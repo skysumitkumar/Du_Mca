@@ -1,0 +1,349 @@
+A. Write a C++ program that finds the intersection of two arrays, returning an array containing elements common to both input arrays.
+
+#include<iostream>
+using namespace std;
+int main()
+{
+    int A,B;
+    cout<<"Enter the length of first array ";
+    cin>>A;
+    cout<<"Enter the length of second array ";
+    cin>>B;
+    int i,j,count=0,a[A],b[B];
+    for(i=0;i<A;i++)
+    {
+        cout<<i<<" index element of arr a is ";
+        cin>>a[i];
+    }
+    cout<<endl;
+    for(i=0;i<B;i++)
+    {
+        cout<<i<<" index element of arr b is ";
+        cin>>b[i];
+    }
+    cout<<endl<<"First array is ";
+    for(i=0;i<A;i++)
+    {
+        cout<<a[i];
+    }
+    cout<<endl<<"Second array is "<<endl;
+    for(i=0;i<B;i++)
+    {
+        cout<<b[i];
+    }
+    if(A>B)
+    {
+        for(i=0;i<A;i++)
+    {
+        for(j=0;j<B;j++)
+        {
+            if(a[i]==b[j])
+            {
+                count++;
+            }
+        }
+    }
+    }
+    else
+    for(i=0;i<B;i++)
+    {
+        for(j=0;j<A;j++)
+        {
+            if(b[i]==a[j])
+            {
+                count++;
+            }
+        }
+    }
+    
+    if(count==0)
+    {
+        cout<<"No element are common in these arrays";
+        
+    }
+    else
+    {
+        cout<<endl<<"Union of array a and b is ";
+        int c[count],k=0;
+        for(i=0;i<A;i++)
+    {
+        for(j=0;j<B;j++)
+        {
+            if(a[i]==b[j])
+            {
+                c[k]=a[i];
+                cout<<c[k]<<" ";
+                k++;
+            }
+        }
+    }
+    }
+}
+
+output
+
+Enter the length of first array 5
+Enter the length of second array3
+0 index element of arr a is 1
+1 index element of arr a is 2
+2 index element of arr a is 3
+3 index element of arr a is 4
+4 index element of arr a is 5
+
+0 index element of arr b is 6
+1 index element of arr b is 5
+2 index element of arr b is 4
+
+First array is 12345
+Second array is
+654
+Union of array a and b is 4 5
+
+B. write code C++ to Implement a function to rotate an array of integers by a specified number of positions. For example, rotate [1, 2, 3, 4, 5] by 2 positions to get [4, 5, 1, 2, 3]. 
+
+#include<iostream>
+using namespace std;
+int rotateBy(int a[],int r,int N);
+int main()
+{
+    int i,r,N;
+    cout<<"Enter the length of the array ";
+    cin>>N;
+    int a[N];
+    cout<<endl<<"Enter the array\n";
+    for(i=0;i<N;i++)
+        cin>>a[i];
+    cout<<"Enter how many times that you want to rotate the array\n";
+        cin>>r;
+    cout<<"\nEntered array is\n";
+    for(i=0;i<N;i++)
+        cout<<a[i];
+    rotateBy(a,r,N);
+}
+int rotateBy(int a[],int r,int N)
+{
+    int i,temp;
+    while(r!=0)
+    {
+        temp=a[N-1];
+        for(i=N-1;i>=0;i--)
+        {
+            a[i]=a[i-1];
+        }
+        a[0]=temp;
+        r--;
+    }
+    cout<<"\nPrint the array\n";
+    for(i=0;i<N;i++)
+        cout<<a[i];
+}
+
+
+output 
+
+Enter the length of the array 5
+
+Enter the array
+1
+2
+3
+4
+5
+Enter how many times that you want to 
+rotate the array
+1
+
+Entered array is
+12345
+Print the array
+51234
+
+C. write C++ program to find the union of two arrays, returning all unique elements.
+
+#include<iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+int N1,N2;
+void sort(int a[],int n)
+{
+    int i,j,small,temp;
+    for(i=0;i<n-1;i++)
+    {
+        small=a[i];
+        for(j=i+1;j<n;j++)
+        {
+            if(a[j]<small)
+            {
+                small=a[j];
+                temp=a[j];
+                a[j]=a[i];
+                a[i]=temp;
+            }
+        }
+    }
+}
+int main()
+{
+    vector<int>Union;
+    int i,j,count=0;
+    cout<<"Enter the length of first array ";
+    cin>>N1;
+    cout<<"Enter the length of Second array ";
+    cin>>N2;
+    int a[N1],b[N2];
+    //Enter the first array
+    cout<<endl<<"Enter the first array"<<endl;
+    for(i=0;i<N1;i++)
+    {
+        cin>>a[i];
+    }
+    cout<<"Enter the second array"<<endl;
+    //Enter the second array
+    for(i=0;i<N2;i++)
+    {
+        cin>>b[i];
+    }
+    sort(a,N1);
+    sort(b,N2);
+    i=0,j=0;
+    int k=0;
+    while(i!=N1&&j!=N2)
+    {
+        if(i!=0||j!=0)
+        {
+            if(a[i]==Union[k-1])
+            {
+                i++;
+                if(i==N1)
+                break;
+            }
+        }
+        if(a[i]<b[j])
+        {
+            Union.push_back(a[i]);
+            i++;
+            k++;
+        }
+        else
+        {
+            Union.push_back(b[j]);
+            j++;
+            k++;
+        }
+        
+    }
+    while(i!=N1)
+    {
+        if(a[i]==Union[k-1])
+        {
+            i++;
+            continue;
+        }
+        Union.push_back(a[i]);
+        i++;
+        k++;
+    }
+    while(j!=N2)
+    {
+        if(b[j]==Union[k-1])
+        {
+            j++;
+            continue;
+        }
+        Union.push_back(b[j]);
+        j++;
+        k++;
+    }
+    cout<<"union of both arrays are"<<endl;
+    int r=Union.size();
+    for(i=0;i<r;i++)
+    {
+        cout<<Union[i]<<" ";
+    }
+}
+
+output
+
+Enter the length of first array 7
+Enter the length of Second array 6
+
+Enter the first array
+1
+2
+2
+3
+3
+4
+5
+Enter the second array
+4
+5
+6
+7
+7
+8
+union of both arrys are
+1 2 3 4 5 6 7 8 
+
+D. Write C++ code for a function that reverses the elements in an array without using any additional data structure.
+
+#include<iostream>
+using namespace std;
+int ReverseArray(int a[],int R);
+int main()
+{
+    int i,R;
+    cout<<"Enter the length of the array ";
+    cin>>R;
+    int a[R];
+    if(R==0)
+        {
+            cout<<"Array is empty firstly enter the array ";
+            return 0;
+        }
+    cout<<"Enter the array\n";
+    for(i=0;i<R;i++)
+        cin>>a[i];
+        
+    cout<<"\nThe entered array is\n";
+    for(i=0;i<R;i++)
+        cout<<a[i];
+        ReverseArray(a,R);
+
+}
+int ReverseArray(int a[],int R)
+{
+    int i,temp,r=R-1;
+    for(i=0;i<R/2;i++)
+    {
+        temp=a[r];
+        a[r]=a[i];
+        a[i]=temp;
+        r--;
+    }
+    cout<<"\nThe New array is\n";
+    for(i=0;i<R;i++)
+        cout<<a[i];
+}
+
+
+output
+
+Enter the length of the array 10
+Enter the array
+1
+2
+5
+4 
+5
+6
+7
+8
+9
+6
+
+The entered array is
+1254567896
+The New array is
+6987654521

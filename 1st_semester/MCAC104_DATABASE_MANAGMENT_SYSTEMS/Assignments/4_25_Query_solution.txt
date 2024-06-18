@@ -1,0 +1,28 @@
+1.SELECT empno,ename,job,hiredate FROM emp;
+2.SELECT DISTINCT job FROM emp;
+3.SELECT CONCAT(ename,",",job) FROM emp;
+4.SELECT ename,sal FROM emp WHERE sal>2850;
+5.SELECT ename,deptno FROM emp WHERE empno=7900;
+6.SELECT ename,sal FROM emp WHERE sal NOT BETWEEN 1500 AND 2850;
+7.SELECT ename,deptno FROM emp WHERE deptno=10 OR deptno=30 ORDER BY ename;
+8.SELECT ename,sal FROM emp WHERE sal>1500 AND (deptno=10 OR deptno=30);
+9.SELECT ename, hiredate FROM emp WHERE hiredate LIKE "1981%";
+10.SELECT ename,job FROM emp WHERE NOT(job='MANAGER');
+11.SELECT ename,sal,comm FROM emp WHERE (comm IS NOT NULL) AND (comm<>0.00) ORDER BY SAL DESC;
+12.SELECT ename FROM emp WHERE ename LIKE "__A%";
+13.SELECT ename FROM emp WHERE ((ename LIKE "%A%A%" OR ename LIKE "%R%R%") AND deptno=30 ) OR mgr=7788;
+14.SELECT ename,job,sal FROM emp WHERE (job="clerk"OR job="analyst")AND (sal NOT IN (1000,3000,5000));
+15.SELECT ename,sal,comm FROM emp WHERE comm>sal*1.05;
+16.SELECT CURDATE();
+   SELECT CURRENT_TIMESTAMP;
+   SELECT CURRENT_TIMESTAMP();
+   SELECT CURRENT_TIMESTAMP FROM DUAL;
+17.SELECT empno,ename,sal,(sal*1.15) AS aggr_sal_sal FROM emp;
+18.SELECT empno,ename,sal,(sal*1.15)AS aggr_sal,((sal*1.15)-sal)As incr_sal FROM emp;
+19.SELECT CONCAT(ename,"earns",sal,"but wants",3*sal)AS "Dream Salary" FROM emp;
+20.SELECT CONCAT(UPPER(SUBSTRING(ename, 1, 1)), LOWER(SUBSTRING(ename, 2))) AS "Employee Name" FROM emp WHERE (ename LIKE "J%" OR ename LIKE "A%" OR ename LIKE "R%");
+21.SELECT e.ename AS "Employee Name", d.dname AS "Department Name", d.deptno AS "Department Number" FROM emp e JOIN dept e ON e.deptno = d.deptno;(IN THIS QUERY PROBLEM)
+22.SELECT DISTINCT job FROM emp WHERE deptno = 30;
+23.SELECT e.ename AS "Employee Name", d.dname AS "Department Name", d.loc AS "Department Location" FROM emp e JOIN dept d ON e.deptno = d.deptno;(IN THIS QUERY PROBLEM)
+24.SELECT e.ename AS "Employee Name", d.dname AS "Department Name" FROM emp e JOIN dept d ON e.deptno = d.deptno WHERE e.ename LIKE "%A%";(IN THIS QUERY PROBLEM)
+25.SELECT e.ename AS "Employee Name", e.job AS "Job", d.deptno AS "Department Number", d.dname AS "Department Name" FROM emp e JOIN dept d ON e.deptno = d.deptno WHERE d.loc = "DALLAS";(IN THIS QUERY PROBLEM)
