@@ -1,0 +1,649 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Circuit-protection methods yield more robust products - 4/14/2005 - EDN - CA514947</title>
+
+<meta name="description" content="The electronics industry's evolution toward small-geometry CMOS as the 		dominant design medium has bolstered signal-processing and computational 		performance, energy efficiency, economy, and compactness. At the same time, 		however, it has reduced ICs' native robustness in the face of common and 		unavoidable electrical transient hazards.">
+<meta name="keywords" content="Analog,Components, Hardware, Interconnect,The electronics industry's evolution toward small-geometry CMOS as the 		dominant design medium has bolstered signal-processing and computational 		performance, energy efficiency, economy, and compactness. At the same time, 		however, it has reduced ICs' native robustness in the face of common and 		unavoidable electrical transient hazards.">
+<meta name="robots" content="follow,noarchive,index">
+<meta http-equiv="pragma" content="no-cache">
+<meta name="author" content="By Joshua Israelsohn, Technical Editor">
+<meta name="copyright" content="Reed Business Information">
+<meta name="language" content="English">
+<meta name="MSSmartTagsPreventParsing" content="TRUE">
+<meta name="distribution" content="Global">
+<meta name="rating" content="General">
+<meta name="expires" content="Never">
+<meta name="revisit-after" content="7 Days">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+
+<script type="text/javascript" language="javascript">
+
+function makeCookie(name,value,days)
+{
+	if (days)
+	{
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = "; expires="+date.toGMTString();
+	}
+	else var expires = "";
+	document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function getCookie(name)
+{
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++)
+	{
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+
+function deleteCookie(name)
+{
+	makeCookie(name,"",-1);
+}
+</script>
+
+<link href="edn.css" tppabs="http://a330.g.akamai.net/7/330/2540/20050714182330/www.edn.com/css/edn.css" rel="stylesheet" type="text/css"/>
+
+<style type="text/css">
+
+/*Global Structure*/
+body {margin: 8px; padding:0px; background-color: #fff;}
+
+#bodycontainer {border: 1px solid #333; width: 758px; margin:0px; padding:0px; position:relative; }
+
+
+#bodytable {width: 100%; margin-top: 3px; padding:0px;}
+
+
+ /*article*/
+.leftcol{width: 170px; background-color: #DDE6ED;}
+#leftcolcontainer{margin: 0px; padding: 0px; position:relative;}
+.rightcol{margin: 0px; padding:5px 0px 0px 0px; width: 586px; voice-family: "\"}\""; voice-family:inherit; width: 588px;}
+#rightcolcontainer {padding-left: 2px;}
+
+
+.centercol {}
+/*#centercolcontainer table {background-color: #fff;}*/
+#centercolcontainer {}
+
+</style>
+<script language="JavaScript" src="edn.js" tppabs="http://a330.g.akamai.net/7/330/2540/20050603182324/www.edn.com/js/edn.js" type="text/javascript"></script><SCRIPT LANGUAGE="JavaScript1.2">
+<!--// 
+function openWindow()
+{
+  with (document.termForm)
+  {
+    term.value = escape(term.value);
+    newURL="index.asp?layout=term&brand=edn&term="+term.value;
+  }
+  
+newwindow=open(newURL,"termWindow","scrollbars=yes,toolbar=no,directories=no,menubar=no,location=no,resizable=yes,status=no,width=800,height=625,screenX=0,screenY=0");
+
+  return false;
+}
+//-->
+</SCRIPT>
+
+</head>
+<body>
+<div id="bodycontainer"><!--Header-->
+	<div id="headercontainer">
+		<a href="javascript:if(confirm('http://www.reed-electronics.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/'" tppabs="http://www.reed-electronics.com/" class="reedlogo">Reed Electronics Group</a><br /><a href="javascript:if(confirm('http://www.edn.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/'" tppabs="http://www.edn.com/" class="logo">EDN: The Voice of the Electronics Engineer</a>
+		<div id="headernav">
+			<a href="javascript:if(confirm('http://www.ednasia.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ednasia.com/'" tppabs="http://www.ednasia.com/">EDN Asia</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.ednc.com.cn/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ednc.com.cn/'" tppabs="http://www.ednc.com.cn/">EDN China</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.ednjapan.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ednjapan.com/'" tppabs="http://www.ednjapan.com/">EDN Japan</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.edn.com/info/123787.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/123787.html'" tppabs="http://www.edn.com/info/123787.html">EDN Europe</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.electronicsnews.com.au/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.electronicsnews.com.au/'" tppabs="http://www.electronicsnews.com.au/">EDN Australia</a>
+		</div>
+		<div style="clear:right;"></div>
+	</div>
+
+<div id="topnav">
+			<div class="tnleft"><SCRIPT LANGUAGE = "JavaScript">var now = new Date();
+var dayNames = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+var monNames = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+document.write("" + dayNames[now.getDay()] + ", " + monNames[now.getMonth()] + " " + now.getDate() + ", " + now.getFullYear());</SCRIPT></div>
+			<ul>
+				<li id="tn1"><a href="javascript:if(confirm('http://www.edn.com/info/CA528811.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/CA528811.html'" tppabs="http://www.edn.com/info/CA528811.html">Subscriptions</a></li>
+				<li id="tn2"><a href="javascript:if(confirm('http://www.edn.com/toc-archive/2005/20050721.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/toc-archive/2005/20050721.html'" tppabs="http://www.edn.com/toc-archive/2005/20050721.html">Current Issue</a></li>
+				<li id="tn3"><a href="javascript:if(confirm('http://www.edn.com/archive  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/archive'" tppabs="http://www.edn.com/archive">Archives</a></li>
+				<li id="tn4"><a href="javascript:if(confirm('http://www.edn.com/info/CA528782.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/CA528782.html'" tppabs="http://www.edn.com/info/CA528782.html">Tools &amp; Services</a></li>
+				<li id="tn5"><a href="javascript:if(confirm('http://www.edn.com/info/CA528812.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/CA528812.html'" tppabs="http://www.edn.com/info/CA528812.html">Blogs</a></li>
+				<li id="tn6"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=Learn_RSS  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=Learn_RSS'" tppabs="http://www.edn.com/index.asp?layout=Learn_RSS">RSS</a></li>
+				<li id="tn7"><a href="javascript:if(confirm('http://www.edn.com/info/30955.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/30955.html'" tppabs="http://www.edn.com/info/30955.html">About EDN</a></li>
+				<li id="tn8"><a href="javascript:if(confirm('http://www.edn.com/info/31091.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/31091.html'" tppabs="http://www.edn.com/info/31091.html">Contact Us</a></li>
+			</ul>
+			<div style="clear:left;"></div>
+	</div>
+
+<!--will be communityMenuEDN-->
+<div id="channelnav">
+<div class="cnreg">
+<form style="display:inline;" method="post" name="emailLookUp" onSubmit="submitForm()" action="http://www.edn.com/subscribe.asp">
+<input type="hidden" name="screen" value="ei1">
+<input type="hidden" name="lastscreen" value="ei1">
+<div style="padding-top:5px;"><b>Register for EDN Newsletters</b></div>
+<div style="padding: 2px;" class="byline"><input type="text" name="email" value="Enter your e-mail address" class="regInput" onClick="clearInput()"></div>
+<div style="padding: 2px;"><a href="#" onClick="submitForm()">Register</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"onClick="submitForm()">Change Profile</a></div></form></div>
+		<div class="cnimage">Technical Channels</div>
+		<div class="cnchan1">
+<a href="javascript:if(confirm('http://www.edn.com/community/2281/Analog.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2281/Analog.html'" tppabs="http://www.edn.com/community/2281/Analog.html">Analog</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/2282/Communications.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2282/Communications.html'" tppabs="http://www.edn.com/community/2282/Communications.html">Communications</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/2280/Components%2FInterconnect.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2280/Components%2FInterconnect.html'" tppabs="http://www.edn.com/community/2280/Components%2FInterconnect.html">Components/Interconnect</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/2283/Computers+%26+Boards.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2283/Computers+%26+Boards.html'" tppabs="http://www.edn.com/community/2283/Computers+%26+Boards.html">Computers &amp; Boards</a><br />
+		</div>
+		<div class="cnchan2">
+<a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas'" tppabs="http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas">Design Ideas</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/42871/Digital+Den.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/42871/Digital+Den.html'" tppabs="http://www.edn.com/community/42871/Digital+Den.html">Digital Den</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/2813/EDA%2FIP.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2813/EDA%2FIP.html'" tppabs="http://www.edn.com/community/2813/EDA%2FIP.html">EDA/IP</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/42872/High+Speed+Design.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/42872/High+Speed+Design.html'" tppabs="http://www.edn.com/community/42872/High+Speed+Design.html">High-Speed Design</a>
+		</div>
+		<div class="cnchan3">
+<a href="javascript:if(confirm('http://www.edn.com/community/2816/Power+Sources%2FControllers.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2816/Power+Sources%2FControllers.html'" tppabs="http://www.edn.com/community/2816/Power+Sources%2FControllers.html">Power Sources/Controllers</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/42873/Processors%2FSoftware%2FTools.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/42873/Processors%2FSoftware%2FTools.html'" tppabs="http://www.edn.com/community/42873/Processors%2FSoftware%2FTools.html">Processors/Software/Tools</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/42874/Programmable+Logic%2FMemory.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/42874/Programmable+Logic%2FMemory.html'" tppabs="http://www.edn.com/community/42874/Programmable+Logic%2FMemory.html">Programmable Logic/Memory</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/2817/Test+%26+Measurement.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2817/Test+%26+Measurement.html'" tppabs="http://www.edn.com/community/2817/Test+%26+Measurement.html">Test &amp; Measurement</a>
+		</div>
+		<div style="clear:left;"></div>
+	</div>
+
+<!--will have searchResultsAutoFill-->
+<div id="searchnav">
+		<div id="searchnavcontent"><form name="SearchForm" onsubmit="checkSearch()" action="javascript:if(confirm('http://www.edn.com/index.asp?content=Go&original=all&layout=searchResults  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?content=Go&original=all&layout=searchResults'" tppabs="http://www.edn.com/index.asp?content=Go&original=all&layout=searchResults" method="get" id="searchform">Search&nbsp;&nbsp; <script language=javascript type="text/javascript">
+<!--
+function stripQts2(name){
+var newName = "";
+var test = name.split(unescape("%27%27")); //split the field on ascii code for double ''
+for(i=0;i<test.length;i++){
+	if(i!=(test.length - 1)){		
+		newName = newName + test[i] + "'"  // put it back together with an "'" 
+	}
+	else{
+		newName = newName + test[i] // make sure end of string has no "'"
+	}
+}
+	userQuery = newName;
+}
+
+var tempQuery="";
+userQuery = "";
+for (i = 0; i < tempQuery.length; i++)
+  if ((tempQuery.charAt(i)=='%') &&
+     (tempQuery.charAt(i+1)=='2') &&
+     (tempQuery.charAt(i+2)=='2'))
+       {userQuery = userQuery + '&quot;';
+        i=i+2;
+       }
+  else
+       {if (tempQuery.charAt(i)=="+")
+	     userQuery = userQuery + " "
+		else
+		 userQuery = userQuery + tempQuery.charAt(i);
+       }
+userQuery=unescape(userQuery);
+stripQts2(userQuery);
+document.write('<input type=text name=text value="' + userQuery + '" class="searchtext" />')
+//-->
+</script>&nbsp; <input type="submit" value="Go" class="searchsubmit" /><INPUT type="hidden" name="content" value="all"><INPUT type="hidden" name="original"><INPUT type="hidden" name="layout" value="searchResults"></form>
+		</div>
+	</div>
+<div id="leaderboard"><img src="edn_adv_top.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050517180213/www.edn.com/contents/images/edn_adv_top.gif" width="20" height="90" style="padding-top:10px;" alt=""/></div>
+
+<!--End Header-->
+<!--Main Content-->
+	<table  id="bodytable">
+		<tr>
+		<td class= "leftcol" valign="top">
+				<div id="leftcolcontainer"><a name="talkBack"></a>
+
+
+
+<h3><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=talkback  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=talkback'" tppabs="http://www.edn.com/index.asp?layout=talkback">Feedback Loop</a></h3><br/>
+<div align="center" id="talkback"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=talkBackPost&articleid=CA514947&talk_back_header_id=514947  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=talkBackPost&articleid=CA514947&talk_back_header_id=514947'" tppabs="http://www.edn.com/index.asp?layout=talkBackPost&articleid=CA514947&talk_back_header_id=514947" class="feedbackinvite">Post a comment on this article</a></div>
+<br/>
+
+<p align="center" style="padding:0 5px;">There are no comments posted for this article.</p>
+</div>
+
+
+<h3>More By This Author</h3>
+<div id="sideNav">
+<ul><li><a href="javascript:if(confirm('http://www.edn.com/article/CA624951.html?ref=nbsa  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/article/CA624951.html?ref=nbsa'" tppabs="http://www.edn.com/article/CA624951.html?ref=nbsa">A bit-o&#39;-power: digitally controlled power conversion</a></li><li><a href="CA608153.html-ref=nbsa.htm" tppabs="http://www.edn.com/article/CA608153.html?ref=nbsa">Politically correct power</a></li><li><a href="CA529389.html-ref=nbsa.htm" tppabs="http://www.edn.com/article/CA529389.html?ref=nbsa">Sine construction: DDSs form precision oscillators</a></li></ul>
+</div>
+<div id="more">
+  <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=moreByThisAuthor&articleid=CA514947  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=moreByThisAuthor&articleid=CA514947'" tppabs="http://www.edn.com/index.asp?layout=moreByThisAuthor&articleid=CA514947">More &gt;&gt;</a>
+ 
+ <previousPage
+ </previousPage>
+ 
+ 
+</div>
+
+<script language="JavaScript" type="text/javascript">
+<!-- // display a new window when not enews article
+function displayWin(publisher,docid) {
+var brand = "";
+switch (publisher) {
+case "CommVerge":
+  brand = "edn";
+  break;
+case "Electronic Business":
+  brand = "eb-mag";
+  break;
+case "ECN":
+  brand = "ecnmag";
+  break;
+case "EDN":
+  brand = "edn";
+  break;
+case "EPP":
+  brand = "semiconductor"
+  break;
+case "Electronic News":
+  brand = "electronicnews";
+  break;
+case "Semiconductor International":
+  brand = "semiconductor";
+  break;
+case "Test & Measurement World":
+  brand = "tmworld";
+  break;
+default:
+  brand = "electronicnews";
+  break;
+  }
+
+var location = "";
+
+if (brand == "edn")
+{
+ location = "http://www.edn.com/article/" + docid + "?ref=nbra";
+}
+else
+{
+ location = "http://www.reed-electronics.com/" + brand + "/article/" + docid + "?ref=nbra";
+}
+
+{
+	makeCookie('tcm-searchquery','',1);
+	window.location = location;
+}
+}
+//-->
+</script>
+
+<a name="related">
+<div id="relart">
+<h3>Related Articles</h3>
+<div id="sideNav">
+<ul>
+
+<li><script language="JavaScript" type="text/javascript">
+<!--
+document.write("<a href=\"javascript: displayWin('EDN','CA631473');\" onclick=\"makeCookie('tcm-searchquery','',1);\">Small driver IC controls multiple LEDs in handhelds</a>")
+//-->
+</script><noscript><a href="javascript:if(confirm('http://www.edn.com/article/CA631473?ref=nbra  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/article/CA631473?ref=nbra'" tppabs="http://www.edn.com/article/CA631473?ref=nbra" title="National Semiconductor&#39;s LP3954 single-chip driver integrates two backlight drivers, a dual RGB LED controller, a flash LED driver, and an ADC." onclick="makeCookie('tcm-searchquery','',1);">Small driver IC controls multiple LEDs in handhelds</a></noscript><br />08/01/2005, EDN</li>
+<li><script language="JavaScript" type="text/javascript">
+<!--
+document.write("<a href=\"javascript: displayWin('EDN','CA624069');\" onclick=\"makeCookie('tcm-searchquery','',1);\">Tiny filter repels EMI/ESD away from wireless functions</a>")
+//-->
+</script><noscript><a href="javascript:if(confirm('http://www.edn.com/article/CA624069?ref=nbra  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/article/CA624069?ref=nbra'" tppabs="http://www.edn.com/article/CA624069?ref=nbra" title="As wireless phones get smaller and pack in more auxiliary functions, such as cameras, the potential for EMI problems increases, whereas the space available to squelch these problems shrinks. The Centurion CM1430 and CM1431 filter arrays from California Micro Devices combines EMI filtering with ESD protection in a low-profile, 0.4-mm-high package." onclick="makeCookie('tcm-searchquery','',1);">Tiny filter repels EMI/ESD away from wireless functions</a></noscript><br />07/07/2005, EDN</li>
+<li><script language="JavaScript" type="text/javascript">
+<!--
+document.write("<a href=\"javascript: displayWin('EDN','CA608887');\" onclick=\"makeCookie('tcm-searchquery','',1);\">Which way to the future? </a>")
+//-->
+</script><noscript><a href="javascript:if(confirm('http://www.edn.com/article/CA608887?ref=nbra  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/article/CA608887?ref=nbra'" tppabs="http://www.edn.com/article/CA608887?ref=nbra" title="A look at next-generation vehicle enhancements and the sensor technologies that the industry needs to make them possible. " onclick="makeCookie('tcm-searchquery','',1);">Which way to the future? </a></noscript><br />06/23/2005, EDN</li>
+<li><script language="JavaScript" type="text/javascript">
+<!--
+document.write("<a href=\"javascript: displayWin('EDN','CA608888');\" onclick=\"makeCookie('tcm-searchquery','',1);\">Electronics challenge the car&#39;s power grid </a>")
+//-->
+</script><noscript><a href="javascript:if(confirm('http://www.edn.com/article/CA608888?ref=nbra  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/article/CA608888?ref=nbra'" tppabs="http://www.edn.com/article/CA608888?ref=nbra" title="Optional content necessitates a new approach to designing electrical-distribution systems. " onclick="makeCookie('tcm-searchquery','',1);">Electronics challenge the car&#39;s power grid </a></noscript><br />06/23/2005, EDN</li>
+<li><script language="JavaScript" type="text/javascript">
+<!--
+document.write("<a href=\"javascript: displayWin('EDN','CA607386');\" onclick=\"makeCookie('tcm-searchquery','',1);\">Book leads those on the digital dark side to the analog force</a>")
+//-->
+</script><noscript><a href="javascript:if(confirm('http://www.edn.com/article/CA607386?ref=nbra  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/article/CA607386?ref=nbra'" tppabs="http://www.edn.com/article/CA607386?ref=nbra" title="A familiar name to  EDN  readers. Bonnie Baker takes many of the  subjects and themes of her popular &#8220;Baker&#8217;s Best&#8221; column into more detail and  depth in  A Baker&#8217;s Dozen: Real Analog Solutions for Digital Designers   (Newnes/Elsevier, ISBN 0-7506-7819-4, May 2005)." onclick="makeCookie('tcm-searchquery','',1);">Book leads those on the digital dark side to the analog force</a></noscript><br />06/09/2005, EDN</li>
+</ul></div>
+<h3>News &amp; New Products</h3>
+<div id="sideNav">
+<ul><li><a href="CA631462.html-ref=nbnp.htm" tppabs="http://www.edn.com/article/CA631462.html?ref=nbnp">Sigma-C gets new CEO for DFM push</a><br />
+EDN, 8/2/2005</li>
+
+
+
+<li><a href="CA631515.html-ref=nbnp.htm" tppabs="http://www.edn.com/article/CA631515.html?ref=nbnp">Atmel joins Z-Alliance's digital-power effort</a><br />
+EDN, 8/1/2005</li>
+
+
+
+<li><a href="CA631473.html-ref=nbnp.htm" tppabs="http://www.edn.com/article/CA631473.html?ref=nbnp">Small driver IC controls multiple LEDs in handhelds</a><br />
+EDN, 8/1/2005</li>
+
+
+
+</ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=news&spacedesc=newProducts  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=news&spacedesc=newProducts'" tppabs="http://www.edn.com/index.asp?layout=news&spacedesc=newProducts">More &gt;&gt;</a></div><h3>Design Ideas</h3>
+<div id="sideNav">
+<ul><li><a href="CA608155.html-ref=nbdi.htm" tppabs="http://www.edn.com/article/CA608155.html?ref=nbdi">Wide-range regulator delivers 12V, 3A output from 16 to 100V		source</a><br />
+EDN, 6/23/2005</li>
+
+
+
+<li><a href="CA605506.html-ref=nbdi.htm" tppabs="http://www.edn.com/article/CA605506.html?ref=nbdi">CMOS hex inverter generates low-distortion sine waves</a><br />
+EDN, 6/9/2005</li>
+
+
+
+<li><a href="CA608156.html-ref=nbdi.htm" tppabs="http://www.edn.com/article/CA608156.html?ref=nbdi">Stable, 18-MHz oscillator features automatic level control,		clean-sine-wave output</a><br />
+EDN, 6/23/2005</li>
+
+
+
+</ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas'" tppabs="http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas">More &gt;&gt;</a></div><h3>Features</h3>
+<div id="sideNav">
+<ul><li><a href="CA624945.html-ref=nbfe.htm" tppabs="http://www.edn.com/article/CA624945.html?ref=nbfe">Thinking inside the box: Buildings get a brain</a><br />
+EDN, 7/21/2005</li>
+
+
+
+<li><a href="CA624967.html-ref=nbfe.htm" tppabs="http://www.edn.com/article/CA624967.html?ref=nbfe">Sun sets on IEEE 488, LAN and PC standards vie for its
+		role</a><br />
+EDN, 7/21/2005</li>
+
+
+
+<li><a href="CA624951.html-ref=nbfe.htm" tppabs="http://www.edn.com/article/CA624951.html?ref=nbfe">A bit-o&#39;-power: digitally controlled power conversion</a><br />
+EDN, 7/21/2005</li>
+
+
+
+</ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=news&spacedesc=features  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=news&spacedesc=features'" tppabs="http://www.edn.com/index.asp?layout=news&spacedesc=features" class="more">More &gt;&gt;</a></div><h3>Columnists</h3>
+<div id="sideNav">
+<ul><li><a href="CA621636.html-ref=nbop.htm" tppabs="http://www.edn.com/article/CA621636.html?ref=nbop">One in a million</a><br />
+By Bonnie Baker, EDN, 7/7/2005</li>
+
+
+
+<li><a href="CA628274.html-ref=nbop.htm" tppabs="http://www.edn.com/article/CA628274.html?ref=nbop">No SOC is an island</a><br />
+By Gabe Moretti, EDA consultant, EDN, 7/21/2005</li>
+
+
+
+<li><a href="CA624952.html-ref=nbop.htm" tppabs="http://www.edn.com/article/CA624952.html?ref=nbop">Some products fall down on the job&#8212;literally!</a><br />
+By John Dodge, Editor in Chief, EDN, 7/21/2005</li>
+
+
+
+</ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=news&spacedesc=opinions  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=news&spacedesc=opinions'" tppabs="http://www.edn.com/index.asp?layout=news&spacedesc=opinions">More &gt;&gt;</a></div><h3>Blogs</h3>
+<div id="sideNav">
+<ul><li><a href="javascript:if(confirm('http://www.edn.com/blog/150000015/post/1360001136.html?ref=nbbl  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/blog/150000015/post/1360001136.html?ref=nbbl'" tppabs="http://www.edn.com/blog/150000015/post/1360001136.html?ref=nbbl" title="WiMax gains momentum with deployments worldwide">WiMax gains momentum with deployments worldwide</a> - 08/01/2005</li><li><a href="javascript:if(confirm('http://www.edn.com/blog/400000040/post/1340001134.html?ref=nbbl  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/blog/400000040/post/1340001134.html?ref=nbbl'" tppabs="http://www.edn.com/blog/400000040/post/1340001134.html?ref=nbbl" title="I Love LA!">I Love LA!</a> - 08/01/2005</li><li><a href="javascript:if(confirm('http://www.edn.com/blog/400000040/post/1290001129.html?ref=nbbl  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/blog/400000040/post/1290001129.html?ref=nbbl'" tppabs="http://www.edn.com/blog/400000040/post/1290001129.html?ref=nbbl" title="Startup Tips">Startup Tips</a> - 07/30/2005</li></ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=siteinfo&articleid=CA528812  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=siteinfo&articleid=CA528812'" tppabs="http://www.edn.com/index.asp?layout=siteinfo&articleid=CA528812">More &gt;&gt;</a></div><h3 class="sponsorhead">Affiliate Network</h3>
+<div id="sideNav">
+<ul><li><span style="font:10px verdana, sans-serif;">
+<script language="JavaScript1.1" SRC=";type=affiliate;sz=1x1;tile=1;u=-1176500494-521400098-946378881-0-article-CA514947--;ord=1122972207-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=affiliate;sz=1x1;tile=1;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">
+</script><script language="JavaScript1.1" SRC=";type=affiliate;sz=1x1;tile=2;u=-1176500494-521400098-946378881-0-article-CA514947--;ord=1122972207-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=affiliate;sz=1x1;tile=2;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">
+</script><script language="JavaScript1.1" SRC=";type=affiliate;sz=1x1;tile=3;u=-1176500494-521400098-946378881-0-article-CA514947--;ord=1122972207-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=affiliate;sz=1x1;tile=3;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">
+</script><script language="JavaScript1.1" SRC=";type=affiliate;sz=1x1;tile=4;u=-1176500494-521400098-946378881-0-article-CA514947--;ord=1122972207-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=affiliate;sz=1x1;tile=4;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">
+</script><script language="JavaScript1.1" SRC=";type=affiliate;sz=1x1;tile=5;u=-1176500494-521400098-946378881-0-article-CA514947--;ord=1122972207-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=affiliate;sz=1x1;tile=5;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">
+</script></span></li></ul>
+</div><h3 class="sponsorhead">Tool Center</h3>
+<div id="sideNav">
+<ul><li><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=19  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=19'" tppabs="http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=19">Software</a></li>
+<li><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=26  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=26'" tppabs="http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=26">Catalogs &amp; Brochures</a></li>
+<li><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=partnerAllArticles  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=partnerAllArticles'" tppabs="http://www.edn.com/index.asp?layout=partnerAllArticles">White Papers</a></li>
+</ul>
+</div>
+<h3><a href="javascript:if(confirm('http://www.edn.com/toc-events  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/toc-events'" tppabs="http://www.edn.com/toc-events">Events</a></h3>
+<div id="sideNav">
+<ul><li><a href="javascript:if(confirm('http://www.edn.com/event/14097.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/event/14097.html'" tppabs="http://www.edn.com/event/14097.html">EDA Tech Forum</a><br/>
+<span class="byline"><strong>Dates:</strong> 8/15/2005 - 8/15/2005<br/>
+<strong>Location:</strong> Penang, Malaysia</span></li><li><a href="javascript:if(confirm('http://www.edn.com/event/14098.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/event/14098.html'" tppabs="http://www.edn.com/event/14098.html">EDA Tech Forum</a><br/>
+<span class="byline"><strong>Dates:</strong> 8/17/2005 - 8/17/2005<br/>
+<strong>Location:</strong> Bangalore, India</span></li><li><a href="javascript:if(confirm('http://www.edn.com/event/14099.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/event/14099.html'" tppabs="http://www.edn.com/event/14099.html">EDA Tech Forum</a><br/>
+<span class="byline"><strong>Dates:</strong> 8/19/2005 - 8/19/2005<br/>
+<strong>Location:</strong> Delhi, India</span></li></ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/toc-events  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/toc-events'" tppabs="http://www.edn.com/toc-events">More &gt;&gt;</a></div>
+</div><br/>
+<img src="pixel.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050404164317/www.edn.com/contents/images/pixel.gif" width="170" alt=""/><br/>
+		</td><!--end leftcol-->
+		
+		<td class= "rightcol" valign="top">
+				<div id="rightcolcontainer"><div id="centercolcontainer">
+<script>
+<!--
+function appendLocation(theLink) {
+    var thisPage = "" + location;
+    var bits = thisPage.split("&");
+    var s = ""
+    for (var i = 0; i < bits.length; i++) {
+      s += bits[i] + "^"
+    }
+    if (s == "") {
+      theLink.href = theLink.href + "&refPage=" + thisPage
+     } else {
+       theLink.href = theLink.href + "&refPage=" + s
+    }
+    return true;
+}
+// -->
+</script>
+<div id="printSubEmail"><div><a href="javascript:if(confirm('http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article'" tppabs="http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article"><img src="ednIconSubscribe.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222505/www.edn.com/contents/images/redesign/ednIconSubscribe.gif" alt="Free Print Subscriptions" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article'" tppabs="http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article">Free Print Subscription</a></div>
+
+<div><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articlePrint&articleID=CA514947  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articlePrint&articleID=CA514947'" tppabs="http://www.edn.com/index.asp?layout=articlePrint&articleID=CA514947"><img src="ednIconPrint.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222321/www.edn.com/contents/images/redesign/ednIconPrint.gif" alt="Printer Friendly Version" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articlePrint&articleID=CA514947  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articlePrint&articleID=CA514947'" tppabs="http://www.edn.com/index.asp?layout=articlePrint&articleID=CA514947">Printer Friendly Version</a></div>
+
+<div><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articleEmail&articleID=CA514947  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articleEmail&articleID=CA514947'" tppabs="http://www.edn.com/index.asp?layout=articleEmail&articleID=CA514947" onclick="return appendLocation(this)"><img src="ednIconEmail.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222407/www.edn.com/contents/images/redesign/ednIconEmail.gif" alt="Email to a Friend" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articleEmail&articleID=CA514947  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articleEmail&articleID=CA514947'" tppabs="http://www.edn.com/index.asp?layout=articleEmail&articleID=CA514947" onclick="return appendLocation(this)">Email to a Friend</a></div></div><br/>
+<div id="articleContainer">
+<h4><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=news&spacedesc=features  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=news&spacedesc=features'" tppabs="http://www.edn.com/index.asp?layout=news&spacedesc=features">Feature</a></h4>
+
+<script type="text/javascript" language="javascript">
+<!-- // display magazine logo when not e-inSITE story
+function get_publication(publication_name) {
+var pub_id = 'EDN';
+if (publication_name == 'EDN' && pub_id == 'CV')
+return 'EDN/CommVerge';
+else
+return publication_name;
+}
+function displayLogo() {
+var pubId = "EDN";
+var brand = "edn";
+if (brand != "default") return;
+switch (pubId) {
+case 'EDN':
+  document.write('<A href="http://www.edn.com/"><IMG border=0 src="edn.gif"/*tpa=http://www.edn.com/contents/images/edn.gif*/ align=right></A>');
+  break;
+default:
+  break;
+  }
+}
+//-->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+displayLogo();
+//-->
+</script>
+
+<h1>Circuit-protection methods yield more robust products</h1>
+<h2>Increasing functional density across virtually all electronic-OEM		segments renders valuable silicon ever more susceptible to everyday, real-world		hazards. Simple and relatively inexpensive measures can protect your products,		your company's reputation, and, in extreme cases, your customers.</h2>
+
+<span class="byline">By Joshua Israelsohn, Technical Editor -- <script language="javascript">document.write(get_publication('EDN'));</script>, 4/14/2005</span><br/>
+
+<span class="copy"><br/><table cellSpacing="0" cellPadding="0" width="180" align="right" border="0"><tbody><tr><td bgcolor="#cccccc"><table cellspacing="1" cellpadding="4" width="100%" border="0"><tbody><tr><td class="table" bgcolor="#ffffff"><STRONG>TECHFLICKS<BR></STRONG>Videos 
+            associated with this article</td></tr><tr><td class="table" bgcolor="#eeeeee"><font color="#666666">Note: Due to the large size of these files, we recommend 
+              that you right-click on the links below and choose "Save Target 
+              As"&nbsp;in order to copy the files to your PC before 
+              playing. 
+                  <BR><BR><A 
+              href="javascript:if(confirm('http://www.edn.com/contents/images/edn050414_techflick1.mpg  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/edn050414_techflick1.mpg'" tppabs="http://www.edn.com/contents/images/edn050414_techflick1.mpg">Animated 
+              map of lightning strikes</A><BR><BR><A 
+              href="javascript:if(confirm('http://a330.g.akamai.net/7/330/2540/20050412172418/www.edn.com/contents/images/edn050414_techflick2.avi  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://a330.g.akamai.net/7/330/2540/20050412172418/www.edn.com/contents/images/edn050414_techflick2.avi'" tppabs="http://a330.g.akamai.net/7/330/2540/20050412172418/www.edn.com/contents/images/edn050414_techflick2.avi">Lithium-ion 
+              overcurrent 1</A><BR><BR><A 
+              href="javascript:if(confirm('http://a330.g.akamai.net/7/330/2540/20050412173833/www.edn.com/contents/images/edn050414_techflick3.avi  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://a330.g.akamai.net/7/330/2540/20050412173833/www.edn.com/contents/images/edn050414_techflick3.avi'" tppabs="http://a330.g.akamai.net/7/330/2540/20050412173833/www.edn.com/contents/images/edn050414_techflick3.avi">Lithium-ion 
+              overcurrent 2</A><BR></font></td></tr><tr><td class="table" bgcolor="#ffffff"><strong>AT A GLANCE</strong></td></tr><tr bgcolor="#eeeeee"><td class="table"><font color="#666666">
+            <UL>
+              <LI>Your product's reputation depends on its                robustness.<li>Compare your circuit's tolerance for                leakage current and shunt capacitance before specifying a                transient-protection topology.<li>Compare the speed of candidate protection                devices with reasonable models for the transients against which                you intend to protect.<li>Beware of IC manufacturers that specify transient-tolerance levels     absent the source model and test method. The tolerance level alone doesn't tell     you anything.</li></UL></font></td></tr><tr><td class="table" bgcolor="#eeeeee">
+            <P><strong>Sidebars:</strong><br><A href="#Safetyfirst">Safety first</A></P></td></tr></tbody></table></td></tr></tbody></table><span>     <p><IMG style="WIDTH: 28px; HEIGHT: 200px" alt="" hspace=5  src="08dffart.jpg" tppabs="http://a330.g.akamai.net/7/330/2540/20050405152510/www.edn.com/articles/images/EDN/20050414/08dffart.jpg" align=left  vspace=5 border=0>The electronics industry's evolution toward small-geometry CMOS as the 		dominant design medium has bolstered signal-processing and computational 		performance, energy efficiency, economy, and compactness. At the same time, 		however, it has reduced ICs' native robustness in the face of common and 		unavoidable electrical transient hazards.<br>     <br>In broad strokes, transient sources segment into lightning, switching, 		EMP (electromagnetic pulse), and ESD (electrostatic discharge). Of the four, 		EMPs are thankfully rare, deriving most famously from nuclear events. But, like 		EMP, virtually all sources of electrical transients derive from a sudden 		release of stored energy. Lightning and ESD result from the sudden release of 		static charge; switching transients typically originate from the collapse of an 		electrostatic or electromagnetic field due to a sudden change in current or 		voltage in the presence of explicit or parasitic reactances.<br>     <br>Sources within a classification tend to exhibit similar time-domain 		characteristics. Switching transients, for example, tend to be periodic with 		amplitude and repetition rates that vary by the details of an installation. 		Lightning and ESD strikes are aperiodic and locationally unpredictable beyond 		broad geographic trends (<strong><A  href="javascript:if(confirm('http://www.edn.com/contents/images/514947f1.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/514947f1.pdf'" tppabs="http://www.edn.com/contents/images/514947f1.pdf">Figure 1</A></strong>). (<strong>TechFlick</strong>: An <A 
+href="javascript:if(confirm('http://www.edn.com/contents/images/edn050414_techflick1.mpg  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/edn050414_techflick1.mpg'" tppabs="http://www.edn.com/contents/images/edn050414_techflick1.mpg">animated 
+version of the map</A>       in 		<strong><A href="javascript:if(confirm('http://www.edn.com/contents/images/514947f1.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/514947f1.pdf'" tppabs="http://www.edn.com/contents/images/514947f1.pdf">Figure  1</A></strong> shows the 
+combined annual strike count per square kilometer as a function of geography. Figure and video 		courtesy NASA National Space Science and Technology Center Lightning Team.)</p>     <p>Lightning and ESD strikes are also difficult to measure and vary over a 		large range of amplitudes. Various industry segments have developed and 		promoted a variety of source standards and test methods. Though standards can 		differ in important areas, such as charge storage and source impedance, for 		example, they tend to agree in principle on how transient hazards typically 		appear to otherwise-unsuspecting circuits (<strong><A href="javascript:if(confirm('http://www.edn.com/contents/images/514947t1.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/514947t1.pdf'" tppabs="http://www.edn.com/contents/images/514947t1.pdf">Table  1</A></strong>). This tabular data doesn't tell the complete story: Transient 		waveforms are not square but tend to exhibit fast exponential rise times, 		comparatively slow exponential decays, and little or no dwell times at their 		peak amplitude.</p>     <p>For any given node that is susceptible to a hazardous transient, a 		protection method must simultaneously meet several requirements. The method 		must be able to clamp the protected node to a safe potential. An appropriate 		protection device, therefore, varies according to the type of circuit it is 		protecting. The protection device must respond fast enough to the transient's 		rising edge to keep the node voltage below the destructive threshold. 		Low-inductance shunt devices and low-capacitance series elements help meet this 		requirement but only if the pc board's design exploits good high-speed-layout 		techniques for the protection network. Lastly, the protection method must 		either be able to absorb the energy that a transient event delivers or cause 		the dissipation to occur in the transient source impedance. For this reason, 		OEM designers cannot always depend on the semiconductor's on-chip protection 		cells and often must add pc-board-level protection elements. A prudent first 		step in determining a protection method for a given transient type, therefore, 		is to calculate the total strike energy that your circuit must absorb. Also 		consider the likely repetition rates and thermal time constants to ensure that 		clamping elements don't overheat in the heat of the moment.</p>     <p><table cellpadding="0" cellspacing="0" border="0" align="right" valign="top" id="boombox" style="background-color:#DDE6ED;padding:19px;">
+
+
+
+
+<tr><td align="center" style="font: normal 10px verdana, sans-serif; color: #333;">ADVERTISEMENT<br />
+<script language=Javascript1.1 src=";abr=!webtv;desc=;desc=CA514947;type=boombox;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=336x280;ptile=2;u=-1176500494-521400098-946378881-0-article-CA514947--;ord=1122972207-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;abr=!webtv;desc=;desc=CA514947;type=boombox;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">
+</script>
+<script>
+<!--
+if ((!document.images && navigator.userAgent.indexOf('Mozilla/2.') >= 0) || (navigator.userAgent.indexOf("WebTV") >= 0))
+{
+document.write('<a href="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=;desc=CA514947;type=boombox;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">');
+document.write('<img src="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=;desc=CA514947;type=boombox;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?" border="0"></a>');
+}
+//-->
+</script>
+<noscript>
+<!-- for non JavaScript browsers and Netscape 2.x -->
+<a href="javascript:if(confirm('http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=;desc=CA514947;type=boombox;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=;desc=CA514947;type=boombox;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?'" tppabs="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=;desc=CA514947;type=boombox;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">
+<img src="javascript:if(confirm('http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=;desc=CA514947;type=boombox;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=;desc=CA514947;type=boombox;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?'" tppabs="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=;desc=CA514947;type=boombox;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?" border="0" align="right" vspace=5 hspace=5>
+</a>
+</noscript>
+
+</td></tr></table>
+
+The most commonly susceptible nodes are a system's exposed ports. These 		include the power entry and signal I/Os. They can also include internal nodes 		that are near an insulating surface as is the case in keyboards and displays. 		Transients needn't originate on a particular lead to damage its associated 		circuitry. Transients occurring on leads connected to one subsystem can 		capacitively couple to leads connected to other subsystems before breakdown or 		can inductively couple during the current ramp that immediately follows 		breakdown. In such cases, protecting the primary victim may not suffice. For 		example, if an installation bundles signal leads with power feeds, then a 		power-line transient induced by, say, a motor could couple to a signal node, 		albeit at reduced amplitude.</p>     <p>High-speed circuits are challenging to protect because they can be 		sensitive to the additional shunt-capacitance loading that clamping schemes add 		to the protected node. This reason is one of several that fiber-optic feeds are 		attractive in high-speed communications, even for short-haul applications, such 		as rack-to-rack links (<strong><A href="#ref">references 1</strong> and 		<strong>2</A></strong>).</p>     <p>Isolated front ends, common in industrial and medical 		signal-conditioning applications, block large common-mode voltages and pass the 		signal's differential-mode component. The common-mode component appears across 		the isolation barrier, which offers a finite breakdown voltage, often in the 		range of 500V to 2 kV. Transients that exceed the isolation barrier's breakdown 		voltage, such as from an ESD strike, will discharge to the system-side ground 		through a path that the isolation barrier's design determines (<strong><A href="javascript:if(confirm('http://www.edn.com/contents/images/514947f2.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/514947f2.pdf'" tppabs="http://www.edn.com/contents/images/514947f2.pdf">Figure  2</A></strong>). The predictability of such a path may vary 		depending on the type of barrier: optical, capacitive, or magnetic.</p>     <a name="Fighting fire with fire"><strong>Fighting fire with fire</strong></a>     <p>In both peak voltage and peak current, lightning strikes are the largest 		transient sources against which you may need to protect. Even at substantial 		distances from the strike site, lightning-induced surges deliver substantial 		energy, and few protection devices can themselves survive the 		experience&#8212;much less perform sufficiently to protect the nodes to which 		they attach. <strong><A  href="javascript:if(confirm('http://www.edn.com/contents/images/514947t2.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/514947t2.pdf'" tppabs="http://www.edn.com/contents/images/514947t2.pdf">Table 2</A> </strong> shows a further breakdown 		of the lightning characteristics in <strong><A  href="javascript:if(confirm('http://www.edn.com/contents/images/514947t1.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/514947t1.pdf'" tppabs="http://www.edn.com/contents/images/514947t1.pdf">Table 1</A></strong>.</p>     <p>The most likely nodes to experience transients from lightning attach to 		power entries or to long, outdoor signaling feeds, such as in POTS 		(plain-old-telephone-system), DSL (digital-subscriber-line), or 		cable-television systems. Although POTS feeds have modest bandwidth 		requirements, DSL deployments are supposed to piggyback on the POTS 		infrastructure, so protection devices must contribute a minimum shunt 		capacitance, as is the case for cable TV. GDTs (gas-discharge tubes), also 		known as gas-plasma arrestors, are good first lines of defense for such large 		distributed systems.</p>     <p>Under normal operating conditions, the shunt impedance of a GDT is on 		the order of 1 T&#937; in parallel with 1 pF or less. The GDT's low leakage 		current&#8212;typically less than 1 pA&#8212;and low capacitance vary little 		with applied potentials less than the gas-ionization, or "glow," voltage. Once 		the tube reaches the glow voltage, the impedance drops precipitously, resulting 		in a current through the gas. Increasing current causes the gas mass to form a 		plasma, which causes the voltage across the device to drop further to the 		neighborhood of 15V. The plasma self-extinguishes when the source can no longer 		supply the plasma current. The net effect is a crowbar behavior that can limit 		the voltage during a transient event to the neighborhood of 15V in less than 1 		&#181;sec. One key advantage of the GDT is that it forces most of the 		dissipation to occur in the transient's source impedance and not in either the 		protective device or the protected circuitry. A combination of the signal's 		voltage-rise rate (dV/dt), the tube's electrode spacing, the gas type, and the 		gas pressure determine the actuation voltage (<strong><A href="#ref">Reference 		3</A></strong>). Devices can sustain currents as large as 20 kA.</p>     <p>GDTs are available in both single- and triple-pole forms (<strong><A href="javascript:if(confirm('http://www.edn.com/contents/images/514947f3.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/514947f3.pdf'" tppabs="http://www.edn.com/contents/images/514947f3.pdf">Figure  3</A></strong>). The triple-pole GDT is a deceptively simple device that 		maintains a differential pair's balance during those critical moments when all 		hell is breaking loose: Small asymmetries can allow a transient to couple 		preferentially to one side of a balanced feed, imposing an enormous 		differential signal as a result. Slight differences in the response behavior of 		two protection devices can also allow a destructive amplitude to appear at a 		system's input terminals, even when the transient event appears symmetrically 		on the balanced line. The triple-pole GDT provides one differential and two 		shunt devices in one tube with a common gas volume. Any condition that causes 		conduction between a pole pair causes conduction between all three poles, 		because the gas' state&#8212;insulating, ionized, or plasma&#8212;determines 		the tube's behavior.</p>     <a name="Get a MOV on"><strong>Get a MOV on</strong></a>     <p>MOVs (metal-oxide varistors) are nonlinear voltage-variable resistors. 		Sintered metal oxides form a structure that models as a series pair of 		back-to-back zener diodes. Under normal operating conditions, MOVs exhibit a 		typical leakage current on the order of 10 &#181;A and a shunt capacitance in 		the region of 45 pF. A voltage that increases beyond the MOV's threshold causes 		one of the distributed diodes to avalanche, which causes the device to clamp 		the protected node. Increasing current eventually causes the voltage across the 		device to rise&#8212;a limiting factor common with most bulk materials.</p>     <p>As a clamp device, an MOV largely absorbs the transient energy, as 		opposed to a gas-plasma device, which causes most of the dissipation to occur 		in the transient's source resistance and in the resistances between the 		transient site and the protected node. In applications, such as power, POTS, 		and industrial sensors, that can tolerate a MOV's leakage and shunt 		capacitance, MOVs provide good secondary protection from lightning-induced 		transients in concert with GDTs because they trigger an order of magnitude 		faster than do gas-plasma arresters. Excess heating of an MOV can degrade its 		behavior in ways that accumulate over repeated thermal overstresses. Therefore, 		be sure to carefully analyze the transient specification you plan to support, 		determine the amount of energy you require an MOV to absorb and the worst-case 		transient repetition rate, and conservatively specify the device.</p>     <a name="Finger lightning"><strong>Finger lightning</strong></a>     <p>The most common transient hazard for OEM electronics is ESD. When 		designing protection schemes that prevent ESD damage, you have to address three 		problem areas: First, the availability of numerous standards means that 		multiple source models exist. You must determine early on in the design cycle 		which source model and test method is most relevant to your application. In the 		event that your IC suppliers specify their parts with other source models, you 		need to assess how reliably they're likely to perform to the source model and 		test method you choose. If robustness in the face of ESD is important to your 		customers, you may need to test working prototypes of I/O-port subsystems and 		elements of the human interface.</p>     <p>Second, modern high-speed I/O ports tolerate little ac loading without 		suffering substantial signal degradation, so protective devices must add little 		extra shunt capacitance. Assess your application's sensitivity to additional 		shunt capacitance at the I/O port by considering the signal's source impedance 		under normal operating conditions in the context of the port's required 		bandwidth.</p>     <p>Finally, the silicon processes that have enabled high-speed I/Os exhibit 		low damage thresholds, so be sure that your protection method clamps fast 		enough and fixes the protected node to a sufficiently low voltage. Virtually 		all ICs have ESD-protective cells, which can substantially aid your design. But 		not all vendors subscribe to the same source models and test methods, so be 		clear on a candidate IC's native robustness before you design it into your 		application. You may also want to limit a contract manufacturer's freedom to 		substitute ICs that attach to susceptible nodes unless the selection criteria 		take matters of robustness and reliability into account.</p>     <p>ESD source models divide into three categories, according to the charge 		source: the HBM (human-body model), CDM (charged-device model), and MM (machine 		model). CDMs and MMs describe ESD hazards that can accrue in manufacturing 		environments or by allowing charge to collect on a finished product's 		insulating surfaces, most notably by triboelectrically displacing electrons. 		The HBM is the most common description for the hazards products face after 		their manufacture. That said, the groupings are hardly mutually exclusive, and 		you'll want to consider, for example, what exposure your product will have to 		sources and scenarios that correspond to each of the three model types. For 		example, the MM can also describe events in which a human charge source 		discharges through an intermediary conductor, as can be the case when 		technicians use small hand tools without first dispensing their accumulated 		charge to a nearby ground terminal.</p>     <p>Of the standards that describe HBM sources, the one the IC industry most commonly 		cites is IEC-64000, which includes air-discharge and direct-contact test 		methods. The model specifies a 150-pF charge reservoir behind a source resistance 		of 330&#937; (<strong><A  href="javascript:if(confirm('http://www.edn.com/contents/images/514947f4.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/514947f4.pdf'" tppabs="http://www.edn.com/contents/images/514947f4.pdf">Figure 4</A></strong>). Most ESD 		models include a high-impedance charge path so that the charging circuit 		doesn't influence the test and vice versa.</p>     <p>By comparison, military standard 883 uses a 100-pF charge reservoir and 		a 1.5-k&#937; source resistance, which limits the total energy and peak 		current to a fraction of the amplitude IEC-64000 allows. These two source 		models demonstrate that an ESD specification is uninformative if it gives only 		a test voltage. A manufacturer must identify the source model and test method 		to give you a context in which to evaluate the ESD specification. Other common 		ESD standards include EIAJ IC121 for MMs and US ESD DS 5.3 for CDMs (<strong><A href="#ref">Reference 4</A></strong>).</p>     <p>Though the air-discharge test method is more familiar, as Semtech 		Applications Engineering Manager Bill Russell points out, "The direct-contact 		method is more repeatable, it models the most severe test conditions, and it 		represents real-world discharges. We have more [OEM] customers that use the 		direct-contact test method exclusively during design and don't worry about the 		air-discharge method than the other way around. The direct-contact method also 		allows you to test specific nodes on a dense assembly, whereas the 		air-discharge is less controllable. IEC 61000-4-2 level 4 requires contact 		discharges of 8 kV, but nowadays lots of manufacturers aren't stopping there: 		They're testing to 10 or 12 kV, particularly in portable electronics." Though 		ESD voltages can be high, the total energy is fairly modest. For example, using 		the IEC 61000-4-2 HBM model, a 10-kV strike imparts 7.5 mJ and varies as the 		voltage squared.</p>     <p>TVSs (transient-voltage suppressors) are avalanche diodes. Traditionally 		a TVS's shunt capacitance was several tens of picofarads, but some current 		devices add less than 10 pF. Leakage currents tend to be 100 &#181;A or more 		for the lowest voltage parts, but these numbers tend to fall to 5 &#181;A or 		less for parts that operate at 12V or more.</p> <P>The current trends in TVSs include greater integration to support dense  portable devices. Multiple devices in chip-scale packages set node spacing to  better match the protected IC or the interface connector. Integrated TVS and EMI  filters address two critical challenges in one package and simplify your task to  route buses through I/Os. Due to their compactness, multi-TVS packages have  become the most common protection devices for dense assemblies.</P> <P><br>&nbsp;</P> <P><hr>  <P></P> <P><table border="0" width="100%" cellPadding="4" cellSpacing="0">         <tbody>             <tr>                 <td colspan="3" bgColor="#eeeeee" class="table"><strong>For more information...</strong></td>             </tr>             <tr>                 <td colspan="3" class="table">For more information on products such as those discussed in 		  this article, contact any of the following manufacturers directly, and please 		  let them know you read about their products in EDN.<br><br></td>             </tr><tr bgcolor="#eeeeee"><td valign="top" class="table"><strong>AVX</strong>: <BR> 				<a href="javascript:if(confirm('http://www.avxcorp.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.avxcorp.com/'" tppabs="http://www.avxcorp.com/">www.avxcorp.com</a></td><td valign="top" class="table"><strong>Bourns</strong>:<BR>  				<a href="javascript:if(confirm('http://www.bourns.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.bourns.com/'" tppabs="http://www.bourns.com/">www.bourns.com</a></td><td valign="top" class="table"><strong>California Micro Devices</strong>:  				<a href="javascript:if(confirm('http://www.calmicro.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.calmicro.com/'" tppabs="http://www.calmicro.com/">www.calmicro.com</a></td></tr><tr><td valign="top" class="table"><strong>Fuji Semiconductor</strong>:  				<a href="javascript:if(confirm('http://www.fujisemiconductor.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.fujisemiconductor.com/'" tppabs="http://www.fujisemiconductor.com/">www.fujisemiconductor.com</a></td><td valign="top" class="table"><strong>Jensen Devices</strong>: <BR> 				<a href="javascript:if(confirm('http://www.jensendevices.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.jensendevices.com/'" tppabs="http://www.jensendevices.com/">www.jensendevices.com</a></td><td valign="top" class="table"><strong>Littelfuse</strong>:  <BR>				<a href="javascript:if(confirm('http://www.littelfuse.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.littelfuse.com/'" tppabs="http://www.littelfuse.com/">www.littelfuse.com</a></td></tr><tr bgcolor="#eeeeee"><td valign="top" class="table"><strong>Maxim Integrated Products</strong>:  <BR>				<a href="javascript:if(confirm('http://www.maxim-ic.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.maxim-ic.com/'" tppabs="http://www.maxim-ic.com/">www.maxim-ic.com</a></td><td valign="top" class="table"><strong>Micro Power</strong>: <BR> 				<a href="javascript:if(confirm('http://www.micro-power.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.micro-power.com/'" tppabs="http://www.micro-power.com/">www.micro-power.com</a></td><td valign="top" class="table"><strong>Microsemi</strong>:  				<a href="javascript:if(confirm('http://www.microsemi.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.microsemi.com/'" tppabs="http://www.microsemi.com/">www.microsemi.com</a></td></tr><tr><td valign="top" class="table"><strong>On Semiconductor</strong>:  				<a href="javascript:if(confirm('http://www.onsemi.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.onsemi.com/'" tppabs="http://www.onsemi.com/">www.onsemi.com</a></td><td valign="top" class="table"><strong>Philips Semiconductor</strong>:  				<a href="javascript:if(confirm('http://www.semiconductors.philips.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.semiconductors.philips.com/'" tppabs="http://www.semiconductors.philips.com/">www.semiconductors.philips.com</a></td><td valign="top" class="table"><strong>ProTek Devices</strong>:  				<a href="javascript:if(confirm('http://www.protekdevices.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.protekdevices.com/'" tppabs="http://www.protekdevices.com/">www.protekdevices.com</a></td></tr><tr bgcolor="#eeeeee"><td valign="top" class="table"><strong>Raychem</strong>:  <BR>				<a href="javascript:if(confirm('http://www.raychem.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.raychem.com/'" tppabs="http://www.raychem.com/">www.raychem.com</a></td><td valign="top" class="table"><strong>Semtech</strong>:  <BR>				<a href="javascript:if(confirm('http://www.semtech.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.semtech.com/'" tppabs="http://www.semtech.com/">www.semtech.com</a></td><td valign="top" class="table"><strong>SRC Devices</strong>:  				<a href="javascript:if(confirm('http://www.srcdevices.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.srcdevices.com/'" tppabs="http://www.srcdevices.com/">www.srcdevices.com</a></td></tr><tr><td valign="top" class="table"><strong>Texas Instruments</strong>:  <BR>				<a href="javascript:if(confirm('http://www.ti.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ti.com/'" tppabs="http://www.ti.com/">www.ti.com</a></td><td valign="top" class="table"><strong>Vishay</strong>: <BR> 				<a href="javascript:if(confirm('http://www.vishay.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.vishay.com/'" tppabs="http://www.vishay.com/">www.vishay.com</a></td><td>&nbsp;</td></tr></tbody>     </table></P> <P><br></P> <P><hr>  <P></P> <P><table border="0" width="100%" cellPadding="2" cellSpacing="0">         <tbody>             <tr>                 <td bgColor="#eeeeee" class="table"><strong>Author Information</strong></td>             </tr>             <tr>                 <td class="table"><IMG                               
+      style="WIDTH: 72px; HEIGHT: 88px" alt="" hspace=5 
+      src="xxjosh-3.jpg" tppabs="http://a330.g.akamai.net/7/330/2540/20050405152606/www.edn.com/articles/images/EDN/20050414/xxjosh.jpg" 
+      align=left vspace=5 border=0>You can reach Technical Editor Joshua Israelsohn at 		  <A href="mailto:jisraelsohn@ edn.com">jisraelsohn@ edn.com</A>.</td>             </tr>         </tbody>     </table></P> <P><br></P> <P><hr>  <P></P> <P><table cellpadding="0" cellspacing="0" border="0" width="100%">         <tbody>             <tr>                 <td bgcolor="#eeeeee" class="table"><strong><a name="#ref">References</a></strong></td>             </tr>             <tr>                 <td class="table">                     <ol>                         <li>Israelsohn, Joshua, "<A          href="javascript:if(confirm('http://www.edn.com/article/CA200388  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/article/CA200388'" tppabs="http://www.edn.com/article/CA200388">Fiber lights the short haul</A>," 				<i>EDN</i>, March 21, 2002, pg 61,  				<a href="javascript:if(confirm('http://www.edn.com/article/CA200388.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/article/CA200388.html'" tppabs="http://www.edn.com/article/CA200388.html">www.edn.com/article/CA200388.html</a>.                          <li>Israelsohn, Joshua, "<A          href="javascript:if(confirm('http://www.edn.com/article/CA265496  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/article/CA265496'" tppabs="http://www.edn.com/article/CA265496">The alchemy of glass</A>," 				<i>EDN</i>, Dec 26, 2002, pg 37,  				<a href="javascript:if(confirm('http://www.edn.com/article/CA265496.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/article/CA265496.html'" tppabs="http://www.edn.com/article/CA265496.html">www.edn.com/article/CA265496.html</a>.                          <li>"Surge Arrester Technologies," Application Note          AN-111, SRC Devices, undated.                          <li>"Introduction to Circuit Protection," Littelfuse, undated.</li>                     </ol>                 </td>             </tr>         </tbody>     </table></P> </span> <P> <table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#000000"><tr><td><table width="100%" bgcolor="#ffffff"><tr><td class="sidebarheader"><span class="sidebarheader">&nbsp;</span></td></tr><tr><td class="sidebareven"><span class="copy"><h3><span class="sidebarheadline"><a name="#Safetyfirst">Safety first</a></span></h3><span>     <p>Lithium-ion chemistry represents one of the greatest advances in 		  portable power sources since the invention of the battery. Unmatched for 		  volumetric power density and mass, lithium-ion cell stacks power everything 		  from digital cameras to cell phones to laptop computers. Though this battery 		  chemistry has proved a major boon to productivity, designing these power 		  sources into portable systems comes with a certain responsibility to ensure 		  safe operation over the full range of anticipatable operating conditions.</p>     <p>The consequences that result from overcurrent conditions, including 		  rapid self-disassembly, in lithium-ion power systems are potentially dire 		  (<strong>TechFlicks</strong>: Click <A 
+            href="javascript:if(confirm('http://a330.g.akamai.net/7/330/2540/20050412172418/www.edn.com/contents/images/edn050414_techflick2.avi  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://a330.g.akamai.net/7/330/2540/20050412172418/www.edn.com/contents/images/edn050414_techflick2.avi'" tppabs="http://a330.g.akamai.net/7/330/2540/20050412172418/www.edn.com/contents/images/edn050414_techflick2.avi">here</A> 
+            and <A 
+            href="javascript:if(confirm('http://a330.g.akamai.net/7/330/2540/20050412173833/www.edn.com/contents/images/edn050414_techflick3.avi  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://a330.g.akamai.net/7/330/2540/20050412173833/www.edn.com/contents/images/edn050414_techflick3.avi'" tppabs="http://a330.g.akamai.net/7/330/2540/20050412173833/www.edn.com/contents/images/edn050414_techflick3.avi">here</A> 
+            for two videos of lithium-ion batteries subjected to overcurrent 
+            conditions in a laboratory environment. Videos courtesy 		  Texas Instruments.)</p>     <p>Yet properly designed lithium-ion packs, including well-designed and 		  -manufactured cells with adequate venting, good charge control and cutoff 		  circuits, and good mechanical design, prevent failures of safety features that 		  might result from mechanical shock.</p>     <p>Unfortunately, expensive replacement packs have inspired 		  counterfeit-battery manufacturers that do not necessarily take the same 		  precautions that your company does when specifying a pack design. As a result, 		  for example, Verizon Wireless last June recalled 50,000 counterfeit LG phone 		  batteries, and Kyocera in October recalled as many as a million counterfeit 		  phone batteries (<strong><A href="#sideref">references A</strong> and 		  <strong>B</A></strong>). Other incidences abound, including more 		  than 100 that the Consumer Product Safety Commission has investigated since 		  2002.</p>     <p>Lithium-ion-pack specifiers can use several ways to protect their 		  customers and their company's reputation. Some pack manufacturers have 		  developed design and manufacturing standards that result in safer packs. One 		  such manufacturer, Micro Power, has codified its design and manufacturing 		  requirements under the name SecuraPack. SecuraPack uses premium cells from 		  qualified vendors, sample-tests incoming cells, ultrasonically welds pack 		  enclosures, provides component traceability, ensures design for 		  extended-temperature ranges, and adheres to the IEEE 1625-2004 standard for 		  rechargeable batteries for portable-computing requirements. SecuraPack also 		  provides failure-mode and -effects analysis on the battery-system design and on 		  the manufacturing process.</p>     <p>A second level of protection is available by means of 		  peripheral-authentication chips, such as those from Maxim's Dallas 		  Semiconductor division and Texas Instruments. These devices allow your system 		  to interrogate removable devices, including batteries. OEMs can still authorize 		  aftermarket battery-pack suppliers that meet the company's safety 		  standards.</p><hr><table cellpadding="0" cellspacing="0" border="0" width="100%">         <tbody>             <tr>                 <td bgcolor="#eeeeee" class="table"><strong><a name="#sideref">References</a></strong></td>             </tr>             <tr>                 <td class="table">                     <ol>                         <li>A. "CPSC, Verizon Wireless Announce Recall of Counterfeit Cell 				  Phone Batteries," Recall Alert, US Consumer Product Safety Commission, June 24, 				  2004, revised Nov 16, 2004,  				  <a href="javascript:if(confirm('http://www.cpsc.gov/cpscpub/prerel/prhtml04/04559.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.cpsc.gov/cpscpub/prerel/prhtml04/04559.html'" tppabs="http://www.cpsc.gov/cpscpub/prerel/prhtml04/04559.html">www.cpsc.gov/cpscpub/prerel/prhtml04/04559.html</a>.                           <li>B. "CPSC, Kyocera Wireless Corp. Announce Recall of Cell Phone 				  Batteries," CPSC, Kyocera Wireless Corp Announce Recall of Cell Phone 				  Batteries, Kyocera, Oct 28, 2004.</li>                     </ol>                 </td>             </tr>         </tbody>     </table> </span> </span></td></tr></table></td></tr></table></P> <P><A href="javascript:if(confirm('http://www.edn.com/contents/images/514947.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/514947.pdf'" tppabs="http://www.edn.com/contents/images/514947.pdf"><IMG  src="pdfbutton-9.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050405152606/www.edn.com/articles/images/EDN/20050414/pdfbutton.gif"></A></P> <P>&nbsp;</P></span></div><br clear="all"/>
+<div style="margin-top: 20px;clear:all;">
+<script>
+<!--
+function appendLocation(theLink) {
+    var thisPage = "" + location;
+    var bits = thisPage.split("&");
+    var s = ""
+    for (var i = 0; i < bits.length; i++) {
+      s += bits[i] + "^"
+    }
+    if (s == "") {
+      theLink.href = theLink.href + "&refPage=" + thisPage
+     } else {
+       theLink.href = theLink.href + "&refPage=" + s
+    }
+    return true;
+}
+// -->
+</script>
+<div id="printSubEmail"><div><a href="javascript:if(confirm('http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article'" tppabs="http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article"><img src="ednIconSubscribe.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222505/www.edn.com/contents/images/redesign/ednIconSubscribe.gif" alt="Free Print Subscriptions" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article'" tppabs="http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article">Free Print Subscription</a></div>
+
+<div><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articlePrint&articleID=CA514947  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articlePrint&articleID=CA514947'" tppabs="http://www.edn.com/index.asp?layout=articlePrint&articleID=CA514947"><img src="ednIconPrint.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222321/www.edn.com/contents/images/redesign/ednIconPrint.gif" alt="Printer Friendly Version" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articlePrint&articleID=CA514947  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articlePrint&articleID=CA514947'" tppabs="http://www.edn.com/index.asp?layout=articlePrint&articleID=CA514947">Printer Friendly Version</a></div>
+
+<div><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articleEmail&articleID=CA514947  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articleEmail&articleID=CA514947'" tppabs="http://www.edn.com/index.asp?layout=articleEmail&articleID=CA514947" onclick="return appendLocation(this)"><img src="ednIconEmail.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222407/www.edn.com/contents/images/redesign/ednIconEmail.gif" alt="Email to a Friend" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articleEmail&articleID=CA514947  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articleEmail&articleID=CA514947'" tppabs="http://www.edn.com/index.asp?layout=articleEmail&articleID=CA514947" onclick="return appendLocation(this)">Email to a Friend</a></div></div></div><br/>
+
+
+<div id="sponsorlink">
+<h3 class="sponsorhead">Sponsor Links</h3>
+<ul><script language="JavaScript1.1" SRC=";type=sponsorlink;sz=1x1;tile=1;u=-1176500494-521400098-946378881-0-article-CA514947--;ord=1122972207-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=sponsorlink;sz=1x1;tile=1;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">
+</script><script language="JavaScript1.1" SRC=";type=sponsorlink;sz=1x1;tile=2;u=-1176500494-521400098-946378881-0-article-CA514947--;ord=1122972207-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=sponsorlink;sz=1x1;tile=2;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">
+</script><script language="JavaScript1.1" SRC=";type=sponsorlink;sz=1x1;tile=3;u=-1176500494-521400098-946378881-0-article-CA514947--;ord=1122972207-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=sponsorlink;sz=1x1;tile=3;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">
+</script><script language="JavaScript1.1" SRC=";type=sponsorlink;sz=1x1;tile=4;u=-1176500494-521400098-946378881-0-article-CA514947--;ord=1122972207-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=sponsorlink;sz=1x1;tile=4;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">
+</script><script language="JavaScript1.1" SRC=";type=sponsorlink;sz=1x1;tile=5;u=-1176500494-521400098-946378881-0-article-CA514947--;ord=1122972207-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=sponsorlink;sz=1x1;tile=5;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">
+</script></ul>
+</div>
+<br/>
+<IFRAME SRC="showct-sid=102&ct=EDN_HP_ROS&num=5&layt=3" tppabs="http://ilinks.industrybrains.com/showct?sid=102&ct=EDN_HP_ROS&num=5&layt=3" width="100%" height="400" frameborder="no" border="0" marginwidth="0" marginheight="0" SCROLLING="no"></IFRAME>
+
+
+</div></div>
+		</td><!--end rightcol-->
+		
+		</tr>
+	</table> <!--end bodytable-->
+<!--End Main Content-->	
+<!--Footer--><div align="center" id="leaderboard" style="margin-bottom:5px;"><img src="edn_adv_top.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050517180213/www.edn.com/contents/images/edn_adv_top.gif" width="20" height="90" style="padding-top:10px;" alt=""/><script language=Javascript1.1 src=";dcopt=ist;abr=!webtv;desc=CA514947;type=leaderboard;pos=2;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;u=-1176500494-521400098-946378881-0-article-CA514947--;ord=1122972207-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;dcopt=ist;abr=!webtv;desc=CA514947;type=leaderboard;pos=2;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">
+</script>
+<script>
+<!--
+if ((!document.images && navigator.userAgent.indexOf('Mozilla/2.') >= 0) || (navigator.userAgent.indexOf("WebTV") >= 0))
+{
+document.write('<a href="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA514947;type=leaderboard;pos=2;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">');
+document.write('<img src="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA514947;type=leaderboard;pos=2;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?" border="0" align="right" height="90" width="728"></a>');
+}
+//-->
+</script>
+<noscript>
+<!-- for non JavaScript browsers and Netscape 2.x -->
+<a href="javascript:if(confirm('http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA514947;type=leaderboard;pos=2;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA514947;type=leaderboard;pos=2;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?'" tppabs="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA514947;type=leaderboard;pos=2;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">
+<img src="javascript:if(confirm('http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA514947;type=leaderboard;pos=2;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA514947;type=leaderboard;pos=2;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?'" tppabs="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA514947;type=leaderboard;pos=2;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?" border="0" align="right" height="90" width="728">
+</a>
+</noscript></div>
+
+
+<div id="footercontainer">
+<div id="footercontent1">
+			<div style="font-size: 11px;"><a href="javascript:if(confirm('http://www.reed-electronics.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/'" tppabs="http://www.reed-electronics.com/">Reed Electronics Group</a></div>
+			<div><a href="javascript:if(confirm('http://www.edn.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/'" tppabs="http://www.edn.com/">EDN</a> | <a href="javascript:if(confirm('http://www.ecnmag.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ecnmag.com/'" tppabs="http://www.ecnmag.com/">ECN</a> | <a href="javascript:if(confirm('http://www.reed-electronics.com/eb-mag  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/eb-mag'" tppabs="http://www.reed-electronics.com/eb-mag">Electronic Business</a> | <a href="javascript:if(confirm('http://www.reed-electronics.com/electronicnews  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/electronicnews'" tppabs="http://www.reed-electronics.com/electronicnews">Electronic News</a><br /></div>
+			<div><a href="javascript:if(confirm('http://www.instat.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.instat.com/'" tppabs="http://www.instat.com/">In-Stat</a> | <a href="javascript:if(confirm('http://www.reed-electronics.com/semiconductor  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/semiconductor'" tppabs="http://www.reed-electronics.com/semiconductor">Semiconductor International</a> | <a href="javascript:if(confirm('http://www.reed-electronics.com/tmworld  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/tmworld'" tppabs="http://www.reed-electronics.com/tmworld">Test and Measurement World</a></div>
+		</div><!--end footercontent1-->
+
+<div id="footercontent2">
+			<div><a href="javascript:if(confirm('http://www.edn.com/info/30955.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/30955.html'" tppabs="http://www.edn.com/info/30955.html">ABOUT EDN</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.edn.com/info/CA528811.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/CA528811.html'" tppabs="http://www.edn.com/info/CA528811.html">FREE SUBSCRIPTIONS</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.edn.com/info/31091.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/31091.html'" tppabs="http://www.edn.com/info/31091.html">CONTACT US</a><br /><br /><br /></div>
+			<div>
+				<div class="footerrbi"><a href="javascript:if(confirm('http://www.reedbusiness.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reedbusiness.com/'" tppabs="http://www.reedbusiness.com/"><img src="ednRBILogo.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050407022207/www.edn.com/contents/images/redesign/ednRBILogo.gif" width="141" height="18" border="0" alt="" /></a></div>
+				<div class="footercopyright">1997-2005 Reed Business Information, a division of Reed Elsevier Inc. All rights reserved.<br />Use of this web site is subject to its <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=page&module=terms  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=page&module=terms'" tppabs="http://www.edn.com/index.asp?layout=page&module=terms">Terms of Use</a> | <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=page&module=privacy  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=page&module=privacy'" tppabs="http://www.edn.com/index.asp?layout=page&module=privacy">Privacy Policy</a></div>
+				<br clear="all" />
+			</div>
+		</div> <!--end footercontent2-->
+		
+	</div> <!--end footercontainer-->
+
+<!--End Footer--><!--ads-->
+
+<div id="topad"><script language=Javascript1.1 src="fi000065." tppabs="http://ad.doubleclick.net/adj/edn.rbi/;dcopt=ist;abr=!webtv;desc=CA514947;type=leaderboard;pos=1;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">
+</script>
+<script>
+<!--
+if ((!document.images && navigator.userAgent.indexOf('Mozilla/2.') >= 0) || (navigator.userAgent.indexOf("WebTV") >= 0))
+{
+document.write('<a href="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA514947;type=leaderboard;pos=1;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">');
+document.write('<img src="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA514947;type=leaderboard;pos=1;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?" border="0" align="right" height="90" width="728"></a>');
+}
+//-->
+</script>
+<noscript>
+<!-- for non JavaScript browsers and Netscape 2.x -->
+<a href="javascript:if(confirm('http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA514947;type=leaderboard;pos=1;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA514947;type=leaderboard;pos=1;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?'" tppabs="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA514947;type=leaderboard;pos=1;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?">
+<img src="javascript:if(confirm('http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA514947;type=leaderboard;pos=1;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA514947;type=leaderboard;pos=1;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?'" tppabs="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA514947;type=leaderboard;pos=1;indid=2280;indid=2281;indid=21363;indid=22113;indid=22115;indid=23432;indid=43310;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA514947||;ord=1122972207?" border="0" align="right" height="90" width="728">
+</a>
+</noscript></div>
+
+<!-- end ads -->
+
+</div> <!-- end bodycontainer -->
+
+</body>
+</html>

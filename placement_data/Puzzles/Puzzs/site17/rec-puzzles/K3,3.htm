@@ -1,0 +1,52 @@
+<html><head>
+<title>Solution for /geometry/K3,3</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /geometry/K3,3 problem</h1>
+<hr>
+The problem you describe is to draw a bipartite graph of 3 nodes
+connected in all ways to 3 nodes, all embedded in the plane.  The graph
+is called K3,3.  A famous theorem of Kuratowsky says that all graphs
+can be embedded in the plane, EXCEPT those containing a subgraph that
+is topologically equivalent to K3,3 or K5 (the complete graph on 5
+vertices, i.e., the graph with 5 nodes and 10 edges).  So your problem
+is a minimal example of a graph that cannot be embedded in the plane.
+
+<p>
+The proofs that K5 and K3,3 are non-planar are really quite easy, and
+only depend on Euler's Theorem that F-E+V=2 for a planar graph.  For
+K3,3 V is 6 and E is 9, so F would have to be 5. But each face has at
+least 4 edges, so E &gt;= (F*4)/2 = 10, contradiction.  For K5 V is 5 and
+E is 10, so F = 7. In this case each face has at least 3 edges, so E &gt;=
+(F*3)/2 = 10.5, contradiction.
+
+<p>
+The difficult part of Kuratowsky is the proof in the other direction!
+
+<p>
+A quick, informal proof by contradiction without assuming Euler's Theorem:
+Using a map in which the houses are 1, 2, and 3 and the utilities are
+A, B, and C, there must be continuous lines that connect the buildings and
+divide the area into three sections bounded by the loops A-1-B-2-A,
+A-1-B-3-A, and A-2-B-3-A.  (One of the areas is the infinite plane *around*
+whichever loop is the outer edge of the network.)  C must be in one of these
+three areas; whichever area it is in, either 1, or 2, or 3, is *not* part of
+the loop that rings its area and hence is inaccessible to C.
+
+The usual quibble is to solve the puzzle by running one of the pipes
+underneath one of houses on its way to another house; the puzzle's
+instructions forbid crossing other *pipes*, but not crossing other *houses*.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

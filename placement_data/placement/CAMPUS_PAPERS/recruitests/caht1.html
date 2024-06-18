@@ -1,0 +1,705 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+<BODY BGCOLOR="silver">
+<P>The Server Code consists of 7 files :</P>
+<OL>
+
+<LI><A HREF="#ChatServer">ChatServer.java</A> </LI>
+<LI><A HREF="#Servicer">Servicer.java </A></LI>
+<LI><A HREF="#Connections">Connections.java</A></LI>
+<LI><A HREF="#Channel">Channel.java</A></LI>
+<LI><A HREF="#ChannelList">ChannelList.java</A></LI>
+<LI><A HREF="#Ping">Ping.java</A></LI>
+<LI><A HREF="#UserInfo">UserInfo.java</A></LI></OL>
+<P><A HREF="source.html">Previous  Page</A></P>
+
+<P></P>
+<P>&nbsp</P>
+<P>&nbsp</P>
+
+
+<DIR>
+
+<U><P><A NAME="ChatServer">ChatServer.java</A></P></U>
+<PRE>
+import java.net.*;
+import java.io.*;
+import java.util.*;
+
+public class ChatServer
+{
+  ServerSocket serverSocket = null;
+  static Connections conn;
+  static ChannelList clist;
+  public static void main(String args[])
+  {
+    new ChatServer();
+  }
+  public ChatServer()
+  {
+    conn = new Connections();
+    clist = new ChannelList();
+    clist.addChannel("General Chat", "Talk about all things general, particularly the Universe");
+    clist.addChannel("Music", "Talk about Music");
+    clist.addChannel("Science & Technology", "Does anybody want to get on this bus??");
+    try
+    {
+      serverSocket = new ServerSocket(2000);
+    }
+    catch (IOException e)
+    {
+      System.out.println("Could not listen on port: " + 2000 + ", " + e);
+      System.exit(1);
+    }
+    System.out.println("For ServerSocket: " + serverSocket.toString());
+    System.out.println("Server stared");
+    while(true)
+    {
+      Socket clientSocket = null;
+      try
+      {
+        clientSocket = serverSocket.accept();
+        System.out.println("Client connected");
+      }
+      catch (IOException e)
+      {
+        System.out.println("Accept failed: " + 2000 + ", " + e);
+        System.exit(1);
+      }
+      new Servicer(clientSocket, conn, clist).start();
+    }
+  }
+}
+</PRE>
+<A HREF="server.html">Back to starting of page</A>
+
+<P>&nbsp</P>
+<P>&nbsp</P>
+<U><P><A NAME="Servicer">Servicer.java</P></U>
+<PRE>
+import java.net.*;
+import java.io.*;
+import java.util.*;
+
+public class Servicer extends Thread
+{
+  Socket s;
+  Connections cn;
+  ChannelList clist;
+  DataInputStream is;
+  DataOutputStream os;
+  String nameOfUser = new String("");
+  String loginName = new String("");
+  boolean isKilled  = false;
+  Ping ping;
+
+  public Servicer(Socket c, Connections con, ChannelList cl)
+  {
+    this.s = c;
+    this.cn = con;
+    this.clist = cl;
+  }
+  public void run()
+  {
+    String[] tokens;
+    String   startChannel        = new String("General Chat");
+    String   quit                = new String("q:");
+    String   mesg                = new String("m:");
+    String   nm                  = new String("n:");
+    String   change_channels     = new String("c:");
+    String   quit_channel        = new String("Q:"); 
+    String   whoInMyChannel      = new String("w:");
+    String   changeChannelStatus = new String("C:");
+    String   channelDescription  = new String("d:");
+    String   channelList         = new String("L:");
+    String   bcast               = new String("b:");
+    String   success             = new String("Y");
+    String   failure             = new String("N");
+    String   pingPacket          = new String("P");
+    String   inputLine           = new String();
+    String   outputLine          = new String();
+    String   tmp                 = new String();
+    String   otherInfo           = new String();
+    String   list                = new String();
+    String   message             = new String();
+    String   tmpName             = new String();
+    String   channel             = new String();
+    String   tmpStr              = new String(); 
+    UserInfo tmpObj;
+
+    try
+    {
+      is = new DataInputStream(new BufferedInputStream(s.getInputStream()));
+      os = new DataOutputStream(s.getOutputStream());
+    }
+    catch (IOException e)
+    {
+      System.out.println("While getting Streams:");
+      System.out.println(e);
+    }
+    catch (NullPointerException npe)
+    {
+      System.out.println("Caught NPE:");
+      System.out.println(npe);
+    }
+    while(true)
+    {
+      try
+      {
+        inputLine = is.readLine();
+        System.out.println("inputline: "+inputLine);
+      }
+      catch (IOException e)
+      {
+        break;
+      }
+      if(!inputLine.startsWith("P") && !inputLine.startsWith("U:"))
+      {
+        System.out.println("RECD#" + inputLine);
+      }
+      if(ping != null)
+      {
+        ping.setTrue();
+      }
+      if(inputLine.equals(pingPacket))
+      {
+        ping.setTrue();
+        continue;
+      }
+      if(isKilled)
+      {
+        break;
+      }   
+
+      if(inputLine.startsWith("$"))
+      {
+        otherInfo=inputLine.substring(2);
+        tokens = split(otherInfo, ":", 2);               
+        tmpName=tokens[0];
+        message=tokens[1];
+        if((tmpObj=cn.getObjectofUser(tmpName))==null)
+        {
+          continue;
+        }
+        else
+        {
+          tmp="$"+":"+nameOfUser+":"+message;
+          writeNetOutput(tmpObj.input,tmpObj.output,tmp,tmpObj.username);
+        }
+      }
+
+      if(inputLine.startsWith(mesg))
+      {
+        message = new String(inputLine.substring(2));
+        tmp = mesg + nameOfUser + ":" + message;
+        multicast(tmp, channel, nameOfUser);
+      }
+
+      else if(inputLine.startsWith(nm))
+      {
+        channel = startChannel;
+        otherInfo = inputLine.substring(2);
+        tokens = split(otherInfo, ":", 2);
+        nameOfUser = tokens[0];
+        loginName  = tokens[1];
+        if(cn.doesUserExist(nameOfUser))
+        {
+          tmp = nm + nameOfUser + ":" + failure;
+          writeNetOutput(is, os, tmp, nameOfUser);
+          break;
+        }
+        cn.putUser(nameOfUser, loginName, channel, is, os);
+        tmp = change_channels + nameOfUser; 
+        multicast(tmp, channel, nameOfUser);
+        tmp = nm + nameOfUser + ":" + success;
+        writeNetOutput(is, os, tmp, nameOfUser);
+        list = cn.getUsernamesInChannel(channel);
+        tmp = whoInMyChannel + list;
+        writeNetOutput(is, os, tmp, nameOfUser);
+        tmp = channelDescription + clist.getChannelDescription(channel);
+        writeNetOutput(is, os, tmp, nameOfUser);
+        tmp = channelList + clist.getChannelList();
+        writeNetOutput(is, os, tmp, nameOfUser);
+        ping = new Ping(cn, nameOfUser, s, this, channel);
+        ping.start();
+      }
+
+      else if(inputLine.startsWith(change_channels))
+      {
+        tmpStr = inputLine.substring(2);
+        tmp = quit_channel + nameOfUser;
+        multicast(tmp, channel, nameOfUser);
+        channel = tmpStr;
+        cn.changeChannel(nameOfUser, channel);
+        tmp = changeChannelStatus + success;
+        writeNetOutput(is, os, tmp, nameOfUser);
+        list = cn.getUsernamesInChannel(channel);
+        tmp = whoInMyChannel + list;
+        writeNetOutput(is, os, tmp, nameOfUser);
+        tmpStr = clist.getChannelDescription(channel);
+        tmp = channelDescription + tmpStr;
+        writeNetOutput(is, os, tmp, nameOfUser);
+        tmp = change_channels + nameOfUser;
+        multicast(tmp, channel, nameOfUser);
+      }
+
+      else if(inputLine.startsWith(quit))
+      {
+        ping.stop();
+        cn.killUser(nameOfUser);
+        tmp = quit + nameOfUser;
+        multicast(tmp, channel, nameOfUser);
+        break;
+      } 
+    }
+    try
+    {
+      is.close();
+      os.close();
+      s.close();
+    }
+    catch (IOException e)
+    {
+      System.out.println("While Closing:");
+      System.out.println(e);
+    }
+  }
+
+  private void writeNetOutput(DataInputStream is, DataOutputStream os, String str, String toWhom)
+  {
+    String tmp_NL = new String();
+    String NL = new String("\n");
+    tmp_NL = str.concat(NL);
+    if(!str.startsWith("U:"))
+    {
+      System.out.println("SENT for " + toWhom + "#" + str);
+    }
+    try
+    {
+      os.writeChars(tmp_NL);
+      os.flush();
+    }
+    catch (IOException e)
+    {
+      cn.killUser(toWhom);
+      isKilled = true;
+    }
+  } 
+
+  void multicast(String multicastMessage, String channel, String name)
+  {
+    Vector users = new Vector();
+    UserInfo tmpU;
+    users = cn.getAllUsersInChannel(channel);
+    int size = users.size();
+    for(int i = 0; i < size; i++)
+    {
+      tmpU = (UserInfo)users.elementAt(i);
+      if(!(tmpU.username.equals(name)))
+      {
+        writeNetOutput(tmpU.input, tmpU.output, multicastMessage, tmpU.username);
+      }
+    }
+  }
+         
+  void multicast(String multicastMessage, String channel)
+  {
+    Vector users = new Vector();
+    UserInfo tmpU;
+    users = cn.getAllUsersInChannel(channel);
+    int size = users.size();
+    for(int i = 0; i < size; i++)
+    {
+      tmpU = (UserInfo)users.elementAt(i);
+      writeNetOutput(tmpU.input, tmpU.output, multicastMessage, tmpU.username);
+    }
+  }
+
+  void broadcast(String broadcastMessage)
+  {
+    Vector users = new Vector();
+    UserInfo tmpU;
+    users = cn.getObjectsOfAllUsers();
+    int size = users.size();
+    for(int i = 0; i < size; i++)
+    {
+      tmpU = (UserInfo)users.elementAt(i);
+      writeNetOutput(tmpU.input, tmpU.output, broadcastMessage, tmpU.username);
+    }
+  }
+
+  String[] split(String toBeSplit, String delim)
+  {
+    Vector v = new Vector();
+    StringTokenizer t = new StringTokenizer(toBeSplit, delim);
+    while(t.hasMoreElements())
+    {
+      v.addElement(t.nextElement());
+    }
+    v.trimToSize();
+    String[] s = new String[v.size()]; 
+    int i = 0;
+    while(i < v.size())
+    {
+      s[i] = v.elementAt(i).toString();
+      i++;
+    }
+    return(s);
+  }
+
+  String[] split(String toBeSplit, String delim, int howMany)
+  {
+    Vector v = new Vector();
+    StringTokenizer t = new StringTokenizer(toBeSplit, delim);
+    while(t.hasMoreElements())
+    {
+      v.addElement(t.nextElement());
+    }
+    v.trimToSize();
+    String[] s = new String[howMany]; 
+    int i = 0;
+    while(i < (howMany - 1))
+    {
+      s[i] = v.elementAt(i).toString();
+      i++;
+    }
+    int length = 0;
+    i = 0;
+    while(i < (howMany - 1))
+    {
+      length += s[i].length();
+      i++;
+    }
+    length += (howMany - 1);
+    s[(howMany - 1)] = toBeSplit.substring(length);
+    return(s);
+  }
+}</PRE>
+<A HREF="server.html">Back to starting of page</A>
+<P>&nbsp</P>
+<P>&nbsp</P>
+<P>&nbsp</P>
+
+<U><P>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                t++;
+    }
+    return(false);
+  }
+      
+  void putUser(String str, String lstr, String channel, DataInputStream in, DataOutputStream out)
+  {
+    users.addElement(new UserInfo(str, lstr, channel, in, out));
+    users.trimToSize();
+  }
+
+  String getUsernamesInChannel(String ch)
+  {
+    UserInfo tmp;
+    String unames = new String();
+    int count = 0;
+    int size = users.size();
+    while(count < size)
+    {
+      tmp = (UserInfo)users.elementAt(count);
+      if(tmp.chatroom.equals(ch))
+      {
+        unames += tmp.username;
+        unames += ":";
+      }
+      count++;
+    }
+    return(unames);
+  }
+
+  UserInfo getObjectofUser(String name)
+  {
+    int size = users.size();
+    UserInfo tmp;
+    for(int i = 0; i < size; i++)
+    {
+      tmp = (UserInfo)users.elementAt(i);
+      if(tmp.username.equals(name))
+      {
+        return(tmp);
+      }
+    }
+    return(null);
+  }
+   
+  Vector getAllUsersInChannel(String channel)
+  {
+    UserInfo tmp;
+    Vector u = new Vector();
+    int size = users.size();
+    for(int i = 0; i < size; i++)
+    {
+      tmp = (UserInfo)users.elementAt(i);
+      if(tmp.chatroom.equals(channel))
+      {
+        u.addElement(tmp);
+      }
+    }
+    u.trimToSize();
+    return(u);
+  }
+              
+  Vector getObjectsOfAllUsers()
+  {
+    return(users);
+  }
+              
+  String getAllUsers()
+  {
+    UserInfo tmp;
+    String list = new String();
+    int size = users.size();
+    for(int i = 0; i < size; i++)
+    {
+      tmp = (UserInfo)users.elementAt(i);
+      list = list + tmp.username + "#" + tmp.chatroom + ":";
+    }
+    return(list);
+  }
+
+  void changeChannel(String name, String channel)
+  {
+    UserInfo tmp ;
+    int size = users.size();
+    for(int i = 0; i < size; i++)
+    {
+      tmp = (UserInfo)users.elementAt(i);
+      if(tmp.username.equals(name))
+      {
+        tmp.chatroom = channel;
+        System.out.println("For " + name + " New channel is " + tmp.chatroom);
+        users.removeElementAt(i);
+        users.addElement(tmp);
+        break;
+      }
+    }
+    users.trimToSize();
+  }
+
+  void killUser(String name)
+  {
+    UserInfo tmp;
+    int size = users.size();
+    for(int i = 0; i < size; i++)
+    {
+      tmp = (UserInfo)users.elementAt(i);
+      if(tmp.username.equals(name))
+      {
+        System.out.println("Killing user " + tmp.username);
+        users.removeElementAt(i);
+        break;
+      }
+    }
+    users.trimToSize();
+  }
+}
+</PRE>
+<A HREF="server.html">Back to starting of page</A>
+<P>&nbsp</P>
+<P>&nbsp</P>
+<P>&nbsp</P>
+
+<U><P><A NAME="Channel">Channel.java</A></P></U>
+<PRE>
+import java.net.*;
+import java.io.*;
+import java.util.*;
+
+public class Channel
+{
+  public String name;
+  public String description;
+
+  public Channel(String n, String d)
+  {
+    this.name        = n;
+    this.description = d;
+  }
+}
+</PRE>
+<A HREF="server.html">Back to starting of page</A>
+<P>&nbsp</P>
+<P>&nbsp</P>
+<P>&nbsp</P>
+
+
+<P><A NAME="ChannelList"><U>ChannelList.java</U></A></P>
+<PRE>
+import java.net.*;
+import java.io.*;
+import java.util.*;
+
+public class ChannelList
+{
+  Vector Channels;
+  public ChannelList()
+  {
+    Channels = new Vector();
+  }
+
+  void addChannel(String n, String d)
+  {
+    Channels.addElement(new Channel(n, d));   
+    Channels.trimToSize();
+  }
+   
+  String getChannelList()
+  {
+    Channel tmp;
+    int size = Channels.size();
+    String ret = new String();
+    for(int i = 0; i < size; i++)
+    {
+      tmp = (Channel)Channels.elementAt(i);
+      ret += tmp.name + ":";
+    }
+    return(ret);
+  }
+ 
+  String getChannelDescription(String c)
+  {
+    Channel tmp;
+    int size = Channels.size();
+    String ret = new String();
+    for(int i = 0; i < size; i++)
+    {
+      tmp = (Channel)Channels.elementAt(i);
+      if(tmp.name.equals(c))
+      {
+        return(tmp.description);
+      }
+    }
+    return(null);
+  }
+} 
+</PRE>
+<A HREF="server.html">Back to starting of page</A>
+<P>&nbsp</P>
+<P>&nbsp</P>
+<P>&nbsp</P>
+
+
+
+<P><A NAME="Ping"><U>Ping.java</U></A></P>
+<PRE>
+import java.net.*;
+import java.io.*;
+import java.util.*;
+
+public class Ping extends Thread
+{
+  boolean isPinged;
+  public Connections c;
+  Socket mySocket;
+  Servicer myServicer;
+  String me;
+  String myChannel;
+
+  public Ping(Connections cs, String name, Socket s, Servicer sr, String c)
+  {
+    this.c          = cs;
+    this.me         = name;
+    this.mySocket   = s;
+    this.myServicer = sr;
+    this.myChannel  = c;
+    this.isPinged   = true;
+  }
+   
+  public void setTrue()
+  {
+    isPinged = true;
+  }
+
+  public void setFalse()
+  {
+    isPinged = false;
+  } 
+
+  public boolean isTrue()
+  {
+    return(isPinged);
+  }
+
+  public void run()
+  {
+    while(true)
+    {
+      try
+      {
+        this.sleep(30000);
+      }
+      catch(InterruptedException e)
+      {
+        System.out.println("SLEEP Interrupted");
+      }
+      isTrue())
+      {
+        setFalse();
+      }
+      else
+      {
+        String tmp = new String();
+        tmp = "q:" + me;
+        System.out.println(me + " has not been pinged");
+        myServicer.multicast(tmp, myChannel, me);
+        c.killUser(me);
+        try
+        {
+          System.out.println("Before being killed: " + mySocket.toString());
+          mySocket.close();
+        }
+        catch (IOException e)
+        {
+          System.out.println("While Closing:");
+          System.out.println(e);
+        }
+        break;
+      }
+    }
+  }
+}
+</PRE>
+<A HREF="server.html">Back to starting of page</A>
+<P>&nbsp</P>
+<P>&nbsp</P>
+<P>&nbsp</P>
+
+
+
+<U><P><A NAME="UserInfo">UserInfo.java</P></U>
+<PRE>
+import java.net.*;
+import java.io.*;
+import java.util.*;
+
+public class UserInfo
+{
+  public String username;
+  public String loginname;
+  public String chatroom;
+  public DataInputStream input;
+  public DataOutputStream output;
+
+  public UserInfo(String name, String lname, String c, DataInputStream in, DataOutputStream out)
+  {
+    this.username = name;
+    this.loginname = lname;
+    this.chatroom = c;
+    this.input = in;
+    this.output = out;
+  }
+}
+</PRE>
+<P><A HREF="server.html">Back to starting page</A></P>
+<CENTER><HR>
+<P><A HREF="http://www.vijaymukhi.com">Back to Main page</A></P></CENTER>
+<CENTER><HR></CENTER>
+</BODY>
+</HTML>

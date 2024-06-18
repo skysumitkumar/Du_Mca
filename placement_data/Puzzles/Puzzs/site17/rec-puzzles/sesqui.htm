@@ -1,0 +1,64 @@
+<html><head>
+<title>Solution for /arithmetic/digits/sesqui</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/digits/sesqui problem</h1>
+<hr>
+Let's represent this number as  a*10^n+b,  where 1&lt;=a&lt;=9 and
+b &lt; 10^n.  Then the condition to be satisfied is:
+
+<pre>
+3/2(a*10^n+b) = 10b+a
+
+  3(a*10^n+b) = 20b+2a
+
+   3a*10^n+3b = 20b+2a
+
+  (3*10^n-2)a = 17b
+
+            b = a*(3*10^n-2)/17
+</pre>
+
+So we must have 3*10^n-2 = 0 (mod 17) (since a is less than 10, it
+cannot contribute the needed prime 17 to the factorization of 17b).
+(Also, assuming large n, we must have a at most 5 so that b &lt; 10^n will
+be satisfied, but note that we can choose a=1).  Now,
+
+<pre>
+3*10^n-2 = 0 (mod 17)
+
+3*10^n   = 2 (mod 17)
+
+10^n     = 12 (mod 17)
+</pre>
+A quick check shows that the smallest n which satisfies this is 15
+(the fact that one exists was assured to us because 17 is prime).  So,
+setting n=15 and a=1 (obviously) gives us b=176470588235294, so the
+number we are looking for is
+
+<p>
+                        1176470588235294
+
+<p>
+and, by the way, we can set a=2 to give us the second smallest such
+number,
+<p>
+                        2352941176470588
+
+<p>
+Other things we can infer about these numbers is that there are 5 of
+them less than 10^16, 5 more less than 10^33, etc.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

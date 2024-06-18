@@ -1,0 +1,308 @@
+I am yogeesh.i came to know about ur site thru my friend. i got lot of useful information from it.
+Its realy good. I am mailing the papers of HCL & Inautix thanx J Yogeesh
+
+----
+
+Srini: Thanks a lot Yogeesh...
+
+----
+
+HCL C and C++ paper
+===================
+
+HCL C++ paper:
+**************
+
+1.which is not an concept of OOPs?
+    a.data abstraction.
+    b.inheritance.
+    c.polymorphism
+    d.operator and function overloading.
+
+ans:    
+
+2.friend is 
+    ans:not tansitive nor virtual.
+
+3.main()
+{ 
+   int i=4;
+   int &j=i;
+   i=i*2;
+   j=j*j;
+   cout<<i<<j;
+ }
+  ans:64 & 64
+  
+ 4.class A{
+    public:
+        int i;
+          set_i(){i=10;}
+    };
+    class B:public A{
+       set_i(){i=20;}
+       
+     };
+     void main()
+     {
+         A obA;
+         B obB;
+         A *p;
+         p=&obB;
+         p->set_i();//call 1
+         p=&obA;
+         p->set_i();call 2
+    }
+    which set_i() does call 1 & 2 invoke
+    
+    ans: both set_i() class A.
+5.int i=400;
+  void main()
+  {
+   int i=200;
+   cout<<::i<endl<<i;
+  }
+  what will be the o/p?
+   
+  ans:400
+      200
+      
+6.class String {
+   public:
+   int len;
+   static int num;
+ };
+ void main()
+ {
+    String s1,s2;
+    s1.len=s2.len=2;s2.num=5;
+    s1.len++;s2.num++;s1.num += 2;
+    cout<<s1.len<<"-"<<s1.num<<"-"<<s2.len<<"-"<<s2.num;
+ }
+ 
+ what will be the o/p?
+ ans:3-8-2-8
+ 
+7.void main(){
+    const char *s1 ="mamama";
+    const char *s2 ="ghshshs";
+    char *p;
+    *s1=NULL; //st 1
+    s1=p;// st 2
+    *s2=NULL;//st 3
+    s2=p;//st 4
+}
+which of the following is valid st 
+
+ans: st 1 & st 3
+
+8.If class D is privately derived from class B then we can access
+
+ans:public members of class B and protected members of class B.
+
+9.which is an pure virtual function
+ans: void f() const =0;
+
+10.a class is said to be abstract only is
+  
+  ans:it has one pure virtual function
+  
+11.which is not an advantage of inline function over an macro
+
+ans:reduces the code size.
+
+12.class C {
+    static int n;
+    
+    C()
+    {n++;}
+    ~c(){n--;}
+}
+main()
+{
+    cout<<C::n;
+    C *p;
+    
+    p = new C[100];
+    cout<<C::n;
+    
+    delete [] p;
+    cot<<C::n;
+}
+what will be o/p?
+
+ans:0-100-0
+
+13.Redirection redirects 
+    ans: a stram from a file to the screen.
+    
+14.when an array name is passed to an function,the function
+
+  ANS: ACCESS EXACTLY THE SAME ARRAY AS THE CALLING PROGRAM & 
+       refers to the array using a defferent name from that used by the calling progarm.
+       
+15.which operator cannot be overloaded?
+    ans: .
+16.The operation of the asignment operator and that of the copy constructor are 
+  ans:similar, except that the copy constructor creates a new object and 
+      different,except that they both copy member data.
+  
+17.which is not the difference bwt inline function and an macro function?
+     ans:reduces the code size.
+
+HCL C paper:
+************
+
+this is the C test paper of HCL.
+
+1.    #define VAL 1+2
+    main()
+    {
+        printf("%d %d",VAL/VAL,VAL*3);
+    }
+    what will be o/p?
+    ans:5 7
+
+2.A function cannot return ?
+    ans:arrays.
+
+3.    union A{
+        char d[6];
+        char *h[5];
+        int f[6];
+    }
+    assume that ur machine supports 4 bytes for an pointer,what will be the size of union?
+    ans:24.
+
+4.which of the following r mutuallyreferntial structures?
+ans:    
+    sruct a {
+      int afield;
+      struct b *bpointer;
+     };
+    struct b {
+        int bfield;
+        struct a *apointer;
+    };
+5.    main()
+    {
+        int a,b;
+        a=(10,15);
+        b=5,6;
+        printf("%d %d",a,b);
+    }
+    what will be o/p?
+    ans: 15,5
+6.    main()
+    {
+        int i=6;
+        if(i++ == 7 || i++ == 8 || i != 9)
+              printf("%d",i);
+        else
+            printf("%d",i);
+    }
+    what will be o/p?
+    ans:9
+7.which of the following is not an proper program for string copy?
+    ans:
+      main()
+      {
+          char *s="somestring",*d;
+        while(*s)
+        {
+         *++d=*++s;
+        }
+      }
+8.    main()
+    {
+        int i=6;
+        printf("%d %d %d",i++,++i,i++);
+    }
+    wht will be the o/p?
+    ans:8 8 6
+
+9.    #include<stdio.h>
+    #define sq(x) x*x*x
+    main(){
+        int a=5;
+        printf("\n %d ",sq(a++));
+        printf("\n %d ",sq(a));
+    }
+    what will be o/p?
+    ans:210 512
+10.    #include<stdio.h>
+    main(){
+        int a[10]={1,2,3,4,5,6,7,8,9,10};
+        int *p,*q;
+        p=&a[5];
+        q=&a[8];
+        printf("%d",q-p);
+    }
+    what will be the o/p?
+    ans: 3
+11.enum day = { jan = 1 ,feb=4, april, may}
+   what is the value of may?
+   a)4 b)5 c)6 d)11
+   e)none of the above
+
+   ans:6
+        
+12. Y=10;
+    if( Y++>9 && Y++!=10 && Y++>10)
+     printf("........ Y);
+    else   printf(""....  )
+
+    ans : 13        
+13.which of the function operator cannot be over loaded
+
+a) <=
+b)?:
+c)==
+d)*
+
+ans:  b and d
+
+14.     i=20,k=0;
+    for(j=1;j<i;j=1+4*(i/j))
+    {
+        k+=j<10?4:3;
+    }
+
+    printf("%d", k); 
+
+           ans  k=4
+
+15.      int i =10
+    main()
+    {
+        int i =20,n;
+        for(n=0;n<=i;)
+        {
+            int i=10
+                i++;
+        }
+        printf("%d", i);              
+    }
+    
+    ans i=20
+16.When u pass a float value to a function it is passed as ?
+    a.int.
+    b.double
+    c.long int.
+    d.float.(ans)
+17.one ques in atod function?
+    
+
+18.What's the outout?
+
+        char *cp;
+        int *ip;
+
+        cp=(char *)0x100;
+        ip=(int *)cp;
+
+        ip++;
+        cp++;
+        printf("cp = %x ip = %x", cp, ip);
+
+        Ans:cp = 0x101 ip = 0x102

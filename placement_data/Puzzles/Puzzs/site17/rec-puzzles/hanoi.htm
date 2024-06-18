@@ -1,0 +1,186 @@
+<html><head>
+<title>Solution for /induction/hanoi</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /induction/hanoi problem</h1>
+<hr>
+The best way of thinking of the Towers of Hanoi problem is inductively.
+To move n disks from post 1 to post 2, first move (n-1) disks
+from post 1 to post 3, then move disk n from post 1 to post 2, then move
+(n-1) disks from post 3 to post 2 (same procedure as moving (n-1) disks
+from post 1 to post 3).  In order to figure out how to move (n-1) disks
+from post 1 to post 3, first move (n-2) disks . . . .
+
+<p>
+As far as an algorithm which straightens out any legal position is
+concerned, the algorithm would go something like this:
+
+<ol>
+<li>  Find the smallest disk.  Call the post that it's on post 1. 
+
+<li>  Find the smallest disk which is not on post 1.  This disk is, say,
+size k.  (I am calling the smallest disk size 1 here.)  Call the post
+that disk k is on post 2.  Disks 1 through (k-1) are then all stacked up
+correctly on post 1 disk k is on top of post 2.  This follow from the
+fact that the disks are in a legal postition.
+
+<li>  Move disks 1 through (k-1) from post 1 to post 2, ignoring the other
+disks.  This is just the standard Tower of Hanoi problem for (k-1)
+disks.
+
+<li>  If the disks are not yet correctly arranged, repeat from step 1.
+</ol>
+In fact, this gives the straightening with the fewest number of moves. 
+
+<p>
+With 3 towers, for N number of disks, the formula for the minimum number of
+moves to complete the puzzle correctly is:
+<pre>
+   (2^N) - 1
+</pre>
+This bit of ancient folklore was invented by De Parville in 1884.
+
+<blockquote>
+``In the great temple at Benares, says he, beneath the dome which
+  marks the centre of the world, rests a brass plate in which are
+  fixed three diamond needles, each a cubit high and as thick as
+  the body of a bee.  On one of these needles, at the creation,
+  God placed sixty-four discs of pure gold, the largest disc resting
+  on the brass plate, and the others getting smaller and smaller
+  up to the top one.  This is the Tower of Bramah.  Day and night
+  unceasingly the priests transfer the discs from one diamond needle
+  to another according to the fixed and immutable laws of Bramah,
+  which require that the priest on duty must not move more than one
+  disc at a time and that he must place this disc on a needle so
+  that there is no smaller disc below it.  When the sixty-four
+  discs shall have been thus transferred from the needle on which
+  at the creation God placed them to one of the other needles,
+  tower, temple, and Brahmins alike will crumble into dust, and 
+  with a thunderclap the world will vanish.'' (W W R Ball,
+  MATHEMATICAL RECREATIONS AND ESSAYS, p. 304)
+</blockquote>
+
+This has been discussed by several authors, e.g.
+<ul>
+<li>    Er, Info Sci 42 (1987) 137-141.
+<li>    Graham, Knuth and Patashnik, _Concrete_Mathematics_.
+</ul>
+There are many papers claiming to solve this, and they are probably
+all correct but they rely on the unproven "Frame's conjecture".
+In particular, for the 4 peg case the conjecture states that an optimal
+solution begins by forming a substack of the k smallest discs, then moving
+the rest, and then moving those k again; k to be determined.
+
+<p>
+Here is a extensible bc program that does the same work. The output
+format is not that great. We get 300 numbers as output. The first
+hundred represent N, the next 100 represent f(N) and the last hundred
+represent i, which is the number of discs to move to tmp1 using f(N).
+For convenience, I have here some values for N &lt;= 48. Enjoy.
+
+<pre>
+Sharma
+
+
+N	 1   2   3  4  5   6  7  8  9  10  11 12 13  14  15  16  17  18  19 
+f(N)	 1   3   5  9 13  17 25 33 41  49  65 81 97 113 129 161 193 225 257 
+i	 0   1   1  2  2   3  3  4  5   6   6  7  8   9  10  10  11  12  13 
+
+
+N	20   21  22  23  24  25  26  27  28  29  30   31   32   33   34   35 
+f(N)	289 321 385 449 513 577 641 705 769 897 1025 1153 1281 1409 1537 1665
+i	14   15  15  16  17  18  19  20  21  21   22   23   24   25   26   27 
+
+N	36    37    38    39     40    41   42   43   44   45   46   47   48 
+f(N)	1793 2049  2305  2561   2817  3073 3329 3585 3841 4097 4609 5121 5633
+i	28    28    29    30     31    32    33   34   35   36  36   37   38 
+
+
+/* This is the bc program that gives f(N) for 4 peg case */
+
+w = 101; /* This represents the number of disks */
+
+m[0] = 0;
+m[1] = 1;
+m[2] = 3;
+m[3] = 5;
+m[4] = 9;
+m[5] = 13;
+m[6] = 17;
+
+/* f(n) is the function that gives the min # of moves for 4 peg case */
+define f(n) {
+  return (m[n]);
+}
+
+/* g(n) is the function that fives the min # of moves for 3 peg case */
+define g(n) {
+  return (2^n - 1);
+}
+
+/* x(n) is the Optimization Routine */
+
+define x(n) {
+  auto j
+  auto r
+  auto i
+  
+  if(n == 1) return (1);
+  j = f(1) + g(n-1);
+  
+  for(i = 2; i &lt; n; i++) {
+    r = f(i) + g(n-i);
+    if(r &lt; j) { j = r; d = i; }
+  }
+  return (j);
+}
+
+/* main program */
+for(q = 4; q &lt; w; q++) {
+  t = x(q-1);
+  m[q] = 2 * t + 1;
+  d[q] = d;
+};
+
+
+/*This for loop prints the number of discs from 1 &lt;= n &lt;=  w*/
+
+for(q = 1; q &lt; w; q++) {
+q;
+}
+
+/*This for loop prints f(n) for 1 &lt;= n &lt;= w */
+
+for(q = 1; q &lt; w; q++) {
+m[q];
+}
+
+/*This for loop prints i for 1 &lt;= n &lt;= w
+i represents the number of disks to be moved to tmp location using f(n)
+N-i-1 will be moved using g(n) */
+
+for(q = 1; q &lt; w; q++) {
+d[q];
+}
+
+-- 
+sharma@sharma.warren.mentorg.com
+</pre>
+<hr>
+There is a solution to the Tower of Hanoi problem which does not require
+recursion.  On odd-numbered moves, move the smallest sized disk clockwise.
+On even-numbered moves, make the single other move which is possible.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

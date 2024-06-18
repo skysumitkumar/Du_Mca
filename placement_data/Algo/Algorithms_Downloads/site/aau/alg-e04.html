@@ -1,0 +1,928 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Algorithms and Data Structures, Aalborg University
+  (INF1, Autumn'04)</title>
+</head>
+<body bgcolor="white">
+ <h2>Algorithms and Data Structures (INF1, Autumn'04)</h2>
+<b>Lecturer:</b> <a href="javascript:if(confirm('http://www.brics.dk/~srba  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.brics.dk/~srba'" tppabs="http://www.brics.dk/~srba">Jiri Srba</a> 
+(email: <a href="mailto:srba@cs.auc.dk">srba@cs.auc.dk</a>, office:
+B2-203)<br>
+<br>
+<b>Course Description: </b> 
+This is an introductory course on algorithms
+and data structures. We will introduce the basic
+concept of algorithm design and analyze the correctness and complexity
+of the algorithms.
+Our aim will be to understand the basic algorithms and reason about
+their complexity.
+We will also focus on the most useful data structures of computer science.
+The working language of the course will be English.
+<br>
+<br>
+<b>Textbook:</b> The main textbook will be 
+ <em>Algorithms and Data Structures: Design, Correctness and Analysis</em>
+by Jeffrey H. Kingston (available at the local bookstore).
+As a supplementary reading material I recommend the book
+<em> Algorithmics: The Spirit of Computing</em> by  David Harel.
+Other reading material will be provided for photocopying in the
+course folder.
+<br>
+<br>
+<b>Lectures and Exercises:</b> 
+The course will run in four-hour blocks. Each block will consist of 
+combined activities: lecturing and supervised solving of exercises. 
+These two activities can be interleaved several times during one
+block. 
+Each week a list of exercises will be released. Students are supposed
+to print out
+the list and bring it to the lecture.
+Occasionally, some of the exercises will be marked as <em>hand-in</em>.
+Students are expected to solve them individually and the solutions 
+will be corrected by the lecturer.
+Solutions to all exercises will be available on the web-page with a certain
+delay after the tutorials.
+The exercises are <em>directly aimed at preparing the students
+for questions of category 1 of the written exam</em>.
+<br>
+<br>
+
+<b>Exam:</b> Individual and written. Marks will be given according to the 
+standard scale 00 - 13. The exam will consist of two categories
+of questions. Questions from category 1 (approximately one question per 
+lecture) will be very concrete questions, possibly with multiple answers. 
+The students are supposed to write/select the correct answer without providing 
+any written justification.
+The questions of category 1 will <em>closely 
+follow the exercises</em> released after each lecture (not necessarily
+only the hand-in ones). In order to pass the exam, a sufficient number
+of category 1 questions have to be answered correctly.
+Questions of category 2 will consist of two or three 
+problems which 
+require creative thinking and a written justification of the solutions
+is a necessary part of the answer 
+(e.g. a design of an algorithm and its complexity analysis). 
+<br> 
+<br>
+
+<b>Syllabus:</b> The syllabus of the course is the same as the
+content of the lectures. Recommended reading is summarized at
+every lecture on the respective page. A brief overview of the
+main focus areas is available on the slides from the last
+lecture (in the course folder). 
+<br><br>
+
+Course web-page from the year 2003 including scanned copies of
+lecture slides is 
+<a href="javascript:if(confirm('http://www.cs.auc.dk/~srba/alg-e03.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.cs.auc.dk/~srba/alg-e03.html'" tppabs="http://www.cs.auc.dk/~srba/alg-e03.html">here</a>.
+<br><br>
+
+<!-- <a href="http://dw3.cs.aau.dk/~srba/form.html">Anonymous Feedback Form</a> <br>
+(The students are <em>very encouraged</em> to notify the lecturer about
+any problem as soon as possible and to send suggestions for improvements.
+Positive feedback is also welcome.) <br><br> -->
+
+How to write algorithms in latex -
+download <a href="algorithms.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e03/algorithms.ps">here</a>.
+<br><br>
+
+<u>
+Inspiration for exam questions of category 2:
+<a href="javascript:if(confirm('http://www.cs.auc.dk/~luca/DATALG/re-exam01.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.cs.auc.dk/~luca/DATALG/re-exam01.pdf'" tppabs="http://www.cs.auc.dk/~luca/DATALG/re-exam01.pdf">here</a>,
+<a href="javascript:if(confirm('http://www.cs.auc.dk/~luca/DATALG/exam01.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.cs.auc.dk/~luca/DATALG/exam01.pdf'" tppabs="http://www.cs.auc.dk/~luca/DATALG/exam01.pdf">here</a>, 
+<a href="javascript:if(confirm('http://www.cs.auc.dk/~luca/DATALG/exam00.ps  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.cs.auc.dk/~luca/DATALG/exam00.ps'" tppabs="http://www.cs.auc.dk/~luca/DATALG/exam00.ps">here</a>,
+<a href="javascript:if(confirm('http://www.cs.auc.dk/~luca/DATALG/rex00.ps  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.cs.auc.dk/~luca/DATALG/rex00.ps'" tppabs="http://www.cs.auc.dk/~luca/DATALG/rex00.ps">here</a>, and possibly also
+<a href="javascript:if(confirm('http://www.cs.auc.dk/~simas/ad03/exam.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.cs.auc.dk/~simas/ad03/exam.html'" tppabs="http://www.cs.auc.dk/~simas/ad03/exam.html">here</a> (exams for DAT1 students).</u>
+<br><br>
+Exam questions from 21.1.2004 are <a href="exam210104.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e03/exam210104.ps">here</a>
+and correct answers are <a href="answers210104.html" tppabs="http://www.cs.aau.dk/~srba/alg-e03/answers210104.html">here</a>.
+<br>
+Exam questions from 30.8.2004 are <a href="exam300804.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e03/exam300804.ps">here</a>
+and correct answers are <a href="answers300804.html" tppabs="http://www.cs.aau.dk/~srba/alg-e03/answers300804.html">here</a>. 
+<br>
+<b>
+Exam questions from 28.1.2005 are <a href="exam280105.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e04/exam280105.ps">here</a>
+and correct answers are <a href="answers280105.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/answers280105.html">here</a>.
+</b>
+<br>
+<br>
+<br>
+<b>Lecture Plan (calendar is available
+<a href="javascript:if(confirm('http://www.cs.auc.dk/~normark/cgi-bin/calendar/data/adinf_e04.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.cs.auc.dk/~normark/cgi-bin/calendar/data/adinf_e04.html'" tppabs="http://www.cs.auc.dk/~normark/cgi-bin/calendar/data/adinf_e04.html">
+here</a>):</b>
+<br>
+<br>
+
+<table cellpadding="2" cellspacing="2" border="3" 
+ style="text-align: left;">
+  <tbody>
+   <tr>
+      <td valign="top">Date<br>
+      </td>
+      <td valign="top">Time<br>
+      </td>
+      <td valign="top">Place<br>
+      </td>
+      <td valign="top">Link<br>
+      </td>
+      <td valign="top">Exercises<br>
+      </td>
+      <td valign="top">Remark<br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">6.9.2004
+      </td>
+      <td valign="top">12:30-16:15
+      </td>
+      <td valign="top">E3-209
+      </td>
+      <td valign="top"><a href="alg-l1-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-l1-e04.html">Lecture 1</a>
+      </td>
+      <td valigh="top">No exercises.
+      </td>
+      <td valign="top">
+     <!-- xxx  <a href="alg-e03/A&D-lecture1.pdf">slides</a> -->
+      <br>
+      </td>
+    </tr>
+
+    <tr>
+      <td valign="top">9.9.2004
+      </td>
+      <td valign="top">8:15-12:00
+      </td>
+      <td valign="top">A4-108
+      </td>
+      <td valign="top"><a href="alg-l2-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-l2-e04.html">Lecture 2</a>
+      </td>
+      <td valigh="top"><a href="alg-t1-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-t1-e04.html">Exercise set 1</a>
+      </td>
+      <td valign="top">
+     <!-- xxx  <a href="alg-e03/A&D-lecture2.pdf">slides</a> -->
+      Solutions to set 1:
+          <a href="tut1.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e04/tut1.ps">ps</a>,
+          <a href="tut1.pdf" tppabs="http://www.cs.aau.dk/~srba/alg-e04/tut1.pdf">pdf</a>,
+          <a href="tut1.tex" tppabs="http://www.cs.aau.dk/~srba/alg-e04/tut1.tex">latex</a>
+
+      <br>
+      </td>
+    </tr>
+
+ <tr>
+      <td valign="top">13.9.2004
+      </td>
+      <td valign="top">12:30-16:15
+      </td>
+      <td valign="top">E3-209
+      </td>
+      <td valign="top"><a href="alg-l3-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-l3-e04.html">Lecture 3</a>
+      </td>
+      <td valigh="top"><a href="alg-t2-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-t2-e04.html">Exercise set 2</a>
+      </td>
+      <td valign="top">
+     <!-- xxx  <a href="alg-e03/A&D-lecture2.pdf">slides</a> -->
+     Solutions to set 2:
+          <a href="tut2.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut2.ps">ps</a>,
+          <a href="tut2.pdf" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut2.pdf">pdf</a>,
+          <a href="tut2.tex" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut2.tex">latex</a>
+      <br>
+      </td>
+    </tr>
+
+ <tr>
+      <td valign="top">16.9.2004
+      </td>
+      <td valign="top">8:15-12:00
+      </td>
+      <td valign="top">A4-108
+      </td>
+      <td valign="top"><a href="alg-l4-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-l4-e04.html">Lecture 4</a>
+      </td>
+      <td valigh="top"><a href="alg-t3-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-t3-e04.html">Exercise set 3</a>
+      </td>
+      <td valign="top">
+     <!-- xxx  <a href="alg-e03/A&D-lecture2.pdf">slides</a> -->
+      Solutions to set 3:
+          <a href="tut3.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut3.ps">ps</a>,
+          <a href="tut3.pdf" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut3.pdf">pdf</a>,
+          <a href="tut3.tex" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut3.tex">latex</a>
+<br>
+      </td>
+    </tr>
+
+ <tr>
+      <td valign="top">20.9.2004
+      </td>
+      <td valign="top">12:30-16:15
+      </td>
+      <td valign="top">E3-209
+      </td>
+      <td valign="top"><a href="alg-l5-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-l5-e04.html">Lecture 5</a>
+      </td>
+      <td valigh="top"><a href="alg-t4-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-t4-e04.html">Exercise set 4</a>
+      </td>
+      <td valign="top">
+     <!-- xxx  <a href="alg-e03/A&D-lecture2.pdf">slides</a> -->
+ Solutions to set 4:
+          <a href="tut4.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut4.ps">ps</a>,
+          <a href="tut4.pdf" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut4.pdf">pdf</a>,
+          <a href="tut4.tex" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut4.tex">latex</a>
+
+      <br>
+      </td>
+    </tr>
+
+ <tr>
+      <td valign="top">27.9.2004
+      </td>
+      <td valign="top">12:30-16:15
+      </td>
+      <td valign="top">E3-209
+      </td>
+      <td valign="top"><a href="alg-l6-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-l6-e04.html">Lecture 6</a>
+      </td>
+      <td valigh="top"><a href="alg-t5-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-t5-e04.html">Exercise set 5</a>
+      </td>
+      <td valign="top">
+     <!-- xxx  <a href="alg-e03/A&D-lecture2.pdf">slides</a> -->
+ Solutions to set 5:
+          <a href="tut5.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut5.ps">ps</a>,
+          <a href="tut5.pdf" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut5.pdf">pdf</a>,
+          <a href="tut5.tex" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut5.tex">latex</a>
+      <br>
+      </td>
+    </tr>
+
+<tr>
+      <td valign="top">30.9.2004
+      </td>
+      <td valign="top">8:15-12:00
+      </td>
+      <td valign="top">A4-108
+      </td>
+      <td valign="top"><a href="alg-l7-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-l7-e04.html">Lecture 7</a>
+      </td>
+      <td valigh="top"><a href="alg-t6-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-t6-e04.html">Exercise set 6</a>
+      </td>
+      <td valign="top">
+     <!-- xxx  <a href="alg-e03/A&D-lecture2.pdf">slides</a> -->
+        Solutions to set 6:
+          <a href="tut6.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut6.ps">ps</a>,
+          <a href="tut6.pdf" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut6.pdf">pdf</a>,
+          <a href="tut6.tex" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut6.tex">latex</a>
+      <br>
+      </td>
+    </tr>
+
+<tr>
+      <td valign="top">4.10.2004
+      </td>
+      <td valign="top">12:30-16:15
+      </td>
+      <td valign="top">E3-209
+      </td>
+      <td valign="top"><a href="alg-l8-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-l8-e04.html">Lecture 8</a>
+      </td>
+      <td valigh="top"><a href="alg-t7-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-t7-e04.html">Exercise set 7</a>
+      </td>
+      <td valign="top">
+     <!-- xxx  <a href="alg-e03/A&D-lecture2.pdf">slides</a> -->
+ Solutions to set 7:
+          <a href="tut7.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut7.ps">ps</a>,
+          <a href="tut7.pdf" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut7.pdf">pdf</a>,
+          <a href="tut7.tex" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut7.tex">latex</a>
+      <br>
+      </td>
+    </tr>
+
+<tr>
+      <td valign="top">7.10.2004
+      </td>
+      <td valign="top">8:15-12:00
+      </td>
+      <td valign="top">A4-108
+      </td>
+      <td valign="top"><a href="alg-l9-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-l9-e04.html">Lecture 9</a>
+      </td>
+      <td valigh="top"><a href="alg-t8-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-t8-e04.html">Exercise set 8</a>
+      </td>
+      <td valign="top">
+     <!-- xxx  <a href="alg-e03/A&D-lecture2.pdf">slides</a> -->
+Solutions to set 8:
+          <a href="tut8.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut8.ps">ps</a>,
+          <a href="tut8.pdf" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut8.pdf">pdf</a>,
+          <a href="javascript:if(confirm('http://www.cs.aau.dk/~srba/alg-e03/tut8.tex  \n\nThis file was not retrieved by Teleport Pro, because the server reports that this file cannot be found.  \n\nDo you want to open it from the server?'))window.location='http://www.cs.aau.dk/~srba/alg-e03/tut8.tex'" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut8.tex">latex</a>
+      <br>
+      </td>
+    </tr>
+
+
+
+<tr>
+      <td valign="top">21.10.2004
+      </td>
+      <td valign="top">8:15-12:00
+      </td>
+      <td valign="top">D2-106
+      </td>
+      <td valign="top"><a href="alg-l10-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-l10-e04.html">Lecture 10</a>
+      </td>
+      <td valigh="top"><a href="alg-t9-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-t9-e04.html">Exercise set 9</a>
+      </td>
+      <td valign="top">
+     <!-- xxx  <a href="alg-e03/A&D-lecture2.pdf">slides</a> -->
+Solutions to set 9:
+          <a href="tut9.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut9.ps">ps</a>,
+          <a href="tut9.pdf" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut9.pdf">pdf</a>,
+          <a href="javascript:if(confirm('http://www.cs.aau.dk/~srba/alg-e03/tut9.tex  \n\nThis file was not retrieved by Teleport Pro, because the server reports that this file cannot be found.  \n\nDo you want to open it from the server?'))window.location='http://www.cs.aau.dk/~srba/alg-e03/tut9.tex'" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut9.tex">latex</a>
+      <br>
+      </td>
+    </tr>
+
+<tr>
+      <td valign="top">25.10.2004
+      </td>
+      <td valign="top">12:30-16:15
+      </td>
+      <td valign="top">E3-209
+      </td>
+      <td valign="top"><a href="alg-l11-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-l11-e04.html">Lecture 11</a>
+      </td>
+      <td valigh="top"><a href="alg-t10-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-t10-e04.html">Exercise set 10</a>
+      </td>
+      <td valign="top">
+     <!-- xxx  <a href="alg-e03/A&D-lecture2.pdf">slides</a> -->
+Solutions to set 10:
+          <a href="tut10.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut10.ps">ps</a>,
+          <a href="tut10.pdf" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut10.pdf">pdf</a>,
+          <a href="javascript:if(confirm('http://www.cs.aau.dk/~srba/alg-e03/tut10.tex  \n\nThis file was not retrieved by Teleport Pro, because the server reports that this file cannot be found.  \n\nDo you want to open it from the server?'))window.location='http://www.cs.aau.dk/~srba/alg-e03/tut10.tex'" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut10.tex">latex</a>
+      <br>
+      </td>
+    </tr>
+
+
+<tr>
+      <td valign="top">4.11.2004
+      </td>
+      <td valign="top">8:15-12:00
+      </td>
+      <td valign="top">D2-106
+      </td>
+      <td valign="top"><a href="alg-l12-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-l12-e04.html">Lecture 12</a>
+      </td>
+      <td valigh="top"><a href="alg-t11-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-t11-e04.html">Exercise set 11</a>
+      </td>
+      <td valign="top">
+     <!-- xxx  <a href="alg-e03/A&D-lecture2.pdf">slides</a> -->
+Solutions to set 11:
+          <a href="tut11.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut11.ps">ps</a>,
+          <a href="tut11.pdf" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut11.pdf">pdf</a>,
+          <a href="tut11.tex" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut11.tex">latex</a>
+      <br>
+      </td>
+    </tr>
+
+<tr>
+      <td valign="top">11.11.2004
+      </td>
+      <td valign="top">8:15-12:00
+      </td>
+      <td valign="top">D2-106
+      </td>
+      <td valign="top"><a href="alg-l13-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-l13-e04.html">Lecture 13</a>
+      </td>
+      <td valigh="top"><a href="alg-t12-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-t12-e04.html">Exercise set 12</a>
+      </td>
+      <td valign="top">
+     <!-- xxx  <a href="alg-e03/A&D-lecture2.pdf">slides</a> -->
+Solutions to set 12:
+          <a href="tut12.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut12.ps">ps</a>,
+          <a href="tut12.pdf" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut12.pdf">pdf</a>,
+          <a href="tut12.tex" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut12.tex">latex</a>
+      <br>
+      </td>
+    </tr>
+
+<tr>
+      <td valign="top">18.11.2004
+      </td>
+      <td valign="top">8:15-12:00
+      </td>
+      <td valign="top">E3-209
+      </td>
+      <td valign="top"><a href="alg-l14-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-l14-e04.html">Lecture 14</a>
+      </td>
+      <td valigh="top"><a href="alg-t13-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-t13-e04.html">Exercise set 13</a>
+      </td>
+      <td valign="top">
+     <!-- xxx  <a href="alg-e03/A&D-lecture2.pdf">slides</a> -->
+Solutions to set 13:
+          <a href="tut13.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut13.ps">ps</a>,
+          <a href="tut13.pdf" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut13.pdf">pdf</a>,
+          <a href="javascript:if(confirm('http://www.cs.aau.dk/~srba/alg-e03/tut13.tex  \n\nThis file was not retrieved by Teleport Pro, because the server reports that this file cannot be found.  \n\nDo you want to open it from the server?'))window.location='http://www.cs.aau.dk/~srba/alg-e03/tut13.tex'" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut13.tex">latex</a>
+
+      <br>
+      </td>
+    </tr>
+
+<tr>
+      <td valign="top">25.11.2004
+      </td>
+      <td valign="top">8:15-12:00
+      </td>
+      <td valign="top">C3-204
+      </td>
+      <td valign="top"><a href="alg-l15-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-l15-e04.html">Lecture 15</a>
+      </td>
+      <td valigh="top"><a href="alg-t14-e04.html" tppabs="http://www.cs.aau.dk/~srba/alg-e04/alg-t14-e04.html">Exercise set 14</a>
+      </td>
+      <td valign="top">
+     <!-- xxx  <a href="alg-e03/A&D-lecture2.pdf">slides</a> -->
+Solutions to set 14:
+          <a href="tut14.ps" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut14.ps">ps</a>,
+          <a href="tut14.pdf" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut14.pdf">pdf</a>,
+          <a href="tut14.tex" tppabs="http://www.cs.aau.dk/~srba/alg-e03/tut14.tex">latex</a>
+      <br>
+      </td>
+    </tr>
+
+
+<!--
+    <tr>
+      <td valign="top">15.9.2003<br>
+      </td>
+      <td valign="top">12:30-14:15<br>
+      </td>
+      <td valign="top">groups<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-t1-e03.html">Tutorial 1</a><br>
+      </td>
+      <td valign="top">
+          Solutions:
+          <a href="alg-e03/tut1.ps">ps</a>,
+          <a href="alg-e03/tut1.pdf">pdf</a>,
+          <a href="alg-e03/tut1.tex">latex</a>
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">14:30-16:15<br>
+      </td>
+      <td valign="top">A4-108<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-l2-e03.html">Lecture 2</a><br>
+      </td>
+      <td valign="top">
+      <a href="alg-e03/A&D-lecture2.pdf">slides</a><br>
+      </td>
+    </tr>
+
+<tr>
+      <td valign="top">18.9.2003<br>
+      </td>
+      <td valign="top">08:15-10:00<br>
+      </td>
+      <td valign="top">groups<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-t2-e03.html">Tutorial 2</a><br>
+      </td>
+      <td valign="top">
+          Solutions:
+          <a href="alg-e03/tut2.ps">ps</a>,
+          <a href="alg-e03/tut2.pdf">pdf</a>,
+          <a href="alg-e03/tut2.tex">latex</a>
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">10:15-12:00<br>
+      </td>
+      <td valign="top">A4-108<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-l3-e03.html">Lecture 3</a><br>
+      </td>
+      <td valign="top">
+      <a href="alg-e03/A&D-lecture3.pdf">slides</a><br>
+      </td>
+    </tr>
+
+<tr>
+      <td valign="top">25.9.2003<br>
+      </td>
+      <td valign="top">08:15-10:00<br>
+      </td>
+      <td valign="top"><b><a href="alg-e03/seminars.html">seminars</a><b><br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-t3-e03.html">Tutorial 3</a><br>
+      </td>
+      <td valign="top">Solutions:
+          <a href="alg-e03/tut3.ps">ps</a>, 
+          <a href="alg-e03/tut3.pdf">pdf</a>,
+          <a href="alg-e03/tut3.tex">latex</a>
+        <br> </td>
+    </tr>
+    <tr>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">10:15-12:00<br>
+      </td>
+      <td valign="top">B2-104<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-l4-e03.html">Lecture 4</a><br>
+      </td>
+      <td valign="top">
+      <a href="alg-e03/A&D-lecture4.pdf">slides</a><br> 
+      </td>
+    </tr>
+
+<tr>
+      <td valign="top">29.9.2003<br>
+      </td>
+      <td valign="top">12:30-14:15<br>
+      </td>
+      <td valign="top">groups<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-t4-e03.html">Tutorial 4</a><br>
+      </td> 
+      <td valign="top">
+          Solutions:
+          <a href="alg-e03/tut4.ps">ps</a>,
+          <a href="alg-e03/tut4.pdf">pdf</a>,
+          <a href="alg-e03/tut4.tex">latex</a>
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">14:30-16:15<br>
+      </td>
+      <td valign="top">A4-108<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-l5-e03.html">Lecture 5</a><br>
+      </td>
+      <td valign="top">
+      <a href="alg-e03/A&D-lecture5.pdf">slides</a><br>
+      </td>
+    </tr>
+
+<tr>
+      <td valign="top">2.10.2003<br>
+      </td>
+      <td valign="top">08:15-10:00<br>
+      </td>
+      <td valign="top">groups<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-t5-e03.html">Tutorial 5</a><br>
+      </td>
+     <td valign="top">
+          Solutions:
+          <a href="alg-e03/tut5.ps">ps</a>,
+          <a href="alg-e03/tut5.pdf">pdf</a>,
+          <a href="alg-e03/tut5.tex">latex</a>
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">10:15-12:00<br>
+      </td>
+      <td valign="top">A4-108<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-l6-e03.html">Lecture 6</a><br>
+      </td>
+      <td valign="top">
+      <a href="alg-e03/A&D-lecture6.pdf">slides</a><br>
+      </td>
+    </tr>
+
+<tr>
+      <td valign="top">9.10.2003<br>
+      </td>
+      <td valign="top">08:15-10:00<br>
+      </td>
+      <td valign="top">groups<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-t6-e03.html">Tutorial 6</a><br>
+      </td>
+      <td valign="top">
+          Solutions:
+          <a href="alg-e03/tut6.ps">ps</a>,
+          <a href="alg-e03/tut6.pdf">pdf</a>,
+          <a href="alg-e03/tut6.tex">latex</a>
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">10:15-12:00<br>
+      </td>
+      <td valign="top">A4-108<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-l7-e03.html">Lecture 7</a><br>
+      </td>
+       <td valign="top">
+      <a href="alg-e03/A&D-lecture7.pdf">slides</a><br>
+      </td>
+    </tr>
+
+<tr>
+      <td valign="top">16.10.2003<br>
+      </td>
+      <td valign="top">08:15-10:00<br>
+      </td>
+      <td valign="top"><b><a href="alg-e03/seminars1.html">seminars</a><b><br>
+      </td>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-t7-e03.html">Tutorial 7</a><br>
+      </td>
+      <td valign="top">
+          Solutions:
+          <a href="alg-e03/tut7.ps">ps</a>,
+          <a href="alg-e03/tut7.pdf">pdf</a>,
+          <a href="alg-e03/tut7.tex">latex</a>
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">10:15-12:00<br>
+      </td>
+      <td valign="top">A4-108<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-l8-e03.html">Lecture 8</a><br>
+      </td>
+      <td valign="top">
+      <a href="alg-e03/A&D-lecture8.pdf">slides</a>,
+      <a href="alg-e03/answers8.html">answers</a><br>
+      </td>
+
+    </tr>
+
+<tr>
+      <td valign="top">23.10.2003<br>
+      </td>
+      <td valign="top">08:15-10:00<br>
+      </td>
+      <td valign="top">groups<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-t8-e03.html">Tutorial 8</a><br>
+      </td>
+      <td valign="top">
+          Solutions:
+          <a href="alg-e03/tut8.ps">ps</a>,
+          <a href="alg-e03/tut8.pdf">pdf</a>,
+          <a href="alg-e03/tut8.tar.gz">latex (tar.gz)</a>
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">10:15-12:00<br>
+      </td>
+      <td valign="top">A4-108<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-l9-e03.html">Lecture 9</a><br>
+      </td>
+      <td valign="top">
+      <a href="alg-e03/A&D-lecture9.pdf">slides</a>
+      <br>
+      </td>
+    </tr>
+
+<tr>
+      <td valign="top">30.10.2003<br>
+      </td>
+      <td valign="top">08:15-10:00<br>
+      </td>
+      <td valign="top">groups<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-t9-e03.html">Tutorial 9</a><br>
+      </td>
+      <td valign="top">
+          Solutions:
+          <a href="alg-e03/tut9.ps">ps</a>,
+          <a href="alg-e03/tut9.pdf">pdf</a>,
+          <a href="alg-e03/tut9.tar.gz">latex (tar.gz)</a>
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">10:15-12:00<br>
+      </td>
+      <td valign="top">A4-108<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-l10-e03.html">Lecture 10</a><br>
+      </td>
+      <td valign="top">
+      <a href="alg-e03/A&D-lecture10.pdf">slides</a>
+      <br>
+      </td>
+    </tr>
+
+<tr>
+      <td valign="top">6.11.2003<br>
+      </td>
+      <td valign="top">08:15-10:00<br>
+      </td>
+      <td valign="top">groups<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-t10-e03.html">Tutorial 10</a><br>
+      </td>
+      <td valign="top">
+          Solutions:
+          <a href="alg-e03/tut10.ps">ps</a>,
+          <a href="alg-e03/tut10.pdf">pdf</a>,
+          <a href="alg-e03/tut10.tar.gz">latex (tar.gz)</a>
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">10:15-12:00<br>
+      </td>
+      <td valign="top">A4-108<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-l11-e03.html">Lecture 11</a><br>
+      </td>
+      <td valign="top">
+      <a href="alg-e03/A&D-lecture11.pdf">slides</a>
+      <br>
+      </td>
+
+    </tr>
+
+<tr>
+      <td valign="top">13.11.2003<br>
+      </td>
+      <td valign="top">08:15-10:00<br>
+      </td>
+      <td valign="top">groups<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-t11-e03.html">Tutorial 11</a><br>
+      </td>
+      <td valign="top">
+          Solutions:
+          <a href="alg-e03/tut11.ps">ps</a>,
+          <a href="alg-e03/tut11.pdf">pdf</a>,
+          <a href="alg-e03/tut11.tex">latex</a>
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">10:15-12:00<br>
+      </td>
+      <td valign="top">A4-108<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-l12-e03.html">Lecture 12</a><br>
+      </td>
+      <td valign="top">
+      <a href="alg-e03/A&D-lecture12.pdf">slides</a><br>
+      </td>
+    </tr>
+
+
+<tr>
+      <td valign="top">20.11.2003<br>
+      </td>
+      <td valign="top">08:15-10:00<br>
+      </td>
+      <td valign="top">groups<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-t12-e03.html">Tutorial 12</a><br>
+      </td>
+      <td valign="top">
+          Solutions:
+          <a href="alg-e03/tut12.ps">ps</a>,
+          <a href="alg-e03/tut12.pdf">pdf</a>,
+          <a href="alg-e03/tut12.tex">latex</a>
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">10:15-12:00<br>
+      </td>
+      <td valign="top">A4-108<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-l13-e03.html">Lecture 13</a><br>
+      </td>
+       <td valign="top">
+      <a href="alg-e03/A&D-lecture13.pdf">slides</a><br>
+      </td>
+    </tr>
+
+<tr>
+      <td valign="top">27.11.2003<br>
+      </td>
+      <td valign="top">08:15-10:00<br>
+      </td>
+      <td valign="top">groups<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-t13-e03.html">Tutorial 13</a><br>
+      </td>
+      <td valign="top">
+          Solutions:
+          <a href="alg-e03/tut13.ps">ps</a>,
+          <a href="alg-e03/tut13.pdf">pdf</a>,
+          <a href="alg-e03/tut13.tar.gz">latex (tar.gz)</a>
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">10:15-12:00<br>
+      </td>
+      <td valign="top">A4-108<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-l14-e03.html">Lecture 14</a><br>
+      </td>
+      <td valign="top">
+      <a href="alg-e03/A&D-lecture14.pdf">slides</a><br>
+      </td>
+    </tr>
+
+<tr>
+      <td valign="top">4.12.2003<br>
+      </td>
+      <td valign="top">08:15-10:00<br>
+      </td>
+      <td valign="top">groups<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-t14-e03.html">Tutorial 14</a><br>
+      </td>
+      <td valign="top">
+          Solutions:
+          <a href="alg-e03/tut14.ps">ps</a>,
+          <a href="alg-e03/tut14.pdf">pdf</a>,
+          <a href="alg-e03/tut14.tex">latex</a>
+        <br>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top"><br>
+      </td>
+      <td valign="top">10:15-12:00<br>
+      </td>
+      <td valign="top">A4-108<br>
+      </td>
+      <td valign="top"><a href="alg-e03/alg-l15-e03.html">Lecture 15</a><br>
+      </td>
+      <td valign="top">
+      <a href="alg-e03/A&D-lecture15.pdf">slides</a><br>
+      </td>
+    </tr>
+-->
+<tr>
+      <td valign="top">24.1.2005<br>
+      </td>
+      <td valign="top">12:30-??<br>
+      </td>
+      <td valign="top">D2-106<br>
+      </td>
+      <td valign="top">Spørgetime<br>
+      </td><td>No exercises.</td>
+      <td valign="top">Send requests/questions in a good time by email.<br>
+      </td>
+    </tr>
+   </tbody>
+</table>
+
+<br>
+<!-- Begin Nedstat Basic code -->
+<!-- Title: Algorithms and Datastructures, INF1, 03 -->
+<!-- URL: http://www.cs.auc.dk/~srba/alg-e03.html -->
+<script language="JavaScript" type="text/javascript" src="basic.js" tppabs="http://m1.nedstatbasic.net/basic.js">
+</script>
+<script language="JavaScript" type="text/javascript" >
+<!--
+  nedstatbasic("ACYWQApC6NsbSg6WWgN0D1L1URqg", 0);
+// -->
+</script>
+<noscript>
+<a target="_blank" href="javascript:if(confirm('http://v1.nedstatbasic.net/stats?ACYWQApC6NsbSg6WWgN0D1L1URqg  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://v1.nedstatbasic.net/stats?ACYWQApC6NsbSg6WWgN0D1L1URqg'" tppabs="http://v1.nedstatbasic.net/stats?ACYWQApC6NsbSg6WWgN0D1L1URqg"><img
+src="n-id=ACYWQApC6NsbSg6WWgN0D1L1URqg.gif" tppabs="http://m1.nedstatbasic.net/n?id=ACYWQApC6NsbSg6WWgN0D1L1URqg"
+border="0" nosave width="18" height="18"
+alt="Nedstat Basic - Free web site statistics"></a>
+</noscript>
+<!-- End Nedstat Basic code -->
+
+</body>
+</html>

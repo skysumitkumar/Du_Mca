@@ -1,0 +1,1021 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl {\f0\froman\fprq2\fcharset0 Times New Roman;}}
+\uc1\pard\nowidctlpar\ulnone\f0\fs20 Table of Contents \par
+\par
+Abstract \par
+INTRODUCTION \par
+1. FUNDAMENTAL CONCEPTS\par
+1.1 Definitions\par
+1.2 Classification of Methods\par
+1.3 A Data Compression Model\par
+1.4 Motivation\par
+2. SEMANTIC DEPENDENT METHODS\par
+3. STATIC DEFINED-WORD SCHEMES\par
+3.1 Shannon-Fano Coding\par
+3.2 Static Huffman Coding\par
+3.3 Universal Codes and Representations of the Integers\par
+3.4 Arithmetic Coding\par
+4. ADAPTIVE HUFFMAN CODING\par
+4.1 Algorithm FGK\par
+4.2 Algorithm V\par
+5. OTHER ADAPTIVE METHODS\par
+5.1 Lempel-Ziv Codes\par
+5.2 Algorithm BSTW\par
+6. EMPIRICAL RESULTS\par
+7. SUSCEPTIBILITY TO ERROR\par
+7.1 Static Codes\par
+7.2 Adaptive Codes\par
+8. NEW DIRECTIONS\par
+9. SUMMARY\par
+REFERENCES\par
+\par
+Abstract \par
+\par
+This paper surveys a variety of data compression methods spanning almost forty years of research,\par
+from the work of Shannon, Fano and Huffman in the late 40's to a technique developed in 1986. The\par
+aim of data compression is to reduce redundancy in stored or communicated data, thus increasing\par
+effective data density. Data compression has important application in the areas of file storage and\par
+distributed systems. \par
+\par
+Concepts from information theory, as they relate to the goals and evaluation of data compression\par
+methods, are discussed briefly. A framework for evaluation and comparison of methods is constructed\par
+and applied to the algorithms presented. Comparisons of both theoretical and empirical natures are\par
+reported and possibilities for future research are suggested. \par
+\par
+INTRODUCTION \par
+\par
+Data compression is often referred to as coding, where coding is a very general term encompassing\par
+any special representation of data which satisfies a given need. Information theory is defined to be the\par
+study of efficient coding and its consequences, in the form of speed of transmission and probability of\par
+error [Ingels 1971]. Data compression may be viewed as a branch of information theory in which the\par
+primary objective is to minimize the amount of data to be transmitted. The purpose of this paper is to\par
+present and analyze a variety of data compression algorithms. \par
+\par
+A simple characterization of data compression is that it involves transforming a string of characters in\par
+some representation (such as ASCII) into a new string (of bits, for example) which contains the same\par
+information but whose length is as small as possible. Data compression has important application in the\par
+areas of data transmission and data storage. Many data processing applications require storage of large\par
+volumes of data, and the number of such applications is constantly increasing as the use of computers\par
+extends to new disciplines. At the same time, the proliferation of computer communication networks is\par
+resulting in massive transfer of data over communication links. Compressing data to be stored or\par
+transmitted reduces storage and/or communication costs. When the amount of data to be transmitted is\par
+reduced, the effect is that of increasing the capacity of the communication channel. Similarly,\par
+compressing a file to half of its original size is equivalent to doubling the capacity of the storage\par
+medium. It may then become feasible to store the data at a higher, thus faster, level of the storage\par
+hierarchy and reduce the load on the input/output channels of the computer system. \par
+\par
+Many of the methods to be discussed in this paper are implemented in production systems. The UNIX\par
+utilities compact and compress are based on methods to be discussed in Sections 4 and 5 respectively\par
+[UNIX 1984]. Popular file archival systems such as ARC and PKARC employ techniques presented in\par
+Sections 3 and 5 [ARC 1986; PKARC 1987]. The savings achieved by data compression can be\par
+dramatic; reduction as high as 80% is not uncommon [Reghbati 1981]. Typical values of compression\par
+provided by compact are: text (38%), Pascal source (43%), C source (36%) and binary (19%).\par
+Compress generally achieves better compression (50-60% for text such as source code and English),\par
+and takes less time to compute [UNIX 1984]. Arithmetic coding (Section 3.4) has been reported to\par
+reduce a file to anywhere from 12.1 to 73.5% of its original size [Witten et al. 1987]. Cormack reports\par
+that data compression programs based on Huffman coding (Section 3.2) reduced the size of a large\par
+student-record database by 42.1% when only some of the information was compressed. As a\par
+consequence of this size reduction, the number of disk operations required to load the database was\par
+reduced by 32.7% [Cormack 1985]. Data compression routines developed with specific applications\par
+in mind have achieved compression factors as high as 98% [Severance 1983]. \par
+\par
+While coding for purposes of data security (cryptography) and codes which guarantee a certain level of\par
+\pard\nowidctlpar\qj data integrity (error detection/correction) are topics worthy of attention, these do not fall under the\par
+umbrella of data compression. With the exception of a brief discussion of the susceptibility to error of\par
+the methods surveyed (Section 7), a discrete noiseless channel is assumed. That is, we assume a\par
+system in which a sequence of symbols chosen from a finite alphabet can be transmitted from one point\par
+to another without the possibility of error. Of course, the coding schemes described here may be\par
+\pard\nowidctlpar combined with data security or error correcting codes. \par
+\par
+Much of the available literature on data compression approaches the topic from the point of view of\par
+data transmission. As noted earlier, data compression is of value in data storage as well. Although this\par
+discussion will be framed in the terminology of data transmission, compression and decompression of\par
+data files for storage is essentially the same task as sending and receiving compressed data over a\par
+communication channel. The focus of this paper is on algorithms for data compression; it does not deal\par
+with hardware aspects of data transmission. The reader is referred to Cappellini for a discussion of\par
+techniques with natural hardware implementation [Cappellini 1985]. \par
+\par
+Background concepts in the form of terminology and a model for the study of data compression are\par
+provided in Section 1. Applications of data compression are also discussed in Section 1, to provide\par
+motivation for the material which follows. \par
+\par
+While the primary focus of this survey is data compression methods of general utility, Section 2\par
+includes examples from the literature in which ingenuity applied to domain-specific problems has\par
+yielded interesting coding techniques. These techniques are referred to as semantic dependent since\par
+they are designed to exploit the context and semantics of the data to achieve redundancy reduction.\par
+Semantic dependent techniques include the use of quadtrees, run length encoding, or difference\par
+mapping for storage and transmission of image data [Gonzalez and Wintz 1977; Samet 1984]. \par
+\par
+General-purpose techniques, which assume no knowledge of the information content of the data, are\par
+described in Sections 3-5. These descriptions are sufficiently detailed to provide an understanding of\par
+the techniques. The reader will need to consult the references for implementation details. In most cases,\par
+only worst-case analyses of the methods are feasible. To provide a more realistic picture of their\par
+effectiveness, empirical data is presented in Section 6. The susceptibility to error of the algorithms\par
+surveyed is discussed in Section 7 and possible directions for future research are considered in Section\par
+8. \par
+\par
+        \par
+ \par
+Data Compression \par
+\par
+1. FUNDAMENTAL CONCEPTS\par
+\par
+         \par
+\par
+A brief introduction to information theory is provided in this section. The definitions and assumptions\par
+necessary to a comprehensive discussion and evaluation of data compression methods are discussed.\par
+The following string of characters is used to illustrate the concepts defined: EXAMPLE = aa bbb\par
+cccc ddddd eeeeee fffffffgggggggg. \par
+\par
+1.1 Definitions\par
+\par
+A code is a mapping of source messages (words from the source alphabet alpha) into codewords\par
+(words of the code alphabet beta). The source messages are the basic units into which the string to be\par
+represented is partitioned. These basic units may be single symbols from the source alphabet, or they\par
+may be strings of symbols. For string EXAMPLE, alpha = \{ a, b, c, d, e, f, g, space\}. For purposes\par
+of explanation, beta will be taken to be \{ 0, 1 \}. Codes can be categorized as block-block,\par
+block-variable, variable-block or variable-variable, where block-block indicates that the source\par
+messages and codewords are of fixed length and variable-variable codes map variable-length source\par
+messages into variable-length codewords. A block-block code for EXAMPLE is shown in Figure 1.1\par
+and a variable-variable code is given in Figure 1.2. If the string EXAMPLE were coded using the\par
+Figure 1.1 code, the length of the coded message would be 120; using Figure 1.2 the length would be\par
+30. \par
+\par
+source message   codeword             source message   codeword\par
+\par
+     a             000                    aa             0\par
+     b             001                    bbb            1\par
+     c             010                    cccc           10\par
+     d             011                    ddddd          11\par
+     e             100                    eeeeee         100\par
+     f             101                    fffffff        101\par
+     g             110                    gggggggg       110\par
+   space           111                    space          111\par
+\par
+Figure 1.1: A block-block code     Figure 1.2: A variable-variable code.\par
+\par
+The oldest and most widely used codes, ASCII and EBCDIC, are examples of block-block codes,\par
+mapping an alphabet of 64 (or 256) single characters onto 6-bit (or 8-bit) codewords. These are not\par
+discussed, as they do not provide compression. The codes featured in this survey are of the\par
+block-variable, variable-variable, and variable-block types. \par
+\par
+When source messages of variable length are allowed, the question of how a message ensemble\par
+(sequence of messages) is parsed into individual messages arises. Many of the algorithms described\par
+here are defined-word schemes. That is, the set of source messages is determined prior to the\par
+invocation of the coding scheme. For example, in text file processing each character may constitute a\par
+message, or messages may be defined to consist of alphanumeric and non-alphanumeric strings. In\par
+Pascal source code, each token may represent a message. All codes involving fixed-length source\par
+messages are, by default, defined-word codes. In free-parse methods, the coding algorithm itself\par
+parses the ensemble into variable-length sequences of symbols. Most of the known data compression\par
+methods are defined-word schemes; the free-parse model differs in a fundamental way from the\par
+classical coding paradigm. \par
+\par
+A code is distinct if each codeword is distinguishable from every other (i.e., the mapping from source\par
+messages to codewords is one-to-one). A distinct code is uniquely decodable if every codeword is\par
+identifiable when immersed in a sequence of codewords. Clearly, each of these features is desirable.\par
+The codes of Figure 1.1 and Figure 1.2 are both distinct, but the code of Figure 1.2 is not uniquely\par
+decodable. For example, the coded message 11 could be decoded as either ddddd or bbbbbb. A\par
+uniquely decodable code is a prefix code (or prefix-free code) if it has the prefix property, which\par
+requires that no codeword is a proper prefix of any other codeword. All uniquely decodable\par
+block-block and variable-block codes are prefix codes. The code with codewords \{ 1, 100000, 00 \}\par
+is an example of a code which is uniquely decodable but which does not have the prefix property.\par
+Prefix codes are instantaneously decodable; that is, they have the desirable property that the coded\par
+message can be parsed into codewords without the need for lookahead. In order to decode a message\par
+encoded using the codeword set \{ 1, 100000, 00 \}, lookahead is required. For example, the first\par
+codeword of the message 1000000001 is 1, but this cannot be determined until the last (tenth) symbol\par
+of the message is read (if the string of zeros had been of odd length, then the first codeword would\par
+have been 100000). \par
+\par
+A minimal prefix code is a prefix code such that if x is a proper prefix of some codeword, then x\par
+sigma is either a codeword or a proper prefix of a codeword, for each letter sigma in beta. The set of\par
+codewords \{ 00, 01, 10 \} is an example of a prefix code which is not minimal. The fact that 1 is a\par
+proper prefix of the codeword 10 requires that 11 be either a codeword or a proper prefix of a\par
+codeword, and it is neither. Intuitively, the minimality constraint prevents the use of codewords which\par
+are longer than necessary. In the above example the codeword 10 could be replaced by the codeword\par
+1, yielding a minimal prefix code with shorter codewords. The codes discussed in this paper are all\par
+minimal prefix codes. \par
+\par
+In this section, a code has been defined to be a mapping from a source alphabet to a code alphabet;\par
+we now define related terms. The process of transforming a source ensemble into a coded message is\par
+coding or encoding. The encoded message may be referred to as an encoding of the source\par
+ensemble. The algorithm which constructs the mapping and uses it to transform the source ensemble is\par
+called the encoder. The decoder performs the inverse operation, restoring the coded message to its\par
+original form. \par
+\par
+1.2 Classification of Methods\par
+\par
+In addition to the categorization of data compression schemes with respect to message and codeword\par
+lengths, these methods are classified as either static or dynamic. A static method is one in which the\par
+mapping from the set of messages to the set of codewords is fixed before transmission begins, so that a\par
+given message is represented by the same codeword every time it appears in the message ensemble.\par
+The classic static defined-word scheme is Huffman coding [Huffman 1952]. In Huffman coding, the\par
+assignment of codewords to source messages is based on the probabilities with which the source\par
+messages appear in the message ensemble. Messages which appear more frequently are represented\par
+by short codewords; messages with smaller probabilities map to longer codewords. These probabilities\par
+are determined before transmission begins. A Huffman code for the ensemble EXAMPLE is given in\par
+Figure 1.3. If EXAMPLE were coded using this Huffman mapping, the length of the coded message\par
+would be 117. Static Huffman coding is discussed in Section 3.2. Other static schemes are discussed\par
+in Sections 2 and 3. \par
+\par
+   source message   probability      codeword\par
+\par
+        a             2/40           1001\par
+        b             3/40           1000\par
+        c             4/40           011\par
+        d             5/40           010\par
+        e             6/40           111\par
+        f             7/40           110\par
+        g             8/40           00\par
+      space           5/40           101\par
+\par
+Figure 1.3 -- A Huffman code for the message EXAMPLE (code length=117).\par
+\par
+A code is dynamic if the mapping from the set of messages to the set of codewords changes over\par
+time. For example, dynamic Huffman coding involves computing an approximation to the probabilities\par
+of occurrence "on the fly", as the ensemble is being transmitted. The assignment of codewords to\par
+messages is based on the values of the relative frequencies of occurrence at each point in time. A\par
+message x may be represented by a short codeword early in the transmission because it occurs\par
+frequently at the beginning of the ensemble, even though its probability of occurrence over the total\par
+ensemble is low. Later, when the more probable messages begin to occur with higher frequency, the\par
+short codeword will be mapped to one of the higher probability messages and x will be mapped to a\par
+longer codeword. As an illustration, Figure 1.4 presents a dynamic Huffman code table corresponding\par
+to the prefix aa bbb of EXAMPLE. Although the frequency of space over the entire message is\par
+greater than that of b, at this point in time b has higher frequency and therefore is mapped to the shorter\par
+codeword. \par
+\par
+   source message   probability      codeword\par
+\par
+        a             2/6            10\par
+        b             3/6            0\par
+      space           1/6            11\par
+\par
+Figure 1.4 -- A dynamic Huffman code table for the prefix\par
+              aa bbb of message EXAMPLE.\par
+\par
+Dynamic codes are also referred to in the literature as adaptive, in that they adapt to changes in\par
+ensemble characteristics over time. The term adaptive will be used for the remainder of this paper; the\par
+fact that these codes adapt to changing characteristics is the source of their appeal. Some adaptive\par
+methods adapt to changing patterns in the source [Welch 1984] while others exploit locality of\par
+reference [Bentley et al. 1986]. Locality of reference is the tendency, common in a wide variety of text\par
+types, for a particular word to occur frequently for short periods of time then fall into disuse for long\par
+periods. \par
+\par
+All of the adaptive methods are one-pass methods; only one scan of the ensemble is required. Static\par
+Huffman coding requires two passes: one pass to compute probabilities and determine the mapping,\par
+and a second pass for transmission. Thus, as long as the encoding and decoding times of an adaptive\par
+method are not substantially greater than those of a static method, the fact that an initial scan is not\par
+needed implies a speed improvement in the adaptive case. In addition, the mapping determined in the\par
+first pass of a static coding scheme must be transmitted by the encoder to the decoder. The mapping\par
+may preface each transmission (that is, each file sent), or a single mapping may be agreed upon and\par
+used for multiple transmissions. In one-pass methods the encoder defines and redefines the mapping\par
+dynamically, during transmission. The decoder must define and redefine the mapping in sympathy, in\par
+essence "learning" the mapping as codewords are received. Adaptive methods are discussed in\par
+Sections 4 and 5. \par
+\par
+An algorithm may also be a hybrid, neither completely static nor completely dynamic. In a simple\par
+hybrid scheme, sender and receiver maintain identical codebooks containing k static codes. For each\par
+transmission, the sender must choose one of the k previously-agreed-upon codes and inform the\par
+receiver of his choice (by transmitting first the "name" or number of the chosen code). Hybrid methods\par
+are discussed further in Section 2 and Section 3.2. \par
+\par
+1.3 A Data Compression Model\par
+\par
+In order to discuss the relative merits of data compression techniques, a framework for comparison\par
+must be established. There are two dimensions along which each of the schemes discussed here may\par
+be measured, algorithm complexity and amount of compression. When data compression is used in a\par
+data transmission application, the goal is speed. Speed of transmission depends upon the number of\par
+bits sent, the time required for the encoder to generate the coded message, and the time required for\par
+the decoder to recover the original ensemble. In a data storage application, although the degree of\par
+compression is the primary concern, it is nonetheless necessary that the algorithm be efficient in order\par
+for the scheme to be practical. For a static scheme, there are three algorithms to analyze: the map\par
+construction algorithm, the encoding algorithm, and the decoding algorithm. For a dynamic scheme,\par
+there are just two algorithms: the encoding algorithm, and the decoding algorithm. \par
+\par
+Several common measures of compression have been suggested: redundancy [Shannon and Weaver\par
+1949], average message length [Huffman 1952], and compression ratio [Rubin 1976; Ruth and\par
+Kreutzer 1972]. These measures are defined below. Related to each of these measures are\par
+assumptions about the characteristics of the source. It is generally assumed in information theory that all\par
+statistical parameters of a message source are known with perfect accuracy [Gilbert 1971]. The most\par
+common model is that of a discrete memoryless source; a source whose output is a sequence of letters\par
+(or messages), each letter being a selection from some fixed alphabet a,... The letters are taken to be\par
+random, statistically independent selections from the alphabet, the selection being made according to\par
+some fixed probability assignment p(a),... [Gallager 1968]. Without loss of generality, the code\par
+alphabet is assumed to be \{0,1\} throughout this paper. The modifications necessary for larger code\par
+alphabets are straightforward. \par
+\par
+It is assumed that any cost associated with the code letters is uniform. This is a reasonable assumption,\par
+although it omits applications like telegraphy where the code symbols are of different durations. The\par
+assumption is also important, since the problem of constructing optimal codes over unequal code letter\par
+costs is a significantly different and more difficult problem. Perl et al. and Varn have developed\par
+algorithms for minimum-redundancy prefix coding in the case of arbitrary symbol cost and equal\par
+codeword probability [Perl et al. 1975; Varn 1971]. The assumption of equal probabilities mitigates\par
+the difficulty presented by the variable symbol cost. For the more general unequal letter costs and\par
+unequal probabilities model, Karp has proposed an integer linear programming approach [Karp 1961].\par
+There have been several approximation algorithms proposed for this more difficult problem [Krause\par
+1962; Cot 1977; Mehlhorn 1980]. \par
+\par
+When data is compressed, the goal is to reduce redundancy, leaving only the informational content.\par
+The measure of information of a source message x (in bits) is -lg p(x) [lg denotes the base 2 logarithm].\par
+This definition has intuitive appeal; in the case that p(x=1, it is clear that x is not at all informative since\par
+it had to occur. Similarly, the smaller the value of p(x, the more unlikely x is to appear, hence the larger\par
+its information content. The reader is referred to Abramson for a longer, more elegant discussion of the\par
+legitimacy of this technical definition of the concept of information [Abramson 1963, pp. 6-13]. The\par
+average information content over the source alphabet can be computed by weighting the information\par
+content of each source letter by its probability of occurrence, yielding the expression SUM\{i=1 to n\}\par
+[-p(a(i)) lg p(a(i))]. This quantity is referred to as the entropy of a source letter, or the entropy of the\par
+source, and is denoted by H. Since the length of a codeword for message a(i) must be sufficient to\par
+carry the information content of a(i), entropy imposes a lower bound on the number of bits required for\par
+the coded message. The total number of bits must be at least as large as the product of H and the\par
+length of the source ensemble. Since the value of H is generally not an integer, variable length\par
+codewords must be used if the lower bound is to be achieved. Given that message EXAMPLE is to be\par
+encoded one letter at a time, the entropy of its source can be calculated using the probabilities given in\par
+Figure 1.3: H = 2.894, so that the minimum number of bits contained in an encoding of EXAMPLE is\par
+116. The Huffman code given in Section 1.2 does not quite achieve the theoretical minimum in this\par
+case. \par
+\par
+Both of these definitions of information content are due to Shannon. A derivation of the concept of\par
+entropy as it relates to information theory is presented by Shannon [Shannon and Weaver 1949]. A\par
+simpler, more intuitive explanation of entropy is offered by Ash [Ash 1965]. \par
+\par
+The most common notion of a "good" code is one which is optimal in the sense of having minimum\par
+redundancy. Redundancy can be defined as: SUM p(a(i)) l(i) - SUM [-p(a(i)) lg p(a(i))] where l(i) is\par
+the length of the codeword representing message a(i). The expression SUM p(a(i)) l(i) represents the\par
+lengths of the codewords weighted by their probabilities of occurrence, that is, the average codeword\par
+length. The expression SUM [-p(a(i)) lg p(a(i))] is entropy, H. Thus, redundancy is a measure of the\par
+difference between average codeword length and average information content. If a code has minimum\par
+average codeword length for a given discrete probability distribution, it is said to be a minimum\par
+redundancy code. \par
+\par
+We define the term local redundancy to capture the notion of redundancy caused by local properties\par
+of a message ensemble, rather than its global characteristics. While the model used for analyzing\par
+general-purpose coding techniques assumes a random distribution of the source messages, this may not\par
+actually be the case. In particular applications the tendency for messages to cluster in predictable\par
+patterns may be known. The existence of predictable patterns may be exploited to minimize local\par
+redundancy. Examples of applications in which local redundancy is common, and methods for dealing\par
+with local redundancy, are discussed in Section 2 and Section 6.2. \par
+\par
+Huffman uses average message length, SUM p(a(i)) l(i), as a measure of the efficiency of a code.\par
+Clearly the meaning of this term is the average length of a coded message. We will use the term\par
+average codeword length to represent this quantity. Since redundancy is defined to be average\par
+codeword length minus entropy and entropy is constant for a given probability distribution, minimizing\par
+average codeword length minimizes redundancy. \par
+\par
+A code is asymptotically optimal if it has the property that for a given probability distribution, the\par
+ratio of average codeword length to entropy approaches 1 as entropy tends to infinity. That is,\par
+asymptotic optimality guarantees that average codeword length approaches the theoretical minimum\par
+(entropy represents information content, which imposes a lower bound on codeword length). \par
+\par
+The amount of compression yielded by a coding scheme can be measured by a compression ratio.\par
+The term compression ratio has been defined in several ways. The definition C = (average message\par
+length)/(average codeword length) captures the common meaning, which is a comparison of the length\par
+of the coded message to the length of the original ensemble [Cappellini 1985]. If we think of the\par
+characters of the ensemble EXAMPLE as 6-bit ASCII characters, then the average message length is\par
+6 bits. The Huffman code of Section 1.2 represents EXAMPLE in 117 bits, or 2.9 bits per character.\par
+This yields a compression ratio of 6/2.9, representing compression by a factor of more than 2.\par
+Alternatively, we may say that Huffman encoding produces a file whose size is 49% of the original\par
+ASCII file, or that 49% compression has been achieved. A somewhat different definition of\par
+compression ratio, by Rubin, C = (S - O - OR)/S, includes the representation of the code itself in the\par
+transmission cost [Rubin 1976]. In this definition S represents the length of the source ensemble, O the\par
+length of the output (coded message), and OR the size of the "output representation" (eg., the number\par
+of bits required for the encoder to transmit the code mapping to the decoder). The quantity OR\par
+constitutes a "charge" to an algorithm for transmission of information about the coding scheme. The\par
+intention is to measure the total size of the transmission (or file to be stored). \par
+\par
+1.4 Motivation\par
+\par
+As discussed in the Introduction, data compression has wide application in terms of information\par
+storage, including representation of the abstract data type string [Standish 1980] and file compression.\par
+Huffman coding is used for compression in several file archival systems [ARC 1986; PKARC 1987],\par
+as is Lempel-Ziv coding, one of the adaptive schemes to be discussed in Section 5. An adaptive\par
+Huffman coding technique is the basis for the compact command of the UNIX operating system, and\par
+the UNIX compress utility employs the Lempel-Ziv approach [UNIX 1984]. \par
+\par
+In the area of data transmission, Huffman coding has been passed over for years in favor of\par
+block-block codes, notably ASCII. The advantage of Huffman coding is in the average number of bits\par
+per character transmitted, which may be much smaller than the lg n bits per character (where n is the\par
+source alphabet size) of a block-block system. The primary difficulty associated with variable-length\par
+codewords is that the rate at which bits are presented to the transmission channel will fluctuate,\par
+depending on the relative frequencies of the source messages. This requires buffering between the\par
+source and the channel. Advances in technology have both overcome this difficulty and contributed to\par
+the appeal of variable-length codes. Current data networks allocate communication resources to\par
+sources on the basis of need and provide buffering as part of the system. These systems require\par
+significant amounts of protocol, and fixed-length codes are quite inefficient for applications such as\par
+packet headers. In addition, communication costs are beginning to dominate storage and processing\par
+costs, so that variable-length coding schemes which reduce communication costs are attractive even if\par
+they are more complex. For these reasons, one could expect to see even greater use of variable-length\par
+coding in the future. \par
+\par
+It is interesting to note that the Huffman coding algorithm, originally developed for the efficient\par
+transmission of data, also has a wide variety of applications outside the sphere of data compression.\par
+These include construction of optimal search trees [Zimmerman 1959; Hu and Tucker 1971; Itai\par
+1976], list merging [Brent and Kung 1978], and generating optimal evaluation trees in the compilation\par
+of expressions [Parker 1980]. Additional applications involve search for jumps in a monotone function\par
+of a single variable, sources of pollution along a river, and leaks in a pipeline [Glassey and Karp 1976].\par
+The fact that this elegant combinatorial algorithm has influenced so many diverse areas underscores its\par
+importance. \par
+\par
+         \par
+Data Compression \par
+\par
+3. STATIC DEFINED-WORD SCHEMES\par
+\par
+         \par
+\par
+The classic defined-word scheme was developed over 30 years ago in Huffman's well-known paper\par
+on minimum-redundancy coding [Huffman 1952]. Huffman's algorithm provided the first solution to the\par
+problem of constructing minimum-redundancy codes. Many people believe that Huffman coding cannot\par
+be improved upon, that is, that it is guaranteed to achieve the best possible compression ratio. This is\par
+only true, however, under the constraints that each source message is mapped to a unique codeword\par
+and that the compressed text is the concatenation of the codewords for the source messages. An\par
+earlier algorithm, due independently to Shannon and Fano [Shannon and Weaver 1949; Fano 1949], is\par
+not guaranteed to provide optimal codes, but approaches optimal behavior as the number of messages\par
+approaches infinity. The Huffman algorithm is also of importance because it has provided a foundation\par
+upon which other data compression techniques have built and a benchmark to which they may be\par
+compared. We classify the codes generated by the Huffman and Shannon-Fano algorithms as\par
+variable-variable and note that they include block-variable codes as a special case, depending upon\par
+how the source messages are defined. \par
+\par
+In Section 3.3 codes which map the integers onto binary codewords are discussed. Since any finite\par
+alphabet may be enumerated, this type of code has general-purpose utility. However, a more common\par
+use of these codes (called universal codes) is in conjunction with an adaptive scheme. This connection\par
+is discussed in Section 5.2. \par
+\par
+Arithmetic coding, presented in Section 3.4, takes a significantly different approach to data\par
+compression from that of the other static methods. It does not construct a code, in the sense of a\par
+mapping from source messages to codewords. Instead, arithmetic coding replaces the source ensemble\par
+by a code string which, unlike all of the other codes discussed here, is not the concatenation of\par
+codewords corresponding to individual source messages. Arithmetic coding is capable of achieving\par
+compression results which are arbitrarily close to the entropy of the source. \par
+\par
+3.1 Shannon-Fano Coding\par
+\par
+The Shannon-Fano technique has as an advantage its simplicity. The code is constructed as follows: the\par
+source messages a(i) and their probabilities p( a(i) ) are listed in order of nonincreasing probability.\par
+This list is then divided in such a way as to form two groups of as nearly equal total probabilities as\par
+possible. Each message in the first group receives 0 as the first digit of its codeword; the messages in\par
+the second half have codewords beginning with 1. Each of these groups is then divided according to\par
+the same criterion and additional code digits are appended. The process is continued until each subset\par
+contains only one message. Clearly the Shannon-Fano algorithm yields a minimal prefix code. \par
+\par
+a    1/2     0\par
+b    1/4     10\par
+c    1/8     110\par
+d    1/16    1110\par
+e    1/32    11110\par
+f    1/32    11111\par
+\par
+Figure 3.1 -- A Shannon-Fano Code.\par
+\par
+Figure 3.1 shows the application of the method to a particularly simple probability distribution. The\par
+length of each codeword x is equal to -lg p(x). This is true as long as it is possible to divide the list into\par
+subgroups of exactly equal probability. When this is not possible, some codewords may be of length\par
+-lg p(x)+1. The Shannon-Fano algorithm yields an average codeword length S which satisfies H <= S\par
+<= H + 1. In Figure 3.2, the Shannon-Fano code for ensemble EXAMPLE is given. As is often the\par
+case, the average codeword length is the same as that achieved by the Huffman code (see Figure 1.3).\par
+That the Shannon-Fano algorithm is not guaranteed to produce an optimal code is demonstrated by the\par
+following set of probabilities: \{ .35, .17, .17, .16, .15 \}. The Shannon-Fano code for this distribution is\par
+compared with the Huffman code in Section 3.2. \par
+\par
+g      8/40    00\par
+f      7/40    010\par
+e      6/40    011\par
+d      5/40    100\par
+space  5/40    101\par
+c      4/40    110\par
+b      3/40    1110\par
+a      2/40    1111\par
+\par
+Figure 3.2 -- A Shannon-Fano Code for EXAMPLE\par
+              (code length=117).\par
+\par
+3.2. Static Huffman Coding\par
+\par
+Huffman's algorithm, expressed graphically, takes as input a list of nonnegative weights \{w(1), ... ,w(n)\par
+\} and constructs a full binary tree [a binary tree is full if every node has either zero or two children]\par
+whose leaves are labeled with the weights. When the Huffman algorithm is used to construct a code,\par
+the weights represent the probabilities associated with the source letters. Initially there is a set of\par
+singleton trees, one for each weight in the list. At each step in the algorithm the trees corresponding to\par
+the two smallest weights, w(i) and w(j), are merged into a new tree whose weight is w(i)+w(j) and\par
+whose root has two children which are the subtrees represented by w(i) and w(j). The weights w(i)\par
+and w(j) are removed from the list and w(i)+w(j) is inserted into the list. This process continues until\par
+the weight list contains a single value. If, at any time, there is more than one way to choose a smallest\par
+pair of weights, any such pair may be chosen. In Huffman's paper, the process begins with a\par
+nonincreasing list of weights. This detail is not important to the correctness of the algorithm, but it does\par
+provide a more efficient implementation [Huffman 1952]. The Huffman algorithm is demonstrated in\par
+Figure 3.3. \par
+\par
+                                                \par
+\par
+Figure 3.3 -- The Huffman process: (a) The list; (b) the tree. \par
+\par
+The Huffman algorithm determines the lengths of the codewords to be mapped to each of the source\par
+letters a(i). There are many alternatives for specifying the actual digits; it is necessary only that the code\par
+have the prefix property. The usual assignment entails labeling the edge from each parent to its left child\par
+with the digit 0 and the edge to the right child with 1. The codeword for each source letter is the\par
+sequence of labels along the path from the root to the leaf node representing that letter. The codewords\par
+for the source of Figure 3.3, in order of decreasing probability, are \{01,11,001,100,101,000,0001\}.\par
+Clearly, this process yields a minimal prefix code. Further, the algorithm is guaranteed to produce an\par
+optimal (minimum redundancy) code [Huffman 1952]. Gallager has proved an upper bound on the\par
+redundancy of a Huffman code of p(n) + lg [(2 lg e)/e] which is approximately p(n) + 0.086, where\par
+p(n) is the probability of the least likely source message [Gallager 1978]. In a recent paper, Capocelli\par
+et al. provide new bounds which are tighter than those of Gallagher for some probability distributions\par
+[Capocelli et al. 1986]. Figure 3.4 shows a distribution for which the Huffman code is optimal while the\par
+Shannon-Fano code is not. \par
+\par
+In addition to the fact that there are many ways of forming codewords of appropriate lengths, there are\par
+cases in which the Huffman algorithm does not uniquely determine these lengths due to the arbitrary\par
+choice among equal minimum weights. As an example, codes with codeword lengths of \{1,2,3,4,4\}\par
+and of \{2,2,2,3,3\} both yield the same average codeword length for a source with probabilities\par
+\{.4,.2,.2,.1,.1\}. Schwartz defines a variation of the Huffman algorithm which performs "bottom\par
+merging"; that is, orders a new parent node above existing nodes of the same weight and always\par
+merges the last two weights in the list. The code constructed is the Huffman code with minimum values\par
+of maximum codeword length (MAX\{ l(i) \}) and total codeword length (SUM\{ l(i) \}) [Schwartz\par
+1964]. Schwartz and Kallick describe an implementation of Huffman's algorithm with bottom merging\par
+[Schwartz and Kallick 1964]. The Schwartz-Kallick algorithm and a later algorithm by Connell\par
+[Connell 1973] use Huffman's procedure to determine the lengths of the codewords, and actual digits\par
+are assigned so that the code has the numerical sequence property. That is, codewords of equal\par
+length form a consecutive sequence of binary numbers. Shannon-Fano codes also have the numerical\par
+sequence property. This property can be exploited to achieve a compact representation of the code\par
+and rapid encoding and decoding. \par
+\par
+                        S-F      Huffman\par
+\par
+a(1)        0.35        00       1\par
+a(2)        0.17        01       011\par
+a(3)        0.17        10       010\par
+a(4)        0.16        110      001\par
+a(5)        0.15        111      000\par
+\par
+Average codeword length 2.31     2.30\par
+\par
+Figure 3.4 -- Comparison of Shannon-Fano and Huffman Codes.\par
+\par
+Both the Huffman and the Shannon-Fano mappings can be generated in O(n) time, where n is the\par
+number of messages in the source ensemble (assuming that the weights have been presorted). Each of\par
+these algorithms maps a source message a(i) with probability p to a codeword of length l (-lg p <= l\par
+<= - lg p + 1). Encoding and decoding times depend upon the representation of the mapping. If the\par
+mapping is stored as a binary tree, then decoding the codeword for a(i) involves following a path of\par
+length l in the tree. A table indexed by the source messages could be used for encoding; the code for\par
+a(i) would be stored in position i of the table and encoding time would be O(l). Connell's algorithm\par
+makes use of the index of the Huffman code, a representation of the distribution of codeword lengths,\par
+to encode and decode in O(c) time where c is the number of different codeword lengths. Tanaka\par
+presents an implementation of Huffman coding based on finite-state machines which can be realized\par
+efficiently in either hardware or software [Tanaka 1987]. \par
+\par
+As noted earlier, the redundancy bound for Shannon-Fano codes is 1 and the bound for the Huffman\par
+method is p(n + 0.086 where p(n) is the probability of the least likely source message (so p(n) is less\par
+than or equal to .5, and generally much less). It is important to note that in defining redundancy to be\par
+average codeword length minus entropy, the cost of transmitting the code mapping computed by these\par
+algorithms is ignored. The overhead cost for any method where the source alphabet has not been\par
+established prior to transmission includes n lg n bits for sending the n source letters. For a\par
+Shannon-Fano code, a list of codewords ordered so as to correspond to the source letters could be\par
+transmitted. The additional time required is then SUM l(i), where the l(i) are the lengths of the\par
+codewords. For Huffman coding, an encoding of the shape of the code tree might be transmitted.\par
+Since any full binary tree may be a legal Huffman code tree, encoding tree shape may require as many\par
+as lg 4^n = 2n bits. In most cases the message ensemble is very large, so that the number of bits of\par
+overhead is minute by comparison to the total length of the encoded transmission. However, it is\par
+imprudent to ignore this cost. \par
+\par
+If a less-than-optimal code is acceptable, the overhead costs can be avoided through a prior\par
+agreement by sender and receiver as to the code mapping. Rather than using a Huffman code based\par
+upon the characteristics of the current message ensemble, the code used could be based on statistics\par
+for a class of transmissions to which the current ensemble is assumed to belong. That is, both sender\par
+and receiver could have access to a codebook with k mappings in it; one for Pascal source, one for\par
+English text, etc. The sender would then simply alert the receiver as to which of the common codes he\par
+is using. This requires only lg k bits of overhead. Assuming that classes of transmission with relatively\par
+stable characteristics could be identified, this hybrid approach would greatly reduce the redundancy\par
+due to overhead without significantly increasing expected codeword length. In addition, the cost of\par
+computing the mapping would be amortized over all files of a given class. That is, the mapping would\par
+be computed once on a statistically significant sample and then used on a great number of files for\par
+which the sample is representative. There is clearly a substantial risk associated with assumptions about\par
+file characteristics and great care would be necessary in choosing both the sample from which the\par
+mapping is to be derived and the categories into which to partition transmissions. An extreme example\par
+of the risk associated with the codebook approach is provided by author Ernest V. Wright who wrote\par
+a novel Gadsby (1939) containing no occurrences of the letter E. Since E is the most commonly used\par
+letter in the English language, an encoding based upon a sample from Gadsby would be disastrous if\par
+used with "normal" examples of English text. Similarly, the "normal" encoding would provide poor\par
+compression of Gadsby. \par
+\par
+McIntyre and Pechura describe an experiment in which the codebook approach is compared to static\par
+Huffman coding [McIntyre and Pechura 1985]. The sample used for comparison is a collection of 530\par
+source programs in four languages. The codebook contains a Pascal code tree, a FORTRAN code\par
+tree, a COBOL code tree, a PL/1 code tree, and an ALL code tree. The Pascal code tree is the result\par
+of applying the static Huffman algorithm to the combined character frequencies of all of the Pascal\par
+programs in the sample. The ALL code tree is based upon the combined character frequencies for all\par
+of the programs. The experiment involves encoding each of the programs using the five codes in the\par
+codebook and the static Huffman algorithm. The data reported for each of the 530 programs consists\par
+of the size of the coded program for each of the five predetermined codes, and the size of the coded\par
+program plus the size of the mapping (in table form) for the static Huffman method. In every case, the\par
+code tree for the language class to which the program belongs generates the most compact encoding.\par
+Although using the Huffman algorithm on the program itself yields an optimal mapping, the overhead\par
+cost is greater than the added redundancy incurred by the less-than-optimal code. In many cases, the\par
+ALL code tree also generates a more compact encoding than the static Huffman algorithm. In the\par
+worst case, an encoding constructed from the codebook is only 6.6% larger than that constructed by\par
+the Huffman algorithm. These results suggest that, for files of source code, the codebook approach\par
+may be appropriate. \par
+\par
+Gilbert discusses the construction of Huffman codes based on inaccurate source probabilities [Gilbert\par
+1971]. A simple solution to the problem of incomplete knowledge of the source is to avoid long\par
+codewords, thereby minimizing the error of underestimating badly the probability of a message. The\par
+problem becomes one of constructing the optimal binary tree subject to a height restriction (see [Knuth\par
+1971; Hu and Tan 1972; Garey 1974]). Another approach involves collecting statistics for several\par
+sources and then constructing a code based upon some combined criterion. This approach could be\par
+applied to the problem of designing a single code for use with English, French, German, etc., sources.\par
+To accomplish this, Huffman's algorithm could be used to minimize either the average codeword length\par
+for the combined source probabilities; or the average codeword length for English, subject to\par
+constraints on average codeword lengths for the other sources. \par
+\par
+3.3 Universal Codes and Representations of the Integers\par
+\par
+A code is universal if it maps source messages to codewords so that the resulting average codeword\par
+length is bounded by c1(H + c2). That is, given an arbitrary source with nonzero entropy, a universal\par
+code achieves average codeword length which is at most a constant times the optimal possible for that\par
+source. The potential compression offered by a universal code clearly depends on the magnitudes of\par
+the constants c1 and c2. We recall the definition of an asymptotically optimal code as one for which\par
+average codeword length approaches entropy and remark that a universal code with c1=1 is\par
+asymptotically optimal. \par
+\par
+An advantage of universal codes over Huffman codes is that it is not necessary to know the exact\par
+probabilities with which the source messages appear. While Huffman coding is not applicable unless\par
+the probabilities are known, it is sufficient in the case of universal coding to know the probability\par
+distribution only to the extent that the source messages can be ranked in probability order. By mapping\par
+messages in order of decreasing probability to codewords in order of increasing length, universality can\par
+be achieved. Another advantage to universal codes is that the codeword sets are fixed. It is not\par
+necessary to compute a codeword set based upon the statistics of an ensemble; any universal\par
+codeword set will suffice as long as the source messages are ranked. The encoding and decoding\par
+processes are thus simplified. While universal codes can be used instead of Huffman codes as\par
+general-purpose static schemes, the more common application is as an adjunct to a dynamic scheme.\par
+This type of application will be demonstrated in Section 5. \par
+\par
+Since the ranking of source messages is the essential parameter in universal coding, we may think of a\par
+universal code as representing an enumeration of the source messages, or as representing the integers,\par
+which provide an enumeration. Elias defines a sequence of universal coding schemes which map the set\par
+of positive integers onto the set of binary codewords [Elias 1975]. \par
+\par
+      gamma          delta\par
+\par
+1     1              1\par
+2     010            0100\par
+3     011            0101\par
+4     00100          01100\par
+5     00101          01101\par
+6     00110          01110\par
+7     00111          01111\par
+8     0001000        00100000\par
+16    000010000      001010000\par
+17    000010001      001010001\par
+32    00000100000    0011000000\par
+\par
+Figure 3.5 -- Elias Codes.\par
+\par
+The first Elias code is one which is simple but not optimal. This code, gamma, maps an integer x onto\par
+the binary value of x prefaced by floor( lg x) zeros. The binary value of x is expressed in as few bits as\par
+possible, and therefore begins with a 1, which serves to delimit the prefix. The result is an\par
+instantaneously decodable code since the total length of a codeword is exactly one greater than twice\par
+the number of zeros in the prefix; therefore, as soon as the first 1 of a codeword is encountered, its\par
+length is known. The code is not a minimum redundancy code since the ratio of expected codeword\par
+length to entropy goes to 2 as entropy approaches infinity. The second code, delta, maps an integer x\par
+to a codeword consisting of gamma (floor[lg x] +1) followed by the binary value of x with the leading\par
+1 deleted. The resulting codeword has length floor[lg x] + 2 floor[lg (1 + floor[lg x] ) ] + 1. This\par
+concept can be applied recursively to shorten the codeword lengths, but the benefits decrease rapidly.\par
+The code delta is asymptotically optimal since the limit of the ratio of expected codeword length to\par
+entropy is 1. Figure 3.5 lists the values of gamma and delta for a sampling of the integers. Figure 3.6\par
+shows an Elias code for string EXAMPLE. The number of bits transmitted using this mapping would\par
+be 161, which does not compare well with the 117 bits transmitted by the Huffman code of Figure 1.3.\par
+Huffman coding is optimal under the static mapping model. Even an asymptotically optimal universal\par
+code cannot compare with static Huffman coding on a source for which the probabilities of the\par
+messages are known. \par
+\par
+Source   Frequency   Rank       Codeword\par
+message\par
+\par
+g           8          1        delta(1)=1\par
+f           7          2        delta(2)=0100\par
+e           6          3        delta(3)=0101\par
+d           5          4        delta(4)=01100\par
+space       5          5        delta(5)=01101\par
+c           4          6        delta(6)=01110\par
+b           3          7        delta(7)=01111\par
+a           2          8        delta(8)=00100000\par
+\par
+Figure 3.6 -- An Elias Code for EXAMPLE (code length=161).\par
+\par
+A second sequence of universal coding schemes, based on the Fibonacci numbers, is defined by\par
+Apostolico and Fraenkel [Apostolico and Fraenkel 1985]. While the Fibonacci codes are not\par
+asymptotically optimal, they compare well to the Elias codes as long as the number of source messages\par
+is not too large. Fibonacci codes have the additional attribute of robustness, which manifests itself by\par
+the local containment of errors. This aspect of Fibonacci codes will be discussed further in Section 7. \par
+\par
+The sequence of Fibonacci codes described by Apostolico and Fraenkel is based on the Fibonacci\par
+numbers of order m >= 2, where the Fibonacci numbers of order 2 are the standard Fibonacci\par
+numbers: 1, 1, 2, 3, 5, 8, 13, .... In general, the Fibonnaci numbers of order m are defined by the\par
+recurrence: Fibonacci numbers F(-m+1) through F(0) are equal to 1; the kth number for k >= 1 is the\par
+sum of the preceding m numbers. We describe only the order 2 Fibonacci code; the extension to\par
+higher orders is straightforward. \par
+\par
+N             R(N)               F(N)\par
+\par
+ 1                           1   11\par
+ 2                       1   0   011\par
+ 3                   1   0   0   0011\par
+ 4                   1   0   1   1011\par
+ 5               1   0   0   0   00011\par
+ 6               1   0   0   1   10011\par
+ 7               1   0   1   0   01011\par
+ 8           1   0   0   0   0   000011\par
+16       1   0   0   1   0   0   0010011\par
+32   1   0   1   0   1   0   0   00101011\par
+\par
+    21  13   8   5   3   2   1\par
+\par
+Figure 3.7 -- Fibonacci Representations and Fibonacci Codes.\par
+\par
+Every nonnegative integer N has precisely one binary representation of the form R(N) = SUM(i=0 to\par
+k) d(i) F(i) (where d(i) is in \{0,1\}, k <= N, and the F(i) are the order 2 Fibonacci numbers as defined\par
+above) such that there are no adjacent ones in the representation. The Fibonacci representations for a\par
+small sampling of the integers are shown in Figure 3.7, using the standard bit sequence, from high order\par
+to low. The bottom row of the figure gives the values of the bit positions. It is immediately obvious that\par
+this Fibonacci representation does not constitute a prefix code. The order 2 Fibonacci code for N is\par
+defined to be: F(N)=D1 where D=d(0)d(1)d(2)...d(k) (the d(i) defined above). That is, the Fibonacci\par
+representation is reversed and 1 is appended. The Fibonacci code values for a small subset of the\par
+integers are given in Figure 3.7. These binary codewords form a prefix code since every codeword\par
+now terminates in two consecutive ones, which cannot appear anywhere else in a codeword. \par
+\par
+Fraenkel and Klein prove that the Fibonacci code of order 2 is universal, with c1=2 and c2=3\par
+[Fraenkel and Klein 1985]. It is not asymptotically optimal since c1>1. Fraenkel and Klein also show\par
+that Fibonacci codes of higher order compress better than the order 2 code if the source language is\par
+large enough (i.e., the number of distinct source messages is large) and the probability distribution is\par
+nearly uniform. However, no Fibonacci code is asymptotically optimal. The Elias codeword delta(N) is\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+Data Compression \par
+\par
+5. OTHER ADAPTIVE METHODS\par
+\par
+         \par
+\par
+Two more adaptive data compression methods, algorithm BSTW and Lempel-Ziv coding, are\par
+discussed in this section. Like the adaptive Huffman coding techniques, these methods do not require a\par
+first pass to analyze the characteristics of the source. Thus, they provide coding and transmission in real\par
+time. However, these schemes diverge from the fundamental Huffman coding approach to a greater\par
+degree than the methods discussed in Section 4. Algorithm BSTW is a defined-word scheme which\par
+attempts to exploit locality. Lempel-Ziv coding is a free-parse method; that is, the words of the source\par
+alphabet are defined dynamically, as the encoding is performed. Lempel-Ziv coding is the basis for the\par
+UNIX utility compress. Algorithm BSTW is a variable-variable scheme, while Lempel-Ziv coding is\par
+variable-block. \par
+\par
+5.1 Lempel-Ziv Codes\par
+\par
+Lempel-Ziv coding represents a departure from the classic view of a code as a mapping from a fixed\par
+set of source messages (letters, symbols or words) to a fixed set of codewords. We coin the term\par
+free-parse to characterize this type of code, in which the set of source messages and the codewords to\par
+which they are mapped are defined as the algorithm executes. While all adaptive methods create a set\par
+of codewords dynamically, defined-word schemes have a fixed set of source messages, defined by\par
+context (eg., in text file processing the source messages might be single letters; in Pascal source file\par
+processing the source messages might be tokens). Lempel-Ziv coding defines the set of source\par
+messages as it parses the ensemble. \par
+\par
+The Lempel-Ziv algorithm consists of a rule for parsing strings of symbols from a finite alphabet into\par
+substrings, or words, whose lengths do not exceed a prescribed integer L(1); and a coding scheme\par
+which maps these substrings sequentially into uniquely decipherable codewords of fixed length L(2)\par
+[Ziv and Lempel 1977]. The strings are selected so that they have very nearly equal probability of\par
+occurrence. As a result, frequently-occurring symbols are grouped into longer strings while infrequent\par
+symbols appear in short strings. This strategy is effective at exploiting redundancy due to symbol\par
+frequency, character repetition, and high-usage patterns. Figure 5.1 shows a small Lempel-Ziv code\par
+table. Low-frequency letters such as Z are assigned individually to fixed-length codewords (in this\par
+case, 12 bit binary numbers represented in base ten for readability). Frequently-occurring symbols,\par
+such as blank (represented by _) and zero, appear in long strings. Effective compression is achieved\par
+when a long string is replaced by a single 12-bit code. \par
+\par
+Symbol string     Code\par
+\par
+     A               1\par
+     T               2\par
+     AN              3\par
+     TH              4\par
+     THE             5\par
+     AND             6\par
+     AD              7\par
+     _               8\par
+     __              9\par
+     ___            10\par
+     0              11\par
+     00             12\par
+     000            13\par
+     0000           14\par
+     Z              15\par
+\par
+     ###          4095\par
+\par
+Figure 5.1 -- A Lempel-Ziv code table.\par
+\par
+The Lempel-Ziv method is an incremental parsing strategy in which the coding process is interlaced\par
+with a learning process for varying source characteristics [Ziv and Lempel 1977]. In Figure 5.1,\par
+run-length encoding of zeros and blanks is being learned. \par
+\par
+The Lempel-Ziv algorithm parses the source ensemble into a collection of segments of gradually\par
+increasing length. At each encoding step, the longest prefix of the remaining source ensemble which\par
+matches an existing table entry (alpha) is parsed off, along with the character (c) following this prefix in\par
+the ensemble. The new source message, alpha c, is added to the code table. The new table entry is\par
+coded as (i,c) where i is the codeword for the existing table entry and c is the appended character. For\par
+example, the ensemble 010100010 is parsed into \{ 0, 1, 01, 00, 010 \} and is coded as \{ (0,0), (0,1),\par
+(1,1), (1,0), (3,0) \}. The table built for the message ensemble EXAMPLE is shown in Figure 5.2. The\par
+coded ensemble has the form: \{ (0,a), (1,space), (0,b), (3,b), (0,space), (0,c), (6,c), (6,space), (0,d),\par
+(9,d), (10,space), (0,e), (12,e), (13,e), (5,f), (0,f), (16,f), (17,f), (0,g), (19,g), (20,g), (20) \}. The\par
+string table is represented in a more efficient manner than in Figure 5.1; the string is represented by its\par
+prefix codeword followed by the extension character, so that the table entries have fixed length. The\par
+Lempel-Ziv strategy is simple, but greedy. It simply parses off the longest recognized string each time\par
+rather than searching for the best way to parse the ensemble. \par
+\par
+Message    Codeword\par
+\par
+a        1\par
+1space        2\par
+b        3\par
+3b        4\par
+space        5\par
+c        6\par
+6c        7\par
+6space        8\par
+d        9\par
+9d        10\par
+10space        11\par
+e        12\par
+12e        13\par
+13e        14\par
+5f        15\par
+f        16\par
+16f        17\par
+17f        18\par
+g        19\par
+19g        20\par
+20g        21\par
+\par
+Figure 5.2 -- Lempel-Ziv table for the message ensemble EXAMPLE\par
+              (code length=173).\par
+\par
+The Lempel-Ziv method specifies fixed-length codewords. The size of the table and the maximum\par
+source message length are determined by the length of the codewords. It should be clear from the\par
+definition of the algorithm that Lempel-Ziv codes tend to be quite inefficient during the initial portion of\par
+the message ensemble. For example, even if we assume 3-bit codewords for characters a through g\par
+and space and 5-bit codewords for table indices, the Lempel-Ziv algorithm transmits 173 bits for\par
+ensemble EXAMPLE. This compares poorly with the other methods discussed in this survey. The\par
+ensemble must be sufficiently long for the procedure to build up enough symbol frequency experience\par
+to achieve good compression over the full ensemble. \par
+\par
+If the codeword length is not sufficiently large, Lempel-Ziv codes may also rise slowly to reasonable\par
+efficiency, maintain good performance briefly, and fail to make any gains once the table is full and\par
+messages can no longer be added. If the ensemble's characteristics vary over time, the method may be\par
+"stuck with" the behavior it has learned and may be unable to continue to adapt. \par
+\par
+Lempel-Ziv coding is asymptotically optimal, meaning that the redundancy approaches zero as the\par
+length of the source ensemble tends to infinity. However, for particular finite sequences, the\par
+compression achieved may be far from optimal [Storer and Szymanski 1982]. When the method\par
+begins, each source symbol is coded individually. In the case of 6- or 8-bit source symbols and 12-bit\par
+codewords, the method yields as much as 50% expansion during initial encoding. This initial inefficiency\par
+can be mitigated somewhat by initializing the string table to contain all of the source characters.\par
+Implementation issues are particularly important in Lempel-Ziv methods. A straightforward\par
+implementation takes O(n^2) time to process a string of n symbols; for each encoding operation, the\par
+existing table must be scanned for the longest message occurring as a prefix of the remaining ensemble.\par
+Rodeh et al. address the issue of computational complexity by defining a linear implementation of\par
+Lempel-Ziv coding based on suffix trees [Rodeh et al. 1981]. The Rodeh et al. scheme is\par
+asymptotically optimal, but an input must be very long in order to allow efficient compression, and the\par
+memory requirements of the scheme are large, O(n) where n is the length of the source ensemble. It\par
+should also be mentioned that the method of Rodeh et al. constructs a variable-variable code; the pair\par
+(i,c) is coded using a representation of the integers, such as the Elias codes, for i and for c (a letter c\par
+can always be coded as the kth member of the source alphabet for some k). \par
+\par
+The other major implementation consideration involves the way in which the string table is stored and\par
+accessed. Welch suggests that the table be indexed by the codewords (integers 1 ... 2^L where L is\par
+the maximum codeword length) and that the table entries be fixed-length codeword-extension\par
+character pairs [Welch 1984]. Hashing is proposed to assist in encoding. Decoding becomes a\par
+recursive operation, in which the codeword yields the final character of the substring and another\par
+codeword. The decoder must continue to consult the table until the retrieved codeword is 0.\par
+Unfortunately, this strategy peels off extension characters in reverse order and some type of stack\par
+operation must be used to reorder the source. \par
+\par
+Storer and Szymanski present a general model for data compression which encompasses Lempel-Ziv\par
+coding [Storer and Szymanski 1982]. Their broad theoretical work compares classes of macro\par
+schemes, where macro schemes include all methods which factor out duplicate occurrences of data\par
+and replace them by references either to the source ensemble or to a code table. They also contribute\par
+a linear-time Lempel-Ziv-like algorithm with better performance than the standard Lempel-Ziv method.\par
+\par
+Rissanen extends the Lempel-Ziv incremental parsing approach [Rissanen 1983]. Abandoning the\par
+requirement that the substrings partition the ensemble, the Rissanen method gathers "contexts" in which\par
+each symbol of the string occurs. The contexts are substrings of the previously encoded string (as in\par
+Lempel-Ziv), have varying size, and are in general overlapping. The Rissanen method hinges upon the\par
+identification of a design parameter capturing the concept of "relevant" contexts. The problem of finding\par
+the best parameter is undecidable, and Rissanen suggests estimating the parameter experimentally. \par
+\par
+As mentioned earlier, Lempel-Ziv coding is the basis for the UNIX utility compress and is one of the\par
+methods commonly used in file archival programs. The archival system PKARC uses Welch's\par
+implementation, as does compress. The compression provided by compress is generally much better\par
+than that achieved by compact (the UNIX utility based on algorithm FGK), and takes less time to\par
+compute [UNIX 1984]. Typical compression values attained by compress are in the range of\par
+50-60%. \par
+\par
+5.2 Algorithm BSTW\par
+\par
+The most recent of the algorithms surveyed here is due to Bentley, Sleator, Tarjan and Wei [Bentley et\par
+al. 1986]. This method, algorithm BSTW, possesses the advantage that it requires only one pass over\par
+the data to be transmitted yet has performance which compares well to that of the static two-pass\par
+method along the dimension of number of bits per word transmitted. This number of bits is never much\par
+larger than the number of bits transmitted by static Huffman coding (in fact, is usually quite close), and\par
+can be significantly better. Algorithm BSTW incorporates the additional benefit of taking advantage of\par
+locality of reference, the tendency for words to occur frequently for short periods of time then fall into\par
+long periods of disuse. The algorithm uses a self-organizing list as an auxiliary data structure and\par
+employs shorter encodings for words near the front of this list. There are many strategies for\par
+maintaining self-organizing lists (see [Hester and Hirschberg 1985]); algorithm BSTW uses\par
+move-to-front. \par
+\par
+A simple example serves to outline the method of algorithm BSTW. As in other adaptive schemes,\par
+sender and receiver maintain identical representations of the code; in this case message lists which are\par
+updated at each transmission, using the move-to-front heuristic. These lists are initially empty. When\par
+message a(t) is transmitted, if a(t) is on the sender's list, he transmits its current position. He then\par
+updates his list by moving a(t) to position 1 and shifting each of the other messages down one position.\par
+The receiver similarly alters his word list. If a(t) is being transmitted for the first time, then k+1 is the\par
+"position" transmitted, where k is the number of distinct messages transmitted so far. Some\par
+representation of the message itself must be transmitted as well, but just this first time. Again, a(t) is\par
+moved to position one by both sender and receiver subsequent to its transmission. For the ensemble\par
+"abcadeabfd", the transmission would be 1 a 2 b 3 c 3 4 d 5 e 3 5 6 f 5. (for ease of\par
+presentation, list positions are represented in base ten). \par
+\par
+As the example shows, algorithm BSTW transmits each source message once; the rest of its\par
+transmission consists of encodings of list positions. Therefore, an essential feature of algorithm BSTW\par
+is a reasonable scheme for representation of the integers. The methods discussed by Bentley et al. are\par
+the Elias codes presented in Section 3.3. The simple scheme, code gamma, involves prefixing the\par
+binary representation of the integer i with floor[ lg i ] zeros. This yields a prefix code with the length of\par
+the codeword for i equal to 2 floor[ lg i ] + 1. Greater compression can be gained through use of the\par
+more sophisticated scheme, delta, which encodes an integer i in 1 + floor[ lg i ] + 2 floor[ (lg (1 +\par
+floor[ lg i ] ) ] bits. \par
+\par
+A message ensemble on which algorithm BSTW is particularly efficient, described by Bentley et al., is\par
+formed by repeating each of n messages n times, for example 1^n 2^n 3^n ... n^n. Disregarding\par
+overhead, a static Huffman code uses n^2 lg n bits (or lg n bits per message), while algorithm BSTW\par
+uses n^2 + 2 SUM\{ i=1 to n\} floor[ lg i ] (which is less than or equal to n^2 + 2 n lg n, or O(1) bits\par
+per message). The overhead for algorithm BSTW consists of just the n lg n bits needed to transmit\par
+each source letter once. As discussed in Section 3.2, the overhead for static Huffman coding includes\par
+an additional 2n bits. The locality present in ensemble EXAMPLE is similar to that in the above\par
+example. The transmission effected by algorithm BSTW is: 1 a 1 2 space 3 b 1 1 2 4 c 1 1 1 2 5 d 1 1\par
+1 1 2 6 e 1 1 1 1 1 2 7 f 1 1 1 1 1 1 1 8 g 1 1 1 1 1 1 1. Using 3 bits for each source letter (a through\par
+g and space) and the Elias code delta for list positions, the number of bits used is 81, which is a great\par
+improvement over all of the other methods discussed (only 69% of the length used by static Huffman\par
+coding). This could be improved further by the use of Fibonacci codes for list positions. \par
+\par
+In [Bentley et al. 1986] a proof is given that with the simple scheme for encoding integers, the\par
+performance of algorithm BSTW is bounded above by 2 S + 1, where S is the cost of the static\par
+Huffman coding scheme. Using the more sophisticated integer encoding scheme, the bound is 1 + S +\par
+2 lg(1 + S). A key idea in the proofs given by Bentley et al. is the fact that, using the move-to-front\par
+heuristic, the integer transmitted for a message a(t) will be one more than the number of different words\par
+transmitted since the last occurrence of a(t). Bentley et al. also prove that algorithm BSTW is\par
+asymptotically optimal. \par
+\par
+An implementation of algorithm BSTW is described in great detail in [Bentley et al. 1986]. In this\par
+implementation, encoding an integer consists of a table lookup; the codewords for the integers from 1\par
+to n+1 are stored in an array indexed from 1 to n+1. A binary trie is used to store the inverse mapping,\par
+from codewords to integers. Decoding an Elias codeword to find the corresponding integer involves\par
+following a path in the trie. Two interlinked data structures, a binary trie and a binary tree, are used to\par
+maintain the word list. The trie is based on the binary encodings of the source words. Mapping a\par
+source message a(i) to its list position p involves following a path in the trie, following a link to the tree,\par
+and then computing the symmetric order position of the tree node. Finding the source message a(i) in\par
+position p is accomplished by finding the symmetric order position p in the tree and returning the word\par
+stored there. Using this implementation, the work done by sender and receiver is O(length(a(i)) +\par
+length(w)) where a(i) is the message being transmitted and w the codeword representing a(i)'s\par
+position in the list. If the source alphabet consists of single characters, then the complexity of algorithm\par
+BSTW is just O(length(w)). \par
+\par
+The move-to-front scheme of Bentley et al. was independently developed by Elias in his paper on\par
+interval encoding and recency rank encoding [Elias 1987]. Recency rank encoding is equivalent to\par
+algorithm BSTW. The name emphasizes the fact, mentioned above, that the codeword for a source\par
+message represents the number of distinct messages which have occurred since its most recent\par
+occurrence. Interval encoding represents a source message by the total number of messages which\par
+have occurred since its last occurrence (equivalently, the length of the interval since the last previous\par
+occurrence of the current message). It is obvious that the length of the interval since the last occurrence\par
+of a message a(t) is at least as great as its recency rank, so that recency rank encoding never uses\par
+more, and generally uses fewer, symbols per message than interval encoding. The advantage to interval\par
+encoding is that it has a very simple implementation and can encode and decode selections from a very\par
+large alphabet (a million letters, for example) at a microsecond rate [Elias 1987]. The use of interval\par
+encoding might be justified in a data transmission setting, where speed is the essential factor. \par
+\par
+Ryabko also comments that the work of Bentley et al. coincides with many of the results in a paper in\par
+which he considers data compression by means of a "book stack" (the books represent the source\par
+messages and as a "book" occurs it is taken from the stack and placed on top) [Ryabko 1987].\par
+Horspool and Cormack have considered move-to-front, as well as several other list organization\par
+heuristics, in connection with data compression [Horspool and Cormack 1987]. \par
+\par
+\par
+         \par
+\par
+\par
+\par
+\par
+\par
+}
+ 

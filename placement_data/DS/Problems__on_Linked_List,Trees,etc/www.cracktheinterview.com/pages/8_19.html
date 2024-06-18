@@ -1,0 +1,521 @@
+
+<HTML>
+
+<!-- Mirrored from www.cracktheinterview.com by HTTrack Website Copier/3.x [XR,YP'2001] -->
+<HEAD>
+<TITLE>CRACK THE INTERVIEW - What purpose do #if, #else, #elif, #endif, #ifdef, #ifndef serve?  (www.cracktheinterview.com)</TITLE><style type="text/css">
+<!--
+.breakhere     {page-break-before: always}
+
+A:link         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+A:active       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+A:visited      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+
+H1             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt; font-weight:bold; color:#336699} 
+H2             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; font-weight:bold} 
+.normal        {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+.announce      {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#000000} 
+.announceLink  {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#336699} 
+.note          {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt ! important; font-weight:normal} 
+.system        {font-family:Courier New, Courier; font-size:x-small;
+                font-weight:normal} 
+.stayblue      {color:#336699 ! important}
+.title         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:larger ! important} 
+.error         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; color:#aa0000; font-weight:bold} 
+.notelink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:normal;
+                font-size:9pt ! important} 
+.tableHeader   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableHeaderSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRow      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#f7f7e7} 
+.tableBlank    {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#ffffff} 
+.hardlink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:bold;
+                font-size:8pt ! important} 
+.boxlink       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#000000 ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.hardnote      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:black ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.tableRowSmall {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal} 
+.tableRowSmallBold {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                bold} 
+.blueHeading   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:bold;
+                color:#336699! important} 
+.blueHeadingLarge {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:16pt! important; font-weight:normal;
+                color:#336699} 
+.blueHeadingMid {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:normal;
+                color:#336699}
+.blueHeadingSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt! important; font-weight:bold;
+                color:#336699} 
+.tableHeaderV  {font-family:Verdana,Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRowV     {font-family:Verdana,Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal; background-color:#f7f7e7} 
+.just          {text-align: justify}
+-->
+</style>
+
+<META NAME="keywords" CONTENT=" ">
+<META NAME="description" CONTENT="What purpose do #if, #else, #elif, #endif, #ifdef, #ifndef serve? ">
+<META NAME="robots" CONTENT="FOLLOW,INDEX">
+<META HTTP-EQUIV="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+
+</HEAD>
+<BODY>
+<TABLE BORDER=0 cellpadding=10>
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER><A HREF="../index.html"><IMG SRC=../images/logo2.jpg border=0></img></A></CENTER></TD>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2>
+<CENTER>
+
+
+<!--START:ADS0-->
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"
+  src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+
+</CENTER>
+</TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER>
+
+<!--START:LINKS-->
+
+
+<TABLE BORDER=0 cellpadding=10>
+<TR><TD NOWRAP>
+<A HREF="../index.html" target="_top"><font class=announcelink>Home</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="../adfaqpublish.html" target="_top"><font class=announcelink>Questions</font></A><BR>
+</TD>
+
+
+<TD NOWRAP>
+<A href="../search.html" target="_top"><font class=announcelink>Search</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="../forum/index.html" target="_top"><font class=announcelink>Forum</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="mailto:cracktheinterview@gmail.com?subject=Hi!"><font class=announcelink>Contact</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum12a3.html" target="_top"><font class=announcelink>Guest Book</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum4d6b.html" target="_top"><font class=announcelink>Polls!</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum31e6.html" target="_top"><font class=announcelink>Got a Question?</font></A><BR>
+</TD>
+
+</TABLE>
+
+<!--END-->
+
+</CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER> &nbsp; </CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=90%% valign=top>
+
+
+
+
+
+<!--START : DATA-->
+
+
+
+<TABLE BORDER=0>
+
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="8_18.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=blueHeading>C Statements</font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="8_20.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD>
+<TD WIDTH=90%%><CENTER><font class=blueHeading>(175 / 268) <font color=blue>*</font></font></center></TD>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%></TD>
+<TD WIDTH=90%%><center>&nbsp;</center></TD>
+<TD WIDTH=5%%></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=announceLink><BR><BR><BR>
+<!--THE QUESTION-->
+
+What purpose do #if, #else, #elif, #endif, #ifdef, #ifndef serve? <BR>
+<!--END-->
+<BR></font></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=normal>
+<!--THE ANSWER--><BR>
+<!--META:START--><!-- --><!--META:END--><BR>
+<BR>
+The following preprocessor directives are used for conditional compilation. Conditional compilation allows statements to be included or omitted based on conditions at compile time. <BR>
+<BR>
+<CODE><BR>
+#if<BR>
+#else<BR>
+#elif<BR>
+#endif<BR>
+#ifdef<BR>
+#ifndef<BR>
+</CODE><BR>
+<BR>
+In the following example, the printf statements are compiled when the symbol DEBUG is defined, but not compiled otherwise <BR>
+<BR>
+<CODE><BR>
+/*&nbsp;remove&nbsp;to&nbsp;suppress&nbsp;debug&nbsp;printf's*/<BR>
+#define&nbsp;DEBUG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+...&nbsp;&nbsp;&nbsp;<BR>
+x&nbsp;=&nbsp;....&nbsp;&nbsp;<BR>
+<BR>
+&nbsp;&nbsp;#ifdef&nbsp;DEBUG&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf(&nbsp;"x=%d\n"&nbsp;);&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;#endif...&nbsp;&nbsp;&nbsp;<BR>
+<BR>
+y&nbsp;=&nbsp;....;&nbsp;&nbsp;<BR>
+<BR>
+&nbsp;&nbsp;#ifdef&nbsp;DEBUG&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf(&nbsp;"y=%d\n"&nbsp;);&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;#endif...<BR>
+</CODE><BR>
+<BR>
+<BR>
+<font class=announcelink>#if, #else, #elif statements</font><BR>
+<BR>
+<font class=announcelink>#if directive</font><BR>
+<BR>
+<UL><BR>
+<LI>#if is followed by a intger constant expression. <BR>
+<LI>If the expression is not zero, the statement(s) following the #if are compiled, otherwise they are ignored. <BR>
+<LI>#if statements are bounded by a matching #endif, #else or #elif <BR>
+<LI>Macros, if any, are expanded, and any undefined tokens are replaced with 0 before the constant expression is evaluated <BR>
+<LI>Relational operators and integer operators may be used <BR>
+</UL><BR>
+<BR>
+Expression examples <BR>
+<BR>
+<CODE><BR>
+#if&nbsp;1<BR>
+#if&nbsp;0<BR>
+#if&nbsp;ABE&nbsp;==&nbsp;3<BR>
+#if&nbsp;ZOO&nbsp;<&nbsp;12<BR>
+#if&nbsp;ZIP&nbsp;==&nbsp;'g'<BR>
+#if&nbsp;(ABE&nbsp;+&nbsp;2&nbsp;-&nbsp;3&nbsp;*&nbsp;ZIP)&nbsp;>&nbsp;(ZIP&nbsp;-&nbsp;2)<BR>
+</CODE> <BR>
+<BR>
+In most uses, expression is simple relational, often equality test <BR>
+<BR>
+<CODE><BR>
+#if&nbsp;SPARKY&nbsp;==&nbsp;'7'&nbsp;<BR>
+</CODE><BR>
+<BR>
+<BR>
+<font class=announcelink>#else directive</font><BR>
+<BR>
+<BR>
+<UL><BR>
+<LI>#else marks the beginning of statement(s) to be compiled if the preceding #if or #elif expression is zero (false) <BR>
+<LI>Statements following #else are bounded by matching #endif <BR>
+</UL><BR>
+<BR>
+Examples <BR>
+<BR>
+<CODE><BR>
+#if&nbsp;OS&nbsp;=&nbsp;'A'&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;system(&nbsp;"clear"&nbsp;);<BR>
+#else&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;system(&nbsp;"cls"&nbsp;);<BR>
+#endif<BR>
+</CODE><BR>
+<BR>
+<BR>
+ <BR>
+<font class=announcelink>#elif directive</font><BR>
+<BR>
+<UL><BR>
+<LI>#elif adds an else-if branch to a previous #if <BR>
+<LI>A series of #elif's provides a case-select type of structure <BR>
+<LI>Statement(s) following the #elif are compiled if the expression is not zero, ignored otherwise <BR>
+<LI>Expression is evaluated just like for #if <BR>
+</UL><BR>
+<BR>
+Examples <BR>
+<BR>
+<CODE><BR>
+#if&nbsp;TST&nbsp;==&nbsp;1&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;z&nbsp;=&nbsp;fn1(&nbsp;y&nbsp;);<BR>
+#elif&nbsp;TST&nbsp;==&nbsp;2&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;z&nbsp;=&nbsp;fn2(&nbsp;y,&nbsp;x&nbsp;);<BR>
+#elif&nbsp;TST&nbsp;==&nbsp;3&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;z&nbsp;=&nbsp;fn3(&nbsp;y,&nbsp;z,&nbsp;w&nbsp;);<BR>
+#endif<BR>
+<BR>
+...<BR>
+#if&nbsp;ZIP&nbsp;==&nbsp;'g'&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;rc&nbsp;=&nbsp;gzip(&nbsp;fn&nbsp;);<BR>
+#elif&nbsp;ZIP&nbsp;==&nbsp;'q'&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;rc&nbsp;=&nbsp;qzip(&nbsp;fn&nbsp;);<BR>
+#else&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;rc&nbsp;=&nbsp;zip(&nbsp;fn&nbsp;);<BR>
+#endif<BR>
+</CODE> <BR>
+<BR>
+<BR>
+<BR>
+<font class=announcelink>#ifdef and #ifndef directives</font><BR>
+<BR>
+Testing for defined macros with #ifdef, #ifndef, and defined()<BR>
+<BR>
+<BR>
+<UL><BR>
+<LI>#ifdef is used to include or omit statements from compilation depending of whether a macro name is defined or not. <BR>
+<LI>Often used to allow the same source module to be compiled in different environments (UNIX/ DOS/MVS), or with different options (development/production).<BR>
+<LI>#ifndef similar, but includes code when macro name is not defined.<BR>
+</UL><BR>
+<BR>
+Examples <BR>
+<BR>
+<CODE><BR>
+#ifdef&nbsp;TESTENV&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;printf(&nbsp;"%d&nbsp;",&nbsp;i&nbsp;);<BR>
+#endif<BR>
+#ifndef&nbsp;DOS&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;#define&nbsp;LOGFL&nbsp;"/tmp/loga.b";<BR>
+#else&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;#define&nbsp;LOGFL&nbsp;"c:\\tmp\\log.b";<BR>
+#endif<BR>
+</CODE> <BR>
+<BR>
+<BR>
+<font class=announcelink>defined() operator</font><BR>
+<BR>
+<BR>
+<UL><BR>
+<LI>defined(mac), operator is used with #if and #elif and gives 1 (true) if macro name mac is defined, 0 (false) otherwise.<BR>
+<LI>Equivalent to using #ifdef and #ifndef, but many shops prefer #if with defined(mac) or !defined(mac) <BR>
+</UL><BR>
+<BR>
+Examples <BR>
+<BR>
+<CODE><BR>
+#if&nbsp;defined(TESTENV)&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;printf(&nbsp;"%d&nbsp;",&nbsp;i&nbsp;);<BR>
+#endif<BR>
+#if&nbsp;!defined(DOS)&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;#define&nbsp;LOGFL&nbsp;"/tmp/loga.b";<BR>
+#else&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;#define&nbsp;LOGFL&nbsp;"c:\\tmp\\log.b";<BR>
+#endif<BR>
+</CODE> <BR>
+<BR>
+<BR>
+<font class=announcelink>Nesting conditional statements</font><BR>
+<BR>
+Conditional compilation structures may be nested: <BR>
+<CODE><BR>
+#if&nbsp;defined(UNIX)&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;#if&nbsp;LOGGING&nbsp;==&nbsp;'y'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#define&nbsp;LOGFL&nbsp;"/tmp/err.log"&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;#else&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#define&nbsp;LOGFL&nbsp;"/dev/null"&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;#endif<BR>
+#elif&nbsp;defined(&nbsp;MVS&nbsp;)&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;#if&nbsp;LOGGING&nbsp;==&nbsp;'y'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#define&nbsp;LOGFL&nbsp;"TAP.AVS.LOG"&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;#else&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#define&nbsp;LOGFL&nbsp;"NULLFILE"&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;#endif<BR>
+#elif&nbsp;defined(&nbsp;DOS&nbsp;)&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;#if&nbsp;LOGGING&nbsp;==&nbsp;'y'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#define&nbsp;LOGFL&nbsp;"C:\\tmp\\err.log"&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;#else&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#define&nbsp;LOGFL&nbsp;"nul"&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;#endif&nbsp;<BR>
+#endif<BR>
+</CODE> 
+<BR><BR>
+<!--END-->
+</font><BR></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="8_18.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=notelink><A href="mailto:cracktheinterview@gmail.com?subject=Comments [What purpose do #if, #else, #elif, #endif, #ifdef, #ifndef serve? ]&Body=Question : [What purpose do #if, #else, #elif, #endif, #ifdef, #ifndef serve? ]"><font class=announcelink>COMMENTS</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><A HREF=../adfaqpublish.html>INDEX</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><a href="#" onclick="window.print();return false;">PRINT</a></font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="8_20.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<BR><BR><BR><font class=notelink>
+Last updated:
+
+July 8, 2005<BR><BR>
+<a href=../index.html>www.cracktheinterview.com</a> - Your destination for the most common IT interview questions, answers, frequently asked interview questions (FAQ), C Programs, C Datastructures for interviews conducted by Microsoft, Oracle, Google, IBM, HP, Yahoo, Infosys, Wipro, SAP, CA (Computer Associates), Sun, Adobe, GE, Novell, Cisco, Motorola, TI (Texas Instruments), Intel, TCS, iFlex, Trilogy, MindTree, GS and more...<br><BR>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+
+<!--END-->
+
+
+</TD>
+
+
+
+
+<TD WIDTH=10%% valign="top">
+
+
+<!--START:ADS1-->
+
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_alternate_color = "CCCCCC";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript" src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"  src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+</TD>
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+</BODY>
+
+<!-- Mirrored from www.cracktheinterview.com by HTTrack Website Copier/3.x [XR,YP'2001] -->
+</HTML>
+
+

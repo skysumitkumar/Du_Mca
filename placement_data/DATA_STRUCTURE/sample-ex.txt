@@ -1,0 +1,221 @@
+SAMPLE EXAM PAPER FOR SEM520.3 (numbers in [.] represent the marks)
+-------------------------------------------------------------------
+
+
+q1) [2 marks] 
+Assume that the list L contains [1,2,3,4,5,6] (1 is the 0-element,
+2, is the 1-element, etc.).
+
+What does L' contain after the following sequence of statements has
+been executed?  Justify your annswer.
+
+     List L';
+     for (int i = L.size-1; i >=1 ; i--)
+        L'.insert(L.retrieve(i), (size-1-i));
+
+****IMPORTANT****:  method 'size' returns the number of elements in the
+list.  In the lecture notes it was call 'length'.  The SAME CHANGE
+applies in the REAL EXAM PAPER.
+
+a1) 
+The fragment of program above retrieves the elements from the list
+L starting from the last one, and inserts them in that order in L',
+so L' = [6,5,4,3,2,1]. 
+
+-----------------------------------------------------------------------
+
+q2)
+Consider the modification of the linked list design we saw in class:
+     
+        class DLinkedList
+        { private class Node
+           { char item;
+             Node next;
+             Node prev;
+
+             Node(char c, Node ptr1, Node ptr2)   // constructor of Node
+             { item = c; next = ptr1; prev = ptr2}
+
+           }
+
+          private Node first;
+
+          // ---------- CONSTRUCTOR ----------
+
+          DLinkedList() { first = null;}
+
+          // ---------- CONS ----------
+
+          public void cons(char newitem)
+            { first = new Node(newitem, first, null);
+              if (first.next != null) first.next.prev = first; }
+
+          // ----------  INSERT ----------
+
+           public boolean insert(char c, int index)
+             {...}
+             // insert c at index position
+        }
+
+
+This linked list design differs from the one we saw in class in that each
+element has two pointers, one pointing to the next element (as usual)
+and the second one pointing to the previous element.
+
+  (a) [3] Draw a picture to visualize the results of the following
+      statements (the code for the constructor and the 'cons' method 
+      are provided in the above class definition):
+
+        DLinkedList L = new DLinkedList();
+        L.cons('a');
+        L.cons('b');
+
+  (b) [3] Write the method 'insert' for the class DLinkedList.
+
+  (c) [1] What are the positive consequences of having two pointers for
+      each element?
+
+a2)
+   (a) 
+       first -->   |__b__|   |__a__|
+                   |____-|-->|__/__|
+                   |__/__|<--|-____| 
+
+   
+   (b) 
+
+    public boolean insert(char c, int index)
+    { if (index < 0) return false;
+      if (index == 0) {first = new Node(c, first, null); return true;}
+      Node p;
+      Node q;
+      int i;
+      p = first; i = 0;
+      while (i < index-1)
+          // finding the right node where to insert new item
+      { p = p.next;
+        if (p == null) return false;
+          // breaking out from the loop if at
+          // the end of the list
+        i++;
+      }
+      q = new Node(c, p.next, p);
+      p.next.prev = q;
+      p.next = q;
+      return true;
+    }
+
+
+  (c)
+
+   The main positive consequence is that we can scan the list backward
+   and forward with only one pointer.
+
+-----------------------------------------------------------------------
+
+q3) 
+Consider a given binary tree (a picture will be provided).  
+You may be asked to answer to some of the following questions:
+
+- [2] name the root element, its right and left children, the elements of the
+left and right subtree, the leaves;
+
+- [2] size of the tree, height of the tree, number of leaves, maximum number of
+leaves for a tree of that height;
+
+- [2] list the elements using one of the traversal algorithms we studied 
+(pre-order, post-order, in-order, or breadth-first);
+
+- [3] recognize if the tree is a binary search tree or a heap or an AVL tree and
+justify the answer.
+
+
+a3) 
+It is enough to know the definitions regarding binary trees.
+
+-----------------------------------------------------------------------
+
+q4) [4] 
+Show step-by-step the effect of inserting a given list of elements
+in an initially empty heap or in an initially empty AVL tree.
+
+
+a4) 
+For each element you insert in the requested data structure following
+the appropriate algorithm, draw a picture of the current state of the data 
+structure.  Comment the most difficult steps (for instance, if in an AVL
+tree you need a double rotation).  Do not forget to calculate the balancing
+factors if the data structure is an AVL tree!
+
+-----------------------------------------------------------------------
+
+q5)  
+Propose an appropriate data structure for each of the following tasks.
+Justify your choice in terms of efficiency of the main operations required
+if appropriate.
+
+   (a) [3] We require a data structure which records partial performance in 
+examinations.  Each item is a pair consisting of a character string 
+(representing the student's name) and an integer in the range 0 to 100
+(representing the exam mark).  The main operation performed would be to
+search for a record using the student's name as key .
+
+   (b) [3] We require a data structure to store arithmetic expressions such
+as (a+b)*c-a/5.  The operators are either binary (e.g., +) or unary
+(e.g., as in -a).  The operands are either integer or symbolic names such
+a,b,...  The main operations performed would be write the
+expressions in infix as well as in the postfix notations.
+
+a5)
+   (a) The most suited structure is an hash table, because it gives
+good peformances for searching, i.e., O(N/M), with N the number
+of elements and M the number of buckets.  Also an AVL is not a bad choice,
+giving that searching is O(\log N), especially if eventually we want
+also to print the elements in an ascending order (for an AVL tree is
+O(N), while for an hash table is O(N log(N)), so slightly worse).
+  
+  (b) The most suited data structure is a binary tree:  each internal node
+would represent an operator and each leaf an operand.
+
+-----------------------------------------------------------------------
+
+q6) [3] 
+For each of the following functions 'f', where n = 1,2,3,... find
+the smallest function 'g' in the order hierarchy such that 'f' is in 
+'O(g)':
+
+   (a) f(n)= n(n+1)/n;
+
+   (b) f(n)= n + log(n) + 1;
+
+   (c) f(n)= 2.
+
+a6)
+
+   (a) O(n);
+
+   (b) O(n);
+
+   (c) O(1). 
+
+-----------------------------------------------------------------------
+
+q7) [3]
+Let A and B be arrays of N integers, indexed from 1 to N.  What is the time 
+complexity of the following program fragment?  Justify your answer.
+
+  for (int i=1; i<=N; i++)
+   for (int j=N; j>=1; j--)
+
+       if (A[i] <= B[j}) 
+         A[i] = B[j];
+
+
+
+a7)
+In this case, the size of the input is the size of the array, i.e., N.
+We can call 'if (A[i] <= B[j}) A[i] = B[j];' 'S', since those
+statements do not depend directly on N.  So, Time_S(N)=c,
+with c>0.  But the execution of S is ruled by two for-loops, each
+of them that makes S executing N times, so Time(N)~= N * N * c $,  which
+implies Time(N) is O(N^2).

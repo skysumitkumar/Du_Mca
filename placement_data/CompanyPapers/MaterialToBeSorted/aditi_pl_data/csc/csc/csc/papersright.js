@@ -1,0 +1,2 @@
+document.write ("<iframe ALIGN='center' scrolling='no' FRAMEBORDER='0' FRAMESPACING='0' MARGINHEIGHT='0' MARGINWIDTH='0' BORDER='0' src='../img/papersright.htm' width='161' height='601' ></iframe>");
+	

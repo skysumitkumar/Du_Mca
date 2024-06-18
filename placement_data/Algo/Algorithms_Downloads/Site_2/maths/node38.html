@@ -1,0 +1,381 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Timing the algorithm </TITLE>
+<META NAME="description" CONTENT="Timing the algorithm ">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="previous" HREF="node37.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node37.html">
+<LINK REL="up" HREF="node37.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node37.html">
+<LINK REL="next" HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html857"
+  HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html851"
+  HREF="node37.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node37.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html847"
+  HREF="node37.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node37.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html853"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html855"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html858"
+  HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">Merge Sort</A>
+<B> Up:</B> <A NAME="tex2html852"
+  HREF="node37.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node37.html">A better sort: Quicksort</A>
+<B> Previous:</B> <A NAME="tex2html848"
+  HREF="node37.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node37.html">A better sort: Quicksort</A>
+ &nbsp <B>  <A NAME="tex2html854"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html856"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00631000000000000000">
+Timing the algorithm </A>
+</H2>
+
+<P>
+Since the algorithm is recursive we expect to get a recurrence relation for
+the time taken. The following argument is going to be a bit vague in its
+use of the word `average' in order to keep things simple. As usual we assume
+that the initial list is a permutation of <!-- MATH
+ $\{1,\ldots,n\}$
+ -->
+{1,..., <I>n</I>} and that all
+permutations are equally likely. Let <I>T</I><SUB>n</SUB> be the average time taken to
+<EM>quicksort</EM> <I>n</I> elements.
+
+<P>
+The sort consists of:
+
+<UL>
+<LI>doing the separation; and
+</LI>
+<LI>quicksorting the two sublists.
+</LI>
+</UL>
+
+<P>
+The above separation algorithm works in time proportional to <I>n</I>, say
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><I>n</I>.  Suppose the list splits into sublists of lengths <I>k</I> and
+<I>n</I> - 1 - <I>k</I>; this leaves one left over for the separator. Then on average
+<!-- MATH
+ \begin{displaymath}
+T_n = \alpha n + T_k + T_{n-1-k}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>T</I><SUB>n</SUB> = <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img97.gif"
+ ALT="$\displaystyle \alpha$"><I>n</I> + <I>T</I><SUB>k</SUB> + <I>T</I><SUB>n - 1 - k</SUB>
+</DIV><P></P>
+But we do not know the value of <I>k</I> in advance. All possible values are
+equally likely. So we take the average over all the possibilities:
+<!-- MATH
+ \begin{displaymath}
+\boxed{ T_n = \alpha n + \frac{1}{n}\sum_{k=0}^{n-1}(T_k + T_{n-1-k})}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="234" HEIGHT="75" ALIGN="MIDDLE" BORDER="0"
+ SRC="img98.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img98.gif"
+ ALT="$\displaystyle \boxed { T_n = \alpha n + \frac{1}{n}\sum_{k=0}^{n-1}(T_k + T_{n-1-k})}$">
+</DIV><P></P>
+This simplifies at once (why?) to
+<!-- MATH
+ \begin{displaymath}
+T_n = \alpha n + \frac{2}{n}\sum_{k=0}^{n-1} T_k
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>T</I><SUB>n</SUB> = <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img97.gif"
+ ALT="$\displaystyle \alpha$"><I>n</I> + <IMG
+ WIDTH="17" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img99.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img99.gif"
+ ALT="$\displaystyle {\frac{2}{n}}$"><IMG
+ WIDTH="28" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img100.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img100.gif"
+ ALT="$\displaystyle \sum_{k=0}^{n-1}$"><I>T</I><SUB>k</SUB>
+</DIV><P></P>
+This is a `full-history' recurrence, and the usual way to deal with
+such things is to get rid of the history by elimination between two
+successive formulas. From the above
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="17" HEIGHT="43" ALIGN="MIDDLE" BORDER="0"
+ SRC="img101.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img101.gif"
+ ALT="$\displaystyle {\frac{n}{2}}$">(<I>T</I><SUB>n</SUB> - <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img97.gif"
+ ALT="$\displaystyle \alpha$"><I>n</I>)</TD>
+<TD NOWRAP ALIGN="LEFT">= <I>T</I><SUB>0</SUB> + <SUP> ... </SUP> + <I>T</I><SUB>n - 1</SUB></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="45" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img102.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img102.gif"
+ ALT="$\displaystyle {\frac{n+1}{2}}$">(<I>T</I><SUB>n + 1</SUB> - <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img97.gif"
+ ALT="$\displaystyle \alpha$">(<I>n</I> + 1))</TD>
+<TD NOWRAP ALIGN="LEFT">= <I>T</I><SUB>0</SUB> + <SUP> ... </SUP> + <I>T</I><SUB>n - 1</SUB> + <I>T</I><SUB>n</SUB></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+Subtract these and get, after a bit of rearranging,
+<!-- MATH
+ \begin{displaymath}
+\frac{T_{n+1}}{n+2} = \frac{T_n}{n+1} + \frac{\alpha(2n+1)}{(n+1)(n+2)}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="45" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img103.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img103.gif"
+ ALT="$\displaystyle {\frac{T_{n+1}}{n+2}}$"> = <IMG
+ WIDTH="45" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img104.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img104.gif"
+ ALT="$\displaystyle {\frac{T_n}{n+1}}$"> + <IMG
+ WIDTH="107" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img105.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img105.gif"
+ ALT="$\displaystyle {\frac{\alpha(2n+1)}{(n+1)(n+2)}}$">
+</DIV><P></P>
+Let <!-- MATH
+ $S_n = T_n/(n+1)$
+ -->
+<I>S</I><SUB>n</SUB> = <I>T</I><SUB>n</SUB>/(<I>n</I> + 1). Then
+<!-- MATH
+ \begin{displaymath}
+S_{n+1} = S_n + \frac{\alpha(2n+1)}{(n+1)(n+2)}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>S</I><SUB>n + 1</SUB> = <I>S</I><SUB>n</SUB> + <IMG
+ WIDTH="107" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img105.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img105.gif"
+ ALT="$\displaystyle {\frac{\alpha(2n+1)}{(n+1)(n+2)}}$">
+</DIV><P></P>
+Hence
+<!-- MATH
+ \begin{displaymath}
+S_n = S_0 + \sum_{k=0}^{n-1} \frac{\alpha(2k+1)}{(k+1)(k+2)}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>S</I><SUB>n</SUB> = <I>S</I><SUB>0</SUB> + <IMG
+ WIDTH="28" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img100.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img100.gif"
+ ALT="$\displaystyle \sum_{k=0}^{n-1}$"><IMG
+ WIDTH="105" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img106.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img106.gif"
+ ALT="$\displaystyle {\frac{\alpha(2k+1)}{(k+1)(k+2)}}$">
+</DIV><P></P>
+You get at the value of this sum by using partial fractions, just as you
+would if integrating. You can check that
+<P></P>
+<DIV ALIGN="CENTER"><TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><I>S</I><SUB>n</SUB></TD>
+<TD NOWRAP ALIGN="LEFT">= <I>S</I><SUB>0</SUB> + 3<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img97.gif"
+ ALT="$\displaystyle \alpha$"><IMG
+ WIDTH="28" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img100.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img100.gif"
+ ALT="$\displaystyle \sum_{k=0}^{n-1}$"><IMG
+ WIDTH="44" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img107.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img107.gif"
+ ALT="$\displaystyle {\frac{1}{k+2}}$"> - <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img97.gif"
+ ALT="$\displaystyle \alpha$"><IMG
+ WIDTH="28" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img100.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img100.gif"
+ ALT="$\displaystyle \sum_{k=0}^{n-1}$"><IMG
+ WIDTH="44" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img108.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img108.gif"
+ ALT="$\displaystyle {\frac{1}{k+1}}$">,</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD>&nbsp;</TD>
+<TD NOWRAP ALIGN="LEFT">= <I>S</I><SUB>0</SUB> + 3<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img97.gif"
+ ALT="$\displaystyle \alpha$">(<I>H</I><SUB>n + 1</SUB> - 1) - <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img97.gif"
+ ALT="$\displaystyle \alpha$"><I>H</I><SUB>n</SUB> = <I>S</I><SUB>0</SUB> + 2<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img97.gif"
+ ALT="$\displaystyle \alpha$"><I>H</I><SUB>n</SUB> + <IMG
+ WIDTH="45" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img109.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img109.gif"
+ ALT="$\displaystyle {\frac{3\alpha}{n+1}}$"> - 3<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img97.gif"
+ ALT="$\displaystyle \alpha$">.</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+So we have, going back to <I>T</I>
+<!-- MATH
+ \begin{displaymath}
+T_n = 2\alpha (n+1)H_n + (S_0-3\alpha)(n+1) + 3\alpha
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>T</I><SUB>n</SUB> = 2<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img97.gif"
+ ALT="$\displaystyle \alpha$">(<I>n</I> + 1)<I>H</I><SUB>n</SUB> + (<I>S</I><SUB>0</SUB> - 3<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img97.gif"
+ ALT="$\displaystyle \alpha$">)(<I>n</I> + 1) + 3<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img97.gif"
+ ALT="$\displaystyle \alpha$">
+</DIV><P></P>
+This is a bit complicated, but remember that <!-- MATH
+ $H_n \sim \ln n$
+ -->
+<I>H</I><SUB>n</SUB> <IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img1.gif"
+ ALT="$ \sim$"> ln&nbsp;<I>n</I>. So, for
+large values of <I>n</I> we can reasonably say that
+<!-- MATH
+ \begin{displaymath}
+\boxed{ T_n \propto n\ln n}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="92" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img110.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img110.gif"
+ ALT="% latex2html id marker 18220
+$\displaystyle \boxed{ T_n \propto n\ln n}$">
+</DIV><P></P>
+For large values of <I>n</I> this should be a huge improvement on the <I>O</I>(<I>n</I><SUP>2</SUP>)
+time taken by our previous algorithms.  To give you some idea of the
+improvement, consider the values in Table&nbsp;<A HREF="node38.html#T:n2-and-log-n" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node38.html#T:n2-and-log-n">2.2</A>
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="T:n2-and-log-n"></A><A NAME="2510"></A>
+<TABLE>
+<CAPTION><STRONG>Table 2.2:</STRONG>
+<A NAME="2319"></A> A comparison of <I>n</I><SUP>2</SUP> and <I>n</I> log&nbsp;<I>n</I> for different values of <I>n</I>.</CAPTION>
+<TR><TD><IMG
+ WIDTH="164" HEIGHT="118" BORDER="0"
+ SRC="img111.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img111.gif"
+ ALT="\begin{table}
+\begin{displaymath}
+\begin{array}{r\vert rr}
+n&amp;n^2&amp;n\ln n\\
+10&amp;10...
+...500&amp;250000&amp;3107.3\\
+1000&amp;1000000&amp;6907.8
+\end{array}\end{displaymath}\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html857"
+  HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html851"
+  HREF="node37.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node37.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html847"
+  HREF="node37.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node37.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html853"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html855"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html858"
+  HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">Merge Sort</A>
+<B> Up:</B> <A NAME="tex2html852"
+  HREF="node37.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node37.html">A better sort: Quicksort</A>
+<B> Previous:</B> <A NAME="tex2html848"
+  HREF="node37.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node37.html">A better sort: Quicksort</A>
+ &nbsp <B>  <A NAME="tex2html854"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html856"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

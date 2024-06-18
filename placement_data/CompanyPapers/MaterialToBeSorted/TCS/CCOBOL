@@ -1,0 +1,872 @@
+
+                                TCS COBOL PAPER
+                                   QUESTIONS
+
+1) Consider the following piece of code:
+        01 GROSS PAY
+                05 BASIC PAY      pic   9(5)
+                05 allowances     pic   9(3)
+
+  If basic pay has a value of 1000 and allowances has the value 250, what 
+will be displayed by
+  the following statement
+
+        Display gross pay
+
+  a)1250    b) 0 1000 250   c) 0 1250  d) 1,250
+
+2) 77  W-A PIC 9(3) v99 value 23.75
+   77  W-B PIC zzgv99   value 123.75
+
+  Move W-A to W-B, then W-B=?
+
+  a)123.75  b)623.75  c)023.75  d)invalid
+
+3) Divide A into B giving C
+
+  a)C=A/B  b) the remainder of B/A is stored in C
+  c)C=B/A  d) the remainder of A/B is stored in C
+
+4) If A(numeric) Display A
+  
+  A is
+  a) numeric  b) alpha  c) alphanumeric  d) numeric/alpha numeric
+
+5) Which is check protection symbol
+  a) Z  b) $  c) *  d) +
+
+6)..........PIC  A(1)
+   01   c   PIC  9(4)
+   
+  If B(numeric) add 10 to C
+
+ a) the condition 'if' is wrong
+ b) nothing is wrong
+ c) C is not initialized, 'add 10 to c' is wrong
+ d) both b and c should be same size.
+
+7) 01  A1
+       05  b  pic  99
+       05  c  pic  X(4)
+   01  A2
+       05  b  pic  99v99
+       05  c  pic  A(4)
+
+  which is true?
+
+ a) A1 and A2 cannot have same subordinates
+ b) A1 and A2 can have same subordinates but should be same pic clause
+ c) nothing wrong
+ d) A1 and A2 cannot have same subordinate provided they are not at a level
+
+8) 01 A pic 99v9 value 5
+   01 B pic 9v9  value 6
+   01 C pic 99v9 value 2.5
+   01 D pic 99   value 3
+
+  compute A rounded B,C=(A+B+C/D) on size error perform point error.
+  A,B,C are
+ a) 10,0,10  b)10,0,9.9  c)10,9.9,9.9  d)10,6,10
+
+9)How many time para A is performed
+  Perform para A varying time counter
+  from 1 by 1 until timer counter > 10
+
+  PARA-A
+     Move p to 9
+     Move 10 to times counter
+
+  a) 10  b) 1  c) 11  d) 0
+
+10) 01 group item
+    05 amount-1 pic 99v9 usage comp value 50
+    05 amount-2 pic 9(4)v99 usage comp
+    Move zero to group from
+    Add 50 to amount-1
+
+    amount-1?
+
+  a) 50  b) 100  c) 0  d) not defined
+
+11) Move to sw no of REC
+    Perform PRT-OUT until sw=1
+    Display no of REC
+    Stop run
+    PRT-OUT
+    READ IN FILE AT END MOVE 1 TO SW
+    WRITE OUT-REC FROM IN-REC
+    Add 1 to no of REC
+
+    File has 1000 RECS .......... displayed the perform.
+    Assume NO_OF REC pic 9(4)
+
+  a) 1000  b)100  c)1  d) mere syntax error
+
+12) Big question
+
+13) C1,C2,C3        C1-true     C2-false     C3-true
+
+  A. C1 AND (NOT C2) OR C3
+  B. (NOT C1) OR (NOT C2 AND NOT C3)
+  C. (C1 OR C2) AND C3
+  D. C1 AND C2 OR C3
+
+  a) A,B,C are true
+  b) A,C,D are true
+  c) A,B,C,D are true
+  d) C,D are true
+
+14) FD FILE-1
+    01 REC-1 pic X(80)
+    working storage section
+    01 W-REC pic X(90)
+    PROCEDURE DIVISION
+    FIRST-PARA
+    READ FILE-1 into W-REC
+    At END MOVE 1 to EOF flag
+
+
+   which is true
+
+  a) REC-1 contains nothing and W-REC has contents of record read
+  b) REC-1 and W-REC contain the same data
+  c) Syntax invalid and syntax error
+  d) REC-1 and W-REC must have same size
+
+15) PERFORM ACCUMULATE Totals if executed
+
+    varying A from 1 by 2 until A>2
+    Alter B from 1 by 1 until B>2
+    Alter C from 2 by -1 until C<1
+
+   a) 18 times  b) 4 times  c) 8 times  d) 24 times
+
+16) FILE-ORGANIZATION IS INDEXED
+    read, records in random also sequentially in which access mode ?
+   a) sequential  b) random  c) dynamic  d) nothing
+
+17) This is PROCEDURE DIVISION ENTRY
+         OPEN EXTENDED IN FILE
+    correct organization of IN-FILE is sequential and.........
+   a) sequential & records can be added in beginning
+   b) sequential & records can be added in the end
+   c) Index and records can be added in the beginning
+   d) Index and records can be added in the end
+
+18) size of W-REC
+    01 W-REC
+       05 A pic 9(4)v99
+       05 B redefine A
+          10  C pic XX
+          10  D pic 89(4)
+       05 E occurs 7 pic ZZ ZZ
+       05 F occurs 5
+         10 occurs pic zz,zzz 99
+           ...................
+             15 J pic  59(8)
+             15 K pic  v99
+
+ a) 177  b)161  c)150  d) none
+
+
+19) If X and Not Y move A to B
+    If Z=1 or 9 MOVE A to B
+    select one of the following data division which gives result
+
+   a) 01  z  pic  9
+         88  X  VALUE  1,9
+         88  y  VALUE  0,2 through 8
+
+   b) 01  z  pic  9
+         88  X value 0,2 through 8
+         88  Y value 1,9
+
+   c) 01  z  pic  9
+         88  X value  1,9
+         88  NOT-Y value 0,2 through 8
+
+   d) NONE
+
+20) MOVE 10 TO N
+    PERFORM PARA-X N TIMES
+    STOP RUN
+    PARA-X
+    Move 5 to n
+   
+    Para-x will be executed how many times?
+
+  a) 10  b) 5  c) 0  d) error
+
+21) If A less 1200 ( if B greater than 25)
+    Move 47 to c
+    Else move 57 to c
+    If A greater 249 Move 67 to c else next sentence
+    else if B less 67 move 27 to c
+
+   what is c if A=137 and B=25
+
+  a) 27  b) 57  c) 67  d) none
+
+22) 77A pic 9v9 value 9.5
+    77A pic 9 value 9
+    77C pic v9 value 0.8
+    77D pic 9
+    77E pic 9
+    77f pic 9v999
+ D,E,F are ?
+
+  a)F=9.589  E=8  D=1   b) F=9.589  E=8  D=9
+  c) F=9.589 E=7  D=9   d) F=9.589  E=7  D=1
+
+23) 77 w-NUN PIC 9 value 0
+       MOVE  To w-NUN
+       PERFORM PARA-X UNTIL W-NUN>9
+       PARA - X  
+       add 1 to w-NUN
+      How many times PARA x would be created ?
+ a) 10 b) 9 c) 11 d) 0
+
+24) 77 A PIC 99V99 value 55 35
+    77B PIC 99V999 value 32754
+    Add B to A on size erreor display error results
+
+ a) A = 88.10 B = 32.754   b) A = 87.60  B =32.754
+ c) A = 87.10 B = 32.754   d) error  
+
+25) 77 A pic 9(10)
+    77 B pic 9(10)
+    77 C pic 9(19)
+
+    Multiply A by B giving C, which is true
+
+   a) execution may give on size error
+   b) execution will give on size error 
+   c) det of C invalid  results in compile error
+   d) No error
+
+26) A paragraph para-x is executed when none of the data names A,B,C have 
+value of 1 which
+ achieves this:
+
+  a) If A not= 1 or B not= 1 or C not= 1
+  b) if Not A =1 and B=1 and C=1
+  c) if A not=1  if not B=1 or C=1
+  d) if A not=1 and B not=1 and C not =1.
+
+27)             Expression              |       Class
+   
+--------------------------------------------------------------------------------------       
+    1. "Spaces"                         |  figurative constant
+    2. "Depreciation schedule"          |  non numeric literal
+    3. "12%"                            |  non numeric literal
+    4. zeros                            |  figurative constant
+   
+--------------------------------------------------------------------------------------- 
+
+
+  a) 1 and 3 are incorrect
+  b) 1 and 4 are correct
+  c) 3 and 4 are correct
+  d) all are correct
+
+28) Identify Invalid Dynamic
+    a) SAVING-ACCOUNT    b) ANNUAL-ALLOCATION-FOR-OVERHEAD
+    c) $AMOUNT 250       d) AIZDN
+
+29)End-of -file-switch pic xxx
+   88 No-More-RECS value "yes"
+   88 More RECS    value "No"
+
+   i) Read sample-file at END MOVE "yes" to
+   ii) No-More-RECs
+   iii) If No-More-RECs-EQUL "yes" GO TO LAST PARA
+   iv) if No-More-RECs Go to LAST PARA
+
+   a) i and ii are wrong
+   b) ii and iii are correct
+   c) i and iii are correct
+   d) all are correct
+
+30) Working storage section
+    01 DATE-TODAY
+       05 yy pic xx value "90"
+       05 mm pic xx value "12"
+       05 dd pic xx value "31"
+    DATE-ELIT pic xx/xx/xx
+    .....DATE TODAY TO DATE EDIT
+
+31) How many bytes allocated?
+
+    REC A
+    05  A  pic  89(4)
+    05  B  pic  XXXBXXX
+    05  C  pic  XX,XX9.99
+    05  D  pic  89(5) comp-3
+    05  E  pic  9(3) comp
+
+   a) 9  b) 26  c) 25   d) 28.
+
+32) W-DATE pic X(6)
+    05 DD pic 99
+    05 MM pic 99
+    05 YY pic 99
+
+   a) nothing wrong  b) under W-C all level 05 items are having pic 99 
+but level has pic X(6)
+   c) pic can't be group item   d) DD,MM,YY invalid data names
+
+33) If
+    consider the following 
+    05 X pic 99 value 10
+    SUBTRACT 20 FROM X . result = ___________
+
+  a)10  b) infinity  c) compile error  d) none
+
+34) 88 lead used for
+  a) data item in W-5 section   b) item with ................
+  c) condition names            d) none
+
+35) compute X= A*B-C*D and
+    compute X= (A*B)-(C*D)
+
+   a) are not same            b) are same
+   c) syntactically wrong     d) will lead to run time error
+
+36) occurs always used in data division 100 data name at
+
+   a) 01 level  b) 77 level   c) 88 level   d) 02 to 49
+
+37) 05 X pic 99 value 10
+    Add 40x to X
+    compute X= 3X-40.  X=_______________
+
+   a) 10  b) 40  c) compile and run error  d) none
+
+38) The hierarchy of execution of logical operator is
+  a) NOT,AND,OR   b) AND,OR,NOT  c) OR,AND,NOT   d) OR,NOT,AND
+
+39) Given the following piece of code:
+    call sub-pgm using A,B,C
+    call sub-pgm using A,B,C
+    
+   a) both call statements will always produce the same result
+   b) both call statements may produce same result
+   c) compile time error because sub-prg is .........
+   d) compile time error because  A,B,C is used .........
+        
+
+40) The order of precedence of arithmetic operators can be overridden by:
+  a)[  ]   b) ()   c){ }   d) any of the above
+
+41)What para is compulsory for every COBOL programmming
+
+  a) SPECIAL NAME    b) PROGRAM ID   c) FILE CONTROL   d) object compute
+
+
+42) which of the following can be opened in all modes INP,I-O,O/P etc..,
+   a) Indexed  b) relative   c) sequential   d) all
+
+43)which of the following editing pic symbol is to be used if negative is 
+to appear before the
+   value if the value is positive?
+
+  a) +   b) -   c) + or -   d) not possible
+
+44)some loop program
+
+
+For Questions 45 to 49 read the following:
+
+   under the following condition
+
+   01 PRICE-LIST
+      03 BRAND OCCURS 25
+      05 BRAND SIZE OCCURS 4
+      07 PRICE PIC 999
+      07 DISCOUNT PIC 99
+
+   Pick out the valid identifiers for the following
+
+45) How many data names?
+
+46) Total amount
+ 
+47) Amount for item
+
+48) No of if and else states
+
+49) What is in Madras.
+
+################################################################
+################################
+
+                                  SOLUTIONS
+        1. B
+
+        2. B
+
+        3. C
+ 
+        4. C
+
+        5. C
+
+        6. A
+
+        7. C
+
+        8. B
+
+        9. B
+
+        10. A
+
+        11. C
+
+        12. C
+
+        13. B
+        
+        14. B
+
+        15. B
+
+        16. C
+
+        17. B
+
+        18. B
+
+        19. D
+
+        20. A
+
+        21. B
+
+        22. C
+
+        23. B
+        
+        24. A
+
+        25. A
+
+        26. D
+
+        27. A
+
+        28. C
+
+        29. A
+
+        30. 90/12/31
+
+        31. C
+
+        32. C
+
+        33. A
+
+        34. C
+
+        35. B
+
+        36. D
+
+        37. C
+
+        38. A
+
+        39. B
+
+        40. B
+
+        41. B
+
+        42. C 
+
+        43. A
+
+        44. STD IN 1
+            STD IN 2
+            END 
+
+        45. 5
+
+        46. 9(8)V99
+
+        47. 9(8)V99
+
+        48. 3
+        
+        49. ZZ,ZZ,Z99V99
+
+################################################################
+###############################
+Subject: TCS C Questions
+--------------------------
+1) Which of these is an invalid dataname?
+   a) wd-count          b) wd_count
+   c) w4count           d) wdcountabcd
+
+2) What is the output of the following program
+   main ()
+   {
+      unsigned int i;
+
+      for (i = 10; i >= 0; i--)
+         printf ("%d", i);
+   }
+   a) prints numbers 10 - 0     b) prints nos 10 - 1
+   c)                           d) goes into infinite loop
+
+11) What is the value of the following expression?
+    i = 1;
+    i << 1 % 2
+    a) 2        b) 
+    c) 1        d) 0
+
+12) What is the value of the following expression?
+    i = 1;
+    i = (i <<= 1 % 2)
+    a) 2        b)
+    c) 0        d) erroneous syntax
+
+What is the result?
+13) *A + 1 - *A + 3
+    a) -        b) -2
+    c) 4        d) none of the above
+
+14) &A[5] - &A[1]?
+    a)          b)
+    c) 4        d)
+
+15) C allows 
+    a) only call by value
+    b) only call by reference
+    c) both
+    d) only call by value and sometimes call by reference
+
+16) The following statement is
+    " The size of a struct is always equal to the sum 
+        of the sizes of its members"
+    a) valid    b) invalid      c) can't say
+
+17) How many x's are printed?
+    for (i = 0, j = 10; i < j; i++, j--)
+       printf ("x");
+    a) 10       b) 5    c) 4    d) none
+
+18) output?
+    main ()
+    {
+       int i = 2, j = 3, k = 1;
+       swap (i, j)
+       printf ("%d %d", i, j);
+    }
+    swap (int i, int j)
+    {
+       int temp;
+       temp = i; i = j; j = temp;
+    }
+    YOU KNOW THE ANSWER
+
+19) main ()
+    {
+       int i = 2;
+       twice (2);
+       printf ("%d", i);
+    }
+    twice (int i)
+    {
+    bullshit
+    }
+
+int i, b[] = {1, 2, 3, 4, 5}, *p;
+    p = b;
+    ++*p;
+    p += 2;
+
+20) What is the value of *p;
+    a) 2 b) 3  c) 4  d) 5
+21) What is the value of (p - (&p - 2))?
+    a)   b) 2  c)    d)  
+
+23) x = fopen (b, c)
+    what is b?
+    a) pointer to a character array which contains the filename
+    b) filename whithin double quotes
+    c) can be anyone of the above
+    d) none
+
+24) x = malloc (y).  Which of the following statements is correct.
+    a) x is the size of the memory allocated
+    b) y points to the memory allocated
+    c) x points to the memory allocated
+    d) none of the above
+
+25) which is the valid declaration?
+    a) #typedef struct { int i;}in;
+    b) typedef struct in {int i;};
+    c) #typedef struct int {int i;};
+    d) typedef struct {int i;} in;
+
+26) union {
+       int no;
+       char ch;
+    }  u;
+    What is the output?
+    u.ch = '2';
+    u.no = 0;
+    printf ("%d", u.ch);
+    a) 2        b) 0    c) null character       d) none
+
+27) Which of these are valid declarations?
+    i) union {          ii) union u_tag   {
+          int i;                int i;
+          int j;                int j;
+       };                  };
+
+    iii) union {        iv) union {
+          int i;                int i;
+          int j;                int j;
+          FILE k;               }u;
+       };                 
+
+    a) all correct      b) i, ii, iv
+    c) ii & iv          d) 
+
+28) p and q are pointers to the same type of dataitems. 
+    Which of these are valid?
+      i) *(p+q)
+     ii) *(p-q)
+    iii) *p - *q
+
+    a) all 
+    b)
+    c) iii is valid sometimes
+
+29) which are valid?
+      i) pointers can be added
+     ii) pointers can be subtracted
+    iii) integers can be added to pointers
+    a) all correct      b) only i and ii
+
+30) int *i;
+    float *f;
+    char *c;
+    which are the valid castings?
+    i) (int *) &c
+    ii) (float *) &c
+    iii) (char *) &i
+
+31) int i = 20;
+    printf ("%x", i);
+    what is the output?
+    a) x14      b) 14   c) 20   d) none of the above
+
+32) main ()
+    {
+       char *name = "name";
+       change (name);
+       printf ("%s", name);
+    }
+    change (char *name)
+    {
+       char *nm = "newname";
+       name = nm;
+    }
+    what is the output?
+    a) name     b) newname      c) name = nm not valid
+    d) function call invalid
+
+33) char name[] = {'n', 'a', 'm', 'e'}
+    printf ("name = \n%s", name);
+    a) name =
+       name
+    b) name =
+       followed by funk characters
+    c) name = \nname
+    d) none
+
+34) int a = 0, b = 2;
+        if (a = 0)
+           b = 0;
+        else
+           b *= 10;
+    what is the value of b?
+    a) 0        b) 20   c) 2    d) none
+
+35) int x = 2, y = 2, z = 1;
+    what is the value of x afterh the following statmements?
+    if (x = y%2)
+       z = crap
+    else
+       crap
+
+    a) 0 b) 2 c)1 d)none
+
+37) output?
+    initially n = -24;
+    printd (int n)
+    {
+       if (n < 0)
+       {
+          printf ("-");
+          n = -n;
+       }
+       if (n % 10)
+          printf ("%d", n);
+       else
+          printf ("%d", n/10);
+
+       printf ("%d", n);
+    }
+    a. -24      b.24    c.      d.-224
+
+38) float x, y, z;
+    scanf ("%f %f", &x, &y);
+
+    if input stream contains "4.2 3 2.3 ..." what will x and y contain
+    after scanf?
+    a. 4.2, 3.0
+    b. 4.2, 2.3
+    c.
+    d.
+
+39) #define max(a,b) (a>b?b:a)
+    #define squre(x) x*x
+
+    int i = 2, j = 3, k = 1;
+    printf ("%d %d", max(i,j), squre(k));
+
+    output?
+    a.32  b.23  c.31  d.13
+
+40) struct adr {
+       char *name;
+       char *city;
+       int zip;
+    };
+    struct adr *adradr;
+    which are valid references?
+
+    i) adr->name   X
+    ii) adradr->name
+    iii) adr.zip   X
+    iv) adradr.zip
+
+41) main (x, y)
+    int x, char *y[];
+    {
+       printf ("%d %s", x, y[1]);
+    }
+    output when invoked as
+       prog arg1
+    a. 1 prog b. 1 arg1 c. 2 prog d. 2 arg1
+
+42) extern int s;
+    int t;
+    static int u;
+    main ()
+    {
+    }
+    which of s, t and u are availeble to a function present in another
+    file
+    a. only s 
+    b. s & t 
+    c. s, t, u
+    d. none
+
+
+43) main ()
+    {
+    }
+    int a;
+    f1(){}
+    f2(){}
+
+    which of the functions is int a available for?
+    a. all of them
+    b. only f2
+    c. only f1
+    d. f1 and f2 only
+
+
+
+    int a = 'a', d = 'd';
+    char b = "b", c = "cr";
+
+    main ()
+    {
+       mixup (a, b, &c);
+    }
+    mixup (int p1, char *p2, char **p3)
+    { 
+       int *temp;
+       ....doesnt matter.....
+    }
+
+44) what is the value of a after mixup?
+    a. a        b.b     c.c     d.none of the above
+
+45) what is the value of b after mixup?
+    a. a        b.b     c.c     d.none of the above
+
+46) main ()
+    {
+       char s[] = "T.C.S", *A;
+       print(s);
+    }
+    print (char *p)
+    {
+       while (*p != '\0')
+       {
+          if (*p != ".")
+             printf ("%s", *p);
+          p++;
+       }
+    }
+    output?
+   a.T.C.S
+    b.TCS
+    c.
+    d. none of the above
+
+47) a question on do ... while
+48) a question on % operator
+
+
+49) main ()
+    {
+       int ones, twos, threes, others;
+       int c;
+
+       ones = twos = threes = others = 0;
+
+       while ((c = getchar ()) != EOF)
+       {
+          switch (c)
+          {
+             case '1': ++ones;
+             case '2': ++twos;
+             case '3': ++threes;
+                       break;
+             default: ++others;
+                       break;
+          }
+       }
+       printf ("%d %d", ones, others);
+    }
+
+    if the input is "1a1b1c" what is the output?
+    a. 13
+    b. 
+    c. 33
+    d. 31
+
+
+
+
+
+

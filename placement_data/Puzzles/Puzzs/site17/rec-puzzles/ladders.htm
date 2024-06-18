@@ -1,0 +1,86 @@
+<html><head>
+<title>Solution for /geometry/ladders</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /geometry/ladders problem</h1>
+<hr>
+Ladders 1 and 2, denoted L1 and L2, respectively, will rest along two
+walls (taken to be perpendicular to the ground), and they will
+intersect at a point O = (a,s), a height s from the ground.  Find the
+largest s such that this is possible.  Then find the width of the
+alley, w = a+b, in terms of L1, L2, and s.  This diagram is not to
+scale.
+<pre>
+                 B                     D
+                  |\ L1           L2 /|
+                  |  \             /  |           BC = length of L1  
+                  |    \         /    |           AD = length of L2
+                  |      \  O  /      |            s = height of intersection
+                 x|        \ /        |y           A = (0,0)
+                  |        /|\        |           AE = a 
+                  |    m /  |  \ n    |           EC = b
+                  |    /    |s   \    |           AO = m
+                  |  /      |      \  |           CO = n
+                  |/________|________\|     
+         (0,0) = A    a     E    b     C
+</pre>
+<hr>
+Without loss of generality, let L2 &gt;= L1.
+
+<p>
+Observe that triangles AOB and DOC are similar.  Let r be the ratio of
+similitude, so that x=ry.  Consider right triangles CAB and ACD.  By
+the Pythagorean theorem, L1^2 - x^2 = L2^2 - y^2.  Substituting x=ry,
+this becomes y^2(1-r^2) = L2^2 - L1^2.  Letting L= L2^2 -L1^2 (L&gt;=0),
+and factoring, this becomes
+
+<pre>
+    (*)   y^2 (1+r)(1-r) = L
+</pre>
+
+Now, because parallel lines cut L1 (a transversal) in proportion, r =
+x/y = (L1-n)/n, and so  L1/n = r+1.  Now, x/s = L1/n = r+1, so ry = x =
+s(r+1).  Solving for r, one obtains the formula r = s/(y-s).
+Substitute this into (*) to get
+
+<pre>
+    (**)  y^2 (y) (y-2s) = L (y-s)^2
+</pre>
+NOTE:  Observe that, since L&gt;=0, it must be true that y-2s&gt;=0.
+
+<p>
+Now, (**) defines a fourth degree polynomial in y.  It can be written in the
+form (by simply expanding (**))
+
+<pre>
+    (***)  y^4 - 2s_y^3 - L_y^2 + 2sL_y - Ls^2 = 0
+</pre>
+L1 and L2 are given, and so L is a constant.  How large can s be?  Given L,
+the value s=k is possible if and only if there exists a real solution, y',
+to (***), such that 2k &lt;= y' &lt; L2.  Now that s has been chosen, L and s are
+constants, and (***) gives the desired value of y.  (Make sure to choose the
+value satisfying 2s &lt;= y' &lt; L2.  If the value of s is "admissible" (i.e.,
+feasible), then there will exist exactly one such solution.)
+Now, w = sqrt(L2^2 - y^2), so this concludes the solution.
+
+<p>
+L1 = 11, L2 = 13, s = 4.  L = 13^2-11^2 = 48, so (***) becomes
+
+<pre>
+   y^4 - 8_y^3 - 48_y^2 + 384_y - 768 = 0
+</pre>
+Numerically find root y ~= 9.70940555, which yields w ~= 8.644504.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

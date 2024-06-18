@@ -1,0 +1,1384 @@
+	   TEXAS INSTRUMENTS 
+	********************** 
+ 
+Technical Test - 1 hr 
+========================== 
+ 
+1. The correct sequence of events in a procedure call is : 
+(a)Caller pushes the args. on to the stack, control is given to the  
+callee,  
+   callee adjusts the stack pointer for local vars. 
+(b)Control given to the callee and callee pushes the args. on to the  
+stack. 
+(c)Caller pushes the args. on to the stack, control is given to the  
+callee. 
+(d)    None of these. 
+ 
+2. Given the pre- post- and in-order traversals for a tree, choose the 
+ original tree. (There were four trees given - simple choice) 
+ 
+3. Which relation below among DFA(Deterministic Finite Automata),  
+NDFA(Non- 
+deterministic DFA), RE(Regular Exp.), PDA(Push-down Automata), and  
+CFL(Context Free Language) is correct : 
+( = means equivalent too, < means subset) 
+(a) 
+(b) 
+(c)    DFA=NDFA=RE<CFL, CFL=PDA (we remember only the correct choice) 
+(d) 
+ 
+4. Which is the simplest m/c to represent {(a^n)(b^n) where n is an  
+int} : 
+(a)    finite state automaton 
+(b)    Turing m/c 
+(c)    PDA 
+(d)    None of these 
+ 
+5. What would be the value of 'c' in the foll. code segment : 
+	#define MUL(a,b)    a*b 
+	int x = 5, y = 10, z = 10, w = 5; 
+	. 
+	. 
+	. 
+	c = MUL(x+y,z+w); 
+ 
+(a) 225 
+(b) 150 
+(c) 110 
+(d) None of these 
+ 
+6.Which of the foll. program is likely to create a Stack overflow for  
+very  
+high value of n : 
+ 
+    (i) 	       (ii) 
+int fact(int n) 	   int fact_ii(int n) 
+{		 { 
+if (n >0)	     int fact_val = 1, i = 0; 
+    return n*fact (n-1);    for (i = 1; i <= n ; i++) 
+else			fact_val = fact_val*i; 
+    return 1;	     return fact_val; 
+}		 } 
+ 
+(a) (i) only 
+(b) (ii) only 
+(c) both 
+(d) None of these 
+ 
+ 
+7. How many times is the printf statment executed in the following code  
+and  
+what is printed each time: 
+    main() 
+    { 
+    int i=1 
+    fork(); 
+    fork(); 
+    printf("i = %d\n", i+1); 
+    } 
+(a) 4, each time 2 is printed 
+(b) 3, each time 2 is printed 
+(c) 2, (2,3) is printed 
+(d) 4, (2,3,4,5) is printed 
+ 
+8. What is the output in the foll. code : 
+void f(int * ptr) 
+{ 
+static int val = 100; 
+ptr = &val; 
+} 
+ 
+main() 
+{ 
+int i = 10; 
+printf("%d\n",i);  
+f(&i); 
+printf("%d\n",i);  
+} 
+ 
+(a) 10, 100 
+(b) 10, 10 
+(c) 10, Address of val 
+(d) None 
+ 
+9. How many times is printf reached in the foll. code : 
+main() 
+{ 
+fork(); 
+fork(); 
+exec("ls -al"); 
+printf("Hi!"); 
+} 
+ 
+(a) 4 
+(b) 3 
+(c) 8 
+(d) Never reached. 
+ 
+10. What does the following fn. output : 
+(short int is 16 bits long) 
+func(short int val) 
+{ 
+short int i; 
+for (i=0 ; i < 16 ; i++) 
+if (val & (0x8000 >> i)) 
+    printf("1"); 
+else 
+    printf("0"); 
+printf("\n"); 
+} 
+ 
+(a) BCD rep. of val 
+(b) binary rep. of val 
+(c) hex rep of val 
+(d) decimal rep of val 
+ 
+ 
+11. What is the exp. corresponding to the following parse tree : 
+	    (/) 
+	   /   \	 
+	 (+)	(x) 
+	/    \ 
+     (-)    (*) 
+    /  \   /   \ 
+  (a) (b) (c) (d)	  
+(a) - 
+(b) - 
+(c) ((a - b) + c * d)/x 
+(d) - 
+ 
+12. What is the sequence of compilation : 
+(a) Lexical, syntax, intermediate code gen., code optimization, code  
+gen. 
+(b) - 
+(c) - 
+(d) -  
+ 
+13. If some C reserved word is misspelt, which phase is likely to catch  
+it : 
+(a) syntax analysis 
+(b) semantic analysis 
+(c) lexical Analysis 
+(d) - 
+ 
+14. What expression is associated with this Karnaugh map : 
+    AB 00  01  11  10 
+    \ ---------------- 
+    C| 1 | X | 0 | 0 | 
+       ---------------- 
+     | 1 | X | 0 | X | 
+      ---------------- 
+ A' = A complement 
+(a) A'	
+(b) B' 
+(c) A.B' 
+(d) - 
+ 
+15. Which is the best data structure to store a heap : 
+(a) B Tree (b) Array (c) Tree (d) Graph 
+ 
+16. What is the worst case complexity of insertion sort : 
+(a) O(nlog n) 
+(b) O(n^2 logn) 
+(c) O(n^2) 
+(d) - 
+ 
+17. What is the complexity of the following code : 
+     
+    fib(n) = fib(n - 1) + fib(n - 2)  
+	   = 1	  if n = 0   
+(a) linear 
+(b) logarithmic 
+(c) exponential 
+(d) none 
+ 
+18. Integer division is defined with num. & denum in 2's complement  
+format	
+    What are the conditions that must b true 
+(a) n = qd + r; 0 <= abs(r) < n; sign(r) == sign(n) 
+(b) n = qd + r; r > 0; r < n;  sign(r) == sign(n) 
+(c) n = qd + r; r <= n 
+(d) - 
+ 
+19. How is this expression parsed as 
+    int *myarrs[5]() 
+(a) integer array 
+(b) array of pointers to functions returning ptr to ints 
+(c) pointer to function returning int array 
+(d) - 
+ 
+20.Given a weighted graph ( weights on edges and vertices), find the  
+shortest  
+path bn. the two given vertices. 
+ 
+[ Graph was large so it is not possible to draw  - easy] 
+ 
+============================================================================== 
+ 
+ 
+2 nd Test  - Aptitude  
+========== 
+ 
+1/2 an hour; 36 Qns;  Pictorial Aptitude - Given a sequence of patterns  
+find  
+the next one from a set of 8 choices. Progressively Difficult. 
+ 
+	       ORP 
+	   ****************** 
+ 
+// 3 Sections -- 
+1)     Aptitude 
+2)     General System Concepts 
+3)  Unix 
+4)  C/C++ 
+5)  Windows 
+6)  Java/Html 
+ 
+u have a option between aswering 3 or 5 and 4 or 6// 
+Techinical---> 
+ 
+1) X.25 is a  
+a) Parallel switch network access protocol. 
+b) Circuit Switch 
+c) Packet Switch 
+d) ---------- 
+ 
+2) Udp is  
+a) Connectionless 
+b) Unreliable 
+c) Connection-oriented. 
+ 
+A) only a is correct 
+B) a and b are correct. 
+ 
+3) Swapping is done by	
+a) Short term scheduler 
+b) long term  
+c) meduim term 
+d) none 
+ 
+5) #define sqrt(x)    ((x)*(x)) 
+    What will be the output of the following code. 
+    main() 
+    { 
+	int i=10,j=10; 
+ 
+	printf("%d %d\n",sqrt(i++),sqrt(j++)); 
+    } 
+a) 100,100 
+b) 110,110 
+c) 100,110 
+d) 110,100 
+ 
+6) If O_NDELAY Flag is set when opening a pipe 
+and when the reading process sees no data in the pipe 
+then 
+a) returns an error 
+b) return zero data read 
+c) waits for data 
+d) 
+ 
+7) S-> xxw {printf("1)} 
+   s->y    {printf("2")} 
+   w->sz {printf("3")} 
+ 
+   what will be the output for the string xxxxyzz ? 
+ 
+8)After fork which process get a return value 0 ? 
+a) child 
+b) parent 
+c) sibling 
+d) none 
+ 
+9)which system call doesnot return after successfull completion ? 
+a) mknod 
+b) exec  
+c) fork 
+d) open 
+ 
+6)Semaphores can be created by 
+a) Semget 
+b) semopt 
+c) semcreate 
+d) none 
+ 
+7) 192.168.199.4 is a which class network  
+a) A 
+b) B 
+c) C 
+d) D 
+ 
+8) Unix uses which cache replacement policy during disk IO 
+a) FiFo 
+b) Lifo 
+c) LRU 
+d) Least refernced page 
+ 
+9) what will be the output of the followinf C Code ? 
+ 
+main() 
+{ 
+    char arr1[]="AB",arr2[]={'A','b'},arr3[]={"ABC","DEF"}; 
+    printf("%d %d %d \n",siezof(arr1),sizeof(arr2),sizeof(arr3); 
+} 
+ 
+10) which is true 
+1) if a is function is private then it can be accesses by members of  
+the class 
+2) if it is protected then it can be accessed by the members of the  
+class 
+3) if it is protected then it can be accesses by its class members and	
+friend	
+class 
+ 
+a) Combinations of 1,2,3...................// 
+ 
+ 
+11) which of the following signals cannot be trapped 
+a) SIGINT 
+b) SIGKILL 
+3) SIGALRAM 
+4) .... 
+ 
+12) FIFO is created by 
+a) fork 
+b) open 
+c) pipe 
+d) mknod 
+ 
+ 
+13) Overflow is detected by  
+a) carry bit in the sign bit 
+b) carry bit out of sign bit 
+c) carry bit into sign bit 
+ 
+14)  Segment	 Base	 Width 
+     0		  2190	  14 
+     1		  xxx	     xx 
+     3		  xxx	     xx 
+     4		  xxx	     xx 
+     5) 	xxx	   xx 
+ 
+     1..5 Base values are less than 2000 
+ 
+physical address for loigcal address 2500 is 
+a) .... 
+b) .... 
+c) .... 
+d) none 
+ 
+15)  
+    main() 
+    { 
+	const char *ptr="Abde"; 
+ 
+	ptr[3]='f'; 
+	printf("%s",ptr); 
+    } 
+    will give 
+a) Error 
+b) Abde 
+c) Abfe 
+d) none 
+ 
+16)Memory leak is 
+a) Data exists but no pointer to it exists 
+b) Data ceases but pointer exists 
+c) Both a & b 
+d) none 
+ 
+17) C------>(derived from) B --------->(dreived from) A 
+then the order in which the constructors will be called is  
+ 
+ 
+18) char *f() 
+{ 
+    char *s=(char *)malloc(sizeof(char)*5); 
+ 
+    strcpy(s,"hi"); 
+    return s; 
+} 
+ 
+char *globptr; 
+ 
+main() 
+{ 
+    globptr=f(); 
+    printf("%s",globptr); 
+} 
+what will be the output of the above code ? 
+ 
+19)  To prevent deadlock the following should not be there  
+a) Circular wait 
+b) Mutual exclusion 
+c) Hold and wait 
+d) .... 
+ 
+20) u can change ur password because 
+a) u have read permission in /etc/password file 
+b) u have execute permission on ,, 
+c)  
+		HUGHES 
+	      ********* 
+1.    Nyquist's Theorm 
+2.    Booth's Theorm. 
+3.    Harley - Shannon Theorm. 
+ 
+4.    Given 4 input muliplexers , how many do you need to make 16 input  
+multiplexer. 
+    a)	  4 
+    b)	  2 
+    c)	  16 
+ 
+5.How many 8 bit numbers have same representation in little and big  
+endian. 
+    a)	  4 
+    b)	  8 
+    c)	  16 
+    d)	  256	  
+ 
+6.A number is choosen at random from 100 - 999 ( both inclusive ).Find	
+the 
+    probability that it doesn't have 7 in it. 
+    a)	  (9/10) ^ 3 
+    b)	  27 / ... 
+    c)	  16 / 25 
+    d)	  18 / 25     
+ 
+7.    Rank of a graph with e edges , v vertices , k components is 
+    a)	  n - k 
+    b)	  n+k 
+    c)	  e - n + v 
+    d) 
+ 
+8.If a binary tree is formed from the foolowing data , how many nodes  
+does the 
+    left and right subtree have 
+ 
+    57 62 1 2 ...... 
+ 
+9.    AVL Tree. 
+ 
+10.    ( A - B ) U ( B - A ) U ( A intersection B ) is equivalent to 
+    a)	  A U B 
+    b)	  A inter B 
+    c)	  A ^ c U B ^ c  
+    d)	  A ^ c inter B ^ c 
+	( A ^ c means complement of A )     
+ 
+11.  Minimun bandwidth reqd for 500bps transmission for transmitting 
+     fundamental freq. only ? 
+ 
+12. Which protocol is reqd for a diskless m/c to know its IP address 
+    a)	  ARP 
+    b)	  RARP 
+    c)	  MNP 
+    d)	  EDP 
+ 
+13. What is multi-threading ? What is re-entrant module ? 
+ 
+14.    What is Direct Map Cache. 
+ 
+15.    What is Daisy algo. 
+ 
+16.    If starting solution is x = -1 , the value to which following  
+equation 
+    will converge , after Newton's Raphson's method. 
+ 
+v	 x ^2  - 2 = 0 
+    a)	  -1 
+    b)	  -2 
+     
+17.    How many calls of X are there for    X(X(5)) 
+ 
+    procedure X( n : integer) : integer 
+    begin 
+	if ( n < 3 ) 
+	    x  := 1 
+	else 
+	    x = x(n-1) + x (n-3) + 1 
+    end 	    
+ 
+18.    In the following program , what is the output if the parameters are  
+    passed by reference and value - result : 
+     
+    PROGRAM (INPUT , OUTPUT) 
+    BEGIN 
+	int a , b ; 
+	a = 1 ; b = 2 ; 
+	p(a,b) ; 
+	printf(" a= %d b = %d\n",a,b) ; 
+    END 
+     
+    p( x , y ) 
+    { 
+	x = x + 2 ; 
+	a = x - y ; 
+	x = x + 1 ; 
+    }				  
+	     
+    a)	  2, 3 
+    b)	  4 , 4 
+     
+ 
+19.    In the circuit , Z = f(A,B) = A bar + B 
+    I and J can take values 0 , 1 , B and B bar 
+ 
+      I 	 J 
+      | 	 | 
+      | 	 | 
+      | 	 |     
+      ---[---]	 | 
+	 [ OR]---|--------------[------] 
+A -------[___]	 |		[ AND  ]------ Z  
+   |		 |	      |-[------] 
+   |		 |	      | 
+   |	 [----]  |-----[----] | 
+   |	 [NOT ]        [ OR ]-- 
+   |-----[____]--------[----] 
+ 
+ 
+ 
+    What should be values of I and J 
+    a)	  0 , B 
+    b)	  0 , B bar 
+    c)	  1 , .. 
+ 
+ 
+20.    Each IP router should have 
+    a)	  No IP address. 
+    b)	  One IP address 
+    c)	  atleast 2  
+    d)	  4 
+ 
+21.    M-shannon equation 
+ 
+ 
+22.    Which network has CSMA/CD 
+    a)	  token ring 
+    b)	  FDDI 
+    c)	  Ethernet 
+ 
+ 
+23.    What's the use of PCM ( in networks )	     
+ 
+24.    In CSMA/CD 
+    a)	  access to channel is probalistic 
+    b)	  access to channel is deterministic 
+    c)	  not all collisions can be detected 
+    d) 
+ 
+25.LX = B,where L is a unit lower triangular matrix. What statement is	
+missing 
+    in the following code : 
+     
+	for (i=1;i<=n;i++) 
+	    x[i] = b[i] ; 
+	     
+	for (i=2;i<=n;i++) 
+	    for (j=1;j<=m;j++) 
+		<statement>		
+ 
+	 
+    This code solves simultaneous set of equations LX=B 
+		     
+ 
+26.    Use of garbage collectors . 
+ 
+27.    When is relative mode addressing used ? 
+    a)	  co-routines 
+    b)	  sub-routines 
+     
+     
+28.    Every node in a tree is atleast as big as it's child . Tree is 
+    a)	  Binary 
+    b)	  AVL 
+    c)	  Heap 
+    d)	  BST 
+ 
+29.    Micro wave curving around earth 
+    a)	  Duching 
+    b)	  Ionoshere effect 
+    c)	  Troposphere scattering 
+    d)	  Faraday effect. 
+     
+ 
+30.    Which contains heterogenous elements 
+    a)	  stack 
+    b)	  array 
+    c)	  record 
+     
+	     
+31.    Power of set { {0} , { 1 , 2 } , 4 } has how many elements 
+ 
+32.    Heap sort. 
+ 
+33.    If x bar * y = x + y 
+    and z = x * y 
+ 
+    then z * x is 
+    a)	  x bar + y 
+    b)	  x 
+    c)	  0 
+    d)	  1 
+ 
+34.    Which doesn't establish a circuit ? 
+    a)	  IP 
+    b)	  ATM 
+    c)	  X.25 
+     
+35.    What is vector interupt. 	    
+ 
+	    MICROLAND 
+	    ********** 
+PART 1 C- LANG 
+ 
+1.    Will the following program compile ? What's the output ?	
+ 
+    main()     
+    { 
+	printf("%d %d %d %d\n",72,072,0x72,0X72); 
+    } 
+     
+2. What's the output ? 
+ 
+    #define cat(x,y) x ## y 
+    main() 
+    { 
+	cat(cat(1,2),3) ; 
+    } 
+     
+3. Is the following declaration appropiate ? 
+    #define square(x) x * x	
+ 
+4. What's the output ? 
+ 
+    main() 
+    { 
+	int k = 12 , n = 500 , p; 
+	p = ( k > 5 & n = 4 ? 100 : 200 ) ; 
+	printf("%d\n",p) ; 
+    } 
+     
+5.    main() 
+    { 
+	int a = 500 , b = 100 , c ; 
+	if ( !a > 400 ) 
+	    b = 200; 
+	    c = 450; 
+	printf("b = %d c = %d\n",b,c) ; 
+    }	      
+ 
+ 
+6.    int fun(char *s , char *f) 
+    { 
+	for ( ; *s==*t ; s++ , f++ ) 
+	    ; 
+	if ( *s == '\0' ) 
+		return 0 ; 
+	return ( (*s - *t) 1 : -1 ) 
+    }		  
+ 
+7. register int i=10; 
+    main() 
+    { 
+	printf ("%d\n",i); 
+	return ; 
+    } 
+ 
+8. 
+    main() 
+    { 
+	int i=10; 
+	printf("%d\n",++i++); 
+	return ; 
+    } 
+ 
+========================================================= 
+ 
+Topics asked : 
+ 
+1. MIME 
+2. MAPI 
+3. CORBA 
+4. HTTP is a stateless server implies ? 
+5. SJF ( Shortest Job First )		      
+6. Thrashing 
+7. Java 
+8. OOP	does not satisfy : 
+    a)	  code reuse 
+    b)	  platform independence 
+ 
+	     NOVELL 
+       ********* 
+1) Write a short note on JAVA,Internet. 
+ 
+2) What should not be used for secondary storage devices 
+    a)hashing b) B-Tree c,d)??? 
+ 
+3) What in type of X inint *(*X)() 
+  
+4) How will u read 3-non blank char separated by blanks 
+    a) scanf("%c %c %c",&a, &b, &c) ; 
+    b) scanf("%c %1s %1s", a, b, c) ; 
+    c) scanf("%3s",&a, &b, &c) ; 
+ 
+5) 3 questions on anytical reasoning 
+ 
+6)  Questions on Hash table , Btrees. 
+ 
+		 ORACLE 30 min. 
+		******** 
+1.    6-7 questions on CORBA , ORACLE , WIN NT , MFC 
+ 
+2.    What is the use of RARP , ARP. 
+3.    UNIX is 
+    a)	  single user 
+    b)	  multi user and multi tasking. 
+    c)	  none. 
+ 
+4.When a computer wants to send a packet to another network , then what  
+is 
+    needed : 
+     
+    a)	  other computer's IP address. 
+    b)	  other computer's name. 
+    c)	  both a and b. 
+    d)	  none.     
+ 
+5.    Which is not a page replacement algorithm. 
+    a)	  LRU 
+    b)	  MRU 
+    c)	  FIFO 
+    d)	  none. 
+ 
+6.    What is cookie ? 
+ 
+7.    Full form of ORB ? 
+ 
+8.    CORBA and IDL . 
+ 
+9.    RDBMS question : 
+	DDL , primary key. 
+	 
+10.    Difference between fork and exec. 
+ 
+11.    What's a Zombie process ? 
+ 
+12.    What is a Magic Cap ? 
+    a)	  open system. 
+    b)	  differnce between a process and process call. 
+    c)	  number of file access. 
+    d)	  none of the above. 
+ 
+13.    Every relation must have a 
+    a)	  primary key. 
+    b)	  foriegn key. 
+    c)	  both a and b. 
+    d)	  none. 
+     
+14.    Complexity of Quick sort : 
+    a)	  O(n) 
+    b)	  O(2 ^ n ) 
+    c)	  O(n log(n) ) 
+    d)	  none. 
+ 
+15.    Oracle supports 
+    a)	  relational model. 
+    b)	  network model. 
+    c)	  heirical model. 
+    d)	  none of the above. 
+ 
+16.    In VC++ , MDI application , a document classes when 
+    a)	  application exits 
+    b)	  last document is closed / exited 
+ 
+17.    Checksum is for . 
+    a)	  error correction 
+    b)	  error detection 
+    c)	  both 
+    d)	  none 
+     
+18A derived class can over ride a non-virtual function in it's base  
+class: 
+    a)	  this is always possible 
+    b)	  not possible 
+    c)	  possible if base class is a abstract class 
+    d)	  possible if base class is not a abstract class 
+ 
+19.    Conceptual Scehma is devised on 
+    a)	  DDL 
+    b)	  DML 
+    c)	  DCL 
+    d)	  ACL 
+ 
+20.    16 bit subsystem in Windows NT is 
+    a)	  WOW	     ( Windows of Windows ) 
+    b)	  Win 16 - 32 
+    c)	  Thunker 
+    d)	  ..	 
+ 
+		 RIVERRUN 
+	********** 
+Solve the following series. 
+ 
+1) 2 , 6 , 14 , 26 , - , 62 
+ 
+2) 2 , 0 , 3 , 1 , 4 , 2 , - , 3 
+ 
+3) 101 , 100 , - , 87 , 71 
+ 
+4) 2 , 9 , 28 , 65 , - 
+ 
+5) class X  
+       { 
+	   virtual void f(int n = 0) = 0 ; 
+    }; 
+   class Y : public X 
+       { 
+	void f(int n = 1) ; 
+    }; 
+   class Z : public Y 
+       { 
+	void f(int n = 2) ; 
+    }; 
+    X * x = new Y; 
+    Y * y = new Z; 
+    x->f();y->f(); 
+    Arguments to f 
+    a) (0,2) b) (1,2) c) (0,0) d) none 
+ 
+6) What criteria do you use to resolve conflict in case of function- 
+   Overloading in a class ? 
+    a) argument members and types of the function 
+    b) return type of the function 
+    c) const declaration if at all of the function 
+ 
+    i) a,b,c  ii) a,b  iii) ?	iv) ? 
+ 
+7) main() 
+    { 
+	if ( fork() == 0 ) 
+	{ 
+	    printf("%d",getppid()); 
+	    sleep(25); 
+	    printf("%d",getppid()); 
+	} 
+    } 
+    Value of the two printf's will be same or different ? 
+ 
+8) DDE(dynamic data exchange) is used for  
+    a) CGI applications for the web-browsers 
+    b) The next generation of CORBA 
+    c) For IPC in Windows 
+    d) None of the above 
+ 
+9) You can detect and correct a single bit error using which mechanism	
+? 
+    a) odd parity 
+    b) even parity 
+    c) hamming code 
+    d) none of the above 
+ 
+10)main() 
+    { 
+	if ( access("test",06) == 0 ) 
+	    printf("Hello\n"); 
+	else 
+	    printf("No\n"); 
+    } 
+ 
+    What will be the output if file "test" has read & write permission 
+    but no execute permission ? 
+ 
+    a) Hello 
+    b) No 
+    c) error 
+    d) undefined 
+ 
+11)main() 
+    { 
+	static char ch [] = "hello world\n"; 
+	char *str = ch ; 
+	printf("%c\n",*str+6); 
+    } 
+    What will be the Output ? 
+ 
+12)main() 
+    { 
+	static char str[] = "river run"; 
+	str += 6 ; 
+	printf("%s \n",str); 
+    } 
+    What is the output ? 
+    a) river run 
+    b) run 
+    c) error 
+    d) undefined output 
+ 
+13)In process scheduling priority is given to the processes which have 
+    had least CPU time . It'll favour which of the following ? 
+    a) CPU bound 
+    b) I/O bound 
+    c) balanced mix of the two 
+    d) none of the above 
+ 
+14)Can NFA be converted into DFA ? 
+ 
+15)Explain the type  
+    int (*[])(); 
+ 
+16)Number of page-faults using FIFO which 3 frames and given the  
+    string of page reference numbers  
+    134253456 
+ 
+17)FTP maps to which layer of OSI ? 
+ 
+18)Given the grammar 
+    S -> ABSc 
+    S -> Abc 
+    BA -> AB 
+    Bb -> bb 
+    Ab -> ab 
+    AA -> aa 
+ 
+    a) aabbccc	b) abaaccc c) aaabbbccc d) abcabc 
+ 
+    Which of the above string will be generated by the above grammar ? 
+ 
+19)IP is supported in 
+    a) Token Ring 
+    b) FDDI 
+    c) Ethernet 
+    d) None of the above 
+ 
+20)TCP is  
+    a) Connection Oriented protocol 
+    b) Connectionless protocol 
+    c) ISO transport layer 
+    d) Arpanet layer 
+ 
+21)main() 
+    { 
+	int n = 11 ; 
+	printf("month = %s ",f(n)); 
+    } 
+    f(int a) 
+    { 
+	static char *a[] = { "illegal","jan","feb",....,"dec"}; 
+	return n>1 && n<12 ? a[n]:a[0] ; 
+    } 
+    What will be the output when this program is compiled ? 
+ 
+22)The minimum number of nodes in an AVL tree of height 5 is .. ? 
+ 
+23)Difference between DFA & NFA ? 
+ 
+24)main() 
+    { 
+	int i ; 
+	for ( i = 0 ; i < 2 ; i++ ) 
+	    printf("hello"); 
+	fork(); 
+	    printf("hello"); 
+    } 
+    How many times hello will be printed ? 
+ 
+25)About threads ? 
+    a)share memory space  b)have same pid 
+    i) a&b ii)~a&b iii)~a&~b iv) a&~b 
+ 
+26)R(a,b) is a relation if A->B is a functional dependency 
+    a) R is not BCNF 
+    b) A is Key 
+    c) B is Key 
+    d) R must have atleast 1-tuple 
+ 
+27)Some questions are of following type . 
+    Three diagrams are given and U have find the next in the series . 
+ 
+28)Find odd man/woman out 
+    house , igloo , office , bunglow . 
+ 
+ 
+29)Questions like this are also given . 
+    Five women , their profession(house-wife,doctor...) and their 
+    husbands and their professions are given with some constraints & 
+    Data ? You have to match them and answer the questions ? 
+    ( Refer Barrons for such questions ) 
+********************************************************************** 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+-------------------------------------------------------------------------------- 
+ 
+	   
+ 
+	       TCS PAPER 
+	  ***************   
+ 
+		 TCS complete peper ( except psychometry ) I am sendig	
+to you	
+ with solutions.  
+ 
+Psychomery is very very easy. But you should answer all quetions. 
+	    
+ 
+	    Ok! 
+  
+Please give me reply immediatly. 
+ 
+		     PAPER-97 
+	       ___________________ 
+ 
+ 
+ 
+----------------------------------------------------------------------------- 
+---		CALICUT  TCS paper --1997 
+--------------------------------------------------------------------------- 
+----- 
+ 
+ 
+SECTION 1 INTURN CONSISTS OF THREE PARTS. 
+ 
+PART 1 
+      VERBAL--- 
+	IT CONSISTS OF 40 WORDS WHICH HAS 5 MULTIPLE ANSWERS 
+    FOR THEM.THE MAIN WORDS WHICH I REMEMBER ARE AS FOLLOWS FOR WHICH 
+    YOU SHOULD LEARN THE SYNONYMS OF THESE--- 
+ 
+merry= gay 
+alienate= estrange 
+solicit= beechat 
+heap= to pile 
+cargo= freight 
+momentary= transient 
+volume= quantity 
+veer= diverge 
+dispel= dissipate 
+admonish= cautious 
+meager= scanty 
+latitude= scope 
+latent= potential 
+covet= crave 
+discretion= prudence 
+latent= potential 
+emanicipate= liberate 
+lethargy= stupor 
+concur= acquiesce 
+confiscate= appropriate 
+baffle= frustrate 
+subside= wane 
+misery= distress 
+pretentious= ostentatious 
+tranquil= serene 
+efface= obliterate 
+obstinate= stubborn 
+hover= linger 
+caprice= whim 
+belate= too late 
+renounce= reject 
+brim= border 
+divulge= reveal 
+lament= wail 
+bileaf= conviction 
+adhesive= tenacious 
+furtive= stealthy 
+hamper= obstruct 
+to merit= to deserve 
+ 
+ 
+SECTION 1	 PART B        20MIN	30 marks 15 QUANTITATIVE. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+THESE ARE SOME PROBLEMS : 
+ 
+1.)  two pencils cost 8 cents. then 5 pencils cost? 
+(20 cents) 
+ 
+2. A work is done by the people in 24 minutes.	One of them can do 
+this workalonely in 40 minutes.  How much time to do the same work 
+for the second person? 
+(60 minutes) 
+ 
+3. A car is filled with four and half gallons of fuel for a round trip. 
+Fuel is taken 1/4 more in going then coming.  What is the fuel	
+consumed in coming up? (2 gallons) 
+ 
+4.Low temperature at the night in a city is 1/3 more than 1/2 high as  
+higher temperature in a day.  Sum of the low tem. and highest temp.  
+is 100 degrees.  Then what is the low temp? (40 deg.) 
+ 
+5. A person, who decided to go to weekened trip should not  
+exceed 8 hours driving in a day.  Average speed of forward journey 
+is 40 m/h. Due to traffic in sundays, the return journey average speed 
+is 30 m/h. How far he can select a picnic spot? 
+    a) 120 miles 
+    b) between 120 and 140 miles 
+    c) 160 miles 
+ans: 120 miles 
+ 
+6. A salesperson multiplied a number and get the answer 3, 
+instead of that number devided by 3. 
+what is the answer he actually has to get? 
+	1 x 3 = 3 
+	so number = 1 
+	devided by 3, the ans. is 1/3. 
+ 
+7. A ship started from port and moving with I miles per hour and  
+another 
+ship started from L and moving with H miles per hour. 
+At which place these two ships meet? 
+ 
+    |----|----|----|----|----|----| 
+  port	   G	H    I	  J    K    L 
+ 
+8. A building with height D shadow upto G. A neighbour building with  
+what height shadows C feet. 
+ 
+    |----|----|----|----|----|----|----| 
+    A	 B    C    D	E    F	  G    H 
+ 
+9. A person was fined for exceeding the speed limit by 10 mph. 
+Another person was also fined for exceeding the same speed limit  
+by twice the same.  If the second person was travelling at a  
+speed of 35 mph, find the speed limit.	(15 mph) 
+ 
+10.A bus started from bustand at 8.00am, and after 30 minutes staying 
+ at destination, it returned back to the busstand.  The destination  
+ is 27 miles from the busstand.  The speed of the bus is 18mph.  In 
+ return journey bus travels with 50% fast speed. 
+ At what time it returns to the busstand? (11.00am). 
+ 
+11.In a mixture, R is 2 parts, S is 1 part. In aoder to make S to  
+ 25% of the mixture, howmuch r is to be added? 
+ 
+12. wind flows 160 miles in 330 min, for 80 miles how much time  
+required. 
+ 
+13. with 4/5 full tank vehicle travels 12 miles, with 1/3 full tank 
+    how much distance travels	 ( 5 miles ) 
+ 
+14. two trees are there. one grows at 3/5 of the other in 4 years, 
+    total growth of trees is 8 ft. what growth will smaller tree will  
+have 
+    in 2 years	(  < 2 ft. )  
+ 
+15. A storm will move with a velocity of     towards the centre in    
+hours, 
+    At the same rate how much far will it move in hrs.	
+     ( but the answer is 8/3 or 2 2/3  ) 
+ 
+SECTION-1   PART-3    marks-50	questions-50  30 min 
+	 
+ 
+   CRITICAL REASONING 
+ 
+ 
+ 
+  1.  My father has no brothers. he has three sisters who has two  
+childs each. 
+      My grandfather has sons. 
+ 
+    a) my grandfather has two sons 
+    b) three of my aunts have two sons 
+    c) my father is only child to his father 
+    d) i have six cousins from jmy mother side 
+    e) i have one uncle 
+ 
+ 2. Ether injected into gallablader to dissolve galstones. this type  
+oneday 
+ treatment is enough for gallastones not for calcium stones. this  
+method is 
+ alternative to surgery for millions of people who are suffering from  
+this  
+ disease. 
+ 
+    a) calcium stones can be cured in oneday 
+    b) hundreds of people contains calcium stones 
+    c) surgery is the only treatment to calcium stones 
+    
+  3. Hacking is illegal entry into other computer. this is done mostly	
+because 
+ of lack of knowledge of computer networking with networks one machine	
+can 
+ access to another machine. hacking go about without knowing that each	
+network 
+ is accredited to use network facility. 
+ 
+   a) Hacking people never break the code of the company which they  
+work for 
+   b) Hacking is the only vulnerability of the computers for the usage 
+      of the data. 
+   c) Hacking is done mostly due to the lack of computer knowledge. 
+(there will be some more questions in this one) 
+ 
+  4. Alphine tunnels are closed tunnels. in the past 30 years not even	
+a single 
+ accident has been recorded for there is one accident in the rail road	
+system. 
+ even in case of a fire accident it is possible to shift the passengers  
+into 
+ adjacent wagons and even the living fire can be detected and  
+extinguished 
+ with in the duration of 30 min. 
+ 
+    a) no accident can occur in the closed tunnels 
+    b) fire is allowed to live for 30 min. 
+    c) all the care that travel in the tunnels will be carried by rail 
+       shutters. 
+    d) 
+ 
+  5. In the past helicopters are forced to ground or crash because of  
+the 
+ formation of the ice on the rotors and engines. a new electronic  
+device	
+ has been developed which can detect the watercontent in the atmosphere  
+and 
+ warns the pilot if the temp. is below freezing temp. about the  
+formation 
+ of the ice on the rotors and wings. 
+ 
+   a) the electronic device can avoid formation of the ice on the wings 
+   b) there will be the malfunction of rotor & engine because of  
+formation 
+      of ice 
+   c) the helicopters are to be crashed or down 
+   d) there is only one device that warn about the formation of ice.  
+ 
+ 
+   6. In the survey conducted in mumbai out of 63 newly married house  
+wives  
+ not a single house wife felt that the husbands should take equal part	
+in the 
+ household work as they felt they loose their power over their	
+husbands. 
+ inspite of their careers they opt to do the kitchen work themselves  
+after 
+ coming back to home. the wives get half as much leisure time as the  
+husbands 
+ get at the week ends. 
+ 
+    a) housewives want the husbands to take part equally in the  
+household 
+    b) wives have half as much leisure time as the husbands have 
+    c) 39% of the men will work equally in the house in cleaning and  
+washing 
+    d) 
+ 
+  7. In confucius days the technology development was less and it took	
+weeks 
+ to communicate a message. wherein we can send it through satellite  
+with in 
+ no time........ even with this fast developments it has become  
+difficult to 
+ understand each other. 
+ 
+    a) people were not intelligent during confucius days 
+    b) transport facilities are very much improved in now-a-days 
+    c) even with the fast developments of the technology we cannot live 
+       happily. 
+    d) we can understand the people very much with the development of  
+       communication. 
+ 
+   8. Senior manager in a big company said that new japanies company  
+invades 
+ in India for transfering the cars from industrial and warned that jobs  
+were 
+ under threat from japanies company.  They stated that increasing  
+competence 
+ would be coupled with an inevitable down term in car market and recent  
+rise 
+ in interest rate which has already hit demand. 
+ 
+   a) manager issue their warning after a rise in interest rate 
+   b) manager told workers that japanies workers are taking jobs away  
+from 
+      indian workers 
+   c) manager said that more people want to buy new cars in future 
+   d) increasing rate of interest mean that japanies firm will create  
+into 
+      operate in the country 
+ 
+   9. Human existence is suspecious of arbitrary divide between concise  
+and 
+ unconcise. The concise world invades shape activity of the unconcise,	
+while 
+ many of great activity of humanity waking as whole or partially  
+improved 
+ by dreams. Even it could be ignored that dreams precede exceptional  
+such a 
+ dichotomy could not be drawn as the influence of dream on waking state  
+would 
+ reamin unclear. But as yet no company rebuilt exists to record the  
+substitute 
+ of prendtl dreaming. 
+ 
+   a) sleepy can be creative state 
+   b) it is difficult to tell whether a sleeper is dream or not 
+   c) if we know what babies would dream about before they are born we	
+could 
+      show that the concise and unconcise mind influence on one another 
+   d) it is untrue claim that concise and unconcise world never impinge 
+      one another 
+ 
+   10. Any one who has has systematic exam phases will have perceived a 
+ profound although not a prolif of asymmetry whether or not the  
+exception 
+ is volitions and self control of spontoneous appeal to predict facial	
+as 
+ symmetry as does the type of emotion potrayed. position can not  
+displace 
+ symmetric at left side regret of a negative emotion is more common  
+posed 
+ expression negation emotions are likely to be symmetric representation 
+ and where as symmetric occurs relative left sided expression is more  
+common. 
+ 
+    a) any angry person is more likely to have left sided expression  
+than 
+       some one who has smiling 
+    b) an actor is likely to smile symmetric when acting 
+    c) delecious facial expression will always be as symmetrical 
+ 
+  11. In the totalitariturian days, the words have very much devalued.	
+In the 
+ present day, they are becoming domestic that is the words will be much  
+more 
+ devalued.  In that days, the words will be very much effected in  
+political  
+ area. but at present, the words came very cheap, we can say they come	
+free 
+ at cost. 
+ 
+      a) totalitarian society words are devalued 
+      b) totalitarian	 will have to come much about words 
+      c) the art totalitarian society the words are used for the  
+political 
+	 speeches 
+      d) 
+ 
+   12. There should be copyright for all arts. the rule has come that  
+all the 
+ arts has come under one copy right society, they were use the money  
+that  
+ come from the arts for the developments.  There may be a lot of money	
+will 
+ come from the Tagore works. we have to ask the benifiters from Tagore	
+work 
+ to help for the development of his works. 
+ 
+     a) Tagore works are come under this copy right rule 
+     b) people gives to theater and collect the money for development 
+     c) people are free to go to the	  because of the copy right  
+rule 
+     d) we have ask the Tagore residents to help for the developments  
+of art. 

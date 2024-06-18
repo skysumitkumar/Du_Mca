@@ -1,0 +1,132 @@
+<html><head>
+<title>Solution for /competition/games/square-1</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /competition/games/square-1 problem</h1>
+<hr>
+<h2>Shapes</h2>
+
+<ol>
+<li> There are 29 different shapes for a side, counting reflections:
+<ul>
+   <li> 1 with 6 corners, 0 edges
+   <li> 3 with 5 corners, 2 edges
+   <li> 10 with 4 corners, 4 edges
+   <li> 10 with 3 corners, 6 edges
+   <li> 5 with 2 corners, 8 edges
+</ul>
+<li> Naturally, a surplus of corners on one side must be compensated
+   by a deficit of corners on the other side.  Thus there are 1*5 +
+   3*10 + C(10,2) = 5 + 30 + 55 = 90 distinct combinations of shapes,
+   not counting the middle layer.
+
+<li> You can reach two squares from any other shape in at most 7 transforms,
+   where a transform consists of (1) optionally twisting the top, (2)
+   optionally twisting the bottom, and (3) flipping.
+
+<li> Each transform toggles the middle layer between Square and Kite,
+   so you may need 8 transforms to reach a perfect cube.
+
+<li> The shapes with 4 corners and 4 edges on each side fall into four
+   mutually separated classes.  Side shapes can be assigned values:
+   0: Square, Mushroom, and Shield; 1: Left Fist and Left Paw; 2:
+   Scallop, Kite, and Barrel; 3. Right Fist and Right Paw.  The top
+   and bottom's sum or difference, depending on how you look at them,
+   is a constant.  Notice that the side shapes with bilateral symmetry
+   are those with even values.
+
+<li> To change this constant, and in particular to make it zero, you must
+   attain a position that does not have 4 corners and 4 edges on each
+   side.  Almost any such position will do, but returning to 4 corners
+   and 4 edges with the right constant is left to your ingenuity.
+
+<li> If the top and bottom are Squares but the middle is a Kite, just flip
+   with the top and bottom 30deg out of phase and you will get a cube.
+</ol>
+<h2>Colors</h2>
+
+<ol>
+<li> I do not know the most efficient way to restore the colors.  What
+   follows is my own suboptimal method.  All flips keep the yellow
+   stripe steady and flip the blue stripe.
+
+<li> You can permute the corners without changing the edges, so first
+   get the edges right, then the corners.
+
+<li> This transformation sends the right top edge to the bottom
+   and the left bottom edge to the top, leaving the other edges
+   on the same side as they started:  Twist top 30deg cl, flip,
+   twist top 30deg ccl, twist bottom 150deg cl, flip, twist bottom
+   30deg cl, twist top 120deg cl, flip, twist top 30deg ccl, twist
+   bottom 150deg cl, flip, twist bottom 30deg cl.  Cl and ccl are
+   defined looking directly at the face.  With this transformation
+   you can eventually get all the white edges on top.
+
+<li> Check the parity of the edge sequence on each side.  If either is
+   wrong, you need to fix it.  Sorry -- I don't know how!  (See any
+   standard reference on combinatorics for an explanation of parity.)
+
+<li> The following transformation cyclically permutes ccl all the top edges
+   but the right one and cl all the bottom edges but the left one.  Apply
+   the transformation in 3., and turn the whole cube 180deg.  Repeat.
+   This is a useful transformation, though not a cure-all.
+
+<li> Varying the transformation in 3. with other twists will produce other
+   results.
+
+<li> The following transformation changes a cube into a Comet and Star:
+   Flip to get Kite and Kite.  Twist top and bottom cl 90deg and flip to get
+   Barrel and Barrel.  Twist top cl 30 and bottom cl 60 and flip to get
+   Scallop and Scallop.  Twist top cl 60 and bottom cl 120 and flip to
+   get Comet and Star.  The virtue of the Star is that it contains only
+   corners, so that you can permute the corners without altering the edges.
+
+<li> To reach a Lemon and Star instead, replace the final bottom cl 120 with
+   a bottom cl 60.  In both these transformation the Star is on the bottom.
+
+<li> The following transformation cyclically permutes all but the bottom
+   left rear.  It sends the top left front to the bottom, and the bottom
+   left front to the top.  Go to Comet and Star.  Twist star cl 60.
+   Go to Lemon and Star -- you need not return all the way to the cube, but
+   do it if you're unsure of yourself by following 7 backwards.  Twist star
+   cl 60.  Return to cube by following 8 backwards.  With this transformation
+   you should be able to get all the white corners on top.
+
+<li> Check the parity of the corner sequences on both sides.  If the bottom
+   parity is wrong, here's how to fix it:  Go to Lemon and Star.  The
+   colors on the Star will run WWGWWG.  Twist it 180 and return to cube.
+
+<li> If the top parity is wrong, do the same thing, except that when you
+   go from Scallop and Scallop to Lemon and Star, twist the top and bottom
+   ccl instead of cl.  The colors on the Star should now run GGWGGW.
+
+<li> Once the parity is right on both sides, the basic method is to
+   go to Comet and Star, twist the star 120 cl (it will be WGWGWG),
+   return to cube, twist one or both sides, go to Comet and Star,
+   undo the star twist, return to cube, undo the side twists.
+   With no side twists, this does nothing.  If you twist the top,
+   you will permute the top corners.  If you twist the bottom,
+   you will permute the bottom corners.  Eventually you will get
+   both the top and the bottom right.  Don't forget to undo the
+   side twists -- you need to have the edges in the right places.
+</ol>
+<pre>
+Happy twisting....
+-- 
+Col. G. L. Sicherman
+gls@windmill.att.COM
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

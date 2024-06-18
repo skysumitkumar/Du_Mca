@@ -1,0 +1,53 @@
+<html><head>
+<title>Solution for /analysis/tower</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /analysis/tower problem</h1>
+<hr>
+Answer: e^(1/e)
+
+<p>
+Let N be the number in question and R the result of the process. Then
+R can be defined recursively by the equation:
+<pre>
+   (1) R = N^R
+</pre>
+Taking the logarithm of both sides of (1):
+<pre>
+   (2) ln(R) = R * ln(N)
+</pre>
+Dividing (2) by R and rearranging:
+<pre>
+   (3) ln(N) = ln(R) / R
+</pre>
+Exponentiating (3):
+<pre>
+   (4) N = R^(1/R)
+</pre>
+We wish to find the maximum value of N with respect to R. Find the
+derivative of N with respect to R and set it equal to zero:
+<pre>
+   (5) d(N)/d(R) = (1 - ln(R)) / R^2 = 0
+</pre>
+For finite values of R, (5) is satisfied by R = e. This is a maximum of
+N if the second derivative of N at R = e is less than zero.
+<pre>
+   (6) d2(N)/d2(R) | R=e = (2 * ln(R) - 3) / R^3 | R=e = -1 / e^3 &lt; 0
+</pre>
+The solution therefore is (4) at R = e:
+<pre>
+   (7) Nmax = e^(1/e)
+</pre>
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

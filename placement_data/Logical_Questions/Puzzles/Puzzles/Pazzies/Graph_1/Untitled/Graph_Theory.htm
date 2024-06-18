@@ -1,0 +1,206 @@
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<link rel=Edit-Time-Data href="editdata.mso.css" tppabs="http://165.29.91.7/asms_teaching_units/Teaching_Units/Mathematics/Graph_Theory_files/editdata.mso">
+<title>Applications of Elementary Graph Theory</title>
+<style><!--
+.Normal
+	{font-size:12.0pt;
+	font-family:"Times New Roman";}
+.MsoTitle
+	{text-align:center;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+.MsoBodyText
+	{font-size:12.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+.MsoBodyTextIndent
+	{font-size:12.0pt;
+	font-family:"Times New Roman";}
+.MsoBodyText2
+	{font-size:12.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;
+	font-style:italic;}
+-->
+</style>
+</head>
+<body lang=EN-US link=#FF0000 vlink=#0000FF class="Normal" bgcolor="#003399" text="#FFFFFF" alink="#FF0000">
+<p class=MsoTitle><span
+style='font-size:20.0pt;'>Applications of Elementary</span></p>
+<p class=MsoTitle><span> </span>Graph Theory  </p>
+<p align=center style='text-align:center'><b><span
+style='font-size:14.0pt;'>Charles Mullins</span></b></p>
+<p align=center style='text-align:center'><b><span
+style='font-size:14.0pt;'>Math Dept, ASMS</span></b></p>
+<p align=center style='text-align:center'><b><span
+style='font-size:14.0pt;'><a
+href="mailto:mullinsc@asms1x.dsc.k12.ar.us">mullinsc@asms1x.dsc.k12.ar.us</a></span></b></p>
+<p align=center style='text-align:center'><b><span
+style='font-size:14.0pt;'>May 2002</span></b></p>
+<p class=MsoTitle>Applications of Elementary Graph Theory   </p>
+<p align=center style='text-align:center'><b>Charles Mullins</b></p>
+<p align=center style='text-align:center'><b>Math Dept, ASMS</b></p>
+<p align=center style='text-align:center'><b><a
+href="mailto:mullinsc@asms1x.dsc.k12.ar.us">mullinsc@asms1x.dsc.k12.ar.us</a></b></p>
+<p><b><u>Objectives:</u></b></p>
+<p> 1)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </span> Students will see an application of graph theory to a classic problem 
+  known as the Konigsburg Bridge Problem and be able to apply results on Euler 
+  Paths and Circuits to solve related problems.</p>
+<p> 2)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </span> Students will know what the Traveling Salesman Problem is and discover 
+  how difficult it can be for even a relatively small number of cities.  Students 
+  will be able to apply the Nearest Neighbor Algorithm to such problems</p>
+<p><b><u>Key Points:</u></b></p>
+<p> 1)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </span> A graph consists of points and edges.  An edge is an arc (or line segment) 
+  joining two points.  Points are also called vertices.  A path joins one point 
+  (vertex) successively to a sequence of other points (vertices) along edges.  
+  A circuit is a path that starts and ends at the same point. An Euler path or 
+  circuit passes through every vertex exactly one time.   <b><u></u></b></p>
+<p class=MsoBodyTextIndent style='
+'> 2)<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> The 
+  Traveling Salesman Problem is the problem of visiting a collection of cities 
+  in the most efficient manner so that no city is visited twice.  The Nearest 
+  Neighbor Algorithm is a quick and efficient method of approaching the Traveling 
+  Salesman Problem although it usually does not give the best solution.</p>
+<p> <b><u></u></b></p>
+<p><b>            The Bridges of Konigsburg.  (1 Day)</b></p>
+<p><b>            </b>One of the classic problems in Graph Theory is the Bridges 
+  of Konigsburg.  Konigsburg is a city in Germany with seven bridges joining various 
+  parts of the city across the Pregel River (see figure below).   </p>
+<table border=0 cellpadding=0 width="100%">
+  <tr> 
+    <td class="Normal"> 
+      <p><span style='font-family:Arial;"Times New Roman"'>To mathematicians, 
+        though, Königsburg is best known because of a puzzle associated with its 
+        seven bridges, which were located roughly as illustrated on the right. 
+        Its citizens pondered for a long time whether it was possible to walk 
+        about the city in such a way that you cross all seven bridges (yellow 
+        in diagram) exactly once. </span><span style='font-family:Arial;"Arial Unicode MS";color:#003300'></span></p>
+    </td>
+    <td class="Normal"> 
+      <p> <img width=254 height=170
+  src="image001.gif" tppabs="http://165.29.91.7/asms_teaching_units/Teaching_Units/Mathematics/Graph_Theory_files/image001.gif" align=left alt="Konigsburg Bridges"
+  v:shapes="_x0000_s1026"> <span style='font-family:Arial;"Arial Unicode MS";color:#003300'></span></p>
+    </td>
+  </tr>
+</table>
+<p>As mentioned above, on a pleasant afternoon, a favorite pastime of people in 
+  Konigsburg was to try and walk a path across each bridge and return to their 
+  starting point crossing each bridge exactly one time.  The great mathematician 
+  Euler (pronounced “oiler”) realized that this task could be treated a problem 
+  in Graph Theory by stripping it down to the bare essentials. The various parts 
+  of the city separated by the river could be treated as points (called <i>vertices</i> 
+  in Graph Theory) and the paths between them across the bridges as line segments 
+  or arcs (called <i>edges</i>).  Below is this stripped down version of the seven 
+  bridges problem.</p>
+<p> <span style='position:
+absolute;z-index:1;width:149px;height:167px'><img
+width=149 height=167 src="image002.gif" tppabs="http://165.29.91.7/asms_teaching_units/Teaching_Units/Mathematics/Graph_Theory_files/image002.gif" v:shapes="_x0000_s1027"></span> 
+  &nbsp; &nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Using this stripped down version of the problem, Euler was able to give an 
+  argument that showed that such a circuit did not exist; that is, he proved that 
+  it was impossible to make such a walk.  This idea has been extended to arbitrary 
+  graphs and a path starting at a certain vertex and passing along each edge (across 
+  each bridge) exactly one time ending at the original vertex is called an <i>Euler 
+  Circuit</i> in honor of the man himself.   </p>
+<p> 1)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </span> At this point students should try to find an Euler Circuit for the Konigsburg 
+  bridges.  </p>
+<p> 2)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </span> After many attempts, ask students if they believe it is possible and 
+  why or why not.  Inform the students that there is no Euler Circuit but before 
+  you explain why have them try and find Euler Circuits for the graphs A, B, C, 
+  and D below.</p>
+<p><span>                                      </span>A                                                       
+  B</p>
+<div align=center> 
+  <table border=1 cellpadding=0 bgcolor="#00bb00">
+    <tr> 
+      <td width=200 class="Normal"> 
+        <p><span style='font-family:Arial;"Times New Roman"'> <img border=0 width=173 height=119
+  src="image003.gif" tppabs="http://165.29.91.7/asms_teaching_units/Teaching_Units/Mathematics/Graph_Theory_files/image003.gif" alt="Leonhard Euler" v:shapes="_x0000_i1025"> 
+          </span><span
+  style='font-family:Arial;
+  color:#003300'></span></p>
+      </td>
+      <td class="Normal"> 
+        <p><span style='font-family:Arial;"Times New Roman"'> <img border=0 width=200 height=200
+  src="image004.gif" tppabs="http://165.29.91.7/asms_teaching_units/Teaching_Units/Mathematics/Graph_Theory_files/image004.gif" alt="Leonhard Euler" v:shapes="_x0000_i1026"> 
+          </span><span
+  style='font-family:Arial;
+  color:#003300'></span></p>
+      </td>
+    </tr>
+    <tr> 
+      <td class="Normal"> 
+        <p><span style='font-family:Arial;"Times New Roman"'> <img border=0 width=200 height=200
+  src="image005.gif" tppabs="http://165.29.91.7/asms_teaching_units/Teaching_Units/Mathematics/Graph_Theory_files/image005.gif" alt="Leonhard Euler" v:shapes="_x0000_i1027"> 
+          </span><span
+  style='font-family:Arial;
+  color:#003300'></span></p>
+      </td>
+      <td class="Normal"> 
+        <p><span style='font-family:Arial;"Times New Roman"'> <img border=0 width=200 height=200
+  src="image006.gif" tppabs="http://165.29.91.7/asms_teaching_units/Teaching_Units/Mathematics/Graph_Theory_files/image006.gif" alt="Leonhard Euler" v:shapes="_x0000_i1028"> 
+          </span><span
+  style='font-family:Arial;
+  color:#003300'></span></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p>                                                C                                             
+  D</p>
+<p> <span
+style='position:absolute;z-index:2;
+width:3px;height:3px'><img width=3 height=3
+src="image007.gif" tppabs="http://165.29.91.7/asms_teaching_units/Teaching_Units/Mathematics/Graph_Theory_files/image007.gif" v:shapes="_x0000_s1059"></span> It may 
+  be possible at this point for some students to come up with a argument similar 
+  to the one Euler gave.  Euler realized that unless one is at the starting vertex, 
+  for any Euler Circuit, every time the path goes into a vertex it must also come 
+  out or else one would be stuck at that vertex since you are not allowed to retrace 
+  any edge.  Hence, except for the starting vertex, each vertex must have an even 
+  number of edges attached to it (such a vertex is said to have <i>even degree</i>).   
+  As for the starting vertex it must also have even degree since you start out 
+  from there and every time you come back to it (if any) you will go out until 
+  you finish there.  Heuristically then it appears that ALL vertices must have 
+  even degree.   Since NONE of the vertices in the Konigsburg bridge graph have 
+  even degree, there certainly cannot be an Euler Circuit.  In fact, Euler gave 
+  a rigorous proof of the following theorem on the existence of an Euler Circuit.</p>
+<p>Theorem:  A graph has an Euler Circuit if and only if it is connected and all 
+  its vertices are of odd degree.  </p>
+<p>Note: C<i>onnected </i>means that every vertex is joined to at least one other 
+  vertex.  </p>
+<p>3) Have students use the theorem to check their answers about the graphs A,B,C, 
+  and D above that have Euler Circuits.</p>
+<p>Again, a path that begins and ends at the same vertex is called a circuit and 
+  if it covers each edge exactly once, it is called Eulerian or an Euler Circuit.  
+  Then, a<b> </b>sleight variation on the problem is to allow the path to end 
+  at a different vertex than the starting one, that is, the Euler Path does not 
+  have to be a circuit but does have to cover every edge exactly once.  In this 
+  case, the above theorem requires a slight change.</p>
+<p>  </p>
+<p>4) Ask students how this will change the Theorem.  </p>
+<p>5) To evaluate if the students have grasped these ideas, have them determine 
+  which of the graphs above have Euler Paths.  Having explored these ideas, they 
+  should also be able to find Euler Paths for those graphs.</p>
+<p>All the graphs above were taken from the website on the Konigsburg Bridge Problem, 
+  Math Dept, The National University of Ireland, Maynooth: <a href="konig.html" tppabs="http://www.maths.may.ie/images/konig.html"><font size="+1">http://www.maths.may.ie/images/konig.html</font></a></p>
+<p><b><font size="+1"><a href="TSP.pdf" tppabs="http://165.29.91.7/asms_teaching_units/Teaching_Units/Mathematics/TSP.pdf">The Traveling Salesman Problem (TSP)</a>  
+  </font></b></p>
+<p><font size="+1"><a href="Graph_Theory_answers.pdf" tppabs="http://165.29.91.7/asms_teaching_units/Teaching_Units/Mathematics/Graph_Theory_answers.pdf">Answers to problems on the 
+  page</a> </font>          </p>
+<p class=MsoTitle align="left">&nbsp;</p>
+<p class=MsoBodyText>&nbsp;</p>
+</body>
+</html>

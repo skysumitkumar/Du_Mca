@@ -1,0 +1,311 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Optimal Sorting </TITLE>
+<META NAME="description" CONTENT="Optimal Sorting ">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node45.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node45.html">
+<LINK REL="previous" HREF="node43.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node43.html">
+<LINK REL="up" HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">
+<LINK REL="next" HREF="node45.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node45.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html942"
+  HREF="node45.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node45.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html936"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html930"
+  HREF="node43.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node43.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html938"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html940"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html943"
+  HREF="node45.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node45.html">Optimal Merging</A>
+<B> Up:</B> <A NAME="tex2html937"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">Sorting</A>
+<B> Previous:</B> <A NAME="tex2html931"
+  HREF="node43.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node43.html">Timings for Various Sorting</A>
+ &nbsp <B>  <A NAME="tex2html939"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html941"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00660000000000000000"></A><A NAME="SS:optimal-sorting"></A>
+<BR>
+Optimal Sorting 
+</H1>
+
+<P>
+The obvious question that now arises is: can we do still better? Could
+we, with a bit of ingenuity, devise a sorting technique that works in
+time which is faster than <I>O</I>(<I>n</I> ln&nbsp;<I>n</I>)? I want to present an argument in
+this section that says that, under fairly broad assumptions, we cannot.
+<I>O</I>(<I>n</I> ln&nbsp;<I>n</I>) is essentially <EM>optimal</EM> for sorting <I>n</I> items.
+
+<P>
+We can undoubtedly do better in certain situations, usually when we have
+some extra information available about the elements of the list. For
+example, if we knew that every element of the list was one of the digits
+0,1,...,9 it would be easy to put together a sorting program that
+worked in time <I>O</I>(<I>n</I>) (think about it).
+
+<P>
+But suppose that we are dealing with what are called <EM>comparison-only</EM>
+sorts where the only question that we can ask of two elements in the list
+is: which of the two is the bigger? In this case I hope to show you that
+we cannot do better than <I>O</I>(<I>n</I> ln&nbsp;<I>n</I>) even in principle.
+
+<P>
+I am actually going to study a slightly different problem, but its theory
+is equivalent to that of optimal sorting. The problem has to do with the
+old game of <EM>Twenty Questions</EM>. I choose a permutation <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$"> from
+<I>S</I><SUB>n</SUB> and you have to find out which one I have picked. You have to do
+this by asking me questions. The only questions that you are allowed to
+ask are of the form: <EM>is element <I>i</I> bigger than element <I>j</I>?</EM> The
+only answers I can give are <EM>yes</EM> or <EM>no</EM>. Can we find a lower
+limit for the maximum number of questions that you will have to ask me
+in order to find out what <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$"> is? That's the problem that we are going
+to study.
+
+<P>
+Let's consider the simple case of <I>n</I> = 3 first. A possible line of questioning
+could be the one shown in the tree shown in Fig&nbsp;<A HREF="node44.html#F:decision-tree" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node44.html#F:decision-tree">2.2</A>
+-- a decision tree.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="F:decision-tree"></A><A NAME="2433"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 2.2:</STRONG>
+A decision tree for an element of <I>S</I><SUB>3</SUB>.</CAPTION>
+<TR><TD><IMG
+ WIDTH="581" HEIGHT="191" BORDER="0"
+ SRC="img115.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img115.gif"
+ ALT="\begin{figure}
+\centering\begin{psTree}[levelsep=12mm,arrows=-&gt;]{\Toval{$1&lt;2$?}}...
+...{psTree} \Toval{$3\quad2\quad1$}\naput{No}
+\end{psTree}\end{psTree}\end{figure}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+Notice that, with this arrangement of the questions you could not
+guarantee to be able to get the answer in fewer than 3 questions (though
+you might in some cases get it in 2). Could we rearrange the questions
+so as to guarantee to get the answer in two questions? No we could not,
+and we don't have to work through all possibilities to decide this.
+
+<P>
+The point is that each possible permutation has to appear as a <EM>leaf</EM>
+on the tree (and, by the logic of the tree, can only appear at one leaf).
+Now <I>S</I><SUB>3</SUB> has 3! = 6 elements, so any decision tree for <I>S</I><SUB>3</SUB> must have
+precisely 6 leaves. You can easily check that every possible tree of
+<EM>depth</EM> 2 has at most 4 leaves. 4 is less than 6 so we cannot 
+possibly distinguish all 6 permutations with 2 questions.
+
+<P>
+Now consider the general case of <I>S</I><SUB>n</SUB>. This has <I>n</I>! elements, so a 
+decision tree for <I>S</I><SUB>n</SUB> must have <I>n</I>! leaves. You can easily convince
+yourself that a tree of depth <I>d</I> has <EM>at most</EM> 2<SUP>d</SUP> leaves on
+it (the maximum for 3 questions was 8 leaves). So, if
+<!-- MATH
+ \begin{displaymath}
+2^d < n! \le 2^{d+1}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+2<SUP>d</SUP> &lt; <I>n</I>!<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img11.gif"
+ ALT="$\displaystyle \le$">2<SUP>d + 1</SUP>
+</DIV><P></P>
+we know that we cannot possibly find all <I>n</I>! permutations in <I>d</I> questions
+though we <EM>may</EM> be able to find them in <I>d</I> + 1 questions (unlikely).
+
+<P>
+So what does this say about the value of <I>d</I>? Take logs of all parts of
+the inequality and get
+<!-- MATH
+ \begin{displaymath}
+d\ln2 < \ln n! \le (d+1)\ln 2
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>d</I> ln&nbsp;2 &lt; ln&nbsp;<I>n</I>!<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img11.gif"
+ ALT="$\displaystyle \le$">(<I>d</I> + 1)ln&nbsp;2
+</DIV><P></P>
+or
+<!-- MATH
+ \begin{displaymath}
+d < \frac{\ln n!}{\ln 2} \le d+1
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>d</I> &lt; <IMG
+ WIDTH="38" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img116.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img116.gif"
+ ALT="$\displaystyle {\frac{\ln n!}{\ln 2}}$"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img11.gif"
+ ALT="$\displaystyle \le$"><I>d</I> + 1
+</DIV><P></P>
+So the minimum number of questions in which we can guarantee to be able to
+find any permutation is greater than
+<!-- MATH
+ \begin{displaymath}
+\textrm{opt} = \frac{\ln n!}{\ln 2}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+opt = <IMG
+ WIDTH="38" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img116.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img116.gif"
+ ALT="$\displaystyle {\frac{\ln n!}{\ln 2}}$">
+</DIV><P></P>
+To make more sense of this we now use Stirling's approximation
+<!-- MATH
+ \begin{displaymath}
+n! \approx \sqrt{2\pi n}n^ne^{-n}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>n</I>! <IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img59.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img59.gif"
+ ALT="$\displaystyle \approx$"> <IMG
+ WIDTH="44" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img117.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img117.gif"
+ ALT="$\displaystyle \sqrt{2\pi n}$"><I>n</I><SUP>n</SUP><I>e</I><SUP>-n</SUP>
+</DIV><P></P>
+or, taking logs,
+<!-- MATH
+ \begin{displaymath}
+\ln n! \approx \frac{1}{2}\ln(2\pi) + \frac{1}{2}\ln n + n\ln n - n
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+ln&nbsp;<I>n</I>! <IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img59.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img59.gif"
+ ALT="$\displaystyle \approx$"> <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img43.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img43.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{2}}$">ln(2<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img72.gif"
+ ALT="$\displaystyle \pi$">) + <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img43.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img43.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{2}}$">ln&nbsp;<I>n</I> + <I>n</I> ln&nbsp;<I>n</I> - <I>n</I>
+</DIV><P></P>
+It is easy to see from this that
+<!-- MATH
+ \begin{displaymath}
+\textrm{opt} = O(n\ln n)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+opt = <I>O</I>(<I>n</I> ln&nbsp;<I>n</I>)
+</DIV><P></P>
+
+<P>
+So <I>O</I>(<I>n</I> ln&nbsp;<I>n</I>) is the lower limit for the number of questions in which we
+can guarantee to be able to find any permutation from <I>S</I><SUB>n</SUB>.
+
+<P>
+The same logic applies to comparison-only sorting -- which is just another
+way of deciding on the nature of a permutation. So we end up with the
+fact that it is logically impossible to produce comparison-only sorts that
+work in time better than <I>O</I>(<I>n</I> ln&nbsp;<I>n</I>).
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html942"
+  HREF="node45.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node45.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html936"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html930"
+  HREF="node43.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node43.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html938"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html940"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html943"
+  HREF="node45.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node45.html">Optimal Merging</A>
+<B> Up:</B> <A NAME="tex2html937"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">Sorting</A>
+<B> Previous:</B> <A NAME="tex2html931"
+  HREF="node43.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node43.html">Timings for Various Sorting</A>
+ &nbsp <B>  <A NAME="tex2html939"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html941"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

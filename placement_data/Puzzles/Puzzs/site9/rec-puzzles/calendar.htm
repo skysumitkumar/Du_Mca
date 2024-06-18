@@ -1,0 +1,114 @@
+<html><head>
+<title>Solution for /geometry/calendar</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /geometry/calendar problem</h1>
+<hr>
+        First note that there are *nineteen* different letters in the
+month abbreviations (abcdef gjlmno prstuv y) so to get them all on the
+eighteen faces of 3 cubes, you know right away you're going to have to
+resort to trickery.
+
+        <p>
+        So I wrote them all down and looked at which ones could be
+reversed to make another letter in the set.  The only pair that jumped
+out at me was the d/p pair.  Now I knew that it was at least feasible,
+as long as it wasn't necessary to duplicate any letters.
+
+        <p>
+        Then I scanned the abbreviations to find ones that had a lot of
+common letters.  The jan-jun-jul series looked like a good place to
+start:
+<pre>
+      j    a       n
+           u       l
+</pre>
+                                was a good beginning but I realized
+right away that I had no room for duplicate letters and the second cube
+had both a and u so aug was going to be impossible.  In fact I almost
+posted that answer.  Then I realized that if Martin Gardner wrote about
+it, it must have a solution.  :-)  So I went back to the letter list.
+
+        <p>
+        I don't put tails on my u's so it didn't strike me the first
+time through that n and u could be combined.
+<pre>
+   Cube 1  Cube 2  Cube 3
+      j      a      n/u
+            n/u      l
+</pre>
+                                would let me get away with putting the g
+on the first cube to get aug, so I did.
+<pre>
+      j       a       n/u
+      g       n/u     l       (1)
+</pre>
+        Now came the fun part.  The a was placed so I had to work around
+it for the other months that had an a in them (mar, apr, may).
+<pre>
+      m       a       r
+     d/p             y       (2)
+</pre>
+        Now the d/p was placed so I had to work around that for sep and dec.
+This one was easy since they shared an e as well.
+<pre>
+    d/p     e       s
+                    c       (3)
+</pre>
+        Now the e was placed so feb had to be worked in.
+<pre>
+     f       e       b       (4)
+</pre>
+
+        The two months left (oct, nov) were far more complex.  Not only
+did they have two "set" letters (c, n/u), there were two possible n/u's
+to be set with.  That's why I left them for last.
+<pre>
+     o       t       c
+            n/u     v       (5)
+</pre>
+        So now I had five pieces to fit together, so that no set would
+have more than six letters in it.  Trial and error provided:
+
+<pre>
+     j       a       n/u                     a       b       e
+     g       n/u     l       or,             c       d/p     g
+     r       s       m       alphabetically: f       l       j
+     y       c       d/p                     n/u     m       o
+     e       v       t                       s       n/u     r
+     o       f       b                       v       t       y
+</pre>
+
+  Without some gimmick the days cannot be done.  Because of the dates 11 and
+22, there must be a 1 and a 2 on each cube. Thus there are 8 remaining spaces
+for the 8 remaining numbers, and because of 30, we put 3 and 0 on different
+cubes. I don't think the way you allocate the others matter. Now 6 numbers on
+each cube can produce at most 36 distinct pairs, and we need 31 distinct pairs
+to represent all possible dates. But since 3 each of {4,5,6,7,8,9} are on each
+cube, there are at least 9 representable numbers which can't be dates.
+Therefore there are at most 27 distinct numbers which are dates on the two
+cubes, and it can't be done. In particular, not all of {04,05,06,07,08,09} can
+be represented.
+
+  <p>
+  The gimmick solution would be to represent the numbers in a stylised format
+(like say, on a digital clock or on a computer screen) such that the 6 can be
+turned upside down to be a 9. Then you can have 012 on both cubes, and three
+each of {3,4,5,6,7,8} on the other faces. Done.
+  
+  <p>
+  Example: 012468 012357
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

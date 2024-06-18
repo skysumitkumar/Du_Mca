@@ -1,0 +1,201 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Generating Random Integers</TITLE>
+<META NAME="description" CONTENT="Generating Random Integers">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node82.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node82.html">
+<LINK REL="previous" HREF="node80.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node80.html">
+<LINK REL="up" HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<LINK REL="next" HREF="node82.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node82.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1498"
+  HREF="node82.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node82.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1492"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1486"
+  HREF="node80.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node80.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1494"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1496"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1499"
+  HREF="node82.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node82.html">Choosing `with probability p'</A>
+<B> Up:</B> <A NAME="tex2html1493"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">Applications of Random Numbers</A>
+<B> Previous:</B> <A NAME="tex2html1487"
+  HREF="node80.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node80.html">Generating Random Reals</A>
+ &nbsp <B>  <A NAME="tex2html1495"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1497"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00932000000000000000"></A><A NAME="7826"></A>
+<BR>
+Generating Random Integers
+</H2>
+
+<P>
+Suppose we want to generate a random stream of integers in the range
+<!-- MATH
+ $n,\ldots,m$
+ -->
+<I>n</I>,..., <I>m</I>. The function for this is:
+<!-- MATH
+ \begin{displaymath}
+\     \mathrm{irand}(n,m) = [n + (m-n+1)*\mathrm{rand}()].
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;irand(<I>n</I>, <I>m</I>) = [<I>n</I> + (<I>m</I> - <I>n</I> + 1)*rand()].
+</DIV><P></P>
+This works because:
+
+<P>
+
+<UL>
+<LI> the result is certainly an integer in the range <!-- MATH
+ $n,\ldots,m$
+ -->
+<I>n</I>,..., <I>m</I> --
+ note that <!-- MATH
+ $\mathrm{rand}() < 1$
+ -->
+rand() &lt; 1.
+</LI>
+<LI> To check randomness we just have to be sure that each integer is
+ equally likely to be chosen at each stage. But <I>k</I> is chosen if 
+ <!-- MATH
+ \begin{displaymath}
+k \le n + (m-n+1)*\mathrm{rand}() < k+1,
+\     
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>k</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img11.gif"
+ ALT="$\displaystyle \le$"><I>n</I> + (<I>m</I> - <I>n</I> + 1)*rand() &lt; <I>k</I> + 1,&nbsp;
+</DIV><P></P>
+i.e.
+    <!-- MATH
+ \begin{displaymath}
+\frac{k-n}{ m-n+1} \le \mathrm{rand}() < \frac{k+1-n}{m-n+1}.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="78" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img197.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img197.gif"
+ ALT="$\displaystyle {\frac{k-n}{m-n+1}}$"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img11.gif"
+ ALT="$\displaystyle \le$">rand() &lt; <IMG
+ WIDTH="78" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img198.gif"
+ ALT="$\displaystyle {\frac{k+1-n}{m-n+1}}$">.
+</DIV><P></P>
+The length of this range, which lies in [0, 1), is independent of
+ <I>k</I> (subtract and see). So, by the definition of uniform
+    distribution for <!-- MATH
+ $\mathrm{rand}()$
+ -->
+rand(), all values of <I>k</I> are equally likely to
+ be chosen.
+</LI>
+</UL>
+If you feel energetic you can also prove that the output of
+<!-- MATH
+ $\mathrm{irand}(n,m)$
+ -->
+irand(<I>n</I>, <I>m</I>) has `higher order randomness' in the sense that,
+for example, all pairs (<I>i</I>, <I>j</I>) with <!-- MATH
+ $n\le i,j \le m$
+ -->
+<I>n</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$"><I>i</I>, <I>j</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$"><I>m</I> are equally
+likely to be chosen.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1498"
+  HREF="node82.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node82.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1492"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1486"
+  HREF="node80.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node80.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1494"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1496"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1499"
+  HREF="node82.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node82.html">Choosing `with probability p'</A>
+<B> Up:</B> <A NAME="tex2html1493"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">Applications of Random Numbers</A>
+<B> Previous:</B> <A NAME="tex2html1487"
+  HREF="node80.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node80.html">Generating Random Reals</A>
+ &nbsp <B>  <A NAME="tex2html1495"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1497"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

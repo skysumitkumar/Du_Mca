@@ -1,0 +1,51 @@
+<html><head>
+<title>Solution for /arithmetic/digits/divisible</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/digits/divisible problem</h1>
+<hr>
+Since the sum of the digits is 45, any permutation of the digits gives a
+multiple of 9.  To get a multiple of both 2 and 5, the last digit must
+be 0, and thus to get a multiple of 8 (and 4), the tens digit must be
+even, and the hundreds digit must be odd if the tens digit is 2 or 6,
+and even otherwise.  The number will also be divisible by 6, since it is
+divisible by 2 and 3, so 7 is all we need to check.  First, we will look
+for a number whose first five digits are 12345; now, 1234500000 has a
+remainder of 6 when divided by 7, so we have to arrange the remaining
+digits to get a remainder of 1.  The possible arrangements, in
+increasing order, are
+
+<pre>
+78960, remainder 0
+79680, remainder 6
+87960, remainder 5
+89760, remainder 6
+97680, remainder 2
+98760, remainder 4
+</pre>
+
+That didn't work, so try numbers starting with 12346; this is impossible
+because the tens digit must be 8, and the hundreds digit cannot be even.
+Now try 12347, and 1234700000 has remainder 2.  The last five digits can
+be
+
+<pre>
+58960, remainder 6
+59680, remainder 5, so this works, and the number is
+
+1234759680.
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

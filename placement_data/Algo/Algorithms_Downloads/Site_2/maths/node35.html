@@ -1,0 +1,248 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>A More Precise Analysis of Insertion Sort </TITLE>
+<META NAME="description" CONTENT="A More Precise Analysis of Insertion Sort ">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="previous" HREF="node32.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node32.html">
+<LINK REL="up" HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">
+<LINK REL="next" HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html817"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html811"
+  HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html807"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html813"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html815"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html818"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html">Example n = 3</A>
+<B> Up:</B> <A NAME="tex2html812"
+  HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">Two Simple Sorting Algorithms</A>
+<B> Previous:</B> <A NAME="tex2html808"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html">Approximate Timing</A>
+ &nbsp <B>  <A NAME="tex2html814"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html816"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00624000000000000000">
+A More Precise Analysis of Insertion Sort </A>
+</H2>
+
+<P>
+We can give a more precise analysis of the operation of insertion
+sort. It is going to be a bit complicated. We will find out in the
+next section that insertion sort is not a very good sorting method and
+should not be used except in special circumstances. So why waste time
+on a complicated analysis? Simply because it happens to be a reasonably
+nice piece of mathematics from which you might learn something.
+
+<P>
+The important quantity in the analysis of the timing of Insertion Sort
+is the total distance through which the elements of the list are moved
+to the right during the sort. Let us assume, as usual, that we are
+dealing with a permutation of <!-- MATH
+ $(1,2,\ldots,n)$
+ -->
+(1, 2,..., <I>n</I>).
+
+<P>
+By the nature of the algorithm, the number of places that <I>i</I> is moved
+in the sort is equal to the number of elements that are less than <I>i</I>
+and to the right of <I>i</I> in the original list. For example, if you apply
+insertion sort to the list
+<!-- MATH
+ \begin{displaymath}
+\pi = (7,4,5,1,3,2,6)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img72.gif"
+ ALT="$\displaystyle \pi$"> = (7, 4, 5, 1, 3, 2, 6)
+</DIV><P></P>
+you will find that 1,2 and 6 do not get moved at all, 3 is moved one
+place (2 is less than it), 5 is moved 3 places (1,3,2 are less than it)
+and so on.
+
+<P>
+Bearing this in mind let us associate to each permuted list <!-- MATH
+ $\pi\in S_n$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$"> <IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img65.gif"
+ ALT="$ \in$"> <I>S</I><SUB>n</SUB>
+a list <!-- MATH
+ $\mathbf{m} = (m_1,m_2,\ldots,m_n)$
+ -->
+<B>m</B> = (<I>m</I><SUB>1</SUB>, <I>m</I><SUB>2</SUB>,..., <I>m</I><SUB>n</SUB>) where <I>m</I><SUB>i</SUB> is the number of
+numbers in <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$"> that are less than <I>i</I> and to the right of it. For the
+permutation of the previous paragraph we have
+<!-- MATH
+ \begin{displaymath}
+\mathbf{m} = (0,0,1,3,3,0,6)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<B>m</B> = (0, 0, 1, 3, 3, 0, 6)
+</DIV><P></P>
+In this <I>m</I><SUB>5</SUB> = 3 because, of the four numbers less than 5, three of them
+are to the right of 5 in <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$">.
+
+<P>
+The lists <!-- MATH
+ $\mathbf{m}$
+ -->
+<B>m</B> that we produce from permutations obviously have the
+property that <!-- MATH
+ $0\le m_i < i$
+ -->
+0<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$"><I>m</I><SUB>i</SUB> &lt; <I>i</I>, because there are only <I>i</I> - 1 positive
+numbers less than <I>i</I>. In particular <I>m</I><SUB>1</SUB> must be 0 and <I>m</I><SUB>2</SUB> can
+only take the values 0 or 1.
+
+<P>
+Let us now introduce the following set <I>M</I><SUB>n</SUB>:
+<!-- MATH
+ \begin{displaymath}
+M_n = \{ (m_1,m_2,m_3,\ldots,m_n) :\qquad 0\le m_i < i,\qquad i=1,n\}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>M</I><SUB>n</SUB> = {(<I>m</I><SUB>1</SUB>, <I>m</I><SUB>2</SUB>, <I>m</I><SUB>3</SUB>,..., <I>m</I><SUB>n</SUB>) : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img11.gif"
+ ALT="$\displaystyle \le$"><I>m</I><SUB>i</SUB> &lt; <I>i</I>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>i</I> = 1, <I>n</I>}
+</DIV><P></P>
+Then what we have done is constructed a mapping
+<!-- MATH
+ \begin{displaymath}
+\phi: S_n \to M_n \qquad \pi\to \mathbf{m}_{\pi}.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img74.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img74.gif"
+ ALT="$\displaystyle \phi$"> : <I>S</I><SUB>n</SUB><IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img75.gif"
+ ALT="$\displaystyle \to$"><I>M</I><SUB>n</SUB>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img72.gif"
+ ALT="$\displaystyle \pi$"><IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img75.gif"
+ ALT="$\displaystyle \to$"><B>m</B><SUB><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img76.gif"
+ ALT="$\scriptstyle \pi$"></SUB>.
+</DIV><P></P>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><UL>
+<LI><A NAME="tex2html819"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html">Example <I>n</I> = 3</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html817"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html811"
+  HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html807"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html813"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html815"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html818"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html">Example n = 3</A>
+<B> Up:</B> <A NAME="tex2html812"
+  HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">Two Simple Sorting Algorithms</A>
+<B> Previous:</B> <A NAME="tex2html808"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html">Approximate Timing</A>
+ &nbsp <B>  <A NAME="tex2html814"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html816"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

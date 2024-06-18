@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>Solution</title>
+</head>
+
+<body bgcolor=lightyellow>
+<center>
+<h1>Solution</h1>
+</center>
+<center>
+</center>  
+
+<blockquote>
+<hr>
+<font color="blue">Question:</font><br>
+<P>There are 5 pirates numbered 1 through 5. They have to divide 1,000 gold 
+coins amongst themselves. Any proposal on how to divide the coins has to be 
+passed by a majority, otherwise the pirate proposing it is thrown overboard. All 
+the pirates are assumed to be <I>greedy</I> and <I>intelligent </I>. They have 
+to make their proposals in the order 5,4,3,2,1. What should pirate #5 propose? 
+Explain your answer. 
+
+<p>
+<font color="blue">Answer:</font><br>
+Pirate #5 should propose the following distribution for (5,4,3,2,1):<br>
+997,0,1,0,2
+<p>
+<pre>
+Let us look at this problem in reverse order:
+
+1. If there is only one pirate left, then he gets all the gold.
+
+2. If there are two pirates left, then pirate 4 has to offer all the gold
+to pirate 5 - because otherwise pirate 5 would simply refuse the offer,
+and get all the gold anyway.
+
+Therefore, in this case:  Pirate 5    Pirate 4
+                           1000          0
+
+and the offer would be passed.
+
+3. If there are three pirates left, pirate 3 would make the following
+proposal:
+
+Pirate 5    Pirate 4    Pirate 3
+   0           1          999
+
+Pirate 5 is going to veto this but pirate 4 would have to agree because
+otherwise he is going to get 0 gold pieces. So the offer would be passed
+by pirates 4 and 3.
+
+4. If there are four pirate left, pirate 2 would make the following
+proposal:
+
+Pirate 5   Pirate 4   Pirate 3   Pirate 2
+   1          2          0         997
+
+Pirates 4 and 5 would agree because otherwise they would get less gold.
+Pirate 3 would disagree, but the proposal would be passed by pirates 5, 4
+and 2.
+
+5. If there are 5 pirates left, pirate 1 would make the following
+proposal:
+
+Pirate 5   Pirate 4  Pirate 3  Pirate 2  Pirate 1
+   2          0         1          0       997
+
+Pirates 5 and 3 would agree, and pirates 2 and 4 would disagree, so the
+proposal would be passed by pirates 5, 3 and 1.
+
+In Darren's words: Arr maties, I know it doesnt seem fair, but thats the
+way it works!
+
+</pre>
+
+<hr>
+<p>
+<center>
+</center>  
+
+<p><br><br><br>
+</blockquote>
+</body>
+</html>

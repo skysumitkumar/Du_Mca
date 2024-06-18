@@ -1,0 +1,961 @@
+<HTML>
+<HEAD>
+  <TITLE>Windows NT as Real-Time OS ?</TITLE>
+<!-- TOP : BEGINNING-->
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<meta name="description" content="The Dedicated Systems Encyclopaedia provides you with all the information you need about dedicated systems issues.">
+<meta name="keywords" content="real-time, realtime, embedded, RTOS, Real-Time Operating Systems, VME, VMEbus, PCI, PMC, CPCI, IndustryPack, IP, mezzanines, tools, CASE, object-oriented, multiprocessing, parallel, distributed, processing, thread, task, multitask, fieldbus, architecture, software, hardware, cross-compiler, system, modules, piggyback, scheduling, safety, security">
+
+<!-- ImageReady Preload Script (DSPage.psd) -->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+function newImage(arg) {
+	if (document.images) {
+		rslt = new Image();
+		rslt.src = arg;
+		return rslt;
+	}
+}
+
+function changeImages() {
+	if (document.images && (preloadFlag == true)) {
+		for (var i=0; i<changeImages.arguments.length; i+=2) {
+			document[changeImages.arguments[i]].src = changeImages.arguments[i+1];
+		}
+	}
+}
+
+var preloadFlag = false;
+function preloadImages() {
+	if (document.images) {
+		DSPage_Section1_over = newImage("DSPage_Section1-over.gif"/*tpa=http://www.omimo.be/fig/templates/DSPage_Section1-over.gif*/);
+		DSPage_Section2_over = newImage("DSPage_Section2-over.gif"/*tpa=http://www.omimo.be/fig/templates/DSPage_Section2-over.gif*/);
+		DSPage_Section3_over = newImage("DSPage_Section3-over.gif"/*tpa=http://www.omimo.be/fig/templates/DSPage_Section3-over.gif*/);
+		Blue_Item1_over = newImage("Blue_Item1-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Item1-over.gif*/);
+		Blue_Item1_1_over = newImage("Blue_Item1_1-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Item1_1-over.gif*/);
+		Blue_Item1_2_over = newImage("Blue_Item1_2-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Item1_2-over.gif*/);
+		Blue_Item1_3_over = newImage("Blue_Item1_3-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Item1_3-over.gif*/);
+		Blue_Item2_over = newImage("Blue_Item2-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Item2-over.gif*/);
+		Blue_Item2_1_over = newImage("Blue_Item2_1-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Item2_1-over.gif*/);
+		Blue_Item2_2_over = newImage("Blue_Item2_2-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Item2_2-over.gif*/);
+		Blue_Item2_3_over = newImage("Blue_Item2_3-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Item2_3-over.gif*/);
+		Blue_Item2_4_over = newImage("Blue_Item2_4-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Item2_4-over.gif*/);
+		Blue_Item3_over = newImage("Blue_Item3-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Item3-over.gif*/);
+		Blue_Item3_1_over = newImage("Blue_Item3_1-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Item3_1-over.gif*/);
+		Blue_Item3_2_over = newImage("Blue_Item3_2-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Item3_2-over.gif*/);
+		Blue_Item3_3_over = newImage("Blue_Item3_3-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Item3_3-over.gif*/);
+		Blue_Item3_4_over = newImage("Blue_Item3_4-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Item3_4-over.gif*/);
+		Blue_Item3_5_over = newImage("Blue_Item3_5-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Item3_5-over.gif*/);
+		Blue_Item3_6_over = newImage("Blue_Item3_6-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Item3_6-over.gif*/);
+		Blue_Item4_over = newImage("Blue_Item4-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Item4-over.gif*/);
+		Blue_Home_over = newImage("Blue_Home-over.gif"/*tpa=http://www.omimo.be/fig/templates/Blue_Home-over.gif*/);
+		preloadFlag = true;
+	}
+}
+
+// -->
+</SCRIPT>
+<!-- End Preload Script -->
+
+<style type="text/css">
+<!--
+h1 {  font-size: 130%; font-style: normal; line-height: normal; font-weight: bold; color: #6600cc;  text-align: center}
+h2 {  font-size: 110%; font-style: normal; line-height: normal; font-weight: bold; color: #6600cc;  text-align: left; TEXT-INDENT: 20pt}
+h3 {  font-size: 100%; font-style: italic; line-height: normal; font-weight: bold; color: #6600cc;  text-align: left}
+-->
+</style>
+</head>
+
+<body bgcolor="#333333"  topmargin="2" leftmargin="2" marginwidth="2" marginheight="2" background="digits.gif" tppabs="http://www.omimo.be/fig/digits.gif" onLoad="preloadImages();">
+
+<!-- ImageReady Slices (DSPage.psd) -->
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td valign="top">
+
+   <!-- TOP : the menu : beginning -->
+
+<!-- ImageReady Slices (GreenNotPopup.psd) -->
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0>
+	<TR>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/magazine/magazine.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/magazine/magazine.htm'" tppabs="http://www.omimo.be/magazine/magazine.htm">
+				<IMG SRC="Green_logo.gif" tppabs="http://www.omimo.be/fig/templates/Green_logo.gif" WIDTH=162 HEIGHT=77 BORDER=0></A></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/magazine/magazine.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/magazine/magazine.htm'" tppabs="http://www.omimo.be/magazine/magazine.htm"
+			   ONMOUSEOVER="changeImages('Green_Item1', 'Green_Item1-over.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item1-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('Green_Item1', 'Green_Item1.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item1.gif*/); return true;">
+				<IMG NAME="Green_Item1" SRC="Green_Item1.gif" tppabs="http://www.omimo.be/fig/templates/Green_Item1.gif" WIDTH=162 HEIGHT=19 BORDER=0></A></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/magazine/current.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/magazine/current.htm'" tppabs="http://www.omimo.be/magazine/current.htm"
+			   ONMOUSEOVER="changeImages('Green_Item1_1', 'Green_Item1_1-over.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item1_1-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('Green_Item1_1', 'Green_Item1_1.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item1_1.gif*/); return true;">
+				<IMG NAME="Green_Item1_1" SRC="Green_Item1_1.gif" tppabs="http://www.omimo.be/fig/templates/Green_Item1_1.gif" WIDTH=162 HEIGHT=17 BORDER=0></A></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/magazine/next.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/magazine/next.htm'" tppabs="http://www.omimo.be/magazine/next.htm"
+			   ONMOUSEOVER="changeImages('Green_Item1_2', 'Green_Item1_2-over.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item1_2-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('Green_Item1_2', 'Green_Item1_2.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item1_2.gif*/); return true;">
+				<IMG NAME="Green_Item1_2" SRC="Green_Item1_2.gif" tppabs="http://www.omimo.be/fig/templates/Green_Item1_2.gif" WIDTH=162 HEIGHT=17 BORDER=0></A></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/magazine/bakissue.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/magazine/bakissue.htm'" tppabs="http://www.omimo.be/magazine/bakissue.htm"
+			   ONMOUSEOVER="changeImages('Green_Item1_3', 'Green_Item1_3-over.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item1_3-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('Green_Item1_3', 'Green_Item1_3.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item1_3.gif*/); return true;">
+				<IMG NAME="Green_Item1_3" SRC="Green_Item1_3.gif" tppabs="http://www.omimo.be/fig/templates/Green_Item1_3.gif" WIDTH=162 HEIGHT=17 BORDER=0></A></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/magazine/calendar.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/magazine/calendar.htm'" tppabs="http://www.omimo.be/magazine/calendar.htm"
+			   ONMOUSEOVER="changeImages('Green_Item1_4', 'Green_Item1_4-over.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item1_4-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('Green_Item1_4', 'Green_Item1_4.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item1_4.gif*/); return true;">
+				<IMG NAME="Green_Item1_4" SRC="Green_Item1_4.gif" tppabs="http://www.omimo.be/fig/templates/Green_Item1_4.gif" WIDTH=162 HEIGHT=17 BORDER=0></A></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/magazine/contrib.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/magazine/contrib.htm'" tppabs="http://www.omimo.be/magazine/contrib.htm"
+			   ONMOUSEOVER="changeImages('Green_Item2', 'Green_Item2-over.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item2-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('Green_Item2', 'Green_Item2.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item2.gif*/); return true;">
+				<IMG NAME="Green_Item2" SRC="Green_Item2.gif" tppabs="http://www.omimo.be/fig/templates/Green_Item2.gif" WIDTH=162 HEIGHT=19 BORDER=0></A></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/magazine/contrib/submit.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/magazine/contrib/submit.htm'" tppabs="http://www.omimo.be/magazine/contrib/submit.htm"
+			   ONMOUSEOVER="changeImages('Green_Item2_1', 'Green_Item2_1-over.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item2_1-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('Green_Item2_1', 'Green_Item2_1.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item2_1.gif*/); return true;">
+				<IMG NAME="Green_Item2_1" SRC="Green_Item2_1.gif" tppabs="http://www.omimo.be/fig/templates/Green_Item2_1.gif" WIDTH=162 HEIGHT=17 BORDER=0></A></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/magazine/pub/pub.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/magazine/pub/pub.htm'" tppabs="http://www.omimo.be/magazine/pub/pub.htm"
+			   ONMOUSEOVER="changeImages('Green_Item2_2', 'Green_Item2_2-over.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item2_2-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('Green_Item2_2', 'Green_Item2_2.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item2_2.gif*/); return true;">
+				<IMG NAME="Green_Item2_2" SRC="Green_Item2_2.gif" tppabs="http://www.omimo.be/fig/templates/Green_Item2_2.gif" WIDTH=162 HEIGHT=17 BORDER=0></A></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/magazine/contact.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/magazine/contact.htm'" tppabs="http://www.omimo.be/magazine/contact.htm"
+			   ONMOUSEOVER="changeImages('Green_Item2_3', 'Green_Item2_3-over.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item2_3-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('Green_Item2_3', 'Green_Item2_3.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item2_3.gif*/); return true;">
+				<IMG NAME="Green_Item2_3" SRC="Green_Item2_3.gif" tppabs="http://www.omimo.be/fig/templates/Green_Item2_3.gif" WIDTH=162 HEIGHT=17 BORDER=0></A></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/vpr/cateventview.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/vpr/cateventview.asp'" tppabs="http://www.omimo.be/vpr/cateventview.asp"
+			   ONMOUSEOVER="changeImages('Green_Item3', 'Green_Item3-over.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item3-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('Green_Item3', 'Green_Item3.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item3.gif*/); return true;">
+				<IMG NAME="Green_Item3" SRC="Green_Item3.gif" tppabs="http://www.omimo.be/fig/templates/Green_Item3.gif" WIDTH=162 HEIGHT=19 BORDER=0></A></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/vpr/layout/display/recent.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/vpr/layout/display/recent.asp'" tppabs="http://www.omimo.be/vpr/layout/display/recent.asp"
+			   ONMOUSEOVER="changeImages('Green_Item3_1', 'Green_Item3_1-over.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item3_1-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('Green_Item3_1', 'Green_Item3_1.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item3_1.gif*/); return true;">
+				<IMG NAME="Green_Item3_1" SRC="Green_Item3_1.gif" tppabs="http://www.omimo.be/fig/templates/Green_Item3_1.gif" WIDTH=162 HEIGHT=17 BORDER=0></A></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/vpr/specific.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/vpr/specific.asp'" tppabs="http://www.omimo.be/vpr/specific.asp"
+			   ONMOUSEOVER="changeImages('Green_Item3_2', 'Green_Item3_2-over.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item3_2-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('Green_Item3_2', 'Green_Item3_2.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item3_2.gif*/); return true;">
+				<IMG NAME="Green_Item3_2" SRC="Green_Item3_2.gif" tppabs="http://www.omimo.be/fig/templates/Green_Item3_2.gif" WIDTH=162 HEIGHT=17 BORDER=0></A></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/vpr/layout/submit/forum.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/vpr/layout/submit/forum.asp'" tppabs="http://www.omimo.be/vpr/layout/submit/forum.asp"
+			   ONMOUSEOVER="changeImages('Green_Item3_3', 'Green_Item3_3-over.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item3_3-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('Green_Item3_3', 'Green_Item3_3.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item3_3.gif*/); return true;">
+				<IMG NAME="Green_Item3_3" SRC="Green_Item3_3.gif" tppabs="http://www.omimo.be/fig/templates/Green_Item3_3.gif" WIDTH=162 HEIGHT=17 BORDER=0></A></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/vpr/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/vpr/'" tppabs="http://www.omimo.be/vpr/"
+			   ONMOUSEOVER="changeImages('Green_Item3_4', 'Green_Item3_4-over.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item3_4-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('Green_Item3_4', 'Green_Item3_4.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item3_4.gif*/); return true;">
+				<IMG NAME="Green_Item3_4" SRC="Green_Item3_4.gif" tppabs="http://www.omimo.be/fig/templates/Green_Item3_4.gif" WIDTH=162 HEIGHT=17 BORDER=0></A></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/magazine/getrtm.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/magazine/getrtm.htm'" tppabs="http://www.omimo.be/magazine/getrtm.htm"
+			   ONMOUSEOVER="changeImages('Green_Item4', 'Green_Item4-over.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item4-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('Green_Item4', 'Green_Item4.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Item4.gif*/); return true;">
+				<IMG NAME="Green_Item4" SRC="Green_Item4.gif" tppabs="http://www.omimo.be/fig/templates/Green_Item4.gif" WIDTH=162 HEIGHT=19 BORDER=0></A></TD>
+	</TR>
+	<TR>
+		<TD>
+			<IMG SRC="Green_end.gif" tppabs="http://www.omimo.be/fig/templates/Green_end.gif" WIDTH=162 HEIGHT=8></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/'" tppabs="http://www.omimo.be/"
+			   ONMOUSEOVER="changeImages('Green_Home', 'Green_Home-over.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Home-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('Green_Home', 'Green_Home.gif'/*tpa=http://www.omimo.be/fig/templates/Green_Home.gif*/); return true;">
+				<IMG NAME="Green_Home" SRC="Green_Home.gif" tppabs="http://www.omimo.be/fig/templates/Green_Home.gif" WIDTH=162 HEIGHT=19 BORDER=0></A></TD>
+	</TR>
+	<TR>
+		<TD>
+			<IMG SRC="Green_Home_end.gif" tppabs="http://www.omimo.be/fig/templates/Green_Home_end.gif" WIDTH=162 HEIGHT=10></TD>
+	</TR>
+				<TR><TD>
+<!-- ------------------- START OF SITE SEARCH PANEL 1 -------------------- -->
+<center>
+<FORM ACTION="http://search.freefind.com/find.html" METHOD="GET" target="_top">
+<font size=1 face="arial,helvetica" ><br>
+<INPUT TYPE="HIDDEN" NAME="id" SIZE="-1" VALUE="9645972">
+<INPUT TYPE="HIDDEN" NAME="pid" SIZE="-1" VALUE="r">
+<INPUT TYPE="HIDDEN" NAME="mode" SIZE="-1" VALUE="ALL">
+<INPUT type="HIDDEN" name="n" value="0">
+<INPUT TYPE="TEXT" NAME="query" SIZE="18"><br><br>
+<INPUT TYPE="SUBMIT" VALUE=" Find! ">
+</font>
+</FORM>
+</center>
+<!-- ------------------- END OF SITE SEARCH PANEL 1 -------------------- -->
+				</TD></TR>
+</TABLE>
+<!-- End ImageReady Slices -->
+
+   <!-- TOP : the menu : end -->
+   
+</td>
+
+
+<td width="2" bgcolor="#000000"></td>
+
+
+<td valign="top">
+
+<!-- TOP : the upper section : beginning -->
+
+<!-- ImageReady Slices (DSPage.psd) -->
+
+<table BORDER=0 CELLPADDING=0 CELLSPACING=0>
+
+<caption>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0>
+	<TR>
+		<TD COLSPAN=5 width="740" bgcolor="#FFFFFF" height="77" align="left" valign="middle">
+		&nbsp;
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+			<IMG SRC="DSPage_Separotor0_1.gif" tppabs="http://www.omimo.be/fig/templates/DSPage_Separotor0_1.gif" WIDTH=4 HEIGHT=25></TD>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/Encyc/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/Encyc/'" tppabs="http://www.omimo.be/Encyc/"
+			   ONMOUSEOVER="changeImages('DSPage_Section1', 'DSPage_Section1-over.gif'/*tpa=http://www.omimo.be/fig/templates/DSPage_Section1-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('DSPage_Section1', 'DSPage_Section1.gif'/*tpa=http://www.omimo.be/fig/templates/DSPage_Section1.gif*/); return true;">
+				<IMG NAME="DSPage_Section1" SRC="DSPage_Section1.gif" tppabs="http://www.omimo.be/fig/templates/DSPage_Section1.gif" WIDTH=106 HEIGHT=25 BORDER=0></A></TD>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/Magazine/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/Magazine/'" tppabs="http://www.omimo.be/Magazine/"
+			   ONMOUSEOVER="changeImages('DSPage_Section2', 'DSPage_Section2-over.gif'/*tpa=http://www.omimo.be/fig/templates/DSPage_Section2-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('DSPage_Section2', 'DSPage_Section2.gif'/*tpa=http://www.omimo.be/fig/templates/DSPage_Section2.gif*/); return true;">
+				<IMG NAME="DSPage_Section2" SRC="DSPage_Section2.gif" tppabs="http://www.omimo.be/fig/templates/DSPage_Section2.gif" WIDTH=201 HEIGHT=25 BORDER=0></A></TD>
+		<TD>
+			<A HREF="javascript:if(confirm('http://www.omimo.be/Experts/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/Experts/'" tppabs="http://www.omimo.be/Experts/"
+			   ONMOUSEOVER="changeImages('DSPage_Section3', 'DSPage_Section3-over.gif'/*tpa=http://www.omimo.be/fig/templates/DSPage_Section3-over.gif*/); return true;"
+			   ONMOUSEOUT="changeImages('DSPage_Section3', 'DSPage_Section3.gif'/*tpa=http://www.omimo.be/fig/templates/DSPage_Section3.gif*/); return true;">
+				<IMG NAME="DSPage_Section3" SRC="DSPage_Section3.gif" tppabs="http://www.omimo.be/fig/templates/DSPage_Section3.gif" WIDTH=201 HEIGHT=25 BORDER=0></A></TD>
+		<TD>
+			<IMG SRC="DSPage_SectionsEnd.gif" tppabs="http://www.omimo.be/fig/templates/DSPage_SectionsEnd.gif" WIDTH=247 HEIGHT=25></TD>
+	</TR>
+</TABLE>
+</caption>
+
+	
+<TR>
+
+<td COLSPAN=5 bgcolor="#FFFFFF" valign="top"> 
+<table border="0" cellspacing="5" cellpadding="4">
+<tr>
+	<td bgcolor="#FFFFFF" width="741">	
+
+<!-- TOP : the upper section : end -->
+
+
+<!-- TOP : END-->
+
+
+
+
+
+<H1 ALIGN=Center>
+  Windows NT as Real-Time OS?
+</H1>
+<P ALIGN=Left>
+<I>More and more companies are trying to use Windows NT as a standard Operating
+System (OS) at all levels of the industrial hierarchy. The use as server
+and workstation is obvious, but some people want to use it also on the factory
+floor. These factory floor applications demand real-time system behaviour.
+Can Windows NT be a component to fulfil this need? <BR>
+First, we will define what a real-time system is and the OS characteristics
+we need to allow developers to build such a real-time system. The distinction
+will be made between hard and soft real-time systems. In the second part,
+we demonstrate how and why Windows NT cannot fulfil the requirements of a
+hard real-time system. We show, however, that for some simple soft real-time
+applications, Windows NT could be used under certain circumstances.</I>
+<P ALIGN=Left>
+<H3>
+  INTRODUCTION
+</H3>
+<P ALIGN=Left>
+Windows NT was not designed with the requi-rements of a Real-Time Operating
+System (RTOS) in mind: it has been designed as a General Purpose OS (GPOS)
+or, to be more precise, as a Network OS (NOS). Nevertheless, because Win-dows
+NT was created by developers of the VMS Operating System, some characteristics
+from the real-time world have been introduced. For example Micro-soft introduced
+the notion of real-time class processes. They are scheduled in the same way,
+as it would be in an RTOS. The ISR (Interrupt Service Routine) has been designed
+in a very efficient way [1]. However, do these elements allow for a
+classification of Windows NT as a RTOS?
+<P ALIGN=Left>
+<H3>
+  WHAT IS A REAL-TIME SYSTEM?
+</H3>
+<H4>
+  Definition
+</H4>
+<P ALIGN=Left>
+A Real-Time System responds in a timely predictable way to unpredictable
+external stimuli arrivals. <BR>
+To fulfil this, some basic requirements are needed:
+<OL>
+  <LI>
+    Meet deadlines. After an event occurred an action has to be taken within
+    a predetermined time limit. Missing a deadline is considered a (severe) software
+    fault. <BR>
+    On the contrary, it is not considered as a software fault when a text editor
+    reacts slowly and so enervating the user. This lack of response is catalogued
+    as a performance problem &#151; which can probably be solved by putting in
+    a faster processor. It can be demonstrated that using a faster processor
+    will not necessarily solve the problem of missing dead-lines [2].
+  <LI>
+    Simultaneity or simultaneous processing: even if more than one event happens
+    simultaneously, all deadlines for all these events should be met. This means
+    that a real-time system needs inherent parallelism. This is achieved by using
+    more than one processor in the system and/or by adopting a multi-task approach.
+</OL>
+<P ALIGN=Left>
+<H4>
+  Hard and Soft Real-Time Systems
+</H4>
+<P ALIGN=Left>
+A classification can be made into hard and soft real-time systems based on
+their properties.<BR>
+The properties of a hard real-time system are:
+<UL>
+  <LI>
+    No lateness is accepted under any circumstances
+  <LI>
+    Useless results if late
+  <LI>
+    Catastrophic failure if deadline missed
+  <LI>
+    Cost of missing deadline is infinitely high
+</UL>
+<P ALIGN=Left>
+A good example of a hard real-time system is the fly-by wire control system
+of an aircraft.<BR>
+A soft real-time system is characterised by:
+<UL>
+  <LI>
+    Rising cost for lateness of results
+  <LI>
+    Acceptance of lower performance for lateness
+</UL>
+<P ALIGN=Left>
+Examples are a vending machine and a network interface subsystem. In the
+latter you can recover from a missed packet by using one or another network
+protocol asking to resend the missed packet. Of course, by doing so, you
+accept system performance degradation. <BR>
+Other real-time systems examples are nuclear power plant control, industrial
+manufacturing control, me-dical monitoring, weapon delivery systems, space
+na-vigation and guidance, reconnaissance systems, laboratory experiments
+control, automobile engines control, robotics, telemetry control systems,
+printer controllers, anti-lock breaking, burglar alarms &#151; the list is
+endless.<BR>
+The difference between a hard and a soft real-time system depends on the
+system requirements: it is called hard if the requirement is "the system
+shall not miss a deadline" and soft if "the system should not miss a
+deadline".<BR>
+There are a lot of discussions going on about the exact meaning of a hard
+and soft real-time system. One could even argue that a soft real-time system
+is not a real-time system, as the first requirement: meet deadlines, is not
+met. Indeed, the term "real-time" is often misused to indicate a fast system.
+And fast can then be seen as "should meet timing deadlines", thus meaning
+a soft real-time system. Therefore, we define a RTOS as an OS that can be
+used to build a hard real-time system.
+<P ALIGN=Left>
+<H4>
+  Hard or Soft RTOS do not exist!
+</H4>
+<P ALIGN=Left>
+People often confuse the notion of real-time systems with real-time operating
+systems (RTOS). From time to time people, even misuse hard and soft attributes.
+They say this RTOS is a hard RTOS or this one is a soft one. There is no
+hard RTOS or soft RTOS. A specific RTOS can only allow you to develop a hard
+real-time system. But having such an RTOS will not prevent you from developing
+a system that does not meet deadlines. <BR>
+If, for example, you decide to build a real-time system that should respond
+to an Ethernet TCP/IP connection, it will never be a hard real-time system
+as the Ethernet itself is never predictable.<BR>
+Of course, if you decide to build an application on top of an OS like
+&#147;Windows 3.11&#148;, your system will never be a hard real-time system
+as the behaviour of the "OS" software is by no means predictable.
+<P ALIGN=Left>
+<H3>
+  NECESSARY OS REQUIREMENTS FOR An RTOS
+</H3>
+<H4>
+  Req. 1: an RTOS has to be multithreaded and preemptible.
+</H4>
+<P ALIGN=Left>
+As mentioned above, a RTOS should be predictable. This does not mean that
+a RTOS should be fast, but that the maximum time to do something should be
+known in advance and should be compatible with the application requirements.
+Windows 3.11 &#151; even on a Pentium Pro 200 MHz &#151; is useless for a
+Real-Time System, as one application can keep the control forever and block
+the rest of the system (Windows 3.11 is co-operative).<BR>
+The first requirement is that the OS is multi-threaded and preemptible. To
+achieve this the scheduler should be able to preempt any thread in the system
+and give the resource to the thread that needs it most. The OS (and the hardware
+architecture) should also allow multiple levels of interrupts to enable
+pre-emption at the interrupt level.
+<P ALIGN=Left>
+<H4>
+  Req. 2: the notion of thread priority has to exist.
+</H4>
+<P ALIGN=Left>
+The problem is to find which thread needs a resource the most. In an ideal
+situation, a RTOS gives the resources to the thread or driver that has the
+closest deadline to meet (we call this a deadline driven OS - see also [2]).
+To do so, however, the OS has to know when a thread has to finish its job
+and how much time each thread needs in order to do so. For the time being
+there is no RTOS for which this is the case, as it is so far too difficult
+to implement.<BR>
+Therefore, the OS developers took another point of view: they introduced
+the concept of priority levels for threads. <BR>
+The designer is responsible for converting deadline requirements in thread
+priorities. As this human activity is prone to error, a Real-Time System
+can easily go amiss. The designer can get help in this transformation process
+by using for example Rate Monotonic Scheduling theories [2] and some simulation
+software [9] but it can be of no avail. Nevertheless, as there is no other
+solution today, the notion of thread priority has to exist.
+<P ALIGN=Left>
+<H4>
+  Req. 3: the OS has to support predic-table thread synchronisation mechanisms
+</H4>
+<P ALIGN=Left>
+As threads share data (resources) and need to communicate, it is logical
+that locking and inter-thread communication mechanisms exist.
+<P ALIGN=Left>
+<H4>
+  Req. 4: a system of priority inheritance has to exist.
+</H4>
+<P ALIGN=Left>
+In fact, it is these synchronisation mechanisms and the fact that the different
+threads run in the same memory space that makes the difference between threads
+and processes. Processes do not share the same memory space. For instance,
+old UNIX versions are not multi-threaded. (Old) UNIX is a multi-task OS,
+but the tasks are processes that can only communicate via pipes and shared
+memory. Both mechanisms use the file-system characterised by an unpredictable
+behaviour.<BR>
+The combination of thread priority and resource sharing between them leads
+to another point: the classical problem of priority inversion. Before having
+a priority inversion condition, at least three threads have to be involved.
+When the lowest priority thread has locked a resource (shared with the highest
+one) while the middle priority thread is running, the highest priority thread
+is then suspended until the locked resource is relea-sed and the middle priority
+thread stops running. In such a case the time needed to complete a high priority
+level thread depends on a lower priority level "priority inversion". It is
+clear that in such a situation it is hard to meet deadlines. (Figure 1).<BR>
+To avoid this, a RTOS should allow priority inheritan-ce in order to boost
+the lowest priority thread above the middle one up to the requester. Priority
+inheritance means that the blocking thread inherits the priority of the thread
+it blocks (of course, this is only the case if the blocked thread has a higher
+priority).
+<P ALIGN=Left>
+<A NAME="fig1" HREF="winnt1.htm" tppabs="http://www.omimo.be/magazine/97q2/winnt1.htm">Figure 1 Priority inversion </A>
+<P ALIGN=Left>
+Some people will argue that a correct design would avoid the problem. This
+is not true for complex applications. The only way to solve this is to increase
+the priority of the thread manually before locking a resource. This implies
+of course that only two threads of different priorities are sharing the protected
+resource. If not, there is no solution.
+<P ALIGN=Left>
+<H4>
+  OS Behaviour should be known
+</H4>
+<P ALIGN=Left>
+Lastly, the timing requirements should be considered. In fact, the developer
+should know all the timing of system calls and the system behaviour in all
+his flavours. Therefore, the following figures should be clearly given by
+the RTOS manufacturer:
+<UL>
+  <LI>
+    The interrupt latency (i.e. time from interrupt to task run): this has to
+    be compatible with application requirements and has to be predictable. This
+    value depends on the number of simultaneous pending interrupts.
+  <LI>
+    For every system call, the maximum time it takes. It should be predictable
+    and independent from the number of objects in the system;
+  <LI>
+    The maximum times the OS and drivers mask the interrupts.
+</UL>
+<P ALIGN=Left>
+The developer should also know the following points:
+<UL>
+  <LI>
+    System Interrupt Levels.
+  <LI>
+    Device driver IRQ Levels, maximum time they take, etc.
+</UL>
+<P ALIGN=Left>
+When all the previous metrics are known, one can imagine to develop a hard
+Real-Time System on top of this OS. Of course, the performance requirements
+of the System to develop should be compatible with the RTOS and the hardware
+chosen.
+<P ALIGN=Left>
+<H3>
+  DOES WINDOWS NT FULFIL THESE REQUIREMENTS?
+</H3>
+<H4>
+  Windows NT is multi-threaded and preemptible
+</H4>
+<P ALIGN=Left>
+It is clear that Windows NT is a multi-threaded and preemptible OS [3], as
+such it fulfils the first requirement (Req. 1). Let us now examine the
+predictability of Windows NT. Therefore, we have to recall the structure
+of Windows NT and to figure out if and how real-time aspects of a system
+can be handled in Windows NT.
+<P ALIGN=Left>
+<H4>
+  Thread priorities (Req. 2)
+</H4>
+<P ALIGN=Left>
+In a real-time system, not all the jobs have the same priority. Some of them
+(those that are time critical) have higher priorities. Others like displaying
+the state of the system, logging events to file or configuring the system
+have on the contrary lower priorities. To take this into account, the OS
+should be able to assign different priorities for these jobs.<BR>
+In Windows NT the notion of priorities is quite complex:
+<UL>
+  <LI>
+    There are two classes of process priorities: real-time class and dynamic
+    class. Processes in the real-time class have a fixed priority level that
+    can only be changed by the application itself, whereas the processes in the
+    dynamic class will see their priorities changed by the scheduler depending
+    on the type of work the process is doing (interactive or non-interactive
+    activity). Only the first class can be used in a real-time system to gua-rantee
+    the predictability of the system. It should be noted that for a non real-time
+    job of a real-time system the second class could always be used as long as
+    it does not share resources with the process of the real-time class.
+  <LI>
+    A process has a base priority level that can only be changed by the application
+    itself (in the case of the real-time class).
+  <LI>
+    A thread in a process can have a priority in the range of &#177;2 the process
+    base priority level plus the two extreme levels of the class. For example
+    the threads of a process of base priority 24 (Real-Time Class) can have any
+    priority level between 22 and 26 plus the levels 16 and 31.
+</UL>
+<P ALIGN=Left>
+<A NAME="fig2" HREF="winnt2.htm" tppabs="http://www.omimo.be/magazine/97q2/winnt2.htm">Figure 2 represents these two classes of
+processes.</A>
+<P ALIGN=Left>
+As there is a notion of thread priority, the second requirement is met. But
+there is a problem: only a small number of priority levels are allowed in
+Windows NT. Most of the modern RTOS allow for at least 256 priorities. <BR>
+Why is this a problem? The answer is obvious: the more priorities you have,
+the more predictable your system is predictable. The best way to design a
+system is to assign to each different thread a different priority [2]. For
+a given process in Windows NT you have only 5 (7 if you count the two extreme
+ones) priorities for threads in a given process. So doing, a lot of them
+will have to run at the same level. Your predictability will then be mediocre
+if you have to handle more than one or two critical events. Some would say
+that different processes could be. But even then, the total number of priorities
+is only 16. Moreover, context-switching time between threads from different
+processes is much higher than between threads in the same process, as they
+do not share their memory space, which is a part of the context. Therefore,
+this is not a good solution.
+<P ALIGN=Left>
+<A HREF="winnt2.htm" tppabs="http://www.omimo.be/magazine/97q2/winnt2.htm">Figure 2 Windows NT priority spectrum </A>
+<H4>
+  Priority inversion
+</H4>
+<P ALIGN=Left>
+As mentioned previously the problem of priority inversion is a classical
+one in a real-time system. There-fore, in a RTOS the synchronisation system
+calls such as mutexes, semaphores and critical sections should be capable
+of handling priority inheritance. In Win-dows NT this is NOT POSSIBLE [4],
+so the requirement 4 is not met. <BR>
+Another problem related to the priority inversion in Windows NT is due to
+the implementation of some GUI system calls. These are handled in a synchronous
+way (the calling thread is suspended until the completion of the system call)
+by a process running at a non real-time class priority [5]. So doing, a lower
+real-time class thread can prevent the upper ones from running.<BR>
+As we have seen, the relatively low number of priorities correlated to the
+problem of the priority inversion make windows NT only suitable for simple
+(few diffe-rent kinds of events) Real-Time Systems.
+<P ALIGN=Left>
+<H4>
+  Win32 API characteristics
+</H4>
+<P ALIGN=Left>
+Why then choose Windows NT? As mentioned be-fore, it could be interesting
+to have the same OS at different levels in the company's industrial hierarchy.
+But another very interesting point to consider is the very rich and powerful
+Win32 API. You have a lot of good development platforms, good compilers and
+also a lot of engineers that know this API well. The features of this API
+are numerous. There is everything you need to create a powerful multi-threaded
+application. The only question is to know if you can build a reliable Real-Time
+Application on top of it.<BR>
+To do so, the system call should be predictable and independent from the
+number of objects in the system.<BR>
+To measure this we have done a few simple tests. We have designed a process
+(belonging to the real-time class) that has a thread executing synchronisation
+system calls. We used the QueryPerformanceCounter system call before and
+after each synchronisation system call to measure the time it takes. At the
+end of the test, we saved everything on disk to exploit the results with
+Excel (Figure 3).<BR>
+We made sure that no swapping had occurred during the tests and that no resource
+had been locked -so our measures are significant. We have also measured the
+delay introduced by the tracing activity and removed it from the test results.
+The tests have been performed on a 100 MHz Pentium with 24MB RAM.<BR>
+For the request mutex system call, for example, we got an average of 35 &#181;s.
+But the maximum has once been up to 670 &#181;s!
+<P ALIGN=Left>
+<A NAME="fig3" HREF="winnt3.htm" tppabs="http://www.omimo.be/magazine/97q2/winnt3.htm">Figure 3 Get Mutex System call time </A>
+<P ALIGN=Left>
+Why? This is simply due to an interrupt either from the disk or from the
+network as this was the only possible activity of the system (this machine
+is connected on our network). This was reproduced many times when loading
+artificially the system with disk and network transfers while performing
+the tests. So doing, we ended up delaying the system calls up to a few
+milliseconds!<BR>
+The Win32 API as we said is very rich. But it should be noticed that it is
+not well designed for real-time. For example mutex requests are queued in
+FIFO order and not in priority order [10]. This is a big drawback for
+predictability. Great care should also be taken when choosing a system call.
+For instance, for thread synchronisation in the same process, the critical
+section should be preferred to any other call (this call takes only a few
+microseconds compared to 35 &#181;s with Mutex). This call is designed to
+work only in such a case (threads have to belong to the same process). This
+is normal, as the context switch between two threads of the same process
+is much lighter than the one between two processes.<BR>
+A final remark concerning this API: when using an API system call one should
+notice that some of them are executed by system processes running at a lower
+priority (dynamic class) and are synchronous. So doing, the calling thread
+will wait for the completion of the call. This could result in a priority
+inversion.<BR>
+Our conclusion after these very simple tests is that, despite a powerful
+API, the underlying kernel and I/O manager is not well adapted to handle
+real-time events at the application level!<BR>
+We will discuss later if this problem can be solved at the driver level.
+<H4>
+  Interrupt Management
+</H4>
+<P ALIGN=Left>
+A real-time system interacts with the external world via the computer hardware.
+External events are converted into interrupts and handled by a device driver.
+<P ALIGN=Left>
+<A NAME="fig4" HREF="winnt4.htm" tppabs="http://www.omimo.be/magazine/97q2/winnt4.htm">Figure 4 Windows NT hardware interfacing
+</A>
+<P ALIGN=Left>
+Figure 4 from the DDK Documentation [6], shows how Windows NT is designed
+to deal with the hardware.<BR>
+The only way to reach the hardware is via a kernel device driver. This is
+logical in such an OS as pro-cesses are running in separate memory spaces
+and cannot gain access directly to the hardware. As most real-time applications
+are dealing with special external events, the developer must also develop
+the kernel device drivers to gain access to the hardware. Let us see how
+a device driver is designed.<BR>
+The device driver is responsible for handling the interrupt generated by
+the hardware it controls. To do this, an original mechanism has been chosen
+in order to increase the responsiveness of the OS. The interrupts are handled
+in two stages. First, the interrupt is handled by a very short Interrupt
+Servicing Routine (ISR). Afterwards the work is completed by executing a
+DPC (Deferred Procedure Call). This delivers the following event flow:
+<UL>
+  <LI>
+    Interrupt occurs
+  <LI>
+    Processor saves PC, SP and calls the dispatcher
+  <LI>
+    The OS saves the context and calls the ISR
+  <LI>
+    The device driver handles the ISR in the shortest possible time, doing only
+    the critical work (Reading/Writing hardware registers)
+  <LI>
+    The device driver calls a Deferred Procedure Call function (in fact this
+    is a queue handled by the I/O Manager)
+  <LI>
+    The device driver exits the ISR
+  <LI>
+    The OS restores the context
+  <LI>
+    The processor restores the PC and SP
+  <LI>
+    The pending DPC is then scheduled at DISPATCH-LEVEL priority. It is a kind
+    of software interrupt.
+  <LI>
+    After completion of all pending DPC, the OS reschedules the user applications.
+</UL>
+<P ALIGN=Left>
+<A NAME="fig5" HREF="winnt5.htm" tppabs="http://www.omimo.be/magazine/97q2/winnt5.htm">Figure 5 Windows-NT Interrupt levels</A>
+<P ALIGN=Left>
+As we can see the handling of an interrupt is quite complex in Windows NT.
+Moreover, an ISR must be designed in the correct way to be as short as possible.
+So most drivers do a lot of work in the DPC (which are only preemptible by
+an ISR) causing other DPC to wait for their completion as all DPC run at
+the same priority level (DISPATCH_LEVEL, level 2 on Figure 5).<BR>
+The Windows NT Device Driver Documentation tells you that: "the ISR are
+preemptible by upper priority ISR and that DPC have higher priority than
+user and system threads". But as all DPC are running at the same level and
+as the policy that should be used when designing a Device Driver is to reduce
+the ISR to the minimum (deferring the rest of the critical job in the DPC),
+your DPC will have to wait for other DPC to be completed. Therefore, here
+your application will depend on others device drivers.<BR>
+Is this different in a RTOS? Of course it is. In an RTOS the developer first
+knows at which level the other device drivers are running. There is usually
+some free space for interrupts above the standard drivers. All the critical
+work is then done in the ISR allowing the developer to tune its drivers'
+configuration depending on the time constraint of the application. In Windows
+NT the ISR are very fast, so the interrupts are not blocked for a long period,
+but nothing is done in the ISR. Most of the job is deferred to the DPC. So
+if you are using a third party device driver badly designed, you will finally
+miss deadlines, except if you do not follow Microsoft policy and do the entire
+job in the ISR &#151; but then, why use an OS?
+<P ALIGN=Left>
+<A NAME="fig6" HREF="winnt6.htm" tppabs="http://www.omimo.be/magazine/97q2/winnt6.htm">Figure 6 Preemption at the interrupt level
+</A>
+<P ALIGN=Left>
+Notice here that this could be very crucial as we discovered that some DPC
+from hard disk and network drivers take more than a few milliseconds.
+<H4>
+  Memory Management
+</H4>
+<P ALIGN=Left>
+Another point to consider when designing a real-time system is the memory
+management policy of the RTOS. In Windows NT, processes are in their own
+me-mory space. Virtual memory mechanism and a pa-ging system can only achieve
+this. For business applications, this is great, but for a real-time system
+that has to respond to external events in a predefined time limit, this generates
+unpredictability when the system has to get a memory page from disk. There-fore,
+Windows NT allows you to lock pages into memory through the call to the
+VirtualLock function. . In his book, Jeffrey Richter says that Windows NT
+can still unlock the pages and swap them out to the disk if the whole process
+is inactive [7]. However, we have not manage to demonstrate this. The only
+thing we manage to find that the memory allocated for the window can still
+be swapped out when you iconise them. So normally for Real-Time applications,
+this will not be a problem. Is the previous point still a problem? It is
+not, if the application and other third party applications are well designed
+and do not take more memory than physically available.<BR>
+At the device driver level, however, swapping can be avoided.
+<H4>
+  Other points to consider
+</H4>
+<P ALIGN=Left>
+Some other few points should be considered when trying to use an OS for real-time
+or embedded applications:
+<UL>
+  <LI>
+    For embedded applications, the memory footprint is generally a key issue.
+    Windows NT has quite a big memory footprint compared to other RTOS on the
+    market.
+  <LI>
+    Most of the time you do not need any keyboard or display.
+  <LI>
+    For large series productions, the Windows NT license is really too expensive:
+    $ 255 for NT 4.0 Workstation (You can reach $ 186 for NT3.5 with more than
+    3000 units and even less, for very large quantities!)
+</UL>
+<H4>
+  Commercial Side
+</H4>
+<P ALIGN=Left>
+Last but not least, one should consider the fact that some companies are
+offering solutions to make Windows NT more Real-Time &#151; a proof if any
+that it is not the case by default! Likewise, this shows that there is a
+market for it.
+<P ALIGN=Left>
+<H3>
+  CONCLUSION: COULD WINDOWS NT BE USED AS A RTOS?
+</H3>
+<P ALIGN=Left>
+We showed in this article that Windows NT, as it has been designed to deal
+mainly with classical applications, is not a good platform to support Real-Time
+applications:
+<UL>
+  <LI>
+    the number of available priorities in the real-time class is too low for
+    real-time applications;
+  <LI>
+    the problem of priority inversion is not solved in the OS (for the real-time
+    class process);
+  <LI>
+    for embedded applications, the memory footprint is too big and the license
+    too expensive;
+  <LI>
+    device drivers can take a lot of time in DPC and no pre-emption by other
+    DPC is possible.
+</UL>
+<P ALIGN=Left>
+So why do some people say they can manage to use Windows NT for real-time
+applications [8]? First, one specific application never demonstrates anything
+on its own. Second, Windows NT can only be used un-der the following
+circumstances:
+<UL>
+  <LI>
+    Soft Real-Time Systems whose requirements allow for deadlines to be missed
+    from time to time;
+  <LI>
+    Simple system where the number of different kinds of events is not too big
+    (predictability of DPC is then higher);
+  <LI>
+    CPU load always remains low (System DPC have time to execute);
+  <LI>
+    Low number of/or no third party drivers or at least a good choice of third
+    party drivers. (source code needed to check!);
+  <LI>
+    Critical jobs (or even all the jobs) done at the DPC level or better in the
+    ISR itself.
+</UL>
+<P ALIGN=Left>
+This last point, however, makes the use of any OS pointless.<BR>
+But, for hard Real-Time systems, Windows NT is out of the question. Your
+system will never be predictable enough. To put it bluntly &#151; you can
+rely upon it and take a plane: Windows NT will not be used in any fly-by-wire
+systems in the near future!<BR>
+But in earnest, what should be changed in Windows NT to enable its use in
+hard real-time systems? The real-time class process should have more priority
+levels. The problem of the priority inversion should be solved. The whole
+interrupt system should be chan-ged:
+<UL>
+  <LI>
+    having DPC is a great idea but they should have many priority levels;
+  <LI>
+    DPC should be preemptible by other higher priority DPC;
+  <LI>
+    third party drivers and system drivers should be configurable (ISR priority
+    level, DPC priority level);
+  <LI>
+    third party drivers should be detailed to the developer, who should at least
+    know the maximum time a device driver can take (during ISR, during DPC);
+  <LI>
+    the time the OS masks the interrupt should also be known to the developer;
+  <LI>
+    the time each system call takes should finally be specified to the developer.
+</UL>
+<P ALIGN=Left>
+Is Microsoft willing and ready to introduce such enhancements in Windows
+NT or do they find the market to small to let this open for third parties?
+<P ALIGN=Left>
+<I></I>
+<P ALIGN=Left>
+<I><A HREF="javascript:if(confirm('http://www.omimo.be/encyc/time/SELECT/MARTIN/martin.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/encyc/time/SELECT/MARTIN/martin.htm'" tppabs="http://www.omimo.be/encyc/time/SELECT/MARTIN/martin.htm">Dr.
+Ir. Martin Timmerman</A> is graduated in Tele-communications Engineering
+at the Royal Military Academy (RMA) Brussels and is Doctor in Applied Science
+at the Gent State University (1982). He became the director of the System
+Development Centre (SDC) at RMA, which he created in 1983, and converted
+himself to a Computer Science Engineer. Actually he is giving general courses
+on Computer Platforms and more specific courses on System Development
+Methodologies at RMA. Outside RMA, Martin is known for his audits, reviews
+and seminars for his two companies Real-Time Consult and Real-Time User's
+Support International. RTUSI provides hardware and software support services
+and is involved in project engineering for Real-Time Systems.</I>
+<P ALIGN=Left>
+<I>Ir. Jean-Christophe Monfret graduated in 1993 as an Ing&eacute;nieur
+T&eacute;l&eacute;com Bretagne, France. He has a master's degree in Parallel
+Computer Science from the University of Rennes I, France (1993), a specialisation
+he had the opportunity to put to practice for a year at the Commissariat
+&agrave; l'Energie Atomique, France. He has been working since 1994 for RTUSI
+and Real-Time Consult as a project manager where he is also involved in audits
+and review activities.</I>
+<P>
+<P ALIGN=Left>
+<SMALL><B>REFERENCES</B></SMALL>
+<P ALIGN=Left>
+<SMALL><SMALL>1. Technology Brief: Real-Time Systems with Micro-soft Windows
+NT, Publication of the Microsoft De-veloper Network, Microsoft Corporation,
+1995.</SMALL></SMALL>
+<P ALIGN=Left>
+<SMALL><SMALL>2. J. Zalewski, "What Every Egineer Needs To Know About
+Rate-Monotonic Scheduling: A Tutorial," in
+<A HREF="javascript:if(confirm('http://www.omimo.be/magazine/index/index951.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/magazine/index/index951.htm'" tppabs="http://www.omimo.be/magazine/index/index951.htm">Real-Time
+Magazine, Issue 1995/1</A></SMALL></SMALL>
+<P>
+<SMALL><SMALL>3. Joel Powell, Multitask Windows NT, Waite Group Press,
+1993.</SMALL></SMALL>
+<P>
+<SMALL><SMALL>4. Microsoft&reg; Win32&reg; Software Development Kit
+Documentation.</SMALL></SMALL>
+<P>
+<SMALL><SMALL>5. Helen Custer, Inside Windows NT , Microsoft Press,
+1992.</SMALL></SMALL>
+<P>
+<SMALL><SMALL>6. Microsoft&reg; Windows NT&#153; Version 3.51 Device Driver
+Kit Documentation.</SMALL></SMALL>
+<P>
+<SMALL><SMALL>7. Jeffrey Richter, Advanced Windows, The Developer's Guide
+to the Win32 API for Windows NT 3.5 and Windows 95, Microsoft Press,
+1995.</SMALL></SMALL>
+<P>
+<SMALL><SMALL>8. Brian Catlin, Design of a TCP/IP Router Using Windows NT,
+a paper presented at the 1995 Digital Communications Design Conference, Catlin
+&amp; Associates, Redondo Beach, CA.</SMALL></SMALL>
+<P>
+<SMALL><SMALL>9. P. KORTMANN and G. MENDAL, PERTS Proto-typing Environment
+for Real-Time Systems,
+<A HREF="javascript:if(confirm('http://www.omimo.be/magazine/index/index961.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/magazine/index/index961.htm'" tppabs="http://www.omimo.be/magazine/index/index961.htm">Real-Time
+Magazine, Issue 1996/1</A> (ISSN 1018-0303).</SMALL></SMALL>
+<P>
+<SMALL><SMALL>10. Mutex Wait is FIFO but Can Be Interrupted, in Win32 SDK
+Books Online, Microsoft Corporation, 1995.</SMALL></SMALL>
+<P ALIGN=Center>
+<A HREF="javascript:if(confirm('http://www.omimo.be/encyc/buyersguide/rtos/ntspecial.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/encyc/buyersguide/rtos/ntspecial.htm'" tppabs="http://www.omimo.be/encyc/buyersguide/rtos/ntspecial.htm">To
+Special Report on Windows NT <BR>
+</A><A HREF="javascript:if(confirm('http://www.omimo.be/magazine/97Q2/index972.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.omimo.be/magazine/97Q2/index972.htm'" tppabs="http://www.omimo.be/magazine/97Q2/index972.htm">Back
+to contents table 97Q2 issue of
+Real-TimeMagazine</A><!-- BOTTOM : BEGINNING -->
+
+
+	<br><br><br><br></td>
+</tr>
+</table>
+</td>
+</TR>
+<tr>
+	<td COLSPAN=5 bgcolor=#ffffff  align=center> 
+	<IMG SRC="DSPage_PageEnd.gif" tppabs="http://www.omimo.be/fig/templates/DSPage_PageEnd.gif"></td>
+</tr>
+
+<TR>
+	<TD COLSPAN=5 bgcolor="#ffffff" height="800" valign=top>
+	&nbsp;</TD>
+</TR>
+
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</BODY>
+
+
+<!-- BOTTOM : END -->
+
+ </HTML>
+

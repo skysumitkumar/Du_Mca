@@ -1,0 +1,245 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="description" content="TimeKeeper Technical Notes">
+<meta name="keywords" content="TimeKeeer, JavaScript">
+<title>TimeKeeper Technical Notes</title>
+<LINK REL=StyleSheet HREF="mh.css" tppabs="http://www.michaelhorowitz.com/mh.css"  TYPE='text/css'>
+</head>
+
+<body>
+ <table border="0" cellpadding="3" cellspacing="0" width="100%">
+ <tr bgcolor="#717855">
+     <td align="left" width="257"><img border="0" src="mhlogo.gif" tppabs="http://www.michaelhorowitz.com/pix/mhlogo.gif" width="255" height="29"></td>
+     <td align="right"><a href="index.htm" tppabs="http://www.michaelhorowitz.com/index.htm" class="breadlink">Home</a>
+      <span class="bread"><a name="top">=></a>&nbsp; </span>
+      <a href="index-1.htm" tppabs="http://www.michaelhorowitz.com/Timekeeper/index.htm" class="breadlink" target="_top">TimeKeeper</a> &nbsp;</td></tr>
+ </table>
+<script language="JavaScript" src="timekeeperheader.js" tppabs="http://www.michaelhorowitz.com/Timekeeper/timekeeperheader.js"> </script>
+
+<h1 align="center">TimeKeeper Technical Notes</h1>
+
+<table border="0" width="100%"> <tr>
+<td><font face="Verdana" size="2">
+<p><img border="0" src="clock.gif" tppabs="http://www.michaelhorowitz.com/pix/clock.gif" width="180" height="147" alt="TimeKeeper" align="right"></p>
+
+ <p><b>Programming Notes:&nbsp;</b></p>
+      <p>TimeKeeper is coded in JavaScript. I attempted to avoid all new
+      features in the language so that TimeKeeper could be used with more web
+      browsers. Specifically, features in JavaScript 1.3 were avoided. All the
+      scripts are in the one TimeKeeper page and can be easily viewed with any
+      HTML or text editor.&nbsp;</p>
+      <p>The functions that respond to the main, driver buttons, only do
+      processing. That is, they do sanity checks, calculations and set the
+      cookies. They do no generation of visible output. The dynamic creation of
+      HTML is all done by scripts in the body of the web page. These scripts
+      only read the cookies, never change them.&nbsp;</p>
+      <p>The functions that work on the current project (Start, End, Suspend,
+      Resume, Reset) all deal with global variables. These function never
+      directly interact with the cookies. Likewise, when the web page is being
+      dynamically built by scripts in the BODY section, these scripts too read
+      the globally shared variables. They never update these variables and never
+      deal with the cookies directly. The global variables have names that start
+      with &quot;global_&quot;. The are initialized to &quot;*not found*&quot;
+      and are then populated based on the input cookies. Variables that have no
+      value in the input cookies remain with the &quot;*not found*&quot; value.
+      The global variables are set in the ReadCookieSetupVariables()
+      function.&nbsp;</p>
+      <p>There is a debug mode for TimeKeeper in which it dumps out the cookies.
+      To enable debug mode, edit the web page. Near the top is a variable called
+      &quot;DebugMode&quot; that is normally initialized to &quot;off&quot;. Set
+      it to &quot;on&quot;.&nbsp;It also displays the time the page was loaded.
+      This should only be of interest to me.&nbsp;</p>
+
+      <p><b>Timers:</b><br>
+	   TimeKeeper is not running anything while its web page is displayed. It als does not auto-reload itself.
+	   No timers are used (except in the reminder windows).<br>
+       The cookies created here all expire Dec 3, 2008 for now. This will be upgraded soon to a fixed time
+       from now. </p>
+
+      <p><b>Netscape Navigator v4&nbsp;</b></p>
+	        <p>With v4.77 the page title does not change in response to the below. It
+	        works in IE5.&nbsp;<br>
+	        &nbsp;&nbsp;<font face="Courier New" size="2"> document.title = &quot;new
+	        title here&quot;&nbsp;</font></p>
+	        <p>With v4.77 TimeKeeper loads very slowly, much more slowly than with  IE5.</p>
+	        <p>Due to differences in the way Navigator and IE5 handle&nbsp;<br>
+	        &nbsp;&nbsp; <font face="Courier New" size="2">&lt;a HREF  onclick="document.bgColor='aqua'; return true"></font><br>
+      I suppress the option to change the background color when the browser is not IE</p>
+      <p>Navigator 4.77 also caused lots of grief with the reminders feature and
+      with disabling buttons (see below).</p>
+
+      <p><b>Reminders&nbsp;</b></p>
+
+      <p>The alert
+        window created when a reminder time is reached, is created using the JavaScript <font face="Courier New" size="2">alert</font>
+      command. In testing, I found this window caused a beep on a Windows 2000
+      computer and not on a Windows NT4 computer. I emailed <a href="javascript:if(confirm('http://www.dannyg.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.dannyg.com/'" tppabs="http://www.dannyg.com/">Danny
+      Goodman</a>, the author of the JavaScript Bible to ask if the alert
+      command causes a beep or not. He was nice enough to respond and said that
+      the beep is Operating System dependent. He said there will be no beep on
+      an Apple Macintosh. The JavaScript language does not, unfortunately, have
+      any sort of beep command.&nbsp;</p>
+      <p>Originally reminders were going to be hosted in the main TimeKeeper
+      page but it turns out they get destroyed when a page is reloaded. So it
+      goes. Instead, each reminder is spawned as its own web browser window.
+      These reminder windows are independent of the TimeKeeper window.&nbsp; The
+      timer is started by the new window, not by the main TimeKeeper window.
+      After the timer alert is issued, the new window closes itself.&nbsp;</p>
+      <p>Reminders are implemented very differently from the main TimeKeeper
+      window. TimeKeeper sets no timers and stores all data in cookies. The
+      reminder windows set/read no cookies and they are driven by a timer that
+      it set when the page is first loaded/created.&nbsp;</p>
+      <p>Reminders work fine with IE5 but do not work well with Navigator 4.77 (I
+      haven't tested other browsers). IE5 will spawn multiple reminder windows
+      as long as the window name property of the window.open command is null (it
+      is). Navigator 4.77 never spawns multiple reminder windows both when the
+      window name was null and when it was set to a value. Each time you set a new reminder in Navigator
+      it destroys the old reminder. </p>
+      <p>Navigator also has a bug with the onUnload event defined in the BODY
+      tag. With a simple web page it works fine, but for some reason when
+      TimeKeeper generates a reminder web page with document.write that has the
+      onUnload event, it does not work. You can see my Netscape Communicator
+      gripes for the gory details. In brief, the onUnload event runs when the page is loaded.
+      To work around this problem, I don't generate
+      the onUnload event when running under a browser other than IE. This
+      means that users with other browsers don't get warned when a reminder is terminated
+      prematurely. Reminder windows generated in a browser other than IE include a suggestion to use IE.</p>
+
+      <p><b>Disabling Buttons:</b></p>
+      <p>The disabling of buttons proved to be a sinkhole of browser incompatibility.
+      In IE buttons are disabled that are not appropriate (such as suspending
+      just after suspending). This does not work however in Netscape Navigator
+      v4.&nbsp; The HTML and JavaScript code to implement this looks like:&nbsp;</p>
+
+      <p>&nbsp; <font face="Courier New" size="2">&lt;input type=button value="Start Work Day"
+      onClick=&quot;StartTicker()&quot; id=&quot;startbutton&quot;&gt;</font><font face="Courier New" size="2"><br>
+      &nbsp;i</font><font face="Courier New" size="2">f (global_LastFunction == "Suspn")               {<br>
+      &nbsp;&nbsp; document.Form1.startbutton.disabled    = true;<br>
+      &nbsp;&nbsp; document.Form1.suspendbutton.disabled  = true;}</font></p>
+
+      <p>This code says that if you just hit the Suspend button, the start
+      button and the suspend button should be disabled. The TimeKeeper logic is
+      that you can't suspend working while you are already suspended and you
+      can't start a new work day while the current day is suspended (instead,
+      you have to end the current day first).&nbsp;</p>
+
+      <p>This code works fine in IE5 but Netscape seemed not to not execute it
+      at all. Debugging showed that when none of the if tests were true,
+      Navigator executed the entire script. However, when an if test was true,
+      the browser died right there and failed to execute the rest of the script.
+      I tried changing the identifying string of the buttons from &quot;id&quot;
+      to &quot;name&quot;. This improved things in that Navigator did not die
+      mid-script. However, it did not disable the buttons. Further research
+      turned up the fact that disabling of buttons is not supported in Navigator
+      v4. It works in IE4, IE5 and Navigator v6.&nbsp;</p>
+
+      <p>While on the subject, Navigator v4 also does not allow control over the
+      button label. IE4, IE5 and Navigator v6 do. Users of those browsers will
+      see bold labels and a red label on the Help button.&nbsp;</p>
+
+      <p><b>Cookie Fields:</b></p>
+      <p>
+      <font face="Courier New" size="2">CurrDayTotal </font> is current days total minutes worked<br>
+      <font face="Courier New" size="2">
+      YestDayTotal</font> is in minutes<br>
+      <font face="Courier New" size="2">
+      CItimeStarted</font> is the time the current interval started. This could either
+      be because the Day just started or because a new interval was started
+      after a suspend. It is always two digits, a colon and two more digits.<br>
+      <font face="Courier New" size="2">
+      CIdatestarted</font> looks wrong because the month is a JavaScript month which
+      ranges from zero thru eleven, not from one thru twelve.&nbsp;<br>
+      <font face="Courier New" size="2">SuspendDateTime</font> is the date/time
+      of the last work suspension. The format derives from the toLocaleString()
+      function.&nbsp;<br>
+      <font face="Courier New" size="2">
+      DayStartDateTime</font> is really just a comment. Its the date/time that the
+      current work day started. Its set when the work day starts and is never
+      changed (except of course when a new day starts). It is read from the
+      cookie and displayed in the main status box.&nbsp;</p>
+
+      <p>One annoying thing about dealing with cookies in client-side JavaScript is
+      that you read all the cookies in one big clump, but you write them out one
+      at a time.&nbsp;TimeKeeper used to have a cookie for each project related
+      variable. Now it has one cookie that represents all 8 variables needed to maintain
+      the state of a given project. When client-side JavaScript reads
+      cookies, it read them all. Even those not related to TimeKeeper at all. I
+      have to parse through this long string that I refer to as BigCookie. A
+      colon is used by JavaScript to separate cookies when they are read.
+      However, its up to my program to parse through BigCookie and split out
+      individual cookies. The last cookie does not end with a semicolon.&nbsp;</p>
+      <p>Within a project related cookie, I use the up-and-down-line character
+      (&quot;|&quot;) as a field separator. The format is<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<font size="2">&nbsp; <font face="Courier New">project1=|fieldname1|value1|fieldname2|value2|&nbsp;</font></font></p>
+      <p><b>Other:</b></p>
+      <p>If the web browser does not support JavaScript, the user is told that
+      JavaScript is required. This is done with NOSCRIPT tags. Note that
+      browsers that <i>can</i> support JavaScript may have it disabled. This
+      same technique is used both in TimeKeeper itself and on <a href="index-1.htm" tppabs="http://www.michaelhorowitz.com/Timekeeper/index.htm">the
+      TimeKeeper home page</a>.&nbsp;</p>
+      <p>TimeKeeper does not write to any files or databases. All its data is
+      kept in web browser cookies.&nbsp;
+      <p>The TimeKeeper logo is clip art included with Front Page 2000.&nbsp;
+      <p>The background color is changed using the following<br><font face="Courier New" size="2">
+      &nbsp; &lt;td width="40" bgcolor="yellow">&lt;a HREF onclick=&quot;document.bgColor='yellow'; return true"><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &lt;font color="yellow">xxxx&lt;/font>&lt;/a>&lt;/td></font><br>
+      The null HREF results in no link being visible to the user, the mouse
+      pointer does not change. The x's are hidden because they are the same
+      color as the table cell background. There has to be something there for
+      the HREF to hang on to. I've seen this done as a transparent GIF but that
+      limits the size. I've also seen it done with a letter X but that is
+      visible to the user.&nbsp;I've also seen this done with onmouseover as
+      opposed to onclick. However, I think its too easy to change the color by
+      accident when using the mouseover event.&nbsp;
+      <p>A cookie, by default, only applies to the directory it is in. This single TimeKeeper.html file can be used<br>
+      to track multiple projects by putting different copies of it in multiple directories. If each project<br>
+      has its own directory, this works out great. The lowermost directory name is displayed as the project<br>
+      name in the page heading. For example&nbsp;<br>
+  C:\my documents\projectabc               it displays "projectabc"&nbsp;<br>
+  C:\customer2\current\JonesReport         it displays "JonesReport"&nbsp;<br>
+  C:\workstuff\BIGclient\JunePresentation  it displays &quot;JunePresentation&quot;&nbsp;&nbsp;
+
+      <p><b>Questions:</b></p>
+      <p>How can you abort a JavaScript script when a fatal error is detected?
+      Try/Catch blocks are too new to be widely implemented. The language
+      tolerates all sorts of numeric errors, such as dividing by zero. One thing
+      you can do is assign a variable to an undefined variable, but that does
+      not stop the script cold.&nbsp;
+      <p>How do stop execution of a script when there is not error? I have a
+      script that is not part of a function and only want to execute it
+      sometimes. If it was a function, no problem, you just <font size="2" face="Courier New">return</font>.
+      But in the body of a script? For the time being, I put the whole script inside an if test, but
+      this is not very elegant. The break statement can break
+      out of any labeled statement, but as far as I know, labeling a statement
+      requires JavaScript 1.3 and I prefer to rely on older syntax.&nbsp;
+      <p>Is there a no-op in JavaScript? Sometimes its preferable to code&nbsp;<br>
+      <font face="Courier New" size="2">&nbsp;&nbsp; if (a==b) </font><i><font size="2" face="Arial Narrow">do
+      nothing</font></i><font face="Courier New" size="2"><br>
+      &nbsp;&nbsp; else c=34;&nbsp;</font><br>
+      In TimeKeeper, I used &quot;no = op&quot; for the <i>do nothing</i></font></td></tr>
+</table>
+
+
+<table width="100%" cellspacing="0" cellpadding="3">
+<tr bgcolor="#717855">
+    <td align="left" >&nbsp; <a href="#top" class="toplink">Top of Page</a></td>
+    <td align="right" ><a href="index.htm" tppabs="http://www.michaelhorowitz.com/index.htm" class="breadlink">Home</a>
+   <span class="bread"> <a name="top"> =></a>&nbsp;</span>
+   <a href="index-1.htm" tppabs="http://www.michaelhorowitz.com/Timekeeper/index.htm" class="breadlink" target="_top">TimeKeeper</a> &nbsp;</td></tr>
+<tr bgcolor="white">
+<td align="left"><font face="Verdana" size="1">Last updated: November 7, 2001 &nbsp;</font></td>
+<td align="right" ><font face="Verdana" size="2">
+TimeKeeper: <a href="Download.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Download.html">Download</a>
+| <a href="Usage.Notes.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Usage.Notes.html">Usage Notes</a>
+| <a href="Change.History.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Change.History.html">Change History</a>
+| <a href="timekeeper.online.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/timekeeper.online.html">Run On-Line</a>
+| <a href="Technical.Notes.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Technical.Notes.html">Tech Notes</a>
+| <a href="Planned.Enhancements.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Planned.Enhancements.html">Enhancements</a></font></td></tr>
+
+<tr bgcolor="#717855"><td colspan=2 height="3"></td></tr>
+</table>
+
+<script language="JavaScript" src="timekeeperfooter2.js" tppabs="http://www.michaelhorowitz.com/Timekeeper/timekeeperfooter2.js"> </script>
+</body>
+</html>

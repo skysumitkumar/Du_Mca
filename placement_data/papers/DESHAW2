@@ -1,0 +1,233 @@
+From reve Mon Sep  1 11:57:03 1997
+Received: from shakti.cc.iitk.ernet.in (shakti.cc.iitk.ernet.in [144.16.163.92]) by qasid.cc.iitk.ernet.in (8.8.3/8.8.3) with SMTP id LAA24977 for <chreddy>; Mon, 1 Sep 1997 11:57:00 +0500 (GMT+0500)
+From: 9620530 rm kumar pg me <reve>
+Received: by shakti.cc.iitk.ernet.in; (5.65v3.2/1.1.8.2/23Sep96-0655AM)
+	id AA17374; Mon, 1 Sep 1997 06:52:58 GMT
+Message-Id: <9709010652.AA17374@shakti.cc.iitk.ernet.in>
+Subject: Forwarded mail...deshaw
+To: chreddy (9620510 cs reddy pg me)
+Date: Mon, 1 Sep 97 12:22:58 IST
+Cc: chreddy (9620510 cs reddy pg me)
+X-Mailer: ELM [version 2.3 PL11]
+Status: RO
+
+Forwarded message:
+> From kvrc@csealpha2.cse.iitk.ernet.in Sat Aug 30 10:35:07 1997
+> From: KVRC Kishore (9611109) <kvrc@csealpha2.cse.iitk.ernet.in>
+> Date: Sat, 30 Aug 1997 11:03:49 +0530 (IST)
+> Message-Id: <199708300533.LAA04830@csealpha3.cse.iitk.ernet.in>
+> 
+> part - B 
+> contains 20 questions.
+> 
+> C - puzzles
+> 
+> 1. return  values of strcmp(s,t)
+> 2. what is int *x[]()?
+> 3. ..
+> main()
+> {
+> 
+>    int i;
+> 
+>    for (i=0;i<3;i++)
+>    {
+> 	int i=100;
+> 
+> 	i--;
+> 	printf("%d .. \n", i);
+>    }
+> }
+> what is the output? ans: 99..99..99
+> 4. main()
+> {
+> 	int i=1;
+> 
+> 	printf("%d",i+2*i++);
+> }
+> ans: 4
+> 5.main()
+> {
+> char ch = 'A';
+> while (ch <= 'F')
+> {
+> 	switch(ch)
+> 	{
+> 	case 'A': case 'B': case 'C': case 'D' :ch ++; continue;
+> 	case 'F': case 'G' : ch++;
+> 	}
+> 
+> 	putchar(ch);
+> }
+> }
+> 
+> Ans: FG
+> 
+> 6. struct node
+> {
+> 	int a;
+> 	int b;
+> } *next;
+> 
+> what does the statement next.a mean?
+> 
+> Ans: compilation error
+> 
+> 7. which one of the following decln. is erroneous for the function f1()
+> and f2() as given below:
+> 
+> main()
+> {
+> 	int a[];
+> 	struct tag t;
+> 
+> 	.
+> 	.
+> 	.
+> 	f1(a)
+> 	f2(t);
+> 	.
+> 	.
+> 	.
+> }
+> I) f1()              II) f1()
+>    int *a;		 int a[];
+>    { . . . }		 { .. }
+>    f2()			 f2()
+>    struct tag x;	 struct tag x
+>    { ... }		 { ... }
+> 
+> III) f1()
+>      int *a;
+>      { . . }
+>      f2()
+>      struct tag *x;
+>      { . ..}
+> ans: III
+> 
+> 8. main()
+> {
+> 	int a=10,b=5,c=3,d=3;
+> 
+> 	if ( (a<b) && (c = d++) ) printf("%d %d %d %d", a, b, c,d);
+> 	else printf("%d %d %d %d", a, b, c,d);
+> }
+> what is the output?
+> A) 10 5 3 3 B) 10 5 3 4  C) compilation error D) 10 5 4 3
+> ans: A  (short circuit evaluation)
+> 8. usage of va_arg() and va_start()
+> #include <stdarg.h>
+> void dispaly(int n, char *s)
+> {
+> 	int i;
+> 
+> 	va_start(s);
+> 	i = va_arg(s, int);
+> 	printf(%d",i);
+> }
+> 
+> void show(char *s, ...)
+> {
+> 	int a;
+> 
+> 	va_start(s);
+> 	a = va_arg(s, int);
+> 	display(a,s);
+> }
+> 
+> what is the output of show("hello world"
+> 
+> 9. 
+> #define PRINT(int)	printf("int = %d ",int);
+> main()
+> {
+> 	int x=0,y=-1,z=3;
+> 
+> 	x = 1;PRINT(x^x);
+>         z <<= 3;PRINT(x);
+> 	y >>= 3; PRINT(y);
+> }
+> what is the output?
+> A) 0 1 -1  B) 0 8 -1 C) compilation error - reserved word int in macro D) 0 1 3
+> ans: A
+> 
+> 10. int f(int n)
+>     {
+> 	if (n<=1) return 1;
+> 	else return n+f(n-1);
+>     }
+> 
+>     what is the value of  f(5)?
+> 
+>     A) 5  B) 10  C) 15 D)25   
+> 
+>     Ans: C f is the sum of first n natural numbers.
+> 
+> 11. main()
+> {
+> 	printf("%d\n",'_'_'_'\'\'\');
+> }
+> 
+> output?  compilation error
+> 
+> 12. main()
+>     {
+> 	FILE *fp1,*fp2;
+> 
+> 	fp1 = open("my_file","w");
+> 	fp2 = open("my_file","w");
+> 
+> 	fputc('A',fp1);
+> 	fputc('B',fp2);
+> 
+> 	fclose(fp1);
+> 	fclose(fp2);
+> }
+> 
+> contents of myfile?
+> A) comatins AB
+> B) contains A
+> C) comtains B
+> D) run time error
+> 
+> Ans: C
+> 
+> 
+> 13. char *f()
+> {
+>     char *str = malloc(6*sizeof(char));
+> 
+>     strcpy(str, "Hello");
+> 
+>     return str;
+> }
+> main()
+> {
+> 	printf("%c\n",*f() = 'A');
+> }
+> 
+> Ans: A
+> 
+> 14. in recursive functions
+>   a. atomatic variables are stored in the stack
+>   b. ....
+>   c .....
+>   d ....
+> 
+> 
+> 15. the stmt. 
+> 	while ( (*t++ = *s++) ) is equivalent to 
+> 
+> 	A) while ( (*t  != '\0') ) 
+> 	    *t++ = *s++;
+> 	B) while ( *s != '\0' ) *t ++ = *s++
+> 	C) while ( *s != '\0' ) *t ++ = *s++;
+> 		*t = '\0';
+> 	D) none of the above  
+> 
+> 	ans: C
+> 
+> 16. 
+> 
+
+

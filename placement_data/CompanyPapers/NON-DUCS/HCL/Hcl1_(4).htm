@@ -1,0 +1,581 @@
+<HTML>
+<HEAD>
+<TITLE>Read Message: Inbox</TITLE>
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+NS4 = (document.layers);
+IE4 = (document.all);
+ver4 = (NS4 || IE4);   
+isMac = (navigator.appVersion.indexOf("Mac") != -1);
+isMenu = (NS4 || (IE4 && !isMac));
+//-->
+</SCRIPT>
+<script language="javascript" TYPE="text/javascript">
+function main_help()
+{
+window.open("/help/main_help.html","popup","top=5,left=30,toolbars=no,maximize=yes,resize=yes,width=452,height=301,location=no,directories=no,scrollbars=yes");
+}
+function scanWin(url)
+{
+window.open(url,"win2","toolbar=no,directories=no,resize=yes,menubar=no,location=no,scrollbars=yes,width=500,height=450,maximize=yes,top=5,left=30");
+}
+function helpWin()
+{
+window.open("/help/read_message_help.html","win1","toolbar=no,directories=no,resize=yes,menubar=no,location=no,scrollbars=yes,width=452,height=301,maximize=yes,top=5,left=30");
+
+}
+function MoveMails()
+{
+	document.forms[0].submit();
+}
+function BlockMail()
+{
+	location.href = "/cgi-bin/gold/blocksender.cgi?login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&folder=Inbox&file_name=1057747875.29744.mailweb34.rediffmail.com.old&Index=10&Field=2&Order=1&address="+ document.forms[1].blockaddr.value +"&formname=add";
+}
+function deleteMail()
+{
+	location.href = "/cgi-bin/gold/folder.cgi?formname=sh_folder&btn_name1=Delete&login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&folder=Inbox&SrtFld=2&SrtOrd=1&MsgCnt=10&SelMsg10=1057747875.29744.mailweb34.rediffmail.com.old&total=15";
+}
+</script>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF TEXT=#000000 LINK=#0066FF ALINK=#0066FF VLINK=#0066FF leftmargin=0 marginwidth=0 marginheight=0 topmargin=0>
+<SCRIPT language=JavaScript>
+function do_logout()
+{
+	window.open("/offerclose.htm","popunder","top=2, left=2,toolbars=no,maximize=no,resize=no,width=800,height=430,location=no,directories=no,scrollbars=yes");
+	parent.window.focus();
+	var logout_redr = "http://login.rediff.com//cgi-bin/gold/logout.cgi?formname=general&login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&function_name=logout";
+	location.href = logout_redr;
+}
+function goldhelp(file)
+{
+	var url = "/help/gold/"+file;
+	window.open(url,"win2","top=5, left=30,toolbars=no,maximize=yes,resize=yes,width=560,height=500,location=no,directories=no,scrollbars=yes");
+}
+function javapop(programName,width,height)
+{
+	var temp ="toolbar=no,location=no,status=no,scrollbars=yes,resizable=no,width="+width+",height="+height;
+ 
+	displayWindow=window.open(programName,"displayWindow",temp) ;
+}
+function gotourl(url)
+{
+	window.location=url;
+}
+</SCRIPT>
+<!-- Start Top Bar -->
+<TABLE WIDTH=770 CELLSPACING=0 CELLPADDING=0 BORDER=0>
+<TR>
+<TD WIDTH=770 COLSPAN=4 HEIGHT=7></TD>
+</TR>
+<TR>
+<TD WIDTH=5 ROWSPAN=2 HEIGHT=7></TD>
+<TD WIDTH=190 VALIGN=bottom ALIGN=center>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/rediff_logo_221102.gif HSPACE=0 VSPACE=0 BORDER=0><BR>
+</TD>
+<TD WIDTH=475 VALIGN=bottom>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/inbox_new.gif USEMAP=#inbox BORDER=0 WIDTH=466 HEIGHT=27 LOWSRC=http://immail.rediff.com/icons/rediff_mail_gold/inbox_map1.gif ALT="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INBOX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;COMPOSE&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADDRESSES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FOLDERS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SETTINGS"><br></TD>
+<TD WIDTH=100 VALIGN=BOTTOM><FONT FACE=VERDANA SIZE=-2 COLOR=#9C9A9C><B><A HREF="javascript:goldhelp('help_read.htm')">Help</A></B> | <a href="javascript:do_logout()" style="text-decoration:none;color:2F6AC7"><B>LOGOUT</B></A></FONT><BR><IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=5 HSPACE=0 VSPACE=0 BORDER=0><BR></TD>
+</TR>
+<TR>
+<TD COLSPAN=3><IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/blueline_791.gif WIDTH=765 HEIGHT=10 HSPACE=0 VSPACE=0 BORDER=0><BR></TD>
+</TR>
+</TABLE>
+<MAP NAME="inbox">
+<AREA SHAPE=RECT ALT=Compose COORDS="105,2,189,27" HREF="/cgi-bin/gold/compose.cgi?FormName=compose&login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU">
+<AREA SHAPE=RECT ALT=Addresses COORDS="190,2,290,27" HREF="/cgi-bin/gold/address.cgi?login=lakshmi_jnu&FormName=address_book&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU">
+<AREA SHAPE=RECT ALT=Folders COORDS="291,2,371,27" HREF="/cgi-bin/gold/folder.cgi?login=lakshmi_jnu&formname=folder_list&function_name=&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU">
+<AREA SHAPE=RECT ALT=Settings COORDS="371,2,457,27" HREF="/cgi-bin/gold/preferences.cgi?login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&FormName=show_pref_options">
+<AREA SHAPE=POLY ALT=Inbox COORDS="0,26,42,0,103,0,105,4,105,27,0,27,0,26" HREF="/cgi-bin/gold/folder.cgi?formname=sh_folder&folder=Inbox&login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&SrtFld=2&SrtOrd=1&MsgCnt=0">
+</MAP>
+<!-- End Top Bar -->
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+function mobile_demo()
+{
+	window.open('/template/gold/mobile_demo.htm','mobile_demo','top=5, left=30,toolbars=no,maximize=yes,resize=yes,width=800,height=500,location=no,directories=no,scrollbars=yes');
+}
+function reqautologin()
+{
+	var randomnumber=Math.floor(Math.random()*121191);
+	var autolredr = "http://sms.rediff.com/cgi-bin/autologin/autologin.cgi?login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&sid=5&cid="+randomnumber+"&FormName=request_autologin&mobile_no=";
+	window.open(autolredr,"autologin","top=5, left=30,toolbars=no,maximize=yes,resize=yes,width=452,height=301,location=no,directories=no,scrollbars=yes");
+}
+</SCRIPT>
+<TABLE WIDTH=770 CELLSPACING=0 CELLPADDING=0 BGCOLOR=#EFEBEF BORDER=0>
+<TR BGCOLOR=#D9DBE7>
+<TD WIDTH=5 BGCOLOR=#FFFFFF HEIGHT=17><FONT SIZE=-2>&nbsp;</FONT></TD>
+<TD WIDTH=1 BGCOLOR=#B5AEB5><IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=5 HSPACE=0 VSPACE=0 BORDER=0><BR></TD>
+<TD WIDTH=104><FONT SIZE=-2>&nbsp;</FONT></TD>
+<TD WIDTH=1><IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=5 HSPACE=0 VSPACE=0 BORDER=0><BR></TD>
+<TD WIDTH=500>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=439 HEIGHT=1 HSPACE=0 VSPACE=0 BORDER=0><BR>
+<FONT FACE=verdana SIZE=-2 COLOR=#00197A>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=35 HEIGHT=1 HSPACE=0 VSPACE=0 BORDER=0 ALIGN=left><IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/mailonmob.gif WIDTH=14 HEIGHT=14 HSPACE=5 BORDER=0 ALIGN=left> <B>Mail On Mobile:</B> <A HREF="javascript:mobile_demo()">See a Demo</A> | <A HREF="/cgi-bin/gold/smssend.cgi?login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&FormName=Show_SMS_Recv">Know More</A> | <A HREF="/cgi-bin/gold/preferences.cgi?login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&FormName=show_price_faq">Price</A> | <A HREF="javascript:reqautologin()">Get Rediffmail on 7333</A></FONT><BR>
+</TD>
+<TD WIDTH=158 ALIGN=right HEIGHT=17>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=158 HEIGHT=1 HSPACE=0 VSPACE=0 BORDER=0><BR>
+<FONT FACE="verdana" SIZE=-2 COLOR=#494949>
+<A HREF="/cgi-bin/gold/compose.cgi?login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&FormName=contact_us&subject=Rediffmail%20Feedback:%20Read%20Message">Feedback</A>&nbsp;&nbsp;</FONT><BR></TD>
+<TD WIDTH=1 BGCOLOR=#B5AEB5 ROWSPAN=2>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=1 HSPACE=0 VSPACE=0 BORDER=0><BR>
+</TD>
+</TR>
+</TABLE>
+<TABLE WIDTH=172 CELLSPACING=0 CELLPADDING=0 BGCOLOR=#EFEBEF ALIGN=left BORDER=0>
+<TR>
+<TD WIDTH=5 BGCOLOR=#FFFFFF HEIGHT=31><FONT SIZE=-2>&nbsp;</FONT></TD>
+<TD WIDTH=1 BGCOLOR=#B5AEB5><IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=5 HSPACE=0 VSPACE=0 BORDER=0><BR></TD>
+<TD WIDTH=165><FONT SIZE=-2>&nbsp;</FONT></TD>
+<TD WIDTH=1><IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=5 HSPACE=0 VSPACE=0 BORDER=0><BR></TD>
+</TR>
+<TR>
+<TD WIDTH=5 BGCOLOR=#FFFFFF HEIGHT=18></TD>
+<TD WIDTH=166 colspan=2 BGCOLOR=#3A88E5><FONT FACE=ARIAL SIZE=-1 COLOR=#FFFFFF>&nbsp;SMS Services</FONT></TD>
+<TD WIDTH=1 BGCOLOR=#B5AEB5><IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=1 HSPACE=0 VSPACE=0 BORDER=0><BR></TD>
+</TR>
+<TR>
+<TD BGCOLOR=#FFFFFF><IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=5 HSPACE=0 VSPACE=0 BORDER=0><BR></TD>
+<TD BGCOLOR=#B5AEB5><IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=5 HSPACE=0 VSPACE=0 BORDER=0><BR></TD>
+<TD HEIGHT=50>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=8 HSPACE=0 VSPACE=0 BORDER=0><BR>
+<FONT FACE="MS SANS SERIF" SIZE=-2>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="/cgi-bin/gold/smssend.cgi?login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&FormName=Show_SMS_Mail&mobile="><B>Send SMS</B></A><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To any mobile<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in India and US<BR><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="/cgi-bin/gold/smssend.cgi?login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&FormName=Show_SMS_Alert&email="><B>Get Alerts</B></A><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;On your mobile when<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;you receive important mails<br><br>
+<TD BGCOLOR=#B5AEB5><IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=5 HSPACE=0 VSPACE=0 BORDER=0><BR></TD>
+</TR>
+<TR>
+<TD BGCOLOR=#FFFFFF>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=5 HSPACE=0 VSPACE=0 BORDER=0><BR>
+</TD>
+<TD BGCOLOR=#B5AEB5>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=5 HSPACE=0 VSPACE=0 BORDER=0><BR>
+</TD>
+<TD BGCOLOR=#F7F7F7 ALIGN=center>
+<TABLE WIDTH=161 BORDER=0 CELLSPACING=0 CELLPADDING=0 BGCOLOR=#FFFFFF>
+<TR>
+<TD WIDTH=161 BGCOLOR=#3A88E5>
+<FONT FACE=ARIAL SIZE=-1 COLOR=#FFFFFF>&nbsp;Mail Anytime, Anywhere</FONT>
+</TD>
+</TR>
+<TR>
+<TD BGCOLOR=#F7F7F7>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=2 HSPACE=0 VSPACE=0 BORDER=0><BR>
+</TD>
+</TR>
+<TR>
+<TD BGCOLOR=#E4E4E4 HEIGHT=45>
+<FONT FACE=VERDANA SIZE=-2 COLOR=#0065FF>
+&nbsp;<FONT SIZE=-2 FACE=ARIAL>&#149;</FONT> <A HREF="/cgi-bin/gold/smssend.cgi?login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&FormName=Show_SMS_Recv"><B>On Your Mobile</B></A> <FONT COLOR=#FF0000><B>Free!</B></FONT><BR></FONT>
+<FONT FACE="MS SANS SERIF" SIZE=-2>
+&nbsp;&nbsp;&nbsp;&nbsp;Receive and send mail<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;from your mobile phone<BR>
+</FONT>
+</TD>
+</TR>
+<TR>
+<TD>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=1 HSPACE=0 VSPACE=0 BORDER=0><BR>
+</TD>
+</TR>
+<TR>
+<TD BGCOLOR=#E4E4E4 HEIGHT=45>
+<FONT FACE=VERDANA SIZE=-2 COLOR=#0065FF>
+&nbsp;<FONT SIZE=-2 FACE=ARIAL>&#149;</FONT> <A HREF="/cgi-bin/gold/preferences.cgi?login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&FormName=show_offline"><B>On Your Desktop</B></A><BR></FONT>
+<FONT FACE="MS SANS SERIF" SIZE=-2>
+&nbsp;&nbsp;&nbsp;&nbsp;Get, read &amp; write Rediffmail in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Outlook Express, Netscape etc<BR>
+</FONT>
+</TD>
+</TR>
+<TR>
+<TD>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=1 HSPACE=0 VSPACE=0 BORDER=0><BR>
+</TD>
+</TR>
+<TR>
+<TD BGCOLOR=#E4E4E4 HEIGHT=45>
+<FONT FACE=VERDANA SIZE=-2 COLOR=#0065FF>
+&nbsp;<FONT SIZE=-2 FACE=ARIAL>&#149;</FONT> <A HREF="/cgi-bin/gold/pop3.cgi?formname=general&login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&function_name=pop3_config"><B>Read Your Other Mails</B></A><BR></FONT>
+<FONT FACE="MS SANS SERIF" SIZE=-2>
+&nbsp;&nbsp;&nbsp;&nbsp;Get mails from your other<br>
+&nbsp;&nbsp;&nbsp;&nbsp;accounts into Rediffmail<BR>
+</FONT>
+</TD>
+</TR>
+<TR>
+<TD>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=1 HSPACE=0 VSPACE=0 BORDER=0><BR>
+</TD>
+</TR>
+<TR>
+<TD BGCOLOR=#E4E4E4 HEIGHT=53>
+<FONT FACE=VERDANA SIZE=-2 COLOR=#0065FF>
+&nbsp;<FONT SIZE=-2 FACE=ARIAL>&#149;</FONT> <A HREF="/cgi-bin/gold/forward.cgi?login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&FormName=show_forward_config"><B>Forward Your Mails</B></A><BR></FONT>
+<FONT FACE="MS SANS SERIF" SIZE=-2>
+&nbsp;&nbsp;&nbsp;&nbsp;Auto Forward Rediffmail to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;other mail accounts<BR>
+</FONT>
+</TD>
+</TR>
+<TR>
+<TD>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=1 HSPACE=0 VSPACE=0 BORDER=0><BR>
+</TD>
+</TR>
+<TR>
+<TD HEIGHT=15 BGCOLOR=#E4E4E4>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=1 HSPACE=0 VSPACE=0 BORDER=0><BR>
+</TD>
+</TR>
+<TR>
+<TD WIDTH=161 BGCOLOR=#3A88E5>
+<FONT FACE=ARIAL SIZE=-1 COLOR=#FFFFFF>&nbsp;Sponsored Link</FONT>
+</TD>
+</TR>
+<TR>
+<TD BGCOLOR=#E7F2FF HEIGHT=33>
+<FONT FACE="ms sans serif" SIZE=-2 COLOR=#0065FF>
+&nbsp;<A HREF="http://r.rediff.com/r?monsterindia.com/rediffin/?&&wn&&mon_redmail" target=_new><B>Uncover hidden jobs</B></A>
+<BR></FONT>
+<FONT FACE="MS SANS SERIF" SIZE=-2>
+&nbsp;From India's best employers<br>
+</FONT>
+</TD>
+</TR>
+<TR>
+<TD>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=1 HSPACE=0 VSPACE=0 BORDER=0><BR>
+</TD>
+</TR>
+
+<TR>
+<TD BGCOLOR=#E4E4E4>
+<FORM></FORM><BR><BR><BR><BR>
+</TD>
+</TR>
+<TR>
+<TD BGCOLOR=#F7F7F7>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=4 HSPACE=0 VSPACE=0 BORDER=0><BR>
+</TD>
+</TR>
+</TABLE>
+</TD>
+<TD BGCOLOR=#B5AEB5>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=5 HSPACE=0 VSPACE=0 BORDER=0><BR>
+</TD>
+</TR>
+<TR>
+<TD BGCOLOR=#FFFFFF>
+</TD>
+<TD COLSPAN=3 BGCOLOR=#B5AEB5>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=1 HSPACE=0 VSPACE=0 BORDER=0><BR>
+</TD>
+</TR>
+</TABLE>
+<!-- Start read msg -->
+<TABLE WIDTH=598 CELLSPACING=0 CELLPADDING=0 ALIGN=left BORDER=0>
+<TR><td width=598>
+<!-- Start Welcome Note -->
+<TABLE WIDTH=598 CELLSPACING=0 CELLPADDING=0 BGCOLOR=#EFEBEF BORDER=0>
+<TR>
+<TD WIDTH=597 VALIGN=top align=CENTER COLSPAN=4>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=1 HSPACE=0 VSPACE=0 BORDER=0><BR>
+</TD>
+<TD WIDTH=1 BGCOLOR=#B5AEB5 ROWSPAN=2>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=1 HSPACE=0 VSPACE=0 BORDER=0><BR>
+</TD>
+</TR>
+<TR>
+<TD HEIGHT=30 WIDTH=598 VALIGN=top COLSPAN=3>
+&nbsp;<BR>
+</TD>
+</TR>
+<TR>
+<TD WIDTH=598 VALIGN=top COLSPAN=4 BGCOLOR=#B5AEB5>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=1 HSPACE=0 VSPACE=0 BORDER=0><BR>
+</TD>
+</TR>
+</TABLE>
+<TABLE WIDTH=598 CELLSPACING=0 CELLPADDING=0 BORDER=0>
+<TR>
+<TD HEIGHT=50 WIDTH=475 VALIGN=middle>
+<form action="/cgi-bin/gold/folder.cgi" METHOD=POST>
+<input type="hidden" name="FormName" value="sh_folder">
+<input type="hidden" name="folder" value="Inbox">
+<input type="hidden" name="login" value="lakshmi_jnu">
+<input type="hidden" name="session_id" value="2K1KTK1zRjUdZa4S5M5gVVGlXMRU">
+<input type="hidden" name="btn_name1" value="Move">
+<input type="hidden" name="SrtFld" value="2">
+<input type="hidden" name="SrtOrd" value="1">
+<input type="hidden" name="MsgCnt" value="0">
+<input type="hidden" name="SelMsg10" value="1057747875.29744.mailweb34.rediffmail.com.old">
+<input type="hidden" name="blockaddr" value="amitkhaiwal@rediffmail.com">
+<INPUT type=hidden name="total" value="15">
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=1 HSPACE=0 VSPACE=0 BORDER=0><BR>
+&nbsp;&nbsp;&nbsp;<FONT SIZE=-1><input type=button name="blocksender" value="Block" class="sbttn" onClick="BlockMail()" title="Block checked messages" tabindex="5">&nbsp;&nbsp;<input type=button name=Delete value="Delete" class="sbttn" onClick="deleteMail()" title="Delete checked messages" tabindex=6>
+&nbsp;&nbsp;&nbsp;<SELECT NAME=moveto_folder1 class="drpdwn" tabindex=7>
+<OPTION VALUE="">Move to Folder</OPTION>
+<OPTION VALUE="Trash">Trash</OPTION>
+<OPTION VALUE="Sent_messages">Sent Messages</OPTION>
+<OPTION VALUE="Drafts">Drafts</OPTION>
+</SELECT></FONT> 
+ <FONT SIZE=-1><input type=submit name=btn_name1 value=Move class=sbttn onClick="MoveMails()" title="Move checked messages" tabindex=8></FONT>
+<FONT FACE="Arial" SIZE=-1>&nbsp;&nbsp;<A HREF="/cgi-bin/gold/folder.cgi?formname=sh_folder&folder=Inbox&login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&SrtFld=2&SrtOrd=1&MsgCnt=0">Back to Inbox</A></FONT></TD>
+<TD WIDTH=122 VALIGN=top align=left HEIGHT=30>
+<IMG SRC=http://immail.rediff.com/icons/rediff_mail_gold/trans.gif WIDTH=1 HEIGHT=1 HSPACE=0 VSPACE=0 BORDER=0><BR>
+<BR>
+</TD>
+</TR>
+</TABLE>
+<!-- End Welcome Note -->
+</form>
+</Td></tr>
+<TR><td width=598>
+<TABLE WIDTH=599 CELLSPACING=0 CELLPADDING=0 BORDER=0>
+<TR><TD WIDTH=599 COLSPAN=2 HEIGHT=5></TD></TR>
+<TR>
+<TD WIDTH=20>&nbsp;</TD>
+<TD WIDTH=579 VALIGN=top>
+<FONT FACE=ARIAL SIZE=-1 COLOR=#494949><B>From:</B> 
+amit &nbsp;khaiwal &lt;amitkhaiwal@rediffmail.com&gt;<a href=/cgi-bin/gold/address.cgi?formname=save_address&login=lakshmi%5Fjnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&saveaddrname=amit%20%20khaiwal&saveaddremail=amitkhaiwal%40rediffmail%2Ecom> Add to Address Book</a>
+ | <a href=/cgi-bin/gold/handlespam.cgi?login=lakshmi%5Fjnu&formname=isspam&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&address=amitkhaiwal%40rediffmail%2Ecom&file_name=1057747875%2E29744%2Emailweb34%2Erediffmail%2Ecom%2Eold&folder=Inbox><b>This is spam</b></a>
+</FONT>
+</TD></TR>
+<TR>
+<TD WIDTH=20>&nbsp;</TD><TD WIDTH=579 HEIGHT=20><FONT FACE=ARIAL SIZE=-1 COLOR=#494949><B>To:</B> 
+lakshmi_jnu@rediffmail.com</FONT><BR></TD>
+</TR>
+<TR>
+<TD WIDTH=20>&nbsp;</TD>
+<TD WIDTH=579 HEIGHT=20><FONT FACE=ARIAL SIZE=-1 COLOR=#494949><B>Subject:</B> 
+Fwd: Fwd: hcl paper</FONT><BR></TD>
+</TR>
+<TR>
+<TD WIDTH=20>&nbsp;</TD>
+<TD WIDTH=579 HEIGHT=20><FONT FACE=ARIAL SIZE=-1 COLOR=#494949><B>Date:</B> 
+Wed, 09 Jul 2003 16:21:45 IST</FONT><BR></TD>
+</TR>
+<TD WIDTH=20>&nbsp;</TD>
+<TD WIDTH=579 HEIGHT=20><FONT FACE=ARIAL SIZE=-1 COLOR=#494949>
+<FONT FACE=ARIAL SIZE=-1 COLOR=#494949>
+A reply to this mail will be sent to: amit &nbsp;khaiwal &lt;amitkhaiwal@rediffmail.com&gt;</FONT><BR></TD>
+</TR>
+<TR>
+<TD WIDTH=20></TD>
+<TD WIDTH=579 HEIGHT=35></TD>
+</TR>
+</TABLE>
+</Td></tr>
+<TR><td width=598>
+<TABLE WIDTH=599 BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<TR BGCOLOR=#3A88E5>
+<TD WIDTH=3>&nbsp;</TD>
+<TD WIDTH=58 ALIGN=center>
+<a href="/cgi-bin/gold/compose.cgi?formname=reply&login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&folder=Inbox&filename=1057747875.29744.mailweb34.rediffmail.com.old"><font face="ms sans serif" size=-2 COLOR=#FFFFFF STYLE="color:#FFFFFF; text-decoration:none">Reply</font></a></td>
+<td  align=center width=60>
+<a href="/cgi-bin/gold/compose.cgi?formname=replyall&login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&folder=Inbox&filename=1057747875.29744.mailweb34.rediffmail.com.old"><font face="ms sans serif" size=-2 COLOR=#FFFFFF STYLE="color:#FFFFFF; text-decoration:none">Reply&#160;All</font></a></td>
+<td align="center" width=60>
+<a href="/cgi-bin/gold/compose.cgi?formname=forward&login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&folder=Inbox&filename=1057747875.29744.mailweb34.rediffmail.com.old"><font face="ms sans serif" size=-2 COLOR=#FFFFFF STYLE="color:#FFFFFF; text-decoration:none">Forward</font></a></td>
+<TD WIDTH=50 ALIGN=center>&nbsp;</TD>
+<TD WIDTH=32 ALIGN=center>&nbsp;</TD>
+<td align=center width=112>&nbsp;</td>
+<td  align=center width=55>
+<a href="/cgi-bin/gold/folder.cgi?formname=read_msg&login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&function_name=prev&folder=Inbox&index=10&SrtFld=2&SrtOrd=1">
+<font face="ms sans serif" size=-2 COLOR=#FFFFFF STYLE="color:#FFFFFF; text-decoration:none">Previous</font></a>
+</td>
+<td  align=center width=55>
+<a href="/cgi-bin/gold/folder.cgi?formname=read_msg&login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&function_name=next&folder=Inbox&index=10&SrtFld=2&SrtOrd=1"><font face="ms sans serif" size=-2 COLOR=#FFFFFF STYLE="color:#FFFFFF; text-decoration:none">Next</font></a>
+</td>
+</TR>
+</TABLE>
+</Td></tr>
+<TR><td width=598>
+<TABLE WIDTH=598 BORDER=0>
+<TR><td width=20>&nbsp;</td><td>
+<TABLE WIDTH=485 BORDER=0>
+<BR>
+<TR><TD><font face=arial size=2>
+<br>
+<br>
+Note: Forwarded message attached<br>
+<br>
+-- Orignal Message --<br>
+<br>
+ From: "tomar111" &lt;<a href='/cgi-bin/gold/compose.cgi?login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&FormName=mail_to_individual&email=tomar111@indiatimes.com' >tomar111@indiatimes.com</a>&gt;<br>
+To: &lt;<a href='/cgi-bin/gold/compose.cgi?login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&FormName=mail_to_individual&email=amitkhaiwal@rediffmail.com' >amitkhaiwal@rediffmail.com</a>&gt;<br>
+Subject: Fwd: hcl paper<br>
+<br>
+___________________________________________________<br>
+Click below to experience Sooraj R Barjatya's latest offering<br>
+'Main Prem Ki Diwani Hoon' starring Hrithik, Abhishek<br>
+ &nbsp;&amp; Kareena <a href=http://www.mpkdh.com target=_new >http://www.mpkdh.com</a><br>
+</font></TD></TR>
+</TABLE>
+</TD></TR>
+<tr><td colspan=3>
+<TABLE WIDTH=485 BORDER=0>
+<BR>
+<TR><TD><font face=arial size=2>
+<BR><B><I>Message from "prakash kumar talreja"<PIKKU13@REDIFFMAIL.COM> Forwarded as attachment</B></I> @
+<hr><font face="Arial" size="2"><b>Get Your Private, Free E-mail from Indiatimes at  </font><A href="http://email.indiatimes.com" target=_new><font face="Arial" size="2">http://email.indiatimes.com</a></b><br>Buy The Best In <b>BOOKS</b> at <A href="http://www.bestsellers.indiatimes.com" target=_new>http://www.bestsellers.indiatimes.com</A><br>Bid for <b>Air Tickets @ Re.1</b> on Air Sahara Flights. Just log on to <A href="http://airsahara.indiatimes.com" target=_new>http://airsahara.indiatimes.com</a> and Bid Now !</font>
+</font></TD></TR>
+</TABLE>
+</TD></TR>
+<tr><td colspan=3>
+<TABLE WIDTH=485 BORDER=0 CELLSPACING=0 CELLPADDING=0>
+<BR>
+<TR BGCOLOR=#DFDFDF>
+<TD ALIGN=CENTER><STRONG><TT>Attachment:</TT></STRONG></TD><TD><STRONG><TT>paper3.rtf</TT></STRONG></TD><TD><TT>(36.80 KB)</TT></TD><TD ALIGN=CENTER><STRONG><TT><a HREF="/cgi-bin/gold/download.cgi/paper3.rtf?login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&formname=download&filetype=text/richtext" target=_new>Download</a>
+</TT></STRONG></TD></TR><TR BGCOLOR=#DFDFDF>
+<TD COLSPAN=2><TT>&nbsp;</TT></TD>
+<TD COLSPAN=2 ALIGN=right>
+<STRONG><TT><a HREF="javascript:scanWin('http://f2check.rediff.com/cgi-bin/gold/download.cgi/paper3.rtf?login=lakshmi_jnu&session_id=2K1KTK1zRjUdZa4S5M5gVVGlXMRU&formname=download&filetype=text/richtext&scanFile=1')">Scan with F-secure</a>
+</TT></STRONG></TD></TR></TABLE></TD></TR><tr><td colspan=3>
+<TABLE WIDTH=485 BORDER=0>
+<BR>
+<TR><TD><font face=arial size=2>
+<br>
+<br>
+Note: Forwarded message attached<br>
+<br>
+-- Orignal Message --<br>
+<br>
+<br>
+<br>
+"do try for the best atleast better will be achieved".<br>
+meet me:<br>
+<a href=http://in.profiles.yahoo.com/prakash_talreja2001 target=_new >http://in.profiles.yahoo.com/prakash_talreja2001</a><br>
+___________________________________________________<br>
+Click below to experience Sooraj R Barjatya's latest offering<br>
+'Main Prem Ki Diwani Hoon' starring Hrithik, Abhishek<br>
+ &nbsp;&amp; Kareena <a href=http://www.mpkdh.com target=_new >http://www.mpkdh.com</a><br>
+<br>
+</font></TD></TR>
+</TABLE>
+</TD></TR>
+<tr><td colspan=3>
+<TABLE WIDTH=485 BORDER=0>
+<BR>
+<TR><TD><font face=arial size=2>
+
+
+
+hi chaps <BR>&gt; hcl paper for you <BR>&gt; it had three sections technical and 1 apti<BR>&gt; score as much as u can but not completely(not good for<BR>&gt; interview)<BR>&gt; and prove urself as bond in interview<BR>&gt; most of the ans r correct <BR>&gt; the paper is exactly same do ur best<BR>&gt; they shortlisted 12 for systems and 35 for appli from<BR>&gt; here<BR>&gt; selected 1 from sys and said give results of appli<BR>&gt; after going to delhi<BR>&gt; in my interview they showed no interest <BR>&gt; as they dont want to take anybody<BR>&gt; they asked abt preprocessors mainly in the whole<BR>&gt; interview(recursion)<BR>&gt; no hr<BR>&gt; best of luck<BR>&gt; if u have papers of samsung and motorola then<BR>&gt; plzzzzzzzzzz <BR>&gt; arrange it<BR>&gt; luv<BR>&gt; bye<BR>&gt; vipin<BR>&gt; <BR>&gt; <BR>&gt; Paper Model:<BR>&gt;&nbsp; Section I:&nbsp;&nbsp; computer awareness(i.e general things<BR>&gt; about computer)&nbsp;&nbsp;
+ Q.15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -ve marks: 1/4<BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&gt;&nbsp; Section II:&nbsp; Simple&nbsp; C- language&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Q. 15 <BR>&gt;&nbsp;&nbsp; &amp;&nbsp; -ve marks: -1/4 <BR>&gt; <BR>&gt;&nbsp; Section III: On pointers &amp; structures and C++,JAVA(<BR>&gt; only 1 on this)&nbsp; Q.10&nbsp;&nbsp;&nbsp; each quetion -&gt;2 marks&nbsp;&nbsp; -ve<BR>&gt; marks: -1/4<BR>&gt; <BR>&gt;&nbsp; Section IV:&nbsp;&nbsp; Analytical&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Q.20&nbsp;&nbsp;&nbsp; <BR>&gt; each quetion -&gt; 2 marks.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -ve marks: -1/4<BR>&gt; <BR>&gt; <BR>&gt; it bhu hcl paper 2002<BR>&gt; **************************************************<BR>&gt; sec 1&nbsp;&nbsp; <BR>&gt; <BR>&gt; <BR>&gt; !
+1.
+ Which of the following involves context switch,<BR>&gt; <BR>&gt; (a) system call <BR>&gt; (b) priviliged instruction<BR>&gt; (c) floating poitnt exception<BR>&gt; (d) all the above<BR>&gt; (e) none of the above<BR>&gt; <BR>&gt; Ans: (a)<BR>&gt; <BR>&gt; <BR>&gt; 2. In OST, terminal emulation is done in<BR>&gt; <BR>&gt; (a) sessions layer <BR>&gt; (b) application layer <BR>&gt; (c) presentation layer <BR>&gt; (d) transport layer<BR>&gt; <BR>&gt; Ans: (b)<BR>&gt; <BR>&gt; <BR>&gt; 3. For a&nbsp; 25MHz processor , what is the time taken by<BR>&gt; the instruction which needs 3 clock cycles,<BR>&gt; <BR>&gt; (a)120 nano secs <BR>&gt; (b)120 micro secs<BR>&gt; (c)75 nano secs <BR>&gt; (d)75 micro secs<BR>&gt; ans a<BR>&gt; <BR>&gt; <BR>&gt; 4. For 1 MB memory, the&nbsp; number of address lines<BR>&gt; required,<BR>&gt; <BR>&gt; (a)11 <BR>&gt; (b)16 <BR>&gt; (c)20<BR>&gt; (d) 24<BR>&gt; <BR>&gt; Ans. (c)<BR>&gt; <BR>&gt; <BR>&gt; 5. Semaphore is used for<BR>&gt; <BR>&gt; (a)
+ synchronization <BR>&gt; (b) dead-lock avoidence<BR>&gt; (c) box <BR>&gt; (d) none<BR>&gt; <BR>&gt; Ans. (a)<BR>&gt; <BR>&gt; 6. Parity error checking is used for.........?<BR>&gt; ans:&nbsp; a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; odd numbers of errors<BR>&gt; <BR>&gt; 7. Address on internet are (Internet IP address is<BR>&gt; unique for..)<BR>&gt;&nbsp;&nbsp; a) unique for particular domain<BR>&gt;&nbsp;&nbsp; b) unique for a particular sub-node list<BR>&gt;&nbsp;&nbsp; c) unique countrywide<BR>&gt;&nbsp;&nbsp; d) unique in a network area<BR>&gt; ans b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; has to be unique in the sub network <BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; 8&nbsp; one ans is&nbsp;&nbsp; c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Volatile modifier<BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; 8. OLE is used in<BR>&gt; a) inter connection in unix<BR>&gt; b) interconnection in WINDOWS<BR>&gt; c)
+ interconnection in WINDOWS NT<BR>&gt; ans c(check)<BR>&gt; <BR>&gt; <BR>&gt; 9. Convert a given HEX number to OCTAL<BR>&gt; one que ans is 177333<BR>&gt; <BR>&gt; <BR>&gt; 10. Macros and function are related in what aspect?<BR>&gt; (a)recursion <BR>&gt; (b)varying no of arguments<BR>&gt; (c)hypochecking <BR>&gt; (d)type declaration<BR>&gt; ans d or a (check)<BR>&gt; <BR>&gt; 11.Preprocessor does not do which one of the following<BR>&gt; (a) macro<BR>&gt; (b) conditional compliclation<BR>&gt; (c) in type checking <BR>&gt; (d) including load file<BR>&gt; Ans. (c)<BR>&gt; <BR>&gt; <BR>&gt; 12. Piggy backing is a technique for<BR>&gt; a) Flow control <BR>&gt; b) Sequence <BR>&gt; c) Acknowledgement <BR>&gt; d) retransmition<BR>&gt; <BR>&gt; Ans. (c)<BR>&gt; <BR>&gt; <BR>&gt; 13. In signed magnitude notation what is the minimum<BR>&gt; value that can be represented with 8 bits<BR>&gt; <BR>&gt; (a) -128 <BR>&gt; (b) -255 <BR>&gt; (c) -127 <BR>&gt; (d) 0<BR>&gt; ans a<BR>&gt; <BR>&g!
+t;
+ <BR>&gt; 14. There is an employer table with key fields as<BR>&gt; employer number data <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in every n'th row are needed for a simple<BR>&gt; following queries will get required results.<BR>&gt; <BR>&gt; (a) select A employee number from employee A , where<BR>&gt; exists from employee B where A employee no. &gt;= B <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp; employee having (count(*) mod n)=0<BR>&gt; (b) select employee number from employe A, employe B<BR>&gt; where A employe number&gt;=B employ number<BR>&gt;&nbsp;&nbsp;&nbsp; group by employee number having(count(*) mod n=0 )<BR>&gt; (c) both (a) &amp; (b)<BR>&gt; (d) none of the above<BR>&gt; <BR>&gt; <BR>&gt; 15. Type duplicates of a row in a table customer with<BR>&gt; non uniform key field customer number you can see<BR>&gt; <BR>&gt; a) delete from costomer where customer number exists(<BR>&gt; select distinct customer number from customer having<BR>&gt; count )<BR>&gt; b) delete customer a where
+ customer number in b rowid<BR>&gt; c) delete customer a where custermor number in( select<BR>&gt; customer number from customer a, customer b )<BR>&gt; d) none of the above<BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; sec 2<BR>&gt; Section II - C Programming <BR>&gt; <BR>&gt; 1. Which of the following about the following two<BR>&gt; declaration is true<BR>&gt; i ) int *F()<BR>&gt; ii) int (*F)()<BR>&gt; <BR>&gt; Choice :<BR>&gt; a) Both are identical<BR>&gt; b) The first is a correct declaration and the second<BR>&gt; is wrong<BR>&gt; c) The first declaraion is a function returning a<BR>&gt; pointer to an integer and the<BR>&gt; second is a pointer to function returning int<BR>&gt; d) Both are different ways of declarin pointer to a<BR>&gt; function<BR>&gt; <BR>&gt; Answer : c<BR>&gt; <BR>&gt; 2. What are the values printed by the following<BR>&gt; program?<BR>&gt; <BR>&gt; #define dprint(expr) printf(#expr "=%d\n",expr)<BR!
+>&gt;
+ <BR>&gt; main()<BR>&gt; {<BR>&gt; int x=7;<BR>&gt; int y=3;<BR>&gt; dprintf(x/y);<BR>&gt; }<BR>&gt; <BR>&gt; Choice:<BR>&gt; a) #2 = 2 b) expr=2 c) x/y=2 d) none<BR>&gt; <BR>&gt; Answer: c<BR>&gt; <BR>&gt; 3. Which of the following is true of the following<BR>&gt; program<BR>&gt; <BR>&gt; main()<BR>&gt; {<BR>&gt; char *c;<BR>&gt; int *p;<BR>&gt; c =(char *)malloc(100);<BR>&gt; p=(int *)c;<BR>&gt; free(p);<BR>&gt; }<BR>&gt; ans: The code functions properly releasing all the<BR>&gt; memory allocated<BR>&gt; <BR>&gt; <BR>&gt; 4.output of the following.<BR>&gt; <BR>&gt; main()<BR>&gt; {<BR>&gt; int i;<BR>&gt; char *p;<BR>&gt; i=0X89;<BR>&gt; p=(char *)i;<BR>&gt; p++;<BR>&gt; printf("%x\n",p);<BR>&gt; }<BR>&gt; ans:0X8A<BR>&gt; <BR>&gt; 5.<BR>&gt; which of the following is not a ANSI C language<BR>&gt; keyword?<BR>&gt; <BR>&gt; ans:Function.<BR>&gt; <BR>&gt; 6. When an array is passed as parameter to a function,<BR>&gt; which of the following statement is correct<BR>&gt; <BR>&gt;
+ choice:<BR>&gt; a) The function can change values in the original<BR>&gt; array<BR>&gt; b) In C parameters are passed by value. The funciton<BR>&gt; cannot change the original<BR>&gt; value in the array<BR>&gt; c) It results in compilation error when the function<BR>&gt; tries to access the<BR>&gt; elements in the array<BR>&gt; d) Results in a run time error when the funtion tries<BR>&gt; to access the elements in<BR>&gt; the array<BR>&gt; <BR>&gt; Answer: a<BR>&gt; <BR>&gt; 7. The type of the controlling statement of a switch<BR>&gt; statement cannot be of the type<BR>&gt; <BR>&gt; a) int b) char c) short d)float e) none<BR>&gt; <BR>&gt; Answer : d<BR>&gt; <BR>&gt; <BR>&gt; 8.What is the value of the statement (3^6) + (a^a)?<BR>&gt; <BR>&gt; a) 3 b) 5 c) 6 d) a+18 e) None<BR>&gt; <BR>&gt; Answer : b<BR>&gt; <BR>&gt; 9. What is the value assigned to the variable X if b<BR>&gt; is 7 ?<BR>&gt; X = b&gt;8 ? b &lt;&lt;3 : b&gt;4 ? b&gt;&gt;1:b;<BR>&gt; <BR>&gt; a) 7 b) 28 c)3 d) !
+14 e)
+ None<BR>&gt; ans: c<BR>&gt; <BR>&gt; 10. Which is the output produced by the following<BR>&gt; program<BR>&gt; main()<BR>&gt; {<BR>&gt; int n=2;<BR>&gt; printf("%d %d\n", ++n, n*n);<BR>&gt; }<BR>&gt; <BR>&gt; a) 3,6 b) 3,4 c) 2,4 d) cannot determine<BR>&gt; <BR>&gt; Answer : b<BR>&gt; <BR>&gt; 11. What is th output of the following program?<BR>&gt; int x= 0x65;<BR>&gt; main()<BR>&gt; {<BR>&gt; char x;<BR>&gt; printf("%d\n",x)<BR>&gt; }<BR>&gt; <BR>&gt; a) compilation error b) 'A' c) 65 d) unidentified<BR>&gt; ans d<BR>&gt; <BR>&gt; 12. What is the output of the following program<BR>&gt; main()<BR>&gt; {<BR>&gt; int a=10;<BR>&gt; int b=6;<BR>&gt; <BR>&gt; if(a=3)<BR>&gt; b++;<BR>&gt; printf("%d %d\n",a,b++);<BR>&gt; }<BR>&gt; <BR>&gt; a) 10,6 b)10,7 c) 3,6 d) 3,7 e) none<BR>&gt; <BR>&gt; Answer : d<BR>&gt; <BR>&gt; 13. What can be said of the following program?<BR>&gt; main()<BR>&gt; {<BR>&gt; enum Months {JAN =1,FEB,MAR,APR};<BR>&gt; Months X = JAN;<BR>&gt; if(X==1)<BR>&gt;
+ {<BR>&gt; printf("Jan is the first month");<BR>&gt; }<BR>&gt; }<BR>&gt; <BR>&gt; a) Does not print anything<BR>&gt; b) Prints : Jan is the first month<BR>&gt; c) Generates compilation error<BR>&gt; d) Results in runtime error<BR>&gt; <BR>&gt; Answer: b<BR>&gt; <BR>&gt; 14. What is the output of the following program?<BR>&gt; main()<BR>&gt; {<BR>&gt; char *src = "Hello World";<BR>&gt; char dst[100];<BR>&gt; strcpy(src,dst);<BR>&gt; printf("%s",dst);<BR>&gt; }<BR>&gt; strcpy(char *dst,char *src)<BR>&gt; {<BR>&gt; while(*src) *dst++ = *src++;<BR>&gt; }<BR>&gt; <BR>&gt; a) "Hello World" b)"Hello" c)"World" d) NULL e)<BR>&gt; unidentified<BR>&gt; <BR>&gt; Answer: e<BR>&gt; <BR>&gt; 15. What is the output of the following program?<BR>&gt; <BR>&gt; main()<BR>&gt; {<BR>&gt; int l=6;<BR>&gt; switch(l)<BR>&gt; { default : l+=2;<BR>&gt; case 4: l=4;<BR>&gt; case 5: l++;<BR>&gt; break;<BR>&gt; }<BR>&gt; printf("%d",l);<BR>&gt; }<BR>&gt; a)8 b)6 c)5 d)4 e)none<BR>&gt; <BR>&gt; Answer : c<!
+BR>&gt;
+ <BR>&gt; 16. What is the output of the following program?<BR>&gt; main()<BR>&gt; {<BR>&gt; int x=20;<BR>&gt; int y=10;<BR>&gt; swap(x,y);<BR>&gt; printf("%d %d",y,x+2);<BR>&gt; }<BR>&gt; swap(int x,int y)<BR>&gt; {<BR>&gt; int temp;<BR>&gt; temp =x;<BR>&gt; x=y;<BR>&gt; y=temp;<BR>&gt; }<BR>&gt; <BR>&gt; a)10,20 b) 20,12 c) 22,10 d)10,22 e)none<BR>&gt; <BR>&gt; Answer:d<BR>&gt; <BR>&gt; 17. What is the output of the following problem ?<BR>&gt; #define INC(X) X++<BR>&gt; main()<BR>&gt; {<BR>&gt; int X=4;<BR>&gt; printf("%d",INC(X++));<BR>&gt; }<BR>&gt; <BR>&gt; a)4 b)5 c)6 d)compilation error e) runtime error<BR>&gt; <BR>&gt; Answer : d<BR>&gt; <BR>&gt; <BR>&gt; 18. what can be said of the following<BR>&gt; <BR>&gt; struct Node {<BR>&gt; char *word;<BR>&gt; int count;<BR>&gt; struct Node left;<BR>&gt; struct Node right;<BR>&gt; }<BR>&gt; <BR>&gt; a) Incorrect definition<BR>&gt; b) structures cannot refer to other structure<BR>&gt; c) Structures can refer to themselves. Hence
+ the<BR>&gt; statement is OK<BR>&gt; d) Structures can refer to maximum of one other<BR>&gt; structure<BR>&gt; <BR>&gt; Answer :c<BR>&gt; <BR>&gt; 19. What is the size of the following union.<BR>&gt; Assume that the size of int =2, size of float =4 and<BR>&gt; size of char =1.<BR>&gt; Union Tag{<BR>&gt; int a;<BR>&gt; flaot b;<BR>&gt; char c;<BR>&gt; };<BR>&gt; <BR>&gt; a)2 b)4 c)1 d) 7<BR>&gt; ans&nbsp; b<BR>&gt; <BR>&gt; 20) What is the output of the following program? (.<BR>&gt; has been used to indicate a space)<BR>&gt; main()<BR>&gt; {<BR>&gt; char s[]="Hello,.world";<BR>&gt; printf(%15.10s",s);//no after dot tells Maximum number<BR>&gt; of characters to print; <BR>&gt; }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //for integers, minimum number of<BR>&gt; digits to print<BR>&gt; <BR>&gt; a)Hello,.World...<BR>&gt; b)....Hello,.Wor<BR>&gt; c)Hello,.Wor....<BR>&gt; d)None of the above<BR>&gt; ans b<BR>&gt; <BR>&gt; <!
+BR>&gt;
+ <BR>&gt; sec 3<BR>&gt; <BR>&gt; <BR>&gt; SECTION III - ANALYSIS PROGRAM SEGMENTS<BR>&gt; ---------------------------------------<BR>&gt; <BR>&gt; 1) Here is the structure declaration of a doubly<BR>&gt; linked list<BR>&gt; <BR>&gt; struct dlink {<BR>&gt; int nodeid;<BR>&gt; struct dlink *next;<BR>&gt; struct dlink *prev;<BR>&gt; } dlink_t;<BR>&gt; <BR>&gt; <BR>&gt; A pointer of the head of the linked list is maintained<BR>&gt; as a global variable,<BR>&gt; whose definition is<BR>&gt; dlink_t *head;<BR>&gt; <BR>&gt; The funtion remove_element(dlink_t *rp), needs to<BR>&gt; remove the node pointed to<BR>&gt; the rp and adjust the head.<BR>&gt; <BR>&gt; The first node's prev and the last node's next are<BR>&gt; NULL.<BR>&gt; <BR>&gt; remove_element(dlink_t *rp)<BR>&gt; {<BR>&gt; rp-&gt;prev-&gt;next = rp-&gt;next;<BR>&gt; rp-&gt;next-&gt;prev = rp-&gt;prev;<BR>&gt; if( head == rp)<BR>&gt; head = rp-&gt;next;<BR>&gt; <BR>&gt; Which of the following statement is true about the<BR>!
+&gt;
+ function remove_element<BR>&gt; <BR>&gt; A) It work when head is the same as rp<BR>&gt; B) It does not work when rp is the last element on the<BR>&gt; list<BR>&gt; c) It sets the head of the list correctly<BR>&gt; D) It works in all cases<BR>&gt; <BR>&gt; Answer :B<BR>&gt; <BR>&gt; 2) Consider the following function written in c:<BR>&gt; <BR>&gt; #define NULL 0<BR>&gt; <BR>&gt; char *index(sp,c)<BR>&gt; register char *sp,c;<BR>&gt; {<BR>&gt; do {<BR>&gt; if(*sp == c)<BR>&gt; return (sp);<BR>&gt; } while (*sp++);<BR>&gt; return NULL;<BR>&gt; }<BR>&gt; <BR>&gt; The first argument sp, is a pointer to a C string. The<BR>&gt; second argument, c, is a character. This function<BR>&gt; scarches<BR>&gt; for the character c, in the string. If it is found a<BR>&gt; pointer to that<BR>&gt; location is returned else NULL is returned.<BR>&gt; This function works<BR>&gt; a) Always<BR>&gt; b) Always, but fails when the first byte contais the<BR>&gt; character c<BR>&gt; c) works when c is a n!
+on NULL
+ character only<BR>&gt; d) Works only when the character c is found in the<BR>&gt; string<BR>&gt; answer: a<BR>&gt; <BR>&gt; 03) What is printed when this program is executed<BR>&gt; main()<BR>&gt; {<BR>&gt; printf ("%d\n",f(7));<BR>&gt; }<BR>&gt; f(X)<BR>&gt; {<BR>&gt; if (x&lt;= 4)<BR>&gt; return x;<BR>&gt; return f(--x);<BR>&gt; }<BR>&gt; <BR>&gt; a) 4<BR>&gt; b) 5<BR>&gt; c) 6<BR>&gt; d) 7<BR>&gt; answer: a<BR>&gt; <BR>&gt; 04) On a machine where pointers are 4 bytes long, what<BR>&gt; happens when the<BR>&gt; following code is executed.<BR>&gt; main()<BR>&gt; {<BR>&gt; int x=0,*p=0;<BR>&gt; x++; p++;<BR>&gt; printf ("%d and %d\n",x,p);<BR>&gt; }<BR>&gt; <BR>&gt; a) 1 and 1 is printed<BR>&gt; b) 1 and 4 is printed<BR>&gt; c) 4 and 4 is printed<BR>&gt; d) causes an exception<BR>&gt; ans b<BR>&gt; <BR>&gt; 05) Which of the following is the correct code for<BR>&gt; strcpy, that is used to copy the contents from src to<BR>&gt; dest?<BR>&gt; <BR>&gt; a) strcpy (char *dst,char
+ *src)<BR>&gt; {<BR>&gt; while (*src)<BR>&gt; *dst++ = *src++;<BR>&gt; }<BR>&gt; b) strcpy (char *dst,char *src)<BR>&gt; {<BR>&gt; while(*dst++ = *src++)<BR>&gt; }<BR>&gt; c) strcpy (char *dst,char *src)<BR>&gt; {<BR>&gt; while(*src)<BR>&gt; { *dst = *src;<BR>&gt; dst++; src++;<BR>&gt; }<BR>&gt; }<BR>&gt; d) strcpy(char *dst, char *src)<BR>&gt; {<BR>&gt; while(*++dst = *++src);<BR>&gt; }<BR>&gt; answer:b<BR>&gt; <BR>&gt; 6) Consider the following program<BR>&gt; <BR>&gt; main()<BR>&gt; {<BR>&gt; int i=20,*j=&amp;i;<BR>&gt; f1(j);<BR>&gt; *j+=10;<BR>&gt; f2(j);<BR>&gt; printf("%d and %d",i,*j);<BR>&gt; }<BR>&gt; f1(k)<BR>&gt; int *k;<BR>&gt; {<BR>&gt; *k +=15;<BR>&gt; }<BR>&gt; <BR>&gt; f2(x)<BR>&gt; int *x;<BR>&gt; {<BR>&gt; int m=*x,*n=&amp;m;<BR>&gt; *n += 10;<BR>&gt; }<BR>&gt; <BR>&gt; The values printed by the program will be<BR>&gt; a) 20 and 55<BR>&gt; b) 20 and 45<BR>&gt; c) 45 and 45<BR>&gt; d) 45 and 55<BR>&gt; e) 35 and 35<BR>&gt; ans c<BR>&gt; <BR>&gt; 7) what is pr!
+inted
+ when the following program is<BR>&gt; compiled and executed?<BR>&gt; <BR>&gt; <BR>&gt; int func (int x)<BR>&gt; {<BR>&gt; if (x&lt;=0)<BR>&gt; return(1);<BR>&gt; return func(x -1) +x;<BR>&gt; }<BR>&gt; main()<BR>&gt; {<BR>&gt; printf("%d\n",func(5));<BR>&gt; }<BR>&gt; <BR>&gt; a) 12<BR>&gt; b) 16<BR>&gt; c) 15<BR>&gt; d) 11<BR>&gt; ans b<BR>&gt; 08) Consider the following of c code in two files<BR>&gt; which will be linked together and executed .<BR>&gt; <BR>&gt; a.c<BR>&gt; ___<BR>&gt; int i;<BR>&gt; main()<BR>&gt; {<BR>&gt; i = 30;<BR>&gt; f1();<BR>&gt; printf("%d\n",i)<BR>&gt; }<BR>&gt; <BR>&gt; b.c<BR>&gt; ___<BR>&gt; static int f1()<BR>&gt; {<BR>&gt; i+=10;<BR>&gt; }<BR>&gt; <BR>&gt; which of the following is true ?<BR>&gt; a) a.c will fail in compilation phase because f1() is<BR>&gt; not declared<BR>&gt; b) b.c will fail in compilation because the variable i<BR>&gt; is not declared<BR>&gt; c) will print 30<BR>&gt; d) will print 40<BR>&gt; e) a &amp; b<BR>&gt; <BR>&gt; a!
+nswer:
+ e<BR>&gt; <BR>&gt; 9) Consider the following prg<BR>&gt; void funca (int *k)<BR>&gt; {<BR>&gt; *k += 20<BR>&gt; }<BR>&gt; void funcb (int *x)<BR>&gt; {<BR>&gt; int m=*x,*n = &amp;m;<BR>&gt; *n+=10;<BR>&gt; }<BR>&gt; main()<BR>&gt; {<BR>&gt; int var = 25,*varp=&amp;var;<BR>&gt; funca(varp);<BR>&gt; *varp += 10;<BR>&gt; funcb(varp);<BR>&gt; printf ("%d and %d\n",var,*varp);<BR>&gt; }<BR>&gt; The values printed when the above prg is complied and<BR>&gt; executed are:<BR>&gt; a) 20 and 55<BR>&gt; b) 20 and 45<BR>&gt; c) 45 and 55<BR>&gt; d) 55 and 55<BR>&gt; e) 35 and 35<BR>&gt; <BR>&gt; answer: d<BR>&gt; <BR>&gt; 10) consider the following program:<BR>&gt; # include &lt;stream.h&gt;<BR>&gt; class x {<BR>&gt; public:<BR>&gt; int a;<BR>&gt; x();<BR>&gt; };<BR>&gt; x::x() { a=10; cout&lt;&lt;a; }<BR>&gt; class b:public x {<BR>&gt; public:<BR>&gt; b();<BR>&gt; };<BR>&gt; b::b() { a=20; cout&lt;&lt;a; }<BR>&gt; main ()<BR>&gt; { b temp;<BR>&gt; }<BR>&gt; what will be the output of th!
+is
+ prg?<BR>&gt; a) 10<BR>&gt; b) 20<BR>&gt; c) 2010<BR>&gt; d) 1020<BR>&gt; answer: b<BR>&gt; <BR>&gt; <BR>&gt; Section IV - General Aptitude Section<BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; 1) In a murder case there are four suspects P,Q,R,S.<BR>&gt; Each of them<BR>&gt; makes a statement. They are<BR>&gt; p: "I had gone to the theatre with S at the time of<BR>&gt; the murder".<BR>&gt; q: "I was playing cards with P at the time of the<BR>&gt; murder".<BR>&gt; r: "Q didn't commit the murder".<BR>&gt; s: "R is not the murderer".<BR>&gt; <BR>&gt; Assuming the only one of the above statement is false<BR>&gt; and that one of<BR>&gt; them is the murderer, who is the murderer?<BR>&gt; a) P<BR>&gt; b) Q<BR>&gt; c) R<BR>&gt; d) Cann't be concluded<BR>&gt; e) S<BR>&gt; <BR>&gt; answer: E<BR>&gt; <BR>&gt; 2) Mohan earned twice as much as Deep. Yogesh earned<BR>&gt; rs.3/- more than half as much as deep. If the amounts<BR>&gt; earned by<BR>&gt; Mohan,Deep,Yogesh are M,D,Y
+ respectively, Which of the<BR>&gt; following is the<BR>&gt; correct ordering of these amounts?<BR>&gt; a) M &lt; D &lt; Y<BR>&gt; b) M &lt; Y &lt; D<BR>&gt; c) D &lt; M &lt; Y<BR>&gt; d) It cann't be determined from the information given<BR>&gt; e) D &lt; Y &lt; M<BR>&gt; ans d<BR>&gt; <BR>&gt; 03) Statistics indicate that men drivers are involved<BR>&gt; in more accidents than women drivers. Hence it may be<BR>&gt; concluded that<BR>&gt; a) sufficiently information is not there to conclude<BR>&gt; anything<BR>&gt; b) Men are actually better drivers but drive more<BR>&gt; frequently<BR>&gt; c) Women Certainly drive more cautiously than Men<BR>&gt; d) Men chauvinists are wrong about women's abilties.<BR>&gt; e) Statistics sometimes present a wrong picture of<BR>&gt; things<BR>&gt; ans c<BR>&gt; <BR>&gt; 04) What does the hex number E78 correspond to in<BR>&gt; radix 7 ?<BR>&gt; a) 12455<BR>&gt; b) 14153<BR>&gt; c) 14256<BR>&gt; d) 13541<BR>&gt; e) 13112<BR>&gt; <BR>&gt;
+ answer:d<BR>&gt; <BR>&gt; 5)Given that A,B,C,D,E each represent one of the<BR>&gt; digits between 1 and<BR>&gt; 9 and that the following multiplication holds:<BR>&gt; A B C D E<BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X 4<BR>&gt; --------------<BR>&gt; E D C B A<BR>&gt; --------------<BR>&gt; <BR>&gt; what digit does E represent ?<BR>&gt; <BR>&gt; a) 4<BR>&gt; b) 6<BR>&gt; c) 8<BR>&gt; d) 7<BR>&gt; <BR>&gt; Answer: c<BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; 9) Worker W produces n units in 5 hours. Workers V and<BR>&gt; W, workers<BR>&gt; independently but at the same time, produce n units in<BR>&gt; 2 hours.<BR>&gt; how long would it take V alone to produce n units?<BR>&gt; a) 1 hr 26 min<BR>&gt; b) 1 hr 53 min<BR>&gt; c) 2 hr 30 min<BR>&gt; d) 3 hr 30 min<BR>&gt; e) 3 hr 20 min<BR>&gt; <BR>&gt; ans: e<BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; 11-15 is the reasoning Questions:(questions are not in<BR>&gt; line they r staaggered around the pa!
+per so
+ mug up the<BR>&gt; ans not option no)<BR>&gt; Occurs and Causes available in placement papers.com<BR>&gt; Questions are to be answered on the following data <BR>&gt; <BR>&gt; A causes B or C, but not both <BR>&gt; F occurs only if B occurs <BR>&gt; D occurs if B or C occurs <BR>&gt; E occurs only if C occurs <BR>&gt; J occurs only if E or F occurs <BR>&gt; D causes G,H or both <BR>&gt; H occurs if E occurs <BR>&gt; G occurs if F occurs <BR>&gt; 11. If A occurs which of the following must occurs<BR>&gt; <BR>&gt; I.&nbsp; F and G<BR>&gt; II. E and H<BR>&gt; III. D<BR>&gt; <BR>&gt; (a) I only<BR>&gt; (b) II only <BR>&gt; (c) III only <BR>&gt; (d) I,II, &amp; III<BR>&gt; (e) I &amp; II (or) II &amp; III but not both<BR>&gt; <BR>&gt; Ans. (e)<BR>&gt; <BR>&gt; <BR>&gt; 12. If B occurs which must occur<BR>&gt; <BR>&gt; (a) D <BR>&gt; (b) D and G <BR>&gt; (c) G and H <BR>&gt; (d) F and G <BR>&gt; (e) J<BR>&gt; <BR>&gt; Ans. (a)<BR>&gt; <BR>&gt; <BR>&gt; 13. If J occurs which must hav!
+e
+ occured<BR>&gt; <BR>&gt; (a) E <BR>&gt; (b) either B or C <BR>&gt; (c) both E &amp; F <BR>&gt; (d) B <BR>&gt; (e) both B &amp; C<BR>&gt; <BR>&gt; Ans. (b)<BR>&gt; <BR>&gt; <BR>&gt; 14. Which may occurs as a result of cause not<BR>&gt; mentioned<BR>&gt; <BR>&gt; I. D <BR>&gt; II. A <BR>&gt; III. F<BR>&gt; <BR>&gt; (a) I only <BR>&gt; (b) II only <BR>&gt; (c) I &amp; II <BR>&gt; (d) II &amp; III <BR>&gt; (e) I,II &amp; III<BR>&gt; <BR>&gt; Ans. (c)<BR>&gt; <BR>&gt; 15. E occurs which one cannot occurs<BR>&gt; <BR>&gt; (a) A <BR>&gt; (b) F <BR>&gt; (c) D <BR>&gt; (d) C <BR>&gt; (e) J <BR>&gt; <BR>&gt; Ans. (b)<BR>&gt; <BR>&gt; 16 - 20 is the reasoning Questions:(questions are not<BR>&gt; in line they r staaggered around the paper so mug up<BR>&gt; the ans not option no)<BR>&gt; <BR>&gt; Six knights - P,Q,R,S,T and U - assemble for a long<BR>&gt; journey in two<BR>&gt; travelling parties. For security, each travelling<BR>&gt; party consists<BR>&gt; of at least two knights. The tw!
+o
+ parties travel by<BR>&gt; separate routes,<BR>&gt; northern and southern. After one month, the routes of<BR>&gt; the northern<BR>&gt; and southern groups converge for a brief time and at<BR>&gt; that point the<BR>&gt; knights can, if they wish, rearrange their travelling<BR>&gt; parties before<BR>&gt; continuing, again in two parties along separate<BR>&gt; northern and southern<BR>&gt; routes. Throughout the entire trip, the composition of<BR>&gt; travelling<BR>&gt; parties must be in accord with the following<BR>&gt; conditions<BR>&gt; <BR>&gt; P and R are deadly enemies and, although they may meet<BR>&gt; briefly,<BR>&gt; can never travel together.<BR>&gt; p must travel in the same party with s<BR>&gt; Q cann't travel by the southern route<BR>&gt; U cann't change routes<BR>&gt; <BR>&gt; 16) If one of the two parties of knights consists of P<BR>&gt; and U and<BR>&gt; two other knights and travels by the southern route,<BR>&gt; the other members<BR>&gt; of this party besides !
+P and U
+ must be<BR>&gt; a) Q and S<BR>&gt; b) Q and T<BR>&gt; c) R and S<BR>&gt; d) R and T<BR>&gt; e) S and T<BR>&gt; <BR>&gt; answer: e<BR>&gt; <BR>&gt; 17) If each of the two parties of knights consists of<BR>&gt; exactly three<BR>&gt; members, which of the following is not a possible<BR>&gt; travelling party<BR>&gt; and route?<BR>&gt; a) P,S,U by the northern route<BR>&gt; b) P,S,T by the northern route<BR>&gt; c) P,S,T by the southern route<BR>&gt; d) P,S,U by the southern route<BR>&gt; e) Q,R,T by the southern route<BR>&gt; <BR>&gt; ans: a<BR>&gt; <BR>&gt; 18) If one of the two parties of knights consists of U<BR>&gt; and two other<BR>&gt; knights and travels by the northern route, the other<BR>&gt; memnbers of this party<BR>&gt; besides U must be<BR>&gt; a) P and S<BR>&gt; b) P and T<BR>&gt; c) Q and R<BR>&gt; d) Q and T<BR>&gt; e) R and T<BR>&gt; <BR>&gt; answer: c<BR>&gt; <BR>&gt; 19) If each of the two parties of knights consists of<BR>&gt; exactly three<BR>&gt; members of
+ different parties, and R travels by the<BR>&gt; northern route,<BR>&gt; then T must travel by the<BR>&gt; a) southern route with P and S<BR>&gt; b) southern route with Q and R<BR>&gt; c) southern route with R and U<BR>&gt; d) northern route with Q and R<BR>&gt; e) northern route with R and U<BR>&gt; <BR>&gt; answer: a<BR>&gt; <BR>&gt; 20) If, when the two parties of knights encounter one<BR>&gt; another after<BR>&gt; a month, exactly one knight changes from one<BR>&gt; travelling party to the<BR>&gt; other travelling party, that knight must be<BR>&gt; a) P<BR>&gt; b) Q<BR>&gt; c) R<BR>&gt; d) S<BR>&gt; e) T<BR>&gt; <BR>&gt; answer: e<BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt;&nbsp; <BR>&gt; <BR>&gt; &gt;From: Vishal Rastogi &lt;vish_rash_04@y...&gt;<BR>&gt; &gt;Reply-To: careeradvisor@yahoogroups.com<BR>&gt; &gt;To: careeradvisor@yahoogroups.com<BR>&gt; &gt;Subject: Re: [careeradvisor] HCL paper?<BR>&gt; &gt;Date: Tue, 3 Sep 2002 10:20:49 -0700 (PDT)<BR>&gt; &gt;<BR>&gt; &gt!
+;Mr
+ Abhinav,<BR>&gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I dont want any drama on this group.please dont<BR>&gt; &gt;mail anymore in this context on this group. Maintain<BR>&gt; &gt;the dignity of this group. It's really my sincere<BR>&gt; &gt;request.<BR>&gt; &gt;<BR>&gt; &gt;<BR>&gt; &gt;Dear friends,<BR>&gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i want the paper given in our college this year<BR>&gt; &gt;if anyone having please send.<BR>&gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bye... Vishal.<BR>&gt; &gt;<BR>&gt; &gt;<BR>&gt; &gt;<BR>&gt; &gt;<BR>&gt; &gt;--- Kumar Abhinav &lt;ingenuous_abhinav@y...&gt; wrote:<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; Dear Vishal,<BR>&gt; &gt; &gt; well if u don't remember.. then who is supposed to..<BR>&gt; &gt; &gt; ??? not me.. atleast..<BR>&gt; &gt; &gt; anyway .. you are EXCUSSSSSSSSED .. as you asked for<BR>&gt; &gt; &gt; it. !!<BR>&gt; &gt; &gt; here is one paper.. don't !
+know
+ whether it is the one<BR>&gt; &gt; &gt; in our college or not..<BR>&gt; &gt; &gt; .. atlast.. dear mr.serious.. if this group is not<BR>&gt; &gt; &gt; made for jokes.. its not for asking for papers as<BR>&gt; &gt; &gt; well..&nbsp; make that pretty clear for future..<BR>&gt; &gt; &gt; but i m sending you this.. coz you are excused !!<BR>&gt; &gt; &gt; luv,<BR>&gt; &gt; &gt;&nbsp; abhinav<BR>&gt; &gt; &gt;<BR>&gt; &gt;------------------------------------------------------------------<BR>--------------------------------------<BR>&gt; &gt; &gt; HCL 2k2.<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; apt is hard , try to do it fast.<BR>&gt; &gt; &gt; tec is easy.<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; Q. In an empty queue front=or rear=<BR>&gt; &gt; &gt; a) 0 b)-1c)&nbsp;&nbsp; d)<BR>&gt; &gt; &gt; ans -1.<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; Q.In a dual ring configuration(don't remember the<BR>&gt; &gt; &gt; exact ques.)<BR>&gt; &gt; &gt; Ans is It rearranges itself to use secondary ring<BR>&g!
+t; &gt;
+ &gt; when<BR>&gt; &gt; &gt; primary fails<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; Q. Value of~0<BR>&gt; &gt; &gt; a) 0 b) 1 c)0Xff d)0Xffff<BR>&gt; &gt; &gt; Ans. D<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; QShort int x=-1;<BR>&gt; &gt; &gt; Long int y=x;<BR>&gt; &gt; &gt; Y=?<BR>&gt; &gt; &gt; a)0 b)-1 c)0Xff d)0Xffff<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; QNo. Of node at level k in a tree<BR>&gt; &gt; &gt; a)2^k b)2^(k-1) c)2^(k+1) d)<BR>&gt; &gt; &gt; Ans a<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; QQues on line discipline ENQ/Ack<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; Q Terminal emulation is done by which layer<BR>&gt; &gt; &gt; Ans Application layer<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; Q Ques on bubble sort<BR>&gt; &gt; &gt; Ans 10<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; Q Searching x-udd on key<BR>&gt; &gt; &gt; Ans Hash<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; Q To run C program from assembly what is reqd.<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; HCL APTI<BR>&gt; &gt; &gt;<BR>&gt; &gt; &!
+gt; 1.
+ jumbled word<BR>&gt; &gt; &gt; ans. parachut<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 2. prefix to add in several words<BR>&gt; &gt; &gt; ans. post<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 3. prefix to add in' scape '&amp; use same suffix in<BR>&gt; &gt; &gt; 'grass'<BR>&gt; &gt; &gt; ans land<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 4. dogs &amp; cats related very tough question. check<BR>&gt; &gt; &gt; out<BR>&gt; &gt; &gt; in barrons<BR>&gt; &gt; &gt;&nbsp;&nbsp; first bit ans is a. third bit ans is c<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 5. now is midnight ,so can we expect sunny days<BR>&gt; &gt; &gt; after<BR>&gt; &gt; &gt; 72 hrs.<BR>&gt; &gt; &gt; ans. no<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 6. 2 nos. whose sum is 330 and when we remove last<BR>&gt; &gt; &gt; digit of one no. sum is 330, find the nos.<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; ans. 300,30<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 7. (ap)^2=bpm&nbsp;&nbsp; digits are there and we have to find<BR>&gt; &gt; &gt; out the value of ap<BR!
+>&gt;
+ &gt; &gt; ans. 19<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 1. product is s.p. 20% of c.p.<BR>&gt; &gt; &gt; are both sufficient<BR>&gt; &gt; &gt; 1. 50 rs sell<BR>&gt; &gt; &gt; 2. s.p. 10% deduct profits<BR>&gt; &gt; &gt; ans. 1 &amp; 2<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 2. two words here, sit atleast 2 dogs learnt sit,<BR>&gt; &gt; &gt; atleast 2 learnt here, atleast 1 knows both,total =<BR>&gt; &gt; &gt; 8.<BR>&gt; &gt; &gt; three types s,r,z.<BR>&gt; &gt; &gt; r=all females<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; there were 4&nbsp; quetions on this<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; mug up the above conditions as it cud help u in<BR>&gt; &gt; &gt; answering the questions faster.<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 3. in maze 25 images were there , leftmost column<BR>&gt; &gt; &gt; had<BR>&gt; &gt; &gt; no number. find out the number.<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 4. simple maths linear eqns<BR>&gt; &gt; &gt;<BR>&gt; &gt!
+;
+ &gt;<BR>&gt; &gt; &gt; 1. arq protocol<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 2. unix init process does what<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 3. which is a network mgmt protocol<BR>&gt; &gt; &gt; ans. snmp<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 4. virtual memory size depends on what<BR>&gt; &gt; &gt; a. address lines&nbsp; b. data bus&nbsp; c. disk space<BR>&gt; &gt; &gt; ans. c<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 5. # define cube(x) x * x * x<BR>&gt; &gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; main()<BR>&gt; &gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a=3<BR>&gt; &gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cube(a++)<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 6. # define mult(x) x*y<BR>&gt; &gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; main()<BR>&gt; &gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mult(2+1);<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 7. printf('%d',printf('hello'));<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 8. char a[10];<BR>&gt; &gt;
+ &gt;&nbsp;&nbsp;&nbsp; char *p1=a;<BR>&gt; &gt; &gt;&nbsp;&nbsp;&nbsp; char *p1=&amp;a[a];<BR>&gt; &gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp; {<BR>&gt; &gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *p1++;<BR>&gt; &gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *p2--;<BR>&gt; &gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp; }<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 9. one ques was there in which funda was that printf<BR>&gt; &gt; &gt; only prints upto /0<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; 10. for cube marco is<BR>&gt; &gt; &gt; #define cube(x) (x)*(X)*(x)<BR>&gt; &gt; &gt;<BR>&gt; &gt;------------------------------------------------------------------<BR>-------------------------------------------------<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt;&nbsp; Vishal Rastogi wrote:Excuse me,<BR>&gt; &gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp; I dont remember all the questions of HCL paper.<BR>&gt; &gt; &gt; that's why i m asking if anyone having the whole<BR>&gt; &gt; &gt; paper<BR>&gt; &gt; &gt; in written. If u find, plz se!
+nd, my
+ few friends r<BR>&gt; &gt; &gt; asking for it.<BR>&gt; &gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp; And I m serious bcoz i know this group is not<BR>&gt; &gt; &gt; made<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; for jokes.<BR>&gt; &gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; All the Best to all friends for Campus.<BR>&gt; &gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BYE. Vishal.<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt;<BR>&gt; &gt; &gt; --- Kumar Abhinav &lt;ingenuous_abhinav@y...&gt;<BR>&gt; &gt; &gt; wrote:<BR>&gt; &gt; &gt; &gt;<BR>&gt; &gt; &gt; &gt; ..... now could there be anything more ridiculous<BR>&gt; &gt; &gt; &gt; than this request ?? honestly speaking .. i never<BR>&gt; &gt; &gt; &gt; encountered something more funny !!! .....<BR>&gt; &gt; &gt; &gt; well ppl.. keep pouring in with such jokes.. i<BR>&gt; &gt; &gt; &gt; really!
+ liked
+ it..<BR>&gt; &gt; &gt; &gt; PS: for the information of those who don't know..<BR>&gt; &gt; &gt; &gt; the man requesting the paper is one of the<BR>&gt; &gt; &gt; &gt; candidates selected in the same company i.e. HCL<BR>&gt; &gt; &gt; &gt;&nbsp; Vishal Rastogi wrote:hi friends,<BR>&gt; &gt; &gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I need HCL paper; if anyone having,<BR>&gt; &gt; &gt; please<BR>&gt; &gt; &gt; &gt; send.<BR>&gt; &gt; &gt; &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bye. VISHAL &gt;<BR>&gt; &gt; &gt; &gt;<BR>&gt; &gt; &gt; &gt;<BR>&gt; Section III<BR>&gt; <BR>&gt; Letter Series<BR>&gt; <BR>&gt; These are too tough. Maintain time&nbsp;&nbsp;&nbsp;&nbsp; 26 questions ----- 10min<BR>&gt; <BR>&gt; <BR>&gt; 1. A C BDEFGI&nbsp;&nbsp; -&nbsp; I&nbsp; H K J L&nbsp; <BR>&gt; <BR>&gt; 2. AIZBEYCIXDI&nbsp; -&nbsp; GENJW&nbsp;&nbsp;&nbsp; <BR>&gt; <BR>&gt; 3. ADGJMP&nbsp;&nbsp; - RWTS&nbsp;&nbsp;!
+&nbsp;
+ <BR>&gt; <BR>&gt; 4. ABCEFGIJK - <BR>&gt; <BR>&gt; 5. ABFGKLPQ - TSVUW&nbsp;&nbsp; <BR>&gt; <BR>&gt; 6 JWXUVST&nbsp; -&nbsp; QPSET&nbsp; <BR>&gt; <BR>&gt; 7. ARHXYTDTWST&nbsp;&nbsp; - NPTKR&nbsp;&nbsp; <BR>&gt; <BR>&gt; 8.FMBIPZVIEV&nbsp; - IRYOU&nbsp;&nbsp; <BR>&gt; <BR>&gt; 9. NZI YCX KWF - JFVMY&nbsp; <BR>&gt; <BR>&gt; 10. AASASPASPKA - RQTSU <BR>&gt; <BR>&gt; 11. AECPS - TRUE&nbsp;&nbsp;&nbsp; <BR>&gt; 12. BBPRDDLNFFIK - HQJIK&nbsp; <BR>&gt; <BR>&gt; 13 AZEXIVMT - RQNSO&nbsp;&nbsp;&nbsp; <BR>&gt; 14. ABDGKP&nbsp; -&nbsp; LIWUX&nbsp;&nbsp;&nbsp; <BR>&gt; <BR>&gt; 15. BCDAEGHIFJLMN&nbsp;&nbsp; LKNMO&nbsp;&nbsp; <BR>&gt; <BR>&gt; 16. XWEFGVUHIJK&nbsp; -&nbsp; PNSRT&nbsp; <BR>&gt; <BR>&gt; 17. ODJTOPQNOERT&nbsp; - QOUVW&nbsp;&nbsp; <BR>&gt; <BR>&gt; 18. PRNUUPEJRBB - HVUNE&nbsp; <BR>&gt; <BR>&gt; 19.LULMGMNFNPS - ONQPS <BR>&gt; <BR>&gt; QUESTIONS ARE NOT IN SEQUENCE. <BR>&gt; <BR>&gt; <BR>&gt; NUMERICAL<BR>&gt; <BR>&gt; 1. 420% OF 7.79 = <BR>&gt; <BR>&gt; 2. 3427 / 16.53 = <B!
+R>&gt;
+ <BR>&gt; 3. 10995 /95 = <BR>&gt; <BR>&gt; 4. 43+557-247 =<BR>&gt; <BR>&gt; 5. 3107*3.082= <BR>&gt; <BR>&gt; 6. 48.7 + 24.9 - 8.7 = <BR>&gt; <BR>&gt; 7. 525.0/47.8 =<BR>&gt; <BR>&gt; 8. (135-30-14)*7 - 6 +2 =3<BR>&gt; <BR>&gt; 9. 3/8 * 5.04=<BR>&gt; <BR>&gt; 10. 697 /219 =<BR>&gt; <BR>&gt; 11. 8/64 +64/16 = <BR>&gt; <BR>&gt; 12. 298*312/208 = <BR>&gt; <BR>&gt; 13. 0.33 *1496 /13 = <BR>&gt; <BR>&gt; 14. 0.26 + 1/8 = <BR>&gt; <BR>&gt; 15. 66.17+1/3= <BR>&gt; <BR>&gt; 16. 2.84+1/4=<BR>&gt; <BR>&gt; 17. 33% OF 450 =<BR>&gt; <BR>&gt; 18. 907.54 / 0.3073= <BR>&gt; <BR>&gt; 19.There are two categories of persons in ratio A, b i.e.A:B = 2:3 <BR>A type<BR>&gt;&nbsp;&nbsp;&nbsp; earns 2.5 dollars/hr and B type 1 dollar/hr&nbsp; total money <BR>earnedby both<BR>&gt;&nbsp;&nbsp;&nbsp; is 24 dollars. then total number of persons<BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp; <BR>&gt; <BR>&gt; 20.Question not clear<BR>&gt; <BR>&gt; Slow running - n hours - A<BR>&gt; <BR>&gt; Medium running
+ -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B<BR>&gt; <BR>&gt; fast running -&nbsp;&nbsp; k hours&nbsp; - c<BR>&gt; <BR>&gt; Ans: nA+kC<BR>&gt; <BR>&gt; 21. Total balls z,red balls N remaining are blak balls,then %of <BR>black<BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp; balls equal to&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>&gt; <BR>&gt; 22. Multiplication three digits and two digits number will result <BR>the <BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ans: HInt: four digit number first number must be one.<BR>&gt; <BR>&gt; 23. A= C;B=2D what should be do to make the ratio same. i.e.a/b = <BR>c/d<BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ans: <BR>&gt; <BR>&gt; 24. P= Total number of compoentns<BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp; Q= defective number of compoentns<BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp; % of non defective equals to <BR>&gt; <BR>&gt; 25. Cost of article x,fir!
+st
+ discount is y% of cost, seconddiscount <BR>is z%<BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp; of cost .&nbsp; The price of x is<BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ans:<BR>&gt; <BR>&gt; 26.Prime number&nbsp;&nbsp; a) 119 b) 115 c) 127 d) none&nbsp; <BR>&gt; <BR>&gt; 27. A/B = C;C&gt;D then <BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ans:A is always greater than D<BR>&gt; <BR>&gt; 28. B&gt;C&nbsp; and&nbsp;&nbsp; A&lt;C&nbsp;&nbsp; which of the following is larger<BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ans: (A+B)C<BR>&gt; <BR>&gt; 29. H hours&nbsp; - S salary; xhours - Medical leave, then salary/hr = ?<BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ans: <BR>&gt; <BR>&gt; 30.(1/6of 596) /(0.695) =<BR>&gt; <BR>&gt; 31.All dogs are cats <BR>&gt; <BR>&gt;&nbsp;&nbsp; All rats are dogs<BR>&gt;
+ <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ans:all rats are cats<BR>&gt; <BR>&gt; 32. 35-30+4/7-5+1&nbsp; = ?&nbsp;&nbsp;&nbsp; <BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ans:<BR>&gt;&nbsp; <BR>&gt; 33.&nbsp; 10995 + 95 = ?<BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ans: <BR>&gt; <BR>&gt; 34.Salary 'S' per month,1 type of tax is xRs. second type of tax <BR>is y Rs<BR>&gt;&nbsp;&nbsp;&nbsp; then % of take home.<BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ans: <BR>&gt; <BR>&gt; 35.All physicians are browns<BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp; All balancians are physicians<BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ans: not know.<BR>&gt; <BR>&gt; 36. B&gt;A then which _expression will be highest value<BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ans: AB<BR>&gt; <BR>&gt; 37. K,L -- Men ;X, Y -&gt;&nbsp; Ans:kX +
+ Ly<BR>&gt; <BR>&gt; 38. If A,B are same number, which one of the following doesnot <BR>satisfy<BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp; this Ans: A*B/B**2<BR>&gt; <BR>&gt; 39. X- bulbs'; y - broken; % of non broken bulbs Ans:<BR>&gt; <BR>&gt; 40. Adding X, Y to A equals to Ans: a (large _expression)<BR>&gt; <BR>&gt; 41. Salary s per month, tax x% of the salry, r% of salary is <BR>deducted what<BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp; is the income.<BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ans:<BR>&gt; <BR>&gt; 42. Add three digits and two digits numbers the first digit is <BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ans:1 (four digit number starting with one)<BR>&gt; <BR>&gt; 43. 0.512 * large number = ?<BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ans:divide the given number by 2<BR>&gt; <BR>&gt; 44..In 10% balls 5 are defective, % of defective <BR>&gt; <BR>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ans:<BR>&gt; 45. 6.29% of 2.8 =
+ <BR>&gt; <BR>&gt; 46.0.398*456=<BR>&gt; <BR>&gt; 47.0 &lt; x&lt;1 which is greater<BR>&gt; <BR>&gt; a) 1/x**2&nbsp;&nbsp; b) 1/x c) x d) x**2<BR>&gt; <BR>&gt; Ans: <BR>&gt; <BR>&gt; 48.c = a/b; a-1 = c, what is the relation between a and b<BR>&gt; <BR>&gt; Ans: <BR>&gt; <BR>&gt; 49.The sum of 7 consecutive odd numbers interms with 27 asfourth <BR>number<BR>&gt; <BR>&gt; Ans:189 (question not clear)<BR>&gt; <BR>&gt; <BR>&gt; <BR>&gt; So here Iam giving flow chart answersin sequence.&nbsp; These answers <BR>are<BR>&gt; p<BR><BR><BR><p><hr SIZE=1>
+Do you Yahoo!?<br>
+<A href="http://pa.yahoo.com/*http://rd.yahoo.com/evt=1207/*http://promo.yahoo.com/sbc/" target=_new>SBC Yahoo! DSL</a> - Now only $29.95 per month!
+<br>
+
+<!-- |**|begin egp html banner|**| -->
+
+<table border=0 cellspacing=0 cellpadding=2>
+<tr bgcolor=#FFFFCC>
+<td align=center><font size="-1" color=#003399><b>Yahoo! Groups Sponsor</b></font></td>
+</tr>
+<tr bgcolor=#FFFFFF>
+<td align=center width=470><A href="http://rd.yahoo.com/M=251812.3170658.4537139.1261774/D=egroupweb/S=1705077624:HM/A=1564415/R=0/SIG=11t6t7kdo/*http://www.netflix.com/Default?mqso=60164784&partid=3170658" target=_new><IMG src="http://us.a1.yimg.com/us.yimg.com/a/ne/netflix/yhoo0303_a_300250.gif" alt="" width="300" height="250" border="0"></a></td>
+</tr>
+<tr><td><IMG alt="" width=1 height=1 src="http://us.adserver.yahoo.com/l?M=251812.3170658.4537139.1261774/D=egroupmail/S=:HM/A=1564415/rand=262423540"></td></tr>
+</table>
+
+<!-- |**|end egp html banner|**| -->
+
+
+<br>
+<tt>
+To unsubscribe from this group, send an email to:<BR>
+ten_bonds-unsubscribe@yahoogroups.com<BR>
+<BR>
+</tt>
+<br>
+
+<br>
+<tt>Your use of Yahoo! Groups is subject to the <A href="http://docs.yahoo.com/info/terms/" target=_new>Yahoo! Terms of Service</a>.</tt>
+</br>
+
+</font></TD></TR>
+</TABLE>
+</TD></TR>
+<tr><td colspan=3>
+</TD></TR></TABLE>
+</td></tr>
+<TR>
+<TD WIDTH=598 VALIGN=top>
+<BR>&nbsp;</BR>
+</TD>
+</TR>
+</TABLE>
+<!-- End read msg -->
+</BODY>
+</HTML>

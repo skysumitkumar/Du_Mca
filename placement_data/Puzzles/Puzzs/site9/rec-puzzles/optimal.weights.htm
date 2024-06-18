@@ -1,0 +1,112 @@
+<html><head>
+<title>Solution for /logic/weighing/optimal.weights</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /logic/weighing/optimal.weights problem</h1>
+<hr>
+<h2>Equation</h2>
+
+Obviously (I hate this word! :-) any weight Y that can be weighed
+by X1, X2, ... Xn can be written as:
+<pre>
+    Y = A1*X1 + A2*X2 + .... + An*Xn
+</pre>
+where Ai is equal to -1, or 0, or 1.
+
+<h2>Upper bound for Y(n)</h2>
+
+Each Ai can have one of three values, so the total number of
+combinations of values for A1,A2, ... An is 3^n. At least one of these 
+combinations gives Y=0 (A1=A2=...=An=0). Out of the remaining 3^n-1
+combinations, some give a negative Y (for example A1=A2=...=An=-1).
+and some a positive Y (and some might also give zero values, e.g. if
+X1=X2, and A1=1, A2=-1).
+<p>
+Because of symmetry it's easy to see that the combinations that give Y&gt;0
+are at most half i.e. (3^n-1)/2. It is also possible that different
+combinations might give the same value of Y, and it is also possible
+that these values of Y are not successive.
+However, to obtain an upper bound, lets assume the best case i.e.
+all (3^n-1)/2 combinations give different, positive, and successive
+values, so:
+<pre>
+    Y(n) &lt;= (3^n-1)/2
+</pre>
+
+<h2>An optimal algorithm for choosing Xn</h2>
+
+I will present an algorithm for choosing the weights X1,X2,...Xn.
+Then we will prove that it is optimal.
+
+<p>
+For n=1, we choose X1=1, and of course Y(1) = 1.
+
+<p>
+Let's assume that we have already chosen n weights X1, X2 ... Xn,
+and that we can weigh all Y where 1&lt;=Y&lt;=Y(n).
+We are allowed to get an extra new weight Xn+1.
+If we choose:
+<pre>
+    Xn+1 = 2*Y(n)+1
+</pre>
+then we get
+<pre>
+    Y(n+1) = Y(n) + Xn+1 = 3*Y(n)+1
+</pre>
+
+<h3>Proof:</h3>
+
+<dl>
+<dt>
+    for 1&lt;= Y &lt;= Y(n):
+<dd>
+	use the weights X1...Xn (ignoring the new one)
+<dt>
+    for Y(n)+1 &lt;= Y &lt; Xn+1 = 2*Y(n)+1
+<dd>
+	Put Xn+1 on one side of the scale, and on the other side put
+	the unknown weight, and a combination of X1...Xn so that
+	this combination weighs "Xn+1 - Y" (which is a number
+	in the range 0...Y(n), so *there exists* such a combination)
+<dt>
+    for 2*Y(n)+1 &lt;= Y &lt;= 3*Y(n)+1:
+<dd>
+	put the unknown weight on one side, and on the other side
+	put Xn+1, and combination of X1...Xn with a weight equal to
+	"Y - Xn+1" (which again is a number in the range 0...Y(n),
+	so there exists such a combination)
+</dl>
+So, to summarize, if we use such an algorithm, we have:
+<pre>
+    X1 = 1;
+    Y(1) =1;
+
+    Xn+1 = 2*Y(n)+1
+    Y(n+1) = Y(n) + Xn+1 = 3*Y(n) + 1
+</pre>
+It's easy to prove (e.g. by induction) that:
+<pre>
+    Y(n) = (3^n-1)/2
+    X(n) = 3^n
+</pre>
+So, Y(n) is equal to the upper bound we found before, so this algorithm is
+optimal, and the weights you must choose are powers of 3.
+
+<pre>
+Spyros Potamianos
+potamian@hpl.hp.com
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

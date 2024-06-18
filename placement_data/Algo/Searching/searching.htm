@@ -1,0 +1,297 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Searching</title>
+</head>
+
+<body>
+
+<p>http://www.cs.auckland.ac.nz/software/AlgAnim/ds_ToC.html</p>
+<p><font face="helvetica" size="+2" color="#000000"><b>Searching</b></font>
+<p><a name="searching"><font color="#000000">Computer systems are often used to
+store large amounts of data from which individual records must be retrieved
+according to some search criterion. Thus the efficient storage of data to
+facilitate fast searching is an important issue. In this section, we shall
+investigate the performance of some searching algorithms and the data structures
+which they use.</font></a><a name="seq-search"></p>
+<h2><font color="#000000">4.1 Sequential Searches</font></h2>
+<font color="#000000">Let's examine how long it will take to find an item
+matching a key in the collections we have discussed so far. We're interested in:</font>
+<p>&nbsp;
+<ol type="a">
+  <li><font color="#000000">the average time</font>
+  <li><font color="#000000">the worst-case time and</font>
+  <li><font color="#000000">the best possible time.</font></li>
+</ol>
+<font color="#000000">However, we will generally be most concerned with the
+worst-case time as calculations based on worst-case times can lead to guaranteed
+performance predictions. Conveniently, the worst-case times are generally easier
+to calculate than average times.</font>
+<p><font color="#000000">If there are <b><i>n</i></b> items in our collection -
+whether it is stored as an array or as a linked list - then it is obvious that
+in the worst case, when there is no item in the collection with the desired key,
+then <b><i>n</i></b> comparisons of the key with keys of the items in the
+collection will have to be made.</font>
+<p><font color="#000000">To simplify analysis and comparison of algorithms, we
+look for a dominant operation and count the number of times that dominant
+operation has to be performed. In the case of searching, the dominant operation
+is the comparison, since the search requires n comparisons in the worst case, we
+say this is a <b><i>O(n)</i></b> <NOTE>
+(pronounce this &quot;big-Oh-n&quot; or &quot;Oh-n&quot;)</NOTE>
+ algorithm. The best case - in which the first comparison returns a match -
+requires a single comparison and is <b><i>O(</i>1<i>)</i></b>. The average time
+depends on the probability that the key will be found in the collection - this
+is something that we would not expect to know in the majority of cases. Thus in
+this case, as in most others, estimation of the average time is of little
+utility. If the performance of the system is vital, i.e. it's part of a
+life-critical system, then we must use the worst case in our design calculations
+as it represents the best guaranteed performance.</font></a><a name="binary-search">
+<h2><font color="#000000">4.2 Binary Search</font></h2>
+<font color="#000000">However, if we place our items in an array and sort them
+in either ascending or descending order on the key first, then we can obtain
+much better performance with an algorithm called <b>binary search</b>.</font>
+<p><font color="#000000">In binary search, we first compare the key with the
+item in the middle position of the array. If there's a match, we can return
+immediately. If the key is less than the middle key, then the item sought must
+lie in the lower half of the array; if it's greater then the item sought must
+lie in the upper half of the array. So we repeat the procedure on the lower (or
+upper) half of the array.</font>
+<p><font color="#000000">Our <tt>FindInCollection</tt> function can now be
+implemented:</font>
+<p>&nbsp;
+<pre><font color="#000000">
+static void *bin_search( collection c, int low, int high, void *key ) {
+	int mid;
+	/* Termination check */
+	if (low &gt; high) return NULL;
+	mid = (high+low)/2;
+	switch (memcmp(ItemKey(c-&gt;items[mid]),key,c-&gt;size)) {
+		/* Match, return item found */
+		case 0: return c-&gt;items[mid];
+		/* key is less than mid, search lower half */
+		case -1: return bin_search( c, low, mid-1, key);
+		/* key is greater than mid, search upper half */
+		case 1: return bin_search( c, mid+1, high, key );
+		default : return NULL;
+		}
+	}
+
+void *FindInCollection( collection c, void *key ) {
+/* Find an item in a collection
+   Pre-condition: 
+	c is a collection created by ConsCollection
+	c is sorted in ascending order of the key
+	key != NULL
+   Post-condition: returns an item identified by key if
+   one exists, otherwise returns NULL
+*/
+	int low, high;
+	low = 0; high = c-&gt;item_cnt-1;
+	return bin_search( c, low, high, key );
+}
+</font></pre>
+<font color="#000000">Points to note:</font>
+<ol type="a">
+  <li><font color="#000000"><tt>bin_search</tt> is recursive: it determines
+    whether the search key lies in the lower or upper half of the array, then
+    calls itself on the appropriate half.</font>
+  <li><font color="#000000">There is a termination condition (two of them in
+    fact!)</font>
+    <ol type="i">
+      <li><font color="#000000">If <tt>low &gt; high</tt> then the partition to
+        be searched has no elements in it <i>and</i></font>
+      <li><font color="#000000">If there is a match with the element in the
+        middle of the current partition, then we can return immediately.</font></li>
+    </ol>
+  <li><font color="#000000"><tt>AddToCollection</tt> will need to be modified to
+    ensure that each item added is placed in its correct place in the array. The
+    procedure is simple:</font>
+    <ol type="i">
+      <li><font color="#000000">Search the array until the correct spot to
+        insert the new item is found,</font>
+      <li><font color="#000000">Move all the following items up one position <i>and</i></font>
+      <li><font color="#000000">Insert the new item into the empty position thus
+        created.</font></li>
+    </ol>
+  <li><font color="#000000"><tt>bin_search</tt> is declared <tt>static</tt>. It
+    is a local function and is not used outside this class: if it were not
+    declared static, it would be exported and be available to all parts of the
+    program. The static declaration also allows other classes to use the same
+    name internally.</font>
+    <blockquote>
+      <table borderColor="red" border="3">
+        <tbody>
+          <tr>
+            <td><font color="#000000"><tt>static</tt> reduces the visibility of
+              a function an should be used wherever possible to control access
+              to functions!</font></td>
+          </tr>
+        </tbody>
+      </table>
+    </blockquote>
+  </li>
+</ol>
+<h4><font color="#000000">Analysis</font></h4>
+<table>
+  <tbody>
+    <tr>
+      <td><font color="#000000"><img src="bsearch.gif" width="411" height="456"></font></td>
+      <td><font color="#000000">Each step of the algorithm divides the block of
+        items being searched in half. We can divide a set of <i><b>n</b></i>
+        items in half at most <b>log<sub>2</sub> <i>n</i></b> times.</font>
+        <p><font color="#000000">Thus the running time of a binary search is
+        proportional to <b>log <i>n</i></b> and we say this is a <b><i>O(</i>log
+        <i>n)</i></b> algorithm.</font></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table>
+  <tbody>
+    <tr>
+      <td><font color="#000000">Binary search requires a more complex program
+        than our original search and thus for <i>small <b>n</b></i> it may run
+        slower than the simple linear search. However, for large <i><b>n</b></i>,<br>
+        <center><img src="limit.gif" width="126" height="46"></center></font>
+        <p><font color="#000000">Thus at large <i><b>n</b></i>, <b>log <i>n</i></b>
+        is <i>much</i> smaller than <i><b>n</b></i>, consequently an <b><i>O(</i>log
+        <i>n)</i></b> algorithm is <i>much</i> faster than an <b><i>O(n)</i></b>
+        one.</font></p>
+      </td>
+      <td><font color="#000000"><img src="log_graph.gif" width="291" height="291">
+        <center>Plot of <i><b>n</b></i> and <b>log <i>n</i></b> <i>vs</i> <i><b>n</b></i>
+        .</center></font></td>
+    </tr>
+  </tbody>
+</table>
+<p><font color="#000000">We will examine this behaviour more formally in a </font></a><font color="#000000"><a href="http://www.cs.auckland.ac.nz/software/AlgAnim/complexity.html">later
+section</a>. First, let's see what we can do about the insertion (<tt>AddToCollection</tt>)
+operation.</font>
+<p><font color="#000000">In the worst case, insertion may require <i><b>n</b></i>
+operations to insert into a sorted list.</font>
+<p>&nbsp;
+<ol>
+  <li><font color="#000000">We can find the place in the list where the new item
+    belongs using binary search in <b><i>O(</i>log <i>n)</i></b> operations.</font>
+  <li><font color="#000000">However, we have to shuffle all the following items
+    up one place to make way for the new one. In the worst case, the new item is
+    the first in the list, requiring <i><b>n</b></i> move operations for the
+    shuffle!</font>
+    <ul>
+    </ul>
+    <p><font color="#000000">A similar analysis will show that deletion is also
+    an <b><i>O(n)</i></b> operation.</font>
+    <p><font color="#000000">If our collection is static, <i>ie</i> it doesn't
+    change very often - if at all - then we may not be concerned with the time
+    required to change its contents: we may be prepared for the initial build of
+    the collection and the occasional insertion and deletion to take some time.
+    In return, we will be able to use a simple data structure (an array) which
+    has little memory overhead.</font>
+    <p><font color="#000000">However, if our collection is large and dynamic, <i>ie</i>
+    items are being added and deleted continually, then we can obtain
+    considerably better performance using a data structure called a <a href="http://www.cs.auckland.ac.nz/software/AlgAnim/trees.html">tree</a>.</font>
+    <p><font color="#000000" face="Arial Black" size="4">Key terms</font>
+    <dl>
+      <dt><b><font color="#000000">Big Oh</font></b>
+      <dd><font color="#000000">A notation formally describing the set of all
+        functions which are bounded above by a nominated function.</font>
+      <dt><b><font color="#000000">Binary Search</font></b>
+      <dd><font color="#000000">A technique for searching an ordered list in
+        which we first check the middle item and - based on that comparison -
+        &quot;discard&quot; half the data. The same procedure is then applied to
+        the remaining half until a match is found or there are no more items
+        left.</font></dd>
+      <dt>=======================================================================</dt>
+    </dl>
+    <p><font size="5"><b>Queues </b></font></p>
+    <p>Queues are dynamic collections which have some concept of order. This can
+    be either based on order of entry into the queue - giving us
+    First-In-First-Out (FIFO) or Last-In-First-Out (LIFO) queues. Both of these
+    can be built with linked lists: the simplest &quot;add-to-head&quot;
+    implementation of a linked list gives LIFO behaviour. A minor modification -
+    adding a tail pointer and adjusting the addition method implementation -
+    will produce a FIFO queue.
+    <p>&nbsp;
+    <h3>Performance</h3>
+    A straightforward analysis shows that for both these cases, the time needed
+    to add or delete an item is constant and <i>independent of the number of
+    items in the queue</i>. Thus we class both addition and deletion as an <b><i>O</i>(1)</b>
+    operation. For any given real machine+operating system+language combination,
+    addition may take <b><i>c<sub>1</sub></i></b> seconds and deletion <b><i>c<sub>2</sub></i></b>
+    seconds, but we aren't interested in the value of the constant, it will vary
+    from machine to machine, language to language, <i>etc</i>. The key point is
+    that the time is not dependent on <b><i>n</i></b> - producing <b><i>O</i>(1)</b>
+    algorithms.
+    <p>Once we have written an <b><i>O</i>(1)</b> method, there is generally
+    little more that we can do from an algorithmic point of view. Occasionally,
+    a better approach may produce a lower constant time. Often, enhancing our
+    compiler, run-time system, machine, <i>etc</i> will produce some significant
+    improvement. However <b><i>O</i>(1)</b> methods are already very fast, and
+    it's unlikely that effort expended in improving such a method will produce
+    much real gain!
+    <p><a name="priority">
+    <h3>5.1 Priority Queues</h3>
+    Often the items added to a queue have a <i><font color="red">priority </font></i>associated
+    with them: this priority determines the order in which they exit the queue -
+    highest priority items are removed first.
+    <p>This situation arises often in process control systems. Imagine the
+    operator's console in a large automated factory. It receives many routine
+    messages from all parts of the system: they are assigned a low priority
+    because they just report the normal functioning of the system - they update
+    various parts of the operator's console display simply so that there is some
+    confirmation that there are no problems. It will make little difference if
+    they are delayed or lost.
+    <p>However, occasionally something breaks or fails and alarm messages are
+    sent. These have high priority because some action is required to fix the
+    problem (even if it is mass evacuation because nothing can stop the imminent
+    explosion!).
+    <p>Typically such a system will be composed of many small units, one of
+    which will be a buffer for messages received by the operator's console. The
+    communications system places messages in the buffer so that communications
+    links can be freed for further messages while the console software is
+    processing the message. The console software extracts messages from the
+    buffer and updates appropriate parts of the display system. Obviously we
+    want to sort messages on their priority so that we can ensure that the
+    alarms are processed immediately and not delayed behind a few thousand
+    routine messages while the plant is about to explode.
+    <p>As we have seen, we could use a tree structure - which generally provides
+    <b><i>O</i>(log<i>n</i>)</b> performance for both insertion and deletion.
+    Unfortunately, if the tree becomes unbalanced, performance will degrade to <b><i>O(n)</i></b>
+    in pathological cases. This will probably not be acceptable when dealing
+    with dangerous industrial processes, nuclear reactors, flight control
+    systems and other <i>life-critical</i> systems.</li>
+  </ol>
+  <dl>
+    <dt><b><font color="#fa0000">F</font><font color="#000000">IFO queue</font></b>
+    <dd><font color="#000000">A queue in which the first item added is always
+      the first one out.</font>
+    <dt><b><font color="#000000">LIFO queue</font></b>
+    <dd><font color="#000000">A queue in which the item most recently added is
+      always the first one out.</font>
+    <dt><b><font color="#000000">Priority queue</font></b>
+    <dd><font color="#000000">A queue in which the items are sorted so that the
+      highest priority item is always the next one to be extracted.</font>
+    <dt><b><font color="#000000">Life critical systems</font></b>
+    <dd><font color="#000000">Systems on which we depend for safety and which
+      may result in death or injury if they fail: medical monitoring, industrial
+      plant monitoring and control and aircraft control systems are examples of
+      life critical systems.</font>
+    <dt><b><font color="#000000">Real time systems</font></b>
+    <dd><font color="#000000">Systems in which <b>time</b> is a constraint. A
+      system which must respond to some event (<i>eg</i> the change in attitude
+      of an aircraft caused by some atmospheric event like wind-shear) within a
+      fixed time to maintain stability or continue correct operation (<i>eg</i>
+      the aircraft systems must make the necessary adjustments to the control
+      surfaces before the aircraft falls out of the sky!).</font></dd>
+  </dl>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</a>
+<p><font color="#000000">=======================================================================</font>
+
+</body>
+
+</html>

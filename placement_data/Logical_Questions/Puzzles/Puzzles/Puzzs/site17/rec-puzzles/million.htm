@@ -1,0 +1,37 @@
+<html><head>
+<title>Solution for /arithmetic/digits/zeros/million</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/digits/zeros/million problem</h1>
+<hr>
+In the numbers from 10^(n-1) through 10^n - 1, there are 9 * 10^(n-1)
+numbers of n digits each, so 9(n-1)10^(n-1) non-leading digits, of
+which one tenth, or 9(n-1)10^(n-2), are zeroes.  When we change the
+range to 10^(n-1) + 1 through 10^n, we remove 10^(n-1) and put in
+10^n, gaining one zero, so
+
+<pre>
+    p(n) = p(n-1) + 9(n-1)10^(n-2) + 1 with p(1)=1.
+</pre>
+
+Solving the recurrence yields the closed form
+
+<pre>
+    p(n) = n(10^(n-1)+1) - (10^n-1)/9.
+</pre>
+For n=6, there are 488,895 zeroes, 600,001 ones, and 600,000 of all other
+digits.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

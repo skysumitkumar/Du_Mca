@@ -1,0 +1,793 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0055)http://grumpytom.com/Interview_Questions/questions.html -->
+<HTML><HEAD><TITLE>Electrical Engineering Interview Questions/Review</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META 
+content="electrical engineering interview questions,&#10;engineering review, engineering questions, questions, review, engineering, ee,&#10;questions and answers, electrical engineering, design, verification" 
+name=keywords>
+<META content="MSHTML 6.00.2800.1543" name=GENERATOR></HEAD>
+<BODY text=black bgColor=white>
+<CENTER>
+<H1>Electrical Engineering<BR>Technical 
+Interview<BR>Questions/Review</H1></CENTER>
+<P>
+<HR>
+
+<P>I've included some sample interview questions below to be used as a review 
+for Electrical Engineering. These are typical of the types of questions asked as 
+part of a hardware design/verification position interview. 
+<P>If anyone has any unique questions (and answers) that you'd like to see 
+included, please email them to me at <B>tom&lt;at&gt;grumpytom.com</B> Also, 
+please let me know if something is unclear or just plain wrong! 
+<P>These questions have been broken into the following categories:
+<P>
+<LI><A 
+href="http://grumpytom.com/Interview_Questions/questions.html#verilog">Verilog</A> 
+
+<LI><A 
+href="http://grumpytom.com/Interview_Questions/questions.html#vera">Vera</A> 
+<LI><A 
+href="http://grumpytom.com/Interview_Questions/questions.html#programming">Programming</A> 
+
+<LI><A 
+href="http://grumpytom.com/Interview_Questions/questions.html#general">General 
+Engineering</A> 
+<P>
+<HR>
+
+<CENTER>
+<H2>Questions</H2>
+<P></CENTER>
+<HR>
+<A name=verilog><!-- *** Verilog Question *************************************************************--><A 
+name=verilog_01q><PRE><B><I>Verilog Question 1</I></B><P>
+Q: What is the difference between a Verilog <B><I>task</I></B> and a Verilog <B><I>function</I></B>?
+
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#verilog_01a">(Answer)</A>
+</P></PRE>
+<HR>
+<!-- *** Verilog Question *************************************************************--><A 
+name=verilog_02q><PRE><B><I>Verilog Question 2</I></B><P>
+Q: Given the following Verilog code, what value of "a" is displayed?
+<BLOCKQUOTE>
+always @(clk) begin
+   a  = 0;
+   a &lt;= 1;
+   $display(a);
+end
+</BLOCKQUOTE>
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#verilog_02a">(Answer)</A>
+</PRE>
+<HR>
+<!-- *** Verilog Question *************************************************************--><A 
+name=verilog_03q><PRE><B><I>Verilog Question 3</I></B><P>
+Q: Given the following snipet of Verilog code,
+   draw out the waveforms for "clk" and "a".
+<BLOCKQUOTE>
+always @(clk) begin
+   a = 0;
+   #5 a = 1;
+end
+</BLOCKQUOTE>
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#verilog_03a">(Answer)</A>
+</PRE>
+<HR>
+<!-- *** Verilog Question *************************************************************--><A 
+name=verilog_04q><PRE><B><I>Verilog Question 4</I></B><P>
+Q: What is the difference between the following two lines of Verilog code?
+<BLOCKQUOTE>
+#5 a = b;
+a = #5 b;
+</BLOCKQUOTE>
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#verilog_04a">(Answer)</A>
+</PRE>
+<HR>
+<!-- *** Verilog Question *********************************************************--><A 
+name=verilog_05q><PRE><B><I>Verilog Question 5</I></B><P>
+Q: Write the Verilog code to provide a divide-by-3 clock from the standard clock.
+
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#verilog_05a">(Answer)</A>
+</P></PRE>
+<HR>
+<!-- *** Verilog Question **********************************************************--><A 
+name=verilog_06q><PRE><B><I>Verilog Question 6</I></B><P>
+Q: What is the difference between:
+<BLOCKQUOTE>
+c = foo ? a : b;
+
+and
+
+if (foo) c = a;
+else c = b;
+</BLOCKQUOTE>
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#verilog_06a">(Answer)</A>
+</PRE>
+<HR>
+<!-- *** Verilog Question **********************************************************--><A 
+name=verilog_07q><PRE><B><I>Verilog Question 7</I></B><P>
+Q: Using the given, draw the waveforms for the following
+versions of a (each version is separate, i.e. not in the same run):
+<BLOCKQUOTE>
+
+reg clk;
+reg a;
+
+always #10 clk = ~clk;
+
+(1) always @(clk) a = # 5 clk;
+(2) always @(clk) a = #10 clk;
+(3) always @(clk) a = #15 clk;
+
+Now, change a to <B>wire</B>, and draw for:
+
+(4) assign #5  a = clk;
+(5) assign #10 a = clk;
+(6) assign #15 a = clk;
+</BLOCKQUOTE>
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#verilog_07a">(Answer)</A>
+</PRE>
+<HR>
+<A name=vera><!-- *** Vera Question *************************************************************--><A 
+name=vera_01q><PRE><B><I>Vera Question 1</I></B><P>
+Q: What is the difference between a <I>Vera</I> task and a <I>Verilog</I> task?
+
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#vera_01a">(Answer)</A>
+</P></PRE>
+<HR>
+<!-- *** Vera Question *************************************************************--><A 
+name=vera_02q><PRE><B><I>Vera Question 2</I></B><P>
+Q: What is the difference between running the following snipet of code
+   on Verilog vs Vera?
+<BLOCKQUOTE>
+fork {
+   task_one();
+   #10;
+   task_one();
+}
+
+task task_one() {
+   cnt = 0;
+   for (i = 0; i &lt; 50; i++) {
+      cnt++;
+   }
+}
+</BLOCKQUOTE>
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#vera_02a">(Answer)</A>
+</PRE>
+<HR>
+<A name=programming><!-- *** Programming Question *************************************************************--><A 
+name=programming_01q><PRE><B><I>Programming Question 1</I></B><P>
+Q: Given $a = "5,-3,7,0,-5,12";
+
+   Write a program to find the lowest number in the string.
+
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#programming_01a">(Answer)</A>
+</P></PRE>
+<HR>
+<!-- *** Programming Question *************************************************************--><A 
+name=programming_02q><PRE><B><I>Programming Question 2</I></B><P>
+Q: Write the code to sort an array of integers.
+
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#programming_02a">(Answer)</A>
+</P></PRE>
+<HR>
+<!-- *** Programming Question *************************************************************--><A 
+name=programming_03q><PRE><B><I>Programming Question 3</I></B><P>
+Q: Write the code to find the factorial of an integer.
+   Use a recursive subroutine.
+
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#programming_03a">(Answer)</A>
+</P></PRE>
+<HR>
+<!-- *** Programming Question *************************************************************--><A 
+name=programming_04q><PRE><B><I>Programming Question 4</I></B><P>
+Q: In C, explain the difference between the <B>&amp;</B> operator and
+   the <B>*</B> operator.
+
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#programming_04a">(Answer)</A>
+</P></PRE>
+<HR>
+<!-- *** Programming Question *************************************************************--><A 
+name=programming_05q><PRE><B><I>Programming Question 5</I></B><P>
+Q: Write a function to determine whether a string is a palindrome (same
+   forward as reverse, such as "radar" or "mom").
+
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#programming_05a">(Answer)</A>
+</P></PRE>
+<HR>
+<!-- *** Programming Question ************************************************************--><A 
+name=programming_06q><PRE><B><I>Programming Question 6</I></B><P>
+Q: Write a function to output a diamond shape according to the given (odd) input.
+
+   <B><I>Examples</I></B>:  Input is 5    Input is 7
+<B>
+                   *             *
+                  ***           ***
+                 *****         *****
+                  ***         *******
+                   *           *****
+                                ***
+                                 *
+</B>
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#programming_06a">(Answer)</A>
+</P></PRE>
+<HR>
+<A name=general><!-- *** General Question *************************************************************--><A 
+name=general_01q><PRE><B><I>General Question 1</I></B><P>
+Q: Given the following FIFO and rules, how deep does the FIFO need to be to
+   prevent underflowing or overflowing?
+<P>
+<BLOCKQUOTE>
+<IMG src="verilog Interview Questions-Review_files/fifo.jpg">
+<P>
+   RULES:
+   1) frequency(clk_A) = frequency(clk_B) / 4
+   2) period(en_B) = period(clk_A) * 100
+   3) duty_cycle(en_B) = 25%
+</P></BLOCKQUOTE>
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#general_01a">(Answer)</A>
+</PRE>
+<HR>
+<!-- *** General Question *************************************************************--><A 
+name=general_02q><PRE><B><I>General Question 2</I></B><P>
+Q: Draw the state diagram to output a "1" for one cycle
+   if the sequence "0110" shows up (the leading 0s cannot be
+   used in more than one sequence).
+
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#general_02a">(Answer)</A>
+</P></PRE>
+<HR>
+<!-- *** General Question *************************************************************--><A 
+name=general_03q><PRE><B><I>General Question 3</I></B><P>
+Q: Explain the differences between "Direct Mapped", "Fully Associative",
+   and "Set Associative" caches.
+
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#general_03a">(Answer)</A>
+</P></PRE>
+<HR>
+<!-- *** General Question **********************************************************--><A 
+name=general_04q><PRE><B><I>General Question 4</I></B><P>
+Q: Design a four-input NAND gate using only two-input NAND gates.
+
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#general_04a">(Answer)</A>
+</P></PRE>
+<HR>
+<!-- *** General Question **********************************************************--><A 
+name=general_05q><PRE><B><I>General Question 5</I></B><P>
+Q: Draw the state diagram for a circuit that outputs a "1" if the aggregate serial
+   binary input is divisible by 5.  For instance, if the input stream is 1, 0, 1, we
+   output a "1" (since 101 is 5). If we then get a "0", the aggregate total is 10, so
+   we output another "1" (and so on).
+
+   <A href="http://grumpytom.com/Interview_Questions/questions.html#general_05a">(Answer)</A>
+</P></PRE>
+<P><!-- **************************************************** --><!-- **************** ANSWERS *************************** --><!-- **************************************************** -->
+<HR>
+
+<P>
+<CENTER>
+<H2>Answers</H2></CENTER>
+<HR>
+
+<P><!-- *** Verilog Answer ***********************************************************--><FONT 
+color=red><A name=verilog_01a><PRE><B><I>Verilog Answer 1</B></I><P>
+Q: What is the difference between a Verilog <I>task</I> and a Verilog <I>function</I>?</FONT>
+
+A:
+<BLOCKQUOTE>
+The following rules distinguish tasks from functions:
+
+<LI>A <B>function</B> shall execute in one simulation time unit;
+  a <B>task</B> can contain time-controlling statements.
+
+<LI>A <B>function</B> cannot enable a task;
+  a <B>task</B> can enable other tasks or functions.
+
+<LI>A <B>function</B> shall have at least one input type argument
+     and shall <B>not</B> have an output or inout type argument;
+  a <B>task</B> can have zero or more arguments of any type.
+
+<LI>A <B>function</B> shall return a single value;
+  a <B>task</B> shall not return a value.
+
+<A href="http://grumpytom.com/Interview_Questions/questions.html#verilog_01q">(Back)</A>
+</LI></BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** Verilog Answer ***********************************************************--><FONT 
+color=red><A name=verilog_02a><PRE><B><I>Verilog Answer 2</I></B><P>
+Q: Given the following Verilog code, what value of "a" is displayed?
+<BLOCKQUOTE>
+always @(clk) begin
+   a  = 0;
+   a &lt;= 1;
+   $display(a);
+end
+</BLOCKQUOTE></FONT>
+
+A:
+<BLOCKQUOTE>
+This is a tricky one!  Verilog scheduling semantics basically imply a
+four-level deep queue for the current simulation time:
+
+   1: Active Events                (blocking statements)
+   2: Inactive Events              (#0 delays, etc)
+   3: Non-Blocking Assign Updates  (non-blocking statements)
+   4: Monitor Events               ($display, $monitor, etc).
+
+Since the "<B>a = 0</B>" is an active event, it is scheduled into the 1st "queue".
+The "<B>a &lt;= 1</B>" is a non-blocking event, so it's placed into the 3rd queue.
+Finally, the display statement is placed into the 4th queue.
+
+Only events in the active queue are completed this sim cycle, so the "<B>a = 0</B>"
+happens, and then the display shows a = 0.  If we were to look at the value of
+a in the next sim cycle, it would show 1.
+
+<A href="http://grumpytom.com/Interview_Questions/questions.html#verilog_02q">(Back)</A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** Verilog Answer ***********************************************************--><FONT 
+color=red><A name=verilog_03a><PRE><B><I>Verilog Answer 3</I></B><P>
+Q: Given the following snipet of Verilog code,
+   draw out the waveforms for clk and a
+<BLOCKQUOTE>
+always @(clk) begin
+   a = 0;
+   #5 a = 1;
+end
+</BLOCKQUOTE></FONT>
+A:
+<BLOCKQUOTE>
+       10      30      50      70      90     110     130
+        ___     ___     ___     ___     ___     ___     ___
+clk ___|   |___|   |___|   |___|   |___|   |___|   |___|   |___
+
+
+a   ___________________________________________________________
+
+
+This obviously is not what we wanted, so to get closer, you could use
+"<B>always @ (posedge clk)</B>" instead, and you'd get
+
+       10      30      50      70      90     110     130
+        ___     ___     ___     ___     ___     ___     ___
+clk ___|   |___|   |___|   |___|   |___|   |___|   |___|   |___
+
+                            ___                     ___
+a   _______________________|   |___________________|   |_______
+
+
+
+<A href="http://grumpytom.com/Interview_Questions/questions.html#verilog_03q">(Back)</A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** Verilog Answer ***********************************************************--><FONT 
+color=red><A name=verilog_04a><PRE><B><I>Verilog Answer 4</I></B><P>
+Q: What is the difference between the following two lines of Verilog code?
+<BLOCKQUOTE>
+#5 a = b;
+a = #5 b;
+</BLOCKQUOTE></FONT>
+A:
+<BLOCKQUOTE>
+<B>#5 a = b;</B>  Wait five time units before doing the action for "a = b;".
+           The value assigned to <B>a</B> will be the value of <B>b</B> 5 time units hence.
+
+<B>a = #5 b;</B>  The value of <B>b</B> is calculated and stored in an internal temp register.
+           After five time units, assign this stored value to <B>a</B>.
+
+<A href="http://grumpytom.com/Interview_Questions/questions.html#verilog_04q">(Back)</A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** Verilog Answer ***********************************************************--><FONT 
+color=red><A name=verilog_06a><PRE><B><I>Verilog Answer 6</I></B><P>
+Q: What is the difference between:
+<BLOCKQUOTE>
+c = foo ? a : b;
+
+and
+
+if (foo) c = a;
+else c = b;
+</BLOCKQUOTE></FONT>
+A:
+<BLOCKQUOTE>
+The ? merges answers if the condition is "x", so for instance if foo = 1'bx, a = 'b10, and b = 'b11,
+you'd get c = 'b1x.
+
+On the other hand, <B>if</B> treats Xs or Zs as FALSE, so you'd always get c = b.
+
+<A href="http://grumpytom.com/Interview_Questions/questions.html#verilog_06q">(Back)</A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** Verilog Answer ***********************************************************--><FONT 
+color=red><A name=verilog_07a><PRE><B><I>Verilog Answer 7</I></B><P>
+
+Q: Using the given, draw the waveforms for the following
+versions of a (each version is separate, i.e. not in the same run):
+<BLOCKQUOTE>
+
+reg clk;
+reg a;
+
+always #10 clk = ~clk;
+
+(1) always @(clk) a = #5  clk;
+(2) always @(clk) a = #10 clk;
+(3) always @(clk) a = #15 clk;
+
+Now, change a to <B>wire</B>, and draw for:
+
+(4) assign #5  a = clk;
+(5) assign #10 a = clk;
+(6) assign #15 a = clk;
+</BLOCKQUOTE></FONT>
+A:
+<BLOCKQUOTE>
+
+       10      30      50      70      90     110     130
+        ___     ___     ___     ___     ___     ___     ___
+clk ___|   |___|   |___|   |___|   |___|   |___|   |___|   |___
+
+          ___     ___     ___     ___     ___     ___     ___
+(1)a ____|   |___|   |___|   |___|   |___|   |___|   |___|   |_
+
+            ___     ___     ___     ___     ___     ___     ___
+(2)a ______|   |___|   |___|   |___|   |___|   |___|   |___|
+
+
+(3)a __________________________________________________________
+
+Since the #delay cancels future events when it activates, any delay
+over the actual 1/2 period time of the clk flatlines...
+
+With changing a to a <B>wire</B> and using <B>assign</B>, we
+just accomplish the same thing...
+
+       10      30      50      70      90     110     130
+        ___     ___     ___     ___     ___     ___     ___
+clk ___|   |___|   |___|   |___|   |___|   |___|   |___|   |___
+
+          ___     ___     ___     ___     ___     ___     ___
+(5)a ____|   |___|   |___|   |___|   |___|   |___|   |___|   |_
+
+            ___     ___     ___     ___     ___     ___     ___
+(6)a ______|   |___|   |___|   |___|   |___|   |___|   |___|
+
+
+(7)a __________________________________________________________
+
+
+<A href="http://grumpytom.com/Interview_Questions/questions.html#verilog_07q">(Back)</A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** Vera Answer ***********************************************************--><FONT 
+color=red><A name=vera_01a><PRE><B><I>Vera Answer 1</I></B><P>
+Q: What is the difference between a <I>Vera</I> task and a <I>Verilog</I> task?</FONT>
+
+A:
+<BLOCKQUOTE>
+<A href="http://grumpytom.com/Interview_Questions/questions.html#vera_01q">(Back)</A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** Vera Answer ***********************************************************--><FONT 
+color=red><A name=vera_02a><PRE><B><I>Vera Answer 2</I></B><P>
+Q: What is the difference between running the following snipet of code
+   on Verilog vs Vera?
+<BLOCKQUOTE>
+fork {
+   task_one();
+   #10;
+   task_one();
+}
+
+task task_one() {
+   cnt = 0;
+   for (i = 0; i &lt; 50; i++) {
+      cnt++;
+   }
+}
+</BLOCKQUOTE></FONT>
+A:
+<BLOCKQUOTE>
+<A href="http://grumpytom.com/Interview_Questions/questions.html#vera_02q">(Back)</A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** Programming Answer ***********************************************************--><FONT 
+color=red><A name=programming_01a><PRE><B><I>Programming Answer 1</I></B><P>
+Q: Given $a = "5,-3,7,0,-5,12";
+
+   Write a program to find the lowest number in the string.
+</FONT>
+
+A:
+<BLOCKQUOTE>
+<B>// BEGIN PERL SNIPET</B>
+
+$a = "5,-5,-1,0,12,-3";
+(@temp) = split (/,/, $a);
+$lowest = $temp[0];
+
+for ($i=0; $i&lt;6; $i++) {
+   if ($temp[$i] &lt; $lowest) { $lowest = $temp[$i]; }
+}
+
+print "Lowest value found was: $lowest\n";
+
+<B>// END PERL SNIPET</B>
+
+<B>NOTE</B>: You could also replace the for loop with this:
+
+foreach $value (@temp) {
+   if ($value &lt; $lowest) { $lowest = $value; }
+}
+
+<A href="http://grumpytom.com/Interview_Questions/questions.html#programming_01q">(Back)</A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** Programming Answer ***********************************************************--><FONT 
+color=red><A name=programming_02a><PRE><B><I>Programming Answer 2</I></B><P>
+Q: Write the code to sort an array of integers.</FONT>
+
+A:
+<BLOCKQUOTE>
+<B>/* BEGIN C SNIPET */</B>
+
+void bubblesort (int x[], int lim) {
+   int i, j, temp;
+
+   for (i = 0; i &lt; lim; i++) {
+      for (j = 0; j &lt; lim-1-i; j++) {
+
+         if (x[j] &gt; x[j+1]) {
+            temp = x[j];
+            x[j] = x[j+1];
+            x[j+1] = temp;
+
+         } /* <I>end if</I>         */
+      }    /* <I>end for j</I>      */
+   }       /* <I>end for i</I>      */
+}          /* <I>end bubblesort</I> */
+
+<B>/* END C SNIPET */</B>
+
+Some optimizations that can be made are that a single-element array does
+not need to be sorted; therefore, the "for i" loop only needs to go from
+0 to <B>lim-1</B>.  Next, if at some point during the iterations, we go through
+the entire array WITHOUT performing a swap, the complete array has been
+sorted, and we do not need to continue.  We can watch for this by adding
+a variable to keep track of whether we have performed a swap on this
+iteration.
+
+<A href="http://grumpytom.com/Interview_Questions/questions.html#programming_02q">(Back)</A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** Programming Answer ***********************************************************--><FONT 
+color=red><A name=programming_03a><PRE><B><I>Programming Answer 3</I></B><P>
+Q: Write the code for finding the factorial of a passed integer.
+   Use a recursive subroutine.</FONT>
+
+A:
+<BLOCKQUOTE>
+<B>// BEGIN PERL SNIPET</B>
+
+sub factorial {
+   my $y = shift;
+   if ( $y &gt; 1 ) {
+      return $y * &amp;factorial( $y - 1 );
+   } else {
+      return 1;
+   }
+}
+
+<B>// END PERL SNIPET</B>
+
+<A href="http://grumpytom.com/Interview_Questions/questions.html#programming_03q">(Back)</A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** Programming Answer ***********************************************************--><FONT 
+color=red><A name=programming_04a><PRE><B><I>Programming Answer 4</I></B><P>
+Q: In C, explain the difference between the <B>&amp;</B> operator and
+   the <B>*</B> operator.</FONT>
+
+A:
+<BLOCKQUOTE>
+<B>&amp;</B> is the address operator, and it creates pointer values.
+<B>*</B> is the indirection operator, and it dereferences pointers
+    to access the object pointed to.
+
+<B><I>Example:</I></B>
+  In the following example, the pointer <B>ip</B> is assigned the
+  address of variable <B>i</B> (<B>&amp;i</B>).  After that assignment,
+  the expression <B>*ip</B> refers to the same object denoted by <B>i</B>:
+  <B>
+  int i, j, *ip;
+  ip = &amp;i;
+  i = 22;
+  j = *ip;    /* j now has the value 22 */
+  *ip = 17;   /* i now has the value 17 */
+  </B>
+<A href="http://grumpytom.com/Interview_Questions/questions.html#programming_04q">(Back)</A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** Programming Answer ***************************************************** --><FONT 
+color=red><A name=programming_05a><PRE><B><I>Programming Answer 5</I></B><P>
+Q: Write a function to determine whether a string is a palindrome (same
+   forward as reverse, such as "radar" or "mom").
+</FONT>
+A:
+<BLOCKQUOTE>
+<B>/* BEGIN C SNIPET */</B>
+
+#include &lt;string.h&gt;
+
+void is_palindrome ( char *in_str ) {
+   char *tmp_str;
+   int  i, length;
+
+   length = strlen ( *in_str );
+   for ( i = 0; i &lt; length; i++ ) {
+      *tmp_str[length-i-1] = *in_str[i];
+   }
+   if ( 0 == strcmp ( *tmp_str, *in_str ) ) printf ("String is a palindrome");
+   else printf ("String is not a palindrome");
+}
+
+<B>/* END C SNIPET */</B>
+
+<A href="http://grumpytom.com/Interview_Questions/questions.html#programming_05q">(Back)</A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** Programming Answer ******************************************************* --><FONT 
+color=red><A name=programming_06a><PRE><B><I>Programming Answer 6</I></B><P>
+Q: Write a function to output a diamond shape according to the given (odd) input.
+
+   <B><I>Examples</I></B>:  Input is 5    Input is 7
+<B>
+                   *             *
+                  ***           ***
+                 *****         *****
+                  ***         *******
+                   *           *****
+                                ***
+                                 *
+</B>
+</FONT>
+A:
+<BLOCKQUOTE>
+<B>### BEGIN PERL SNIPET ###</B>
+
+for ($i = 1; $i &lt;= (($input * 2) - 1); $i += 2) {
+    if ($i &lt;= $input) {
+        $stars = $i;
+        $spaces = ($input - $stars) / 2;
+        while ($spaces--) { print " "; }
+        while ($stars--) { print "*"; }
+    } else {
+        $spaces = ($i - $input) / 2;
+        $stars = $input - ($spaces * 2);
+        while ($spaces--) { print " "; }
+        while ($stars--) { print "*"; }
+    }
+    print "\n";
+}
+<B>### END PERL SNIPET ###</B>
+
+<A href="http://grumpytom.com/Interview_Questions/questions.html#programming_06q">(Back)</A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** General Answer *********************************************************** --><FONT 
+color=red><A name=general_01a><PRE><B><I>General Answer 1</I></B><P>
+Q: Given the following FIFO and rules, how deep does the FIFO need to be to
+   prevent underflowing or overflowing?
+
+   <IMG src="verilog Interview Questions-Review_files/fifo.jpg">
+
+   RULES:
+   1) frequency(clk_A) = frequency(clk_B) / 4
+   2) period(en_B) = period(clk_A) * 100
+   3) duty_cycle(en_B) = 25%
+   </FONT>
+
+A:
+<BLOCKQUOTE>
+Assume clk_B = 100MHz (10ns)
+
+From (1), clk_A = 25MHz (40ns)
+
+From (2), period(en_B) = 40ns * 400 = 4000ns, but we only output for 1000ns,
+   due to (3), so 3000ns of the enable we are doing no output work.
+
+Therefore, FIFO size = 3000ns/40ns = 75 entries.
+
+<A href="http://grumpytom.com/Interview_Questions/questions.html#general_01q">(Back)<A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** General Answer ***********************************************************--><FONT 
+color=red><A name=general_02a><PRE><B><I>General Answer 2</I></B><P>
+Q: Draw the state diagram to output a "1" for one cycle
+   if the sequence "0110" shows up (the leading 0s cannot be
+   used in more than one sequence).</FONT>
+
+A:
+   <IMG src="verilog Interview Questions-Review_files/state_machine_1.jpg">
+<BLOCKQUOTE>
+<A href="http://grumpytom.com/Interview_Questions/questions.html#general_02q">(Back)</A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** General Answer ***********************************************************--><FONT 
+color=red><A name=general_03a><PRE><B><I>General Answer 3</I></B><P>
+Q: Explain the differences between "Direct Mapped", "Fully Associative",
+   and "Set Associative" caches.
+</FONT>
+
+A:
+<BLOCKQUOTE>
+If each block has only one place it can appear in the cache, the cache
+is said to be <B><I>direct mapped</I></B>.  The mapping is usually (block-frame address)
+modulo (number of blocks in cache).
+
+If a block can be placed anywhere in the cache, the cache is said to be
+<B><I>fully associative</I></B>.
+
+If a block can be placed in a restricted set of places in the cache, the cache
+is said to be <B><I>set associative</I></B>.  A <I>set</I> is a group of two or more
+blocks in the cache.  A block is first mapped onto a set, and then the block
+can be placed anywhere within the set.  The set is usually chosen by bit
+selection; that is, (block-frame address) modulo (number of <B>sets</B> in cache).
+If there are <I>n</I> blocks in a set, the cache placement is
+called <B><I>n-way set associative</I></B>.
+
+<A href="http://grumpytom.com/Interview_Questions/questions.html#general_03q">(Back)</A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** General Answer ***********************************************************--><FONT 
+color=red><A name=general_04a><PRE><B><I>General Answer 4</I></B><P>
+Q: Design a four-input NAND gate using only two-input NAND gates.</FONT>
+
+A:
+<BLOCKQUOTE>
+Basically, you can tie the inputs of a NAND gate together to get an inverter, so...
+
+<IMG src="verilog Interview Questions-Review_files/nand_gates.jpg">
+
+<A href="http://grumpytom.com/Interview_Questions/questions.html#general_04q">(Back)</A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+<!-- *** General Answer ***********************************************************--><FONT 
+color=red><A name=general_05a><PRE><B><I>General Answer 5</I></B><P>
+Q: Draw the state diagram for a circuit that outputs a "1" if the aggregate serial
+   binary input is divisible by 5.  For instance, if the input stream is 1, 0, 1, we
+   output a "1" (since 101 is 5). If we then get a "0", the aggregate total is 10, so
+   we output another "1" (and so on).
+</FONT>
+A:
+<BLOCKQUOTE>
+We don't need to keep track of the entire string of numbers - if something
+is divisible by 5, it doesn't matter if it's 250 or 0, so we can just reset to 0.
+So we really only need to keep track of "0" through "4".
+
+<IMG src="verilog Interview Questions-Review_files/state_machine_2.jpg">
+
+<A href="http://grumpytom.com/Interview_Questions/questions.html#general_05q">(Back)</A>
+</BLOCKQUOTE>
+</PRE>
+<HR>
+</LI></BODY></HTML>

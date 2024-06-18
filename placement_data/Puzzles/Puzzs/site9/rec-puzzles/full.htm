@@ -1,0 +1,211 @@
+<html><head>
+<title>Solution for /combinatorics/full</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /combinatorics/full problem</h1>
+<hr>
+Knuth, Volume 2 Seminumerical Algorithms, section 3.2.2 discusses this problem.
+He cites the following results:
+<p>
+Shortest length: m^n + n - 1, where m = number of symbols in the language.
+<p>
+Algorithms:
+[Exercise 7, W. Mantel, 1897]
+The binary sequence is the LSB of X computed by the MIX program:
+<pre>
+    LDA X
+    JANZ *+2
+    LDA A
+    ADD X
+    JNOV *+3
+    JAZ *+2
+    XOR A
+    STA X
+</pre>
+[Exercise 10, M. H. Martin, 1934]
+<br>
+Set x[1] = x[2] = ... = x[n] = 0.  Set x[i+1] = largest value &lt; n such that
+substring of n digits ending at x[i+1] does not occur earlier in string.
+Terminate when this is not possible.
+
+<p>
+If we instead consider the strings as circular, we have a well known
+problem whose solution is given by any hamiltonian cycle in the de
+Bruijn (or Good) graph of dimension K.  (Or equivalently an eulerian
+circuit in the de Bruijn graph of dimension K-1) As a string of length
+2^K is produced, it must be optimal, and any shortest sequence must be
+an eulerian circuit in a dB graph.
+
+<p>
+The de Bruijn graph Tn has as its vertex set the binary n-strings.
+Directed edges join n-strings that may be derived by deleting the left
+most digit and appending a 0 or 1 to the right end.  de Bruijn + van
+Ardenne-Ehrenfest (in 1951) counted the number of eulerian circuits in
+Tn. There are 2^(2^(n-1)-n) of them.
+
+<p>
+Some examples:
+<pre>
+K=2 1100
+K=3 11101000
+K=4 1111001011010000
+</pre>
+
+The solution to the above problem (non-circular strings) can be found
+by duplicating the first K-1 digits of the solution string at the end
+of the string.  These are not the only solutions, but they
+are of minimum length: 2^K + K-1.  
+
+<p>
+We can obtain a lower bound for the optimal sequence for the general case as
+follows:
+
+<p>
+Consider first the simpler case of breaking into an answer machine which
+accepts d+1 digits, values 0 to n-1.  We wish to find the minimal universal
+code that will allow us access to any such answering machine.
+
+<p>
+Let us construct a digraph G = (V,E), where the n^d vertices are labelled
+with a d sequence of digits.  Notation: let [v_{i,1},v_{i,2},...,v_{i,d}]
+denote the labelling on node v_i.  An edge e = (v_i, v_j) is in E iff for k
+in 1, ..., d-1: v_{i,k+1} = v_{j,k}, i.e., the last d-1 digits in the
+labelling of the initial vertex of e is identical with the first d-1 digits
+in the labelling of the terminal vertex of e.  We associate with each edge a
+value, t(e) = v_{j,d}, the last digit in the labelling of the terminal
+vertex.
+
+<p>
+The intuition goes as follows:  we are going to perform a Euler circuit of
+the digraph, where the label on the current vertex gives the last d digits
+in the output sequence so far.  If we make a transition on edge e, we output
+the tone/digit t(e) as the next output value, thus preserving the invariant
+on the labelling.
+
+<p>
+How do we know that a Euler circuit exists?  Simple:  a connected digraph
+has an Euler circuit iff for all vertices v: indegree(v) = outdegree(v).
+This property is trivially true for this digraph.
+
+<p>
+So, in order to generate a universal code for the AM, we simply output 0^d
+(to satisfy the precondition for being in vertex [0,...,0]), and perform an
+Euler circuit starting at node [0,...,0].
+
+<p>
+Now, the total length of the universal sequence is just the number of edges
+traversed in the Euler circuit plus the initial precondition sequence, or
+n^d * n + d (number of vertices times the out-degree) or n^{d+1} + d.  That
+this is a minimal sequence is obvious.
+
+<p>
+Next, let us consider the machine AM' where the security code is of the form
+[0...n-1]^d [0...m-1], i.e., d digits ranging from 0 to n-1, followed by a
+terminal digit ranging from 0 to m-1, m &lt; n.
+
+<p>
+We build a digraph G = (V, E) similar to the construction above, except for
+the following:  an edge e is in E iff t(e) in 0 to m-1.  This digraph is
+clearly non-Eulerian.  In particular, there are two classes of vertices:
+
+<pre>
+(1) v is of the form [0...n-1]^{d-1} [0...m-1]  (``fat'' vertices)
+
+	and
+
+(2) v is of the form [0...n-1]^{d-1} [m...n-1]  (``thin'' vertices)
+</pre>
+
+Observations:  there are (n^{d-1} * m) fat vertices, and (n^{d-1} * (n-m))
+thin vertices.  All vertices have out-degree of m.  Fat vertices have
+in-degrees of n, and thin vertices have in-degrees of 0.  Color all the
+edges blue.
+
+<p>
+The question now becomes:  can we put a bound on how many new (red) edges
+must we add to G in order to make a blue edge covering path possible?
+(Instead of thinking of edges being traversed multiple times in the blue
+edge covering path, we allow multiple edges between vertices and allow each
+edge to be traversed once.)  Note that, in this procedure, we add edges only
+if it is allowed (the vertex labelling constraint).  We will first obtain a
+lower bound on the length of a blue covering circuit, and then transform it
+into a bound for arbitrary blue covering paths.
+
+<p>
+Clearly, we must add at least (n-m)*(n^{d-1}*m) edges incident from the fat
+vertices.  [ We need (n-m) new out-going edges for each of (n^{d-1}*m)
+vertices to bring the out-degree up to the in-degree. ]
+
+<p>
+Let us partition our vertices into sets.  Denote the range [0..m-1] by S,
+the range [m..n-1] by L, and the range [0..n-1] by X.
+
+<p>
+Let S_0 = { v: v = [X^{d-1}S] }.  S_0 is just the set of fat vertices.
+Define in(S_0) = number of edges from vertices not in S to vertices in S.
+Define out(S_0) in the corresponding fashion, and let excess(S_0) =
+in(S_0)-out(S_0).  Clearly, excess(S_0) = n^{d-1}m(n-m) from the argument
+above.  Generalizing the requirement for Eulerian digraphs, we see that we
+must add excess(S_0) edges from S_0 if the blue edges connected to/within
+S_0 are to be covered by some circuit (edges may not be travered multiple
+times -- we add parallel edges to handle that case).  In particular, edges
+from S_0 will be incident on vertices of the form [X^{d-2}SX].  Furthermore,
+they can not be [X^{d-2}SS] since that is a subset of S_0 and adding those
+edges will not help excess(S_0).  [Now, these edges may be needed if we are
+to have a circuit, but we do not consider them since they do not help
+excess(S_0).] So, we are forced to add excess(S_0) edges from S_0 to S_1 = {
+v: v = [X^{d-2}SL] }.  Color these newly added edges red.
+
+<p>
+Let us define in(S_1), out(S_1) and excess(S_1) as above for the modified
+digraph, i.e., including the red excess(S_0) edges that we just added.
+Clearly, in(S_1) = out(S_0) = n^{d-1}m(n-m), and out(S_1) = m*|S_1| =
+m*n^{d-2}m(n-m), so excess(S_1) = n^{d-2}m(n-m)^2.  Consider S_0 union S_1.
+We must add excess(S_1) edges to S_0 union S_1 to make it possible for the
+digraph to be covered by a circuit, and these edges must go from {S_0 union
+S_1} to S_2 = { v: v = [X^{d-3}SL^2] } by a similar argument as before.
+Repeating this partitioning process, eventually we get to S_{d-1} = { v: v =
+[SL^{d-1}] }, where union of S_0 to S_{d-1} will need edges to S_d = { v: v
+= [L^d] }, where this process terminates.  Note that at this time,
+excess(union of S_0 to S_{d-1}) = m(n-m)^d, but in(S_d) = 0 and out(S_d) =
+m(n-m)^d, and the process terminates.
+
+<p>
+What have we shown?  Adding up blue edges and the red edges gives us a lower
+bound on the total number of edges in a blue-edges covering circuit (not
+necessarily Eulerian) in the complete digraph.  This comes out to be
+n^{d+1}-(n-m)^{d+1} edges.
+
+<p>
+Next, we note that if we had an optimal path covering all the blue edges, we
+can transform it into a circuit by adding d edges.  So, a minimal path can
+be no more than d edges shorter than the minimal circuit covering all blue
+edges.  [Otherwise, we add d extra edges to make it into a shorter circuit.]
+
+<p>
+So the shortest blue covering path through the digraph is at least
+n^{d+1}-{n-m}^{d+1}-d.  With an initial pre-condition sequence of length d
+(to establish the transition invariant), the shortest universal answering
+machine sequence is of length at least n^{d+1}-(n-m)^{d+1}.
+
+<p>
+While this has not been that constructive, it is easy to see that we can
+achieve this bound.  If we looked at the vertices in each of the S_i's, we
+just add exactly the edges to S_{i+1} and no more.  The resultant digraph
+would be Eulerian, and to find the minimal path we need only start at the
+vertex labelled [{n-1}^d], find the Euler circuit, and omit the last d edges
+from the tour.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

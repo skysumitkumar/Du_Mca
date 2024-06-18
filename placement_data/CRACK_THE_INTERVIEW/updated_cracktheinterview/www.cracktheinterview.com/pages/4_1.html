@@ -1,0 +1,483 @@
+
+<HTML>
+
+<!-- Mirrored from www.cracktheinterview.com by HTTrack Website Copier/3.x [XR,YP'2001] -->
+<HEAD>
+<TITLE>CRACK THE INTERVIEW - What purpose do the bitwise and, or, xor and the shift operators serve?  (www.cracktheinterview.com)</TITLE><style type="text/css">
+<!--
+.breakhere     {page-break-before: always}
+
+A:link         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+A:active       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+A:visited      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+
+H1             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt; font-weight:bold; color:#336699} 
+H2             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; font-weight:bold} 
+.normal        {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+.announce      {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#000000} 
+.announceLink  {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#336699} 
+.note          {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt ! important; font-weight:normal} 
+.system        {font-family:Courier New, Courier; font-size:x-small;
+                font-weight:normal} 
+.stayblue      {color:#336699 ! important}
+.title         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:larger ! important} 
+.error         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; color:#aa0000; font-weight:bold} 
+.notelink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:normal;
+                font-size:9pt ! important} 
+.tableHeader   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableHeaderSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRow      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#f7f7e7} 
+.tableBlank    {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#ffffff} 
+.hardlink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:bold;
+                font-size:8pt ! important} 
+.boxlink       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#000000 ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.hardnote      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:black ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.tableRowSmall {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal} 
+.tableRowSmallBold {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                bold} 
+.blueHeading   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:bold;
+                color:#336699! important} 
+.blueHeadingLarge {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:16pt! important; font-weight:normal;
+                color:#336699} 
+.blueHeadingMid {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:normal;
+                color:#336699}
+.blueHeadingSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt! important; font-weight:bold;
+                color:#336699} 
+.tableHeaderV  {font-family:Verdana,Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRowV     {font-family:Verdana,Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal; background-color:#f7f7e7} 
+.just          {text-align: justify}
+-->
+</style>
+
+<META NAME="keywords" CONTENT="interview,bitwise operators,bits,and,or,xor">
+<META NAME="description" CONTENT="What purpose do the bitwise and, or, xor and the shift operators serve? ">
+<META NAME="robots" CONTENT="FOLLOW,INDEX">
+<META HTTP-EQUIV="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+
+</HEAD>
+<BODY>
+<TABLE BORDER=0 cellpadding=10>
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER><A HREF="../index.html"><IMG SRC=../images/logo2.jpg border=0></img></A></CENTER></TD>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2>
+<CENTER>
+
+
+<!--START:ADS0-->
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"
+  src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+
+</CENTER>
+</TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER>
+
+<!--START:LINKS-->
+
+
+<TABLE BORDER=0 cellpadding=10>
+<TR><TD NOWRAP>
+<A HREF="../index.html" target="_top"><font class=announcelink>Home</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="../adfaqpublish.html" target="_top"><font class=announcelink>Questions</font></A><BR>
+</TD>
+
+
+<TD NOWRAP>
+<A href="../search.html" target="_top"><font class=announcelink>Search</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="../forum/index.html" target="_top"><font class=announcelink>Forum</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="mailto:cracktheinterview@gmail.com?subject=Hi!"><font class=announcelink>Contact</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum12a3.html" target="_top"><font class=announcelink>Guest Book</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum4d6b.html" target="_top"><font class=announcelink>Polls!</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum31e6.html" target="_top"><font class=announcelink>Got a Question?</font></A><BR>
+</TD>
+
+</TABLE>
+
+<!--END-->
+
+</CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER> &nbsp; </CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=90%% valign=top>
+
+
+
+
+
+<!--START : DATA-->
+
+
+
+<TABLE BORDER=0>
+
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="4_0.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=blueHeading>Bit Fiddling</font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="4_2.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD>
+<TD WIDTH=90%%><CENTER><font class=blueHeading>(112 / 268)</font></center></TD>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%></TD>
+<TD WIDTH=90%%><center>&nbsp;</center></TD>
+<TD WIDTH=5%%></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=announceLink><BR><BR><BR>
+<!--THE QUESTION-->
+
+What purpose do the bitwise and, or, xor and the shift operators serve? <BR>
+<!--END-->
+<BR></font></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=normal>
+<!--THE ANSWER--><BR>
+<!--META:START--><!--interview,bitwise operators,bits,and,or,xor--><!--META:END--><BR>
+<BR>
+<font class=announcelink>The AND operator</font><BR>
+<BR>
+<CODE><BR>
+Truth&nbsp;Table<BR>
+-----------<BR>
+0&nbsp;AND&nbsp;0&nbsp;=&nbsp;0<BR>
+0&nbsp;AND&nbsp;1&nbsp;=&nbsp;0<BR>
+1&nbsp;AND&nbsp;0&nbsp;=&nbsp;0<BR>
+1&nbsp;AND&nbsp;1&nbsp;=&nbsp;1<BR>
+<BR>
+x&nbsp;AND&nbsp;0&nbsp;=&nbsp;0<BR>
+x&nbsp;AND&nbsp;1&nbsp;=&nbsp;x<BR>
+</CODE><BR>
+<BR>
+We use bitwise "and" to test if certain bit(s) are one or not. And'ing a value against a pattern with ones only in the bit positions you are interested in will give zero if none of them are on, nonzero if one or more is on. We can also use bitwise "and" to turn off (set to zero) any desired bit(s). If you "and" a pattern against a variable, bit positions in the pattern that are ones will leave the target bit unchanged, and bit positions in the pattern that are zeros will set the target bit to zero.<BR>
+<BR>
+<font class=announcelink>The OR operator</font><BR>
+<BR>
+<CODE><BR>
+Truth&nbsp;Table<BR>
+-----------<BR>
+0&nbsp;OR&nbsp;0&nbsp;=&nbsp;0<BR>
+0&nbsp;OR&nbsp;1&nbsp;=&nbsp;1<BR>
+1&nbsp;OR&nbsp;0&nbsp;=&nbsp;1<BR>
+1&nbsp;OR&nbsp;1&nbsp;=&nbsp;1<BR>
+<BR>
+x&nbsp;OR&nbsp;0&nbsp;=&nbsp;x<BR>
+x&nbsp;OR&nbsp;1&nbsp;=&nbsp;1<BR>
+</CODE><BR>
+<BR>
+<BR>
+Use bitwise "or" to turn on (set to one) desired bit(s). <BR>
+<BR>
+<font class=announcelink>The XOR operator</font><BR>
+<BR>
+<CODE><BR>
+0&nbsp;XOR&nbsp;0&nbsp;=&nbsp;0<BR>
+0&nbsp;XOR&nbsp;1&nbsp;=&nbsp;1<BR>
+1&nbsp;XOR&nbsp;0&nbsp;=&nbsp;1<BR>
+1&nbsp;XOR&nbsp;1&nbsp;=&nbsp;0<BR>
+<BR>
+x&nbsp;XOR&nbsp;0&nbsp;=&nbsp;x<BR>
+x&nbsp;XOR&nbsp;1&nbsp;=&nbsp;~x<BR>
+</CODE><BR>
+<BR>
+<BR>
+Use bitwise "exclusive or" to flip or reverse the setting of desired bit(s) (make it a one if it was zero or make it zero if it was one).<BR>
+<BR>
+<font class=announcelink>The >>, &lt;&lt;, >>=, &lt;&lt;= operators</font><BR>
+<BR>
+Operators <font class=announcelink>>></font> and <font class=announcelink>&lt;&lt;</font> can be used to shift the bits of an operand to the right or left a desired number of positions. The number of positions to be shifted can be specified as a constant, in a variable or as an expression. Bits shifted out are lost. For left shifts, bit positions vacated by shifting always filled with zeros. For right shifts, bit positions vacated by shifting filled with zeros for unsigned data type and with copy of the highest (sign) bit for signed data type. The right shift operator can be used to achieve quick multiplication by a power of 2. Similarly the right shift operator can be used to do a quick division by power of 2 (unsigned types only). The operators <font class=announcelink>>></font> and <font class=announcelink>&lt;&lt;</font>, <font class=announcelink>dont</font> change the operand at all. However, the operators <font class=announcelink>>>=</font> and <font class=announcelink>&lt;=&lt;</font> also change the operand after doing the shift operations.<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<CODE><BR>
+x&nbsp;&lt;<&nbsp;y&nbsp;&nbsp;-&nbsp;Gives&nbsp;value&nbsp;x&nbsp;shifted&nbsp;left&nbsp;y&nbsp;bits&nbsp;(Bits&nbsp;positions&nbsp;vacated&nbsp;by&nbsp;shift&nbsp;are&nbsp;filled&nbsp;with&nbsp;zeros).<BR>
+x&nbsp;&lt;&lt;=&nbsp;y&nbsp;-&nbsp;Shifts&nbsp;variable&nbsp;x&nbsp;left&nbsp;y&nbsp;bits&nbsp;(Bits&nbsp;positions&nbsp;vacated&nbsp;by&nbsp;shift&nbsp;are&nbsp;filled&nbsp;with&nbsp;zeros).<BR>
+<BR>
+A&nbsp;left&nbsp;shift&nbsp;of&nbsp;n&nbsp;bits&nbsp;multiplies&nbsp;by&nbsp;2&nbsp;raise&nbsp;to&nbsp;n.<BR>
+<BR>
+x&nbsp;>>&nbsp;y&nbsp;&nbsp;-&nbsp;Gives&nbsp;value&nbsp;x&nbsp;shifted&nbsp;right&nbsp;y&nbsp;bits.<BR>
+x&nbsp;>>=&nbsp;y&nbsp;-&nbsp;Shifts&nbsp;variable&nbsp;x&nbsp;right&nbsp;y&nbsp;bits.<BR>
+<BR>
+For&nbsp;the&nbsp;right&nbsp;shift,&nbsp;All&nbsp;bits&nbsp;of&nbsp;operand&nbsp;participate&nbsp;in&nbsp;the&nbsp;shift.&nbsp;For&nbsp;unsigned&nbsp;data&nbsp;type,&nbsp;<BR>
+bits&nbsp;positions&nbsp;vacated&nbsp;by&nbsp;shift&nbsp;are&nbsp;filled&nbsp;with&nbsp;zeros.&nbsp;For&nbsp;signed&nbsp;data&nbsp;type,&nbsp;bits&nbsp;positions&nbsp;<BR>
+vacated&nbsp;by&nbsp;shift&nbsp;are&nbsp;filled&nbsp;with&nbsp;the&nbsp;original&nbsp;highest&nbsp;bit&nbsp;(sign&nbsp;bit).&nbsp;Right&nbsp;shifting&nbsp;n&nbsp;bits&nbsp;<BR>
+divides&nbsp;by&nbsp;2&nbsp;raise&nbsp;to&nbsp;n.&nbsp;Shifting&nbsp;signed&nbsp;values&nbsp;may&nbsp;fail&nbsp;because&nbsp;for&nbsp;negative&nbsp;values&nbsp;the&nbsp;result&nbsp;never&nbsp;<BR>
+gets&nbsp;past&nbsp;-1:<BR>
+<BR>
+-5&nbsp;>>&nbsp;3&nbsp;is&nbsp;-1&nbsp;and&nbsp;not&nbsp;0&nbsp;like&nbsp;-5/8.<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<font class=announcelink>Good interview question</font><BR>
+<BR>
+A simple C command line utility takes a series of command line options. The options are given to the utility like this : &lt;utility_name> options=[no]option1,[no]options2,[no]option3?... Write C code using bitwise operators to use these flags in the code.<BR>
+<BR>
+<CODE><BR>
+<BR>
+//Each&nbsp;option&nbsp;will&nbsp;have&nbsp;a&nbsp;bit&nbsp;reserved&nbsp;in&nbsp;the&nbsp;global_options_bits&nbsp;integer.&nbsp;The&nbsp;global_options_bits<BR>
+//&nbsp;integer&nbsp;will&nbsp;have&nbsp;a&nbsp;bit&nbsp;set&nbsp;or&nbsp;not&nbsp;set&nbsp;depending&nbsp;on&nbsp;how&nbsp;the&nbsp;option&nbsp;was&nbsp;specified&nbsp;by&nbsp;the&nbsp;user.<BR>
+//&nbsp;For&nbsp;example,&nbsp;if&nbsp;the&nbsp;user&nbsp;said&nbsp;nooption1,&nbsp;the&nbsp;bit&nbsp;for&nbsp;OPTION1&nbsp;in&nbsp;global_options_bits<BR>
+//&nbsp;will&nbsp;be&nbsp;0.&nbsp;Likewise,&nbsp;if&nbsp;the&nbsp;user&nbsp;specified&nbsp;option3,&nbsp;the&nbsp;bit&nbsp;for&nbsp;OPTION3&nbsp;in&nbsp;global_options_bits<BR>
+//&nbsp;will&nbsp;be&nbsp;set&nbsp;to&nbsp;1.<BR>
+<BR>
+#define&nbsp;OPTION1&nbsp;"option1"&nbsp;//&nbsp;For&nbsp;strcmp()&nbsp;with&nbsp;the&nbsp;passed&nbsp;arguments.<BR>
+#define&nbsp;OPTION1_BITPOS&nbsp;(0x00000001)&nbsp;//&nbsp;Bit&nbsp;reserved&nbsp;for&nbsp;this&nbsp;option.<BR>
+#define&nbsp;OPTION2&nbsp;"option2"<BR>
+#define&nbsp;OPTION2_BITPOS&nbsp;(0x00000002)<BR>
+#define&nbsp;OPTION3&nbsp;"option3"<BR>
+#define&nbsp;OPTION3_BITPOS&nbsp;(0x00000004)<BR>
+<BR>
+//Required&nbsp;to&nbsp;do&nbsp;the&nbsp;bit&nbsp;operations.<BR>
+#define&nbsp;ALL_BITPOS&nbsp;(0x0001ffff)<BR>
+<BR>
+//&nbsp;Assume&nbsp;you&nbsp;have&nbsp;already&nbsp;parsed&nbsp;the&nbsp;command&nbsp;line&nbsp;option&nbsp;and&nbsp;that<BR>
+//&nbsp;parsed_argument_without_no&nbsp;has&nbsp;option1&nbsp;or&nbsp;option2&nbsp;or&nbsp;option3&nbsp;(depending&nbsp;on&nbsp;what&nbsp;has<BR>
+//&nbsp;been&nbsp;provided&nbsp;at&nbsp;the&nbsp;command&nbsp;line)&nbsp;and&nbsp;the&nbsp;variable&nbsp;negate_argument&nbsp;says&nbsp;if&nbsp;the<BR>
+//&nbsp;option&nbsp;was&nbsp;negated&nbsp;or&nbsp;not&nbsp;(i.e,&nbsp;if&nbsp;it&nbsp;was&nbsp;option1&nbsp;or&nbsp;nooption1)<BR>
+<BR>
+if&nbsp;(strcmp((char&nbsp;*)&nbsp;parsed_argument_without_no,&nbsp;(char&nbsp;*)&nbsp;OPTION1)&nbsp;==&nbsp;0)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Copy&nbsp;the&nbsp;global_options_bits&nbsp;to&nbsp;a&nbsp;temporary&nbsp;variable.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;tmp_action=&nbsp;global_options_bits;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(negate_argument)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Setting&nbsp;the&nbsp;bit&nbsp;for&nbsp;this&nbsp;particular&nbsp;option&nbsp;to&nbsp;0&nbsp;as&nbsp;the&nbsp;option&nbsp;has<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;been&nbsp;negated.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;action_mask=&nbsp;~(OPTION1_BITPOS)&nbsp;&&nbsp;ALL_BITPOS;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp_action=&nbsp;tmp_action&nbsp;&&nbsp;action_mask;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Setting&nbsp;the&nbsp;bit&nbsp;for&nbsp;this&nbsp;particular&nbsp;option&nbsp;to&nbsp;1.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;action_mask=&nbsp;(OPTION1_BITPOS);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp_action=&nbsp;tmp_action&nbsp;|&nbsp;action_mask;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Copy&nbsp;back&nbsp;the&nbsp;final&nbsp;bits&nbsp;to&nbsp;the&nbsp;global_options_bits&nbsp;variable<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;global_options_bits=&nbsp;tmp_action;<BR>
+}<BR>
+else&nbsp;if&nbsp;(strcmp((char&nbsp;*)&nbsp;parsed_argument_without_no,&nbsp;(char&nbsp;*)&nbsp;OPTION2)&nbsp;==&nbsp;0)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//Similar&nbsp;code&nbsp;for&nbsp;OPTION2<BR>
+}<BR>
+else&nbsp;if&nbsp;(strcmp((char&nbsp;*)&nbsp;parsed_argument_without_no,&nbsp;(char&nbsp;*)&nbsp;OPTION3)&nbsp;==&nbsp;0)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//Similar&nbsp;code&nbsp;for&nbsp;OPTION3<BR>
+}<BR>
+<BR>
+<BR>
+//Now&nbsp;someone&nbsp;who&nbsp;wishes&nbsp;to&nbsp;check&nbsp;if&nbsp;a&nbsp;particular&nbsp;option&nbsp;was&nbsp;set&nbsp;or&nbsp;not&nbsp;can&nbsp;use&nbsp;the<BR>
+//&nbsp;following&nbsp;type&nbsp;of&nbsp;code&nbsp;anywhere&nbsp;else&nbsp;in&nbsp;the&nbsp;code.<BR>
+if(((global_options_bits&nbsp;&&nbsp;OPTION1_BITPOS)&nbsp;==&nbsp;OPTION1_BITPOS)<BR>
+{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//Do&nbsp;processing&nbsp;for&nbsp;the&nbsp;case&nbsp;where&nbsp;OPTION1&nbsp;was&nbsp;active.&nbsp;<BR>
+}<BR>
+else<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//Do&nbsp;processing&nbsp;for&nbsp;the&nbsp;case&nbsp;where&nbsp;OPTION1&nbsp;was&nbsp;NOT&nbsp;active.<BR>
+}<BR>
+</CODE> 
+<BR><BR>
+<!--END-->
+</font><BR></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="4_0.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=notelink><A href="mailto:cracktheinterview@gmail.com?subject=Comments [What purpose do the bitwise and, or, xor and the shift operators serve? ]&Body=Question : [What purpose do the bitwise and, or, xor and the shift operators serve? ]"><font class=announcelink>COMMENTS</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><A HREF=../adfaqpublish.html>INDEX</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><a href="#" onclick="window.print();return false;">PRINT</a></font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="4_2.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<BR><BR><BR><font class=notelink>
+Last updated:
+
+July 8, 2005<BR><BR>
+<a href=../index.html>www.cracktheinterview.com</a> - Your destination for the most common IT interview questions, answers, frequently asked interview questions (FAQ), C Programs, C Datastructures for interviews conducted by Microsoft, Oracle, Google, IBM, HP, Yahoo, Infosys, Wipro, SAP, CA (Computer Associates), Sun, Adobe, GE, Novell, Cisco, Motorola, TI (Texas Instruments), Intel, TCS, iFlex, Trilogy, MindTree, GS and more...<br><BR>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+
+<!--END-->
+
+
+</TD>
+
+
+
+
+<TD WIDTH=10%% valign="top">
+
+
+<!--START:ADS1-->
+
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_alternate_color = "CCCCCC";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript" src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"  src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+</TD>
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+</BODY>
+
+<!-- Mirrored from www.cracktheinterview.com by HTTrack Website Copier/3.x [XR,YP'2001] -->
+</HTML>
+
+

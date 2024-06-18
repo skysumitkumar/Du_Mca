@@ -1,0 +1,46 @@
+<html><head>
+<title>Solution for /geometry/hypercube</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /geometry/hypercube problem</h1>
+<hr>
+Take any vertex of the hypercube, and ask how many k-V's it
+participates in.  To make a k-V it needs to combine with k adjacent and
+orthogonal vertices, and there are (nCk) distinct ways of doing this
+[that is, choose k directions out of n possible ones].  Then multiply
+by 2^n, the total number of vertices.  But this involves multiple
+counting, since each k-V is shared by 2^k vertices.  So divide by 2^k,
+and this yields the answer: (nCk)*2^{n-k}.
+
+<p>
+For example, 12d hypercube:
+
+<pre>
+ 0-v:   4,096
+ 1-v:  24,576
+ 2-v:  67,584
+ 3-v: 112,640
+ 4-v: 126,720
+ 5-v: 101,376
+ 6-v:  59,136
+ 7-v:  25,344
+ 8-v:   7,920
+ 9-v:   1,760
+10-v:     264
+11-v:      24
+12-v:       1
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

@@ -1,0 +1,38 @@
+<html><head>
+<title>Solution for /decision/red</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /decision/red problem</h1>
+<hr>
+If a deck has n cards, r red and b black, the best strategy wins
+with a probability of r/n.  Thus, you can say "red" on the first card,
+the last card, or any other card you wish.
+Proof by induction on n.  The statement is clearly true for one-card decks.
+Suppose it is true for n-card decks, and add a red card.
+I will even allow a nondeterministic strategy, meaning you say "red"
+on the first card with probability p.  With probability 1-p,
+you watch the first card go by, and then apply the "optimal" strategy
+to the remaining n-card deck, since you now know its composition.
+<p>
+The odds of winning are therefore: p * (r+1)/(n+1)  +
+        (1-p) * ((r+1)/(n+1) * r/n  +  b/(n+1) * (r+1)/n).
+<p>
+After some algebra, this becomes (r+1)/(n+1) as expected.
+Adding a black card yields: p * r/(n+1)  +
+        (1-p) * (r/(n+1) * (r-1)/n  +  (b+1)/(n+1) * r/n).
+<p>
+This becomes r/(n+1) as expected.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

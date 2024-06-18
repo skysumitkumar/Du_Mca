@@ -1,0 +1,133 @@
+\documentclass[english,twoside]{article} 
+
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{fancyhdr}
+
+\begin{document}
+
+\pagenumbering{arabic}
+
+%----Header stuff---------------------------
+\pagestyle{fancy}
+ \lhead{\sc Algorithms \& Data Structures}
+ \chead{}
+ \rhead{\sc INF1 2004}
+
+
+\section*{Tutorial 1}
+
+\subsection*{Example 1}
+
+\begin{algorithmic}
+\STATE $x := 1$
+\REPEAT
+\STATE $x := x*2$
+\UNTIL (NOT $x<20$)
+\STATE $x := x+1$
+
+\bigskip
+
+Similarly, the same can be achieved also by using a {\bf while}-loop.
+
+\end{algorithmic}
+
+
+\subsection*{Example 2}
+
+{\bf INPUT:} A sequence $S$ of natural numbers of length $n$ such that
+     $n > 0$. \\
+{\bf OUTPUT:} The smallest and largest element of $S$.\\
+
+\begin{itemize}
+\item
+ \begin{algorithmic}
+   \STATE $min := S[1]$; $max := S[1]$
+   \FOR {$i:=2$ to $n$}
+      \IF {$S[i]< min$}
+         \STATE {$min:=S[i]$}
+	  \ELSE \IF {$S[i] > max$}
+	     \STATE {$max:=S[i]$}
+		 \ENDIF
+	  \ENDIF
+   \ENDFOR
+   \STATE {\bf return} $min$, $max$
+ \end{algorithmic}
+
+\item In the worst-case the number of comparisons is $2(n-1)=2n - 2$.
+\item Yes. For example let $n=2$
+ and let $S=[3,4]$ (i.e. $S[1]=3$ and $S[2]=4$). Then
+  the algorithm performs $2$ comparisons.
+  If $S=[6,5]$ (i.e. $S[1]=6$ and $S[2]=5$) the algorithm 
+  performs only $1$ comparison. \\
+{\bf Remark:} For your algorithm the answer can be different.
+\end{itemize}
+
+\subsection*{Example 3}
+
+{\bf INPUT:} A sequence $S$ of natural numbers of length $n$ such that
+$n > 0$. \\
+{\bf OUTPUT:} The second smallest ($ssmall$) element of $S$.\\
+
+\begin{itemize}
+\item
+ \begin{algorithmic}
+   \STATE $min :=  \infty$; $ssmall := \infty$
+   \FOR{$i:=1$ to $n$}
+     \IF {$S[i] < ssmall$}
+	   \IF {$S[i] < min$}
+	     \STATE {$ssmall := min$}
+		 \STATE {$min := S[i]$}
+	   \ELSE
+	     \STATE {$ssmall := S[i]$}
+	   \ENDIF
+	 \ENDIF  
+   \ENDFOR
+   \IF {$ssmall = \infty$}
+     \STATE {{\bf return} "second smallest does not exist"}
+   \ELSE
+     \STATE {{\bf return} $ssmall$}
+   \ENDIF
+ \end{algorithmic}
+
+ 
+\item Number of comparisons in the worst-case is $2n+1$.
+\item Yes.
+\item For each $n$, the algorithm performs the largest number of comparisons
+on e.g. the following sequence: $S=[n, n-1, n-2, \ldots, 2, 1]$
+ (i.e. $S[1]=n$, $S[2]=n-1$, $S[3]=n-2$, \ldots, $S[n-1]=2$, $S[n]=1$).
+\end{itemize}
+
+\subsection*{Example 4}
+
+{\bf INPUT:} Text  $x$ of length $n$ and pattern $y$ of length $m$ such that
+ $n > m > 0$.\\
+{\bf OUTPUT:} Number of occurrences of $y$ in $x$.\\
+
+\begin{itemize}
+\item
+  \begin{algorithmic}
+  \STATE {$occurrences:=0$}
+  \FOR {$i:=1$ to $n-m+1$}
+    \STATE {$j:=1$}
+    \WHILE {$x[i+j-1] = y[j]$ and $j \leq m$}
+		  \STATE {$j:=j+1$}
+	\ENDWHILE
+	\IF {$j=m+1$} \STATE  {$occurrences:=occurrences+1$} 
+        \ENDIF
+  \ENDFOR
+  \STATE {{\bf return} $occurrences$}
+  \end{algorithmic}
+
+\item Number of comparisons in the worst-case (we count only the comparisons
+between two positions in $x$ and $y$): 
+$(n-m+1)\cdot m = nm - m^2 + m = O(nm)$ because $n>m$.
+
+\item For each $n$ and $m$,  the largest number of comparisons 
+will be e.g. on the input $x=[\underbrace{A, A,\ldots, A}_{n \times}]$
+and $y=[\underbrace{A, A, \ldots, A}_{m \times}]$.
+\end{itemize}
+
+\end{document}

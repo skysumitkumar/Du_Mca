@@ -1,0 +1,463 @@
+Ramco Sample C Test PaperHome
+    
+Back To Ramco Page
+ 
+1) Find the output for the following C program
+main()
+{
+char *p1="Name";
+char *p2;
+p2=(char *)malloc(20);
+while(*p2++=*p1++);
+printf("%s\n",p2);
+}
+ Ans. An empty string
+
+2) Find the output for the following C program
+main()
+{
+int x=20,y=35;
+x = y++ + x++;
+y = ++y + ++x;
+printf("%d %d\n",x,y);
+}
+Ans. 57 94 
+ 
+3) Find the output for the following C program
+main()
+{
+int x=5;
+printf("%d %d %d\n",x,x<<2,x>>2);
+}
+Ans. 5 20 1
+
+4) Find the output for the following C program
+#define swap1(a,b) a=a+b;b=a-b;a=a-b;
+main()
+{
+int x=5,y=10;
+swap1(x,y);
+printf("%d %d\n",x,y);
+swap2(x,y);
+printf("%d %d\n",x,y);
+}
+int swap2(int a,int b)
+{
+int temp;
+temp=a;
+b=a;
+a=temp;
+return;
+}
+Ans. 10 5
+
+5) Find the output for the following C program
+main()
+{
+char *ptr = "Ramco Systems";
+(*ptr)++;
+printf("%s\n",ptr);
+ptr++;
+printf("%s\n",ptr);
+}
+Ans. Samco Systems
+
+6) Find the output for the following C program
+#include<stdio.h>
+main()
+{
+char s1[]="Ramco";
+char s2[]="Systems";
+s1=s2;
+printf("%s",s1);
+}
+Ans. Compilation error giving it cannot be an modifiable 'lvalue'
+
+7) Find the output for the following C program
+#include<stdio.h>
+main()
+{
+char *p1;
+char *p2;
+p1=(char *) malloc(25);
+p2=(char *) malloc(25);
+strcpy(p1,"Ramco");
+strcpy(p2,"Systems");
+strcat(p1,p2);
+printf("%s",p1);
+}
+ Ans. RamcoSystems
+
+8) Find the output for the following C program given that
+[1]. The following variable is available in file1.c
+static int average_float;
+Ans. All the functions in the file1.c can access the variable
+
+9) Find the output for the following C program
+# define TRUE 0
+some code
+while(TRUE)
+{
+some code 
+}
+Ans. This won't go into the loop as TRUE is defined as 0
+
+10) Find the output for the following C program
+main()
+{
+int x=10;
+x++;
+change_value(x);
+x++;
+Modify_value();
+printf("First output: %d\n",x);
+}
+x++;
+change_value(x);
+printf("Second Output : %d\n",x);
+Modify_value(x);
+printf("Third Output : %d\n",x);
+}
+Modify_value()
+{
+return (x+=10);
+}
+change_value()
+{
+return(x+=1);
+}
+Ans. 12 1 1
+
+11) Find the output for the following C program
+main()
+{
+int x=10,y=15;
+x=x++;
+y=++y;
+printf("%d %d\n",x,y);
+}
+Ans. 11 16
+
+12) Find the output for the following C program
+main()
+{
+int a=0;
+if(a=0) printf("Ramco Systems\n");
+printf("Ramco Systems\n");
+}
+Ans. Ony one time "Ramco Systems" will be printed
+
+13)  Find the output for the following C program 
+#include<stdio.h>
+int SumElement(int *,int);
+void main(void)
+{
+int x[10];
+int i=10;
+for(;i;)
+{
+i--;
+*(x+i)=i;
+}
+printf("%d",SumElement(x,10));
+}
+int SumElement(int array[],int size)
+{
+int i=0;
+float sum=0;
+for(;i<size;i++)
+sum+=array[i];
+return sum;
+}
+
+Q14) Find the output for the following C program
+#include<stdio.h>
+void main(void);
+int printf(const char*,...);
+void main(void)
+{
+int i=100,j=10,k=20;
+-- int sum;
+float ave;
+char myformat[]="ave=%.2f";
+sum=i+j+k;
+ave=sum/3.0;
+printf(myformat,ave);
+}
+
+Q15)  Find the output for the following C program
+#include<stdio.h>
+void main(void);
+{
+int a[10];
+printf("%d",((a+9) + (a+1)));
+}
+
+Q16)  Find the output for the following C program
+#include<stdio.h>
+void main(void)
+{
+struct s{
+int x;
+float y;
+}s1={25,45.00};
+union u{
+int x;
+float y;
+} u1;
+u1=(union u)s1;
+printf("%d and %f",u1.x,u1.y);
+} 
+
+Q17)  Find the output for the following C program
+#include<stdio.h>
+void main(void)
+{
+unsigned int c;
+unsigned x=0x3;
+scanf("%u",&c);
+switch(c&x)
+{
+case 3: printf("Hello!\t");
+case 2: printf("Welcome\t");
+case 1: printf("To All\t");
+default:printf("\n");
+}
+}
+
+Q18)  Find the output for the following C program
+#include<stdio.h>
+int fn(void);
+void print(int,int(*)());
+int i=10;
+void main(void)
+{
+int i=20;
+print(i,fn);
+}
+void print(int i,int (*fn1)())
+{
+printf("%d\n",(*fn1)());
+}
+int fn(void)
+{
+return(i-=5);
+}
+
+Q19)  Find the output for the following C program
+#include<stdio.h>
+void main(void);
+{
+char numbers[5][6]={"Zero","One","Two","Three","Four"};
+printf("%s is %c",&numbers[4][0],numbers[0][0]);
+}
+
+Q20)  Find the output for the following C program
+int bags[5]={20,5,20,3,20};
+void main(void)
+{
+int pos=5,*next();
+*next()=pos;
+printf("%d %d %d",pos,*next(),bags[0]);
+}
+int *next()
+{
+int i;
+for(i=0;i<5;i++)
+if (bags[i]==20)
+return(bags+i);
+printf("Error!");
+exit(0);
+}
+
+Q21)  Find the output for the following C program
+#include<stdio.h>
+void main(void)
+{
+int y,z;
+int x=y=z=10;
+int f=x;
+float ans=0.0;
+f *=x*y;
+ans=x/3.0+y/3;
+printf("%d %.2f",f,ans);
+}
+
+Q22)  Find the output for the following C program
+#include<stdio.h>
+void main(void);
+{
+double dbl=20.4530,d=4.5710,dblvar3;
+double dbln(void);
+dblvar3=dbln();
+printf("%.2f\t%.2f\t%.2f\n",dbl,d,dblvar3);
+}
+double dbln(void)
+{
+double dblvar3;
+dbl=dblvar3=4.5;
+return(dbl+d+dblvar3);
+}
+
+Q23)  Find the output for the following C program
+#include<stdio.h>
+static int i=5;
+void main(void)
+{
+int sum=0;
+do
+{
+sum+=(1/i);
+}while(0<i--);
+}
+
+Q24)  Find the output for the following C program
+#include<stdio.h>
+void main(void)
+{
+int oldvar=25,newvar=-25;
+int swap(int,int);
+swap(oldvar,newvar);
+printf("Numbers are %d\t%d",newvar,oldvar);
+}
+int swap(int oldval,int newval)
+{
+int tempval=oldval;
+oldval=newval;
+newval=tempval;
+}
+
+Q25)  Find the output for the following C program
+#include<stdio.h>
+void main(void);
+{
+int i=100,j=20;
+i++=j;
+i*=j;
+printf("%d\t%d\n",i,j);
+}
+
+Q26)  Find the output for the following C program
+#include<stdio.h>
+void main(void);
+int newval(int);
+void main(void)
+{
+int ia[]={12,24,45,0};
+int i;
+int sum=0;
+for(i=0;ia[i];i++)
+{
+sum+=newval(ia[i]);
+}
+printf("Sum= %d",sum);
+}
+int newval(int x)
+{
+static int div=1;
+return(x/div++);
+}
+ 
+Q27)  Find the output for the following C program
+#include<stdio.h>
+void main(void);
+{
+int var1,var2,var3,minmax;
+var1=5;
+var2=5;
+var3=6;
+minmax=(var1>var2)?(var1>var3)?var1:var3:(var2>var3)?var2:var3;
+printf("%d\n",minmax);
+
+Q28)  Find the output for the following C program
+#include<stdio.h>
+void main(void);
+{
+void pa(int *a,int n);
+int arr[5]={5,4,3,2,1};
+pa(arr,5);
+}
+void pa(int *a,int n)
+{
+int i;
+for(i=0;i<n;i++)
+printf("%d\n",*(a++)+i);
+}
+
+Q29)  Find the output for the following C program
+#include<stdio.h>
+void main(void);
+void print(void);
+{
+print();
+}
+void f1(void)
+{
+printf("\nf1():");
+}
+
+Q30)  Find the output for the following C program
+#include "6.c"
+void print(void)
+{
+extern void f1(void);
+f1();
+}
+static void f1(void)
+{
+printf("\n static f1().");
+}
+
+Q31)  Find the output for the following C program
+#include<stdio.h>
+void main(void);
+static int i=50;
+int print(int i);
+void main(void)
+{
+static int i=100;
+while(print(i))
+{
+printf("%d\n",i);
+i--;
+}
+}
+int print(int x)
+{
+static int i=2;
+return(i--);
+}
+
+Q32)  Find the output for the following C program
+#include<stdio.h>
+void main(void);
+typedef struct NType
+{
+int i;
+char c;
+long x;
+} NewType;
+void main(void)
+{
+NewType *c;
+c=(NewType *)malloc(sizeof(NewType));
+c->i=100;
+c->c='C';
+(*c).x=100L;
+printf("(%d,%c,%4Ld)",c->i,c->c,c->x);
+}
+
+Q33)  Find the output for the following C program
+#include<stdio.h>
+void main(void);
+const int k=100;
+void main(void)
+{
+int a[100];
+int sum=0;
+for(k=0;k<100;k++)
+*(a+k)=k;
+sum+=a[--k];
+printf("%d",sum);
+}
+Back to top

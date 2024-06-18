@@ -1,0 +1,127 @@
+#include <stdio.h>
+#include	<math.h>
+
+#define	TRUE	1
+#define	FALSE	0
+
+void	get_prime( long *val);
+long	getE( long PHI);
+long	get_common_denom( long e, long PHI);
+long 	getD( long e,  long PHI);
+long	decrypt(long c,long n, long d);
+
+int	main(void)
+{
+long	a,b,n,e,PHI,d,m,c;
+
+
+	get_prime(&a);
+	get_prime(&b);
+	n=a*b;
+	PHI=(a-1)*(b-1);
+	e=getE(PHI);
+
+	d= getD(e,PHI);
+	printf("Enter input value >> "); scanf("%ld",&m);
+
+	c=(long)pow(m,e) % n;
+
+	printf("a=%ld b=%ld n=%ld PHI=%ld\n",a,b,n,PHI);
+	printf("e=%ld d=%ld c=%ld\n",e,d,c);
+
+	m=decrypt(c,n,d);	/* this function required as c to 		*/
+				/*the power of d causes and overflow 	*/
+	printf("Message is %ld ",m);
+	return(0);
+}
+
+long	decrypt(long c,long n, long d)
+{
+long	i,g,f;
+
+if (d%2==0) g=1; else g=c;
+
+for (i=1;i<=d/2;i++)
+		{
+		f=c*c % n;
+		g=f*g % n;
+	}
+    return(g);
+}
+
+long getD( long e,  long PHI)
+{
+long u[3]={1,0,PHI};
+long v[3]={0,1,e};
+long q,temp1,temp2,temp3;
+
+	while (v[2]!=0)
+	{
+		q=floor(u[2]/v[2]);
+		temp1=u[0]-q*v[0];
+		temp2=u[1]-q*v[1];
+		temp3=u[2]-q*v[2];
+		u[0]=v[0];
+		u[1]=v[1];
+		u[2]=v[2];
+		v[0]=temp1;
+		v[1]=temp2;
+		v[2]=temp3;
+	}
+	if (u[1]<0) return(u[1]+PHI);
+	else return(u[1]);
+}
+
+long	getE( long PHI)
+{
+ long great=0, e=2;
+
+	while (great!=1)
+	{
+		e=e+1;
+		great = get_common_denom(e,PHI);
+	}
+	return(e);
+}
+
+long get_common_denom(long e, long PHI)
+{
+long great,temp,a;
+
+	if (e >PHI)
+	{
+		while (e % PHI != 0)
+		{
+			temp= e % PHI;
+			e =PHI;
+			PHI = temp;
+		}
+		great = PHI;
+	} else
+	{
+		while (PHI % e != 0)
+		{
+			a = PHI % e;
+			PHI = e;
+			e = a;
+		}
+		great = e;
+	}
+	return(great);
+}
+
+void	get_prime( long *val)
+{
+#define NO_PRIMES 11
+long 	primes[NO_PRIMES]={3,5,7,11,13,17,19,23,29,31,37};
+long	prime,i;
+
+	do
+	{
+		prime=FALSE;
+		printf("Enter a prime number >> ");
+		scanf("%ld",val);
+		for (i=0;i<NO_PRIMES;i++)
+			if (*val==primes[i]) prime=TRUE;
+	} while (prime==FALSE);
+}

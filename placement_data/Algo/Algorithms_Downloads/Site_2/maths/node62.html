@@ -1,0 +1,203 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Grammers and Parsing </TITLE>
+<META NAME="description" CONTENT="Grammers and Parsing ">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">
+<LINK REL="previous" HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">
+<LINK REL="up" HREF="notes.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.html">
+<LINK REL="next" HREF="node63.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node63.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1207"
+  HREF="node63.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node63.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1201"
+  HREF="notes.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1195"
+  HREF="node61.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1203"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1205"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1208"
+  HREF="node63.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node63.html">Formal Languages</A>
+<B> Up:</B> <A NAME="tex2html1202"
+  HREF="notes.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.html">Algorithms MX4028</A>
+<B> Previous:</B> <A NAME="tex2html1196"
+  HREF="node61.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html">Questions 3 (Hints and</A>
+ &nbsp <B>  <A NAME="tex2html1204"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1206"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00800000000000000000"></A><A NAME="S:grammers"></A>
+<BR>
+Grammers and Parsing 
+</H1>
+A good source of  material relevent to this section is
+(<A
+ HREF="node112.html#sedgwick95:_algor_cplusplus" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node112.html#sedgwick95:_algor_cplusplus">Sedgwick, 1995</A>); in my  edition, there are
+chapters on ``String Searching'', Pattern Matching'' and ``Parsing''
+all of which are of interest.
+
+<P>
+If you type the following line in a FORTRAN program
+<DIV ALIGN="CENTER">
+<TT>X = (A + B)*C - D</TT>
+
+</DIV>
+you expect the computer, when running the program, to take the values of
+A and B, add them, multiply the answer by the value of C and then subtract
+the value of D -- finally putting the result in X. How does the computer
+work out that that is what you want to happen? How does it `read' the
+expression on the RHS? Equally, how does it know that the following is
+rubbish?
+<DIV ALIGN="CENTER">
+<TT>X = (A + B)C - * D)) </TT>
+
+</DIV>
+
+<P>
+The FORTRAN <I>compiler</I> has the job of making sense of what you have
+written and converting it into a series of machine operations. You will
+know by now that FORTRAN, like all other computer languages, requires you
+to write your programs in a very strict and formalised style. It imposes
+a <I>syntax</I> or <I>grammar</I> on you which you cannot ignore in any
+way (the compiler will accept <TT>A*(B+C)</TT> but not <TT>A(B+C)</TT>, despite
+the standard mathematical convention).
+
+<P>
+The general problem we face is this: the compiler (or compiler writer)
+defines a certain syntax for `acceptable statements'. You have to write
+your programs in this syntax. The compiler then has to be able to `decode'
+what you have written so as to find out what to do. It also has to be
+able to decide whether what you have written actually <I>is</I>
+grammatical.
+
+<P>
+To study this problem it helps to introduce the concept of a Formal
+Language and the related concept of a Syntax ( a Chomsky Transformational
+Grammar, to be precise). The definitions of these concepts are going to be
+rather abstract, but some examples should make things fairly clear.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html1209"
+  HREF="node63.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node63.html">Formal Languages</A>
+<LI><A NAME="tex2html1210"
+  HREF="node64.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node64.html">Formal Grammars </A>
+<LI><A NAME="tex2html1211"
+  HREF="node65.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node65.html">First Example</A>
+<LI><A NAME="tex2html1212"
+  HREF="node66.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node66.html">Second Example</A>
+<UL>
+<LI><A NAME="tex2html1213"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node67.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node67.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node67.html">Property P</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1214"
+  HREF="node68.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node68.html">Arithmetic Expressions </A>
+<UL>
+<LI><A NAME="tex2html1215"
+  HREF="node69.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node69.html">AE Grammer</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1216"
+  HREF="node70.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node70.html">Postfix Expressions </A>
+<UL>
+<LI><A NAME="tex2html1217"
+  HREF="node71.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node71.html">Postfix Grammer</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1218"
+  HREF="node72.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node72.html">Converting Infix to Postfix </A>
+<UL>
+<LI><A NAME="tex2html1219"
+  HREF="node73.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node73.html">FBIE Grammer</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1220"
+  HREF="node74.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node74.html">Evaluating a Postfix Expression </A>
+<LI><A NAME="tex2html1221"
+  HREF="node75.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node75.html">Questions 4 (Hints and solutions start on page <IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/crossref.gif">.)</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1207"
+  HREF="node63.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node63.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1201"
+  HREF="notes.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1195"
+  HREF="node61.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1203"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1205"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1208"
+  HREF="node63.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node63.html">Formal Languages</A>
+<B> Up:</B> <A NAME="tex2html1202"
+  HREF="notes.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.html">Algorithms MX4028</A>
+<B> Previous:</B> <A NAME="tex2html1196"
+  HREF="node61.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html">Questions 3 (Hints and</A>
+ &nbsp <B>  <A NAME="tex2html1204"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1206"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

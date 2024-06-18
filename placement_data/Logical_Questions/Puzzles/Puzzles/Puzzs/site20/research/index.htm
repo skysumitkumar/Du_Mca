@@ -1,0 +1,752 @@
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.ibm.com/data/dtd/v11/ibmxhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>IBM Research | Ponder This</title>
+	<meta name="TITLE" content="IBM Research | Ponder This" />
+	<meta name="DESCRIPTION" content="Ponder This" />
+	<meta name="ABSTRACT" content="Ponder This" />
+	<meta name="KEYWORDS" content="IBM Research, Ponder This" />
+	<meta name="OWNER" content="webmaster@watson.ibm.com" />
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="SECURITY" content="Public" />
+	<meta name="SOURCE" content="IBM Research Communications" />
+	<meta name="ROBOTS" content="index,follow" />
+	<meta name="DC.LANGUAGE" scheme="rfc1766" content="en-us" />
+	<meta name="CHARSET" content="iso88591" />
+	<meta name="IBM.COUNTRY" content="us" />
+	<meta name="DC.DATE" scheme="iso8601" content="2001-02-23" />
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true for "http://www.ibm.com" r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true for "http://www.ibm.com" r (n 0 s 0 v 0 l 0))'>
+	<meta name="DC.Rights" content="Copyright (c) 2004 by IBM Corporation" />
+	<meta name="IBM.Effective" scheme="W3CDTF" content="2004-01-01" />
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+	<link rel="schema.DC" href="javascript:if(confirm('http://purl.org/DC/elements/1.0/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://purl.org/DC/elements/1.0/'" tppabs="http://purl.org/DC/elements/1.0/" />
+	<link rel="SHORTCUT ICON" href="javascript:if(confirm('http://www.ibm.com/favicon.ico  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ibm.com/favicon.ico'" tppabs="http://www.ibm.com/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="main.css" tppabs="http://www.ibm.com/common/v14/main.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="screen.css" tppabs="http://www.ibm.com/common/v14/screen.css" />
+	<link rel="stylesheet" type="text/css" media="print" href="print.css" tppabs="http://www.ibm.com/common/v14/print.css" />
+	<script src="detection.js" tppabs="http://www.ibm.com/common/v14/detection.js" language="JavaScript" type="text/javascript">
+	</script>
+</head>
+<body>
+<!-- masthead -->
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		<tr valign="top">
+			<td class="bbg" width="110"><a href="javascript:if(confirm('http://www.ibm.com/us/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ibm.com/us/'" tppabs="http://www.ibm.com/us/"><img alt="IBM&reg;" border="0" height="52" src="ibm-logo.gif" tppabs="http://www.ibm.com/i/v14/t/ibm-logo.gif" width="110"/></a></td>
+			<td align="right" class="mbbg" width="100%">
+				<table border="0" cellpadding="0" cellspacing="0" align="right">
+					<tr class="cty-tou">
+						<td rowspan="2" width="17" class="upper-masthead-corner"><a href="#main"><img src="c.gif" tppabs="http://www.ibm.com/i/c.gif" border="0" width="1" height="1" alt="Skip to main content"/></a></td>
+						<td align="left"><table border="0" cellpadding="0" cellspacing="0" align="left"><tr><td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><b class="country">Country/region</b><span class="spacer">&nbsp;[</span><a class="ur-link" href="javascript:if(confirm('http://www.research.ibm.com/worldwide/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.research.ibm.com/worldwide/'" tppabs="http://www.research.ibm.com/worldwide/">change</a><span class="spacer">]</span></td><td width="29" class="upper-masthead-divider">&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="left"><a class="ur-link" href="javascript:if(confirm('http://www.ibm.com/legal/us/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ibm.com/legal/us/'" tppabs="http://www.ibm.com/legal/us/">Terms of use</a></td></tr></table></td>
+						<td width="40">&nbsp;</td>
+					</tr>
+					<tr><td class="cty-tou-border" height="1" colspan="2"><img src="c.gif" tppabs="http://www.ibm.com/i/c.gif" alt="" height="1" width="1"/></td></tr>
+					<tr><td colspan="3"><img alt="" height="8" src="c.gif" tppabs="http://www.ibm.com/i/c.gif" width="1"/></td></tr>
+					<tr><td>&nbsp;</td>
+						<td align="center" colspan="2">
+							<form action="http://www.ibm.com/Search" onSubmit="return dosearchsubmit();" method="get" name="search-form" title="Search form">
+								<table border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td width="18"><label for="sn"><img src="c.gif" tppabs="http://www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label></td>
+										<td>
+<script language="Javascript1.2" type="text/javascript">
+//<![CDATA[
+var siteoptnam=new Array(2);
+var siteoptval=new Array(2);
+var siteoptact=new Array(2);
+
+siteoptnam[0]="all";
+siteoptval[0]="All of IBM                                 ";
+siteoptact[0]="http://www.ibm.com/Search";
+
+siteoptnam[1]="research";
+siteoptval[1]="IBM Research";
+siteoptact[1]="http://www.research.ibm.com/searchresearch";
+
+var siteoptpick=1;
+document.write("<select id=\"sn\" name=\"site\" class=\"input-local\" size=\"1\">");
+for(var i=0; i<siteoptnam.length; i++) {
+	document.write("<option name=\""+siteoptnam[i]+"\""+(siteoptpick==i?" selected=\"selected\"":"")+">"+siteoptval[i]+"</option>");
+}
+document.write("</select>");
+function dosearchsubmit() {
+	var siteoptobj=document.forms['search-form'].site.options;
+	for(var i=0; i<document.forms['search-form'].site.options.length; i++) {
+		if(document.forms['search-form'].site.options[i].selected==true) {
+			if(i==2) {
+				document.location.href=siteoptact[i]+""+document.forms['search-form'].q.value;
+				return false;
+			} else { 
+				document.forms['search-form'].action=siteoptact[i];
+				return(1);
+			}
+		}
+	}
+}
+//]]>
+</script>
+<noscript>
+	<select id="sn" name="site" class="input-local" size="1"><option name="all" selected="selected">All of IBM</option></select>
+</noscript>
+										</td>
+										<td width="7"><label for="q"><img src="c.gif" tppabs="http://www.ibm.com/i/c.gif" width="1" height="1" alt="Search for:"/></label></td>
+										<td align="right"><input class="input" id="q" maxlength="100" name="q" size="15" type="text" value=""/></td>
+										<td width="7">&nbsp;<input value="11" name="v" type="hidden"/>
+											<input value="en" name="lang" type="hidden"/>
+											<input value="us" name="cc" type="hidden"/></td>
+										<td align="left" width="90"><input alt="Search" name="Search" src="search.gif" tppabs="http://www.ibm.com/i/v14/t/search.gif" type="image" value="Search" /></td>
+									</tr>
+								</table>
+							</form>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr><td class="blbg" colspan="2"><table border="0" cellpadding="0" cellspacing="0" width="760"><tr><td><table border="0" cellpadding="0" cellspacing="0"><tr><td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td><a class="masthead-mainlink" href="javascript:if(confirm('http://www.ibm.com/us/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ibm.com/us/'" tppabs="http://www.ibm.com/us/">Home</a></td><td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a class="masthead-mainlink" href="javascript:if(confirm('http://www.ibm.com/products/us/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ibm.com/products/us/'" tppabs="http://www.ibm.com/products/us/">Products</a></td><td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a class="masthead-mainlink" href="javascript:if(confirm('http://www.ibm.com/servicessolutions/us/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ibm.com/servicessolutions/us/'" tppabs="http://www.ibm.com/servicessolutions/us/">Services &amp; solutions</a></td><td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a class="masthead-mainlink" href="javascript:if(confirm('http://www.ibm.com/support/us/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ibm.com/support/us/'" tppabs="http://www.ibm.com/support/us/">Support &amp; downloads</a></td><td class="masthead-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a class="masthead-mainlink" href="javascript:if(confirm('http://www.ibm.com/account/us/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ibm.com/account/us/'" tppabs="http://www.ibm.com/account/us/">My account</a></td><td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr></table></td></tr></table></td></tr>
+	</table>
+	<script src="pmh.js" tppabs="http://www.ibm.com/common/v14/pmh.js" language="JavaScript" type="text/javascript"></script>
+<!-- /masthead -->
+
+<!-- mainbody -->
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" id="v14-body-table">
+		<tr valign="top">
+			<td width="150" id="navigation">
+	<!-- leftnav -->
+				<table border="0" cellpadding="0" cellspacing="0" width="150"><tr class="left-nav-spacer"><td width="17"><img src="t-bk-gray.gif" tppabs="http://www.ibm.com/i/v14/t/t-bk-gray.gif" height="14" width="16" alt=""/></td><td width="133"><a class="parent" href="javascript:if(confirm('http://www.ibm.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ibm.com/'" tppabs="http://www.ibm.com/">IBM Home</a></td></tr></table>
+				<table border="0" cellpadding="0" cellspacing="0" width="150">
+					<tr><th class="left-nav-overview" colspan="2"><a class="left-nav-overview" href="javascript:if(confirm('http://www.research.ibm.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.research.ibm.com/'" tppabs="http://www.research.ibm.com/">IBM Research</a></th></tr>
+
+						
+					<tr><td class="left-nav" colspan="2"><a class="left-nav" href="javascript:if(confirm('http://www.research.ibm.com/thinkresearch/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.research.ibm.com/thinkresearch/'" tppabs="http://www.research.ibm.com/thinkresearch/">Think Research</a></td></tr>
+					<tr><td class="left-nav" colspan="2"><a class="left-nav" href="javascript:if(confirm('http://www.research.ibm.com/disciplines/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.research.ibm.com/disciplines/'" tppabs="http://www.research.ibm.com/disciplines/">Technical Disciplines</a></td></tr>
+					<tr><td class="left-nav" colspan="2"><a class="left-nav" href="javascript:if(confirm('http://www.research.ibm.com/cross_disciplines/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.research.ibm.com/cross_disciplines/'" tppabs="http://www.research.ibm.com/cross_disciplines/">Cross-Disciplines</a></td></tr>
+					<tr><td class="left-nav" colspan="2"><a class="left-nav" href="javascript:if(confirm('http://www.research.ibm.com/about/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.research.ibm.com/about/'" tppabs="http://www.research.ibm.com/about/">Who we are</a></td></tr>
+					<tr><td class="left-nav" colspan="2"><a class="left-nav" href="javascript:if(confirm('http://www.research.ibm.com/resources/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.research.ibm.com/resources/'" tppabs="http://www.research.ibm.com/resources/">What we do</a></td></tr>
+					<tr><td class="left-nav" colspan="2"><a class="left-nav" href="javascript:if(confirm('http://www.research.ibm.com/resources/search.shtml  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.research.ibm.com/resources/search.shtml'" tppabs="http://www.research.ibm.com/resources/search.shtml">Search research</a></td></tr>
+					<tr><td class="left-nav" colspan="2"><a class="left-nav" href="javascript:if(confirm('http://domino.research.ibm.com/Comm/feedback.nsf/Comments  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/feedback.nsf/Comments'" tppabs="http://domino.research.ibm.com/Comm/feedback.nsf/Comments">Feedback</a></td></tr>
+					<tr><td class="left-nav-highlight" colspan="2"><a class="left-nav" href="index.htm" tppabs="http://www.research.ibm.com/ponder/">Ponder This</a></td></tr>
+
+						
+					<tr class="left-nav-last"><td width="14"><img src="c.gif" tppabs="http://www.ibm.com/i/c.gif" width="14" height="1" alt="" class="display-img"/></td><td width="136"><img src="left-nav-corner.gif" tppabs="http://www.ibm.com/i/v14/t/left-nav-corner.gif" width="136" height="19" alt="" class="display-img"/></td></tr>
+				</table>
+				<br />
+
+
+	<!-- /leftnav -->
+
+			</td>
+			<td width="10"><img alt="" class="display-img" height="1" src="c.gif" tppabs="http://www.ibm.com/i/c.gif" width="10" /></td>
+	<!-- pagecontent -->
+			<td width="100%"><a name="main"></a><table cellpadding="0" cellspacing="0" border="0" align="right" width="230" height="72"><tr><td valign="top" align="right" background="research_label.jpg" tppabs="http://www.research.ibm.com/images/shared/research_label.jpg" width="230" height="72"><a href="javascript:if(confirm('http://www.research.ibm.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.research.ibm.com/'" tppabs="http://www.research.ibm.com/"><img src="c.gif" tppabs="http://www.ibm.com/i/c.gif" width="230" height="72" align="right" alt="IBM Research" border="0" /></a></td></tr></table>
+				<h1 style="margin-top: 8px;">
+		<!-- pagecontent-title -->
+					Ponder This
+		<!-- /pagecontent-title -->
+				</h1>
+				<p id="subtitle"><em>
+		<!-- pagecontent-subtitle -->
+					
+		<!-- /pagecontent-subtitle -->
+				</em></p>
+				<img alt="" class="display-img" height="6" src="c.gif" tppabs="http://www.ibm.com/i/c.gif" width="1" /><br clear="all" />
+
+	<!--pagecontent-->
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td width="55%" valign="top">
+		<!--pagecontent1-->
+							<table width="100%" cellpadding="1" cellspacing="0" border="0">
+								<tr width="100%">
+									<th class="v14-header-1">
+										Welcome to our Monthly Puzzles
+									</th>
+								</tr>
+							</table>
+							<span class="plain">
+							You are cordially invited to match wits with some of the best minds in IBM Research.<br />
+							<br />
+							Seems some of us can't see a problem without wanting to take a crack at solving it. Does that sound like you?  Good. Forge ahead and ponder this month's problem. We'll post a new one every month, and allow two to three weeks for you to submit solutions (we may even publish submitted answers, especially if they're correct). Towards the end of the month, we'll post the answer.<br />
+							<ul>
+								<li>Here is the <b><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2005.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2005.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2005.html">solution</a></b> for our May 2005 problem.</li>
+								<li>And now... here's our <b><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2005.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2005.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2005.html">June challenge!</a></b></li>
+							</ul>
+							So give your mind a break from its routine---you never know what other problems you may solve in the process!<br />
+							<div align="right">-&nbsp;Don&nbsp;Coppersmith&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+							<br /><br />
+							<i>If you have any problems you think we might enjoy, please send them in.  All replies should be sent to:</i>
+							<a href="mailto:webmaster@watson.ibm.com">webmaster@watson.ibm.com</a><br />
+							<br /><br />
+							</span>
+		<!--/pagecontent1-->
+						</td>
+						<td>&nbsp;&nbsp;</td>
+						<td width="45%" bgcolor="#FFFFFF" valign="top">
+		<!--pagecontent2-->
+							<table width="100%" name="header_right_column" cellpadding="1" cellspacing="0" border="0">
+								<tr width="100%">
+									<th class="v14-header-2">
+										Archive
+									</th>
+								</tr>
+							</table>
+							<table border="0" cellspacing="0" cellpadding="2" width="100%">
+							<tr>
+									<td><b>June 2005</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2005.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2005.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2005.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2005.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2005.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2005.html"></a>Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>	
+							<tr>
+							<tr>
+									<td><b>May 2005</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2005.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2005.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2005.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2005.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2005.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2005.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>	
+							<tr>
+							<tr>
+									<td><b>April 2005</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2005.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2005.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2005.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2005.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2005.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2005.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>	
+							<tr>
+							<tr>
+									<td><b>March 2005</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2005.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2005.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2005.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2005.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2005.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2005.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>	
+							<tr>
+							<tr>
+									<td><b>February 2005</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2005.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2005.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2005.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2005.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2005.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2005.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>	
+							<tr>
+							<tr>
+									<td><b>January 2005</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2005.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2005.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2005.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2005.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2005.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2005.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>	
+							<tr>
+							<tr>
+									<td><b>December 2004</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December2004.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December2004.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+							<tr>
+							<tr>
+									<td><b>November 2004</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November2004.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November2004.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>							<tr>
+									<td><b>October 2004</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October2004.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October2004.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>							<tr>
+									<td><b>September 2004</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September2004.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September2004.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>							<tr>
+									<td><b>August2004</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August2004.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August2004.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>							<tr>
+									<td><b>July 2004</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July2004.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July2004.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+							<tr>
+									<td><b>June 2004</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2004.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2004.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+							<tr>
+									<td><b>May 2004</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2004.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2004.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>April 2004</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2004.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2004.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>March 2004</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2004.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2004.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>February 2004</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2004.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2004.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>January 2004</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2004.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2004.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2004.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>December 2003</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December2003.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December2003.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>November 2003</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November2003.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November2003.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>October 2003</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October2003.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October2003.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>September 2003</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September2003.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September2003.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>August 2003</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August2003.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August2003.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>July 2003</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July2003.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July2003.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>June 2003</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2003.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2003.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>May 2003</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2003.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2003.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>April 2003</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2003.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2003.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+									<tr>
+									<td><b>March 2003</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2003.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2003.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+								<tr>
+									<td><b>February 2003</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2003.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2003.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+                                                <tr>
+								<tr>
+									<td><b>January 2003</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2003.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2003.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2003.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2003.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+                                                <tr>
+                                                <tr>
+									<td><b>December 2002</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December2002.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December2002.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+                                                <tr>
+									<td><b>November 2002</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November2002.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November2002.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+                                                <tr>
+									<td><b>October 2002</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October2002.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October2002.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+                                                <tr>
+									<td><b>September 2002</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September2002.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September2002.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+                                               	<tr>
+									<td><b>August 2002</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August2002.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August2002.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+                                                <tr>
+									<td><b>July 2002</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July2002.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July2002.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>June 2002</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2002.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2002.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>May 2002</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2002.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2002.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>April 2002</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2002.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2002.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>March 2002</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2002.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2002.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+                                                <tr>
+									<td><b>February 2002</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2002.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2002.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+                                                <tr>
+									<td><b>January 2002</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2002.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2002.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2002.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2002.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+
+								<tr>
+									<td><b>December 2001</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December2001.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December2001.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+
+
+								<tr>
+									<td><b>November 2001</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November2001.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November2001.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+
+								<tr>
+									<td><b>October 2001</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October2001.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October2001.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>September 2001</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September2001.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September2001.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>August 2001</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August2001.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August2001.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>July 2001</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July2001.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July2001.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>June 2001</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2001.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2001.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>May 2001</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2001.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2001.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>April 2001</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2001.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2001.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>March 2001</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2001.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2001.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+
+								<tr>
+									<td><b>February 2001</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2001.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2001.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>January 2001</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2001.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2001.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2001.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2001.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>December 2000</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December2000.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December2000.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>November 2000</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November2000.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November2000.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>October 2000</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October2000.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October2000.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>September 2000</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September2000.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September2000.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>August 2000</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August2000.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August2000.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>July 2000</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July2000.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July2000.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>June 2000</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June2000.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June2000.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>May 2000</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May2000.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May2000.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>April 2000</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April2000.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April2000.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>March 2000</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March2000.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March2000.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>February 2000</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February2000.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February2000.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>January 2000</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January2000.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2000.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January2000.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>December 1999</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December1999.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December1999.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>November 1999</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November1999.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November1999.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>October 1999</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October1999.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October1999.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>September 1999</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September1999.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September1999.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>August 1999</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August1999.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August1999.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>July 1999</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July1999.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July1999.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>June 1999</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June1999.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June1999.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>May 1999</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May1999.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May1999.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>April 1999</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/April1999.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/April1999.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>March 1999</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/March1999.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/March1999.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>February 1999</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/February1999.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/February1999.html">Solution</a></td>
+								</tr>
+								<tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>January 1999</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/January1999.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January1999.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January1999.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/January1999.html">Solution</a></td>
+								</tr>
+                                                <tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>December 1998</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December1998.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December1998.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/December1998.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December1998.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December1998.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/December1998.html">Solution</a></td>
+								</tr>
+                                                <tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>November 1998</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November1998.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November1998.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/November1998.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November1998.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November1998.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/November1998.html">Solution</a></td>
+								</tr>
+                                                <tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>October 1998</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October1998.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October1998.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/October1998.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October1998.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October1998.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/October1998.html">Solution</a></td>
+								</tr>
+                                                <tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>September 1998</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September1998.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September1998.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/September1998.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September1998.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September1998.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/September1998.html">Solution</a></td>
+								</tr>
+                                                <tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>August 1998</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August1998.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August1998.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/August1998.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August1998.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August1998.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/August1998.html">Solution</a></td>
+								</tr>
+                                                <tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>July 1998</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July1998.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July1998.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/July1998.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July1998.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July1998.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/July1998.html">Solution</a></td>
+								</tr>
+                                                <tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>June 1998</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June1998.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June1998.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/June1998.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June1998.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June1998.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/June1998.html">Solution</a></td>
+								</tr>
+                                                <tr><td colspan="3"><hr noshade /></td></tr>
+								<tr>
+									<td><b>May 1998</b></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May1998.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May1998.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/challenges/May1998.html">Challenge</a></td>
+									<td><a href="javascript:if(confirm('http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May1998.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May1998.html'" tppabs="http://domino.research.ibm.com/Comm/wwwr_ponder.nsf/solutions/May1998.html">Solution</a></td>
+								</tr>
+
+							</table>
+		<!--/pagecontent2-->
+						</td>
+						<td>&nbsp;&nbsp;</td>
+					</tr>
+				</table>
+				</p>
+	<!--/pagecontent-->
+	
+			</td>
+	<!-- /pagecontent -->
+		</tr>
+	</table>
+<!-- /mainbody -->
+<!-- footer -->
+<br />
+	<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td class="bbg" height="19"><table border="0" cellpadding="0" cellspacing="0"><tr><td><span class="spacer">&nbsp;&nbsp;&nbsp;&nbsp;</span><a class="mainlink" href="javascript:if(confirm('http://www.ibm.com/ibm/us/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ibm.com/ibm/us/'" tppabs="http://www.ibm.com/ibm/us/">About IBM</a></td><td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a class="mainlink" href="javascript:if(confirm('http://www.ibm.com/privacy/us/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ibm.com/privacy/us/'" tppabs="http://www.ibm.com/privacy/us/">Privacy</a></td><td class="footer-divider" width="27">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a class="mainlink" href="javascript:if(confirm('http://www.ibm.com/contact/us/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ibm.com/contact/us/'" tppabs="http://www.ibm.com/contact/us/">Contact</a></td></tr></table></td></tr></table>
+	<script type="text/javascript" language="JavaScript1.2" src="stats.js" tppabs="http://www.ibm.com/common/stats/stats.js"></script>
+	<noscript><img src="uc.GIF-R=noscript" tppabs="http://stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0"/></noscript>
+<!-- /footer -->
+
+</body>
+</html>

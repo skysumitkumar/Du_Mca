@@ -1,0 +1,57 @@
+<html><head>
+<title>Solution for /arithmetic/consecutive.sums</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/consecutive.sums problem</h1>
+<hr>
+Generalize to find X (and I) such that
+<pre>
+    (X + X+1 + X+2 + ... + X+I) = T
+</pre>
+for any integer T.
+
+<p>
+You are asking for all (X,I) s.t. (2X+I)(I+1) = 2T.  The problem is
+(very) slightly easier if we don't restrict X to being positive, so
+we'll solve this first.
+
+<p>
+Note that 2X+I and I+1 must have different parities, so the answer
+to the relaxed question is N = 2*(o_1+1)*(o_2+1)*...*(o_n+1), where
+2T = 2^o_0*3^o_1*...*p_n^o_n (the prime factorization); this is easily
+seen to be the number of ways we can break 2T up into two positive
+factors of differing parity (with order).
+
+<p>
+In particular, 20000 = 2^5*5^4, hence there are 2*(4+1) = 10 solutions
+for T = 10000.  These are (2X+I,I+1):
+
+<pre>
+(32*1,5^4)   (32*5,5^3)   (32*5^2,5^2)   (32*5^3,5)   (32*5^4,1)
+(5^4,32*1)   (5^3,32*5)   (5^2,32*5^2)   (5,32*5^3)   (1,32*5^4)
+</pre>
+
+And they give rise to the solutions (X,I):
+
+<pre>
+(-296,624)   (18,124)   (388,24)   (1998,4)     (10000,0)
+(297,31)     (-27,179)  (-387,799) (-1997,3999) (-9999,19999)
+</pre>
+
+If you require that X&gt;0 note that this is true iff 2X+I &gt; I+1 and
+hence the number of solutions to this problem is N/2 (due to the
+symmetry of the above ordered pairs).
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

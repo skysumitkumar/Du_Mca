@@ -1,0 +1,199 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Fourier Series</TITLE>
+<META NAME="description" CONTENT="Fourier Series">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node91.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node91.html">
+<LINK REL="previous" HREF="node89.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node89.html">
+<LINK REL="up" HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<LINK REL="next" HREF="node91.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node91.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1634"
+  HREF="node91.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node91.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1628"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1622"
+  HREF="node89.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node89.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1630"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1632"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1635"
+  HREF="node91.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node91.html">The Fourier Matrix</A>
+<B> Up:</B> <A NAME="tex2html1629"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">The Fast Fourier Transform</A>
+<B> Previous:</B> <A NAME="tex2html1623"
+  HREF="node89.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node89.html">Multiplying Polynomials</A>
+ &nbsp <B>  <A NAME="tex2html1631"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1633"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001020000000000000000">
+Fourier Series</A>
+</H1>
+The crucial idea uses a variant of the Fourier transform, which is
+often first met as a way of representing a function in terms of sine
+and cosine of multiples of an angle.  Recall that given <I>f</I> a function
+defined on the interval <!-- MATH
+ $[-\pi,\pi]$
+ -->
+[- <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$">,<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$">], or defined on <!-- MATH
+ $\ensuremath{\mathbb{R}}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img246.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img246.gif"
+ ALT="$\ensuremath{\mathbb{R}}$"> and periodic,
+with period 2<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$">, we define the Fourier coefficients
+<A NAME="8817"></A>
+ of <I>f</I> by
+<!-- MATH
+ \begin{displaymath}
+a_n = \frac{1}{2\pi}\int_{-\pi}^{\pi}f(t)\cos nt\,dt,
+\ensuremath{\qquad\text{and}\qquad}b_n = \frac{1}{2\pi}\int_{-\pi}^{\pi}f(t)\sin nt\,dt.
+\end{displaymath}
+ -->
+<P ALIGN="CENTER"><IMG
+ WIDTH="454" HEIGHT="45" BORDER="0"
+ SRC="img251.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img251.gif"
+ ALT="\begin{displaymath}
+a_n = \frac{1}{2\pi}\int_{-\pi}^{\pi}f(t)\cos nt dt,
+\ensur...
+...d}\qquad}b_n = \frac{1}{2\pi}\int_{-\pi}^{\pi}f(t)\sin nt dt.
+\end{displaymath}"></P>
+For many functions, we can reconstruct <I>f</I> from its Fourier
+coefficients, by using the Fourier series.
+<A NAME="8827"></A>
+In the case of a string <A NAME="8828"></A>
+fixed between two points, and initially held in a shape which is the
+graph of <I>f</I>, the Fourier (sine) coefficients have a physical
+interpretation; they represent the amount of the corresponding
+harmonic in the resulting vibration.
+
+<P>
+A trick often used to unite the Fourier sine and cosine series, even
+for real functions, is to define the complex Fourier coefficient
+<!-- MATH
+ \begin{displaymath}
+c_n = \frac{1}{2\pi}\int_{-\pi}^{\pi}f(t)\exp(-int)\,dt.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>c</I><SUB>n</SUB> = <IMG
+ WIDTH="26" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img249.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img249.gif"
+ ALT="$\displaystyle {\frac{1}{2\pi}}$"><IMG
+ WIDTH="31" HEIGHT="52" ALIGN="MIDDLE" BORDER="0"
+ SRC="img250.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img250.gif"
+ ALT="$\displaystyle \int_{-\pi}^{\pi}$"><I>f</I> (<I>t</I>)exp(- <I>int</I>)&nbsp;d<I>t</I>.
+</DIV><P></P>
+The usual series then follow by taking real and imaginary parts. There
+are many advantages in using this complex form, even though there is a
+less intuitive description for the coefficients.
+
+<P>
+In this section we apply these ideas to the  <A NAME="9371"></A><B>discrete Fourier
+transform</B>,<A NAME="8834"></A> the version which
+applies to a function <I>f</I> defined on the finite set <!-- MATH
+ $\ensuremath{\mathbb{Z}}_n$
+ -->
+<IMG
+ WIDTH="23" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img252.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img252.gif"
+ ALT="$\ensuremath{\mathbb{Z}}_n$">.  As in the
+continuous case, it is helpful to think of the function as being
+periodic, so that <!-- MATH
+ $f(j+n) = f(j)$
+ -->
+<I>f</I> (<I>j</I> + <I>n</I>) = <I>f</I> (<I>j</I>).  The discrete transform has the
+advantage that we no longer have convergence worries; of course a
+finite sum exists, while an integral may not: but it does mean that
+the formulae are less familiar.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1634"
+  HREF="node91.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node91.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1628"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1622"
+  HREF="node89.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node89.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1630"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1632"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1635"
+  HREF="node91.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node91.html">The Fourier Matrix</A>
+<B> Up:</B> <A NAME="tex2html1629"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">The Fast Fourier Transform</A>
+<B> Previous:</B> <A NAME="tex2html1623"
+  HREF="node89.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node89.html">Multiplying Polynomials</A>
+ &nbsp <B>  <A NAME="tex2html1631"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1633"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

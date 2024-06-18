@@ -1,0 +1,346 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <meta name="ProgId" content="Word.Document">
+   <meta name="Generator" content="Microsoft Word 9">
+   <meta name="Originator" content="Microsoft Word 9">
+   <meta name="GENERATOR" content="Mozilla/4.77 [en] (X11; U; SunOS 5.7 sun4u) [Netscape]">
+   <title>Optimal hole</title>
+<link rel=File-List href="javascript:if(confirm('http://www.math.utah.edu/~cherk/holes/Hole-1_files/filelist.xml  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?'))window.location='http://www.math.utah.edu/~cherk/holes/Hole-1_files/filelist.xml'" tppabs="http://www.math.utah.edu/~cherk/holes/Hole-1_files/filelist.xml">
+<link rel=Edit-Time-Data href="javascript:if(confirm('http://www.math.utah.edu/~cherk/holes/Hole-1_files/editdata.mso  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?'))window.location='http://www.math.utah.edu/~cherk/holes/Hole-1_files/editdata.mso'" tppabs="http://www.math.utah.edu/~cherk/holes/Hole-1_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>andrej</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>andrej</o:LastAuthor>
+  <o:Revision>7</o:Revision>
+  <o:TotalTime>24</o:TotalTime>
+  <o:Created>2001-07-07T04:46:00Z</o:Created>
+  <o:LastSaved>2001-07-07T04:57:00Z</o:LastSaved>
+  <o:Pages>5</o:Pages>
+  <o:Words>598</o:Words>
+  <o:Characters>3413</o:Characters>
+  <o:Company>mathematics</o:Company>
+  <o:Lines>28</o:Lines>
+  <o:Paragraphs>6</o:Paragraphs>
+  <o:CharactersWithSpaces>4191</o:CharactersWithSpaces>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:553679495 -2147483648 8 0 66047 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:1.0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	color:red;
+	mso-font-kerning:0pt;}
+h2
+	{mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:1.0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	color:#993300;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+span.MsoFootnoteReference
+	{vertical-align:super;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin-top:0in;
+	margin-right:1.0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:blue;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+	{margin-top:0in;
+	margin-right:1.0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:18.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:blue;
+	font-weight:bold;
+	font-style:italic;}
+p.MsoBlockText, li.MsoBlockText, div.MsoBlockText
+	{margin-top:0in;
+	margin-right:1.0in;
+	margin-bottom:0in;
+	margin-left:.75in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:16.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:red;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoDocumentMap, li.MsoDocumentMap, div.MsoDocumentMap
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	background:navy;
+	font-size:12.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.05in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:883642402;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1821328842 67698703 1034089518 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F06E;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+@list l1
+	{mso-list-id:1681084763;
+	mso-list-type:hybrid;
+	mso-list-template-ids:863259176 -225278564 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+	{mso-level-text:"\(%1\)";
+	mso-level-tab-stop:63.6pt;
+	mso-level-number-position:left;
+	margin-left:63.6pt;
+	text-indent:-27.6pt;
+	mso-ansi-font-size:14.0pt;
+	color:red;
+	mso-ansi-font-weight:bold;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]-->
+<!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+<body text="#000000" bgcolor="#FFFFCC" link="#0000FF" vlink="#800080" alink="#FF0000" lang="EN-US" style="tab-interval:.5in">
+
+<div class=Section1>&nbsp;
+<center>
+<p><font color="#990000">PART II</font></center>
+
+<h2>
+<font color="#990000">Analysis</font></h2>
+
+<ul>
+<li class="MsoNormal" style="margin-top:0in;margin-right:90.6pt;margin-bottom:
+0in;margin-left:.5in;margin-bottom:.0001pt">
+<font color="#990000">(i)</font> Optimal shape depends of loading. Here,
+there is only one parameter of the loading that may influence the solution:
+the ratio<font color="#3333FF"> <b><i><font size=+1>a</font></i></b></font>
+of horizontal and vertical component of the loading: Optimal holes form
+a one-parameter family of shapes.</li>
+</ul>
+
+<ul>
+<li class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt">
+<font color="#990000">(ii) </font>The variational theory (stationary necessary
+conditions) predicts that the energy density is constant everywhere on
+the boundary of an optimal hole. This condition implies that</li>
+</ul>
+
+<ol>
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt">
+<blockquote><b><font color="#3333FF">(1)&nbsp;&nbsp;&nbsp; Absolute value
+of tension is constant on the boundary of an optimal hole.</font></b></blockquote>
+</div>
+</ol>
+
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt"><font color="#990000">Remark.</font>
+Notice that here we are dealing with a <i><font color="#3333FF">free boundary
+problem</font></i>: The boundary of the domain is not specified; instead,
+the additional requirement <b><font color="#3333FF">(1)
+</font></b>is posed.</div>
+
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:list .75in">&nbsp;
+<h2>
+<font color="#990000">Solutions</font></h2>
+</div>
+
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:list .75in">Next,
+we find the geometrical shapes that satisfy the condition&nbsp; <b><font color="#3333FF">(1)</font>
+.</b></div>
+
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:list .75in">&nbsp;</div>
+
+<h2>
+<font color="#990000">A. Loadings of the same sign</font></h2>
+
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:list 1.0in">&nbsp;</div>
+
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;tab-stops:list 1.0in">A
+hole that has a constant tension on its boundary satisfies equation <b><font color="#3333FF">(1)</font></b></div>
+
+<div class="MsoNormal" style="margin-right:1.0in;text-indent:.5in">It is
+not too difficult to <b><font color="#3333FF"><font size=+1>guess</font>
+</font></b>solutions of this type:</div>
+
+<p><br>
+<hr WIDTH="100%">
+<div class="MsoNormal" style="margin-right:1.0in"><b><i>The circle is optimal
+if the loading is even from all directions <font size=+1>( V=H) </font>.
+</i></b>In
+this case,<font color="#3333FF"><font size=+1> <b><i>a=1</i></b></font></font><b><i>.</i></b></div>
+
+<br>&nbsp;
+<blockquote>
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.75in;margin-bottom:.0001pt"><img SRC="IMAGE009.GIF" tppabs="http://www.math.utah.edu/~cherk/holes/IMAGE009.GIF" v:shapes="_x0000_i1029" height=207 width=228></div>
+</blockquote>
+
+<p><br>
+<hr WIDTH="100%">
+<div class="MsoNormal" style="margin-right:1.0in"><b><i>The ellipse is
+optimal if the loading is uneven <font size=+1>( 0&lt;H&lt; V) .</font></i></b>In
+this case,<font color="#3333FF"><font size=+1> <b><i>0 &lt; a &lt; 1.</i></b></font></font></div>
+
+<br>&nbsp;
+<blockquote>
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.75in;margin-bottom:.0001pt"><img SRC="IMAGE011.GIF" tppabs="http://www.math.utah.edu/~cherk/holes/IMAGE011.GIF" v:shapes="_x0000_i1030" height=208 width=228></div>
+</blockquote>
+
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt">&nbsp;
+<br>The optimal ellipse is oriented so that its smaller axis is parallel
+to the direction of minimal loading</div>
+
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt">and
+<font color="#CC0000">the
+ratio of its axes is equal to </font><b><i><font color="#3333FF"><font size=+1>a</font></font></i></b>.</div>
+
+<p><br>
+<hr WIDTH="100%">A crack-like inclusion is optimal if the loading is applied
+from only one side <b><i><font color="#3366FF"><font size=+1>( 0=V&lt;
+H)</font></font></i></b>. In this case, <b><i><font color="#3333FF"><font size=+1>a
+= 0.</font></font></i></b>
+<br>&nbsp;
+<blockquote>
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.75in;margin-bottom:.0001pt"><img SRC="IMAGE013.GIF" tppabs="http://www.math.utah.edu/~cherk/holes/IMAGE013.GIF" v:shapes="_x0000_i1031" height=207 width=170></div>
+</blockquote>
+
+<p><br><i>So far, the problem has an elegant classical solution...</i>
+<center>
+<p><a href="part3.html" tppabs="http://www.math.utah.edu/~cherk/holes/part3.html">To the third part&nbsp;</a><a href="part3.html" tppabs="http://www.math.utah.edu/~cherk/holes/part3.html"><img SRC="IMAGE001.GIF" tppabs="http://www.math.utah.edu/~cherk/holes/IMAGE001.GIF" BORDER=0 v:shapes="_x0000_i1036" height=62 width=78></a></center>
+</div>
+
+<div style='mso-element:footnote-list'>&nbsp;</div>
+
+</body>
+</html>
+
+
+
+
+
+

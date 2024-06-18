@@ -1,0 +1,158 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Traversals</TITLE>
+<META NAME="description" CONTENT="Traversals">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node58.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node58.html">
+<LINK REL="previous" HREF="node56.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node56.html">
+<LINK REL="up" HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">
+<LINK REL="next" HREF="node58.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node58.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1141"
+  HREF="node58.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node58.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1135"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1129"
+  HREF="node56.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node56.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1137"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1139"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1142"
+  HREF="node58.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node58.html">Binary Trees</A>
+<B> Up:</B> <A NAME="tex2html1136"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">Trees</A>
+<B> Previous:</B> <A NAME="tex2html1130"
+  HREF="node56.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node56.html">The ADT tree</A>
+ &nbsp <B>  <A NAME="tex2html1138"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1140"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00722000000000000000">
+Traversals</A>
+</H2>
+It is often convenient to a single list containing all the nodes in a
+tree.  This list may correspond to an order in which the nodes should
+be visited when the tree is being searched.  We define three such
+lists here, the <A NAME="5022"></A><B>preorder</B>, <A NAME="5024"></A><B>postorder</B> and
+<A NAME="5026"></A><B>inorder</B> traversals of the tree.  The definitions themselves
+are recursive:
+
+<P>
+
+<UL>
+<LI>if <I>T</I> is the empty tree, then the empty list is the preorder,
+the inorder and the postorder traversal associated with <I>T</I>;
+</LI>
+<LI>if <I>T</I> = [<I>N</I>] consists of a single node, the list [<I>N</I>] is the preorder,
+the inorder and the postorder traversal associated with <I>T</I>;
+</LI>
+<LI>otherwise, <I>T</I> contains a root node <I>n</I>, and subtrees <!-- MATH
+ $T_1,
+\ldots, T_n$
+ -->
+<I>T</I><SUB>1</SUB>,..., <I>T</I><SUB>n</SUB>: and 
+
+<UL>
+<LI>the <I>preorder</I> traversal of the nodes of <I>T</I> is the list containing
+<I>N</I>, followed, in order by the preorder traversals of <!-- MATH
+ $T_1\ldots,
+T_n$
+ -->
+<I>T</I><SUB>1</SUB>..., <I>T</I><SUB>n</SUB>;
+</LI>
+<LI>the <I>inorder</I> traversal of the nodes of <I>T</I> is the list
+containing the inorder traversal of <I>T</I><SUB>1</SUB> followed by <I>N</I> followed in
+order by the inorder traversal of each of <!-- MATH
+ $T_2, \ldots, T_n$
+ -->
+<I>T</I><SUB>2</SUB>,..., <I>T</I><SUB>n</SUB>.
+</LI>
+<LI>the <I>postorder</I> traversal of the nodes of <I>T</I> is the list
+containing in order the postorder traversal of each of <!-- MATH
+ $T_1, \ldots,
+T_n$
+ -->
+<I>T</I><SUB>1</SUB>,..., <I>T</I><SUB>n</SUB>, followed by <I>N</I>.
+</LI>
+</UL>
+</LI>
+</UL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1141"
+  HREF="node58.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node58.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1135"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1129"
+  HREF="node56.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node56.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1137"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1139"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1142"
+  HREF="node58.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node58.html">Binary Trees</A>
+<B> Up:</B> <A NAME="tex2html1136"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">Trees</A>
+<B> Previous:</B> <A NAME="tex2html1130"
+  HREF="node56.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node56.html">The ADT tree</A>
+ &nbsp <B>  <A NAME="tex2html1138"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1140"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,426 @@
+
+<HTML>
+<HEAD>
+<TITLE>CRACK THE INTERVIEW - Solve the Rat In A Maze problem using backtracking.  (www.cracktheinterview.com)</TITLE><style type="text/css">
+<!--
+.breakhere     {page-break-before: always}
+
+A:link         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+A:active       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+A:visited      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+
+H1             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt; font-weight:bold; color:#336699} 
+H2             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; font-weight:bold} 
+.normal        {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+.announce      {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#000000} 
+.announceLink  {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#336699} 
+.note          {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt ! important; font-weight:normal} 
+.system        {font-family:Courier New, Courier; font-size:x-small;
+                font-weight:normal} 
+.stayblue      {color:#336699 ! important}
+.title         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:larger ! important} 
+.error         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; color:#aa0000; font-weight:bold} 
+.notelink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:normal;
+                font-size:9pt ! important} 
+.tableHeader   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableHeaderSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRow      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#f7f7e7} 
+.tableBlank    {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#ffffff} 
+.hardlink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:bold;
+                font-size:8pt ! important} 
+.boxlink       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#000000 ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.hardnote      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:black ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.tableRowSmall {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal} 
+.tableRowSmallBold {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                bold} 
+.blueHeading   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:bold;
+                color:#336699! important} 
+.blueHeadingLarge {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:16pt! important; font-weight:normal;
+                color:#336699} 
+.blueHeadingMid {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:normal;
+                color:#336699}
+.blueHeadingSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt! important; font-weight:bold;
+                color:#336699} 
+.tableHeaderV  {font-family:Verdana,Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRowV     {font-family:Verdana,Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal; background-color:#f7f7e7} 
+.just          {text-align: justify}
+-->
+</style>
+
+<META NAME="keywords" CONTENT="interview,C,rat in a maze,rat,maze,backtracking,backtrack">
+<META NAME="description" CONTENT="Solve the Rat In A Maze problem using backtracking. ">
+<META NAME="robots" CONTENT="FOLLOW,INDEX">
+<META HTTP-EQUIV="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+
+</HEAD>
+<BODY>
+<TABLE BORDER=0 cellpadding=10>
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER><A HREF="index.htm" tppabs="http://www.cracktheinterview.com/"><IMG SRC="logo2.jpg" tppabs="http://www.cracktheinterview.com/images/logo2.jpg" border=0></img></A></CENTER></TD>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2>
+<CENTER>
+
+
+<!--START:ADS0-->
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"
+  src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+
+</CENTER>
+</TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER>
+
+<!--START:LINKS-->
+
+
+<TABLE BORDER=0 cellpadding=10>
+<TR><TD NOWRAP>
+<A HREF="index.htm" tppabs="http://www.cracktheinterview.com/" target="_top"><font class=announcelink>Home</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="adfaqpublish.html" tppabs="http://www.cracktheinterview.com/adfaqpublish.html" target="_top"><font class=announcelink>Questions</font></A><BR>
+</TD>
+
+
+<TD NOWRAP>
+<A href="search.html" tppabs="http://www.cracktheinterview.com/search.html" target="_top"><font class=announcelink>Search</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="index-1.htm" tppabs="http://www.cracktheinterview.com/forum" target="_top"><font class=announcelink>Forum</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="mailto:cracktheinterview@gmail.com?subject=Hi!"><font class=announcelink>Contact</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="viewforum.php-f=2.htm" tppabs="http://www.cracktheinterview.com/forum/viewforum.php?f=2" target="_top"><font class=announcelink>Guest Book</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="viewforum.php-f=3.htm" tppabs="http://www.cracktheinterview.com/forum/viewforum.php?f=3" target="_top"><font class=announcelink>Polls!</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="viewforum.php-f=4.htm" tppabs="http://www.cracktheinterview.com/forum/viewforum.php?f=4" target="_top"><font class=announcelink>Got a Question?</font></A><BR>
+</TD>
+
+</TABLE>
+
+<!--END-->
+
+</CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER> &nbsp; </CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=90%% valign=top>
+
+
+
+
+
+<!--START : DATA-->
+
+
+
+<TABLE BORDER=0>
+
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="2_10.html" tppabs="http://www.cracktheinterview.com/pages/2_10.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=blueHeading>Programs</font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="2_12.html" tppabs="http://www.cracktheinterview.com/pages/2_12.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD>
+<TD WIDTH=90%%><CENTER><font class=blueHeading>(38 / 268)</font></center></TD>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%></TD>
+<TD WIDTH=90%%><center>&nbsp;</center></TD>
+<TD WIDTH=5%%></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=announceLink><BR><BR><BR>
+<!--THE QUESTION-->
+
+Solve the Rat In A Maze problem using backtracking. <BR>
+<!--END-->
+<BR></font></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=normal>
+<!--THE ANSWER--><BR>
+<!--META:START--><!--interview,C,rat in a maze,rat,maze,backtracking,backtrack--><!--META:END--><BR>
+<BR>
+This is one of the <font class=announcelink>classical</font> problems of computer science. There is a <font class=announcelink>rat</font> trapped in a maze. There are multiple paths in the maze from the starting point to the ending point. There is some <font class=announcelink>cheese</font> at the exit. The <font class=announcelink>rat</font> starts from the entrance of the maze and wants to get to the <font class=announcelink>cheese</font>. <BR>
+<BR>
+This problem can be attacked as follows. <BR>
+<BR>
+<UL><BR>
+<LI>Have a m*m matrix which represents the maze.<BR>
+<LI>For the sake of simplifying the implementation, have a boundary around your matrix and fill it up with all ones. This is so that you know when the rat is trying to go out of the boundary of the maze. In the real world, the rat would know not to go out of the maze, but hey! So, initially the matrix (I mean, the maze) would be something like (the ones represent the "exra" boundary we have added). The ones inside specify the obstacles.<BR>
+<BR>
+<CODE><BR>
+111111111111111111111<BR>
+100000000000000000001<BR>
+100000010000000000001<BR>
+100000010000000000001<BR>
+100000000100001000001<BR>
+100001000010000000001<BR>
+100000000100000000001<BR>
+100000000000000000001<BR>
+111111111111111111111<BR>
+</CODE><BR>
+<BR>
+<LI>The rat can move in four directions at any point in time (well, right, left, up, down). Please note that the rat can't move diagonally. Imagine a real maze and not a matrix. In matrix language<BR>
+  <UL><BR>
+    <LI>Moving right means adding {0,1} to the current coordinates.<BR>
+    <LI>Moving left means adding {0,-1} to the current coordinates.<BR>
+    <LI>Moving up means adding {-1,0} to the current coordinates.<BR>
+    <LI>Moving right means adding {1,0} to the current coordinates.<BR>
+  </UL><BR>
+<LI> The rat can start off at the first row and the first column as the entrance point.<BR>
+<LI> From there, it tries to move to a cell which is currently free. A cell is free if it has a zero in it.<BR>
+<LI> It tries all the 4 options one-by-one, till it finds an empty cell. If it finds one, it moves to that cell and marks it with a 1 (saying it has visited it once). Then it continues to move ahead from that cell to other cells.<BR>
+<LI> If at a particular cell, it runs out of all the 4 options (that is it cant move either right, left, up or down), then it needs to backtrack. It backtracks till a point where it can move ahead and be closer to the exit.<BR>
+<LI>If it reaches the exit point, it gets the cheese, ofcourse.<BR>
+<LI>The complexity is O(m*m).<BR>
+</UL><BR>
+<BR>
+Here is some pseudocode to chew upon<BR>
+<BR>
+<CODE><BR>
+findpath()<BR>
+{<BR>
+&nbsp;&nbsp;Position&nbsp;offset[4];<BR>
+&nbsp;&nbsp;Offset[0].row=0;&nbsp;offset[0].col=1;//right;<BR>
+&nbsp;&nbsp;Offset[1].row=1;&nbsp;offset[1].col=0;//down;<BR>
+&nbsp;&nbsp;Offset[2].row=0;&nbsp;offset[2].col=-1;//left;<BR>
+&nbsp;&nbsp;Offset[3].row=-1;&nbsp;offset[3].col=0;//up;<BR>
+<BR>
+&nbsp;&nbsp;//&nbsp;Initialize&nbsp;wall&nbsp;of&nbsp;obstacles&nbsp;around&nbsp;the&nbsp;maze<BR>
+&nbsp;&nbsp;for(int&nbsp;i=0;&nbsp;i&lt;m+1;i++)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;maze[0][i]&nbsp;=&nbsp;maze[m+1][i]=1;&nbsp;maze[i][0]&nbsp;=&nbsp;maze[i][m+1]=1;<BR>
+<BR>
+&nbsp;&nbsp;Position&nbsp;here;<BR>
+&nbsp;&nbsp;Here.row=1;<BR>
+&nbsp;&nbsp;Here.col=1;<BR>
+<BR>
+&nbsp;&nbsp;maze[1][1]=1;<BR>
+&nbsp;&nbsp;int&nbsp;option&nbsp;=&nbsp;0;<BR>
+&nbsp;&nbsp;int&nbsp;lastoption&nbsp;=&nbsp;3;<BR>
+<BR>
+&nbsp;&nbsp;while(here.row!=m&nbsp;||&nbsp;here.col!=m)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Find&nbsp;a&nbsp;neighbor&nbsp;to&nbsp;move<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;r,c;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(option&lt;=LastOption)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r=here.row&nbsp;+&nbsp;offset[position].row;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c=here.col&nbsp;+&nbsp;offset[option].col;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(maze[r][c]==0)break;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;option++;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Was&nbsp;a&nbsp;neighbor&nbsp;found?<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(option&lt;=LastOption)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path->Add(here);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;here.row=r;here.col=c;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maze[r][c]=1;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;option=0;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(path->Empty())return(False);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Position&nbsp;&nbsp;next;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Path->Delete(next);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If(new.row==here.row)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Option=2+next.col&nbsp;-&nbsp;here.col;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Else&nbsp;{&nbsp;option&nbsp;=&nbsp;3&nbsp;+&nbsp;next.row&nbsp;-&nbsp;here.col;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Here=next;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return(TRUE);<BR>
+&nbsp;&nbsp;}<BR>
+}<BR>
+</CODE> 
+<BR><BR>
+<!--END-->
+</font><BR></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="2_10.html" tppabs="http://www.cracktheinterview.com/pages/2_10.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=notelink><A href="mailto:cracktheinterview@gmail.com?subject=Comments [Solve the Rat In A Maze problem using backtracking. ]&Body=Question : [Solve the Rat In A Maze problem using backtracking. ]"><font class=announcelink>COMMENTS</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><A HREF="adfaqpublish.html" tppabs="http://www.cracktheinterview.com/adfaqpublish.html">INDEX</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><a href="#" onclick="window.print();return false;">PRINT</a></font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="2_12.html" tppabs="http://www.cracktheinterview.com/pages/2_12.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<BR><BR><BR><font class=notelink>
+Last updated:
+
+July 8, 2005<BR><BR>
+<a href="index.htm" tppabs="http://www.cracktheinterview.com/">www.cracktheinterview.com</a> - Your destination for the most common IT interview questions, answers, frequently asked interview questions (FAQ), C Programs, C Datastructures for interviews conducted by Microsoft, Oracle, Google, IBM, HP, Yahoo, Infosys, Wipro, SAP, CA (Computer Associates), Sun, Adobe, GE, Novell, Cisco, Motorola, TI (Texas Instruments), Intel, TCS, iFlex, Trilogy, MindTree, GS and more...<br><BR>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+
+<!--END-->
+
+
+</TD>
+
+
+
+
+<TD WIDTH=10%% valign="top">
+
+
+<!--START:ADS1-->
+
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_alternate_color = "CCCCCC";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript" src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"  src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+</TD>
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+</BODY>
+</HTML>
+
+

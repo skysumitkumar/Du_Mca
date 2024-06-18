@@ -1,0 +1,3087 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0046)http://www.faqs.org/faqs/kerberos-faq/general/ -->
+<HTML><HEAD><TITLE>Kerberos FAQ, v2.0 (last modified 8/18/2000)</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type><LINK 
+href="mailto:faq-admin@faqs.org" rev=made>
+<META content="MSHTML 5.00.2614.3500" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff text=#000000>
+<DIV align=center><SMALL><A 
+href="http://www.faqs.org/faqs/kerberos-faq/general/preamble.html">MultiPage</A> 
+</SMALL><BR>
+<HR noShade SIZE=2 width=600>
+
+<P>
+<H1>Kerberos FAQ, v2.0 (last modified 8/18/2000)</H1>
+<HR noShade SIZE=2 width=600>
+</DIV><PRE>Message-ID: &lt;kerberos-faq/general_1024393669@rtfm.mit.edu&gt;
+Supersedes: &lt;kerberos-faq/general_1021801510@rtfm.mit.edu&gt;
+Expires: 1 Aug 2002 09:47:49 GMT
+X-Last-Updated: 2000/08/18
+Newsgroups: <A href="news:comp.protocols.kerberos">comp.protocols.kerberos</A>,<A href="news:comp.answers">comp.answers</A>,<A href="news:news.answers">news.answers</A>
+From: Ken Hornstein &lt;<A href="mailto:kenh@cmf.nrl.navy.mil">kenh@cmf.nrl.navy.mil</A>&gt;
+Subject: Kerberos FAQ, v2.0 (last modified 8/18/2000)
+Followup-To: <A href="news:comp.protocols.kerberos">comp.protocols.kerberos</A>
+Organization: Naval Research Laboratory, Computational Meta-Facility
+Summary: This is the list of Frequently Asked Questions about the Kerberos
+        security protocol.  It should be read by anyone who has questions
+        about Kerberos or wants to learn more about it.
+Date: 18 Jun 2002 09:50:07 GMT
+X-Trace: 1024393807 senator-bedfellow.mit.edu 3929 18.181.0.29
+
+Archive-name: kerberos-faq/general
+Posting-Frequency: monthly
+URL: <A href="http://www.nrl.navy.mil/CCS/people/kenh/kerberos-faq.html">http://www.nrl.navy.mil/CCS/people/kenh/kerberos-faq.html</A>
+Copyright: (c) 2000 United States Government as represented by the
+        Secretary of the Navy. All rights reserved.
+
+Table of Contents:
+
+   * 0. Introduction
+
+   * 1. General information about Kerberos
+        o 1.1. What is Kerberos?
+        o 1.2. Where does the name "Kerberos" come from?
+        o 1.3. Hey! I remember my Greek mythology, and I thought the dog
+          that guarded the entrance was called Cerberus! What gives?
+        o 1.4. Where can I find out more information about Kerberos?
+        o 1.5. What is the latest version of Kerberos available from MIT?
+        o 1.6. Are there any other free version of Kerberos available?
+        o 1.7. What are the differences between Kerberos Version 4 and
+          Version 5?
+        o 1.8. What are the differences between AFS Kerberos and "normal"
+          Kerberos?
+        o 1.9. What is the format of principals?
+        o 1.10. How are realms named? Do they really have to be uppercase?
+        o 1.11. What is ASN.1?
+        o 1.12. I see the acronyms TGT and TGS used a lot. What do they
+          mean?
+        o 1.13. What is the export status of Kerberos?
+        o 1.14. What is a "Kerberos client", "Kerberos server", and
+          "application server"?
+        o 1.15. I use software package &lt;foo&gt;, and it claims it supports
+          Kerberos. What does that mean?
+        o 1.16. What is cross-realm authentication?
+        o 1.17. Are there security risks involved in cross-realm
+          authentication?
+        o 1.18. Are there any known weaknesses in Kerberos?
+        o 1.19. What is preauthentication?
+        o 1.20. Why do I need to synchronize my system clocks to run
+          Kerberos?
+        o 1.21. What computer vendors support Kerberos?
+        o 1.22. Can I use Kerberos 4 clients with Kerberos 5? How about the
+          reverse?
+        o 1.23. What is a "key salt"? "kvno"?
+        o 1.24. Does Kerberos support multi-homed machines?
+        o 1.25. What is "user to user" authentication?
+        o 1.26. What are forwardable tickets?
+        o 1.27. What are renewable tickets?
+        o 1.28. What are postdatable tickets?
+        o 1.29. What are the advantages/disadvantages of Kerberos vs. SSL?
+        o 1.30. What are proxiable tickets?
+   * 2. Administration questions
+        o 2.1. Okay, I'm the administrator of a site, and I'd like to run
+          Kerberos. What do I need to do?
+        o 2.2. What sort of resources do I need to dedicate to a KDC?
+        o 2.3. What programs/files need to go on each application server?
+        o 2.4. What programs/files need to go on each client?
+        o 2.5. There's a lot of stuff in the krb5.conf and kdc.conf files.
+          What does it all mean, and what do I really need?
+        o 2.6. How do I change the master key?
+        o 2.7. How do I set up slave servers?
+        o 2.8. What do I need to do to make V4 clients work with my V5 KDC?
+        o 2.9. I just added a host key to a machine with ktadd, and the kvno
+          got incremented! What just happened?
+        o 2.10. How do I run kadmin from a shell script unattended?
+        o 2.11. I can't use kadmin to talk to the admin server of another
+          realm. What am I doing wrong?
+        o 2.12. We run AFS at our site currently. Is there a way we can run
+          Kerberos along with AFS?
+        o 2.13. Employee &lt;X&gt; just left the company, and he had root on our
+          KDC. What should I do?
+        o 2.14. How should I configure my DNS for Kerberos?
+        o 2.15. What do I need to do to setup cross-realm authentication?
+        o 2.16. Can I configure the admin server to reject bad passwords?
+        o 2.17. Is there a hook I can use to do further password checking?
+        o 2.18. How come the "Last xxx" fields in the Kerberos database
+          don't seem to get updated?
+        o 2.19. What does krb524d do? Do I need to run it?
+        o 2.20. What is v5passwdd? Do I need to run it?
+        o 2.21. How do a rename a principal?
+        o 2.22. What is the difference between the "-a valid" and the "-a
+          user" flags for telnetd?
+        o 2.23. I already have a standard Unix password database for my user
+          population. Can I convert this to a Kerberos password database?
+        o 2.24. Can I have multiple realms on a single KDC?
+        o 2.25. What is the kadm5.acl file?
+   * 3. User and application questions
+        o 3.1. What happens when my tickets expire?
+        o 3.2. How do I run a cron job with Kerberos authentication?
+        o 3.3. How do I use renewable tickets?
+        o 3.4. What is the .k5login file, and how do I use it?
+        o 3.5. I've hear Microsoft will support Kerberos in Windows 2000. Is
+          that true?
+        o 3.6. How can I be authenticated as two different principals at the
+          same time?
+        o 3.7. How come Kerberos rlogin works to a machine, but when I use
+          Kerberos telnet I'm still asked for a password?
+        o 3.8. How do I use Kerberos telnet/rlogin to connect to a system as
+          a userid other than my current one?
+        o 3.9. Is there any way to do Kerberos authentication across the
+          WWW?
+        o 3.10. Is there a way to use Kerberos to authenticate my X windows
+          connections? I tried compiling the Kerberos support in X, but it
+          didn't work.
+        o 3.11. I need to use Kerberos through a firewall. What does my
+          firewall administrator need to do?
+   * 4. Error messages and other problems.
+        o 4.1. "No such file or directory"
+        o 4.2. "Decrypt integrity check failed"
+        o 4.3. "Cannot find/read stored master key"
+        o 4.4. "Incorrect net address"
+        o 4.5. "Initial Ticket response appears to be Version 4 error"
+        o 4.6. "Message stream modified"
+        o 4.7. "Illegal cross-realm ticket"
+        o 4.8. "Couldn't authenticate to server: Bad sendauth version was
+          sent"
+        o 4.9. When I try using Kerberos ftp, it doesn't work, but it says,
+          "No error".
+        o 4.10. When I telnet from a Linux machine to a Solaris machine with
+          Kerberos and hit Ctrl-C, the connection hangs.
+   * 5. Programming with Kerberos.
+        o 5.1. How do I start programming with Kerberos?
+        o 5.2. What is GSSAPI?
+        o 5.3. What is SASL?
+        o 5.4. Is there a reference for the Kerberos API?
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 0. Introduction
+
+Welcome to the Kerberos FAQ! The intent of this document is to answer many
+of the recurring questions that appear on the <A href="mailto:kerberos@mit.edu">kerberos@mit.edu</A> mailing list,
+as well as the <A href="news:comp.protocols.kerberos">comp.protocols.kerberos</A> newsgroup. It is also intended to
+serve as a repository of information for people who want to know more about
+the Kerberos authentication system.
+
+In general, this FAQ deals with the freely available MIT releases of
+Kerberos. If a question deals specifically with another implementation of
+Kerberos, then it will be explicitly mentioned.
+
+Questions and comments should be directed to the FAQ maintainer, Ken
+Hornstein, &lt;<A href="mailto:kenh@cmf.nrl.navy.mil">kenh@cmf.nrl.navy.mil</A>&gt;.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1. General information about Kerberos
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.1 What is Kerberos?
+
+From &lt;<A href="http://web.mit.edu/kerberos/www/">http://web.mit.edu/kerberos/www/</A>&gt;
+
+     Kerberos is a network authentication protocol. It is designed to
+     provide strong authentication for client/server applications by
+     using secret-key cryptography. A free implementation of this
+     protocol is available from the Massachusetts Institute of
+     Technology. Kerberos is available in many commercial products as
+     well.
+
+     The Internet is an insecure place. Many of the protocols used in
+     the Internet do not provide any security. Tools to "sniff"
+     passwords off of the network are in common use by systems
+     crackers. Thus, applications which send an unencrypted password
+     over the network are extremely vulnerable. Worse yet, other
+     client/server applications rely on the client program to be
+     "honest" about the identity of the user who is using it. Other
+     applications rely on the client to restrict its activities to
+     those which it is allowed to do, with no other enforcement by the
+     server.
+
+     Some sites attempt to use firewalls to solve their network
+     security problems. Unfortunately, firewalls assume that "the bad
+     guys" are on the outside, which is often a very bad assumption.
+     Most of the really damaging incidents of computer crime are
+     carried out by insiders. Firewalls also have a significant
+     disadvantage in that they restrict how your users can use the
+     Internet. (After all, firewalls are simply a less extreme example
+     of the dictum that there is nothing more secure then a computer
+     which is not connected to the network --- and powered off!) In
+     many places, these restrictions are simply unrealistic and
+     unacceptable.
+
+     Kerberos was created by MIT as a solution to these network
+     security problems. The Kerberos protocol uses strong cryptography
+     so that a client can prove its identity to a server (and vice
+     versa) across an insecure network connection. After a client and
+     server have used Kerberos to prove their identity, they can also
+     encrypt all of their communications to assure privacy and data
+     integrity as they go about their business.
+
+     Kerberos is freely available from MIT, under a copyright
+     permission notice very similar to the one used for the BSD
+     operating and X11 Windowing system. MIT provides Kerberos in
+     source form, so that anyone who wishes to use it may look over the
+     code for themselves and assure themselves that the code is
+     trustworthy. In addition, for those who prefer to rely on a
+     professional supported product, Kerberos is available as a product
+     from many different vendors.
+
+     In summary, Kerberos is a solution to your network security
+     problems. It provides the tools of authentication and strong
+     cryptography over the network to help you secure your information
+     systems across your entire enterprise. We hope you find Kerberos
+     as useful as it has been to us. At MIT, Kerberos has been
+     invaluable to our Information/Technology architecture.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.2. Where does the name "Kerberos" come from?
+
+The name Kerberos comes from Greek mythology; it is the three-headed dog
+that guarded the entrance to Hades.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.3. Hey! I remember my Greek mythology, and I thought the dog that
+	guarded the entrance was called Cerberus! What gives?
+
+I personally wonder about this myself. I have seen references in "The
+Devil's Dictionary" that claim it is Kerberos, but when I checked this
+myself I only found the "Cerberus" variant.
+
+I never actually heard of the "Kerberos" spelling/pronunciation until I got
+involved with Kerberos myself.
+
+From: Tom Yu &lt;<A href="mailto:tlyu@MIT.EDU">tlyu@MIT.EDU</A>&gt;
+
+     "Cerberus" is the Latin spelling of the Greek "Kerberos", and
+     according to the OED is pronounced like "serberus", but that is
+     quite at odds with the Greek, as the initial consonant is a "k".
+     MIT Project Athena chose to use the Greek spelling and
+     pronunciation.
+
+From: Jan Sacharuk &lt;<A href="mailto:Jan.Sacharuk@cul.ca">Jan.Sacharuk@cul.ca</A>&gt;
+
+     Tom Yu is correct, Cerberus is the Latin spelling. However, the
+     fact that the OED says that the 'c' is pronounced as an 's' is an
+     English affectation. In Latin, the letter 'c' is always hard. So
+     Cerberus is pronounced 'Ker-ber-ous'. The letter 'u' is also
+     slightly different, making it somewhere in between 'oos' and
+     'ous'.
+
+From: Michael A. Covington &lt;<A href="mailto:Michael@CovingtonInnovations.com">Michael@CovingtonInnovations.com</A>&gt;
+
+     "Kerberos" is the original Greek name. In Latin, the letter K is
+     not normally used, and in Roman times, C always represented the K
+     sound. Also, "-os" is a Greek suffix (nominative masculine
+     singular) whose nearest equivalent in Latin is the suffix "-us"
+     (very familiar in Latin names). That's why the name goes into
+     Latin as Cerberus.
+
+     (See, a Ph.D. in linguistics is good for something! :)
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.4. Where can I find out more information about Kerberos?
+
+If you're new to Kerberos, I would suggest you read:
+
+   * Bill Bryant, "Designing an Authentication System: A Dialogue in Four
+     Scenes."
+     &lt;<A href="http://web.mit.edu/kerberos/www/dialogue.html">http://web.mit.edu/kerberos/www/dialogue.html</A>&gt;
+
+     A cute explanation of Kerberos protocol, in plain English. Technobabble
+     is kept to a minimum.
+
+   * Jeffrey I. Schiller, "Secure Distributed Computing", Scientific
+     American, November 1994, pp 72-76.
+
+     An excellent overview that covers all of the important details of the
+     Kerberos protocol. It also explains how it's used at MIT as a "real
+     world" example. This article could be useful in persuading manager
+     droids that Kerberos is a good thing.
+
+   * J. G. Steiner, B. Clifford Neuman, and J.I. Schiller, "Kerberos: An
+     Authentication Service for Open Network Systems".
+     &lt;<A href="ftp://athena-dist.mit.edu/pub/kerberos/doc/usenix.PS">ftp://athena-dist.mit.edu/pub/kerberos/doc/usenix.PS</A>&gt;
+
+     The original paper describing Kerberos. A good general overview. It
+     describes the encryption notation used by many other Kerberos papers,
+     so it is definitely worth reading if you want to read other Kerberos
+     papers.
+
+   * Brian Tung, "The Moron's Guide to Kerberos"
+     &lt;<A href="http://www.isi.edu/~brian/security/kerberos.html">http://www.isi.edu/~brian/security/kerberos.html</A>&gt;
+
+     Despite the title, goes into a fair amount of detail. I would suggest
+     reading this after you have read one or more of the higher-level
+     papers.
+
+The MIT Kerberos web page &lt;<A href="http://web.mit.edu/kerberos/www/">http://web.mit.edu/kerberos/www/</A>&gt; has many links
+pointing to Kerberos resources.
+
+One of the best tutorials for Kerberos is Jim Rowe's, "How To Kerberize Your
+Site", which is available at:
+
+   * &lt;<A href="http://www.y12.doe.gov/~jar/HowToKerb.html">http://www.y12.doe.gov/~jar/HowToKerb.html</A>&gt;
+
+There is an RFC for Kerberos 5: <A href="http://www.faqs.org/rfcs/rfc1510.html">RFC 1510</A>, which is available at:
+
+&lt;<A href="http://www.ietf.org/rfc/rfc1510.txt">http://www.ietf.org/rfc/rfc1510.txt</A>&gt;
+
+But it is a rather difficult read unless you already know a lot about how
+Kerberos works.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.5. What is the latest version of Kerberos available from MIT?
+
+The latest version of Kerberos 4 from MIT is patchlevel 10. You can get it
+by reading &lt;<A href="ftp://athena-dist.mit.edu/pub/kerberos/README.KRB4">ftp://athena-dist.mit.edu/pub/kerberos/README.KRB4</A>&gt; and
+following the directions in that file.
+
+Kerberos 4 is officially considered "dead" by MIT; all current development
+is concentrated on Kerberos 5.
+
+The latest version of Kerberos 5 is 1.2.1. You can get it from the following
+location:
+
+http
+     Go to the Kerberos web page &lt;<A href="http://web.mit.edu/kerberos/www/">http://web.mit.edu/kerberos/www/</A>&gt;, select
+     the link marked, "Release 1.2", and from there, select "Retrieving".
+
+Note that only U.S. &amp; Canadian citizens can legally download Kerberos from
+MIT. However, Kerberos 5 is available for ftp from:
+&lt;<A href="ftp://ftp.ox.ac.uk/pub/comp/security/software/Kerberos5">ftp://ftp.ox.ac.uk/pub/comp/security/software/Kerberos5</A>&gt;
+
+I have no idea if it is legal for non-US residents to download Kerberos from
+this ftp site.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.6. Are there any other free version of Kerberos available?
+
+Cygnus Solutions has announced the release of KerbNet 1.2. This is based on
+the MIT 1.0pl1 release, but with a number of enhancements. You can find out
+more information about KerbNet at &lt;<A href="http://www.cygnus.com/technie/kerbnet/">http://www.cygnus.com/technie/kerbnet/</A>&gt;.
+
+The Center for Parallel Computers at the Royal Institute of Technology in
+Stockholm, Sweden have a version of eBones (Bones with crypto calls added
+back in). This is a version of Kerberos 4 that is exportable to other
+countries (assuming that your country allows you to import cryptographic
+software). It is available at
+
+&lt;<A href="ftp://ftp.pdc.kth.se/pub/krb">ftp://ftp.pdc.kth.se/pub/krb</A>&gt;.
+
+A web page for KTH krb4 is available at:
+
+   * &lt;<A href="http://www.pdc.kth.se/kth-krb">http://www.pdc.kth.se/kth-krb</A>&gt;
+
+There is also work at the Center for Parallel Computers to create a freely
+available version of Kerberos 5 called Heimdal. Mailing lists to discuss
+Heimdal are are available at:
+
+   * &lt;<A href="mailto:heimdal-announce@sics.se">heimdal-announce@sics.se</A>&gt; - low-volume announcement only, moderated
+   * &lt;<A href="mailto:heimdal-discuss@sics.se">heimdal-discuss@sics.se</A>&gt; - high-volume discussion
+
+Send email to &lt;<A href="mailto:majordomo@sics.se">majordomo@sics.se</A>&gt; to subscribe to either one of these
+mailing lists.
+
+A web page for heimdal is also available at:
+
+&lt;<A href="http://www.pdc.kth.se/heimdal/">http://www.pdc.kth.se/heimdal/</A>&gt;
+
+As of this writing, the latest release is 0.03a.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.7. What are the differences between Kerberos Version 4 and
+	Version 5?
+
+The paper "The Evolution of the Kerberos Authentication System" is a very
+good description of the limitations of Kerberos 4 and what changes were made
+in Kerberos 5. This paper is available from
+&lt;<A href="ftp://athena-dist.mit.edu/pub/kerberos/doc/krb_evol.PS">ftp://athena-dist.mit.edu/pub/kerberos/doc/krb_evol.PS</A>&gt;.
+
+However, here is a quick list of the more important changes:
+
+   * The key salt algorithm has been changed to use the entire principal
+     name.
+   * The network protocol has been completely redone and now uses ASN.1
+     encoding everywhere.
+   * There is now support for forwardable, renewable, and postdatable
+     tickets.
+   * Kerberos tickets can now contain multiple IP addresses and addresses
+     for different types of networking protocols.
+   * A generic crypto interface module is now used, so other encryption
+     algorithms beside DES can be used.
+   * There is now support for replay caches, so authenticators are not
+     vulnerable to replay.
+   * There is support for transitive cross-realm authentication.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.8. What are the differences between AFS Kerberos and "normal"
+	Kerberos?
+
+The Kerberos used in AFS (formerly known as the Andrew File System) was
+developed from the Kerberos 4 papers, but before the protocol was
+formalized.
+
+As a result, AFS Kerberos uses the RX protocol for all communication between
+the clients and database servers (which function as KDCs in Kerberos
+termology)
+
+The standard AFS clients that perform authentication discard the TGT after
+they acquire an AFS service ticket. This means that you can't get tickets
+for other services using your AFS token.
+
+It is possible to use regular Kerberos instead of AFS Kerberos. For more
+information, see Question 2.12.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.9. What is the format of principals?
+
+In Kerberos 4, a principal was divided into three parts:
+
+  1. The principal name
+  2. An optional instance
+  3. The Kerberos realm
+
+Kerberos 4 principals are written in the following format:
+
+name.instance@realm
+
+Kerberos 5 principals are written in a slightly different format:
+
+component/component/component@realm
+
+The terms "name" and "instance" are still used for the first and the second
+components respectively.
+
+Note that in both Kerberos 4 and Kerberos 5, the way that principals are
+encoded into strings have nothing to do with the way they are stored
+internally in Kerberos.
+
+There is an established convention as to how principals are named.
+Generally, you will encounter three different types of principals.
+
+  1. A principal without an instance. This is used for users, with the
+     username being used as the principal name. Some examples:
+
+     <A href="mailto:kenh@CMF.NRL.NAVY.MIL">kenh@CMF.NRL.NAVY.MIL</A>
+     <A href="mailto:tytso@ATHENA.MIT.EDU">tytso@ATHENA.MIT.EDU</A>
+
+  2. A principal with a hostname for an instance. This is used to
+     distinguish between the same service on different machines. Some
+     examples:
+
+     <A href="mailto:host/foo.bar.org@BAR.ORG">host/foo.bar.org@BAR.ORG</A>
+     <A href="mailto:ftp/blah.bar.org@BAR.ORG">ftp/blah.bar.org@BAR.ORG</A>
+
+  3. A principal with a unique instance that is not a hostname. For these
+     principals the instance has other significance.
+
+     <A href="mailto:krbtgt/BAR.ORG@BAR.ORG">krbtgt/BAR.ORG@BAR.ORG</A>
+     <A href="mailto:krbtgt/FOO.ORG@BAR.ORG">krbtgt/FOO.ORG@BAR.ORG</A>
+
+While the specification for Kerberos 5 allows more than two components, in
+practice this is not used.
+
+The two most important differences between Kerberos 4 principals and
+Kerberos 5 principals are:
+
+  1. The instance separator in Kerberos 4 is a period (.) where in Kerberos
+     5 the instance separator is a forward slash (/).
+  2. In principals where the hostname is used as the instance, the "short"
+     hostname (without a domain name) is used as the instance for Kerberos
+     4. In Kerberos 5, the fully qualified domain name is used as the
+     instance.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.10. How are realms named? Do they really have to be uppercase?
+
+In theory, the realm name is arbitrary. You can call your realm whatever you
+want.
+
+However, in practice a Kerberos realm is named by uppercasing the DNS domain
+name associated with the hosts in the to-be named realm. In other words, if
+your hosts are all in the foo.org domain, you might call your Kerberos realm
+FOO.ORG.
+
+If you wish to have more than one Kerberos realm associated with the same
+DNS domain name, the convention is to create realms that are in the same
+hierarchy of your DNS domain name. For example, if you wish to have two
+Kerberos realms in the DNS domain foo.org for Human Resources and Sales, you
+might create the Kerberos realms HR.FOO.ORG and SALES.FOO.ORG.
+
+The convention to use uppercase for realms names arose out of the desire to
+easily distinguish between DNS domain names (which are actually
+case-insensitive) and Kerberos realms. The Kerberos realm name is case
+sensitive (the realm foo.org is different than the realm FOO.ORG). You are
+not required to have an uppercase Kerberos realm, but I would strongly
+advise it.
+
+It is worth noting that the recent revisions to the Kerberos standard have
+specified that uppercase realm names are preferred and lowercase realm names
+have been depreciated.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.11. What is ASN.1?
+
+ASN.1 is short for Abstract Syntax Notation One. It is a notation for
+describing abstract types and values. Using ASN.1, one can describe the
+format of complex objects by putting together more simpler types.
+
+However, ASN.1 does not specify how these objects are encoded into strings
+of ones and zeros. For that, you must use a set of encoding rules. The two
+most common encoding rules are the Basic Encoding Rules (BER) and the
+Distinguished Encoding Rules (DER). The only difference between BER and DER
+is that there are multiple ways to encode objects in the BER, but the DER is
+a subset of the BER such that there is only one possible way to encode each
+object.
+
+Kerberos 5 uses ASN.1 and the DER to encode and decode all of the Kerberos
+protocol messages. Unless you are planning on adding to the Kerberos
+protocol itself, you don't really need to worry about ASN.1 at all.
+
+If you wish to learn more about ASN.1, I would suggest reading:
+
+   * Burton S. Kaliski Jr., "A Layman's Guide to a Subset of ASN.1, BER, and
+     DER"
+     &lt;<A href="ftp://ftp.rsa.com/pub/pkcs/ps/layman.ps">ftp://ftp.rsa.com/pub/pkcs/ps/layman.ps</A>&gt;
+   * Brian Tung, "ASN.1: Wherefore Art Thou?"
+     &lt;<A href="http://www.isi.edu/~brian/security/asn1.html">http://www.isi.edu/~brian/security/asn1.html</A>&gt;
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.12. I see the acronyms TGT and TGS used a lot. What do they mean?
+
+TGT is the acronym for a "Ticket Granting Ticket".
+
+TGS is the acronym for the "Ticket Granting Service".
+
+While it may seen that the two acronyms are used interchangeably, they refer
+to two very different things. The Ticket Granting Ticket is a Kerberos
+ticket for the Ticket Granting Service. Both play a special role in
+Kerberos.
+
+When a user first authenticates to Kerberos, he talks to the Authentication
+Service on the KDC to get a Ticket Granting Ticket. This ticket is encrypted
+with the user's password.
+
+When the user wants to talk to a Kerberized service, he uses the Ticket
+Granting Ticket to talk to the Ticket Granting Service (which also runs on
+the KDC). The Ticket Granting Service verifies the user's identity using the
+Ticket Granting Ticket and issues a ticket for the desired service.
+
+The reason the Ticket Granting Ticket exists is so a user doesn't have to
+enter in their password every time they wish to connect to a Kerberized
+service or keep a copy of their password around. If the Ticket Granting
+Ticket is compromised, an attacker can only masquerade as a user until the
+ticket expires.
+
+The documentation in Question 1.4 explains all of this in further detail.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.13. What is the export status of Kerberos?
+
+This is a topic of much discussion, and it appears that there is no clear
+answer. Your best bet is to contact a lawyer for a definitive answer. But if
+you're willing to listen to "educated guesses", read on.
+
+The recent US Government relaxation of export controls has caused much
+discussion on this topic. The current belief is that under the new
+regulations, Kerberos source code can be exported everywhere, except for the
+so-called "T7" countries (countries that are defined by the US State
+Department as being terrorist countries).
+
+The definitive source for the exact regulations is the Bureau of Export
+Administration, and their web site is at:
+&lt;<A href="http://www.bxa.doc.gov/Encryption/">http://www.bxa.doc.gov/Encryption/</A>&gt;
+
+Specifically, if you look at the Encryption License Exemption Chart,
+&lt;<A href="http://www.bxa.doc.gov/Encryption/lechart1.htm">http://www.bxa.doc.gov/Encryption/lechart1.htm</A>&gt;
+
+you can see that under "Unrestricted, encryption source code (open source
+code)" that the only restriction is to not knowingly export to T7 countries.
+
+The official response from MIT with respect to the export status of Kerberos
+5 is that they have contacted their legal staff, and they have not yet given
+them an answer.
+
+However, Question 1.5 does list a non-US ftp site for Kerberos 5. The
+legality of downloading Kerberos from this site is unknown.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.14. What is a "Kerberos client", "Kerberos server", and
+	"application server"?
+
+In Kerberos, all authentication takes place between clients and servers. So
+in Kerberos termology, a "Kerberos client" is any entity that gets a service
+ticket for a Kerberos service. A client is typically a user, but any
+principal can be a client (unless for some reason the administrator has
+explicitly forbidden this principal to be a client).
+
+The term "Kerberos server" generally refers to the Key Distribution Center,
+or the KDC for short. The KDC implements the Authentication Service (AS) and
+the Ticket Granting Service (TGS). The KDC has a copy of every password
+associated with every principal. For this reason, it is absolutely vital
+that the KDC be as secure as possible.
+
+Most KDC implementations store the principals in a database, so you may hear
+the term "Kerberos database" applied to the KDC.
+
+For reliability purposes, it is possible to have backup KDCs. These are
+referred to as slave servers. The slaves all synchronize their databases
+from the master KDC.
+
+In most Kerberos implementations there is also an administration server
+which allows remote manipulation of the Kerberos database. This
+administration server usually runs on the KDC.
+
+The term "application server" generally refers to Kerberized programs that
+clients communicate with using Kerberos tickets for authentication. For
+example, the Kerberos telnet daemon (telnetd) is an example of an
+application server.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.15. I use software package &lt;foo&gt;, and it claims it supports
+	Kerberos. What does that mean?
+
+Unfortunately, "supporting Kerberos" can mean a number of things.
+
+The most basic level of Kerberos support is verifying a plaintext password
+against the Kerberos database. Depending on the application, this may or may
+not be secure. For example, since the Unix xlock application is designed to
+verify passwords and (hopefully) is only run from on your local workstation,
+verifying passwords against a Kerberos database is perfectly adequate.
+However, if you have a POP server that verifies the PASS command by checking
+the password against a Kerberos database, that is NOT secure, because the
+password will travel over the network in the clear.
+
+There are different levels of password verification, however. Unless a
+program that does plaintext password verification uses the acquired TGT to
+get a service ticket for a locally trusted service (that is, with the key in
+a keytab on local disk), then an attacker can spoof the client with a TGT
+encrypted in a known password.
+
+The next level of Kerberos support is a "true" Kerberized application that
+uses Kerberos tickets to verify identity and/or encrypt data. This is the
+way that Kerberos was designed to function, and it provides the highest
+level of security that Kerberos has to offer. Unfortunately, relatively few
+applications support Kerberos to this degree.
+
+If you use an application that claims to support Kerberos, you should find
+out exactly what this means and determine if that is appropriate for your
+environment. If you use Kerberos primarily as a single-signon system, then
+having a POP server that verifies plaintext passwords against a Kerberos
+database may be acceptable to you.
+
+All of the Unix replacement commands that come with the MIT Kerberos
+distributions (telnet, ftp, rlogin, rsh, etc), are "true" Kerberized
+applications.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.16. What is cross-realm authentication?
+
+Any Kerberos principal can authenticate to other principals within the same
+Kerberos realm. However, it is also possible to configure a Kerberos realm
+so principals in one realm can authenticate to principals in another realm.
+This is called cross-realm authentication.
+
+The way this is implemented is the KDCs in the two realms share a special
+cross-realm secret, and this secret is used to prove the identity of
+principals when crossing the boundary between realms.
+
+Kerberos 5 supports an additional variant of this called transitive
+cross-realm authentication. In traditional cross-realm authentication, each
+pair of realms that wish to authenticate need to share a cross-realm secret.
+This means in a group of N realms, 2 * ((N - 1) ** 2) secrets will need to
+be exchanged in order to cover all possible cross-realm authentication
+paths.
+
+In transitive cross-realm authentication you can define a path of realms
+connected via cross-realm secrets and use this path to "hop" between realms
+until you get credentials in the desired realm.
+
+Information on configuring cross-realm authentication can be found in the
+answer to Question 2.15
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.17. Are there security risks involved in cross-realm
+	authentication?
+
+When you set up a cross-realm secret, you are in essence trusting the remote
+KDC to only issue cross-realm tickets for the correct users. If you do not
+trust the foreign KDC then all principals from the foreign realm are
+suspect.
+
+However, a realm which you share a cross-realm secret with cannot acquire a
+ticket for a user in your local realm; a foreign KDC can only cause tickets
+to be issued that identify users from the foreign realm (in other words,
+there's no way a KDC can cause a ticket to be generated for a principal in a
+realm other than it's own).
+
+All of the daemons that come with the MIT Kerberos 5 release do not trust
+principals in foreign realms by default; you have to explicitly enable them
+using ACLs. So as long as foreign-realm principals are not on any ACLs in
+your realm, there isn't a risk.
+
+If you do decide to place foreign-realm principals on ACLs, you will have to
+remember that the security of that principal depends on the security of the
+foreign realm.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.18. Are there any known weaknesses in Kerberos?
+
+Kerberos makes no provisions for host security; it assumes that it is
+running on trusted hosts with an untrusted network. If your host security is
+compromised, then Kerberos is compromised as well.
+
+However, the degree to which Kerberos is compromised depends on the host
+that is compromised. If an attacker breaks into a multi-user machine and
+steals all of the tickets stored on that machine, he can impersonate the
+users who have tickets stored on that machine .... but only until those
+tickets expire.
+
+Kerberos uses a principal's password (encryption key) as the fundamental
+proof of identity. If a user's Kerberos password is stolen by an attacker,
+then the attacker can impersonate that user with impunity.
+
+Since the KDC holds all of the passwords for all of the principals in a
+realm, if host security on the KDC is compromised, then the entire realm is
+compromised.
+
+In Kerberos 4, authenticators are valid for 5 minutes. If an attacker sniffs
+the network for authenticators, they have a 5 minute window in which they
+can re-use it and gain access to the same service you used. Kerberos 5
+introduced a replay cache which prevents any authenticator from being used
+more than once.
+
+Since anybody can request a TGT for any user, and that ticket is encrypted
+with the user's secret key (password), it is simple to perform a offline
+attack on this ticket by trying to decrypt it with different passwords.
+Kerberos 5 introduced preauthentication to solve this problem.
+
+A excellent critique of Kerberos is:
+
+   * S. M. Bellovin and M. Merritt. "Limitations of the Kerberos
+     Authentication System"
+     &lt;<A href="ftp://research.att.com/dist/internet_security/kerblimit.usenix.ps">ftp://research.att.com/dist/internet_security/kerblimit.usenix.ps</A>&gt;
+
+It was written for Kerberos 4, but has an appendix which also covers
+Kerberos 5.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.19. What is preauthentication?
+
+As mentioned in Question 1.18, one weakness in Kerberos is the ability to do
+an offline dictionary attack by requested a TGT for a user and just trying
+different passwords until you find one that decrypts the TGT successfully.
+
+One way of preventing this particular attack is to do what is known as
+preauthentication. This means to simply require some additional
+authentication before the KDC will issue you a TGT.
+
+The simplest form of preauthentication is known as PA-ENC-TIMESTAMP. This is
+simply the current timestamp encrypted with the user's key.
+
+There are various other types of preauthentication, but not all versions of
+Kerberos 5 support them all.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.20. Why do I need to synchronize my system clocks to run
+	Kerberos?
+
+The actual verification of a client's identity is done by validating an
+authenticator. The authenticator contains the client's identity and a
+timestamp.
+
+To insure that the authenticator is up-to-date and is not an old one that
+has been captured by an attacker, the timestamp in the authenticator is
+checked against the current time. If the timestamp is not close enough to
+the current time (typically within five minutes) then the authenticator is
+rejected as invalid. Thus, Kerberos requires your system clocks to be
+loosely synchronized (the default is 5 minutes, but it can be adjusted in
+Version 5 to be whatever you want).
+
+The paper:
+
+   * Don Davis, Daniel Geer, and Theodore Ts'o, "Kerberos With Clocks
+     Adrift: History, Protocols, and Implementation"
+     &lt;<A href="http://world.std.com/~dtd/synch/synch.ps">http://world.std.com/~dtd/synch/synch.ps</A>&gt;
+
+explains a way for Kerberos principals to securely determine the time
+without having to rely on a external time source. This is implemented for
+clients only in the Kerberos 5 release. With this in place, clients do not
+need to synchronize their system clocks to use Kerberos; however,
+application servers need to.
+
+Note that it is possible to use the above technique for application servers
+as well as clients; it is just not currently implemented that way.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.21. What vendors support Kerberos?
+
+Please note that this is by no means a definitive list; I am only listing
+the ones that I know about. Corrections to this list are especially welcome.
+
+A number of software vendors sell versions of Kerberos, or provide support
+for Kerberos:
+
+   * CyberSafe sells and supports Kerberos 4 and Kerberos 5 with their
+     TrustBroker product. In additional to normal Kerberos passwords,
+     TrustBroker also supports the use of PKINIT authentication using public
+     key certificates.
+
+     You can find out more information from &lt;<A href="http://www.cybersafe.com/">http://www.cybersafe.com/</A>&gt;.
+
+   * WRQ Inc. supports Kerberos on Win32 platforms with their Reflection
+     Secure and Reflection Signature products. This includes a telnet client
+     that does Kerberos 5 authentication and a graphical FTP client which
+     supports Kerberos 5 (GSSAPI) authentication, data integrity, and
+     privacy.
+
+     You can find out more information from &lt;<A href="http://www.wrq.com/">http://www.wrq.com/</A>&gt;.
+
+   * Hummingbird Communications Ltd. supports Kerberos on Win32 platforms
+     with their HostExplorer product. This includes a telnet client that
+     does Kerberos 4 authentication and encryption.
+
+     You can find out more information from &lt;<A href="http://www.hummingbird.com/">http://www.hummingbird.com/</A>&gt;.
+
+   * Columbia University's Kermit Project supports Kerberos 4 and Kerberos 5
+     in Kermit 95 for Windows 95/98/NT and in C-Kermit for Unix. Kermit's
+     scripting language can be used to automate a variety of ticket
+     management tasks. Kerberos authentication and DES encryption applies to
+     telnet connections.
+
+     The Internet Kermit Service daemon (C-Kermit 7.0) supports Kerberos for
+     automated client authentication.
+
+     For further information see &lt;<A href="http://www.kermit-project.org/">http://www.kermit-project.org/</A>&gt;.
+
+In additional to independent vendors, a number of computer vendors have
+integrated Kerberos into some of their products:
+
+   * Sun ships a basic set of Kerberos 4 utilities with Solaris (kinit,
+     klist, kdestroy), and the RPC that comes with Solaris supports a
+     Kerberos 4 authentication mechanism.
+
+     Sun has also announced a complete Kerberos 5 product that will also act
+     as a Microsoft KDC. This product is available world-wide with 56 bit
+     DES with no key recovery/escrow requirements.
+
+     For the press release on this product announcement, see
+     &lt;<A href="http://www.sun.com/smi/Press/sunflash/9907/sunflash.990719.1.html">http://www.sun.com/smi/Press/sunflash/9907/sunflash.990719.1.html</A>&gt;.
+
+     For more specific documentation, please see
+     &lt;<A href="http://docs.sun.com/ab2/coll.384.1/@Ab2CollView">http://docs.sun.com/ab2/coll.384.1/@Ab2CollView</A>&gt;.
+   * Cisco routers support Kerberos 5 authentication for incoming and
+     outgoing telnet connections. It was broken for a very long time, but I
+     have heard reports that it's fixed now. However, ticket forwarding (as
+     of last report) is still broken.
+   * Microsoft has stated that they will support some version of Kerberos 5
+     in Windows 2000.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.22. Can I use Kerberos 4 clients with Kerberos 5? How about the
+	reverse?
+
+The MIT Kerberos 5 release can speak the Kerberos 4 protocol, assuming it
+was built with the --with-krb4 option (which is the default). So with a
+little work (see Question 2.8) you should be able to use all Kerberos 4
+programs with your Kerberos 5 KDC and application servers.
+
+However, since the protocol is so different, there is really no way to make
+Kerberos 5 clients work with Kerberos 4 application servers and KDCs.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.23. What is a "key salt"? "kvno"?
+
+To understand a key salt, it's important to remember that in Kerberos you
+prove your identity by being able to decrypt or encrypt data using an
+encryption key that you share with the KDC.
+
+However, a 56-bit DES key is hard for humans to remember. So, whenever a
+person enters in their "Kerberos password", it is really converted to a
+encryption key by a function called string2key(). This function converts the
+plaintext password via a one-way hash algorithm to an encryption key. In
+Kerberos 4 this is always a DES key. In Kerberos 5 it could be a key for
+algorithms other than DES (but currently DES is still the most widely used
+algorithm in Kerberos 5).
+
+The string2key() function takes an optional argument called the key salt.
+This is an additional input to the one-way hash algorithm. If a salt is
+supplied, it is concatenated to the plaintext password and the resulting
+string is converted using the one-way hash algorithm.
+
+In Kerberos 4, a salt was never used. The password was the only input to the
+one-way hash function. This has a serious disadvantage; if a user happens to
+use the same password in two Kerberos realms, a key compromise in one realm
+would result in a key compromise in the other realm.
+
+In Kerberos 5 the complete principal name (including the realm) is used as
+the salt. This means that the same password will not result in the same
+encryption key in different realms or with two different principals in the
+same realm.
+
+AFS uses a different string2key algorithm than Kerberos 4 and Kerberos 5,
+and uses the Kerberos realm name (not the cell name) as the key salt.
+
+The MIT Kerberos 5 KDC stores the key salt algorithm along with the
+principal name, and that is passed back to the client as part of the
+authentication exchange. This means that if you convert your Kerberos
+database from Kerberos 4 to Kerberos 5, Kerberos 5 clients can use the
+correct string2key algorithm to convert your password to the matching
+encryption key. The same is true with AFS, and the AFS-Kerberos 5 migration
+kit comes with tools to let you do this (see Question 2.12 for more
+information).
+
+It's worth pointing out that this is only an issue for the cases when you
+need to convert a plaintext password to an encryption key. Programs that
+deal directly with encryption keys (such as application servers) never deal
+with plaintext passwords, and as a result this is not an issue with them.
+
+The term "kvno" is simply an acronym for "Key version number". To help
+distinguish between multiple keys associated with the same principal (for
+example, if a user changes his password), each key is assigned a key version
+number. Key version numbers typically start at zero when the principal is
+first created and are incremented by one every time the password/encryption
+key is changed.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.24. Does Kerberos support multi-homed machines?
+
+In both Kerberos 4 and Kerberos 5, a machine's network address is part of
+the ticket information. This address is used as an additional check to make
+sure the ticket hasn't been stolen and is being used on another machine.
+
+In Kerberos 4, there was room for only one IP address in the ticket, which
+did not work with multihomed machines. KTH krb4 includes some hacks to make
+it work with Kerberos 4.
+
+Kerberos 5 supports multiple IP addresses in a ticket, thus allowing
+Kerberos 5 tickets to deal with multi-homed machines. However, doing so
+requires careful configuration of your DNS server. Question 2.14 explains
+this in further detail.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.25. What is "user to user" authentication?
+
+From: Don Davis &lt;<A href="mailto:dtd@world.std.com">dtd@world.std.com</A>&gt;
+
+     User-to-user authentication is a special Kerberos application
+     protocol, that allows users to host secure application services on
+     their desktop machines. It is increasingly common for users to
+     offer desktop services that merit secure authentication, such as
+     nfs and ftp. When users configure their desktop servers with a
+     long-lived srvtab key, this long-lived key becomes a very
+     attractive target for theft. User-to-user authentication enables a
+     user to run a server without keeping a long-lived key on disk.
+     Instead, the user's short-lived TGS session-key takes the place of
+     the usual srvtab secret key, in the server's authentication
+     handshakes.
+
+     Authentication in Kerberos happens between a client and server.
+     The client gets a ticket for a service, and the server decrypts
+     this ticket using its secret key. This works fine for a
+     physically- secure server, which keeps its secret key on its local
+     disk. But, storing the server's key on disk doesn't work for
+     services that run on users' desktop machines, since no-one should
+     keep a long-lived secret key on an insecure disk drive.
+
+     The solution to this problem is called user-to-user
+     authentication, and it is implemented in Kerberos 5. In the
+     user-to-user protocol, one user acts as a server, and the other
+     user acts as a client. at the client-user's request, the
+     server-user sends his TGT (but not his session key) to the
+     client-user, who then gets credentials from the KDC, encrypted
+     with the session keys of both TGTs. Both users can decrypt the new
+     session-key and use it to verify each other's identity. The
+     advantage of the U2U scheme is that the server-user exposes only
+     his short-lived TGS session-key to theft; he keeps his long-lived
+     secret, his password, in his biological memory. An attacker is
+     less likely to bother to steal a short-lived server-key. However,
+     U2U's downside is that the desktop server cannot operate
+     autonomously; the service-operator has to refresh his TGT in order
+     for the server to keep accepting clients' requests.
+
+     Applications have to handle user-to-user authentication as a
+     special case; Kerberos 5 does not offer an API that hides the
+     difference between desktop servers and physically-secure servers.
+     For this reason, very few services currently support the
+     user-to-user protocol. The user-to-user protocol was originally
+     designed for authenticating X-windows sessions, where the server
+     usually runs on an insecure desktop machine. See Question 3.10 for
+     more information on this.
+
+The motivation and theory behind user to user authentication is described in
+the paper:
+
+   * Don Davis, Ralph Swick, "Workstation Services and Kerberos
+     Authentication at Project Athena"
+     &lt;<A href="ftp://athena-dist.mit.edu/pub/ATHENA/kerberos/doc/user2user.ps">ftp://athena-dist.mit.edu/pub/ATHENA/kerberos/doc/user2user.ps</A>&gt;
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.26. What are forwardable tickets?
+
+Inside of the Kerberos ticket is encoded the IP address of the client. This
+is used by application servers and the KDC to verify the address of the
+client. This means that a ticket that was acquired on one host cannot be
+used on another.
+
+Kerberos 5 introduced the concept of forwardable tickets. During the initial
+TGT acquisition, a client can request that the ticket be marked forwardable.
+If the KDC chooses to honor this request (the administrator has the option
+of disallowing forwardable tickets on a per-site or per-principal basis),
+the TKT_FLG_FORWARDABLE flag will be set in the flags field in the ticket.
+
+Once the TKT_FLG_FORWARDABLE flag is set on a ticket, the user can use this
+ticket to request a new ticket, but with a different IP address. Thus, a
+user can use their current credentials to get credentials valid on another
+machine.
+
+In the MIT Kerberos 5 release, all of the remote login programs (telnet,
+rlogin, rsh) support forwarding a user's TGT to the remote system.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.27. What are renewable tickets?
+
+One practical problem with Kerberos is that the tickets eventually expire. A
+practical balance has to be made between the desire to reduce the usefulness
+of stolen tickets (short lifetime) versus the ease-of-use for the user (long
+lifetime).
+
+This problem becomes a much larger issue when dealing with long-running user
+processes. Jobs run on some supercomputer systems can run for days or weeks,
+but having tickets that last that long can be a security nightmare.
+
+The compromise for this problem that was introduced in Kerberos 5 is the
+support for renewable tickets. Renewable tickets have expiration times, like
+normal tickets. However, they also have a maximum renewable lifetime.
+
+A renewable ticket can be renewed by asking the KDC for a new ticket with an
+extended lifetime. However, the ticket itself has to be valid (in other
+words, you cannot renew a ticket that has expired; you have to renew it
+before it expires). A renewable ticket can be renewed up until the maximum
+renewable ticket lifetime.
+
+This scheme has two important advantages over long-lived tickets:
+
+  1. It reduces the window of usefulness for stolen tickets. If an attacker
+     gets access to a renewable ticket after it has expired, then it is
+     useless.
+  2. After a user is finished with a renewable ticket, he can notify the KDC
+     that he no longer needs the ticket, and the KDC will refuse to renew
+     this ticket any more (note that although this is in the protocol, I
+     don't think any version of Kerberos actually implements this part).
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.28. What are postdatable tickets?
+
+Normally, a ticket is valid starting from the time you request it until it
+expires.
+
+However, there may be some cases where a user would like a ticket that is
+valid some time in the future. For example, a user may wish to run a batch
+job next week, but your maximum ticket lifetime is only one day.
+
+To accommodate this need, Kerberos 5 introduced postdatable tickets. These
+are tickets which are initially invalid, and have a starting time some time
+in the future.
+
+To use a postdatable ticket, the user must send it back to the KDC to have
+it validated during the ticket's valid lifetime.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.29. What are the advantages/disadvantages of Kerberos vs. SSL?
+
+From: Jonathan Kamens &lt;<A href="mailto:jik@kamens.brookline.ma.us">jik@kamens.brookline.ma.us</A>&gt;
+
+     In brief, the question seems to be, "What does Kerberos give me
+     that SSL doesn't?"
+
+     That question is specific case of the general question, "What are
+     the advantages and disadvantages of a private-key,
+     trusted-third-party authentication system vs. a public-key,
+     certificate-based authentication system?"
+
+     As I see it, SSL has two major advantages over Kerberos: (1) It
+     doesn't require an accessible trusted third party; (2) it can be
+     used to establish a secure connection even when one end of the
+     connection doesn't have a "secret" (a.k.a. "key" or "password").
+     These two advantages make it ideal for secured Web communication
+     and for similar applications where there is a large user base
+     which is not known in advance.
+
+     [ Here are some disadvantages of SSL: ]
+
+     1) Key revocation. If a Verisign certificate issued to a user is
+     compromised and must be revoked, how will all the servers with
+     whom that user interacts know that the certificate is no longer
+     valid? Either revocation certificates have to be circulated to all
+     relevant servers and cached for a long time, or servers have to
+     verify incoming user certificates against a "revocation server."
+     In that case, the revocation server must be a highly available
+     third party, which means you've eliminated one of the two major
+     advantages of SSL over Kerberos. Kerberos principals can be
+     disabled at will on the KDC and will then become unusable as soon
+     as any cached tickets expire, on the order of hours, without any
+     action by servers.
+
+     2) Key security. If I'm issued a Verisign certificate, it has to
+     live on my hard disk. Yes, it may be encrypted there such that I
+     have to unlock it with a password before I can use it, but it's
+     still on the hard disk and therefore vulnerable to cracking
+     attacks. On the other hand, I don't need any sort of certificate
+     to authenticate to Kerberos -- all I need is my password, which is
+     in my brain, not on a hard disk.
+
+     3) Cost of use. Kerberos doesn't infringe on any patents. Which
+     means that it can be used for free, while SSL users may have to
+     pay.
+
+     4) Open standards. Kerberos has been free from the beginning. The
+     standards documenting it are open and have been developed openly
+     from the start. On the other hand, SSL was developed by a company
+     with a commercial interest in ensuring that its standards become
+     THE standard. Let's just say that Netscape is not exactly known
+     for "playing by the rules" when it comes to developing Internet
+     standards.
+
+     5) Flexibility. I'm under the impression, although I may be wrong
+     (if so, I hope someone will correct me), that Kerberos is somewhat
+     more flexible than SSL. For example, if I want to add a new
+     authentication technology to Kerberos (e.g., a new kind of
+     SmartCard with its own algorithm), all I have to do is modify my
+     KDC and my ticket-acquiring client to know how to do the new
+     authentication. Then, it can be used to get Kerberos tickets which
+     will look the same as any other Kerberos tickets and will be
+     usable with any Kerberos-capable application. On the other hand,
+     if I want to implement a new authentication technology for SSL, I
+     believe I'd have to get new versions of all my SSL-capable
+     applications.
+
+     I'm probably forgetting some advantages and disadvantages of
+     Kerberos and SSL, but my object here isn't to be comprehensive. My
+     point is that there are applications for which SSL is superior to
+     Kerberos and vice versa.
+
+Another good reference for comparing public-key cryptography to symmetric
+key systems like Kerberos can be found at:
+
+   * Don Davis, "Compliance Defects in Public-Key Cryptography"
+     &lt;<A href="http://world.std.com/~dtd/compliance/compliance.ps">http://world.std.com/~dtd/compliance/compliance.ps</A>&gt;
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 1.30. What are proxiable tickets?
+
+As discussed in Question 1.26, Kerberos tickets contain the IP addresses of
+hosts they are to be used on.
+
+In addition to forwardable tickets, Kerberos 5 introduce the concept of
+proxiable tickets. A proxiable ticket is a ticket (generally only a TGT)
+that allows you to get a ticket for a service with IP addresses other than
+the ones in the TGT.
+
+This is different than forwardable tickets in that you cannot proxy a new
+TGT from your current TGT; you can only proxy non-TGT service tickets. In
+other words, forwardable tickets let you transfer your complete identity
+(TGT) to another machine, where proxy tickets only let you transfer
+particular tickets.
+
+In general practice, proxiable tickets are not used that often.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2. Administration questions
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.1. Okay, I'm the administrator of a site, and I'd like to run
+	Kerberos. What do I need to do?
+
+An excellent question!
+
+Please note that this information applies to the MIT Kerberos 5 release. If
+you're using one of the commercial versions of Kerberos, then you should
+consult the documentation that came with it.
+
+First, you should read at least some of the documentation in Question 1.4.
+You will find that administrating Kerberos is much easier once you
+understand the fundamentals.
+
+Once you feel you understand the basics, you should download the software
+from MIT. You can get it from any of the places listed in Question 1.5. Note
+that Kerberos is usually distributed as three tar files containing the src,
+doc, and crypto directories; you'll want to download all three tar files.
+
+The doc directory contains three important files that you'll want to read:
+the Kerberos installation guide, the Kerberos administration guide, and the
+Kerberos user's guide. The first one you'll need to read is the installation
+guide.
+
+After you have everything downloaded, you should compile the Kerberos
+distribution. If you don't have the space or would rather not, binary
+snapshots of Kerberos are available from the Kerberos web site mentioned in
+Question 1.5 for some of the more popular versions of Unix.
+
+If you're compiling Kerberos yourself, the installation guide explains how
+to do it, and lists most of the options you can give to configure program.
+Unless you have special needs the defaults are usually sufficient.
+
+Building the MIT Kerberos 5 distribution requires GNU make. I have not had
+success with any vendor's make.
+
+Once Kerberos is built, you should follow the instructions in the install
+guide for Chapter 4: "Installing Kerberos 5".
+
+Unfortunately, it is difficult to give specific directions on how to deploy
+Kerberos at your site, since every site is different. The deployment of
+Kerberos at your site may have political issues that are beyond the scope of
+this FAQ :-).
+
+A fair amount of practical advice can be found at:
+
+   * &lt;<A href="http://www.y12.doe.gov/~jar/HowToKerb.html">http://www.y12.doe.gov/~jar/HowToKerb.html</A>&gt;
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.2. What sort of resources do I need to dedicate to a KDC?
+
+You will need a dedicated machine to run the KDC on. The database stored on
+this machine is quite sensitive, if it's compromised your entire realm will
+be compromised. Therefore, this machine needs to be as secure as possible.
+Preferably it should not run any services other than the KDC. The
+secure-minded administrator might only allow logins on the console.
+
+This machine also has to be reliable. If it is down, you will not be able to
+use any Kerberized services unless you have also configured a slave server.
+
+Running the Kerberos server requires very little CPU power and a small
+amount of disk. An old PC with some hundreds of megabytes of free disk space
+should do fine. Most of the disk space will be used for various logs.
+
+Because the KDC has all of the keys for all of the principals in your realm,
+loss of the Kerberos database would require your entire realm to be rekeyed.
+Thus, backing up your Kerberos database is critical. However, precisely
+because the database contains all of your keys, you should treat backups of
+the KDC with the same security that you treat the KDC itself (in other
+words, don't leave the dump tapes lying around on your desk).
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.3. What programs/files need to go on each application server?
+
+As a MINIMUM, on each application server, you'll need to put:
+
+   * A Kerberos configuration file (/etc/krb5.conf).
+   * The Kerberos application server daemons (telnetd, rlogind, ftpd, etc).
+   * At least one encryption key (usually stored in /etc/krb5.keytab).
+
+The encryption key is really the critical part; it needs to be transmitted
+to the application server host in a secure fashion. This is typically the
+key for the host principal (host/foo.bar.org@REALM). Note that the MIT admin
+client kadmin encrypts all of the transfers between it and the admin server,
+so using ktadd from inside of kadmin is safe, provided that you're not
+sending your admin password over the network in the clear.
+
+You'll probably want to put the Kerberos client binaries on each application
+server as well, if you plan on having interactive user logins on your
+application servers.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.4. What programs/files need to go on each client?
+
+The bare minimum:
+
+   * A configuration file (usually /etc/krb5.conf, but with MIT Kerberos you
+     can set the environment variable KRB5_CONFIG to point to the location
+     of the configuration file).
+   * The Kerberos client binaries. At a minimum, you would need:
+        o kinit
+        o kdestroy
+        o klist
+        o telnet
+     And whatever other client programs your users would use (rlogin, ftp).
+
+As a data point, our Kerberos client kits we distribute to our user
+community contain the following files:
+
+   * krb5.conf
+   * kinit
+   * kdestroy
+   * klist
+   * kpasswd
+   * telnet
+   * rcp
+   * rlogin
+   * rsh
+   * ftp
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.5. There's a lot of stuff in the krb5.conf and kdc.conf files.
+	What does it all mean, and what do I really need?
+
+For krb5.conf, there are six different stanzas used:
+
+[libdefaults]
+     Various configuration parameters used by the Kerberos library. The
+     krb5.conf man page lists all of the available parameters. Ones you
+     should take special note of are:
+
+     default_realm
+          The default Kerberos realm. THIS IS REQUIRED!
+
+     default_keytab_name
+          The default keytab used by application servers. In pre-1.0
+          releases of Kerberos 5, the default was /etc/v5srvtab, but
+          starting with 1.0 it is now /etc/krb5.keytab. This field could be
+          used to ease the transition from a pre-1.0 installation to an
+          up-to-date version of Kerberos 5.
+
+     ccache_type
+          This sets the credential cache type used by Kerberos. The default
+          credential cache type is 3.
+
+          Credential cache type 1 is also understood by DCE 1.0.3a systems,
+          and credential cache type 2 is also understood by DCE 1.1 systems.
+          If you wish to have interoperability with DCE, you may want to set
+          this value.
+
+          If you wish to use the kdc_timesync feature, you will need to set
+          this value to 4, as this is the credential cache type that
+          supports header tags, which are used by the clock skew correction
+          code.
+
+     kdc_timesync
+          Setting this variable to 1 enables Kerberos clients to
+          automatically correct for a difference between the local clock and
+          the clock used by the KDC. Note that you will need to set
+          ccache_type to a value of 4 to use this feature.
+[login]
+     This configures the behavior of login.krb5. The man page for login.krb5
+     explains these in more detail.
+
+[realms]
+     This section lists all of the Kerberos realms known to this client. If
+     a realm is not listed in this section, than it cannot be accessed by
+     the client that is using this configuration file.
+
+     Configuration variables of note used in this section are:
+
+     default_domain
+          This lists the default domain used to convert V4 instances (which
+          were not fully qualified host names) to V5 instances (which are
+          fully qualified).
+
+          When converting a principal name from Kerberos 4 to Kerberos 5,
+          the default_domain is appended to the instance. When converting
+          from Kerberos 5 to Kerberos 4, it is removed.
+
+     v4_instance_convert
+          This is used to configure exceptions to the default_domain mapping
+          rule. In this subsection is a list of V4 instance names and their
+          V5 equivalents.
+
+     Note that neither of these two variables are required if you're not
+     planning on using the Kerberos 4 compatibility of Kerberos 5. Question
+     2.8 explains the use of these two variables in more detail.
+
+[domain_realm]
+     This section defines the mapping from hostnames to Kerberos realms.
+
+     When using host-based services, a Kerberos client needs to know the
+     Kerberos realm that the service lives in so it can contact the proper
+     KDC (and optionally request cross-realm tickets if necessary). This is
+     determined by the rules found in the domain_realm section.
+
+     If you're only using one Kerberos realm, and your realm is the
+     uppercase version of your domain name, then you don't need a
+     domain_realm section.
+
+     One point about the [domain_realm] stanza that confuses a lot of people
+     is whether or not to use a leading period when referring to domains
+     (most people put both just to be safe). For example:
+
+     [domain_realm]
+             foo.bar.org = FOO.BAR.ORG
+             .foo.bar.org = FOO.BAR.ORG
+
+     The rules are very simple. Anything with a leading period matches all
+     hosts in that domain. So the entry for .foo.bar.org matches all hosts
+     in the foo.bar.org domain. Entries without a leading period only match
+     that specific host. So in this case, the entry for foo.bar.org only
+     matches the host foo.bar.org.
+
+     An important side note is that domain wildcard entries do not match a
+     host who's name is the name of your domain. In other words, the entry
+     for .foo.bar.org doesn't match a host called foo.bar.org.
+
+     If this is too confusing, remember these simple rules:
+
+       1. You almost always need an entry for your domain with a leading
+          period.
+       2. You only need an entry without a leading period if you have a host
+          named the same as your domain name (in other words, your domain is
+          foo.bar.org, and you have a host called foo.bar.org).
+
+[logging]
+     This section describes the way different Kerberos programs perform
+     logging. Currently this is only used by the KDC and the admin servers,
+     so this section is only required on on your master and slave Kerberos
+     servers.
+[capaths]
+     This section defines a set of valid authentication paths when doing
+     transitive cross-realm authentication. The use of this section is
+     explained further in Question 2.15.
+
+A bare minimum krb5.conf will need to contain a default_realm entry and a
+[realms] section describing your default realm. For example:
+
+[libdefaults]
+        default_realm = FOO.BAR
+
+[realms]
+        FOO.BAR = {
+                kdc = kdc1.foo.bar
+                kdc = kdc2.foo.bar
+                admin_server = kdc1.foo.bar
+        }
+
+If your realm name is different than your domain name, then you'll need an
+appropriate mapping entry under [domain_realm].
+
+[libdefaults]
+        default_realm = TEST.BAR
+
+[realms]
+        TEST.BAR = {
+                kdc = kdc1.foo.bar
+                kdc = kdc2.foo.bar
+                admin_server = kdc1.foo.bar
+        }
+
+[domain_realm]
+        .foo.bar = TEST.BAR
+
+The kdc.conf uses the same format. The man page describes all of the
+sections and variables used. The critical ones are:
+
+max_life
+     This is the maximum lifetime for all tickets issued from this KDC. The
+     default is 10 hours. If you wish to increase the ticket lifetime, you
+     will need to increase this variable (in addition to increasing the
+     lifetime of the principals in the database).
+
+supported_keytypes
+     This lists all of the key/salt combinations that will be created for
+     new principals or principals that change their password. This is
+     important if you wish to support Kerberos 4 or AFS clients.
+
+     Since it is impossible to change a key from one salt type to another, I
+     always advise people to configure in support for V4 salted keys when
+     they first set up their realm, since it may require users to change
+     their passwords if you find out you need V4 compatibility at a later
+     date (depending on what sort of V4 compatibility you need). Question
+     2.8 has more information on the subject of configuring V4
+     compatibility.
+
+A minimal kdc.conf would be:
+
+[realms]
+    FOO.BAR = {
+        supported_keytypes = des:normal
+    }
+
+If you wanted to support V4 and AFS salted keys, you might have:
+
+[realms]
+    FOO.BAR = {
+        supported_keytypes = des:normal des-cbc-crc:v4 des-cbc-crc:afs3
+    }
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.6. How do I change the master key?
+
+In Kerberos 5 .. you don't :-)
+
+It is possible for you to change the master key using the kadmin. However,
+the master key is also probably stored in a stash file (depending on your
+site) and is used to encrypt all of the entries in the database. If you
+change the master key with kadmin, you won't change it in the stash file or
+reencrypt all of the entries in the database.
+
+Note that there are no technical obstacles in doing this; Kerberos 4
+provided a command to change the master key, and it did all of the right
+things. However, no one has implemented this functionality (yet) for
+Kerberos 5.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.7. How do I set up slave servers?
+
+Setting up a slave KDC is fairly simple. Here are the steps you need to
+perform:
+
+  1. Create host principals for your master and slave KDCs. These will look
+     like host/kdc1.foo.bar@FOO.BAR, or something similar.
+  2. In the Kerberos database directory (/usr/krb5/lib/krb5kdc using the
+     default configuration) on both your masters and slaves, create a file
+     called kpropd.acl and place in it all of the host principals for your
+     KDCs.
+
+     For example, if you had three KDCs, kdc1.foo.bar, kdc2.foo.bar, and
+     kdc3.foo.bar, this file would contain:
+
+     host/kdc1.foo.bar@FOO.BAR
+     host/kdc2.foo.bar@FOO.BAR
+     host/kdc3.foo.bar@FOO.BAR
+
+  3. On your slave KDCs, add an entry for kpropd in inetd.conf. A sample
+     entry would look like:
+
+     krb5_prop  stream  tcp  nowait root /usr/krb5/sbin/kpropd kpropd
+
+  4. On the master KDC, dump the database into a file using kdb5_util.
+     Depending on where you told Kerberos to live, a sample command would
+     look like:
+
+     /usr/krb5/sbin/kdb5_util dump /usr/krb5/lib/krb5kdc/slave_datatrans
+
+  5. Run kprop on the master to propagate the database to each slave:
+
+     /usr/krb5/sbin/kprop -f /usr/krb5/lib/krb5kdc/slave_datatrans kdc2.foo.bar
+     /usr/krb5/sbin/kprop -f /usr/krb5/lib/krb5kdc/slave_datatrans kdc3.foo.bar
+
+Once you have this working, you probably want to write a script to propagate
+the database at regular intervals. Here is the one that I use:
+
+#!/bin/sh
+#
+
+kdclist="kdc1.foo.bar kdc2.foo.bar"
+
+/usr/krb5/sbin/kdb5_util dump /var/krb5/krb5kdc/slave_datatrans
+
+for kdc in $kdclist
+do
+        /usr/krb5/sbin/kprop $kdc &gt; /dev/null
+done
+
+The most common error people get when setting up their KDC is the extremely
+confusing "Decrypt integrity check failed". This means that the host keys
+stored in the KDC don't match the keys stored in the corresponding keytabs
+(I bet you recreated the database a couple of times while you were playing
+around with the KDC, didn't you?). Installing new host keys on the master
+and the slaves will fix this problem.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.8. What do I need to do to make V4 clients work with my V5 KDC?
+
+First off, it's important to understand the issues involved.
+
+The main differences between V4 and V5 (for the purpose of this discussion)
+are:
+
+  1. The network protocol used is very different.
+  2. The string-to-key algorithm is different.
+  3. The format of the encrypted tickets is very different.
+
+The MIT V5 KDC can speak the V4 protocol as well as the V5 protocol, so
+difference number 1 isn't a big problem.
+
+The MIT V5 KDC also supports the V4 string-to-key algorithm, and will use
+this to encrypt tickets when it gets V4 requests. If you read Question 2.5,
+then you already have your KDC set up to support this before you started
+adding users :-).
+
+The MIT distribution also included a special daemon called krb524d. This can
+be used to convert an encrypted Kerberos 5 ticket into an encrypted Kerberos
+4 ticket.
+
+A number of the MIT application servers (telnetd, rlogind, rshd) support V4
+clients as well as V5.
+
+So, all of the pieces are there ... now, how do you use them?
+
+If your application needs to get a Kerberos 4 TGT, then you need to
+configure your KDC to support Kerberos 4 salted keys. You can tell if your
+application needs to get a V4 TGT if you have to give it a Kerberos password
+at some point.
+
+If your application needs to get V4 service tickets, then you have the
+option of using krb524init to convert your V5 TGT into a V4 TGT, and then
+your application can use the V4 TGT to acquire V4 service tickets. Question
+2.19 explains more about krb524init and krb524d.
+
+If you can modify your application, then you can change it so it converts a
+V5 service ticket into a V4 service ticket internally. This is the approach
+used by the aklog program in the AFS-Kerberos 5 migration kit. Question 2.12
+explains this in greater detail.
+
+If you want to support a V4 application server, you need to create a V4
+format keytab containing the principal used by the application server. You
+can do this by using ktutil to convert a V5 format keytab into the
+corresponding V4 keytab.
+
+If you simply wish to support incoming Kerberos 4 telnet or rlogin, then all
+you need to do is configure the daemons to support V4 connections. This is
+done by an additional flag in inetd.conf for the Berkeley r-commands. The V4
+compatibility routines can read a Kerberos 5 keytab, so there's no need to
+copy it over.
+
+There is a bug in telnetd that prevents it from talking correctly to V4
+clients; to work around it, you simply need to create an empty /etc/srvtab.
+
+There is one more important point when dealing with V4 clients. You should
+never create V4 format principals in your KDC; you should use the V5 names.
+For example, you shouldn't create rcmd.foo; you should instead always use
+host/foo.bar.org
+
+The KDC automatically converts back and forth between V4 and V5 principal
+names at the appropriate times. This is trivial for user principals, but is
+trickier for host-based principals. Since the instance was the "short" name
+in V4 and is now fully qualified in V5, rules have to be configured to
+convert between V4 and V5 instances. This is done via the default_domain and
+the v4_instance_convert lines in krb5.conf.
+
+The default_domain variable is used to indicate the DNS domain name that is
+removed or added when converting between V4 and V5 principals. For example,
+if you have:
+
+[realms]
+        FOO.BAR.ORG = {
+                kdc = kdc1.foo.bar.org
+                default_domain = foo.bar.org
+        }
+
+Then the V5 principal host/sun1.foo.bar.org will be converted to the V4
+principal rcmd/sun1.
+
+The v4_instance_convert variable is used to configure exceptions to the
+default mapping rule. For example, let's say the above realm has a host
+called foo.bar.org. Under V4 the host principal for this machine would be
+called rcmd/foo, but the default_domain rule would fail to convert this
+principal name correctly. However, if we place the following in in our
+krb5.conf:
+
+        v4_instance_convert = {
+                foo = foo.bar.org
+        }
+
+Then the instance will be converted correctly.
+
+Since all of these name translations take place on the KDC, you generally
+only need to make sure the krb5.conf files on the KDC are the ones that are
+up-to-date (but it's a good idea to keep the configuration file consistent
+across machines).
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.9. I just added a host key to a machine with ktadd, and the kvno
+	got incremented! What just happened?
+
+The protocol that kadmin uses has no way of extracting a key from the
+database. That was a deliberate design decision; it prevents a compromised
+admin account from being able to read out all of the keys from the database.
+
+However, there is a way to create a new random key and return this key to
+the client program. This is used by the ktadd command of kadmin to get a new
+key to add to a keytab. A new random key is created for the principal, and
+as a result, the kvno gets incremented (just like when a user changes their
+password). The returned random key then gets added to the keytab.
+
+This has a couple of noteworthy side effects. You can't use ktadd to add the
+same key to more than one host, because the key will be changed on the
+second host you add it to. Also, since you'll be creating a new key, tickets
+created with the old key will no longer be valid. You can work around this
+by saving the old key in the keytab, but if you're regenerating a key
+because the previous one didn't match the one in the KDC, you will need to
+have your users acquire new service tickets (by running kinit or the
+equivalent) before they will get tickets encrypted with the new key.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.10. How do I run kadmin from a shell script unattended?
+
+To do this, it's important to understand that to authenticate to Kerberos,
+one of two things has to happen:
+
+  1. A human has to enter in a secret at some point.
+  2. A secret has to be stored somewhere on a computer.
+
+You can play some funny games with either of these two things, but it
+basically boils down to #1 or #2.
+
+Now, to truly run kadmin unattended, you need to store the secret key of a
+privileged user somewhere on the computer that will run kadmin. That means
+that if the system is ever compromised, the attacker could gain access to
+this secret key and use it to do nasty things to your Kerberos database. You
+need to decide if you want to open yourself up to this risk.
+
+That being said .... here's how you do it.
+
+  1. Create the admin principal you wish to use.
+  2. Put the key for the admin principal somewhere on your machine.
+  3. Use kinit to acquire a Kerberos ticket for the principal from the
+     keytab, and run kadmin with the -q to perform whatever tasks you wish.
+     Here's an example of a shell script that does this.
+
+     #!/bin/sh
+     #
+     PATH=$PATH:/path/to/kerberos; export PATH
+     KRB5CCNAME=/tmp/krb5cc_root_$$; export KRB5CCNAME
+     trap kdestroy 0 1 2 3 5 15
+
+     kinit -S kadmin/admin -k -t /path/to/keytab admin_principal
+     kadmin -c $KRB5CCNAME -q "delprinc foo"
+     exit 0
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.11. I can't use kadmin to talk to the admin server of another
+	realm. What am I doing wrong?
+
+Even though you can specify an alternate realm to kadmin with the -r option,
+it doesn't change the default realm for the admin principal. You need to
+specify the complete admin principal (including the realm!) with the -p
+option:
+
+kadmin -r BAR.ORG -p <A href="mailto:user/admin@BAR.ORG">user/admin@BAR.ORG</A>
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.12. We run AFS at our site currently. Is there a way we can run
+	Kerberos along with AFS?
+
+Yes! You should get the AFS-Kerberos 5 Migration Kit. It comes with all of
+the tools and documentation you should need. And since it was developed by
+the FAQ author, you can be sure it was done by someone who claims they know
+what they're talking about.
+
+The latest version of the AFS-Kerberos 5 Migration Kit is 1.2, and includes
+patches for Kerberos 1.0.5. You can get it from:
+
+ftp
+     &lt;<A href="ftp://ftp.cmf.nrl.navy.mil/pub/kerberos5/afs-krb5-1.2.tar.Z">ftp://ftp.cmf.nrl.navy.mil/pub/kerberos5/afs-krb5-1.2.tar.Z</A>&gt;
+afs
+     &lt;file:///afs/transarc.com/public/afs-contrib/tools/afs-krb5-1.2.tar.Z&gt;
+
+However, if you'd rather not run Kerberos 5, the AFS kaserver already
+implements a perfectly adequate Kerberos 4 KDC. In addition to that,
+Transarc provides drop-in replacements for the klog, pagsh, and tokens
+commands which are Kerberos 4 aware, and retain the Kerberos TGT after
+authentication has completed.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.13. Employee &lt;X&gt; just left the company, and he had root on our
+	KDC. What should I do?
+
+If a person had root on your KDC, then they had the ability to grab a copy
+of your entire Kerberos database. While the database is encrypted with the
+master key, a root user could have read the master key out of the stash
+file, or even attached a debugger to the KDC process to read the master key
+out of the KDC's memory.
+
+So, this now becomes a question of what to do when every key in your
+database is compromised.
+
+When a user's key is compromised, the attacker can impersonate that user.
+
+If a host key is compromised, then an attacker could generate forged service
+tickets for that host with any user in the ticket.
+
+However, the worst key to get compromised is the krbtgt key, as an attacker
+could use this to generate a valid TGT for any principal in your realm!
+
+The steps you should take depend on the exact circumstances of the incident
+and your local site policy. However, it's important to keep in mind that the
+worst-case scenario is that your realm would need to be completely re-keyed.
+
+If I personally was responsible for our KDC and this situation happened to
+me (a person who had root on our KDC left under questionable circumstances),
+I would immediately change the key for the krbtgt and the admin principals,
+and force a global user password change over some period of time (assuming
+we weren't expiring passwords at this point).
+
+As a side note, a compromised master key isn't quite as bad as one would
+normally fear. The master key is only used to encrypt the Kerberos database
+and as a seed for the random number generator. As long as access to your KDC
+is secure, an attacker can't do much with the master key.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.14. How should I configure my DNS for Kerberos?
+
+Your DNS should be configured so that gethostbyname() and gethostbyaddr()(or
+your operating system equivalent) returns the fully qualified domain name
+for a host.
+
+Now, this is technically NOT true. The "real" answer is that you can do it
+either way, as long as you're consistent. When MIT Kerberos figures out
+service principal names, it calls:
+
+gethostbyaddr(gethostbyname(host))
+
+So if you have your name service configured to return "short" names, then as
+long as you use the short name in the instance of the service principal,
+then everything will be fine.
+
+That being said .... YOU DO NOT WANT TO DO THIS!
+
+First and foremost, it will break people who are not in your domain who try
+to use your Kerberized services. It will also undo the very wise change from
+the way instances were handled in Kerberos 4.
+
+Trust me when I say that configuring your name service the "right" way will
+be better in the long run.
+
+Unfortunately, things are less clear when multi-homed hosts are involved.
+
+The issue of multi-homed hosts is a large one; very few things deal with
+multi-homed hosts well, and there are a number of schools of thought on how
+multi-homed hosts should be treated.
+
+This FAQ does not claim to address the issue of multi-homed hosts. It does,
+however, try to explain the issues involved with multi-homed hosts and
+Kerberos, and the FAQ author does make a "recommendation" as to the way you
+should configure your DNS. Take it with the appropriate grain of salt :-)
+
+I have seen two basic schools of thought when it comes to dealing with
+multi-homed hosts:
+
+  1. Treat the host as a bunch of different single-homed machines, all of
+     which happen to magically share the same hardware (the "one name per
+     interface" scheme).
+  2. Treat the host as a single machine, with a bunch of network interface
+     cards (the "multiple address records per machine" scheme).
+
+Both of these approaches have their advantages and disadvantages. I
+personally recommends the second approach ("multiple address records per
+machine"), as I feel it is closer to reality. Also, the Host Requirements
+RFC (<A href="http://www.faqs.org/rfcs/rfc1123.html">RFC 1123</A>) says:
+
+     2.3 Applications on Multihomed hosts
+
+     When the remote host is multihomed, the name-to-address
+     translation will return a list of alternative IP addresses. As
+     specified in Section 6.1.3.4, this list should be in order of
+     decreasing preference. Application protocol implementations SHOULD
+     be prepared to try multiple addresses from the list until success
+     is obtained. More specific requirements for SMTP are given in
+     Section 5.3.4.
+
+However, <A href="http://www.faqs.org/rfcs/rfc1122.html">RFC 1122</A> does admit:
+
+     Multihoming introduces considerable confusion and complexity into
+     the protocol suite, and it is an area in which the Internet
+     architecture falls seriously short of solving all problems.
+
+Regardless of the way you configure your host name resolution, it's critical
+to understand the issues involved.
+
+When connecting to a Kerberized host, the service instance used is derived
+from the fully qualified host name. If there is one host key but multiple
+canonical names per host, connections to the interfaces who's names do not
+match the name of the host used in the Kerberos instance will fail.
+
+If that was too confusing, here's an example:
+
+We have a host called foo.bar.org, that's in the BAR.ORG realm. It has one
+host key, <A href="mailto:host/foo.bar.org@BAR.ORG">host/foo.bar.org@BAR.ORG</A>, and three interfaces:
+
+foo.bar.org             IN      A       1.2.3.4
+foo-fddi.bar.org        IN      A       1.2.4.4
+foo-en.bar.org          IN      A       1.2.5.4
+
+If I say "telnet foo.bar.org" (using my Kerberized telnet), everything works
+fine. But if I try connecting to foo-en.bar.org, then this will fail,
+because there is no such principal called <A href="mailto:host/foo-en.bar.org@BAR.ORG">host/foo-en.bar.org@BAR.ORG</A>.
+
+You can create multiple keys per host, but that won't solve all of your
+problems either. Some Kerberized application servers will only accept
+principals for services who's instance is the FQDN of the local hostname.
+ftpd is an example of one such application server (in the above example, for
+our host called "foo", this means that ftpd would only accept principals
+with the instance of foo.bar.org).
+
+There is considerable debate about whether or not application servers should
+accept any valid service key, or only ones that match their canonical name.
+However, in the case of ftpd, <A href="http://www.faqs.org/rfcs/rfc2228.html">RFC 2228</A> is quite clear that ftpd is doing the
+right thing according to the FTP Security Specification.
+
+Another issue with multihomed hosts is the issue of credential forwarding.
+When credentials are forwarded to a remote machine, the IP address(es) of
+the remote machine are placed in the ticket. When you go to use this ticket,
+the KDC verifies the addresses in the ticket against the source address of
+the request.
+
+There is currently no way for Kerberos to know all of a machine's interfaces
+when using the "one name per interface" scheme. So when you forward
+credentials to a multihomed machine using this configuration, you must make
+sure that the address you place in the ticket is the IP address that the
+remote machine will use to talk to the KDC (and if you're using cross-realm,
+you have to make sure it's the same interface to all KDCs).
+
+Both of these issues go away when using the "multiple address records per
+host" scheme. However, you can use this setup and have the ability to refer
+to different interfaces. Here's an example DNS setup:
+
+my.host.name.   A       1.2.3.4
+                A       1.2.4.4
+                A       1.2.5.4
+
+my-en0.host.name.       A       1.2.3.4
+my-en1.host.name.       A       1.2.4.4
+my-en2.host.name.       A       1.2.5.4
+
+4.3.2.1         PTR     my.host.name.
+4.4.2.1         PTR     my.host.name.
+4.5.2.1         PTR     my.host.name.
+
+In summary, you can make both ways work. The FAQ author recommends using
+"multiple address records per host", but you can do things the other way if
+you're careful.
+
+One final note: if you're using NIS instead of DNS for hostname resolution,
+you will find that you cannot use the "multiple address records per host"
+setup, because of the way NIS works (it's a key-value map, and silently
+strips out all but one address record). This holds true even if you're using
+DNS to hold your zone information and you've configured NIS to fall back to
+DNS!
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.15. What do I need to do to setup cross-realm authentication?
+
+The simplest case is having two realms cross-realm authenticate with each
+other. To do this, you need to create two special cross-realm principals on
+each KDC:
+
+   * krbtgt/REALM2@REALM1
+   * krbtgt/REALM1@REALM2
+
+The keys of the corresponding principals have to match on the two KDCs, but
+the different cross-realm principals don't have to have matching keys. In
+other words, krbtgt/REALM2@REALM1 has to have the same key on each KDC, but
+krbtgt/REALM2@REALM1 and krbtgt/REALM1@REALM2 don't have to match.
+
+Another important point is that the corresponding kvnos have to match up as
+well.
+
+When clients want to connect to a server in another realm, they will use
+their current TGT to get a cross-realm TGT from the local KDC. They will
+then use that cross-realm TGT to request service tickets from the foreign
+KDC.
+
+Two principals are needed for each direction of the authentication path
+(REALM1 to REALM2, and vice versa). When a client in REALM1 wishes to talk
+to a server in REALM2, it uses the krbtgt/REALM2@REALM1 TGT. Note that this
+is different than the procedure in V4, where only one cross realm secret was
+created (krbtgt.FOREIGN-REALM@LOCAL-REALM) and used for both directions.
+
+Since each principal corresponds to the different authentication paths, if
+you only want one-way cross-realm authentication you can simply only create
+one of the cross-realm principals.
+
+V5 also supports transitive cross-realm, which lets you define
+authentication paths between different KDCs so you don't have to share as
+many keys. The difference is O(n**2) versus O(2**n), so depending on the
+number of realms you plan on working with, it can make a big difference on
+the number of keys you have to manage.
+
+There are two ways to organize your transitive cross-realm authentication
+paths: hierarchical and [capaths].
+
+Hierarchical cross-realm authentication is fairly simple. Your realms must
+be organized in a hierarchy almost identical to DNS domain names, and
+clients magically "know" to traverse up the realm tree to talk to neighbors.
+For example, if you have the realms:
+
+   * FOO.ORG
+   * BAR.FOO.ORG
+   * BIZ.FOO.ORG
+   * BLAH.FOO.ORG
+
+You would have the BAR, BIZ, and BLAH sub-realms each share a cross-realm
+key with the parent FOO.ORG realm, and all of the clients and application
+servers would do the right things without any extra work on your part.
+
+One thing to be careful of is that there is an implied trust when doing
+hierarchical cross-realm. If you create a new realm in the above hierarchy
+called BLARGH.FOO.ORG and have it share a cross-realm key with the parent
+FOO.ORG realm, then all of your realms will implicitly trust cross-realm
+tickets from this realm, and that may not be what you want (depending on
+your environment).
+
+The other way to do transitive cross-realm is to use the [capaths] section
+of the Kerberos configuration file. The krb5.conf man page explains the
+format of this section fairly well, so I'll only cover the the concepts
+here.
+
+The [capaths] section defines a series of authentication paths to use when
+doing transitive cross-realm. This is used by the clients to determine the
+correct path for doing transitive cross-realm, and by the application
+servers to determine that a cross-realm authentication path is actually
+valid.
+
+Since each application server verifies authentication paths using this
+section, the addition of a new path to one realm does not assign any
+implicit trust to the other realms. The downside is that the krb5.conf file
+must be updated on every host when a new authentication path is created.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.16. Can I configure the admin server to reject bad passwords?
+
+Yes. In your kdc.conf file, in the [realms] section, you can set a variable
+called dict_file that can point to a file containing a list of passwords
+that are not permitted to be used. The kadmind man page has more
+information.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.17. Is there a hook I can use to do further password checking?
+
+There isn't a well-defined hook, but the admin server uses the passwd_check
+function in lib/kadm5/srv/server_misc.c to do it's password quality
+checking. You could add your own function there.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.18. How come the "Last xxx" fields in the Kerberos database don't
+	seem to get updated?
+
+By default the support for this is not compiled into the KDC; you need to
+specify the --with-kdc-kdb-update option to configure if you wish to enable
+this support.
+
+Note that this feature is marked in the Kerberos documentation as "not
+regularly tested", so you should be careful if you decide to use this
+option. It also doesn't work with slave servers.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.19. What does krb524d do? Do I need to run it?
+
+The krb524d daemon is used to convert a Kerberos 5 service ticket to a
+Kerberos 4 service ticket. This is primarily used by the krb524init program
+and the AFS-Kerberos 5 Migration Kit.
+
+To use this daemon, you need to either run it on your KDC, or give it access
+to the keys for the service principals who's tickets you wish to convert. It
+needs access to the principals' keys because it decrypts the Kerberos 5
+ticket, converts it to a Kerberos 4 ticket, and re-encrypts it. Everyone I
+know of that uses krb524d runs it on their KDC.
+
+Depending on your use of Kerberos 4, you may or may not need it. If you plan
+on using krb524init or the AFS-Kerberos 5 Migration kit, then you definitely
+need it.
+
+To use krb524init, run krb524d on your KDCs and simply run krb524init after
+you've acquired a V5 TGT. Your V5 TGT will be converted to a V4 TGT, which
+can then be used by V4 applications.
+
+Note that login.krb5 can be configured to convert your credentials
+automatically as well. See the man page for more information.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.20. What is v5passwdd? Do I need to run it?
+
+The v5passwdd daemon implements the "old" Kerberos 5 password changing
+protocol (before OpenVision donated their admin server).
+
+This protocol is used by a few Kerberos 5 clients; the only ones I know of
+are the MIT Win32 Kerberos client, and some Xyplex terminal servers. If you
+don't have any programs that use this protocol, or you don't want people who
+use those clients to be able to change their password, then you don't need
+to run it.
+
+If you do need to run it, you'll need to do the following things:
+
+   * Create a special changepw principal, of the form:
+
+        o changepw/YOUR.REALM@YOUR.REALM
+
+     Make sure this principal has the same attributes as the kadmin/changepw
+     principal; specificially, set the DISALLOW_TGS_REQ and
+     PASSWORD_CHANGING_SERVICE attributes.
+
+   * Add this principal's key to the admin keytab (see the original
+     installation instructions for this procedure)
+
+   * Start the v5passwdd with the following sample command line:
+
+        o v5passwdd -port 464 -T /path/to/admin/keytab
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.21. How do a rename a principal?
+
+In Kerberos 5, you don't :-)
+
+There currently is no way to rename a principal using the MIT V5 admin
+system (even though the man page for kadmin claims otherwise).
+
+The issue is that in Kerberos 5, the key is salted using the full principal
+name, so changing the principal name would invalidate the user's password.
+However, since the Kerberos database provides the ability to store an
+alternate key salt, this could actually be implemented.
+
+The current workaround is to simply delete the old principal name and create
+the new principal name.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.22. What is the difference between the "-a valid" and the "-a
+	user" flags for telnetd?
+
+In the current MIT release, there is no difference due to a bug in telnetd.
+Here's a patch that fixes this and makes the these flags behave according to
+the man page.
+
+Index: lib/appl/telnet/libtelnet/kerberos.c
+===================================================================
+--- kerberos.c  1997/06/02 21:54:38     1.1.1.1
++++ kerberos.c  1997/08/25 23:12:44     1.3
+@@ -435,8 +430,15 @@
+        if (UserNameRequested &amp;&amp; !kuserok(&amp;adat, UserNameRequested)) {
+                strcpy(name, UserNameRequested);
+                return(AUTH_VALID);
+-       } else
++       } else {
++               /*
++                * Always copy in UserNameRequested if the authentication
++                * is valid, because the higher level routines need it.
++                */
++               if (UserNameRequested)
++                       strcpy(name, UserNameRequested);
+                return(AUTH_USER);
++       }
+ }
+
+ #define        BUMP(buf, len)          while (*(buf)) {++(buf), --(len);}
+Index: lib/appl/telnet/libtelnet/kerberos5.c
+===================================================================
+--- kerberos5.c 1997/12/15 18:51:31     1.1.1.2
++++ kerberos5.c 1997/12/15 19:15:50     1.4
+@@ -682,8 +690,16 @@
+        {
+                strcpy(name, UserNameRequested);
+                return(AUTH_VALID);
+-       } else
++       } else {
++               /*
++                * Always copy in UserNameRequested if the authentication
++                * is valid, because the higher level routines need it.
++                */
++               if (UserNameRequested)
++                       strcpy(name, UserNameRequested);
++
+                return(AUTH_USER);
++       }
+ }
+
+ #define        BUMP(buf, len)          while (*(buf)) {++(buf), --(len);}
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.23. I already have a standard Unix password database for my user
+	population. Can I convert this to a Kerberos password database?
+
+From: Jeffrey Hutzelman &lt;<A href="mailto:jhutz@cmu.edu">jhutz@cmu.edu</A>&gt;
+
+     It does you no good to know the contents of the password field in
+     /etc/passwd or /etc/shadow; to do this you would have to know the
+     user's actual password. Note that the entry you see in /etc/shadow
+     is not merely scrambled; it is the result of passing the user's
+     password through a one-way hash function. That is, it's easy to
+     compute the scrambled value from the plaintext, but very, very
+     hard to go the other way. If this weren't so, then any user could
+     look at the password field in /etc/passwd (on systems without
+     shadow passwords), compute the password of anyone they liked, and
+     then log in as that person.
+
+     The values that are actually stored in the Kerberos database are
+     the result of applying a different one-way hash function to the
+     user's password. Now, you might ask why they don't use the same
+     function, to make the conversion process easy. There are two
+     reasons for this, but they both stem from the fact that in AFS (or
+     Kerberos, for that matter), the output of the hash function is
+     used as a DES encryption key, which is used to encrypt sensitive
+     data passed between the user and the Kerberos server.
+
+     Rather than having users type the DES key themselves, Kerberos
+     uses a hash function to translate the user's password into a key
+     (note: See Question 1.23 for more information). This means the
+     user gets to remember an easy-remember word, phrase, or whatever,
+     and you still get a good distribution of keys. However, this
+     operation is done by the client (login, kinit, or whatever), not
+     by the Kerberos server - the user never tells the Kerberos server
+     his password; he merely proves that he knows it. An attacker who
+     knows the key but not the password used to produce it can still
+     authenticate just as if he were the user.
+
+     (Ed note: This isn't technically true in V5 - you do tell the
+     admin server your password when you change it, but that's so it
+     can perform password strength checking on it. But it doesn't get
+     stored; The Kerberos database stores keys, not passwords).
+
+     Since anyone who knows a user's key could become the user, it
+     would be a Bad Thing(tm) to use a predictable value for the user's
+     key, like the contents of the password field in /etc/passwd from
+     just before the conversion. Since anyone could see that file,
+     every user's key would essentially be publicly-known!
+
+     So, now that we know that there is no easy way to "convert" the
+     existing Unix passwords to something the Kerberos server can use,
+     you still have a problem. The usual solution is to set up a
+     registration mechanism, where users run some program, give it
+     their UNIX password, and the program verifies the password against
+     /etc/passwd and then registers it with the Kerberos server.
+     Ideally, this would be done automatically in login, so that any
+     user who logged in (except root!) would be converted
+     automatically.
+
+     The problem here is that in order to register the user's password,
+     your registration program (or login) must be able to authenticate
+     to the Kerberos server as an administrator. Or, it must be able to
+     authenticate to a separate registration service, which itself is
+     an administrator and enforces certain restrictions (i.e. a user
+     can only be registered once).
+
+I have heard of sites modifying login to use the host key stored on machines
+for this purpose, and giving the host principal the ability to add accounts
+via the admin server (obviously, this is for Kerberos 5 only). However, no
+one has made such code publically available.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.24. Can I have multiple realms on a single KDC?
+
+From: Christopher Misra &lt;<A href="mailto:crispy@nic.umass.edu">crispy@nic.umass.edu</A>&gt;
+
+     I run a single KDC that maintains three databses all kept in
+     separate subdirs. I then run three kadmin processes, and just
+     manually configure the port to be in sync.
+
+     Here is a list of the processes as running (from ps):
+
+     .../sbin/krb5kdc -r &lt;realm1&gt; -r &lt;realm2&gt; -r &lt;realm3&gt;
+
+     .../sbin/kadmind -r &lt;realm1&gt;
+     .../sbin/kadmind -r &lt;realm2&gt; -port 748
+     .../sbin/kadmind -r &lt;realm3&gt; -port 747
+
+     Although maybe not exactly the way it should be done, it has
+     worked for me. Presently I only keep a slave KDC for one of the
+     three databases, but it should be reasonably trivial to run an
+     additional slave of one of the other db's.
+
+     Included below is a cleaned up version of my kdc.conf and
+     kpropd.acl just to be complete.
+
+     Also included below is the command line for running kprop, as I
+     remember it taking me the better part of a day to get it all
+     working.
+
+     Hope this helps. All this is, good or bad, provided without any
+     guarantee, etc.
+
+     --- kdc.conf:
+
+     [kdcdefaults]
+
+     [realms]
+        &lt;realm1&gt; = {
+             profile = /etc/krb5.conf
+             database_name = .../var/krb5kdc/&lt;realm1&gt;/principal
+             admin_database_name = .../var/krb5kdc/&lt;realm1&gt;/principal.kadm5
+             admin_database_lockfile = .../var/krb5kdc/&lt;realm1&gt;/principal.kadm5.lock
+             admin_keytab = .../var/krb5kdc/&lt;realm1&gt;/kadm5.keytab
+             acl_file = .../var/krb5kdc/&lt;realm1&gt;/kadm5.acl
+             dict_file = .../var/krb5kdc/kadm5.dict
+             key_stash_file = .../var/krb5kdc/&lt;realm1&gt;/.k5stash
+             kadmind_port = 748
+             max_life = 10h 0m 0s
+             max_renewable_life = 7d 0h 0m 0s
+             master_key_type = &lt;enc-type&gt;
+             }
+       &lt;realm2&gt; = {
+             profile = /etc/krb5.conf
+             database_name = .../var/krb5kdc/&lt;realm2&gt;/principal
+             admin_database_name = .../var/krb5kdc/&lt;realm2&gt;/principal.kadm5
+             admin_database_lockfile = .../var/krb5kdc/&lt;realm2&gt;/principal.kadm5.lock
+             admin_keytab = .../var/krb5kdc/&lt;realm2&gt;/kadm5.keytab
+             acl_file = .../var/krb5kdc/&lt;realm2&gt;/kadm5.acl
+             dict_file = .../var/krb5kdc/kadm5.dict
+             key_stash_file = .../var/krb5kdc/&lt;realm2&gt;/.k5stash
+             kadmind_port = 749
+             max_life = 10h 0m 0s
+             max_renewable_life = 7d 0h 0m 0s
+             master_key_type = &lt;enc-type&gt;
+             }
+        &lt;realm3&gt; = {
+             profile = /etc/krb5.conf
+             database_name = .../var/krb5kdc/&lt;realm3&gt;/principal
+             admin_database_name = .../var/krb5kdc/&lt;realm3&gt;/principal.kadm5
+             admin_database_lockfile = .../var/krb5kdc/&lt;realm3&gt;/principal.kadm5.lock
+             admin_keytab = .../var/krb5kdc/&lt;realm3&gt;/kadm5.keytab
+             acl_file = ...var/krb5kdc/&lt;realm3&gt;/kadm5.acl
+             dict_file = .../var/krb5kdc/kadm5.dict
+             key_stash_file = .../var/krb5kdc/&lt;realm3&gt;/.k5stash
+             kadmind_port = 747
+             max_life = 10h 0m 0s
+             max_renewable_life = 7d 0h 0m 0s
+             master_key_type = &lt;enc-type&gt;
+             }
+
+     --- kpropd.acl
+
+     host/&lt;<A href="news:master_kdc.domain">master_kdc.domain</A>h
+     host/&lt;slave_kdc.domain&gt;@&lt;realm1&gt;
+
+     --- kprop command line arguments
+
+     .../sbin/kprop -r &lt;realm1&gt; -f &lt;filename&gt; -P &lt;port&gt; &lt;slave_kdc.domain&gt;
+
+     This requires kpropd be running on the appropriate slave_kdc (I do
+     it from inetd, this could be argued to be bad, but oh well...)
+     with a -R &lt;realm1&gt; argument
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 2.25 What is the kadm5.acl file?
+
+From: Dan E. Anderson &lt;<A href="mailto:anderson@computer.org">anderson@computer.org</A>&gt;
+
+     The kadm5.acl (access control list) file resides on the KDC host
+     and controls access to the Kerberos database. The location of the
+     kadm5.acl is specified in the kdc.conf file for each realm under
+     the [realms] stanza:
+
+     [realms]
+             FOOBAR.ORG = {
+                   acl_file = /var/krb5kdc/kadm5.acl
+             }
+
+     The ACL format is documented in the "Kerberos V5 Installation
+     Guide". It contains the principal names (including "*" as
+     wildcards) and the access permissions ("*" for everything)
+     followed by an optional principal the ACL applies (if omitted, it
+     applies to all principals). For example:
+
+     *<A href="mailto:/admin@FOOBAR.ORG">/admin@FOOBAR.ORG</A>      *
+
+     Allows all admin principals all access (add, delete, modification
+     of principals). The following just allows adding, listing, and
+     inquire of principals for principal fred/admin:
+
+     <A href="mailto:fred/admin@FOOBAR.ORG">fred/admin@FOOBAR.ORG</A>   ali
+
+     Of course, Fred must use the fred/admin principal to access the
+     Kerberos database (with kadmin).
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 3. User and application questions
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 3.1. What happens when my tickets expire?
+
+First off, you won't be able to get tickets for new services.
+
+What happens to the Kerberized services that you are using depends on how
+they are implemented.
+
+All implementations of telnetd, rlogind, and other remote login utilities
+generally only check the ticket expiration time at login time, and don't
+care about it afterwards. However, AFS will not give you access to your
+files anymore, even if you already have files open.
+
+Note, however, that this is just a matter of implementation. Someone could
+write a version of telnetd that closed your connection when your ticket
+expired, but I doubt that it would be very popular :-)
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 3.2. How do I run a cron job with Kerberos authentication?
+
+Nothing can authenticate to Kerberos without providing a password/encryption
+key. The same holds true for cron jobs.
+
+In practice, you typically have two choices for providing Kerberos
+authentication for any program:
+
+  1. A human types in a password on a keyboard.
+  2. A password/encryption key is stored somewhere on a machine
+
+Obviously, both of these also apply to cron jobs. So to provide Kerberos
+authentication to cron jobs, you would either have to have a human type in a
+password at the appropriate time, or store the password/encryption key
+somewhere where the cron job could read it.
+
+What I (and others) have done with success is the following:
+
+  1. Create a special "cron" user (possibly username/cron).
+  2. Use kadmin to place a keytab for that user on the workstation where you
+     are going to use cron.
+
+     kadmin: ktadd -k user.keytab username/cron
+
+  3. Use the -k flag to kinit to get a TGT for that user using the stored
+     keytab.
+
+     kinit -k -t user.keytab username/cron
+
+Note that this applies to any sort of unattended programs that you wish to
+run, not just cron. Of course, you have to evaluate whether or not this is
+acceptable to you; if the machine where you store this principal is
+compromised, then this principal is compromised.
+
+As an additional note, if you are just going to be running programs as root,
+I would personally use the host principal, since it will likely already be
+in place and is already used by other programs that run as root (telnetd,
+ftpd, etc).
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 3.3. How do I use renewable tickets?
+
+First, you have to get a renewable ticket; you can do this using the -r flag
+to kinit.
+
+Once this is done, you can renew your ticket using the -R option to kinit.
+Note that you have to renew your ticket before the ticket expires.
+
+The FAQ author has a program that will renew a ticket automatically; contact
+him for details.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 3.4. What is the .k5login file, and how do I use it?
+
+The ~/.k5login (~/.klogin in the V4 world) is a list of the Kerberos
+principals authorized to login to your account. It's stored in the home
+directory of the user and should of course not be writable by anybody else.
+This file is consulted by a lot of different programs (rlogind, rshd,
+telnetd, ftpd, su, ...) to figure out if the authenticated user has the
+right to do something as a particular user.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 3.5. I've hear Microsoft will support Kerberos in Windows 2000. Is
+	that true?
+
+This is true, but it is unclear how compatible Microsoft's version of
+Kerberos will be with the standard. It is evident that some degree of
+incompatibility will exist; the exact extent of that incompatibility is
+unknown at this writing. What seems to be the case is that with the
+proprietary ticket extension created by Micrososft KDCs, a non-Microsoft KDC
+won't be able to include any group membership information in the ticket.
+This may or may not impact you, depending on how critical Windows group
+membership information is to your Windows infrastructure.
+
+This article, written by Ted T'so, gives what I feel is a reasonable summary
+of the situation. This originally appeared in the November 1997 NT special
+edition of ;login:, and is used here with permission.
+
+From: Ted T'so &lt;<A href="mailto:tytso@MIT.EDU">tytso@MIT.EDU</A>&gt;
+
+     Microsoft Embraces and Extends Kerberos V5
+
+     There has been a lot of excitement generated by Microsoft's
+     announcement that NT 5.0 would use Kerberos. This excitement was
+     followed by a lot of controversy when it was announced by
+     Microsoft would be adding proprietary extensions to the Kerberos
+     V5 protocol. Exactly what and how Microsoft did and tried to do
+     has been a subject of some confusion; here's the scoop about what
+     really happened.
+
+     NT 5.0 will indeed use Kerberos. However, this protocol has been
+     "embraced and extended" by Microsoft, by adding a digitally signed
+     Privilege Attribute Certificate (PAC) to the Kerberos ticket. The
+     PAC will contain information about the user's 128-bit NT unique
+     id, as well as a list of groups to which the user belongs.
+
+     The NT PAC is unfortunately not compatible with the PAC's used by
+     the Open Software Foundation's Distributed Computing Environment
+     (DCE). It is also somewhat debatable whether the NT PAC is legal
+     with respect to <A href="http://www.faqs.org/rfcs/rfc1510.html">RFC-1510</A>, the IETF Kerberos V5 protocol
+     specification. The original intent of <A href="http://www.faqs.org/rfcs/rfc1510.html">RFC-1510</A> prohibited what
+     Microsoft was trying to do, but Microsoft found what they claimed
+     to be a loophole in <A href="http://www.faqs.org/rfcs/rfc1510.html">RFC-1510</A> specification.
+
+     Many folks, including Paul Hill and myself at MIT, as well as
+     Cliff Neumann at ISI, have tried to work with Microsoft to find a
+     more compatible way of doing what they wanted to do. To that end,
+     we made changes in the upcoming revision of <A href="http://www.faqs.org/rfcs/rfc1510.html">RFC-1510</A> to add a
+     clean and compatible way of adding extensions such as Microsoft's
+     PAC to the Kerberos ticket.
+
+     To Microsoft's credit, they agreed to change NT 5.0 to use a
+     cleaner and more compatible way of adding extensions to the
+     Kerberos V5 ticket. They also pledged that they would make
+     available to us detailed technical information about the NT PAC
+     after the beta release of NT 5.0. This pledge was very important
+     to MIT and other commercial, educational, and government sites
+     which have an extensive deployed base of Kerberos V4 applications
+     (for example Transarc's AFS), as we had planned to add the ability
+     to generate an NT PAC to the MIT Kerberos V5 implementation, which
+     has backwards compatibility for Kerberos V4 applications.
+
+     Unfortunately, at the Microsoft Professional Developers Conference
+     (PDC) in September, Microsoft appears to be backing away from this
+     commitment. For the first time, Microsoft revealed that they had
+     chosen to implement the NT Domain Controller such that the Active
+     Directory Server and the Microsoft KDC ran in the same process
+     space, and that NT clients could not be configured to split a
+     Domain Controller across two machines. Thus, it would not be
+     useful for Microsoft to reveal their proprietary extensions to the
+     Kerberos protocol.
+
+     However, at the PDC, Microsoft did indicate that they had licensed
+     their Domain Controller to a few UNIX vendors. So it may
+     eventually be possible to run a Domain Controller on a non-NT
+     machine but there is no indication what the license may cost each
+     site. It is doubtful, however, whether Kerberos V4 support will be
+     included in those products.
+
+     Microsoft should be commended for using a mature industry standard
+     such as Kerberos for their authentication protocol. Kerberos has
+     had a long review period, and its use has been proven in many
+     operational environments. It seems ironic, however, that Microsoft
+     would choose to design and deploy their implementation with
+     features that are guaranteed to alienate the early adopters of
+     Kerberos, the very people that have helped to create and improve
+     the technology that Microsoft has chosen to "embrace and extend."
+
+Microsoft has issed a number of technical reports explaining how they have
+implemented Kerberos 5 and procedures for interoperating with "vanilla"
+Kerberos 5. They include:
+
+   * Windows 2000 Kerberos Authentication
+     &lt;<A href="http://www.microsoft.com/windows2000/library/howitworks/security/kerberos.asp">http://www.microsoft.com/windows2000/library/howitworks/security/kerberos.asp</A>&gt;
+
+   * Windows 2000 Kerberos Interoperability
+     &lt;<A href="http://www.microsoft.com/WINDOWS2000/library/howitworks/security/kerbint.asp">http://www.microsoft.com/WINDOWS2000/library/howitworks/security/kerbint.asp</A>&gt;
+
+   * Step-by-Step Guide to Kerberos 5 (krb5 1.0) Interoperability
+     &lt;<A href="http://www.microsoft.com/windows2000/library/planning/security/kerbsteps.asp">http://www.microsoft.com/windows2000/library/planning/security/kerbsteps.asp</A>&gt;
+
+Unfortunately, none of the above documents can be read on a non-Microsoft
+operating system; the FAQ author notes the irony of this situation.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 3.6. How can I be authenticated as two different principals at the
+	same time?
+
+In most Kerberos implementations, there can only be a single principal per
+credential cache (or ticket file). You can however choose which cache to use
+by setting the KRB5CCNAME (in V5) and KRBTKFILE (in V4) environment
+variable.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 3.7. How come Kerberos rlogin works to a machine, but when I use
+	Kerberos telnet I'm still asked for a password?
+
+The default for Kerberos telnet as shipped in the MIT distribution is to not
+do authentication. You have to explicitly use the -a flag to request an
+authenticated session.
+
+If you are using -a and you still get a password prompt, the chances are
+good that you're not talking to a Kerberos telnet daemon for some reason.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 3.8. How do I use Kerberos telnet/rlogin to connect to a system as
+	a userid other than my current one?
+
+Use the -l option to both telnet and rlogin to specify an alternate user
+name, e.g.:
+
+telnet -l user hostname
+
+rlogin -l user hostname
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 3.9. Is there any way to do Kerberos authentication across the WWW?
+
+There was code in some versions of NCSA httpd 1.5 and Mosaic 2.7beta to do
+Kerberos authentication. Unfortunately this was non-standard and was not
+carried forward into any modern software.
+
+There are a number of ways to provide Kerberos password verification over an
+SSL-protected pipe, but be aware that these schemes all are fraught with a
+number of serious security problems. Nevertheless, you can find one example
+of a module at:
+
+   * &lt;<A href="http://stonecold.unity.ncsu.edu/software/mod_auth_kerb/index.html">http://stonecold.unity.ncsu.edu/software/mod_auth_kerb/index.html</A>&gt;
+
+The CyberSafe TrustBroker SSO/Web product provides a way to do Kerberos
+authentication over the web. For more information, look at:
+
+   * &lt;<A href="http://www.cybersafe.com/solutions/trustbroker.html">http://www.cybersafe.com/solutions/trustbroker.html</A>&gt;
+
+Probably the best protocol to use for this is the Kerberos Cipher Suites for
+TLS, which is documented in IETF <A href="http://www.faqs.org/rfcs/rfc2712.html">RFC 2712</A>:
+
+   * &lt;<A href="http://www.ietf.org/rfc/rfc2712.txt">http://www.ietf.org/rfc/rfc2712.txt</A>&gt;
+
+An open-source implementation of this, called KSSL, can be found at
+SourceForge:
+
+   * &lt;<A href="http://sourceforge.net/projects/kssl/">http://sourceforge.net/projects/kssl/</A>&gt;
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 3.10. Is there a way to use Kerberos to authenticate my X windows
+	connections? I tried compiling the Kerberos support in X, but it
+	didn't work.
+
+The Kerberos support in X11R6 is written for old betas of MIT Kerberos 5. It
+also only authenticates the connection startup and does not encrypt any of
+the data.
+
+Another approach to this problem is taken by the `kx' and `kxd' programs. It
+allows you to have Kerberos authenticated and encrypted sessions by going
+through a proxy X server. These programs are distributed as part of the KTH
+krb4 distribution and V5 versions of them will be part of the Heimdal
+distribution. For information about these distributions see Question 1.6.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 3.11. I need to use Kerberos through a firewall. What does my
+	firewall administrator need to do?
+
+From: Von Welch &lt;<A href="mailto:vwelch@ncsa.uiuc.edu">vwelch@ncsa.uiuc.edu</A>&gt;
+
+     There are three components in the Kerberos world: the kerberos
+     client applications (e.g. kinit, telnet, pop), the server
+     applications (e.g. telnetd, popper), and the Kerberos KDC. Each
+     pair has different types of traffic that go between them.
+     Depending on the pair of components your firewall is between, you
+     will need to allow different types of traffic through your
+     firewall.
+
+     The notation 'xxxx/udp' or 'xxxx/tcp' below refers to a ephemeral
+     port number (&gt;1024). This refers to a return port that is assigned
+     by the system. The only assumption you can make about the port
+     number is that it will be greater than 1024.
+
+     Between a client program and the KDC, your firewall may need to
+     allow traffic on the following ports/protocols:
+
+                   Client Application                To KDC  Return traffic
+
+      Initial ticket request (i.e. kinit)           88/udp   xxxx/udp
+
+      Kerberos 5-to-4 ticket conversion             4444/udp xxxx/udp
+
+      Changing password (kpasswd under unix)        749/tcp  xxxx/tcp
+
+      Changing password (under windows, old
+      interface)                                    464/tcp  xxxx/tcp
+
+      Changing password (under windows, new
+      interface)                                    464/udp  xxxx/udp
+
+      Running kadmin (also requires initial
+      ticket, 88/udp)                               749/tcp  xxxx/tcp
+
+     Between an application server and the KDC, your firewall may need
+     to allow traffic on the following ports/protocols:
+
+              Application Server           To KDC  Return traffic
+
+      Initial ticket request (i.e. kinit) 88/udp   xxxx/udp
+
+      Kerberos 5-to-4 ticket conversion   4444/udp xxxx/udp
+
+     Between an client program and an application server, your firewall
+     may need to allow traffic on the following ports/protocols:
+
+         Application program/server       To server          To client
+
+      rlogin/rlogind (w/o encryption) 543/tcp            xxxx/tcp
+
+      rlogin/rlogind (w/encryption)   2105/tcp           xxxx/tcp
+
+      rsh/rshd                        544/tcp            xxxx/tcp
+
+      pop/popper                      1109/tcp           xxxx/tcp
+
+      telnet/telnetd                  Same as non-kerberized
+                                      telnet/telnetd
+
+      ftp/ftpd                        Same as non-kerberized ftp/ftpd
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 4. Error messages and other problems
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 4.1. "No such file or directory"
+
+This error is generally returned by application servers when they can't find
+a keytab. Make sure you've created a keytab for the service in question.
+
+Note that in pre-1.0 releases of Kerberos 5, the keytab was called
+/etc/v5srvtab, but it got renamed to /etc/krb5.keytab for the 1.0 release.
+If you're running a pre-1.0 release of Kerberos 5, you'll need to deal with
+this when you upgrade.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 4.2. "Decrypt integrity check failed"
+
+This confusing looking error really means, "Password incorrect" (and in fact
+it's the error that kinit looks for when it goes to print the "Password
+incorrect" message). It means that the encryption key used to encrypt the
+data in this message didn't match the encryption key used for decryption,
+and as a result the checksum comparison didn't work.
+
+The most common time I've seen this message is when trying to set up a slave
+KDC. In this case, the two keys that don't match are the encryption keys for
+the host principal that are stored in the KDC database and on the slave.
+This is generally caused because the administrator was confused about the
+location of host keys and put both host keys on both machines (the master
+and the slave). Unfortunately, this causes problems because every use of
+ktadd generated a new key (see Question 2.9 for more information). The
+solution in this case is to delete the keytabs on each machine, and only add
+the host principal's key to their corresponding machine; e.g., add
+host/master.your.domain ONLY to your master KDC and add
+host/slave.your.domain ONLY to your slave KDC.
+
+In general, this means that the encryption key stored in a keytab doesn't
+match the key stored in the KDC for a particular principal. As mentioned
+above, generating a new key will fix this problem. Note that you'll need to
+get rid of any old cached tickets by using kdestroy, otherwise the various
+Kerberos programs will continue to use an old ticket encrypted with the
+wrong encryption key.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 4.3. "Cannot find/read stored master key"
+
+This means that the program in question was unable to find the copy of the
+master key that is stored in the database (this is different from the stash
+file, which also holds the master key but is in a separate file).
+
+Since this is one of the first operations that the database library does, it
+is also a sort of catch-all error for problems with your Kerberos database.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 4.4. "Incorrect net address"
+
+Included in the Kerberos ticket is a list of IP addresses that this ticket
+can be used on. If you try to use a Kerberos ticket from a machine who's IP
+address is not listed in the ticket, you will get an "Incorrect net
+address".
+
+This mostly occurs when using multihomed machines. Question 2.14 explains
+the issues associated with using multihomed machines with Kerberos in
+greater detail.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 4.5. "Initial Ticket response appears to be Version 4 error"
+
+This means that the reply to a message sent to the KDC didn't make any
+sense, but it seemed to bear a remarkable resemblance to a Kerberos 4 error
+packet.
+
+This means that your Kerberos 5 program is trying to talk to a Kerberos 4
+KDC. While Kerberos 5 is compatible with Kerberos 4, the compatibility is
+only one-way. Kerberos 4 clients can talk to an appropriately configured
+Kerberos 5 KDC, but Kerberos 5 clients cannot talk to a Kerberos 4 KDC.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 4.6. "Message stream modified"
+
+This is returned from the krb5_rd_safe() function. It means that the
+checksum used to verify the data packet didn't match what was expected,
+which would imply a corrupted data stream or a possible attack.
+
+I have seen this occasionally when propagating our Kerberos database to
+slave servers. As far as I can tell, it seems to be benign in this case. It
+occurs very infrequently, I haven't had a chance to figure out what is going
+on.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 4.7. "Illegal cross-realm ticket"
+
+This means that you were using transitive cross-realm authentication and
+that the authentication path wasn't valid.
+
+Question 2.15 explains in greater detail how to configure transitive
+cross-realm authentication. Note that currently you need to set up your
+configuration file correctly on every application server, since currently it
+is the application servers that enforce this restriction. In the next
+version of the Kerberos protocol it will be possible to have the KDC do the
+transitive realm check.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 4.8. "Couldn't authenticate to server: Bad sendauth version was
+	sent"
+
+This comes from the krb5_sendauth() function call. The protocol used by this
+function includes a version string that the remote side can use to verify
+that they are speaking the same protocol.
+
+Every time I have seen this problem, it is with the Kerberized Berkeley
+r-commands (rlogin, rsh, etc etc). The appropriate server is closing the
+remote end of the connection for some reason (for example, if you don't have
+tcp wrappers configured to let in Kerberos rlogins) and this is the first
+thing that fails.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 4.9. When I try using Kerberos ftp, it doesn't work, but it says,
+	"No error".
+
+What you probably saw were errors like the following:
+
+GSSAPI error major: No error
+GSSAPI error minor: No error
+
+There is an error here, it's just not being reported very well.
+
+This comes from the ftp daemon; it is trying to build a service principal
+for the ftp service using the fully-qualified local hostname as the
+principal instance, and it's not finding it in the local keytab. This
+generally results in a confusion between the machine's local hostname and
+it's hostname in DNS.
+
+Note that ftpd is currently the only program that deals with service
+principals this way, so this is why these problems crop up with the Kerberos
+ftp daemon and not other Kerberized services.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 4.10. When I telnet from a Linux machine to a Solaris machine with
+	Kerberos and hit Ctrl-C, the connection hangs.
+
+From: Christopher Blizzard &lt;<A href="mailto:blizzard@appliedtheory.com">blizzard@appliedtheory.com</A>&gt;
+
+     The solution was to define "NO_URGENT" when building the telnetd
+     daemon on Solaris. When sending urgent data to a Linux client, one
+     or the other is getting confused.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 5. Programming with Kerberos.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 5.1. How do I start programming with Kerberos?
+
+From: Jim Doyle &lt;<A href="mailto:jrd@bu.edu">jrd@bu.edu</A>&gt;
+
+     In the Kerberos V5 distribution, I believe there is a s
+     simple-server/simple-client pair that demonstrates the code
+     skeleton needed to implemented per-connection authentication.
+
+     A word of caution to new Kerberizers of applications. :) Dont just
+     go off and craft your product's Kerberos implementation around one
+     day's worth of hacking on the V5 demo examples... Take the time to
+     understand all the subtleties of the protocol and all of the
+     features of design in V5 that you have available to you.
+
+     Some common mistakes that newbies do when they Kerberize their
+     first client-server application:
+
+       1. They hard-code various things into their code, such as the
+          location of the keytab file, or the server's principal name.
+          Bad ideas. Consider that people may want to put the keytab
+          files in places other than your products' installation
+          directory.
+
+          Further, you should also make sure that end-users can choose
+          whatever principal name they wish for each server instance...
+          This has a side effect that the client side protocol needs to
+          be able to discover the principal name of the server process
+          before getting and sending an authenticator. Without the
+          ability to choose principal names, it may be difficult to
+          multiply-instantiate servers in a Kerberos realm.
+
+       2. Put lots of debugging trace statements in your
+          implementation. These are invaluable for diagnosing Kerberos
+          related problems once your product is in deployment.
+
+       3. Consider using generic GSSAPI services.
+
+Another point worth mentioning is that if you are using a standardized
+protocol (such a POP, IMAP, etc etc) it is strongly recommended that you
+work within the framework of that protocol. In the case of protocols like
+POP and IMAP, there is already a standard authentication framework into
+which Kerberos fits. This saves you the work of having to design a protocol
+for your application. This doesn't apply to custom protocols developed
+internally, of course, but the design decisions made for standardized
+protocols might give you some ideas to apply to your own protocol.
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 5.2. What is GSSAPI?
+
+GSSAPI is an acronym; it stands for Generic Security Services Application
+Programming Interface.
+
+The GSSAPI is a generic API for doing client-server authentication. The
+motivation behind it is that every security system has it's own API, and the
+effort involved with adding different security systems to applications is
+extremely difficult with the variance between security APIs. However, with a
+common API, application vendors could write to the generic API and it could
+work with any number of security systems.
+
+How does this relate to Kerberos? Included with most major Kerberos 5
+distributions is a GSSAPI implementation. Thus, if a particular application
+or protocol says that it supports the GSSAPI, then that means that it
+supports Kerberos, by virtue of Kerberos including a GSSAPI implementation.
+
+The relevant standards for GSSAPI include:
+
+   * <A href="http://www.faqs.org/rfcs/rfc2743.html">RFC 2743</A> - Generic Security Services Application Program Interface
+     Version 2, Update 1.
+     &lt;<A href="http://www.ietf.org/rfc/rfc2743.txt">http://www.ietf.org/rfc/rfc2743.txt</A>&gt;
+
+   * <A href="http://www.faqs.org/rfcs/rfc1509.html">RFC 1509</A> - Generic Security Service API: C-bindings
+     &lt;<A href="http://www.ietf.org/rfc/rfc1509.txt">http://www.ietf.org/rfc/rfc1509.txt</A>&gt;
+
+   * <A href="http://www.faqs.org/rfcs/rfc1964.html">RFC 1964</A> - The Kerberos Version 5 GSS-API Mechanism
+     &lt;<A href="http://www.ietf.org/rfc/rfc1964.txt">http://www.ietf.org/rfc/rfc1964.txt</A>&gt;
+
+In terms of programming guides, the only one available that I know about is
+the one from Sun Microsystems. It seems fairly complete and is a excellent
+starting point:
+
+   * &lt;<A href="http://docs.sun.com/ab2/coll.610.1/GSSAPIPG/">http://docs.sun.com/ab2/coll.610.1/GSSAPIPG/</A>&gt;
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 5.3. What is SASL?
+
+SASL is an acronym; it stands for Simple Authentication and Security Layer.
+
+SASL is a generic protocol framework for doing various sorts of
+authentication between clients and server. In SASL termology, application
+protocols such as POP, IMAP, and SMTP specify a "SASL profile," which
+describes how to encapsulate SASL negotiation and SASL messages for that
+protocol. Different authentication schemes are called "mechanisms" in the
+SASL framework.
+
+How does this relate to Kerberos? One of the supported mechanisms for SASL
+is GSSAPI, and since Kerberos is one of the standardized GSSAPI mechanisms,
+protocols that use SASL for authentication support Kerberos authentication
+via the GSSAPI.
+
+It's important to clarify one thing: while a protocol may support SASL, it's
+not required that applications that implement that protocol support all
+security mechanisms. In other words, a particular mail reader may support
+SASL, but it might not support the GSSAPI mechanism. You need to talk to the
+vendor to find out which mechanisms each application supports.
+
+SASL is described by the following RFC:
+
+   * <A href="http://www.faqs.org/rfcs/rfc2222.html">RFC 2222</A> - &lt;<A href="http://www.ietf.org/rfc/rfc2222.txt">http://www.ietf.org/rfc/rfc2222.txt</A>&gt;
+
+Some example of SASL profiles for application protocols are:
+
+POP
+     <A href="http://www.faqs.org/rfcs/rfc1734.html">RFC 1734</A> - &lt;<A href="http://www.ietf.org/rfc/rfc1734.txt">http://www.ietf.org/rfc/rfc1734.txt</A>&gt;
+
+IMAP
+     <A href="http://www.faqs.org/rfcs/rfc1731.html">RFC 1731</A> - &lt;<A href="http://www.ietf.org/rfc/rfc1731.txt">http://www.ietf.org/rfc/rfc1731.txt</A>&gt;&gt;
+
+SMTP
+     <A href="http://www.faqs.org/rfcs/rfc2554.html">RFC 2554</A> - &lt;<A href="http://www.ietf.org/rfc/rfc2554.txt">http://www.ietf.org/rfc/rfc2554.txt</A>&gt;
+
+A number of SASL libraries are available for programmers who don't wish to
+write their own SASL code. The most common open-source one is Cyrus SASL.
+It's available at:
+
+   * &lt;<A href="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail">ftp://ftp.andrew.cmu.edu/pub/cyrus-mail</A>&gt;
+
+<HR align=left noShade SIZE=2 width=500>
+
+Subject: 5.4. Is there a reference for the Kerberos API?
+
+There is a semi-complete list of the basic Kerberos 5 API functions included
+in the distribution under $(KRB5)/doc/api. It's not complete list of all API
+functions, but it's definitely a good start.
+
+If you have trouble converting the LaTeX documentation, Jeff Mahoney at the
+Computer Science House of RIT has very kindly converted this document to
+HTML format and made it available on the Web. You can get it at:
+
+   * &lt;<A href="http://www.csh.rit.edu/~jeffm/docs/krb5api/">http://www.csh.rit.edu/~jeffm/docs/krb5api/</A>&gt;
+
+------------------------------------------------------------
+</PRE>
+<DIV align=center><SMALL>
+<P>
+<HR noShade width=300>
+<BR><A 
+href="http://www.faqs.org/faqs/kerberos-faq/general/preamble.html">MultiPage</A> 
+</SMALL>
+<P>
+<HR noShade SIZE=2 width=450>
+<SMALL><STRONG>[ <A href="http://www.faqs.org/faqs/by-archive-name.html">By 
+Archive-name</A> | <A href="http://www.faqs.org/faqs/by-author/">By Author</A> | 
+<A href="http://www.faqs.org/faqs/by-category.html">By Category</A> | <A 
+href="http://www.faqs.org/faqs/by-newsgroup/">By Newsgroup</A> ] <BR>[ <A 
+href="http://www.faqs.org/faqs/">Home</A> | <A 
+href="http://www.faqs.org/faqs/kerberos-faq/general/faqs/changed.html">Latest 
+Updates</A> | <A href="http://www.faqs.org/faqs/stats.html">Archive Stats</A> | 
+<A href="http://www.faqs.org/faqs/faqsearch.html">Search</A> | <A 
+href="http://www.faqs.org/usenet/">Usenet References</A> | <A 
+href="http://www.faqs.org/faqs/WWW-FAQ-Archive-Tech-Info.html">Help</A> ] 
+</STRONG></SMALL><BR>
+<HR noShade SIZE=2 width=450>
+
+<P>
+<ADDRESS>Send corrections/additions to the FAQ Maintainer: <BR>Ken Hornstein 
+&lt;<A href="mailto:kenh@cmf.nrl.navy.mil">kenh@cmf.nrl.navy.mil</A>&gt; 
+</ADDRESS>
+<P><SMALL><STRONG>Last Update July 07 2002 @ 11:37 PM</STRONG> 
+<BR></SMALL></P></DIV></BODY></HTML>

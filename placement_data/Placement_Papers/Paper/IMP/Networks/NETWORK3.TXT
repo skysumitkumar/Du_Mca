@@ -1,0 +1,703 @@
+
+19.6
+How can a receiver preforming reassemblytell whether all fragments have arrived?
+(a)the fragment that carries the final piece of data has an additional bit set in the
+ header.
+(b)the fragments are numbered from 1 to n, so when n is received you know that all the
+ fragments have arrived.
+(c)the router gives this information to the destination host.
+(d)B and C of the above.
+19.7
+A fragment offset:
+Tells the receiver how to order fragments within a given datagram.
+Delays a fragment until others can catch up.
+Breaks down the packet into different sizes.
+All of the above.
+19.7
+If an underlying network drops packets:
+an encapsulated datagram or fragment can be lost.
+the lost fragment can be reconstructed from those already received.
+the computer requests the lost fragment to be re-sent.
+the receiving computer hangs because it is waiting for it to arrive.
+19.7
+How does IP software reassemble fragments that arrive out of order?
+&#61623; By using IDENTIFICATION number and the IP source address in an incoming
+ fragment to determent the datagram to which the fragment belongs and FRAGMENToffset
+ to order fragments within a given datagram.
+&#61623; Use sequencing
+&#61623; Ignore out of order
+&#61623; Retransmit.
+19.7
+How does IP software reassemble fragments that arrive out of order?
+� By using IDENTIFICATION number and the IP source address in an incoming fragment to 
+  determent the datagram to which the fragment  belongs and  FRAGMENToffset to  order 
+  fragments within a given datagram.
+� Use sequencing
+� Ignore out of order
+� Retransmit
+19.8
+Fragment loss involves
+a network dropping packets
+ip timer expires before all fragments arrive and fragments are dropped upon arrival
+datagram not being able to be reassembled
+all of the above
+19.8
+Fragment loss involves
+a network dropping packets
+ip timer expires before all fragments arrive and fragments are dropped upon arrival
+datagram not being able to be reassembled
+all of the above
+19.8
+IP uses a fragment reassembly timer. The main function of this is
+to prevent the receiver from waiting forever for lost or delayed fragments
+to count the number of fragments received
+to exhaust memory
+to ensure all fragments arrive
+19.8
+Which of the following statements is NOT true about Fragment Loss.
+The receiver must save the fragments that have arrived if the timer expires before all
+ fragments arrive.
+The receiver starts a timer when the first fragment arrives from a given datagram.
+The result of IP's reassembly timer is all-or-not.
+There's no guarantee that a retransmitted datagram would be fragmented in the same way as
+ the original.
+19.9
+When a router receives a subfragment of a fragment of a datagram it:
+Handles it like a fragment.
+Holds it until receives the other subfragments of the fragment and reassembles it.
+Discards it.
+Combines it with the next subfragment with the same destination address.
+19.9
+Fragmentation occurs where on an IPv4 network?
+router
+host
+all of the above
+none of the above
+19.9
+What is the maximum number for a fragment can be divided into smaller segments?
+As many as possible, there is no limitation
+Zero, because a fragment can not be divided anymore
+Five times, because otherwise the data will be too small and can cause more transmission
+ error
+Only one more time
+19.10
+MTU stands for
+Maximum Transmission Unit
+Minimum Transmission Unit
+Maximum Transfer Utility
+Mail Transfer Unit
+19.10
+An MTU is best defined as An Internet connection can be de-multiplexed at such a host,
+ therefore allowing greater bandwidth
+Maximum Transmission Unit
+Maine Technical University
+Media Transfer Unit
+Multi Telephone Upload
+20.2
+The success of the current version of IP is:
+The protocol has accommodated changes in hardware technologies, heterogeneous networks
+ and extremely large scale.
+The protocol has accommodated changes in hardware technologies, heterogeneous networks 
+and extremely small scale.
+The protocol has accommodated changes in software technologies, heterogeneous networks
+ and extremely large scale.
+The protocol has accommodated changes in hardware technologies, homogeneous networks 
+and extremely large scale.
+20.2
+The current version of IP has been ______ and has made it possible for the Internet 
+to handle ______ networks.
+Successful, heterogeneous
+Unsuccessful, heterogeneous
+Successful, homogeneous
+Unsuccessful, homogeneous
+20.2
+Which of the following cannot be categorized as a success of IP4?
+It allows cluster addressing.
+It can accomodate dramatic changes in hardware technology.
+It defines a uniform packet format, which handles heterogeneity.
+It accomodats changes in extremely large scale.
+20.3
+What is the primary motivation to moving to using IPV6?
+The current version of IP is running out of addresses for new computers, and a newer
+ scheme with more address is required.
+IPV6 allows clustering.
+All the kids have it!
+The latest Internet applications need a more sophisticated version of IP.
+20.3
+What is the primary movitation for defining a new version of IP?
+Limited address space.
+New audio/video internet applications.
+New applications that require more complex routing capabilities.
+The current version of IP just ain't hakin' it any more.
+20.3
+Why is a change needed in IP?
+All of the above.
+Limited address space.
+New Internet applications need data delivered at regular intervales.
+New applications require more complex addressing and routing capabilities.
+20.4
+Before IPv6 become the offical name, what was the name researchers used to call it?
+IPng
+IPv5
+IPst
+IPnt
+20.4
+The next generation IP is called IPv6 because:
+IPv5 had been assigned to an experimental protocol known as ST.
+This is the next logical version number as we currently using IPv5.
+The first 5 proposals failed to meet the internet requirements.
+non of the above.
+20.4
+Which of the following is the reason IPv6 is the official next release version of IP?
+The next official version of IP, version 5 had been assigned to an experimental 
+protocal known as ST
+The amount of new features and functionality added to IP warranted a larger revision number.
+Various companies were simultaneously working on the new standards using varying 
+versioning numbers. IPv6 was the most common version and was thus adopted.
+None of the above
+20.5
+section 20.5 Comparing to IPv4, the following is not the new feature of IPv6.
+none of them.
+Address size
+Header Format
+Extension
+20.5
+What are the main new features in Ipv6:
+address Size, Header format, extension headers, support for audio adn video,
+ extensible protocal
+address size, transmission codes, transmission speed, it's not called IPv4 anymore
+it's exactly the same as IPng
+the main thing is the support for audio adn video and the new mechanism for high
+ quality path through the network
+20.5
+Which of the following is not a new feature in IPv6?
+IPv6 is designed to be connectionless.
+IPv6 uses 128-bit addressing.
+IPv6 has high-performance guarantees for streaming audio and video.
+IPv6 is designed to be extensible.
+20.6
+IPv6 Base header contains less information but is:
+2 times as large
+3 times as large
+4 times as large
+2 times as small
+20.6
+What is the optional part of the IPv6 datgram format (for lack of a better question)
+Extension header
+Base header
+Size of the Base header
+Data Area
+20.7
+Which of the following is NOT true of the IPv6 Base Header Format?
+Each address occupies 32 bits.
+It is twice the size of the IPv4 Header.
+It contains less information than the IPv4 Header.
+The PAYLOAD LENGTH field corresponds to the IPv4 Header's TOTAL LENGTH field.
+20.7
+Which of the following statements is true about the IPv6 datagram header.
+The IPv6 header contains fewer fields than the IPv4 datagram header.
+The IPv6 header contains more fields than the IPv4 datagram header.
+The IPv6 header contains the same amount of fields than the IPv4 datagram header.
+The IPv6 datagram does not contain a header.
+20.8
+The value of the NEXT HEADER field of an IPv6 header specifies which one of the following?
+The type of information that follows the header (i.e. data or another header)
+The next hop address for the datagram.
+The value of the fragment datagram which follows the current one.
+The length of the data that follows (in number of octets).
+20.8
+In the IPv6 protocol, there may exist multiple headers. What information is NOT
+ usually stored inside of an IPv6 header?
+The number of headers.
+The size of the header.
+TheNEXT HEADER"field."
+The type of data within the header.
+20.8
+Which of the following is true about IPv6 and the way it handles multiple headers?
+A receiver uses the next header field in each header to determine what follows.
+A receiver uses the options header field in each header to determine what follows.
+A receiver uses the header len field in each header to determine what follows.
+A receiver does not need to use anything to determine what follows.
+20.8
+###################################
+A receiver uses the next header field in each header to determine what follows
+A receiver uses the options header field in each header to determine what follows
+A receiver uses the header len field in each header to determine what follows
+######################
+20.9
+What is the following right about Fragmentation?
+In IPv6, a sending host is responsible for fragmentation
+Fragmentation part in IPv4 is the same fragmentation part in IPv6.
+In IPv4, a sending host is responsible for fragmentation
+none of the above is right.
+20.9
+When an IPv6 packet is fragmented:
+Each fragment is smaller than the original packet
+Each fragment is the same size as the original packet
+Each fragment is larger than the original packet
+No information about the fragment size is known
+20.10
+In comparison with IPv4, IPv6 headers:
+include only required header fields.
+include all required IPv4 field and optionaly contain other fields.
+include all IPv4 and allocate space for new fields which have a specificnot set"value."
+have a fixed header containing the subset of the fields in IPv4 that were commonly used 
+and a small number of addition fields that were lacking in IPv4
+20.10
+One reason for the use of multiple headers in IPv6 is
+to save space.
+IPv6 doesn't use multiple headers.
+to make the extension header shorter.
+to add redundancy, making the protocol more robust.
+20.10
+IPv6 uses separate extention headers to:
+Save space and to allow for the possibility of adding a new feature to the protocol.
+Fully encapsulate the IPv4 header and its functionality.
+Allow for the possibility of data corruption.
+Replace missing footers in the new version.
+20.11
+The motivation for anycast addressing arises from:
+a desire to allow replication of services
+cluster addressing
+needing a replacement to broadcasting
+a need to send packets to any computer on the internet
+20.11
+anycast refers to:
+The address corresponding to a set of computers that share a common address prefix
+ in a single location
+the address corresponding to a single computer
+the address corresponding to a set of ocmputers at many locations
+A datagram being delivered to each member of the set by IPv6
+20.12
+The optimization of IPv6 addressing allows the address of 69DC:0:0:0:0:0:0:B1 to be
+ written as?
+69DC::B1
+69DC:0:B1
+69DC:6-0:B1
+69DC:::::::B1
+20.12
+Which of the following is a valid colon hexadecimal notation?
+0:87DE:7777:4444:5555:6666:8888:0
+0:87DE:7777:4444:5555:6666:8888:0
+ABCD::EFGH
+ABCD:0:0:FFFF:0:FFFF:::1234
+20.12
+To help reduce the number of characters used to write an address, designers of IPV6 
+propose using a more compact form know as _______________?
+Colon hexadecimal notation
+Fixed hexadecimal notation
+Compressed hexadecimal notation
+bracket hexidecimal notation
+20.13
+What is the main reason IPv4 will be replaced?
+Because the address space will soon be exhausted.
+IPv4 didn't work well at all.
+IPv4 was just a trial version and IPv5 will be the original.
+IPv4 had lots of address space but didn't provide connectionless service.
+20.13
+How many bits are used to represent each IPv6 address?
+128
+64
+32
+1/2
+20.13
+The number of bits it takes to represent an IPv6 address is
+128
+64
+32
+16
+21.2
+when a datagram is received, the checksum is verified to ensure that the header
+ arrived intact, to verify the checksum the receiver ...
+recomputes the checksum including the value in the checksum field.
+recomputes the checksum and compares it to the value in the checksum field.
+recomuptes the checksum without the checksum feild and compares it to zero.
+recomputes the checksum including the value in the checksum field and compares it to one
+21.2
+Best effort is:
+doesn't gauarantee delivery
+guarantees delivery
+careless
+is not used by TCP/IP
+21.3
+When does ICMP send a Time Exceeded message?
+When TIME TO LIVE is zero
+When TIME TO LIVE is 1
+When TIME TO LVIE is -1
+It depends on the system
+21.3
+If an ICMP error message causes an error what happens?
+No error message is sent.
+An ICMP error message is sent to the sender of the original error message.
+An ICMP error message is sent to the receiver of the original error message.
+The original error message is retransmitted.
+21.3
+3 examples of an Internet Contorl Message Protocol (ICMP) error message are:
+Source Quench, Time Exceeded, and Redirect
+Source Quench, Parameter Acceptance, and Frame Size Exceeded
+Destination Unreachable, IPv6 Who's Over There, and Parameter Problem
+Alternate Address, Return to Sender, and Not Valid Postage
+21.4
+If a datagram carrying an ICMP error message causes an error then
+no error message is sent
+an error message is sent
+an error message is sent after 1 second
+an error message is sent after 2 second
+21.4
+Where should an ICMP message be sent?
+Back to the source of the datagram
+To all routers adjacent to where the packet is now
+Nowhere
+to the Inter Canadian Mission for Presidency of the united states
+21.4
+To transport an ICMP error message it must be
+Encapsulated into an IP datagram and then that is encapsulated in a frame for transmission.
+Encapsulated directly into a frame for transmission.
+Encapsulated into a ARP message and then that is encapsulated into a frame for transmission.
+Is not Encapsulated at all and is just sent by itself.
+21.5
+The ICMP echo request and echo reply messeages are used by what?
+Ping
+Traceroute
+Ping and traceroute
+none of the above
+21.5
+Ping uses the ICMP
+echo request and echo reply messages.
+echo request.
+information request.
+information request and information reply.
+21.5
+When an echo request arrives, ICMP must...
+send an echo reply
+report it directly to the server
+find out where it's coming from before it does anything else
+fragment the message so that it understandable
+21.6
+When using ICMP to trace a route, which of the following ICMP messages is sent to
+the computer tracing the route?
+Time Exceeded.
+Source Quench.
+Unassigned.
+Address Mask Request.
+21.6
+When using UDP, what kind of program on the destination macine the traceroute sends
+ the UDP to?
+Nonexistent
+Existent
+Application
+Anyone
+21.6
+When using ICMP to trace a route, what type of ICMP message does the router send 
+back to the source?
+Time Exceeded.
+Echo.
+Echo Reply.
+Source Quench
+21.7
+what is a path MTU?
+the smallest MTU along a path from a source to a destination.
+the sum of the MTU along a path from a source to a destination.
+the largest MTU along a path from a source to a destination.
+the number of MTU along a path from a source to a destination.
+21.7
+Which of the following statements is true?
+None of the statements are true other than this one.
+Fragmention of large dtatgrams increases the data flow rate.
+Routers may need to fragment a datagram to make the datagram fit into gaps of data 
+transfer on the network wire.
+The path MTU refers to the largest MTU along a path from a source to a destination.
+21.7
+Define a path MTU.
+The smallest MTU along a path from a source to a destination.
+The largest MTU along a path from a source to a destination.
+A complete path from source to destination which fragmentation is guarenteed not to
+ take place.
+A path from source to destination is fragmentation is guarenteed to occur.
+21.8
+In addition to ______ that is used to detect transmission errors, IP implementations
+ include ______ known as Internet Control Message Protocol(ICMP).
+a header checksum, an error reporting system
+IPv6, a security system
+CRC, a security system
+CRC, a traceroute system
+21.8
+IP addresses are 32-bit numbers, dotted decimal notation expresses _____ -bit section 
+of a 32-bit number as a decimal value and uses periods to seperate the sections.
+8
+16
+4
+2
+21.8
+In addition to a header checksum that is used to detect transmission errors, IP
+ implementations include an error reporting system known as the _________.
+ICMP
+MTU
+IETF
+UDP
+21.8
+ICMP error messages can be used to test an internet to obtain ________ ?
+information
+routers
+switches
+dirty movies
+22.2
+What is the need for Reliable Transport:
+The data must be delivered in exactly the same order that the data was sent, and 
+there must be no loss or duplication.
+The software doesn't need to guarantee prompt, reliable communication.
+The data should be sent to efficiently transport data.
+The programmer needs to transport data efficiently.
+22.2
+Who has the responsibility of ensuring that data is sent properly though a network?
+The underlying internet software, that applications interact with
+The IP rotocol
+The ARP protocol
+The Application Programmer
+22.2
+What must software for internet data transmission guarentee
+prompt, reliable communication with no data loss
+coffee and donuts for all!!!
+prompt and reliable but some loss is okay
+doesn't guarentee anything
+22.3
+In the TCP/IP suite what is used as the transport service?
+PCT
+TCP
+IP
+HTTP
+22.3
+What is the transport level protocol that provides reliability in the TCP/IP protocol suite?
+Transmission Control Protocol (TCP)
+Graceful Connection Shutdown (GCS)
+Reliable Connection Startup (RCS)
+Burger King Combo Value Meal (BKCVM)
+22.4
+Which of the following is the right answer to the service offered by TCP?
+All of alternate answers listed below.
+Connection orientation and point-to-point communication.
+Complete reliability,full duplex communication and stream interface.
+Reliable connection startup and graceful connection shutdown.
+22.4
+Which feature is not a service offered by TCP?
+Address Resolution Protocol
+Complete Reliability
+Stream Interface
+Graceful Connection Shutdown
+22.4
+Which feature is not a service offered by TCP?
+Address Resolution Protocol
+Complete Reliability
+Stream Interface
+Graceful Connection Shutdown
+22.4
+Which of the following are valid service features that TCP provides to Applications?
+Reliable connection startup and Point-to-point communication
+Full duplex communication and Complete reconnect reliability
+Stream Interface and 4-Way handshake
+none of the above
+22.5
+Which protocal provides a connection directly from an application on one computer to
+ an application on a remote computer?
+TCP
+IP
+SMTP
+FTP
+22.5
+The connections provided by TCP are called virtual because
+they are achieved in software
+they are achieved in hardware
+they are standardized
+they use IP to transport ARP messages
+22.5
+TCP software is needed at ____ of a virtual connection.
+each end
+destination end
+source end
+each router
+22.5
+TCP software is needed at ____ of a virtual connection.
+each end
+destination end
+source end
+each router
+22.6
+Which protocol must be carefully designed to achieve reliability:
+TCP
+FTP
+ARP
+ICMP
+22.6
+Transport protocols like TCP must be carefully designed to achieve reliability. What 
+are the two major problems that have to be overcome to be a reliable protocol?
+Unreliable delivery by the underlying communications system and computer reboot.
+Data getting corrupted during transmission and computer reboot.
+Unreliable delivery by the underlying communications system and data getting corrupted
+ during transmission.
+Slow data rates and many different protocols.
+22.6
+A transport protocol like TCP must be carfully designed to achieve ----------?
+Reliability
+unreliability
+maximum succses
+comunication
+22.7
+1. The delay required for data to reach a destination and acknowledgement to return
+ depends on traffic in the internet as well as:
+(a) the distance to the destination
+(b) TCP software is used at each end of a virtual connection.
+(c) TCP software is used on intermediate routers
+(d) the size of datagram
+22.7
+22.7 When TCP sends data, the sender compensates for packet loss by
+implementing a retransmission scheme.
+not caring, TCP provides connectionless data delivery.
+resending on a different route.
+implementing checksum on the data block.
+22.7
+What is one of the most important techniques that TCP uses to achieve reliability?
+retransmission. (pg313)
+Stream Interface.
+Reliable Connection Startup.
+Graceful Connection Shutdown.
+22.8
+Which protocol is best known to use adaptive retransmission?
+TCP
+ARP
+UDP
+ICQ
+22.8
+TCP's retransmission is ____.
+adaptive
+reproductive
+usefull
+delayed
+22.8
+Why did the designers working on TCP decide to have TCP's retransmission adaptive?
+They realized that a fixed time out would not operate well for an internet
+Static retransmission was not full operational at the time TCP was created.
+adaptive retransmission was the only type of retransmission avaliable a the time
+both b and c
+22.9
+How does TCP set the retransmission timeout?
+TCP sets the retransmission timeout to be slightly longer than the mean round-trip delay.
+TCP sets the retransmission timeout to be equal to the mean round-trip delay.
+TCP sets the retransmission timeout to be slightly less than the mean round-trip delay.
+TCP sets the retransmission timeout to be a fixed value.
+22.9
+How does TCP set the retransmission timeout?
+TCP sets the retransmission timeout to be slightly longer than the mean round-trip delay.
+TCP sets the retransmission timeout to be equal to the mean round-trip delay.
+TCP sets the retransmission timeout to be slightly less than the mean round-trip delay.
+TCP sets the retransmission timeout to be a fixed value.
+22.9
+What is the goal of the timing of a retransmission period set by TCP?
+To wait long enough to determine that a packet was lost, without waiting longer than 
+necessary.
+To minimize the retransmission timeout as much as possible to continue a high 
+transmission rate.
+To maximize the retransmission timeout as much as possible to ensure that the data 
+was lost and not simply taking a slow route.
+None of the above.
+22.9
+TCP sets the retransmission timeout to be ______ the mean round-trip delay.
+slightly longer than
+double
+slightly less than
+equal to
+22.10
+Which mechanism does TCP use to control the flow of data?
+window
+buffer
+3-way handshake
+congestion control
+22.10
+TCP uses what to control the flow of data?
+A window mechanism.
+A remote control.
+Fragment offseting.
+A compiler.
+22.10
+What must a sender do when it receives a acknowledgment package advertising a zero window?
+Stop sending until the reciever advertises a positive window.
+send more data until a reciever advertises a positive window.
+Discard the connection.
+All of the above depending on condition.
+22.11
+TCP uses this method to guarantee that connections are established and terminated reliably
+3 way handshaking
+synchronization segments
+finish segments
+32bit sequence numbers
+22.11
+TCP uses this method to guarantee that connections are established and terminated reliably
+3 way handshaking
+synchronization segments
+finish segments
+32bit sequence numbers
+22.11
+What does TCP use to guarantee that connections are established?
+3 way handshake.
+2 way handshake.
+1 way handshake.
+No handshake, because TCP does not guarantee.
+22.12
+What kind of TCP scheme will help prevent congestion collapse?
+&#61623; Congestion control
+&#61623; Retransmit package
+&#61623; Packet loss
+&#61623; TCP double the amount of data being sent
+22.12
+. What kind of TCP scheme will help prevent congestion collapse?
+� Congestion control
+� Retransmit package
+� Packet loss
+� TCP double the amount of data being sent
+22.12
+Congestion Control in TCP works by:
+Reducing the rate of transmission intitially, and then increasing it exponentially if 
+successful.
+Increasing the rate of transmission initially, and then reducing it exponentially if 
+successful.
+Reducing the rate of transmission exponentially until it receives an acknowledgement.
+Waiting an arbitrary amount of time and retransmitting at the same rate.
+22.12
+TCP adapts to excessive internet congestion by
+lowering the frequency of retransmission in a high congestion environment
+increasing the frequency of retransmission in a high congestion environment
+halting retransmission given any type of internet congestion
+sequentially crashing all computers on the internet
+22.13
+Which of the following statements is NOT true about TCP Segment Format.
+The CHECKSUM field contains a checksum that covers only TCP segment header.
+The ACKNOWLEDGMENT NUMBER specifies the sequence number of the data that has been received.
+The WINDOW specifies how much additional buffer space is available for more data.
+The ACKNOWLEDGMENT NUMBER and WINDOW field refer to incoming data while the SEQUENCE 
+NUMBER field refers to outgoing data.
+22.13
+TCP uses a single format for:
+all of the above
+messages carrying data
+acknowledgements
+messages that are part of the 3-way handshake used to create or terminate a connection
+22.14
+Each TCP segment travels in .... datagram.
+IP (Internet Protocol)
+ICMP (Internet Control Message Protocol)
+Ethernet protocol
+TCP
+22.14
+What does TCP provied to application program?
+With a reliable, flow-controlled, full-duplex, stream transport service.
+With a reliabe, self-controlled, full-duplex, stream transport service.
+With a reliable, flow-controlled, full-duplex, real time transport service.
+None the above.
+22.14
+TCP provides
+flow controlled, full duplex, with in order delivery and no duplication of data.
+flow controlled, half duplex, with in order delivery and no duplication of data.
+flow controlled, full duplex, with possibly out of order delivery and no duplication
+ of data.
+flow controlled, full duplex, with in order delivery and possibly duplication of data.
+
+

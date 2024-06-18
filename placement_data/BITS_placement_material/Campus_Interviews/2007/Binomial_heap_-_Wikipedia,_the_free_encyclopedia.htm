@@ -1,0 +1,604 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0042)http://en.wikipedia.org/wiki/Binomial_heap -->
+<HTML lang=en dir=ltr xml:lang="en" 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>Binomial heap - Wikipedia, the free encyclopedia</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META 
+content="Binomial heap,Abstract data type,Big O notation,Binary heap,Binary logarithm,Binary numeral system,Binary tree,Binomial,Charles E. Leiserson,Clifford Stein,Computer science" 
+name=keywords><LINK href="/favicon.ico" rel="shortcut icon"><LINK 
+title="Wikipedia (English)" href="/w/opensearch_desc.php" 
+type=application/opensearchdescription+xml rel=search><LINK 
+href="http://www.gnu.org/copyleft/fdl.html" rel=copyright>
+<STYLE type=text/css media="screen, projection">@import url( /skins-1.5/common/shared.css?90 );
+@import url( /skins-1.5/monobook/main.css?90 );
+</STYLE>
+<LINK media=print 
+href="Binomial heap - Wikipedia, the free encyclopedia_files/commonPrint.css" 
+type=text/css rel=stylesheet><!--[if lt IE 5.5000]><style type="text/css">@import "/skins-1.5/monobook/IE50Fixes.css?90";</style><![endif]--><!--[if IE 5.5000]><style type="text/css">@import "/skins-1.5/monobook/IE55Fixes.css?90";</style><![endif]--><!--[if IE 6]>
+<STYLE type=text/css>@import url( /skins-1.5/monobook/IE60Fixes.css?90 );
+</STYLE>
+<![endif]--><!--[if IE 7]><style type="text/css">@import "/skins-1.5/monobook/IE70Fixes.css?90";</style><![endif]--><!--[if lt IE 7]>
+<SCRIPT src="Binomial heap - Wikipedia, the free encyclopedia_files/IEFixes.js" 
+type=text/javascript></SCRIPT>
+
+<META http-equiv=imagetoolbar content=no><![endif]-->
+<SCRIPT type=text/javascript>/*<![CDATA[*/
+var skin = "monobook";
+var stylepath = "/skins-1.5";
+var wgArticlePath = "/wiki/$1";
+var wgScriptPath = "/w";
+var wgScript = "/w/index.php";
+var wgServer = "http://en.wikipedia.org";
+var wgCanonicalNamespace = "";
+var wgCanonicalSpecialPageName = false;
+var wgNamespaceNumber = 0;
+var wgPageName = "Binomial_heap";
+var wgTitle = "Binomial heap";
+var wgAction = "view";
+var wgRestrictionEdit = [];
+var wgRestrictionMove = [];
+var wgArticleId = "254138";
+var wgIsArticle = true;
+var wgUserName = null;
+var wgUserGroups = null;
+var wgUserLanguage = "en";
+var wgContentLanguage = "en";
+var wgBreakFrames = false;
+var wgCurRevisionId = "143068535";
+/*]]>*/</SCRIPT>
+
+<SCRIPT src="Binomial heap - Wikipedia, the free encyclopedia_files/wikibits.js" 
+type=text/javascript><!-- wikibits js --></SCRIPT>
+
+<SCRIPT src="Binomial heap - Wikipedia, the free encyclopedia_files/index.php" 
+type=text/javascript><!-- site js --></SCRIPT>
+
+<STYLE type=text/css>@import url( /w/index.php?title=MediaWiki:Common.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=2678400 );
+@import url( /w/index.php?title=MediaWiki:Monobook.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=2678400 );
+@import url( /w/index.php?title=-&action=raw&gen=css&maxage=2678400 );
+</STYLE>
+<!-- Head Scripts -->
+<SCRIPT src="Binomial heap - Wikipedia, the free encyclopedia_files/ajax.js" 
+type=text/javascript></SCRIPT>
+
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY class="mediawiki ns-0 ltr page-Binomial_heap">
+<DIV id=globalWrapper>
+<DIV id=column-content>
+<DIV id=content><A id=top name=top></A>
+<DIV id=siteNotice>
+<SCRIPT language=JavaScript type=text/javascript>
+<!--
+document.writeln("\x3cdiv style=\"text-align:right; font-size:80%\"\x3eYour \x3cb\x3e\x3ca href=\"http://wikimediafoundation.org/wiki/Fundraising\" class=\"extiw\" title=\"wikimedia:Fundraising\"\x3econtinued donations\x3c/a\x3e\x3c/b\x3e keep Wikipedia running!     \x3c/div\x3e\n");
+-->
+</SCRIPT>
+</DIV>
+<H1 class=firstHeading>Binomial heap</H1>
+<DIV id=bodyContent>
+<H3 id=siteSub>From Wikipedia, the free encyclopedia</H3>
+<DIV id=contentSub></DIV>
+<DIV id=jump-to-nav>Jump to: <A 
+href="http://en.wikipedia.org/wiki/Binomial_heap#column-one">navigation</A>, <A 
+href="http://en.wikipedia.org/wiki/Binomial_heap#searchInput">search</A></DIV><!-- start content -->
+<P>In <A title="Computer science" 
+href="http://en.wikipedia.org/wiki/Computer_science">computer science</A>, a 
+<B><A title=Binomial href="http://en.wikipedia.org/wiki/Binomial">binomial</A> 
+<A title="Heap (data structure)" 
+href="http://en.wikipedia.org/wiki/Heap_(data_structure)">heap</A></B> is a <A 
+title="Data structure" href="http://en.wikipedia.org/wiki/Data_structure">data 
+structure</A> similar to <A title="Binary heap" 
+href="http://en.wikipedia.org/wiki/Binary_heap">binary heap</A> but also 
+supporting the operation of merging two heaps quickly. This is achieved by using 
+a special tree structure. It is important as an implementation of the 
+<B>mergeable heap</B> <A title="Abstract data type" 
+href="http://en.wikipedia.org/wiki/Abstract_data_type">abstract data type</A> 
+(also called meldable heap), which is a <A title="Priority queue" 
+href="http://en.wikipedia.org/wiki/Priority_queue">priority queue</A> supporting 
+merge operation.</P>
+<TABLE class=toc id=toc summary=Contents>
+  <TBODY>
+  <TR>
+    <TD>
+      <DIV id=toctitle>
+      <H2>Contents</H2></DIV>
+      <UL>
+        <LI class=toclevel-1><A 
+        href="http://en.wikipedia.org/wiki/Binomial_heap#Binomial_tree"><SPAN 
+        class=tocnumber>1</SPAN> <SPAN class=toctext>Binomial tree</SPAN></A> 
+        <LI class=toclevel-1><A 
+        href="http://en.wikipedia.org/wiki/Binomial_heap#Structure_of_a_binomial_heap"><SPAN 
+        class=tocnumber>2</SPAN> <SPAN class=toctext>Structure of a binomial 
+        heap</SPAN></A> 
+        <LI class=toclevel-1><A 
+        href="http://en.wikipedia.org/wiki/Binomial_heap#Implementation"><SPAN 
+        class=tocnumber>3</SPAN> <SPAN class=toctext>Implementation</SPAN></A> 
+        <UL>
+          <LI class=toclevel-2><A 
+          href="http://en.wikipedia.org/wiki/Binomial_heap#Merge"><SPAN 
+          class=tocnumber>3.1</SPAN> <SPAN class=toctext>Merge</SPAN></A> 
+          <LI class=toclevel-2><A 
+          href="http://en.wikipedia.org/wiki/Binomial_heap#Insert"><SPAN 
+          class=tocnumber>3.2</SPAN> <SPAN class=toctext>Insert</SPAN></A> 
+          <LI class=toclevel-2><A 
+          href="http://en.wikipedia.org/wiki/Binomial_heap#Find_minimum"><SPAN 
+          class=tocnumber>3.3</SPAN> <SPAN class=toctext>Find minimum</SPAN></A> 
+
+          <LI class=toclevel-2><A 
+          href="http://en.wikipedia.org/wiki/Binomial_heap#Delete_minimum"><SPAN 
+          class=tocnumber>3.4</SPAN> <SPAN class=toctext>Delete 
+          minimum</SPAN></A> 
+          <LI class=toclevel-2><A 
+          href="http://en.wikipedia.org/wiki/Binomial_heap#Decrease_key"><SPAN 
+          class=tocnumber>3.5</SPAN> <SPAN class=toctext>Decrease key</SPAN></A> 
+
+          <LI class=toclevel-2><A 
+          href="http://en.wikipedia.org/wiki/Binomial_heap#Delete"><SPAN 
+          class=tocnumber>3.6</SPAN> <SPAN class=toctext>Delete</SPAN></A> 
+        </LI></UL>
+        <LI class=toclevel-1><A 
+        href="http://en.wikipedia.org/wiki/Binomial_heap#Performance"><SPAN 
+        class=tocnumber>4</SPAN> <SPAN class=toctext>Performance</SPAN></A> 
+        <LI class=toclevel-1><A 
+        href="http://en.wikipedia.org/wiki/Binomial_heap#Variants"><SPAN 
+        class=tocnumber>5</SPAN> <SPAN class=toctext>Variants</SPAN></A> 
+        <LI class=toclevel-1><A 
+        href="http://en.wikipedia.org/wiki/Binomial_heap#See_also"><SPAN 
+        class=tocnumber>6</SPAN> <SPAN class=toctext>See also</SPAN></A> 
+        <LI class=toclevel-1><A 
+        href="http://en.wikipedia.org/wiki/Binomial_heap#References"><SPAN 
+        class=tocnumber>7</SPAN> <SPAN class=toctext>References</SPAN></A> 
+        <LI class=toclevel-1><A 
+        href="http://en.wikipedia.org/wiki/Binomial_heap#External_links"><SPAN 
+        class=tocnumber>8</SPAN> <SPAN class=toctext>External links</SPAN></A> 
+        </LI></UL></TD></TR></TBODY></TABLE>
+<SCRIPT type=text/javascript>
+//<![CDATA[
+ if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+//]]>
+</SCRIPT>
+
+<P><A id=Binomial_tree name=Binomial_tree></A></P>
+<H2><SPAN class=editsection>[<A title="Edit section: Binomial tree" 
+href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;action=edit&amp;section=1">edit</A>]</SPAN> 
+<SPAN class=mw-headline>Binomial tree</SPAN></H2>
+<P>A binomial heap is implemented as a collection of binomial <A 
+title="Tree data structure" 
+href="http://en.wikipedia.org/wiki/Tree_data_structure">trees</A> (compare with 
+a <A title="Binary heap" href="http://en.wikipedia.org/wiki/Binary_heap">binary 
+heap</A>, which has a shape of a single <A title="Binary tree" 
+href="http://en.wikipedia.org/wiki/Binary_tree">binary tree</A>). A <B>binomial 
+tree</B> is defined recursively:</P>
+<UL>
+  <LI>A binomial tree of order 0 is a single node 
+  <LI>A binomial tree of order <I>k</I> has a root of degree <I>k</I> and its 
+  children are roots of binomial trees of orders <I>k</I>-1, <I>k</I>-2, ..., 2, 
+  1, 0 (in this order). </LI></UL>
+<DIV class=center>
+<DIV class="thumb tnone">
+<DIV class=thumbinner style="WIDTH: 502px"><A class=internal 
+title="Binomial trees of order 0 to 3: Each tree has a root node with subtrees of all lower ordered binomial trees, which have been highlighted. For example, the order 3 binomial tree is connected to an order 2, 1, and 0(highlighted as blue, green and red respectively) binomial tree." 
+href="http://en.wikipedia.org/wiki/Image:Binomial_Trees.svg"><IMG 
+class=thumbimage height=286 
+alt="Binomial trees of order 0 to 3: Each tree has a root node with subtrees of all lower ordered binomial trees, which have been highlighted. For example, the order 3 binomial tree is connected to an order 2, 1, and 0(highlighted as blue, green and red respectively) binomial tree." 
+src="Binomial heap - Wikipedia, the free encyclopedia_files/500px-Binomial_Trees.svg.png" 
+width=500 longDesc=/wiki/Image:Binomial_Trees.svg></A> 
+<DIV class=thumbcaption>
+<DIV class=magnify style="FLOAT: right"><A class=internal title=Enlarge 
+href="http://en.wikipedia.org/wiki/Image:Binomial_Trees.svg"><IMG height=11 
+alt="" 
+src="Binomial heap - Wikipedia, the free encyclopedia_files/magnify-clip.png" 
+width=15></A></DIV>Binomial trees of order 0 to 3: Each tree has a root node 
+with subtrees of all lower ordered binomial trees, which have been highlighted. 
+For example, the order 3 binomial tree is connected to an order 2, 1, and 
+0(highlighted as blue, green and red respectively) binomial 
+tree.</DIV></DIV></DIV></DIV>
+<P>A binomial tree of order <I>k</I> has 2<SUP>k</SUP> nodes, height 
+<I>k</I>.</P>
+<P>Because of its unique structure, a binomial tree of order <I>k</I> can be 
+constructed from two trees of order <I>k</I>-1 trivially by attaching one of 
+them as the leftmost child of the other one. This feature is central to the 
+<I>merge</I> operation of a binomial heap, which is its major advantage over 
+other conventional heaps.</P>
+<P><A id=Structure_of_a_binomial_heap name=Structure_of_a_binomial_heap></A></P>
+<H2><SPAN class=editsection>[<A 
+title="Edit section: Structure of a binomial heap" 
+href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;action=edit&amp;section=2">edit</A>]</SPAN> 
+<SPAN class=mw-headline>Structure of a binomial heap</SPAN></H2>
+<P>A binomial heap is implemented as a set of binomial trees that satisfy the 
+<I>binomial heap properties</I>:</P>
+<UL>
+  <LI>Each binomial tree in a heap obeys the <I><A title="Minimum-heap property" 
+  href="http://en.wikipedia.org/wiki/Minimum-heap_property">minimum-heap 
+  property</A></I>: the key of a node is greater than or equal to the key of its 
+  parent. </LI></UL>
+<UL>
+  <LI>There can only be either <I>one</I> or <I>zero</I> binomial trees for each 
+  order, including zero order. </LI></UL>
+<P>The first property ensures that the root of each binomial tree contains the 
+smallest key in the tree, which applies to the entire heap.</P>
+<P>The second property implies that a binomial heap with <I>n</I> elements 
+consists of at most <I><A title="Binary logarithm" 
+href="http://en.wikipedia.org/wiki/Binary_logarithm">lg</A> n</I> + 1 binomial 
+trees. In fact, the number and orders of these trees are uniquely determined by 
+the number of elements <I>n</I>: each binomial tree corresponds to digit one in 
+the <A title="Binary numeral system" 
+href="http://en.wikipedia.org/wiki/Binary_numeral_system">binary</A> 
+representation of number <I>n</I>. For example number 13 is 1101 in binary, 
+<SPAN class=texhtml>2<SUP>3</SUP> + 2<SUP>2</SUP> + 2<SUP>0</SUP></SPAN>, and 
+thus a binomial heap with 13 elements will consist of three binomial trees of 
+orders 3, 2, and 0 (see figure below).</P>
+<CENTER><A class=image title="Example of a binomial heap" 
+href="http://en.wikipedia.org/wiki/Image:Binomial-heap-13.svg"><IMG height=217 
+alt="Example of a binomial heap" 
+src="Binomial heap - Wikipedia, the free encyclopedia_files/325px-Binomial-heap-13.svg.png" 
+width=325 longDesc=/wiki/Image:Binomial-heap-13.svg></A><BR><I>Example of a 
+binomial heap containing 13 elements with distinct keys.<BR>The heap consists of 
+three binomial trees with orders 0, 2, and 3.</I></CENTER>
+<P><A id=Implementation name=Implementation></A></P>
+<H2><SPAN class=editsection>[<A title="Edit section: Implementation" 
+href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;action=edit&amp;section=3">edit</A>]</SPAN> 
+<SPAN class=mw-headline>Implementation</SPAN></H2>
+<P>Because no operation requires random access to the root nodes of the binomial 
+trees, the roots of the binomial trees can be stored in a <A title="Linked list" 
+href="http://en.wikipedia.org/wiki/Linked_list">linked list</A>, ordered by 
+increasing order of the tree.</P>
+<P><A id=Merge name=Merge></A></P>
+<H3><SPAN class=editsection>[<A title="Edit section: Merge" 
+href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;action=edit&amp;section=4">edit</A>]</SPAN> 
+<SPAN class=mw-headline>Merge</SPAN></H3>
+<P>As mentioned above, the simplest and most important operation is the merging 
+of two binomial trees of the same order within two binomial heaps. Due to the 
+structure of binomial trees, they can be merged trivially. As their root node is 
+the smallest element within the tree, by comparing the two keys, the smaller of 
+them is the minimum key, and becomes the new root node. Then the other tree 
+become a subtree of the combined tree. This operation is basic to the complete 
+merging of two binomial heaps.</P><PRE><B>function</B> mergeTree(p, q)
+    <B>if</B> p.root &lt;= q.root
+        <B>return</B> p.addSubTree(q)
+    <B>else</B>
+        <B>return</B> q.addSubTree(p)
+</PRE>
+<DIV class="thumb tleft">
+<DIV class=thumbinner style="WIDTH: 202px"><A class=internal 
+title="To merge two binomial trees of the same order, first compare the root key. Since 7>3, the black tree on the left(with root node 7) is attached to the grey tree on the right(with root node 3) as a subtree. The result is a tree of order 3." 
+href="http://en.wikipedia.org/wiki/Image:Binomial_heap_merge1.svg"><IMG 
+class=thumbimage height=291 
+alt="To merge two binomial trees of the same order, first compare the root key. Since 7>3, the black tree on the left(with root node 7) is attached to the grey tree on the right(with root node 3) as a subtree. The result is a tree of order 3." 
+src="Binomial heap - Wikipedia, the free encyclopedia_files/200px-Binomial_heap_merge1.svg.png" 
+width=200 longDesc=/wiki/Image:Binomial_heap_merge1.svg></A> 
+<DIV class=thumbcaption>
+<DIV class=magnify style="FLOAT: right"><A class=internal title=Enlarge 
+href="http://en.wikipedia.org/wiki/Image:Binomial_heap_merge1.svg"><IMG 
+height=11 alt="" 
+src="Binomial heap - Wikipedia, the free encyclopedia_files/magnify-clip.png" 
+width=15></A></DIV>To merge two binomial trees of the same order, first compare 
+the root key. Since 7&gt;3, the black tree on the left(with root node 7) is 
+attached to the grey tree on the right(with root node 3) as a subtree. The 
+result is a tree of order 3.</DIV></DIV></DIV>
+<P>The operation of <B>merging</B> two heaps is perhaps the most interesting and 
+can be used as a subroutine in most other operations. The lists of roots of both 
+heaps are traversed simultaneously, similarly as in the <A 
+title="Merge algorithm" 
+href="http://en.wikipedia.org/wiki/Merge_algorithm">merge algorithm</A>.</P>
+<P>If only one of the heaps contains a tree of order <I>j</I>, this tree is 
+moved to the merged heap. If both heaps contain a tree of order <I>j</I>, the 
+two trees are merged to one tree of order <I>j</I>+1 so that the minimum-heap 
+property is satisfied. Note that it may later be necessary to merge this tree 
+with some other tree of order <I>j</I>+1 present in one of the heaps. In the 
+course of the algorithm, we need to examine at most three trees of any order 
+(two from the two heaps we merge and one composed of two smaller trees).</P>
+<P>Each tree has order at most lg <I>n</I> and therefore the running time is 
+<I>O</I>(lg <I>n</I>).</P><PRE><B>function</B> merge(p, q)
+    <B>while</B> <B>not</B>( p.end() <B>and</B> q.end() )
+            tree = mergeTree(p.currentTree(), q.currentTree())
+                <B>if</B> <B>not</B> heap.currentTree().empty()
+                    tree = mergeTree(tree, heap.currentTree())
+                        heap.addTree(tree)
+                <B>else</B>
+                    heap.addTree(tree)
+                heap.next() p.next() q.next()
+</PRE>
+<DIV class="thumb tright">
+<DIV class=thumbinner style="WIDTH: 302px"><A class=internal 
+title="This shows the merger of two binomial heaps. This is accomplished by merging two binomial trees of the same order one by one. If the resulting merged tree has the same order as one binomial tree in one of the two heaps, then those two are merged again." 
+href="http://en.wikipedia.org/wiki/Image:Binomial_heap_merge2.svg"><IMG 
+class=thumbimage height=248 
+alt="This shows the merger of two binomial heaps. This is accomplished by merging two binomial trees of the same order one by one. If the resulting merged tree has the same order as one binomial tree in one of the two heaps, then those two are merged again." 
+src="Binomial heap - Wikipedia, the free encyclopedia_files/300px-Binomial_heap_merge2.svg.png" 
+width=300 longDesc=/wiki/Image:Binomial_heap_merge2.svg></A> 
+<DIV class=thumbcaption>
+<DIV class=magnify style="FLOAT: right"><A class=internal title=Enlarge 
+href="http://en.wikipedia.org/wiki/Image:Binomial_heap_merge2.svg"><IMG 
+height=11 alt="" 
+src="Binomial heap - Wikipedia, the free encyclopedia_files/magnify-clip.png" 
+width=15></A></DIV>This shows the merger of two binomial heaps. This is 
+accomplished by merging two binomial trees of the same order one by one. If the 
+resulting merged tree has the same order as one binomial tree in one of the two 
+heaps, then those two are merged again.</DIV></DIV></DIV>
+<P><A id=Insert name=Insert></A></P>
+<H3><SPAN class=editsection>[<A title="Edit section: Insert" 
+href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;action=edit&amp;section=5">edit</A>]</SPAN> 
+<SPAN class=mw-headline>Insert</SPAN></H3>
+<P><B>Inserting</B> a new element to a heap can be done by simply creating a new 
+heap containing only this element and then merging it with the original heap in 
+<I>O</I>(1) time.</P>
+<P><A id=Find_minimum name=Find_minimum></A></P>
+<H3><SPAN class=editsection>[<A title="Edit section: Find minimum" 
+href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;action=edit&amp;section=6">edit</A>]</SPAN> 
+<SPAN class=mw-headline>Find minimum</SPAN></H3>
+<P>To find the <B>minimum</B> element of the heap, find the minimum among the 
+roots of the binomial trees. This can again be done easily in <I>O</I>(lg 
+<I>n</I>) time.</P>
+<P>By using a pointer to the binomial tree that contains the minimum element, 
+the time for this operation can be reduced to <I>O</I>(1). The pointer must be 
+updated when performing any operation other than Find minimum. This can be done 
+in <I>O</I>(lg <I>n</I>) without raising the running time of any operation.</P>
+<P><A id=Delete_minimum name=Delete_minimum></A></P>
+<H3><SPAN class=editsection>[<A title="Edit section: Delete minimum" 
+href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;action=edit&amp;section=7">edit</A>]</SPAN> 
+<SPAN class=mw-headline>Delete minimum</SPAN></H3>
+<P>To <B>delete the minimum element</B> from the heap, first find this element, 
+remove it from its binomial tree, and obtain a list of its subtrees. Then 
+transform this list of subtrees into a separate binomial heap by reordering them 
+from largest to smallest order. Then merge this heap with the original heap.</P><PRE><B>function</B> deleteMin(heap)
+    min = heap.trees().first()
+    <B>for each</B> current <B>in</B> heap.trees()
+        <B>if</B> current.root &lt; min <B>then</B> min = current
+    <B>for each</B> tree <B>in</B> min.subTrees()
+        tmp.addTree(tree)
+    heap.removeTree(min)
+    merge(heap, tmp)
+</PRE>
+<P><A id=Decrease_key name=Decrease_key></A></P>
+<H3><SPAN class=editsection>[<A title="Edit section: Decrease key" 
+href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;action=edit&amp;section=8">edit</A>]</SPAN> 
+<SPAN class=mw-headline>Decrease key</SPAN></H3>
+<P>After <B>decreasing</B> the key of an element, it may become smaller than the 
+key of its parent, violating the minimum-heap property. If this is the case, 
+exchange the element with its parent, and possibly also with its grandparent, 
+and so on, until the minimum-heap property is no longer violated. Each binomial 
+tree has height at most lg <I>n</I>, so this takes <I>O</I>(lg <I>n</I>) 
+time.</P>
+<P><A id=Delete name=Delete></A></P>
+<H3><SPAN class=editsection>[<A title="Edit section: Delete" 
+href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;action=edit&amp;section=9">edit</A>]</SPAN> 
+<SPAN class=mw-headline>Delete</SPAN></H3>
+<P>To <B>delete</B> an element from the heap, decrease its key to minus infinity 
+(that is, some value lower than any element in the heap) and then delete the 
+minimum in the heap.</P>
+<P><A id=Performance name=Performance></A></P>
+<H2><SPAN class=editsection>[<A title="Edit section: Performance" 
+href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;action=edit&amp;section=10">edit</A>]</SPAN> 
+<SPAN class=mw-headline>Performance</SPAN></H2>
+<P>All of the following operations work in <A title="Big O notation" 
+href="http://en.wikipedia.org/wiki/Big_O_notation">O</A>(log <I>n</I>) time on a 
+binomial heap with <I>n</I> elements:</P>
+<UL>
+  <LI>Insert a new element to the heap 
+  <LI>Find the element with minimum key 
+  <LI>Delete the element with minimum key from the heap 
+  <LI>Decrease key of a given element 
+  <LI>Delete given element from the heap 
+  <LI>Merge two given heaps to one heap </LI></UL>
+<P>Finding the element with minimum key can also be done in <I>O</I>(1) by using 
+an additional pointer to the minimum.</P>
+<P><A id=Variants name=Variants></A></P>
+<H2><SPAN class=editsection>[<A title="Edit section: Variants" 
+href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;action=edit&amp;section=11">edit</A>]</SPAN> 
+<SPAN class=mw-headline>Variants</SPAN></H2>
+<P>Variants of binomial trees are used to construct other similar heap data 
+structures such as <A title="Fibonacci heap" 
+href="http://en.wikipedia.org/wiki/Fibonacci_heap">Fibonacci heaps</A> and <A 
+title="Soft heap" href="http://en.wikipedia.org/wiki/Soft_heap">soft 
+heaps</A>.</P>
+<P><A id=See_also name=See_also></A></P>
+<H2><SPAN class=editsection>[<A title="Edit section: See also" 
+href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;action=edit&amp;section=12">edit</A>]</SPAN> 
+<SPAN class=mw-headline>See also</SPAN></H2>
+<UL>
+  <LI><A title="Fibonacci heap" 
+  href="http://en.wikipedia.org/wiki/Fibonacci_heap">Fibonacci heap</A> 
+  <LI><A title="Soft heap" href="http://en.wikipedia.org/wiki/Soft_heap">Soft 
+  heap</A> </LI></UL>
+<P><A id=References name=References></A></P>
+<H2><SPAN class=editsection>[<A title="Edit section: References" 
+href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;action=edit&amp;section=13">edit</A>]</SPAN> 
+<SPAN class=mw-headline>References</SPAN></H2>
+<UL>
+  <LI><A title="Thomas H. Cormen" 
+  href="http://en.wikipedia.org/wiki/Thomas_H._Cormen">Thomas H. Cormen</A>, <A 
+  title="Charles E. Leiserson" 
+  href="http://en.wikipedia.org/wiki/Charles_E._Leiserson">Charles E. 
+  Leiserson</A>, <A title="Ronald L. Rivest" 
+  href="http://en.wikipedia.org/wiki/Ronald_L._Rivest">Ronald L. Rivest</A>, and 
+  <A title="Clifford Stein" 
+  href="http://en.wikipedia.org/wiki/Clifford_Stein">Clifford Stein</A>. <I><A 
+  title="Introduction to Algorithms" 
+  href="http://en.wikipedia.org/wiki/Introduction_to_Algorithms">Introduction to 
+  Algorithms</A></I>, Second Edition. MIT Press and McGraw-Hill, 2001. <A 
+  class=internal 
+  href="http://en.wikipedia.org/w/index.php?title=Special:Booksources&amp;isbn=0262032937">ISBN 
+  0-262-03293-7</A>. Chapter 19: Binomial Heaps, pp.455–475. 
+  <LI>Vuillemin, J. (1978). <A class="external text" 
+  title=http://portal.acm.org/citation.cfm?id=359478 
+  href="http://portal.acm.org/citation.cfm?id=359478" rel=nofollow>A data 
+  structure for manipulating priority queues.</A> <I>Communications of the 
+  ACM</I> <B>21</B>, 309-314. </LI></UL>
+<P><A id=External_links name=External_links></A></P>
+<H2><SPAN class=editsection>[<A title="Edit section: External links" 
+href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;action=edit&amp;section=14">edit</A>]</SPAN> 
+<SPAN class=mw-headline>External links</SPAN></H2>
+<UL>
+  <LI><A class="external text" 
+  title=http://www.cs.yorku.ca/~aaw/Sotirios/BinomialHeap.html 
+  href="http://www.cs.yorku.ca/~aaw/Sotirios/BinomialHeap.html" 
+  rel=nofollow>Java applet simulation of binomial heap</A> 
+  <LI><A class="external text" 
+  title=http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/511508 
+  href="http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/511508" 
+  rel=nofollow>Python implementation of binomial heap</A> </LI></UL><!-- Saved in parser cache with key enwiki:pcache:idhash:254138-0!1!0!default!!en!2 and timestamp 20070810182851 -->
+<DIV class=printfooter>Retrieved from "<A 
+href="http://en.wikipedia.org/wiki/Binomial_heap">http://en.wikipedia.org/wiki/Binomial_heap</A>"</DIV>
+<DIV id=catlinks>
+<P class=catlinks><A title=Special:Categories 
+href="http://en.wikipedia.org/wiki/Special:Categories">Category</A>: <SPAN 
+dir=ltr><A title="Category:Heaps (structure)" 
+href="http://en.wikipedia.org/wiki/Category:Heaps_(structure)">Heaps 
+(structure)</A></SPAN></P></DIV><!-- end content -->
+<DIV class=visualClear></DIV></DIV></DIV></DIV>
+<DIV id=column-one>
+<DIV class=portlet id=p-cactions>
+<H5>Views</H5>
+<DIV class=pBody>
+<UL>
+  <LI class=selected id=ca-nstab-main><A title="View the content page [c]" 
+  accessKey=c href="http://en.wikipedia.org/wiki/Binomial_heap">Article</A> 
+  <LI id=ca-talk><A title="Discussion about the content page [t]" accessKey=t 
+  href="http://en.wikipedia.org/wiki/Talk:Binomial_heap">Discussion</A> 
+  <LI id=ca-edit><A 
+  title="You can edit this page. Please use the preview button before saving. [e]" 
+  accessKey=e 
+  href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;action=edit">Edit 
+  this page</A> 
+  <LI id=ca-history><A title="Past versions of this page [h]" accessKey=h 
+  href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;action=history">History</A> 
+  </LI></UL></DIV></DIV>
+<DIV class=portlet id=p-personal>
+<H5>Personal tools</H5>
+<DIV class=pBody>
+<UL>
+  <LI id=pt-login><A 
+  title="You are encouraged to log in, it is not mandatory however. [o]" 
+  accessKey=o 
+  href="http://en.wikipedia.org/w/index.php?title=Special:Userlogin&amp;returnto=Binomial_heap">Sign 
+  in / create account</A> </LI></UL></DIV></DIV>
+<DIV class=portlet id=p-logo><A title="Visit the Main Page [z]" 
+style="BACKGROUND-IMAGE: url(/images/wiki-en.png)" accessKey=z 
+href="http://en.wikipedia.org/wiki/Main_Page"></A></DIV>
+<SCRIPT type=text/javascript> if (window.isMSIE55) fixalpha(); </SCRIPT>
+
+<DIV class=portlet id=p-navigation>
+<H5>Navigation</H5>
+<DIV class=pBody>
+<UL>
+  <LI id=n-Main-page><A href="http://en.wikipedia.org/wiki/Main_Page">Main 
+  page</A> 
+  <LI id=n-Contents><A 
+  href="http://en.wikipedia.org/wiki/Wikipedia:Contents">Contents</A> 
+  <LI id=n-Featured-content><A 
+  href="http://en.wikipedia.org/wiki/Wikipedia:Featured_content">Featured 
+  content</A> 
+  <LI id=n-currentevents><A 
+  title="Find background information on current events" 
+  href="http://en.wikipedia.org/wiki/Portal:Current_events">Current events</A> 
+  <LI id=n-randompage><A title="Load a random page [x]" accessKey=x 
+  href="http://en.wikipedia.org/wiki/Special:Random">Random article</A> 
+</LI></UL></DIV></DIV>
+<DIV class=portlet id=p-interaction>
+<H5>interaction</H5>
+<DIV class=pBody>
+<UL>
+  <LI id=n-About-Wikipedia><A 
+  href="http://en.wikipedia.org/wiki/Wikipedia:About">About Wikipedia</A> 
+  <LI id=n-portal><A 
+  title="About the project, what you can do, where to find things" 
+  href="http://en.wikipedia.org/wiki/Wikipedia:Community_Portal">Community 
+  portal</A> 
+  <LI id=n-recentchanges><A title="The list of recent changes in the wiki [r]" 
+  accessKey=r href="http://en.wikipedia.org/wiki/Special:Recentchanges">Recent 
+  changes</A> 
+  <LI id=n-contact><A 
+  href="http://en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</A> 
+
+  <LI id=n-sitesupport><A title="Support us" 
+  href="http://wikimediafoundation.org/wiki/Fundraising">Make a donation</A> 
+  <LI id=n-help><A title="Guidance on how to use and edit Wikipedia" 
+  href="http://en.wikipedia.org/wiki/Help:Contents">Help</A> 
+</LI></UL></DIV></DIV>
+<DIV class=portlet id=p-search>
+<H5><LABEL for=searchInput>Search</LABEL></H5>
+<DIV class=pBody id=searchBody>
+<FORM id=searchform action=/wiki/Special:Search>
+<DIV><INPUT id=searchInput title="Search Wikipedia [f]" accessKey=f name=search> 
+<INPUT class=searchButton id=searchGoButton type=submit value=Go name=go>&nbsp; <INPUT class=searchButton id=mw-searchButton type=submit value=Search name=fulltext> 
+</DIV></FORM></DIV></DIV>
+<DIV class=portlet id=p-tb>
+<H5>Toolbox</H5>
+<DIV class=pBody>
+<UL>
+  <LI id=t-whatlinkshere><A title="List of all wiki pages that link here [j]" 
+  accessKey=j 
+  href="http://en.wikipedia.org/wiki/Special:Whatlinkshere/Binomial_heap">What 
+  links here</A> 
+  <LI id=t-recentchangeslinked><A 
+  title="Recent changes in pages linked from this page [k]" accessKey=k 
+  href="http://en.wikipedia.org/wiki/Special:Recentchangeslinked/Binomial_heap">Related 
+  changes</A> 
+  <LI id=t-upload><A title="Upload images or media files [u]" accessKey=u 
+  href="http://en.wikipedia.org/wiki/Wikipedia:Upload">Upload file</A> 
+  <LI id=t-specialpages><A title="List of all special pages [q]" accessKey=q 
+  href="http://en.wikipedia.org/wiki/Special:Specialpages">Special pages</A> 
+  <LI id=t-print><A title="Printable version of this page [p]" accessKey=p 
+  href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;printable=yes">Printable 
+  version</A> 
+  <LI id=t-permalink><A title="Permanent link to this version of the page" 
+  href="http://en.wikipedia.org/w/index.php?title=Binomial_heap&amp;oldid=143068535">Permanent 
+  link</A>
+  <LI id=t-cite><A 
+  href="http://en.wikipedia.org/w/index.php?title=Special:Cite&amp;page=Binomial_heap&amp;id=143068535">Cite 
+  this article</A> </LI></UL></DIV></DIV>
+<DIV class=portlet id=p-lang>
+<H5>In other languages</H5>
+<DIV class=pBody>
+<UL>
+  <LI class=interwiki-de><A 
+  href="http://de.wikipedia.org/wiki/Binomial-Heap">Deutsch</A> 
+  <LI class=interwiki-fr><A 
+  href="http://fr.wikipedia.org/wiki/Tas_binomial">Français</A> 
+  <LI class=interwiki-he><A 
+  href="http://he.wikipedia.org/wiki/×¢×¥_×××&nbsp;×××">עברית</A> 
+  <LI class=interwiki-ja><A 
+  href="http://ja.wikipedia.org/wiki/äºé&nbsp;ãã¼ã">日本語</A> 
+  <LI class=interwiki-pl><A 
+  href="http://pl.wikipedia.org/wiki/Kopiec_dwumianowy">Polski</A> 
+  <LI class=interwiki-ru><A 
+  href="http://ru.wikipedia.org/wiki/ÐÐ¸Ð½Ð¾Ð¼Ð¸Ð°Ð»ÑÐ½Ð°Ñ_ÐºÑÑÐ°">Русский</A> 
+
+  <LI class=interwiki-uk><A 
+  href="http://uk.wikipedia.org/wiki/ÐÑÐ½Ð¾Ð¼ÑÐ°Ð»ÑÐ½Ð°_ÐºÑÐ¿Ð°">Українська</A> 
+  </LI></UL></DIV></DIV></DIV><!-- end of the left (by default at least) column -->
+<DIV class=visualClear></DIV>
+<DIV id=footer>
+<DIV id=f-poweredbyico><A href="http://www.mediawiki.org/"><IMG 
+alt="Powered by MediaWiki" 
+src="Binomial heap - Wikipedia, the free encyclopedia_files/poweredby_mediawiki_88x31.png"></A></DIV>
+<DIV id=f-copyrightico><A href="http://wikimediafoundation.org/"><IMG 
+alt="Wikimedia Foundation" 
+src="Binomial heap - Wikipedia, the free encyclopedia_files/wikimedia-button.png" 
+border=0></A></DIV>
+<UL id=f-list>
+  <LI id=lastmod>This page was last modified 09:24, 7 July 2007. 
+  <LI id=copyright>All text is available under the terms of the <A 
+  class=internal title="Wikipedia:Text of the GNU Free Documentation License" 
+  href="http://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License">GNU 
+  Free Documentation License</A>. (See <B><A class=internal 
+  title=Wikipedia:Copyrights 
+  href="http://en.wikipedia.org/wiki/Wikipedia:Copyrights">Copyrights</A></B> 
+  for details.) <BR>Wikipedia® is a registered trademark of the <A 
+  href="http://www.wikimediafoundation.org/">Wikimedia Foundation, Inc</A>., a 
+  US-registered <A class=internal title=501(c)(3) 
+  href="http://en.wikipedia.org/wiki/501(c)#501.28c.29.283.29">501(c)(3)</A> <A 
+  href="http://wikimediafoundation.org/wiki/Deductibility_of_donations">tax-deductible</A> 
+  <A class=internal title="Non-profit organization" 
+  href="http://en.wikipedia.org/wiki/Non-profit_organization">nonprofit</A> <A 
+  title="Charitable organization" 
+  href="http://en.wikipedia.org/wiki/Charitable_organization">charity</A>.<BR>
+  <LI id=privacy><A title="wikimedia:Privacy policy" 
+  href="http://wikimediafoundation.org/wiki/Privacy_policy">Privacy policy</A> 
+  <LI id=about><A title=Wikipedia:About 
+  href="http://en.wikipedia.org/wiki/Wikipedia:About">About Wikipedia</A> 
+  <LI id=disclaimer><A title="Wikipedia:General disclaimer" 
+  href="http://en.wikipedia.org/wiki/Wikipedia:General_disclaimer">Disclaimers</A> 
+  </LI></UL></DIV>
+<SCRIPT type=text/javascript>if (window.runOnloadHook) runOnloadHook();</SCRIPT>
+</DIV><!-- Served by srv84 in 0.097 secs. --></BODY></HTML>

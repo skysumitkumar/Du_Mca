@@ -1,0 +1,152 @@
+Amazon Interview Questions 
+
+Telephonic Interview :
+
+1) Explain ur current company project.He wanted to know in depth, at each step he said , can we go into more details of implementation.
+2) You are given a very huge string ,u have to beautify it.
+   beautify means that wherever there are multiple spaces / tabs repace it with single space.Whenever there is a full stop make the next char in Upper case,
+   no characters except the start of new line should be in upper case except when they are enclosed in single/double quotes,
+   U have to do this all in a single traversal and const space.
+3) Implement a stack so that push,pop and max would take O(1) time.(gave 4-5 approaches)
+4) Given a date as 2001/10/02 its a palendrom , find the palendrom date that occured just before this.
+
+Round 1: (focused just on coding)
+
+1) given an array find three numbers whose product is maximum.
+   
+   (NOTE : looks easy but dont be fooled , there could be -ve nos too !!!!
+           gave 3-4 approaches , finally gave code for the approach taking O(n) time and const space)
+           
+2) Given a binary tree , convert it into a doubly linked list where the elements in DLL will be in same order as inorder traversal of the tree.
+
+3) Given a sorted array , rotate it from a given Kth index in best possible manner
+
+4) given a sorted array that is rotated find the index from which rotation happened ( O(logn) soln )
+
+Round 2 : (focused on coding and DS )
+
+1) given an i/p string AAABBCCCAA , o/p = A3B2C3A2 etc ..  requirements : single traversal of string and const memory
+
+2) give me a data structure such that if there could be values between 1-1000 then u could do the following operation in o(1) time :
+
+   insert(x) , delete(x), giveAnyElement()
+   
+   where 'giveAnyElement()' will return any element present in the Data Structure.
+
+   U can assume that memory is no issue .. just concentrate on O(1) time .
+   
+   (My soln : take a array[3][1000] array wherein 
+    for each of the 'i' index :
+    array [0][i] = a int having value 0 or 1 , where 0 means element not present , 1 = element is present
+    array [1][i] = index of next value in the list
+    array [2][i] = index of previous value in the list
+    
+    Basically u need to implement a doubly linked list on in an array and u are done :)
+
+3) given a linkedList where each node has two pointer fields next and Random 
+   where next points to the next node of linklist , while random could point to any node in LL 
+   so create a copy of the linkList.
+   
+Round 3 : (focused on Algo,DS and coding)
+
+1) given a NxM matrix , where each array entry is a character, write a code that will find all the words that can be formed using elements in a row, oolumn and diagonal
+   
+2) given a binary tree , each node apart from left and right has a tail pointer attached to it , where each tail should point to a node which would 
+   come to the right of the current node , if a inorder traversal of tree is done.
+   So u have to devise a O(n) algo to find out which all nodes have their tail pointers set incorrectly.
+   
+3) given a huge string of size n (where n = about one billion ), there are m strings each k characters long u have to find out all the occurences of these m strings
+   in a single traversal of the big string.
+   
+   (soln started from naive string matching, then kmp,then sorting the m strings and using buckets,then using binary trees, tries, hashing etc .. )
+
+Round 4 : (focused on my ability to Design )
+
+1) u have a function where there is an infinite loop thats running and in that loop , getRandomNumber() is called, at any point of time i should be able to track
+   the maximum, minimum, second max , sum , mean ,median etc of the nos.
+   
+   Also i should have the flexibility that i can add more features , ex i can also add feature to find mode of the nos found so far
+   
+   more importantly :a) i should have the flexibility to 'Remove' any feature as and when i want
+                     b) i should be able to change the implementation of any of max, minimum methods without needing any change in my class 
+                     
+   
+   (My soln : after a good long discussion , i used Observer Design Pattern)
+   
+2) what is the diff between interface and abstract classes 
+   give real world examples for them.
+   
+3) What do u know about JDBC , what is the purpose of the driver, when u do a preparedStatement.execute() then what all happens
+
+4) Discuss the Collections API , what all interfaces and concrete classes does it provide , if u had to create ur own Varun-collections API then what all interface
+   and abstract classes would u provide
+   
+5) U have to design a database schema denoting the entire recruitment process , wherein storing info about candidates , interviewers , the interview results etc ..
+   
+Round 5 : (foucussed on Algo and how efficiently can i convert my algo to code)
+
+1) given a NxM matrix where each row has elements in sorted order , and each column has element in sorted order , u have to find a given no in O(n) time and no extra space  
+   ex : 
+          1 4 10
+          3 6 11
+          4 7 15 
+   find if 7 is present or not .           
+
+2) Given n sorted arrays merge them into a single sorted array
+
+3) If i give u an N then ur code should give me the no of distinct binary trees possible with N nodes 
+   ex i/p = 3 o/p = 5
+
+4) once again went back to first question , now its given that all the arrays are increasing continously 
+   ie 
+       1 4 10 
+       12 16 20
+       24 30 35  now find if a given x is present of not
+
+       
+Round 6 : (Focussed on HR,Data Strcuture , Algo)
+
+1) whats the best thing about trilogy
+2) if u have to change something in trilogy what would that be 
+3) biggest challenge u faced there 
+4) biggest accomplishment
+5) Why amazon , there are 100 of companies out there ???
+
+6) if u have to design the algo for searching that would be used for google , then what algo are u going to use.
+
+7) extension of 6th : u have a huge file and u enter some key words , now u need to find the closest set of characters that enclose the entire set of keywords.
+   
+   ex : let String Be "ABAACAAABXYABX....BXAC.." where these A,B,C... are words (not a single characters)
+        suppose user enters the keywords A,B,C then ur answer should be "BXAC"
+        
+Round 7 : (DS, Algo , OS, Puzzles)
+
+1) what all have u read in OS. Can u describe features of any OS.
+
+   (I told lot of things that i had read in Galvin , then i started to describe UNIX , giving details about inode, the kind of scheduling algo it uses, singal 
+    mechanism it uses ,system call mechanism , the dual mode operations , the access control of files, talked about (datablock,superblock,inodeblock,bootblock) 
+    talked about its shell and how can its functionality be easily extended etc ... )
+    
+2) in amazon we have millions of customers daily , if we wanted to give some gift to the customer who buy 3 or more items during the last 7 days , what DS and Algo 
+   are u going to use to store and retrive this info
+
+3) There is a file that has N lines 
+   where 'i' th line says : "There are exactly i lines in the file which are false"
+   
+   ie .. There are exactly 1 line in the file which is false
+         There are exactly 2 lines in the file which are false
+         ..
+         ..
+         There are exactly n lines in the file which are false
+         
+    now u have to find out which of these n lines are true.
+    
+4) given a village with demons and a sleeping man, The man is always sleeping ,never wakes up. Now a demon can eat the sleeping man , but after that
+   he will fall asleep , any demon can eat another sleeping demon.
+   
+   If demons are very smart and would always choose to stay alive than to eat the man and risk their lives.
+   
+   so if initially there are 65 demons and 1 sleeping man ,, what would happen in the village ???
+   
+   
+

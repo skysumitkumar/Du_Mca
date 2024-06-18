@@ -1,0 +1,34 @@
+ void delpntdnode(Nodeptr &head,Nodeptr &head1)
+{
+  Nodeptr temp;
+  temp = head;
+  if(temp == head1)
+  {
+head=head->next;
+delete head1;
+  }
+
+  while(temp->next && temp->next !=head1 )
+    temp = temp->next;
+
+  if(!temp->next)
+  {
+cout<<"no such pointer ";
+return;
+  }
+cout<<temp->key;
+  if(!head1->next)
+   {
+     cout<<"here";
+     
+     delete head1;
+     //delete temp;
+     //temp->next = NULL;
+     return;
+   }
+  
+     temp->next = temp->next->next;
+delete head1
+   
+
+}

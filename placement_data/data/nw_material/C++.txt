@@ -1,0 +1,345 @@
+                               TECH INTVS COMM
+Here is my experience interviewing with Microsoft. The interview went well, I got the job and here are some of the programming questions......
+
+1. Write a program to find the first non-repeating character in a null terminating string. Should be O(n) time.
+
+2. Write a program to remove all duplicate elements from a string. Again O(n) time. 
+
+3. Now this is tricky one, hope I explain it well.... 
+a. You are given a Double Link List with one pointer of each node pointing to the next node just like in a single link list.
+b The second pointer however CAN point to any node in the list and not just the previous node.
+
+Now write a program in O(n) time to duplicate this list. That is, write a program which will create a copy of this list. 
+4. You are given two things:
+a. A binary search tree of integer value nodes (remember integer can have negative values)
+b. An integer value X
+
+Write a program that checks if a path exists in the binary search tree that has a total sum of X. By path we mean a complete path - from root of tree to a leaf. 
+5. Write a C++ class definition for a singleton design pattern. 
+
+(Singleton desing pattern means only one instance of the class can exist for the entire program) 
+
+=================================================================================================
+Print on Console                                             c/c++ programming comm
+
+
+Is it possible to print something(lets say "Hello World") on console, without writing anything in the main() block???? 
+
+ans :
+1)
+
+#include<iostream>
+using namespace std;
+class A{
+public:
+.....A(){ cout<<"Hello World";}
+}a;
+
+int main()
+{
+} 
+
+2)
+
+#include<stdio.h>
+
+int i = printf("Hello World");
+
+int main()
+{
+} 
+
+=================================================================================================
+
+Is main() Function overloaded?                                   c/c++ programming comm
+
+
+As we can use any form one with aruments that is argc n argv, and other wothout arguments. 
+
+
+
+ANS :
+
+You can define main() in many distinct ways, but only one definition can be globally available -- 
+The C++ Programming Language 3rd, 9.4
+
+What's the "magic" behing? Once main() is a regular function, who calls main?
+
+When you run a process, the operating system loads and parse its image to a convenient and managed place in memory.
+ Each OS has its standard way to do that, and its documented how the OS transfers the control to the program.
+
+When you write a program in Assembly, the entry point is that one defined by the OS, but why is it different in C? 
+Actually, its not different in C or any other language, but higher level languages has one thing called start up code, that prepares the whole context, initializing std libraries (stdlib, heap area for malloc, ...), offering portability and simplicity to your logic. This way you don't have to worry about many common tasks.
+
+The C (and C++) start up code finally call one function usually known as "int main(int, char*)" -- 
+int main(int, char*, char *) in some OSes. Now you must understand a little bit how linking process work, 
+and I assume that.
+--
+/* prepare the environment to your code */
+main(argcounter,argarray);
+/* clean up the environment */
+--
+The start up code is already compiled, and its object code (machine code) is somewhat like this:
+
+push argarray
+push argcounter
+call _main
+pop argcounter
+pop argarray
+
+Once this code is already compiled, doesn't matter how you declare main() in your code -- of course you cannot get 
+wrong arguments or arguments not passed, like:
+
+int main( float f, int i, char c );
+
+Finally, you can ignore the arguments, no problem:
+
+int main( void )
+
+or you can get only one:
+
+int main( int argc )
+
+You can even not return a value:
+
+void main( void )
+
+or return a wrong type:
+
+float main( void )
+
+but returning wrong types or makes your program isolated from the caller, because the return code of main() is the standard way you have to inform if the caller if the job as OK or not, and why.
+
+When you don't return a value, the startup code gets garbage as return, and that's not correct.
+
+A good example is (Bourne) shell scripting:
+
+if ! copyfile $source $dest
+then
+echo "Failed copying. The installation will abort"
+# even scripts must worry about return codes
+exit 5
+fi
+
+
+ops! I wrote char * in the past posts! Sorry: char *[] in place of both char *)
+
+The third parameter is a non-standard list of environment variables. Its a NULL-terminated char *[] in the format: "VARIABLE_NAME=VALUE".
+
+--
+int main( int argc, char *argv[], char *envp[] )
+{
+printf( "Environment variables:\n" );
+while( *envp )
+printf( " %s\n", *envp++ );
+}
+--
+
+Note that Windows and most Unix-based OSes support that. It depends also on the compiler, wich offsers the CRT code, so don't trust in its portability. You can use getenv() instead. 
+
+Once this code is already compiled, doesn't matter how you declare main() in your code -- of course you cannot get wrong arguments or arguments not passed, like:
+
+int main( float f, int i, char c );
+
+You cannot get, but you can declare them. It's absolutelly unuseful and invalid @ runtime, but a good C programmer must understand the traps.
+
+This flexibility is one reason that many people get scared of C, but I like to say "kill the dragon" instead of "undefined behavior" -- no offense intention to many really experts that use to say that. 
+=================================================================================================
+
+Why int in declaration of main(int main()) 
+it returns the int value by default to system.
+how the function can be return the value to system? 
+ans:
+i think that upon successfull return the value returned will be 0 and on error or kill the process it will send 1 or other number. that number will be depends on the error or kill id
+
+
+==============================================================================================
+                                                    7aspirants
+Problem statement : There is a singly linked in which 3rd node should 
+be deleted but without using a temporary node. 
+i.e. 2nd node should point to the 4th node and memory allocated by 3rd 
+should be FREED 
+ANS:
+Node *p; 
+if((p=head->next->next))    //p points to 3rd node 
+{ 
+       head->next->next=p->next; 
+       free(p); 
+}
+
+===============================================================================================
+Level order Traversal                                            DS COMM
+I want to make a program 4 level order traversal,in which nodes in same level shuld
+print in one line and next level in next line so on.
+
+ANS:
+
+Intialize a queue Q and enqueue root.
+
+while Q is not empty
+{ 
+x=dequeue();
+if(x->left)
+enqueue(x->left);
+if(x->right)
+enqueue(x->right);
+print(x->element);
+} 
+
+
+
+ALITER :
+to print the nodes of a particular level ( say 3)
+
+use two queues say q1 and q2 & keep a level=1
+push the root into first queue
+then push the right and left of the element poped from q1 into q2.
+
+increment level=2
+now dequeue all the elements from q2 and keep inserting the left and right of all the nodes poped out into q1 till q2 becomes empty
+
+increment level=3
+now level=3
+there dequeue the elements from the q1 and print them as they are the nodes at level = 3.....
+
+RECURSIVE METHOD : ???????????
+
+================================================================================================
+HOW TO FIND THE Nth ELEMENT FROM THE END OF THE LINKED LIST IN THE COMPLEXITY OF O(N)???? 
+                                                                    DS COMM
+
+take two pntrs.....
+one at the beg and the other at the distance of n nodes
+now keep on increasing both the pointers by 1
+till the  2nd pntr reches the end of the list
+at this pt the first pntr wd give u the location of nth node from the end
+===============================================================================================
+o(lgn) time needed.....sorted array                               DS PUZZLES
+Suppose that you are given a sorted sequence of distinct integers{a1,a2,...an} . Give an 
+
+o(lgn) algorithm to determine whether there exists an index i such at ai = i . For example, in 
+
+the array
+{-10,-3,3,5,7} a3 = 3 therefore return 3 as the answer...
+,But In{2,3,4,5,6,7}, there is no such i. for which ai=i 
+
+ANS :
+
+Function returns the number which is same as its own index. Array A[1....n]. First call made as itsOwnIndex(A,1,n).
+
+itsOwnIndex(A,p,q)
+1.if(A[p]>p || A[q]<q)
+2.....then return -1
+3.if(p==q)
+4.....then if(A[p]!=p)
+5..............then return -1
+6.r=(p+q)/2
+7.if(A[r]==r)
+8.....then return r
+9.if(A[r]<r)
+10.....then return itsOwnIndex(A,r+1,q)
+11.....else return itsOwnIndex(A,p,r-1) 
+=============================================================================================
+                                                                       DS COMM
+
+need a very efficient algorithm / program to find out the Nth prime number.
+The input should be a positive integer (N) and the output should be the Nth prime number.
+For example, if the input is 4, the output should be the 4th prime number, i.e. 7 
+===============================================================================================
+                                                                     DS COMM
+Q: how do ya reverse a link list --
+a> . Using three pointers,
+b> . Using two pointers ,
+c> . Using just one pointer
+d> . without using any pointer..
+kindly explain in detail
+Q: reverse a string using 2 pointers..
+and also using a stack.. 
+
+ans :
+Reversal using 3 pointers :
+reverse(node* head,node* prev=0){
+...if(!head){
+.....head = prev; //missed this line last time
+.....return;
+...}
+...node* temp = head->next;
+...head->next = prev;
+...reverse(temp,head);
+} 
+if the list is empty then head=null and therefore head=prev which is ofcourse null....
+
+in all other cases when head is not null...
+we are first saving the next pointer so that list doesn't break....
+and then head->next = prev;
+and then call the function on temp and head ( as the new prev pointer)....
+
+now when we reach the end point of the list....
+ie again head will be null ...
+at that point in time prev will be pointing to the last node of the list...
+the control will go to ....
+...if(!head){
+.....head = prev; //missed this line last time
+.....return;
+...}
+this part of the code...
+where head will be set to prev ptr and hence we are done...
+
+
+
+
+Using 2 pointers 
+Nodeptr reverse(Nodeptr &current, Nodeptr &prev=0)
+{
+.....if(!current)
+.........return prev;
+.....Nodeptr head= reverse(current->next,current);
+.....current->next=prev;
+.....return head;
+}
+And this uses only two pointers to reverse the list, third one doesn't play a role in reversing it, infact that returns the head of the new list which i feel get missed in above solutions. 
+delete 
+
+
+Using one pointer.
+
+reverse(NodePtr &current)
+{
+....if(!current->next)
+........return current;
+....NodePtr temp=reverse(current->next);
+....current->next->next=current;
+....return temp;
+}
+
+In main or from where the function call chould be like the one below:-
+NodePtr newhead=revese(head);
+head->next=0;
+head=newhead; 
+
+
+============================================================================================
+
+Find the same nos repeating n' times among 2n nos.                     ALGORITHMS COMM
+Given an array of 2n elements of which n elements are same and the remaining n elements are all different.
+
+Give an efficient algo to find value which is present n times in the array. 
+
+ANS :
+
+We can go on comparing each element with the next two elements in the array. As soon as we find a pair matching, we got the answer. 
+Example:- n= 6. repeatexdd number =3
+321353.
+we compare first 3 with 2 and 1
+then 2 with 1 and 3
+then 1 with 3 and 5
+then 3 with 5 and 3*** you got a match, so that's it. 
+
+============================================================================================
+TWO QUESTIONS                                                   ALGORITHMS COMM  
+1)count the number of ones in O(lg n)steps????
+
+for this i ve the soln.....
+
+
+2)to find the longest increasing order subsequence in an array (not necessarily consecutive) in O(nlg n)?????its easy to do inO(n^2).......i dont know how this is done so plz be clr??????? 

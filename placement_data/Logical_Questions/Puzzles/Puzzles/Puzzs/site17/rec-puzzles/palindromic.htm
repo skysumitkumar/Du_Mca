@@ -1,0 +1,79 @@
+<html><head>
+<title>Solution for /arithmetic/clock/palindromic</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/clock/palindromic problem</h1>
+<hr>
+The problem is underspecified.  Digital clocks may run from
+
+<pre>
+	(a) 1:00 to 12:59
+	(b) 01:00 to 12:59
+	(c) 0:00 to 23:59
+	(d) 00:00 to 23:59
+	(e-h) any of the above with seconds appended, :00 to :59.
+</pre>
+I agree that not all of these are common, but I have seen some uncommon
+ones.  For that matter, I've seen ones not on the above list -- the Toronto
+subway stations used to contain digital clocks that ran from 0:00 to 12:59
+(pm), then from 1:00 (pm) to 11:59 (pm), while a computer that I used to
+use had the inverse anomaly -- its time of day command displayed times
+from 12:00:00 to 12:59:59 (am), then 01:00:00 to 23:59:59!
+
+<p>
+I get the following results for the 8 cases.
+
+<pre>
+	CASE	AM+PM	HOURS pals/hr  TOTAL	OVERALL TOTAL
+	(a)	yes	1-9	 6	 54
+			10-12	 1	  3	114
+  
+	(b)	yes	01-05	 1	  5
+			06-09	 0	  0
+			10-12	 1	  3	16
+
+	(c)	no	0-9	 6	 60
+			10-15	 1	  6
+			16-19	 0	  0
+			20-23	 1	  4	70
+
+	(d)	no	00-05	 1	  6
+			06-09	 0	  0
+			10-15	 1	  6
+			16-19	 0	  0
+			20-23	 1	  4	16
+
+	(e)	yes	1-9	60	540
+			10-12	 6	 18	1116
+
+	(f)	yes	01-05	 6	 30
+			06-09	 0	  0
+			10-12	 6	 18	96
+
+	(g)	no	0-9	60	600
+			10-15	 6	 36
+			16-19	 0	  0
+			20-23	 6	 24	660
+
+	(h)	no	00-05	 6	 36
+			06-09	 0	  0
+			10-15	 6	 36
+			16-19	 0	  0
+			20-23	 6	 24	96
+
+--Mark Brader (msb@sq.com)
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

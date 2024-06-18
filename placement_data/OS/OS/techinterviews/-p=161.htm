@@ -1,0 +1,783 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head profile="http://gmpg.org/xfn/1">
+	<title>  MS SQL Server interview questions &lt; TechInterviews.com</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css" media="screen">
+		@import url( "style.css");
+	</style>
+        <meta name="description" content="The site offers  as well as career tips and preparation guides for a job interview in the field. Interview questions for high-tech companies.">
+	<link rel="stylesheet" type="text/css" media="print" href="print.css" tppabs="http://www.techinterviews.com/print.css" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="-feed=rss2.htm" tppabs="http://www.techinterviews.com/?feed=rss2" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="-feed=rss.htm" tppabs="http://www.techinterviews.com/?feed=rss" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="-feed=atom" tppabs="http://www.techinterviews.com/?feed=atom" />
+	<link rel="pingback" href="xmlrpc.php.htm" tppabs="http://www.techinterviews.com/xmlrpc.php" />
+		</head>
+
+<body>
+<h1 id="header"><a href="index.htm" tppabs="http://www.techinterviews.com/">Interview questions for tech companies</a></h1>
+<!-- end header --><table width="100%"><tr><td valign="top" width="200" bgcolor="silver">
+<!--sidebar start-->
+	<p class="categorizer">Full-text search:</p><ul class="menulist2"><li><center>
+		<form id="searchform" method="get" action="">
+			<input type="text" name="s" /><input type="submit" name="submit" value="Search" />
+		</form></center></li></ul>
+
+	<p><p class="categorizer">Categories:</p>
+		<ul class="menulist">
+				<li><a href="index.php-cat=9.htm" tppabs="http://www.techinterviews.com/index.php?cat=9" title="View all posts filed under .NET">.NET</a> (29)
+</li>
+	<li><a href="index.php-cat=2.htm" tppabs="http://www.techinterviews.com/index.php?cat=2" title="View all posts filed under C++">C++</a> (25)
+</li>
+	<li><a href="index.php-cat=12.htm" tppabs="http://www.techinterviews.com/index.php?cat=12" title="View all posts filed under Database">Database</a> (26)
+</li>
+	<li><a href="index.php-cat=1.htm" tppabs="http://www.techinterviews.com/index.php?cat=1" title="View all posts filed under General">General</a> (38)
+</li>
+	<li><a href="index.php-cat=11.htm" tppabs="http://www.techinterviews.com/index.php?cat=11" title="View all posts filed under Hardware">Hardware</a> (16)
+</li>
+	<li><a href="index.php-cat=4.htm" tppabs="http://www.techinterviews.com/index.php?cat=4" title="View all posts filed under Java">Java</a> (48)
+</li>
+	<li><a href="index.php-cat=5.htm" tppabs="http://www.techinterviews.com/index.php?cat=5" title="View all posts filed under Networking">Networking</a> (21)
+</li>
+	<li><a href="index.php-cat=13.htm" tppabs="http://www.techinterviews.com/index.php?cat=13" title="View all posts filed under Testing">Testing</a> (11)
+</li>
+	<li><a href="javascript:if(confirm('http://www.techinterviews.com/index.php?cat=7  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/index.php?cat=7'" tppabs="http://www.techinterviews.com/index.php?cat=7" title="View all posts filed under Unix/Linux">Unix/Linux</a> (16)
+</li>
+	<li><a href="javascript:if(confirm('http://www.techinterviews.com/index.php?cat=8  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/index.php?cat=8'" tppabs="http://www.techinterviews.com/index.php?cat=8" title="View all posts filed under VB">VB</a> (8)
+</li>
+	<li><a href="javascript:if(confirm('http://www.techinterviews.com/index.php?cat=14  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/index.php?cat=14'" tppabs="http://www.techinterviews.com/index.php?cat=14" title="View all posts filed under Web dev">Web dev</a> (13)
+</li>
+	<li><a href="javascript:if(confirm('http://www.techinterviews.com/index.php?cat=6  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/index.php?cat=6'" tppabs="http://www.techinterviews.com/index.php?cat=6" title="View all posts filed under Windows">Windows</a> (21)
+</li>
+		<li><a href="mailto:techinterviews@gmail.com?Subject=Submission">Submit yours</a></li>
+		</ul>
+	</p>
+
+	<p>
+	<p class="categorizer">Site sponsors:</p><ul class="menulist2"><li>
+		<center>
+	<script type="text/javascript"><!--
+		google_ad_client = "pub-6610148867873991";
+		google_ad_width = 160;
+		google_ad_height = 600;
+		google_ad_format = "160x600_as";
+		google_ad_channel ="0322550296";
+		google_color_border = "C0C0C0";
+		google_color_bg = "c0c0c0";
+		google_color_link = "000000";
+		google_color_url = "CCCCCC";
+		google_color_text = "CCCCCC";
+		//--></script>
+		<script type="text/javascript"
+		  src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+
+	</center></li></ul>
+	</p>
+<p>
+<p class="categorizer">E-mail updates:</p><ul class="menulist2"><li>
+	 <form action="http://groups-beta.google.com/group/TechInterviewscom-additions/boxsubscribe">
+	  <div align="center">
+	  <table cellpadding="2">
+	  <tr><td>
+		<p align="center">Sign up for updates - win a free book</td></tr>
+	  <tr>
+		<td><center><input type=text name=email value=email@server></center></td>
+	  </tr>
+	  <tr>
+		<td><center>
+			 <input type=submit name="sub" value="Subscribe">
+		</center></td>
+	  </tr>
+	  <tr>
+		<td><p align="center">We give away programming books to e-mail subscribers</p></td>
+	  </tr>
+	  </table>
+	   </div>
+	   </form></li></ul>
+</p>
+
+<p>
+<p class="categorizer">Miscellaneous stuff:</p>
+<div class="menulist2">
+<script type="text/javascript" src="text_group.php-sid=6932&br=1" tppabs="http://1.adbrite.com/mb/text_group.php?sid=6932&br=1"></script>
+<p />
+<div><a class="adHeadline" target="_top" href="javascript:if(confirm('http://www.adbrite.com/mb/commerce/purchase_form.php?opid=7189&afsid=1  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.adbrite.com/mb/commerce/purchase_form.php?opid=7189&afsid=1'" tppabs="http://www.adbrite.com/mb/commerce/purchase_form.php?opid=7189&afsid=1">Your Ad Here</a></div>
+<li><a class="adHeadline" href="javascript:if(confirm('http://new3.mysurvey.com/join.cfm?r=491576  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://new3.mysurvey.com/join.cfm?r=491576'" tppabs="http://new3.mysurvey.com/join.cfm?r=491576">Take a survey, earn money. Get $5 for sign-up.</a></li>
+<li><a class="adHeadline" href="javascript:if(confirm('http://www.dreamhost.com/rewards.cgi?prostoalex  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.dreamhost.com/rewards.cgi?prostoalex'" tppabs="http://www.dreamhost.com/rewards.cgi?prostoalex">2.4 Gigs of storage with 120 GB of bandwidth monthly - great hosting for $7.95 a month</a></li>
+<li><a class="adHeadline" href="javascript:if(confirm('http://www.nobelcom.com/cgi-bin/newActive/nobelcom.cgi?AFFN=168936128  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.nobelcom.com/cgi-bin/newActive/nobelcom.cgi?AFFN=168936128'" tppabs="http://www.nobelcom.com/cgi-bin/newActive/nobelcom.cgi?AFFN=168936128">International phone cards, cheap rates</a></li>
+<li><a class="adHeadline" href="javascript:if(confirm('http://www.satellitesolutions.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.satellitesolutions.com/'" tppabs="http://www.satellitesolutions.com/">Satelite TV</a> - <span class="adText">have satelite television installed at your house with directv</a>. <a href="javascript:if(confirm('http://www.rubberstampchamp.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.rubberstampchamp.com/'" tppabs="http://www.rubberstampchamp.com/">Rubber Stamp</a> - <span class="adText">Shop for custom self-inking stamps, hand stamps, address stamps, label stamps, check endorsement stamps, check deposit stamps, date stamps, pre inks, pocket stamps, ink and much more!</a></li>
+<li> <a class="adHeadline" href="javascript:if(confirm('http://www.daytradeteam.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.daytradeteam.com/'" tppabs="http://www.daytradeteam.com/">Day Trading</a> - <span class="adText">day trading signals for active stock and options traders.</a></li>
+</div>
+</p><p>
+		<p class="categorizer">Good books:</p>
+		<p>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0471383562/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0471383562/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0471383562/moskalyukcom-20"><img src="1.jpg" tppabs="http://www.techinterviews.com/images/1.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0316919160/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0316919160/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0316919160/moskalyukcom-20"><img src="2.jpg" tppabs="http://www.techinterviews.com/images/2.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/007016357X/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/007016357X/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/007016357X/moskalyukcom-20"><img src="3.jpg" tppabs="http://www.techinterviews.com/images/3.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0786865962/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0786865962/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0786865962/moskalyukcom-20"><img src="4.jpg" tppabs="http://www.techinterviews.com/images/4.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0425166864/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0425166864/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0425166864/moskalyukcom-20"><img src="5.gif" tppabs="http://www.techinterviews.com/images/5.gif"></a>
+<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/1580624936/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/1580624936/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/1580624936/moskalyukcom-20"><img src="1580624936.01.THUMBZZZ.jpg" tppabs="http://images.amazon.com/images/P/1580624936.01.THUMBZZZ.jpg" border="0"></a>
+		</p>
+	</p>
+
+	<p>
+	<p class="categorizer">Good links:</p>
+			<ul class="menulist2">
+				<li><a href="javascript:if(confirm('http://www.hotdealsportal.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.hotdealsportal.com/'" tppabs="http://www.hotdealsportal.com/">Deals on PCs</a></li>
+<li><a href="javascript:if(confirm('http://www.techbooksforfree.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.techbooksforfree.com/'" tppabs="http://www.techbooksforfree.com/">Free books</a></li>
+<li><a href="javascript:if(confirm('http://www.itfacts.biz/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.itfacts.biz/'" tppabs="http://www.itfacts.biz/">IT Research</a></li>
+<li><a href="javascript:if(confirm('http://www.sellsbrothers.com/fun/msiview/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.sellsbrothers.com/fun/msiview/'" tppabs="http://www.sellsbrothers.com/fun/msiview/">Interview@MSFT</a></li>
+<li><a href="javascript:if(confirm('http://weblogs.asp.net/JobsBlog/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://weblogs.asp.net/JobsBlog/'" tppabs="http://weblogs.asp.net/JobsBlog/">Career blog @ MSFT</a></li>
+<li><a href="javascript:if(confirm('http://www.c-sharpcorner.com/faq.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.c-sharpcorner.com/faq.asp'" tppabs="http://www.c-sharpcorner.com/faq.asp">C# FAQ</a></li>
+<li><a href="javascript:if(confirm('http://blogs.msdn.com/csharpfaq  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://blogs.msdn.com/csharpfaq'" tppabs="http://blogs.msdn.com/csharpfaq">MSDN C# FAQ</a></li>
+<li><a href="javascript:if(confirm('http://www.everythingfirebird.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.everythingfirebird.com/'" tppabs="http://www.everythingfirebird.com/">Everything Firebird</a></li>
+<li><a href="javascript:if(confirm('http://searchsmallbizit.techtarget.com/sDefinition/0,,sid44_gci826135,00.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://searchsmallbizit.techtarget.com/sDefinition/0,,sid44_gci826135,00.html'" tppabs="http://searchsmallbizit.techtarget.com/sDefinition/0,,sid44_gci826135,00.html">Cheat sheets</a></li>
+<li><a href="javascript:if(confirm('http://www.thatwasfunny.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.thatwasfunny.com/'" tppabs="http://www.thatwasfunny.com/">That was funny</a></li>
+<li><a href="javascript:if(confirm('http://www.collectorcarbuff.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.collectorcarbuff.com/'" tppabs="http://www.collectorcarbuff.com/">Collector cars</a></li>
+<li><a href="javascript:if(confirm('http://www.aspfree.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.aspfree.com/'" tppabs="http://www.aspfree.com/">ASP Free</a></li>
+<li><a href="javascript:if(confirm('http://www.vault.com/survival/center.jsp?type=3&  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.vault.com/survival/center.jsp?type=3&#038;ch_id=262&#038;article_id=9106882&#038;cat_id=1481&#038;listelement=1'" tppabs="http://www.vault.com/survival/center.jsp?type=3&#038;ch_id=262&#038;article_id=9106882&#038;cat_id=1481&#038;listelement=1">What&#039;s your biggest weakness?</a></li>
+<li><a href="javascript:if(confirm('http://www.perlfunc.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.perlfunc.com/'" tppabs="http://www.perlfunc.com/">PerlFunc</a></li>
+<li><a href="javascript:if(confirm('http://www.microsoft.com/smallbusiness/resources/management/recruiting_staffing/hiring_6_interview_questions_you_need_to_ask.mspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.microsoft.com/smallbusiness/resources/management/recruiting_staffing/hiring_6_interview_questions_you_need_to_ask.mspx'" tppabs="http://www.microsoft.com/smallbusiness/resources/management/recruiting_staffing/hiring_6_interview_questions_you_need_to_ask.mspx">Small business interview questions</a></li>
+<li><a href="javascript:if(confirm('http://www.devbistro.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.devbistro.com/'" tppabs="http://www.devbistro.com/">Tech jobs at DevBistro</a></li>
+			</ul>
+<center>
+<form name="search" method="post" action="http://www.meteus.com/search.php">
+<input type="hidden" name="aid" value="32147">
+Search <a href="javascript:if(confirm('http://www.meteus.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.meteus.com/'" tppabs="http://www.meteus.com/" target="_blank">Meteus</a><br />
+<input type="text" name="q" size="20" value="">
+<input type="submit" value="Search" /></form>
+<center>
+	</p>
+
+<!--sidebar end-->
+</td>
+
+<td valign="top" bgcolor="white">
+		<div class="post">
+		<h3><a href="-p=161.htm" tppabs="http://www.techinterviews.com/?p=161" rel="bookmark" title="Interview questions: MS SQL Server interview questions">MS SQL Server interview questions</a></h3>
+			<p>This one always gets asked. For a while the database interview questions were limited to Oracle and generic database design questions. This is a set of more than a hundred Microsoft SQL Server interview questions. Some questions are open-ended, and some do not have answers.</p>
+	<ol>
+<li>What is normalization? -  Well a relational database is basically composed of tables that contain related data. So the Process of organizing this data into tables is actually referred to as normalization. </li>
+	<li>What is a <a href="javascript:if(confirm('http://www.google.com/search?num=100&  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.google.com/search?num=100&#038;hl=en&#038;lr=&#038;c2coff=1&#038;client=firefox-a&#038;oi=defmore&#038;q=define:stored+procedure'" tppabs="http://www.google.com/search?num=100&#038;hl=en&#038;lr=&#038;c2coff=1&#038;client=firefox-a&#038;oi=defmore&#038;q=define:stored+procedure">Stored Procedure</a>? -  Its nothing but a set of T-SQL statements combined to perform a single task of several tasks. Its basically like a Macro so when you invoke the Stored procedure, you actually run a set of statements. </li>
+<a id="more-161"></a></p>
+	<li>Can you give an example of Stored Procedure? -  sp_helpdb , sp_who2, sp_renamedb are a set of system defined stored procedures. We can also have user defined stored procedures which can be called in similar way.</li>
+	<li>What is a trigger? -  Triggers are basically used to implement business rules. Triggers is also similar to stored procedures. The difference is that it can be activated when data is added or edited or deleted from a table in a database. </li>
+	<li>What is a view? -  If we have several tables in a db and we want to view only specific columns from specific tables we can go for views. It would also suffice the needs of security some times allowing specfic users to see only specific columns based on the permission that we can configure on the view. Views also reduce the effort that is required for writing queries to access specific columns every time. </li>
+	<li>What is an Index? -  When queries are run against a db, an index on that db basically helps in the way the data is sorted to process the query for faster and data retrievals are much faster when we have an index. </li>
+	<li>What are the types of indexes available with SQL Server? -  There are basically two types of indexes that we use with the <a href="javascript:if(confirm('http://www.microsoft.com/sql/default.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.microsoft.com/sql/default.asp'" tppabs="http://www.microsoft.com/sql/default.asp">SQL Server</a>. Clustered and the Non-Clustered. </li>
+	<li>What is the basic difference between <A href="javascript:if(confirm('http://www.sql-server-performance.com/gv_index_data_structures.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.sql-server-performance.com/gv_index_data_structures.asp'" tppabs="http://www.sql-server-performance.com/gv_index_data_structures.asp">clustered and a non-clustered index</a>? -  The difference is that, Clustered index is unique for any given table and we can have only one clustered index on a table. The leaf level of a clustered index is the actual data and the data is resorted in case of clustered index. Whereas in case of non-clustered index the leaf level is actually a pointer to the data in rows so we can have as many non-clustered indexes as we can on the db. </li>
+	<li>What are cursors? -  Well cursors help us to do an operation on a set of data that we retreive by commands such as Select columns from table. For example : If we have duplicate records in a table we can remove it by declaring a cursor which would check the records during retreival one by one and remove rows which have duplicate values. </li>
+	<li>When do we use the UPDATE_STATISTICS command? -  This command is basically used when we do a large processing of data. If we do a large amount of deletions any modification or Bulk Copy into the tables, we need to basically update the indexes to take these changes into account. UPDATE_STATISTICS updates the indexes on these tables accordingly. </li>
+	<li>Which TCP/IP port does SQL Server run on? -  SQL Server runs on port 1433 but we can also change it for better security. </li>
+	<li>From where can you change the default port? -  From the Network Utility TCP/IP properties &#8211;> Port number.both on client and the server. </li>
+	<li>Can you tell me the difference between DELETE &#038; TRUNCATE commands? -  Delete command removes the rows from a table based on the condition that we provide with a WHERE clause. Truncate will actually remove all the rows from a table and there will be no data in the table after we run the truncate command. </li>
+	<li>Can we use Truncate command on a table which is referenced by FOREIGN KEY? -  No. We cannot use Truncate command on a table with Foreign Key because of referential integrity. </li>
+	<li>What is the use of DBCC commands? -  DBCC stands for database consistency checker. We use these commands to check the consistency of the databases, i.e., maintenance,  validation task and status checks. </li>
+	<li>Can you give me some DBCC command options?(Database consistency check) -  DBCC CHECKDB - Ensures that tables in the db and the indexes are correctly linked.and DBCC CHECKALLOC - To check that all pages in a db are correctly allocated. DBCC SQLPERF - It gives report on current usage of transaction log in percentage. DBCC CHECKFILEGROUP - Checks all tables file group for any damage. </li>
+	<li>What command do we use to rename a db? -  sp_renamedb &#8216;oldname&#8217; , &#8216;newname&#8217; </li>
+	<li>Well sometimes sp_reanmedb may not work you know because if some one is using the db it will not accept this command so what do you think you can do in such cases? -  In such cases we can first bring to db to single user using sp_dboptions and then we can rename that db and then we can rerun the sp_dboptions command to remove the single user mode. </li>
+	<li>What is the difference between a HAVING CLAUSE and a WHERE CLAUSE? -  Having Clause is basically used only with the GROUP BY function in a query. WHERE Clause is applied to each row before they are part of the GROUP BY function in a query. </li>
+	<li>What do you mean by COLLATION? -  Collation is basically the sort order. There are three types of sort order Dictionary case sensitive, Dictonary - case insensitive and Binary. </li>
+	<li>What is a Join in SQL Server? -  Join actually puts data from two or more tables into a single result set. </li>
+	<li>Can you explain the types of Joins that we can have with Sql Server? -  There are three types of joins: Inner Join, Outer Join, Cross Join </li>
+	<li>When do you use <A href="javascript:if(confirm('http://msdn.microsoft.com/library/default.asp?url=/library/en-us/adminsql/ad_mon_perf_86ib.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/library/default.asp?url=/library/en-us/adminsql/ad_mon_perf_86ib.asp'" tppabs="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/adminsql/ad_mon_perf_86ib.asp">SQL Profiler</a>? -  SQL Profiler utility allows us to basically track connections to the SQL Server and also determine activities such as which SQL Scripts are running, failed jobs etc.. </li>
+	<li>What is a <a href="javascript:if(confirm('http://www.databasejournal.com/features/mssql/article.php/3085211  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.databasejournal.com/features/mssql/article.php/3085211'" tppabs="http://www.databasejournal.com/features/mssql/article.php/3085211">Linked Server</a>? -  Linked Servers is a concept in SQL Server by which we can add other SQL Server to a Group and query both the SQL Server dbs using T-SQL Statements. </li>
+	<li>Can you link only other SQL Servers or any database servers such as Oracle? -  We can link any server provided we have the OLE-DB provider from Microsoft to allow a link. For Oracle we have a OLE-DB provider for oracle that microsoft provides to add it as a linked server to the sql server group. </li>
+	<li>Which stored procedure will you be running to add a linked server? -  <a href="javascript:if(confirm('http://msdn.microsoft.com/library/default.asp?url=/library/en-us/tsqlref/ts_sp_adda_8gqa.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/library/default.asp?url=/library/en-us/tsqlref/ts_sp_adda_8gqa.asp'" tppabs="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/tsqlref/ts_sp_adda_8gqa.asp">sp_addlinkedserver</a>, <a href="javascript:if(confirm('http://www.dbazine.com/sharma2.shtml  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.dbazine.com/sharma2.shtml'" tppabs="http://www.dbazine.com/sharma2.shtml">sp_addlinkedsrvlogin</a></li>
+	<li>What are the OS services that the SQL Server installation adds? -  MS SQL SERVER SERVICE, SQL AGENT SERVICE, DTC (Distribution transac co-ordinator) </li>
+	<li>Can you explain the role of each service? -  SQL SERVER - is for running the databases SQL AGENT - is for automation such as Jobs, DB Maintanance, Backups DTC - Is for linking and connecting to other SQL Servers </li>
+	<li>How do you troubleshoot SQL Server if its running very slow? -  First check the processor and memory usage to see that processor is not above 80% utilization and memory not above 40-45% utilization then check the disk utilization using Performance Monitor, Secondly, use SQL Profiler to check for the users and current SQL activities and jobs running which might be a problem. Third would be to run UPDATE_STATISTICS command to update the indexes </li>
+	<li>Lets say due to N/W or Security issues client is not able to connect to server or vice versa. How do you troubleshoot? -  First I will look to ensure that port settings are proper on server and client Network utility for connections. ODBC is properly configured at client end for connection &#8212;&#8212;Makepipe &#038; readpipe are utilities to check for connection. Makepipe is run on Server and readpipe on client to check for any connection issues. </li>
+	<li>What are the authentication modes in SQL Server? -  Windows mode and mixed mode (SQL &#038; Windows). </li>
+	<li>Where do you think the users names and passwords will be stored in sql server? -  They get stored in master db in the sysxlogins table. </li>
+	<li>What is log shipping? Can we do logshipping with SQL Server 7.0 -  Logshipping is a new feature of SQL Server 2000. We should have two SQL Server - Enterprise Editions. From Enterprise Manager we can configure the logshipping. In logshipping the transactional log file from one server is automatically updated into the backup database on the other server. If one server fails, the other server will have the same db and we can use this as the DR (disaster recovery) plan. </li>
+	<li>Let us say the SQL Server crashed and you are rebuilding the databases including the master database what procedure to you follow? -  For restoring the master db we have to stop the SQL Server first and then from command line we can type SQLSERVER –m which will basically bring it into the maintenance mode after which we can restore the master db. </li>
+	<li>Let us say master db itself has no backup. Now you have to rebuild the db so what kind of action do you take? -  (I am not sure- but I think we have a command to do it). </li>
+	<li>What is BCP? When do we use it? - BulkCopy is a tool used to copy huge amount of data from tables and views. But it won&#8217;t copy the structures of the same. </li>
+	<li>What should we do to copy the tables, schema and views from one SQL Server to another? - We have to write some DTS packages for it.  </li>
+	<li>What are the different types of joins and what dies each do? </li>
+	<li>What are the four main query statements? </li>
+	<li>What is a sub-query? When would you use one? </li>
+	<li>What is a NOLOCK? </li>
+	<li>What are three SQL keywords used to change or set someone&#8217;s permissions? </li>
+	<li>What is the difference between HAVING clause and the WHERE clause? </li>
+	<li>What is referential integrity? What are the advantages of it? </li>
+	<li>What is database normalization? </li>
+	<li>Which command using Query Analyzer will give you the version of SQL server and operating system? </li>
+	<li>Using query analyzer, name 3 ways you can get an accurate count of the number of records in a table? </li>
+	<li>What is the purpose of using COLLATE in a query? </li>
+	<li>What is a trigger? </li>
+	<li>What is one of the first things you would do to increase performance of a query? For example, a boss tells you that &#8220;a query that ran yesterday took 30 seconds, but today it takes 6 minutes&#8221; </li>
+	<li>What is an execution plan? When would you use it? How would you view the execution plan? </li>
+	<li>What is the STUFF function and how does it differ from the REPLACE function? </li>
+	<li>What does it mean to have quoted_identifier on? What are the implications of having it off? </li>
+	<li>What are the different types of replication? How are they used? </li>
+	<li>What is the difference between a local and a global variable? </li>
+	<li>What is the difference between a Local temporary table and a Global temporary table? How is each one used? </li>
+	<li>What are cursors? Name four types of cursors and when each one would be applied? </li>
+	<li>What is the purpose of UPDATE STATISTICS? </li>
+	<li>How do you use DBCC statements to monitor various aspects of a SQL server installation? </li>
+	<li>How do you load large data to the SQL server database? </li>
+	<li>How do you check the performance of a query and how do you optimize it? </li>
+	<li>How do SQL server 2000 and XML linked? Can XML be used to access data? </li>
+	<li>What is SQL server agent? </li>
+	<li>What is referential integrity and how is it achieved? </li>
+	<li>What is indexing? </li>
+	<li>What is normalization and what are the different forms of normalizations? </li>
+	<li>Difference between server.transfer and server.execute method? </li>
+	<li>What id de-normalization and when do you do it? </li>
+	<li>What is better - 2nd Normal form or 3rd normal form? Why? </li>
+	<li>Can we rewrite subqueries into simple select statements or with joins? Example? </li>
+	<li>What is a function? Give some example? </li>
+	<li>What is a stored procedure? </li>
+	<li>Difference between Function and Procedure-in general? </li>
+	<li>Difference between Function and Stored Procedure? </li>
+	<li>Can a stored procedure call another stored procedure. If yes what level and can it be controlled? </li>
+	<li>Can a stored procedure call itself(recursive). If yes what level and can it be controlled.? </li>
+	<li>How do you find the number of rows in a table? </li>
+	<li>Difference between Cluster and Non-cluster index? </li>
+	<li>What is a table called, if it does not have neither Cluster nor Non-cluster Index? </li>
+	<li>Explain DBMS, RDBMS? </li>
+	<li>Explain basic SQL queries with SELECT from where Order By, Group By-Having? </li>
+	<li>Explain the basic concepts of SQL server architecture? </li>
+	<li>Explain couple pf features of SQL server </li>
+	<li>Scalability, Availability, Integration with internet, etc.)? </li>
+	<li>Explain fundamentals of Data ware housing &#038; OLAP? </li>
+	<li>Explain the new features of SQL server 2000? </li>
+	<li>How do we upgrade from SQL Server 6.5 to 7.0 and 7.0 to 2000? </li>
+	<li>What is data integrity? Explain constraints? </li>
+	<li>Explain some DBCC commands? </li>
+	<li>Explain sp_configure commands, set commands? </li>
+	<li>Explain what are db_options used for? </li>
+	<li>What is the basic functions for master, msdb, tempdb databases? </li>
+	<li>What is a job? </li>
+	<li>What are tasks? </li>
+	<li>What are primary keys and foreign keys? </li>
+	<li>How would you Update the rows which are divisible by 10, given a set of numbers in column? </li>
+	<li>If a stored procedure is taking a table data type, how it looks? </li>
+	<li>How m-m relationships are implemented? </li>
+	<li>How do you know which index a table is using? </li>
+	<li>How will oyu test the stored procedure taking two parameters namely first name and last name returning full name? </li>
+	<li>How do you find the error, how can you know the number of rows effected by last SQL statement? </li>
+	<li>How can you get @@error and @@rowcount at the same time? </li>
+	<li>What are sub-queries? Give example? In which case sub-queries are not feasible? </li>
+	<li>What are the type of joins? When do we use Outer and Self joins? </li>
+	<li>Which virtual table does a trigger use? </li>
+	<li>How do you measure the performance of a stored procedure? </li>
+	<li>Questions regarding Raiseerror? </li>
+	<li>Questions on identity? </li>
+	<li>If there is failure during updation of certain rows, what will be the state?</li>
+</ol>
+		<p class="feedback">
+			<a href="-p=161.htm" tppabs="http://www.techinterviews.com/?p=161">Read all</a> | Browse topics: <a href="javascript:if(confirm('http://www.techinterviews.com/index.php?cat=6  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/index.php?cat=6'" tppabs="http://www.techinterviews.com/index.php?cat=6" title="View all posts in Windows" rel="category tag">Windows</a>,  <a href="index.php-cat=9.htm" tppabs="http://www.techinterviews.com/index.php?cat=9" title="View all posts in .NET" rel="category tag">.NET</a>,  <a href="index.php-cat=12.htm" tppabs="http://www.techinterviews.com/index.php?cat=12" title="View all posts in Database" rel="category tag">Database</a>		</p>
+
+<center>
+<script type="text/javascript"><!--
+google_ad_client = "pub-6610148867873991";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text_image";
+google_ad_channel ="5988513540";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "000066";
+google_color_url = "C0c0c0";
+google_color_text = "c0c0c0";
+//--></script>
+<script type="text/javascript"
+  src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</center>
+
+<h2 id="comments">46 Comments 
+	<a href="#postcomment" title="Please leave a comment">&raquo;</a>
+</h2>
+
+<ol id="commentlist">
+
+	<li id="comment-2225">
+		<p>I believe there&#8217;s a mistake in p.3-4: &#8220;What is a trigger?&#8221; should be a separate entry.
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://sean.kiev.ua/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://sean.kiev.ua/'" tppabs="http://sean.kiev.ua/" rel='external nofollow'>Sean</a></b></cite> </p>
+	</li>
+
+	<li id="comment-2306">
+		<p>Q-12: Additionally, DELETE is a logged operation, whereas TRUNCATE is a non-logged operation. Helpful to know when log space is limited.
+</p>
+	<p><cite>Tech Interviews comment by <b>Paul Sligar</b></cite> </p>
+	</li>
+
+	<li id="comment-3181">
+		<p>In question 10, it is worth mentioning that a table can have no more than 249 non clustered indexes - as opposed to saying &#8220;as many as we can on the db&#8221;
+</p>
+	<p><cite>Tech Interviews comment by <b>Hassan</b></cite> </p>
+	</li>
+
+	<li id="comment-3212">
+		<p>What are sub-queries? Give example?<br />
+Sub-query means a Query within a Query. This is the Example:<br />
+Select Employee_Id, Employee_name From Employees Where Employee_Id IN (Select Mgr_Id from Manager)
+</p>
+	<p><cite>Tech Interviews comment by <b>Upendra</b></cite> </p>
+	</li>
+
+	<li id="comment-3962">
+		<p>Hi,<br />
+Can you tell me how to get a query text in MS SQL SErver ?<br />
+If we want the same in Oracle we can get it by executing :<br />
+select SQL_TEXT from V$SQL</p>
+	<p>Pl. respond me ASAP.</p>
+	<p>Thanks !!
+</p>
+	<p><cite>Tech Interviews comment by <b>Deepak agarwal</b></cite> </p>
+	</li>
+
+	<li id="comment-5398">
+		<p>Hello,</p>
+	<p>I have an issue where we have a temp table (I&#8217;ll just call it #temp for this question) where we store table info that we are creating through an app&#8230;.then once it&#8217;s changed we need to copy all of the data from that table into a global temp table&#8230;say we&#8217;ll call this one ##global&#8230;</p>
+	<p>can anyone tell me a way to copy or insert all of the columns and data from #temp into ##global please? and withought having to include all the existing colum names in the #Temp tabe in the script. Is it even possible withough using a bcp to out it then another to in it from files?</p>
+	<p>Any help would be GREATLY appreciated,</p>
+	<p>Thank you,</p>
+	<p>Jason
+</p>
+	<p><cite>Tech Interviews comment by <b>Jason</b></cite> </p>
+	</li>
+
+	<li id="comment-5583">
+		<p>how is #67 related to SQL server?
+</p>
+	<p><cite>Tech Interviews comment by <b>mEmENT0m0RI</b></cite> </p>
+	</li>
+
+	<li id="comment-5642">
+		<p>can u tell the command to get all table names from a database
+</p>
+	<p><cite>Tech Interviews comment by <b>vinay</b></cite> </p>
+	</li>
+
+	<li id="comment-5882">
+		<p>Hello Jason ,</p>
+	<p>I think we can shoot any triger to do the job. Any app when work on #tmp table will fire the triger in the sql server, which will do the job to transfer the data from #tmp to #global.</p>
+	<p>Ofcourse there may be otherway, I just point out my suggestion.</p>
+	<p>Cheers!<br />
+Himadrish
+</p>
+	<p><cite>Tech Interviews comment by <b>Himadrish</b></cite> </p>
+	</li>
+
+	<li id="comment-6060">
+		<p>Hi Vinay,</p>
+	<p>To get all the table names from a database just execute &#8220;sp_tables&#8221; system store procedure without the quotes.</p>
+	<p>Regards,<br />
+Chandraprakash.
+</p>
+	<p><cite>Tech Interviews comment by <b>Chandraprakash</b></cite> </p>
+	</li>
+
+	<li id="comment-6061">
+		<p>Hello vinay,</p>
+	<p>Use below query to et all tables from database</p>
+	<p>Select name from sysObjects where xtype=&#8217;u&#8217;
+</p>
+	<p><cite>Tech Interviews comment by <b>Kiran</b></cite> </p>
+	</li>
+
+	<li id="comment-6226">
+		<p>its the best site i had ever visited
+</p>
+	<p><cite>Tech Interviews comment by <b>manmeet</b></cite> </p>
+	</li>
+
+	<li id="comment-6318">
+		<p>Hi ,<br />
+Thanks a lot.It&#8217;s really helpfull.
+</p>
+	<p><cite>Tech Interviews comment by <b>sangeetha</b></cite> </p>
+	</li>
+
+	<li id="comment-6319">
+		<p>What is a Function?<br />
+Set of statements to perform a particular task.It compute a value and returns it.<br />
+if u call 1000 times a function,it has the same effect.It cannot be executed individually.<br />
+when u call a function,u must assign a value to the variable.<br />
+Note:Returns a single value.
+</p>
+	<p><cite>Tech Interviews comment by <b>sangeetha</b></cite> </p>
+	</li>
+
+	<li id="comment-6439">
+		<p>Question: Which one is newer and better to use MS SQL server 2000 or SQL server 7.0?<br />
+Thanks<br />
+Rod
+</p>
+	<p><cite>Tech Interviews comment by <b>Rod J. Rhedugen</b></cite> </p>
+	</li>
+
+	<li id="comment-6729">
+		<p>The webpage is really good. It is really informative. It would be better if answers for all questions are published
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="index.htm" tppabs="http://www.techinterviews.com/" rel='external nofollow'>Vidhya</a></b></cite> </p>
+	</li>
+
+	<li id="comment-6817">
+		<p>Answer to question 15 is SQL Server 2000 is newer and better than SQL 7.0
+</p>
+	<p><cite>Tech Interviews comment by <b>db don</b></cite> </p>
+	</li>
+
+	<li id="comment-6949">
+		<p>Q: How to update one according to other table if one column is identical in both?
+</p>
+	<p><cite>Tech Interviews comment by <b>Banti Agrawal</b></cite> </p>
+	</li>
+
+	<li id="comment-7090">
+		<p>tell me a query that second largest salary to display?
+</p>
+	<p><cite>Tech Interviews comment by <b>vinay</b></cite> </p>
+	</li>
+
+	<li id="comment-7095">
+		<p>42.<br />
+sp_addlogin &#8216;Buck&#8217;, &#8216;password&#8217;With the name Buck and a password </p>
+	<p>If you have Windows authentication set on your server, you use a different command, and you don&#8217;t have to specify the password: </p>
+	<p>sp_grantlogin &#8216;HQ\Buck&#8217;</p>
+	<p>or we can say<br />
+GRANT SELECT, UPDATE<br />
+ON authors<br />
+TO [HQ\Buck</p>
+	<p>REVOKE SELECT<br />
+ON authors<br />
+FROM [HQ\Buck]</p>
+	<p>DENY INSERT<br />
+ON authors<br />
+TO [HQ\Buck]
+</p>
+	<p><cite>Tech Interviews comment by <b>Joji</b></cite> </p>
+	</li>
+
+	<li id="comment-7096">
+		<p>46.<br />
+Three command to get version or operating system related infomation.<br />
+Select @@Version<br />
+Or<br />
+EXEC sp_MSgetversion<br />
+or<br />
+Exec  xp_msver
+</p>
+	<p><cite>Tech Interviews comment by <b>Jaweed Khan</b></cite> </p>
+	</li>
+
+	<li id="comment-7097">
+		<p>42.<br />
+Grant, Revoke, Deny</p>
+	<p>or </p>
+	<p>To create SQL Server logins using SQL authentication is sp_addlogin. The format looks like this:</p>
+	<p>sp_addlogin &#8216;Buck&#8217;, &#8216;password&#8217;With the name Buck and a password of password (which is not a good password).</p>
+	<p>If you have Windows authentication set on your server, you use a different command, and you don&#8217;t have to specify the password: </p>
+	<p>sp_grantlogin &#8216;HQ\Buck&#8217;</p>
+	<p>46.<br />
+Three command to get version or operating system related infomation.<br />
+Select @@Version<br />
+Or<br />
+EXEC sp_MSgetversion<br />
+or<br />
+Exec xp_msver
+</p>
+	<p><cite>Tech Interviews comment by <b>Jaweed Khan</b></cite> </p>
+	</li>
+
+	<li id="comment-7098">
+		<p>42.<br />
+Grant, Revoke, Deny<br />
+or<br />
+To create SQL Server logins using SQL authentication is sp_addlogin. The format looks like this:</p>
+	<p>sp_addlogin ‘Buck’, ‘password’With the name Buck and a password of password (which is not a good password).</p>
+	<p>If you have Windows authentication set on your server, you use a different command, and you don’t have to specify the password: </p>
+	<p>sp_grantlogin ‘HQ\Buck’</p>
+	<p>46.<br />
+Three command to get version or operating system related infomation.<br />
+Select @@Version<br />
+Or<br />
+EXEC sp_MSgetversion<br />
+or<br />
+Exec xp_msver </p>
+	<p>52.<br />
+SELECT STUFF(&#8217;wabbit_season&#8217;, 7, 1, &#8216;_hunting_&#8217;)<br />
+Result will be<br />
+Microsoft SQL Server [returns &#8216;wabbit_hunting_season&#8217;]</p>
+	<p>Microsoft SQL Server uses the STUFF function to overwrite existing characters. Using this syntax, STUFF(string_expression, start, length, replacement_characters), string_expression is the string that will have characters substituted, start is the starting position, length is the number of characters in the string that are substituted, and replacement_characters are the new characters interjected into the string.<br />
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-<br />
+This example replaces the string cde in abcdefghi with xxx.</p>
+	<p>SELECT REPLACE(&#8217;abcdefghicde&#8217;,'cde&#8217;,'xxx&#8217;)<br />
+GO</p>
+	<p>Here is the result set:</p>
+	<p>&#8212;&#8212;&#8212;&#8212;<br />
+abxxxfghixxx<br />
+(1 row(s) affected)
+</p>
+	<p><cite>Tech Interviews comment by <b>Jaweed Khan</b></cite> </p>
+	</li>
+
+	<li id="comment-7099">
+		<p>53.<br />
+when Quoted identifiers is ON<br />
+Quoted identifiers are delimited by double quotation marks (&#8221;):<br />
+SELECT * FROM &#8220;Blanks in Table Name&#8221;<br />
+or we can use ([])<br />
+SELECT * FROM [Blanks in Table Name]
+</p>
+	<p><cite>Tech Interviews comment by <b>Jaweed Khan</b></cite> </p>
+	</li>
+
+	<li id="comment-7100">
+		<p>56.<br />
+Prefix local temporary table names with single number sign (#table_name), and prefix global temporary table names with a double number sign (##table_name).</p>
+	<p>A local temporary table created in a stored procedure is dropped automatically when the stored procedure completes. All other local temporary tables are dropped automatically at the end of the current session.</p>
+	<p>Global temporary tables are automatically dropped when the session that created the table ends and all other tasks have stopped referencing them.
+</p>
+	<p><cite>Tech Interviews comment by <b>Jaweed Khan</b></cite> </p>
+	</li>
+
+	<li id="comment-7101">
+		<p>57.<br />
+Static cursors<br />
+Dynamic cursors<br />
+Forward-only cursors<br />
+Keyset-driven cursors </p>
+	<p>Static cursors detect few or no changes but consume relatively few resources while scrolling, although they store the entire cursor in tempdb. Dynamic cursors detect all changes but consume more resources while scrolling, although they make the lightest use of tempdb. Keyset-driven cursors lie in between, detecting most changes but at less expense than dynamic cursors.
+</p>
+	<p><cite>Tech Interviews comment by <b>joji</b></cite> </p>
+	</li>
+
+	<li id="comment-7181">
+		<p>Additionally, DELETE command can be rolled back but TRUNCATE cannot be rolled back
+</p>
+	<p><cite>Tech Interviews comment by <b>Asok</b></cite> </p>
+	</li>
+
+	<li id="comment-7192">
+		<p>Four Types of Transaction Isloation level in SQL server</p>
+	<p>Transact-SQL scripts and DB-Library applications use the SET TRANSACTION ISOLATION LEVEL statement.</p>
+	<p>SET TRANSACTION ISOLATION LEVEL<br />
+    {   READ UNCOMMITTED<br />
+      | READ COMMITTED<br />
+      | REPEATABLE READ<br />
+      | SERIALIZABLE<br />
+    }<br />
+BEGIN TRANSACTION<br />
+&#8230;<br />
+COMMIT TRANSACTION
+</p>
+	<p><cite>Tech Interviews comment by <b>jaweed khan</b></cite> </p>
+	</li>
+
+	<li id="comment-7208">
+		<p>Truncate is a DDL command<br />
+Delete is a DML command
+</p>
+	<p><cite>Tech Interviews comment by <b>Swathi</b></cite> </p>
+	</li>
+
+	<li id="comment-7211">
+		<p>45.Database Normalization means organizing data into more than one table.<br />
+Normalization improves performance by reducing redundancy.
+</p>
+	<p><cite>Tech Interviews comment by <b>Swathi Gunnala</b></cite> </p>
+	</li>
+
+	<li id="comment-7212">
+		<p>38.there r 4 types of joins r there<br />
+1.Natual Join<br />
+2.Outer Join<br />
+3.Self Join<br />
+4.Equi Join
+</p>
+	<p><cite>Tech Interviews comment by <b>Swathi Gunnala</b></cite> </p>
+	</li>
+
+	<li id="comment-7213">
+		<p>66.<br />
+1st Normal Form<br />
+2nd Normal Form<br />
+3rd Normal Form<br />
+Boyce-codd Normal Form
+</p>
+	<p><cite>Tech Interviews comment by <b>Swathi Gunnala</b></cite> </p>
+	</li>
+
+	<li id="comment-7215">
+		<p>68.The intentional introduction of redundancy into a table in order to improve performance is called Denormalization
+</p>
+	<p><cite>Tech Interviews comment by <b>Swathi Gunnala</b></cite> </p>
+	</li>
+
+	<li id="comment-7217">
+		<p>Data integrity ensures the consistency &amp; correctness of data stored in a database.</p>
+	<p>5 types of constraints</p>
+	<p>1. PRIMARY constraint<br />
+2.FOREIGN constraint<br />
+3.UNIQUE constraint<br />
+4.CHECK constraint<br />
+5.DEFAULT constraint
+</p>
+	<p><cite>Tech Interviews comment by <b>Swathi Gunnala</b></cite> </p>
+	</li>
+
+	<li id="comment-7218">
+		<p>88.Data integrity ensures the consistency &amp; correctness of data stored in a database.</p>
+	<p>5 types of constraints</p>
+	<p>1. PRIMARY constraint<br />
+2.FOREIGN constraint<br />
+3.UNIQUE constraint<br />
+4.CHECK constraint<br />
+5.DEFAULT constraint
+</p>
+	<p><cite>Tech Interviews comment by <b>Swathi Gunnala</b></cite> </p>
+	</li>
+
+	<li id="comment-7228">
+		<p>The difference from REPLACE is that this function uses a position in the string to make replacement rather than a pattern.
+</p>
+	<p><cite>Tech Interviews comment by <b>Jimmy</b></cite> </p>
+	</li>
+
+	<li id="comment-7258">
+		<p>Dear Friends</p>
+	<p>Another Way to get all the table names from a database ,<br />
+execute this query</p>
+	<p>SELECT Table_Name From Information_Schema.tables
+</p>
+	<p><cite>Tech Interviews comment by <b>Palaksha</b></cite> </p>
+	</li>
+
+	<li id="comment-7868">
+		<p>Thanks a Lot. Please keep it updated. Readers are requested to post other questions also.<br />
+All the best.
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://yahoo.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://yahoo.com/'" tppabs="http://yahoo.com/" rel='external nofollow'>premanshu</a></b></cite> </p>
+	</li>
+
+	<li id="comment-10056">
+		<p>To copy the data from one table to another without creating the script:</p>
+	<p>let us consider the #temp is one table having data and that has to be copied to #globaltemp,<br />
+execute the following query:</p>
+	<p>select * into #globaltemp from #temp</p>
+	<p>Hope this helps u&#8230;Jason
+</p>
+	<p><cite>Tech Interviews comment by <b>Madhumalar</b></cite> </p>
+	</li>
+
+	<li id="comment-10057">
+		<p>Hi Vinay,</p>
+	<p>Here&#8217;s the query to get the second largest salary in a table.  Let us have the employee table with salary as one of the column</p>
+	<p>select max(a.salary) from employee a, employee b where a.salary
+</p>
+	<p><cite>Tech Interviews comment by <b>Madhumalar</b></cite> </p>
+	</li>
+
+	<li id="comment-10550">
+		<p>Hi,<br />
+Please tell me how to select the second largest salary from a table? Thanks
+</p>
+	<p><cite>Tech Interviews comment by <b>Praba</b></cite> </p>
+	</li>
+
+	<li id="comment-10551">
+		<p>Hi, How to delete duplicate rows from a table&#8230;.thanks
+</p>
+	<p><cite>Tech Interviews comment by <b>Praba</b></cite> </p>
+	</li>
+
+	<li id="comment-10949">
+		<p>hello all,</p>
+	<p>How can BCP used effectivey? help me with syntax
+</p>
+	<p><cite>Tech Interviews comment by <b>yash</b></cite> </p>
+	</li>
+
+	<li id="comment-12618">
+		<p>Q) can u tell the command to get all table names from a database<br />
+A) select name from sysobjects where type = &#8216;u&#8217;
+</p>
+	<p><cite>Tech Interviews comment by <b>Amit</b></cite> </p>
+	</li>
+
+	<li id="comment-12619">
+		<p>Q) Please tell me how to select the second largest salary from a table?<br />
+A) Select Top 1 from Employee where Salary Not IN ( select Top 1 from Employee order by Salary Desc)<br />
+order by Salary Desc
+</p>
+	<p><cite>Tech Interviews comment by <b>Amit</b></cite> </p>
+	</li>
+
+	<li id="comment-12890">
+		<p>The answer to the 1st question is absolutly wrong. Normalization is bringing database schema to some of normal form, strictly speaking, it is bringing to a higher normal form. Denormalization is reverse process &#8212; bringing schema to a lower normal form.
+</p>
+	<p><cite>Tech Interviews comment by <b>bjack</b></cite> </p>
+	</li>
+
+<li>Explore hiring practices of: <a href="javascript:if(confirm('http://www.interviewat.com/infosys/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/infosys/'" tppabs="http://www.interviewat.com/infosys/" title="Infosys">Infosys</a>, <a href="javascript:if(confirm('http://www.interviewat.com/accenture/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/accenture/'" tppabs="http://www.interviewat.com/accenture/" title="Accenture">Accenture</a>, <a href="javascript:if(confirm('http://www.interviewat.com/caritor/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/caritor/'" tppabs="http://www.interviewat.com/caritor/" title="Caritor">Caritor</a>, <a href="javascript:if(confirm('http://www.interviewat.com/cognizant/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/cognizant/'" tppabs="http://www.interviewat.com/cognizant/" title="Cognizant">Cognizant</a>, <a href="javascript:if(confirm('http://www.interviewat.com/wipro/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/wipro/'" tppabs="http://www.interviewat.com/wipro/" title="Wipro">Wipro</a>, <a href="javascript:if(confirm('http://www.interviewat.com/satyam/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/satyam/'" tppabs="http://www.interviewat.com/satyam/" title="Satyam">Satyam</a>, <a href="javascript:if(confirm('http://www.interviewat.com/kanbay/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/kanbay/'" tppabs="http://www.interviewat.com/kanbay/" title="Kanbay">Kanbay</a>, <a href="javascript:if(confirm('http://www.interviewat.com/oracle/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/oracle/'" tppabs="http://www.interviewat.com/oracle/" title="Oracle">Oracle</a>, <a href="javascript:if(confirm('http://www.interviewat.com/tata-infotech/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/tata-infotech/'" tppabs="http://www.interviewat.com/tata-infotech/" title="Tata Infotech">Tata Infotech</a>, <a href="javascript:if(confirm('http://www.interviewat.com/verizon/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/verizon/'" tppabs="http://www.interviewat.com/verizon/" title="Verizon">Verizon</a>, <a href="javascript:if(confirm('http://www.interviewat.com/cts/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/cts/'" tppabs="http://www.interviewat.com/cts/" title="CTS">CTS</a>, <a href="javascript:if(confirm('http://www.interviewat.com/virtusa/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/virtusa/'" tppabs="http://www.interviewat.com/virtusa/" title="Virtusa">Virtusa</a>, <a href="javascript:if(confirm('http://www.interviewat.com/tcs/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/tcs/'" tppabs="http://www.interviewat.com/tcs/" title="TCS">TCS</a>, <a href="javascript:if(confirm('http://www.interviewat.com/sasken-communication/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/sasken-communication/'" tppabs="http://www.interviewat.com/sasken-communication/" title="Sasken Communication">Sasken Communication</a>, <a href="javascript:if(confirm('http://www.interviewat.com/microsoft/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/microsoft/'" tppabs="http://www.interviewat.com/microsoft/" title="Microsoft">Microsoft</a>, <a href="javascript:if(confirm('http://www.interviewat.com/hcl/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/hcl/'" tppabs="http://www.interviewat.com/hcl/" title="HCL">HCL</a>, <a href="javascript:if(confirm('http://www.interviewat.com/mindtree-consulting/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/mindtree-consulting/'" tppabs="http://www.interviewat.com/mindtree-consulting/" title="Mindtree Consulting">Mindtree Consulting</a>, <a href="javascript:if(confirm('http://www.interviewat.com/ibm/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/ibm/'" tppabs="http://www.interviewat.com/ibm/" title="IBM">IBM</a>, <a href="javascript:if(confirm('http://www.interviewat.com/lt/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/lt/'" tppabs="http://www.interviewat.com/lt/" title="Larsen &amp; Toubro">Larsen &amp; Toubro</a>, <a href="javascript:if(confirm('http://www.interviewat.com/siemens/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/siemens/'" tppabs="http://www.interviewat.com/siemens/" title="Siemens">Siemens</a>, <a href="javascript:if(confirm('http://www.interviewat.com/patni/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/patni/'" tppabs="http://www.interviewat.com/patni/" title="Patni">Patni</a>, <a href="javascript:if(confirm('http://www.interviewat.com/icici-bank/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/icici-bank/'" tppabs="http://www.interviewat.com/icici-bank/" title="ICICI Bank">ICICI Bank</a>, <a href="javascript:if(confirm('http://www.interviewat.com/covansys/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/covansys/'" tppabs="http://www.interviewat.com/covansys/" title="Covansys">Covansys</a>, <a href="javascript:if(confirm('http://www.interviewat.com/hexaware/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/hexaware/'" tppabs="http://www.interviewat.com/hexaware/" title="Hexaware">Hexaware</a>, <a href="javascript:if(confirm('http://www.interviewat.com/desis/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/desis/'" tppabs="http://www.interviewat.com/desis/" title="D. E. Shaw India Software">D. E. Shaw India Software</a>, <a href="javascript:if(confirm('http://www.interviewat.com/mascot-systems/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/mascot-systems/'" tppabs="http://www.interviewat.com/mascot-systems/" title="Mascot Systems">Mascot Systems</a>, <a href="javascript:if(confirm('http://www.interviewat.com/sonata-software/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/sonata-software/'" tppabs="http://www.interviewat.com/sonata-software/" title="Sonata Software">Sonata Software</a>, <a href="javascript:if(confirm('http://www.interviewat.com/hewlett-packard/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/hewlett-packard/'" tppabs="http://www.interviewat.com/hewlett-packard/" title="Hewlett Packard">Hewlett Packard</a>, <a href="javascript:if(confirm('http://www.interviewat.com/tcgivega/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/tcgivega/'" tppabs="http://www.interviewat.com/tcgivega/" title="TCGIvega">TCGIvega</a>, <a href="javascript:if(confirm('http://www.interviewat.com/syntel/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/syntel/'" tppabs="http://www.interviewat.com/syntel/" title="Syntel">Syntel</a>
+</li>
+
+</ol>
+
+
+<h2><a href="index.htm" tppabs="http://www.techinterviews.com/">Technical Interview Questions</a> comment policy:</h2>
+<ul>
+	<li>All requests for answers <b>will be deleted</b>. If we don't publish answers, it's because we don't have them.</li>
+	<li>Any personal attacks, obscenities, spam and inappropriate comments will be deleted.</li>
+        <li>Sometimes, if you're a new poster, your comment has to be approved by moderators.</li>
+	</ul>
+<h2 id="postcomment">Leave a comment</h2>
+
+
+<form action="http://www.techinterviews.com/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1" />
+<label for="author"><small>Name (required)</small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2" />
+<label for="email"><small>Mail (will not be published) (required)</small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3" />
+<label for="url"><small>Website</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;code&gt; &lt;em&gt; &lt;i&gt; &lt;strike&gt; &lt;strong&gt; </small></p>-->
+
+<p><textarea name="comment" id="comment" cols="80%" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
+<input type="hidden" name="comment_post_ID" value="161" />
+</p>
+
+
+	<p style="clear: both;" class="subscribe-to-comments">
+        <input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;" />
+        <label for="subscribe">Send new comments to my e-mail</label>
+	</p>
+
+
+
+</form>
+
+
+
+<Script language="Javascript1.1" src="getntag.aspx-action=VIEWAD&run=300&cwformat=728x90&advid=112&pid=700002&dfcat=1104&width=728&height=90&pnet=4&SiteID=tech.3236&u=1392eb38d1a1b15b7378aab09dddda5f" tppabs="http://ad.admarketplace.net/TagPublish/getntag.aspx?action=VIEWAD&run=300&cwformat=728x90&advid=112&pid=700002&dfcat=1104&width=728&height=90&pnet=4&SiteID=tech.3236">  </Script>
+	</div>
+	<h4></h4>
+</td></tr></table>
+<!-- begin footer -->
+</div>
+
+
+<h1 id="header"><a href="index.htm" tppabs="http://www.techinterviews.com/">&copy; TechInterviews.com</a></h1>
+<p>Property of <a href="javascript:if(confirm('http://www.digitalmediaventuresllc.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.digitalmediaventuresllc.com/'" tppabs="http://www.digitalmediaventuresllc.com/">Digital Media Ventures LLC</a>. Read <a href="javascript:if(confirm('http://www.techinterviews.com/wp-rdf.php  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/wp-rdf.php'" tppabs="http://www.techinterviews.com/wp-rdf.php">RDF</a>, <a href="javascript:if(confirm('http://www.techinterviews.com/wp-rss2.php  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/wp-rss2.php'" tppabs="http://www.techinterviews.com/wp-rss2.php">RSS 2.0</a>, <a href="javascript:if(confirm('http://www.techinterviews.com/wp-rss.php  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/wp-rss.php'" tppabs="http://www.techinterviews.com/wp-rss.php">RSS 0.92</a>, <a href="javascript:if(confirm('http://www.techinterviews.com/wp-atom.php  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/wp-atom.php'" tppabs="http://www.techinterviews.com/wp-atom.php">Atom</a>, <a href="javascript:if(confirm('http://www.techinterviews.com/wp-commentsrss2.php  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/wp-commentsrss2.php'" tppabs="http://www.techinterviews.com/wp-commentsrss2.php">Comments RSS</a></p>
+</body>
+</html>

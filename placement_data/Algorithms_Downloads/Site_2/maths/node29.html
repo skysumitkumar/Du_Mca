@@ -1,0 +1,115 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Two Simple Sorting Algorithms</TITLE>
+<META NAME="description" CONTENT="Two Simple Sorting Algorithms">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node37.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node37.html">
+<LINK REL="previous" HREF="node28.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node28.html">
+<LINK REL="up" HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">
+<LINK REL="next" HREF="node30.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node30.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html728"
+  HREF="node30.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node30.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html722"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html716"
+  HREF="node28.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node28.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html724"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html726"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html729"
+  HREF="node30.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node30.html">Minimum Element Sort</A>
+<B> Up:</B> <A NAME="tex2html723"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">Sorting</A>
+<B> Previous:</B> <A NAME="tex2html717"
+  HREF="node28.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node28.html">Complications</A>
+ &nbsp <B>  <A NAME="tex2html725"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html727"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00620000000000000000">
+Two Simple Sorting Algorithms</A>
+</H1>
+
+<P>
+Let me present two algorithms for sorting a list of numbers into ascending
+order (they will work with any linearly ordered set). They are meant to be
+`obvious' rather than good. We will consider good methods later. The main
+aim here is to get something `on the table' so that we know what we have
+to improve on later.
+
+<P>
+The first algorithm is probably the most mindless of all. I will call it
+the `minimum element sort'. It is probably the method that you would use
+by hand if you had a very small number of items to sort.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html730"
+  HREF="node30.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node30.html">Minimum Element Sort</A>
+<LI><A NAME="tex2html731"
+  HREF="node31.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node31.html">Insertion Sort</A>
+<LI><A NAME="tex2html732"
+  HREF="node32.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node32.html">Proof of Algorithm</A>
+<UL>
+<LI><A NAME="tex2html733"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node33.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node33.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node33.html">Claim:</A>
+<LI><A NAME="tex2html734"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html">Approximate Timing</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html735"
+  HREF="node35.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node35.html">A More Precise Analysis of Insertion Sort </A>
+<UL>
+<LI><A NAME="tex2html736"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html">Example <I>n</I> = 3</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

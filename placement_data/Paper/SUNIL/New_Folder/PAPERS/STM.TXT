@@ -1,0 +1,176 @@
+
+1.
+main()
+{
+int a=10,b=2;
+a>=5 ? b=100 : b=200 ;
+printf("%d",b);
+}
+Ans: L-value required in function main.               (200)
+
+2.
+main()
+{
+int n[3][3]= { 1,2,3, // array starts at 404
+4,5,6,
+7,8,9 }
+printf("%u %u %u %d",n,n[2],n[2][2]);
+}
+Ans: 404 416 9  ( in turbo C )                        //not running
+
+3.
+what does the following piece of code do ??
+main()
+{
+int *p;
+p= (int *)15;
+}
+
+4.
+main()
+{
+char *s[]={ "bull", "dog", "Test" , "trial" };
+printf("%s%s",*(s+2),*(s+2)+1);
+}
+Ans: Testest
+
+5.
+main()
+{
+int i =1;
+i=1+2*i++;
+printf("%d",i);
+}
+Ans: 4 ( in Turbo C ), otherwise can be compiler dependent.
+
+6.
+main()
+{
+int i=6;
+printf("%d",i++,i++);
+}
+Ans: 7
+
+7.
+main()
+{
+some enum declaration....
+{ l=10,m,n=100,o}
+values of l,m,n,o ???
+Ans: 10 11 100 101
+
+8.
+#define MAX(x,y) (x)>(y)?(x):(y)
+main()
+{
+int i=10,j=6,k;
+k=MAX(i++,j++);
+printf("%d%d%d",i,k,j);
+}   i=12 k=11 j=7
+
+
+choose one of more options:
+
+1.
+Dividing a program into functions is ..... abstraction
+1. data
+2. process
+3. application *
+4. none
+
+
+
+2.
+which of the following is true about inheritance ??
+1. in public inh. public members are inherited as public.
+2. in private inh, all members become private when inherited.
+3. in protected inheritance, protected members remain protected
+public members become public
+4. bullshit
+Ans: 1,2,3.
+
+3.
+which of the following is true ??
+1. C++ implements polymorphism using virtual functions.
+2. polymorphism is done by early binding.
+two more options in which 3 was also correct
+Ans: 1,3
+
+4.
+class a {}
+main()
+{
+A a;
+cout<< sizeof(a) ;
+}
+Ans: non zero , usually 1
+
+5.
+class A
+{
+public:
+int X() { cout<< 10; }
+};
+class B
+{
+public:
+int X() { cout<<20; }
+};
+class C :public A,public B { some code };
+main()
+{
+C c;
+c.X();
+}
+output ???
+
+6.
+question on default parameters
+function definition like
+void X(int a,int b=10,int c=20) {...... }
+which of the following calls is/are valid ???
+1. X()
+2. X(2)
+3. X(2,3)
+4. X(2,3,4)
+Ans: 2,3,4
+
+
+
+1. Multigraph contains ...... edges
+1. parallel
+2. directed
+3. undirected
+4. all
+
+2. What are Glitches ??
+
+3. For a k bit Johnson counter what is the no of flip flops ??
+
+4. identifying using a diagram??? what the diagram ??
+Ans. Ripple counter
+( because of one flip flop was given to clock of the next)
+
+5. what is TTL noise margin ???
+1. 0.4 mV
+2. 100 mV
+3. 200 mV
+4. 400 mV
+Ans: 4
+
+6. question on mealy and moore machine .... In which machine does
+the
+output depend both on present state and input ???
+
+7. what does a shottkey diode do ???
+It doesn't allow saturation....
+
+8. output functions for half adder..
+Ans: S=A XOR B
+C=AB
+
+
+
+
+
+

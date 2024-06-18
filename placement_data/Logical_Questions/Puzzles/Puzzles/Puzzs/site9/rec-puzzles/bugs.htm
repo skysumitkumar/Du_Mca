@@ -1,0 +1,94 @@
+<html><head>
+<title>Solution for /analysis/bugs</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /analysis/bugs problem</h1>
+<hr>
+Since the bugs start out walking perpendicularly, and there is nothing
+in the problem to alter this symmetry, the bugs are always walking
+perpendicularly.  Since each bug is walking perpendicularly to the line
+separating it from the bug chasing it, the gap is closing at the speed
+of the chasing bug.  Therefore, each bug walks a distance equal to the
+side of the square before it meets the next bug.
+
+<p>
+In order to conveniently express the equation of the bugs' motion,
+use standard polar coordinates, and let the first bug's position at
+any instant be (r(t), theta(t)).  Assume the initial square is
+centered at the origin.
+
+<p>
+Then by symmetry the bugs are always at four corners of some square
+centered at the origin, and if they meet they meet at the origin.
+Also, each bug is always walking in a direction pi/4 (45 degrees) away
+from the radial line to the origin.  This means that in the limit as
+the time step goes to zero, the bug travels sec(pi/4) = sqrt(2) units
+along its path for every unit of progress made good toward the center.
+Since the corners are initially d/sqrt(2) distance from the center,
+each bug travels distance d before they meet, assuming they meet at
+all.
+
+<p>
+Since a bug's path always crosses radial lines at angle psi = pi/4,
+the path is a logarithmic spiral with angle psi = pi/4 and equation
+<pre>
+  r(t) = e^(a*theta(t) + b)
+</pre>
+Moreover since the bugs walk clockwise, both r(t) and theta(t)
+decrease as t increases, in other words r increases as theta
+increases, hence a is positive.  Also, psi = pi/4 gives us
+
+<pre>
+  d(r)/d(theta) = r
+</pre>
+
+(this is easiest to see by drawing the path for a small time step
+delta-t and taking the limit as delta-t goes to 0).  The solution is
+
+<pre>
+  r(t) = e^(theta(t) + b)
+</pre>
+
+(that is, a = 1).  As we know, this spiral makes infinitely many
+"wraps" around the origin as the radius approaches zero, but it does
+have finite length from any point inward and its limit point is the
+origin, where the bugs will meet (unless one wants to quibble about
+the behavior at the exact limit point).
+
+<p>
+How much closer is the bug to the origin after its first complete cycle
+around the origin?  Recall that r(0) = d/sqrt(2).  As the bug walks
+clockwise around the origin, after one full circuit its angle decreases
+from theta(0) to theta(t1), where t1 (the time at which full circuit
+occurs) is defined by
+
+<pre> 
+  theta(t1) = theta(0) - 2*pi
+</pre>
+
+Hence
+<pre>
+  r(0) = e^(theta(0) + b)
+  r(t1) = e^(theta(0) - 2*pi + b)
+
+  r(t1)/r(0) = e^(-2*pi)
+</pre>
+The quantity we want is
+<pre>
+  r(0) - r(t1) = r(0)*(1 - e^(-2*pi))
+               = d * (1 - e^(-2*pi))/sqrt(2)
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

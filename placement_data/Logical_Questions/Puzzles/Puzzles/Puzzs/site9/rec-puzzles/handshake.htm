@@ -1,0 +1,92 @@
+<html><head>
+<title>Solution for /induction/handshake</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /induction/handshake problem</h1>
+<hr>
+Assume there were 2n people (including host and hostess)
+in the party.
+
+<ol>
+<li> When the host asked the question he must have got
+   2n-1 responses (including from his wife).
+
+<li> All of the responses were different.
+</ol>
+The responses have to be (0, 1, 2, 3, ..., 2n-2)
+to satisfy the above requirements. As 2n-2 is the maximum
+possible handshakes any person in this party could have made.
+
+<pre>
+/**   Below,
+      P{x} - means a person who shook x hands.
+      H    - means the host
+ **/
+
+H: &lt;--------&gt;2n-2   0
+	   2n-3        1
+          2n-4          2
+	  2n-5          3
+          .             .
+           .           .
+             .       .
+	      n  n-1 n-2
+</pre>
+		(There are 2n-1 on the circle.)
+
+<p>
+P{2n-2} must have handshaked with H (because in the circle he
+can handshake with only 2n-3. He has to exclude himself also.)
+
+<p>
+P{2n-3} must have handshaked with H (because in the circle he
+can handshake with only 2n-4.)
+
+<p>
+P{2n-4} must have handshaked with H (because in the circle he
+can handshake with only 2n-5.)
+
+<p>
+P{n} must have handshaked with H (because in the circle he
+can handshake with only n-1.)
+
+<p>
+from P{n-1} to P{0} nobody  handshakes with H, because, for them
+the handshake numbers are satisfied on the circle itself.
+
+<p>
+This leaves H with (n-1) handshakes.
+<hr>
+
+P{0} must be the spouse of P{2n-2} (since P{2n-2} handshakes with
+everbody else.)<br>
+.<br>
+.<br>
+.<br>
+same logic till P{n-2}
+<p>
+leaving the Hostess to be P{n-1}.
+
+<hr>
+So,<br>
+Host    - made (n-1) handshakes.<br>
+Hostess - made (n-1) handshakes.
+
+<p>
+where n is the number of couple including
+the host couple.
+<hr>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

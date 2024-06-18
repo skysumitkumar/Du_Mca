@@ -1,0 +1,149 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Recursion</TITLE>
+<META NAME="description" CONTENT="Recursion">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node15.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node15.html">
+<LINK REL="previous" HREF="node13.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node13.html">
+<LINK REL="up" HREF="node11.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node11.html">
+<LINK REL="next" HREF="node15.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node15.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html498"
+  HREF="node15.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node15.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html492"
+  HREF="node11.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node11.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html486"
+  HREF="node13.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node13.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html494"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html496"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html499"
+  HREF="node15.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node15.html">Algorithm Types</A>
+<B> Up:</B> <A NAME="tex2html493"
+  HREF="node11.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node11.html">Algorithms; Computer languages</A>
+<B> Previous:</B> <A NAME="tex2html487"
+  HREF="node13.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node13.html">An Implementation of the</A>
+ &nbsp <B>  <A NAME="tex2html495"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html497"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00513000000000000000"></A><A NAME="577"></A>
+<BR>
+Recursion
+</H2>
+This type of ``divide and conquer'' algorithm is very common in what
+follows; one way to solve a problem is to show how to reduce it to a
+smaller problem of the same (or a closely related) type. If that
+smaller problem itself can be reduced, then we can continue in this
+way. Ideally we end up only having to solve a very trivial version of
+the problem. A familiar model for this should be the evaluation of
+integrals using reduction formulae, for example <!-- MATH
+ $I_n = \int \sin ^n
+x$
+ -->
+<I>I</I><SUB>n</SUB> = <IMG
+ WIDTH="15" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img3.gif"
+ ALT="$ \int$">sin<SUP>n</SUP><I>x</I>. Using integration by parts, one expresses <I>I</I><SUB>n</SUB> in terms of
+<I>I</I><SUB>n - 2</SUB>, and then only has to evaluate <I>I</I><SUB>1</SUB> and <I>I</I><SUB>0</SUB>.
+
+<P>
+In this context, the method is known as <EM>recursion</EM>, because the
+function recursively calls itself.  The method is not necessarily very
+efficient (as measured by run times) but it <EM>is</EM> very good for
+showing the logical structure of the program. The language FORTRAN
+does not support recursion, so only the first form of the algorithm is
+acceptable to it.  In contrast, languages like Pascal, POP11, C etc
+are quite happy with recursions even though they have to unwind the
+recursion to perform the actual evaluation.
+
+<P>
+Another lack in FORTRAN is any built-in sophisticated form of structure,
+other than the double precision number, and the array. Of course, this
+sparseness is one reason why the language is attractive. However, we
+shall see later that writing effective algorithms, and generating new
+data structures are very closely related, and that, at least during
+explorations, it can be valuable to have non-numeric structures
+available. In particular, it can be helpful to have a ``list'' as a
+built in data type. For this reason I will also use POP11, as above to
+give examples. Again there should be no difficulties; if you don't speak
+POP11, just read it.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html498"
+  HREF="node15.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node15.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html492"
+  HREF="node11.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node11.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html486"
+  HREF="node13.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node13.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html494"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html496"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html499"
+  HREF="node15.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node15.html">Algorithm Types</A>
+<B> Up:</B> <A NAME="tex2html493"
+  HREF="node11.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node11.html">Algorithms; Computer languages</A>
+<B> Previous:</B> <A NAME="tex2html487"
+  HREF="node13.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node13.html">An Implementation of the</A>
+ &nbsp <B>  <A NAME="tex2html495"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html497"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

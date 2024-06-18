@@ -1,0 +1,756 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Computing detours: Ank</TITLE>
+<META NAME="description" CONTENT="Computing detours: Ank">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node24.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node24.html">
+<LINK REL="previous" HREF="node22.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node22.html">
+<LINK REL="up" HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+<LINK REL="next" HREF="node24.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node24.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html628"
+  HREF="node24.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node24.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html622"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html616"
+  HREF="node22.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node22.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html624"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html626"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html629"
+  HREF="node24.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node24.html">Approximating H<SUB>n</SUB></A>
+<B> Up:</B> <A NAME="tex2html623"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">The Analysis of an</A>
+<B> Previous:</B> <A NAME="tex2html617"
+  HREF="node22.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node22.html">A More Precise Analysis</A>
+ &nbsp <B>  <A NAME="tex2html625"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html627"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00533000000000000000">
+Computing detours: <I>A</I><SUP>n</SUP><SUB>k</SUB></A>
+</H2>
+Let <I>S</I><SUB>n</SUB> denote the set of all permutations of <!-- MATH
+ $(1,2,3,\ldots,n)$
+ -->
+(1, 2, 3,..., <I>n</I>).
+Recall that <I>S</I><SUB>n</SUB> has <I>n</I>! elements. Let <I>A</I><SUP>n</SUP><SUB>k</SUB> be the number of
+permutations in <I>S</I><SUB>n</SUB> that require <I>k</I> detours when applying the
+algorithm. Then the average number of detours, denoted by <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img18.gif"
+ ALT="$ \mu$">(<I>n</I>) is
+given by <!-- MATH
+ \begin{displaymath}
+\mu(n) = \frac{1}{n!}\sum_k kA^n_k
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img19.gif"
+ ALT="$\displaystyle \mu$">(<I>n</I>) = <IMG
+ WIDTH="22" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img20.gif"
+ ALT="$\displaystyle {\frac{1}{n!}}$"><IMG
+ WIDTH="27" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img21.gif"
+ ALT="$\displaystyle \sum_{k}^{}$"><I>kA</I><SUP>n</SUP><SUB>k</SUB>
+</DIV><P></P> 
+
+<P>
+Consider first the case when <I>n</I> = 3.  We can list all the permutations
+in <I>S</I><SUB>3</SUB> and work out the number of detours for each one.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="883"></A>
+<TABLE>
+<CAPTION><STRONG>Table 1.1:</STRONG>
+<A NAME="708"></A>
+Number of detours sorting elements of  <I>S</I><SUB>3</SUB>.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<TABLE COLS=2>
+<COL ALIGN=CENTER><COL ALIGN=RIGHT>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$"></TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> <I>d</I></TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+(1, 2, 3)</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>0</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+(1, 3, 2)</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>0</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+(2, 1, 3)</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>1</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+(2, 3, 1)</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>1</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+(3, 1, 2)</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>1</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+(3, 2, 1)</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>2</TD></TR>
+</TABLE>
+
+</DIV>
+
+<A NAME="T:sorting-S3"></A></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+In the above notation we have <I>A</I><SUP>3</SUP><SUB>0</SUB> = 2, <I>A</I><SUP>3</SUP><SUB>1</SUB> = 3 and <I>A</I><SUP>3</SUP><SUB>2</SUB> = 1, giving
+a total of 3! = 6. The average number of detours is <!-- MATH
+ \begin{displaymath}
+\mu(3) =
+\frac{0+0+1+1+1+2}{6} = \frac{0.A^3_0 + 1.A^3_1 + 2.A^3_2}{6}
+= \frac{5}{6}.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img19.gif"
+ ALT="$\displaystyle \mu$">(3) = <IMG
+ WIDTH="153" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img23.gif"
+ ALT="$\displaystyle {\frac{0+0+1+1+1+2}{6}}$"> = <IMG
+ WIDTH="141" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img24.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img24.gif"
+ ALT="$\displaystyle {\frac{0.A^3_0 + 1.A^3_1 + 2.A^3_2}{6}}$"> = <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img25.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img25.gif"
+ ALT="$\displaystyle {\textstyle\frac{5}{6}}$">.
+</DIV><P></P>
+
+<P>
+You should check for yourself in the same way, that
+<!-- MATH
+ $\mu(2)=\frac{1}{2}$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img18.gif"
+ ALT="$ \mu$">(2) = <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img26.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img26.gif"
+ ALT="$ {\frac{1}{2}}$">
+and, with a bit more effort, that <!-- MATH
+ $\mu(4) = \frac{13}{12}$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img18.gif"
+ ALT="$ \mu$">(4) = <IMG
+ WIDTH="21" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img27.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img27.gif"
+ ALT="$ {\frac{13}{12}}$">.
+
+<P>
+Returning to the general case, note that we have already decided the
+following claims: 
+<BR>
+<DIV ALIGN="CENTER">
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray*}
+A^n_k &=&0\ensuremath{\quad\text{if}\quad}k<0\ensuremath{\quad\text{or}\quad}k\ge n, \\
+A^n_0 &=&(n-1)! \ensuremath{\quad\text{(all permutations starting with a 1),}\quad}\\
+A^n_{n-1} &=& 1 \ensuremath{\quad\text{(only the permutation}\quad}(n,n-1,\ldots,3,2,1)),\\
+A^2_0 &=&1 \qquad A^2_1 = 1.\\
+\end{eqnarray*}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><I>A</I><SUP>n</SUP><SUB>k</SUB></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP>0&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;&nbsp;&nbsp;&nbsp;<I>k</I> &lt; 0&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;&nbsp;&nbsp;&nbsp;<I>k</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img28.gif"
+ ALT="$\displaystyle \ge$"><I>n</I>,</TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="25" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img29.gif"
+ ALT="$\displaystyle A^n_0$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img30.gif"
+ ALT="$\textstyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="343" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img31.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img31.gif"
+ ALT="$\displaystyle (n-1)! \ensuremath{\quad\text{(all permutations starting with a 1),}\quad}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="41" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img32.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img32.gif"
+ ALT="$\displaystyle A^n_{n-1}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img30.gif"
+ ALT="$\textstyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="351" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img33.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img33.gif"
+ ALT="$\displaystyle 1 \ensuremath{\quad\text{(only the permutation}\quad}(n,n-1,\ldots,3,2,1)),$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="23" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img34.gif"
+ ALT="$\displaystyle A^2_0$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img30.gif"
+ ALT="$\textstyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="97" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img35.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img35.gif"
+ ALT="$\displaystyle 1 \qquad A^2_1 = 1.$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"></DIV><P></P>
+
+<P>
+Now consider the following argument. Divide <I>S</I><SUB>n</SUB> up into <I>n</I> subsets.
+The first, <I>L</I><SUB>1</SUB>, consisting of those that end with a 1, the second,
+<I>L</I><SUB>2</SUB>, consisting  of those that end with a 2 and so on up to the last
+subset,  <I>L</I><SUB>n</SUB>, consisting of those lists that end with an <I>n</I>. We now
+try to count how many of the elements of each of these subsets require
+<I>k</I> detours.
+
+<P>
+First consider <I>L</I><SUB>1</SUB>. In this set we know for certain that the last
+detour is made on the very last element, because 1 is the smallest
+element. So <I>k</I> - 1 detours must have been made in the previous <I>n</I> - 1
+elements. Now the previous elements make up all permutations of
+<!-- MATH
+ $(2,3,\ldots,n)$
+ -->
+(2, 3,..., <I>n</I>), each one represented just once. So by our earlier
+argument about the  irrelevance of the <EM>names</EM> of the elements,
+the number of  permutations in <I>L</I><SUB>1</SUB> that require <I>k</I> detours is 
+<!-- MATH
+ $A^{n-1}_{k-1}$
+ -->
+<I>A</I><SUP>n - 1</SUP><SUB>k - 1</SUB>.
+
+<P>
+Now consider <I>L</I><SUB>2</SUB>. In this case we know for certain that we 
+<EM>do not</EM> do a detour on the last element, because the 1 has already
+passed. So all <I>k</I> detours must occur in the first <I>n</I> - 1 elements. By
+the same argument as in the previous case this means that the number of
+permutations in <I>L</I><SUB>2</SUB> that require <I>k</I> detours is <I>A</I><SUP>n - 1</SUP><SUB>k</SUB>.
+
+<P>
+The same argument applies to the other subsets <!-- MATH
+ $L_3,\ldots,L_n$
+ -->
+<I>L</I><SUB>3</SUB>,..., <I>L</I><SUB>n</SUB>. In each
+case all <I>k</I> detours have to be made before we come to the last element
+because the last element is not 1.
+
+<P>
+Gathering all this information together we see that we obtain the
+following <EM>recurrence relation</EM> for <I>A</I><SUP>n</SUP><SUB>k</SUB>: 
+<!-- MATH
+ \begin{displaymath}
+A^n_k = (n-1)A^{n-1}_k + A^{n-1}_{k-1}
+\qquad\mbox{for $n>1$, $k>0$.}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>A</I><SUP>n</SUP><SUB>k</SUB> = (<I>n</I> - 1)<I>A</I><SUP>n - 1</SUP><SUB>k</SUB> + <I>A</I><SUP>n - 1</SUP><SUB>k - 1</SUB>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for <I>n</I> &gt; 1, <I>k</I> &gt; 0.
+</DIV><P></P>
+
+<P>
+That was a typical combinatorial argument and it may very well leave you
+a bit confused. The best thing to do in that case is to work through the
+argument in a particular case, for example <I>n</I> = 4. You may then realise
+that behind the confusion lies a simple argument.
+
+<P>
+We are now in a position to work out lots of values of <I>A</I><SUP>n</SUP><SUB>k</SUB> by using
+this recurrence relation in conjunction with the initial and boundary
+values calculated before.  Some values which can be obtained fairly
+easily are given in Table&nbsp;<A HREF="node23.html#T:values-of-Ank" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node23.html#T:values-of-Ank">1.2</A>.
+For example, <!-- MATH
+ $A^6_3 = 5A^5_3 + A^5_2 = 5\times 10 + 35 = 85$
+ -->
+<I>A</I><SUP>6</SUP><SUB>3</SUB> = 5<I>A</I><SUP>5</SUP><SUB>3</SUB> + <I>A</I><SUP>5</SUP><SUB>2</SUB> = 5&#215;10 + 35 = 85.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="884"></A>
+<TABLE>
+<CAPTION><STRONG>Table 1.2:</STRONG>
+<A NAME="745"></A>
+Values of  <I>A</I><SUP>n</SUP><SUB>k</SUB> for small values of <I>n</I> and <I>k</I>.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<TABLE COLS=7 BORDER RULES=GROUPS>
+<COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=RIGHT><COL ALIGN=RIGHT><COL ALIGN=RIGHT><COL ALIGN=RIGHT><COL ALIGN=RIGHT><COL ALIGN=RIGHT>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>
+n</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  
+1</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>  1</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>   
+2</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>  1</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>  1</TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>   
+3</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>  2</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>  3</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>  1</TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>   
+4</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>  6</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 11</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>  6</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 1</TD><TD></TD><TD></TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>   
+5</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 24</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 50</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 35</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>10</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 1</TD><TD></TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> 
+6</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>120</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>274</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>225</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>85</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>15</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>1</TD></TR>
+</TABLE>
+
+</DIV>
+
+<A NAME="T:values-of-Ank"></A></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+We can obviously carry this on as long as we wish, but it does not
+provide us with anything like a general formula for <I>A</I><SUP>n</SUP><SUB>k</SUB>. Compare
+this situation with that of the binomial coefficients. There we have a
+recurrence relation which is superficially very similar to the one for
+the <I>A</I>'s: 
+<!-- MATH
+ \begin{displaymath}
+\boxed{ C^n_k = C^{n-1}_k + C^{n-1}_{k-1}}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="152" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img36.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img36.gif"
+ ALT="$\displaystyle \boxed { C^n_k = C^{n-1}_k + C^{n-1}_{k-1}}$">
+</DIV><P></P>
+from which we build
+up Pascal's triangle. But we also have the explicit formula <!-- MATH
+ \begin{displaymath}
+C^n_k =
+\frac{n!}{k!\,(n-k)!}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>C</I><SUP>n</SUP><SUB>k</SUB> = <IMG
+ WIDTH="78" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img37.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img37.gif"
+ ALT="$\displaystyle {\frac{n!}{k! (n-k)!}}$">
+</DIV><P></P> (allowing that we accept the factorials as
+`explicit'). We have no such explicit formula for the <I>A</I>'s.
+
+<P>
+Does the fact that we have not actually got an explicit formula for the
+<I>A</I>'s destroy any hope of calculating the value of <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img18.gif"
+ ALT="$ \mu$">(<I>n</I>)? As it
+happens it does not, though this is not yet obvious. What we will do
+next is to use the recurrence for the <I>A</I>'s to obtain a corresponding
+recurrence relation for the <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img18.gif"
+ ALT="$ \mu$">'s. The difference will turn out to be
+that the recurrence relation for the <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img18.gif"
+ ALT="$ \mu$">'s is explicitly solvable.
+That is luck rather than judgment.
+
+<P>
+Take the definition of <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img18.gif"
+ ALT="$ \mu$">(<I>n</I>): <!-- MATH
+ \begin{displaymath}
+\mu(n) = \frac{1}{n!}\sum_k kA^n_k
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img19.gif"
+ ALT="$\displaystyle \mu$">(<I>n</I>) = <IMG
+ WIDTH="22" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img20.gif"
+ ALT="$\displaystyle {\frac{1}{n!}}$"><IMG
+ WIDTH="27" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img21.gif"
+ ALT="$\displaystyle \sum_{k}^{}$"><I>kA</I><SUP>n</SUP><SUB>k</SUB>
+</DIV><P></P>
+and substitute <I>A</I><SUP>n</SUP><SUB>k</SUB> by the value given by its recurrence relation. 
+<!-- MATH
+ \begin{displaymath}
+\mu(n) = \frac{1}{n!}\sum_k k((n-1)A^{n-1}_k + A^{n-1}_{k-1})
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img19.gif"
+ ALT="$\displaystyle \mu$">(<I>n</I>) = <IMG
+ WIDTH="22" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img20.gif"
+ ALT="$\displaystyle {\frac{1}{n!}}$"><IMG
+ WIDTH="27" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img21.gif"
+ ALT="$\displaystyle \sum_{k}^{}$"><I>k</I>((<I>n</I> - 1)<I>A</I><SUP>n - 1</SUP><SUB>k</SUB> + <I>A</I><SUP>n - 1</SUP><SUB>k - 1</SUB>)
+</DIV><P></P>
+Now start to manipulate the right-hand side: 
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img19.gif"
+ ALT="$\displaystyle \mu$">(<I>n</I>)</TD>
+<TD NOWRAP ALIGN="LEFT">= <IMG
+ WIDTH="45" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img38.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img38.gif"
+ ALT="$\displaystyle {\frac{n-1}{n!}}$"><IMG
+ WIDTH="27" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img21.gif"
+ ALT="$\displaystyle \sum_{k}^{}$"><I>kA</I><SUP>n - 1</SUP><SUB>k</SUB> + <IMG
+ WIDTH="22" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img20.gif"
+ ALT="$\displaystyle {\frac{1}{n!}}$"><IMG
+ WIDTH="27" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img21.gif"
+ ALT="$\displaystyle \sum_{k}^{}$"><I>kA</I><SUP>n - 1</SUP><SUB>k - 1</SUB>,</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD>&nbsp;</TD>
+<TD NOWRAP ALIGN="LEFT">= <IMG
+ WIDTH="45" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img38.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img38.gif"
+ ALT="$\displaystyle {\frac{n-1}{n!}}$">(<I>n</I> - 1)!<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img19.gif"
+ ALT="$\displaystyle \mu$">(<I>n</I> - 1) + <IMG
+ WIDTH="22" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img20.gif"
+ ALT="$\displaystyle {\frac{1}{n!}}$"><IMG
+ WIDTH="27" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img21.gif"
+ ALT="$\displaystyle \sum_{k}^{}$">(<I>k</I> - 1)<I>A</I><SUP>n - 1</SUP><SUB>k - 1</SUB> + <IMG
+ WIDTH="22" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img20.gif"
+ ALT="$\displaystyle {\frac{1}{n!}}$"><IMG
+ WIDTH="27" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img21.gif"
+ ALT="$\displaystyle \sum_{k}^{}$"><I>A</I><SUP>n - 1</SUP><SUB>k - 1</SUB>,</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD>&nbsp;</TD>
+<TD NOWRAP ALIGN="LEFT">= <IMG
+ WIDTH="45" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img39.gif"
+ ALT="$\displaystyle {\frac{n-1}{n}}$"><IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img19.gif"
+ ALT="$\displaystyle \mu$">(<I>n</I> - 1) + <IMG
+ WIDTH="62" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img40.gif"
+ ALT="$\displaystyle {\frac{(n-1)!}{n!}}$"><IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img19.gif"
+ ALT="$\displaystyle \mu$">(<I>n</I> - 1) + <IMG
+ WIDTH="62" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img40.gif"
+ ALT="$\displaystyle {\frac{(n-1)!}{n!}}$">,</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD>&nbsp;</TD>
+<TD NOWRAP ALIGN="LEFT">= <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img19.gif"
+ ALT="$\displaystyle \mu$">(<I>n</I> - 1) + <IMG
+ WIDTH="17" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img41.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img41.gif"
+ ALT="$\displaystyle {\frac{1}{n}}$">.</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+So we have obtained the recurrence relation 
+<!-- MATH
+ \begin{displaymath}
+\boxed{ \mu(n) = \mu(n-1) + \frac{1}{n}. }
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="164" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img42.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img42.gif"
+ ALT="$\displaystyle \boxed { \mu(n) = \mu(n-1) + \frac{1}{n}. }$">
+</DIV><P></P>
+
+<P>
+Before going on to study this, perhaps I had better explain what was
+happening in the above chain of manipulations. The aim of the exercise
+was to replace all the <I>A</I>'s by <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img18.gif"
+ ALT="$ \mu$">'s, somehow or other. Nothing much
+happens in the first line. In the second line we note that the first sum
+is just the sum that would occur in the definition of <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img18.gif"
+ ALT="$ \mu$">(<I>n</I> - 1), so we
+substitute appropriately, remembering the factorial. We also do a
+further, less obvious, bit of rearrangement. Basically, we change the
+<!-- MATH
+ $kA^{n-1}_{k-1}$
+ -->
+<I>kA</I><SUP>n - 1</SUP><SUB>k - 1</SUB> term into <!-- MATH
+ $(k-1)A^{n-1}_{k-1} + A^{n-1}_{k-1}$
+ -->
+(<I>k</I> - 1)<I>A</I><SUP>n - 1</SUP><SUB>k - 1</SUB> + <I>A</I><SUP>n - 1</SUP><SUB>k - 1</SUB>. This
+will then allow us to interpret the first sum as part of the definition
+of <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img18.gif"
+ ALT="$ \mu$">(<I>n</I> - 1) -- remember that <I>k</I> is a dummy variable and it doesn't
+matter in the least that we suddenly choose to call it <I>k</I> - 1. Finally,
+in the third line, recall that the sum of all the <I>A</I>'s must equal the
+total number of permutations.
+
+<P>
+Now let's study the recurrence that we have obtained. We already know
+that <!-- MATH
+ $\mu(2) = 1/2$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img18.gif"
+ ALT="$ \mu$">(2) = 1/2. So, using the recurrence,
+<P></P>
+<DIV ALIGN="CENTER"><TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img19.gif"
+ ALT="$\displaystyle \mu$">(3)</TD>
+<TD NOWRAP ALIGN="LEFT">= <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img43.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img43.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{2}}$"> + <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img44.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img44.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{3}}$">,</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img19.gif"
+ ALT="$\displaystyle \mu$">(4)</TD>
+<TD NOWRAP ALIGN="LEFT">= <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img43.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img43.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{2}}$"> + <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img44.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img44.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{3}}$"> + <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img45.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img45.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{4}}$">,</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img19.gif"
+ ALT="$\displaystyle \mu$">(5)</TD>
+<TD NOWRAP ALIGN="LEFT">= <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img43.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img43.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{2}}$"> + <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img44.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img44.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{3}}$"> + <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img45.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img45.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{4}}$"> + <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img46.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img46.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{5}}$">,</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and so on. It is now obvious that 
+<!-- MATH
+ \begin{displaymath}
+\     \mu(n) = \frac{1}{2} + \frac{1}{3} + \dots + \frac{1}{n}.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img19.gif"
+ ALT="$\displaystyle \mu$">(<I>n</I>) = <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img43.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img43.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{2}}$"> + <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img44.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img44.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{3}}$"> + ... + <IMG
+ WIDTH="17" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img41.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img41.gif"
+ ALT="$\displaystyle {\frac{1}{n}}$">.
+</DIV><P></P>
+
+<P>
+Our conclusion is that the average number of detours made in applying
+the ``minimum element'' algorithm to the permutations of
+<!-- MATH
+ $(1,2,\ldots,n)$
+ -->
+(1, 2,..., <I>n</I>), assuming that all are equally likely to occur, is
+<!-- MATH
+ \begin{displaymath}
+\boxed{ \mu(n) = H_n -1 }
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="117" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img47.gif"
+ ALT="$\displaystyle \boxed { \mu(n) = H_n -1 }$">
+</DIV><P></P>
+where <I>H</I><SUB>n</SUB> is the <!-- MATH
+ $n^{\textrm{th}}$
+ -->
+<I>n</I><SUP>th</SUP> <EM>Harmonic Number</EM> defined by
+<!-- MATH
+ \begin{displaymath}
+H_n = 1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{n} =\sum_{k=1}^n \frac{1}{k}.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>H</I><SUB>n</SUB> = 1 + <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img43.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img43.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{2}}$"> + <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img44.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img44.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{3}}$"> + <SUP> ... </SUP> + <IMG
+ WIDTH="17" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img41.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img41.gif"
+ ALT="$\displaystyle {\frac{1}{n}}$"> = <IMG
+ WIDTH="27" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img48.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img48.gif"
+ ALT="$\displaystyle \sum_{k=1}^{n}$"><IMG
+ WIDTH="17" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img49.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img49.gif"
+ ALT="$\displaystyle {\frac{1}{k}}$">.
+</DIV><P></P>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html628"
+  HREF="node24.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node24.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html622"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html616"
+  HREF="node22.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node22.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html624"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html626"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html629"
+  HREF="node24.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node24.html">Approximating H<SUB>n</SUB></A>
+<B> Up:</B> <A NAME="tex2html623"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">The Analysis of an</A>
+<B> Previous:</B> <A NAME="tex2html617"
+  HREF="node22.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node22.html">A More Precise Analysis</A>
+ &nbsp <B>  <A NAME="tex2html625"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html627"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

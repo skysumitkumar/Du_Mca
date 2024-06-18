@@ -1,0 +1,478 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head profile="http://gmpg.org/xfn/1">
+	<title>  C++ gamedev interview questions &lt; TechInterviews.com</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css" media="screen">
+		@import url( "style.css");
+	</style>
+        <meta name="description" content="The site offers  as well as career tips and preparation guides for a job interview in the field. Interview questions for high-tech companies.">
+	<link rel="stylesheet" type="text/css" media="print" href="print.css" tppabs="http://www.techinterviews.com/print.css" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="-feed=rss2.htm" tppabs="http://www.techinterviews.com/?feed=rss2" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="-feed=rss.htm" tppabs="http://www.techinterviews.com/?feed=rss" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="javascript:if(confirm('http://www.techinterviews.com/?feed=atom  \n\nThis file was not retrieved by Teleport Pro, because it did not meet the project\'s file type specifications.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/?feed=atom'" tppabs="http://www.techinterviews.com/?feed=atom" />
+	<link rel="pingback" href="xmlrpc.php.htm" tppabs="http://www.techinterviews.com/xmlrpc.php" />
+		</head>
+
+<body>
+<h1 id="header"><a href="index.htm" tppabs="http://www.techinterviews.com/">Interview questions for tech companies</a></h1>
+<!-- end header --><table width="100%"><tr><td valign="top" width="200" bgcolor="silver">
+<!--sidebar start-->
+	<p class="categorizer">Full-text search:</p><ul class="menulist2"><li><center>
+		<form id="searchform" method="get" action="">
+			<input type="text" name="s" /><input type="submit" name="submit" value="Search" />
+		</form></center></li></ul>
+
+	<p><p class="categorizer">Categories:</p>
+		<ul class="menulist">
+				<li><a href="index.php-cat=9.htm" tppabs="http://www.techinterviews.com/index.php?cat=9" title="View all posts filed under .NET">.NET</a> (29)
+</li>
+	<li><a href="index.php-cat=2.htm" tppabs="http://www.techinterviews.com/index.php?cat=2" title="View all posts filed under C++">C++</a> (25)
+</li>
+	<li><a href="index.php-cat=12.htm" tppabs="http://www.techinterviews.com/index.php?cat=12" title="View all posts filed under Database">Database</a> (26)
+</li>
+	<li><a href="index.php-cat=1.htm" tppabs="http://www.techinterviews.com/index.php?cat=1" title="View all posts filed under General">General</a> (38)
+</li>
+	<li><a href="index.php-cat=11.htm" tppabs="http://www.techinterviews.com/index.php?cat=11" title="View all posts filed under Hardware">Hardware</a> (16)
+</li>
+	<li><a href="index.php-cat=4.htm" tppabs="http://www.techinterviews.com/index.php?cat=4" title="View all posts filed under Java">Java</a> (48)
+</li>
+	<li><a href="index.php-cat=5.htm" tppabs="http://www.techinterviews.com/index.php?cat=5" title="View all posts filed under Networking">Networking</a> (21)
+</li>
+	<li><a href="index.php-cat=13.htm" tppabs="http://www.techinterviews.com/index.php?cat=13" title="View all posts filed under Testing">Testing</a> (11)
+</li>
+	<li><a href="index.php-cat=7.htm" tppabs="http://www.techinterviews.com/index.php?cat=7" title="View all posts filed under Unix/Linux">Unix/Linux</a> (16)
+</li>
+	<li><a href="index.php-cat=8.htm" tppabs="http://www.techinterviews.com/index.php?cat=8" title="View all posts filed under VB">VB</a> (8)
+</li>
+	<li><a href="index.php-cat=14.htm" tppabs="http://www.techinterviews.com/index.php?cat=14" title="View all posts filed under Web dev">Web dev</a> (13)
+</li>
+	<li><a href="index.php-cat=6.htm" tppabs="http://www.techinterviews.com/index.php?cat=6" title="View all posts filed under Windows">Windows</a> (21)
+</li>
+		<li><a href="mailto:techinterviews@gmail.com?Subject=Submission">Submit yours</a></li>
+		</ul>
+	</p>
+
+	<p>
+	<p class="categorizer">Site sponsors:</p><ul class="menulist2"><li>
+		<center>
+	<script type="text/javascript"><!--
+		google_ad_client = "pub-6610148867873991";
+		google_ad_width = 160;
+		google_ad_height = 600;
+		google_ad_format = "160x600_as";
+		google_ad_channel ="0322550296";
+		google_color_border = "C0C0C0";
+		google_color_bg = "c0c0c0";
+		google_color_link = "000000";
+		google_color_url = "CCCCCC";
+		google_color_text = "CCCCCC";
+		//--></script>
+		<script type="text/javascript"
+		  src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+
+	</center></li></ul>
+	</p>
+<p>
+<p class="categorizer">E-mail updates:</p><ul class="menulist2"><li>
+	 <form action="http://groups-beta.google.com/group/TechInterviewscom-additions/boxsubscribe">
+	  <div align="center">
+	  <table cellpadding="2">
+	  <tr><td>
+		<p align="center">Sign up for updates - win a free book</td></tr>
+	  <tr>
+		<td><center><input type=text name=email value=email@server></center></td>
+	  </tr>
+	  <tr>
+		<td><center>
+			 <input type=submit name="sub" value="Subscribe">
+		</center></td>
+	  </tr>
+	  <tr>
+		<td><p align="center">We give away programming books to e-mail subscribers</p></td>
+	  </tr>
+	  </table>
+	   </div>
+	   </form></li></ul>
+</p>
+
+<p>
+<p class="categorizer">Miscellaneous stuff:</p>
+<div class="menulist2">
+<script type="text/javascript" src="text_group.php-sid=6932&br=1" tppabs="http://1.adbrite.com/mb/text_group.php?sid=6932&br=1"></script>
+<p />
+<div><a class="adHeadline" target="_top" href="javascript:if(confirm('http://www.adbrite.com/mb/commerce/purchase_form.php?opid=7189&afsid=1  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.adbrite.com/mb/commerce/purchase_form.php?opid=7189&afsid=1'" tppabs="http://www.adbrite.com/mb/commerce/purchase_form.php?opid=7189&afsid=1">Your Ad Here</a></div>
+<li><a class="adHeadline" href="javascript:if(confirm('http://new3.mysurvey.com/join.cfm?r=491576  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://new3.mysurvey.com/join.cfm?r=491576'" tppabs="http://new3.mysurvey.com/join.cfm?r=491576">Take a survey, earn money. Get $5 for sign-up.</a></li>
+<li><a class="adHeadline" href="javascript:if(confirm('http://www.dreamhost.com/rewards.cgi?prostoalex  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.dreamhost.com/rewards.cgi?prostoalex'" tppabs="http://www.dreamhost.com/rewards.cgi?prostoalex">2.4 Gigs of storage with 120 GB of bandwidth monthly - great hosting for $7.95 a month</a></li>
+<li><a class="adHeadline" href="javascript:if(confirm('http://www.nobelcom.com/cgi-bin/newActive/nobelcom.cgi?AFFN=168936128  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.nobelcom.com/cgi-bin/newActive/nobelcom.cgi?AFFN=168936128'" tppabs="http://www.nobelcom.com/cgi-bin/newActive/nobelcom.cgi?AFFN=168936128">International phone cards, cheap rates</a></li>
+<li><a class="adHeadline" href="javascript:if(confirm('http://www.satellitesolutions.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.satellitesolutions.com/'" tppabs="http://www.satellitesolutions.com/">Satelite TV</a> - <span class="adText">have satelite television installed at your house with directv</a>. <a href="javascript:if(confirm('http://www.rubberstampchamp.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.rubberstampchamp.com/'" tppabs="http://www.rubberstampchamp.com/">Rubber Stamp</a> - <span class="adText">Shop for custom self-inking stamps, hand stamps, address stamps, label stamps, check endorsement stamps, check deposit stamps, date stamps, pre inks, pocket stamps, ink and much more!</a></li>
+<li> <a class="adHeadline" href="javascript:if(confirm('http://www.daytradeteam.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.daytradeteam.com/'" tppabs="http://www.daytradeteam.com/">Day Trading</a> - <span class="adText">day trading signals for active stock and options traders.</a></li>
+</div>
+</p><p>
+		<p class="categorizer">Good books:</p>
+		<p>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0471383562/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0471383562/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0471383562/moskalyukcom-20"><img src="1.jpg" tppabs="http://www.techinterviews.com/images/1.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0316919160/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0316919160/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0316919160/moskalyukcom-20"><img src="2.jpg" tppabs="http://www.techinterviews.com/images/2.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/007016357X/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/007016357X/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/007016357X/moskalyukcom-20"><img src="3.jpg" tppabs="http://www.techinterviews.com/images/3.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0786865962/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0786865962/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0786865962/moskalyukcom-20"><img src="4.jpg" tppabs="http://www.techinterviews.com/images/4.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0425166864/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0425166864/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0425166864/moskalyukcom-20"><img src="5.gif" tppabs="http://www.techinterviews.com/images/5.gif"></a>
+<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/1580624936/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/1580624936/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/1580624936/moskalyukcom-20"><img src="1580624936.01.THUMBZZZ.jpg" tppabs="http://images.amazon.com/images/P/1580624936.01.THUMBZZZ.jpg" border="0"></a>
+		</p>
+	</p>
+
+	<p>
+	<p class="categorizer">Good links:</p>
+			<ul class="menulist2">
+				<li><a href="javascript:if(confirm('http://www.hotdealsportal.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.hotdealsportal.com/'" tppabs="http://www.hotdealsportal.com/">Deals on PCs</a></li>
+<li><a href="javascript:if(confirm('http://www.techbooksforfree.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.techbooksforfree.com/'" tppabs="http://www.techbooksforfree.com/">Free books</a></li>
+<li><a href="javascript:if(confirm('http://www.itfacts.biz/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.itfacts.biz/'" tppabs="http://www.itfacts.biz/">IT Research</a></li>
+<li><a href="javascript:if(confirm('http://www.sellsbrothers.com/fun/msiview/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.sellsbrothers.com/fun/msiview/'" tppabs="http://www.sellsbrothers.com/fun/msiview/">Interview@MSFT</a></li>
+<li><a href="javascript:if(confirm('http://weblogs.asp.net/JobsBlog/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://weblogs.asp.net/JobsBlog/'" tppabs="http://weblogs.asp.net/JobsBlog/">Career blog @ MSFT</a></li>
+<li><a href="javascript:if(confirm('http://www.c-sharpcorner.com/faq.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.c-sharpcorner.com/faq.asp'" tppabs="http://www.c-sharpcorner.com/faq.asp">C# FAQ</a></li>
+<li><a href="javascript:if(confirm('http://blogs.msdn.com/csharpfaq  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://blogs.msdn.com/csharpfaq'" tppabs="http://blogs.msdn.com/csharpfaq">MSDN C# FAQ</a></li>
+<li><a href="javascript:if(confirm('http://www.everythingfirebird.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.everythingfirebird.com/'" tppabs="http://www.everythingfirebird.com/">Everything Firebird</a></li>
+<li><a href="javascript:if(confirm('http://searchsmallbizit.techtarget.com/sDefinition/0,,sid44_gci826135,00.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://searchsmallbizit.techtarget.com/sDefinition/0,,sid44_gci826135,00.html'" tppabs="http://searchsmallbizit.techtarget.com/sDefinition/0,,sid44_gci826135,00.html">Cheat sheets</a></li>
+<li><a href="javascript:if(confirm('http://www.thatwasfunny.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.thatwasfunny.com/'" tppabs="http://www.thatwasfunny.com/">That was funny</a></li>
+<li><a href="javascript:if(confirm('http://www.collectorcarbuff.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.collectorcarbuff.com/'" tppabs="http://www.collectorcarbuff.com/">Collector cars</a></li>
+<li><a href="javascript:if(confirm('http://www.aspfree.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.aspfree.com/'" tppabs="http://www.aspfree.com/">ASP Free</a></li>
+<li><a href="javascript:if(confirm('http://www.vault.com/survival/center.jsp?type=3&  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.vault.com/survival/center.jsp?type=3&#038;ch_id=262&#038;article_id=9106882&#038;cat_id=1481&#038;listelement=1'" tppabs="http://www.vault.com/survival/center.jsp?type=3&#038;ch_id=262&#038;article_id=9106882&#038;cat_id=1481&#038;listelement=1">What&#039;s your biggest weakness?</a></li>
+<li><a href="javascript:if(confirm('http://www.perlfunc.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.perlfunc.com/'" tppabs="http://www.perlfunc.com/">PerlFunc</a></li>
+<li><a href="javascript:if(confirm('http://www.microsoft.com/smallbusiness/resources/management/recruiting_staffing/hiring_6_interview_questions_you_need_to_ask.mspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.microsoft.com/smallbusiness/resources/management/recruiting_staffing/hiring_6_interview_questions_you_need_to_ask.mspx'" tppabs="http://www.microsoft.com/smallbusiness/resources/management/recruiting_staffing/hiring_6_interview_questions_you_need_to_ask.mspx">Small business interview questions</a></li>
+<li><a href="javascript:if(confirm('http://www.devbistro.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.devbistro.com/'" tppabs="http://www.devbistro.com/">Tech jobs at DevBistro</a></li>
+			</ul>
+<center>
+<form name="search" method="post" action="http://www.meteus.com/search.php">
+<input type="hidden" name="aid" value="32147">
+Search <a href="javascript:if(confirm('http://www.meteus.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.meteus.com/'" tppabs="http://www.meteus.com/" target="_blank">Meteus</a><br />
+<input type="text" name="q" size="20" value="">
+<input type="submit" value="Search" /></form>
+<center>
+	</p>
+
+<!--sidebar end-->
+</td>
+
+<td valign="top" bgcolor="white">
+		<div class="post">
+		<h3><a href="-p=85.htm" tppabs="http://www.techinterviews.com/?p=85" rel="bookmark" title="Interview questions: C++ gamedev interview questions">C++ gamedev interview questions</a></h3>
+			<p>This set of questions came from a prominent gaming company. As you can see, the answers are not given (the interviews are typically conducted by senior developers), but there&#8217;s a set of notes with common mistakes to avoid.
+<ol>
+	<li><b>Explain which of the following declarations will compile and what will be constant - a pointer or the value pointed at:</b>
+	<ul>
+	<li>const char *
+	<li>char const *
+	<li>char * const
+	</ul>
+	<p><i>Note:</i> Ask the candidate whether the first declaration is pointing to a string or a single character. Both explanations are correct, but if he says that it&#8217;s a single character pointer, ask why a whole string is initialized as char* in C++. If he says this is a string declaration, ask him to declare a pointer to a single character. Competent candidates should not have problems pointing out why const char* can be both a character and a string declaration, incompetent ones will come up with invalid reasons.<br />
+	<a id="more-85"></a></p>
+	<li><b>You&#8217;re given a simple code for the class BankCustomer. Write the following functions:</b>
+	<ul>
+	<li>Copy constructor
+	<li>= operator overload
+	<li>== operator overload
+	<li>+ operator overload (customers&#8217; balances should be added up, as an example of joint account between husband and wife)
+	</ul>
+	<p><i>Note:</i>Anyone confusing assignment and equality operators should be dismissed from the interview. The applicant might make a mistake of passing by value, not by reference. The candidate might also want to return a pointer, not a new object, from the addition operator. Slightly hint that you&#8217;d like the value to be changed outside the function, too, in the first case. Ask him whether the statement customer3 = customer1 + customer2 would work in the second case.</p>
+	<li><b>What problems might the following macro bring to the application?</b><br />
+	<blockquote><p>#define sq(x) x*x</p></blockquote>
+	<li><b>Consider the following struct declarations:</b><br />
+	<blockquote><pre>
+struct A { A(){ cout << \"A\"; } };
+struct B { B(){ cout << \"B\"; } };
+struct C { C(){ cout << \"C\"; } };
+struct D { D(){ cout << \"D\"; } };
+struct E : D { E(){ cout << \"E\"; } };
+struct F : A, B
+{
+	C c;
+	D d;
+	E e;
+	F() : B(), A(),d(),c(),e() { cout << \"F\"; }
+};</pre></blockquote>
+	<p>What constructors will be called when an instance of F is initialized? Produce the program output when this happens.</p>
+	<li><b>Anything wrong with this code?</b><br />
+	<blockquote><pre>
+T *p = new T[10];
+delete p;
+	</pre></blockquote>
+	<p><i>Note</i>: Incorrect replies: &#8220;No, everything is correct&#8221;, &#8220;Only the first element of the array will be deleted&#8221;, &#8220;The entire array will be deleted, but only the first element destructor will be called&#8221;.</p>
+	<li><b>Anything wrong with this code?</b><br />
+	<blockquote><pre>
+T *p = 0;
+delete p;
+</pre></blockquote>
+	<p><i>Note:</i> Typical wrong answer: Yes, the program will crash in an attempt to delete a null pointer. The candidate does not <a href="javascript:if(confirm('http://www.joelonsoftware.com/articles/fog0000000073.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.joelonsoftware.com/articles/fog0000000073.html'" tppabs="http://www.joelonsoftware.com/articles/fog0000000073.html">understand pointers</a>. A <b>very smart</b> candidate will ask whether delete is overloaded for the class T.</p>
+	<li><b>Explain virtual inheritance. Draw the diagram explaining the initialization of the base class when virtual inheritance is used.</b><br />
+<i>Note:</i> Typical mistake for applicant is to draw an inheritance diagram, where a single base class is inherited with virtual methods. Explain to the candidate that this is not virtual inheritance. Ask them for <a href="javascript:if(confirm('http://cplus.about.com/library/weekly/aa121502e.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://cplus.about.com/library/weekly/aa121502e.htm'" tppabs="http://cplus.about.com/library/weekly/aa121502e.htm">the classic definition of virtual inheritance</a>. Such question might be too complex for a beginning or even intermediate developer, but any applicant with advanced C++ experience should be somewhat familiar with the concept, even though he&#8217;ll probably say he&#8217;d avoid using it in a real project. Moreover, even the experienced developers, who know about virtual inheritance, cannot coherently explain the initialization process. If you find a candidate that knows both the concept and the initialization process well, he&#8217;s hired.</p>
+	<li><b>What&#8217;s potentially wrong with the following code?</b><br />
+	<blockquote><pre>
+long value;
+//some stuff
+value &#038;= 0xFFFF;
+</pre></blockquote>
+	<p><i>Note:</i> Hint to the candidate about the base platform they&#8217;re developing for. If the person still doesn&#8217;t find anything wrong with the code, they are not experienced with C++.</p>
+	<li><b>What does the following code do and why would anyone write something like that?</b><br />
+	<blockquote><pre>
+void send (int *to, int * from, int count)
+{
+	int n = (count + 7) / 8;
+	switch ( count  %  8)
+	{
+		case 0: do { *to++ = *from++;
+		case 7: *to++ = *from++;
+		case 6: *to++ = *from++;
+		case 5: *to++ = *from++;
+		case 4: *to++ = *from++;
+		case 3: *to++ = *from++;
+		case 2: *to++ = *from++;
+		case 1: *to++ = *from++;
+		} while ( --n > 0 );
+	}
+}
+</pre></blockquote>
+	<li><b>In the H file you see the following declaration:</b><br />
+	<blockquote><pre>
+class Foo {
+void Bar( void ) const ;
+};
+</pre></blockquote>
+	<p>Tell me all you know about the Bar() function.
+</ol>
+		<p class="feedback">
+			<a href="-p=85.htm" tppabs="http://www.techinterviews.com/?p=85">Read all</a> | Browse topics: <a href="index.php-cat=2.htm" tppabs="http://www.techinterviews.com/index.php?cat=2" title="View all posts in C++" rel="category tag">C++</a>		</p>
+
+<center>
+<script type="text/javascript"><!--
+google_ad_client = "pub-6610148867873991";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text_image";
+google_ad_channel ="5988513540";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "000066";
+google_color_url = "C0c0c0";
+google_color_text = "c0c0c0";
+//--></script>
+<script type="text/javascript"
+  src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</center>
+
+<h2 id="comments">13 Comments 
+	<a href="#postcomment" title="Please leave a comment">&raquo;</a>
+</h2>
+
+<ol id="commentlist">
+
+	<li id="comment-960">
+		<p>Heres a question I faced. What are templates and can templates be used in C#?
+</p>
+	<p><cite>Tech Interviews comment by <b>raphu</b></cite> </p>
+	</li>
+
+	<li id="comment-2012">
+		<p>/*This is regarding question 5. I compiled and executed the following program and it worked. So what is wrong with it? */<br />
+# include <stdlib.h></p>
+	<p>class T {int i;};<br />
+main()<br />
+{<br />
+        T *p = new T[10];<br />
+        delete p;<br />
+}
+</p>
+	<p><cite>Tech Interviews comment by <b>rachna</b></cite> </p>
+	</li>
+
+	<li id="comment-2224">
+		<p>rachna:</p>
+	<p>The issue with #5 is that you *must* always call array delete when deleting an array (in this case, an array to T&#8217;s. The proper code looks like this:</p>
+	<p>class T {int i;};<br />
+main()<br />
+{<br />
+T *p = new T[10];<br />
+delete <b>[]</b> p;<br />
+}</p>
+	<p>BTW, my best advice for C++ interviews is to read Scott Meyers&#8217; books.
+</p>
+	<p><cite>Tech Interviews comment by <b>mdos</b></cite> </p>
+	</li>
+
+	<li id="comment-3727">
+		<p>T *p = 0;<br />
+delete p;</p>
+	<p>Perfectly valid (if stupid) code.  The C++ standard says its legal to delete null pointers, and its a noop.
+</p>
+	<p><cite>Tech Interviews comment by <b>Alex</b></cite> </p>
+	</li>
+
+	<li id="comment-3929">
+		<p>What is single ton effect.Can i use this function to create the object at restrict times?
+</p>
+	<p><cite>Tech Interviews comment by <b>muthu</b></cite> </p>
+	</li>
+
+	<li id="comment-5446">
+		<p>#define sq(x) x*x</p>
+	<p>b = 5;<br />
+a = sq(b++); // expands to b++ * b++</p>
+	<p>Answer is 30 (5*6) if sq is a macro.<br />
+Answer is 25 if sq was a function.
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://agami.blogspot.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://agami.blogspot.com/'" tppabs="http://agami.blogspot.com/" rel='external nofollow'>Shafi</a></b></cite> </p>
+	</li>
+
+	<li id="comment-5447">
+		<p>This is known as Duff&#8217;s device, from the C++ book,<br />
+it speeds up copying of a string by pipelining<br />
+8 chars at a time.</p>
+	<p>void send (int *to, int * from, int count)<br />
+{<br />
+int n = (count + 7) / 8;<br />
+switch ( count  %  8)<br />
+{<br />
+case 0: do { *to++ = *from++;<br />
+case 7: *to++ = *from++;<br />
+case 6: *to++ = *from++;<br />
+case 5: *to++ = *from++;<br />
+case 4: *to++ = *from++;<br />
+case 3: *to++ = *from++;<br />
+case 2: *to++ = *from++;<br />
+case 1: *to++ = *from++;<br />
+} while ( &#8211;n &gt; 0 );<br />
+}<br />
+}
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://agami.blogspot.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://agami.blogspot.com/'" tppabs="http://agami.blogspot.com/" rel='external nofollow'>Shafi</a></b></cite> </p>
+	</li>
+
+	<li id="comment-5448">
+		<p>The constant 0xffff should be written as 0&#215;0ffffL with the suffix L<br />
+to indicate it is long, otherwise it will be sign extended, please<br />
+compile and confirm.</p>
+	<p>long value;<br />
+//some stuff<br />
+value &amp;= 0xFFFF;
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://agami.blogspot.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://agami.blogspot.com/'" tppabs="http://agami.blogspot.com/" rel='external nofollow'>Shafi</a></b></cite> </p>
+	</li>
+
+	<li id="comment-5449">
+		<p>Easy way to remember object of &#8216;const&#8217;, is that it applies to the<br />
+immediate object to its right:</p>
+	<p>const char* p;  //mutable pointer to constant char</p>
+	<p>char const*p; // constant pointer to mutable char, same as next<br />
+char* const p;  // constant pointer to mutable char</p>
+	<p>const char* const p; // const pointer to const char
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://agami.blogspot.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://agami.blogspot.com/'" tppabs="http://agami.blogspot.com/" rel='external nofollow'>Shafi</a></b></cite> </p>
+	</li>
+
+	<li id="comment-5900">
+		<p>Thank you very much. Very useful site. I&#8217;ll tell to all my friends about this site
+</p>
+	<p><cite>Tech Interviews comment by <b>Ira</b></cite> </p>
+	</li>
+
+	<li id="comment-5938">
+		<p>Shafi, that is not correct. &#8220;const char * p&#8221; == &#8220;char const * p&#8221; (i.e., the &#8220;char&#8221; is const&#8221;). Try it. The correct &#8220;easy way to remember&#8221; is that const makes the type immediately following on the LEFT constant.
+</p>
+	<p><cite>Tech Interviews comment by <b>harko</b></cite> </p>
+	</li>
+
+	<li id="comment-6264">
+		<p>Another way to remember is to recall that we are declaring a pointer and that a * will be used later to dereference (access) the variable:</p>
+	<p>Therefore, if the const is on the left of the *, the const acts (through the *) on the dereferenced variable (i.e. the variable itself is constant), otherwise if the const is on the right of the * the const acts on the pointer itself (the pointer is constant).</p>
+	<p>In other words the const is acting in the same way that we would try to use the pointer/variable.</p>
+	<p>see the explaination at: <a href="javascript:if(confirm('http://www.possibility.com/Cpp/const.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.possibility.com/Cpp/const.html'" tppabs="http://www.possibility.com/Cpp/const.html" rel='nofollow'>http://www.possibility.com/Cpp/const.html</a></p>
+	<p>const int x;      // constant int<br />
+x = 2;            // illegal - can&#8217;t modify x</p>
+	<p>const int* pX;    // changeable pointer to constant int<br />
+*pX = 3;          // illegal -  can&#8217;t use pX to modify an int<br />
+pX = &#038;someOtherIntVar;      // legal - pX can point somewhere else</p>
+	<p>int* const pY;              // constant pointer to changeable int<br />
+*pY = 4;                    // legal - can use pY to modify an int<br />
+pY = &#038;someOtherIntVar;      // illegal - can&#8217;t make pY point anywhere else</p>
+	<p>const int* const pZ;        // const pointer to const int<br />
+*pZ = 5;                    // illegal - can&#8217;t use pZ to modify an int<br />
+pZ = &#038;someOtherIntVar;      // illegal - can&#8217;t make pZ point anywhere else
+</p>
+	<p><cite>Tech Interviews comment by <b>J</b></cite> </p>
+	</li>
+
+	<li id="comment-12473">
+		<p>#define sq(x) x*x</p>
+	<p>b = 5;<br />
+a = sq(b++); // expands to b++ * b++</p>
+	<p>Answer is 30 (5*6) if sq is a macro.<br />
+Answer is 25 if sq was a function. </p>
+	<p>NOT really. The result depends on the compiler (I did not check what the standard says, I’ll do).<br />
+On Solaris, AIX, GCC, aCC (HP-UX) the result is 30 (sorry I made a typo in my previous remark)
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://www.mainsoft.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.mainsoft.com/'" tppabs="http://www.mainsoft.com/" rel='external nofollow'>Jeanb</a></b></cite> </p>
+	</li>
+
+<li>Explore hiring practices of: <a href="javascript:if(confirm('http://www.interviewat.com/infosys/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/infosys/'" tppabs="http://www.interviewat.com/infosys/" title="Infosys">Infosys</a>, <a href="javascript:if(confirm('http://www.interviewat.com/accenture/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/accenture/'" tppabs="http://www.interviewat.com/accenture/" title="Accenture">Accenture</a>, <a href="javascript:if(confirm('http://www.interviewat.com/caritor/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/caritor/'" tppabs="http://www.interviewat.com/caritor/" title="Caritor">Caritor</a>, <a href="javascript:if(confirm('http://www.interviewat.com/cognizant/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/cognizant/'" tppabs="http://www.interviewat.com/cognizant/" title="Cognizant">Cognizant</a>, <a href="javascript:if(confirm('http://www.interviewat.com/wipro/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/wipro/'" tppabs="http://www.interviewat.com/wipro/" title="Wipro">Wipro</a>, <a href="javascript:if(confirm('http://www.interviewat.com/satyam/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/satyam/'" tppabs="http://www.interviewat.com/satyam/" title="Satyam">Satyam</a>, <a href="javascript:if(confirm('http://www.interviewat.com/kanbay/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/kanbay/'" tppabs="http://www.interviewat.com/kanbay/" title="Kanbay">Kanbay</a>, <a href="javascript:if(confirm('http://www.interviewat.com/oracle/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/oracle/'" tppabs="http://www.interviewat.com/oracle/" title="Oracle">Oracle</a>, <a href="javascript:if(confirm('http://www.interviewat.com/tata-infotech/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/tata-infotech/'" tppabs="http://www.interviewat.com/tata-infotech/" title="Tata Infotech">Tata Infotech</a>, <a href="javascript:if(confirm('http://www.interviewat.com/verizon/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/verizon/'" tppabs="http://www.interviewat.com/verizon/" title="Verizon">Verizon</a>, <a href="javascript:if(confirm('http://www.interviewat.com/cts/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/cts/'" tppabs="http://www.interviewat.com/cts/" title="CTS">CTS</a>, <a href="javascript:if(confirm('http://www.interviewat.com/virtusa/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/virtusa/'" tppabs="http://www.interviewat.com/virtusa/" title="Virtusa">Virtusa</a>, <a href="javascript:if(confirm('http://www.interviewat.com/tcs/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/tcs/'" tppabs="http://www.interviewat.com/tcs/" title="TCS">TCS</a>, <a href="javascript:if(confirm('http://www.interviewat.com/sasken-communication/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/sasken-communication/'" tppabs="http://www.interviewat.com/sasken-communication/" title="Sasken Communication">Sasken Communication</a>, <a href="javascript:if(confirm('http://www.interviewat.com/microsoft/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/microsoft/'" tppabs="http://www.interviewat.com/microsoft/" title="Microsoft">Microsoft</a>, <a href="javascript:if(confirm('http://www.interviewat.com/hcl/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/hcl/'" tppabs="http://www.interviewat.com/hcl/" title="HCL">HCL</a>, <a href="javascript:if(confirm('http://www.interviewat.com/mindtree-consulting/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/mindtree-consulting/'" tppabs="http://www.interviewat.com/mindtree-consulting/" title="Mindtree Consulting">Mindtree Consulting</a>, <a href="javascript:if(confirm('http://www.interviewat.com/ibm/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/ibm/'" tppabs="http://www.interviewat.com/ibm/" title="IBM">IBM</a>, <a href="javascript:if(confirm('http://www.interviewat.com/lt/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/lt/'" tppabs="http://www.interviewat.com/lt/" title="Larsen &amp; Toubro">Larsen &amp; Toubro</a>, <a href="javascript:if(confirm('http://www.interviewat.com/siemens/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/siemens/'" tppabs="http://www.interviewat.com/siemens/" title="Siemens">Siemens</a>, <a href="javascript:if(confirm('http://www.interviewat.com/patni/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/patni/'" tppabs="http://www.interviewat.com/patni/" title="Patni">Patni</a>, <a href="javascript:if(confirm('http://www.interviewat.com/icici-bank/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/icici-bank/'" tppabs="http://www.interviewat.com/icici-bank/" title="ICICI Bank">ICICI Bank</a>, <a href="javascript:if(confirm('http://www.interviewat.com/covansys/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/covansys/'" tppabs="http://www.interviewat.com/covansys/" title="Covansys">Covansys</a>, <a href="javascript:if(confirm('http://www.interviewat.com/hexaware/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/hexaware/'" tppabs="http://www.interviewat.com/hexaware/" title="Hexaware">Hexaware</a>, <a href="javascript:if(confirm('http://www.interviewat.com/desis/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/desis/'" tppabs="http://www.interviewat.com/desis/" title="D. E. Shaw India Software">D. E. Shaw India Software</a>, <a href="javascript:if(confirm('http://www.interviewat.com/mascot-systems/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/mascot-systems/'" tppabs="http://www.interviewat.com/mascot-systems/" title="Mascot Systems">Mascot Systems</a>, <a href="javascript:if(confirm('http://www.interviewat.com/sonata-software/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/sonata-software/'" tppabs="http://www.interviewat.com/sonata-software/" title="Sonata Software">Sonata Software</a>, <a href="javascript:if(confirm('http://www.interviewat.com/hewlett-packard/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/hewlett-packard/'" tppabs="http://www.interviewat.com/hewlett-packard/" title="Hewlett Packard">Hewlett Packard</a>, <a href="javascript:if(confirm('http://www.interviewat.com/tcgivega/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/tcgivega/'" tppabs="http://www.interviewat.com/tcgivega/" title="TCGIvega">TCGIvega</a>, <a href="javascript:if(confirm('http://www.interviewat.com/syntel/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/syntel/'" tppabs="http://www.interviewat.com/syntel/" title="Syntel">Syntel</a>
+</li>
+
+</ol>
+
+
+<h2><a href="index.htm" tppabs="http://www.techinterviews.com/">Technical Interview Questions</a> comment policy:</h2>
+<ul>
+	<li>All requests for answers <b>will be deleted</b>. If we don't publish answers, it's because we don't have them.</li>
+	<li>Any personal attacks, obscenities, spam and inappropriate comments will be deleted.</li>
+        <li>Sometimes, if you're a new poster, your comment has to be approved by moderators.</li>
+	</ul>
+<h2 id="postcomment">Leave a comment</h2>
+
+
+<form action="http://www.techinterviews.com/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1" />
+<label for="author"><small>Name (required)</small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2" />
+<label for="email"><small>Mail (will not be published) (required)</small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3" />
+<label for="url"><small>Website</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;code&gt; &lt;em&gt; &lt;i&gt; &lt;strike&gt; &lt;strong&gt; </small></p>-->
+
+<p><textarea name="comment" id="comment" cols="80%" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
+<input type="hidden" name="comment_post_ID" value="85" />
+</p>
+
+
+	<p style="clear: both;" class="subscribe-to-comments">
+        <input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;" />
+        <label for="subscribe">Send new comments to my e-mail</label>
+	</p>
+
+
+
+</form>
+
+
+
+<Script language="Javascript1.1" src="getntag.aspx-action=VIEWAD&run=300&cwformat=728x90&advid=112&pid=700002&dfcat=1104&width=728&height=90&pnet=4&SiteID=tech.3236" tppabs="http://ad.admarketplace.net/TagPublish/getntag.aspx?action=VIEWAD&run=300&cwformat=728x90&advid=112&pid=700002&dfcat=1104&width=728&height=90&pnet=4&SiteID=tech.3236">  </Script>
+	</div>
+	<h4></h4>
+</td></tr></table>
+<!-- begin footer -->
+</div>
+
+
+<h1 id="header"><a href="index.htm" tppabs="http://www.techinterviews.com/">&copy; TechInterviews.com</a></h1>
+<p>Property of <a href="javascript:if(confirm('http://www.digitalmediaventuresllc.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.digitalmediaventuresllc.com/'" tppabs="http://www.digitalmediaventuresllc.com/">Digital Media Ventures LLC</a>. Read <a href="javascript:if(confirm('http://www.techinterviews.com/wp-rdf.php  \n\nThis file was not retrieved by Teleport Pro, because it did not meet the project\'s file type specifications.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/wp-rdf.php'" tppabs="http://www.techinterviews.com/wp-rdf.php">RDF</a>, <a href="wp-rss2.php.htm" tppabs="http://www.techinterviews.com/wp-rss2.php">RSS 2.0</a>, <a href="wp-rss.php.htm" tppabs="http://www.techinterviews.com/wp-rss.php">RSS 0.92</a>, <a href="javascript:if(confirm('http://www.techinterviews.com/wp-atom.php  \n\nThis file was not retrieved by Teleport Pro, because it did not meet the project\'s file type specifications.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/wp-atom.php'" tppabs="http://www.techinterviews.com/wp-atom.php">Atom</a>, <a href="wp-commentsrss2.php.htm" tppabs="http://www.techinterviews.com/wp-commentsrss2.php">Comments RSS</a></p>
+</body>
+</html>

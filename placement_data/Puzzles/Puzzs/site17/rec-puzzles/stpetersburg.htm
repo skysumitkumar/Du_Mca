@@ -1,0 +1,103 @@
+<html><head>
+<title>Solution for /decision/stpetersburg</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /decision/stpetersburg problem</h1>
+<hr>
+Classical decision theory says that you should be willing to pay any
+amount up to the expected value of the wager.  Let's calculate the
+expected value:  The probability of winning at step n is 2^-n, and the
+payoff at step n is 2^n, so the sum of the products of the
+probabilities and the payoffs is:
+
+<pre>
+    E = sum over n (2^-n * 2^n) = sum over n (1) = infinity
+</pre>
+
+So you should be willing to pay any amount to play this game.  This is
+called the "St. Petersburg Paradox."
+
+<p>
+The classical solution to this problem was given by Bernoulli.  He
+noted that people's desire for money is not linear in the amount of
+money involved.  In other words, people do not desire $2 million twice
+as much as they desire $1 million.  Suppose, for example, that people's
+desire for money is a logarithmic function of the amount of money.
+Then the expected VALUE of the game is:
+
+<pre>
+    E = sum over n (2^-n * C * log(2^n)) = sum over n (2^-n * C' * n) =  C''
+</pre>
+
+Here the C's are constants that depend upon the risk aversion of the
+player, but at least the expected value is finite.  However, it turns
+out that these constants are usually much higher than people are really
+willing to pay to play, and in fact it can be shown that any
+non-bounded utility function (map from amount of money to value of
+money) is prey to a generalization of the St. Petersburg paradox.  So
+the classical solution of Bernoulli is only part of the story.
+
+<p>
+The rest of the story lies in the observation that bankrolls are always
+finite, and this dramatically reduces the amount you are willing to bet
+in the St. Petersburg game.
+
+<p>
+To figure out what would be a fair value to charge for playing the game
+we must know the bank's resources.  Assume that the bank has 1 million
+dollars (1*K*K = 2^20).  I cannot possibly win more than $1 million
+whether I toss 20 tails in a row or 2000.
+
+<p>
+Therefore my expected amount of winning is 
+
+<pre>
+    E = sum n up to 20 (2^-n * 2^n) = sum n up to 20 (1) = $20
+</pre>
+
+and my expected value of winning is 
+
+<pre>
+    E = sum n up to 20 (2^-n * C * log(2^n)) = some small number
+</pre>
+
+This is much more in keeping with what people would really pay to
+play the game.
+
+<p>
+Incidentally, T.C. Fry suggested this change to the problem in 1928
+(see W.W.R. Ball, Mathematical Recreations and Essays, N.Y.: Macmillan,
+1960, pp.  44-45).
+
+<p>
+The problem remains interesting when modified in this way,
+for the following reason. For a particular value of the bank's
+resources, let
+
+<pre>
+      e denote the expected value of the player's winnings; and let
+      p denote the probability that the player profits from the game, assuming
+        the price of getting into the game is 0.8e (20% discount).
+</pre>
+
+Note that the expected value of the player's profit is 0.2e.  Now
+let's vary the bank's resources and observe how e and p change.  It
+will be seen that as e (and hence the expected value of the profit)
+increases, p diminishes.  The more the game is to the player's
+advantage in terms of expected value of profit, the less likely it is
+that the player will come away with any profit at all.  This 
+is mildly counterintuitive.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

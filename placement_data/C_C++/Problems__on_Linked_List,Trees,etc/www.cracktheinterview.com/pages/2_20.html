@@ -1,0 +1,855 @@
+
+<HTML>
+
+<!-- Mirrored from www.cracktheinterview.com by HTTrack Website Copier/3.x [XR,YP'2001] -->
+<HEAD>
+<TITLE>CRACK THE INTERVIEW - Write code to remove duplicates in a sorted array.  (www.cracktheinterview.com)</TITLE><style type="text/css">
+<!--
+.breakhere     {page-break-before: always}
+
+A:link         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+A:active       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+A:visited      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+
+H1             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt; font-weight:bold; color:#336699} 
+H2             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; font-weight:bold} 
+.normal        {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+.announce      {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#000000} 
+.announceLink  {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#336699} 
+.note          {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt ! important; font-weight:normal} 
+.system        {font-family:Courier New, Courier; font-size:x-small;
+                font-weight:normal} 
+.stayblue      {color:#336699 ! important}
+.title         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:larger ! important} 
+.error         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; color:#aa0000; font-weight:bold} 
+.notelink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:normal;
+                font-size:9pt ! important} 
+.tableHeader   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableHeaderSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRow      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#f7f7e7} 
+.tableBlank    {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#ffffff} 
+.hardlink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:bold;
+                font-size:8pt ! important} 
+.boxlink       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#000000 ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.hardnote      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:black ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.tableRowSmall {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal} 
+.tableRowSmallBold {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                bold} 
+.blueHeading   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:bold;
+                color:#336699! important} 
+.blueHeadingLarge {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:16pt! important; font-weight:normal;
+                color:#336699} 
+.blueHeadingMid {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:normal;
+                color:#336699}
+.blueHeadingSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt! important; font-weight:bold;
+                color:#336699} 
+.tableHeaderV  {font-family:Verdana,Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRowV     {font-family:Verdana,Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal; background-color:#f7f7e7} 
+.just          {text-align: justify}
+-->
+</style>
+
+<META NAME="keywords" CONTENT="interview,C,integer,duplicate,array,remove">
+<META NAME="description" CONTENT="Write code to remove duplicates in a sorted array. ">
+<META NAME="robots" CONTENT="FOLLOW,INDEX">
+<META HTTP-EQUIV="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+
+</HEAD>
+<BODY>
+<TABLE BORDER=0 cellpadding=10>
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER><A HREF="../index.html"><IMG SRC=../images/logo2.jpg border=0></img></A></CENTER></TD>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2>
+<CENTER>
+
+
+<!--START:ADS0-->
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"
+  src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+
+</CENTER>
+</TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER>
+
+<!--START:LINKS-->
+
+
+<TABLE BORDER=0 cellpadding=10>
+<TR><TD NOWRAP>
+<A HREF="../index.html" target="_top"><font class=announcelink>Home</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="../adfaqpublish.html" target="_top"><font class=announcelink>Questions</font></A><BR>
+</TD>
+
+
+<TD NOWRAP>
+<A href="../search.html" target="_top"><font class=announcelink>Search</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="../forum/index.html" target="_top"><font class=announcelink>Forum</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="mailto:cracktheinterview@gmail.com?subject=Hi!"><font class=announcelink>Contact</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum12a3.html" target="_top"><font class=announcelink>Guest Book</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum4d6b.html" target="_top"><font class=announcelink>Polls!</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum31e6.html" target="_top"><font class=announcelink>Got a Question?</font></A><BR>
+</TD>
+
+</TABLE>
+
+<!--END-->
+
+</CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER> &nbsp; </CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=90%% valign=top>
+
+
+
+
+
+<!--START : DATA-->
+
+
+
+<TABLE BORDER=0>
+
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="2_19.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=blueHeading>Programs</font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="2_21.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD>
+<TD WIDTH=90%%><CENTER><font class=blueHeading>(47 / 268)</font></center></TD>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%></TD>
+<TD WIDTH=90%%><center>&nbsp;</center></TD>
+<TD WIDTH=5%%></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=announceLink><BR><BR><BR>
+<!--THE QUESTION-->
+
+Write code to remove duplicates in a sorted array. <BR>
+<!--END-->
+<BR></font></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=normal>
+<!--THE ANSWER--><BR>
+<!--META:START--><!--interview,C,integer,duplicate,array,remove--><!--META:END--><BR>
+<!--UPDATED--><BR>
+There are a number of ways to remove duplicates from a sorted array. Here are a few C programs...<BR>
+<BR>
+<BR>
+<font class=announcelink>Method1</font><BR>
+<BR>
+In this simple C program, we change the original array and also send the new size of the array back to the caller.<BR>
+<BR>
+<CODE><BR>
+#include&nbsp;&lt;stdio.h><BR>
+<BR>
+int&nbsp;removeDuplicates(int&nbsp;a[],&nbsp;int&nbsp;array_size);<BR>
+<BR>
+//&nbsp;The&nbsp;main&nbsp;function<BR>
+int&nbsp;main()<BR>
+{<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;//&nbsp;Different&nbsp;test&nbsp;cases..<BR>
+&nbsp;&nbsp;int&nbsp;my_array1[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{1,&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;5,&nbsp;6,&nbsp;6,&nbsp;7,&nbsp;10,&nbsp;25,&nbsp;100,&nbsp;123,&nbsp;123};<BR>
+&nbsp;&nbsp;int&nbsp;my_array1_size&nbsp;=&nbsp;13;<BR>
+<BR>
+&nbsp;&nbsp;int&nbsp;my_array2[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{1,&nbsp;2,&nbsp;3,&nbsp;5,&nbsp;6};<BR>
+&nbsp;&nbsp;int&nbsp;my_array2_size&nbsp;=&nbsp;5;<BR>
+<BR>
+&nbsp;&nbsp;int&nbsp;my_array3[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{1,&nbsp;1,&nbsp;1,&nbsp;1,&nbsp;1};<BR>
+&nbsp;&nbsp;int&nbsp;my_array3_size&nbsp;=&nbsp;5;<BR>
+<BR>
+&nbsp;&nbsp;int&nbsp;my_array4[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{123,&nbsp;123};<BR>
+&nbsp;&nbsp;int&nbsp;my_array4_size&nbsp;=&nbsp;2;<BR>
+<BR>
+&nbsp;&nbsp;int&nbsp;my_array5[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{1,&nbsp;123,&nbsp;123};<BR>
+&nbsp;&nbsp;int&nbsp;my_array5_size&nbsp;=&nbsp;3;<BR>
+<BR>
+&nbsp;&nbsp;int&nbsp;my_array6[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{123,&nbsp;123,&nbsp;166};<BR>
+&nbsp;&nbsp;int&nbsp;my_array6_size&nbsp;=&nbsp;3;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;int&nbsp;my_array7[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{1,&nbsp;2,&nbsp;8,&nbsp;8&nbsp;,&nbsp;24,&nbsp;60,&nbsp;60,&nbsp;60,&nbsp;60,&nbsp;75,&nbsp;100,&nbsp;100,&nbsp;123};<BR>
+&nbsp;&nbsp;int&nbsp;my_array7_size&nbsp;=&nbsp;13;<BR>
+<BR>
+&nbsp;<BR>
+&nbsp;&nbsp;my_array1_size&nbsp;=&nbsp;removeDuplicates(my_array1,&nbsp;my_array1_size);<BR>
+&nbsp;&nbsp;my_array2_size&nbsp;=&nbsp;removeDuplicates(my_array2,&nbsp;my_array2_size);<BR>
+&nbsp;&nbsp;my_array3_size&nbsp;=&nbsp;removeDuplicates(my_array3,&nbsp;my_array3_size);<BR>
+&nbsp;&nbsp;my_array4_size&nbsp;=&nbsp;removeDuplicates(my_array4,&nbsp;my_array4_size);<BR>
+&nbsp;&nbsp;my_array5_size&nbsp;=&nbsp;removeDuplicates(my_array5,&nbsp;my_array5_size);<BR>
+&nbsp;&nbsp;my_array6_size&nbsp;=&nbsp;removeDuplicates(my_array6,&nbsp;my_array6_size);&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;my_array7_size&nbsp;=&nbsp;removeDuplicates(my_array7,&nbsp;my_array7_size);&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;return(0);<BR>
+}<BR>
+<BR>
+<BR>
+//&nbsp;Function&nbsp;to&nbsp;remove&nbsp;the&nbsp;duplicates<BR>
+int&nbsp;removeDuplicates(int&nbsp;a[],&nbsp;int&nbsp;array_size)&nbsp;<BR>
+{&nbsp;<BR>
+&nbsp;&nbsp;int&nbsp;i,&nbsp;j;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;j&nbsp;=&nbsp;0;&nbsp;<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;//&nbsp;Print&nbsp;old&nbsp;array...<BR>
+&nbsp;&nbsp;printf("\n\nOLD&nbsp;:&nbsp;");<BR>
+&nbsp;&nbsp;for(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;<&nbsp;array_size;&nbsp;i++)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("[%d]&nbsp;",&nbsp;a[i]);<BR>
+&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;//&nbsp;Remove&nbsp;the&nbsp;duplicates&nbsp;...<BR>
+&nbsp;&nbsp;for&nbsp;(i&nbsp;=&nbsp;1;&nbsp;i&nbsp;<&nbsp;array_size;&nbsp;i++)&nbsp;<BR>
+&nbsp;&nbsp;{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(a[i]&nbsp;!=&nbsp;a[j])&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j++;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a[j]&nbsp;=&nbsp;a[i];&nbsp;//&nbsp;Move&nbsp;it&nbsp;to&nbsp;the&nbsp;front&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<BR>
+&nbsp;&nbsp;}&nbsp;<BR>
+<BR>
+&nbsp;&nbsp;//&nbsp;The&nbsp;new&nbsp;array&nbsp;size..<BR>
+&nbsp;&nbsp;array_size&nbsp;=&nbsp;(j&nbsp;+&nbsp;1);<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;//&nbsp;Print&nbsp;new&nbsp;array...<BR>
+&nbsp;&nbsp;printf("\n\nNEW&nbsp;:&nbsp;");<BR>
+&nbsp;&nbsp;for(i&nbsp;=&nbsp;0;&nbsp;i<&nbsp;array_size;&nbsp;i++)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("[%d]&nbsp;",&nbsp;a[i]);<BR>
+&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;printf("\n\n");<BR>
+<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;//&nbsp;Return&nbsp;the&nbsp;new&nbsp;size...<BR>
+&nbsp;&nbsp;return(j&nbsp;+&nbsp;1);&nbsp;<BR>
+}<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+And here is the output...<BR>
+<BR>
+<CODE><BR>
+OLD&nbsp;:&nbsp;[1]&nbsp;[1]&nbsp;[2]&nbsp;[3]&nbsp;[5]&nbsp;[6]&nbsp;[6]&nbsp;[7]&nbsp;[10]&nbsp;[25]&nbsp;[100]&nbsp;[123]&nbsp;[123]<BR>
+NEW&nbsp;:&nbsp;[1]&nbsp;[2]&nbsp;[3]&nbsp;[5]&nbsp;[6]&nbsp;[7]&nbsp;[10]&nbsp;[25]&nbsp;[100]&nbsp;[123]<BR>
+<BR>
+<BR>
+OLD&nbsp;:&nbsp;[1]&nbsp;[2]&nbsp;[3]&nbsp;[5]&nbsp;[6]<BR>
+NEW&nbsp;:&nbsp;[1]&nbsp;[2]&nbsp;[3]&nbsp;[5]&nbsp;[6]<BR>
+<BR>
+<BR>
+OLD&nbsp;:&nbsp;[1]&nbsp;[1]&nbsp;[1]&nbsp;[1]&nbsp;[1]<BR>
+NEW&nbsp;:&nbsp;[1]<BR>
+<BR>
+<BR>
+OLD&nbsp;:&nbsp;[123]&nbsp;[123]<BR>
+NEW&nbsp;:&nbsp;[123]<BR>
+<BR>
+<BR>
+OLD&nbsp;:&nbsp;[1]&nbsp;[123]&nbsp;[123]<BR>
+NEW&nbsp;:&nbsp;[1]&nbsp;[123]<BR>
+<BR>
+<BR>
+OLD&nbsp;:&nbsp;[123]&nbsp;[123]&nbsp;[166]<BR>
+NEW&nbsp;:&nbsp;[123]&nbsp;[166]<BR>
+<BR>
+<BR>
+OLD&nbsp;:&nbsp;[1]&nbsp;[2]&nbsp;[8]&nbsp;[8]&nbsp;[24]&nbsp;[60]&nbsp;[60]&nbsp;[60]&nbsp;[60]&nbsp;[75]&nbsp;[100]&nbsp;[100]&nbsp;[123]<BR>
+NEW&nbsp;:&nbsp;[1]&nbsp;[2]&nbsp;[8]&nbsp;[24]&nbsp;[60]&nbsp;[75]&nbsp;[100]&nbsp;[123]<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<font class=announcelink>Method2</font><BR>
+<BR>
+If we <font class=announcelink>dont want</font> to change the input array and just want to print the array without any duplicates, the solution is very simple. Check out the removeDuplicatesNoModify() function in the program below. It keeps a track of the most recently seen number and does not print any duplicates of it when traversing the sorted array.<BR>
+<BR>
+<BR>
+<CODE><BR>
+#include&nbsp;&lt;stdio.h><BR>
+<BR>
+void&nbsp;removeDuplicatesNoModify(int&nbsp;my_array[],&nbsp;int&nbsp;my_array1_size);<BR>
+void&nbsp;print_array(int&nbsp;array[],&nbsp;int&nbsp;array_size,&nbsp;int&nbsp;current_pos,&nbsp;int&nbsp;dup_start,&nbsp;int&nbsp;dup_end);<BR>
+<BR>
+<BR>
+//&nbsp;The&nbsp;main&nbsp;function<BR>
+int&nbsp;main()<BR>
+{<BR>
+&nbsp;&nbsp;//&nbsp;Different&nbsp;inputs...<BR>
+&nbsp;&nbsp;int&nbsp;my_array1[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{1,&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;5,&nbsp;6,&nbsp;6,&nbsp;7,&nbsp;10,&nbsp;25,&nbsp;100,&nbsp;123,&nbsp;123};<BR>
+&nbsp;&nbsp;int&nbsp;my_array1_size&nbsp;=&nbsp;13;<BR>
+<BR>
+&nbsp;&nbsp;int&nbsp;my_array2[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{1,&nbsp;2,&nbsp;3,&nbsp;5,&nbsp;6};<BR>
+&nbsp;&nbsp;int&nbsp;my_array2_size&nbsp;=&nbsp;5;<BR>
+<BR>
+&nbsp;&nbsp;int&nbsp;my_array3[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{1,&nbsp;1,&nbsp;1,&nbsp;1,&nbsp;1};<BR>
+&nbsp;&nbsp;int&nbsp;my_array3_size&nbsp;=&nbsp;5;<BR>
+<BR>
+&nbsp;&nbsp;int&nbsp;my_array4[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{123,&nbsp;123};<BR>
+&nbsp;&nbsp;int&nbsp;my_array4_size&nbsp;=&nbsp;2;<BR>
+<BR>
+&nbsp;&nbsp;int&nbsp;my_array5[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{1,&nbsp;123,&nbsp;123};<BR>
+&nbsp;&nbsp;int&nbsp;my_array5_size&nbsp;=&nbsp;3;<BR>
+<BR>
+&nbsp;&nbsp;int&nbsp;my_array6[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{123,&nbsp;123,&nbsp;166};<BR>
+&nbsp;&nbsp;int&nbsp;my_array6_size&nbsp;=&nbsp;3;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;int&nbsp;my_array7[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{1,&nbsp;2,&nbsp;8,&nbsp;8&nbsp;,&nbsp;24,&nbsp;60,&nbsp;60,&nbsp;60,&nbsp;60,&nbsp;75,&nbsp;100,&nbsp;100,&nbsp;123};<BR>
+&nbsp;&nbsp;int&nbsp;my_array7_size&nbsp;=&nbsp;13;<BR>
+<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;removeDuplicatesNoModify(my_array1,&nbsp;my_array1_size);<BR>
+&nbsp;&nbsp;removeDuplicatesNoModify(my_array2,&nbsp;my_array2_size);<BR>
+&nbsp;&nbsp;removeDuplicatesNoModify(my_array3,&nbsp;my_array3_size);<BR>
+&nbsp;&nbsp;removeDuplicatesNoModify(my_array4,&nbsp;my_array4_size);<BR>
+&nbsp;&nbsp;removeDuplicatesNoModify(my_array5,&nbsp;my_array5_size);<BR>
+&nbsp;&nbsp;removeDuplicatesNoModify(my_array6,&nbsp;my_array6_size);&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;removeDuplicatesNoModify(my_array7,&nbsp;my_array7_size);&nbsp;&nbsp;<BR>
+<BR>
+&nbsp;&nbsp;return(0);<BR>
+}<BR>
+<BR>
+<BR>
+<BR>
+//&nbsp;&nbsp;This&nbsp;function&nbsp;just&nbsp;prints&nbsp;the&nbsp;array&nbsp;without&nbsp;duplicates.<BR>
+//&nbsp;&nbsp;It&nbsp;does&nbsp;not&nbsp;modify&nbsp;the&nbsp;original&nbsp;array!<BR>
+<BR>
+void&nbsp;removeDuplicatesNoModify(int&nbsp;array[],&nbsp;int&nbsp;array_size)&nbsp;<BR>
+{&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;int&nbsp;i,&nbsp;last_seen_unique;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;if(array_size&nbsp;&lt;=&nbsp;1){return;}<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;last_seen_unique&nbsp;=&nbsp;array[0];<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;printf("\n\nOld&nbsp;:&nbsp;",&nbsp;array_size);<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;for(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;<&nbsp;array_size;&nbsp;i++)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("[%2d]&nbsp;",&nbsp;array[i]);<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;printf("\nNew&nbsp;:&nbsp;",&nbsp;array_size);<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;printf("[%2d]&nbsp;",&nbsp;array[0]);<BR>
+&nbsp;&nbsp;&nbsp;for(i=1;&nbsp;i&nbsp;<&nbsp;array_size;&nbsp;i++)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(array[i]!=last_seen_unique)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("[%2d]&nbsp;",&nbsp;array[i]);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;last_seen_unique&nbsp;=&nbsp;array[i];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;printf("\n");<BR>
+}&nbsp;<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+And here is the output..<BR>
+<CODE><BR>
+Old&nbsp;:&nbsp;[&nbsp;1]&nbsp;[&nbsp;1]&nbsp;[&nbsp;2]&nbsp;[&nbsp;3]&nbsp;[&nbsp;5]&nbsp;[&nbsp;6]&nbsp;[&nbsp;6]&nbsp;[&nbsp;7]&nbsp;[10]&nbsp;[25]&nbsp;[100]&nbsp;[123]&nbsp;[123]<BR>
+New&nbsp;:&nbsp;[&nbsp;1]&nbsp;[&nbsp;2]&nbsp;[&nbsp;3]&nbsp;[&nbsp;5]&nbsp;[&nbsp;6]&nbsp;[&nbsp;7]&nbsp;[10]&nbsp;[25]&nbsp;[100]&nbsp;[123]<BR>
+<BR>
+<BR>
+Old&nbsp;:&nbsp;[&nbsp;1]&nbsp;[&nbsp;2]&nbsp;[&nbsp;3]&nbsp;[&nbsp;5]&nbsp;[&nbsp;6]<BR>
+New&nbsp;:&nbsp;[&nbsp;1]&nbsp;[&nbsp;2]&nbsp;[&nbsp;3]&nbsp;[&nbsp;5]&nbsp;[&nbsp;6]<BR>
+<BR>
+<BR>
+Old&nbsp;:&nbsp;[&nbsp;1]&nbsp;[&nbsp;1]&nbsp;[&nbsp;1]&nbsp;[&nbsp;1]&nbsp;[&nbsp;1]<BR>
+New&nbsp;:&nbsp;[&nbsp;1]<BR>
+<BR>
+<BR>
+Old&nbsp;:&nbsp;[123]&nbsp;[123]<BR>
+New&nbsp;:&nbsp;[123]<BR>
+<BR>
+<BR>
+Old&nbsp;:&nbsp;[&nbsp;1]&nbsp;[123]&nbsp;[123]<BR>
+New&nbsp;:&nbsp;[&nbsp;1]&nbsp;[123]<BR>
+<BR>
+<BR>
+Old&nbsp;:&nbsp;[123]&nbsp;[123]&nbsp;[166]<BR>
+New&nbsp;:&nbsp;[123]&nbsp;[166]<BR>
+<BR>
+<BR>
+Old&nbsp;:&nbsp;[&nbsp;1]&nbsp;[&nbsp;2]&nbsp;[&nbsp;8]&nbsp;[&nbsp;8]&nbsp;[24]&nbsp;[60]&nbsp;[60]&nbsp;[60]&nbsp;[60]&nbsp;[75]&nbsp;[100]&nbsp;[100]&nbsp;[123]<BR>
+New&nbsp;:&nbsp;[&nbsp;1]&nbsp;[&nbsp;2]&nbsp;[&nbsp;8]&nbsp;[24]&nbsp;[60]&nbsp;[75]&nbsp;[100]&nbsp;[123]<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<font class=announcelink>Method3</font><BR>
+<BR>
+Here is a slightly compilcated, but more <font class=announcelink>visual version</font> of the removeDuplicates() function. It shrinks the original array as and when it find duplicates. It is also optimized to identify continuous strings of duplicates and eliminate them at one shot.<BR>
+<BR>
+<BR>
+<BR>
+<CODE><BR>
+#include&nbsp;&lt;stdio.h><BR>
+<BR>
+void&nbsp;removeDuplicates(int&nbsp;array[],&nbsp;int&nbsp;*array_size)&nbsp;;<BR>
+void&nbsp;print_array(int&nbsp;array[],&nbsp;int&nbsp;array_size,&nbsp;int&nbsp;current_pos,&nbsp;int&nbsp;dup_start,&nbsp;int&nbsp;dup_end);<BR>
+<BR>
+<BR>
+//&nbsp;The&nbsp;main&nbsp;function<BR>
+int&nbsp;main()<BR>
+{<BR>
+&nbsp;&nbsp;//&nbsp;Different&nbsp;inputs...<BR>
+&nbsp;&nbsp;int&nbsp;my_array1[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{1,&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;5,&nbsp;6,&nbsp;6,&nbsp;7,&nbsp;10,&nbsp;25,&nbsp;100,&nbsp;123,&nbsp;123};<BR>
+&nbsp;&nbsp;int&nbsp;my_array1_size&nbsp;=&nbsp;13;<BR>
+<BR>
+&nbsp;&nbsp;int&nbsp;my_array2[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{1,&nbsp;2,&nbsp;3,&nbsp;5,&nbsp;6};<BR>
+&nbsp;&nbsp;int&nbsp;my_array2_size&nbsp;=&nbsp;5;<BR>
+<BR>
+&nbsp;&nbsp;int&nbsp;my_array3[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{1,&nbsp;1,&nbsp;1,&nbsp;1,&nbsp;1};<BR>
+&nbsp;&nbsp;int&nbsp;my_array3_size&nbsp;=&nbsp;5;<BR>
+<BR>
+&nbsp;&nbsp;int&nbsp;my_array4[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{123,&nbsp;123};<BR>
+&nbsp;&nbsp;int&nbsp;my_array4_size&nbsp;=&nbsp;2;<BR>
+<BR>
+&nbsp;&nbsp;int&nbsp;my_array5[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{1,&nbsp;123,&nbsp;123};<BR>
+&nbsp;&nbsp;int&nbsp;my_array5_size&nbsp;=&nbsp;3;<BR>
+<BR>
+&nbsp;&nbsp;int&nbsp;my_array6[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{123,&nbsp;123,&nbsp;166};<BR>
+&nbsp;&nbsp;int&nbsp;my_array6_size&nbsp;=&nbsp;3;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;int&nbsp;my_array7[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{1,&nbsp;2,&nbsp;8,&nbsp;8&nbsp;,&nbsp;24,&nbsp;60,&nbsp;60,&nbsp;60,&nbsp;60,&nbsp;75,&nbsp;100,&nbsp;100,&nbsp;123};<BR>
+&nbsp;&nbsp;int&nbsp;my_array7_size&nbsp;=&nbsp;13;<BR>
+<BR>
+&nbsp;&nbsp;removeDuplicates(my_array1,&nbsp;&my_array1_size);<BR>
+&nbsp;&nbsp;removeDuplicates(my_array2,&nbsp;&my_array2_size);<BR>
+&nbsp;&nbsp;removeDuplicates(my_array3,&nbsp;&my_array3_size);<BR>
+&nbsp;&nbsp;removeDuplicates(my_array4,&nbsp;&my_array4_size);<BR>
+&nbsp;&nbsp;removeDuplicates(my_array5,&nbsp;&my_array5_size);<BR>
+&nbsp;&nbsp;removeDuplicates(my_array6,&nbsp;&my_array6_size);&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;removeDuplicates(my_array7,&nbsp;&my_array7_size);&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;return(0);<BR>
+}<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+//&nbsp;Changes&nbsp;the&nbsp;original&nbsp;array&nbsp;and&nbsp;resets&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;array&nbsp;if&nbsp;duplicates<BR>
+//&nbsp;have&nbsp;been&nbsp;removed.<BR>
+<BR>
+void&nbsp;removeDuplicates(int&nbsp;array[],&nbsp;int&nbsp;*array_size)&nbsp;<BR>
+{&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;int&nbsp;i,&nbsp;j,&nbsp;k,&nbsp;l;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;int&nbsp;current_pos;<BR>
+&nbsp;&nbsp;&nbsp;int&nbsp;dup_start;<BR>
+&nbsp;&nbsp;&nbsp;int&nbsp;dup_end;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;printf("\nInitial&nbsp;array&nbsp;(size&nbsp;:&nbsp;[%d])\n\n",&nbsp;*array_size);<BR>
+&nbsp;&nbsp;&nbsp;for(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;<&nbsp;*array_size;&nbsp;i++)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("[%2d]&nbsp;",&nbsp;array[i]);<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;printf("\n\n\n------------------------------------------------\n");<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;if(*array_size&nbsp;==&nbsp;1){return;}<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;//&nbsp;Remove&nbsp;the&nbsp;dups...<BR>
+&nbsp;&nbsp;&nbsp;for&nbsp;(i&nbsp;=&nbsp;0;&nbsp;(i&nbsp;<&nbsp;*array_size);&nbsp;i++)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Start&nbsp;with&nbsp;the&nbsp;next&nbsp;element&nbsp;in&nbsp;the&nbsp;array&nbsp;and&nbsp;check&nbsp;if&nbsp;its&nbsp;a&nbsp;duplicate...<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(j&nbsp;=&nbsp;i+1;&nbsp;(j&nbsp;<&nbsp;*array_size);&nbsp;j++)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(array[i]!=array[j])<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;No&nbsp;duplicate,&nbsp;just&nbsp;continue...<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;The&nbsp;next&nbsp;element&nbsp;is&nbsp;a&nbsp;duplicate.&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;See&nbsp;if&nbsp;there&nbsp;are&nbsp;more&nbsp;duplicates,&nbsp;as&nbsp;we&nbsp;want&nbsp;to&nbsp;optimize&nbsp;here.&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;That&nbsp;is,&nbsp;if&nbsp;we&nbsp;have&nbsp;something&nbsp;like&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Array&nbsp;:&nbsp;[1,&nbsp;1,&nbsp;1,&nbsp;2]<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;then,&nbsp;we&nbsp;want&nbsp;to&nbsp;copy&nbsp;2&nbsp;directly&nbsp;in&nbsp;the&nbsp;second&nbsp;position&nbsp;and&nbsp;reduce&nbsp;the&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;array&nbsp;to&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Array&nbsp;:&nbsp;[1,&nbsp;2].<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;in&nbsp;a&nbsp;single&nbsp;iteration.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current_pos&nbsp;=&nbsp;i;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dup_start&nbsp;=&nbsp;j;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j++;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while((array[i]==array[j])&nbsp;&&&nbsp;(j&nbsp;<&nbsp;*array_size))<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j++;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dup_end&nbsp;=&nbsp;j-1;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print_array(array,&nbsp;*array_size,&nbsp;current_pos,&nbsp;dup_start,&nbsp;dup_end);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Now&nbsp;remove&nbsp;elements&nbsp;of&nbsp;the&nbsp;array&nbsp;from&nbsp;"dup_start"&nbsp;to&nbsp;"dup_end"<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;and&nbsp;shrink&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;array.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(k&nbsp;=&nbsp;(dup_end&nbsp;+&nbsp;1),&nbsp;l&nbsp;=&nbsp;dup_start&nbsp;;&nbsp;k&nbsp;<&nbsp;*array_size;)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array[l++]=array[k++];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Reduce&nbsp;the&nbsp;array&nbsp;size&nbsp;by&nbsp;the&nbsp;number&nbsp;of&nbsp;elements&nbsp;removed.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*array_size&nbsp;=&nbsp;*array_size&nbsp;-&nbsp;(dup_end&nbsp;-&nbsp;dup_start&nbsp;+&nbsp;1);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;}&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;printf("\n\n------------------------------------------------");<BR>
+&nbsp;&nbsp;&nbsp;printf("\n\nFinal&nbsp;array&nbsp;(size&nbsp;:&nbsp;[%d])\n\n",&nbsp;*array_size);<BR>
+&nbsp;&nbsp;&nbsp;for(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;<&nbsp;*array_size;&nbsp;i++)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("[%2d]&nbsp;",&nbsp;array[i]);<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;printf("\n\n");<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+}<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+//&nbsp;This&nbsp;function&nbsp;prints&nbsp;the&nbsp;array&nbsp;with&nbsp;some&nbsp;special&nbsp;pointers&nbsp;to&nbsp;the&nbsp;numbers&nbsp;that<BR>
+//&nbsp;are&nbsp;duplicated.&nbsp;<BR>
+//&nbsp;<BR>
+//&nbsp;Dont&nbsp;bother&nbsp;too&nbsp;much&nbsp;about&nbsp;this&nbsp;function,&nbsp;it&nbsp;just&nbsp;helps&nbsp;in&nbsp;understanding<BR>
+//&nbsp;how&nbsp;and&nbsp;where&nbsp;the&nbsp;duplicates&nbsp;are&nbsp;being&nbsp;removed&nbsp;from.<BR>
+<BR>
+void&nbsp;print_array(int&nbsp;array[],&nbsp;int&nbsp;array_size,&nbsp;int&nbsp;current_pos,&nbsp;int&nbsp;dup_start,&nbsp;int&nbsp;dup_end)<BR>
+{<BR>
+&nbsp;&nbsp;int&nbsp;i;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;printf("\n\n");<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;for(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;<&nbsp;array_size;&nbsp;i++)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("[%2d]&nbsp;",&nbsp;array[i]);<BR>
+&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;printf("\n");<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;for(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;<&nbsp;array_size;&nbsp;i++)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;if((i&nbsp;==&nbsp;current_pos)&nbsp;||&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(i&nbsp;==&nbsp;dup_start&nbsp;&&&nbsp;i&nbsp;==&nbsp;dup_end)&nbsp;||&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((i&nbsp;==&nbsp;dup_start&nbsp;||&nbsp;i&nbsp;==&nbsp;dup_end)&nbsp;&&&nbsp;(dup_start&nbsp;!=&nbsp;dup_end)))<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("&nbsp;&nbsp;^&nbsp;&nbsp;");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;printf("\n");<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;for(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;<&nbsp;array_size;&nbsp;i++)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;if((i&nbsp;==&nbsp;current_pos)&nbsp;||&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(i&nbsp;==&nbsp;dup_start&nbsp;&&&nbsp;i&nbsp;==&nbsp;dup_end)&nbsp;||&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((i&nbsp;==&nbsp;dup_start&nbsp;||&nbsp;i&nbsp;==&nbsp;dup_end)&nbsp;&&&nbsp;(dup_start&nbsp;!=&nbsp;dup_end)))<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("&nbsp;&nbsp;|&nbsp;&nbsp;");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;printf("\n");<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;for(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;<&nbsp;array_size;&nbsp;i++)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;if(i&nbsp;==&nbsp;current_pos)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("&nbsp;&nbsp;C&nbsp;&nbsp;");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(i&nbsp;==&nbsp;dup_start&nbsp;&&&nbsp;i&nbsp;==&nbsp;dup_end)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("&nbsp;S/E&nbsp;");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if((i&nbsp;==&nbsp;dup_start&nbsp;||&nbsp;i&nbsp;==&nbsp;dup_end)&nbsp;&&&nbsp;(dup_start&nbsp;!=&nbsp;dup_end))<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(i&nbsp;==&nbsp;dup_start)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("&nbsp;&nbsp;S--");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("--E&nbsp;&nbsp;");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(i>dup_start&nbsp;&&&nbsp;i&lt;dup_end)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("-----");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;<BR>
+}<BR>
+<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+And here is the output (for one of the inputs)...<BR>
+<BR>
+<CODE><BR>
+C&nbsp;-&nbsp;Current&nbsp;position.<BR>
+S&nbsp;-&nbsp;Start&nbsp;of&nbsp;duplicates.<BR>
+E&nbsp;-&nbsp;End&nbsp;of&nbsp;duplicates.<BR>
+</CODE><BR>
+<BR>
+<BR>
+<CODE><BR>
+Old&nbsp;:&nbsp;[&nbsp;1]&nbsp;[&nbsp;2]&nbsp;[&nbsp;8]&nbsp;[&nbsp;8]&nbsp;[24]&nbsp;[60]&nbsp;[60]&nbsp;[60]&nbsp;[60]&nbsp;[75]&nbsp;[100]&nbsp;[100]&nbsp;[123]<BR>
+<BR>
+-------------------------------------------------------------------------<BR>
+[&nbsp;1]&nbsp;[&nbsp;2]&nbsp;[&nbsp;8]&nbsp;[&nbsp;8]&nbsp;[24]&nbsp;[60]&nbsp;[60]&nbsp;[60]&nbsp;[60]&nbsp;[75]&nbsp;[100]&nbsp;[100]&nbsp;[123]<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^&nbsp;&nbsp;&nbsp;&nbsp;^<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;&nbsp;S/E<BR>
+<BR>
+<BR>
+[&nbsp;1]&nbsp;[&nbsp;2]&nbsp;[&nbsp;8]&nbsp;[24]&nbsp;[60]&nbsp;[60]&nbsp;[60]&nbsp;[60]&nbsp;[75]&nbsp;[100]&nbsp;[100]&nbsp;[123]<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^&nbsp;&nbsp;&nbsp;&nbsp;^&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;&nbsp;&nbsp;S---------E<BR>
+<BR>
+<BR>
+[&nbsp;1]&nbsp;[&nbsp;2]&nbsp;[&nbsp;8]&nbsp;[24]&nbsp;[60]&nbsp;[75]&nbsp;[100]&nbsp;[100]&nbsp;[123]<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^&nbsp;&nbsp;&nbsp;&nbsp;^<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;&nbsp;S/E<BR>
+<BR>
+-------------------------------------------------------------------------<BR>
+New&nbsp;:&nbsp;[&nbsp;1]&nbsp;[&nbsp;2]&nbsp;[&nbsp;8]&nbsp;[24]&nbsp;[60]&nbsp;[75]&nbsp;[100]&nbsp;[123]<BR>
+</CODE><BR>
+<BR>
+<BR>
+If there are other elegant methods of removing duplicate numbers from an array, please let me know!. 
+<BR><BR>
+<!--END-->
+</font><BR></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="2_19.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=notelink><A href="mailto:cracktheinterview@gmail.com?subject=Comments [Write code to remove duplicates in a sorted array. ]&Body=Question : [Write code to remove duplicates in a sorted array. ]"><font class=announcelink>COMMENTS</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><A HREF=../adfaqpublish.html>INDEX</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><a href="#" onclick="window.print();return false;">PRINT</a></font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="2_21.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<BR><BR><BR><font class=notelink>
+Last updated:
+
+July 8, 2005<BR><BR>
+<a href=../index.html>www.cracktheinterview.com</a> - Your destination for the most common IT interview questions, answers, frequently asked interview questions (FAQ), C Programs, C Datastructures for interviews conducted by Microsoft, Oracle, Google, IBM, HP, Yahoo, Infosys, Wipro, SAP, CA (Computer Associates), Sun, Adobe, GE, Novell, Cisco, Motorola, TI (Texas Instruments), Intel, TCS, iFlex, Trilogy, MindTree, GS and more...<br><BR>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+
+<!--END-->
+
+
+</TD>
+
+
+
+
+<TD WIDTH=10%% valign="top">
+
+
+<!--START:ADS1-->
+
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_alternate_color = "CCCCCC";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript" src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"  src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+</TD>
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+</BODY>
+
+<!-- Mirrored from www.cracktheinterview.com by HTTrack Website Copier/3.x [XR,YP'2001] -->
+</HTML>
+
+

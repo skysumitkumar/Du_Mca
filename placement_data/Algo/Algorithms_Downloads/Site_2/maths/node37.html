@@ -1,0 +1,275 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>A better sort: Quicksort </TITLE>
+<META NAME="description" CONTENT="A better sort: Quicksort ">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">
+<LINK REL="previous" HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">
+<LINK REL="up" HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">
+<LINK REL="next" HREF="node38.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node38.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html844"
+  HREF="node38.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node38.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html838"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html832"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html840"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html842"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html845"
+  HREF="node38.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node38.html">Timing the algorithm</A>
+<B> Up:</B> <A NAME="tex2html839"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">Sorting</A>
+<B> Previous:</B> <A NAME="tex2html833"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html">Example n = 3</A>
+ &nbsp <B>  <A NAME="tex2html841"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html843"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00630000000000000000">
+A better sort: Quicksort </A>
+</H1>
+
+<P>
+Let me now introduce you to another sorting technique, which
+uses a recursive `divide and conquer' method. That is to say, it solves
+the problem of sorting a list by breaking the list into two parts and then
+applying the algorithm to each part in turn and so on recursively. There
+may or may not be some special technique used at the tail end of the 
+recursion. Since recursive functions (functions that refer to themselves)
+are not officially allowed in FORTRAN these algorithms are more easily
+coded in other languages, like C or Pascal.
+
+<P><P>
+<BR>
+
+<P>
+The idea here is very simple in its broad outline. We start with our list
+<!-- MATH
+ $\{x_1,\ldots,x_n\}$
+ -->
+{<I>x</I><SUB>1</SUB>,..., <I>x</I><SUB>n</SUB>}. We pick some element in the list, called the
+<EM>separator</EM>, and then rearrange the list so that all the elements
+that are less than or equal to the separator come before it and all the
+elements that are greater than the separator come after it. Having done
+this we then recursively apply the algorithm to each of these sublists.
+The recursion continues along any branch until its sublist shrinks down
+to zero or one element. (Actually it turns out to be a bit more efficient
+if we switch over to Insertion Sort when the lists drop to a length
+below about 10.)
+
+<P>
+The outline of the program would be:
+
+<P>
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ algorithm quicksort(x,lo,hi)
+<BR>// to sort <!-- MATH
+ $x_{lo},\ldots,x_{hi}$
+ -->
+<I>x</I><SUB>lo</SUB>,..., <I>x</I><SUB>hi</SUB> 
+<BR>
+begin
+<BR>&nbsp;&nbsp;if hi &gt; lo begin // i.e. if there is anything to sort 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;choose separator s from list
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;separate out the list into the form
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;<!-- MATH
+ $(x_{lo},\ldots,x_{k},\ \ s\ \ ,x_{k+2},\ldots,x_{hi})$
+ -->
+(<I>x</I><SUB>lo</SUB>,..., <I>x</I><SUB>k</SUB>,&nbsp; <I>s</I>&nbsp; , <I>x</I><SUB>k + 2</SUB>,..., <I>x</I><SUB>hi</SUB>)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;quicksort(x,lo,k)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;quicksort(x,k+2,hi)
+<BR>&nbsp;&nbsp;end
+<BR>
+end
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>
+<P>
+You then sort the whole list <!-- MATH
+ $x_1,\ldots,x_n$
+ -->
+<I>x</I><SUB>1</SUB>,..., <I>x</I><SUB>n</SUB> by the call
+<TT>quicksort(x,1,n)</TT>.
+
+<P>
+The only detail left to be explained is how we do the separation. There
+is no problem in actually doing it. The problem is to make it efficient
+<EM>and</EM> to do it without introducing an extra array for temporary
+storage. I will state the algorithm and leave it to you to convince
+yourself that it works and does so in time proportional to the length
+of the list. The other problem is which element to choose as separator.
+The basic criterion, as we will see, is that the separation should be
+as even as possible. The obvious procedure of picking the first element
+can be a bit dangerous if the list is already nearly in order. People
+sometimes choose the `middle' element and sometimes use a random number
+generator to pick an element at random. The choice does not affect the
+method.
+
+<P>
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ 01 &nbsp;algorithm separate(x,lo,hi,sep)
+<BR>
+02 &nbsp;// rearranges the list <!-- MATH
+ $x_{lo},\ldots,x_{hi}$
+ -->
+<I>x</I><SUB>lo</SUB>,..., <I>x</I><SUB>hi</SUB> either side of <I>x</I><SUB>sep</SUB>.
+<BR>
+03 &nbsp;begin
+<BR>
+04 &nbsp;&nbsp;&nbsp;xsep = x(sep)
+<BR>
+05 &nbsp;&nbsp;&nbsp;x(sep) = x(lo)
+<BR>
+06 &nbsp;&nbsp;&nbsp;x(lo) = xsep
+<BR>
+07 &nbsp;&nbsp;&nbsp;i = lo
+<BR>
+08 &nbsp;&nbsp;&nbsp;j = hi
+<BR>
+09 &nbsp;&nbsp;&nbsp;while( i &lt; j ) begin
+<BR>
+10 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while( x(j) &gt; xsep ) j = j - 1
+<BR>
+11 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x(i) = x(j)
+<BR>
+12 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while( i &lt; j &nbsp;and &nbsp;x(i) &lt;= xsep ) i = i + 1
+<BR>
+13 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x(j) = x(i)
+<BR>
+14 &nbsp;&nbsp;&nbsp;end
+<BR>
+15 &nbsp;&nbsp;&nbsp;x(i) = xsep
+<BR>
+16 &nbsp;end
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>
+<P>
+The algorithm starts in lines 1 to 3 by moving <code>x(sep)</code> to the
+start of the list, where it acts as a <I>sentinel</I>, ensuring that
+the <code>while</code> loop on line 10 necessarily terminates.  It also
+makes available the separating value against which we compare
+everything in a temporary variable.  Pointer <code>i</code> will always
+point to one after the top of the ``low'' list, while <code>j</code> will
+point to one before the ``high'' list. 
+
+<P>
+The first while loop on line 10 starts at the top of the list, and
+drops down until it finds an element that is out of place.  This is
+copied to its new position, effectively leaving a hole in position
+<code>j</code>.  The first time this copy happens, the value <code> xsep</code>
+in <code>x(lo)</code> is overwritten, but the new value acts just as
+effectively as a sentinel.  When the ``increasing' while loop on line
+12 starts, we have just put a ``low'' value in <code>x(i)</code>, so we move
+up the list until we find a ``high' value.  This is copied to the
+available hole in position <code>j</code> on line 13, and the whole process
+restarts.  Note that each time other than the first that we enter the
+while loop on line 10, we have just put a ``high'' element in position
+<code>j</code>, so <code>j</code> is reduced by at least one each time.
+
+<P>
+At each stage of the algorithm everything below <code>i</code> and above
+<code>j</code> is properly ordered.  Clearly <I>i</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$"><I>j</I>, and the
+algorithm is complete when <I>i</I> = <I>j</I>, in which case we fill in the hole
+with the separator, as in line 15.  That leaves the problem of timing.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html846"
+  HREF="node38.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node38.html">Timing the algorithm </A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html844"
+  HREF="node38.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node38.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html838"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html832"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html840"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html842"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html845"
+  HREF="node38.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node38.html">Timing the algorithm</A>
+<B> Up:</B> <A NAME="tex2html839"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">Sorting</A>
+<B> Previous:</B> <A NAME="tex2html833"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html">Example n = 3</A>
+ &nbsp <B>  <A NAME="tex2html841"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html843"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

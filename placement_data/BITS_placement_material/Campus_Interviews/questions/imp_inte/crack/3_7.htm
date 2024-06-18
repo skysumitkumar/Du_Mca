@@ -1,0 +1,439 @@
+
+<HTML>
+<HEAD>
+<TITLE>CRACK THE INTERVIEW - Write C code to return a pointer to the nth node of an inorder traversal of a BST.  (www.cracktheinterview.com)</TITLE><style type="text/css">
+<!--
+.breakhere     {page-break-before: always}
+
+A:link         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+A:active       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+A:visited      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+
+H1             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt; font-weight:bold; color:#336699} 
+H2             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; font-weight:bold} 
+.normal        {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+.announce      {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#000000} 
+.announceLink  {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#336699} 
+.note          {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt ! important; font-weight:normal} 
+.system        {font-family:Courier New, Courier; font-size:x-small;
+                font-weight:normal} 
+.stayblue      {color:#336699 ! important}
+.title         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:larger ! important} 
+.error         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; color:#aa0000; font-weight:bold} 
+.notelink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:normal;
+                font-size:9pt ! important} 
+.tableHeader   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableHeaderSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRow      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#f7f7e7} 
+.tableBlank    {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#ffffff} 
+.hardlink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:bold;
+                font-size:8pt ! important} 
+.boxlink       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#000000 ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.hardnote      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:black ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.tableRowSmall {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal} 
+.tableRowSmallBold {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                bold} 
+.blueHeading   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:bold;
+                color:#336699! important} 
+.blueHeadingLarge {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:16pt! important; font-weight:normal;
+                color:#336699} 
+.blueHeadingMid {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:normal;
+                color:#336699}
+.blueHeadingSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt! important; font-weight:bold;
+                color:#336699} 
+.tableHeaderV  {font-family:Verdana,Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRowV     {font-family:Verdana,Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal; background-color:#f7f7e7} 
+.just          {text-align: justify}
+-->
+</style>
+
+<META NAME="keywords" CONTENT="integer,C,tree,nth node,inorder,binary search tree,BST">
+<META NAME="description" CONTENT="Write C code to return a pointer to the nth node of an inorder traversal of a BST. ">
+<META NAME="robots" CONTENT="FOLLOW,INDEX">
+<META HTTP-EQUIV="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+
+</HEAD>
+<BODY>
+<TABLE BORDER=0 cellpadding=10>
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER><A HREF="http://www.cracktheinterview.com"><IMG SRC=http://www.cracktheinterview.com/images/logo2.jpg border=0></img></A></CENTER></TD>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2>
+<CENTER>
+
+
+<!--START:ADS0-->
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+
+</CENTER>
+</TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER>
+
+<!--START:LINKS-->
+
+
+<TABLE BORDER=0 cellpadding=10>
+<TR><TD NOWRAP>
+<A HREF="http://www.cracktheinterview.com" target="_top"><font class=announcelink>Home</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="http://www.cracktheinterview.com/adfaqpublish.html" target="_top"><font class=announcelink>Questions</font></A><BR>
+</TD>
+
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/search.html" target="_top"><font class=announcelink>Search</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="http://www.cracktheinterview.com/forum" target="_top"><font class=announcelink>Forum</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="mailto:cracktheinterview@gmail.com?subject=Hi!"><font class=announcelink>Contact</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/forum/viewforum.php?f=2" target="_top"><font class=announcelink>Guest Book</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/forum/viewforum.php?f=3" target="_top"><font class=announcelink>Polls!</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/forum/viewforum.php?f=4" target="_top"><font class=announcelink>Got a Question?</font></A><BR>
+</TD>
+
+</TABLE>
+
+<!--END-->
+
+</CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER> &nbsp; </CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=90%% valign=top>
+
+
+
+
+
+<!--START : DATA-->
+
+
+
+<TABLE BORDER=0>
+
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="3_6.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=blueHeading>Trees</font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="3_8.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD>
+<TD WIDTH=90%%><CENTER><font class=blueHeading>(91 / 268)</font></center></TD>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%></TD>
+<TD WIDTH=90%%><center>&nbsp;</center></TD>
+<TD WIDTH=5%%></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=announceLink><BR><BR><BR>
+<!--THE QUESTION-->
+
+Write C code to return a pointer to the nth node of an inorder traversal of a BST. <BR>
+<!--END-->
+<BR></font></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=normal>
+<!--THE ANSWER--><BR>
+<!--META:START--><!--integer,C,tree,nth node,inorder,binary search tree,BST--><!--META:END--><BR>
+<!--NEW--><BR>
+Here is a C program. Study it carefully, it has some <font class=announcelink>Gotchas!</font><BR>
+<BR>
+<CODE><BR>
+typedef&nbsp;struct&nbsp;node<BR>
+{<BR>
+&nbsp;&nbsp;int&nbsp;value;&nbsp;<BR>
+&nbsp;&nbsp;struct&nbsp;node&nbsp;*left;<BR>
+&nbsp;&nbsp;struct&nbsp;node&nbsp;*right;<BR>
+}mynode;<BR>
+<BR>
+mynode&nbsp;*root;<BR>
+static&nbsp;ctr;<BR>
+<BR>
+void&nbsp;nthnode(mynode&nbsp;*root,&nbsp;int&nbsp;n,&nbsp;mynode&nbsp;**nthnode&nbsp;/*&nbsp;POINTER&nbsp;TO&nbsp;A&nbsp;POINTER!&nbsp;*/);<BR>
+<BR>
+int&nbsp;main()<BR>
+{<BR>
+&nbsp;&nbsp;mynode&nbsp;*temp;<BR>
+&nbsp;&nbsp;root&nbsp;=&nbsp;NULL;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;//&nbsp;Construct&nbsp;the&nbsp;tree<BR>
+&nbsp;&nbsp;add(19);<BR>
+&nbsp;&nbsp;add(20);<BR>
+&nbsp;&nbsp;...<BR>
+&nbsp;&nbsp;add(11);<BR>
+<BR>
+&nbsp;&nbsp;//&nbsp;Plain&nbsp;Old&nbsp;Inorder&nbsp;traversal&nbsp;<BR>
+&nbsp;&nbsp;//&nbsp;Just&nbsp;to&nbsp;see&nbsp;if&nbsp;the&nbsp;next&nbsp;function&nbsp;is&nbsp;really&nbsp;returning&nbsp;the&nbsp;nth&nbsp;node?<BR>
+&nbsp;&nbsp;inorder(root);<BR>
+<BR>
+&nbsp;&nbsp;//&nbsp;Get&nbsp;the&nbsp;pointer&nbsp;to&nbsp;the&nbsp;nth&nbsp;Inorder&nbsp;node<BR>
+&nbsp;&nbsp;nthinorder(root,&nbsp;6,&nbsp;&temp);<BR>
+<BR>
+&nbsp;&nbsp;printf("\n[%d]\n,&nbsp;temp->value);<BR>
+&nbsp;&nbsp;return(0);<BR>
+}<BR>
+<BR>
+//&nbsp;Get&nbsp;the&nbsp;pointer&nbsp;to&nbsp;the&nbsp;nth&nbsp;inorder&nbsp;node&nbsp;in&nbsp;"nthnode"<BR>
+void&nbsp;nthinorder(mynode&nbsp;*root,&nbsp;int&nbsp;n,&nbsp;mynode&nbsp;**nthnode)<BR>
+{<BR>
+&nbsp;&nbsp;static&nbsp;whichnode;<BR>
+&nbsp;&nbsp;static&nbsp;found;<BR>
+<BR>
+&nbsp;&nbsp;if(!found)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;if(root)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nthinorder(root->left,&nbsp;n&nbsp;,&nbsp;nthnode);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(++whichnode&nbsp;==&nbsp;n)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("\nFound&nbsp;%dth&nbsp;node\n",&nbsp;n);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;found&nbsp;=&nbsp;1;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*nthnode&nbsp;=&nbsp;root;&nbsp;//&nbsp;Store&nbsp;the&nbsp;pointer&nbsp;to&nbsp;the&nbsp;nth&nbsp;node.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nthinorder(root->right,&nbsp;n&nbsp;,&nbsp;nthnode);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;}<BR>
+}<BR>
+<BR>
+<BR>
+inorder(mynode&nbsp;*root)<BR>
+{<BR>
+&nbsp;&nbsp;//&nbsp;Plain&nbsp;old&nbsp;inorder&nbsp;traversal<BR>
+}<BR>
+<BR>
+<BR>
+//&nbsp;Function&nbsp;to&nbsp;add&nbsp;a&nbsp;new&nbsp;value&nbsp;to&nbsp;a&nbsp;Binary&nbsp;Search&nbsp;Tree<BR>
+add(int&nbsp;value)<BR>
+{<BR>
+&nbsp;&nbsp;mynode&nbsp;*temp,&nbsp;*prev,&nbsp;*cur;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;temp&nbsp;=&nbsp;malloc(sizeof(mynode));<BR>
+&nbsp;&nbsp;temp->value&nbsp;=&nbsp;value;<BR>
+&nbsp;&nbsp;temp->left&nbsp;&nbsp;=&nbsp;NULL;<BR>
+&nbsp;&nbsp;temp->right&nbsp;=&nbsp;NULL;<BR>
+<BR>
+&nbsp;&nbsp;if(root&nbsp;==&nbsp;NULL)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;=&nbsp;temp;<BR>
+&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;prev&nbsp;=&nbsp;NULL;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;cur&nbsp;&nbsp;=&nbsp;root;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;while(cur)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev&nbsp;=&nbsp;cur;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cur&nbsp;&nbsp;=&nbsp;(value&nbsp;<&nbsp;cur->value)?&nbsp;cur->left&nbsp;:&nbsp;cur->right;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;if(value&nbsp;>&nbsp;prev->value)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev->right&nbsp;=&nbsp;temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev->left&nbsp;&nbsp;=&nbsp;temp;<BR>
+&nbsp;&nbsp;}&nbsp;<BR>
+}&nbsp;&nbsp;&nbsp;<BR>
+</CODE><BR>
+<BR>
+<BR>
+There <font class=announcelink>seems to be an easier way to do this</font>, or so they say. Suppose each node also has a <font class=announcelink>weight associated with it</font>. This weight is the number of nodes below it and including itself. So, the root will have the highest weight <font class=announcelink>(weight of its left subtree + weight of its right subtree + 1)</font>. Using this data, we can easily find the <font class=announcelink>nth</font> inorder node. <BR>
+<BR>
+<BR>
+Note that for any node, the <font class=announcelink>(weight of the leftsubtree of a node + 1)</font> is its <font class=announcelink>inorder rank</font>in the tree!. Thats simply because of how the inorder traversal works (left->root->right). So calculate the rank of each node and you can get to the nth inorder node easily. But <font class=announcelink> frankly speaking</font>, I really dont know how this method is any simpler than the one I have presented above. I see more work to be done here (calculate thw weights, then calculate the ranks and then get to the nth node!).<BR>
+<BR>
+Also, if <font class=announcelink>(n > weight(root))</font>, we can error out saying that this tree does not have the <font class=announcelink>nth</font> node you are looking for. 
+<BR><BR>
+<!--END-->
+</font><BR></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="3_6.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=notelink><A href="mailto:cracktheinterview@gmail.com?subject=Comments [Write C code to return a pointer to the nth node of an inorder traversal of a BST. ]&Body=Question : [Write C code to return a pointer to the nth node of an inorder traversal of a BST. ]"><font class=announcelink>COMMENTS</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><A HREF=../adfaqpublish.html>INDEX</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><a href="#" onclick="window.print();return false;">PRINT</a></font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="3_8.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<BR><BR><BR><font class=notelink>
+Last updated:
+
+July 8, 2005<BR><BR>
+<a href=http://www.cracktheinterview.com>www.cracktheinterview.com</a> - Your destination for the most common IT interview questions, answers, frequently asked interview questions (FAQ), C Programs, C Datastructures for interviews conducted by Microsoft, Oracle, Google, IBM, HP, Yahoo, Infosys, Wipro, SAP, CA (Computer Associates), Sun, Adobe, GE, Novell, Cisco, Motorola, TI (Texas Instruments), Intel, TCS, iFlex, Trilogy, MindTree, GS and more...<br><BR>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+
+<!--END-->
+
+
+</TD>
+
+
+
+
+<TD WIDTH=10%% valign="top">
+
+
+<!--START:ADS1-->
+
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_alternate_color = "CCCCCC";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+</TD>
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+</BODY>
+</HTML>
+
+

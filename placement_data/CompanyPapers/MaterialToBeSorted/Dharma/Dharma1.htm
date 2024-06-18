@@ -1,0 +1,268 @@
+<html>
+
+<head>
+<title>Dharma Sample Test Paper For Campus Recruitment</title>
+<meta name="keywords"
+content="Dharma Systems dharma paper placement papers campus recruitments interview Placement Papers Campus Recruitments recruitment india companies job career preparation engineering question paper jobs test campussing Recruitment India tests">
+<meta name="description"
+content="A guide to question papers asked by companies during placements and recruitment across various Indian college campuses Companies like Infosys Wipro TCS Hughes IBM HCL Siemens are listed here">
+<meta name="author" content="AVAAVA">
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+</head>
+
+<body bgcolor="#CCCC99">
+<div align="center"><center>
+
+<table border="0" width="100%">
+  <tr>
+    <td width="50%"><a name="top"><font size="5"><u>Dharma Sample Test Paper</u></font></a></td>
+    <td width="50%"><p align="right"><a href="../index.html" title="Back to home page">Home</a></td>
+  </tr>
+</table>
+</center></div>
+
+<p align="right"><a href="Dharma.htm#test">Back To Dharma Page</a></p>
+
+<p align="right">&nbsp;</p>
+
+<p><em><strong>Give the output of the programs in each case unless mentioned otherwise</strong></em></p>
+
+<p>1.<br>
+void main()<br>
+{<br>
+int d=5;<br>
+printf(&quot;%f&quot;,d);<br>
+}</p>
+
+<p><font color="#800000">Ans: Undefined</font></p>
+
+<p><br>
+2.<br>
+void main()<br>
+{<br>
+int i;<br>
+for(i=1;i&lt;4,i++)<br>
+switch(i)<br>
+case 1: printf(&quot;%d&quot;,i);break;<br>
+{<br>
+case 2:printf(&quot;%d&quot;,i);break;<br>
+case 3:printf(&quot;%d&quot;,i);break;<br>
+}<br>
+switch(i) case 4:printf(&quot;%d&quot;,i);<br>
+}</p>
+
+<p><font color="#800000">Ans: 1,2,3,4 </font></p>
+
+<p><br>
+3.<br>
+void main()<br>
+{<br>
+char *s=&quot;\12345s\n&quot;;<br>
+printf(&quot;%d&quot;,sizeof(s));<br>
+}</p>
+
+<p><font color="#800000">Ans: 6</font></p>
+
+<p><br>
+4. <br>
+void main()<br>
+{<br>
+unsigned i=1; /* unsigned char k= -1 =&gt; k=255; */<br>
+signed j=-1; /* char k= -1 =&gt; k=65535 */<br>
+/* unsigned or signed int k= -1 =&gt;k=65535 */<br>
+if(i&lt;j)<br>
+printf(&quot;less&quot;);<br>
+else<br>
+if(i&gt;j)<br>
+printf(&quot;greater&quot;);<br>
+else<br>
+if(i==j)<br>
+printf(&quot;equal&quot;);<br>
+}</p>
+
+<p><font color="#800000">Ans: less</font></p>
+
+<p><br>
+5.<br>
+void main()<br>
+{<br>
+float j;<br>
+j=1000*1000;<br>
+printf(&quot;%f&quot;,j);<br>
+}<br>
+<br>
+1. 1000000<br>
+2. Overflow<br>
+3. Error<br>
+4. None </p>
+
+<p><font color="#800000">Ans: 4 </font></p>
+
+<p><br>
+6.&nbsp; How do you declare an array of N pointers to functions returning<br>
+&nbsp;&nbsp;&nbsp;&nbsp; pointers to functions returning pointers to characters?<br>
+<br>
+<font color="#800000">Ans: The first part of this question can be answered in at least<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; three ways:<br>
+<br>
+&nbsp;&nbsp;&nbsp; 1. char *(*(*a[N])())();<br>
+<br>
+&nbsp;&nbsp;&nbsp; 2. Build the declaration up incrementally, using typedefs:<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; typedef char *pc;&nbsp;&nbsp;&nbsp; /* pointer
+to char */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; typedef pc fpc();&nbsp;&nbsp;&nbsp; /* function
+returning pointer to char */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; typedef fpc *pfpc;&nbsp;&nbsp;&nbsp; /* pointer
+to above */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; typedef pfpc fpfpc();&nbsp;&nbsp;&nbsp; /*
+function returning... */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; typedef fpfpc *pfpfpc;&nbsp;&nbsp;&nbsp; /*
+pointer to... */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pfpfpc a[N];
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* array of... */<br>
+<br>
+&nbsp;&nbsp;&nbsp; 3. Use the cdecl program, which turns English into C and vice<br>
+&nbsp;&nbsp;&nbsp; versa:<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cdecl&gt; declare a as array of pointer to
+function returning<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pointer to function
+returning pointer to char<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; char *(*(*a[])())()<br>
+<br>
+&nbsp;&nbsp;&nbsp; cdecl can also explain complicated declarations, help with<br>
+&nbsp;&nbsp;&nbsp; casts, and indicate which set of parentheses the arguments<br>
+&nbsp;&nbsp;&nbsp; go in (for complicated function definitions, like the one<br>
+&nbsp;&nbsp;&nbsp; above). <br>
+&nbsp;&nbsp;&nbsp; Any good book on C should explain how to read these complicated<br>
+&nbsp;&nbsp;&nbsp; C declarations &quot;inside out&quot; to understand them
+(&quot;declaration<br>
+&nbsp;&nbsp;&nbsp; mimics use&quot;).<br>
+&nbsp;&nbsp;&nbsp; The pointer-to-function declarations in the examples above have<br>
+&nbsp;&nbsp;&nbsp; not included parameter type information. When the parameters<br>
+&nbsp;&nbsp;&nbsp; have complicated types, declarations can *really* get messy.<br>
+&nbsp;&nbsp;&nbsp; (Modern versions of cdecl can help here, too.)<br>
+</font><br>
+<br>
+7. A structure pointer is defined of the type time . With 3 fields min,sec hours having
+pointers to intergers.<br>
+&nbsp;&nbsp;&nbsp; Write the way to initialize the 2nd element to 10.</p>
+
+<p><br>
+8. In the above question an array of pointers is declared.<br>
+&nbsp;&nbsp;&nbsp; Write the statement to initialize the 3rd element of the 2 element to
+10;</p>
+
+<p><br>
+9.<br>
+int f()<br>
+void main()<br>
+{<br>
+f(1);<br>
+f(1,2);<br>
+f(1,2,3);<br>
+}<br>
+f(int i,int j,int k)<br>
+{<br>
+printf(&quot;%d %d %d&quot;,i,j,k);<br>
+}<br>
+<br>
+What are the number of syntax errors in the above? <br>
+<br>
+<font color="#800000">Ans: None.</font></p>
+
+<p><br>
+10. <br>
+void main()<br>
+{<br>
+int i=7;<br>
+printf(&quot;%d&quot;,i++*i++);<br>
+}<br>
+<br>
+<font color="#800000">Ans: 56</font></p>
+
+<p><br>
+11. <br>
+#define one 0<br>
+#ifdef one <br>
+printf(&quot;one is defined &quot;);<br>
+#ifndef one<br>
+printf(&quot;one is not defined &quot;);<br>
+<br>
+<font color="#800000">Ans: &quot;one is defined&quot;</font><br>
+<br>
+<br>
+12.<br>
+void main()<br>
+{<br>
+int count=10,*temp,sum=0;<br>
+temp=&amp;count;<br>
+*temp=20;<br>
+temp=&amp;sum;<br>
+*temp=count;<br>
+printf(&quot;%d %d %d &quot;,count,*temp,sum);<br>
+}<br>
+<br>
+<font color="#800000">Ans: 20 20 20</font><br>
+<br>
+<br>
+13. There was question in c working only on unix machine with pattern matching.<br>
+<br>
+<br>
+14. what is alloca()</p>
+
+<p><font color="#800000">Ans : It allocates and frees memory after use/after getting out
+of scope</font></p>
+
+<p><br>
+15. <br>
+main()<br>
+{<br>
+static i=3;<br>
+printf(&quot;%d&quot;,i--);<br>
+return i&gt;0 ? main():0;<br>
+}<br>
+<br>
+<font color="#800000">Ans: 321</font></p>
+
+<p><br>
+16. <br>
+char *foo()<br>
+{<br>
+char result[100]);<br>
+strcpy(result,&quot;anything is good&quot;);<br>
+return(result);<br>
+}<br>
+void main()<br>
+{<br>
+char *j;<br>
+j=foo()<br>
+printf(&quot;%s&quot;,j);<br>
+}<br>
+<br>
+<font color="#800000">Ans: anything is good.</font></p>
+
+<p><br>
+17.<br>
+void main()<br>
+{<br>
+char *s[]={
+&quot;dharma&quot;,&quot;hewlett-packard&quot;,&quot;siemens&quot;,&quot;ibm&quot;};<br>
+char **p;<br>
+p=s;<br>
+printf(&quot;%s&quot;,++*p);<br>
+printf(&quot;%s&quot;,*p++);<br>
+printf(&quot;%s&quot;,++*p);<br>
+}</p>
+
+<p><font color="#800000">Ans: &quot;harma&quot; (p-&gt;add(dharma) &amp;&amp;
+(*p)-&gt;harma)<br>
+&quot;harma&quot; (after printing, p-&gt;add(hewlett-packard) &amp;&amp;(*p)-&gt;harma)<br>
+&quot;ewlett-packard&quot; </font><br>
+<br>
+</p>
+
+<p align="center"><a href="#top">Back to top</a></p>
+</body>
+</html>

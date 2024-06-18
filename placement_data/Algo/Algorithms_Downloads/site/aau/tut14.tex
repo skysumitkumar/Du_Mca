@@ -1,0 +1,119 @@
+\documentclass[english]{article} 
+
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{fancyhdr}
+\usepackage[all]{xypic}
+
+\begin{document}
+
+\pagenumbering{arabic}
+
+%----Header stuff---------------------------
+\pagestyle{fancy}
+ \lhead{\sc Algorithms \& Data Structures}
+ \chead{}
+ \rhead{\sc INF1 -- 2003}
+
+
+\section*{Tutorial 14}
+
+\subsection*{Exercise 1}
+\begin{itemize}
+\item \mbox{} \\
+\begin{tabular}{r|rrrrrrr}
+  & k=0 & k=1 & k=2 & k=3 & k=4 & k=5 & k=6\\
+\hline
+a &	0 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+b &	$\infty$ & 7 & 7 & 7 & 7 & 7 & 6\\ 
+c &	$\infty$ & $\infty$ & 10 & 10 & 10 & 10 & 10\\ 
+d &	$\infty$ & 4 & 4 & 4 & 4 & 1 & 1\\ 
+e &	$\infty$ & $\infty$ & $\infty$ & 7 & 7 & 7 & 7\\ 
+f &	$\infty$ & $\infty$ & 8 & 8 & -1 & -1 & -1\\ 
+\end{tabular}
+\item The digraph contains a negative cycle because the columns where
+ $k=5$ and $k=6$ are different. It can be easily seen that
+b, c, e, f, d, b is a cycle with the total cost -1.
+\end{itemize}
+
+\subsection*{Exercise 2}
+
+Let us define
+$max(v)\stackrel{\mbox{\scriptsize def}}{=} \max_{w \in V} \{d(v,w)\}$
+for every vertex $v \in V$.
+
+\begin{itemize}
+\item
+  \begin{description}
+  \item[Pre:] The input graph $g$ is a digraph with nonnegative costs on edges 
+and for every edge between two vertices there is an edge in the opposite 
+direction with the same cost.
+  \item $res:=hospital(g:DIGRAPH)$
+  \item[Post:] $res$ is a vertex of the digraph s.t. for every 
+vertex $v \in V$ it holds that $max(res) \leq max(v)$.
+  \end{description}
+
+\item
+\begin{algorithmic}
+\STATE{\bf hospital} (g:DIGRAPH):VERTEX\_TYPE =\\
+\STATE{$max:=\infty$}\\
+\STATE{$candidate:=g.new\_nil\_vertex$}
+\STATE{$v:=g.first\_vertex$}
+\WHILE{{\bf not} $g.nil\_vertex(v)$}
+  \STATE{$dijkstra(g,v)$}
+  \STATE{$lmax:=0$}
+  \STATE{$u:=g.first\_vertex$}
+  \WHILE{{\bf not} $g.nil\_vertex(u)$}
+    \STATE{$lmax:=\mbox{maximum of } \ u.distance \ \mbox{and }\  lmax$}
+	\STATE{$u:=g.next\_vertex(u)$}
+  \ENDWHILE
+  \IF{$lmax<max$}
+    \STATE{$candidate:=v$}
+	\STATE{$max:=lmax$}
+  \ENDIF
+  \STATE{$v:=g.next\_vertex(v)$}
+\ENDWHILE
+\STATE{{\bf return} $candidate$}
+\end{algorithmic}
+
+\item
+  \begin{itemize}
+     \item We have selected adjacency list implementation of the input digraph
+      and hence the operations $g.first\_vertex$, $g.nil\_vertex(v)$ and
+      $g.next\_vertex(u)$ can be performed in $O(1)$ time.
+ \item As for Dijkstra's algorithm we used Fibonacci heaps based 
+ implementation with the worst-case time complexity $O(n\log n +m)$.
+  \end{itemize}
+  The innermost {\bf while}-loop takes $O(n)$, one call of Dijkstra's algorithm
+ takes $O(n\log n +m)$, the rest in the body of the outermost {\bf while}-loop 
+ takes only $O(1)$.
+ The  outermost {\bf while}-loop is executed $n$ times hence the total 
+ time complexity is  $n \cdot \big(O(n \log n + m)+ O(n) +O(1)\big) = 
+n\cdot O(n \log n + m) = O(n^2 \log n+ nm)$.
+\end{itemize}
+
+\subsection*{Exercise 3}
+Prof. {\em Konfus} is again wrong. 
+Dijkstra's algorithm called from the start node $a$
+will give a wrong answer e.g. on the following digraph:
+\begin{itemize}
+\item[-]$G=(V,E)$, where
+\item[-]$V=\{a,b,c\}$ and
+\item[] $E=\{(a,b),(a,c),(b,c)\}$ with the following costs on edges:
+\begin{itemize}
+\item[$\cdot$] $c(a,b)=5$,
+\item[$\cdot$] $c(a,c)=4$ and
+\item[$\cdot$] $c(b,c)=-2$.
+\end{itemize} 
+\end{itemize}
+\xymatrix@R=5ex@C=14ex{
+& b \ar[dd]^{-2} \\
+a \ar[ur]^5 \ar[dr]_4 & \\
+& c 
+  }
+\mbox{}\\[2mm]
+The shortest distance between 
+$a$ and $c$ is $d(a,c)=3$; Dijkstra's algorithm returns $4$.
+\end{document}

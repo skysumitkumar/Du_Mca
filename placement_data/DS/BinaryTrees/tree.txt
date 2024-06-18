@@ -1,0 +1,12 @@
+int check(nodeptr root,int previous=0)
+{
+	static flag=0;
+     		check(root->left,previous);
+	if(root->data < previous)
+		flag=1;
+	else
+		previous=root->data;
+     	check(root->right,previous);
+
+	return flag;
+}

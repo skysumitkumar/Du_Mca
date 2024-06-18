@@ -1,0 +1,186 @@
+<html><head>
+<title>Solution for /logic/zoo</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /logic/zoo problem</h1>
+<hr>
+Given that there is at least one boy and one girl (John and Mary are
+mentioned) then the answer is that there were 3 nephews and 2 nieces,
+the winner was a boy who got 4 right.
+
+<p>
+Number the animals 1 through 8, such that the females are even and the
+males are odd, with members of the same species consecutive; i.e.  1 is
+Mr. Tove, 2 Mrs. Tove, etc.
+
+<p>
+Then each childs guesses can be represented by a permutation.  I use
+the standard notation of a permutation as a set of orbits.  For
+example: (1 3 5)(6 8) means 1 -&gt; 3, 3 -&gt; 5, 5 -&gt; 1, 6 -&gt; 8, 8 -&gt; 6 and
+2,4,7 are unchanged.
+
+<ol>
+<li>  Let P be any childs guesses.  Then P(mate(i)) = mate(P(i)).
+
+<li>  If Q is another childs guesses, then [P,Q] = T, where [P,Q] is the
+commutator of P and Q (P composed with Q composed with P inverse
+composed with Q inverse) and T is the special permutation (1 2) (3 4)
+(5 6) (7 8) that just swaps each animal with its spouse.
+
+<li>  If P represents a boy, then P*P = I (I use * for composition, and
+I for the identity permutation: (1)(2)(3)(4)(5)(6)(7)(8)
+
+<li>  If P represents a girl, then P*P = T.
+
+</ol>
+(1) and (4) together mean that all girl's guesses must be of the form:
+    (A B C D) (E F G H) where A and C are mates, as are B &amp; D,
+    E &amp; F G &amp; H.
+
+<p>
+So without loss of generality let Mary = (1 3 2 4) (5 7 6 8)
+Without to much effort we see that the only possibilities for other
+girls "compatible" with Mary (I use compatible to mean the relation
+expressed in (2)) are:
+<pre>
+    g1:  (1 5 2 6) (3 8 4 7)
+    g2:  (1 6 2 5) (3 7 4 8)
+    g3:  (1 7 2 8) (3 5 4 6)
+    g4:  (1 8 2 7) (3 6 4 5)
+</pre>
+Note that g1 is incompatible with g2 and g3 is incompatible with g4.
+Thus no 4 of Mary and g1-4 are mutually compatible.  Thus there are at
+most three girls: Mary, g1 and g3 (without loss of generality)
+
+By (1) and (3), each boy must be represented as a product of
+transpostions and/or singletons: e.g. (1 3) (2 4) (5) (6) (7) (8) or
+(1) (2) (3 4) (5 8) (6 7).
+
+<p>
+Let J represent John's guesses and consider J(1).
+If J(1) = 1, then J(2) = 2 (by [1]) using [2] and Mary J(3) = 4, J(4) =
+3,  and g1 &amp; J =&gt; J(5) = 6, J(6) = 5, &amp; g3 &amp; J =&gt; J(8) = 7 J(7) = 8
+<p>
+i.e. J = (1)(2)(3 4)(5 6)(7 8).  But the [J,Mary] &lt;&gt; T.  In fact, we
+can see that J must have no fixed points, J(i) &lt;&gt; i for all i, since
+there is nothing special about i = 1.
+
+<p>
+If J(1) = 2, then we get from Mary that J(3) = 3.  contradiction.
+
+<p>
+If J(1) = 3, then J(2) = 4, J(3) = 1, J(4) = 2 (from Mary) =&gt;
+   J(5) = 7, J(6) = 8, J(7) = 5, J(8) = 6 =&gt; J = (1 3)(2 4)(5 7)(6 8)
+   (from g1)
+<p>
+But then J is incompatible with g3.
+
+<p>
+A similar analysis shows that J(1) cannot be 4,5,6,7 or 8; i.e. no J 
+can be compatible with all three girls.  So without loss of generality,
+throw away g3.
+
+<pre>
+We have Mary = (1 3 2 4) (5 7 6 8)
+        g1   = (1 5 2 6) (3 8 4 7)
+</pre>
+The following are the only possible boy guesses which are compatible
+with
+both of these:
+
+<pre>
+  B1: (1)(2)(3 4)(5 6)(7)(8)
+  B2: (1 2)(3)(4)(5)(6)(7 8)
+  B3: (1 3)(2 4)(5 7)(6 8)
+  B4: (1 4)(2 3)(5 8)(6 7)
+  B5: (1 5)(2 6)(3 8)(4 7)
+  B6: (1 6)(2 5)(3 7)(4 8)
+</pre>
+Note that B1 &amp; B2 are incombatible, as are B3 &amp; B4, B5 &amp; B6, so at most
+three of them are mutually compatible.  In fact, Mary, g1, B1, B3 and
+B5 are all mutually compatible (as are all the other possibilities you
+can get by choosing either B1 or B2, B3 or B4, B5 or B6.  So if there
+are 2 girls there can be 3 boys, but no more, and we have already
+eliminated the case of 3 girls and 1 boy.
+
+<p>
+The only other possibility to consider is whether there can be 4 or
+more boys and 1 girl.  Suppose there are Mary and 4 boys.  Each boy
+must map 1 to a different digit or they would not be mutually
+compatible.  For example if b1 and b2 both map 1 to 3, then they both
+map 3 to 1 (since a boy's map consists of transpositions), so both
+b1*b2 and b2*b1 map 1 to 1.  Furthermore, b1 and b2 cannot map 1 onto
+spouses.  For example, if b1(1) = a and b is the spouse of a, then
+b1(2) = b.  If b2(1) = b, then b2(2) = a.  Then b1*b2(1) = b1(b) = 2
+and b2*b1(1) = b2(a) = 2 (again using the fact that boys are all
+transpostions).  Thus the four boys must be:
+
+<pre>
+B1: (1)(2)...    or (1 2)....
+B2: (1 3)...     or (1 4) ...
+B3: (1 5) ...    or (1 6) ...
+B4: (1 7) ...    or (1 8) ...
+</pre>
+
+Consider B4.  The only permutation of the form (1 7)... which is
+compatible
+with Mary ( (1 3 2 4) (5 7 6 8) ) is:
+
+<pre>
+   (1 7)(2 8)(3 5)(4 6)
+</pre>
+The only (1 8)... possibility is:
+
+<pre>
+   (1 8)(2 7)(3 6)(4 5)
+</pre>
+Suppose B4 = (1 7)(2 8)(3 5)(4 6)
+
+<p>
+If B3 starts (1 5), it must be (1 5)(2 6)(3 8)(4 7) to be compatible
+with B4.  This is compatible with Mary also.
+
+<p>
+Assuming this and B2 starts with (1 3) we get B2 = (1 3)(2 4)(5 8)(6 7)
+in order to be compatible with B4.  But then B2*B3 and B3*B2 moth map 1
+to 8.  I.e. no B2 is mutually compatible with B3 &amp; B4.
+
+<p>
+Similarly if B2 starts with (1 4) it must be (1 4)(2 3)(5 7)(6 8) to
+work with B4, but this doesn't work with B3.
+
+<p>
+Likewise B3 starting with (1 6) leads to no possible B2 and the
+identical reasoning eliminates B4 = (1 8)...
+
+<p>
+So no B4 is possible!
+
+<p>
+I.e at most 3 boys are mutually compatiblw with Mary, so 2 girls &amp; 3
+boys is optimal.
+
+<p>
+Thus:
+
+<pre>
+Mary = (1 3 2 4) (5 7 6 8)
+Sue  = (1 5 2 6) (3 8 4 7)  
+John = (1)(2)(3 4)(5 6)(7)(8)
+Bob  = (1 3)(2 4)(5 7)(6 8)
+Jim  = (1 5)(2 6)(3 8)(4 7)
+</pre>
+is one optimal solution, with the winner being John (4 right: 1 2 7 &amp; 8)
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

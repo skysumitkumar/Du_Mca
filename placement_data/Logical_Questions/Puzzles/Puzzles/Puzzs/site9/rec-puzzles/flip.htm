@@ -1,0 +1,73 @@
+<html><head>
+<title>Solution for /logic/flip</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /logic/flip problem</h1>
+<hr>
+A flips a coin.  If the result is heads, A multiplies 2 prime numbers
+containing about 90 digits; if the result is tails, A multiplies 3
+prime numbers containing about 60 digits.  A tells B the result of the
+multiplication.  B now calls either heads or tails and tells A.  A then
+supplies B with the original numbers to verify the flip.
+
+<p>
+Consider what is involved in multiplying 90 digit numbers.  Using the method
+of long multiplication that we all learned in grade school, you have maybe
+90 or so strings of 90 characters (or "digits") each.  That's no problem for
+a computer to deal with.  The magnitude of the number represented isn't
+much of a factor; we're only manipulating the string of digits.
+
+<p>
+Consider what is involved in factoring 90 digit numbers.  There are of course,
+little tricks for determining factorability by small integers which we all
+learned in grade school.  (Is the last digit even?  Is the sum of all the
+digits divisible by 9?  And so on.)  But these are of little use in factoring
+large numbers with large factors.  In fact, there is no essentially better
+method than checking every number smaller that the number to be factored and
+seeing if it one divides the other evenly.  We means we could be checking some
+100,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000
+nummbers.  This is very hard to do, even for a supercomputer.  Here, the
+number of digits this number has is of little consequence.  It is the
+magnitude of the number that we have to worry about, and there just isn't 
+enough time in the world to do this properly.
+
+<p>
+Where does A find a list of 60- and 90- digit prime numbers?  Well, that's not
+to hard to come by.  The simplest method to find a few prime numbers is simply
+to choose a 90-digit number (or 60-digit number, as the case warrants)
+randomly, and check to see if it is prime.  You won't have to wait too long
+before you stumble across a prime number.
+
+<p>
+"But wait!" you cry.  "I thought you just said it was incredibly difficult
+to factor large numbers.  If that's the case, then how are you going to know
+if the number you randomly choose is prime?"  A good question.  Here we enter
+into the strange an wacky world of number theory.  It turns out (and I won't
+explain how unless someone asks) there are "probabalistic" algorithms,
+which depend on us choosing numbers at random.  There are probablistic
+algorithms that when given a prime number, will quickly tell us that it is
+a prime number, and when given a composite number, will either tell us that
+it is a composite number (with very, very high probability) or will tell us
+that it is a prime number (with very, very low probability.)  What's the use
+of an algorithm that only returns the right answer "with very, very high
+probability?"  Well, we can make this probability as high as we want, just by
+running the algorithm longer.  In fact, it is within our technological
+abilities to quickly run this algorithm for 90-digit numbers so that the
+probability of it giving a wrong answer is less than the probability of a
+cosmic ray striking a vital part of the computer at some vital time and causing
+the computer to spit out the wrong answer anyway.  That's what I mean by "very,
+very high."
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

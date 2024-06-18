@@ -1,0 +1,47 @@
+<html><head>
+<title>Solution for /arithmetic/digits/squares/change.leading</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/digits/squares/change.leading problem</h1>
+<hr>
+Omitting solutions that are obtained from smaller solutions by
+multiplying by powers of 10, the squares of these numbers satisfy the
+condition:
+
+<pre>
+1. (105,145), (3375,4625), (14025,17225), (326625,454625),
+    (10846875,14753125), (43708125,53948125), ...
+
+2. (45,55), (144375,175625), (463171875,560828125), ...
+
+7. (2824483699753370361328125,2996282391593370361328125), ...
+</pre>
+Here is how to find them. We have (y+x)*(y-x) = 10^n, and so we must have 
+{y+x, y-x} as {5^m*10^a, 2^m*10^b} in some order. It is also necessary (and
+sufficient) that y/x lies in the interval [sqrt(3/2),sqrt(2)], or equivalently
+that (y+x)/(y-x) lies in [3+sqrt(8),5+sqrt(24)] = [5.82842...,9.89897...].
+Thus we need to make (5/2)^m*10^(a-b), or its reciprocal, in this range.
+For each m there is clearly at most one power of 10 that will do. m=2,a=b
+gives (105,145); m=3,b=a+2 gives (3375,4625), and so on.
+
+<p>
+There are infinitely many non-equivalent solutions, because log(5/2) / log(10)
+is irrational.
+
+<p>
+One can use exactly the same argument to find squares whose initial 2 can 
+be replaced by a 3, of course, except that the range of (y+x)/(y-x) changes.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

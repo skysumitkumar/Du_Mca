@@ -1,0 +1,208 @@
+how the normal recursive fibonacci function can be altered so that it is efficient
+int fib (int n)
+{
+if(n<=1)
+return 1;
+return (fib(n-1)+fib(n-2));
+} 
+ANS :
+use memoisation...
+thr is space time trade off involved here..
+say u wanaa compute fib(n), keep an array of n and initialize evry value wid -1 ..
+before making a recursive call chck in d array if d value has been computed already..
+if nt mk d call and store d value in d array...
+else simply use d value whch has already been computed.. 
+================================================================================================
+which solution is the best recursive or iterative? 
+which solution is the best recursive or iterative ?
+what would be the complexities of each one ?
+comment on these ? 
+
+ANS :
+
+Recursive solutions always has an overhead of creating a stack for each call...so makes more consumption of space and time while it is very intuitive simple to write in most cases.
+
+Iterative solution is more complex to write while usually faster and consumes less memory. 
+
+Recursive Solutions make the programming logic easier. But as said above, it has overhead of stack bulding, It makes individual copy of each variable declared in the function for each call so requires much amount of memory and also may lead to stack overflow if used on large data(eg. floodfill algorithm - 8 connected points). Also it has a problem that every function have i.e. Control Switching, every time the function is called control is switched from current running function to called one so it also takes more time execute.
+
+On other hand though the iterative solution is much complex in programming but it don't have disadvantages as recursive solution do have.
+
+Also u asked about the complexities of both. I don't think so recursive or iterative way of finding the solution will affect its complexity. Because eg. To find factorial of a no 'n'. you will run the loop 'n' times in iterative solution and incase of recursive the function will be called 'n' times. Complexity remains O(n) for both the times
+
+================================================================================================
+Try solving it:
+
+given an array of size n..it has numbers from 1 to n...
+n-2 numbers are as it is,bt one number is missing and other one is repeated..u have to find the repeated n missing number in o(n)...
+
+Note: n can be really large, may be the max value stored that can be stored in some datatype for ex if aray is of int the n can be max value of int so take care:) 
+
+
+ANS:
+
+assuming indexs starting from 1 for easy understanding....
+
+suppose the array is:
+1 2 3 4 5 :indexs
+----------
+2 4 5 4 1 :elements
+
+i=1;
+while(i<=n)
+{
+if(a(i)==a(a(i)) && a(i)!=i){
+..repeated_num = a(i);
+..break;
+}
+
+if(a(i)!=a(a(i)&&a(i)!=i){ //missed a(i)!=i last time
+..swap(a(i),a(a(i)));
+..i--;
+}
+i++
+}
+
+Now once we have found the repeated_num
+take xor of all the elements with the indexes also and then with the repeated_num one extra time...
+
+for(i=1;i<=n;i++)
+{
+..missing_num ^= i^a(i);
+}
+
+missing_num ^= repeated_num;
+
+for eg...
+here repeated_num = 4
+therefore we will get....
+
+(1^2^2^4^3^5^4^4^5^1)^repeated_num;
+so we finally get the missing number and the complexity of the algo is o(n).... 
+
+
+And the correct code is like this....
+
+#include <stdio.h>
+
+int main()
+{
+int a[] = {2,2,3,1,4};
+int i=0;
+int rep=0;
+int miss=0;
+int t1,t2;
+int k;
+
+while(i<5){
+..if((a(i)!= i)&& (a(i)!= a(a(i)))){
+....t1 = a(i);
+....t2 = a(a(i));
+....a(a(i)) = t1;
+....a(i) = t2;
+....i--;
+...}
+
+if( (a(i)!= i)&&(a(i)== a(a(i)))){
+....rep = a(i);
+....break;
+}
+..i=i+1;
+}
+
+
+for(i=0;i<5;i++)
+...miss ^= i^a(i);
+miss ^= rep;
+printf("rep =%d miss =%d ",rep,miss);
+getch();
+return 0;
+} 
+================================================================================================
+Are these possible in c++
+i++++ or ++++i where i is an integer variable , also explain ur answer
+
+================================================================================================
+Please give me any links or code for iterative versions of the three tree traversals
+                                                                      DS PUZZLES COMMUNITY
+
+================================================================================================
+how can you findout the maximum of two nos without using any 
+comparisions and conditions like if,for,switch,==,<=,=>,.etc...if you 
+solve this try for 3 no.s also........ 
+
+ANS :
+max=(mod(a-b)+a+b)/2 
+similarly for three numbers 
+max_final=(mod(max-c)+max+c)/2 
+
+ALITER :
+abs(absolute value) function internally uses comparison operator..cn u 
+figure out a way f finding absolute value widout using comparison 
+operators???? 
+
+it cn b done like: 
+
+abs(x)=x^(x>>(sizeof(int)*8-1))-(x>>(sizeof(int)*8-1)) 
+===============================================================================================
+FACT : in C all variables are to b declared in d beginning f d program
+===============================================================================================
+                                                          DS PUZZLES COMMUNITY
+                         
+1:Given a string of length N, find whether there exits an even length palindrome substring.
+2: Given an array arr[a1 a2 ... an b1 b2 ...bn]
+
+Arrange in order arr[a1 b1 a2 b2 .. an bn] in O(n)
+3: Given N sets of integers( Assume suitable representation), Device an algorithm to print the cross product of N sets, N known at runtime. complexity?
+4:Algo to compute determinant of
+an array[N][N]
+5: Array of size N is given, N is even. In this array one entry is repeated n/2 times and the remaining n/2 entries are unique. Write algo to find the repeated value. Complexity?
+6:Given an array which represents a tree. Find out the distance between two elements. Distance between tree-nodes is length of their path from one to other through root. Assume array is represented as heap.
+7:Convert a tree into doubly linked list such that the elements in the list are in order same as inorder traversal of tree. 
+
+===============================================================================================
+
+dqueue is 
+a double ended queue where data can be inserted and deleted from  both 
+ends. 
+
+
+Thr r 2 types of dqueue... 
+
+
+1) Input restricted - here input is allowed from one end  only where as 
+deletion can be done from any end. 
+
+
+2) Output restricted - here deletion is allowed only from one end but 
+input is  allowed from  both ends. 
+
+
+DOUBT - 
+
+
+Plz give me definition of 
+
+
+1)  strict binary tree 
+2) complete binary tree 
+3) extended binary tree.. 
+
+
+ans:
+a strict binary tree is one in which every node has degree 0 or 2. 
+a complete binary tree is one in which evry node has degree 0 or 2 and evry 
+leaf node is at the same level. 
+
+
+extended tree???dunno?? 
+
+
+also we cannot delete/add elements from d middle in a deque. 
+
+
+==============================================================================================
+destructor is called wen thr is some exception in the 
+try block for normal termination. This concept is known as stack 
+unwinding wen destructor destructs the automatic variables... 
+

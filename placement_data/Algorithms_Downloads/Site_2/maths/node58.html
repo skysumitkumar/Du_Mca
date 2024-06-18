@@ -1,0 +1,184 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Binary Trees</TITLE>
+<META NAME="description" CONTENT="Binary Trees">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node59.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html">
+<LINK REL="previous" HREF="node57.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node57.html">
+<LINK REL="up" HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">
+<LINK REL="next" HREF="node59.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1155"
+  HREF="node59.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1149"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1143"
+  HREF="node57.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node57.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1151"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1153"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1156"
+  HREF="node59.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html">Huffman Codes</A>
+<B> Up:</B> <A NAME="tex2html1150"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">Trees</A>
+<B> Previous:</B> <A NAME="tex2html1144"
+  HREF="node57.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node57.html">Traversals</A>
+ &nbsp <B>  <A NAME="tex2html1152"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1154"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00723000000000000000">
+Binary Trees</A>
+</H2>
+A <A NAME="5028"></A><B>binary tree</B> is a tree which is either empty, or one in
+which every node:
+
+<UL>
+<LI>has no children; or
+</LI>
+<LI>has just a left child; or
+</LI>
+<LI>has just a right child; or
+</LI>
+<LI>has both a left and a right child.
+</LI>
+</UL>
+We have already seen examples of binary trees; both
+Fig&nbsp;<A HREF="node44.html#F:decision-tree" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node44.html#F:decision-tree">2.2</A> considered in the discussion of optimal
+sorting, and Fig&nbsp;<A HREF="node45.html#F:merge-tree" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node45.html#F:merge-tree">2.3</A> on Page&nbsp;<A HREF="node45.html#F:merge-tree" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node45.html#F:merge-tree"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/crossref.gif"></A>
+which was used to illustrate the process of optimal merging, are
+binary trees, although in each case, the situation in which a node can
+have just one child does not occur.  Note also that this is rather
+different from an <I>ordered</I> tree, since for a binary tree we
+distinguish between a node with a single left child, and one with a
+single right child.  An alternative definition, which is ``cleaner''
+is to first introduce the concept of a terminal, or ``null'' node,
+which has no children, and then define a binary tree to be one in
+which every node other than the null node has precisely two children.
+
+<P>
+A <A NAME="5030"></A><B>complete</B> binary tree <A NAME="D:cpte-binary-tree"></A> is a
+special case of a binary tree, in which all the levels, except perhaps
+the last, are full; while on the last level, any missing nodes are to
+the right of all the nodes that are present.  An example is shown in
+Fig.&nbsp;<A HREF="node58.html#F:cpte-binary-tree" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node58.html#F:cpte-binary-tree">3.5</A>.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="F:cpte-binary-tree"></A><A NAME="4507"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.5:</STRONG>
+A complete binary tree: the only ``missing'' entries can be on
+the last row.</CAPTION>
+<TR><TD><IMG
+ WIDTH="339" HEIGHT="192" BORDER="0"
+ SRC="img162.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img162.gif"
+ ALT="\begin{figure}
+\centering\begin{psTree}[levelsep=12mm]{\Tcircle{A}}
+\begin{psTr...
+...}}
+\Tcircle{M}
+\end{psTree} \Tcircle{G}
+\end{psTree} \end{psTree}\end{figure}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+<P>
+<DIV><A NAME="E:cpte-binary-tree-implementation"><B>Example  3.5</B></A> &nbsp; 
+Give a space - efficient implementation of a complete binary tree in
+terms of an array <code>A</code>.  Describe how to pass from a parent to its two
+children, and vice-versa</DIV><P></P>
+
+<P>
+<I>Solution</I> An obvious one, in which no space is wasted, stores the root of the
+tree in <code>A[1]</code>; the two children in <code>A[2]</code> and <code>A[3]</code>,
+the next generation at <code>A[4]</code> up to <code>A[7]</code> and so on.  An
+element <code>A[k]</code> has children at <code>A[2k]</code> and <code>A[2k+1]</code>,
+providing they both exists, while the parent of node <code>A[k]</code> is at
+<code>A[k div 2]</code>.  Thus traversing the tree can be done very efficiently.
+<P>
+
+<P>
+<BR>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1155"
+  HREF="node59.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1149"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1143"
+  HREF="node57.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node57.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1151"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1153"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1156"
+  HREF="node59.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html">Huffman Codes</A>
+<B> Up:</B> <A NAME="tex2html1150"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">Trees</A>
+<B> Previous:</B> <A NAME="tex2html1144"
+  HREF="node57.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node57.html">Traversals</A>
+ &nbsp <B>  <A NAME="tex2html1152"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1154"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

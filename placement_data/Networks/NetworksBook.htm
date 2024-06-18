@@ -1,0 +1,1647 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0055)http://homepages.ius.edu/RWISMAN/B438/HTML/Chapter5.htm -->
+<HTML xmlns="http://www.w3.org/TR/REC-html40" xmlns:v = 
+"urn:schemas-microsoft-com:vml" xmlns:o = 
+"urn:schemas-microsoft-com:office:office"><!-- Source is http://homepages.ius.edu/jfdoyle/b438/html/Chapter%205.htm --><HEAD><TITLE>Chapter 5</TITLE>
+<META http-equiv=Content-Language content=en-us>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="Raymond Wisman" name=Author>
+<META content="MSHTML 6.00.2900.2722" name=GENERATOR>
+<META content=FrontPage.Editor.Document name=ProgId><LINK 
+href="NetworksBook_files/basic.css" type=text/css rel=stylesheet>
+<STYLE>SPAN.body {
+	FONT-SIZE: 13px; COLOR: #000000; FONT-FAMILY: verdana, sans-serif
+}
+</STYLE>
+</HEAD>
+<BODY>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD width="50%" bgColor=#ffff66>
+      <H1>Chapter 5 Network Layer</H1></TD>
+    </TR></TBODY></TABLE>
+<P><B><FONT size=+1>Network layer</FONT></B> - concerned with delivering packets 
+from source to destination, often through many intermediate routers,<IMG 
+height=183 src="NetworksBook_files/Chapter5_1.jpg" width=313 align=right> called 
+Internet Message Processor on the Internet. IP is the routing protocol of the 
+Internet but is often used to mean all the protocols. Used here, IP means the 
+protocol of the network layer.</P>
+<P><B>Router/gateway/bridges</B> </P>
+<UL>
+  <LI><B>Routers</B> form the connection point between the same type of networks 
+  (e.g. connect two Internet subnets) by determining where a message should be 
+  sent.
+  <UL>
+    <LI><I>Would you need a router to connect two LANs on a campus? 
+    </I><BR>&nbsp; </LI></UL>
+  <LI><B>Gateways</B> perform the hardware and software translation necessary to 
+  connect dissimilar networks (e.g. X.25 to ATM, Internet to Microsoft Network, 
+  broadcast LAN to point-to-point).&nbsp;<BR>&nbsp; 
+  <LI><B>Bridges</B> are simpler versions of gateways, translating only at the 
+  MAC level and forwarding frames (e.g. Ethernet to Ethernet, Ethernet to 
+  wireless, etc.). </LI></UL>
+<CENTER>
+<P>&nbsp;</P></CENTER>
+<OL>
+  <LI><B>Connectionless</B> - Internet view using the routing protocol IP.
+  <UL>
+    <LI>No flow control or error handling by subnet. 
+    <LI>Primitives SEND/RECEIVE PACKET. Each packet contains full address and 
+    routed independently. 
+    <LI>Reliable connections responsibility of higher level transport protocol 
+    (TCP). 
+    <LI>Usually implemented on packet switching network by sending datagrams. 
+    <LI>Complexity on each host rather than subnet. </LI></UL>
+  <LI><B>Connection-oriented </B>- Phone company view. 
+  <UL>
+    <LI>Connection setup, send/receive data, connection held till disconnect by 
+    either end. 
+    <LI>Subnet responsible for establishing connection. 
+    <LI>Data delivered in sequence. 
+    <LI>Flow control. 
+    <LI>No need for complete address on each packet. 
+    <LI>Usually implemented on virtual circuit switched network. 
+    <LI>Complexity on network subnet. </LI></UL>
+  <LI><B>Subnet internal organization</B> 
+  <UL>
+    <LI><B>Virtual circuit</B>
+    <UL>
+      <LI>Connection established through set of routers from source to 
+      destination, once established all data sent through same routers. 
+      <LI>Router maintains table of connections to other machines, can have 
+      multiple virtual circuits over single physical channel. 
+      <LI>Using simplex circuit connection process merely needs to pick lowest 
+      available outgoing circuit number to next router. 
+      <LI>When data arrives on a circuit at router, sent out on circuit from 
+      table containing outgoing circuit much like time division switch. 
+      <LI>The router table below forms a full duplex connection between 2 and 3 
+      by routing data arriving on 2 out on 3 and arriving on 3 out on 2 as long 
+      as the connection is maintained. Channels 1 and 4 are not in use. 
+      <BR>&nbsp; 
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD>In channel&nbsp;</TD>
+          <TD>1</TD>
+          <TD bgColor=#66ffff><B>2</B></TD>
+          <TD bgColor=#ffff99><B>3</B></TD>
+          <TD>4</TD>
+          <TD>5</TD>
+          <TD>6</TD></TR>
+        <TR>
+          <TD>Out channel&nbsp;</TD>
+          <TD></TD>
+          <TD bgColor=#ffff99><B>3</B></TD>
+          <TD bgColor=#66ffff><B>2</B></TD>
+          <TD></TD>
+          <TD>6</TD>
+          <TD>5</TD></TR></TBODY></TABLE></LI></UL></LI></UL>
+  <P>&nbsp;
+  <UL>
+    <LI><B>Datagram</B>
+    <UL>
+      <LI>No fixed set of routers, route determined independently for each 
+      packet. 
+      <LI>Each packet contains full address, router maintains table of 
+      <B>destination</B> machines not just those directly connected. 
+      <LI>Packet routed on <I>best </I>line leading to destination. <I>Best</I> 
+      may mean least congested, highest bandwidth, or other criteria.<BR>&nbsp; 
+      </LI></UL></LI></UL>
+  <LI><B>Comparison of Datagram and Virtual Circuit Subnet</B> 
+  <P><BR><B>&nbsp;&nbsp;&nbsp; 
+  Issue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  Datagram&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  Virtual Circuit</B> </P>
+  <TABLE border=1>
+    <TBODY>
+    <TR bgColor=#66ffff>
+      <TD>Connection Setup</TD>
+      <TD>None</TD>
+      <TD>Required</TD></TR>
+    <TR>
+      <TD>Addressing</TD>
+      <TD>Packet contains full source and destination address</TD>
+      <TD>Packet contains short virtual circuit number identifier.</TD></TR>
+    <TR>
+      <TD>State information</TD>
+      <TD>None other than router table containing destination network</TD>
+      <TD>Each virtual circuit number entered to table on setup, used for 
+        routing.</TD></TR>
+    <TR>
+      <TD>Routing</TD>
+      <TD>Packets routed independently</TD>
+      <TD>Route established at setup, all packets follow same route.</TD></TR>
+    <TR>
+      <TD>Effect of router failure</TD>
+      <TD>Only on packets lost during crash</TD>
+      <TD>All virtual circuits passing through failed router terminated.</TD></TR>
+    <TR>
+      <TD>Congestion control</TD>
+      <TD>Difficult since all packets routed independently router resource 
+        requirements can vary.</TD>
+      <TD>Simple by pre-allocating enough buffers to each virtual circuit at 
+        setup, since maximum number of circuits 
+fixed.</TD></TR></TBODY></TABLE></LI></OL>
+<P><B><FONT size=+1>Routing algorithms</FONT> - </B>determines on which output 
+line an incoming packet should be transmitted. Virtual circuit determines once 
+at setup, datagram for each packet. <IMG height=236 
+src="NetworksBook_files/ch5_2.jpg" width=572 align=right></P>
+<OL>
+  <LI><B>Issues</B> 
+  <OL type=a>
+    <LI>Changing topology due to router crashes, line failures, subnet 
+    modification.<BR>&nbsp; 
+    <LI>Fairness and optimality often contradictory. At right, A to A', B to B' 
+    and C to C' is optimal but unfair to X and X'.<BR>&nbsp; 
+    <LI>Reducing hops through routers tends to reduce delay and bandwidth 
+    consumed, improving throughput of network.<IMG height=149 
+    src="NetworksBook_files/ch5_1.jpg" width=306 align=right border=0><BR>&nbsp; 
+    <LI><B>Static routing</B> methods do not adapt to changes on traffic, 
+    topology, etc. Routes determined off-line and loaded to routers.<BR>&nbsp; 
+    <LI><B>Adaptive routing</B> methods change routes with traffic, topology, 
+    etc. in attempt to optimize on some criteria.<BR>&nbsp; </LI></OL>
+  <LI><B>Optimality Principle</B> - If router J lies on optimal path from I to 
+  K, then J to K also optimal. Diagram below has optimal path I to K of I-C-J-K, 
+  hence I-C-J optimal to J since J lies on optimal path I-K. <IMG height=266 
+  src="NetworksBook_files/ch5_3.jpg" width=559 align=right border=0>
+  <CENTER>
+  <P>&nbsp;</P></CENTER>
+  <LI><B>Sink Tree</B> (minimum spanning tree) - Set of all optimal paths from 
+  all sources to a given destination (e.g. the root). Can be found using the 
+  <I>shortest path</I> algorithm from destination to all sources giving optimal 
+  though not necessarily unique route. Note that a tree has no cycles. Figure a) 
+  at right is network b) is sink tree with root at B. <BR>&nbsp; 
+  <LI><B>Shortest Path Algorithm -</B> Determines the optimal path through a 
+  graph based upon the criteria of&nbsp; number of hops, distance, cost, etc. 
+  <UL>
+    <LI>Topology based, that is it determines connections to use from one router 
+    to another. 
+    <LI>Static, must be recomputed as routers added/deleted. 
+    <LI>Can be used to construct a sink tree with the destination the sink tree 
+    root. One possible application would be for each router to compute the sink 
+    tree of a network with itself as the root to determine the optimal output 
+    line incoming packets should be transmitted to reach their destination. 
+  </LI></UL></LI></OL>
+<H3>Routing methods</H3>
+<OL>
+  <LI><B>Flooding</B> 
+  <UL>
+    <LI>Every incoming packet sent on every outgoing line except the one of 
+    arrival, generates duplicate packets. 
+    <LI>Requires flood damping, usually by each router decrementing a hop 
+    counter, discarding packets that have made too many hops. Hop counter must 
+    be initialized to the network diameter or the greatest number of valid hops 
+    in network. For example, in the figure above (a) above the greatest number 
+    of hops needed to traverse the network is 4 (e.g. O-N-J-C-B). 
+    <LI><B>Selective flooding</B> - Floods in most likely direction, would 
+    require table relating a range of destination addresses to an output line. 
+    <LI><B>Uses</B> - Where major failures likely as in warfare, update 
+    distributed databases, compare with other methods since flooding chooses all 
+    paths, guarantees shortest path selected (ignoring flooding 
+    overhead).<BR>&nbsp; </LI></UL>
+  <LI><B>Distance-vector routing</B> - Used on Internet till 1979. 
+  <OL type=a>
+    <LI>Distance may be any metric (measure). 
+    <LI>Routing table - indexed by <B>each router in subnet</B>, contents is 
+    estimate of best output line and distance metric to router. 
+    <LI>Method using delay time as metric 
+    <UL>
+      <LI>Send ECHO packet to immediate neighbors which respond back ASAP, 
+      record response time in table. 
+      <LI>Regularly send table with estimate of <B>time to each subnet 
+      router</B> to all neighbors. 
+      <LI>On receiving table from neighbor X and time to X for each table entry 
+      (all subnet routers) compute time estimate for going through X to another 
+      router Y. 
+      <LI>If lower to go through X to Y than going through another neighbor, add 
+      X to table so packets destined to Y are routed through X. 
+  </LI></UL></LI></OL></LI></OL>
+<CENTER>
+<TABLE cellSpacing=0 cellPadding=0 width="80%" border=1>
+  <TBODY>
+  <TR>
+    <TD>Router J is connected to A, I, K, and H. J sends ECHO to connected 
+      routers and measures <I>delay </I>time of each to respond back with 
+      routing table. The delay is added to the time required to route through a 
+      router connected to J to another router, the minimum delay route is added 
+      to the routing table of J. 
+      <CENTER>
+      <P><IMG height=382 src="NetworksBook_files/ch5_5.jpg" 
+    width=494></P></CENTER></TD></TR></TBODY></TABLE></CENTER>
+<OL>
+  <UL>
+    <LI>Problems 
+    <UL>
+      <LI>Used queue length as metric rather than time delay, did not take into 
+      account line bandwidth. 
+      <LI>Takes long time to converge, spreading good news (shorter metrics) 
+      quickly, but bad news (failure on subnet) slowly. 
+      <UL>
+        <LI><B>Count to Infinity Problem - </B>Can occur when a router becomes 
+        unreachable. Basic problem that when router X tells Y that it has a path 
+        somewhere, Y has no way of knowing that it itself is on the path. 
+        <LI>For diagram (a), good news from A propagates to E after 4 exchanges 
+        (4 hops). 
+        <LI>For diagram (b), bad news propagates slowly. 
+        <UL>
+          <LI>For example the link from A to B is broken, B discovers that A is 
+          unreachable but that C has a metric of 2 to A, possibly through B 
+          itself or perhaps through an alternate route. 
+          <LI>B assumes that A can now be reached in 3 hops through C. B has no 
+          way of knowing the path through C to A includes B since it only has 
+          information from directly connected routers. 
+          <LI>On the next exchange, C discovers that A is reachable through B or 
+          D in 3 hops so updates table to A in 4 hops. 
+          <LI>As you can see, the information that A is unreachable propagates 
+          slowly, converging toward infinity. The choice of infinity should be 
+          the maximum hops + 1 to determine that a router is unreachable. 
+        </LI></UL></LI></UL></LI></UL></LI></UL></OL>
+<CENTER>
+<P><IMG height=229 src="NetworksBook_files/ch5_6.jpg" width=566></P></CENTER>
+<OL start=3>
+  <LI><B>Link State Routing&nbsp;</B> - Currently widely used on Internet. 
+  Determines complete topology and delays to neighbors, then distributes to all 
+  other routers so that each can compute shortest path to any router. 
+  <OL>
+    <LI>Discover neighbors addresses by sending ECHO packet on all outgoing 
+    lines. 
+    <LI>Measure the cost to each of its neighbors (time to receive ECHO response 
+    divided by two). 
+    <UL>
+      <LI>To include load as a factor the timer is started when ECHO packet 
+      placed in queue, to ignore load the timer is started when ECHO packet 
+      reaches head of queue. <IMG height=96 src="NetworksBook_files/ch5_28.jpg" 
+      width=44 align=right border=0> 
+      <LI>Using load can cause oscillation when two parallel paths are available 
+      since the load will be shifted back and forth to the lowest delay channel. 
+      </LI></UL>
+    <LI>Construct packet containing all information about neighbors just 
+    learned. The packet from A would include information about B and E. 
+    <LI>Distribute packet to <B>all</B> other routers. Tricky because routers 
+    will receive packet at different times so will use different information for 
+    routing. Flooding used to distribute with a sequence number for each new 
+    packet sent. 
+    <UL>
+      <LI>Routers keep track of (router, sequence number, age), remembering and 
+      forwarding the highest sequence numbered ones and discarding duplicates 
+      and lower sequence numbered ones as a means of stemming the flood. 
+      <LI><B>Aging - </B>Since a rebooted router would start at sequence number 
+      0, all other routers would discard the new but low sequence numbered 
+      packets. 
+      <UL>
+        <LI>Age field is initialized to an arbitrary value, perhaps 60, then 
+        decremented one by each router forwarding the packet&nbsp; to prevent 
+        packets from circulating forever. 
+        <LI>A router holding a packet decrements the age once per second. When 
+        age = 0 for a packet, the packet is discarded and routing information 
+        for that router forgotten so that packets from a rebooted router will 
+        eventually be accepted. </LI></UL></LI></UL>
+    <LI>Each router computes <I>shortest path</I> to <B>all</B> other routers 
+    using most current information from other routers, store in table containing 
+    router and output line to router to use. 
+    <LI><B>OSPF (Open Shortest Path First)&nbsp; - </B>Used on Internet, based 
+    on link state, more later. </LI></OL></LI></OL>
+<CENTER>
+<TABLE bgColor=#66ffff>
+  <TBODY>
+  <TR>
+    <TD>
+      <P align=center><B>Differences between link state and distance vector 
+      </B></P>
+      <CENTER>
+      <TABLE bgColor=#66ffff>
+        <TBODY>
+        <TR>
+          <TD>Distance vector 
+            <UL>
+              <LI>Information indirectly through connected routers 
+              <LI>Count to infinity problem 
+              <LI>Convergence routing </LI></UL></TD>
+          <TD>Link state 
+            <UL>
+              <LI>Information directly from all routers 
+              <LI>No count to infinity problem 
+              <LI>Shortest path routing 
+  </LI></UL></TD></TR></TBODY></TABLE></CENTER></TD></TR></TBODY></TABLE></CENTER>
+<CENTER>
+<TABLE style="BORDER-COLLAPSE: collapse" borderColor=#111111 cellSpacing=0 
+cellPadding=0 border=1>
+  <TBODY>
+  <TR>
+    <TD>From the link state packets broadcast in (b) between each router of 
+(a)
+      <UL>
+        <LI>Router B would construct a table with the following entries. 
+        <UL>
+          <LI>The best path to E is through router C, 
+          <LI>B-C is cost 2 
+          <LI>C-E is cost 1 
+          <LI>the total cost of 3 of B-C-E, 
+          <LI>all other paths are greater cost. </LI></UL></LI></UL>
+      <CENTER>
+      <TABLE style="BORDER-COLLAPSE: collapse" borderColor=#111111 cellSpacing=0 
+      cellPadding=0 border=1>
+        <TBODY>
+        <TR bgColor=#66ffff>
+          <TD>Destination</TD>
+          <TD>A</TD>
+          <TD>B</TD>
+          <TD>C</TD>
+          <TD>D</TD>
+          <TD>E</TD>
+          <TD>F</TD></TR>
+        <TR>
+          <TD>Router</TD>
+          <TD>A</TD>
+          <TD>-</TD>
+          <TD>C</TD>
+          <TD>C</TD>
+          <TD>C</TD>
+          <TD>F</TD></TR>
+        <TR>
+          <TD>Cost</TD>
+          <TD>4</TD>
+          <TD>-</TD>
+          <TD>2</TD>
+          <TD>5</TD>
+          <TD>3</TD>
+          <TD>6</TD></TR></TBODY></TABLE></CENTER>
+      <CENTER>
+      <P><IMG height=232 src="NetworksBook_files/ch5_7.jpg" width=563 
+      border=0></P></CENTER>
+      <TABLE id=AutoNumber1 style="BORDER-COLLAPSE: collapse" cellSpacing=0 
+      cellPadding=0 bgColor=#00ffff border=1>
+        <TBODY>
+        <TR>
+          <TD width="100%">Give the table for 
+  D.</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></CENTER>
+<OL start=4>
+  <LI><B>Hierarchical Routing </B>- Router tables grow proportionally with 
+  number of routers, reach point where not feasible for all routers to have full 
+  knowledge of network. Used on Internet. 
+  <OL>
+    <LI>Divide network routers into groups called regions where each router can 
+    route packets anywhere within region. 
+    <LI>Send all out of region packets to router that connects region to other 
+    regions. May have multiple out of region routers depending upon destination. 
+
+    <LI>Benefit - Reduced router table size. 
+    <UL>
+      <LI>The two level network below 17 routers require 4 entries for each 
+      region and 2 to 5 entries for routers within a region 3 and 5 
+      respectively, a total of 6 to 9 table entries. 
+      <LI>A flat network of 17 routers would require 16 table entries for each 
+      router. </LI></UL>
+    <LI>Cost 
+    <UL>
+      <LI>Increased path length required to route through a router hierarchy. 
+      <LI>Possible congestion point at router if inter-region traffic heavy. 
+      </LI></UL>
+    <LI>Optimal - For <I>N</I> routers optimal levels is <I>ln N</I> requiring 
+    <I>e ln N</I> table entries per router. </LI></OL></LI></OL>
+<CENTER>
+<TABLE style="BORDER-COLLAPSE: collapse" borderColor=#111111 cellSpacing=0 
+cellPadding=0 border=1>
+  <TBODY>
+  <TR>
+    <TD>
+      <UL>
+        <LI>Router 1A in Region 1 is connected to Region 4 through router 1C. 
+        <UL>
+          <LI>A packet arriving at 1A destined for 4C would be routed: 
+          <LI>1A-1C-3B-4A-4C at a cost of 4 hops = 3 hops 1A to Region 4 + 1 hop 
+          to 4C. </LI></UL></LI></UL>
+      <CENTER>
+      <P><IMG height=424 src="NetworksBook_files/ch5_8.jpg" width=604 
+      border=0></P></CENTER></TD></TR></TBODY></TABLE></CENTER>
+<OL start=5>
+  <LI><B>Broadcast Routing</B> - Sending packet to all destinations 
+  simultaneously. Possible approaches: 
+  <OL>
+    <LI>Send packet to individual destinations, wastes bandwidth and requires 
+    source to have <I>complete</I> list of destinations. 
+    <LI><B>Flooding</B> but generates too many packets and consumes too much 
+    bandwidth. Burden on network. 
+    <LI><B>Multi-destination</B> routing, a packet includes list of 
+    destinations, router generates new packet with destination list reachable on 
+    the output line used. Distribute bandwidth use through routers. Burden on 
+    source. 
+    <LI>Sink tree or any <B>spanning tree </B>from source router. All routers 
+    must know spanning tree used and broadcast received packet on all but the 
+    arrival channel. Uses minimum number of packets but global spanning tree 
+    information may not be available (for link state <I>shortest path 
+    </I>determined from each router not globally, no spanning tree for 
+    distance-vector). 
+    <LI><B>Reverse path forwarding</B> attempts to approximate <I>spanning 
+    tree</I> routing without tree information. 
+    <OL>
+      <LI>Source router broadcasts on all channels. 
+      <LI>A router receiving broadcast packet notes <I>source router</I> and the 
+      arrival channel.
+      <UL>
+        <LI>If broadcast arrives on channel normally used for sending packets to 
+        <I>source router</I> it is assumed to be first time seen so forwarded on 
+        all other channels. 
+        <LI>If broadcast arrived on different channel to source than in router 
+        table assumed to be duplicate and discarded. 
+        <LI>If the source router is not in the table, the packet is broadcast on 
+        all but arrival channel with source router and arrival channel of 
+        broadcast packet noted in table. </LI></UL>
+      <LI>The text considers an example (p369, Fig.5-16). 
+      <UL>
+        <LI>For comparison (b) has <I>source router</I> I at the root of a 
+        <I>sink tree.</I> 
+        <LI>All routers would normally send packets to the <I>source router</I> 
+        along the sink tree using the optimal path (e.g. I-B would follow 
+        I-F-D-C-B). 
+        <LI>Using <I>reverse path forwarding </I>the path may differ from the 
+        sink tree, on receiving a broadcast packet from the <I>source router</I> 
+        on the usual channel, each router would forward packet on all channels 
+        except the one received under the assumption the receiving channel was 
+        optimal. 
+        <LI>In this case was simply the reverse of the sink tree path normally 
+        used for sending to the packet source. 
+        <LI>In diagram (c) H sends a packet to K but K expects to receive 
+        packets from M so the packet is discarded rather than forwarded. 
+        <LI>The optimal case using the sink tree requires a maximum of 4 hops 
+        maximum (I-N-M-K-L) and 14 total packets. 
+        <LI>Using reverse path forwarding requires a maximum of 5 hops (4 for 
+        I-N-M-K-L plus 1 to B) and 23 total packets with the extra, duplicate 
+        packets sent to the leaf nodes. </LI></UL></LI></OL></LI></OL></LI></OL>
+<CENTER>
+<TABLE cellSpacing=0 cellPadding=0 border=1>
+  <TBODY>
+  <TR>
+    <TD>
+      <CENTER>
+      <P><IMG height=229 src="NetworksBook_files/ch5_10.jpg" width=608 
+      border=0></P></CENTER></TD></TR>
+  <TR>
+    <TD>
+      <CENTER>
+      <P><IMG height=264 src="NetworksBook_files/ch5_19.jpg" width=381 
+      border=0></P></CENTER>
+      <UL>
+        <LI>Note that the text in diagram (c) performs too well since the 
+        diagram follows the sink tree precisely. 
+        <LI>A more realistic example is above where the <I>reverse path 
+        forwarding </I>(e.g. a packet traveling I-E follows I-H-E) differs from 
+        the <I>sink tree</I> path (e.g. I-E follows I-F-A-E). 
+        <LI>The leaf nodes of the tree are discarded packets. 
+        <LI>For example, assume O had never received a packet sourced from I. 
+        <LI>O would receive the I packet from both N and J, assuming that J 
+        packet arrived first at O it would be forwarded to N which would discard 
+        having already received a packet from I on I channel. 
+        <LI>When O received the packet from N, having already noted that packets 
+        sourced from I arrive first on J, O discards the packet from N. </LI></UL>
+      <TABLE id=AutoNumber2 style="BORDER-COLLAPSE: collapse" 
+      borderColor=#111111 cellSpacing=0 cellPadding=0 bgColor=#00ffff 
+        border=0><TBODY>
+        <TR>
+          <TD width="100%">Give the reverse path tree for a broadcast from D 
+            assuming no routers have any forwarding information about other 
+            routers.</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></CENTER>
+<OL start=6>
+  <LI><B>Multicasting</B> - Sending to a select group. Might be used for 
+  selecting video on demand channels. 
+  <UL>
+    <LI>Could use broadcast but inefficient when only a fraction of network is 
+    receiver. 
+    <LI><B>Multicast routing</B> - Algorithm for multicasting. Requires that 
+    <I>destination hosts</I> join multicast group by informing their connected 
+    <I>routers</I>. Each router informs neighbor routers so that information 
+    about group membership propagates through network. When any group host 
+    member sends all other members would receive since each router knows its 
+    member hosts and which neighbor routers are part of the multicast subnet. 
+    <OL>
+      <LI>Each router computes spanning tree for full network with itself as 
+      root. 
+      <LI>When host sends multicast packet, the first router prunes spanning 
+      tree, retaining only those lines leading to group member hosts. 
+      <LI>Multicast packets are forwarded only on those lines along the spanning 
+      tree. </LI></OL>
+    <LI><B>Problems - </B>Scales poorly for large networks since based on 
+    <I>n</I> group spanning trees each with <I>m </I>members requiring storage 
+    for <I>mn</I> spanning trees. </LI></UL></LI></OL>
+<CENTER>
+<P><IMG height=459 src="NetworksBook_files/ch5_11.jpg" width=578></P></CENTER>
+<H2><B>Dijkstra's Shortest Path Algorithm</B></H2>
+<P>The shortest path algorithm is in fact a general graph minimization algorithm 
+where the metrics of the graph edges can represent distance, cost, time, etc. It 
+is important in networking because of the desirability of minimizing network 
+resources and is therefore employed by many routing algorithms.<BR></P>
+<TABLE bgColor=#00ffff border=0>
+  <TBODY>
+  <TR>
+    <TD width="100%">The general idea behind the algorithm is to compute the 
+      <I>shortest path</I> from the <I>destination</I> node to other nodes until 
+      the <I>starting</I> node is reached. When complete each node points to its 
+      predecessor node on its own shortest path to the <I>destination. </I>From 
+      the <I>starting</I> node, the shortest path to the <I>destination</I> is 
+      then through the list of <I>predecessor</I> nodes.</TD></TR></TBODY></TABLE>
+<P>Briefly, the algorithm given here is: </P>
+<OL>
+  <LI>k = destination 
+  <LI>At the k node, 
+  <UL>
+    <LI>Examine only nodes connected to <I>k</I> not already with shortest path 
+    to the <I>destination</I>. 
+    <LI>Of those nodes, make <I>k</I> the predecessor node if the the path 
+    through <I>k</I> to the destination is shorter than previously examined 
+    paths to the destination. </LI></UL>
+  <LI>Find the new node <I>k </I>with the shortest connection that is not 
+  already on the shortest path to the destination and make it part of the 
+  shortest path. 
+  <LI>If <I>k </I>is the <I>starting</I> node then finished, otherwise go back 
+  to <I>2.</I> </LI></OL>
+<P>In the following, note in panels (c) that node G reached A through A at a 
+distance of 6 and in (d) that node G reached A through E at a distance of 5. 
+Since that produced the shortest distance of any connections (all eventually 
+back to A) the G node was placed permanently with its shortest path to A through 
+E.</P>
+<P>Another approach is to consider 3 abstract data structures:</P>
+<OL>
+  <LI><B>queue</B> ordered by minimum cost to reach a node, unexpanded nodes are 
+  added when a new node is expanded 
+  <LI><B>path list</B> containing node and predecessor pairs 
+  <LI><B>closed list</B> that contains nodes that have been expanded, we'll 
+  clean duplicates from the queue also. </LI></OL>
+<P>The node at the head of the queue is always chosen for expansion and is added 
+to the path and closed lists.</P>
+<P>We halt when the goal is reached.</P>
+<TABLE id=table1 cellSpacing=0 border=1>
+  <TBODY>
+  <TR>
+    <TD>Queue</TD>
+    <TD>Path</TD>
+    <TD>Closed</TD></TR>
+  <TR>
+    <TD>A</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>B2, G6</TD>
+    <TD>&nbsp;</TD>
+    <TD>A</TD></TR>
+  <TR>
+    <TD>E4,G6,C9</TD>
+    <TD>(B,A)</TD>
+    <TD>A, B</TD></TR>
+  <TR>
+    <TD>G5,G6,F6,C9</TD>
+    <TD>(E,B),(B,A)</TD>
+    <TD>A,B,E</TD></TR>
+  <TR>
+    <TD>F6,C9,H9</TD>
+    <TD>(G,E),(E,B),(B,A)</TD>
+    <TD>A,B,E,G</TD></TR>
+  <TR>
+    <TD>H8,C9,H9,C9</TD>
+    <TD>(F,E),(G,E),(E,B),(B,A)</TD>
+    <TD>A,B,E,G,F</TD></TR>
+  <TR>
+    <TD>C9,C9,D10</TD>
+    <TD>(H,F),(F,E),(G,E),(E,B),(B,A)</TD>
+    <TD>A,B,E,G,F,H</TD></TR>
+  <TR>
+    <TD>D10,D12</TD>
+    <TD>(C,F),(H,F),(F,E),(G,E),(E,B),(B,A)</TD>
+    <TD>A,B,E,G,F,H,C</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>(D,H),(C,F),(H,F),(F,E),(G,E),(E,B),(B,A)</TD>
+    <TD>A,B,E,G,F,H,C,D</TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE bgColor=#00ffff border=0>
+  <TBODY>
+  <TR>
+    <TD width="100%">What is the final path for A-D?</TD></TR></TBODY></TABLE>
+<P> </P>
+<CENTER>
+<P><IMG height=492 src="NetworksBook_files/ch5_4.jpg" width=599></P></CENTER>
+<P><BR></P>
+<TABLE bgColor=#00ffff border=0>
+  <TBODY>
+  <TR>
+    <TD width="100%">Use Dijkstra's Algorithm to find the shortest path from 
+      A-D for&nbsp; <IMG height=97 src="NetworksBook_files/ch5_29.jpg" width=190 
+      align=middle border=0></TD></TR></TBODY></TABLE>
+<P align=left>&nbsp;</P>
+<P></P>
+<TABLE style="BORDER-COLLAPSE: collapse" borderColor=#111111 cellSpacing=0 
+cellPadding=0 bgColor=#ffff99 border=1>
+  <CAPTION><B>Dijkstra's Shortest Path Algorithm</B></CAPTION>
+  <TBODY>
+  <TR>
+    <TD><PRE> #include &lt;iostream.h&gt;                           //  Network from Tanenbaum text
+&nbsp;#define MAX_NODES 8                           //  Distance from i to j node
+&nbsp;#define INFINITY 1000000000                 //  0 if i=j or not connected
+&nbsp;int n;                                                   //         0  1  2  3  4  5  6  7
+&nbsp;int dist[MAX_NODES][MAX_NODES] =    { //         A  B  C  D  E  F  G  H
+                                                                     {0, 2, 0, 0, 0, 0, 6, 0 }, //A 0&nbsp;
+                                                                     {2, 0, 7, 0, 2, 0, 0, 0 }, //B 1
+                                                                     {0, 7, 0, 3, 0, 3, 0, 0 }, //C 2
+                                                                     {0, 0, 3, 0, 0, 0, 0, 2 }, //D 3
+                                                                     {0, 2, 0, 0, 0, 2, 1, 0 }, //E 4
+                                                                     {0, 0, 3, 0, 2, 0, 0, 2 }, //F 5
+                                                                     {6, 0, 0, 0, 1, 0, 0, 4 }, //G 6
+                                                                     {0, 0, 0, 2, 0, 2, 4, 0 }  //H 7
+                                      };
+&nbsp;typedef enum {permanent, tentative} labelID;<IMG height=112 src="NetworksBook_files/ch5_20.jpg" width=232 align=right border=0>
+ //                        start  destination
+&nbsp;void shortest_path(int s, int t, int path[]){
+
+        struct state {
+                 int       predecessor;
+                 int       length;
+                 labelID label;
+         } state[MAX_NODES];
+
+         int i, k, min;                    
+
+         n = MAX_NODES;
+         for(i=0; i&lt;n; i++) {                                 // Initialize state
+                 state[i].predecessor = -1;
+                 state[i].length = INFINITY;
+                 state[i].label = tentative;
+         }
+
+         state[t].length = 0;
+         state[t].label=permanent;&nbsp;&nbsp;&nbsp;
+         k=t;                                                    // Start at destination.
+
+         do {                                                    // Label current shortest nonzero tentative paths &nbsp;
+            for(i=0; i&lt;n; i++)                              // from all i connected to the current k node
+                 if(dist[k][i] != 0 &amp;&amp; state[i].label == tentative)&nbsp;
+                     if(state[k].length+dist[k][i] &lt; state[i].length) {
+                         state[i].predecessor = k;
+                         state[i].length = state[k].length+dist[k][i];
+                     }
+
+            min = INFINITY;                                // Find tentatively labeled node with smallest length
+            for (i=0; i&lt;n; i++)&nbsp;
+                  if( state[i].label == tentative &amp;&amp; state[i].length &lt; min) {
+                      min=state[i].length;
+                      k=i;
+                  }
+
+            state[k].label = permanent;                // Make smallest path length permanent
+         } while(k != s);                                    // k=current node, s=start
+
+         i=0;
+         k=s;
+         do {    path[i++]=k;                             // Copy path from start to destination
+                   k=state[k].predecessor;
+         } while (k&gt;=0);
+&nbsp;}
+
+&nbsp;void main(void) {
+         int i, s=0, t=3;                                     // s=start node t=destination node
+         int path[MAX_NODES];
+
+         shortest_path(s, t, path);
+         i = 0;
+         cout &lt;&lt; "Path ";
+         do {    cout &lt;&lt; path[i] &lt;&lt; " ";
+         } while (path[i++] != t );
+&nbsp;}</PRE></TD></TR>
+  <TR>
+    <TD>
+      <CENTER>
+      <P><B>Solution: </B>Path 0 1 4 5 7 3</P></CENTER></TD></TR></TBODY></TABLE>
+<H2><B><FONT size=+1>Congestion Control Algorithms</FONT></B></H2>
+<P><B>Congestion</B> occurs when demand exceeds capacity at any point in 
+network. Demand could be for any resource such as channel bandwidth or router 
+buffer storage. <BR>&nbsp; </P>
+<CENTER>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><B>Router internal buffer use</B> <BR><IMG height=223 
+      src="NetworksBook_files/ch5_23.jpg" width=311 border=0> <BR>When available 
+      buffers exhausted router forced to drop incoming packets causing&nbsp; 
+      sharp reduction in number of packets delivered.</TD>
+    <TD><B>Congestion causes performance degradation</B> <BR><IMG height=270 
+      src="NetworksBook_files/ch5_12.jpg" width=396 
+border=0></TD></TR></TBODY></TABLE></CENTER>
+<OL>
+  <LI><B>Common reasons for congestion on router - </B>Congestion can occur on a 
+  router when packets arrive at a greater rate than possible to forward. 
+  Congestion can be sporadic or long term. When congestion occurs, packets must 
+  be discarded by the router. Congestion occurs at a bottleneck when: 
+  <OL>
+    <LI>Packets arrive on several channels to be forwarded on a single channel. 
+    <LI>Incoming channel has a higher bandwidth than outgoing channel. 
+    <LI>Channel bandwidth is sufficient but router CPU processing is too slow to 
+    handle bookkeeping (queuing, routing table updates, etc). 
+    <LI>Router lacks sufficient memory buffer space. 
+    <LI>Under an end-to-end reliable protocol (e.g. TCP), even with infinite 
+    memory, congestion can get worse because packets have timed out (e.g. moving 
+    from queue back to front on router or due to delay in acknowledging on a 
+    receiver) resulting in duplicates, adding to the congestion.
+    <TABLE bgColor=#00ffff border=0>
+      <TBODY>
+      <TR>
+        <TD width="100%">Is it worse for congestion to discard a data or an 
+          acknowledgement packet?</TD></TR></TBODY></TABLE></LI></OL>
+  <P> </P>
+  <LI><B>Self Feeding</B> - Congestion gets worse. 
+  <OL>
+    <LI>One router becomes congested, starts discarding packets. 
+    <LI>Sending router waiting for acknowledge cannot discard packet until 
+    acknowledge received, times out and resends. Its buffers cannot be released 
+    so that it also becomes congested. Not the case of Internet, is the case of 
+    a reliable <I>network</I>.<BR>&nbsp; </LI></OL>
+  <LI><B>Congestion and Flow Control</B> 
+  <OL>
+    <LI><B>Congestion control</B> is concerned with ensuring the subnet can 
+    accept the requested traffic, a <I>global</I> issue. 
+    <UL>
+      <LI>Can be managed by rerouting packets dynamically over network, possibly 
+      around congestion. 
+      <LI>Best managed by routers. 
+      <LI>Recall that link state routing exchanges a metric such as delay among 
+      routers allowing them to calculate the best route to a subnet destination. 
+      </LI></UL>
+    <LI><B>Flow control</B> is concerned with whether the <I>receiver</I> can 
+    accept the traffic from the <I>sender</I>, an issue only between the two 
+    ends. 
+    <UL>
+      <LI>Best managed between the two ends. </LI></UL>
+    <LI><B>Congestion control</B> is sometimes implemented using <B>flow 
+    control</B>, when the congestion occurs the host sources are told to slow 
+    down. 
+    <UL>
+      <LI>One possible problem with this approach is that under network 
+      congestion the <I>slow down</I> message adds to the traffic and may itself 
+      be discarded. 
+      <LI>Another is that routers along the path leading to the congested router 
+      should participate in congestion control by routing around congestion or 
+      otherwise reducing the traffic at the congested router.<BR>&nbsp; 
+    </LI></UL></LI></OL>
+  <LI><B>General Principles of Congestion Control</B> 
+  <OL>
+    <LI><B>Open loop</B> - Example: doctors office that schedules patients into 
+    time slots with no information about future office congestion state 
+    attempting to prevent congestion by estimating the time the doctor will 
+    spend with each patient. 
+    <UL>
+      <LI>Design attempts to prevent congestion from occurring through decisions 
+      on accepting new traffic, when to discard packets, and scheduling. 
+      <LI>Decisions made without regard to current state depending upon good 
+      design to avoid congestion. </LI></UL>
+    <LI><B>Closed loop </B>- Example: heating control system. Uses feedback to 
+    adjust to traffic changes. Has three parts: 
+    <UL>
+      <LI><I>Monitor system</I> to detect when and where congestion occurs. 
+      Congestion measured by percentage of packets discarded, average packet 
+      delay, etc. 
+      <LI><I>Pass information to places where action can be taken</I>, usually 
+      along the path back to the traffic source. Congested router sending notice 
+      to source increases traffic. 
+      <LI><I>Adjust system operation to correct the problem</I>. 
+      <UL>
+        <LI>If router claims congestion too soon and source stops sending 
+        completely on receipt of congestion notice but restarts at same rate, 
+        traffic will oscillate and never converge to a steady rate. 
+        <LI>Waiting too long makes system sluggish, nullifying benefit of 
+        congestion control. 
+        <LI>Averaging of congestion over time can provide better overall measure 
+        of when to act.<BR>&nbsp; </LI></UL></LI></UL></LI></OL></LI></OL>
+<P><B>5.3.2 Congestion Prevention Policies - </B>Implemented at several levels, 
+policies that affect congestion are: </P>
+<CENTER>
+<TABLE style="BORDER-COLLAPSE: collapse" borderColor=#111111 cellSpacing=0 
+cellPadding=0 border=1>
+  <TBODY>
+  <TR bgColor=#66ffff>
+    <TD><B>Layer</B></TD>
+    <TD><B>Policies</B></TD></TR>
+  <TR>
+    <TD>Transport&nbsp;</TD>
+    <TD>
+      <UL>
+        <LI>Retransmission policy - <I>go back n</I> heavier load due to number 
+        of retransmits than <I>selective repeat</I> 
+        <LI>Out-of-order caching policy -&nbsp; <I>go back n</I> discards, 
+        <I>selective repeat</I> keeps 
+        <LI>Acknowledge policy - Piggybacking ACKs versus separate but waiting 
+        to piggyback may result in timeout causing retransmit. 
+        <LI>Flow control policy - Small window limits number of outstanding 
+        packets reducing data rate. 
+        <LI>Timeout determination - Waiting too long causes packets to back up 
+        at source. Timing out too soon can produce retransmit duplicates adding 
+        to traffic. </LI></UL></TD></TR>
+  <TR>
+    <TD>Network</TD>
+    <TD>
+      <UL>
+        <LI>Virtual circuits versus datagram inside the subnet 
+        <LI>Packet queuing and service policy - Number of queues per 
+        input/output line, order packets processed in queue. 
+        <LI>Packet discard policy - Choice of which packet to discard. 
+        <LI>Routing algorithm - Can avoid congestion by spreading traffic. 
+        <LI>Packet lifetime management - Time to live used to discard packets, 
+        if too long orphans may clog network, too short may discard valid but 
+        slow packets.&nbsp; </LI></UL></TD></TR>
+  <TR>
+    <TD>Data Link</TD>
+    <TD>
+      <UL>
+        <LI>Retransmission policy - same as transport layer 
+        <LI>Out-of-order caching - same as transport layer&nbsp; 
+        <LI>Acknowledgment policy - same as transport layer 
+        <LI>Flow control policy - same as transport layer 
+</LI></UL></TD></TR></TBODY></TABLE></CENTER>
+<P><B>5.3.3 Traffic Shaping - </B>Bursty traffic one cause of congestion. Open 
+loop solution requires predictable rates that do not exceed some maximum. 
+<BR><BR><B>Leaky Bucket</B> - uses a finite queue as buffer where host packets 
+enter queue at anytime but forwards packets to router at constant rate, creating 
+an even flow from host. </P>
+<UL>
+  <LI>Packets discarded if queue size exceeded. 
+  <LI>Leaky bucket metaphor is that water can be added in bursts to the bucket 
+  (queue) but leaks out of a hole (channel) in steady stream and overflows when 
+  full discards packets). <BR>&nbsp; </LI></UL>
+<P><B>5.3.4 Congestion Control in Datagram Subnets</B></P>
+<P><B>Choke Packets</B> - Router monitors output line utilization (why monitor 
+output line?) to determine if utilization threshold exceeded using: </P>
+<CENTER>
+<TABLE bgColor=#66ffff>
+  <TBODY>
+  <TR>
+    <TD>
+      <P align=center><B>u<SUB>new</SUB> = au<SUB>old</SUB> + (1-a)f </B></P>
+      <P align=left>where <BR>&nbsp;&nbsp; a - rate forgets recent history, 1 
+      forgets nothing, 0 forgets all. <BR>&nbsp;&nbsp; f - 0 when not in use or 
+      1 when in use, the instantaneous line utilization <BR>&nbsp;&nbsp; u - 0.0 
+      to 1.0 recent line utilization </P>
+      <P>Example: a=1, f=0 no change u<SUB>new </SUB>= u<SUB>old</SUB> 
+      <BR>Example: a=0, f=1 then u<SUB>new</SUB> = 1 or 100% utilization 
+      <BR>&nbsp;</P></TD></TR></TBODY></TABLE></CENTER>
+<P>When <B>u &gt; threshold </B>enters warning state:</P>
+<UL>
+  <LI>new packet for congested output line triggers sending of <B>choke 
+  packet</B> to source 
+  <LI>new packet tagged <I>choked</I> so it won't cause more choke packets on 
+  down the router line to destination. 
+  <LI>Source host required to reduce traffic by about 1/2 each choke packet 
+  received, after some fixed time (e.g. timeout interval) without choke packet 
+  host can slowly increase traffic. </LI></UL>
+<CENTER>
+<P><IMG height=115 src="NetworksBook_files/chap5_2.jpg" width=556 
+align=center></P></CENTER>
+<P>IP uses two windows on source host</P>
+<BLOCKQUOTE>
+  <TABLE bgColor=#00ffff border=0>
+    <TBODY>
+    <TR>
+      <TD width="100%">Smaller windows utilize less available network 
+        capacity. Why?</TD></TR></TBODY></TABLE></BLOCKQUOTE>
+<UL>
+  <LI>Uses <B>fast stop/slow start</B> which halves window each time choked 
+  packet received, increases at slower rate whenever fixed time interval expires 
+  without additional choke packets or <B>acknowledge</B> received. More details 
+  in Chapter 6. </LI></UL>
+<P><B>Hop-by-Hop choke packets</B></P>
+<UL>
+  <LI>High bandwidth over long distances make returning choke packets the 
+  congestion source too slow. 
+  <LI>A 100 Mbps channel with an end-to-end propagation time of 10 ms. would 
+  hold 1,000,000 bits. 
+  <LI>During the time a choke packet traveled to the source 1,000,000 additional 
+  bits could arrive at a router and 1,000,000 would be on the way. </LI></UL>
+<P>Hop-by-Hop requires each router to reduce packet rate when a choke packet 
+arrives providing immediate relief. The choke packet eventually reaches the 
+source to reduce the overall packet rate. </P>
+<CENTER>
+<P><IMG height=730 src="NetworksBook_files/ch5_13.jpg" width=467></P></CENTER>
+<P><B>5.5 Interworking - Connecting two or more networks, may be same or 
+different networking protocols (IP, SNA, IPX, AppleTalk, etc.)</B> </P>
+<OL>
+  <LI><B>Important terms - Gateway means any device that connects two or more 
+  different networks.</B> 
+  <UL>
+    <LI><B>Repeaters</B> copy individual bits between segments of same LAN such 
+    as between segments on same 802.3 
+    <LI><B>Bridges</B> store and forward (buffer) data link frames between LAN's 
+    such as 802.3 to 802.5 
+    <LI><B>Multiprotocol routers</B> similar to bridges, forward packets between 
+    different networks such as IP to IPX. 
+    <LI><B>Transport gateways</B> connect byte streams in the transport layer. 
+    <LI><B>Application gateways</B> allow interworking above layer 4, such as 
+    mail systems. </LI></UL>
+  <LI><B>Half gateway - </B>Two gateways connected by wire running an agreed 
+  upon protocol between and other protocol on either network side. 
+  <LI><B>Bridges vs Routers</B> 
+  <TABLE>
+    <TBODY>
+    <TR>
+      <TD><B>Bridge</B> handles data link <I>frames</I> whose data load 
+        contains a network packet, examines MAC address. Cannot examine data 
+        load to determine whether IP, IPX, etc. <BR><IMG height=351 
+        src="NetworksBook_files/ch4_15.jpg" width=584></TD></TR>
+    <TR>
+      <TD>
+        <CENTER>
+        <P><B>Nesting of Frame/Packet/Segment</B> <BR><IMG height=88 
+        src="NetworksBook_files/Ch6_1.jpg" width=303></P></CENTER></TD></TR>
+    <TR>
+      <TD><B>Ethernet Frame at Bridge</B> <BR><IMG height=172 
+        src="NetworksBook_files/ch4_5.jpg" width=617></TD></TR>
+    <TR>
+      <TD><B>Internet Packet at Router&nbsp; - </B>does not handle 
+        <I>frames</I> but the data load from the frame. Can determine whether 
+        IP, IPX, etc. networking protocol. <BR><IMG height=308 
+        src="NetworksBook_files/ch5_16.jpg" width=572></TD></TR>
+    <TR>
+      <TD><IMG height=399 src="NetworksBook_files/Ch6_2.jpg" 
+    width=596></TD></TR></TBODY></TABLE></LI></OL>
+<OL>
+  <UL>
+    <LI>Often bridge and router combined in one system. Key difference is how 
+    far up the protocol stack the data is handled. </LI></UL></OL>
+<P><B>5.5.1 How Networks Differ</B> </P>
+<CENTER>
+<TABLE style="BORDER-COLLAPSE: collapse" borderColor=#111111 cellSpacing=0 
+cellPadding=0 width="51%" border=1>
+  <TBODY>
+  <TR bgColor=#66ffff>
+    <TD><B>Item</B></TD>
+    <TD><B>Some Possibilities</B></TD></TR>
+  <TR>
+    <TD>Service offered</TD>
+    <TD>Connection-oriented vs connectionless</TD></TR>
+  <TR>
+    <TD>Protocols</TD>
+    <TD>IP, IPX, SNA, AppleTalk, ETC.</TD></TR>
+  <TR>
+    <TD>Addressing</TD>
+    <TD>Flat (802.x) vs hierarchical (IP)</TD></TR>
+  <TR>
+    <TD>Multicasting</TD>
+    <TD>Yes or no (also broadcasting)</TD></TR>
+  <TR>
+    <TD>Packet size</TD>
+    <TD>Every network has its own maximum</TD></TR>
+  <TR>
+    <TD>Quality of service</TD>
+    <TD>May be present or absent (IP)</TD></TR>
+  <TR>
+    <TD>Error handling</TD>
+    <TD>Reliable, ordered, and unordered delivery</TD></TR>
+  <TR>
+    <TD>Flow control</TD>
+    <TD>Sliding window, rate control, other or none</TD></TR>
+  <TR>
+    <TD>Congestion control</TD>
+    <TD>Leaky bucket, choke packets, etc.</TD></TR>
+  <TR>
+    <TD>Security</TD>
+    <TD>Privacy rules, encryption, etc.</TD></TR>
+  <TR>
+    <TD>Parameters</TD>
+    <TD>Different timeouts, flow specifications, etc.</TD></TR>
+  <TR>
+    <TD>Accounting</TD>
+    <TD>By connect time, by packet, by byte, or not at 
+all</TD></TR></TBODY></TABLE></CENTER>
+<P><B>5.5.2 How Networks can be Connected</B></P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><B>Physical</B> - Hubs or repeaters perform electrical or other physical 
+    connections 
+    <LI><B>Data Link - </B>Bridges and switches (on Ethernet what is the 
+    difference between hub and switch?). 
+    <UL>
+      <LI>In the figure below (a) connects two Ethernet LANs via a switch. 
+      <LI>S encapsulates IP packet in frame addressed to D and transmits on 
+      LAN1. 
+      <LI>Switch examines frame address and forwards onto LAN2 to D, no changes 
+      to frame. </LI></UL>
+    <LI><B>Network - </B>Routers examine packet to determine where to forward.
+    <UL>
+      <LI>In the figure below (b) connects two Ethernet LANs via two routers 
+      connected point-to-point. 
+      <LI>S encapsulates IP packet in frame addressed to router and transmits on 
+      LAN1. 
+      <LI>Source router examines packet address, locating destination network in 
+      routing table and forwards onto point-to-point connection, no changes to 
+      packet. 
+      <LI>Destination router examines packet address, translates into frame 
+      address of D (using ARP table) and transmits on LAN2. </LI></UL>
+    <LI><B>Transport - </B>Gateway that translates between two transport 
+    protocols (TCP and SNA). 
+    <LI><B>Application - </B>Gateway that translates between two application 
+    protocols (Internet email format to X.400 use different addressing scheme, 
+    etc.) </LI></UL>
+  <P><IMG height=313 src="NetworksBook_files/ch5-44.jpg" width=800 
+border=0></P></BLOCKQUOTE>
+<P><B>5.5.3 Concatenated Virtual Circuit - </B>All packets traverse same path. 
+</P>
+<P><BR><IMG height=183 src="NetworksBook_files/Chapter5_1.jpg" width=313 
+align=ABSCENTER><IMG height=347 src="NetworksBook_files/ch5_27.jpg" width=552 
+align=ABSCENTER> </P>
+<OL>
+  <LI><B>Host</B> - connected to subnet, to establish connection to host in 
+  remote external subnet sends full destination address to router. 
+  <LI><B>Router</B> - builds circuit to gateway providing access to external 
+  subnet nearest destination. 
+  <LI><B>Gateway</B> - records circuit, builds circuit to <U>next</U> subnet. 
+  Process continue till destination reached. Relays packets converting formats 
+  and circuit numbers as required. <BR><B>Advantages</B> 
+  <OL>
+    <LI>Buffers can be reserved in advance. 
+    <LI>Sequencing automatic. 
+    <LI>Short headers. 
+    <LI>avoids delayed, duplicate packets. </LI></OL>
+  <P><B>Disadvantages</B> 
+  <OL>
+    <LI>Table space required for each open connection. 
+    <LI>No alternate routing to avoid congestion. 
+    <LI>Vulnerable to router failures. </LI></OL></LI></OL>
+<OL>
+  <P>Note that quality of service is that of the lowest providing network. If 
+  one of them does not provide reliable delivery then circuit is 
+unreliable.</P></OL>
+<P><B>5.4.3 Connectionless Internetworking</B> </P>
+<OL>
+  <LI><B>Host </B>- injects packet on subnet, fully addressed to destination. 
+  <LI><B>Router</B> - Selects output line to gateway leading to destination. 
+  <LI><B>Gateway</B> - Converts from one network format to another. 
+  <UL>
+    <LI>Generally <U>not</U> possible to convert one protocol to another due to 
+    addressing, size of packets, etc. incompatibilities. 
+    <LI>Consider IP to IPX would require every IPX router and host in the world 
+    to have IP address and vice versa, and a database of converting between 
+    addresses. </LI></UL>
+  <LI><B>Advantages</B> 
+  <UL>
+    <LI>Can be used over subnets that do not use virtual circuits. 
+    <LI>More robust to router failure. 
+    <LI>Can route around congestion giving better response. </LI></UL>
+  <LI><B>Disadvantages</B> 
+  <UL>
+    <LI>More potential for congestion but more opportunity to adapt 
+    <LI>Long headers since each packet routed individually. </LI></UL></LI></OL>
+<P><B>5.4.4 Tunneling - </B>Avoids interwork conversion problems.<B> </B>When 
+source and destination networks same, at gateway place packet inside 
+intermediate network packet, deliver to destination gateway using intermediate 
+network, remove unchanged packet and forward using original network protocol. 
+</P>
+<P><BR>Example: IPX networks can be connected by tunneling through an IP network 
+by connecting: </P>
+<P>IPX network-------IPX/IP gateway--------IP network--------IP/IPX 
+gateway--------IPX network <BR>&nbsp; </P>
+<OL>
+  <LI><B>Host </B>- inserts packet on IPX subnet. 
+  <LI><B>Source IPX/IP Gateway</B> - Accepts IPX packet and wraps IPX packet in 
+  IP packet data load, sends to destination gateway over IP network. 
+  <LI><B>IP Routers</B> - Examine only IP packet for routing to destination 
+  IP/IPX gateway. 
+  <LI><B>Destination IP/IPX Gateway</B> - Extracts IPX packet from IP packet 
+  data load, inserts IPX packet onto IPX subnet. </LI></OL>
+<CENTER>
+<P><IMG height=288 src="NetworksBook_files/ch5_14.jpg" width=572></P></CENTER>
+<P><B>5.4.5 Internetwork Routing</B><IMG height=171 
+src="NetworksBook_files/ch5_24.jpg" width=456 align=right> </P>
+<UL>
+  <LI>Two level - Interior and Exterior 
+  <UL>
+    <LI>Interior Gateway Protocol (IGP) - Subnet routing within subnet, all 
+    subnet routers use same protocol. Uses routing metric to determine best 
+    path. 
+    <LI>Exterior Gateway Protocol (EGP) - Internet routing through subnets using 
+    standard routing algorithms. Gateways share a common EGP but packet received 
+    at a gateway tunneled through intervening subnet. EGP routers cannot 
+    determine best path because different metrics may be used on each subnet 
+    through which packet is tunneled. </LI></UL></LI></UL>
+<P><B>5.4.6 Fragmentation - All packet networks have a finite packet size</B> 
+</P>
+<UL>
+  <LI><B>Problem</B> 
+  <OL>
+    <LI>Limit packet size to minimum of any intervening subnet OR 
+    <LI>Break up packet and reassemble (fragment) </LI></OL></LI></UL>
+<CENTER>
+<P><IMG height=342 src="NetworksBook_files/ch5_15.jpg" width=557></P></CENTER>
+<OL>
+  <UL>
+    <LI><B>Fragmentation Strategies and Their Problems</B> 
+    <OL>
+      <LI><B>Transparent</B> 
+      <UL>
+        <LI>Gateway breaks up oversized packets, addressing each fragment to 
+        same exit gateway where reassembled. 
+        <LI>Problems 
+        <OL>
+          <LI>Exit gateway must know when all packets received requiring count 
+          bits or end of fragment bits in each fragment. 
+          <LI>Overhead of fragmenting and reassembly. 
+          <LI>May be reassembled at exit gateway only to be fragmented again at 
+          a later gateway later. </LI></OL></LI></UL>
+      <LI><B>Nontransparent - Used on Internet</B> 
+      <UL>
+        <LI>Gateway breaks up oversized packets, each fragment treated as 
+        original, addressed through any gateway to <B>destination host</B>. 
+        <LI>Problems 
+        <OL>
+          <LI>All hosts must be capable of reassembly. 
+          <LI>Increased overhead due to smaller packets with full addressing. 
+          <LI>Header must have enough room to hold <B>sequence </B>numbers of 
+          fragment needed for reassembly. Recall that each packet already 
+          carries a sequence and possibly an acknowledgment number. Since 
+          fragments may themselves be fragmented, the first fragmentation might 
+          use numbers 0, 1, 2, 3, ..., the second fragmentation 0.0, 0.1, 0.2, 
+          ..., and the third 0.0.0, 0.0.1, 0.0.2, etc. 
+          <LI>If <I>single</I> fragment fails to arrive entire packet must be 
+          resent. 
+          <UL>
+            <LI>Cause seen when&nbsp; fragment 2 of 10 fragments lost, sending 
+            host times out and resends entire packet since it had no knowledge 
+            of fragmentation. New packet may take different route where the 
+            original packet results in a fragment 2 of 5 fragments. 
+        </LI></UL></LI></OL>
+        <LI><B>Sequence number solution</B> 
+        <OL>
+          <LI>Define elementary packet size that all can handle, say a byte. A 
+          packet with 100 data bytes would be considered to have 100 fragments. 
+          <LI>Each internet header contains sequence, fragment number, and end 
+          of fragment bit. For byte size fragments, fragment number and the 
+          number of starting byte of packet the same. 
+          <LI>All fragments same size except perhaps last. </LI></OL>
+        <P><BR><B>Original packet</B> </P>
+        <TABLE cellSpacing=0 cellPadding=0 width="59%" border=1>
+          <TBODY>
+          <TR>
+            <TD>Packet 27</TD>
+            <TD>Fragment 0</TD>
+            <TD>End of Packet bit 1</TD>
+            <TD>A</TD>
+            <TD>B</TD>
+            <TD>C</TD>
+            <TD>D</TD>
+            <TD>E</TD>
+            <TD>F</TD>
+            <TD>G</TD>
+            <TD>H</TD>
+            <TD>I</TD>
+            <TD>J</TD>
+            <TD>K</TD>
+            <TD>L</TD></TR></TBODY></TABLE>
+        <P><B>Fragment into two packets</B> </P>
+        <TABLE cellSpacing=0 cellPadding=0 width="52%" border=1>
+          <TBODY>
+          <TR>
+            <TD>Packet 27</TD>
+            <TD>Fragment 0</TD>
+            <TD>End of Packet bit 0</TD>
+            <TD>A</TD>
+            <TD>B</TD>
+            <TD>C</TD>
+            <TD>D</TD>
+            <TD>E</TD>
+            <TD>F</TD>
+            <TD>G</TD>
+            <TD>H</TD></TR></TBODY></TABLE>
+        <TABLE cellSpacing=0 cellPadding=0 width="43%" border=1>
+          <TBODY>
+          <TR>
+            <TD>Packet 27</TD>
+            <TD>Fragment 8</TD>
+            <TD>End of Packet bit 1</TD>
+            <TD>I</TD>
+            <TD>J</TD>
+            <TD>K</TD>
+            <TD>L</TD></TR></TBODY></TABLE>
+        <P><B>Fragment into 12 packets</B> </P>
+        <TABLE cellSpacing=0 cellPadding=0 width="39%" border=1>
+          <TBODY>
+          <TR>
+            <TD>Packet 27</TD>
+            <TD>Fragment 0</TD>
+            <TD>End of Packet bit 0</TD>
+            <TD>A</TD></TR></TBODY></TABLE>
+        <TABLE cellSpacing=0 cellPadding=0 width="39%" border=1>
+          <TBODY>
+          <TR>
+            <TD>Packet 27</TD>
+            <TD>Fragment 1</TD>
+            <TD>End of Packet bit 0</TD>
+            <TD>B</TD></TR></TBODY></TABLE>
+        <TABLE cellSpacing=0 cellPadding=0 width="39%" border=1>
+          <TBODY>
+          <TR>
+            <TD>Packet 27</TD>
+            <TD>Fragment 2</TD>
+            <TD>End of Packet bit 0</TD>
+            <TD>C</TD></TR></TBODY></TABLE>
+        <TABLE cellSpacing=0 cellPadding=0 width="39%" border=1>
+          <TBODY>
+          <TR>
+            <TD>Packet 27</TD>
+            <TD>Fragment ....</TD>
+            <TD>End of Packet bit 0</TD>
+            <TD>....</TD></TR></TBODY></TABLE>
+        <TABLE cellSpacing=0 cellPadding=0 width="39%" border=1>
+          <TBODY>
+          <TR>
+            <TD>Packet 27</TD>
+            <TD>Fragment 11</TD>
+            <TD>End of Packet bit 1</TD>
+            <TD>L</TD></TR></TBODY></TABLE></LI></UL></LI></OL></LI></UL></OL>
+<BLOCKQUOTE>
+  <BLOCKQUOTE>
+    <BLOCKQUOTE>
+      <P>&nbsp; <IMG height=308 src="NetworksBook_files/ch5_16.jpg" 
+    width=572></P></BLOCKQUOTE></BLOCKQUOTE></BLOCKQUOTE>
+<P><B>5.4.7 Firewalls - Filter traffic based on some criteria</B></P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><B>Packet filter - </B>Standard router that inspects incoming/outgoing 
+      <B>packets</B> forwarding those that satisfy some criteria. 
+      <UL>
+        <LI><B>Criteria</B> - Typically allowing/disallowing access to specific 
+        addresses/ports. Usually table driven, configured by system 
+        administrator. 
+        <LI><B>Incoming</B> - Simple since can block all incoming packets for 
+        ports used by Telnet, FTP, HTTP, etc. 
+        <LI><B>Outgoing</B> - More difficult since off-site locations can use 
+        any port or assign dynamically </LI></UL>
+      <P><B>Application filter - </B>Examine content of packet data to determine 
+      how to process. Operates at application layer. </P>
+      <UL>
+        <LI><B>Example</B> - Block access to certain words in Web page title. 
+        <LI><B>Problems</B> - Access usually not limited to single entity (e.g. 
+        dialups) </LI></UL></TD>
+    <TD>
+      <TABLE border=1>
+        <TBODY>
+        <TR>
+          <TD>The architecture of a firewall with a secure computer bracketed 
+            by two packet filters. 
+            <P>To secure a host one filter restricts packets from <I>outside 
+            </I>and another restricts packets from <I>inside</I>. Known as the 
+            double moat approach. </P>
+            <P>Only restricting outside packets implies that inside is fully 
+            trusted, that none of the organization computers have been 
+            compromised. <BR><IMG height=246 src="NetworksBook_files/ch5_25.jpg" 
+            width=551 border=0 
+Image></P></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<P><B>5.5 Internet Network Layer</B> </P>
+<P><B>5.5.1 IP Protocol</B></P>
+<CENTER>
+<P><IMG height=312 src="NetworksBook_files/ch5_16.jpg" width=572></P></CENTER>
+<OL>
+  <UL>
+    <LI><B>Header specification - 20 or more bytes</B> 
+    <OL>
+      <LI><B>Version - </B>Protocol version 
+      <LI><B>IHL - </B>Header length in 32-bit bytes, not constant. Between 
+      32-bit units of 5 (20 bytes) and 15 (60 bytes) 
+      <LI><B>Type of service - </B>Combination of reliability and speed. 
+      <LI><B>Precedence - </B>Delay, Throughput, Reliability. In practice is 
+      ignored. 
+      <LI><B>Total length - </B>Length of entire datagram, maximum 65535. 
+      <LI><B>Identification</B> - All fragments have same identity. 
+      <LI><B>DF - </B>Don't Fragment, destination cannot reassemble. 576 minimum 
+      all machines must accept. 
+      <LI><B>More Fragments</B> - When clear (0)&nbsp; means this is the last 
+      fragment. 
+      <LI><B>Fragment offset</B> - Fragment number within a datagram, minimum of 
+      8 byte fragments, 13 bits allow maximum of 8192 fragments per datagram, 
+      giving 65,526 data bytes per datagram maximum. 
+      <LI><B>Time to live</B> - Maximum of 255, counter decremented each router 
+      hop until 0 then datagram discarded. Used to kill <I>orphan</I> packets. 
+      <LI><B>Protocol</B> - Used by destination after reassembling datagram to 
+      determine which transport process should receive, TCP, UDP, etc. 
+      <LI><B>Header checksum - </B>Verifies header only. Recomputed at each hop 
+      since TTL field changes. 
+      <LI><B>Source and Destination Address - </B>32-bit from the IP form 
+      xxx.xxx.xxx.xxx where each xxx is 0-255 value (8-bits). 
+      <LI><B>Options</B> - Escape to allow later versions to include new 
+      information. 
+      <UL>
+        <LI><B>Strict source routing</B> - List of routers to follow. 
+        <LI><B>Record route</B> - Routers append address, limited to 10 32-bit 
+        addresses (difference between 5 and 15 byte headers). 
+    </LI></UL></LI></OL></LI></UL></OL>
+<P><B>5.5.2 IP Addresses - 32 bit in form of Network/Host</B></P>
+<CENTER>
+<P><IMG height=339 src="NetworksBook_files/ch5_17.jpg" width=617></P></CENTER>
+<OL>
+  <UL>
+    <LI><B>Address Formats</B> 
+    <UL>
+      <LI><B>A - </B>Few networks (127) with many hosts (16,777,216) 1.0.0.0 to 
+      127.255.255.255 
+      <LI><B>B - </B>More networks (16,382) with fewer hosts (65,536) 128.0.0.0 
+      to 191.255.255.255 
+      <LI><B>C - </B>Many networks (2,000,000) with few hosts (256) 192.0.0.0 to 
+      223.255.255.255 
+      <LI><B>D - </B>Multicast 224.0.0.0 to 239.255.255.255 
+      <LI><B>E - </B>Future 240.0.0.0 to 247.255.255.255 </LI></UL>
+    <LI><B>Booting</B> - 0.0.0.0 used for booting. 
+    <LI><B>Broadcast</B> - Address of all 1's broadcasts on local network. 
+    <LI><B>Loopback - </B>127.xxx.yyy.zzz used for loopback testing, transmitted 
+    packets processed locally as though incoming. </LI></UL></OL>
+<P><B>IP routing</B></P>
+<BLOCKQUOTE>
+  <P>Each router has table of (network,0) for distant networks and 
+  (this-network, host IP addresses) for local hosts.</P>
+  <P>When packet arrives at router:</P></BLOCKQUOTE>
+<UL>
+  <LI>Destination address looked up in routing table
+  <UL>
+    <LI>If for distant network, forwarded to next router 
+    <LI>If local host sent directly onto LAN 
+    <LI>If unknown network sent to default router </LI></UL></LI></UL>
+<P><B>5.5.3 Subnet and Classless Addressing - Appear as one network to outside 
+but consists of multiple networks inside.</B> </P>
+<P><IMG height=350 src="NetworksBook_files/5-57.jpg" width=800 border=0></P>
+<UL>
+  <LI><B>Problem</B> - All hosts must have same network address for routing 
+  packets. A Class C network limited to 254 hosts, more hosts need new network 
+  and new router. LAN can easily have more than 254. 
+  <LI><B>Solution - </B>For Class B all 65,536 hosts have same <I>network</I> 
+  address
+  <OL>
+    <LI>Main router has table with all 65,536 entries with address of 
+    sub-router. Requires large table and manual entry of host addresses. 
+    <LI>Group hosts into subnets using any organization of the <I>host</I> bits. 
+    All hosts on sub-router have same subnet address. </LI></OL>
+  <LI><B>How</B> - Routers maintain two level hierarchy table of a mix of 
+  distant network (network, 0) and local host (this network, host) addresses 
+  associated with a network interface. 
+  <UL>
+    <LI>Arriving packets either forwarded to next router when destined for 
+    another network or directly to subnet of local host. 
+    <LI>Class B using subnets has association of (this network, subnet , 0) or 
+    (this network, this subnet, host) number for network interface. Creates 
+    three level hierarchy on subnet which gateway router uses to route packet to 
+    subnet router or host if on this subnet. </LI></UL>
+  <LI><B>Mask -&nbsp;</B> Router AND's the IP with subnet mask to recover the 
+  network and subnet number. Reduces size of router table since does not contain 
+  all hosts on this network. 
+  <UL>
+    <LI><B>Class C</B> network routers often have a subnet mask of 
+    255.255.255.000 so that the router can direct packet to interface on which 
+    host 1-254 is connected. 
+    <LI>For example, 194.160.25.3 when ANDed with 255.255.255.0 by the router 
+    produces 194.160.25.0, the network and subnet having 254 hosts (0 and 255 
+    are reserved). IPs in the range of 194.160.25.0-194.160.25.255 would be 
+    routed to this subnet for delivery to a host. 
+    <LI><B>Class B</B> network routers mask using 255.255.0.0 for network 
+    address. 
+    <LI>For example, to determine packet destination
+    <BLOCKQUOTE>
+      <BLOCKQUOTE>
+        <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        149.160.023.147<BR>AND&nbsp;&nbsp; <U>255.255.000.000 
+        <BR></U>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        149.160.000.000</P></BLOCKQUOTE></BLOCKQUOTE>
+    <P>Main router ANDs address with mask to determine destination is on its 
+    network 149.160.0.0. </P>
+    <P> </P>
+    <LI><B>CIDR Notation (Classless InterDomain Routing) - </B>Specifies mask 
+    associated with address by appending a / and size of mask in decimal. 
+    <UL>
+      <LI>Does away with classes because of number of wasted IPs, Class B often 
+      too big, Class C too small. 
+      <LI>Allocates variable sized blocks, can allocate in blocks of powers of 
+      2. 
+      <LI>Makes routing more complicated. 
+      <UL>
+        <LI>Each router must now contain network address and mask. 
+        <LI>Extracts destination IP and applies mask. Possible for result to 
+        match several networks, longest mask used. </LI></UL>
+      <LI>A CIDR number 128.211.0.0/16 would imply a 16-bit mask of 255.255.0.0 
+      for 128.211.0.0 subnet. 
+      <LI>128.211.0.16/28 specifies a 28-bit mask of 255.255.255.240 for 
+      subnetting addresses 128.211.0.16-128.211.0.31. 
+      <LI>128.211.0.8/29 specifies a 29-bit mask of 255.255.255.248 for 
+      subnetting addresses 128.211.0.8-128.211.0.15. 
+      <LI>Note that host address with only 0's or 1's are not allowed so the 
+      128.211.0.8/29 subnet has 8 host addresses 0-7 (binary 000-111) but only 6 
+      valid host addresses 1-6 (binary 001-110). </LI></UL></LI></UL>
+  <LI><B>Example - Class B</B>
+  <P><IMG height=335 src="NetworksBook_files/5-58.jpg" width=822 border=0></P>
+  <BLOCKQUOTE>
+    <P>149.160.23.147 is 
+    10<U>010101.1010</U><B>0000.00<U>010111.10010011</U></B></P>
+    <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    Class B<U>|&nbsp; Network&nbsp;&nbsp; |</U><B> Subnet 
+    |<U>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    Hosts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    |</U></B></P>
+    <P>Determine destination network at main router</P>
+    <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    149.160.023.147<BR>AND&nbsp;&nbsp; <U>255.255.000.000 
+    <BR></U>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 149.160.000.000</P>
+    <P>Main router determines which of 256 destination subnets to route 
+    packet</P>
+    <P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    149.160.023.147<BR>AND&nbsp;&nbsp; <U>255.255.255.000 
+    <BR></U>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 149.160.023.000</P>
+    <P>Subnet router determines which of 256 destination hosts to route packet, 
+    on LAN table would be in form of (host IP, destination LAN)</P></BLOCKQUOTE>
+  <LI><B>Example - </B>
+	<a href="http://homepages.ius.edu/jfdoyle/B438/HTML/iptable.htm">Table 
+  diagramming IP subnetting</a> courtesy David Seckinger. </LI></UL>
+<BLOCKQUOTE>
+  <TABLE bgColor=#00ffff border=0>
+    <TBODY>
+    <TR>
+      <TD width="100%">For a Class B network, what mask is needed for 16 
+        subnets?
+        <P>How many hosts would be on each?</P></TD></TR></TBODY></TABLE></BLOCKQUOTE>
+<P>&nbsp;</P>
+<P><B>5.5.4 Internet Control Protocols - IP used for packet transfer</B> </P>
+<UL>
+  <LI><B>ICMP - </B>Used to test and control the Internet. ICMP encapsulated 
+  within IP packet. Some examples: 
+  <UL>
+    <LI><B>Source Quench</B> - A choke packet router sends to host when packet 
+    discarded due to no more buffer space available. Treated by source as a 
+    timeout. 
+    <LI><B>Time Exceeded</B> - Sent to host when TTL (Time To Live) field 
+    reaches zero or from host if reassembly timer exceeded before all fragments 
+    arrive. 
+    <LI><B>Destination Unreachable</B> - Sent to host when packet cannot be 
+    delivered. 
+    <LI><B>Echo Request/Reply </B>- On receipt of a request, any computer must 
+    reply with the same data. Used by <I>ping</I> and <I>traceroute 
+    (</I>Microsoft <I>tracert</I>)<I>.</I> <BR><IMG height=458 
+    src="NetworksBook_files/ch5_21.jpg" width=296> </LI></UL>
+  <LI><B>ARP</B> - Learn destination datalink address of a receiver on a LAN by 
+  broadcasting destination IP address. Datalink does not understand higher level 
+  IP addressing (it may be 802.3 or 802.5 on LANs). Each host builds ARP table 
+  containing (IP, datalink) correspondence. Table entries grow stale and are 
+  deleted after a few minutes to allow changes to LAN hosts.<IMG height=291 
+  src="NetworksBook_files/ch5_26.jpg" width=396 align=right> 
+  <OL>
+    <LI>If sender does not know datalink address of receiver, broadcast to all 
+    LAN stations ARP request containing receiver IP. Host W broadcasts request 
+    on LAN. 
+    <LI>If receiver on LAN responds with ARP containing datalink address. Host Y 
+    responds to host W with datalink address. 
+    <LI>If receiver NOT on LAN, router responds&nbsp; to ARP sending its 
+    datalink address (proxy ARP) and the router would itself ARP the receiver to 
+    learn its datalink address. Sending host uses the router's datalink address, 
+    the router unpacks frame, determines destination LAN for receiving host IP, 
+    and forwards packet. </LI></OL>
+  <LI><B>RARP</B> - Reverse ARP, knows datalink address but needs IP. Useful 
+  when booting diskless host that knows its datalink address but needs IP to 
+  download memory image boot records from an IP server. Requires a RARP server 
+  that contains datalink to IP address table, server must be on LAN since 
+  datalink broadcasts are not forwarded by IP routers but by bridges. 
+  <LI><B>Bootp</B> - Allows a single boot server on the Internet versus a LAN. 
+  Uses UDP which contains IP of destination boot server, booting host has IP of 
+  boot server and default router address. </LI></UL>
+<P><B>5.5.5 Interior Gateway Routing Protocols</B> </P>
+<UL>
+  <LI><B>RIP (Routing Information Protocol)</B> 
+  <UL>
+    <LI>Based on distance vector routing, works well for small systems but 
+    suffers from count-to-infinity and generally slow convergence. 
+    <LI>Implemented as daemon <I>routed</I> on most Unix systems. 
+    <LI>Main advantage is requires little configuration. 
+    <LI>Use UDP for messaging so unreliable. </LI></UL>
+  <CENTER>
+  <P><IMG height=273 src="NetworksBook_files/ch5_22.jpg" width=430> <BR>Format of a 
+  RIP update message. Message contains a list of destinations and a distance 
+  metric to each. RIP measures distance in hops.</P></CENTER>
+  <LI><B>OSPF (Open Shortest Path First) - Used within an organization where all 
+  routers run same routing algorithm</B> 
+  <UL>
+    <LI>Open (non-proprietary). 
+    <LI>Supports variety of distance metrics from link-state routing information 
+    using shortest path algorithm. 
+    <LI>dynamic algorithm changing routing as topology changes since routers 
+    exchange routing information. 
+    <LI>Supports routing based on type of service by running shortest path 
+    multiple times based on different metrics, delay, throughput, and costs 
+    <LI>Load balancing, uses multiple routes rather than shortest in hops. 
+    <LI>Hierarchical network support since networks have grown too large for one 
+    router to maintain table. Each router configured to know which other outers 
+    are in its hierarchy. To connect hierarchy, one router in each hierarchy 
+    configured to communicate with one or more routers in other hierarchies. 
+    <LI>Authenticated Message Exchange between two routers to ensure messages 
+    only accepted from trusted source as security to prevent spoofing by bogus 
+    routing information. </LI></UL></LI></UL>
+<P><B>5.5.6 Exterior Gateway Routing Protocol: BGP (Border Gateway Protocol) - 
+</B>Used to connect organization networks running own version of an interior 
+gateway routing protocol, must deal with politics. May not allow certain transit 
+traffic, etc.</P>
+<P><B>5.5.8 Mobile IP - When IP's move to different network but keep same IP</B> 
+</P>
+<OL>
+  <P>Each site with mobile users must support home agent that acts on behalf of 
+  the mobile user, essentially forwarding any packets received for the mobile IP 
+  to its new network. </P>
+  <LI>Mobile IP 
+  <OL>
+    <LI>When mobile IP arrives in new area listens for advertisement of services 
+    from foreign routing agents or broadcasts its arrival and waits for foreign 
+    agent response. 
+    <LI>Registers with foreign routing agent giving IP home routing agent 
+    address and data link address. </LI></OL>
+  <LI>Foreign routing agent 
+  <OL>
+    <LI>Foreign agent contacts home routing agent sending <B>in-care-of</B> 
+    address to home routing agent. 
+    <LI>Receives packets for mobile IP from home routing agent, forwards to 
+    mobile IP. </LI></OL>
+  <LI>Home routing agent 
+  <OL>
+    <LI>Routes packets for mobile IP to a willing foreign routing agent where 
+    mobile IP has moved, packet essentially tunneled through Internet (an IP 
+    packet inside an IP packet) from home router to foreign routing agent. 
+    <LI>When a packet arrives at home network for mobile IP the router ARP is 
+    responded to by the home agent with its data link address. Home agent may 
+    also send <I>gratuitous ARP</I> to router to replace mobile IP data link 
+    address with its own so that it will receive any packets destined for the 
+    mobile IP. 
+    <LI>To reduce latency due to tunneling through the home agent, the sender is 
+    given the IP address of the foreign agent to tunnel packets directly to the 
+    mobile IP. </LI></OL></LI></OL>
+<CENTER>
+<P><IMG height=323 src="NetworksBook_files/ch5_9.jpg" width=484></P></CENTER>
+<P><B>5.5.9 CIDR IPv4 - Classless InterDomain Routing - Delaying the IP network 
+explosion problem</B> </P>
+<UL>
+  <LI><B>Problem - </B>Routers use two level table of all other routers on other 
+  networks and hosts on own. Class C networks require 2,000,000 table entries 
+  for routers and 256 for hosts; 512,000,000 Class C addresses. Routers must 
+  exchange table information periodically. 
+  <LI><B>Possible Solutions</B> 
+  <UL>
+    <LI><B>Deeper Heirarchy</B> - Have IP address contain country, state, etc. 
+    Requires larger IP number and wasteful for small countries. 
+    <LI><B>CIDR</B> - Allocate contiguous, variable sized blocks of Class C 
+    addresses totaling 2,000,000*256, among regions. An additional 32-bit mask 
+    is assigned with the block that is ANDed by routers to extract the base 
+    Class C block address. All routers for that region would receive the 
+    starting block and mask. Can be used for A, B, and C networks. North America 
+    has addresses 198.0.0.0 to 199.255.255.255. Any router in the world 
+    receiving a packet starting with 198 or 199 routes the packet to its North 
+    American router.&nbsp; 
+    <UL>
+      <LI>Suppose IUS needed 1024 addresses (2<SUP>10</SUP>) and IUPUI needed 
+      4096 (2<SUP>12</SUP>) . IUS could be given addresses 198.24.128.0 through 
+      198.24.131.255 and mask 255.255.252.0; IUPUI 198.24.0.0 through 
+      198.24.15.255 and mask 255.255.240.0.&nbsp; 
+      <LI>All routers would need to be informed of the IUS network address and 
+      mask. 
+      <LI>A packet arriving at a router would have destination address ANDed 
+      with each mask until the result matched an assigned subnet. Router 
+      forwards to nearest router to subnet or, if connected to subnet, to host 
+      directly. </LI></UL>
+    <P>&nbsp;
+    <UL>
+      <LI><PRE>            255.255.252.0 = 11111111 11111111 11111100 00000000
+     AND 198.024.130.5 = <U>11000110 00011000 10000010 00000101
+</U>     IUS  198.024.128.0 = 11000110 00011000 10000000 00000000 </PRE></LI></UL></LI></UL></LI></UL>
+<P><B>5.5.10 IPv6</B> </P>
+<UL>
+  <LI>Support billions of hosts - uses 16 byte addresses, (e.g. 
+  8000:0000:0000:0000:0123:5678:CDEF), IPv4 addresses could be written as 
+  ::192.31.20.46 
+  <LI>Reduce size of routing tables - 16 byte addresses allow deeper hierarchy. 
+  <LI>Simplify protocol so routers can process packets faster - header reduced 
+  to 7 fields from 13 in IPv4. Removed checksum field since transport and data 
+  link protocols normally have own and network communication highly reliable. 
+  <LI>Provide better security - supports state-of-the-art checksum 
+  authentication and user optional encoding algorithm for privacy. Encryption is 
+  essentially an end-to-end issue. 
+  <LI>Attention to type of service, particularly real-time data - Priority field 
+  defining slow and fast data. 
+  <LI>Aid multicasting by allowing scopes to be defined - Multicast addresses 
+  with 4-bit scope field and 112-bit group field. 
+  <LI>Support roaming hosts - not supported directly, still possible via 
+  foreign/home agents 
+  <LI>Allow protocol to evolve - Much of IPv4 header pushed into higher level, 
+  end-to-end protocols (e.g. checksum) which can be implemented independent of 
+  routing issues. 
+  <LI>Permit old and new protocols to coexist - not compatible with IPv4 but is 
+  with TCP, UDP, ICMP, DNS, etc. except for larger addresses. Initially islands 
+  of IPv6 tunnel through IPv4 networks until eventually merge into a complete 
+  IPv6 network. Current investment in IPv4 routers too large. </LI></UL>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><IMG height=378 src="NetworksBook_files/ch5_18.jpg" width=466 
+  border=0></TD></TR>
+  <TR>
+    <TD><IMG height=312 src="NetworksBook_files/ch5_16.jpg" width=572 
+  border=0></TD></TR></TBODY></TABLE>
+<P></P>
+<HR width="100%">
+
+<P>Document last modified:&nbsp;
+<SCRIPT language=JavaScript>
+document.write(document.lastModified);
+</SCRIPT>
+ <BR>&nbsp; </P></BODY></HTML>

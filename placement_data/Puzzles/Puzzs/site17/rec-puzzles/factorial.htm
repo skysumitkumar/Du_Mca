@@ -1,0 +1,107 @@
+<html><head>
+<title>Solution for /arithmetic/digits/least.significant/factorial</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/digits/least.significant/factorial problem</h1>
+<hr>
+Reduce mod 10 the numbers 2..n and then cancel out the
+required factors of 10. The final step then involves
+computing 2^i*3^j*7^k mod 10 for suitable i,j and k. 
+
+<p>
+A small program that performs this calculation is appended. Like the
+other solutions, it takes O(log n) arithmetic operations.
+
+<pre>
+-kym
+===
+
+#include&lt;stdio.h&gt;
+#include&lt;assert.h&gt;
+
+int	p[6][4]={
+	/*2*/	2,	4,	8,	6,
+	/*3*/	3,	9,	7,	1,
+	/*4*/	4,	6,	4,	6,
+	/*5*/	5,	5,	5,	5,
+	/*6*/	6,	6,	6,	6,
+	/*7*/	7,	9,	3,	1,
+	};
+
+main(){
+	int	i;
+	int n;
+
+	for(n=2;n&lt;1000;n++){
+		i=lsdfact(n);
+		printf("%d\n",i);
+		}
+
+	exit(0);
+	}
+
+lsdfact(n){
+	int	a[10];
+	int	i;
+	int	n5;
+	int	tmp;
+
+	for(i=0;i&lt;=9;i++)a[i]=alpha(i,n);
+
+	n5=0;
+/* NOTE: order is important in following */
+l5:;
+	while(tmp=a[5]){	/* cancel factors of 5 */
+		n5+=tmp;
+		a[1]+=(tmp+4)/5;
+		a[3]+=(tmp+3)/5;
+		a[5]=(tmp+2)/5;
+		a[7]+=(tmp+1)/5;
+		a[9]+=(tmp+0)/5;
+		}
+l10:;
+	if(tmp=a[0]){
+		a[0]=0;	/* cancel all factors of 10 */
+		for(i=0;i&lt;=9;i++)a[i]+=alpha(i,tmp);
+		}
+	if(a[5]) goto l5;
+	if(a[0]) goto l10;
+
+/* n5 == number of 5's cancelled; 
+   must now cancel same number of factors of 2 */
+	i=ipow(2,a[2]+2*a[4]+a[6]+3*a[8]-n5)*
+		ipow(3,a[3]+a[6]+2*a[9])*
+		ipow(7,a[7]);
+	assert(i%10);	/* must not be zero */
+	return	i%10;
+	}
+
+alpha(d,n){
+/* number of decimal numbers in [1,n] ending in digit d */
+	int tmp;
+	tmp=(n+10-d)/10;
+	if(d==0)tmp--;	/* forget 0 */
+	return tmp;
+	}
+
+ipow(x,y){
+/* x^y mod 10 */
+	if(y==0) return 1;
+	if(y==1) return x;
+	return p[x-2][(y-1)%4];
+	}
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

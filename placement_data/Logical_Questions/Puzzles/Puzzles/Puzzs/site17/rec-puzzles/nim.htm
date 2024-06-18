@@ -1,0 +1,60 @@
+<html><head>
+<title>Solution for /competition/games/nim</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /competition/games/nim problem</h1>
+<hr>
+For the particular game described we only need to consider positions for
+which the following condition holds for each pile:
+
+<pre>
+   (number of bills in pile k) + k &gt;= (number of piles) + 1
+</pre>
+
+A GOOD position is defined as one in which this condition holds,
+with equality applying only to one pile P, and all piles following P
+having the same number of bills as P.
+( So the initial position is GOOD, the special pile being the first. )
+I now claim that if I leave you a GOOD position, and you make any move,
+I can move back to a GOOD position.
+
+<p>
+Suppose there are n piles and the special pile is numbered (n-p+1)
+(so that the last p piles each contain p bills).
+<ol>
+<li> You take p bills from p or more piles; 
+  <ul>
+  <li> If p = n, you have just taken the last bill and lost.
+  <li> Otherwise I reduce pile (n-p) (which is now the last) to 1 bill.
+  </ul>
+<li> You take p bills from r(&lt;p) piles;
+    I take r bills from (p-r) piles.
+<li> You take q(&lt;p) bills from p or more piles;
+    I take (p-q) bills from q piles.
+<li> You take q(&lt;p) bills from r(&lt;p) piles;
+  <ul>
+  <li> q+r&gt;p; I take (p-q) bills from (q+r-p) piles
+  <li> q+r&lt;=p; I take (p-q) bills from (q+r) piles
+  </ul>
+</ol>
+
+Verifying that each of the resulting positions is GOOD is tedious
+but straightforward.  It is left as an exercise for the reader.
+
+<pre>
+    -- RobH
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

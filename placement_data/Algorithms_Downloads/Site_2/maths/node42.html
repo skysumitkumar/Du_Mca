@@ -1,0 +1,109 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Timing the Algorithm</TITLE>
+<META NAME="description" CONTENT="Timing the Algorithm">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="previous" HREF="node41.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node41.html">
+<LINK REL="up" HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">
+<LINK REL="next" HREF="node43.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node43.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html914"
+  HREF="node43.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node43.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html908"
+  HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html904"
+  HREF="node41.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node41.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html910"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html912"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html915"
+  HREF="node43.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node43.html">Timings for Various Sorting</A>
+<B> Up:</B> <A NAME="tex2html909"
+  HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">Merge Sort</A>
+<B> Previous:</B> <A NAME="tex2html905"
+  HREF="node41.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node41.html">Merge Sort</A>
+ &nbsp <B>  <A NAME="tex2html911"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html913"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00643000000000000000">
+Timing the Algorithm</A>
+</H2>
+As before we look for a recurrence relation. We will ignore the special
+case <I>j</I> - <I>i</I> &lt; 3 which occurs at the end of each branch. Let <I>T</I>(<I>n</I>) be the
+average time to sort <I>n</I> elements. The sort consists of sorting two lists
+of `half' the length and then combining them by a merge. So
+<!-- MATH
+ \begin{displaymath}
+\     T(n) =  T(\text{floor}(n/2)) + T(\text{ceiling}(n/2)) + \alpha n.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;<I>T</I>(<I>n</I>) = <I>T</I>(floor(<I>n</I>/2)) + <I>T</I>(ceiling(<I>n</I>/2)) + <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img97.gif"
+ ALT="$\displaystyle \alpha$"><I>n</I>.
+</DIV><P></P>
+We have already studied this recurrence and have found that, roughly
+speaking,
+<!-- MATH
+ \begin{displaymath}
+\boxed{  T(n) \propto n\ln n }
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="107" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img112.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img112.gif"
+ ALT="% latex2html id marker 18263
+$\displaystyle \boxed{ T(n) \propto n\ln n }$">
+</DIV><P></P>
+So this algorithm, like Quicksort, is an <I>O</I>(<I>n</I> ln&nbsp;<I>n</I>) sorting algorithm.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

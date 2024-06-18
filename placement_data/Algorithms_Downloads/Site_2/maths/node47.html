@@ -1,0 +1,1143 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Questions 2 (Hints and solutions start on page .)</TITLE>
+<META NAME="description" CONTENT="Questions 2 (Hints and solutions start on page .)">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="previous" HREF="node45.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node45.html">
+<LINK REL="up" HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">
+<LINK REL="next" HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html981"
+  HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html975"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html971"
+  HREF="node46.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node46.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html977"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html979"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html982"
+  HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">Abstract Data Types</A>
+<B> Up:</B> <A NAME="tex2html976"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">Sorting</A>
+<B> Previous:</B> <A NAME="tex2html972"
+  HREF="node46.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node46.html">Some Example Sort Implementations</A>
+ &nbsp <B>  <A NAME="tex2html978"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html980"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00680000000000000000"></A><A NAME="SQ:sorting"></A>
+<BR>
+Questions 2 (Hints and solutions start on page <A HREF="node107.html#SA:sorting" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node107.html#SA:sorting"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/crossref.gif"></A>.)
+</H1>
+
+<P>
+<P>
+<DIV><A NAME="Q:perm-notation"><B>Q  2.1</B></A> &nbsp; 
+ 
+Just to check that you understand the basic notations, let
+<!-- MATH
+ \begin{displaymath}
+\pi_1 = 	\begin{pmatrix}
+		1&2&3&4&5&6\\
+		4&3&1&5&2&6
+		\end{pmatrix},\qquad
+   \pi_2 = 	\begin{pmatrix}
+		1&2&3&4&5&6\\
+		6&5&4&3&2&1
+		\end{pmatrix}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img119.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img119.gif"
+ ALT="$\displaystyle \pi_{1}^{}$"> = <IMG
+ WIDTH="159" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img120.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img120.gif"
+ ALT="$\displaystyle \begin{pmatrix}
+1&amp;2&amp;3&amp;4&amp;5&amp;6\\
+4&amp;3&amp;1&amp;5&amp;2&amp;6
+\end{pmatrix}$">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img121.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img121.gif"
+ ALT="$\displaystyle \pi_{2}^{}$"> = <IMG
+ WIDTH="159" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img122.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img122.gif"
+ ALT="$\displaystyle \begin{pmatrix}
+1&amp;2&amp;3&amp;4&amp;5&amp;6\\
+6&amp;5&amp;4&amp;3&amp;2&amp;1
+\end{pmatrix}$">
+</DIV><P></P>
+be permutations in <I>S</I><SUB>6</SUB>. Work out <!-- MATH
+ $\pi_1\pi_2$
+ -->
+<IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img123.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img123.gif"
+ ALT="$ \pi_{1}^{}$"><IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img124.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img124.gif"
+ ALT="$ \pi_{2}^{}$">, <!-- MATH
+ $\pi_2\pi_1$
+ -->
+<IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img124.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img124.gif"
+ ALT="$ \pi_{2}^{}$"><IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img123.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img123.gif"
+ ALT="$ \pi_{1}^{}$">,
+<!-- MATH
+ $\pi_1^{-1}\pi_2\pi_1$
+ -->
+<IMG
+ WIDTH="31" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img125.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img125.gif"
+ ALT="$ \pi_{1}^{-1}$"><IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img124.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img124.gif"
+ ALT="$ \pi_{2}^{}$"><IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img123.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img123.gif"
+ ALT="$ \pi_{1}^{}$">, <IMG
+ WIDTH="21" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img126.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img126.gif"
+ ALT="$ \pi_{1}^{3}$">. Decompose <IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img123.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img123.gif"
+ ALT="$ \pi_{1}^{}$"> and <IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img124.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img124.gif"
+ ALT="$ \pi_{2}^{}$"> as
+products of disjoint cycles.
+
+<P>
+Show that the inverse of a cycle is a cycle. What is the
+inverse of <!-- MATH
+ $\langle a_1,a_2,\ldots,a_k\rangle$
+ -->
+<IMG
+ WIDTH="10" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img127.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img127.gif"
+ ALT="$ \langle$"><I>a</I><SUB>1</SUB>, <I>a</I><SUB>2</SUB>,..., <I>a</I><SUB>k</SUB><IMG
+ WIDTH="10" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img128.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img128.gif"
+ ALT="$ \rangle$">?</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:perm-disjoint"><B>Q  2.2</B></A> &nbsp; 
+ 
+Suppose that a permutation <!-- MATH
+ $\pi\in S_n$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$"> <IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img65.gif"
+ ALT="$ \in$"> <I>S</I><SUB>n</SUB> decomposes into a
+product of disjoint cycles as
+<!-- MATH
+ \begin{displaymath}
+\pi = \sigma_1\sigma_2\ldots\sigma_k.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img72.gif"
+ ALT="$\displaystyle \pi$"> = <IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img129.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img129.gif"
+ ALT="$\displaystyle \sigma_{1}^{}$"><IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img130.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img130.gif"
+ ALT="$\displaystyle \sigma_{2}^{}$">...<IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img131.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img131.gif"
+ ALT="$\displaystyle \sigma_{k}^{}$">.
+</DIV><P></P>
+Find the smallest positive integer <I>m</I> such that <IMG
+ WIDTH="26" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img132.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img132.gif"
+ ALT="$ \pi^{m}_{}$"> = <I>id</I> ( the <I>order</I> of <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$">) in terms of the lengths of the sigmas.</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:shuffle"><B>Q  2.3</B></A> &nbsp; 
+ 
+If we have a pack of 16 cards then the effect of a 
+split-and-interleave shuffle is one of the following permutations,
+depending on which `hand' is uppermost.
+ <!-- MATH
+ \begin{displaymath}
+\pi_1 = 	\begin{pmatrix}
+		1&2&3&4&5&6&7&8&9&10&11&12&13&14&15&16\\
+		1&9&2&10&3&11&4&12&5&13&6&14&7&15&8&16
+		\end{pmatrix}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img119.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img119.gif"
+ ALT="$\displaystyle \pi_{1}^{}$"> = <IMG
+ WIDTH="484" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img133.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img133.gif"
+ ALT="$\displaystyle \begin{pmatrix}
+1&amp;2&amp;3&amp;4&amp;5&amp;6&amp;7&amp;8&amp;9&amp;10&amp;11&amp;12&amp;13&amp;14&amp;15&amp;16\\
+1&amp;9&amp;2&amp;10&amp;3&amp;11&amp;4&amp;12&amp;5&amp;13&amp;6&amp;14&amp;7&amp;15&amp;8&amp;16
+\end{pmatrix}$">
+</DIV><P></P>
+<!-- MATH
+ \begin{displaymath}
+\pi_2 =	\begin{pmatrix}
+		1&2&3&4&5&6&7&8&9&10&11&12&13&14&15&16\\
+		9&1&10&2&11&3&12&4&13&5&14&6&15&7&16&8
+		\end{pmatrix}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img121.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img121.gif"
+ ALT="$\displaystyle \pi_{2}^{}$"> = <IMG
+ WIDTH="492" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img134.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img134.gif"
+ ALT="$\displaystyle \begin{pmatrix}
+1&amp;2&amp;3&amp;4&amp;5&amp;6&amp;7&amp;8&amp;9&amp;10&amp;11&amp;12&amp;13&amp;14&amp;15&amp;16\\
+9&amp;1&amp;10&amp;2&amp;11&amp;3&amp;12&amp;4&amp;13&amp;5&amp;14&amp;6&amp;15&amp;7&amp;16&amp;8
+\end{pmatrix}$">
+</DIV><P></P>
+Break each permutation into a product of disjoint cycles and then
+find the smallest positive integers <I>n</I>, <I>m</I> such that <!-- MATH
+ $\pi_1^n=id$
+ -->
+<IMG
+ WIDTH="22" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img135.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img135.gif"
+ ALT="$ \pi_{1}^{n}$"> = <I>id</I> and
+<!-- MATH
+ $\pi_2^m=id$
+ -->
+<IMG
+ WIDTH="26" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img136.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img136.gif"
+ ALT="$ \pi_{2}^{m}$"> = <I>id</I>.
+(If you've got paper and patience you can do the same for a pack of
+52 cards.)</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:high-degree"><B>Q  2.4</B></A> &nbsp; 
+ 
+Bearing all this stuff about decompositions in  mind, what
+permutations in <I>S</I><SUB>10</SUB> have the highest degree, and what is that
+degree? (Once more: the <I>degree</I> of a permutation is the
+smallest positive integer <I>n</I> such that <IMG
+ WIDTH="22" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img137.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img137.gif"
+ ALT="$ \pi^{n}_{}$"> = <I>id</I>, where <I>id</I> is
+the `identity permutation' that changes nothing.)
+
+<P>
+What are the permutations of highest order in <I>S</I><SUB>20</SUB>? Please don't
+check through all  <!-- MATH
+ $20! = 2,432,902,008,176,640,000$
+ -->
+20! = 2, 432, 902, 008, 176, 640, 000 cases!</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:perm-ops"><B>Q  2.5</B></A> &nbsp; 
+ 
+In the following parts I want you to write an algorithm
+to perform the desired calculation. At the least, sketch out the way
+in which such an algorithm would operate. At the most, if enthusiastic,
+write an actual program in some language.
+
+<P>
+Let us adopt the convention that a permutation is represented
+by an array <!-- MATH
+ $(a_1,a_2,\ldots,a_k)$
+ -->
+(<I>a</I><SUB>1</SUB>, <I>a</I><SUB>2</SUB>,..., <I>a</I><SUB>k</SUB>), standing for the permutation
+<!-- MATH
+ \begin{displaymath}
+\pi = \begin{pmatrix}
+		1&2&\ldots& k\\
+		 a_1&a_2&\ldots & a_k
+	 \end{pmatrix}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img72.gif"
+ ALT="$\displaystyle \pi$"> = <IMG
+ WIDTH="147" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img138.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img138.gif"
+ ALT="$\displaystyle \begin{pmatrix}
+1&amp;2&amp;\ldots&amp; k\\
+a_1&amp;a_2&amp;\ldots &amp; a_k
+\end{pmatrix}$">
+</DIV><P></P>
+
+<OL>
+<LI>Given two permutations <IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img123.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img123.gif"
+ ALT="$ \pi_{1}^{}$"> and <IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img124.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img124.gif"
+ ALT="$ \pi_{2}^{}$">, calculate their product;
+</LI>
+<LI>calculate the inverse of a permutation; and 
+</LI>
+<LI>decompose a permutation into a product of disjoint cycles.
+</LI>
+</OL>
+You will need to decide on a useful form for the `output'.</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:sort-exs"><B>Q  2.6</B></A> &nbsp; 
+ 
+Work through each sorting algorithm carefully for each of the
+following lists -- pretend to be a computer.
+<BLOCKQUOTE>
+5,4,6,8,2,1,3,9,0,7
+<BR>
+0,1,2,3,4,5,6
+<BR>
+6,5,4,3,2,1,0
+<BR>
+1,1,1,2,2,2,2
+
+</BLOCKQUOTE></DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:quicksort-order"><B>Q  2.7</B></A> &nbsp; 
+ 
+If, in Quicksort, we choose the first element of each sublist as
+separator at each stage then the very worst case of the algorithm
+comes when you present it with a list that is already in order!
+
+<P>
+In this case the algorithm achieves as little <I>dividing and 
+conquering</I> as possible. If <I>T</I>(<I>n</I>) is the running time for this case
+and the separation time is <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><I>n</I>, show that <!-- MATH
+ $T(n)=\alpha n +T(n-1)$
+ -->
+<I>T</I>(<I>n</I>) = <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><I>n</I> + <I>T</I>(<I>n</I> - 1)
+and deduce that <!-- MATH
+ $T(n) = O(n^2)$
+ -->
+<I>T</I>(<I>n</I>) = <I>O</I>(<I>n</I><SUP>2</SUP>).</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:sort-stable"><B>Q  2.8</B></A> &nbsp; 
+ 
+Which of the sorting algorithms are stable? Recall the definition of
+<I>stable</I>: We have a list of elements <!-- MATH
+ $x_1,\ldots,x_n$
+ -->
+<I>x</I><SUB>1</SUB>,..., <I>x</I><SUB>n</SUB>. They may
+all be different but some are the same as far as the inequality is
+concerned (e.g. the elements may be pairs of numbers <I>x</I><SUB>i</SUB> = (<I>a</I>, <I>b</I>) and
+we may be putting them into order according to the first
+element). Suppose that <I>x</I><SUB>i</SUB> and <I>x</I><SUB>j</SUB> are equal as far as the
+inequality is concerned. Then the sort is <I>stable</I> if it
+preserves the order in which <I>x</I><SUB>i</SUB> and <I>x</I><SUB>j</SUB> came in the list.</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:merge-sort"><B>Q  2.9</B></A> &nbsp; 
+ 
+Before looking at the notes, which contain the answer, try to think up
+an algorithm for <I>merging</I> two ordered list into a single
+ordered list. You are given lists <!-- MATH
+ $(x_1,\ldots,x_n)$
+ -->
+(<I>x</I><SUB>1</SUB>,..., <I>x</I><SUB>n</SUB>) and
+<!-- MATH
+ $(y_1,\ldots,y_m)$
+ -->
+(<I>y</I><SUB>1</SUB>,..., <I>y</I><SUB>m</SUB>) both of which are in increasing order and you want
+to put them together into a list <!-- MATH
+ $(z_1,\ldots,z_{n+m})$
+ -->
+(<I>z</I><SUB>1</SUB>,..., <I>z</I><SUB>n + m</SUB>) which is also
+in increasing order. Your method should not take time worse than
+<I>O</I>(<I>n</I> + <I>m</I>) (it should be roughly proportional to <I>n</I> + <I>m</I>). When you have
+done this compare your result with the version in the notes.
+
+<P>
+Can you adapt the algorithm so that it finds the <I>union </I> of the
+two lists <I>x</I> <IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img139.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img139.gif"
+ ALT="$ \cup$"> <I>y</I> ? -- i.e. there are to be no repeated elements in
+<I>z</I>.</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:insertion-sort"><B>Q  2.10</B></A> &nbsp; 
+ 
+Suppose we want to sort a list <!-- MATH
+ $(x_1,\ldots,x_n)$
+ -->
+(<I>x</I><SUB>1</SUB>,..., <I>x</I><SUB>n</SUB>) into order.
+If we use Insertion Sort it will take time roughly proportional to <I>n</I><SUP>2</SUP>.
+Suppose that we do the following instead: first split the list into
+two halves, then apply insertion sort to each half, then merge the results
+by the algorithm of the previous question. Show that this should lead
+to a faster sorting routine if <I>n</I> is reasonably large. What about
+subdividing the list into a larger number of sublists?
+
+<P>
+Suppose that you don't split the list into two <I>halves</I> but just
+divide it randomly into two parts before starting the above process. Are
+you likely to get much of an advantage over direct Insertion Sort or
+does this depend on the split being almost exactly half way?</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:alphabetical"><B>Q  2.11</B></A> &nbsp; 
+ 
+Write a careful algorithm to decide the alphabetical order of two
+words. To be more precise: define a function <TT>ord(a,b)</TT> which,
+given the strings of letters <TT>a</TT> and <TT>b</TT> returns 1 if <TT>a</TT>
+is alphabetically before <TT>b</TT>, 0 if they are equal and -1 if <TT>b</TT> is alphabetically before <TT>a</TT>. You may assume that the end of
+each word is marked in the string by the `letter' <IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img140.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img140.gif"
+ ALT="$ \epsilon$">.</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:recursive"><B>Q  2.12</B></A> &nbsp; 
+ 
+We have been working with recursive programs, so let's look at
+recursive functions. 
+
+<P>
+Let <I>P</I>(<I>n</I>) be the number of ways of decomposing <I>n</I> as a sum of positive
+integers, ignoring order. 
+<!-- MATH
+ \begin{displaymath}
+\text{e.g.} 4 = 4 = 3+1 = 2+2 = 2+1+1 = 1+1+1+1 \text{so} P(4)=5
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+e.g.4 = 4 = 3 + 1 = 2 + 2 = 2 + 1 + 1 = 1 + 1 + 1 + 1so<I>P</I>(4) = 5
+</DIV><P></P>
+<I>P</I> is a surprisingly important function. It would be nice if we could
+calulate its values without having to write down all possible decompositions.
+
+<P>
+The easiest approach is to define a function <I>Q</I>(<I>n</I>, <I>m</I>) which gives the
+number of ways of decomposing <I>n</I> using no numbers bigger than <I>m</I>. For
+example <I>Q</I>(4, 1) = 1, <I>Q</I>(4, 2) = 3, <I>Q</I>(4, 3) = 4 . Obviously <!-- MATH
+ $P(n)=Q(n,n)$
+ -->
+<I>P</I>(<I>n</I>) = <I>Q</I>(<I>n</I>, <I>n</I>).
+
+<P>
+I am now going to give you a recursive definition of <I>Q</I>. I want you to show
+that it is correct in the following two senses: (1) starting with any
+(<I>n</I>, <I>m</I>) (<I>n</I>, <I>m</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$">1) it allows us to find <I>Q</I>(<I>n</I>, <I>m</I>), and (2) the answer you
+get is correct.
+
+<P>
+The following are meant to be applied in order:
+
+<OL>
+<LI><!-- MATH
+ $Q(1,m) = 1$
+ -->
+<I>Q</I>(1, <I>m</I>) = 1 if <I>m</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$">1
+</LI>
+<LI><!-- MATH
+ $Q(n,1) = 1$
+ -->
+<I>Q</I>(<I>n</I>, 1) = 1 if <I>n</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$">1
+</LI>
+<LI><!-- MATH
+ $Q(n,m) = Q(n,n)$
+ -->
+<I>Q</I>(<I>n</I>, <I>m</I>) = <I>Q</I>(<I>n</I>, <I>n</I>) if <!-- MATH
+ $m\ge n\ge 1$
+ -->
+<I>m</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$"><I>n</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$">1
+</LI>
+<LI><!-- MATH
+ $Q(n,n) = Q(n,n-1)+1$
+ -->
+<I>Q</I>(<I>n</I>, <I>n</I>) = <I>Q</I>(<I>n</I>, <I>n</I> - 1) + 1 if <I>n</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$">2
+</LI>
+<LI><!-- MATH
+ $Q(n,m) = Q(n,m-1) + Q(n-m,m)$
+ -->
+<I>Q</I>(<I>n</I>, <I>m</I>) = <I>Q</I>(<I>n</I>, <I>m</I> - 1) + <I>Q</I>(<I>n</I> - <I>m</I>, <I>m</I>)
+</LI>
+</OL>
+The usual problem you run into with such definitions is that it is possible
+to get trapped into an infinite loop from which there is no escape.
+
+<P>
+Whilst you are at it, work out a few values of <I>P</I>(<I>n</I>).
+
+<P>
+Another famous recursive function is Ackerman's function. This was designed
+to be a nuisance. The function <I>A</I>(<I>n</I>, <I>m</I>) is defined as follows:
+
+<OL>
+<LI><!-- MATH
+ $A(0,m) = m+1$
+ -->
+<I>A</I>(0, <I>m</I>) = <I>m</I> + 1
+</LI>
+<LI><!-- MATH
+ $A(n,0) = A(n-1,1)$
+ -->
+<I>A</I>(<I>n</I>, 0) = <I>A</I>(<I>n</I> - 1, 1)
+</LI>
+<LI><!-- MATH
+ $A(n,m) = A(n-1,A(n,m-1))$
+ -->
+<I>A</I>(<I>n</I>, <I>m</I>) = <I>A</I>(<I>n</I> - 1, <I>A</I>(<I>n</I>, <I>m</I> - 1))
+</LI>
+</OL>
+Work out <I>A</I>(3, 2). Roughly how many digits has <I>A</I>(4, 2)? If you had to
+write out <I>A</I>(4, 4) would the forests of Sweden be sufficient, or would 
+you have to use up the Amazon basin as well?</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:timing"><B>Q  2.13</B></A> &nbsp; 
+ 
+In case you found the timing argument for insertion sort a bit
+too glib, try the following alternative:
+
+<P>
+Let <!-- MATH
+ $\pi\in S_n$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$"> <IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img65.gif"
+ ALT="$ \in$"> <I>S</I><SUB>n</SUB> be a permutation of <!-- MATH
+ $\{1,\ldots,n\}$
+ -->
+{1,..., <I>n</I>}. Think of <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$"> as
+a (shuffled) list. For <!-- MATH
+ $i=1,\dots,n$
+ -->
+<I>i</I> = 1,..., <I>n</I> let <!-- MATH
+ $m_{\pi}(i)$
+ -->
+<I>m</I><SUB><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img76.gif"
+ ALT="$\scriptstyle \pi$"></SUB>(<I>i</I>) be the number of
+elements in the list <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$"> that are to the <I>right</I> of <I>i</I> and are
+less than it.
+<!-- MATH
+ \begin{displaymath}
+\text{if} \pi = (4 2 1 5 3) \in S_5 \text{then} m_{\pi}(1)=0,\quad
+\    m_{\pi}(2)=1,\quad m_{\pi}(3)=0\text{etc}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+if<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img72.gif"
+ ALT="$\displaystyle \pi$"> = (42153) <IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img142.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img142.gif"
+ ALT="$\displaystyle \in$"> <I>S</I><SUB>5</SUB>then<I>m</I><SUB><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img76.gif"
+ ALT="$\scriptstyle \pi$"></SUB>(1) = 0,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>m</I><SUB><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img76.gif"
+ ALT="$\scriptstyle \pi$"></SUB>(2) = 1,&nbsp;&nbsp;&nbsp;&nbsp;<I>m</I><SUB><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img76.gif"
+ ALT="$\scriptstyle \pi$"></SUB>(3) = 0etc
+</DIV><P></P>
+Why is <!-- MATH
+ $m_{\pi}(1)+\cdots+m_{\pi}(n)$
+ -->
+<I>m</I><SUB><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img76.gif"
+ ALT="$\scriptstyle \pi$"></SUB>(1) + <SUP> ... </SUP> + <I>m</I><SUB><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img76.gif"
+ ALT="$\scriptstyle \pi$"></SUB>(<I>n</I>) equal to the number of `moves' that
+need to be made in the insertion sort of <!-- MATH
+ $\pi\in S_n$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$"> <IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img65.gif"
+ ALT="$ \in$"> <I>S</I><SUB>n</SUB>?
+
+<P>
+Show that <!-- MATH
+ $0\le m_{\pi}(i) \le i-1 \text{for} i=1,\ldots,n$
+ -->
+0<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$"><I>m</I><SUB><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img76.gif"
+ ALT="$\scriptstyle \pi$"></SUB>(<I>i</I>)<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$"><I>i</I> - 1for<I>i</I> = 1,..., <I>n</I>.
+<!-- MATH
+ \begin{displaymath}
+\text{Let} P_n = \left\{ (m_1,\ldots,m_n)\in \ensuremath{\mathbb{Z}}^n : 0\le m_i\le i-1 \qquad
+\                     i=1,\ldots,n\right\}
+\end{displaymath}
+ -->
+<P ALIGN="CENTER"><IMG
+ WIDTH="441" HEIGHT="28" BORDER="0"
+ SRC="img146.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img146.gif"
+ ALT="\begin{displaymath}\text{Let} P_n = \left\{ (m_1,\ldots,m_n)\in \ensuremath{\mathbb{Z}}^n : 0\le m_i\le i-1 \qquad
+i=1,\ldots,n\right\}\end{displaymath}"></P>
+We have a mapping <!-- MATH
+ $\psi :S_n\to P_n$
+ -->
+<IMG
+ WIDTH="15" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img147.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img147.gif"
+ ALT="$ \psi$"> : <I>S</I><SUB>n</SUB><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>P</I><SUB>n</SUB> given by <!-- MATH
+ $\psi(\pi)={\bf m}_{\pi}$
+ -->
+<IMG
+ WIDTH="15" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img147.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img147.gif"
+ ALT="$ \psi$">(<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$">) = <IMG
+ WIDTH="28" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img148.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img148.gif"
+ ALT="$ \bf m_{\pi}^{}$">.
+
+<P>
+(1) Show that <!-- MATH
+ $\vert P_n\vert = n! = \vert S_n \vert$
+ -->
+|<I>P</I><SUB>n</SUB>|= <I>n</I>! =|<I>S</I><SUB>n</SUB>|.
+
+<P>
+(2) We now want to prove that <IMG
+ WIDTH="15" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img147.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img147.gif"
+ ALT="$ \psi$"> is a <I>bijection</I>. 
+Since both sets have the same number of elements it is sufficient to prove
+that <IMG
+ WIDTH="15" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img147.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img147.gif"
+ ALT="$ \psi$"> is <I>onto</I>. So we have to prove that, given <!-- MATH
+ ${\bf m}\in
+P_n$
+ -->
+<IMG
+ WIDTH="19" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img149.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img149.gif"
+ ALT="$ \bf m$"> <IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img65.gif"
+ ALT="$ \in$"> <I>P</I><SUB>n</SUB>, we can find <!-- MATH
+ $\pi\in S_n$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$"> <IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img65.gif"
+ ALT="$ \in$"> <I>S</I><SUB>n</SUB> such that <!-- MATH
+ $\psi(\pi)={\bf m}$
+ -->
+<IMG
+ WIDTH="15" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img147.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img147.gif"
+ ALT="$ \psi$">(<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$">) = <IMG
+ WIDTH="19" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img149.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img149.gif"
+ ALT="$ \bf m$">.
+
+<P>
+<BLOCKQUOTE>
+Show how to reconstruct <!-- MATH
+ $(4,2,1,5,3)$
+ -->
+(4, 2, 1, 5, 3) from <!-- MATH
+ ${\bf m}=(0,1,0,3,1)$
+ -->
+<IMG
+ WIDTH="19" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img149.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img149.gif"
+ ALT="$ \bf m$"> = (0, 1, 0, 3, 1).
+<BR>
+What perm <!-- MATH
+ $\pi\in S_n$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$"> <IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img65.gif"
+ ALT="$ \in$"> <I>S</I><SUB>n</SUB> produces <!-- MATH
+ ${\bf m}=(0,0,1,2,0,4,1,4,6)$
+ -->
+<IMG
+ WIDTH="19" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img149.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img149.gif"
+ ALT="$ \bf m$"> = (0, 0, 1, 2, 0, 4, 1, 4, 6)?
+<BR>
+Can you now give a rough argument to show that <IMG
+ WIDTH="15" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img147.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img147.gif"
+ ALT="$ \psi$"> is onto?
+
+</BLOCKQUOTE>
+
+<P>
+For <!-- MATH
+ $\pi\in S_n$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$"> <IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img65.gif"
+ ALT="$ \in$"> <I>S</I><SUB>n</SUB> let
+<!-- MATH
+ \begin{displaymath}
+\rho(\pi) = \sum_{i=1}^n m_{\pi}(i)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img150.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img150.gif"
+ ALT="$\displaystyle \rho$">(<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img72.gif"
+ ALT="$\displaystyle \pi$">) = <IMG
+ WIDTH="27" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img79.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img79.gif"
+ ALT="$\displaystyle \sum_{i=1}^{n}$"><I>m</I><SUB><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img76.gif"
+ ALT="$\scriptstyle \pi$"></SUB>(<I>i</I>)
+</DIV><P></P>
+-- the total number of `moves' in the insertion sort of <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$">. Then the
+average number of moves for all <!-- MATH
+ $\pi\in S_n$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$"> <IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img65.gif"
+ ALT="$ \in$"> <I>S</I><SUB>n</SUB> is
+<P></P>
+<DIV ALIGN="CENTER"><TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT">&nbsp;<I>av</I></TD>
+<TD NOWRAP ALIGN="LEFT">= <IMG
+ WIDTH="22" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img20.gif"
+ ALT="$\displaystyle {\frac{1}{n!}}$"><IMG
+ WIDTH="36" HEIGHT="52" ALIGN="MIDDLE" BORDER="0"
+ SRC="img93.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img93.gif"
+ ALT="$\displaystyle \sum_{\pi\in S_n}^{}$"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img150.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img150.gif"
+ ALT="$\displaystyle \rho$">(<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img72.gif"
+ ALT="$\displaystyle \pi$">)</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD NOWRAP ALIGN="LEFT">= <IMG
+ WIDTH="22" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img20.gif"
+ ALT="$\displaystyle {\frac{1}{n!}}$"><IMG
+ WIDTH="41" HEIGHT="52" ALIGN="MIDDLE" BORDER="0"
+ SRC="img151.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img151.gif"
+ ALT="$\displaystyle \sum_{{\bf m}\in P_n}^{}$"><IMG
+ WIDTH="19" HEIGHT="63" ALIGN="MIDDLE" BORDER="0"
+ SRC="img83.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img83.gif"
+ ALT="$\displaystyle \left(\vphantom{\sum_{i=1}^n m_i}\right.$"><IMG
+ WIDTH="27" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img79.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img79.gif"
+ ALT="$\displaystyle \sum_{i=1}^{n}$"><I>m</I><SUB>i</SUB><IMG
+ WIDTH="19" HEIGHT="63" ALIGN="MIDDLE" BORDER="0"
+ SRC="img84.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img84.gif"
+ ALT="$\displaystyle \left.\vphantom{\sum_{i=1}^n m_i}\right)$">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;why?</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD NOWRAP ALIGN="LEFT">= <IMG
+ WIDTH="22" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img20.gif"
+ ALT="$\displaystyle {\frac{1}{n!}}$"><IMG
+ WIDTH="27" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img79.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img79.gif"
+ ALT="$\displaystyle \sum_{i=1}^{n}$"><IMG
+ WIDTH="41" HEIGHT="52" ALIGN="MIDDLE" BORDER="0"
+ SRC="img151.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img151.gif"
+ ALT="$\displaystyle \sum_{{\bf m}\in P_n}^{}$"><I>m</I><SUB>i</SUB></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+What is <IMG
+ WIDTH="21" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img152.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img152.gif"
+ ALT="$ \sum$"><I>m</I><SUB>i</SUB> over <!-- MATH
+ ${\bf m}\in P_n$
+ -->
+<IMG
+ WIDTH="19" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img149.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img149.gif"
+ ALT="$ \bf m$"> <IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img65.gif"
+ ALT="$ \in$"> <I>P</I><SUB>n</SUB>? (Work out some simple examples.)
+Now calculate <I>av</I>.</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:quicksort-june97"><B>Q  2.14</B></A> &nbsp;
+
+<P><P>
+<BR>
+a) Describe the ``Quicksort'' algorithm for sorting a list and
+give pseudo-code for a routine
+<!-- MATH
+ \begin{displaymath}
+\text{\texttt{quicksort(x,lo,hi)}}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<TT>quicksort(x, lo, hi)</TT>
+</DIV><P></P>
+which sorts the sublist <!-- MATH
+ $x_{lo},\dots,x_{hi}$
+ -->
+<I>x</I><SUB>lo</SUB>,..., <I>x</I><SUB>hi</SUB> of the list <TT>x</TT>.
+You may assume that the routine <TT>separate(x,lo,hi,sep)</TT>, in
+which a list is separated into two sublists based on the separator
+<TT>sep</TT>, is available.  Illustrate your answer by ``quicksorting''
+the list
+<!-- MATH
+ \begin{displaymath}
+\begin{array}{ccccccccccc}
+6&4&8&2&11&5&3&7&9&1&10
+\end{array}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<TABLE>
+<TR VALIGN="MIDDLE"><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>6</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>8</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>11</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>5</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>7</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>9</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>10</TD></TR>
+</TABLE>
+</DIV><P></P>
+[When making a ``random'' choice from a list, choose the item that
+occurs in the first position, so a ``random'' choice from [2, 1, 3]
+would be 2.]
+
+<P>
+
+<P><P>
+<BR>
+b) 
+Let <I>T</I><SUB>n</SUB> be the average time taken to quicksort a list of <I>n</I>
+elements.  Assuming that the separation algorithm applied to a list of
+length <I>n</I> takes time <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><I>n</I>, derive the recurrence relation
+<!-- MATH
+ \begin{displaymath}
+\     T_n = \alpha n + \frac{2}{n}\sum_{k=0}^{n-1}T_k,
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;<I>T</I><SUB>n</SUB> = <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img97.gif"
+ ALT="$\displaystyle \alpha$"><I>n</I> + <IMG
+ WIDTH="17" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img99.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img99.gif"
+ ALT="$\displaystyle {\frac{2}{n}}$"><IMG
+ WIDTH="28" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img100.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img100.gif"
+ ALT="$\displaystyle \sum_{k=0}^{n-1}$"><I>T</I><SUB>k</SUB>,
+</DIV><P></P>
+explaining what other simplifying assumptions have been made.  Hence
+show that
+<!-- MATH
+ \begin{displaymath}
+\     \frac{1}{n+1}T_n =
+	T_0 + \sum_{k=0}^{n-1} \frac{\alpha(2k+1)}{(k+1)(k+2)}.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;<IMG
+ WIDTH="45" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img153.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img153.gif"
+ ALT="$\displaystyle {\frac{1}{n+1}}$"><I>T</I><SUB>n</SUB> = <I>T</I><SUB>0</SUB> + <IMG
+ WIDTH="28" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img100.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img100.gif"
+ ALT="$\displaystyle \sum_{k=0}^{n-1}$"><IMG
+ WIDTH="105" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img106.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img106.gif"
+ ALT="$\displaystyle {\frac{\alpha(2k+1)}{(k+1)(k+2)}}$">.
+</DIV><P></P>
+
+<P>
+
+<P><P>
+<BR>
+c) 
+How does Quicksort compare with insertion sort and
+Heapsort?</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html981"
+  HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html975"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html971"
+  HREF="node46.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node46.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html977"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html979"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html982"
+  HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">Abstract Data Types</A>
+<B> Up:</B> <A NAME="tex2html976"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">Sorting</A>
+<B> Previous:</B> <A NAME="tex2html972"
+  HREF="node46.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node46.html">Some Example Sort Implementations</A>
+ &nbsp <B>  <A NAME="tex2html978"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html980"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,407 @@
+<html><head>
+<title>Solution for /competition/games/rubiks/rubiks.cube</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /competition/games/rubiks/rubiks.cube problem</h1>
+<hr>
+The "official" world record was set by Minh Thai at the 1982 World
+Championships in Budapest Hungary, with a time of 22.95 seconds.
+
+<p>
+Keep in mind mathematicians provided standardized dislocation patterns
+for the cubes to be randomized as much as possible.
+
+<p>
+The fastest cube solvers from 19 different countries had 3 attempts each
+to solve the cube as quickly as possible.   Minh and several others have
+unofficially solved the cube in times between 16 and 19 seconds.
+However, Minh averages around 25 to 26 seconds after 10 trials, and my
+best average of ten trials is about 27 seconds (although it is usually
+higher).
+
+<p>
+Consider that in the World Championships 19 of the world's fastest cube
+solvers each solved the cube 3 times and no one solved the cube in less
+than 20 seconds...
+
+<p>
+God's algorithm is the name given to an as yet (as far as I know)
+undiscovered method to solve the rubik's cube in the least number of
+moves; as opposed to using 'canned' moves.
+
+<p>
+The known lower bound is 18 moves. This is established by looking at
+things backwards: suppose we can solve a position in N moves. Then by
+running the solution backwards, we can also go from the solved position
+to the position we started with in N moves. Now we count how many
+sequences of N moves there are from the starting position, making
+certain that we don't turn the same face twice in a row:
+
+<ul>
+<li> N=0: 1 (empty) sequence;
+<li> N=1: 18 sequences (6 faces can be turned, each in 3 different ways)
+<li> N=2: 18*15 sequences (take any sequence of length 1, then turn any of the
+       five faces which is not the last face turned, in any of 3
+       different ways); N=3: 18*15*15 sequences (take any sequence of
+       length 2, then turn any of the five faces which is not the last
+       face turned, in any of 3 different ways); :  :  N=i: 18*15^(i-1)
+       sequences.
+</ul>
+So there are only 1 + 18 + 18*15 + 18*15^2 + ... + 18*15^(n-1)
+sequences of moves of length n or less. This sequence sums to
+(18/14)*(15^n - 1) + 1.  Trying particular values of n, we find that
+there are about 8.4 * 10^18 sequences of length 16 or less, and about
+1.3 times 10^20 sequences of length 17 or less.
+
+<p>
+Since there are 2^10 * 3^7 * 8! * 12!, or about 4.3 * 10^19, possible
+positions of the cube, we see that there simply aren't enough sequences
+of length 16 or less to reach every position from the starting
+position. So not every position can be solved in 16 or less moves -
+i.e. some positions require at least 17 moves.
+
+<p>
+This can be improved to 18 moves by being a bit more careful about
+counting sequences which produce the same position. To do this, note
+that if you turn one face and then turn the opposite face, you get
+exactly the same result as if you'd done the two moves in the opposite
+order. When counting the number of essentially different sequences of N
+moves, therefore, we can split into two cases:
+
+<ol>
+<li> Last two moves were not of opposite faces. All such sequences can be
+    obtained by taking a sequence of length N-1, choosing one of the 4 faces
+    which is neither the face which was last turned nor the face opposite
+    it, and choosing one of 3 possible ways to turn it. (If N=1, so that the
+    sequence of length N-1 is empty and doesn't have a last move, we
+    can choose any of the 6 faces.)
+
+<li> Last two moves were of opposite faces. All such sequences can be
+    obtained by taking a sequence of length N-2, choosing one of the 2
+    opposite face pairs that doesn't include the last face turned, and
+    turning each of the two faces in this pair (3*3 possibilities for how it
+    was turned). (If N=2, so that the sequence of length N-2 is empty and
+    doesn't have a last move, we can choose any of the 3 opposite face
+    pairs.)
+</ol>
+
+This gives us a recurrence relation for the number X_N of sequences of
+length N:
+
+<pre>
+  N=0: X_0                               = 1 (the empty sequence)
+  N=1: X_1 = 18 * X_0                    = 18
+  N=2: X_2 = 12 * X_1     + 27 * X_0     = 243
+  N=3: X_3 = 12 * X_2     + 18 * X_1     = 3240
+  :
+  :
+  N=i: X_i = 12 * X_(i-1) + 18 * X_(i-2)
+</pre>
+If you do the calculations, you find that X_0 + X_1 + X_2 + ... + X_17 is
+about 2.0 * 10^19. So there are fewer essentially different sequences of
+moves of length 17 or less than there are positions of the cube, and so some
+positions require at least 18 moves.
+
+<p>
+The upper bound of 50 moves is I believe due to Morwen Thistlethwaite, who
+developed a technique to solve the cube in a maximum of 50 moves. It
+involved a descent through a chain of subgroups of the full cube group,
+starting with the full cube group and ending with the trivial subgroup
+(i.e.  the one containing the solved position only). Each stage involves a
+careful examination of the cube, essentially to work out which coset of the
+target subgroup it is in, followed by a table look-up to find a sequence to put
+it into that subgroup. Needless to say, it was not a fast technique!
+
+<p>
+But it was fascinating to watch, because for the first three quarters or
+so of the solution, you couldn't really see anything happening - i.e. the
+position continued to appear random! If I remember correctly, one of the
+final subgroups in the chain was the subgroup generated by all the double
+twists of the faces - so near the end of the solution, you would suddenly
+notice that each face only had two colours on it. A few moves more and the
+solution was complete. Completely different from most cube solutions, in
+which you gradually see order return to chaos: with Morwen's solution, the
+order only re-appeared in the last 10-15 moves.
+
+<pre>
+* Mark's Update/Comments ----------------------------------------------
+* Despite some accounts of Thistlethwaite's method, it is possible to
+* follow the progression of his algorithm. Clearly after Stage 2 is
+* completed the L and R faces will have L and R colours on them only.
+* After Stage 3 is complete the characteristics of the square's group
+* is clearly visible on all 6 sides. It is harder to understand what
+* is accomplished in Stage 1.
+*
+* ---------------------------------------------------------------------
+</pre>
+With God's algorithm, of course, I would expect this effect to be even more
+pronounced: someone solving the cube with God's algorithm would probably
+look very much like a film of someone scrambling the cube, run in
+reverse!
+
+<p>
+Finally, something I'd be curious to know in this context: consider the
+position in which every cubelet is in the right position, all the corner
+cubelets are in the correct orientation, and all the edge cubelets are
+"flipped" (i.e. the only change from the solved position is that every edge
+is flipped). What is the shortest sequence of moves known to get the cube
+into this position, or equivalently to solve it from this position? (I know
+of several sequences of 24 moves that do the trick.)
+
+<pre>
+* Mark's Update/Comments ----------------------------------------------
+*
+*  This is from my file cmoves.txt which includes the best known
+*   sequences for interesting patterns:
+*
+* p3  12 flip    R1 L1 D2 B3 L2 F2 R2 U3 D1 R3 D2 F3 B3 D3 F2 D3  (20)
+*                   R2 U3 F2 D3
+*
+* ---------------------------------------------------------------------
+</pre>
+The reason I'm interested in this particular position: it is the unique
+element of the centre of the cube group. As a consequence, I vaguely suspect
+(I'd hardly like to call it a conjecture :-) it may lie "opposite" the
+solved position in the cube graph - i.e. the graph with a vertex for each
+position of the cube and edges connecting positions that can be transformed
+into each other with a single move. If this is the case, then it is a good
+candidate to require the maximum possible number of moves in God's
+algorithm.
+
+<pre>
+    -- David Seal dseal@armltd.co.uk
+</pre>
+To my knowledge, no one has ever demonstrated a specific cube position
+that takes 15 moves to solve.  Furthermore, the lower bound is known to
+be greater than 15, due to a simple proof.
+
+<pre>
+* ---------------------------------------------------------------------
+* Mark&gt;  Definitely sequences exist in the square's group of length 15
+*     &gt;  e.g. Antipode 2   R2 B2 D2 F2 D2 F2 T2 L2 T2 D2 F2 T2 L2 T2 B2
+* ---------------------------------------------------------------------
+</pre>
+The way we know the lower bound is by working backwards counting how
+many positions we can reach in a small number of moves from the solved
+position.  If this is less than 43,252,003,274,489,856,000 (the total
+number of positions of Rubik's cube) then you need more than that
+number of moves to reach the other positions of the cube.  Therefore,
+those positions will require more moves to solve.
+
+<p>
+The answer depends on what we consider a move.  There are three common
+definitions.  The most restrictive is the QF metric, in which only a
+quarter-turn of a face is allowed as a single move.  More common is
+the HF metric, in which a half-turn of a face is also counted as a
+single move.  The most generous is the HS metric, in which a quarter-
+turn or half-turn of a central slice is also counted as a single move.
+These metrics are sometimes called the 12-generator, 18-generator, and
+27-generator metrics, respectively, for the number of primitive moves.
+The definition does not affect which positions you can get to, or even
+how you get there, only how many moves we count for it.
+
+<p>
+The answer is that even in the HS metric, the lower bound is 16,
+because at most 17,508,850,688,971,332,784 positions can be reached
+within 15 HS moves.  In the HF metric, the lower bound is 18, because
+at most 19,973,266,111,335,481,264 positions can be reached within 17
+HF moves.  And in the QT metric, the lower bound is 21, because at
+most 39,812,499,178,877,773,072 positions can be reached within 20 QT
+moves.
+
+<pre>
+ -- jjfink@skcla.monsanto.com writes:
+</pre>
+
+Lately in this conference I've noted several messages related to Rubik's
+Cube and Square 1. I've been an avid cube fanatic since 1981 and I've
+been gathering cube information since.
+
+<p>
+Around Feb. 1990 I started to produce the Domain of the Cube Newsletter,
+which focuses on Rubik's Cube and all the cube variants produced to
+date. I include notes on unproduced prototype cubes which don't even
+exist, patent information, cube history (and prehistory), computer
+simulations of puzzles, etc. I'm up to the 4th issue.
+
+<p>
+Anyways, if you're interested in other puzzles of the scramble by
+rotation type you may be interested in DOTC. It's available free to
+anyone interested. I am especially interested in contributing articles
+for the newsletter, e.g. ideas for new variants, God's Algorithm.
+
+<p>
+Anyone ever write a Magic Dodecahedron simulation for a computer?
+
+<p>
+Drop me a SASE (say empire size) if you're interested in DOTC or if you
+would like to exchange notes on Rubik's Cube, Square 1 etc.
+
+<p>
+I'm also interested in exchanging puzzle simulations, e.g. Rubik's Cube,
+Twisty Torus, NxNxN Simulations, etc, for Amiga and IBM computers. I've
+written several Rubik's Cube solving programs, and I'm trying to make
+the definitive puzzle solving engine. I'm also interested in AI programs
+for Rubik's Cube and the like.
+
+<p>
+Ideal Toy put out the Rubik's Cube Newsletter, starting with
+issue #1 on May 1982. There were 4 issues in all.
+
+<pre>
+They are:  #1, May    1982
+           #2, Aug    1982
+           #3, Winter 1983
+           #4, Aug    1983
+</pre>
+There was another sort of magazine, published in several languages
+called Rubik's Logic and Fantasy in space. I believe there were 8
+issues in all. Unfortunately I don't have any of these! I'm willing
+to buy these off anyone interesting in selling. I would like to get the
+originals if at all possible...
+
+<p>
+I'm also interested in buying any books on the cube or related puzzles.
+In particular I am _very_ interested in obtaining the following:
+
+<pre>
+Cube Games                               Don Taylor, Leanne Rylands
+Official Solution to Alexander's Star    Adam Alexander
+The Amazing Pyraminx                     Dr. Ronald Turner-Smith
+The Winning Solution                     Minh Thai
+The Winning Solution to Rubik's Revenge  Minh Thai
+Simple Solutions to Cubic Puzzles        James G. Nourse
+</pre>
+
+I'm also interested in buying puzzles of the mechanical type.
+I'm still missing the Pyraminx Star (basically a Pyraminx with more tips
+on it), Pyraminx Ball, and the Puck.
+
+<p>
+If anyone out here is a fellow collector I'd like to hear from you.
+If you have a cube variant which you think is rare, or an idea for a
+cube variant we could swap notes.
+
+<p>
+I'm in the middle of compiling an exhaustive library for computer
+simulations of puzzles. This includes simulations of all Uwe Meffert's
+puzzles which he prototyped but _never_ produced. In fact, I'm in the
+middle of working on a Pyraminx Hexagon solver. What? Never heard of it?
+Meffert did a lot of other puzzles which never were made.
+
+<p>
+I invented some new "scramble by rotation" puzzles myself. My favourite
+creation is the Twisty Torus. It is a torus puzzle with segments (which
+slide around 360 degrees) with multiple rings around the circumference.
+
+<p>
+The computer puzzle simulation library I'm forming will be described
+in depth in DOTC #4 (The Domain of the Cube Newsletter). So if you
+have any interesting computer puzzle programs please email me and
+tell me all about them!
+
+<p>
+Also to the people interested in obtaining a subscription to DOTC,
+who are outside of Canada (which it seems is just about all of you!)
+please don't send U.S. or non-Canadian stamps (yeah, I know I said
+Self-Addressed Stamped Envelope before). Instead send me an
+international money order in Canadian funds for $6. I'll send you
+the first 4 issues (issue #4 is almost finished).
+
+<pre>
+Mark Longridge
+Address: 259 Thornton Rd N, Oshawa Ontario Canada, L1J 6T2
+Email:   mark.longridge@canrem.com
+</pre>
+
+One other thing, the six bucks is not for me to make any money. This
+is only to cover the cost of producing it and mailing it. I'm
+just trying to spread the word about DOTC and to encourage other
+mechanical puzzle lovers to share their ideas, books, programs and
+puzzles. Most of the programs I've written and/or collected are
+shareware for C64, Amiga and IBM. I have source for all my programs
+(all in C or Basic) and I am thinking of providing a disk with the
+4th issue of DOTC. If the response is favourable I will continue
+to provide disks with DOTC.
+
+<pre>
+    -- Mark Longridge &lt;mark.longridge@canrem.com&gt; writes:
+</pre>
+It may interest people to know that in the latest issue of "Cubism For Fun" %
+(# 28 that I just received yesterday) there is an article by Herbert Kociemba
+from Darmstadt.  He describes a program that solves the cube.  He states that
+until now he has found no configuration that required more than 21 turns to
+solve.
+
+<p>
+He gives a 20 move manoeuvre to get at the "all edges flipped/
+all corners twisted" position:
+<pre>
+   DF^2U'B^2R^2B^2R^2LB'D'FD^2FB^2UF'RLU^2F'
+</pre>
+or in Varga's parlance:
+<pre>
+   dofitabiribirilobadafodifobitofarolotifa
+</pre>
+
+Other things #28 contains are an analysis of Square 1, an article about
+triangular tilings by Martin Gardner, and a number of articles about other
+puzzles.
+<pre>
+--
+%  CFF is a newsletter published by the Dutch Cubusts Club NKC.
+Secretary:
+        Anneke Treep
+        Postbus 8295
+        6710 AG  Ede
+        The Netherlands
+Membership fee for 1992 is DFL 20 (about$ 11).
+--
+    -- dik t. winter &lt;dik@cwi.nl&gt;
+</pre>
+<h2>References:</h2>
+
+<h3>Mathematical Papers</h3>
+
+Rubik's Revenge: The Group Theoretical Solution<br>
+Mogens Esrom Larsen   A.M.M. Vol. 92 No. 6, June-July 1985, pages<br>
+381-390
+
+<p>
+Rubik's Groups<br>
+E. C. Turner &amp; K. F. Gold, American Mathematical Monthly,<br>
+vol. 92 No. 9 November 1985, pp. 617-629.
+
+<p>
+Cubelike Puzzles - What Are They and How Do You Solve Them?<br>
+J.A. Eidswick   A.M.M. Vol. 93 No. 3 March 1986, pp 157-176
+
+<p>
+The Slice Group in Rubik's Cube,  David Hecker, Ranan Banerji<br>
+Mathematics Magazine, Vol. 58 No. 4 Sept 1985
+
+<p>
+The Group of the Hungarian Magic Cube<br>
+Chris Rowley   Proceedings of the First Western Austrialian
+                Conference on Algebra, 1982
+
+<h3>Books</h3>
+
+Rubik's Cubic Compendium<br>
+Erno Rubik, Tamas Varga, et al, Edited by David Singmaster<br>
+Oxford University Press, 1987<br>
+Enslow Publishers Inc
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

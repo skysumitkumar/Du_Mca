@@ -1,0 +1,26 @@
+/*	UNENCODE.C		*/
+#include <stdio.h>
+#define	FLAG	0xff	/* 1111 1111b	*/
+
+int	main(void)
+{
+FILE	*in,*out;
+char	ch;
+int	count,i;
+
+	;;; ;;;;
+	do
+	{
+		ch=fgetc(in);
+		if (ch==FLAG)	{
+			ch=fgetc(in);
+			fscanf(in,"%c%02d",&ch,&count);
+			for (i=0;i<count;i++) fprintf(out,"%c",ch);
+		}
+		else fprintf(out,"%c",ch);
+
+	}	while (!feof(in));
+	fclose(in);
+	fclose(out);
+	return(0);
+}

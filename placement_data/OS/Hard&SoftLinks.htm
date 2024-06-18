@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 4//EN">
+<HTML><!-- Source is http://publib.boulder.ibm.com/iseries/v5r2/ic2924/index.htm?info/ifs/rzaaxmstlinkcmp.htm -->
+<HEAD>
+<Title>iSeries Information Center</Title>
+<!-- (C) Copyright IBM Corporation, 2002, 2003                        -->
+<!-- All rights reserved. Licensed Materials Property of IBM          -->
+<!-- US Government Users Restricted Rights                            -->
+<!-- Use, duplication or disclosure restricted by                     -->
+<!-- GSA ADP Schedule Contract with IBM Corp.                         -->
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<meta name="Owner" content="rchinfoc@us.ibm.com">
+	<meta name="Abstract" content="iSeries Information Center main entry frameset.">
+	<meta name="Description" content="iSeries Information Center main entry frameset.">
+	<meta name="Keywords" content="ibm,international business machines,internet,e-business,ebusiness,technical support, technical information, information, manuals, books, information center, infocenter">
+	<meta scheme="rfc1766" name="DC.Language" content="en-us">
+	<meta scheme="iso8601" name="DC.Date" content="2002-09-01">
+	<meta name="Security" content="public">
+	<meta name="Copyright" content="Copyright (c) 2002 by IBM Corporation">
+	<meta name="Source" content="">
+	<meta name="Robots" content="index,follow">
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))'>
+</HEAD>
+<script language="JavaScript" src="Hard&SoftLinks_files/rzahgcookies.js"></script>
+<script language="JavaScript" src="Hard&SoftLinks_files/rzahgcommon.js"></script>
+<script language="JavaScript" src="Hard&SoftLinks_files/extwindow.js"></script>
+<SCRIPT TYPE="text/javascript" LANGUAGE="JavaScript">
+<!--
+//START NON-TRANSLATABLE
+var notoc = false;
+var nocrumbs = false;
+var icText = 'info/rzahgicmain.htm';
+//This first section of code parses the location.search parameter,
+//  which is the part of the url that follows the '?'.
+//In the url:  http://www.infocntr.com/index.htm?rzaha/devkit.htm
+//  the search paramter is rzaha/devkit.htm
+//If there is a search parameter, it assigns icText to it.
+//Otherwise, icText is given the default 'rzahgicmain.htm',
+//  InfoCenter's front page.
+//This portion of code also looks for other arguments that could have been passed
+// such as 'notoc' to signal turning off the TOC
+var books = false;
+var info = false;
+
+var args = location.search ? unescape(location.search.substring(1)) : '';
+if (args != ''){
+	argArray = args.split("?");
+      if (argArray[0].substr(0,5) == "books" ) { 
+            books = true;      
+      } 
+      if (argArray[0].substr(0,4) == "info" ) { 
+            info = true;      
+      }  
+         
+	for (ii = 0; ii < argArray.length; ii++) {
+		if (argArray[ii] == "notoc") {
+			notoc = true;
+		} else if (argArray[ii] == "nocrumbs") {
+			nocrumbs = true;
+		} else {
+			if ( (books == false) && (info == false ) ) {
+				icText = "info" + "/" + argArray[ii];
+			} else {   
+				icText = argArray[ii];
+			}  
+		}
+	} // end outer FOR loop
+	// patch for EZ-Setup for V5R2 only
+	icText = (icText == 'info/rbasp/plngstrt.htm') ? 'info/phyplan/chooseserver.htm' : icText;
+	icText = (icText == 'info/RZAM9/rzam9unpack.htm') ? 'info/phyplan/choosecables.htm' : icText;
+	icText = (icText == 'books/c4153025.pdf') ? 'books/c4153006.pdf' : icText;
+	icText = (icText == 'info/RZAHC/rzahcothersw.htm') ? 'info/rzahc/rzahcinstallothersw1.htm' : icText;
+	icText = (icText == 'info/rzahg/rzahgictroub2.htm') ? 'info/rzahgictroub2.htm' : icText;
+	// end patch
+}
+var loadContentCalled = false;
+var setUpCalled = false;
+var icNav = 'icnavbarcontrol.html';
+
+if (!nocrumbs){
+	//Determine if the user has the breadcrumbs turned on
+	var valBreadcrumbs=getCookie('crumbBreadcrumbs');
+    if (valBreadcrumbs == null) valBreadcrumbs=true;
+    if (valBreadcrumbs == "true") valBreadcrumbs=true;
+	if (valBreadcrumbs == "false") valBreadcrumbs=false;
+	nocrumbs = (valBreadcrumbs==true) ? false : true;
+}
+//This section of code checks to see if this document is at the "top" of 
+//the frameset.  That is, it makes sure that we are not being 'framed'.
+if (top != self) {
+	//If we are not at the top of the frameset, we need to reload ourselves at the top.
+	//If document.images is true, then I know the replace() function is supported in this browser,
+	//  otherwise, I have to use direct assignment, which messes up the Back button.
+	if (document.images)
+		top.location.replace(location.href);
+	else
+		top.location.href = location.href;
+} else {
+	//If everything is all set, start writing out the html that sets up the frameset.
+	//In the future, it'd be nice to see this in straight html rather than javascript.
+	//END NON-TRANSLATABLE
+	if (isNS || isNS6){
+		document.writeln('<frameset frameborder="0" border="0" rows="30,*,22" framespacing="0" onLoad="loadContent()">');
+		document.writeln('  <frame src="./info/rzah8masthead.htm" name="icmast" scrolling="no" marginwidth="0" marginheight="0" border="0" title="Banner"> ');
+		//This first frameset holds the navigation applet and several other framesets.
+		if(!notoc)
+			document.writeln('  <frameset ID="FSmain" cols="'+nNavigationWidth+',*" frameborder="0" border="0" framespacing="0">');	
+		else
+			document.writeln('  <frameset ID="FSmain" cols="0,*" frameborder="0" border="0" framespacing="0">');	
+
+		document.writeln('    <frame src="./info/rzahgnavfrm.htm" border="0" name="navFrame"  scrolling="no"  marginwidth="0" marginheight="0">');
+		document.writeln('    <frameset ID="FSsearchwrap" rows="35,*" frameborder="0" border="0" framespacing="0">');	
+		document.writeln('         <frame src="./info/lucenesearch.htm" name="FRMsearchbar" scrolling="no" marginwidth="0" marginheight="0" border="0" bordercolor="#3333CC" title="Search bar"> ');
+
+		//This frameset holds the breadcrumbs and the content (whatever icText is assigned to)
+		if (!nocrumbs)
+			document.writeln('      <frameset ID="FScontent" rows="20,*"  cols="*" border="0" framespacing="1">');
+		else
+			document.writeln('      <frameset ID="FScontent" rows="0,*"  cols="*" border="0" framespacing="1">');
+			
+		document.writeln('        <frame src="./info/rzahgbreadcrumb.htm" name="breadcrumbs" marginwidth="0" marginheight="0" scrolling="NO" title="Breadcrumb bar">');
+		document.writeln('        <frame src="'+icText+'" name="text" border="0" scrolling="yes" marginwidth="0" marginheight="0" title="Content area">');
+		document.writeln('      <\/frameset>');
+		document.writeln('    <\/frameset>');
+		document.writeln('    <\/frameset>');
+		
+	} else {
+		document.writeln('<frameset frameborder="0" border="0" rows="27,*,22" framespacing="0" onLoad="loadContent()">');
+		document.writeln('  <frame src="./info/rzah8masthead.htm" name="icmast" scrolling="no" marginwidth="0" marginheight="0" border="0" title="Banner" noresize> ');
+		//This first frameset holds the navigation applet and several other framesets.
+		document.writeln('  <frameset ID="FSmain" cols="'+nNavigationWidth+',*" framespacing="1" frameborder="yes" >');	
+		document.writeln('    <frame src="./info/rzahgnavfrm.htm" border="0" name="navFrame"  scrolling="no"  marginwidth="0" marginheight="0">');
+		document.writeln('    <frameset ID="FSsearchwrap" rows="33,*" frameborder="0" border="0" framespacing="0">');	
+		document.writeln('      <frame src="./info/lucenesearch.htm" name="FRMsearchbar" scrolling="no" marginwidth="0" marginheight="0" border="0" bordercolor="#3333CC" title="Search bar"> ');
+
+		//This frameset holds the breadcrumbs and the content (whatever icText is assigned to)
+		if (!nocrumbs)
+			document.writeln('     <frameset ID="FScontent" rows="15,*"  cols="*" border="0" framespacing="1">');
+		else
+			document.writeln('     <frameset ID="FScontent" rows="0,*"  cols="*" border="0" framespacing="1">');
+			
+		document.writeln('          <frame src="./info/rzahgbreadcrumb_ie.htm" name="breadcrumbs" marginwidth="0" marginheight="0" scrolling="NO" title="Breadcrumb bar">');
+		document.writeln('          <frame src="'+icText+'" name="text" border="0" scrolling="yes" marginwidth="0" marginheight="0" title="Content area">');
+		document.writeln('        <\/frameset>');
+		document.writeln('      <\/frameset>');
+		document.writeln('    <\/frameset>');
+	}
+	writeCDfooter();
+	//Standard disclaimer stuff...
+	writeDisclaimer();
+	document.writeln('<\/FRAMESET>');
+}
+
+//--></SCRIPT>
+<noscript>
+<body bgcolor="#FFFFFF">
+<h3>This site is designed to be viewed with a browser that is frames, Javascript, and Java enabled.</h3>
+<P>To use this site as intended, please ensure that you browser has these features enabled. </P>
+<P>Alternatively, you may want to use the <a href="http://publib.boulder.ibm.com/iseries/v5r2/ic2924/index_acc.htm">screen reader accessible version</a> 
+of the Information Center,  or you may want to navigate directly to the
+<a href="http://publib.boulder.ibm.com/iseries/v5r2/ic2924/info/rzahgicmain.htm">main content page</a>.</P>
+</body>
+</noscript>
+</HTML>
+

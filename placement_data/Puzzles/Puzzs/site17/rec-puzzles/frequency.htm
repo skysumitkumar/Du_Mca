@@ -1,0 +1,103 @@
+<html><head>
+<title>Solution for /language/english/frequency</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /language/english/frequency problem</h1>
+<hr>
+<pre>
+web2 = word list from Webster's Second Unabridged
+web2a = hyphenated words and phrases from Webster's Second Unabridged
+both = web2 + web2a
+net = several gigabytes of Usenet traffic
+
+1) Most frequently appearing letters overall:
+web2:	eiaorn tslcup mdhygb fvkwzx qj
+both:	eairon tslcud pmhgyb fwvkzx qj
+net:	etaoin srhldc umpfgy wbvkxj qz
+
+2) Most frequently appearing letters BEGINNING words:
+web:	spcaut mbdrhi eofgnl wvkjqz yx
+both:	spcatb umdrhf eigowl nvkqjz yx
+net:	taisow cmbphd frnelu gyjvkx qz
+
+3) Most frequent final letters:
+web:	eysndr ltacmg hkopif xwubzv jq
+both:	eydsnr tlagcm hkpoiw fxbuzv jq
+net:	estndr yolafg mhipuk cwxbvz jq
+
+4) Most frequent digrams (ordered pairs of letters)
+web:	er in ti on te al an at ic en is re ra le ri ro st ne ar ...
+both:	er in te ti on an re al at le en ra ic ar st ri ro ed ne ...
+net:	th he in er re an on at te es or en ar ha is ou it to st nd ...
+
+Program to compute this from word list in standard input:
+#include <stdio.h>
+#include <ctype.h>
+typedef struct {
+	int count;
+	char name[3];
+} FREQ;
+
+FREQ all[256],initial[256],terminal[256],digram[65536];
+
+int compare(p,q)
+FREQ *p,*q;
+{	return q->count - p->count;
+}
+
+void sort_and_print(freq,count,description)
+FREQ *freq;
+int count;
+char *description;
+{   register FREQ *p;
+
+    (void)qsort(freq,count,sizeof(*freq),compare);
+    puts(description);
+    for (p=freq;p<freq+count;p++)
+	if (p->count) printf("%s %d\n",p->name,p->count);
+}
+
+main()
+{   char s[BUFSIZ];
+    register char *p;
+    register int i;
+
+    while (gets(s)!=NULL) {
+	if (islower(*s)) {
+	    initial[*s].count++;
+	    sprintf(initial[*s].name,"%c",*s);
+	    for (p=s;*p;p++) {
+		if (isalpha(*p)) {
+		    all[*p].count++;
+		    sprintf(all[*p].name,"%c",*p);
+		    if (isalpha(p[1])) {
+			i = p[0]*256 + p[1];
+			digram[i].count++;
+			sprintf(digram[i].name,"%c%c",p[0],p[1]);
+		    }
+		}
+	    }
+	    terminal[*--p].count++;
+	    sprintf(terminal[*p].name,"%c",*p);
+	}
+    }
+    sort_and_print(all,256,"overall character distribution: ");
+    sort_and_print(initial,256,"initial character distribution: ");
+    sort_and_print(terminal,256,"terminal character distribution: ");
+    sort_and_print(digram,65536,"digram distribution: ");
+}
+
+</pre>
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

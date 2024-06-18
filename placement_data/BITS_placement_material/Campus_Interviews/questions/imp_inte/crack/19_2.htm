@@ -1,0 +1,536 @@
+
+<HTML>
+<HEAD>
+<TITLE>CRACK THE INTERVIEW - What is hashing?  (www.cracktheinterview.com)</TITLE><style type="text/css">
+<!--
+.breakhere     {page-break-before: always}
+
+A:link         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+A:active       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+A:visited      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+
+H1             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt; font-weight:bold; color:#336699} 
+H2             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; font-weight:bold} 
+.normal        {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+.announce      {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#000000} 
+.announceLink  {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#336699} 
+.note          {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt ! important; font-weight:normal} 
+.system        {font-family:Courier New, Courier; font-size:x-small;
+                font-weight:normal} 
+.stayblue      {color:#336699 ! important}
+.title         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:larger ! important} 
+.error         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; color:#aa0000; font-weight:bold} 
+.notelink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:normal;
+                font-size:9pt ! important} 
+.tableHeader   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableHeaderSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRow      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#f7f7e7} 
+.tableBlank    {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#ffffff} 
+.hardlink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:bold;
+                font-size:8pt ! important} 
+.boxlink       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#000000 ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.hardnote      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:black ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.tableRowSmall {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal} 
+.tableRowSmallBold {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                bold} 
+.blueHeading   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:bold;
+                color:#336699! important} 
+.blueHeadingLarge {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:16pt! important; font-weight:normal;
+                color:#336699} 
+.blueHeadingMid {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:normal;
+                color:#336699}
+.blueHeadingSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt! important; font-weight:bold;
+                color:#336699} 
+.tableHeaderV  {font-family:Verdana,Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRowV     {font-family:Verdana,Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal; background-color:#f7f7e7} 
+.just          {text-align: justify}
+-->
+</style>
+
+<META NAME="keywords" CONTENT="interview,C,hash,hashing">
+<META NAME="description" CONTENT="What is hashing? ">
+<META NAME="robots" CONTENT="FOLLOW,INDEX">
+<META HTTP-EQUIV="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+
+</HEAD>
+<BODY>
+<TABLE BORDER=0 cellpadding=10>
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER><A HREF="http://www.cracktheinterview.com"><IMG SRC=http://www.cracktheinterview.com/images/logo2.jpg border=0></img></A></CENTER></TD>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2>
+<CENTER>
+
+
+<!--START:ADS0-->
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+
+</CENTER>
+</TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER>
+
+<!--START:LINKS-->
+
+
+<TABLE BORDER=0 cellpadding=10>
+<TR><TD NOWRAP>
+<A HREF="http://www.cracktheinterview.com" target="_top"><font class=announcelink>Home</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="http://www.cracktheinterview.com/adfaqpublish.html" target="_top"><font class=announcelink>Questions</font></A><BR>
+</TD>
+
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/search.html" target="_top"><font class=announcelink>Search</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="http://www.cracktheinterview.com/forum" target="_top"><font class=announcelink>Forum</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="mailto:cracktheinterview@gmail.com?subject=Hi!"><font class=announcelink>Contact</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/forum/viewforum.php?f=2" target="_top"><font class=announcelink>Guest Book</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/forum/viewforum.php?f=3" target="_top"><font class=announcelink>Polls!</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/forum/viewforum.php?f=4" target="_top"><font class=announcelink>Got a Question?</font></A><BR>
+</TD>
+
+</TABLE>
+
+<!--END-->
+
+</CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER> &nbsp; </CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=90%% valign=top>
+
+
+
+
+
+<!--START : DATA-->
+
+
+
+<TABLE BORDER=0>
+
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="19_1.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=blueHeading>General Concepts</font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="19_3.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD>
+<TD WIDTH=90%%><CENTER><font class=blueHeading>(242 / 268)</font></center></TD>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%></TD>
+<TD WIDTH=90%%><center>&nbsp;</center></TD>
+<TD WIDTH=5%%></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=announceLink><BR><BR><BR>
+<!--THE QUESTION-->
+
+What is hashing? <BR>
+<!--END-->
+<BR></font></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=normal>
+<!--THE ANSWER--><BR>
+<!--META:START--><!--interview,C,hash,hashing--><!--META:END--><BR>
+<BR>
+Hashing is the process of mapping strings to integers, in a relatively small range. <BR>
+<BR>
+A <font class=announcelink>hash function</font> maps a string (or some other data structure) to a bounded number (called the <font class=announcelink>hash bucket</font>) which can more easily be used as an index in an array, or for performing repeated comparisons. <BR>
+<BR>
+A mapping from a potentially huge set of strings to a small set of integers will not be unique. Any algorithm using hashing therefore has to deal with the possibility of <font class=announcelink>collisions</font>.<BR>
+<BR>
+Here are some common methods used to create hashing functions<BR>
+<BR>
+<CODE><BR>
+Direct&nbsp;method<BR>
+Subtraction&nbsp;method<BR>
+Modulo-Division&nbsp;method<BR>
+Digit-Extraction&nbsp;method<BR>
+Mid-Square&nbsp;method<BR>
+Folding&nbsp;method<BR>
+Pseudo-random&nbsp;method<BR>
+</CODE><BR>
+ <BR>
+<BR>
+Here is a simple implementation of a hashing scheme in C<BR>
+<BR>
+<CODE><BR>
+#include&nbsp;&lt;stdio.h><BR>
+#define&nbsp;HASHSIZE&nbsp;197<BR>
+<BR>
+typedef&nbsp;struct&nbsp;node<BR>
+{<BR>
+&nbsp;&nbsp;int&nbsp;value;<BR>
+&nbsp;&nbsp;struct&nbsp;node&nbsp;*next;<BR>
+}mynode;<BR>
+<BR>
+<BR>
+typedef&nbsp;struct&nbsp;hashtable<BR>
+{<BR>
+&nbsp;&nbsp;mynode&nbsp;*llist;<BR>
+}HT;<BR>
+<BR>
+<BR>
+HT&nbsp;myHashTable[HASHSIZE];<BR>
+<BR>
+<BR>
+int&nbsp;main()<BR>
+{<BR>
+&nbsp;&nbsp;initialize();<BR>
+&nbsp;&nbsp;add(2);<BR>
+&nbsp;&nbsp;add(2500);<BR>
+&nbsp;&nbsp;add(199);<BR>
+<BR>
+&nbsp;&nbsp;display_hash();<BR>
+&nbsp;&nbsp;getch();<BR>
+&nbsp;&nbsp;return(0);<BR>
+}<BR>
+<BR>
+int&nbsp;initialize()<BR>
+{<BR>
+&nbsp;&nbsp;int&nbsp;i;<BR>
+&nbsp;&nbsp;for(i=0;i&lt;HASHSIZE;i++)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myHashTable[i].llist=NULL;<BR>
+&nbsp;&nbsp;return(1);<BR>
+}<BR>
+<BR>
+int&nbsp;add(int&nbsp;value)<BR>
+{<BR>
+&nbsp;&nbsp;int&nbsp;hashkey;<BR>
+&nbsp;&nbsp;int&nbsp;i;<BR>
+&nbsp;&nbsp;mynode&nbsp;*tempnode1,&nbsp;*tempnode2,&nbsp;*tempnode3;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;hashkey=value%HASHSIZE;<BR>
+&nbsp;&nbsp;printf("\nHashkey&nbsp;:&nbsp;[%d]\n",&nbsp;hashkey);<BR>
+	<BR>
+&nbsp;&nbsp;if(myHashTable[hashkey].llist==NULL)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//This&nbsp;hash&nbsp;bucket&nbsp;is&nbsp;empty,&nbsp;add&nbsp;the&nbsp;first&nbsp;element!<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tempnode1&nbsp;=&nbsp;malloc(sizeof(mynode));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tempnode1->value=value;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tempnode1->next=NULL;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myHashTable[hashkey].llist=tempnode1;<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//This&nbsp;hash&nbsp;bucket&nbsp;already&nbsp;has&nbsp;some&nbsp;items.&nbsp;Add&nbsp;to&nbsp;it&nbsp;at&nbsp;the&nbsp;end.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Check&nbsp;if&nbsp;this&nbsp;element&nbsp;is&nbsp;already&nbsp;there?<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(tempnode1=myHashTable[hashkey].llist;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tempnode1!=NULL;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tempnode3=tmpnode1,tempnode1=tempnode1->next)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(tempnode1->value==value)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("\nThis&nbsp;value&nbsp;[%d]&nbsp;already&nbsp;exists&nbsp;in&nbsp;the&nbsp;Hash!\n",&nbsp;value);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return(1);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;tempnode2&nbsp;=&nbsp;malloc(sizeof(mynode));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;tempnode2->value&nbsp;=&nbsp;value;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;tempnode2->next=NULL;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;tempnode3->next=tempnode2;<BR>
+&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;return(1);<BR>
+}<BR>
+<BR>
+<BR>
+int&nbsp;display_hash()<BR>
+{<BR>
+&nbsp;&nbsp;int&nbsp;i;<BR>
+&nbsp;&nbsp;mynode&nbsp;*tempnode;<BR>
+<BR>
+&nbsp;&nbsp;for(i=0;i&lt;HASHSIZE;i++)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(myHashTable[i].llist==NULL)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("\nmyHashTable[%d].llist&nbsp;->&nbsp;(empty)\n",i);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("\nmyHashTable[%d].llist&nbsp;->&nbsp;",i);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(tempnode=myHashTable[i].llist;tempnode!=NULL;tempnode=tempnode->next)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{	<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("[%d]&nbsp;->&nbsp;",tempnode->value);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("(end)\n");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(i%20==0)getch();<BR>
+&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;return(0);<BR>
+}<BR>
+<BR>
+</CODE><BR>
+<BR>
+And here is the output<BR>
+<BR>
+<CODE><BR>
+<BR>
+Hashkey&nbsp;:&nbsp;[2]<BR>
+<BR>
+Hashkey&nbsp;:&nbsp;[136]<BR>
+<BR>
+Hashkey&nbsp;:&nbsp;[2]<BR>
+<BR>
+Hashkey&nbsp;:&nbsp;[2]<BR>
+<BR>
+This&nbsp;value&nbsp;[2]&nbsp;already&nbsp;exists&nbsp;in&nbsp;the&nbsp;Hash!<BR>
+<BR>
+myHashTable[0].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[1].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[2].llist&nbsp;->&nbsp;[2]&nbsp;->&nbsp;[199]&nbsp;->&nbsp;(end)<BR>
+<BR>
+myHashTable[3].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[4].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[5].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[6].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[7].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[8].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[9].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[10].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[11].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[12].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[13].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[14].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[15].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[16].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[17].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[18].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[19].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[20].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+...<BR>
+<BR>
+myHashTable[133].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[134].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[135].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+myHashTable[136].llist&nbsp;->&nbsp;[2500]&nbsp;->&nbsp;(end)<BR>
+<BR>
+myHashTable[137].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+...<BR>
+<BR>
+myHashTable[196].llist&nbsp;->&nbsp;(empty)<BR>
+<BR>
+</CODE> 
+<BR><BR>
+<!--END-->
+</font><BR></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="19_1.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=notelink><A href="mailto:cracktheinterview@gmail.com?subject=Comments [What is hashing? ]&Body=Question : [What is hashing? ]"><font class=announcelink>COMMENTS</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><A HREF=../adfaqpublish.html>INDEX</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><a href="#" onclick="window.print();return false;">PRINT</a></font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="19_3.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<BR><BR><BR><font class=notelink>
+Last updated:
+
+July 8, 2005<BR><BR>
+<a href=http://www.cracktheinterview.com>www.cracktheinterview.com</a> - Your destination for the most common IT interview questions, answers, frequently asked interview questions (FAQ), C Programs, C Datastructures for interviews conducted by Microsoft, Oracle, Google, IBM, HP, Yahoo, Infosys, Wipro, SAP, CA (Computer Associates), Sun, Adobe, GE, Novell, Cisco, Motorola, TI (Texas Instruments), Intel, TCS, iFlex, Trilogy, MindTree, GS and more...<br><BR>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+
+<!--END-->
+
+
+</TD>
+
+
+
+
+<TD WIDTH=10%% valign="top">
+
+
+<!--START:ADS1-->
+
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_alternate_color = "CCCCCC";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+</TD>
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+</BODY>
+</HTML>
+
+

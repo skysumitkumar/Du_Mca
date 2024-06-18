@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Solution</title>
+</head>
+
+<body bgcolor=lightyellow>
+<center>
+<h1>Solution</h1>
+</center>
+<blockquote>
+<hr>
+<font color="blue">Question:</font><br>
+How many primes are in the sequence 101, 10101, 1010101, ...?
+
+<p>
+<font color="blue">Answer:</font><br>
+<p>
+1
+<pre>
+ Note that the sequence 
+ 
+ 101 , 10101, 1010101, ....
+ 
+ can be viewed as 
+ 
+ 100**1 +1, 100**2 + 100**1 + 1, 100**3 + 100**2 + 100**1 +1 ....
+ 
+ that is, the k-th term in the sequence is 
+ 
+ 100**k + 100**(k-1) + 100**(k-2) + ...+ 100**(1) + 1
+ 
+ = (100)**(k+1) - 1
+   ----------------
+     11 * 9
+
+ = (10)**(2k+2) - 1
+  ----------------
+     11 * 9
+ 
+ = ((10)**(k+1) - 1)*((10)**(k+1) +1)
+    ---------------------------------
+        11*9
+ 
+ thus either 11 and 9 divide the numerator. Either they both divide the
+ same factor in the numerator or different factors in the numerator. In any
+ case, after dividing, they leave the numerators as a product of two
+ integers. Only in the case of k = 1, one of the integers is 1. Thus there
+ is
+ exactly one prime in the above sequence: 101. 
+ 
+</pre>
+
+
+<hr>
+<p>
+<p><br><br><br>
+</blockquote>
+</body>
+</html>

@@ -1,0 +1,235 @@
+\documentclass[english]{article} 
+
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{fancyhdr}
+
+\begin{document}
+
+\pagenumbering{arabic}
+
+%----Header stuff---------------------------
+\pagestyle{fancy}
+ \lhead{\sc Algorithms \& Data Structures}
+ \chead{}
+ \rhead{\sc INF1 -- 2003}
+
+\section*{Tutorial 3}
+
+\subsection*{Exercise 1} 
+
+Let $T_j(n)$, such that $1 \leq j \leq k$, be the maximum
+of $T_1(n), \ldots, T_k(n)$ and recall that the probabilities
+$p_i$ satisfy $p_1 + p_2 + \cdots + p_k = 1$. Then
+
+$$A(n) = 
+\sum_{i = 1}^k p_i\cdot T_i(n) \leq
+\sum_{i = 1}^k p_i\cdot T_j(n) \leq
+T_j(n) \sum_{i = 1}^k p_i = T_j(n) = \max_{1 \leq i \leq k} T_i(n) = W(n).$$ 
+
+\subsection*{Exercise 2}
+
+We shall solve the following recurrence equation
+\begin{center}
+\begin{tabular}{rcl}
+$T(1)$ & $=$ & $7$ \\
+$T(n)$ & $=$ & $2 + T(n-1)$ for $n>1$  
+\end{tabular}
+\end{center}
+by repeated substitutions.
+Let us unfold $T(n)$. 
+$$T(n) = 2 + T(n-1) = 2 + 2 + T(n-2) = 2 + 2 + 2 + T(n-3) = \ldots $$
+Observe the pattern 
+$T(n) = \underbrace{2 + 2 + \cdots + 2}_{i \times} + T(n-i)$
+for $i < n$. So if $i = n -1 $ then
+$$T(n) = \underbrace{2 + 2 + \cdots + 2}_{(n-1) \times} + T(n-n+1)=
+2(n-1) + T(1) = 2n - 2 + 7 = 2n +5.$$
+Proof: by induction on n we show that $T(n)=2n + 5$. In the base case
+$n=1$ and $T(1)=2\cdot 1 + 5 = 7$ as required. Let $n>1$.
+By IH (induction hypothesis) assume that $T(j) = 2j +5$ for all
+$1 \leq j < n$. Now $$T(n) = \mbox{(by definition) } 2 + T(n-1) =
+\mbox{(by IH) }
+2 + 2(n-1) + 5 = 2 + 2n - 2 + 5 = 2n + 5.$$
+
+\subsection*{Exercise 3}
+
+We shall solve the following recurrence equation
+\begin{center}
+\begin{tabular}{rcl}
+$T(0)$ & $=$ & $1$ \\
+$T(n)$ & $=$ & $nT(n-1)$ for $n>1$  
+\end{tabular}
+\end{center}
+by repeated substitutions.
+Let us unfold $T(n)$. 
+$$T(n) = nT(n-1) = n(n-1)T(n-2) = n(n-1)(n-2)T(n-3) = ... $$
+Observe the pattern
+$T(n) = n(n-1)(n-2)\cdots(n-i+1)T(n-i)$
+for $i \leq n$. So if $i = n$ then
+$$T(n) = n(n-1)(n-2)\cdots(n-n+1)T(0)=
+ n(n-1)(n-2)\cdots 2\cdot 1\cdots T(0) = n!.$$
+
+Proof: by induction on n we show that $T(n)=n!$. In the base case
+$n=0$ and $T(0)=1=0!$ as required. Let $n>0$.
+By IH (induction hypothesis) assume that $T(j) = j!$ for all
+$0 \leq j < n$. Now $$T(n) = \mbox{(by definition) } nT(n-1) =
+\mbox{(by IH) }
+n\cdot (n-1)! = n!.$$
+
+\subsection*{Exercise 4}
+
+Let $n$ be the size of the array, i.e., $n = b-a+1$ and assume
+that $a \leq b$.
+Then $W(1)= 1$ and $W(n)=1 + W( \lfloor (n+1)/2 \rfloor)$ for $n >1$.
+Let us reformulate the recurrence equation such that we consider
+only the points where $n = 2^k$ for some integer $k \geq 0$.
+
+Let $n = 2^k$. Observe that $\lfloor (n+1)/2 \rfloor =
+\lfloor (2^k+1)/2 \rfloor = 2^{k-1}$.
+Hence we shall solve the following recurrence equation
+\begin{center}
+\begin{tabular}{rcl}
+$W(2^0)$ & $=$ & $1$ \\
+$W(2^k)$ & $=$ & $1 + W(2^{k-1})$ for $k > 0$. 
+\end{tabular}
+\end{center}
+by repeated substitutions.
+Let us unfold $W(2^k)$.
+$$W(2^k) = 1 + W(2^{k-1}) =
+ 1 + 1 + W(2^{k-2}) = 
+ 1 + 1 + 1 + W(2^{k-3}) = \ldots$$
+Observe the pattern
+$W(2^k) = i + W(2^{k-i})$
+for $i \leq k$. So if $i = k$ then
+$$W(2^k) =  k + W(2^0) = k + 1.$$
+However, $2^k = n$ implies that $k = \log_{2}(n)$.
+So $W(n) = \log_{2}n + 1$.
+
+Proof: by induction on k we show that $W(2^k)=k+1$. 
+In the base case
+$k=0$ and $W(2^0) = \mbox{ (by definition) }1 = 0+1$ 
+as required. Let $k>0$.
+By IH (induction hypothesis) assume that $W(2^j) =j+1$ for all
+$0 \leq j < k$. Now $$W(2^k) = \mbox{(by definition) } 1 +  
+W(2^{k-1}) = \mbox{(by IH) }
+1 + (k-1) + 1 = k+1.$$
+
+\subsection*{Exercise 5} 
+
+$$T(n) = n^3$$
+
+\subsection*{Exercise 6} 
+
+\begin{itemize}
+\item[a)] Let us fix $n_0=1$ and $M=5$, then
+  $n+4 \leq 5n$ for all $n\geq 1$. Another
+  possibility is e.g. $n_0=4$ and $M=2$ because
+  $n+4 \leq 2n$ for all $n \geq 4$. The validity
+  of the second case can be proved by induction.
+  In the basic step we have to check that  $4+4 \leq 2\cdot 4$
+  which is true. For the inductive step
+  let $n>4$ and by IH we assume 
+  that $(n-1) + 4 \leq 2(n-1)$. We want to show that
+  $n + 4 \leq 2n$, which is true because
+  $$n+4 = (n-1) + 4 + 1 \leq \mbox{ (by IH) }
+  2(n-1) +1 = 2n - 2 + 1 = 2n -1 \leq 2n.$$
+ 
+\item[b)] Let us fix e.g. $n_0 = 1$ and $M=5$, then
+$3n^5 + 2n^3 \leq M\cdot n^5$ for every $n \geq n_0$.
+Why and how did we find it?
+$$3n^5 + 2n^3 \leq 3n^5 + 2n^5 = 5n^5$$
+
+\item[c)] Let $n_0=100$ and $M=1$. Then $n^7 \leq 2^n$ for all 
+$n \geq 100$. The argument for ``why'' is a little bit more difficult
+this time and we will prove it by induction on $n$.
+
+For the base case (n=100) we have 
+$100^7 \leq 2^{100}$ which is true (check this on a calculator if you want
+ to :-)).
+
+Let $n>100$ and we assume by IH that $(n-1)^7 \leq 2^{n-1}$.
+We aim to show that 
+\begin{equation} \label{eq1}
+n^7 \leq 2^n.
+\end{equation}
+
+In order to do that we will in fact prove a stronger claim 
+\begin{equation} \label{eq2}
+n^7 \leq (n-1)^7\cdot 2.
+\end{equation}
+
+If we succeed  to show this then by IH 
+$(n-1)^7\cdot 2 \leq 2^{n-1}\cdot 2 = 2^n$, and
+the inequality (\ref{eq1}) is also proven.
+
+To finish the proof we will now argue that (\ref{eq2}) is true
+for all $n > 100$.
+To prove $n^7 \leq (n-1)^7\cdot 2$ is the same as to prove
+$\sqrt[7]{n^7} \leq \sqrt[7]{(n-1)^7\cdot 2}$
+(both sides are non-negative), which is the
+same as $n \leq (n-1)\cdot  \sqrt[7]{2}$, which is the same
+as $n \leq n\cdot  \sqrt[7]{2} - \sqrt[7]{2}$, which is the same as
+$\sqrt[7]{2} \leq n\cdot (\sqrt[7]{2} - 1)$, which is the same as
+$n \geq \frac{\sqrt[7]{2}}{\sqrt[7]{2} - 1}$, which is obviously true
+for all $n > 100$ because $\frac{\sqrt[7]{2}}{\sqrt[7]{2} - 1} \simeq 11$.
+
+
+
+\item[d)] Let us fix. e.g. $n_0 = 2$ and $M=1/2$, then
+      $n^2\cdot \log n \geq n^2 = (1/2)\cdot 2 n^2$ 
+      for all $n \geq 2$.
+
+\item[e)] First we show that $5n^2 + 2n + 4$ is $O(n^2)$.
+      Let $n_0=1$ and $M=11$. Then  
+  $$5n^2 + 2n +4 \leq 5n^2 + 2n^2 + 4n^2 = 11n^2 =
+ M\cdot n^2$$
+  for all $n \geq 1$. \\
+      Next we have to show that $5n^2 +2n +4$ is
+    $\Omega(n^2)$. Let $n_0=1$ and $M = 1$ which immediately
+    implies that $5n^2 +2n +4 \geq n^2$ for all $n \geq 1$.
+
+\end{itemize}
+
+\subsection*{Exercise 7}
+
+\begin{itemize}
+\item $20n^2 = O(n^2)$ \\
+(!!! {\bf but also} e.g. $20n^2 = O(n^3)$, $20n^2 = O(n^8)$ and
+  $20n^2 = O(2^n)$ even if these are not optimal estimates)
+\item $10n^3 + 6n = O(n^3)$
+\item $2^n + n^{1691} = O(2^n)$
+\item $1000n + n^2 = O(n^2)$
+\item $\log_5(3n^4) = O(\log_2 n)$\\
+  (and we usually write only $O(\log n)$
+  since the base of the logarithm is irrelevant for the $O$-notation
+  as proved during the lecture) \\
+  The argument for this is the following:
+   $\log_5{(3n^4)} = \log_5{3} + \log_5{n^4} = 
+  \log_5{3} + 4\cdot\log_5 n = O(\log_5{n}) = O(\log_2{n})$
+\end{itemize}
+
+\subsection*{Exercise 8} 
+
+It is true that $2^n$ is $O(3^n)$ but $2^n$ is not $\Omega(3^n)$.
+Hence $2^n$ is not $\Theta(3^n)$. \\
+
+\subsection*{Exercise 9}
+
+Assume that $f(n)=O(g(n))$ and $g(n)=O(h(n))$ which means that
+there are natural numbers $n_0$ and $n_1$, and real numbers
+$M_0$ and $M_1$ such that 
+\begin{itemize}
+\item
+$f(n) \leq M_0\cdot g(n)$ for all $n \geq n_0$ and
+\item
+$g(n) \leq M_1\cdot h(n)$ for all $n \geq n_1$.
+\end{itemize}
+Let us define $n_2 = \max\{n_0,n_1\}$ and $M_2=M_0\cdot M_1$,
+which implies that
+$$f(n) \leq M_0\cdot g(n) \leq M_0\cdot ( M_1\cdot h(n)) =
+(M_0\cdot M_1)\cdot h(n) = M_2\cdot h(n)$$ for all
+$n \geq n_2$ and hence $f(n)=O(h(n))$.
+
+\end{document}

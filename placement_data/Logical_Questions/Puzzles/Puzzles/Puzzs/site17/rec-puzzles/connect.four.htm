@@ -1,0 +1,133 @@
+<html><head>
+<title>Solution for /competition/games/connect.four</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /competition/games/connect.four problem</h1>
+<hr>
+An AI program has solved Connect Four for the standard 7 x 6 board.
+The conclusion: White wins, was confirmed by the brute force check made by
+James D. Allen, which has been published in rec.games.programmer.
+
+<p>
+The program called VICTOR consists of a pure knowledge-based evaluation
+function which can give three values to a position: 
+<ul>
+<li> 1 won by white,
+<li> 0 still unclear.
+<li> -1 at least a draw for Black,
+</ul>
+
+This evaluation function is based on 9 strategic rules concerning the game,
+which all nine have been (mathematically) proven to be correct.
+This means that a claim made about the game-theoretical value of a position
+by VICTOR, is correct, although no search tree is built.
+If the result 1 or -1 is given, the program outputs a set of rules applied,
+indicating the way the result can be achieved.
+This way one evaluation can be used to play the game to the end without any
+extra calculation (unless the position was still unclear, of course).
+
+<p>
+Using the evaluation function alone, it has been shown that Black can at least
+draw the game on any 6 x (2n) board. VICTOR found an easy strategy for
+these boardsizes, which can be taught to anyone within 5 minutes. Nevertheless,
+this strategy had not been encountered before by any humans, as far as I know.
+
+<p>
+For 7 x (2n) boards a similar strategy was found, in case White does not
+start the game in the middle column. In these cases Black can therefore at
+least draw the game.
+
+<p>
+Furthermore, VICTOR needed only to check a few dozen positions to show
+that Black can at least draw the game on the 7 x 4 board.
+
+<p>
+Evaluation of a position on a 7 x 4 or 7 x 6 board costs between 0.01 and 10
+CPU seconds on a Sun4.
+
+<p>
+For the 7 x 6 board too many positions were unclear. For that reason a
+combination of Conspiracy-Number Search and Depth First Search was used
+to determine the game-theoretical value. This took several hundreds of hours
+on a Sun4.
+
+<p>
+The main reason for the large amount of search needed, was the fact that in 
+many variations, the win for White was very difficult to achieve. 
+This caused many positions to be unclear for the evaluation function.
+
+<p>
+Using the results of the search, a database will be constructed
+of roughly 500.000 positions with their game-theoretical value. 
+Using this datebase, VICTOR can play against humans or other programs, 
+winning all the time (playing White).  The average move takes less 
+than a second of calculation (search in the database or evaluation 
+of the position by the evaluation function).
+
+<p>
+Some variations are given below (columns and rows are numbered as is customary
+in chess):
+
+<p>
+1. d1, ..  The only winning move.
+
+<ul>
+<li> After 1. .., a1 wins 2. e1. Other second moves for White has not been
+checked yet.
+<li> After 1. .., b1 wins 2. f1. Other second moves for White has not been
+checked yet.
+<li> After 1. .., c1 wins 2. f1. Only 2 g1 has not been checked yet. All other
+second moves for White give Black at least a draw.
+<li> After 1. .., d2 wins 2. d3. All other second moves for White give black
+at least a draw.
+</ul>
+A nice example of the difficulty White has to win:
+
+<ul>
+ <li> 1. d1, d2 
+ <li> 2. d3, d4
+<li> 3. d5, b1
+<li> 4. b2!
+</ul>
+The first three moves for White are forced, while alternatives at the
+fourth moves of White are not checked yet.
+
+<p>
+A variation which took much time to check and eventually turned out
+to be at least a draw for Black, was:
+
+<ul>
+<li> 1. d1, c1
+<li> 2. c2?, .. f1 wins, while c2 does not.
+<li> 2. .., c3 Only move which gives Black the draw.
+<li> 3. c4, .. White's best chance.
+<li> 3. .., g1!! Only 3 .., d2 has not been checked completely, while all
+            other third moves for Black have been shown to lose.
+</ul>
+<p>
+The project has been described in my 'doctoraalscriptie' (Master thesis)
+which has been supervised by Prof.Dr H.J. van den Herik of the
+Rijksuniversiteit Limburg (The Netherlands).
+
+<p>
+I will give more details if requested.
+
+<p>
+Victor Allis.<br>
+Vrije Universiteit van Amsterdam.<br>
+The Netherlands.<br>
+victor@cs.vu.nl<br>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

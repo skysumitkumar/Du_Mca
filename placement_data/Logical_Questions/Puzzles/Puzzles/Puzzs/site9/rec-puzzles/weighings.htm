@@ -1,0 +1,411 @@
+<html><head>
+<title>Solution for /logic/weighing/weighings</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /logic/weighing/weighings problem</h1>
+<hr>
+Oh gracious and wise king, I have solved this problem by first
+simplifying and then expanding.  That is, consider the problem of
+being allowed only a single weighing.  Stop reading right now if you
+want to think about it further.
+
+<p>
+There are three possible outcomes for each mint (light, OK, heavy)
+which may be represented as (-1, 0, +1).  Now, let each mint represent
+one place in base 3.  Thus, the first mint is the ones place, the
+second the threes place, the third is the nines place and so on.  The
+number of coins from each mint must equal the place.  That is, we'll
+have 1 coin from mint 1, 3 from mint 2, 9 from mint 3, and, in
+general, 3^(n-1) from mint n.
+
+<p>
+By weighing all coins at once, we will get a value between 1 + 3 + 9 +
+...  and -1 + -3 + -9 + ...  In fact, we notice that that value will
+be unique for any mint outcomes.  Thus, for the one weighing problem,
+we need
+
+<p>
+sum for i=1 to n (3^(i-1))
+
+<p>
+which evaluates to (3^n - 1)/2
+
+<p>
+I'm fairly satisfied that this is a minimum for a single weighing.
+What does a second weighing give us?  Well, we can divide the coins
+into two groups and use the same method.  That is, if we have 5 mints,
+one weighing will be:
+
+<p>
+1 coin from mint 1 + 3 coins from mint 2 + 9 coins from mint 3
+
+<p>
+while the other weighing will be:
+
+<p>
+1 coin from mint 4 + 3 coins from mint 5
+
+<p>
+It's pretty plain that this gives us a total coinage of:
+
+<pre>
+   3^(n/2) - 1 for even n and, after some arithmetic agitation:
+   2 * 3^((n-1)/2) - 1 for odd n
+</pre>
+
+I think the flaw in this solution is that we don't know ahead of time
+the amount by which the coins are off weight.  So if you weigh 1 coin
+from mint 1 together with 3 coins from mint 2 and the result is heavy
+by 3x units, you still don't know whether the bogus coins are from
+mint 3 (heavy by x units) or from mint 1 (heavy by 3x units).  Note
+that we're not given the error amount, only the fact that is is equal
+for all bogus coins.
+
+<p>
+Here is my partial solution:
+
+<p>
+After considering the above, it would seem that on each of the two
+weighings we must include coins from all of the mints (except for the
+special cases of small n).  So let ai (a sub i) be the number of coins
+from mint i on weighing 1 and bi be the number of coins from mint i on
+weighing 2.  Let the error in the bogus coins have a value x, and let
+ci be a the counterfeit function: ci is 0 if mint i is good, 1
+otherwise.
+
+<p>
+Then
+<pre>
+   Sum   ai ci x = delta1		error on weighing 1
+   Sum   bi ci x = delta2		error on weighing 2
+</pre>
+Now the ratio of delta1 to delta2 will be rational regardless of the
+value of x, since x will factor out; let's call this ratio p over q (p
+and q relatively prime).  We would like to choose { ai } and { bi }
+such that for any set of mints J, which will be a subset of { 1 , 2 ,
+... , n }, that
+
+<pre>
+   Sum aj	( = Sum  ai ci ) is relatively prime to Sum bj.
+</pre>
+If this is true then we can determine the error x; it will simply be
+delta1/p, which is equal to  delta2/q.
+
+<p>
+If the { ai } have been carefully chosen, we should be able to figure
+out the bogus mints from one of the weighings, provided that
+all subsets ( { { aj } over all J } ) have unique sums.
+This was the strategy proposed above, where is was suggested
+that ai = 3 ** (i-1) ; note that you can use base 2 instead
+of base 3 since all the errors have the same sign.
+
+<p>
+Well, for the time being I'm stumped.
+
+<p>
+This agrees with the analysis I've been fighting with.  I actually
+came up with a pair of functions that "almost" works.  So that the
+rest of you can save some time (in case you think the way I did):
+
+<h4>Weighing 1:</h4>
+1 coin from each mint
+
+<h4>Weighing 2:</h4>
+2^(k-1) coins from mint k, for 1...k...n (total 2^n - 1 coins)
+
+<p>
+Consider the n mints to be one-bit-each -- bit set -&gt; mint makes bogus
+coins.  Then we can just state that we're trying to discover "K",
+where K is a number whose bit pattern _just_ describes the bogosity of
+each mint.  OK - now, assuming we know 'x', and we only consider the
+*difference* of the weighing from what it should be, for weighing 1,
+the devaiation is just the Hamming weight of K -- that is the number
+of 1-bits in it -- that is, the number of bogosifying mints.  For
+weighing 2, the deviation is just K!  When the nth bit of K is set,
+then that mint contributes just 2^n to the deviation, and so the total
+deviation will just be K.
+
+<p>
+So that set me in search of a lemma: given H(x) is the hamming weight
+of x, is f(x) = x / H(x) a 1-1 map integers into rationals?  That is,
+if x/H(x) = y/H(y) can we conclude that x = y?
+
+<p>
+The answer (weep) is NO.  The lowest pair I could find are 402/603
+(both give the ratio 100.5).  Boy it sure looked like a good
+conjecture for a while!  Sigh.
+
+<p>
+There are two parts to the problem. First let us try to come up with a 
+solution to finding the answer in 2 weighings - then worry about using the
+min. number of coins.
+Solutions are for GENERAL n.
+
+<pre>
+   Let N = set of all mints, 1 to n. Card(N) = n.
+   Let P = set of all bogus mints. Let Card(P) = p.
+</pre>
+Weighing I: Weigh n coins, 1 from each mint.
+
+<p>
+Since each "good" coins weighs one ounce, let delta1 be the error in weighing.
+Since all bogus coins are identical, let delta1 be abs(error).
+If x is the weight by which one bogus coin differs from a good coin,
+ delta1 = p * x.
+
+<p>
+Weighing II: The coins to be weighed are composed thusly.
+
+<p>
+Let a1 be the number of coins from mint 1, a2 # from mint2 .. and an from
+mint n. All ai's are distinct integers.
+
+<p>
+Let A = Set of all ai's.
+
+<p>
+Let delta2 = (abs.) error in weighing 2 = x * k
+	where k is the number of coins that are bogus in weighing two.
+<p>
+Or more formally
+		k = sigma(ai)
+		 (over all i in P)
+
+<p>
+Assuming p is not zero (from Weighing I - in that case go back and get beheaded
+for giving the king BAAAAAD advice), 
+<pre>
+   Let ratio = delta1/delta2 = p/k.
+   Let IR = delta2/delta1 = k/p = inverse-ratio (for later proof).
+</pre>
+
+<p>
+Let S(i) be the bag of all numbers generated by summing i distinct elements 
+from A. Clearly there will be nCi (that n comb. i) elements in S(i).
+
+<p>
+[A bag is a set that can have the same element occur more than once.]
+
+<p>
+So S(1) = A
+and S(n) will have one element that is the sum of all the elements of A.
+
+<p>
+Let R(i) = {x : For-all y in S(i), x = i/y} expressed as p/q (no common 
+								factors).
+<p>
+(R is a bag too).
+
+<p>
+Let R-A = Bag-Union(R(i) for 1&gt;= i &gt;=n). (can include same element twice)
+
+<p>
+Choose A, such that all elements of R-A are DISTINCT, i.e. Bag(R-A) = Set(R-A).
+
+<p>
+Let the sequence a1, a2, .. an, be an L-sequence if the above property is
+true. Or more simply, A is in L.
+
+<hr>
+<h3>Conjecture:</h3>
+The bogus mint problem is solved in two weighings if A is in L.
+
+<p>
+Sketchy proof: R(1) = all possible ratios (= delta1/delta2) when p=1.
+R(i) = all possible ratio's when p=i.
+
+<p>
+Since all possible combinations of bogus mints are reflected in R, just match
+the actual ratio with the generated table for n.
+
+<hr>
+A brief example. Say n=3. Skip to next line if you want.
+Let A=(2,3,7).
+
+<pre>
+p=1 possible ratios = 1/2 1/3 1/7
+p=2 possible ratios = 2/5 2/9 1/5(2/10)
+p=3 possible ratios = 1/4(3/12) (lots of blood in Scandalvania).
+</pre>
+
+As all outcomes are distinct, and the actual ratio MUST be one of these,
+match it to the answer, and start sharpening the axe.
+
+<p>
+Note that the minimum for n=3 is A=(0,1,3)
+possible ratios are 
+<pre>
+p=1 infinity (delta2=0),1,1/3
+p=2 2/1,2/3,1/2
+p=3 3/4
+</pre>
+<hr>
+
+All those with the determination to get this far are saying OK, OK how do we
+get A.
+
+<p>
+I propose a solution that will generate A, to give you the answer in two
+weighings, but will not give you the optimal number of coins.
+
+<p>
+Let a1=0
+
+<p>
+For i&gt;=2 &gt;=n
+
+<p>
+ai = i*(a1 + a2 + ... + ai-1) + 1
+
+<pre>
+*****************************************
+*		i-1			*
+*	ai = i* [Sigma(aj)] + 1 	*   ****Generator function G*****
+*		j=1			*
+*****************************************
+</pre>
+If A is L, all RATIO's are unique. Also all inverse-ratio's (1/ratio) are
+unique. I will prove that all inverse-ratio's (or IR's) are unique.
+
+<p>
+Let A(k), be the series generated by the first k elements from eqn. G.(above)
+
+<hr>
+
+<h3>Proof by induction.</h3>
+
+<pre>
+A(1) = {0} is in L.
+A(2) = {0,1} is in L.
+</pre>
+
+ASSUME A(k) = {0,1, ..., ak} is in L.
+
+<p>
+T.P.T. A(k+1) = {0,1, ..., ak, D) is in L where D is generated from G.
+
+<p>
+We know that all IR's(inverse ratio's)  from A(k) are distinct.
+
+<p>
+Let K = set of all IR's of A(k).
+
+<p>
+Since A(k+1) contains A(k), all IR's of A(k) will also be IR's of A(K+1).
+
+<p>
+So for all P, such that (k+1) is not in P, we get a distinct IR.
+
+<p>
+So consider cases when (k+1) is in P.
+
+<p>
+p=1 (i.e. (k+1) = only bogus mint), IR = D
+
+<hr>
+<h3>Conjecture:</h3>
+Highest IR for A(k) = max(K) = ak
+
+<p>
+<h4>Proof:</h4>
+<pre>
+Since max[A(k)] = ak,
+	for p'= 1, max IR = ak/1 = ak
+	for p'= 2, max IR (max sum of 2 ai's)/2
+		   = (ak + ak-1)/2 &lt; ak (as ak&gt;ak-1).
+	for p'= i max IR sum of largest i elements of A(k)
+		          --------------------------------
+					i
+			&lt; i * ak/i = ak.
+So max. IR for A(k) is ak.
+</pre>
+<hr>
+
+D &gt; ak
+<p>
+So for p=1 IR is distinct.
+
+<pre>
+Let Xim be the IR formed by choosing i elements from A(k+1). 
+  Note: We are choosing D and (i-1) elements from A(k).
+     m is just an index to denote each distinct combination of
+     (i-1) elemnts of A(i).
+</pre>
+<hr>
+<h3>Conjecture:</h3>
+For p=j, all new IR's Xjm are limited to the range
+ D/(j-1) &gt; Xjm &gt; D/j.
+
+<h4>Proof:</h4>
+<pre>
+Xjm = (D + {j-1 elements of A(k)})/j
+
+Clearly Xjm &gt; D/j.
+
+To show: max[Xjm] &lt; D/(j-1)
+
+Note: a1 + a2 .. + ak &lt; D/(k+1)
+
+  max[Xjm] = (D + ak + ak-1 +  ... + a(k-j+1))/j
+           &lt; (D + D/(k+1))/j
+           = D (k+2)/(k+1)j
+	   = [D/(j-1)] * alpha.
+
+   alpha = (j-1)/(j)  *  (k+2)/(k+1)
+		
+   Since j &lt;= k, (j-1)/j &lt;= (k-1)/k &lt; (k+1)/(k+2)
+
+   <b>implies</b> alpha &lt; 1.
+</pre>
+Conjecture proved.
+
+<hr>
+<h3>Conjecture:</h3> For a given p, all newly generated IR's are distinct.
+
+<h4>Proof by contradiction:</h4>
+
+Assume this is not so.
+
+<p>
+Implies
+<pre>
+   (D + (p-1) elements of A(k))/p 
+    = (D + some other (p-1) elements of A(k))/p 
+</pre>
+Implies
+<pre>
+   SUM[(p-1) elements of A(k)] = SUM[ some other (p-1) elements of A(k)]
+</pre>
+<p>
+Implies 
+<pre>
+   SUM[(p-1) elements of A(k)]/(p-1) 
+   = SUM[some other (p-1) elements]/(p-1)
+</pre>
+Implies A(k) is NOT in L.
+<p>
+Contra.
+
+<p>
+Hence conjecture.
+<hr>
+
+<h3>Conjecture:</h3>
+A(k+1) is in L.
+
+<p>
+Since all newly generated IR's are distinct from each other, and all newly generated IR's are greater than previous IR's, A(k+1) is in L.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

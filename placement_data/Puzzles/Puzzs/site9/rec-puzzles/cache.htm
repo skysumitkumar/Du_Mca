@@ -1,0 +1,172 @@
+<html><head>
+<title>Solution for /analysis/cache</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /analysis/cache problem</h1>
+<hr>
+If the truck can siphon gas out of its tank and leave it in the cache,
+the answer is:
+<pre>
+        { 1/1 + 1/3 + ... + 1/(2 * N - 1) } x 500 miles.
+</pre>
+A much harder problem occurs when the truck can siphon gas, but if it does,
+it must siphon the gas into one of the initial barrels.
+
+<p>
+Now, remarkably, for initial gas values of 50, 100, 150, 200, 250, 300,
+and 350 gallons, the two problems give identical optimal distances, viz.
+<pre>
+   gal   dist
+   ---   ----
+    50   500
+   100   733.3333
+   150   860
+   200   948.5714
+   250  1016.8254
+   300  1072.3810
+   350  1117.8355
+</pre>
+However, for the 8 barrel case (400 gallons), the unlimited cache optimal
+distance is 1157.6957, but limited cache is only 1157.2294.
+
+<p>
+What happened is that the unlimited cache optimal solution has started to
+siphon out more than 50 gallons (60-80/13 to be exact) of gas on trips
+to the first depot.  With a limited cache, the truck can only leave a
+maximum of 50 gallons (one barrel worth), and does not have a big
+enough gas tank (only ten gallons) to carry around the excess.
+
+<p>
+The limited cache problem is the same as the "Desert Fox" problem
+described, but not solved, by Dewdney, July '87 "Scientific American".
+
+<p>
+Dewdney's Oct. '87 Sci. Am. article gives for N=2, the optimal distance
+of 733.33 miles.
+
+<p>
+In the Nov. issue, Dewdney lists the optimal distance of 860 miles for
+N=3, and gives a better, but not optimal, general distance formula.
+
+<p>
+Westbrook, in Vol 74, #467, pp 49-50, March '90 "Mathematical Gazette",
+gives an even better formula, for which he incorrectly claims optimality:
+
+<pre>
+  For N = 2,3,4,5,6:
+     Dist = (600/1 + 600/3 + ... + 600/(2N-3))  +  (600-100N)/(2N-1)
+  For N &gt; 6:
+     Dist = (600/1 + 600/3 + ... + 600/9)  +  (500/11 + ... + 500/(2N-3))
+</pre>
+
+The following shows that Westbrook's formula is not optimal for N=8:
+
+<pre>
+   Ferry  7 drums forward   33.3333 miles   (356.6667 gallons remain)
+   Ferry  6 drums forward   51.5151 miles   (300.0000 gallons remain)
+   Ferry  5 drums forward   66.6667 miles   (240.0000 gallons remain)
+   Ferry  4 drums forward   85.7143 miles   (180.0000 gallons remain)
+   Ferry  3 drums forward  120.0000 miles   (120.0000 gallons remain)
+   Ferry  2 drums forward  200.0000 miles   ( 60.0000 gallons remain)
+   Ferry  1 drums forward  600.0000 miles
+                          ---------------
+         Total distance = 1157.2294 miles
+   (Westbrook's formula = 1156.2970 miles)
+
+       ["Ferrying n drums forward x miles" involves (2*n-1) trips,
+         each of distance x.]
+</pre>
+Other attainable values I've found:
+<pre>
+   N      Distance
+  ---    ---------  (Ferry distances for each N are omitted for brevity.)
+    5    1016.8254
+    7    1117.8355
+   11    1249.2749
+   13    1296.8939
+   17    1372.8577
+   19    1404.1136  (The N &lt;= 19 distances could be optimal.)
+   31    1541.1550  (I doubt that this N = 31 distance is optimal.)
+  139    1955.5702  (Attainable and probably optimal.)
+</pre>
+So...where's MY formula?
+I haven't found one, and believe me, I've looked.
+
+<p>
+I would be most grateful if someone would end my misery by mailing me
+a formula, a literature reference, or even an efficient algorithm that
+computes the optimal distance.
+
+<p>
+If you do come up with the solution, you might want to first check it
+against the attainable distances listed above, before sending it out.
+(Not because you might be wrong, but just as a mere formality to check
+ your work.)
+
+<p>
+[Warning:  the Mathematician General has determined that
+           this problem is as addicting as Twinkies.]
+
+<p>
+Myron P. Souris<br>
+EDS/Unigraphics<br>
+<em>souris@ug.eds.com</em>
+
+<hr>
+The following output comes from some hack programs that I've used to
+empirically verify some proofs I've been working on.
+
+<p>
+Initial barrels:   12 (600 gallons)<br>
+Attainable distance= 1274.175211<br>
+<pre>
+                  Barrels  Distance      Gas
+                   Moved    covered     left
+&gt;From depot   1:      10     63.1579   480.0000
+&gt;From depot   2:       8     50.0000   405.0000
+&gt;From depot   3:       7     37.5000   356.2500
+&gt;From depot   4:       6     51.1364   300.0000
+&gt;From depot   5:       5     66.6667   240.0000
+&gt;From depot   6:       4     85.7143   180.0000
+&gt;From depot   7:       3    120.0000   120.0000
+&gt;From depot   8:       2    200.0000    60.0000
+&gt;From depot   9:       1    600.0000     0.0000
+</pre>
+
+Initial barrels:   40 (2000 gallons)<br>
+Attainable distance= 1611.591484<br>
+<pre>
+                  Barrels  Distance      Gas
+                   Moved    covered     left
+&gt;From depot   1:      40      2.5316  1980.0000
+&gt;From depot   2:      33     50.0000  1655.0000
+&gt;From depot   3:      28     50.0000  1380.0000
+&gt;From depot   4:      23     53.3333  1140.0000
+&gt;From depot   5:      19     50.0000   955.0000
+&gt;From depot   6:      16     56.4516   780.0000
+&gt;From depot   7:      13     50.0000   655.0000
+&gt;From depot   8:      11     54.7619   540.0000
+&gt;From depot   9:       9     50.0000   455.0000
+&gt;From depot  10:       8     32.1429   406.7857
+&gt;From depot  11:       7     38.9881   356.1012
+&gt;From depot  12:       6     51.0011   300.0000
+&gt;From depot  13:       5     66.6667   240.0000
+&gt;From depot  14:       4     85.7143   180.0000
+&gt;From depot  15:       3    120.0000   120.0000
+&gt;From depot  16:       2    200.0000    60.0000
+&gt;From depot  17:       1    600.0000     0.0000
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

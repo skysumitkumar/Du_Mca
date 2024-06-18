@@ -1,0 +1,232 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Timing</TITLE>
+<META NAME="description" CONTENT="Timing">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node22.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node22.html">
+<LINK REL="previous" HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+<LINK REL="up" HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+<LINK REL="next" HREF="node22.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node22.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html600"
+  HREF="node22.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node22.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html594"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html588"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html596"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html598"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html601"
+  HREF="node22.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node22.html">A More Precise Analysis</A>
+<B> Up:</B> <A NAME="tex2html595"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">The Analysis of an</A>
+<B> Previous:</B> <A NAME="tex2html589"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">The Analysis of an</A>
+ &nbsp <B>  <A NAME="tex2html597"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html599"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00531000000000000000">
+Timing</A>
+</H2>
+
+<P>
+Our attention is going to focus on the <EM>timing</EM> of the algorithm.
+How long does it take to do the job? The obvious answer to this question
+is: it depends on which computer you are using. Certainly, but that does
+not make the question a silly one. Most present-day computers only vary
+in the speed with which they can perform elementary operations (machine
+instructions). If we know how many basic operations the method requires
+then we know how fast it will run on any particular machine. We will not
+go down to quite this level of detail because machines also differ
+somewhat in the nature of their elementary operations but we will always
+attempt to break our algorithms down into very simple steps.
+
+<P>
+Let me now rewrite the above algorithm in the form of a flow-chart
+using very basic operations (see Fig.&nbsp;<A HREF="node21.html#flowchart" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node21.html#flowchart">1.7</A>). We will
+pretend that each of these operations takes the same time to execute
+on a computer. This is not precisely true but neither is it wildly
+false.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="flowchart"></A><A NAME="686"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 1.7:</STRONG>
+Flow chart to find the minimum element in a list.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><!-- MATH
+ $\includegraphics[width=9cm]{xfig/flowchart.eps}$
+ -->
+<IMG
+ WIDTH="405" HEIGHT="435" ALIGN="BOTTOM" BORDER="0"
+ SRC="img17.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img17.gif"
+ ALT="\includegraphics [width=9cm] {xfig/flowchart.eps}">
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+Now we can start timing the algorithm. We just want to count how many
+times each box is executed. Boxes A and B are only executed once. Boxes
+C, E and F are on a loop that the program goes round <I>n</I> - 1 times, so each
+of these is executed <I>n</I> - 1 times. That leaves box D. This is where all
+our problems come.
+
+<P>
+Consider the list (4,5,3,6,1,2). As the algorithm scans along this it
+will start with <code>min=4</code>. It will then do a `detour' on the third
+element to make <code>min=3</code> and it will make a final detour on the fifth
+element to give <code>min</code> its final value of 1. In all the box D gets
+executed twice.
+
+<P>
+On the other hand, if we apply the algorithm to the list (1,4,3,6,2,5)
+the detour box D will never be executed. <code>min</code> will get its correct
+value right at the start and will never need to be updated.
+
+<P>
+This is our problem. There is no fixed value for the number of detours.
+It depends entirely on the list being processed. We can make three
+obvious statements about the value <I>d</I> of the number of detours:
+
+<P>
+
+<UL>
+<LI>First, the minimum value of <I>d</I> is zero. This will occur
+whenever the list has its smallest element in first place.
+
+<P>
+</LI>
+<LI>Second, the maximum value of <I>d</I> for a list of <I>n</I> elements is
+<I>n</I> - 1. This will occur when the list is in strictly decreasing order, so
+that the current value of the minimum has to be updated on each step.
+
+<P>
+</LI>
+<LI>Thirdly, for lists of <I>n</I> elements <I>d</I> can take any value
+between these extremes (exercise).
+</LI>
+</UL>
+
+<P>
+These comments allow us to make the following statement. Suppose each
+box in the flow chart takes unit time to execute. Then the time <I>T</I>(<I>n</I>)
+taken by the algorithm to find the minimum of <I>n</I> numbers lies in the
+range <!-- MATH
+ \begin{displaymath}
+3(n-1)+2 \le T(n) \le 3(n-1)+2+(n-1)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+3(<I>n</I> - 1) + 2<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img11.gif"
+ ALT="$\displaystyle \le$"><I>T</I>(<I>n</I>)<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img11.gif"
+ ALT="$\displaystyle \le$">3(<I>n</I> - 1) + 2 + (<I>n</I> - 1)
+</DIV><P></P>
+or <!-- MATH
+ \begin{displaymath}
+3n -1 \le T(n)
+\le 4n-2
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+3<I>n</I> - 1<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img11.gif"
+ ALT="$\displaystyle \le$"><I>T</I>(<I>n</I>)<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img11.gif"
+ ALT="$\displaystyle \le$">4<I>n</I> - 2
+</DIV><P></P>
+For many purposes this might be all that you need to know.
+The timing is roughly proportional to the number of elements in the
+list, allowing for some variation due to the different number of detours
+made for different lists.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html600"
+  HREF="node22.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node22.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html594"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html588"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html596"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html598"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html601"
+  HREF="node22.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node22.html">A More Precise Analysis</A>
+<B> Up:</B> <A NAME="tex2html595"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">The Analysis of an</A>
+<B> Previous:</B> <A NAME="tex2html589"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">The Analysis of an</A>
+ &nbsp <B>  <A NAME="tex2html597"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html599"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

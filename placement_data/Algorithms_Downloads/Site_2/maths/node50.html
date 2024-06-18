@@ -1,0 +1,148 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The ADT Stack</TITLE>
+<META NAME="description" CONTENT="The ADT Stack">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node51.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node51.html">
+<LINK REL="previous" HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">
+<LINK REL="up" HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">
+<LINK REL="next" HREF="node51.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node51.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1041"
+  HREF="node51.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node51.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1035"
+  HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1029"
+  HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1037"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1039"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1042"
+  HREF="node51.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node51.html">The ADT Queue</A>
+<B> Up:</B> <A NAME="tex2html1036"
+  HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html1030"
+  HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">Introduction</A>
+ &nbsp <B>  <A NAME="tex2html1038"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1040"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00711000000000000000">
+The ADT Stack</A>
+</H2> <A NAME="SSS:stack"></A>A <A NAME="5000"></A><B>stack</B> is a collection of elements or items, for which the
+following operations are defined:
+<DL>
+<DT></DT>
+<DD><code>create(S)</code> creates an empty stack <code>S</code>;
+</DD>
+<DT></DT>
+<DD><code>isEmpty(S)</code> is a predicate 
+<A NAME="tex2html24"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot4324'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot4324"><SUP>3.2</SUP></A>  that returns ``true'' if <code>S</code>
+exists and is empty, and ``false'' otherwise;
+</DD>
+<DT></DT>
+<DD><code>push(S,item)</code> adds the given <code>item</code> to the stack
+<code>S</code><A NAME="tex2html25"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot4326'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot4326"><SUP>3.3</SUP></A> ; and
+</DD>
+<DT></DT>
+<DD><code>pop(S)</code> removes the most recently added item from the stack
+<code>S</code> and returns it as the value of the function;
+</DD>
+</DL>
+
+<P>
+The primitive <code>isempty</code> is needed to avoid calling <code>pop</code> on
+an empty stack, which should cause an error.  In the real world, the
+<code>push</code> primitive should return an error when the stack is
+``full'' and so no more items can be added.  We ignore such
+complications here.  An additional operation is sometimes defined,
+called <code>top(S)</code> which simply returns the last item to be added to
+the stack, without removing it.  Show that this can be done in terms
+of the primitive operations described above.
+
+<P>
+The word ``stack'' is chosen by analogy with a stack of plates, where
+the last one placed on the top of the stack is usually the first one to
+be used.  Thus a stack implements a ``last in first out'' ordering on
+a set of items.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1041"
+  HREF="node51.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node51.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1035"
+  HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1029"
+  HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1037"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1039"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1042"
+  HREF="node51.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node51.html">The ADT Queue</A>
+<B> Up:</B> <A NAME="tex2html1036"
+  HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html1030"
+  HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">Introduction</A>
+ &nbsp <B>  <A NAME="tex2html1038"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1040"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

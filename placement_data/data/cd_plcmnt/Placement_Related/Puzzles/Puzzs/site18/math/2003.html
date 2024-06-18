@@ -1,0 +1,526 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (X11; U; SunOS 5.9 sun4u) [Netscape]">
+   <meta name="description" content="Optimization Methods: Course description">
+   <meta name="keywords" content="optimization, applied mathematics, Course description, cyllabus">
+   <title>Methods of Optimization</title>
+</head>
+<body text="#000000" bgcolor="#FFFFCC" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<a NAME="start"></a>
+<center>
+<p>Math&nbsp; 7870, 3 credit hours. Spring 2004.
+<br><b><font size=+3>Topics in Applied Math: Methods of Optimization</font></b></center>
+
+<table BORDER=0 COLS=2 WIDTH="100%" NOSAVE >
+<tr>
+<td>Instructor:&nbsp;
+<br>Professor <a href="javascript:if(confirm('http://www.math.utah.edu/~cherk  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.math.utah.edu/~cherk'" tppabs="http://www.math.utah.edu/~cherk">Andrej Cherkaev,<br>
+</a><a href="javascript:if(confirm('http://www.math.utah.edu/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.math.utah.edu/'" tppabs="http://www.math.utah.edu/">Department
+of Mathematics&nbsp;</a>
+<br>Office: JWB 225&nbsp;
+<br>Email: <a href="mailto:cherk@math.utah.edu">cherk@math.utah.edu</a>
+<br>Tel : +1 801 - 581 6822&nbsp;</td>
+
+<td>
+<center><img SRC="JigSaw01.JPG" tppabs="http://www.math.utah.edu/~cherk/teach/opt/JigSaw01.JPG" height=200 width=132>
+<br>&nbsp;Search for the Perfection:&nbsp;
+<br>An image from&nbsp;
+<br><a href="javascript:if(confirm('http://www.pipeline.com/~rabaron/MONA10.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.pipeline.com/~rabaron/MONA10.htm'" tppabs="http://www.pipeline.com/~rabaron/MONA10.htm">Bridgeman Art
+Library</a></center>
+</td>
+</tr>
+
+<tr>
+<td></td>
+</tr>
+</table>
+
+<p>The course is designed for grad students in Math, Science, and Engineering.
+It covers algorithms and methods for search of extremum of functions of
+one or several variables&nbsp; such as methods of golden ratio, gradient,
+conjugate gradient, quasi-Newton; basics of linear, quadratic, and convex
+programming; Ritz and Galerkin-type methods for variational problems, and
+control problems. We also discuss modeling, dealing with uncertainty in
+data, and optimization of large poorly defined objects. The students are
+encouraged to apply the methods to their research&nbsp; projects that will
+be treated as the course projects.
+<p><b>Prerequisite</b>: Calculus, ODE, elementary programming.
+<br>
+<hr WIDTH="100%">
+<br>The final grade is composed as follows: 60% - the homework, 40% - the
+project.
+<br>
+<hr WIDTH="100%">
+<h4>
+Contents</h4>
+<a href="#topic1#">Plan</a>
+<br><a href="#topic2">Remarks</a>, Introduction: <a href="#topic3">About
+the algorithms</a>, <a href="#topic4">Optimization and modeling</a>, <a href="#topic7">Basic
+rules</a>, <a href="#topic5">Classification</a>
+<br><a href="#topic6">Links</a>
+<p><a NAME="topic1"></a>
+<br><a href="#start">Go to the top</a>
+<ul>
+<ol>
+<h4>
+Plan</h4>
+
+<li>
+Extremum of a function of one variable (2 weeks)</li>
+
+<br>Fibbonacci and Golden Mean method, Secant method, Newton method.
+<li>
+Modeling and Optimization (2 weeks)</li>
+
+<br>Types of problems and methods, Approximations. Examples. Setting of
+course projects.
+<li>
+Unconstrained optimization (3 weeks)</li>
+
+<br>Gradient search, Newton method and its modifications, Conjugate Gradient
+method, flip-flop type methods. Example: Mean Square approximation and
+its modifications.
+<li>
+Constrained optimization (3 weeks)</li>
+
+<br>Lagrangians and Augmented Lagrangian Methods. Duality.
+<br>Linear Programming. Quadratic programming. Convex programming.
+<li>
+Review of various methods (2 week)</li>
+
+<br>Stochastic search. Genetic algorithms. Discrete methods. Minimax and
+games.
+<li>
+<b>Projects presentations</b> (1 week)</li>
+
+<li>
+Reserve (1 week).</li>
+</ol>
+
+<hr><a NAME="topic2"></a>
+<br><a href="#start">Go to the top</a>
+<h3>
+Remarks on Optimization</h3>
+The desire for <b>optimality</b> (perfection) is inherent for humans. The
+search for extremes inspires mountaineers, scientists, mathematicians,
+and the rest of the human race. A beautiful and practical mathematical
+theory of optimization (i.e. search-for-optimum strategies) is developed
+since the sixties when computers become available. Every new generation
+of computers allows for attacking new types of problems and calls for new
+methods. The goal of the theory is the creation of reliable methods to
+catch the extremum of a function by an intelligent arrangement of its evaluations
+(measurements). This theory is vitally important for modern engineering
+and planning that incorporate optimization at every step of the complicated
+decision making process.
+<p>
+<hr WIDTH="100%">
+<table>
+<tr>
+<td><img SRC="Dantepic.jpg" tppabs="http://www.math.utah.edu/~cherk/teach/opt/Dantepic.jpg" height=161 width=134 align=LEFT></td>
+
+<td><b>Optimization and aestetics&nbsp;</b>
+<p>The inherent human desire to optimize is cerebrated in the famous Dante
+quotation:&nbsp;
+<br><i><font color="#993399">All that is superfluous displeases God and
+Nature</font></i>
+<br><i><font color="#993399">All that displeases God and Nature is evil.</font></i>
+<br>In engineering, optimal projects are considered beautiful and rational,
+and the far-from-optimal ones are called ugly and meaningless. Obviously,
+every engineer tries to create the best project and he/she relies on optimization
+methods to achieve the goal.&nbsp;</td>
+</tr>
+</table>
+
+<hr WIDTH="100%">
+<table>
+<tr>
+<td><img SRC="Maupertuis.jpeg" tppabs="http://www.math.utah.edu/~cherk/teach/opt/Maupertuis.jpeg" height=163 width=134 align=LEFT></td>
+
+<td><b>Optimization and Nature&nbsp;</b>
+<p>The <i>general principle </i>by <a href="javascript:if(confirm('http://www-groups.dcs.st-and.ac.uk/~history/Mathematicians/Maupertuis.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www-groups.dcs.st-and.ac.uk/~history/Mathematicians/Maupertuis.html'" tppabs="http://www-groups.dcs.st-and.ac.uk/~history/Mathematicians/Maupertuis.html">Maupertuis
+</a>proclaims:&nbsp;
+<br><i><font color="#993399">If there occur some changes in nature, the
+amount of action necessary for this change must be as small as possible.&nbsp;</font></i><a href="story.html" tppabs="http://www.math.utah.edu/~cherk/spiral-trees/story.html" TARGET="page 3"><img SRC="title-4.gif" tppabs="http://www.math.utah.edu/~cherk/teach/opt/title.gif" LOWSRC="title-4.gif" tppabs="http://www.math.utah.edu/~cherk/teach/opt/title.gif" NOSAVE height=79 width=150 align=RIGHT></a>
+<br>&nbsp;This principle&nbsp; proclaims that the nature always finds the
+"best" way to reach a goal. It leads to an interesting <i>inverse optimization
+problem</i>: Find the essence of optimality of a natural "project."</td>
+</tr>
+</table>
+
+<p>
+<hr WIDTH="100%">
+<table WIDTH="90%" >
+<tr>
+<td><b>The essence </b>of an optimization problem is: <font color="#993399"><i>Catching
+a black cat in a dark room in minimal time</i>.
+</font>(A constrained optimization
+problem corresponds to a room full of furniture.)
+<br>A light, even dim, is needed: Hence optimization methods explore assumptions
+about the character of response of the goal function to varying parameters
+and suggest the best way to change them. The variety of <i>a priori assumptions
+</i>corresponds
+to the variety of optimization methods. This variety explains why there
+is no<font color="#993399"> silver bullet </font>in optimization theory.</td>
+
+<td>
+<table BGCOLOR="#000099" >
+<tr NOSAVE>
+<td NOSAVE><img SRC="blackcat.gif" tppabs="http://www.math.utah.edu/~cherk/teach/opt/blackcat.gif" height=134 width=122 align=RIGHT></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<p><b>Semantics</b>
+<br>Optimization theory is developed by ingenious and creative people,
+who regularly appeal to vivid common sense associations, formulating them
+in a general mathematical form. For instance, the theory steers numerical
+searches through
+<i><font color="#993399">canyons</font><font color="#003300">
+and </font><font color="#993399">passes (saddles)</font></i>, towards the
+<i><font color="#993399">peaks</font></i>;
+it fights the <i><font color="#993399">curse of dimensionality</font></i>,
+models
+<font color="#993399">evolution</font>,
+<font color="#993399">gambling,</font>
+and other human passions. The optimizing algorithms themselves are mathematical
+models of intellectual and intuitive decision making.
+<br><a NAME="topic3"></a><a href="#start">Go to the top</a></ul>
+
+<center>
+<h3>
+
+<hr SIZE=6 WIDTH="100%"></h3></center>
+
+<blockquote>
+<center>
+<h3>
+Introduction to Optimization</h3></center>
+Everyone who studied calculus knows that an extremum of a smooth function
+is reached at a stationary point where its gradient vanishes. Some may
+also remember the Weierstrass theorem which proclaims that the minimum
+and the maximum of a function in a closed finite domain do exist. Does
+this mean that the problem is solved?
+<p>A small thing remains: To actually find that maximum. This problem is
+the subject of the <i>optimization theory </i>that deals with algorithms
+for search of the extremum. More precisely, we are looking for an algorithm
+to approach a proximity of this maximum and we are allowed to evaluate
+the function (to measure it) in a finite number of points. Below, some
+links to mathematical societies and group in optimization are placed that
+testify how popular the optimization theory is today: Many hundreds of
+groups are intensively working on it.
+<p><a NAME="topic4"></a>
+<br>
+<hr WIDTH="100%">
+<br><a href="#start">Go to the top</a>
+<h4>
+Optimization and Modeling</h4>
+
+<li>
+The modeling<font color="#993399"> </font>of the optimizing process is
+conducted along with the optimization. Inaccuracy of the model is emphasized
+in optimization problem, since optimization usually brings the control
+parameters to the edge, where a model may fail to accurately describe the
+prototype. For example, when a linearized model is optimized, the optimum
+often corresponds to infinite value of the linearized control. <a href="javascript:if(confirm('http://www.math.utah.edu/~cherk/teach/opt/opt2.html  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?'))window.location='http://www.math.utah.edu/~cherk/teach/opt/opt2.html'" tppabs="http://www.math.utah.edu/~cherk/teach/opt/opt2.html" TARGET="page 3">(Click
+here to see an example)</a> On the other hand, the roughness of the model
+should not be viewed as a negative factor, since the simplicity of a model
+is as important as the accuracy.&nbsp; Recall the joke about the most accurate
+geographical map: It is done in the 1:1 scale.</li>
+
+<li>
+Unlike the models of a physical phenomena, an optimization models critically
+depend on designer's will.&nbsp; Firstly, different aspects of the process
+are emphasized or neglected depending on the optimization goal. Secondly,
+it is not easy to set the goal and the specific constrains for optimization.</li>
+
+<blockquote>Naturally, one wants to produce more goods, with lowest cost
+and highest quality. To optimize the production, one either may constrain
+by some level the cost and the quality and maximize the quantity, or constrain
+the quantity and quality and minimize the cost, or constrain the quantity
+and the cost and maximize the quality. There is no way to avoid the difficult
+choice of the values of constraints.&nbsp; The mathematical tricks go not
+farther than: "Better be healthy and wealthy than poor and ill". True,
+still not too exciting.</blockquote>
+
+<li>
+The maximization of the monetary profit solves the problem to some extent
+by applying an universal criterion. Still, the short-term and long-term
+profits require very different strategies; and it is necessary to assign
+the level of insurance, to account for possible market variations, etc.
+These variables must be a priori assigned by the researcher.</li>
+
+<li>
+Sometimes, a solution of an optimization problem shows unexpected features:
+for example, an optimal trajectory zigzags infinitely often. Such behavior
+points to an unexpected, but optimal behavior of the solution. It should
+not be rejected as a mathematical extravaganza, but thought through! (<a href="struct_opt.html" tppabs="http://www.math.utah.edu/~cherk/opt/struct_opt.html" TARGET="page 3">Click
+here for some discussion.</a>)</li>
+
+<br><a NAME="topic7"></a>
+<br><a href="#start">Go to the top</a>
+<p>
+<hr WIDTH="100%">
+<h4>
+Basic rules for optimization algorithms</h4>
+
+<dir>
+<dir>
+<li>
+<font color="#993399">There is no smart algorithm for choosing the oldest
+person from an alphabetical telephone directory.</font></li>
+</dir>
+This says that some properties of the maximized function be a priori assumed.
+Without assumptions, no rational algorithms can be suggested. The search
+methods approximate -- directly or indirectly -- the behavior of the function
+in the neighborhood of measurements. The approximation is based on the
+assumed <font color="#993399"><i>smoothness</i> </font>or sometimes the
+<i><font color="#993399">convexity</font></i>
+Various methods assume different types of the approximation.
+<br>&nbsp;
+<dir>
+<li>
+<font color="#993399">My maximum is higher than your maximum!</font></li>
+</dir>
+Generally, there are no ways to predict the behavior of the function everywhere
+in the permitted domain. An optimized function may have more than one local
+maximum. Most of the methods pilot the search to a local maximum without
+a guarantee that this maximum is also a global one. Those methods that
+guarantee the global character of the maximum, require additional assumptions
+as the convexity.
+<br>&nbsp;
+<li>
+Several classical optimization problems serve as testing grounds for optimization
+algorithms. Those are: <font color="#993399"><i>maximum of an one-dimensional
+unimodal function</i>, the <i>mean square approximation</i>, <i>linear
+</i>and
+<i>quadratic
+programming</i>.</font></li>
+</dir>
+<a NAME="topic5"></a><a href="#start">Go to the top</a>
+<hr WIDTH="100%"></blockquote>
+
+<h4>
+Classification</h4>
+To explain how knotty the optimization problems are, one may try to classify
+them. I recommend to look at the <a href="javascript:if(confirm('http://www-fp.mcs.anl.gov/otc/Guide/OptWeb/index.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www-fp.mcs.anl.gov/otc/Guide/OptWeb/index.html'" tppabs="http://www-fp.mcs.anl.gov/otc/Guide/OptWeb/index.html" TARGET="page 3">optimization
+tree</a> by NEOS.
+<p>Below, there are some comments and <a href="javascript:if(confirm('http://www.math.utah.edu/~cherk/teach/opt/opt1.html  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?'))window.location='http://www.math.utah.edu/~cherk/teach/opt/opt1.html'" tppabs="http://www.math.utah.edu/~cherk/teach/opt/opt1.html" TARGET="page 3">examples
+of optimization problems.</a>
+<ul>
+<li>
+Numerous optimization methods are designed for various number<font color="#993399"><i>
+of independent controls</i> </font>(dimensionality). These ranges corresponds
+to one variable, several (two to ten), dozens, hundreds, or tens of thousands.</li>
+
+<ul>
+<li>
+An important special class -- <font color="#993399">discrete optimization</font>
+-- corresponds to a large number of controls that take only integer or
+Boolean values. It requires combinatorial methods.</li>
+
+<li>
+Another special case --
+<a href="calc-var2.html" tppabs="http://www.math.utah.edu/~cherk/teach/calc-var2.html" TARGET="page 3">calculus
+of variations </a>-- corresponds to infinitely many controls.</li>
+</ul>
+
+<li>
+A significant parameter is the <i><font color="#993399">cost of evaluation</font></i>
+of the function: It ranges from milliseconds of the computer time to lengthy
+and costly measurements in natural experiments. Accordingly, the realistic
+goals and the methods are different.</li>
+
+<table BORDER=0 CELLSPACING=3 CELLPADDING=3 WIDTH="90%" NOSAVE >
+<tr>
+<td><img SRC="bobs.jpg" tppabs="http://www.math.utah.edu/~cherk/teach/opt/bobs.jpg" height=300 width=215>
+<br>Sharp Maximum is achieved!&nbsp;
+<br>The photo by and courtesy of&nbsp;
+<br>Dr. Robert <a href="javascript:if(confirm('http://www.math.utah.edu/~palais  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.math.utah.edu/~palais'" tppabs="http://www.math.utah.edu/~palais">(Bob) Palais</a></td>
+
+<td>The <font color="#993399"><i>sharpness of the maximum</i> </font>is
+of a special interest. It is very difficult to find a maximum of a flat
+function especially in the presence of numerical errors. For instance,
+a point of the maximum elevation in a flat&nbsp; region is much harder
+to determine than to locate a peak in the mountains. A sharp maximum&nbsp;
+(left figure)&nbsp; also requires some special methods since the gradient
+is discontinuous; it does not exist in the optimal point.&nbsp;</td>
+</tr>
+</table>
+
+<li>
+The presence of constraints and their character is very important for the
+choice of the strategy. Th<font color="#993399">e <i>constrained problem</i></font>
+typically possess the sharp maximum in a corner of the permitted domain
+while the smooth unconstrained function reaches its maximum in a stationary
+point.</li>
+
+<li>
+&nbsp;<i><font color="#993399">Stochastic optimization deals&nbsp;</font></i>
+with noise in measurements or uncertainty of some factors in the model.
+The optimization process should account for possibly non accurate data
+(<a href="javascript:if(confirm('http://www.math.utah.edu/~cherk/teach/opt/opt3.html  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?'))window.location='http://www.math.utah.edu/~cherk/teach/opt/opt3.html'" tppabs="http://www.math.utah.edu/~cherk/teach/opt/opt3.html" TARGET="page 3">click
+here to see an example</a>). Here, the goal may be to maximize the expected
+gain or to maximize the probability of the high profit.</li>
+
+<li>
+Another approach asks to play the game: Design versus Uncertainty, considering
+for the worst possible scenario. Find here <a href="ab.html" tppabs="http://www.math.utah.edu/~cherk/comics2/ab.html" TARGET="page 3">an
+example of such game.</a></li>
+
+<table WIDTH="90%" >
+<tr>
+<td><a href="7710-2.html" tppabs="http://www.math.utah.edu/~cherk/teach/7710-2.html" TARGET="page 3">Structural
+Optimization</a> is an interesting and tricky class of optimization problem.
+It is characterized by a large number of variables that represent the shape
+of the design and and stiffness of the available materials.&nbsp;
+<br>The control is the layout of the materials in the volume of the structure.&nbsp;</td>
+
+<td><img SRC="esher1-1.gif" tppabs="http://www.math.utah.edu/~cherk/teach/opt/esher1.gif" height=200 width=200></td>
+</tr>
+</table>
+</ul>
+In any practical problem, the researcher meets a unique combination of
+mentioned factors and has to decide what numerical tools to use or modify
+to reach the goal. Therefore, the optimization always includes creativity
+and intuition. It is said that optimization belongs to both science and
+art.
+<br><a NAME="topic6"></a>
+<br><a href="#start">Go to the top</a>
+<br>
+<hr WIDTH="100%">
+<center>
+<h3>
+Related Links</h3></center>
+Below, there are several links to the interesting popular and tutorial
+material in Optimization Theory at the Internet. There are hundreds more.
+<br>Please send me more links: (<a href="mailto:cherk@math.utah.edu">cherk@math.utah.edu</a>).
+<dir>
+<li>
+Personal websites</li>
+
+<ul>
+<li>
+<a href="references.html" tppabs="http://www.math.utah.edu/~cherk/references.html" TARGET="page 3">My
+references </a>to papers and books in Calculus of variation, Structural
+optimization, micro-inhomogeneous media, etc. A large bibtex file, about
+1300 entries.</li>
+
+<li>
+<a href="javascript:if(confirm('http://www.cudenver.edu/~hgreenbe/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.cudenver.edu/~hgreenbe/'" tppabs="http://www.cudenver.edu/~hgreenbe/" TARGET="page 3">website of
+Harley J. Greenberg
+</a>contains a lot of useful links, particularly the
+<a href="javascript:if(confirm('http://www.cudenver.edu/~hgreenbe/sites/universities.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.cudenver.edu/~hgreenbe/sites/universities.html'" tppabs="http://www.cudenver.edu/~hgreenbe/sites/universities.html" TARGET="page 3">list
+of related websites at some Universities.</a></li>
+
+<li>
+<a href="javascript:if(confirm('http://mat.gsia.cmu.edu/index.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://mat.gsia.cmu.edu/index.html'" tppabs="http://mat.gsia.cmu.edu/index.html" TARGET="page 3">Michael Trick's
+Operations Research Page
+</a>contains links to several tutorials for the
+optimization courses.</li>
+
+<li>
+<a href="javascript:if(confirm('http://www.dai.ed.ac.uk/CVonline/LOCAL_COPIES/BMVA96Tut/BMVA96Tut.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.dai.ed.ac.uk/CVonline/LOCAL_COPIES/BMVA96Tut/BMVA96Tut.html'" tppabs="http://www.dai.ed.ac.uk/CVonline/LOCAL_COPIES/BMVA96Tut/BMVA96Tut.html" TARGET="page 3">Vision
+Through Optimization </a>by N.A.Thacker and T.F.Cootes. An on-line optimization
+course.</li>
+
+<li>
+<a href="javascript:if(confirm('http://www.fam.dtu.dk/html/os.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.fam.dtu.dk/html/os.html'" tppabs="http://www.fam.dtu.dk/html/os.html" TARGET="page 3">Ole Sigmund
+homepage </a>with the amazing interactive structural optimization software.</li>
+
+<li>
+<a href="javascript:if(confirm('http://www.princeton.edu/~rvdb/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.princeton.edu/~rvdb/'" tppabs="http://www.princeton.edu/~rvdb/" TARGET="page 3">Robert Vanderbei's
+website&nbsp;</a> with JAVA examples in optimization and linear programming.</li>
+
+<li>
+<a href="javascript:if(confirm('http://www.math.niu.edu/~rusin/known-math/index/90-XX.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.math.niu.edu/~rusin/known-math/index/90-XX.html#INTRO'" tppabs="http://www.math.niu.edu/~rusin/known-math/index/90-XX.html#INTRO" TARGET="page 3">The
+Mathematical Atlas 90: Operations research, mathematical programming</a>
+by Dave Rusin.</li>
+
+<li>
+<a href="javascript:if(confirm('http://mscmga.ms.ic.ac.uk/jeb/or/intro.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://mscmga.ms.ic.ac.uk/jeb/or/intro.html'" tppabs="http://mscmga.ms.ic.ac.uk/jeb/or/intro.html" TARGET="page 3">History
+of operation research</a>: Notes by J E Beasley.</li>
+
+<li>
+<a href="javascript:if(confirm('http://www.econ.canterbury.ac.nz/hist.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.econ.canterbury.ac.nz/hist.htm#y80'" tppabs="http://www.econ.canterbury.ac.nz/hist.htm#y80" TARGET="page 3">Chronology
+of Game Theory</a> by Paul Walker.</li>
+
+<li>
+<a href="javascript:if(confirm('http://catt.bus.okstate.edu/itorms/pinter/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://catt.bus.okstate.edu/itorms/pinter/'" tppabs="http://catt.bus.okstate.edu/itorms/pinter/" TARGET="page 3">Continuous
+Global Optimization:</a> An Introduction to Models, Solution Approaches,
+Tests and Applications. by J&aacute;nos D. Pint&eacute;r</li>
+
+<li>
+<a href="javascript:if(confirm('http://www.mat.univie.ac.at/~neum/glopt.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.mat.univie.ac.at/~neum/glopt.html'" tppabs="http://www.mat.univie.ac.at/~neum/glopt.html" TARGET="page 3">Global
+Optimization</a> by Arnold Neumaier. The website of Computational Mathematics
+group at the University of Vienne</li>
+
+<li>
+<a href="javascript:if(confirm('http://plato.la.asu.edu/guide.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://plato.la.asu.edu/guide.html'" tppabs="http://plato.la.asu.edu/guide.html" TARGET="page 3">Decision Tree
+for Optimization Software</a> by H.D. Mittelmann and P. Spellucci</li>
+</ul>
+
+<li>
+Institutions and Societies</li>
+
+<ul>
+<li>
+<a href="javascript:if(confirm('http://riot.ieor.berkeley.edu/riot/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://riot.ieor.berkeley.edu/riot/'" tppabs="http://riot.ieor.berkeley.edu/riot/" TARGET="page 3">RIOT</a>
+- Remote Interactive Optimization Testbed by the&nbsp; Industrial Engineering
+and Operations Research Department&nbsp; at UC Berkeley. Tons of interesting
+materials, including software, examples, links, with JAVA applets.</li>
+
+<li>
+<a href="javascript:if(confirm('http://www-neos.mcs.anl.gov/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www-neos.mcs.anl.gov/'" tppabs="http://www-neos.mcs.anl.gov/" TARGET="page 3">NEOS Guide</a> with
+the <a href="javascript:if(confirm('http://www-fp.mcs.anl.gov/otc/Guide/OptWeb/index.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www-fp.mcs.anl.gov/otc/Guide/OptWeb/index.html'" tppabs="http://www-fp.mcs.anl.gov/otc/Guide/OptWeb/index.html" TARGET="page 3">optimization
+tree</a>, software guide, news, links,&nbsp; and more. By Optimization
+Technology Center at Argonne National Lab and Northwestern University.</li>
+
+<li>
+&nbsp;<a href="javascript:if(confirm('http://csep1.phy.ornl.gov/mo/mo.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://csep1.phy.ornl.gov/mo/mo.html'" tppabs="http://csep1.phy.ornl.gov/mo/mo.html">Mathematical Optimization</a>&nbsp;
+Computational Science Education Project is an electronic book for teaching
+Computational Science and Engineering. The intended audience are students
+in science and engineering at the advanced undergraduate level and higher.</li>
+
+<li>
+<a href="javascript:if(confirm('http://www.ime.auc.dk/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ime.auc.dk/'" tppabs="http://www.ime.auc.dk/" TARGET="page 3">The Institute of Mechanical
+Engineering</a> in Aalborg University, contains many interesting structural
+optimization projects.</li>
+
+<li>
+<a href="javascript:if(confirm('http://www.stanford.edu/group/SOL/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.stanford.edu/group/SOL/'" tppabs="http://www.stanford.edu/group/SOL/" TARGET="page 3">Systems Optimization
+Laboratory
+</a>(SOL) at Stanford. Contains algorithms and links.</li>
+
+<li>
+<a href="javascript:if(confirm('http://www.siam.org/siags/siagopt.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.siam.org/siags/siagopt.htm'" tppabs="http://www.siam.org/siags/siagopt.htm" TARGET="page 3">SIAM Activity
+Group on Optimization</a></li>
+
+<li>
+<a href="javascript:if(confirm('http://optnet.itwm.uni-kl.de/opt-net/opt-net.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://optnet.itwm.uni-kl.de/opt-net/opt-net.html'" tppabs="http://optnet.itwm.uni-kl.de/opt-net/opt-net.html" TARGET="page 3">OPT-NET</a>
+The Optimization Society</li>
+
+<li>
+<a href="javascript:if(confirm('http://aemes.aero.ufl.edu/~issmo/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://aemes.aero.ufl.edu/~issmo/'" tppabs="http://aemes.aero.ufl.edu/~issmo/" TARGET="page 3">ISSMO</a> The
+International Society for Structural and Multidisciplinary Optimization</li>
+
+<li>
+<a href="javascript:if(confirm('http://mathworld.wolfram.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://mathworld.wolfram.com/'" tppabs="http://mathworld.wolfram.com/" TARGET="page 3">Eric Weisstein's
+World of Mathematics</a></li>
+</ul>
+
+<p><br><a href="#cont">Go to Contents</a>
+<br><a href="#start">Go to the top</a>
+<br><a href="teaching.html" tppabs="http://www.math.utah.edu/~cherk/teach/teaching.html">Go to
+Teaching Page</a>
+<br><a href="javascript:if(confirm('http://www.math.utah.edu/~cherk  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.math.utah.edu/~cherk'" tppabs="http://www.math.utah.edu/~cherk">Go to my Homepage</a>
+<br>
+<hr WIDTH="100%">
+<br>&nbsp;
+<p>NSF support is acknowledged.</dir>
+
+</body>
+</html>

@@ -1,0 +1,354 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Convolution as Filtering</TITLE>
+<META NAME="description" CONTENT="Convolution as Filtering">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">
+<LINK REL="previous" HREF="node95.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node95.html">
+<LINK REL="up" HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<LINK REL="next" HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1730"
+  HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1724"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1718"
+  HREF="node96.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node96.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1726"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1728"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1731"
+  HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">An application to Image</A>
+<B> Up:</B> <A NAME="tex2html1725"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">The Fast Fourier Transform</A>
+<B> Previous:</B> <A NAME="tex2html1719"
+  HREF="node96.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node96.html">Timing the FFT</A>
+ &nbsp <B>  <A NAME="tex2html1727"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1729"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001070000000000000000">
+Convolution as Filtering</A>
+</H1>
+We claimed above that the fast Fourier transform was very important,
+but so far have presented it purely as a way of multiplying
+polynomials.  For the remainder of this section we give a brief
+indication of a much more practical use for this algorithm.  To do so,
+we first suggest another way of thinking about convolution.
+
+<P>
+Although convolution is symmetric, I want to interpret the action of
+convolving by a fixed element of <!-- MATH
+ $\ensuremath{\mathbb{C}}^n$
+ -->
+<IMG
+ WIDTH="24" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img274.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img274.gif"
+ ALT="$\ensuremath{\mathbb{C}}^n$">, and to emphasise the
+asymmetry I will call the fixed element <!-- MATH
+ $\mathbf{m}$
+ -->
+<B>m</B> rather than <B>b</B>.  We
+thus consider the map
+<!-- MATH
+ \begin{displaymath}
+\mathbf{a}\to \mathbf{a}\star \mathbf{m}\qquad(\mathbf{a}\in \ensuremath{\mathbb{C}}^n)
+\end{displaymath}
+ -->
+<P ALIGN="CENTER"><IMG
+ WIDTH="165" HEIGHT="28" BORDER="0"
+ SRC="img339.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img339.gif"
+ ALT="\begin{displaymath}
+\mathbf{a}\to \mathbf{a}\star \mathbf{m}\qquad(\mathbf{a}\in \ensuremath{\mathbb{C}}^n)
+\end{displaymath}"></P>
+for a fixed element <!-- MATH
+ $\mathbf{m}\in \ensuremath{\mathbb{C}}^n$
+ -->
+<IMG
+ WIDTH="59" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img340.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img340.gif"
+ ALT="$\mathbf{m}\in \ensuremath{\mathbb{C}}^n$">.  We will call such a fixed element
+a <A NAME="9518"></A><B>mask</B><A NAME="9165"></A> or <A NAME="9520"></A><B>filter</B>.<A NAME="9167"></A> How does
+filtering (convolving with a fixed mask) affect <!-- MATH
+ $\mathbf{a}\in \ensuremath{\mathbb{C}}^n$
+ -->
+<IMG
+ WIDTH="53" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img341.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img341.gif"
+ ALT="$\mathbf{a}\in \ensuremath{\mathbb{C}}^n$">, often
+called the <A NAME="9525"></A><B>signal</B>?<A NAME="9169"></A>
+
+<P>
+To get an initial understanding, it helps to choose a simple filter,
+so let
+<!-- MATH
+ \begin{displaymath}
+\mathbf{m}= (m_0,m_1,0,\ldots,0,m_{-1})
+\ensuremath{\qquad\text{and}\qquad}\mathbf{a}= (a_0,a_1,a_2,\ldots,a_{n-2},a_{n-1}).
+\end{displaymath}
+ -->
+<P ALIGN="CENTER"><IMG
+ WIDTH="505" HEIGHT="28" BORDER="0"
+ SRC="img342.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img342.gif"
+ ALT="\begin{displaymath}
+\mathbf{m}= (m_0,m_1,0,\ldots,0,m_{-1})
+\ensuremath{\qquad\text{and}\qquad}\mathbf{a}= (a_0,a_1,a_2,\ldots,a_{n-2},a_{n-1}).
+\end{displaymath}"></P>
+From the definition, we have
+<P></P>
+<DIV ALIGN="RIGHT"><A NAME="E:filter"></A><!-- MATH
+ \begin{multline}
+\mathbf{a}\star \mathbf{m}= (a_{-1}m_1 + a_0 m_0 + a_1 m_{-1},\,
+a_0m_1 + a_1m_0 + a_2m_{-1}, \ldots\\
+		a_{n-3}m_1 + a_{n-2}m_0 + a_{n-1}m_{-1},\,
+		a_{n-2}m_1 + a_{n-1}m_0 + a_0m_{-1}).
+\end{multline}
+ -->
+<A NAME="E:filter"></A><IMG
+ WIDTH="700" HEIGHT="59" ALIGN="BOTTOM" BORDER="0"
+ SRC="img343.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img343.gif"
+ ALT="\begin{multline}
+\mathbf{a}\star \mathbf{m}= (a_{-1}m_1 + a_0 m_0 + a_1 m_{-1},\...
+...n-2}m_0 + a_{n-1}m_{-1}, 
+a_{n-2}m_1 + a_{n-1}m_0 + a_0m_{-1}).
+\end{multline}"></DIV>
+<BR CLEAR="ALL">
+<P><P></P>
+The circular wrap-around is essential as far as <!-- MATH
+ $\mathbf{m}$
+ -->
+<B>m</B> is concerned, but
+can get in the way of understanding what happens to <!-- MATH
+ $\mathbf{a}$
+ -->
+<B>a</B>.
+
+<P>
+<P>
+<DIV><A NAME="E:mask"><B>Example  6.8</B></A> &nbsp; 
+Let <!-- MATH
+ $\mathbf{a}= (0,0,3,7,1,4,6,2,0,0)$
+ -->
+<B>a</B> = (0, 0, 3, 7, 1, 4, 6, 2, 0, 0) and <!-- MATH
+ $\mathbf{m}=(4,2,0,0,0,0,0,0,0,1)$
+ -->
+<B>m</B> = (4, 2, 0, 0, 0, 0, 0, 0, 0, 1).
+Evaluate <!-- MATH
+ $\mathbf{a}\star \mathbf{m}$
+ -->
+<B>a</B><IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img278.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img278.gif"
+ ALT="$ \star$"><B>m</B>.</DIV><P></P>
+
+<P>
+<I>Solution</I> This is simple arithmetic, based on  Equation&nbsp;<A HREF="node97.html#E:filter" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node97.html#E:filter">6.6</A>.  
+<!-- MATH
+ \begin{displaymath}
+\mathbf{a}\star \mathbf{m}= (0, 3, 19, 35, 22, 24, 34, 20, 4, 0).
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<B>a</B><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img280.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img280.gif"
+ ALT="$\displaystyle \star$"><B>m</B> = (0, 3, 19, 35, 22, 24, 34, 20, 4, 0).
+</DIV><P></P>
+It is worth doing to the calculation to discover an efficient way to
+set it out.  One way is as follows: first flip <!-- MATH
+ $\mathbf{m}$
+ -->
+<B>m</B>, and then consider
+sliding it along above <!-- MATH
+ $\mathbf{a}$
+ -->
+<B>a</B>, multiplying elements in the same column,
+and assigning the sum of these products as the output associated with
+the current position of element zero of <!-- MATH
+ $\mathbf{m}$
+ -->
+<B>m</B>.  Here then is the
+calculation of the fourth element (ie the element with index 3) of <!-- MATH
+ $\mathbf{a}
+\star \mathbf{m}$
+ -->
+<B>a</B><IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img278.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img278.gif"
+ ALT="$ \star$"><B>m</B>:
+
+<P>
+<DIV ALIGN="CENTER">
+<TABLE COLS=10 RULES=GROUPS>
+<COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>
+0</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>0</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>0</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>0</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>0</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>0</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>0</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+0</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>0</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>7</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>6</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>0</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>0
+</TD></TR>
+</TABLE>
+
+</DIV>
+And <!-- MATH
+ $(\mathbf{a}\star \mathbf{m})_3 = 2.3 + 4.7 + 1.1.$
+ -->
+(<B>a</B><IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img278.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img278.gif"
+ ALT="$ \star$"><B>m</B>)<SUB>3</SUB> = 2.3 + 4.7 + 1.1.
+<P>
+
+<P>
+<BR>
+
+<P>
+It may be easier now to see why the language of signals and filters
+was used.  In this case, the filter <!-- MATH
+ $\mathbf{m}$
+ -->
+<B>m</B> has acted as a smoothing
+filter;<A NAME="9199"></A> the two pronounced peaks in the
+original signal have been spread out; indeed, looking at <!-- MATH
+ $\mathbf{m}$
+ -->
+<B>m</B> it may
+now be clear that it is indeed a prescription to smooth the central
+element by incorporating a contribution from either side.  For
+convenience in calculation, this particular filter also amplified the
+signal.  However the effect may have been easier to understand if the
+filter had been scaled so that the total mass (the sum of all the
+values in the filter) was set to&nbsp;1.  This would involve multiplying
+<!-- MATH
+ $\mathbf{a}\star \mathbf{m}$
+ -->
+<B>a</B><IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img278.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img278.gif"
+ ALT="$ \star$"><B>m</B> by 1/7.
+
+<P>
+The effect of convolution has been to ``do the same thing'' to each of
+the elements of the incoming signal <!-- MATH
+ $\mathbf{a}$
+ -->
+<B>a</B>.  In this case it was easy
+to do the convolution directly because the support (the number of
+non -zero elements) of <!-- MATH
+ $\mathbf{m}$
+ -->
+<B>m</B> was small.  As the support becomes larger,
+the gain from implementing such a filter using Fourier transforms and
+the convolution theorem becomes significant.
+
+<P>
+In passing we note another name for <!-- MATH
+ $\mathbf{m}$
+ -->
+<B>m</B>, since we can recognise <!-- MATH
+ $\mathbf{m}$
+ -->
+<B>m</B>
+as the (reveresed) output corrsponding to input 1<SUB>0</SUB> in the notation
+of Section&nbsp;<A HREF="node92.html#SS:products" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node92.html#SS:products">6.4</A>.  It is thus sometimes called the
+<I>point spread function</I>,<A NAME="9202"></A> or perhaps
+the <I>instrument response function</I>.<A NAME="9204"></A>  From this viewpoint, displaying the mask as
+<!-- MATH
+ $(m_0,\ldots,m_{n-1})$
+ -->
+(<I>m</I><SUB>0</SUB>,..., <I>m</I><SUB>n - 1</SUB>) is not particularly convenient; it is usually
+easier to visualise the effect if presented as
+<!-- MATH
+ \begin{displaymath}
+(\ldots,m_{-2},m_{-1},m_0,m_1,m_2,\ldots)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+(..., <I>m</I><SUB>-2</SUB>, <I>m</I><SUB>-1</SUB>, <I>m</I><SUB>0</SUB>, <I>m</I><SUB>1</SUB>, <I>m</I><SUB>2</SUB>,...)
+</DIV><P></P>
+centered as closely as possible on <I>m</I><SUB>0</SUB>.  Thus we would describe the
+mask of Example&nbsp;<A HREF="node97.html#E:mask" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node97.html#E:mask">6.8</A> as <!-- MATH
+ $(0,0,0,1,4,2,0,0,0,0)$
+ -->
+(0, 0, 0, 1, 4, 2, 0, 0, 0, 0), and as being
+centered on the value 4.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1730"
+  HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1724"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1718"
+  HREF="node96.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node96.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1726"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1728"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1731"
+  HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">An application to Image</A>
+<B> Up:</B> <A NAME="tex2html1725"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">The Fast Fourier Transform</A>
+<B> Previous:</B> <A NAME="tex2html1719"
+  HREF="node96.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node96.html">Timing the FFT</A>
+ &nbsp <B>  <A NAME="tex2html1727"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1729"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

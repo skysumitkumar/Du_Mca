@@ -1,0 +1,216 @@
+INDUSLOGIC PAPER
+Question 1. What is the output of the following code when compiled and run? Select two correct answers.
+ 
+public class Question01 {
+        public static void main(String[] args){
+                int y=0;                        //line 1
+                int x=z=1;                      //line 2
+                System.out.println(y+","+x+","+z);        //line 3
+        }
+} 
+
+A. Prints 0,1,1 
+B. Error during compilation at line 1 
+C. Prints 0,0,1 
+D. Error during compilation at line 3 
+E. Error during compilation at line 2
+
+
+Question 2. Select three correct statements.
+The garbage collection thread cannot outlive the last user thread. 
+The garbage collection can be forced by invoking System.gc(). 
+The garbage collection thread is a non-deamon thread. 
+The finalize() method is invoked at most once by the JVM for any given object. 
+The finalize() method may resurrect the object upon which it has been invoked.
+
+
+Question 3. What is the output of the following code when compiled and run? Select one correct answer.
+
+import java.io.*;
+public class Question05 {
+        public static void main(String[] args) {
+                Question05Sub myref = new Question05Sub();
+                try{
+                    myref.test();
+                }catch(IOException ioe){}
+        }
+        void test() throws IOException{
+                System.out.println("In Question05");
+                throw new IOException();
+        }
+}
+class Question05Sub extends Question05 {
+        void test()throws IOException {
+                System.out.println("In Question05Sub");
+        }
+}
+ 
+A. Prints: 
+        In Question05Sub
+B. Prints: 
+        In Question05
+C. Prints: 
+        In Question05
+        In Question05Sub
+D. Prints: 
+        In Question05Sub
+        In Question05
+E. The code does not compile.
+ 
+
+Question 4. Select two correct statements about the code given below?
+
+class A{}
+class B extends A implements E{}        //line 1
+class C extends A{}
+class D extends B{}
+interface E{}
+public class Question07 {
+        public static void main(String[] args) {
+                A a = new D();        //line 2
+                C c = new C();        //line 3
+                E e = (E)a;        //line 4
+                B b = (B)e;        //line 5
+        }
+}
+ 
+The code compiles without error and runs fine. 
+Compilation error on line 1 because interface E is not yet declared (forward-referencing). 
+Compilation error on line 4 because class A does not implement interface E. 
+The cast on line 4 is mandatory. 
+The cast on line 5 is not mandatory.
+ 
+
+Question 5. How many objects are eligible for garbage collection immediately after line 1? Select one correct answer.
+
+public class Question08 {
+        public static void main(String[] args) {
+                Question08 q08 = new Question08();
+                q08.doSomething();        //line 1
+                Thread.sleep(20000);
+        }
+ 
+        public void doSomething(){
+                Object[] objArray = new Object[2];
+                for(int i=0;i<objArray.length;i++){
+                    objArray[i] = new Object();
+                }
+        }
+}
+
+0 
+1 
+2 
+3 
+4
+
+
+Question 6. What is the output of the following code when compiled and run? Select one correct answer.
+
+public class Question09 {
+        public static void main(String[] args) {
+                try {
+                    int i = (int)(Math.random()*10);
+                    if(i<=5)
+       
+                     System.out.println("i = "+i);
+                    else
+                            throw new Exception("i > 5");
+                } catch (Exception e){
+                    System.err.println(e.getMessage()+" (i="+i+")");
+                }
+        }
+}
+
+The output cannot be determined. 
+Compilation error. 
+An exception is thrown at runtime. 
+Output is i = 2 
+Output is i > 5 (i=6)
+ 
+Question 7. What is the output of the following code when compiled and run? Select one correct answer.
+
+public class Question10 {
+        public static void main(String[] args) {
+                new Question10().doSomething();
+        }
+ 
+        public void doSomething(){
+                int i=5;
+       
+         Thread t = new Thread(new Runnable(){
+                    public void run(){
+                            for(int j=0;j<=i;j++){
+                                System.out.print(" "+j);
+                            }
+                    }
+                });
+                t.start();
+        }
+}
+
+Prints 0 1 2 3 4 
+Compilation error. 
+No output. 
+IllegalThreadStateException is thrown at runtime. 
+Prints 0 1 2 3 4 5
+
+
+Question 8. What is the output of the following code when compiled and run? Select one correct answer.
+
+public class Question11 {
+        public static void main(String[] args) {
+                StringBuffer buf1 = new StringBuffer("Hello W");
+                addSomeStuff(buf1);
+                System.out.println(buf1.toString());
+        }
+ 
+        public static void addSomeStuff(StringBuffer buf){
+                StringBuffer b = buf.replace(6,10,"orld");
+                System.out.println(b.delete(0,1).toString());
+        }
+}
+
+A. Prints 
+        Hello World
+        Hello World
+B. Prints 
+        Hello orld
+        Hello orld
+C. Prints 
+        Hello orld
+        ello orld
+D. Prints 
+        ello orld
+        ello orld
+E. Compilation error.
+
+
+Question 9. What is the output of the following code when compiled and run? Select two correct answers. (Note: when an instance of a Vector is printed, its content appear between square brackets [])
+
+import java.util.*;
+public class Question13 {
+        public static void main(String[] args) {
+                Vector col = new Vector();
+                col.add(new Integer(1));
+                col.add(new Integer("2"));
+                col.add(new Float(3.2d));        //line 1
+                col.add(col.elementAt(1));
+                col.setElementAt(col.elementAt(2),0);
+                System.out.println(col);
+        }
+}
+
+Compilation error on line 1. 
+Only line 1 won't compile. 
+The code compiles and runs fine. 
+Prints [3.2, 2, 3.2, 2] 
+Prints [1, 2, 3.2, 2]
+
+Question 10. Select three correct statements.
+
+A static method may override another static method. 
+A static method cannot override a non-static method. 
+A non-static method cannot override a static method. 
+A non-static method may be overloaded by a static method. 
+A synchronized method cannot be overridden

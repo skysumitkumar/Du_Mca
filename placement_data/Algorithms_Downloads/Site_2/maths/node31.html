@@ -1,0 +1,166 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Insertion Sort</TITLE>
+<META NAME="description" CONTENT="Insertion Sort">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node32.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node32.html">
+<LINK REL="previous" HREF="node30.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node30.html">
+<LINK REL="up" HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">
+<LINK REL="next" HREF="node32.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node32.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html763"
+  HREF="node32.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node32.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html757"
+  HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html751"
+  HREF="node30.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node30.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html759"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html761"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html764"
+  HREF="node32.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node32.html">Proof of Algorithm</A>
+<B> Up:</B> <A NAME="tex2html758"
+  HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">Two Simple Sorting Algorithms</A>
+<B> Previous:</B> <A NAME="tex2html752"
+  HREF="node30.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node30.html">Minimum Element Sort</A>
+ &nbsp <B>  <A NAME="tex2html760"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html762"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00622000000000000000"></A><A NAME="2106"></A>
+<BR>
+Insertion Sort
+</H2>
+
+<P>
+Once more  we want to sort a list <!-- MATH
+ $(x_1,\ldots,x_n)$
+ -->
+(<I>x</I><SUB>1</SUB>,..., <I>x</I><SUB>n</SUB>) into ascending
+order. Let me state the full algorithm directly
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ algorithm insertionsort
+<BR>
+begin
+<BR>&nbsp;&nbsp;for i= n-1 down to 1 begin
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;temp = <I>x</I><SUB>i</SUB>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;j = i+1
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;while(j &lt;= n and <I>x</I><SUB>j</SUB> &lt; temp) begin
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- MATH
+ $x_{j-1}=x_{j}$
+ -->
+<I>x</I><SUB>j - 1</SUB> = <I>x</I><SUB>j</SUB>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j=j+1
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;end
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;<I>x</I><SUB>j - 1</SUB> = temp
+<BR>&nbsp;&nbsp;end
+<BR>
+end
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>To help you see what is happening, here is the algorithm
+working on the list <!-- MATH
+ $(4,3,6,1,5,2)$
+ -->
+(4, 3, 6, 1, 5, 2).
+<DIV ALIGN="CENTER">
+<TABLE COLS=8 BORDER RULES=GROUPS>
+<COLGROUP><COL ALIGN=LEFT><COLGROUP><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COLGROUP><COL ALIGN=LEFT>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>
+<I>i</I> = 5</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>6</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP><B>5</B></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>temp = 5</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> 
+<I>i</I> = 4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>6</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP><B>1</B></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>5</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>temp = 1</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> 
+<I>i</I> = 3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP><B>6</B></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>5</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>temp = 6</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> 
+<I>i</I> = 2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP><B>3</B></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>5</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>6</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>temp = 3</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> 
+<I>i</I> = 1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP><B>4</B></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>5</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>6</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>temp = 4</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> 
+<I>i</I> = 0</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>5</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>6</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>temp =</TD></TR>
+</TABLE>
+
+</DIV>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html763"
+  HREF="node32.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node32.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html757"
+  HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html751"
+  HREF="node30.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node30.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html759"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html761"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html764"
+  HREF="node32.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node32.html">Proof of Algorithm</A>
+<B> Up:</B> <A NAME="tex2html758"
+  HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">Two Simple Sorting Algorithms</A>
+<B> Previous:</B> <A NAME="tex2html752"
+  HREF="node30.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node30.html">Minimum Element Sort</A>
+ &nbsp <B>  <A NAME="tex2html760"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html762"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

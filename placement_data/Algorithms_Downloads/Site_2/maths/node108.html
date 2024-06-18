@@ -1,0 +1,816 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Solutions for Questions&nbsp;3 (page ).</TITLE>
+<META NAME="description" CONTENT="Solutions for Questions&nbsp;3 (page ).">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node109.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node109.html">
+<LINK REL="previous" HREF="node107.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node107.html">
+<LINK REL="up" HREF="node103.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node103.html">
+<LINK REL="next" HREF="node109.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node109.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1890"
+  HREF="node109.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node109.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1884"
+  HREF="node103.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node103.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1878"
+  HREF="node107.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node107.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1886"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1888"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1891"
+  HREF="node109.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node109.html">Solutions for Questions&nbsp;4 (page</A>
+<B> Up:</B> <A NAME="tex2html1885"
+  HREF="node103.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node103.html">Appendices</A>
+<B> Previous:</B> <A NAME="tex2html1879"
+  HREF="node107.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node107.html">Solutions for Questions&nbsp;2 (page</A>
+ &nbsp <B>  <A NAME="tex2html1887"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1889"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001150000000000000000"></A><A NAME="SA:adt"></A>
+<BR>
+Solutions for Questions&nbsp;<A HREF="node61.html#SQ:adt" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html#SQ:adt">3</A> (page <A HREF="node61.html#SQ:adt" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html#SQ:adt"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/crossref.gif"></A>).
+</H1>
+
+<P>
+<I>Solution</I> <A HREF="node61.html#Q:queue-as-stack" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html#Q:queue-as-stack">3.1</A>:<A NAME="A:queue-as-stack"></A>Pop the stack and push onto an auxiliary stack until the first stack
+is empty, and you can get at the bottom element.  Then push them all
+back again, noting that at least they come out in the right order.  So
+if there are <I>n</I> elements on the stack, it takes 2<I>n</I> operations to
+remove the next element from the queue: not a very bright idea!
+<P>
+
+<P>
+<BR>
+
+<P>
+<I>Solution</I> <A HREF="node61.html#Q:queue-as-array" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html#Q:queue-as-array">3.2</A>:<A NAME="A:queue-as-array"></A>Add at the end of the array, remove at the front, and roll round to
+avoid running out of space before the array is full.  This means there
+is need for two points to be kept current all the time, say <code>f</code>,
+pointing to the front of the queue, and <code>b</code>, pointing to the
+back, where new elements will be added.  If <code>f</code> &lt; <code>b</code>
+things are as you expect, while if <code>f</code> &gt; <code>b</code>, the queue
+``really'' stretches from <code>f</code> to <code>b + N</code>, where <code>N</code> is
+the size of the array.
+<P>
+
+<P>
+<BR>
+
+<P>
+<I>Solution</I> <A HREF="node61.html#Q:three-flags" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html#Q:three-flags">3.3</A>:<A NAME="A:three-flags"></A>Since there are more red tokens than any other, we re-arrange the
+algorihtm to avoid performing a swap when we meet a red token.  Here
+is the new algorithm:
+<DIV ALIGN="LEFT">
+<TT>
+ b = w = 1;r = N; // initialise as before
+<BR>
+while (w &lt; r + 1) begin
+<BR>&nbsp;&nbsp;if (R(r)) r = r-1 // it was a red token
+<BR>&nbsp;&nbsp;else if (W(r)) begin // it was a white token
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;swap(w,r);w=w+1
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;end
+<BR>&nbsp;&nbsp;else begin &nbsp;// it was a blue token
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;swap(b,w);swap(r,b);b=b+1;w=w+1
+<BR>&nbsp;&nbsp;end
+<BR>
+end // while
+<BR></TT>
+</DIV>
+
+<P>
+The action on seeing a blue token is first to move region <I>W</I> up by
+swapping it's first member with the unknown token at the bottom of
+region <I>X</I>, and then to swap that unknown token with the one at the
+bottom of region <I>R</I>, which has just proved to be blue.
+
+<P>
+The total number of calls to <code>swap</code> is thus <!-- MATH
+ $|W| + 2|B|$
+ -->
+| <I>W</I>| + 2| <I>B</I>|.  This
+is faster than the original algorithm provided
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation*}
+|W| + 2|B| \le |B| + |R|
+\end{equation*}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER">| <I>W</I>| + 2| <I>B</I>|<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img11.gif"
+ ALT="$\displaystyle \le$">| <I>B</I>| + | <I>R</I>|</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and this occours iff <!-- MATH
+ $|W| + |B| \le |R|$
+ -->
+| <I>W</I>| + | <I>B</I>|<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$">| <I>R</I>|; in other words, when at
+least half of the tokens are red.
+<P>
+
+<P>
+<BR>
+
+<P>
+<I>Solution</I> <A HREF="node61.html#Q:flattening" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html#Q:flattening">3.4</A>:<A NAME="A:flattening"></A>It is the preorder traversal.
+
+<P>
+<PRE><TT>
+Preorder:-  <code>[A B E F G H C I D]</code>
+<BR>
+Inorder:- 		<code>[E B F G H A I C D]</code>
+<BR>
+Postorder:- 		<code>[E F G H B I C D A]</code>
+</TT></PRE>
+<P>
+
+<P>
+<BR>
+
+<P>
+<I>Solution</I> <A HREF="node61.html#Q:binary-tree" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html#Q:binary-tree">3.5</A>:<A NAME="A:binary-tree"></A>To pass from a ``left-right children'' description to a ``terminal node''
+description, replace the empty tree by one consisting of a single
+terminal node.  Next repleace every child node which is a leaf node by
+one having two children, each of which is a terminal node.  Finally,
+if a node has a left child, add a terminal right node etc.
+
+<P>
+To pass from the ``terminal node'' description to the ``left-right
+children'' description, simlpy delete all terminal nodes.
+<P>
+
+<P>
+<BR>
+
+<P>
+<I>Solution</I> <A HREF="node61.html#Q:priority-queue" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html#Q:priority-queue">3.6</A>:<A NAME="A:priority-queue"></A>Try it - going to Sedgewick if necessary for more help.
+<P>
+
+<P>
+<BR>
+
+<P>
+<I>Solution</I> <A HREF="node61.html#Q:string-sorting" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html#Q:string-sorting">3.7</A>:<A NAME="A:string-sorting"></A>Note that it is not unique; where two symbols have the same
+frequency, it is necessary to make exactly the same choice as shown
+in the diagram in order to exactly reproduce the tree given in the notes.
+<P>
+
+<P>
+<BR>
+
+<P>
+<I>Solution</I> <A HREF="node61.html#Q:huffman" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html#Q:huffman">3.8</A>:<A NAME="A:huffman"></A>A Huffman code is used when the input is from a limited character set,
+and contains information that is redundant; a typical example is
+English text, in which the letter ``e'' occurs significantly more
+often than random.  One such application is in the ``gzip'' utility
+which is based on the Huffman code.
+
+<P>
+We describe how to build the binary Huffman code by building the
+corresponding binary tree.  We start by analysing the message to find
+the frequencies of each symbol that occurs in it.  Our basic strategy
+will be to assign short codes to symbols that occur frequently, while
+still insisting that the code has the prefix property.  Our example
+will be build around the message
+<DIV ALIGN="CENTER">
+A TEST EXAMINATION ANSWER
+
+</DIV>
+The corresponding frequencies are given in Table&nbsp;<A HREF="node108.html#T:huff-freqs1" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node108.html#T:huff-freqs1">6.8.2</A>;
+we write the space symbol `` '', in the table as <code> </code>.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="11906"></A>
+<TABLE>
+<CAPTION><STRONG>Table 2:</STRONG>
+Symbol frequencies used to build a Huffman Code.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<TABLE COLS=12 RULES=GROUPS>
+<COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>
+A</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>T</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>E</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>S</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>X</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>M</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>I</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>N</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>O</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>W</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>R</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP><code> </code></TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3
+</TD></TR>
+</TABLE>
+<A NAME="T:huff-freqs1"></A>
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Now begin with a collection (a forest) of very simple trees, one for
+each symbol to be coded, with each consisting of a single node,
+labelled by that symbol, and the frequency with which it occurs in the
+string.  The construction is recursive: at each stage the two trees
+which account for the least total frequency in their root nodes are
+selected, and used to produce a new binary tree.  This has, as its
+children the two trees just chosen: the root is then labelled with the
+total frequency accounted for by both subtrees, and the original
+subtrees are removed from the forest.  The construction continues in
+this way until only one tree remains; that is then the Huffman
+encoding tree.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="11955"></A>
+<TABLE>
+<CAPTION><STRONG>Table 3:</STRONG>
+Symbol frequencies used to build a Huffman Code.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<TABLE COLS=12 RULES=GROUPS>
+<COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>
+N</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP><code> </code></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>A</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>X</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>M</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>O</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>W</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>T</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>E</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>R</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>S</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>I</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD></TR>
+<TR><TD></TD><TD></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=2>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=2>2</TD><TD></TD><TD></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=2>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD></TR>
+<TR><TD></TD><TD></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=4>4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=2>6</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=3>5</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=2> 
+6</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=5>8</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD></TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=7> 
+14</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=5>11</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=12> 
+25</TD></TR>
+</TABLE>
+<A NAME="T:huff-freqs2"></A>
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+[NB The particular order in which the symbols are displayed was
+determined by trial and error in order to present the result in a
+tabular form in which only adjacent columns were merged.  It is not
+necessary to give a presentation in this form; crossing are perfectly
+acceptable.]
+
+<P>
+We now code the word ANSWER using this coding tree.  Although this is
+a prefix code and so spaces are <I>not</I> required, we include spaces
+between letters for clarity.  We read up from the bottom of the table,
+assigning 0 to a choice of a left hand branch, and 1 to a choice
+of the right hand branch.  The resulting code is then
+<DIV ALIGN="CENTER">
+010<code> </code>000<code> </code>1101<code> </code>01111<code> </code>101<code> </code>1100
+
+</DIV>
+
+<P>
+The Huffman code has the prefix property; no character code is the
+prefix, or start of the the code for another character.  In the same
+way that the Huffman code was constructed, we can associate a binary
+code with the prefix property to any binary tree.  Given any binary
+tree with the same set of leaf nodes, and thus able to code the same
+symbols, the Huffman code is <I>optimal</I> in the sense that the
+corresponding coded message length is at least as short as that from
+the given tree.
+
+<P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<I>Solution</I> <A HREF="node61.html#Q:heapsort" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html#Q:heapsort">3.9</A>:<A NAME="A:heapsort"></A>A priority queue is a collection of elements or items, each of which
+has an associated priority.  The operations available are:-
+
+<P>
+<DL>
+<DT></DT>
+<DD><code>create</code> creates an empty priority  queue;
+</DD>
+<DT></DT>
+<DD><code>add(item)</code> adds the given <code>item</code> to the priority queue; and
+</DD>
+<DT></DT>
+<DD><code>remove</code> removes the item with the highest priority from the queue.
+</DD>
+</DL>
+
+<P>
+A complete binary tree is a tree which is either empty, or one in
+which every node:
+
+<UL>
+<LI>has no children; or
+</LI>
+<LI>has just a left child; or
+</LI>
+<LI>has both a left and a right child.
+</LI>
+</UL>
+
+<P>
+In addition, we require that all the levels, except perhaps the last,
+has both a left and a right child; while on the last level, any
+missing nodes are to the right of all the nodes that are present.
+
+<P>
+If we have a representation of a priority queue as a complete binary
+tree in which each node contains an element and its associated key or
+priority, it satisfies the<I>heap condition</I> if at each node, the
+associated key is larger than the keys associated with either child of
+that node.
+
+<P>
+We now create a priority queue, represented as a complete binary tree,
+in which letters at the end of the alphabet have priority.  When the
+first three characters are added as additional nodes in the binary
+tree, the new tree already satisfies the heap condition.  Adding ``P''
+violates that condition; ``P'' thus has to rise until it is again
+satisfied.
+<DIV ALIGN="CENTER">
+<BR>
+<IMG
+ WIDTH="28" HEIGHT="28" ALIGN="BOTTOM" BORDER="0"
+ SRC="img411.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img411.gif"
+ ALT="\begin{psTree}[levelsep=10mm]{\Tcircle{H}}
+\end{psTree}">
+<BR>
+ 
+<BR>
+<IMG
+ WIDTH="29" HEIGHT="73" ALIGN="BOTTOM" BORDER="0"
+ SRC="img412.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img412.gif"
+ ALT="\begin{psTree}[levelsep=10mm]{\Tcircle{H}}
+\Tcircle{E}
+\end{psTree}">
+<BR>
+ 
+<BR>
+<IMG
+ WIDTH="91" HEIGHT="73" ALIGN="BOTTOM" BORDER="0"
+ SRC="img413.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img413.gif"
+ ALT="\begin{psTree}[levelsep=10mm]{\Tcircle{H}}
+\Tcircle{E}
+\Tcircle{A}
+\end{psTree}">
+<BR>
+ 
+<BR>
+<IMG
+ WIDTH="91" HEIGHT="118" ALIGN="BOTTOM" BORDER="0"
+ SRC="img414.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img414.gif"
+ ALT="\begin{psTree}[levelsep=10mm]{\Tcircle{H}}
+\begin{psTree}{\Tcircle{E}}
+\Tcircle{P}
+\end{psTree} \Tcircle{A}
+\end{psTree}">
+<BR>
+<!-- MATH
+ $\quad \rightarrow \quad$
+ -->
+&nbsp;&nbsp;&nbsp;&nbsp; <IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img415.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img415.gif"
+ ALT="$ \rightarrow$"> &nbsp;&nbsp;&nbsp;&nbsp;
+<BR>
+<IMG
+ WIDTH="79" HEIGHT="104" ALIGN="BOTTOM" BORDER="0"
+ SRC="img416.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img416.gif"
+ ALT="\begin{psTree}[levelsep=10mm]{\Tcircle{P}}
+\ \begin{psTree}{\Tcircle{H}}
+\Tcircle{E}
+%%\Tcircle{A}
+\end{psTree} \Tcircle{A}
+\end{psTree}">
+<BR>
+</DIV>
+When  ``S'' is added, it rises to the top of the tree before the heap
+condition holds. 
+<DIV ALIGN="CENTER">
+<BR>
+<IMG
+ WIDTH="121" HEIGHT="119" ALIGN="BOTTOM" BORDER="0"
+ SRC="img417.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img417.gif"
+ ALT="\begin{psTree}[levelsep=10mm]{\Tcircle{P}}
+\begin{psTree}{\Tcircle{H}}
+\Tcircle{E}
+\Tcircle{S}
+\end{psTree} \Tcircle{A}
+\end{psTree}">
+<BR>
+<!-- MATH
+ $\quad \longrightarrow \quad$
+ -->
+&nbsp;&nbsp;&nbsp;&nbsp; <IMG
+ WIDTH="30" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img418.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img418.gif"
+ ALT="$ \longrightarrow$"> &nbsp;&nbsp;&nbsp;&nbsp;
+<BR>
+<IMG
+ WIDTH="121" HEIGHT="119" ALIGN="BOTTOM" BORDER="0"
+ SRC="img419.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img419.gif"
+ ALT="\begin{psTree}[levelsep=10mm]{\Tcircle{S}}
+\begin{psTree}{\Tcircle{P}}
+\Tcircle{E}
+\Tcircle{H}
+\end{psTree} \Tcircle{A}
+\end{psTree}">
+<BR>
+</DIV>
+Now add ``O''; it has to rises to be above ``A''
+<DIV ALIGN="CENTER">
+<BR>
+<IMG
+ WIDTH="153" HEIGHT="119" ALIGN="BOTTOM" BORDER="0"
+ SRC="img420.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img420.gif"
+ ALT="\begin{psTree}[levelsep=10mm]{\Tcircle{S}}
+\begin{psTree}{\Tcircle{P}}
+\Tcircl...
+... \end{psTree} \begin{psTree}{\Tcircle{A}}
+\Tcircle{O}
+\end{psTree}\end{psTree}">
+<BR>
+<!-- MATH
+ $\quad \longrightarrow \quad$
+ -->
+&nbsp;&nbsp;&nbsp;&nbsp; <IMG
+ WIDTH="30" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img418.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img418.gif"
+ ALT="$ \longrightarrow$"> &nbsp;&nbsp;&nbsp;&nbsp;
+<BR>
+<IMG
+ WIDTH="153" HEIGHT="119" ALIGN="BOTTOM" BORDER="0"
+ SRC="img421.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img421.gif"
+ ALT="\begin{psTree}[levelsep=10mm]{\Tcircle{S}}
+\begin{psTree}{\Tcircle{P}}
+\Tcircl...
+... \end{psTree} \begin{psTree}{\Tcircle{O}}
+\Tcircle{A}
+\end{psTree}\end{psTree}">
+<BR>
+</DIV>
+Now add ``R''; this replaces ``O'' and fills the tree at level 2.
+<DIV ALIGN="CENTER">
+<BR>
+<IMG
+ WIDTH="215" HEIGHT="119" ALIGN="BOTTOM" BORDER="0"
+ SRC="img422.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img422.gif"
+ ALT="\begin{psTree}[levelsep=10mm]{\Tcircle{S}}
+\begin{psTree}{\Tcircle{P}}
+\Tcircl...
+... \begin{psTree}{\Tcircle{O}}
+\Tcircle{A}
+\Tcircle{R}
+\end{psTree}\end{psTree}">
+<BR>
+<!-- MATH
+ $\quad \longrightarrow \quad$
+ -->
+&nbsp;&nbsp;&nbsp;&nbsp; <IMG
+ WIDTH="30" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img418.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img418.gif"
+ ALT="$ \longrightarrow$"> &nbsp;&nbsp;&nbsp;&nbsp;
+<BR>
+<IMG
+ WIDTH="216" HEIGHT="119" ALIGN="BOTTOM" BORDER="0"
+ SRC="img423.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img423.gif"
+ ALT="\begin{psTree}[levelsep=10mm]{\Tcircle{S}}
+\begin{psTree}{\Tcircle{P}}
+\Tcircl...
+... \begin{psTree}{\Tcircle{R}}
+\Tcircle{A}
+\Tcircle{O}
+\end{psTree}\end{psTree}">
+<BR>
+</DIV>
+The final addition of ``T'' completes the tree, when it has been re-heaped.
+<DIV ALIGN="CENTER">
+<BR>
+<IMG
+ WIDTH="216" HEIGHT="164" ALIGN="BOTTOM" BORDER="0"
+ SRC="img424.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img424.gif"
+ ALT="\begin{psTree}[levelsep=10mm]{\Tcircle{S}}
+\begin{psTree}{\Tcircle{P}}
+\begin{...
+... \begin{psTree}{\Tcircle{R}}
+\Tcircle{A}
+\Tcircle{O}
+\end{psTree}\end{psTree}">
+<BR>
+<!-- MATH
+ $\quad \longrightarrow \quad$
+ -->
+&nbsp;&nbsp;&nbsp;&nbsp; <IMG
+ WIDTH="30" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img418.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img418.gif"
+ ALT="$ \longrightarrow$"> &nbsp;&nbsp;&nbsp;&nbsp;
+<BR>
+<IMG
+ WIDTH="216" HEIGHT="164" ALIGN="BOTTOM" BORDER="0"
+ SRC="img425.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img425.gif"
+ ALT="\begin{psTree}[levelsep=10mm]{\Tcircle{T}}
+\begin{psTree}{\Tcircle{S}}
+\begin{...
+... \begin{psTree}{\Tcircle{R}}
+\Tcircle{A}
+\Tcircle{O}
+\end{psTree}\end{psTree}">
+<BR>
+</DIV>
+
+<P>
+The string is now sorted by removing the root node -- this is the
+item with the highest priority remaining in the tree -- and replacing it
+with the ``last'' node in the tree.  The tree no longer satisfies the
+heap condition, and so the node that has just been promoted is allowed
+to fall again until the condition holds.
+
+<P>
+<DIV ALIGN="CENTER">
+<BR>
+<IMG
+ WIDTH="216" HEIGHT="119" ALIGN="BOTTOM" BORDER="0"
+ SRC="img426.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img426.gif"
+ ALT="\begin{psTree}[levelsep=10mm]{\Tcircle{E}}
+\begin{psTree}{\Tcircle{S}}
+\Tcircl...
+... \begin{psTree}{\Tcircle{R}}
+\Tcircle{A}
+\Tcircle{O}
+\end{psTree}\end{psTree}">
+<BR>
+<!-- MATH
+ $\quad \longrightarrow \quad$
+ -->
+&nbsp;&nbsp;&nbsp;&nbsp; <IMG
+ WIDTH="30" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img418.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img418.gif"
+ ALT="$ \longrightarrow$"> &nbsp;&nbsp;&nbsp;&nbsp;
+<BR>
+<IMG
+ WIDTH="216" HEIGHT="119" ALIGN="BOTTOM" BORDER="0"
+ SRC="img423.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img423.gif"
+ ALT="\begin{psTree}[levelsep=10mm]{\Tcircle{S}}
+\begin{psTree}{\Tcircle{P}}
+\Tcircl...
+... \begin{psTree}{\Tcircle{R}}
+\Tcircle{A}
+\Tcircle{O}
+\end{psTree}\end{psTree}">
+<BR>
+</DIV>
+The root of the tree again contains the next character in order and is
+removed.  This continues until the whole heap has been destroyed.
+
+<P>
+Finally, note that although in general Heapsort is slower than
+Quicksort by a factor of about 2, the ``worst case'' behaviour remains
+<!-- MATH
+ $O(n\log n)$
+ -->
+<I>O</I>(<I>n</I> log&nbsp;<I>n</I>), whereas Quicksort can become <I>O</I>(<I>n</I><SUP>2</SUP>).
+<P>
+
+<P>
+<BR>
+
+<P>
+<I>Solution</I> <A HREF="node61.html#Q:huffman-2000" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html#Q:huffman-2000">3.10</A>:<A NAME="A:huffman-2000"></A>A Huffman code is used when the input is from a limited character set,
+and contains information that is redundant; a typical example is
+English text, in which the letter ``e'' occurs significantly more
+often than random.  One such application is in the ``gzip'' utility
+which is based on the Huffman code.
+
+<P>
+We describe how to build the binary Huffman code by building the
+corresponding binary tree.  We start by analysing the message to find
+the frequencies of each symbol that occurs in it.  Our basic strategy
+will be to assign short codes to symbols that occur frequently, while
+still insisting that the code has the prefix property.  Our example
+will be build around the message
+<DIV ALIGN="CENTER">
+A HUFFMAN EXAMPLE PLEASE
+
+</DIV>
+The corresponding frequencies are given in Table&nbsp;<A HREF="node108.html#T:huff-freqs-4" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node108.html#T:huff-freqs-4">6.8.2</A>;
+we write the space symbol `` '', in the table as <code> </code>.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="12155"></A>
+<TABLE>
+<CAPTION><STRONG>Table 4:</STRONG>
+Symbol frequencies used to build a Huffman Code.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<TABLE COLS=13 RULES=GROUPS>
+<COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>
+A</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP><code> </code></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>H</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>U</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>F</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>M</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>N</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>E</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>X</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>P</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>L</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>S</TD><TD></TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>        3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1
+</TD><TD></TD></TR>
+</TABLE>
+<A NAME="T:huff-freqs-4"></A>
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Now begin with a collection (a forest) of very simple trees, one for
+each symbol to be coded, with each consisting of a single node,
+labelled by that symbol, and the frequency with which it occurs in the
+string.  The construction is recursive: at each stage the two trees
+which account for the least total frequency in their root nodes are
+selected, and used to produce a new binary tree.  This has, as its
+children the two trees just chosen: the root is then labelled with the
+total frequency accounted for by both subtrees, and the original
+subtrees are removed from the forest.  The construction continues in
+this way until only one tree remains; that is then the Huffman
+encoding tree.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="12216"></A>
+<TABLE>
+<CAPTION><STRONG>Table 5:</STRONG>
+Symbol frequencies used to build a Huffman Code.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<TABLE COLS=12 RULES=GROUPS>
+<COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>
+A</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP><code> </code></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>H</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>U</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>F</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>M</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>N</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>X</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>E</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>P</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>L</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>S</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>        3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+</DIV>
+<P>
+<DIV ALIGN="CENTER"></TD><TD></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=2>2</TD><TD></TD><TD></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=2>2</TD><TD></TD><TD></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=2>3</TD></TR>
+<TR><TD></TD><TD></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=3>4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=3>4</TD><TD></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=3>5</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=2> 
+7</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=6>8</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=4>9</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=8> 
+15</TD><TD></TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP COLSPAN=12> 
+24</TD></TR>
+</TABLE>
+<A NAME="T:huff-freqs3"></A>
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+[NB The particular order in which the symbols are displayed happens to
+give a table with no crossings when listed in the order in which the
+symbols are gathered.  It is not necessary to give a presentation in
+this form; crossing are perfectly acceptable.]
+
+<P>
+We now code the word PLEASE using this coding tree.  Although this is
+a prefix code and so spaces are <I>not</I> required, we include spaces
+between letters for clarity.  We read up from the bottom of the table,
+assigning 0 to a choice of a left hand branch, and 1 to a choice
+of the right hand branch.  The resulting code is then
+<DIV ALIGN="CENTER">
+110<code> </code>1110<code> </code>10<code> </code>000<code> </code>1111<code> </code>10
+
+</DIV>
+
+<P>
+A binary tree with 2<SUP>n</SUP> nodes must have at least <I>n</I> levels, so the
+longest string must have at least <I>n</I> symbols.  This bound is actually
+attained if the tree is a complete binary tree; one circumstance
+in which this will occur is if all the letters in the initial alphabet
+are equally probable.
+
+<P>
+To get the longest possible string, the tree must be completely
+unbalanced, with (for example) every left node being a leaf node, and
+with all growth taking place at the right.  This means that apart from
+the final level, we have one symbol of each length, and so the longest
+symbol must have length 2<SUP>n</SUP> - 1.  If the corresponding probabilities
+are <!-- MATH
+ $p_0 \ge \ldots  \ge p_k$
+ -->
+<I>p</I><SUB>0</SUB><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$">...<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$"><I>p</I><SUB>k</SUB>, where <I>k</I> = 2<SUP>n</SUP>, then to ensure the
+tree builds in the way specified, we must have 
+<!-- MATH
+ \begin{displaymath}
+p_i \ge \sum_{j=i+1}^k p_j
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>p</I><SUB>i</SUB><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img28.gif"
+ ALT="$\displaystyle \ge$"><IMG
+ WIDTH="40" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img427.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img427.gif"
+ ALT="$\displaystyle \sum_{j=i+1}^{k}$"><I>p</I><SUB>j</SUB>
+</DIV><P></P>
+so the probability of a given symbol must be at least as great as the
+sum of the probabilities of all the less likely symbols.
+<P>
+
+<P>
+<BR>
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1890"
+  HREF="node109.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node109.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1884"
+  HREF="node103.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node103.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1878"
+  HREF="node107.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node107.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1886"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1888"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1891"
+  HREF="node109.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node109.html">Solutions for Questions&nbsp;4 (page</A>
+<B> Up:</B> <A NAME="tex2html1885"
+  HREF="node103.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node103.html">Appendices</A>
+<B> Previous:</B> <A NAME="tex2html1879"
+  HREF="node107.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node107.html">Solutions for Questions&nbsp;2 (page</A>
+ &nbsp <B>  <A NAME="tex2html1887"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1889"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

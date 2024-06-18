@@ -1,0 +1,90 @@
+<html><head>
+<title>Solution for /logic/same.street</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /logic/same.street problem</h1>
+<hr>
+Sally asks Sam "Is your house number a perfect square?".  He answers.
+Then Sally asks "Is is greater than 50?".  He answers again.
+
+<p>
+Sally thinks she now knows the address of Sam's house and decides to
+visit.
+
+<blockquote>
+	Since Sally thinks that she has enough information, I deduce
+	that Sam answered that his house number was a perfect square
+	greater than 50.  There are two of these {64,81} and Sally must
+	live in one of them in order to have decided she knew where Sam
+	lives.
+</blockquote>
+When she gets there, she finds out she is wrong.  This is not
+surprising, considering Sam answered only the second question
+truthfully.
+
+<blockquote>
+	So Sam's house number is greater than 50, but not a perfect
+	square.
+</blockquote>
+
+Sue, unaware of Sally's conversation, asks Sam two questions.
+Sue asks "Is your house number a perfect cube?".  He answers.
+She then asks "Is it greater than 25?".  He answers again.
+
+<blockquote>
+	Observation: perfect cubes greater than 25 are {27, 64}, less
+	than 25 are {1,8}.
+</blockquote>
+
+Sue thinks she knows where Sam lives and decides to pay him a visit.
+She too is mistaken as Sam once again answered only the second 
+question truthfully.
+
+<blockquote>
+	Since Sam's house number is greater than 50, he told Sue that
+	it was greater than 25 as well.  Since Sue thought she knew
+	which house was his, she must live in either of {27,64}.
+</blockquote>
+
+If I tell you that Sam's number is less than Sue's or Sally's,
+
+<blockquote>
+	Since Sam's number is greater than 50, and Sue's is even
+	bigger, she must live in 64.  Assuming Sue and Sally are not
+	roommates (although awkward social situations of this kind are
+	not without precedent), Sally lives in 81.
+</blockquote>
+
+and that the sum of their numbers is a perfect square multiplied
+by two, you should be able to figure out where all three of them
+live.
+
+<pre>
+	Sue + Sally + Sam = 2 p^2        for p an integer
+	64  + 81    + Sam = 2 p^2
+</pre>
+
+	Applying the constraint 50 &lt; Sam &lt; 64, looks like Sam = 55 (p = 10).
+
+	<p>
+	In summary,
+<pre>
+	Sam = 55
+	Sue = 64
+	Sally = 81
+
+-- Tom Smith &lt;tom@ulysses.att.com&gt;
+</pre>
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

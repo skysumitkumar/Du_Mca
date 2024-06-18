@@ -1,0 +1,41 @@
+#include 	<stdio.h>
+
+int	main(void)
+{
+FILE	*in;
+char	fname[BUFSIZ];
+int	i,left,top,width,height;
+char	ch,packed;
+
+	printf("Enter GIF file>>");
+	gets(fname);
+
+	if ((in=fopen(fname,"r"))==NULL)
+	{
+		printf("Can't find file %s\n",fname);
+		return(1);
+	}
+
+	do
+	{
+		fread(&ch,1,1,in);
+	} while (ch!=0x2C); /* find image seperator */
+
+	fread(&left,2,1,in);
+	printf("Image left position: %d\n",left);
+	fread(&top,2,1,in);
+	printf("Image top position: %d\n",top);
+	fread(&width,2,1,in);
+	printf("Image width: %d\n",width);
+	fread(&height,2,1,in);
+	printf("Image height: %d\n",height);
+	fread(&packed,1,1,in);
+	printf("Packed: %x\n",packed & 0xff);
+	fclose(in);
+	return(0);
+}
+
+
+
+
+

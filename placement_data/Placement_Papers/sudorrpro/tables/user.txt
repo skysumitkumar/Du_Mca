@@ -1,0 +1,7 @@
+create table user_account
+(
+id number primary key,
+name varchar2(30) not null,
+password varchar2(10),
+superuser char(1),
+constraint uachk check(superuser in('y','n')));

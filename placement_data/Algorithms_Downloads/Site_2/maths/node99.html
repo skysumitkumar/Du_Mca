@@ -1,0 +1,245 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Gaussian Blur</TITLE>
+<META NAME="description" CONTENT="Gaussian Blur">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node100.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node100.html">
+<LINK REL="previous" HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">
+<LINK REL="up" HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">
+<LINK REL="next" HREF="node100.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node100.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1761"
+  HREF="node100.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node100.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1755"
+  HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1749"
+  HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1757"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1759"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1762"
+  HREF="node100.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node100.html">The Laplace Operator</A>
+<B> Up:</B> <A NAME="tex2html1756"
+  HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">An application to Image</A>
+<B> Previous:</B> <A NAME="tex2html1750"
+  HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">An application to Image</A>
+ &nbsp <B>  <A NAME="tex2html1758"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1760"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001081000000000000000">
+Gaussian Blur</A>
+</H2>
+As we saw in Example&nbsp;<A HREF="node97.html#E:mask" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node97.html#E:mask">6.8</A>, an obvious use for masking is to
+implement a smoothing or blurring.  Such an effect is easy to see on
+an image.  We now approximate a normal, or Gaussian
+blur,<A NAME="9233"></A> obtained perhaps using a ``soft'' lens so
+the light spreads out on the focal plane, rather than all going to the
+``correct'' spot. Such a Gaussian, of variance <IMG
+ WIDTH="21" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img354.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img354.gif"
+ ALT="$ \sigma^{2}_{}$"> is of the
+form
+<!-- MATH
+ \begin{displaymath}
+f(j,k) = \frac{1}{\sqrt{2\pi\sigma}}\exp
+	\left(\frac{-(j^2 + k^2)}{2\sigma^2}\right),
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>f</I> (<I>j</I>, <I>k</I>) = <IMG
+ WIDTH="49" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img355.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img355.gif"
+ ALT="$\displaystyle {\frac{1}{\sqrt{2\pi\sigma}}}$">exp<IMG
+ WIDTH="18" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img356.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img356.gif"
+ ALT="$\displaystyle \left(\vphantom{\frac{-(j^2 + k^2)}{2\sigma^2}}\right.$"><IMG
+ WIDTH="83" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img357.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img357.gif"
+ ALT="$\displaystyle {\frac{-(j^2 + k^2)}{2\sigma^2}}$"><IMG
+ WIDTH="18" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img358.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img358.gif"
+ ALT="$\displaystyle \left.\vphantom{\frac{-(j^2 + k^2)}{2\sigma^2}}\right)$">,
+</DIV><P></P>
+where conventionally we assume the function is zero outside a
+neighbourhood of radius 3<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$">. If we take <!-- MATH
+ $\sigma = 1$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$"> = 1 we get
+the mask
+<!-- MATH
+ \begin{displaymath}
+\frac{1}{1003}
+\     \begin{pmatrix}
+	0& 0& 1&  2& 1& 0& 0\\
+	0& 3&13& 22&13& 3& 0\\
+	1&13&59& 97&59&13& 1\\
+	2&22&97&159&97&22& 2\\
+	1&13&59& 97&59&13& 1\\
+	0& 3&13& 22&13& 3& 0\\
+	0& 0& 1&  2& 1& 0& 0
+\     \end{pmatrix}.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="33" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img359.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img359.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{1003}}$">&nbsp;<IMG
+ WIDTH="241" HEIGHT="153" ALIGN="MIDDLE" BORDER="0"
+ SRC="img360.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img360.gif"
+ ALT="$\displaystyle \begin{pmatrix}
+0&amp; 0&amp; 1&amp; 2&amp; 1&amp; 0&amp; 0\\
+0&amp; 3&amp;13&amp; 22&amp;13&amp; 3&amp; 0 ...
+... 97&amp;59&amp;13&amp; 1\\
+0&amp; 3&amp;13&amp; 22&amp;13&amp; 3&amp; 0\\
+0&amp; 0&amp; 1&amp; 2&amp; 1&amp; 0&amp; 0
+ \end{pmatrix}$">.
+</DIV><P></P>
+The result of applying this mask, considered as centered on the
+largest value, to the image of Fig&nbsp;<A HREF="node99.html#F:susie" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node99.html#F:susie">6.1</A> is shown in
+Fig.&nbsp;<A HREF="node99.html#F:gaussian" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node99.html#F:gaussian">6.2</A>.  It is clear that a noticeable blur has been
+obtained as was expected.
+
+<P></P>
+<DIV ALIGN="CENTER">
+
+<P><A NAME="F:susie"></A><A NAME="F:gaussian"></A><A NAME="F:dog"></A></P>
+<TABLE><CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.1:</STRONG>
+Input image.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><!-- MATH
+ $\includegraphics[width=0.9\textwidth]{susie.eps}$
+ -->
+<IMG
+ WIDTH="647" HEIGHT="647" ALIGN="BOTTOM" BORDER="0"
+ SRC="img361.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img361.gif"
+ ALT="\includegraphics [width=0.9\textwidth]{susie.eps}">
+</DIV></TD></TR>
+</TABLE>
+
+<TABLE><CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.2:</STRONG>
+Output after Gaussian filtering.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><!-- MATH
+ $\includegraphics[width=0.9\textwidth]{susie-gaussian.eps}$
+ -->
+<IMG
+ WIDTH="647" HEIGHT="647" ALIGN="BOTTOM" BORDER="0"
+ SRC="img362.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img362.gif"
+ ALT="\includegraphics [width=0.9\textwidth]{susie-gaussian.eps}">
+</DIV></TD></TR>
+</TABLE>
+
+<TABLE><CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.3:</STRONG>
+The zero-crossings of the image filtered by a difference of Gaussians.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><!-- MATH
+ $\includegraphics[width=0.9\textwidth]{susie-zcross.eps}$
+ -->
+<IMG
+ WIDTH="647" HEIGHT="647" ALIGN="BOTTOM" BORDER="0"
+ SRC="img363.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img363.gif"
+ ALT="\includegraphics [width=0.9\textwidth]{susie-zcross.eps}">
+</DIV></TD></TR>
+</TABLE>
+</DIV>
+<P></P>
+
+<P>
+It may be less clear why there is any interest in blurring an image.
+However it can form a useful intermediate step.  The image shown in
+Fig&nbsp;<A HREF="node99.html#F:susie" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node99.html#F:susie">6.1</A> was filtered using a difference of Gaussians (DoG
+filter) at two different scales.<A NAME="9265"></A> The resulting
+filter is supposed to respond in a way very simlarly to the receptive
+fields in our eyes.  The output is no longer always positive, so does
+not represent an image, but the pixels where the intensity changes
+sign are marked in Fig&nbsp;<A HREF="node99.html#F:dog" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node99.html#F:dog">6.3</A>.  The overall effect is that of a
+neurophysiologically plausible edge detector.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1761"
+  HREF="node100.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node100.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1755"
+  HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1749"
+  HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1757"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1759"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1762"
+  HREF="node100.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node100.html">The Laplace Operator</A>
+<B> Up:</B> <A NAME="tex2html1756"
+  HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">An application to Image</A>
+<B> Previous:</B> <A NAME="tex2html1750"
+  HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">An application to Image</A>
+ &nbsp <B>  <A NAME="tex2html1758"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1760"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

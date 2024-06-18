@@ -1,0 +1,215 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>An application to Image Processing</TITLE>
+<META NAME="description" CONTENT="An application to Image Processing">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node102.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node102.html">
+<LINK REL="previous" HREF="node97.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node97.html">
+<LINK REL="up" HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<LINK REL="next" HREF="node99.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node99.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1744"
+  HREF="node99.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node99.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1738"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1732"
+  HREF="node97.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node97.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1740"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1742"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1745"
+  HREF="node99.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node99.html">Gaussian Blur</A>
+<B> Up:</B> <A NAME="tex2html1739"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">The Fast Fourier Transform</A>
+<B> Previous:</B> <A NAME="tex2html1733"
+  HREF="node97.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node97.html">Convolution as Filtering</A>
+ &nbsp <B>  <A NAME="tex2html1741"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1743"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001080000000000000000">
+An application to Image Processing</A>
+</H1>
+
+<P>
+We can extend the definition of the discrete Fourier transform from
+vectors to arrays<A NAME="9210"></A> with only notational difficulty.
+It is of interest because an array has a very visual representation as
+a digitised image or picture, with <I>f</I> (<I>j</I>, <I>k</I>) representing the
+brightness of the image at position (<I>j</I>, <I>k</I>).  We thus define the
+Fourier transform of an image as the (complex valued) array <I>F</I>, given
+by
+<!-- MATH
+ \begin{displaymath}
+\     F(p,q) = \frac{1}{\sqrt{nm}}\sum_{j=0}^{m-1}\sum_{k=0}^{n-1}
+	f(j,k)\exp\left(\frac{-2\pi ijp}{m}\right)
+	\exp\left(\frac{-2\pi ikq}{n}\right).
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;<I>F</I>(<I>p</I>, <I>q</I>) = <IMG
+ WIDTH="45" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img344.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img344.gif"
+ ALT="$\displaystyle {\frac{1}{\sqrt{nm}}}$"><IMG
+ WIDTH="32" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img345.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img345.gif"
+ ALT="$\displaystyle \sum_{j=0}^{m-1}$"><IMG
+ WIDTH="28" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img100.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img100.gif"
+ ALT="$\displaystyle \sum_{k=0}^{n-1}$"><I>f</I> (<I>j</I>, <I>k</I>)exp<IMG
+ WIDTH="18" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img346.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img346.gif"
+ ALT="$\displaystyle \left(\vphantom{\frac{-2\pi ijp}{m}}\right.$"><IMG
+ WIDTH="59" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img347.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img347.gif"
+ ALT="$\displaystyle {\frac{-2\pi ijp}{m}}$"><IMG
+ WIDTH="18" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img348.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img348.gif"
+ ALT="$\displaystyle \left.\vphantom{\frac{-2\pi ijp}{m}}\right)$">exp<IMG
+ WIDTH="18" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img349.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img349.gif"
+ ALT="$\displaystyle \left(\vphantom{\frac{-2\pi ikq}{n}}\right.$"><IMG
+ WIDTH="60" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img350.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img350.gif"
+ ALT="$\displaystyle {\frac{-2\pi ikq}{n}}$"><IMG
+ WIDTH="18" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img351.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img351.gif"
+ ALT="$\displaystyle \left.\vphantom{\frac{-2\pi ikq}{n}}\right)$">.
+</DIV><P></P>
+Just as before we can write this as a double sum 
+<!-- MATH
+ \begin{displaymath}
+F(p,q) =
+\frac{1}{\sqrt{nm}}\sum_{j=0}^{m-1}\sum_{k=0}^{n-1}f(j,k)\omega _m^{jp}\omega _n^{kq}.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>F</I>(<I>p</I>, <I>q</I>) = <IMG
+ WIDTH="45" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img344.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img344.gif"
+ ALT="$\displaystyle {\frac{1}{\sqrt{nm}}}$"><IMG
+ WIDTH="32" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img345.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img345.gif"
+ ALT="$\displaystyle \sum_{j=0}^{m-1}$"><IMG
+ WIDTH="28" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img100.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img100.gif"
+ ALT="$\displaystyle \sum_{k=0}^{n-1}$"><I>f</I> (<I>j</I>, <I>k</I>)<IMG
+ WIDTH="28" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img352.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img352.gif"
+ ALT="$\displaystyle \omega_{m}^{jp}$"><IMG
+ WIDTH="29" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img353.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img353.gif"
+ ALT="$\displaystyle \omega_{n}^{kq}$">.
+</DIV><P></P>
+There is a similar inversion formula to Equation&nbsp;<A HREF="node91.html#E:ift" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node91.html#E:ift">6.3</A>, which can
+be checked in exactly the same way.
+
+<P>
+The implementation of the true 2 - dimensional transform can be done
+in two stages; for each fixed row, we take the transform of each
+column, and then with the transformed data in the corresponding
+position, take the transform of each row. Thus all the difficulties
+have been faced in the 1-dimensional case.
+
+<P>
+A digitised image rotuinely contains around 250, 000 elements or
+<I>pixels</I>; there is thus a very significant saving to be made by
+using the FFT to implement convolution or masking as soon as the
+support of the mask becomes of significant size.  We conclude with two
+examples of image masks which clearly do useful things, and which
+normally would be implemented in this way.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html1746"
+  HREF="node99.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node99.html">Gaussian Blur</A>
+<LI><A NAME="tex2html1747"
+  HREF="node100.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node100.html">The Laplace Operator</A>
+<UL>
+<LI><A NAME="tex2html1748"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html">Summary</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1744"
+  HREF="node99.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node99.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1738"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1732"
+  HREF="node97.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node97.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1740"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1742"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1745"
+  HREF="node99.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node99.html">Gaussian Blur</A>
+<B> Up:</B> <A NAME="tex2html1739"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">The Fast Fourier Transform</A>
+<B> Previous:</B> <A NAME="tex2html1733"
+  HREF="node97.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node97.html">Convolution as Filtering</A>
+ &nbsp <B>  <A NAME="tex2html1741"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1743"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

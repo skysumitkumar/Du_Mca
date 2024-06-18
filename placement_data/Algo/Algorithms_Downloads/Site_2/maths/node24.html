@@ -1,0 +1,326 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Approximating Hn</TITLE>
+<META NAME="description" CONTENT="Approximating Hn">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node25.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node25.html">
+<LINK REL="previous" HREF="node23.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node23.html">
+<LINK REL="up" HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+<LINK REL="next" HREF="node25.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node25.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html642"
+  HREF="node25.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node25.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html636"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html630"
+  HREF="node23.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node23.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html638"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html640"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html643"
+  HREF="node25.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node25.html">Conclusion</A>
+<B> Up:</B> <A NAME="tex2html637"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">The Analysis of an</A>
+<B> Previous:</B> <A NAME="tex2html631"
+  HREF="node23.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node23.html">Computing detours: A<SUP>n</SUP><SUB>k</SUB></A>
+ &nbsp <B>  <A NAME="tex2html639"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html641"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00534000000000000000">
+Approximating <I>H</I><SUB>n</SUB></A>
+</H2>
+Does this help? Only if we know something about <I>H</I><SUB>n</SUB>. This leads us
+into another important aspect of the study of algorithms, that of
+asymptotic estimation. Put in simple terms, can we find a simple
+approximate formula for <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img18.gif"
+ ALT="$ \mu$">(<I>n</I>) to replace the complicated exact
+formula that we have obtained above? In this case we can, and the result
+is quite famous.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="F:y-equals-1-over-x"></A><A NAME="836"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 1.8:</STRONG>
+Graph of <I>y</I> = 1/<I>x</I>.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><!-- MATH
+ $\includegraphics[width=4in]{xfig/one-over-x.eps}$
+ -->
+<IMG
+ WIDTH="456" HEIGHT="228" ALIGN="BOTTOM" BORDER="0"
+ SRC="img50.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img50.gif"
+ ALT="\includegraphics [width=4in] {xfig/one-over-x.eps}">
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+Consider the diagram in Fig&nbsp;<A HREF="node24.html#F:y-equals-1-over-x" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node24.html#F:y-equals-1-over-x">1.8</A>.
+By adding up the areas of the rectangles that lie <EM>above</EM> the graph
+we get 
+<!-- MATH
+ \begin{displaymath}
+1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n-1} >
+\int_1^n\frac{dx}{x} = \ln n.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+1 + <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img43.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img43.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{2}}$"> + <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img44.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img44.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{3}}$"> + <SUP> ... </SUP> + <IMG
+ WIDTH="45" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img51.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img51.gif"
+ ALT="$\displaystyle {\frac{1}{n-1}}$"> &gt; <IMG
+ WIDTH="29" HEIGHT="52" ALIGN="MIDDLE" BORDER="0"
+ SRC="img52.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img52.gif"
+ ALT="$\displaystyle \int_{1}^{n}$"><IMG
+ WIDTH="25" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img53.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img53.gif"
+ ALT="$\displaystyle {\frac{dx}{x}}$"> = ln&nbsp;<I>n</I>.
+</DIV><P></P>
+Similarly, by adding up the areas
+of the rectangles that lie <EM>below</EM> the graph we get 
+<!-- MATH
+ \begin{displaymath}
+\frac{1}{2} +\frac{1}{3} + \cdots + \frac{1}{n} < \int_1^n\frac{dx}{x} = \ln n.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img43.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img43.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{2}}$"> + <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img44.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img44.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{3}}$"> + <SUP> ... </SUP> + <IMG
+ WIDTH="17" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img41.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img41.gif"
+ ALT="$\displaystyle {\frac{1}{n}}$"> &lt; <IMG
+ WIDTH="29" HEIGHT="52" ALIGN="MIDDLE" BORDER="0"
+ SRC="img52.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img52.gif"
+ ALT="$\displaystyle \int_{1}^{n}$"><IMG
+ WIDTH="25" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img53.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img53.gif"
+ ALT="$\displaystyle {\frac{dx}{x}}$"> = ln&nbsp;<I>n</I>.
+</DIV><P></P>
+From these we easily deduce that  
+<!-- MATH
+ \begin{displaymath}
+\ln n + \frac{1}{n} < H_n < \ln n + 1
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+ln&nbsp;<I>n</I> + <IMG
+ WIDTH="17" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img41.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img41.gif"
+ ALT="$\displaystyle {\frac{1}{n}}$"> &lt; <I>H</I><SUB>n</SUB> &lt; ln&nbsp;<I>n</I> + 1
+</DIV><P></P>
+This estimate can be improved greatly, but is already adequate for our
+purposes. It says that <I>H</I><SUB>n</SUB> is close to ln&nbsp;<I>n</I>, and that the
+percentage error decreases to zero as <!-- MATH
+ $n\to \infty$
+ -->
+<I>n</I><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img55.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img55.gif"
+ ALT="$ \infty$">.
+
+<P>
+If you are interested, a better estimate is
+
+<P>
+<!-- MATH
+ \begin{displaymath}
+H_n = \ln n + \gamma + \frac{1}{2n} + \cdots \qquad
+\ensuremath{\quad\text{where}\quad}\gamma   = 0{.}5772156649\quad\text{is Euler's Constant.}
+\end{displaymath}
+ -->
+<P ALIGN="CENTER"><IMG
+ WIDTH="558" HEIGHT="38" BORDER="0"
+ SRC="img58.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img58.gif"
+ ALT="\begin{displaymath}H_n = \ln n + \gamma + \frac{1}{2n} + \cdots \qquad
+\ensurema...
+...}\quad}\gamma = 0{.}5772156649\quad\text{is Euler's Constant.}
+\end{displaymath}"></P>
+A proof, together with much more information is available in
+(<A
+ HREF="node112.html#graham88:_concr_mathem" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node112.html#graham88:_concr_mathem">Graham et&nbsp;al., 1988</A>, Page 264).  Don't take the title of this
+book at its face value: ``Concrete'' Mathematics is a blend of
+<I>Con</I>tinuous and dis<I>crete</I> mathematics, chosen to be of
+interest and relevance to this type of calculation!
+
+<P>
+Now we can go back to our study of the timing of our algorithm. Recall
+that we obtained a formula for the average running time of the algorithm
+which could now be written as 
+
+<P>
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray*}
+T(n) 	&=& 3(n-1) + 2 + \mu(n), \\
+	&=& 3n + H_n -2, \\
+	&\approx& 3n + \ln n.
+\end{eqnarray*}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><I>T</I>(<I>n</I>)</TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP>3(<I>n</I> - 1) + 2 + <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img19.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img19.gif"
+ ALT="$\displaystyle \mu$">(<I>n</I>),</TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP>3<I>n</I> + <I>H</I><SUB>n</SUB> - 2,</TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img59.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img59.gif"
+ ALT="$\displaystyle \approx$"></TD>
+<TD ALIGN="LEFT" NOWRAP>3<I>n</I> + ln&nbsp;<I>n</I>.</TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+Where the approximation is meant to be applied if <I>n</I> is quite large.
+This is interesting. Let me put some values down in a table: 
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="876"></A>
+<TABLE>
+<CAPTION><STRONG>Table 1.3:</STRONG>
+The growth of <I>T</I>(<I>n</I>).</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<TABLE COLS=3 BORDER RULES=GROUPS>
+<COLGROUP><COL ALIGN=RIGHT><COLGROUP><COL ALIGN=RIGHT><COLGROUP><COL ALIGN=RIGHT>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>
+<I>n</I></TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 3<I>n</I></TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> ln&nbsp;<I>n</I></TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 
+10</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 30</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 2.3</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 
+100</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 300</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 4.6</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 
+1000</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 3000</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 6.9</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 
+10000</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 30000</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 9.2</TD></TR>
+</TABLE>
+
+</DIV>
+
+<A NAME="T:growth-of-Tn"></A></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+So you see that, on average, there are really very few detours indeed.
+For a value of <I>n</I> like 10000 the detours only make up, on average,
+0.03% of the time taken by the algorithm.
+
+<P>
+This shows a phenomenon that you need to get clear in your mind at an
+early stage: the logarithm function grows very slowly indeed. 
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html642"
+  HREF="node25.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node25.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html636"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html630"
+  HREF="node23.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node23.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html638"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html640"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html643"
+  HREF="node25.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node25.html">Conclusion</A>
+<B> Up:</B> <A NAME="tex2html637"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">The Analysis of an</A>
+<B> Previous:</B> <A NAME="tex2html631"
+  HREF="node23.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node23.html">Computing detours: A<SUP>n</SUP><SUB>k</SUB></A>
+ &nbsp <B>  <A NAME="tex2html639"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html641"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

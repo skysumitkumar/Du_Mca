@@ -1,0 +1,795 @@
+
+<HTML>
+<HEAD>
+<TITLE>CRACK THE INTERVIEW - Implement the memmove() function. What is the difference between the memmove() and memcpy() function?  (www.cracktheinterview.com)</TITLE><style type="text/css">
+<!--
+.breakhere     {page-break-before: always}
+
+A:link         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+A:active       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+A:visited      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+
+H1             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt; font-weight:bold; color:#336699} 
+H2             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; font-weight:bold} 
+.normal        {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+.announce      {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#000000} 
+.announceLink  {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#336699} 
+.note          {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt ! important; font-weight:normal} 
+.system        {font-family:Courier New, Courier; font-size:x-small;
+                font-weight:normal} 
+.stayblue      {color:#336699 ! important}
+.title         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:larger ! important} 
+.error         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; color:#aa0000; font-weight:bold} 
+.notelink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:normal;
+                font-size:9pt ! important} 
+.tableHeader   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableHeaderSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRow      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#f7f7e7} 
+.tableBlank    {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#ffffff} 
+.hardlink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:bold;
+                font-size:8pt ! important} 
+.boxlink       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#000000 ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.hardnote      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:black ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.tableRowSmall {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal} 
+.tableRowSmallBold {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                bold} 
+.blueHeading   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:bold;
+                color:#336699! important} 
+.blueHeadingLarge {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:16pt! important; font-weight:normal;
+                color:#336699} 
+.blueHeadingMid {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:normal;
+                color:#336699}
+.blueHeadingSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt! important; font-weight:bold;
+                color:#336699} 
+.tableHeaderV  {font-family:Verdana,Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRowV     {font-family:Verdana,Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal; background-color:#f7f7e7} 
+.just          {text-align: justify}
+-->
+</style>
+
+<META NAME="keywords" CONTENT="interview,C,memmove,memcpy,overlap,memory">
+<META NAME="description" CONTENT="Implement the memmove() function. What is the difference between the memmove() and memcpy() function? ">
+<META NAME="robots" CONTENT="FOLLOW,INDEX">
+<META HTTP-EQUIV="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+
+</HEAD>
+<BODY>
+<TABLE BORDER=0 cellpadding=10>
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER><A HREF="index.htm" tppabs="http://www.cracktheinterview.com/"><IMG SRC="logo2.jpg" tppabs="http://www.cracktheinterview.com/images/logo2.jpg" border=0></img></A></CENTER></TD>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2>
+<CENTER>
+
+
+<!--START:ADS0-->
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"
+  src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+
+</CENTER>
+</TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER>
+
+<!--START:LINKS-->
+
+
+<TABLE BORDER=0 cellpadding=10>
+<TR><TD NOWRAP>
+<A HREF="index.htm" tppabs="http://www.cracktheinterview.com/" target="_top"><font class=announcelink>Home</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="adfaqpublish.html" tppabs="http://www.cracktheinterview.com/adfaqpublish.html" target="_top"><font class=announcelink>Questions</font></A><BR>
+</TD>
+
+
+<TD NOWRAP>
+<A href="search.html" tppabs="http://www.cracktheinterview.com/search.html" target="_top"><font class=announcelink>Search</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="javascript:if(confirm('http://www.cracktheinterview.com/forum/  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.cracktheinterview.com/forum/'" tppabs="http://www.cracktheinterview.com/forum" target="_top"><font class=announcelink>Forum</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="mailto:cracktheinterview@gmail.com?subject=Hi!"><font class=announcelink>Contact</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="viewforum.php-f=2.htm" tppabs="http://www.cracktheinterview.com/forum/viewforum.php?f=2" target="_top"><font class=announcelink>Guest Book</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="viewforum.php-f=3.htm" tppabs="http://www.cracktheinterview.com/forum/viewforum.php?f=3" target="_top"><font class=announcelink>Polls!</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="viewforum.php-f=4.htm" tppabs="http://www.cracktheinterview.com/forum/viewforum.php?f=4" target="_top"><font class=announcelink>Got a Question?</font></A><BR>
+</TD>
+
+</TABLE>
+
+<!--END-->
+
+</CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER> &nbsp; </CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=90%% valign=top>
+
+
+
+
+
+<!--START : DATA-->
+
+
+
+<TABLE BORDER=0>
+
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="1_0.html" tppabs="http://www.cracktheinterview.com/pages/1_0.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=blueHeading>Write your own ....</font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="1_2.html" tppabs="http://www.cracktheinterview.com/pages/1_2.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD>
+<TD WIDTH=90%%><CENTER><font class=blueHeading>(17 / 268)</font></center></TD>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%></TD>
+<TD WIDTH=90%%><center>&nbsp;</center></TD>
+<TD WIDTH=5%%></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=announceLink><BR><BR><BR>
+<!--THE QUESTION-->
+
+Implement the memmove() function. What is the difference between the memmove() and memcpy() function? <BR>
+<!--END-->
+<BR></font></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=normal>
+<!--THE ANSWER--><BR>
+<!--META:START--><!--interview,C,memmove,memcpy,overlap,memory--><!--META:END--><BR>
+<!--UPDATED--><BR>
+One more <font class=announcelink> most frequently asked</font> interview question!.<BR>
+<BR>
+<font class=announcelink>memmove()</font> offers guaranteed behavior if the source and destination arguments <font class=announcelink>overlap</font>. memcpy() makes <font class=announcelink>no such guarantee</font>, and may therefore be more efficient to implement. It's always safer to use memmove(). <BR>
+<BR>
+Here is an implementation<BR>
+<BR>
+<BR>
+<CODE><BR>
+#include&nbsp;&lt;stdio.h><BR>
+#include&nbsp;&lt;stdlib.h><BR>
+<BR>
+char&nbsp;*mymemmove(char&nbsp;*to,&nbsp;char&nbsp;*from,&nbsp;int&nbsp;size);<BR>
+<BR>
+int&nbsp;main(void)<BR>
+{<BR>
+<BR>
+&nbsp;&nbsp;char&nbsp;*p1,&nbsp;*p2;<BR>
+&nbsp;&nbsp;char&nbsp;*p3,&nbsp;*p4;<BR>
+&nbsp;&nbsp;int&nbsp;size;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;printf("\n--------------------------------\n");<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;/*&nbsp;----------------------------------------<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;CASE&nbsp;1&nbsp;:&nbsp;From&nbsp;(SRC)&nbsp;<&nbsp;To&nbsp;(DEST)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;*<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+--+---------------------+--+<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;|<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+--+---------------------+--+<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^&nbsp;&nbsp;^<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;|<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;From&nbsp;To<BR>
+&nbsp;&nbsp;&nbsp;*<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;---------------------------------------&nbsp;*/<BR>
+&nbsp;<BR>
+&nbsp;&nbsp;p1&nbsp;=&nbsp;(char&nbsp;*)&nbsp;malloc(12);<BR>
+&nbsp;&nbsp;memset(p1,12,'\0');<BR>
+&nbsp;&nbsp;size=10;<BR>
+<BR>
+&nbsp;&nbsp;strcpy(p1,"ABCDEFGHI");<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;p2&nbsp;=&nbsp;p1&nbsp;+&nbsp;2;<BR>
+<BR>
+&nbsp;&nbsp;printf("\n--------------------------------\n");<BR>
+&nbsp;&nbsp;printf("\nFrom&nbsp;(before)&nbsp;=&nbsp;[%s]",p1);<BR>
+&nbsp;&nbsp;printf("\nTo&nbsp;(before)&nbsp;&nbsp;&nbsp;=&nbsp;[%s]",p2);<BR>
+<BR>
+&nbsp;&nbsp;mymemmove(p2,p1,size);<BR>
+<BR>
+&nbsp;&nbsp;printf("\n\nFrom&nbsp;(after)&nbsp;=&nbsp;[%s]",p1);<BR>
+&nbsp;&nbsp;printf("\nTo&nbsp;(after)&nbsp;&nbsp;&nbsp;=&nbsp;[%s]",p2);<BR>
+<BR>
+&nbsp;&nbsp;printf("\n--------------------------------\n");<BR>
+<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;/*&nbsp;----------------------------------------<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;CASE&nbsp;2&nbsp;:&nbsp;From&nbsp;(SRC)&nbsp;>&nbsp;To&nbsp;(DEST)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;*<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+--+---------------------+--+<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;|<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+--+---------------------+--+<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^&nbsp;&nbsp;^<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;|<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;To&nbsp;From<BR>
+&nbsp;&nbsp;&nbsp;*<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;---------------------------------------&nbsp;*/<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;p3&nbsp;=&nbsp;(char&nbsp;*)&nbsp;malloc(12);<BR>
+&nbsp;&nbsp;memset(p3,12,'\0');<BR>
+&nbsp;&nbsp;p4&nbsp;=&nbsp;p3&nbsp;+&nbsp;2;<BR>
+<BR>
+&nbsp;&nbsp;strcpy(p4,&nbsp;"ABCDEFGHI");<BR>
+<BR>
+&nbsp;&nbsp;printf("\nFrom&nbsp;(before)&nbsp;=&nbsp;[%s]",p4);<BR>
+&nbsp;&nbsp;printf("\nTo&nbsp;(before)&nbsp;&nbsp;&nbsp;=&nbsp;[%s]",p3);<BR>
+<BR>
+&nbsp;&nbsp;mymemmove(p3,&nbsp;p4,&nbsp;size);<BR>
+<BR>
+&nbsp;&nbsp;printf("\n\nFrom&nbsp;(after)&nbsp;=&nbsp;[%s]",p4);<BR>
+&nbsp;&nbsp;printf("\nTo&nbsp;(after)&nbsp;&nbsp;&nbsp;=&nbsp;[%s]",p3);<BR>
+<BR>
+&nbsp;&nbsp;printf("\n--------------------------------\n");<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;/*&nbsp;----------------------------------------<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;CASE&nbsp;3&nbsp;:&nbsp;No&nbsp;overlap<BR>
+&nbsp;&nbsp;&nbsp;*<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;---------------------------------------&nbsp;*/<BR>
+&nbsp;<BR>
+&nbsp;&nbsp;p1&nbsp;=&nbsp;(char&nbsp;*)&nbsp;malloc(30);<BR>
+&nbsp;&nbsp;memset(p1,30,'\0');<BR>
+&nbsp;&nbsp;size=10;<BR>
+<BR>
+&nbsp;&nbsp;strcpy(p1,"ABCDEFGHI");<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;p2&nbsp;=&nbsp;p1&nbsp;+&nbsp;15;<BR>
+<BR>
+&nbsp;&nbsp;printf("\n--------------------------------\n");<BR>
+&nbsp;&nbsp;printf("\nFrom&nbsp;(before)&nbsp;=&nbsp;[%s]",p1);<BR>
+&nbsp;&nbsp;printf("\nTo&nbsp;(before)&nbsp;&nbsp;&nbsp;=&nbsp;[%s]",p2);<BR>
+<BR>
+&nbsp;&nbsp;mymemmove(p2,p1,size);<BR>
+<BR>
+&nbsp;&nbsp;printf("\n\nFrom&nbsp;(after)&nbsp;=&nbsp;[%s]",p1);<BR>
+&nbsp;&nbsp;printf("\nTo&nbsp;(after)&nbsp;&nbsp;&nbsp;=&nbsp;[%s]",p2);<BR>
+<BR>
+&nbsp;&nbsp;printf("\n--------------------------------\n");<BR>
+<BR>
+&nbsp;&nbsp;printf("\n\n");<BR>
+<BR>
+&nbsp;&nbsp;return(0);<BR>
+}<BR>
+<BR>
+<BR>
+<BR>
+char&nbsp;*mymemmove(char&nbsp;*to,&nbsp;char&nbsp;*from,&nbsp;int&nbsp;size)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;*p1;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;*p2;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;p1&nbsp;=&nbsp;to;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;p2&nbsp;=&nbsp;from;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;p2&nbsp;=&nbsp;p2&nbsp;+&nbsp;size;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Check&nbsp;if&nbsp;there&nbsp;is&nbsp;an&nbsp;overlap&nbsp;or&nbsp;not.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(p2&nbsp;!=&nbsp;from&nbsp;&&&nbsp;--p2&nbsp;!=&nbsp;to);<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(p2&nbsp;!=&nbsp;from)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Overlap&nbsp;detected!<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p2&nbsp;&nbsp;=&nbsp;from;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p2&nbsp;&nbsp;=&nbsp;p2&nbsp;+&nbsp;size;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p1&nbsp;&nbsp;=&nbsp;p1&nbsp;+&nbsp;size;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(size--&nbsp;!=&nbsp;0)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*--p1&nbsp;=&nbsp;*--p2;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;No&nbsp;overlap&nbsp;OR&nbsp;they&nbsp;overlap&nbsp;as&nbsp;CASE&nbsp;2&nbsp;above.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;memcopy()&nbsp;would&nbsp;have&nbsp;done&nbsp;this&nbsp;directly.<BR>
+&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(size--&nbsp;!=&nbsp;0)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*p1++&nbsp;=&nbsp;*p2++;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;return(to);<BR>
+}<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+And here is the output<BR>
+<BR>
+<CODE><BR>
+--------------------------------<BR>
+<BR>
+From&nbsp;(before)&nbsp;=&nbsp;[ABCDEFGHI]<BR>
+To&nbsp;&nbsp;&nbsp;(before)&nbsp;=&nbsp;[CDEFGHI]<BR>
+<BR>
+<BR>
+From&nbsp;(after)&nbsp;=&nbsp;[ABABCDEFGHI]<BR>
+To&nbsp;&nbsp;&nbsp;(after)&nbsp;=&nbsp;[ABCDEFGHI]<BR>
+<BR>
+--------------------------------<BR>
+<BR>
+From&nbsp;(before)&nbsp;=&nbsp;[ABCDEFGHI]<BR>
+To&nbsp;&nbsp;&nbsp;(before)&nbsp;=&nbsp;[&#945;&#9561;ABCDEFGHI]<BR>
+<BR>
+<BR>
+From&nbsp;(after)&nbsp;=&nbsp;[CDEFGHI]<BR>
+To&nbsp;&nbsp;&nbsp;(after)&nbsp;=&nbsp;[ABCDEFGHI]<BR>
+<BR>
+--------------------------------<BR>
+<BR>
+From&nbsp;(before)&nbsp;=&nbsp;[ABCDEFGHI]<BR>
+To&nbsp;&nbsp;&nbsp;(before)&nbsp;=&nbsp;[FE&#948;&#8252;&:F]<BR>
+<BR>
+<BR>
+From&nbsp;(after)&nbsp;=&nbsp;[ABCDEFGHI]<BR>
+To&nbsp;(after)&nbsp;&nbsp;&nbsp;=&nbsp;[ABCDEFGHI]<BR>
+<BR>
+--------------------------------<BR>
+</CODE><BR>
+<BR>
+<BR>
+So then, whats the difference between the implementation of <font class=announcelink>memmove()</font> and <font class=announcelink>memcpy()</font>. Its just that memcpy() will <font class=announcelink>not care</font> if the memories <font class=announcelink>overlap</font> and will either copy from <font class=announcelink>left to right</font> or <font class=announcelink>right to left</font> without checking which method to used depending on the type of the <font class=announcelink>overlap</font>. Also note that the C code proves that the results are the same irrespective of the <font class=announcelink>Endian-ness</font> of the machine. <BR>
+<BR>
+<BR>
+<BR>
+<font class=announcelink>**</font><BR>
+<!--<BR>
+This is a <font class=announcelink>very elaborate</font> implementation of memmove(). It also has C code which proves that the results are the same irrespective of the <font class=announcelink>Endian-ness</font> of the machine. Check out this C program...<BR>
+<BR>
+<BR>
+<CODE><BR>
+/*&nbsp;------------------------------------------------------<BR>
+&nbsp;*&nbsp;memmove()&nbsp;implementation<BR>
+&nbsp;*&nbsp;----------------------------------------------------*/<BR>
+<BR>
+#include&lt;stdio.h><BR>
+<BR>
+void&nbsp;mymove(char&nbsp;*from,&nbsp;char&nbsp;*to,&nbsp;int&nbsp;size);<BR>
+<BR>
+int&nbsp;main()<BR>
+{<BR>
+<BR>
+&nbsp;&nbsp;char&nbsp;*p1,&nbsp;*p2;<BR>
+&nbsp;&nbsp;char&nbsp;*p3,&nbsp;*p4;<BR>
+&nbsp;&nbsp;int&nbsp;size;<BR>
+&nbsp;&nbsp;int&nbsp;endian&nbsp;=&nbsp;1;<BR>
+<BR>
+&nbsp;&nbsp;//&nbsp;Check&nbsp;what&nbsp;kind&nbsp;of&nbsp;a&nbsp;machine&nbsp;is&nbsp;this?<BR>
+&nbsp;&nbsp;if(*(char&nbsp;*)&endian&nbsp;==&nbsp;1)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("\nMachine&nbsp;is&nbsp;Little&nbsp;Endian.\n");<BR>
+&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("\nMachine&nbsp;is&nbsp;Big&nbsp;Endian.\n");<BR>
+&nbsp;&nbsp;}&nbsp;<BR>
+<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;/*&nbsp;----------------------------------------<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;CASE&nbsp;1&nbsp;:&nbsp;From&nbsp;(SRC)&nbsp;<&nbsp;To&nbsp;(DEST)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;*<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+--+---------------------+--+<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;|<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+--+---------------------+--+<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^&nbsp;&nbsp;^<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;|<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;From&nbsp;To<BR>
+&nbsp;&nbsp;&nbsp;*<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;---------------------------------------&nbsp;*/<BR>
+&nbsp;<BR>
+&nbsp;&nbsp;p1&nbsp;=&nbsp;(char&nbsp;*)&nbsp;calloc(1,12);<BR>
+&nbsp;&nbsp;size=10;<BR>
+<BR>
+&nbsp;&nbsp;strcpy(p1,"ABCDEFGHI");<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;p2&nbsp;=&nbsp;p1&nbsp;+&nbsp;2;<BR>
+<BR>
+&nbsp;&nbsp;printf("\n--------------------------------\n");<BR>
+&nbsp;&nbsp;printf("\nFrom&nbsp;(before)&nbsp;=&nbsp;[%s]",p1);<BR>
+&nbsp;&nbsp;printf("\nTo&nbsp;(before)&nbsp;&nbsp;&nbsp;=&nbsp;[%s]",p2);<BR>
+<BR>
+&nbsp;&nbsp;mymove(p1,p2,size);<BR>
+<BR>
+&nbsp;&nbsp;printf("\n\nFrom&nbsp;(after)&nbsp;=&nbsp;[%s]",p1);<BR>
+&nbsp;&nbsp;printf("\nTo&nbsp;(after)&nbsp;&nbsp;&nbsp;=&nbsp;[%s]",p2);<BR>
+<BR>
+&nbsp;&nbsp;printf("\n--------------------------------\n");<BR>
+<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;/*&nbsp;----------------------------------------<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;CASE&nbsp;1&nbsp;:&nbsp;From&nbsp;(SRC)&nbsp;>&nbsp;To&nbsp;(DEST)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;*<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+--+---------------------+--+<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;|<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+--+---------------------+--+<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^&nbsp;&nbsp;^<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;|<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;To&nbsp;From<BR>
+&nbsp;&nbsp;&nbsp;*<BR>
+&nbsp;&nbsp;&nbsp;*&nbsp;---------------------------------------&nbsp;*/<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;p3&nbsp;=&nbsp;(char&nbsp;*)&nbsp;calloc(1,12);<BR>
+&nbsp;&nbsp;p4&nbsp;=&nbsp;p3&nbsp;+&nbsp;2;<BR>
+<BR>
+&nbsp;&nbsp;strcpy(p4,&nbsp;"ABCDEFGHI");<BR>
+<BR>
+&nbsp;&nbsp;printf("\nFrom&nbsp;(before)&nbsp;=&nbsp;[%s]",p4);<BR>
+&nbsp;&nbsp;printf("\nTo&nbsp;(before)&nbsp;&nbsp;&nbsp;=&nbsp;[%s]",p3);<BR>
+<BR>
+&nbsp;&nbsp;mymove(p4,&nbsp;p3,&nbsp;size);<BR>
+<BR>
+&nbsp;&nbsp;printf("\n\nFrom&nbsp;(after)&nbsp;=&nbsp;[%s]",p4);<BR>
+&nbsp;&nbsp;printf("\nTo&nbsp;(after)&nbsp;&nbsp;&nbsp;=&nbsp;[%s]",p3);<BR>
+<BR>
+&nbsp;&nbsp;printf("\n--------------------------------\n");<BR>
+<BR>
+&nbsp;&nbsp;printf("\n\n");<BR>
+<BR>
+&nbsp;&nbsp;return(0);<BR>
+}<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+void&nbsp;mymove(char&nbsp;*from,&nbsp;char&nbsp;*to,&nbsp;int&nbsp;size)<BR>
+{<BR>
+&nbsp;&nbsp;int&nbsp;i,diff;<BR>
+<BR>
+&nbsp;&nbsp;if(from==to)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("\n\nNothing&nbsp;to&nbsp;copy!\n");<BR>
+&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;else&nbsp;if(from>to)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;diff=from-to;&nbsp;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("\n\nFrom&nbsp;>&nbsp;To&nbsp;(addresses)\n");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("\nDegree&nbsp;of&nbsp;overlap&nbsp;:&nbsp;[%d]\n",&nbsp;diff);<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;if(diff>size)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("\nThe&nbsp;memories&nbsp;dont&nbsp;overlap,&nbsp;can&nbsp;use&nbsp;memcpy()&nbsp;here!\n");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;for(i=diff;i&lt;=size+diff-1;i++)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("\n->Copying&nbsp;from[%d]&nbsp;->&nbsp;to[%d]",<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(i-diff),<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(i-diff));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to[i-diff]&nbsp;=&nbsp;from[(i-diff)];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;diff=to-from;&nbsp;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("\n\nFrom&nbsp;<&nbsp;To&nbsp;(addresses)\n");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("\nDegree&nbsp;of&nbsp;overlap&nbsp;:&nbsp;[%d]\n",&nbsp;diff);<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;if(diff>size)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("\nThe&nbsp;memories&nbsp;dont&nbsp;overlap,&nbsp;can&nbsp;use&nbsp;memcpy()&nbsp;here!\n");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;for(i=size+diff-1;i>=diff;i--)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("\n->Copying&nbsp;from[%d]&nbsp;->&nbsp;to[%d]",<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(i-diff),&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(i-diff));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to[(i-diff)]&nbsp;=&nbsp;from[(i-diff)];&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;}&nbsp;<BR>
+}&nbsp;<BR>
+<BR>
+</CODE><BR>
+<BR>
+And here is the output<BR>
+<BR>
+<CODE><BR>
+<BR>
+Machine&nbsp;is&nbsp;Little&nbsp;Endian.<BR>
+<BR>
+From&nbsp;(before)&nbsp;=&nbsp;[ABCDEFGHI]<BR>
+To&nbsp;(before)&nbsp;&nbsp;&nbsp;=&nbsp;[CDEFGHI]<BR>
+<BR>
+From&nbsp;<&nbsp;To&nbsp;(addresses)<BR>
+<BR>
+Degree&nbsp;of&nbsp;overlap&nbsp;:&nbsp;[2]<BR>
+<BR>
+->Copying&nbsp;from[9]&nbsp;->&nbsp;to[9]<BR>
+->Copying&nbsp;from[8]&nbsp;->&nbsp;to[8]<BR>
+->Copying&nbsp;from[7]&nbsp;->&nbsp;to[7]<BR>
+->Copying&nbsp;from[6]&nbsp;->&nbsp;to[6]<BR>
+->Copying&nbsp;from[5]&nbsp;->&nbsp;to[5]<BR>
+->Copying&nbsp;from[4]&nbsp;->&nbsp;to[4]<BR>
+->Copying&nbsp;from[3]&nbsp;->&nbsp;to[3]<BR>
+->Copying&nbsp;from[2]&nbsp;->&nbsp;to[2]<BR>
+->Copying&nbsp;from[1]&nbsp;->&nbsp;to[1]<BR>
+->Copying&nbsp;from[0]&nbsp;->&nbsp;to[0]<BR>
+<BR>
+From&nbsp;(after)&nbsp;=&nbsp;[ABABCDEFGHI]<BR>
+To&nbsp;(after)&nbsp;&nbsp;&nbsp;=&nbsp;[ABCDEFGHI]<BR>
+<BR>
+--------------------------------<BR>
+<BR>
+From&nbsp;(before)&nbsp;=&nbsp;[ABCDEFGHI]<BR>
+To&nbsp;(before)&nbsp;&nbsp;&nbsp;=&nbsp;[]<BR>
+<BR>
+From&nbsp;>&nbsp;To&nbsp;(addresses)<BR>
+<BR>
+Degree&nbsp;of&nbsp;overlap&nbsp;:&nbsp;[2]<BR>
+<BR>
+->Copying&nbsp;from[0]&nbsp;->&nbsp;to[0]<BR>
+->Copying&nbsp;from[1]&nbsp;->&nbsp;to[1]<BR>
+->Copying&nbsp;from[2]&nbsp;->&nbsp;to[2]<BR>
+->Copying&nbsp;from[3]&nbsp;->&nbsp;to[3]<BR>
+->Copying&nbsp;from[4]&nbsp;->&nbsp;to[4]<BR>
+->Copying&nbsp;from[5]&nbsp;->&nbsp;to[5]<BR>
+->Copying&nbsp;from[6]&nbsp;->&nbsp;to[6]<BR>
+->Copying&nbsp;from[7]&nbsp;->&nbsp;to[7]<BR>
+->Copying&nbsp;from[8]&nbsp;->&nbsp;to[8]<BR>
+->Copying&nbsp;from[9]&nbsp;->&nbsp;to[9]<BR>
+<BR>
+From&nbsp;(after)&nbsp;=&nbsp;[CDEFGHI]<BR>
+To&nbsp;(after)&nbsp;&nbsp;&nbsp;=&nbsp;[ABCDEFGHI]<BR>
+--------------------------------<BR>
+<BR>
+<BR>
+<BR>
+Machine&nbsp;is&nbsp;Big&nbsp;Endian.<BR>
+<BR>
+--------------------------------<BR>
+<BR>
+From&nbsp;(before)&nbsp;=&nbsp;[ABCDEFGHI]<BR>
+To&nbsp;(before)&nbsp;&nbsp;&nbsp;=&nbsp;[CDEFGHI]<BR>
+<BR>
+From&nbsp;<&nbsp;To&nbsp;(addresses)<BR>
+<BR>
+Degree&nbsp;of&nbsp;overlap&nbsp;:&nbsp;[2]<BR>
+<BR>
+->Copying&nbsp;from[9]&nbsp;->&nbsp;to[9]<BR>
+->Copying&nbsp;from[8]&nbsp;->&nbsp;to[8]<BR>
+->Copying&nbsp;from[7]&nbsp;->&nbsp;to[7]<BR>
+->Copying&nbsp;from[6]&nbsp;->&nbsp;to[6]<BR>
+->Copying&nbsp;from[5]&nbsp;->&nbsp;to[5]<BR>
+->Copying&nbsp;from[4]&nbsp;->&nbsp;to[4]<BR>
+->Copying&nbsp;from[3]&nbsp;->&nbsp;to[3]<BR>
+->Copying&nbsp;from[2]&nbsp;->&nbsp;to[2]<BR>
+->Copying&nbsp;from[1]&nbsp;->&nbsp;to[1]<BR>
+->Copying&nbsp;from[0]&nbsp;->&nbsp;to[0]<BR>
+<BR>
+From&nbsp;(after)&nbsp;=&nbsp;[ABABCDEFGHI]<BR>
+To&nbsp;(after)&nbsp;&nbsp;&nbsp;=&nbsp;[ABCDEFGHI]<BR>
+<BR>
+--------------------------------<BR>
+<BR>
+From&nbsp;(before)&nbsp;=&nbsp;[ABCDEFGHI]<BR>
+To&nbsp;(before)&nbsp;&nbsp;&nbsp;=&nbsp;[]<BR>
+<BR>
+From&nbsp;>&nbsp;To&nbsp;(addresses)<BR>
+<BR>
+Degree&nbsp;of&nbsp;overlap&nbsp;:&nbsp;[2]<BR>
+<BR>
+->Copying&nbsp;from[0]&nbsp;->&nbsp;to[0]<BR>
+->Copying&nbsp;from[1]&nbsp;->&nbsp;to[1]<BR>
+->Copying&nbsp;from[2]&nbsp;->&nbsp;to[2]<BR>
+->Copying&nbsp;from[3]&nbsp;->&nbsp;to[3]<BR>
+->Copying&nbsp;from[4]&nbsp;->&nbsp;to[4]<BR>
+->Copying&nbsp;from[5]&nbsp;->&nbsp;to[5]<BR>
+->Copying&nbsp;from[6]&nbsp;->&nbsp;to[6]<BR>
+->Copying&nbsp;from[7]&nbsp;->&nbsp;to[7]<BR>
+->Copying&nbsp;from[8]&nbsp;->&nbsp;to[8]<BR>
+->Copying&nbsp;from[9]&nbsp;->&nbsp;to[9]<BR>
+<BR>
+From&nbsp;(after)&nbsp;=&nbsp;[CDEFGHI]<BR>
+To&nbsp;(after)&nbsp;&nbsp;&nbsp;=&nbsp;[ABCDEFGHI]<BR>
+<BR>
+</CODE> <BR>
+<BR>
+--> 
+<BR><BR>
+<!--END-->
+</font><BR></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="1_0.html" tppabs="http://www.cracktheinterview.com/pages/1_0.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=notelink><A href="mailto:cracktheinterview@gmail.com?subject=Comments [Implement the memmove() function. What is the difference between the memmove() and memcpy() function? ]&Body=Question : [Implement the memmove() function. What is the difference between the memmove() and memcpy() function? ]"><font class=announcelink>COMMENTS</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><A HREF="adfaqpublish.html" tppabs="http://www.cracktheinterview.com/adfaqpublish.html">INDEX</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><a href="#" onclick="window.print();return false;">PRINT</a></font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="1_2.html" tppabs="http://www.cracktheinterview.com/pages/1_2.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<BR><BR><BR><font class=notelink>
+Last updated:
+
+July 8, 2005<BR><BR>
+<a href="index.htm" tppabs="http://www.cracktheinterview.com/">www.cracktheinterview.com</a> - Your destination for the most common IT interview questions, answers, frequently asked interview questions (FAQ), C Programs, C Datastructures for interviews conducted by Microsoft, Oracle, Google, IBM, HP, Yahoo, Infosys, Wipro, SAP, CA (Computer Associates), Sun, Adobe, GE, Novell, Cisco, Motorola, TI (Texas Instruments), Intel, TCS, iFlex, Trilogy, MindTree, GS and more...<br><BR>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+
+<!--END-->
+
+
+</TD>
+
+
+
+
+<TD WIDTH=10%% valign="top">
+
+
+<!--START:ADS1-->
+
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_alternate_color = "CCCCCC";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript" src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"  src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+</TD>
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+</BODY>
+</HTML>
+
+

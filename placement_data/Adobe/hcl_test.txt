@@ -1,0 +1,117 @@
+There are 4 written tests.
+
+1. Aptitude:
+(Multiple choice paper)
+very simple geometry & algebra. 1 minute per question.
+properties such as sum of angles of a triangle etc.
+for attempting the first part:
+There are 2 columns and if entry in column a is greater than b then tick: a
+	if entry in column b is greater tick:b
+	if both are equal tick: c\
+	if cannot determine: d
+
+jaisey ki they will give u a right angle triangle with 2 angles X & Y and third is ofcourse 90.
+now in the 2 columns they might right x , y respectively. Then since it cannot be determined which is greater so the answer would be d.
+
+Some algebra like ki jo questions bachpan mein kiye they... linear equations bana kar ho jaatey hain jo.
+
+There are 4
+2. Analytical:
+(Multiple choice or one word answer type)
+	puzzles. Be analytical in this paper relax and try to make some meaningful diagrams out of the questions or something and you would be able to solve it.
+
+
+
+3. c/c++ or Java (choice)
+Writing code.
+Since I gave the c/c++ paper I know only that:
+1. write a recursive program that prints: 1, 1, 2, 3, 5... (upto n terms where n is the input).
+	This is fibonacci series.
+2. write a program for breadth first search of a graph.
+	bfs(Graph *g, int currentIndex, NodeValue value ) //note Graph is actually a structure containing the adjacency matrix and data about the graph. (typedefed), value is the element being searched. current index is the index the search is on. assume 0 to be the root node.
+	{
+
+		// assumed taking a visit matrix of size g->NumberOfNodes X g->NumberOfNodes.
+		std::queue q;
+
+		q.push_back(0); // 0 is the index of root. pushing in root.
+		while (!q.empty()) {
+		
+			currentIndex = q.front();
+			q.pop();
+
+			visit[currentIndex] = 1;
+			visitNode(currentIndex, value); // do whatever.
+			for (i = 0; i < g->NumberOfNodes; i++) { // visit all children of currentNode.
+				if (g->adj_matrix[currentIndex][i] == 1 && visited[i] == 0)
+					q.push_back(i);
+			}
+		}
+	}
+
+
+4. Engineering:-
+Giving reasons for answers is compulsory.
+
+Automata Theory: Simple DFA... like make a dfa that accepts even number of a's and odd number of b's. NOthing more than DFA is asked.
+Searching/Sorting  : all kinds of searching and sorting.
+
+DataStructures: Tree traversals. pre-order in-order post order.
+Sample question: given a pre-order and in-order traversal draw the tree.
+
+Complexity: big-O notation only. 
+Sample questions: write an algorithm to find an element in a sorted array and also derive its complexity.
+
+what is the complexity of following code:-
+for (i =0; i< n; i++)
+	for (j =0 j < i; j/=2)
+	{
+		....
+	}
+
+Answer: I think it should be n log(n). what do u say?
+
+
+
+
+
+Test:
+1. Write an algo whihc calculates X pow m in O(log n) time
+2. what this function is doing
+	
+	F(a,) return 0 if b > a
+	      return F((a-b),b) else
+		
+3.See the following and answer if (a>b) 25%and (B>c) 75% how many times the foo_2() will be called if the program is executed 5000 times.
+	if(a>b)
+	{
+		foo_1();
+	}
+	else
+	{
+		if(b>c){
+			foo_2();
+		}
+	}
+4.invert all odd bits of a number
+5.invert 20th bit of a number
+6.for 100 sorted elements array
+  a. what will be avg complexity of searching an element in the array
+  b. write a code for searching an element
+
+7.write strindex(char *c,char*t) whihc finds the rightmost index of t in c
+8.write some preprocessors in C
+9.what does sizeof returns
+10 write a function prototype which returns a char * and takes a function pointer which returns void* and takes int and char * as input
+11.write prototype of printf function
+12.write a DFA which accepts aabb*.
+13.create a tree for which inorder and preorder traversal is given
+14.insert a node at pth position from end of a list in O(n) time.
+15.what is B+ tree.wrtie a algorithem for following 
+	1.given an array of 100 elements and the numbers in the array are in the range from 0-9
+	what will be complexity of your algo
+	
+16.write algo of Binary search
+17.print 1 1 2 3 5 8 13 without using recursion.
+18.write string reversal algo and derive the complexity also.
+19.

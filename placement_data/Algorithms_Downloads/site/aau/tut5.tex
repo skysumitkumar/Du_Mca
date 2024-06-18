@@ -1,0 +1,114 @@
+\documentclass[english]{article} 
+
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{fancyhdr}
+
+\begin{document}
+
+\pagenumbering{arabic}
+
+%----Header stuff---------------------------
+\pagestyle{fancy}
+ \lhead{\sc Algorithms \& Data Structures}
+ \chead{}
+ \rhead{\sc INF1 -- 2003}
+
+
+ 
+\section*{Tutoriral 5}
+
+\subsection*{Exercise 1}
+
+\begin{itemize}
+\item
+\begin{algorithmic}
+  \STATE{{\bf merge}($A,B$) =}
+  \STATE{$i:=1; j:=1; k:=1$}
+  \WHILE{$i \leq n$ or $j \leq m$}
+    \IF{$i > n$}
+	  \STATE{$C[k] := B[j]$}
+	  \STATE{$k:=k+1; j:=j+1$}
+	\ELSIF{$j > n$}
+	  \STATE{$C[k] := A[i]$}
+	  \STATE{$k:=k+1; i:=i+1$}
+	\ELSIF{$A[i] \leq B[j]$}
+	  \STATE{$C[k] := A[i]$}
+	  \STATE{$k:=k+1; i:=i+1$}
+	\ELSE
+	  \STATE{$C[k] := B[j]$}
+	  \STATE{$k:=k+1; j:=j+1$}
+	\ENDIF
+  \ENDWHILE
+  \STATE{{\bf return} $C$} 
+\end{algorithmic}
+
+\item $O(n+m)$
+\end{itemize}
+Here is another solution (inspired by some of the groups):
+
+\begin{algorithmic}
+  \STATE{{\bf merge}($A,B$) =}
+  \STATE{$i:=1;  j:=1$}
+  \FOR{$k:=1$ to $(m+n)$}
+  \IF{$i > n$}
+          \STATE{$C[k] := B[j];\ j:=j+1$}
+        \ELSIF{$j > n$}
+          \STATE{$C[k] := A[i];\ i:=i+1$}
+        \ELSIF{$A[i] \leq B[j]$}
+          \STATE{$C[k] := A[i];\ i:=i+1$}
+        \ELSE
+          \STATE{$C[k] := B[j];\ j:=j+1$}
+        \ENDIF
+  \ENDFOR
+\end{algorithmic}
+
+\newpage
+
+\subsection*{Exercise 2}
+
+\begin{itemize}
+\item
+\begin{algorithmic}
+  \STATE{{\bf sum}($s:SET$):$int$ =}
+  \STATE{$x:=0$}
+  \STATE{$tmp.make$}
+  \WHILE{ $not$ $s.empty$}
+    \STATE{$elem := s.delete\_any$}
+	\STATE{$x := x + elem$}
+	\STATE{$tmp.insert$($elem$)}
+  \ENDWHILE
+  \WHILE{$not$ $tmp.empty$}
+    \STATE{$s.insert$($tmp.delete\_any$)}
+  \ENDWHILE
+  \STATE{{\bf return} $x$}
+\end{algorithmic}
+
+\item Yes - $O(n)$
+\end{itemize}
+
+\subsection*{Exercise 3}
+
+\begin{itemize}
+\item
+\begin{algorithmic}
+  \STATE{{\bf intersection}($s_1:SET,s_2:SET$):$SET$ =}
+  \STATE{$res.make,tmp.make$}
+  \WHILE{ $not$ $s_1.empty$}
+    \STATE{$elem := s_1.delete\_any$}
+	\STATE{$tmp.insert$($elem$)}
+	\IF{$member$($elem,s_2$)}
+	  \STATE{$res.insert$($elem$)}
+	\ENDIF 
+  \ENDWHILE
+  \WHILE{$not$ $tmp.empty$}
+    \STATE{$s_1.insert$($tmp.delete\_any$)}
+  \ENDWHILE
+  \STATE{{\bf return} $res$}
+\end{algorithmic}
+\item $O(|s_1| \cdot |s_2|)$
+\end{itemize}
+
+\end{document}

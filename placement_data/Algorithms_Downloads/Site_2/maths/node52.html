@@ -1,0 +1,299 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The ADT Array</TITLE>
+<META NAME="description" CONTENT="The ADT Array">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node53.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node53.html">
+<LINK REL="previous" HREF="node51.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node51.html">
+<LINK REL="up" HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">
+<LINK REL="next" HREF="node53.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node53.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1069"
+  HREF="node53.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node53.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1063"
+  HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1057"
+  HREF="node51.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node51.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1065"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1067"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1070"
+  HREF="node53.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node53.html">The ADT List</A>
+<B> Up:</B> <A NAME="tex2html1064"
+  HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html1058"
+  HREF="node51.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node51.html">The ADT Queue</A>
+ &nbsp <B>  <A NAME="tex2html1066"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1068"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00713000000000000000">
+The ADT Array</A>
+</H2>
+An array is probably the most versatile or fundamental  Abstract Data Type, left
+until now simply to show it was reasonable to consider others.
+An <A NAME="5004"></A><B>array</B> is a finite sequence of storage cells, for which the
+following operations are defined:
+<DL>
+<DT></DT>
+<DD><code>create(A,N)</code> creates an array <code>A</code> with
+storage for <code>N</code> items;
+</DD>
+<DT></DT>
+<DD><code>A[i]=item</code> stores <code>item</code> in the <code>i</code><!-- MATH
+ ${}^{\textrm{th}}$
+ -->
+<SUP>th</SUP> position in the array <code>A</code>; and
+</DD>
+<DT></DT>
+<DD><code>A[i]</code> returns the value of the item stored in the
+<code>i</code><!-- MATH
+ ${}^{\textrm{th}}$
+ -->
+<SUP>th</SUP> position in the array <code>A</code>.
+</DD>
+</DL>
+
+<P>
+Of course an array is another way of looking at a vector; the emphasis
+here is on the functions that create and access it.  It is a matter of
+convenience how the array cells should be labelled.  When it is
+necessary to be precise, we assume they are labelled
+<!-- MATH
+ $A[0],\ldots,A[N-1]$
+ -->
+<I>A</I>[0],..., <I>A</I>[<I>N</I> - 1], as is the convention in eg C++, but the ``more
+obvious'' convention using <!-- MATH
+ $A[1],\ldots,A[N]$
+ -->
+<I>A</I>[1],..., <I>A</I>[<I>N</I>] is equally valid.  It
+<I>is</I> important to stick with one convention or the other.
+Whatever FORTRAN or C may tell you, we regard accessing <I>A</I>[<I>i</I>] as an
+error if a value has not previously been assigned to it!
+
+<P>
+The data storage in most computers can be regarded as an array, so in
+practice it provides the ultimate implementation for most of our other
+ Abstract Data Types
+<P>
+<DIV><B>Example  3.1</B> &nbsp; 
+An array can be used to implement a stack.</DIV><P></P>
+
+<P>
+<I>Solution</I> We implement a stack using an array of size <I>N</I>.  The construction
+will fail if an attempt is made to push more than <I>N</I> elements onto
+the stack.
+
+<P>
+The <code>create(S)</code> operation is trivial.  An array <code>A</code> is
+created, and associated with the stack <code>S</code>.  In addition, an
+internal pointer or cursor <code>p</code> say, is initialised to point to
+the first cell in <code>A</code>.  To be definite, we take this as 0;
+
+<P>
+<code>isEmpty(S)</code> is true iff <code> p = 0</code>
+
+<P>
+<code>push(S,item)</code> is implemented as <code>A[p] = item; p = p+1</code> and
+
+<P>
+<code>pop(S)</code> is  implemented as <code> return(A[p]); p = p-1</code>
+
+<P>
+Of course there should be additional error checking for safety, to
+avoid problems if the capacity of array is exceeded.
+
+<P>
+It is clear at this stage that a stack <I>is</I> a relatively simple
+structure; we have just implemented it as an array in which the
+read-write pointer only moves one step between successive calls.
+
+<P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><B>Example  3.2</B> (The three-coloured flags)  &nbsp; 
+You are given an array of length <I>N</I>,  each of whose
+<I>N</I> members is either a red, white or blue token.  the aim is to
+re-arrange the tokens in such a way that all the blue tokens appear
+before the white ones, and that all the red tokens appear last.  The
+following tools are available:
+
+<UL>
+<LI>predicates <code>B(i)</code>, <code>W(i)</code> and <code>R(i)</code> which return
+true if and only if token <code>i</code> is respectively blue, white and red; and
+</LI>
+<LI>an operation <code>swap(i,j)</code> which interchanges the tokens in
+positions <code>i</code> and <code>j</code>; the case <code>i = j</code> is not excluded.
+</LI>
+</UL>
+Each of the predicates may only be calculated one for each token.  The
+aim is to accomplish the re-arrangement with the minimum number of
+calls to the <code>swap</code> operation.</DIV><P></P>
+
+<P>
+<I>Solution</I> Our aim is to sort the tokens so that the known blue area <I>B</I> comes
+before the known white area <I>W</I>, and so that both of these come before
+the known red area <I>R</I>.  In a general state we will have an area <I>X</I>
+of tokens of unknown colour which follows <I>W</I> and precedes
+<I>R</I>. Initially each of <I>B</I>, <I>W</I> and <I>R</I> is empty and <I>X</I> consists of
+the whole array.
+We use three variables to keep track of the current state of the
+array. Let <code>b</code> and <code>w</code> point to the tokens which come immediately
+after the blue and white areas respectively, and let <code>r</code> point to
+the token that comes immediately before the red area.  
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="F:bwr"></A><A NAME="4362"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.1:</STRONG>
+Sorting the array of flags</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><!-- MATH
+ $\includegraphics[height=0.6in ]{bwr.eps}$
+ -->
+<IMG
+ WIDTH="234" HEIGHT="66" ALIGN="BOTTOM" BORDER="0"
+ SRC="img158.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img158.gif"
+ ALT="\includegraphics [height=0.6in ] {bwr.eps}">
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+An intermediate state during the sorting of the array is shown in
+Fig.&nbsp;<A HREF="node52.html#F:bwr" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node52.html#F:bwr">3.1</A>.  Consider the following algorithm:-
+
+<P>
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ b = w = 1;r = N;
+<BR>
+while (w &lt; r + 1) begin
+<BR>&nbsp;&nbsp;if (W(w)) w = w+1 // it was a white token
+<BR>&nbsp;&nbsp;else if (B(w)) begin // it was a blue token
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;swap(w,b);b=b+1;w=w+1
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;end
+<BR>&nbsp;&nbsp;else begin &nbsp;// it was a red token
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;swap(r,w);r = r-1
+<BR>&nbsp;&nbsp;end
+<BR>
+end // while
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>
+<P>
+To see that the algorithm is finite, note that at each stage either
+<I>w</I> is increased or <I>r</I> is decreased. Thus the length | <I>X</I>| of the
+region <I>X</I>, which is <I>r</I> + 1 - <I>w</I> decreases each time, while the
+``sorted' condition; that 
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+B < W  < X < R
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><I>B</I> &lt; <I>W</I> &lt; <I>X</I> &lt; <I>R</I></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.1)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+remains true.  Since the algorithm terminates when the length of <I>X</I>
+becomes 0, we finish with a sorted list.  We have seen that the loop
+is executed <I>N</I> times, and that there are | <I>B</I>| + | <I>R</I>| calls to the
+routine <code>swap</code>.
+<P>
+
+<P>
+<BR>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1069"
+  HREF="node53.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node53.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1063"
+  HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1057"
+  HREF="node51.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node51.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1065"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1067"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1070"
+  HREF="node53.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node53.html">The ADT List</A>
+<B> Up:</B> <A NAME="tex2html1064"
+  HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html1058"
+  HREF="node51.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node51.html">The ADT Queue</A>
+ &nbsp <B>  <A NAME="tex2html1066"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1068"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,473 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- Source is http://www.tutorial5.com/content/view/165/79/ -->
+
+<head>
+<title>Subnetting example explained - Online Training and Tutorials</title>
+<meta name="title" content="Subnetting example explained - Online Training and Tutorials" />
+<meta name="robots" content="index, follow" />
+<meta name="description" content="In this tutorial, I will show how to calculate subnets, network addresses and the number of hosts within a given IP." />
+<meta name="keywords" content="subnet, network, IP" />
+<meta http-equiv="Last-modified" content="2008-02-28 0:11:52 GMT" />
+<script type='text/javascript'>
+/*<![CDATA[*/
+	var jax_live_site = 'http://www.tutorial5.com/index.php';
+/*]]>*/
+</script><script type="text/javascript" src="Subnettingexplained_files/ajax.js.php"></script>
+<link rel="stylesheet" type="text/css" href="Subnettingexplained_files/style.css"/>
+<link rel="stylesheet" type="text/css" href="Subnettingexplained_files/comment_style.css"/>
+
+<script type='text/javascript'>
+/*<![CDATA[*/
+var jc_option           = "com_content";
+var jc_autoUpdate       = "0";
+var jc_update_period    = 300*1000;
+var jc_orderBy          = "1";
+var jc_livesite_busyImg = "http://www.tutorial5.com/components/com_jomcomment/busy.gif";
+var jc_commentForm;
+/*]]>*/
+</script>
+<script src="Subnettingexplained_files/script.js" type="text/javascript"></script>
+<!-- JW AJAX Vote Plugin v1.0 starts here -->		
+<link href="Subnettingexplained_files/ajaxvote.php" rel="stylesheet" type="text/css" />	
+<script type="text/javascript">
+	var live_site = 'http://www.tutorial5.com';
+	var jwajaxvote_lang = new Array();
+	jwajaxvote_lang['UPDATING'] = 'Updating...';
+	jwajaxvote_lang['THANKS'] = 'Thanks for voting!';
+	jwajaxvote_lang['ALREADY_VOTE'] = 'You have already voted for this item!';
+	jwajaxvote_lang['VOTES'] = 'votes';
+	jwajaxvote_lang['VOTE'] = 'vote';
+</script>
+<script type="text/javascript" src="Subnettingexplained_files/ajaxvote-1.php"></script>
+<!-- JW AJAX Vote Plugin v1.0 ends here -->
+<!--<base href="http://www.tutorial5.com/" />-->
+			<link rel="alternate" type="application/rss+xml" title="Online Training and Tutorials" href="http://www.tutorial5.com/index2.php?option=com_rss&amp;feed=RSS2.0&amp;no_html=1" />
+				<link rel="shortcut icon" href="http://www.tutorial5.com/images/favicon.ico" />
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link href="Subnettingexplained_files/template_css.css" rel="stylesheet" type="text/css" />
+<link href="Subnettingexplained_files/default.css" rel="stylesheet" type="text/css" />
+<link href="Subnettingexplained_files/ja-sosdmenu.css" rel="stylesheet" type="text/css" />
+					<script language="javascript" type="text/javascript" src="Subnettingexplained_files/ja.cssmenu.js"></script></head>
+<body id="bd" class="wide fs3">
+<div id="outerslice"><div id="slice">		Latest tutorial: <a href="http://www.tutorial5.com/content/view/170/46/">Making a Movieclip face another Movieclip or point on the stage</a>
+	 | <a href="http://www.tutorial5.com/content/view/81/">Ask Tutorial5!</a></div></div>
+	<div id="ja-top">
+		<div id="ja-top-modules">
+			<div id="ja-logo">
+				<a href="http://www.tutorial5.com/content/view/165/79/index.php"><img src="Subnettingexplained_files/logo-default.jpg" alt="Online Training and Tutorials" /></a>
+		</div>
+<div id="ban">
+		<table cellpadding="0" cellspacing="0" class="moduletable">
+				<tr>
+			<td>
+				&nbsp;			</td>
+		</tr>
+		</table>
+		</div>
+<div style="float: right; padding-top: 14px;">
+<!-- Google CSE Search Box Begins  -->
+<form action="http://www.tutorial5.com/content/view/161/" id="searchbox_001297618196237469528:hffbgnn8t8w">
+  <input type="hidden" name="cx" value="001297618196237469528:hffbgnn8t8w" />
+  <input type="hidden" name="cof" value="FORID:10" />
+  <input type="text" name="q" size="25" />
+  <input type="submit" name="sa" value="Search" />
+</form>
+<script type="text/javascript" src="Subnettingexplained_files/brand"></script>
+<!-- Google CSE Search Box Ends -->
+</div>
+			<!-- BEGIN: SEARCH -->
+			<div id="ja-search">
+			</div>
+		<!-- END: SEARCH -->
+		</div>
+	</div>
+	
+	<!-- BEGIN: TOPNAV -->
+	<div id="ja-topnav" class="clearfix">
+             <div id="ja-topnav-inner" class="wide fs3">
+
+             </div>
+	</div>
+	<!-- END: TOPNAV -->
+	<div id="ja-gray-bar">
+	</div>
+        <!-- BEGIN: WRAPPER -->
+	<div id="ja-wrapper1">
+		<div id="ja-wrapper2">
+			<div id="ja-wrapper3">
+				<!-- BEGIN: WRAPPER INNER1 -->
+				<div id="ja-wrapper-" class="clearfix">
+					                                        <!-- BEGIN: LEFTCOL -->
+					<div id="ja-leftcol" class="wide fs3">
+                                               															<div class="moduletable">
+							<h3>
+					Get tutorials on EMail				</h3>
+				<div style="text-align:center"><form action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://www.feedburner.com/fb/a/emailverifySubmit?feedId=955385', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><br /><input type="text" style="width:140px" name="email" value="Enter Email Address" onclick="this.value=''"/><input type="hidden" value="http://feeds.feedburner.com/~e?ffid=955385" name="url"/><input type="hidden" value="Online Training and Tutorials" name="title"/><input type="hidden" name="loc" value="en_US"/><input type="submit" style="width:144px" value="Subscribe" /><br /></form><br /></div>		</div>
+				<div class="moduletable">
+							<h3>
+					Categories				</h3>
+				<ul  id="mainlevel"><li><a href="http://www.tutorial5.com/component/option,com_frontpage/Itemid,1/" class="mainlevel" title="Home">Home</a></li><li><a href="http://www.tutorial5.com/content/blogsection/4/42/" class="mainlevel" title="Software tutorials">Software tutorials</a></li><li><a href="http://www.tutorial5.com/content/blogsection/5/82/" class="mainlevel" title="Hardware tutorials">Hardware tutorials</a></li><li><a href="http://www.tutorial5.com/content/blogsection/7/43/" class="mainlevel" title="Networking tutorials">Networking tutorials</a><ul ><li><a href="http://www.tutorial5.com/content/blogcategory/24/48/" class="sublevel" title="Troubleshooting">Troubleshooting</a></li><li><a href="http://www.tutorial5.com/content/blogcategory/19/79/" class="sublevel" id="active_menu" title="Network Operating System">Network Operating System</a></li><li><a href="http://www.tutorial5.com/content/blogcategory/22/87/" class="sublevel" title="Physical">Physical</a></li></ul></li><li><a href="http://www.tutorial5.com/content/blogsection/6/49/" class="mainlevel" title="Blog">Blog</a></li></ul>		</div>
+				<div class="moduletable">
+			<h3>Navigation</h3><ul><li><a href="http://www.tutorial5.com/content/view/81/" class="red" title="get live free support">Ask Tutorial5</a></li><li><a href="http://www.tutorial5.com/component/option,com_comprofiler/task,registers/" title="Register">Register</a></li><li><a href="http://www.tutorial5.com/component/option,com_login/Itemid,84/" title="Login">Login</a></li><li><a href="http://feeds.feedburner.com/tutorial5" class="red" rel="alternate" type="application/rss+xml">Get tutorials by RSS</a></li><li><a href="http://www.feedburner.com/fb/a/emailverifySubmit?feedId=955385&amp;loc=en_US" class="red" rel="alternate" type="application/rss+xml">Get tutorials by Email</a></li></ul>		</div>
+		
+					
+					
+
+
+
+                                        </div>
+					<!-- END: LEFTCOL -->
+										
+					<!-- BEGIN: CONTENT -->
+					<div id="ja-content-full-right">
+
+
+						
+						<!-- BEGIN: MAIN CONTENT -->
+                                                        
+                                                        
+
+
+                                                                                                                				<table class="contentpaneopen">
+			<tr>
+								<td class="contentheading" width="100%">
+					<h1>Subnetting example explained</h1>
+									</td>
+				
+                  </tr>
+			</table>
+			<!-- JW AJAX Vote Plugin v1.0 starts here -->
+<div class="jwajaxvote-inline-rating">
+  <ul class="jwajaxvote-star-rating">
+    <li id="rating165" class="current-rating" style="width:82%;"></li>
+    <li><a href="javascript:void(null)" onclick="javascript:jwAjaxVote(165,1,127,31);" title="1 star out of 5" class="one-star">1</a></li>
+    <li><a href="javascript:void(null)" onclick="javascript:jwAjaxVote(165,2,127,31);" title="2 stars out of 5" class="two-stars">2</a></li>
+    <li><a href="javascript:void(null)" onclick="javascript:jwAjaxVote(165,3,127,31);" title="3 stars out of 5" class="three-stars">3</a></li>
+    <li><a href="javascript:void(null)" onclick="javascript:jwAjaxVote(165,4,127,31);" title="4 stars out of 5" class="four-stars">4</a></li>
+    <li><a href="javascript:void(null)" onclick="javascript:jwAjaxVote(165,5,127,31);" title="5 stars out of 5" class="five-stars">5</a></li>
+  </ul>
+  <div id="jwajaxvote165" class="jwajaxvote-box">
+    (31 votes)  </div>
+</div>
+<!-- JW AJAX Vote Plugin v1.0 ends here -->
+
+		<table class="contentpaneopen">
+					<tr>
+				<td width="70%" align="left" valign="top" colspan="2">
+					<span class="small">
+						 Written by <a href="http://www.tutorial5.com/component/option,com_comprofiler/task,userProfile/user,67/Itemid,79/">Mihai Dobos</a>					</span>
+					&nbsp;&nbsp;
+				</td>
+			</tr>
+					<tr>
+			<td valign="top" colspan="2">
+				
+<!-- google_ad_section_start -->
+In this tutorial, I will show how to calculate subnets, network addresses and the number of hosts within a given IP and subnet mask. 
+		<div class="moduletable">
+			<div class="clr"></div><div class="ads"><script type="text/javascript"><!--google_ad_client = "pub-8444114940177882";/* networking */google_ad_slot = "7094539648";google_ad_width = 336;google_ad_height = 280;//--></script><script type="text/javascript" src="Subnettingexplained_files/show_ads.js"></script><br /></div>		</div>
+		<br />
+<p>
+<br />
+Let&#39;s follow this example: 
+</p>
+<p>
+We have the IP address of 192.32.65.10 with a <strong>CIDR</strong> (Classless Interdomain Routing standard) notation of /27.<br />
+<br />
+<strong>The /27 means we have 27 bits reserved for the network in the IP address.</strong> /27 also means that the subnetmask in dotted decimal is<br />
+the equivalent of 11111111.11111111.11111111.11100000 (first 27 of the 32 bits are 1) = 255.255.255.224. 
+</p>
+<p>
+We have 3 IP classes to keep in mind: 
+</p>
+<p>
+A: 1.0.0.0 -&gt; 127.255.255.255 with a mask of /8 by default<br />
+B: 128.0.0.0 -&gt; 191.255.255.255 with a mask of /16 by default<br />
+C: 192.0.0.0 -&gt; 223.255.255.255 with a mask of /24 by default. 
+</p>
+<p>
+These are specified by international organizations. 
+</p>
+<p>
+We conclude that our IP address 192.32.65.10 is in class C. So by default, we have 24 bits for network part. But we applied 27 bits for this part, so 27-24 = 3 bits used for subnet. 
+</p>
+<p>
+Keep this in mind. 
+</p>
+<p>
+<strong>Q: How do we calculate the number of subnets?<br />
+</strong><br />
+A: We have 3 bits for the subnet part in our case. Each bit can take two values: 1 or 0. The total number of possibilities is 2^3 (2 raised to the power of number of bits). This means 8 subnets, from which 1 or 2, depending on the technology used (if we subnet zero or not - Cisco routers use a service called ip subnet-zero to use the first subnet) cannot be used. So we have a total of 7 subnets generally, or 6 on older routing systems. 
+</p>
+<p>
+<strong>Q: How do we calculate the network address?<br />
+<br />
+</strong>A: We have to write down our IP address in binary. 
+</p>
+<p>
+192.32.65.10=<br />
+11000000.00100000.01000001.00001010 and we also type down the subnet mask in same format<br />
+11111111.11111111.11111111.11100000 and do an operation called ANDing comparing bit by bit.<br />
+ -----------------------------------------------<br />
+11000000.00100000.01000001.00000000, which in dotted decimal is 192.32.65.0; and this is your network address 
+</p>
+<p>
+<br />
+ANDing works by comparing bit by bit (first bit in the IP with first bit in the network mask and so on).<br />
+The results are like this: 
+</p>
+<p>
+1 AND 1 = 1<br />
+1 AND 0 = 0<br />
+0 AND 1 = 0<br />
+0 AND 0 = 0 
+</p>
+<p>
+<br />
+<strong>Q: How do we calculate the number of hosts?<br />
+</strong><br />
+A: Well we use the same idea in calculating the number of subnets. The IP address has 32 bits, from which 27 are reserved for network usage. So we end up with 32-27=5 bits for hosts. So the total number of hosts is 2^5 = 32, from which 2 are unusable: the first one - the network address itself and the the last one - the broadcast address of the network. So we end up with 2^the-number-of-host-bits minus 2. 
+</p>
+<p>
+<br />
+For a closer look, see <a href="http://www.tutorial5.com/content/view/165/79/content/view/89/79/">http://www.tutorial5.com/content/view/89/79/</a>. 
+</p>
+<p>
+<br />
+  
+</p>
+<br clear="all"/>
+<span class="related_css">
+<h3></h3> 
+<ul ><li  class="related_li" ><a  class="related_css"  href="http://www.tutorial5.com/content/view/94/86/">Get started with AdSense guide</a><br/><p class="MsoNormal">
+This guide is written for the low/middle websites witch
+offer quality content and play by the rules. Many new website owners ask for
+gold tips on getting rich with AdSense, you will not find this here because
+there is no such thing as golden tips. What you will find here is a collection
+of tested tips from webmasters based on reality. <span> </span>
+</p>
+ </li>
+<li  class="related_li" ><a  class="related_css"  href="http://www.tutorial5.com/content/view/87/49/">Archivers Benchmark</a><br/>Here are some test results we&#39;ve gathered from some archiving software benchmarks.<br />
+<br />
+ </li>
+<li  class="related_li" ><a  class="related_css"  href="http://www.tutorial5.com/content/view/73/80/">The quantum processor</a><br/>The next generation of processors
+ </li>
+<li  class="related_li" ><a  class="related_css"  href="http://www.tutorial5.com/content/view/150/51/">Configuring a Linux Share in Microsoft networks</a><br/><img width="40" src="Subnettingexplained_files/linux4040-logo.gif" alt="linux4040-logo.gif" height="40" style="float: left; margin: 5px" title="linux4040-logo.gif" class="thumb" />Learn how to share files from a Linux server in a Microsoft network environment. 
+ </li>
+<li  class="related_li" ><a  class="related_css"  href="http://www.tutorial5.com/content/view/50/51/">How to view the traffic statistics of hosts</a><br/>This tutorial will explain how to view traffic statistics over a specific IP in your network.
+ </li>
+</ul>
+</span>
+<br /><p><a href="http://feeds.feedburner.com/tutorial5" class="ask" title="Subscribe to RSS and get all the new tutorials"><h3>Subscribe now via RSS feed and get all the new tutorials</h3></a></div><!-- JOM COMMENT START -->
+<script type='text/javascript'>
+/*<![CDATA[*/
+var jc_username			= "";
+var jc_email			= "";
+/*]]>*/
+</script>
+<div style="clear:both;height:1px;padding:0px"></div>
+
+
+	<!-- Hide/Show input form notice -->
+	
+	<!-- Placeholder for all comments. REQUIRED.  -->
+	<div id="jc_commentsDiv" >
+		<div id="pc_800" class="jomentry2" onmouseover="">  
+    
+		<span class="small">written by Ced , February 28, 2008</span>
+		<br/><br /> 
+    <span id="comment-text-container-800">1.      If you worked on an older network that could not interpret classless addressing, and your <br />network ID was 145.27.0.0, what is the theoretical maximum number of different subnets you could <br />create on this network? <br />2.       You have decided to create 254 subnets on your Class B network. What subnet mask will you <br />use to accomplish this? <br /> <br />3.       If you subdivide your Class B network into 254 subnets, what is the maximum number of hosts <br />you can assign to any single subnet? <br /> <br />4.       Your company has leased a Class C network whose network ID is 205.61.128.0. You want to <br />create 16 subnets within this network. One of the subnets will have an extended network prefix of <br />205.61.128.64. What will be the broadcast address for this subnet? (Hint: If you know the number of <br />hosts per subnet, you can easily determine the broadcast address.) <br /> <br />5. What is Supernetting <br /> <br />6. How do you calculate a default gateway </span> 
+</div> 
+<div id="pc_801" class="jomentry1 jomauthor" onmouseover="">  
+    
+		<span class="small">written by Mihai Dobos , February 28, 2008</span>
+		<br/><br /> 
+    <span id="comment-text-container-801">Hello Ced <br /> <br />We are more then happy to answer your questions, but this does not include your homework assessments. To fully understand subnetting, read our tutorials related to this topic and do some exercises. </span> 
+</div> 
+<div id="pc_860" class="jomentry2" onmouseover="">  
+    
+		<span class="small">written by Boley, Emmanuel , March 16, 2008</span>
+		<br/><br /> 
+    <span id="comment-text-container-860">can you send me a more detail lesson on this subject to my email box to help me out. Thanks. <br /> <br />Boley </span> 
+</div> 
+<div id="pc_861" class="jomentry1" onmouseover="">  
+    
+		<span class="small">written by Boley, Emmanuel , March 16, 2008</span>
+		<br/><br /> 
+    <span id="comment-text-container-861">The stuff is good and i like it...it comes down to your level. Even my kid knows what's in it to learn. Thanks </span> 
+</div> 
+<div id="pc_1122" class="jomentry2" onmouseover="">  
+    
+		<span class="small">written by kondal , June 11, 2008</span>
+		<br/><br /> 
+    <span id="comment-text-container-1122">The given information is good. </span> 
+</div> 
+<div id="pc_1372" class="jomentry1" onmouseover="">  
+    
+		<span class="small">written by <a href='http://microchunk.tv' rel='external nofollow' target="_blank">Misty</a> , September 25, 2008</span>
+		<br/><br /> 
+    <span id="comment-text-container-1372">I've looked at about five tutorials on this subject and I have to say that you explained it better than the rest.  Thank you for writing this. </span> 
+</div> 
+<div id="pc_1411" class="jomentry2" onmouseover="">  
+    
+		<span class="small">written by Emma , October 11, 2008</span>
+		<br/><br /> 
+    <span id="comment-text-container-1411">How can I create or develop a subnet scheme using IP addresses 10.1.1.1/24 and 192.168.11.0/24 respectively that will allow a network to support two subnets of up to forty (40)clients each? How many subnets must there be to allow future growth? Your efficient service is greatly appreciated in advance and I know your simple but profound explanation will help me understand how to calculate the subnets, host bits, and host IDs. </span> 
+</div> 
+<div id="pc_1434" class="jomentry1" onmouseover="">  
+    
+		<span class="small">written by set , October 22, 2008</span>
+		<br/><br /> 
+    <span id="comment-text-container-1434">wats the answers to the questions above? </span> 
+</div> 
+<div id="pc_1590" class="jomentry2" onmouseover="">  
+    
+		<span class="small">written by duddi , December 25, 2008</span>
+		<br/><br /> 
+    <span id="comment-text-container-1590">I have a network 172.16.0.0 and I need to subnet it into two subnets with 125 hosts, two subnets with 90 hosts, one subnet with 30 hosts, and 4 subnets with 2 hosts. Please help me  </span> 
+</div> 
+<div id="pc_1600" class="jomentry1" onmouseover="">  
+    
+		<span class="small">written by chuck paver , December 27, 2008</span>
+		<br/><br /> 
+    <span id="comment-text-container-1600">172.16.0.0 <br />you need 9 subnets <br />2 hosts = /30 <br />30 hosts = /27 <br />90 hosts = /25 <br />125 hosts = /25 <br /> <br />start with the largest subnet you need: /25: <br />A) 172.16.0.0/25 (3rd octet = 00000000); this satisfies 1 subnet offering 2^7 - 2 = 126 hosts <br /> <br />B) next subnet = 172.16.0.128/25 (3rd octet = 00000000) 4th=(10000000) <br />this satisfies 1 subnet offering 2^7 -2 = 126 hosts <br /> <br />C) now at this point, we have answered the 125 host requirement. Let us move forward regarding the 90 host requirement. 2 subnets are needed, same mask--since no other mask would work. <br /> <br />172.16.1.0/25 (3rd octet = 00000001) (4th octet = 00000000) <br />172.16.1.128/25 (3rd octet = 00000001) (4th octet = 10000000) <br />both solve the requirement for 90 hosts <br /> <br />D) Next, look at /27 mask. we need only 1 subnet. We need to make sure that we do not overlap the previous subnets that we used. (you cannot take from the parent). therefore, we will use 172.16.4.0/27--i have chosen this arbitrarily, i could have chosen another combination. <br />this gives us that 1 subnet.  <br /> <br />E) the final requirement calls for 4 subnets, each having a mask of /30 <br /> <br />well, again, i can pick a different subnet: 172.16.5.0/30, .6.0/30, .7/0/30, and .8.0/30. <br /> <br />here is how i did it, in case you are confused. <br /> <br />172.16.0.0/16 is the starting point. when you use vlsm, you can break it down by 1 bit at a time, but this takes a long time in your case: <br />172.16.0.0/17     and    172.16.128.0/17    <br />                 then take 1 more bit we get <br />172.16.0.0/18   &amp;   172.16.64.0/18  &amp; 128.0/18   &amp; 192.0/18 <br />                take one more bit we get 2^3 = 8 combinations): <br />172.16.0.0/19 &amp; 32.0/19 &amp; 64.0/19 &amp; 96.0/19 ........etc... <br /> <br /> <br />this takes forever, in your case. thus we can jump.  <br />we know the starting point is /25 since you have been asked to create 2 subnets containing 125 hosts each. 2^7-2 = 126. Thus, i will borrow 9 bits for the subnetting, leaving 7 bits for the host portion. <br /> <br />borrowing 9 bits for hte host portion gives us 512 subnets. There is no way on earth we can realistically write all down in a given amt of time--its not practical. Thus you can pick the subnets. <br /> <br />172.16.00000000.0 0000000   </span> 
+</div> 
+<div id="pc_1744" class="jomentry2" onmouseover="">  
+    
+		<span class="small">written by sonu chaudhary , February 24, 2009</span>
+		<br/><br /> 
+    <span id="comment-text-container-1744">hi this sonu chaudhary from aligarh <br />i have a qustion - <br /> <br />Q.1 <br />I have a network id 192.168.0.0/24. <br />and i want 10 subnet and each should have 300 Host. <br /> <br /> <br />please tell me.... <br /> <br /> <br />Regards <br />sonu chaudhary <br /> </span> 
+</div> 
+<div id="pc_1871" class="jomentry1" onmouseover="">  
+    
+		<span class="small">written by president , April 21, 2009</span>
+		<br/><br /> 
+    <span id="comment-text-container-1871">I want to know with support of exemple how to customise subtenet </span> 
+</div> 
+<div id="pc_1893" class="jomentry2" onmouseover="">  
+    
+		<span class="small">written by kimper , April 27, 2009</span>
+		<br/><br /> 
+    <span id="comment-text-container-1893">how do i calculate the subnet number? (not the number of subnets but rather the subnet number of the subnet that host is attached to) </span> 
+</div>	</div>
+<!-- 'Write Comment' Title -->
+<br />
+<div class="contentheading" id="write_comment_title">Do you need more help? Ask now!</div>
+
+<!-- Hide/Show input form notice -->
+
+<!-- Comment locked notice -->
+
+<!-- Login required -->
+
+<!-- Placeholder for ajax notification -->
+<div id="jc_busyDiv"></div>
+
+<!-- Input form begin -->
+<div id="postCommentDiv"> 
+<div id="jc_commentFormDiv"  >
+<form method="post" onsubmit="return false;" action="" id="jc_commentForm" name="jc_commentForm"> 
+    <table width="100%" border="0" cellspacing="2" cellpadding="2" id="postComment"> 
+								
+				
+        <tr> 
+            <td width="120" valign="top"><label for="jc_comment">Comment</label></td> 
+            <td><textarea name="jc_comment" cols="40" rows="6" id="jc_comment" tabindex="2"></textarea></td> 
+        </tr> 
+        
+        
+                <tr> 
+            <td width="120" valign="top"><label for="jc_name">Name</label></td> 
+            <td><input style="background-color: rgb(255, 255, 160);" name="jc_name" id="jc_name" value="" tabindex="3" /></td> 
+        </tr> 
+        				
+				
+				        <tr> 
+            <td width="120" valign="top"><label for="jc_email">Email</label></td> 
+            <td><input style="background-color: rgb(255, 255, 160);" name="jc_email" id="jc_email" tabindex="4" /></td> 
+        </tr> 
+        				
+				        <tr> 
+            <td width="120" valign="top"><label for="jc_website">Website</label></td> 
+            <td><input name="jc_website" id="jc_website" tabindex="5" /></td> 
+        </tr> 
+        				
+				        
+				
+				<tr> 
+            <td width="120" valign="top">&nbsp;</td> 
+            <td><button class="button" id="jc_submit" onclick="addComments()">Add Comment</button>
+						<noscript><div>Please enable JavaScript to post a new comment</div></noscript>
+           <input name="jc_contentid" type="hidden" id="jc_contentid" value="165"/>
+					 <input name="jc_sid" type="hidden" id="jc_sid" value="df7c0f32b13de117f4894375b03e955b" />
+					 <input name="jc_task" type="hidden" id="jc_task" value="add" />
+					 <input name="jc_isajax" type="hidden" id="jc_isajax" value="0" />
+					 <input name="jc_option" type="hidden" id="jc_option" value="com_content"/>
+					</td> 
+        </tr> 
+        
+    </table> 
+</form> 
+</div>
+<!-- Trackback Title-->
+<div class="contentheading" id="trackback_title"><a href="http://www.tutorial5.com/index.php?option=com_jomcomment&amp;task=trackback&amp;id=165&amp;opt=com_content" rel="trackback" type="application/x-www-form-urlencoded">Trackback<span>(0)</span></a></div>
+<div id="trackback_entries"></div>
+
+<!-- 'Comments Title -->
+<div class="contentheading" id="written_comments_title"><a href="http://www.tutorial5.com/index.php?option=com_jomcomment&amp;jc_task=rss&amp;contentid=165&amp;opt=com_content" rel="bookmark">Comments <span id="jc_numComment">(13)</span></a></div>
+</div><br/><div style="text-align:center;font-size:95%"><a target="_blank" href="http://www.rentahobby.com"></a></div><script type='text/javascript'> jc_loadUserInfo(); </script><img src="Subnettingexplained_files/busy.gif" alt="busy" style="visibility:hidden;display:none;"/><!-- JOM COMMENT END -->
+<!-- google_ad_section_end -->
+			</td>
+		</tr>
+					<tr>
+				<td colspan="2" align="left" class="modifydate">
+					Last Updated ( Thursday, 28 February 2008 )
+				</td>
+			</tr>
+					</table>
+
+		<span class="article_seperator">&nbsp;</span>
+
+		                                                        <div id="content_ad">
+                                                                                                               </div>
+                                                       
+           
+                                     <!-- END: MAIN CONTENT -->
+
+                                        					<!-- END: CONTENT -->
+					</div>
+
+					<!-- BEGIN: RIGHTCOL -->
+
+
+										<!-- END: RIGHTCOL -->
+					<br />
+				</div>
+			<!-- END: WRAPPER INNER1 -->
+			</div>		
+		</div>
+	</div>
+  <!-- END: WRAPPER -->
+	
+	<!-- BEGIN: FOOTER -->
+	<div id="ja-footer" class="clearfix">
+		<div id="ja-footer-inner" class="wide fs3">
+			<div id="copyright">
+				Copyright &copy; Tutorial5.com 2006 - 2008 | <a href="http://www.tutorial5.com/Legal/Terms-of-Use.html" title="Terms of Use">Terms of Use</a> | <a href="http://www.tutorial5.com/component/option,com_contact/">Contact us</a> | <a href="http://feeds.feedburner.com/tutorial5" title="Get latest news and tutorials via RSS">Subscribe to RSS</a>
+			</div>
+		</div>
+	</div>
+	<!-- END: FOOTER -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3425527-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+</body>
+</html>

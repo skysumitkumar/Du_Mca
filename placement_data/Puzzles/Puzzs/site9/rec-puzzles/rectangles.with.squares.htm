@@ -1,0 +1,146 @@
+<html><head>
+<title>Solution for /geometry/tiling/rectangles.with.squares</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /geometry/tiling/rectangles.with.squares problem</h1>
+<hr>
+A rectangle can be tiled with (axa) and (bxb) squares,   iff
+
+<pre>
+(i) gcd(a,b)=1 , and any of the following hold:
+</pre>
+
+either:  both sides of the rectangle are multiples of a;<br>
+    or:  both sides of the rectangle are multiples of b;<br>
+    or:  one side is a multiple of (ab), and the other is any length EXCEPT
+         one of a finite number of "bad" lengths: those numbers which are
+         NOT positive integer combinations of a &amp; b. { By Sylvester's theorem
+         there are (a-1)(b-1)/2 of these, the largest being (a-1)(b-1)-1. }
+
+<pre>
+(ii) gcd(a,b) = d . 
+</pre>
+     Then merely apply (i) to the problem with a,b replaced
+     by a/d, b/d  and the rectangle lengths also divided by d.
+     i.e.  all cells must appear in (dxd) subsquares.
+
+<H3>Proof</h3>
+It is clear that (ii) follows from (i), and that simple constructions give
+the "if" part of (i). For the "only if" part, we prove that...
+
+<p>
+(S) If one side of the rectangle is not divisible by a, and the other is
+    not divisible by b, then the tiling is impossible.
+
+<p>
+The results in (i) follow immediately from (S).
+
+<p>
+To prove (S):  ( <em>Chakraborty-Hoey</em> style ).
+
+<p>
+Let the width of the rectangle be a NON-(a-multiple). Then the number of
+bxb squares starting (i.e. top edge) at row 1 must be a NON-a-multiple.
+Thus the number of bxb starting at row 2 must BE an a-multiple. Similarly
+for the number starting at rows 3,4,...,b . Then the number starting at
+row (b+1) must be a NON-a-multiple again.
+
+<p>
+Similarly the number starting at rows (2b+1), (3b+1), (4b+1),... must all be
+non-a-multiples. So if the number of rows is NOT a multiple of b, (call it
+bx+r), then row (bx+1) must have a NON-a-multiple of bxb squares starting
+there, i.e. at least one, and there is no room left to squeeze it in.     [QED]
+<hr>
+
+A <em>Rickard-style</em> proof of (S) is also possible, by
+coloring the rectangle in vertical strips as shown here:
+
+<pre>
+    ..BBB....BBWWW...WBBB....BBWWW...W(..etc)
+    ..BBB....BBWWW...WBBB....BBWWW...W
+    ..BBB....BBWWW...WBBB....BBWWW...W
+      &lt;-  a  -&gt;&lt; b-a &gt;&lt;-  a  -&gt;&lt; b-a &gt;
+</pre>
+Every square tile covers an a-multiple of black squares. But if the width
+is a NON-b-multiple, and the number of rows is a NON-a-multiple, then there
+are a NON-a-multiple of black squares in total.    [QED]
+
+<p>
+(<b>Note</b>: the coloring must have 1 column of blacks on the right, and any
+spare columns of whites on the left.)
+
+<pre>
+Bill Taylor.            wft@math.canterbury.ac.nz
+</pre>
+<hr>
+<pre>
+&gt;A Rickard-style proof of (S) is    ..BBB....BBWWW...WBBB....BBWWW...W(..etc)
+&gt;  ~~~~~~~   also possible, by      ..BBB....BBWWW...WBBB....BBWWW...W
+&gt;coloring the rectangle in          ..BBB....BBWWW...WBBB....BBWWW...W
+&gt;vertical strips as shown here:       &lt;-  a  -&gt;&lt; b-a &gt;&lt;-  a  -&gt;&lt; b-a &gt;
+&gt;
+&gt;Every square tile covers an a-multiple of black squares. But if the width
+&gt;is a NON-b-multiple, and the number of rows is a NON-a-multiple, then there
+&gt;are a NON-a-multiple of black squares in total.    [QED]
+
+&gt;
+&gt;(Note: the coloring must have 1 column of blacks on the right, and any
+&gt; ====     spare columns of whites on the left.)
+</pre>
+This statement of how to position the colouring isn't good enough, I'm
+afraid. Take a=4, b=7 and consider e.g. a 19x10 rectangle. Coloured your
+way, you get:
+
+<pre>
+    BWWWBBBBWWWBBBBWWWB
+    BWWWBBBBWWWBBBBWWWB
+    :::::::::::::::::::
+    BWWWBBBBWWWBBBBWWWB
+    BWWWBBBBWWWBBBBWWWB
+</pre>
+The result has 10*10=100 black squares in it, which *is* a multiple of a=4,
+despite the fact that 19 is not a multiple of 7 and 10 is not a multiple of
+4.
+
+<p>
+Of course, there is an alternative offset for the pattern that does give you
+the result you want:
+
+<pre>
+    WWBBBBWWWBBBBWWWBBB
+    WWBBBBWWWBBBBWWWBBB
+    :::::::::::::::::::
+    WWBBBBWWWBBBBWWWBBB
+    WWBBBBWWWBBBBWWWBBB
+</pre>
+To show this happens in general: because the width of the rectangle is a
+non-multiple of b, it is possible to position it on the pattern so that the
+leftmost column in the rectangle is white and the column just right of the
+right edge of the rectangle is black. Suppose N columns are black with this
+positioning. Then the rectangle contains N*H black cells, where H is the
+height of the rectangle.
+
+<p>
+If we then shift the rectangle right by one, the number of black columns
+increases by 1 and it contains (N+1)*H black cells. The difference between
+these two numbers of black cells is H, which is not a multiple of a.
+Therefore N*H and (N+1)*H cannot both be multiples of a, and so one of these
+two positionings of the pattern will suit your purposes.
+
+<pre>
+David Seal
+dseal@armltd.co.uk
+</pre>
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

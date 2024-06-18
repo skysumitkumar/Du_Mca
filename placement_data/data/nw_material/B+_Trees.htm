@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0058)http://babbage.clarku.edu/~achou/cs160/B+Trees/B+Trees.htm -->
+<!-- saved from url=(0062)http://www.iwu.edu/~sander/C314-Lectures/physicalDB/btree.html --><HTML><HEAD><TITLE>B+ Trees</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META content="MSHTML 5.50.4134.600" name=GENERATOR></HEAD>
+<BODY bgColor=white><BR>
+<H3 align=center>B+ TREES</H3>
+<P><BR><B>B Trees</B>. B Trees are multi-way trees. That is each node contains a 
+set of keys and pointers. A B Tree with four keys and five pointers represents 
+the minimum size of a B Tree node. A B Tree contains only data pages.</P>
+<P>B Trees are dynamic. That is, the height of the tree grows and contracts as 
+records are added and deleted. <BR><BR><B>B+ Trees</B> A B+ Tree combines 
+features of ISAM and B Trees. It contains index pages and data pages. The data 
+pages always appear as leaf nodes in the tree. The root node and intermediate 
+nodes are always index pages. These features are similar to ISAM. Unlike ISAM, 
+overflow pages are not used in B+ trees. 
+<P>The index pages in a B+ tree are constructed through the process of inserting 
+and deleting records. Thus, B+ trees grow and contract like their B Tree 
+counterparts. The contents and the number of index pages reflects this growth 
+and shrinkage. <BR><BR>B+ Trees and B Trees use a "fill factor" to control the 
+growth and the shrinkage. A 50% fill factor would be the minimum for any B+ or B 
+tree. As our example we use the smallest page structure. This means that our B+ 
+tree conforms to the following guidelines. <BR><BR>
+<CENTER>
+<TABLE cellPadding=5 border=1>
+  <TBODY>
+  <TR>
+    <TD>Number of Keys/page 
+    <TD>4</TD>
+  <TR>
+    <TD>Number of Pointers/page</TD>
+    <TD>5 
+  <TR>
+    <TD>Fill Factor</TD>
+    <TD>50%</TD>
+  <TR>
+    <TD>Minimum Keys in each page</TD>
+    <TD>2 </TD></TR></TBODY></TABLE></CENTER><BR><BR>As this table indicates each 
+page must have a minimum of two keys. The root page may violate this rule. 
+<P>The following table shows a B+ tree. As the example illustrates this tree 
+does not have a full index page. (We have room for one more key and pointer in 
+the root page.) In addition, one of the data pages contains empty slots. 
+<BR><BR>
+<CENTER>
+<TABLE cellPadding=5 border=1>
+  <CAPTION>B+ Tree with four keys</CAPTION>
+  <TBODY>
+  <TR>
+    <TD><IMG src="B+ Trees_files/btree3.jpg" border=0> 
+</TD></TR></TBODY></TABLE></CENTER><BR><BR><B>Adding Records to a B+ Tree</B> 
+<BR><BR>The key value determines a record's placement in a B+ tree. The leaf 
+pages are maintained in sequential order AND a doubly linked list (not shown) 
+connects each leaf page with its sibling page(s). This doubly linked list speeds 
+data movement as the pages grow and contract. 
+<P>We must consider three scenarios when we add a record to a B+ tree. Each 
+scenario causes a different action in the insert algorithm. The scenarios are: 
+<BR><BR>
+<CENTER>
+<TABLE cellPadding=5 border=1>
+  <CAPTION>The <TT>insert</TT> algorithm for B+ Trees</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Leaf Page Full</TH>
+    <TH>Index Page FULL</TH>
+    <TH>Action</TH></TR>
+  <TR>
+    <TD>NO </TD>
+    <TD>NO</TD>
+    <TD>Place the record in sorted position in the appropriate leaf page</TD></TR>
+  <TR>
+    <TD>YES</TD>
+    <TD>NO</TD>
+    <TD>
+      <OL>
+        <LI>Split the leaf page 
+        <LI>Place Middle Key in the index page in sorted order. 
+        <LI>Left leaf page contains records with keys below the middle key. 
+        <LI>Right leaf page contains records with keys equal to or greater than 
+        the middle key. </LI></OL></TD>
+  <TR>
+    <TD>YES</TD>
+    <TD>YES</TD>
+    <TD>
+      <OL>
+        <LI>Split the leaf page. 
+        <LI>Records with keys &lt; middle key go to the left leaf page. 
+        <LI>Records with keys &gt;= middle key go to the right leaf page. 
+        <BR><BR>
+        <LI>Split the index page. 
+        <LI>Keys &lt; middle key go to the left index page. 
+        <LI>Keys &gt; middle key go to the right index page. 
+        <LI>The middle key goes to the next (higher level) index. <BR><BR>IF the 
+        next level index page is full, continue splitting the index pages. 
+      </LI></OL></TD></TR></TBODY></TABLE></CENTER><BR><BR><B>Illustrations of the 
+<B>insert</B> algorithm</B> <BR><BR>The following examples illlustrate each of 
+the <B>insert</B> scenarios. We begin with the simplest scenario: inserting a 
+record into a leaf page that is not full. Since only the leaf node containing 25 
+and 30 contains expansion room, we're going to insert a record with a key value 
+of 28 into the B+ tree. The following figures shows the result of this addition. 
+<BR><BR>
+<CENTER>
+<TABLE cellPadding=5 border=1>
+  <CAPTION>Add Record with Key 28 </CAPTION>
+  <TBODY>
+  <TR>
+    <TD><IMG src="B+ Trees_files/btree4.jpg" border=0> 
+</TD></TR></TBODY></TABLE></CENTER><BR><BR><B>Adding a record when the leaf page 
+is full but the index page is not</B> <BR><BR>Next, we're going to insert a 
+record with a key value of 70 into our B+ tree. This record should go in the 
+leaf page containing 50, 55, 60, and 65. Unfortunately this page is full. This 
+means that we must split the page as follows: <BR><BR>
+<CENTER>
+<TABLE cellPadding=5 border=1>
+  <TBODY>
+  <TR>
+    <TH>Left Leaf Page</TH>
+    <TH>Right Leaf Page</TH></TR>
+  <TR>
+    <TD><TT>50 55 </TT></TD>
+    <TD><TT>60 65 70</TT></TD></TR></TBODY></TABLE></CENTER><BR><BR>The middle key 
+of 60 is placed in the index page between 50 and 75. 
+<P>The following table shows the B+ tree after the addition of 70. <BR><BR>
+<CENTER>
+<TABLE cellPadding=5 border=1>
+  <CAPTION>Add Record with Key 70 </CAPTION>
+  <TBODY>
+  <TR>
+    <TD><IMG src="B+ Trees_files/btree5.jpg" border=0> 
+</TD></TR></TBODY></TABLE></CENTER><BR><BR><B>Adding a record when both the leaf 
+page and the index page are full</B> 
+<P>As our last example, we're going to add a record containing a key value of 95 
+to our B+ tree. This record belongs in the page containing 75, 80, 85, and 90. 
+Since this page is full we split it into two pages: <BR><BR>
+<CENTER>
+<TABLE cellPadding=5 border=1>
+  <TBODY>
+  <TR>
+    <TH>Left Leaf Page</TH>
+    <TH>Right Leaf Page</TH></TR>
+  <TR>
+    <TD><TT>75 80 </TT></TD>
+    <TD><TT>85 90 95</TT></TD></TR></TBODY></TABLE></CENTER><BR><BR>The middle key, 
+85, rises to the index page. Unfortunately, the index page is also full, so we 
+split the index page: <BR><BR>
+<CENTER>
+<TABLE cellPadding=5 border=1>
+  <TBODY>
+  <TR>
+    <TH>Left Index Page</TH>
+    <TH>Right Index Page</TH>
+    <TH>New Index Page</TH></TR>
+  <TR>
+    <TD><TT>25 50 </TT></TD>
+    <TD><TT>75 85</TT></TD>
+    <TD>60</TD></TR></TBODY></TABLE></CENTER><BR><BR>The following table illustrates 
+the addition of the record containing 95 to the B+ tree. <BR><BR>
+<CENTER>
+<TABLE cellPadding=5 border=1>
+  <CAPTION>Add Record with Key 95 </CAPTION>
+  <TBODY>
+  <TR>
+    <TD><IMG src="B+ Trees_files/btree6.jpg" border=0> 
+</TD></TR></TBODY></TABLE></CENTER><BR><BR><B>Rotation</B> <BR><BR>B+ trees can 
+incorporate rotation to reduce the number of page splits. A rotation occurs when 
+a leaf page is full, but one of its sibling pages is not full. Rather than 
+splitting the leaf page, we move a record to its sibling, adjusting the indices 
+as necessary. Typically, the left sibling is checked first (if it exists) and 
+then the right sibling. 
+<P>As an example, consider the B+ tree before the addition of the record 
+containing a key of 70. As previously stated this record belongs in the leaf 
+node containing 50 55 60 65. Notice that this node is full, but its left sibling 
+is not. <BR><BR>
+<CENTER>
+<TABLE cellPadding=5 border=1>
+  <CAPTION>Add Record with Key 28 </CAPTION>
+  <TBODY>
+  <TR>
+    <TD><IMG src="B+ Trees_files/btree4.jpg" border=0> 
+</TD></TR></TBODY></TABLE></CENTER><BR><BR>Using rotation we shift the record 
+with the lowest key to its sibling. Since this key appeared in the index page we 
+also modify the index page. The new B+ tree appears in the following table. 
+<BR><BR>
+<CENTER>
+<TABLE cellPadding=5 border=1>
+  <CAPTION>Illustration of Rotation </CAPTION>
+  <TBODY>
+  <TR>
+    <TD><IMG src="B+ Trees_files/btree7.jpg" border=0> 
+</TD></TR></TBODY></TABLE></CENTER><BR><BR><B>Deleting Keys from a B+ tree</B> 
+<BR><BR>We must consider three scenarios when we delete a record from a B+ tree. 
+Each scenario causes a different action in the delete algorithm. The scenarios 
+are: <BR><BR>
+<CENTER>
+<TABLE cellPadding=5 border=1>
+  <CAPTION>The <TT>delete</TT> algorithm for B+ Trees</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Leaf Page Below Fill Factor</TH>
+    <TH>Index Page Below Fill Factor</TH>
+    <TH>Action</TH></TR>
+  <TR>
+    <TD>NO </TD>
+    <TD>NO</TD>
+    <TD>Delete the record from the leaf page. Arrange keys in ascending order 
+      to fill void. If the key of the deleted record appears in the index page, 
+      use the next key to replace it.</TD></TR>
+  <TR>
+    <TD>YES</TD>
+    <TD>NO</TD>
+    <TD>
+      <OL>Combine the leaf page and its sibling. Change the index page to 
+        reflect the change. </OL></TD>
+  <TR>
+    <TD>YES</TD>
+    <TD>YES</TD>
+    <TD>
+      <OL>
+        <LI>Combine the leaf page and its sibling. 
+        <LI>Adjust the index page to reflect the change. 
+        <LI>Combine the index page with its sibling. <BR><BR>Continue combining 
+        index pages until you reach a page with the correct fill factor or you 
+        reach the root page. </LI></OL></TD></TR></TBODY></TABLE></CENTER><BR><BR>As our 
+example, we consider the B+ tree after we added 95 as a key. As a refresher this 
+tree is printed in the following table. <BR><BR>
+<CENTER>
+<TABLE cellPadding=5 border=1>
+  <CAPTION>Add Record with Key 95 </CAPTION>
+  <TBODY>
+  <TR>
+    <TD><IMG src="B+ Trees_files/btree6.jpg" border=0> 
+</TD></TR></TBODY></TABLE></CENTER><BR><BR><B>Delete 70 from the B+ Tree</B> 
+<BR><BR>We begin by deleting the record with key 70 from the B+ tree. This 
+record is in a leaf page containing 60, 65 and 70. This page will contain 2 
+records after the deletion. Since our fill factor is 50% or (2 records) we 
+simply delete 70 from the leaf node. The following table shows the B+ tree after 
+the deletion. <BR><BR>
+<CENTER>
+<TABLE cellPadding=5 border=1>
+  <CAPTION>Delete Record with Key 70 </CAPTION>
+  <TBODY>
+  <TR>
+    <TD><IMG src="B+ Trees_files/btree8.jpg" border=0> 
+</TD></TR></TBODY></TABLE></CENTER><BR><BR><B>Delete 25 from the B+ tree</B> 
+<BR><BR>Next, we delete the record containing 25 from the B+ tree. This record 
+is found in the leaf node containing 25, 28, and 30. The fill factor will be 50% 
+after the deletion; however, 25 appears in the index page. Thus, when we delete 
+25 we must replace it with 28 in the index page. 
+<P>The following table shows the B+ tree after this deletion. <BR><BR>
+<CENTER>
+<TABLE cellPadding=5 border=1>
+  <CAPTION>Delete Record with Key 25 </CAPTION>
+  <TBODY>
+  <TR>
+    <TD><IMG src="B+ Trees_files/btree9.jpg" border=0> 
+</TD></TR></TBODY></TABLE></CENTER><BR><BR><B>Delete 60 from the B+ tree</B> 
+<BR><BR>As our last example, we're going to delete 60 from the B+ tree. This 
+deletion is interesting for several resasons: 
+<OL>
+  <LI>The leaf page containing 60 (60 65) will be below the fill factor after 
+  the deletion. Thus, we must combine leaf pages. 
+  <LI>With recombined pages, the index page will be reduced by one key. Hence, 
+  it will also fall below the fill factor. Thus, we must combine index pages. 
+  <LI>Sixty appears as the only key in the root index page. Obviously, it will 
+  be removed with the deletion. </LI></OL><BR><BR>The following table shows the B+ 
+tree after the deletion of 60. Notice that the tree contains a single index 
+page. <BR><BR>
+<CENTER>
+<TABLE cellPadding=5 border=1>
+  <CAPTION>Delete Record with Key 60 </CAPTION>
+  <TBODY>
+  <TR>
+    <TD><IMG src="B+ Trees_files/btree10.jpg" border=0> 
+</TD></TR></TBODY></TABLE></CENTER><BR><BR><FONT size=1>Copyright, 1998, Susan 
+Anderson-Freed</FONT> <BR></BODY></HTML>

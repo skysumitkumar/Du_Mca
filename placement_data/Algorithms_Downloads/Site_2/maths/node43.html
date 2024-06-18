@@ -1,0 +1,207 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Timings for Various Sorting Algorithms</TITLE>
+<META NAME="description" CONTENT="Timings for Various Sorting Algorithms">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node44.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node44.html">
+<LINK REL="previous" HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">
+<LINK REL="up" HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">
+<LINK REL="next" HREF="node44.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node44.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html928"
+  HREF="node44.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node44.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html922"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html916"
+  HREF="node42.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node42.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html924"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html926"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html929"
+  HREF="node44.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node44.html">Optimal Sorting</A>
+<B> Up:</B> <A NAME="tex2html923"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">Sorting</A>
+<B> Previous:</B> <A NAME="tex2html917"
+  HREF="node42.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node42.html">Timing the Algorithm</A>
+ &nbsp <B>  <A NAME="tex2html925"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html927"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00650000000000000000">
+Timings for Various Sorting Algorithms</A>
+</H1>
+Each type of sort was given a set of M randomly chosen lists of
+integers (<!-- MATH
+ $0\le k \le 16383$
+ -->
+0<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$"><I>k</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$">16383) for the shown lengths n.  The sorts were
+timed (in centiseconds per sort) using the following methods and
+numbers of lists.
+
+<P>
+<DIV ALIGN="CENTER">
+<TABLE COLS=3 RULES=GROUPS>
+<COL ALIGN=LEFT><COL ALIGN=LEFT><COL ALIGN=RIGHT>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>
+Label</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> Method </TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> M</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> 
+A</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> Minimum Element Sort </TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP>200</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> 
+B</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> Insertion Sort       </TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 500</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> 
+C</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> Quicksort		</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 500</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> 
+D</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> Mergesort		</TD><TD VALIGN=BASELINE ALIGN=RIGHT NOWRAP> 500
+</TD></TR>
+</TABLE>
+
+</DIV>
+The timings are given in Table&nbsp;<A HREF="node43.html#T:sort-times" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node43.html#T:sort-times">2.3</A>.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="T:sort-times"></A><A NAME="2516"></A>
+<TABLE>
+<CAPTION><STRONG>Table 2.3:</STRONG>
+<A NAME="2379"></A>
+A comparison of sort times using different sorting methods.</CAPTION>
+<TR><TD><IMG
+ WIDTH="374" HEIGHT="197" BORDER="0"
+ SRC="img113.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img113.gif"
+ ALT="\begin{table}
+\begin{displaymath}\begin{array}{r\vert rrrr}
+n&amp;\mbox{Method A}&amp;\...
+... &amp;43.3 \\
+900&amp;807.9 &amp;437.0 &amp;26.2 &amp;51.8
+\end{array}\end{displaymath}\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+Empirical Formulas for the data in Table&nbsp;<A HREF="node43.html#T:sort-times" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node43.html#T:sort-times">2.3</A> are as
+follows, where T is in centiseconds:
+<DIV ALIGN="CENTER">
+<TABLE COLS=2 RULES=GROUPS>
+<COL ALIGN=LEFT><COL ALIGN=LEFT>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>
+ A)</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <!-- MATH
+ $T(n) \approx 0{.}001 n^2$
+ -->
+<I>T</I>(<I>n</I>) <IMG
+ WIDTH="16" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img114.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img114.gif"
+ ALT="$ \approx$"> 0.001<I>n</I><SUP>2</SUP></TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> 
+ B)</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <!-- MATH
+ $T(n) \approx 0{.}00054 n^2$
+ -->
+<I>T</I>(<I>n</I>) <IMG
+ WIDTH="16" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img114.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img114.gif"
+ ALT="$ \approx$"> 0.00054<I>n</I><SUP>2</SUP></TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> 
+ C)</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <!-- MATH
+ $T(n) \approx 0{.}00043 n\ln n$
+ -->
+<I>T</I>(<I>n</I>) <IMG
+ WIDTH="16" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img114.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img114.gif"
+ ALT="$ \approx$"> 0.00043<I>n</I> ln&nbsp;<I>n</I></TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP> 
+ D)</TD><TD VALIGN=BASELINE ALIGN=LEFT NOWRAP>  <!-- MATH
+ $T(n) \approx 0{.}00083 n\ln n$
+ -->
+<I>T</I>(<I>n</I>) <IMG
+ WIDTH="16" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img114.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img114.gif"
+ ALT="$ \approx$"> 0.00083<I>n</I> ln&nbsp;<I>n</I></TD></TR>
+</TABLE>
+
+</DIV>
+These data confirm the theoretical analysis of the order of the
+timing, and also give some idea of the size of the contants of
+proportionality.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html928"
+  HREF="node44.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node44.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html922"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html916"
+  HREF="node42.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node42.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html924"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html926"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html929"
+  HREF="node44.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node44.html">Optimal Sorting</A>
+<B> Up:</B> <A NAME="tex2html923"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">Sorting</A>
+<B> Previous:</B> <A NAME="tex2html917"
+  HREF="node42.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node42.html">Timing the Algorithm</A>
+ &nbsp <B>  <A NAME="tex2html925"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html927"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

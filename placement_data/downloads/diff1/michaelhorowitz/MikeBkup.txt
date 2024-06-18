@@ -1,0 +1,696 @@
+
+'**************************************************************
+' Programmed by Michael Horowitz    michael@michaelhorowitz.com
+' As of: August 30, 2002
+' Version 2.11
+' Updated comments January 14, 2005
+' Updated comments May 5, 2005 with a patch to send output to a
+'   specific directory rather than root of a disk drive. Search
+'   for the date of the change to find the comment.
+' www.michaelhorowitz.com/backupscript.html
+'**************************************************************
+
+
+'**************************************************************
+'         Controlling Parameters   (Configuration Variables)
+'**************************************************************
+' These parameters control the operation of the script
+' MODIFY them to suit your needs
+'**************************************************************
+'Output Drive letter. Backups are written to this drive
+   OutputDrive = "D"
+
+'Copy these folders to make a bkups of them
+'Note: The number of array elements in the Dim statement is
+'      always one less than the number of folders listed.
+'      This is because VBScript arrays start at element zero.
+'Examples:
+'dim sourcefolders(1) is used to back up 2 directories
+'dim sourcefolders(2) is used to back up 3 directories
+   dim sourcefolders(1)
+   sourcefolders(0) = "F:\SomeDir\subdir"
+   sourcefolders(1) = "C:\WINNT\repair"
+
+'Run in automated operation mode? (not case sensitive)
+   AutoOpMode = "no"         'Valid values are "yes" and "no"
+
+'Minimum number of backup generations to keep
+'(Only applies when AutoOpMode is "yes")
+   MinBkupsToKeep = 3
+
+'Minimum number of days to keep every backup generation
+'(Only applies when AutoOpMode is "yes")
+'If specifying zero, the script will not delete old generations created on the same
+'day the script is run. A backup made today is considered zero days old and this
+'field specifies the minimum age, in days, of backups that are to be kept.
+   MinDaysToKeep = 8
+
+'File name prefix for the log file and the main backup directory
+   OutputFilePrefix = "MikeBkup"
+
+'A comment that is written to the log file
+   LogComment = "Look ma, no hands!"
+
+'Enable system logging?   (not case sensitive)
+   SystemLogging = "no"   'Valid values are "yes" and "no"
+
+'**************************************************************
+'              End of controlling parameters
+'**************************************************************
+
+
+
+'-------------------------------------------------------------------------
+'                        NOTES
+'-------------------------------------------------------------------------
+'Note to programmers: this is my first VBScript program and, as such, I made
+'  some rookie mistakes. Also, it was coded using just the off-line Microsoft
+'  documentation that comes with WSH when you download it. This doc is mostly
+'  of a reference nature, there is not much in the way of a User Guide.
+'  Specifically, variable names don't conform to any set standard.
+'  I may have been a bit sloppy on variable scopes.
+'  There is no error handling
+'  I probably don't release all objects when I'm done with them. I do
+'  release some, but added this after the fact.
+'In manual mode, there is no constant status window on the screen while the
+'  file copies are in progress. This is because I don't know how to do
+'  this in WSH with VBScript. I'm pretty sure it's not even possible.
+'  WSH was intended for non-interactive scripts.
+'The NTFS file system supports compressed folders and files. WSH scripts
+'  are not allowed to create new compressed directories. They also can not
+'  change the compression attribute of an existing directory. As a result,
+'  the only way to have this script create compressed backups under NTFS
+'  is to have the entire drive compressed. If this gets to be a problem, the
+'  script would have to be changed such that it no longer creates the main
+'  backup directory in the root of the drive, but instead creates it under
+'  a master, super compressed backup directory. It's do-able.
+'It might be useful to put this script in a directory of its own for two
+'  reasons. It keepts it segrated along with the log files and can avoid
+'  mistakenly backing up the script while its running
+'It might be useful to name the script with some ofthe parameters. For
+'  example a copy that runs in auto-ops mode might be MikesBkupAuto.vbs.
+'  Also daily backups might be called MikesBkupDaily while weekly
+'  backups called MikesBkupWeekly.
+'Windows 2000 users should consider backing up C:\WINNT\repair
+'Worst to Best uses of this script:
+' -Copy to the same hard disk as the source directories. If the hard
+'      disk fails you lose the originals and the backups
+' -Copy to a second hard disk on the same computer as the source files.
+'      If the computer is damaged or lost, you lose originals and bkups
+' -Copy to another computer on a LAN
+' -Copy to an external hard disk connected to your computer either via
+'    USB 1, USB 2.0, FireWire, pcmcia card or whatever
+' -Copy to a USB based keychain storage device
+' -Copy to a CD-RW disc (either on the same or different computer). This
+'     allows removing the backup disc and storing it off-site. Note that
+'     the max capacity of a CD-RW disc used this way is about 550 meg.
+'     Requires use of Direct-CD software to initially format the CD-RW disc.
+' -Copy to an on-line data storage. Only good if you have both a high speed
+'     net connection and a backup service that appears to your computer as
+'     just another disk drive.
+' -Copy to a CD-R disc. As far as I know this is not possible without using
+'     special software to write the files to the CD-R disc.
+'When the log file says the script has finished, this is not completely true.
+'  The log file is created in the directory that the script is running from.
+'  After the log file is closed, it is copied to the main backup directory.
+'  Needless to say,this final log copy should not be done with the log file
+'  open. It can't audit activity on itself.
+'There may be a bug in WSH v5.6. I have seen a network drive reported as using
+'  the FAT file system when I'm pretty sure it was using FAT32. Local drives
+'  that use FAT32 are correctly reported as doing so.
+'There seems to be another bug in WSH v5.6. The operating system displays
+'  as Windows_NT when running under Windows 2000.
+
+
+'-----------------------------------------------------------------
+'          INTRO --  WHAT THIS SCRIPT DOES
+'-----------------------------------------------------------------
+'This script backs up directories/folders. This script should be of use
+'to people who need to back up files in multiple directories. You specify
+'a list of directories to be backed up and the drive letter where the
+'backups should reside. All the backups reside in a single backup
+'directory. The name of the directory was chosen to make its purpose
+'and creation date/time clear.
+'
+'Additional doc on this script is available on the web at:
+'   www.michaelhorowitz.com/backupscript.html
+'
+'-----------------------------------------------------------------
+'               DETAILED SPECS
+'-----------------------------------------------------------------
+'This script backs up directories (aka folders). It does not back
+'  up individual files as I had no need for that. It backs up any
+'  number of directories, each one has to be specified below as a
+'  member of the sourcefolders array.
+'This script logs its activity to a plain text log file. The log
+'  file name is MikeBkup_Log_mmmdd.yyyy_hh.mm.txt. A copy of the
+'  log is written to the directory the script is running out of.
+'  An additional copy is written to the backup directory.
+'All backed up directories reside in a single folder. The disk
+'  drive where the folder is created is determined by the value
+'  of the outputdrive variable. The directory name is
+'  MikeBkup_Full_mmmdd.yyyy_hh.mm
+'  Currently all backups are full backups, no incrementals.
+'The backup is done using plain vanilla Windows file copy. No
+'  special software is needed to view/use the backup files.
+'With auto-operations mode OFF, before any copies are made
+'  the user is presented with a message box
+'  that shows the total number of bytes to be backed up and
+'  the available free space on the output disk drive. It also shows
+'  the output drive letter, its volume name and file system.
+'  No backups are made until the user clicks Yes to this message.
+'Even with auto-ops mode OFF, the user sees nothing while a
+'  directory is being copied. After a directory has been copied,
+'  a message is displayed for a couple seconds that shows the
+'  directory name and the time taken to back it up.
+'When all directories have been copied, the user is put into Notepad
+'  to view the log file (if auto-ops mode is OFF)
+'Directory names and structure are not perfectly preserved in the
+'  backup copy, but this was done to make it easier to read.
+'  For an explanation and example, see the doc on the web site.
+'
+'-----------------------------------------------------------------
+'               BELLS AND WHISTLES
+'-----------------------------------------------------------------
+'After a folder has been copied, the total elapsed seconds for the
+'  copy is calculated. If the copy took at least 4 seconds, then the
+'  speed of the copy operation is calculated. Small directories are
+'  ignored on purpose because the sample size is too small to produce
+'  useful speed numbers. The speed of the backup is shown as both
+'  bytes/second and MegaBits/second. The first number is useful as a
+'  point of comparison when backing up from and to a local hard disk.
+'  The second number is useful when backing up a computer on your LAN.
+'  Are you really getting the 10 MegaBits/second the LAN was advertised
+'  as being capable of? Probably not. Both these rates are externalized
+'  in the log file.
+'After copying all the source directories, the freespace on the output
+'  disk drive is re-examined. This is done to compare the number of
+'  bytes that should have been needed for the backup to the actual
+'  number of bytes used. The bytes used is taken from the difference in
+'  the amount of free space on the output drive before and after the copy
+'  operation. This calculation gives you some idea of the wasted space
+'  due to poor cluster sizes. This waste/overhead will vary depending on
+'  the file system and the partition size. The worst case is a FAT
+'  partition of 2 gigabytes. I once ran a copy of 219 Megabytes of data
+'  to a disk drive that had 278 free Megabytes. The copy got only halfway
+'  though before running out of space due to extreme cluster size waste.
+'
+
+
+'**************************************************************
+'                    Common objects
+'**************************************************************
+ set fso = CreateObject("Scripting.FileSystemObject")
+ Dim myNetworkObj
+ Set myNetworkObj = Wscript.CreateObject("Wscript.Network")
+ Dim TotalInputBytes   ' total size of all input folders
+ TotalInputBytes = 0
+ Set shellobj = CreateObject("Wscript.Shell")
+ AutoOpMode = LCase(AutoOpMode)       'Force lower case
+ SystemLogging = LCase(SystemLogging) 'Force lower case
+
+
+'********************************************************************
+'     Log the fact that the script started to the system log
+'********************************************************************
+ Dim temp   're-used alot but only with a short duration of validity
+ temp = "Script: " & Wscript.Scriptname &" started"&vbCRLF& "Run by user: " &_
+   myNetworkObj.UserName &vbCRLF& "From: " & Wscript.ScriptFullName &vbCRLF&_
+   "Controlling Parameters: "               &vbCRLF&_
+   "  AutoOpMode: "&       AutoOpMode       &vbCRLF&_
+   "  OutputDrive: "&      OutputDrive      &vbCRLF&_
+   "  OutputFilePrefix: "& OutputFilePrefix &vbCRLF&_
+   "  MinBkupsToKeep: "&   MinBkupsToKeep   &vbCRLF&_
+   "  MinDaysToKeep: "&    MinDaysToKeep    &vbCRLF&_
+   "  SystemLogging: "&    SystemLogging    &vbCRLF&_
+   "  Comment: "& LogComment
+ If SystemLogging <> "no" Then
+    ShellObj.LogEvent 4, temp  'Type four is an Informational message
+ End If
+
+
+'********************************************************************
+'            Create the activity log file
+' Its created in the directory where the script is running
+' File name is  MikeBkup_Log_mmmdd.yyyy_hh.mm.txt
+' The hours and minutes are putzed with so they are always 2 digits
+'********************************************************************
+ tempdate = now()
+ dim filenamedate  'format is _mmmdd.yyyy_hh.mm
+ filenamedate = MonthName(DatePart("m",tempdate), True) 'abbreviated month name
+ filenamedate = "_" & filenamedate & DatePart ("d",tempdate) &_
+      "." & DatePart ("yyyy",tempdate) & "_"
+ temp = DatePart ("h",tempdate)
+ If temp < 10 Then temp = "0" & temp
+ filenamedate = filenamedate & temp & "."  'hour as hh
+ temp =  DatePart ("n",tempdate)
+ If temp < 10 Then temp = "0" & temp
+ filenamedate = filenamedate & temp        'minutes as mm
+ logfilename = OutputFilePrefix & "_Log" & filenamedate & ".txt"
+ set logfileobj = fso.createtextfile(logfilename,true)
+
+
+ '**************************************************************
+ ' Write out some environmental information
+ '**************************************************************
+ logfileobj.WriteLine "*** Mike's backup script started at: " &now()& " ***"&vbCrLf
+ logfileobj.WriteLine "Script: " & Wscript.Scriptname &"  Version 2.11 "
+ logfileobj.WriteLine "Environment:"
+ Set WshSysEnv = Shellobj.Environment("SYSTEM")
+ logfileobj.WriteLine "  OS: " &   WshSysEnv("OS") &_
+                      "  Computer: " & myNetworkObj.ComputerName &_
+                      "  User: " &  myNetworkObj.UserName &_
+                      "  WSH version: " & Wscript.Version
+ set myNetworkObj = Nothing       ' let my object go
+ Set WshSysEnv    = Nothing
+ logfileobj.WriteLine "Running from: " & Wscript.ScriptFullName &" by "& Wscript.Application
+ logfileobj.WriteLine "Comment: "  &  LogComment
+ logfileobj.WriteLine "Controlling parameters:"
+ logfileobj.WriteLine "  AutoOpMode="& AutoOpMode & " MinBkupsToKeep="& MinBkupsToKeep &_
+                       " MinDaysToKeep=" & MinDaysToKeep &_
+                       " OutputFilePrefix=" & OutputFilePrefix
+ logfileobj.WriteLine "  OutputDrive=" & OutputDrive & " SystemLogging=" & SystemLogging
+
+
+
+'**************************************************************
+' Write out information about input folders
+' Write each ones name and size to the log file
+' Also log the total space needed to backup all input folders
+'**************************************************************
+  logfileobj.WriteLine "Input Folders to be copied:"
+  Dim ifobj,indx2  ' Input Folder object, an index to the array
+  For indx2 = 0 to UBound(sourcefolders, 1) 'fixed in v2.11, no more -1
+    Set ifobj =  fso.GetFolder(sourcefolders(indx2))
+    logfileobj.WriteLine "  "& sourcefolders(indx2) &" "&FormatNumber(ifobj.Size/1048576, 1)&" Megabytes"
+    TotalInputBytes = TotalInputBytes + ifobj.Size
+    Set ifobj = Nothing
+  Next     'ifobj.Drive&"\"&ifobj.Name did not work well when copying from local dir
+  Dim neededspace
+  neededspace = FormatNumber(TotalInputBytes/1048576, 1) & " Megabytes"
+  logfileobj.WriteLine "  Total size of input folders " & neededspace
+
+
+'****************************************************************************
+'             Chose an output disk drive
+'                       and
+'        Determine whether to make backups at all
+'-----------------------------------------------------------------------------
+'The following two routines set two important variables that are used later
+'OutputDrive is the disk drive where the output backups are written
+'ToCopyOrNotToCopy is the flag for whether to take backups or not
+'It also has to set variables OutDrvObj and OutDrvFspc
+'****************************************************************************
+  Dim Drv,DrvType,DrvFspc,DrvTotSpc,DrvName,strDriveMsg,ToCopyOrNotToCopy
+  Dim OutDrvObj     ' output drive object
+  Dim OutDrvFspc    ' output drive freespace
+'-----------------------------------------------------------------------------
+' Chose output disk drive for manual mode
+'   Show the user free space info on all available disk drives
+'   Let user pick a drive letter  (default is config variable OutputDrive)
+'   If user clicks Cancel button, then don't take any backups at all
+'------------------------------------------------------------------------------
+  If AutoOpMode <> "yes" Then   'manual mode
+    logfileobj.WriteLine "Available disk drives:"
+    For each Drv in fso.Drives
+      If Drv.IsReady Then  'ignore drives that are not ready
+        Select Case Drv.DriveType
+            Case 0: DrvType = "Unknown"
+            Case 1: DrvType = "Removable"
+            Case 2: DrvType = "Fixed"
+            Case 3: DrvType = "Network"
+            Case 4: DrvType = "CD-ROM"
+            Case 5: DrvType = "RAM Disk"
+        End Select
+        If Drv.DriveType=4 Then  'cdrom
+ 	  DrvFspc="N/A"
+        ElseIf Drv.FreeSpace<1024^2 Then
+	  DrvFspc=FormatNumber(Drv.FreeSpace/1024,0)&" KB"
+        ElseIf Drv.FreeSpace<10240^2 Then
+ 	  DrvFspc=FormatNumber(Drv.FreeSpace/(1024^2),2)&" MB"
+        Else
+ 	  DrvFspc=FormatNumber(Drv.FreeSpace/(1024^2),0)&" MB"
+        End If
+        If Drv.TotalSize<1024^2 Then
+ 	   DrvTotSpc=FormatNumber(Drv.TotalSize/1024,0)&" KB"
+        ElseIf Drv.TotalSize<10240^2 Then
+ 	   DrvTotSpc=FormatNumber(Drv.TotalSize/(1024^2),2)&" MB"
+        Else
+ 	   DrvTotSpc=FormatNumber(Drv.TotalSize/(1024^2),0)&" MB"
+        End If
+        If Drv.VolumeName="" Then
+           DrvName="(None)"
+        Else
+           DrvName=Drv.VolumeName
+        End If
+        strDriveMsg=strDriveMsg&"Drive "& Drv.DriveLetter &_
+ 	   ": "&DrvName &vbTab &_
+ 	   "Free Space: " & DrvFspc &vbCRLF  'Build input box message
+ 	logfileobj.WriteLine "  "& Drv.DriveLetter &" - "& DrvName &" "&_
+ 	   " Free Space: " & DrvFspc  &" Total Space: "& DrvTotSpc &" " &_
+ 	   Drv.FileSystem &" "&DrvType
+      End If
+    Next 'next Drv in fso.Drives collection
+    strDriveMsg="Space needed for backups: "& neededspace &vbCrLf&vbCrLf& strDriveMsg
+    Dim InputDrive
+    InputDrive = InputBox (strDriveMsg  &vbCRLF& "Enter desired output drive letter " &vbCRLF&_
+       "  (enter a single character, no colon or slash) "  &vbCRLF&_
+       "To skip backup entirely, click Cancel button", _
+       "Select Output Disk Drive Letter", OutputDrive)
+    If InputDrive = "" Then         'User clicked the Cancel button
+         ToCopyOrNotToCopy = vbNo
+    Else
+         ToCopyOrNotToCopy = vbYes  'take the backups
+         OutputDrive = InputDrive   'and use drive letter user input
+         logfileobj.WriteLine "Backing up to -" & OutputDrive & "- drive per user input"
+    End If
+    Set OutDrvObj = fso.GetDrive(OutputDrive)   'output drive object
+    OutDrvFspc = OutDrvObj.FreeSpace
+  End If                            'End manual mode disk drive selection
+'-----------------------------------------------------------------------------
+' Chose output disk drive for AutoOps mode
+'   Not much to chose, always use the value of config variable OutputDrive
+'   Always make backups too (should eventually test if output drive has enough fspc
+'   Log the total space available on this disk drive
+'-----------------------------------------------------------------------------
+   If AutoOpMode = "yes" Then
+     ToCopyOrNotToCopy = vbYes   'In auto-op mode, always make a backup
+     Set OutDrvObj = fso.GetDrive(OutputDrive)
+     OutDrvFspc = OutDrvObj.FreeSpace
+     logfileobj.WriteLine "Output drive: (from controlling parameter OutputDrive)"
+     Select Case OutDrvObj.DriveType
+        Case 0: DrvType = "Unknown"
+        Case 1: DrvType = "Removable"
+        Case 2: DrvType = "Fixed"
+        Case 3: DrvType = "Network"
+        Case 4: DrvType = "CD-ROM"
+        Case 5: DrvType = "RAM Disk"
+     End Select
+     logfileobj.WriteLine "  " & OutputDrive & " " & OutDrvObj.VolumeName &_
+        "(" & DrvType & ") " & OutDrvObj.FileSystem &" "& OutDrvObj.ShareName &_
+        " Total Size: " & FormatNumber(OutDrvObj.TotalSize/1048576, 0) & " Megabytes" &_
+        " Free Space: " & FormatNumber(OutDrvObj.FreeSpace/1048576, 1) & " Megabytes"
+   End If    'End auto-ops mode disk drive selection
+
+
+
+ '***************************************************************
+ '             To Copy or Not To Copy
+ '***************************************************************
+ 'Comment added May 5, 2005
+ 'Note: If you want to send the output backups to a folder rather than to the
+ 'root of the output disk drive, change the line below that assigns a value to
+ 'the outfoldername variable and add your desired folder name after the ":\"
+ 'For example:
+ 'outfoldername = OutputDrive & ":\MyBackups\" &  etc. etc.
+ '---------------------------------------------------------------
+  If ToCopyOrNotToCopy = vbNo Then       ' this was set by the code just above
+    logfileobj.WriteLine vbCRLF & "BACKUP OPERATION BYPASSED BY USER"
+  Else					 ' same variable used for the log file name/timestamp
+    dim outfoldername                    ' date format is mmmdd.yyyy_hh.mm
+    outfoldername = OutputDrive & ":\" & OutputFilePrefix & "_Full" & filenamedate
+    set tempfolder = fso.CreateFolder(outfoldername)
+    logfileobj.WriteLine "Created output folder " & tempfolder.Path
+    set tempfolder = Nothing
+    logfileobj.WriteLine "Copy starting..."
+    Dim outfileobj
+    CopyAllFolders()     'Do the copy!
+  End If
+
+
+'******************************************************************
+'         Deal with backup generations
+'******************************************************************
+' Look for existing generations of backup folders on output Drive
+' If NOT auto-op mode, tell the user this is happening
+'------------------------------------------------------------------
+  dim outmsg3, BkupGenCount
+  logfileobj.WriteLine vbCrLf&"Searching for existing backup folders . . . "
+  logfileobj.WriteLine "  looking in root of " & OutputDrive &_
+                       " disk for directories starting with " & OutputFilePrefix
+  If ToCopyOrNotToCopy = vbNo Then
+      outmsg3 = "Backup operation BYPASSED" &vbCRLF& "Listing existing backup folders"
+  Else
+      outmsg3 = "Backup complete" &vbCRLF& "Searching for existing backup folders"
+  End If
+  If AutoOpMode <> "yes" Then
+     shellobj.Popup outmsg3, 2, "Reviewing old backups . . ."
+  End If
+  BkupGenCount= 0                 'The number of backup generations found
+  rootfold = OutDrvObj.RootFolder 'Root folder from output drive object
+  CountBackups(rootfold)          'Count the number of backup generations and log them
+
+
+'***********************************************************************
+'    Accumulate all the existing backup generations into an array
+'***********************************************************************
+'This is done to aid in deleting the old generations
+'Only do this in Auto-Op mode when there is more than one
+'  generation of backups
+'Accumulate the array, then sort it by the age of the backup,
+'  then skip the first MinBkupsToKeep generations of backup.
+'On whatever is left, see if it is older than MinDaysToKeep days.
+'If yes, it's the weakest link. Goodbye.
+'------------------------------------------------------------------
+  If AutoOpMode<>"yes" Then
+     logfileobj.WriteLine "Did not attempt to delete old backups because auto-op mode is off."
+  ElseIf  BkupGenCount=0 Then
+     logfileobj.WriteLine "Did not attempt to delete old backups because none were found."
+  End If
+  If (AutoOpMode<>"yes") or (BkupGenCount=0) Then
+        BkupGenCount = BkupGenCount   'A fudged no-op
+  Else
+   Dim BkupGenerations()
+   ReDim BkupGenerations(BkupGenCount-1)
+   AccumBkupGens(rootfold)   ' Build array of all the existing backup generations
+  '                 The array BkupGenerations is now fully populated, but unsorted
+  '                 Next up: sort it by the age of each backup generation
+  '                 Note: VBScript has no sort function,Jscript does.Had I only known.
+   If BkupGenCount > 1 Then    'only sort if the array has at least 2 elements
+      Dim outer, inner
+      For outer = 0 to BkupGenCount-2      'from first element to next-to-last element
+      For inner= outer+1 to BkupGenCount-1 'end at last array element
+        If BkupGenerations(inner) < BkupGenerations(outer) Then 'switch them
+            temp = BkupGenerations(inner)
+            BkupGenerations(inner) = BkupGenerations(outer)
+            BkupGenerations(outer) = temp
+        End If
+      Next
+      Next
+   End If
+ '***********************************************************************
+ '              Delete old backup generations
+ '***********************************************************************
+ 'Are there more backup generations than the minimum required?
+ '  If yes, start looking to prune them old backup generations
+ 'BkupGenerations array is now sorted by the age of the backup which is the
+ '   first 4 characters of each elements
+ 'The newest backups are at the beginning of the array, so simply skiping the first
+ '  MinBkupsToKeep elements of the array when looking to delete stuff will honor
+ '  the directive to keep that many generations no matter what
+ 'The loop ends at the end of the BkupGenerations array
+ 'The loop starts with generation MinBkupsToKeep plus one
+ 'Vesion 2.6--added force option to DeleteFolder command. It uses a boolean value of
+ '   True to indicate that force should be used.
+ '----------------------------------------------------------------------------------
+   If BkupGenCount > MinBkupsToKeep Then
+      Dim indx, age4, forceit, DelCounter
+      DelCounter = 0  'Count of deleted backup generations
+      logfileobj.WriteLine "Examining old backups for possible deletion..."
+      For indx = MinBkupsToKeep To BkupGenCount-1
+        age4 = Left(BkupGenerations(indx),4) 'strip off the 4 digit age of bkup
+        age4 = CLng(age4)                    'convert string to number (long)
+        If age4 > MinDaysToKeep Then
+           logfileobj.WriteLine "  Deleting " & Mid(BkupGenerations(indx),5) &_
+                 " It is "& FormatNumber(age4,0) & " days old. Limit is " &_
+                 MinDaysToKeep &" days"
+           forceit = CBool(-1)  ' a TRUE boolean variable
+           fso.DeleteFolder Mid(BkupGenerations(indx),5), forceit 'Delete backup folder
+           DelCounter = DelCounter + 1   'Count of deleted backup generations
+        End If
+      Next
+      logfileobj.WriteLine "Examination complete, "& DelCounter &" backup generations deleted."
+   Else
+      logfileobj.WriteLine "Did not attempt to delete old backups because minimum " &_
+                           "generations not yet exceeded"
+   End If
+  End If
+
+
+'**************************************************************
+'                   Closing up shop
+'**************************************************************
+ logfileobj.WriteLine vbCrLf&"*** Mike's backup script ended at: " & now() & " ***"
+ logfileobj.WriteLine        "   (Programmed by Michael Horowitz)"
+ logfileobj.WriteLine        "   (www.michaelhorowitz.com/backupscript.html)"
+ logfileobj.close   'close the log file
+ Set logfileobj = Nothing
+'If a backup was made, then copy the log file to the main output directory
+ If (fso.FolderExists(outfoldername)) Then 'only copy if the folder exists
+    If ToCopyOrNotToCopy = vbYes Then      'only copy if we made a backup
+      Set logfileobj = fso.GetFile(logfilename)      'create a File object
+      logfileobj.Copy(outfoldername&"\"&logfilename) 'copy log file to output directory
+      Set logfileobj = Nothing
+    End If
+ End If
+
+
+'********************************************************************
+'                    Dat's All Folks
+'If NOT auto-ops mode, then put the user in browse on the log file
+'Log the fact that the script ended to the system log
+'********************************************************************
+ If AutoOpMode <> "yes" Then
+     shellobj.Run "%windir%\notepad " & logfilename
+ End If
+ temp = "Script: " & Wscript.Scriptname &" ended"&vbCRLF&vbCRLF &_
+    "Run from: " & Wscript.ScriptFullName
+ If SystemLogging <> "no" Then
+    ShellObj.LogEvent 4, temp  'Type four is an Informational message
+ End If
+'Wscript.Quit
+
+
+'==============================================================
+'==============================================================
+'                SUBROUTINES
+'==============================================================
+'==============================================================
+
+
+'**************************************************************
+'  Copy all folders by looping thru the list of source folders
+'**************************************************************
+sub CopyAllFolders()
+ Dim indx3  ' new in v2.10
+ For indx3 = 0 to UBound(sourcefolders, 1) 'fixed in v2.11, no more -1
+     copy1folder(sourcefolders(indx3))   ' GUTS of issue
+ Next
+'Below is the code that suffered from the bug fixed in v2.10
+'For Each singleelement In sourcefolders
+'    copy1folder(singleelement)
+'Next
+ logfileobj.WriteLine "Copy completed."   'Finished copying all folders
+ Dim OutDrvFspcAfter
+ OutDrvFspcAfter = OutDrvObj.FreeSpace
+ logfileobj.WriteLine "Output Drive Freespace: Before " & FormatNumber(OutDrvFspc/1048576, 1) &_
+     " After: " & FormatNumber(OutDrvFspcAfter/1048576, 1)
+ logfileobj.WriteLine "Backups that should have used " & FormatNumber(TotalInputBytes/1048576, 1) &_
+     " Megabytes, actually used " & FormatNumber((OutDrvFspc-OutDrvFspcAfter)/1048576, 1)  &_
+     " Megabytes"
+ If ((OutDrvFspc-OutDrvFspcAfter)-TotalInputBytes) > 5242880 Then '5 Megabytes=5242880
+    logfileobj.WriteLine "   Note: look into cluster waste on " & OutDrvObj.FileSystem &_
+    " " & OutputDrive & " drive"
+ End If
+end sub
+
+'**************************************************************
+'       Copy a single source folder to back it up
+'**************************************************************
+sub copy1folder(parm2)       'parameter looks like "C:\WINNT\repair"
+  dim starttime, endtime, elapsecs, copytofolder, lenless3, tempfolder
+  set thisFolder = fso.GetFolder(parm2)  'folder object for a source folder
+  lenless3 = Len(parm2) - 3              'there is no substrng in vbscript
+  copytofolder = Right(parm2,lenless3)   'strip off leading driveletter,colon,slash
+  copytofolder = Replace(copytofolder, "\", "__" , 1, -1)  'replace slashes to force 1 level
+  copytofolder = outfoldername & "\" & copytofolder
+  set tempfolder = fso.CreateFolder(copytofolder)    'create the output bkup folder
+  starttime = now()                        'Note when the copy started
+  logfileobj.WriteLine " Start "&parm2&" "&starttime&" "&FormatNumber(thisFolder.size,0) & " bytes"
+
+  thisFolder.Copy(copytofolder)            ' COPY!!
+
+  endtime = now()                                  'Note when copy ended
+  elapsecs = DateDiff("s", starttime, endtime)     'secs twixt start time and end time
+  logfileobj.WriteLine "   End " & parm2 & " " & endtime & " " & elapsecs & " seconds to copy"
+  If elapsecs > 3 Then         ' dont bother doing this for very small folders
+    logfileobj.WriteLine "       Speed of copy: " & FormatNumber((thisFolder.size/elapsecs),0) &_
+             " bytes/second "  &_
+             FormatNumber((((thisFolder.size/elapsecs)*8)/1048576),1) & " MegaBits/second"
+  End If
+  Set thisFolder = Nothing
+  Set tempfolder = Nothing
+  If AutoOpMode <> "yes" Then     'Show user status if not in auto-ops mode
+     shellobj.Popup "Copied "&parm2&" in "&elapsecs&" seconds", 3, "One Dir Down"
+  End If
+end sub
+
+
+
+'*******************************************************************
+' Loop thru the backups on the output disk drive a second time
+'*******************************************************************
+' Accumulate the backup generations in array BkupGenerations
+' The array really should be two dimensional as it contains two data
+'   items for each backup generation, the name and age. However, I
+'   denormalized it into a single dimension array where each element
+'   starts with a four digit age and is immediately followed by the
+'   full name of the directory which contains the backup generation.
+'   Its just easier to deal with this way, especially for sorting.
+'   Sample array elements: 0012F:\somedir
+'                          0002C:\otherdir
+' Note: if there is ever a folder that is more than 9,999 days old
+'   (27 years and change) this routine won't work correctly.
+'   Waddya want for a free program.
+'--------------------------------------------------------------------
+sub AccumBkupGens(parm2)
+  set thisFolder = fso.GetFolder(parm2)  'folder object
+  set subfoldcol = thisFolder.SubFolders 'subfolder collection
+  dim ArrayIndex, age, PrefixLen
+  ArrayIndex = 0
+  PrefixLen = Len(OutputFilePrefix)
+  For each onefolder in subfoldcol
+    If Len(onefolder.name)>PrefixLen and Left(onefolder.name,PrefixLen)=OutputFilePrefix Then
+       age = DateDiff("d",onefolder.DateCreated,Now)
+       If Len(age) = 1 Then age = "000" & age
+       If Len(age) = 2 Then age = "00"  & age
+       If Len(age) = 3 Then age = "0"   & age
+       BkupGenerations(ArrayIndex) = age&onefolder.path
+       ArrayIndex = ArrayIndex + 1
+    End If
+  Next
+  set thisFolder = Nothing
+  set subfoldcol = Nothing
+end sub
+
+'*************************************************************************************
+' Count the number of backups that are on the output disk volume
+' Pattern matched key used to be a folder starting with "MikeBkup_"
+' Pattern matched key is now a folder starting with OutputFilePrefix
+' This is done to Dim the array where they will be stored
+' Also, write the name, size and creation date to the log file
+'-----------
+'Auto-deletion of old backup generations posed a technical problem. I wanted
+'  to create an array with all the backups in it and apply the auto-delete
+'  rules to the array. The problem was the VBScript does not allow arrays to
+'  be dynamically sized. They are normally declared with a fixed number of
+'  elements. That declaration can not be done with a variable, it must be
+'  done with a numeric literal. It does allow sort-of dynamic arrays, that
+'  are declared without a size. Before you can add elements to the array
+'  however, you have to ReDim it with a fixed size. Luckily, the ReDim
+'  statement takes a variable as input. However, this means I have to first
+'  count every backup generation before I can store them in an array. I could
+'  have declared the array with a large number of elements, but this is both
+'  wasteful and an accident waiting to happen when there are too many elements.
+'  moved this comment here January 14, 2005
+'*************************************************************************************
+ sub CountBackups(parm1)
+     set thisFolder = fso.GetFolder(parm1)
+     set subfoldcol = thisFolder.SubFolders
+     Dim PrefixLen
+     PrefixLen = Len(OutputFilePrefix)
+     For each onefolder in subfoldcol
+       If Len(onefolder.name)>PrefixLen and Left(onefolder.name,PrefixLen)=OutputFilePrefix Then
+          BkupGenCount= BkupGenCount+ 1
+          logfileobj.WriteLine "  "& onefolder.path & " (" &_
+                FormatNumber(onefolder.Size/1048576, 1)&" Meg) "&onefolder.DateCreated
+       End If
+     Next
+     set thisFolder = Nothing
+     set subfoldcol = Nothing
+     logfileobj.WriteLine "Search completed"
+ end sub
+
+'*******************************************************************
+' Programmed by Michael Horowitz    michael@michaelhorowitz.com
+'*******************************************************************

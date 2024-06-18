@@ -1,0 +1,258 @@
+<html><head>
+<title>Solution for /arithmetic/digits/equations/find</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/digits/equations/find problem</h1>
+<hr>
+As set up, it requires recompilation for different sets of numbers;
+it's currently set up for 8,8,3,3; to try in other numbers, stick 'em
+in the 'val' array.  To find all target numbers for which the equation
+is valid, uncomment the 't' loop and 'target = t', and extend the range
+to be checked... you might want to turn off VERBOSE.  I don't bother
+with eliminating symmetries if equal vals are given (like 8 8 3 3), so
+I normally use it like
+
+<pre>
+   numop 24 | sort | uniq
+</pre>
+
+As it stands, this gives the output:
+
+<pre>
+8 / (3 - (8 / 3)) = 24.0
+8 / (3 - (8 / 3)) = 24.0
+8 / (3 - (8 / 3)) = 24.0
+8 / (3 - (8 / 3)) = 24.0
+</pre>
+
+As you can see, there are five different kinds of binary trees with
+exactly four leaf nodes.  The program tries all four operators in each
+place, and all four values in each of the leaves, guaranteeing that each
+is used only once... a fairly quick operation.  A small extract from
+'numop 1' shows the five different shapes of trees:
+
+<pre>
+((3 * 8) / 3) / 8 = 1.0
+(3 * (8 / 3)) / 8 = 1.0
+(3 - 3) + (8 / 8) = 1.0
+3 * ((8 / 3) / 8) = 1.0
+3 * (8 / (3 * 8)) = 1.0
+</pre>
+
+Probably FUDGE ought to be set a little lower, for more confidence that
+the equality isn't fortuitous.  Extensions to other binary operators are
+obvious; unary operators and more values are not.  For a more general
+problem I'd go recursive, use exact rational arithmetic, and have a fine
+old time.
+
+<p>
+Enjoy...
+
+<pre>
+   Jim Gillogly &lt;uunet!rand.org!James_Gillogly&gt;
+   21 Wedmath S.R. 1993, 10:58
+</pre>
+<hr>
+
+<pre>
+/* numop: using elementary operations on 4 numbers, find a
+ * desired result; e.g. 24.
+ *
+ * Don't worry about symmetries resulting in multiple correct answers.
+ *
+ * 11 Aug 93, SCRYER
+ */
+
+#include &lt;stdio.h&gt;
+
+#define VERBOSE
+
+
+#define MUL 0
+#define DIV 1
+#define ADD 2
+#define SUB 3
+
+#define FUDGE 0.01
+
+float val[4] = {8, 8, 3, 3};
+float eval(), atof(), fabs();
+char nameop();
+
+int divzero;
+
+main(argc, argv)
+int argc;
+char *argv[];
+{
+    int op1, op2, op3;
+    int iv1, iv2, iv3, iv4;
+    int used[4];
+    int i;
+    float target;
+    float e1, e2, e3;
+    int t, winner;
+
+    if (argc != 2)
+    {
+	fprintf(stderr, "Usage: numop &lt;target&gt;\n");
+	exit(1);
+    }
+    target = atof(argv[1]);
+
+
+/* for (t = -1000; t &lt; 1000; t++) */
+ {
+/*    target = t;*/
+    winner = 0;
+
+    for (i = 0; i &lt; 4; i++) used[i] = 0;
+
+    for (op1 = 0; op1 &lt; 4; op1++)
+	for (op2 = 0; op2 &lt; 4; op2++)
+	    for (op3 = 0; op3 &lt; 4; op3++)
+		for (iv1 = 0; iv1 &lt; 4; iv1++)
+		{
+		    used[iv1] = 1;
+		    for (iv2 = 0; iv2 &lt; 4; iv2++)
+		    {
+			if (used[iv2]) continue;
+			used[iv2] = 1;
+			for (iv3 = 0; iv3 &lt; 4; iv3++)
+			{
+			    if (used[iv3]) continue;
+			    used[iv3] = 1;
+			    for (iv4 = 0; iv4 &lt; 4; iv4++)
+			    {
+				if (used[iv4]) continue;
+
+				/* Case 1 */
+				divzero = 0;
+				e3 = eval(op3, val[iv3], val[iv4]);
+				e2 = eval(op2, val[iv1], val[iv2]);
+				e1 = eval(op1, e2, e3);                         /* (u + v) * (w - x) */
+				if (fabs(e1 - target) &lt; FUDGE &amp;&amp; ! divzero)
+#ifdef VERBOSE
+				    printf("(%.0f %c %.0f) %c (%.0f %c %.0f) = %.1f\n",
+					val[iv1], nameop(op2), val[iv2], nameop(op1),
+					val[iv3], nameop(op3), val[iv4], e1);
+#else
+				    winner = 1;
+#endif
+				/* Case 2 */
+				divzero = 0;
+				e3 = eval(op3, val[iv1], val[iv2]);
+				e2 = eval(op2, e3, val[iv3]);
+				e1 = eval(op1, e2, val[iv4]);                   /* ((u + v) * w) - x */
+				if (fabs(e1 - target) &lt; FUDGE &amp;&amp; ! divzero)
+#ifdef VERBOSE
+				    printf("((%.0f %c %.0f) %c %.0f) %c %.0f = %.1f\n",
+					val[iv1], nameop(op3), val[iv2], nameop(op2), val[iv3], nameop(op1), val[iv4], e1);
+#else
+				    winner = 1;
+#endif
+
+				/* Case 3 */
+				divzero = 0;
+				e3 = eval(op3, val[iv2], val[iv3]);
+				e2 = eval(op2, val[iv1], e3);
+				e1 = eval(op1, e2, val[iv4]);                   /* (u + (v * w)) - x */
+				if (fabs(e1 - target) &lt; FUDGE &amp;&amp; ! divzero)
+#ifdef VERBOSE
+				    printf("(%.0f %c (%.0f %c %.0f)) %c %.0f = %.1f\n",
+					val[iv1], nameop(op2), val[iv2], nameop(op3), val[iv3],
+					nameop(op1), val[iv4], e1);
+#else
+				    winner = 1;
+#endif
+
+				/* Case 4 */
+				divzero = 0;
+				e3 = eval(op3, val[iv2], val[iv3]);
+				e2 = eval(op2, e3, val[iv4]);
+				e1 = eval(op1, val[iv1], e2);                   /* u + ((v * w) - x) */
+				if (fabs(e1 - target) &lt; FUDGE &amp;&amp; ! divzero)
+#ifdef VERBOSE
+				    printf("%.0f %c ((%.0f %c %.0f) %c %.0f) = %.1f\n",
+					val[iv1], nameop(op1), val[iv2], nameop(op3), val[iv3],
+					nameop(op2), val[iv4], e1);
+#else
+				    winner = 1;
+#endif
+
+				/* Case 5 */                                    /* u + (v * (w - x)) */
+				divzero = 0;
+				e3 = eval(op3, val[iv3], val[iv4]);
+				e2 = eval(op2, val[iv2], e3);
+				e1 = eval(op1, val[iv1], e2);
+				if (fabs(e1 - target) &lt; FUDGE &amp;&amp; ! divzero)
+#ifdef VERBOSE
+				    printf("%.0f %c (%.0f %c (%.0f %c %.0f)) = %.1f\n",
+					val[iv1], nameop(op1), val[iv2], nameop(op2), val[iv3],
+					nameop(op3), val[iv4], e1);
+#else
+				    winner = 1;
+#endif
+
+			    }
+			    used[iv3] = 0;
+			}
+			used[iv2] = 0;
+		    }
+		    used[iv1] = 0;
+		}
+#ifndef VERBOSE
+     if (winner) printf("%d\n", t), fflush(stdout);
+#endif
+  }
+}
+
+char nameop(op)
+int op;
+{
+    switch(op)
+    {
+	case MUL: return '*';
+	case DIV: return '/';
+	case ADD: return '+';
+	case SUB: return '-';
+    }
+    return '?';
+}
+
+float eval(op, val1, val2)
+int op;
+float val1, val2;
+{
+    switch(op)
+    {
+	case MUL: return val1 * val2;
+	case DIV:
+		if (val2 == 0.)
+		{
+			divzero = 1;
+#ifdef EXTREMELYVERBOSE
+			fprintf(stderr, "Division by zero.\n");
+#endif
+		}
+		return val2 == 0.? 0. : val1 / val2;
+	case ADD: return val1 + val2;
+	case SUB: return val1 - val2;
+    }
+    return 0.;
+}
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

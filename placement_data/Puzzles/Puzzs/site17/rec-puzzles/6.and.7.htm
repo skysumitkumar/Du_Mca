@@ -1,0 +1,62 @@
+<html><head>
+<title>Solution for /arithmetic/digits/6.and.7</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/digits/6.and.7 problem</h1>
+<hr>
+Yes.  My proof follows:
+
+<p>
+Claim 1: For every k, there is a k-digit number whose only digits
+are 6 and 7, which is divisible by 2^k.
+
+<p>
+The proof is by induction.  Suppose N is a k-digit number 
+satisfying the above condition.  Then either N = 0 (mod 2^(k+1))
+or N = 2^k (mod 2^(k+1)). Note that 6(10^k) = 0 (mod 2^(k+1)),
+and 7(10^k) = 2^k (mod 2^(k+1)).  So, either 6*10^k + N or
+7*10^k + N is divisible by 2^(k+1).
+
+<p>
+Claim 2:  If m and 10 are relatively prime, then for any r,
+there is a number N whose only digits are 6 and 7 such that
+N = r (mod m). 
+
+<p>
+Proof:  Let K be the (m^2)-digit number whose only digit is 6.
+There is an s, 0 &lt;= s &lt; m, so that K + s = r (mod m).
+Let N = K + 10^(m - 1) + 10^(2m - 2) + . . . + 10^(sm - s).
+Since 10^(im - i) = 1 (mod m), N = K + s (mod m) = r (mod m).
+Clearly, every digit of N is either 6 or 7. 
+
+<p>
+Claim 3: If n is not divisible by 5, then there is a number N whose
+only digits are 6 and 7, so that N is divisible by n. 
+
+<p>
+Proof:  We can write n = (2^k)m, with gcd(m,10)=1.
+Use claim 1 to find a k-digit number M, whose only digits are 6 and 7,
+which is divisible by 2^k.  Choose an integer r so that
+(10^k)r + M = 0 (mod m).  Use claim 2 to find a number K whose
+only digits are 6 and 7, so that K = r (mod m).  Let N = 10^k K + M.
+Then N = 0 (mod m) and N = 0 (mod 2^k), so N is divisible by n.
+Finally, the only digits of N are 6 and 7, so we are done.
+
+<pre>
+--
+David Radcliffe                                radcliff@csd4.csd.uwm.edu
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

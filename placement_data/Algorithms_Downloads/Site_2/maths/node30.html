@@ -1,0 +1,198 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Minimum Element Sort</TITLE>
+<META NAME="description" CONTENT="Minimum Element Sort">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node31.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node31.html">
+<LINK REL="previous" HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">
+<LINK REL="up" HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">
+<LINK REL="next" HREF="node31.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node31.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html749"
+  HREF="node31.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node31.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html743"
+  HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html737"
+  HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html745"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html747"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html750"
+  HREF="node31.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node31.html">Insertion Sort</A>
+<B> Up:</B> <A NAME="tex2html744"
+  HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">Two Simple Sorting Algorithms</A>
+<B> Previous:</B> <A NAME="tex2html738"
+  HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">Two Simple Sorting Algorithms</A>
+ &nbsp <B>  <A NAME="tex2html746"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html748"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00621000000000000000">
+Minimum Element Sort</A>
+</H2>
+
+<P>
+The recipe is as follows: go through the list and find the smallest element.
+Swap it with the first element of the list. Now find the smallest element
+of the rest of the list and swap it with the second element of the list.
+And so on.
+
+<P>
+Rather more formally: to sort <!-- MATH
+ $(x_1,\ldots,x_n)$
+ -->
+(<I>x</I><SUB>1</SUB>,..., <I>x</I><SUB>n</SUB>) into ascending order
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ for i = 1 to n-1 begin
+<BR>&nbsp;&nbsp;find smallest of <!-- MATH
+ $(x_{i},\ldots,x_{n})$
+ -->
+(<I>x</I><SUB>i</SUB>,..., <I>x</I><SUB>n</SUB>)
+<BR>&nbsp;&nbsp;swap with <I>x</I><SUB>i</SUB>
+<BR>
+end
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>Putting in all the details, we get:
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ algorithm minimumElementSort
+<BR>
+begin
+<BR>&nbsp;&nbsp;for i = 1 to n-1 begin
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;min = x(i)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;minp = i
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;for j = i+1 to n begin
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if x(j) &lt; min then begin
+<BR>&nbsp;min = x(j) 
+<BR>&nbsp;minp = j
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;end
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;t = x(i)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;x(i) = x(minp)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;x(minp) = t
+<BR>&nbsp;&nbsp;end
+<BR>
+end
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>
+<P>
+I think this method is obvious enough not to need a proof. 
+
+<P>
+The other concern is its efficiency. So let us consider the timing of
+the algorithm.  The most important part of the process is the repeated
+search for the extreme element. It can be shown that for <I>k</I> items
+this takes time roughly proportional to <I>k</I>. The other parts of the
+algorithm are of lower order.  Thus the overall running time for the
+algorithm (for reasonably large values of <I>n</I>) should be roughly
+proportional to
+<!-- MATH
+ \begin{displaymath}
+\sum_{i=1}^{n-1} (n-i) = \frac{n(n-1)}{2} \approx \frac{n^2}{2}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="28" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img62.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img62.gif"
+ ALT="$\displaystyle \sum_{i=1}^{n-1}$">(<I>n</I> - <I>i</I>) = <IMG
+ WIDTH="67" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img63.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img63.gif"
+ ALT="$\displaystyle {\frac{n(n-1)}{2}}$"> <IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img59.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img59.gif"
+ ALT="$\displaystyle \approx$"> <IMG
+ WIDTH="25" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img64.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img64.gif"
+ ALT="$\displaystyle {\frac{n^2}{2}}$">
+</DIV><P></P>
+We say that this is an <I>O</I>(<I>n</I><SUP>2</SUP>) sorting algorithm.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html749"
+  HREF="node31.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node31.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html743"
+  HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html737"
+  HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html745"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html747"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html750"
+  HREF="node31.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node31.html">Insertion Sort</A>
+<B> Up:</B> <A NAME="tex2html744"
+  HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">Two Simple Sorting Algorithms</A>
+<B> Previous:</B> <A NAME="tex2html738"
+  HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">Two Simple Sorting Algorithms</A>
+ &nbsp <B>  <A NAME="tex2html746"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html748"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

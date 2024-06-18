@@ -1,0 +1,860 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head profile="http://gmpg.org/xfn/1">
+	<title>  Interview questions on C/C++ &lt; TechInterviews.com</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css" media="screen">
+		@import url( "style.css");
+	</style>
+        <meta name="description" content="The site offers  as well as career tips and preparation guides for a job interview in the field. Interview questions for high-tech companies.">
+	<link rel="stylesheet" type="text/css" media="print" href="print.css" tppabs="http://www.techinterviews.com/print.css" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="-feed=rss2.htm" tppabs="http://www.techinterviews.com/?feed=rss2" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="-feed=rss.htm" tppabs="http://www.techinterviews.com/?feed=rss" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="-feed=atom" tppabs="http://www.techinterviews.com/?feed=atom" />
+	<link rel="pingback" href="xmlrpc.php.htm" tppabs="http://www.techinterviews.com/xmlrpc.php" />
+		</head>
+
+<body>
+<h1 id="header"><a href="index.htm" tppabs="http://www.techinterviews.com/">Interview questions for tech companies</a></h1>
+<!-- end header --><table width="100%"><tr><td valign="top" width="200" bgcolor="silver">
+<!--sidebar start-->
+	<p class="categorizer">Full-text search:</p><ul class="menulist2"><li><center>
+		<form id="searchform" method="get" action="">
+			<input type="text" name="s" /><input type="submit" name="submit" value="Search" />
+		</form></center></li></ul>
+
+	<p><p class="categorizer">Categories:</p>
+		<ul class="menulist">
+				<li><a href="index.php-cat=9.htm" tppabs="http://www.techinterviews.com/index.php?cat=9" title="View all posts filed under .NET">.NET</a> (29)
+</li>
+	<li><a href="index.php-cat=2.htm" tppabs="http://www.techinterviews.com/index.php?cat=2" title="View all posts filed under C++">C++</a> (25)
+</li>
+	<li><a href="index.php-cat=12.htm" tppabs="http://www.techinterviews.com/index.php?cat=12" title="View all posts filed under Database">Database</a> (26)
+</li>
+	<li><a href="index.php-cat=1.htm" tppabs="http://www.techinterviews.com/index.php?cat=1" title="View all posts filed under General">General</a> (38)
+</li>
+	<li><a href="index.php-cat=11.htm" tppabs="http://www.techinterviews.com/index.php?cat=11" title="View all posts filed under Hardware">Hardware</a> (16)
+</li>
+	<li><a href="index.php-cat=4.htm" tppabs="http://www.techinterviews.com/index.php?cat=4" title="View all posts filed under Java">Java</a> (48)
+</li>
+	<li><a href="index.php-cat=5.htm" tppabs="http://www.techinterviews.com/index.php?cat=5" title="View all posts filed under Networking">Networking</a> (21)
+</li>
+	<li><a href="index.php-cat=13.htm" tppabs="http://www.techinterviews.com/index.php?cat=13" title="View all posts filed under Testing">Testing</a> (11)
+</li>
+	<li><a href="javascript:if(confirm('http://www.techinterviews.com/index.php?cat=7  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/index.php?cat=7'" tppabs="http://www.techinterviews.com/index.php?cat=7" title="View all posts filed under Unix/Linux">Unix/Linux</a> (16)
+</li>
+	<li><a href="javascript:if(confirm('http://www.techinterviews.com/index.php?cat=8  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/index.php?cat=8'" tppabs="http://www.techinterviews.com/index.php?cat=8" title="View all posts filed under VB">VB</a> (8)
+</li>
+	<li><a href="javascript:if(confirm('http://www.techinterviews.com/index.php?cat=14  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/index.php?cat=14'" tppabs="http://www.techinterviews.com/index.php?cat=14" title="View all posts filed under Web dev">Web dev</a> (13)
+</li>
+	<li><a href="javascript:if(confirm('http://www.techinterviews.com/index.php?cat=6  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/index.php?cat=6'" tppabs="http://www.techinterviews.com/index.php?cat=6" title="View all posts filed under Windows">Windows</a> (21)
+</li>
+		<li><a href="mailto:techinterviews@gmail.com?Subject=Submission">Submit yours</a></li>
+		</ul>
+	</p>
+
+	<p>
+	<p class="categorizer">Site sponsors:</p><ul class="menulist2"><li>
+		<center>
+	<script type="text/javascript"><!--
+		google_ad_client = "pub-6610148867873991";
+		google_ad_width = 160;
+		google_ad_height = 600;
+		google_ad_format = "160x600_as";
+		google_ad_channel ="0322550296";
+		google_color_border = "C0C0C0";
+		google_color_bg = "c0c0c0";
+		google_color_link = "000000";
+		google_color_url = "CCCCCC";
+		google_color_text = "CCCCCC";
+		//--></script>
+		<script type="text/javascript"
+		  src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+
+	</center></li></ul>
+	</p>
+<p>
+<p class="categorizer">E-mail updates:</p><ul class="menulist2"><li>
+	 <form action="http://groups-beta.google.com/group/TechInterviewscom-additions/boxsubscribe">
+	  <div align="center">
+	  <table cellpadding="2">
+	  <tr><td>
+		<p align="center">Sign up for updates - win a free book</td></tr>
+	  <tr>
+		<td><center><input type=text name=email value=email@server></center></td>
+	  </tr>
+	  <tr>
+		<td><center>
+			 <input type=submit name="sub" value="Subscribe">
+		</center></td>
+	  </tr>
+	  <tr>
+		<td><p align="center">We give away programming books to e-mail subscribers</p></td>
+	  </tr>
+	  </table>
+	   </div>
+	   </form></li></ul>
+</p>
+
+<p>
+<p class="categorizer">Miscellaneous stuff:</p>
+<div class="menulist2">
+<script type="text/javascript" src="text_group.php-sid=6932&br=1" tppabs="http://1.adbrite.com/mb/text_group.php?sid=6932&br=1"></script>
+<p />
+<div><a class="adHeadline" target="_top" href="javascript:if(confirm('http://www.adbrite.com/mb/commerce/purchase_form.php?opid=7189&afsid=1  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.adbrite.com/mb/commerce/purchase_form.php?opid=7189&afsid=1'" tppabs="http://www.adbrite.com/mb/commerce/purchase_form.php?opid=7189&afsid=1">Your Ad Here</a></div>
+<li><a class="adHeadline" href="javascript:if(confirm('http://new3.mysurvey.com/join.cfm?r=491576  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://new3.mysurvey.com/join.cfm?r=491576'" tppabs="http://new3.mysurvey.com/join.cfm?r=491576">Take a survey, earn money. Get $5 for sign-up.</a></li>
+<li><a class="adHeadline" href="javascript:if(confirm('http://www.dreamhost.com/rewards.cgi?prostoalex  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.dreamhost.com/rewards.cgi?prostoalex'" tppabs="http://www.dreamhost.com/rewards.cgi?prostoalex">2.4 Gigs of storage with 120 GB of bandwidth monthly - great hosting for $7.95 a month</a></li>
+<li><a class="adHeadline" href="javascript:if(confirm('http://www.nobelcom.com/cgi-bin/newActive/nobelcom.cgi?AFFN=168936128  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.nobelcom.com/cgi-bin/newActive/nobelcom.cgi?AFFN=168936128'" tppabs="http://www.nobelcom.com/cgi-bin/newActive/nobelcom.cgi?AFFN=168936128">International phone cards, cheap rates</a></li>
+<li><a class="adHeadline" href="javascript:if(confirm('http://www.satellitesolutions.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.satellitesolutions.com/'" tppabs="http://www.satellitesolutions.com/">Satelite TV</a> - <span class="adText">have satelite television installed at your house with directv</a>. <a href="javascript:if(confirm('http://www.rubberstampchamp.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.rubberstampchamp.com/'" tppabs="http://www.rubberstampchamp.com/">Rubber Stamp</a> - <span class="adText">Shop for custom self-inking stamps, hand stamps, address stamps, label stamps, check endorsement stamps, check deposit stamps, date stamps, pre inks, pocket stamps, ink and much more!</a></li>
+<li> <a class="adHeadline" href="javascript:if(confirm('http://www.daytradeteam.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.daytradeteam.com/'" tppabs="http://www.daytradeteam.com/">Day Trading</a> - <span class="adText">day trading signals for active stock and options traders.</a></li>
+</div>
+</p><p>
+		<p class="categorizer">Good books:</p>
+		<p>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0471383562/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0471383562/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0471383562/moskalyukcom-20"><img src="1.jpg" tppabs="http://www.techinterviews.com/images/1.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0316919160/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0316919160/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0316919160/moskalyukcom-20"><img src="2.jpg" tppabs="http://www.techinterviews.com/images/2.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/007016357X/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/007016357X/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/007016357X/moskalyukcom-20"><img src="3.jpg" tppabs="http://www.techinterviews.com/images/3.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0786865962/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0786865962/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0786865962/moskalyukcom-20"><img src="4.jpg" tppabs="http://www.techinterviews.com/images/4.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0425166864/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0425166864/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0425166864/moskalyukcom-20"><img src="5.gif" tppabs="http://www.techinterviews.com/images/5.gif"></a>
+<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/1580624936/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/1580624936/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/1580624936/moskalyukcom-20"><img src="1580624936.01.THUMBZZZ.jpg" tppabs="http://images.amazon.com/images/P/1580624936.01.THUMBZZZ.jpg" border="0"></a>
+		</p>
+	</p>
+
+	<p>
+	<p class="categorizer">Good links:</p>
+			<ul class="menulist2">
+				<li><a href="javascript:if(confirm('http://www.hotdealsportal.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.hotdealsportal.com/'" tppabs="http://www.hotdealsportal.com/">Deals on PCs</a></li>
+<li><a href="javascript:if(confirm('http://www.techbooksforfree.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.techbooksforfree.com/'" tppabs="http://www.techbooksforfree.com/">Free books</a></li>
+<li><a href="javascript:if(confirm('http://www.itfacts.biz/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.itfacts.biz/'" tppabs="http://www.itfacts.biz/">IT Research</a></li>
+<li><a href="javascript:if(confirm('http://www.sellsbrothers.com/fun/msiview/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.sellsbrothers.com/fun/msiview/'" tppabs="http://www.sellsbrothers.com/fun/msiview/">Interview@MSFT</a></li>
+<li><a href="javascript:if(confirm('http://weblogs.asp.net/JobsBlog/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://weblogs.asp.net/JobsBlog/'" tppabs="http://weblogs.asp.net/JobsBlog/">Career blog @ MSFT</a></li>
+<li><a href="javascript:if(confirm('http://www.c-sharpcorner.com/faq.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.c-sharpcorner.com/faq.asp'" tppabs="http://www.c-sharpcorner.com/faq.asp">C# FAQ</a></li>
+<li><a href="javascript:if(confirm('http://blogs.msdn.com/csharpfaq  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://blogs.msdn.com/csharpfaq'" tppabs="http://blogs.msdn.com/csharpfaq">MSDN C# FAQ</a></li>
+<li><a href="javascript:if(confirm('http://www.everythingfirebird.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.everythingfirebird.com/'" tppabs="http://www.everythingfirebird.com/">Everything Firebird</a></li>
+<li><a href="javascript:if(confirm('http://searchsmallbizit.techtarget.com/sDefinition/0,,sid44_gci826135,00.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://searchsmallbizit.techtarget.com/sDefinition/0,,sid44_gci826135,00.html'" tppabs="http://searchsmallbizit.techtarget.com/sDefinition/0,,sid44_gci826135,00.html">Cheat sheets</a></li>
+<li><a href="javascript:if(confirm('http://www.thatwasfunny.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.thatwasfunny.com/'" tppabs="http://www.thatwasfunny.com/">That was funny</a></li>
+<li><a href="javascript:if(confirm('http://www.collectorcarbuff.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.collectorcarbuff.com/'" tppabs="http://www.collectorcarbuff.com/">Collector cars</a></li>
+<li><a href="javascript:if(confirm('http://www.aspfree.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.aspfree.com/'" tppabs="http://www.aspfree.com/">ASP Free</a></li>
+<li><a href="javascript:if(confirm('http://www.vault.com/survival/center.jsp?type=3&  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.vault.com/survival/center.jsp?type=3&#038;ch_id=262&#038;article_id=9106882&#038;cat_id=1481&#038;listelement=1'" tppabs="http://www.vault.com/survival/center.jsp?type=3&#038;ch_id=262&#038;article_id=9106882&#038;cat_id=1481&#038;listelement=1">What&#039;s your biggest weakness?</a></li>
+<li><a href="javascript:if(confirm('http://www.perlfunc.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.perlfunc.com/'" tppabs="http://www.perlfunc.com/">PerlFunc</a></li>
+<li><a href="javascript:if(confirm('http://www.microsoft.com/smallbusiness/resources/management/recruiting_staffing/hiring_6_interview_questions_you_need_to_ask.mspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.microsoft.com/smallbusiness/resources/management/recruiting_staffing/hiring_6_interview_questions_you_need_to_ask.mspx'" tppabs="http://www.microsoft.com/smallbusiness/resources/management/recruiting_staffing/hiring_6_interview_questions_you_need_to_ask.mspx">Small business interview questions</a></li>
+<li><a href="javascript:if(confirm('http://www.devbistro.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.devbistro.com/'" tppabs="http://www.devbistro.com/">Tech jobs at DevBistro</a></li>
+			</ul>
+<center>
+<form name="search" method="post" action="http://www.meteus.com/search.php">
+<input type="hidden" name="aid" value="32147">
+Search <a href="javascript:if(confirm('http://www.meteus.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.meteus.com/'" tppabs="http://www.meteus.com/" target="_blank">Meteus</a><br />
+<input type="text" name="q" size="20" value="">
+<input type="submit" value="Search" /></form>
+<center>
+	</p>
+
+<!--sidebar end-->
+</td>
+
+<td valign="top" bgcolor="white">
+		<div class="post">
+		<h3><a href="-p=201.htm" tppabs="http://www.techinterviews.com/?p=201" rel="bookmark" title="Interview questions: Interview questions on C/C++">Interview questions on C/C++</a></h3>
+			<p>A reader submitted the interview questions he was asked. More C/C++ questions will be added here, as people keep sending us a set of 2-3 questions they got on their job itnerview.</p>
+	<p><b>Q1: Tell how to check whether a linked list is circular.</b></p>
+	<p>A: Create two pointers, each set to the start of the list. Update each as follows:</p>
+	<pre>
+while (pointer1) {
+ pointer1 = pointer1-&gt;next;
+ pointer2 = pointer2-&gt;next; if (pointer2) pointer2=pointer2-&gt;next;
+ if (pointer1 == pointer2) {
+   print (\"circular\n\");
+ }
+}
+</pre>
+<a id="more-201"></a><br />
+<b>Q2: OK, why does this work?</b></p>
+	<p>If a list is circular, at some point pointer2 will wrap around and be either at the item just before pointer1, or the item before that. Either way, it&#8217;s either 1 or 2 jumps until they meet.</p>
+	<p><b>How can you quickly find the number of elements stored in a</b> a) static array b) dynamic array ?</p>
+	<p><b>Why is it difficult to store linked list in an array?</b></p>
+	<p><b>How can you find the nodes with repetetive data in a linked list?</b></p>
+	<p><b>Write a prog to accept a given string in any order and flash error if any of the character is different</b>. For example : If abc is the input then abc, bca, cba, cab bac are acceptable but aac or bcd are unacceptable.</p>
+	<p><b>This is a C question that I had for an intern position at Microsoft</b>: Write out a function that prints out all the permutations of a string. For example, abc would give you   abc, acb, bac, bca, cab, cba. You can assume that all the characters will be unique. After I wrote out my function, he asked me to figure out from the code how many times the printf statement is run, and also questions on optimizing my algorithm.</p>
+	<p>What&#8217;s the output of the following program? Why?</p>
+	<blockquote><pre>
+#include &lt;stdio.h&gt;
+main()
+{
+	typedef union
+	{
+		int a;
+		char b[10];
+		float c;
+	}
+	Union;
+	
+	Union x,y = {100};
+	x.a = 50;
+	strcpy(x.b,\"hello\");
+	x.c = 21.50;
+	
+	printf(\"Union x : %d %s %f \n\",x.a,x.b,x.c );
+	printf(\"Union y :%d %s%f \n\",y.a,y.b,y.c);
+}
+</pre></blockquote>
+	<p><b>Given inputs X, Y, Z</b> and operations | and &#038; (meaning bitwise OR and AND, respectively)</p>
+	<p>What is output equal to in<br />
+<blockquote>output = (X &#038; Y) | (X &#038; Z) | (Y &#038; Z)</p></blockquote>
+		<p class="feedback">
+			<a href="-p=201.htm" tppabs="http://www.techinterviews.com/?p=201">Read all</a> | Browse topics: <a href="index.php-cat=2.htm" tppabs="http://www.techinterviews.com/index.php?cat=2" title="View all posts in C++" rel="category tag">C++</a>		</p>
+
+<center>
+<script type="text/javascript"><!--
+google_ad_client = "pub-6610148867873991";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text_image";
+google_ad_channel ="5988513540";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "000066";
+google_color_url = "C0c0c0";
+google_color_text = "c0c0c0";
+//--></script>
+<script type="text/javascript"
+  src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</center>
+
+<h2 id="comments">29 Comments 
+	<a href="#postcomment" title="Please leave a comment">&raquo;</a>
+</h2>
+
+<ol id="commentlist">
+
+	<li id="comment-6972">
+		<p>i think this will work for<br />
+ while(node)<br />
+ {<br />
+  If(node==start)<br />
+   printf(&#8221;circular&#8221;);<br />
+ node=node-&gt;next;<br />
+}
+</p>
+	<p><cite>Tech Interviews comment by <b>chinmaya</b></cite> </p>
+	</li>
+
+	<li id="comment-7015">
+		<p>Chinmaya,<br />
+   Your solution works only if loop begins at first element. But original solution works for all cases.
+</p>
+	<p><cite>Tech Interviews comment by <b>nagarajan makala</b></cite> </p>
+	</li>
+
+	<li id="comment-7037">
+		<p>this is a very useful site for freshers like me and who are willing to gain more knowledge. i have many other ideas which will help this site to comeup</p>
+	<p>if u can give a chance i will tell i m frm hyderabad
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://www.geocities.com/kkarthiksarma/karthikresume.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.geocities.com/kkarthiksarma/karthikresume.htm'" tppabs="http://www.geocities.com/kkarthiksarma/karthikresume.htm" rel='external nofollow'>Karthiksarma</a></b></cite> </p>
+	</li>
+
+	<li id="comment-7053">
+		<p>How about those codes:</p>
+	<p>node = start-&gt;next;<br />
+while(node)<br />
+{<br />
+  if(node == start)<br />
+  {<br />
+     printf(&#8221;circular&#8221;);<br />
+     return;<br />
+  }<br />
+  node = node-&gt;next;<br />
+}
+</p>
+	<p><cite>Tech Interviews comment by <b>confused</b></cite> </p>
+	</li>
+
+	<li id="comment-7058">
+		<p>The posted solution is flawed in that it can (and usually will) seg-fault on non-circular lists.  A correct solution should have a &#8220;not circular&#8221; result as well.
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://csua.berkeley.edu/~mel  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://csua.berkeley.edu/~mel'" tppabs="http://csua.berkeley.edu/~mel" rel='external nofollow'>Mel</a></b></cite> </p>
+	</li>
+
+	<li id="comment-7162">
+		<p>how can u find no of elements in an array quickly?</p>
+	<p>if it is a dynamic array(linked list) the tradition is to keep the count variable in the head<br />
+and incrementing it everytime an insertion is performed and decrementing whenever a deletion is performed.so by seeing that count vaiable we can easily tell no. of elements.
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://techinterviews.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://techinterviews.com/'" tppabs="http://techinterviews.com/" rel='external nofollow'>karthikeyan</a></b></cite> </p>
+	</li>
+
+	<li id="comment-7165">
+		<p>Write a prog to accept a given string in any order and flash error if any of the character is different. For example : If abc is the input then abc, bca, cba, cab bac are acceptable but aac or bcd are unacceptable.<br />
+program<br />
+**************************************************</p>
+	<p>#define true 1<br />
+#define false 0<br />
+int* isalreadyread;  /* this array is used to make sure that<br />
+int main(void)           the characters in the original,which r matched with a char<br />
+{                         in the dup is marked as &#8216;already read&#8217;*/<br />
+   char* original;  /* this string holds the original string like..abc*/<br />
+ char* dup;       /* this string is used to hold the duplicates like acb bac cab cba&#8230;*/<br />
+ int isokay(char* ,char* ); /* this is the function(which intern calls many) which checks whether the string is okay*/<br />
+ int origlength;<br />
+ int flag;<br />
+ void initilaizing_isalreadyread();<br />
+ printf(&#8221;\n enter the original string&#8221;);<br />
+ scanf(&#8221;%s&#8221;,original);<br />
+ origlength=strlen(original);<br />
+ isalreadyread=(int*) calloc(origlength,sizeof(int));<br />
+ flag=true;<br />
+ while(flag)<br />
+{<br />
+  printf(&#8221;enter the duplicate string&#8221;);scanf(&#8221;%s&#8221;,dup);<br />
+  initializing_isread(origlength);<br />
+  flag=isokay(original,dup);<br />
+  if(flag)<br />
+  printf(&#8221;%s&#8221;,dup);<br />
+ }<br />
+} /* end of main*/<br />
+int isokay(char* original,char* dup)<br />
+{<br />
+ int reflength=strlen(original);<br />
+ int duplength=strlen(dup);<br />
+ int found(char c,char* str);<br />
+ if(reflength!=duplength)<br />
+ return false;     /* this is obvious*/<br />
+ for(int i=0;i
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://techinterviews.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://techinterviews.com/'" tppabs="http://techinterviews.com/" rel='external nofollow'>karthikeyan</a></b></cite> </p>
+	</li>
+
+	<li id="comment-7224">
+		<p>Write out a function that prints out all the permutations of a string.<br />
+For example, abc would give you abc, acb, bac, bca, cab, cba.</p>
+	<p>    It can be observed that the number of combinations of string, of length N,<br />
+is N!.  Consider an example:</p>
+	<p>         string:  123<br />
+         Length:  3<br />
+    Combination:  3! = 6<br />
+         Output:  123  132  321  312  231  213</p>
+	<p>    Following is a program to print all the combination a string:</p>
+	<p> 1  /*<br />
+ 2   * str_combi.c  -   Print all the combinations of a string<br />
+ 3   * Author       -   Vijay Kumar R Zanvar<br />
+ 4   * Date         -   Feb 16, 2004<br />
+ 5   */<br />
+ 6<br />
+ 7  #include<br />
+ 8  #include<br />
+ 9  #include<br />
+10<br />
+11  void<br />
+12  string_combi ( char * s, int len )<br />
+13  {<br />
+14      int         i;<br />
+15      char        tmp;<br />
+16      static int  j;<br />
+17      static char *p;<br />
+18<br />
+19      if ( !p )<br />
+20          p = s;<br />
+21<br />
+22      for ( i = 1; i  2 )<br />
+25              string_combi ( s+1, len-1 );<br />
+26          else<br />
+27          {<br />
+28              j++;<br />
+29              printf ( &#8220;%d: %s\t&#8221;, j, p );<br />
+30              if ( !( j%10 ) )<br />
+31                  puts ( &#8220;&#8221; );<br />
+32          }<br />
+33          if ( i
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://www.geocities.com/vijoeyz/faq/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.geocities.com/vijoeyz/faq/'" tppabs="http://www.geocities.com/vijoeyz/faq/" rel='external nofollow'>C FAQs</a></b></cite> </p>
+	</li>
+
+	<li id="comment-7225">
+		<p>The was some problem during the upload of comment 8 above.<br />
+See a program to print combination of strings here:</p>
+	<p><a href="javascript:if(confirm('http://www.geocities.com/vijoeyz/faq/c/str_combi.txt  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.geocities.com/vijoeyz/faq/c/str_combi.txt'" tppabs="http://www.geocities.com/vijoeyz/faq/c/str_combi.txt" rel='nofollow'>http://www.geocities.com/vijoeyz/faq/c/str_combi.txt</a>
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://www.geocities.com/vijoeyz/faq/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.geocities.com/vijoeyz/faq/'" tppabs="http://www.geocities.com/vijoeyz/faq/" rel='external nofollow'>C FAQs</a></b></cite> </p>
+	</li>
+
+	<li id="comment-7267">
+		<p>chinmaya,<br />
+        ur condition within the while loop is never going to be false if it is a circular<br />
+linked list. a break is needed.
+</p>
+	<p><cite>Tech Interviews comment by <b>karthikeyan</b></cite> </p>
+	</li>
+
+	<li id="comment-7269">
+		<p>Got a question that extends on the detecting circular linked list question:<br />
+Given the constraints that you cannot modify the struct (or class) of the elements, and that you have to remove the loop in the cyclic linked list in O(n) time and O(1) space, how would you do it?<br />
+By removing the loop, I mean something like:<br />
+                           _______________________________<br />
+ __      __      __      _|      __      __      __      _|<br />
+|  | -&gt; |  | -&gt; |  | -&gt; |  | -&gt; |  | -&gt; |  | -&gt; |  | -&gt; |  |<br />
+ &#8212;      &#8212;      &#8212;      &#8212;      &#8212;      &#8212;      &#8212;      &#8211;</p>
+	<p>Given this linked list, how do you make the last element in the list to point to NULL in O(n) time and O(1) space?</p>
+	<p>I couldn&#8217;t think of a solution that uses O(1) space without modifying the structure.  If I was allowed, I could just have a visited flag inside the struct.  I&#8217;ll then have 2 pointers, a current and a previous.  For every node traversed by the current, I will set the flag to true, and each traversal, I will check whether that flag is set to true.  If it is, then the previous pointer is the last element of the list, and I can just set the next to NULL.  This will also be in O(n) time.</p>
+	<p>Any insights on this?
+</p>
+	<p><cite>Tech Interviews comment by <b>Wilson</b></cite> </p>
+	</li>
+
+	<li id="comment-7270">
+		<p>The picture of the linked list was kinda screwed up&#8230;<br />
+Anyway, that picture has 8 elements, with the last element pointing to the 4th element, thus making a loop in the list.
+</p>
+	<p><cite>Tech Interviews comment by <b>Wilson</b></cite> </p>
+	</li>
+
+	<li id="comment-7291">
+		<p>answer for finding that link list is circular is<br />
+int count=0;<br />
+while (node)<br />
+{<br />
+  if(node == start &amp;&amp; count != 0) {<br />
+       printf(&#8221;Circular&#8221;);<br />
+       exit(0);<br />
+  }<br />
+  p = node-&gt;next;<br />
+  q = node-&gt;next;<br />
+  if(node == start)<br />
+      node-&gt;next = null;
+</p>
+	<p><cite>Tech Interviews comment by <b>Jatin Bhateja</b></cite> </p>
+	</li>
+
+	<li id="comment-7292">
+		<p>answer for finding that link list is circular is<br />
+int count=0;<br />
+while (node)<br />
+{<br />
+  if(node == start &amp;&amp; count != 0) {<br />
+       printf(&#8221;Circular&#8221;);<br />
+       exit(0);<br />
+  }<br />
+  p = node-&gt;next;<br />
+  q = node-&gt;next;<br />
+  if(node == start)<br />
+      node-&gt;next = null;<br />
+  else<br />
+      node-&gt;next = r;<br />
+  p-&gt;next = node;<br />
+  node = q;<br />
+  r = p;<br />
+  count = count + 3;<br />
+}
+</p>
+	<p><cite>Tech Interviews comment by <b>Jatin Bhateja</b></cite> </p>
+	</li>
+
+	<li id="comment-7444">
+		<p>iscircular(Node* head)    /* check whether a link list is circular */<br />
+{</p>
+	<p>  /* assume that linklist has a header which keeps a count of no.<br />
+     of nodes in the list */</p>
+	<p>  Node* temp=head;</p>
+	<p>  while(head-&gt;data&#8211;)</p>
+	<p>    temp=temp-&gt;next;</p>
+	<p>  if(temp-&gt;next=head-&gt;next)/*1st node actually is next node to head*/<br />
+     return TRUE;</p>
+	<p>     return FALSE;<br />
+}
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://techinterviews.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://techinterviews.com/'" tppabs="http://techinterviews.com/" rel='external nofollow'>karthikeyan.s</a></b></cite> </p>
+	</li>
+
+	<li id="comment-7942">
+		<p>constructor can be static or not?and why?  in c++
+</p>
+	<p><cite>Tech Interviews comment by <b>bhavin</b></cite> </p>
+	</li>
+
+	<li id="comment-8026">
+		<p>Not to mention the glaring access-violation once pointer2 becomes NULL(though this error indicates &#8216;not circular&#8217;), the unnecessity of traversing pointer1(though doing so does not impact numof iterations), and the lack of terminating conditions(though still technically within the guidlines by only &#8220;checking for circular&#8221;), the solution is FLAWED in that it will print &#8220;Circular&#8221; for non-circular lists with 1 node!!! (when Pointer1 and Pointer2 are both NULL)  I did think it was a kinda cool idea to weed out the non-circular lists in (num of Nodes)/2 iterations, but the extra traversal code i think outweighs any benefit.<br />
+My elegant solution, if i do say so myself:</p>
+	<p>//assert: list is not empty<br />
+for(node=head-&gt;next; node!=NULL &amp;&amp; node!=head; node=node-&gt;next);</p>
+	<p>if(node==NULL) cout
+</p>
+	<p><cite>Tech Interviews comment by <b>Dawid</b></cite> </p>
+	</li>
+
+	<li id="comment-8027">
+		<p>oops, that last statement should read:</p>
+	<p>if(node==NULL) printf(&#8221;Non-circular&#8221;);<br />
+else printf(&#8221;Circular&#8221;);
+</p>
+	<p><cite>Tech Interviews comment by <b>Dawid</b></cite> </p>
+	</li>
+
+	<li id="comment-8192">
+		<p>dawid,<br />
+      i dont think my code is lack of terminating condition. i have put while(head-&gt;data&#8211;)<br />
+but i should have copied that head-&gt;data into a temporary variable. it should look like</p>
+	<p>int temp1=head-&gt;data<br />
+while(temp1&#8211;)&#8230;&#8230;&#8230;&#8230;</p>
+	<p> i dont think it will print &#8220;circular&#8221; for all single node lists.<br />
+ if the&#8217;next&#8217; of the single node is the address of the node&#8230;it will print circular.<br />
+ otherwise it will print &#8220;not circular&#8221;.</p>
+	<p>the idea is to get the address in the &#8216;next&#8217; field of the last node(node which was inserted latest)<br />
+i dont think there is a better way than traversing to reach &#8216;last&#8217; node.</p>
+	<p>And&#8230;in ur code u assumed that the &#8216;last&#8217; node&#8217;s next point to the Head.<br />
+i think its not a good design. it ruins the whole list then.
+</p>
+	<p><cite>Tech Interviews comment by <b>karthikeyan</b></cite> </p>
+	</li>
+
+	<li id="comment-8611">
+		<p>Sorry karthikeyan, I should have been more clear: I was referring to the original solution (by default). It seems to have been torn up enough already, but i wanted to show off my fancy 1 line traversal.<br />
+However, in rebuttal:<br />
+-You&#8217;re fired! Mistaking an equality operator(==) with an assignment(=) is an offense punishable by death.<br />
+-Your solution is unintelligible with that mangled loop condition. However relying on a count of num of nodes makes your algorithm possibly unscalable to lists with dummy nodes, for example.<br />
+-A chain of pointers will either end in a NULL pointer(if programmed responsibly), or you&#8217;ll eventually be back where you started again. I don&#8217;t see how this testing ruins a list.  Your point is noted, though, about a list with a dummy head that is bypassed around the circle (Like this: -0 ); but that doesn&#8217;t look like a circle to me, and I feel that head should point to the first node and any extra information should be stored in a wrapping class (because starting at the front of the list would mean dereferencing twice; silly if traversed many times each game loop, for example).  However, to address that issue for those small standalone-pointers-as-lists, you would send the first &#8216;real&#8217; node ( head-&gt;next ) to this function. It is not completely efficient in that there is no specific head to terminate at - you must traverse all the way back around to the given node, but it works for any list.  My beautiful(concise) function, if i do say so myself:</p>
+	<p>bool isCircular(Node* node1)<br />
+{<br />
+  if(node1==NULL) return false;<br />
+  for(Node* node2=node1-&gt;next; node2!=NULL &amp;&amp; node2!=node1; node2=node2-&gt;next);<br />
+  return (node2!=NULL);<br />
+}</p>
+	<p>Regards, Dawid.
+</p>
+	<p><cite>Tech Interviews comment by <b>dawid</b></cite> </p>
+	</li>
+
+	<li id="comment-8750">
+		<p>dawid,<br />
+       ur code looks efficient
+</p>
+	<p><cite>Tech Interviews comment by <b>karthikeyan S</b></cite> </p>
+	</li>
+
+	<li id="comment-9050">
+		<p>David, your code does not work in case the loop does not begin with the first element. For example:</p>
+	<p>A-&gt;B-&gt;C-&gt;D-&gt;C</p>
+	<p>I agree though that the question was &#8220;check that a linked list is circular&#8221; and not &#8220;check that a linked list contains a circle&#8221;.
+</p>
+	<p><cite>Tech Interviews comment by <b>Oren</b></cite> </p>
+	</li>
+
+	<li id="comment-9375">
+		<p>int main(int argc, char* argv[])<br />
+{<br />
+	//Write a prog to accept a given string in any order and flash error if any of<br />
+	//the character is different. For example : If abc is the input then abc,<br />
+	//bca, cba, cab bac are acceptable but aac or bcd are unacceptable.<br />
+	//program</p>
+	<p>	char code[100];<br />
+	char ip[100];<br />
+	int i,count,flag=0;<br />
+	puts(&#8221;Enter the string:&#8221;);<br />
+	scanf(&#8221;%s&#8221;,ip);<br />
+	puts(&#8221;Enter the comparision string:&#8221;);<br />
+	scanf(&#8221;%s&#8221;,code);<br />
+	for(i=0;i
+</p>
+	<p><cite>Tech Interviews comment by <b>Somdutta Roy</b></cite> </p>
+	</li>
+
+	<li id="comment-9860">
+		<p>I executed the Program uploaded on site: as mentioned in ANS No: 9<br />
+But the string are repeated:<br />
+For Example following is the programs Output:</p>
+	<p> Enter String :  123<br />
+1: 123<br />
+2: 132<br />
+3: 231<br />
+4: 213<br />
+5: 123    (Repeated with 1:)<br />
+6: 132    (Repeated with 2:)<br />
+Press any key to continue.</p>
+	<p>The effort to write the program is apperiable. I am also trying to write a program for it.
+</p>
+	<p><cite>Tech Interviews comment by <b>SMN</b></cite> </p>
+	</li>
+
+	<li id="comment-10894">
+		<p>#include<br />
+#include<br />
+#include<br />
+#define MLS 5<br />
+typedef struct listnode *p_node;<br />
+typedef struct listnode node;<br />
+typedef struct listnode{<br />
+			int data;<br />
+			p_node link;<br />
+			};<br />
+void print_list (p_node ptr);<br />
+void add(p_node*,p_node*,p_node);<br />
+int delet(p_node*);<br />
+p_node creat_node(void);<br />
+void main()<br />
+{<br />
+clrscr();<br />
+int opselect=0;<br />
+p_node node1,node2,node3,node4,node5;<br />
+printf(&#8221;============START=============&#8221;);<br />
+if(opselect!=99)<br />
+{<br />
+printf(&#8221; \n enter aselect node \n&#8221;);<br />
+printf(&#8221; \n 1 to add \n&#8221;);<br />
+printf(&#8221; \n 2 to delet \n&#8221;);<br />
+printf(&#8221; \n 3 to exit \n&#8221;);<br />
+if(opselect==1){ add(,);  }<br />
+if(opselect==2){ delete();  }<br />
+if(opselect==3){ printf(&#8221; good by the exit &#8220;);}<br />
+}<br />
+node1=creat_node();<br />
+node2=creat_node();<br />
+node3=creat_node();<br />
+node4=creat_node();<br />
+node5=creat_node();<br />
+//********************//<br />
+node1-&gt;data=10;<br />
+node1-&gt;link=node2;<br />
+node2-&gt;data=11;<br />
+node2-&gt;link=node3;<br />
+node3-&gt;data=12;<br />
+node3-&gt;link=node4;<br />
+node4-&gt;data=13;<br />
+node4-&gt;link=node5;<br />
+node5-&gt;data=14;<br />
+node5-&gt;link=NULL;<br />
+//*******************//<br />
+}<br />
+//function creat node//<br />
+p_node creat_node(void)<br />
+{<br />
+p_node lptr;<br />
+lptr=(p_node)malloc(sizeof(node));<br />
+return(lptr);<br />
+}<br />
+//function add node//<br />
+void add(p_node*rear,p_node*front,int data_insert)<br />
+{<br />
+p_node temp;<br />
+temp=(p_node)malloc(sizeof(p_node));<br />
+if(is_full(temp)){ printf(&#8221;\n   the memory is full  \n&#8221;);<br />
+		 exit(1); }<br />
+temp-&gt;data=data_insert;<br />
+if(*lptr){<br />
+	 temp-&gt;link=node-&gt;link;<br />
+	 node-&gt;link=temp;<br />
+	 }<br />
+else{<br />
+    temp-&gt;link=NULL;<br />
+    *lptr=temp;<br />
+    }<br />
+}<br />
+//function delet node//<br />
+void delet(p_node ,p_node trial,p_node)<br />
+{<br />
+*node=trial-&gt;link;<br />
+if(trial)<br />
+    trial-&gt;link=trial-&gt;link-&gt;link;<br />
+else<br />
+   *lptr=(*lptr)-&gt;link;<br />
+}<br />
+//function print nodes//<br />
+void print_link(p_node lptr)<br />
+{<br />
+printf(&#8221; \n the list contains: \n &#8220;);<br />
+while(lptr)<br />
+	   {<br />
+	   printf(&#8221; \n \t %d&#8221;,lptr-&gt;data);<br />
+	   lptr=lptr-&gt;link;<br />
+	   }<br />
+}
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://hotmail/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://hotmail/'" tppabs="http://hotmail/" rel='external nofollow'>mohammad</a></b></cite> </p>
+	</li>
+
+	<li id="comment-10925">
+		<p>For printing out all permutations of a string.<br />
+Please tell me all ways I can optimize. Any thoughts on a non-recursive algorithm? My C/C++ isn&#8217;t very strong. Raised on Java.</p>
+	<p>void  PrintPermu (char *sBegin, char* sRest)<br />
+{<br />
+	int			iLoop;<br />
+	char		cTmp;<br />
+	char		cFLetter[1];<br />
+	char		*sNewBegin;<br />
+	char		*sCur;<br />
+	int			iLen;<br />
+	static int	iCount;</p>
+	<p>	iLen = strlen(sRest);</p>
+	<p>	if (iLen == 2)<br />
+	{<br />
+		iCount++;<br />
+		printf(&#8221;%d: %s%s\n&#8221;, iCount, sBegin, sRest);</p>
+	<p>		iCount++;<br />
+		printf(&#8221;%d: %s%c%c\n&#8221;, iCount, sBegin, sRest[1], sRest[0]);</p>
+	<p>		return;<br />
+	}<br />
+	else if (iLen == 1)<br />
+	{<br />
+		iCount++;<br />
+		printf(&#8221;%d: %s%s\n&#8221;, iCount, sBegin, sRest);<br />
+		return;<br />
+	}<br />
+	else<br />
+	{<br />
+		// swap the first character of sRest with each of the remaining chars<br />
+		// recursively call debug print</p>
+	<p>		sCur = (char*)malloc(iLen);<br />
+		sNewBegin = (char*)malloc(iLen);</p>
+	<p>		for (iLoop = 0; iLoop
+</p>
+	<p><cite>Tech Interviews comment by <b>Aditya</b></cite> </p>
+	</li>
+
+	<li id="comment-10926">
+		<p>For printing out all permutations of a string.<br />
+Please tell me all ways I can optimize. Any thoughts on a non-recursive algorithm? My C/C++ isn&#8217;t very strong. Raised on Java.</p>
+	<p>void  PrintPermu (char *sBegin, char* sRest)<br />
+{<br />
+	int			iLoop;<br />
+	char		cTmp;<br />
+	char		cFLetter[1];<br />
+	char		*sNewBegin;<br />
+	char		*sCur;<br />
+	int			iLen;<br />
+	static int	iCount;</p>
+	<p>	iLen = strlen(sRest);</p>
+	<p>	if (iLen == 2)<br />
+	{<br />
+		iCount++;<br />
+		printf(&#8221;%d: %s%s\n&#8221;, iCount, sBegin, sRest);</p>
+	<p>		iCount++;<br />
+		printf(&#8221;%d: %s%c%c\n&#8221;, iCount, sBegin, sRest[1], sRest[0]);</p>
+	<p>		return;<br />
+	}<br />
+	else if (iLen == 1)<br />
+	{<br />
+		iCount++;<br />
+		printf(&#8221;%d: %s%s\n&#8221;, iCount, sBegin, sRest);<br />
+		return;<br />
+	}<br />
+	else<br />
+	{<br />
+		// swap the first character of sRest with each of the remaining chars<br />
+		// recursively call debug print</p>
+	<p>		sCur = (char*)malloc(iLen);<br />
+		sNewBegin = (char*)malloc(iLen);</p>
+	<p>		for (iLoop = 0; iLoop lessthan iLen; iLoop ++)<br />
+		{</p>
+	<p>			strcpy(sCur, sRest);<br />
+			strcpy(sNewBegin, sBegin);</p>
+	<p>			cTmp = sCur[iLoop];<br />
+			sCur[iLoop] = sCur[0];<br />
+			sCur[0] = cTmp;</p>
+	<p>			sprintf(cFLetter, &#8220;%c&#8221;, sCur[0]);<br />
+			strcat(sNewBegin, cFLetter);<br />
+			debugprint(sNewBegin, sCur+1);</p>
+	<p>		}<br />
+	}</p>
+	<p>}</p>
+	<p>void main()<br />
+{</p>
+	<p>	char s[255];<br />
+	char sIn[255];<br />
+	printf(&#8221;\nEnter a string:&#8221;);<br />
+	scanf(&#8221;%s%*c&#8221;,sIn);<br />
+	memset(s,0,255);</p>
+	<p>	PrintPermu(s, sIn);<br />
+}
+</p>
+	<p><cite>Tech Interviews comment by <b>Aditya</b></cite> </p>
+	</li>
+
+	<li id="comment-12830">
+		<p>What is the size of the empty class&#8217;s object?If it is 1byte why?<br />
+please help me.
+</p>
+	<p><cite>Tech Interviews comment by <b>bharadwaja</b></cite> </p>
+	</li>
+
+	<li id="comment-13025">
+		<p>Write out a function that prints out all the permutations of a string.<br />
+For example, abc would give you abc, acb, bac, bca, cab, cba</p>
+	<p>Another solution</p>
+	<p>#include<br />
+#include<br />
+#include<br />
+#include<br />
+using namespace std;</p>
+	<p>typedef set setchar;<br />
+char szPermutation[256];</p>
+	<p>void permutate(setchar charset, char* szPermute )<br />
+{<br />
+	if (!charset.size())<br />
+	{<br />
+		cout &gt; strPermutation;<br />
+	cout
+</p>
+	<p><cite>Tech Interviews comment by <b>Benjamin</b></cite> </p>
+	</li>
+
+<li>Explore hiring practices of: <a href="javascript:if(confirm('http://www.interviewat.com/infosys/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/infosys/'" tppabs="http://www.interviewat.com/infosys/" title="Infosys">Infosys</a>, <a href="javascript:if(confirm('http://www.interviewat.com/accenture/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/accenture/'" tppabs="http://www.interviewat.com/accenture/" title="Accenture">Accenture</a>, <a href="javascript:if(confirm('http://www.interviewat.com/caritor/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/caritor/'" tppabs="http://www.interviewat.com/caritor/" title="Caritor">Caritor</a>, <a href="javascript:if(confirm('http://www.interviewat.com/cognizant/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/cognizant/'" tppabs="http://www.interviewat.com/cognizant/" title="Cognizant">Cognizant</a>, <a href="javascript:if(confirm('http://www.interviewat.com/wipro/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/wipro/'" tppabs="http://www.interviewat.com/wipro/" title="Wipro">Wipro</a>, <a href="javascript:if(confirm('http://www.interviewat.com/satyam/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/satyam/'" tppabs="http://www.interviewat.com/satyam/" title="Satyam">Satyam</a>, <a href="javascript:if(confirm('http://www.interviewat.com/kanbay/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/kanbay/'" tppabs="http://www.interviewat.com/kanbay/" title="Kanbay">Kanbay</a>, <a href="javascript:if(confirm('http://www.interviewat.com/oracle/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/oracle/'" tppabs="http://www.interviewat.com/oracle/" title="Oracle">Oracle</a>, <a href="javascript:if(confirm('http://www.interviewat.com/tata-infotech/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/tata-infotech/'" tppabs="http://www.interviewat.com/tata-infotech/" title="Tata Infotech">Tata Infotech</a>, <a href="javascript:if(confirm('http://www.interviewat.com/verizon/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/verizon/'" tppabs="http://www.interviewat.com/verizon/" title="Verizon">Verizon</a>, <a href="javascript:if(confirm('http://www.interviewat.com/cts/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/cts/'" tppabs="http://www.interviewat.com/cts/" title="CTS">CTS</a>, <a href="javascript:if(confirm('http://www.interviewat.com/virtusa/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/virtusa/'" tppabs="http://www.interviewat.com/virtusa/" title="Virtusa">Virtusa</a>, <a href="javascript:if(confirm('http://www.interviewat.com/tcs/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/tcs/'" tppabs="http://www.interviewat.com/tcs/" title="TCS">TCS</a>, <a href="javascript:if(confirm('http://www.interviewat.com/sasken-communication/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/sasken-communication/'" tppabs="http://www.interviewat.com/sasken-communication/" title="Sasken Communication">Sasken Communication</a>, <a href="javascript:if(confirm('http://www.interviewat.com/microsoft/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/microsoft/'" tppabs="http://www.interviewat.com/microsoft/" title="Microsoft">Microsoft</a>, <a href="javascript:if(confirm('http://www.interviewat.com/hcl/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/hcl/'" tppabs="http://www.interviewat.com/hcl/" title="HCL">HCL</a>, <a href="javascript:if(confirm('http://www.interviewat.com/mindtree-consulting/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/mindtree-consulting/'" tppabs="http://www.interviewat.com/mindtree-consulting/" title="Mindtree Consulting">Mindtree Consulting</a>, <a href="javascript:if(confirm('http://www.interviewat.com/ibm/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/ibm/'" tppabs="http://www.interviewat.com/ibm/" title="IBM">IBM</a>, <a href="javascript:if(confirm('http://www.interviewat.com/lt/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/lt/'" tppabs="http://www.interviewat.com/lt/" title="Larsen &amp; Toubro">Larsen &amp; Toubro</a>, <a href="javascript:if(confirm('http://www.interviewat.com/siemens/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/siemens/'" tppabs="http://www.interviewat.com/siemens/" title="Siemens">Siemens</a>, <a href="javascript:if(confirm('http://www.interviewat.com/patni/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/patni/'" tppabs="http://www.interviewat.com/patni/" title="Patni">Patni</a>, <a href="javascript:if(confirm('http://www.interviewat.com/icici-bank/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/icici-bank/'" tppabs="http://www.interviewat.com/icici-bank/" title="ICICI Bank">ICICI Bank</a>, <a href="javascript:if(confirm('http://www.interviewat.com/covansys/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/covansys/'" tppabs="http://www.interviewat.com/covansys/" title="Covansys">Covansys</a>, <a href="javascript:if(confirm('http://www.interviewat.com/hexaware/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/hexaware/'" tppabs="http://www.interviewat.com/hexaware/" title="Hexaware">Hexaware</a>, <a href="javascript:if(confirm('http://www.interviewat.com/desis/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/desis/'" tppabs="http://www.interviewat.com/desis/" title="D. E. Shaw India Software">D. E. Shaw India Software</a>, <a href="javascript:if(confirm('http://www.interviewat.com/mascot-systems/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/mascot-systems/'" tppabs="http://www.interviewat.com/mascot-systems/" title="Mascot Systems">Mascot Systems</a>, <a href="javascript:if(confirm('http://www.interviewat.com/sonata-software/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/sonata-software/'" tppabs="http://www.interviewat.com/sonata-software/" title="Sonata Software">Sonata Software</a>, <a href="javascript:if(confirm('http://www.interviewat.com/hewlett-packard/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/hewlett-packard/'" tppabs="http://www.interviewat.com/hewlett-packard/" title="Hewlett Packard">Hewlett Packard</a>, <a href="javascript:if(confirm('http://www.interviewat.com/tcgivega/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/tcgivega/'" tppabs="http://www.interviewat.com/tcgivega/" title="TCGIvega">TCGIvega</a>, <a href="javascript:if(confirm('http://www.interviewat.com/syntel/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/syntel/'" tppabs="http://www.interviewat.com/syntel/" title="Syntel">Syntel</a>
+</li>
+
+</ol>
+
+
+<h2><a href="index.htm" tppabs="http://www.techinterviews.com/">Technical Interview Questions</a> comment policy:</h2>
+<ul>
+	<li>All requests for answers <b>will be deleted</b>. If we don't publish answers, it's because we don't have them.</li>
+	<li>Any personal attacks, obscenities, spam and inappropriate comments will be deleted.</li>
+        <li>Sometimes, if you're a new poster, your comment has to be approved by moderators.</li>
+	</ul>
+<h2 id="postcomment">Leave a comment</h2>
+
+
+<form action="http://www.techinterviews.com/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1" />
+<label for="author"><small>Name (required)</small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2" />
+<label for="email"><small>Mail (will not be published) (required)</small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3" />
+<label for="url"><small>Website</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;code&gt; &lt;em&gt; &lt;i&gt; &lt;strike&gt; &lt;strong&gt; </small></p>-->
+
+<p><textarea name="comment" id="comment" cols="80%" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
+<input type="hidden" name="comment_post_ID" value="201" />
+</p>
+
+
+	<p style="clear: both;" class="subscribe-to-comments">
+        <input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;" />
+        <label for="subscribe">Send new comments to my e-mail</label>
+	</p>
+
+
+
+</form>
+
+
+
+<Script language="Javascript1.1" src="getntag.aspx-action=VIEWAD&run=300&cwformat=728x90&advid=112&pid=700002&dfcat=1104&width=728&height=90&pnet=4&SiteID=tech.3236&u=1392eb38d1a1b15b7378aab09dddda5f" tppabs="http://ad.admarketplace.net/TagPublish/getntag.aspx?action=VIEWAD&run=300&cwformat=728x90&advid=112&pid=700002&dfcat=1104&width=728&height=90&pnet=4&SiteID=tech.3236">  </Script>
+	</div>
+	<h4></h4>
+</td></tr></table>
+<!-- begin footer -->
+</div>
+
+
+<h1 id="header"><a href="index.htm" tppabs="http://www.techinterviews.com/">&copy; TechInterviews.com</a></h1>
+<p>Property of <a href="javascript:if(confirm('http://www.digitalmediaventuresllc.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.digitalmediaventuresllc.com/'" tppabs="http://www.digitalmediaventuresllc.com/">Digital Media Ventures LLC</a>. Read <a href="javascript:if(confirm('http://www.techinterviews.com/wp-rdf.php  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/wp-rdf.php'" tppabs="http://www.techinterviews.com/wp-rdf.php">RDF</a>, <a href="javascript:if(confirm('http://www.techinterviews.com/wp-rss2.php  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/wp-rss2.php'" tppabs="http://www.techinterviews.com/wp-rss2.php">RSS 2.0</a>, <a href="javascript:if(confirm('http://www.techinterviews.com/wp-rss.php  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/wp-rss.php'" tppabs="http://www.techinterviews.com/wp-rss.php">RSS 0.92</a>, <a href="javascript:if(confirm('http://www.techinterviews.com/wp-atom.php  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/wp-atom.php'" tppabs="http://www.techinterviews.com/wp-atom.php">Atom</a>, <a href="javascript:if(confirm('http://www.techinterviews.com/wp-commentsrss2.php  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/wp-commentsrss2.php'" tppabs="http://www.techinterviews.com/wp-commentsrss2.php">Comments RSS</a></p>
+</body>
+</html>

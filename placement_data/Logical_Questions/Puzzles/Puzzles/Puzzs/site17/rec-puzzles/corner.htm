@@ -1,0 +1,57 @@
+<html><head>
+<title>Solution for /geometry/corner</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /geometry/corner problem</h1>
+<hr>
+<pre>
+------\---------
+B   /  \.......|..B/sin(theta)
+   theta\      |
+---|-----X     |
+         |\    |
+         | \...|..A/cos(theta)
+         |  \  |
+         |   \ |
+         | A  \|
+</pre>
+
+Theta is the angle off horizontal.
+
+<p>
+Minimize length = A/cos(theta) + B/sin(theta)
+
+<pre>
+    d(length)/d(theta)
+           = A*sin(theta)/cos(theta)^2 - B*cos(theta)/sin(theta)^2 (?)
+           = 0
+    A*sin(theta)/cos(theta)^2 = B*cos(theta)/sin(theta)^2
+
+    B/A = sin(theta)^3/cos(theta()^3 = tan(theta)^3
+
+    theta = inverse_tan(cube_root(B/A))
+</pre>
+If you use the trigonometric formulas  cos^2 x = 1/(1 + tan^2 x)
+and  sin x = tan x cos x, and plug through the algebra, I believe
+that the formula for the length reduces to
+
+<pre>
+(A^(2/3) + B^(2/3))^(3/2)
+</pre>
+
+At any rate this is symmetric in A and B as one would expect, and
+has the right values at A=B and as either A--&gt;0 or B--&gt;0.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

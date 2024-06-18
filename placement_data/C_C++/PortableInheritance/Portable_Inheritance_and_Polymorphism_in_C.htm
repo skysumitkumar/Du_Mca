@@ -1,0 +1,1857 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0038)http://www.embedded.com/97/fe29712.htm -->
+<!--
+SiteCatalyst code version: G.7. Copyright 1997-2004 Omniture, Inc.
+More info available at http://www.omniture.com
+--><HTML><HEAD><TITLE>Portable Inheritance and Polymorphism in C</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<SCRIPT language=JavaScript>
+<!--
+
+/* You may give each page an identifying name, server, and channel on the next lines. */
+var s_pageName=""
+var s_server=""
+var s_channel=""
+var s_pageType=""
+var s_prop1=""
+var s_prop2=""
+var s_prop3=""
+var s_prop4=""
+var s_prop5=""
+var s_prop6=""
+var s_prop7=""
+var s_prop8=""
+var s_prop9=""
+var s_prop10=""
+var s_prop11=""
+var s_prop12=""
+
+/* E-commerce Variables */
+var s_campaign=""
+var s_state=""
+var s_zip=""
+var s_events=""
+var s_products=""
+var s_purchaseID=""
+var s_eVar1=""
+var s_eVar2=""
+var s_eVar3=""
+var s_eVar4=""
+var s_eVar5=""
+
+/********* INSERT THE DOMAIN AND PATH TO YOUR CODE BELOW *********/
+//-->
+</SCRIPT>
+
+<META content="MSHTML 6.00.2600.0" name=GENERATOR></HEAD>
+<BODY text=#000000 vLink=#999999 aLink=#6699cc link=#336699 bgColor=white 
+leftMargin=0 topMargin=0 rightMargin=0>
+<TABLE cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <SCRIPT language=JavaScript 
+      src="Portable Inheritance and Polymorphism in C_files/s_code_remote.js"></SCRIPT>
+    </TD></TR></TBODY></TABLE><!-- End SiteCatalyst code version: G.7. --><!-- STATS PURPOSES --><!-- /STATS PURPOSES -->
+<META 
+content="Welcome to Embedded.com, the on-line resource for embedded systems developers. This is the place to come for tutorials, code,  demos, and news, along with information about Embedded Systems Programming Magazine and the Embedded Systems Conferences." 
+name=description>
+<META 
+content="embedded systems,conference,development,real-time,programming,emulators,multitasking,debugging,software,optimization,engineer,RTOS,chips,tools,microcontrollers,DSP,operating systems,kernel,microprocessors,object-oriented,single board,ada,C++,visual basic, forth,RISC,compilers,specialty libraries, configuration management,ICE,ROM emulators,logic analyzers,device programmers,oscilloscopes,8-bit,eprom,flash,OEM,boards,CMP Media LLC,vendor,magazine,custom publishing,esp,esc,directories,mwmedia,Windows CE, Win CE, CE, Windows, Microsoft, developer,  software, operating system, hand held, wallet, PC, OS, mobile, wireless, portable, driver, ETK, OAL, OAK, Pentium, 486, MIPS, Smartcards, Cellular Phone, Small-Form-Factor, H/PC, Palm, CE, RFA, PDA, PIC" 
+name=keywords>
+<META content="2 days" name=revisit-after>
+<META content=index,follow name=ROBOTS><!-- informative poll called from MainTemaplate --><!-- <droplet src="informative.jhtml"></droplet> -->
+<STYLE type=text/css>.poll {
+	FONT-SIZE: 10px; FONT-FAMILY: verdana,arial
+}
+.pollArchives {
+	FONT-SIZE: 12px; FONT-FAMILY: verdana,arial
+}
+A.nnLink:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.nnLink:visited {
+	COLOR: #666666; TEXT-DECORATION: none
+}
+A.nnLink:hover {
+	COLOR: #0000ff; TEXT-DECORATION: underline
+}
+A.nnLink:active {
+	COLOR: #0000ff; TEXT-DECORATION: none
+}
+.nnLink {
+	FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: tahoma
+}
+.nnType {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #000000; FONT-FAMILY: tahoma
+}
+.tdHeader {
+	FONT-WEIGHT: bold; FONT-SIZE: 7pt; VERTICAL-ALIGN: top; COLOR: #ffffff; FONT-FAMILY: tahoma; BACKGROUND-COLOR: #333b61; TEXT-ALIGN: center
+}
+.eetnsearchform {
+	FONT-SIZE: 11px; WIDTH: 110px; COLOR: #000063; FONT-FAMILY: verdana,arial; BACKGROUND-COLOR: #fefdd8
+}
+.eetnsearchsites {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; WIDTH: 125px; COLOR: #000063; FONT-FAMILY: verdana,arial; BACKGROUND-COLOR: #fefdd8
+}
+</STYLE>
+<!-- menu.js -->
+<SCRIPT language=javascript1.2 type=text/javascript>
+
+
+
+
+
+
+
+
+
+
+    
+  
+
+
+    
+  
+
+
+    
+  
+
+
+    
+  
+
+
+
+    
+
+        /*
+Dr. Clue's drop-down menu system for 4th generation browsers
+        copyright @ 1998,1999 drclue , www.drclue.net
+license is granted for use of this software by individuals
+in support of personal web-sites. All other rights reserved.
+*/
+//*** Global Variables
+var LIBLOADEDJSmenu=false;
+var     systemLibCnt    =0;
+var     systemIsNS      =(document.layers!=null);       // Is it a Netscape browser
+var     systemMouseDn   =false; // mousemove dragging
+if(document.layers)document.all=document.layers;
+var     systemMaxZ      =0; 
+var     systemNullChk   =((systemIsNS)?((navigator.appVersion.substring(0,4)=="4.05")?"null":"undefined"):"null")
+var menuTimeOut         =null;  // mouseout Cancel menu timer
+var     menuCurrentItem =null;  // currently highlighted object.
+var     menuCurrentPath ="";    // The open menu list.
+var     menuScreenWidth =0;
+//*** General Menu  configuration variables
+var     menuSubAuto     =false;
+var     menuSubSymbol   ="&raquo;";     // html to indicate sub menu
+var     menuRoll        =true;  // Show menu items as built
+var     menuCharHeight  =11;    // Avg Char Height.
+var     menuCharWidth   =5;     // Avg Char Width.
+var     menuYpopoff     =0;
+var     menuXpopoff     =178;
+var     menuBcolor      ="#ABABAB";     // background
+var     menuTcolor      ="#FFFFFF";     // Text
+var     menuHBcolor     ="#FFFFFF";
+var     menuHTcolor     ="#ABABAB";
+var     menuFont        ="verdana,arial";// menu label font
+var     menuFontSize    =1;     // menu font size
+var     menuBold        =false; // Use bold
+var     menuAtimeout    =4500;
+var     Firstpass       =true;
+var     lastEVENT       =null;
+
+var szDuds="Mozilla/4.0 (compatible; MSIE 4.5; Mac_PowerPC)";
+
+esconfoff = new Image;
+esconfoff.src = "http://i.cmpnet.com/embedded/redesign/es_conf_off.gif";
+esconfon = new Image;
+esconfon.src = "http://i.cmpnet.com/embedded/redesign/es_conf_on.gif";
+
+bostonoff = new Image;
+bostonoff.src = "http://i.cmpnet.com/embedded/redesign/es_confboston_off.gif";
+bostonon = new Image;
+bostonon.src = "http://i.cmpnet.com/embedded/redesign/es_confboston_on.gif";
+
+magoff = new Image;
+magoff.src = "http://i.cmpnet.com/embedded/redesign/esp_mag.gif";
+magon = new Image;
+magon.src = "http://i.cmpnet.com/embedded/redesign/esp_mag_on.gif";
+
+eurooff = new Image;
+eurooff.src = "http://i.cmpnet.com/embedded/redesign/esp_euro.gif";
+euroon = new Image;
+euroon.src = "http://i.cmpnet.com/embedded/redesign/esp_euro_on.gif";
+
+iaoff = new Image;
+iaoff.src = "http://i.cmpnet.com/embedded/redesign/ia.gif";
+iaon = new Image;
+iaon.src = "http://i.cmpnet.com/embedded/redesign/ia_on.gif";
+
+downoff = new Image;
+downoff.src = "http://i.cmpnet.com/embedded/redesign/code.gif";
+downon = new Image;
+downon.src = "http://i.cmpnet.com/embedded/redesign/code_on.gif";
+
+demooff = new Image;
+demooff.src = "http://i.cmpnet.com/embedded/redesign/prod_demos.gif";
+demoon = new Image;
+demoon.src = "http://i.cmpnet.com/embedded/redesign/prod_demos_on.gif";
+
+resoff = new Image;
+resoff.src = "http://i.cmpnet.com/embedded/redesign/resources.gif";
+reson = new Image;
+reson.src = "http://i.cmpnet.com/embedded/redesign/resources_on.gif";
+
+ieoff = new Image;
+ieoff.src = "http://i.cmpnet.com/embedded/redesign/ind_ev.gif";
+ieon = new Image;
+ieon.src = "http://i.cmpnet.com/embedded/redesign/ind_ev_on.gif";
+
+guideoff = new Image;
+guideoff.src = "http://i.cmpnet.com/embedded/redesign/buyers.gif";
+guideon = new Image;
+guideon.src = "http://i.cmpnet.com/embedded/redesign/buyers_on.gif";
+
+siteoff = new Image;
+siteoff.src = "http://i.cmpnet.com/embedded/redesign/sitemap.gif";
+siteon = new Image;
+siteon.src = "http://i.cmpnet.com/embedded/redesign/sitemap_on.gif";
+
+productsoff = new Image;
+productsoff.src = "http://i.cmpnet.com/embedded/redesign/new_prod.gif";
+productson = new Image;
+productson.src = "http://i.cmpnet.com/embedded/redesign/new_prod_on.gif";
+
+directoff = new Image;
+directoff.src = "http://i.cmpnet.com/embedded/redesign/catalogs.gif";
+directon = new Image;
+directon.src = "http://i.cmpnet.com/embedded/redesign/catalogs_on.gif";
+
+cdromoff = new Image;
+cdromoff.src = "http://i.cmpnet.com/embedded/redesign/cdrom.gif";
+cdromon = new Image;
+cdromon.src = "http://i.cmpnet.com/embedded/redesign/cdrom_on.gif";
+
+embeddedbooksoff = new Image;
+embeddedbooksoff.src = "http://i.cmpnet.com/embedded/redesign/embeddedbooks.gif";
+embeddedbookson = new Image;
+embeddedbookson.src = "http://i.cmpnet.com/embedded/redesign/embeddedbooks_on.gif";
+
+researchoff = new Image;
+researchoff.src = "http://i.cmpnet.com/embedded/redesign/market.gif";
+researchon = new Image;
+researchon.src = "http://i.cmpnet.com/embedded/redesign/market_on.gif";
+
+jobsoff = new Image;
+jobsoff.src = "http://i.cmpnet.com/embedded/redesign/job.gif";
+jobson = new Image;
+jobson.src = "http://i.cmpnet.com/embedded/redesign/job_on.gif";
+
+
+welcomeoff = new Image;
+welcomeoff.src = "http://i.cmpnet.com/embedded/redesign/welcometo.gif";
+welcomeon = new Image;
+welcomeon.src = "http://i.cmpnet.com/embedded/redesign/welcometo_on.gif";
+
+function imgSwap(imgId,imgSrc,restat) {
+   document.images[imgId].src=eval(imgSrc+'.src');
+   if (restat)window.status='';
+}
+
+function PreLoads(treeList)
+        {
+        window.status="["+systemLibCnt+"] menu.js["+LIBLOADEDJSmenu + "] items ["+""+" Loading ...";
+        if(!LIBLOADEDJSmenu)
+          {  setTimeout("PreLoads('"+treeList+"')",500);return;   }
+        window.onResize="document.location.href=document.location.href";        
+        if(!document.links.length)
+          {  setTimeout("PreLoads('"+treeList+"')",500);return;   }
+        window.status="initializing";
+        while(treeList.length>1)
+             {          
+             killboy =treeList.substring(1);
+             killboy =killboy.substring(0,killboy.indexOf(":"));
+             treeList=treeList.substring(killboy.length+1);
+             window.status="Loading "+killboy;
+             menuCREATE(killboy,0,0);
+             }
+        window.status="";
+        }
+
+
+/* Called by the jsLAYERclass to create
+a layer if the layer does not already exist.*/
+function jsLAYERcreateLayer(Homeboy,x,y,w,h,bColor)
+        {
+        if(systemIsNS)
+          {
+          var lyr= document.layers[Homeboy.lyrName] = new Layer(w)
+          lyr.left=x;lyr.top=y; lyr.clip.height=h+1;lyr.clip.width=w+1;
+          lyr.bgColor=((jsLAYERcreateLayer.arguments.length>5)?bColor:menuBcolor);
+          lyr.visibility='hidden';lyr.zIndex=1;
+          lyr.isHighlight=false;
+          lyr.border=1;
+          document.layers[Homeboy.lyrName].style=document.layers[Homeboy.lyrName];
+          }else{
+          var str = '\n<DIV id='+Homeboy.lyrName+' style="visibility: hidden; position:absolute; left:'+x+'; top:'+y+'; width:'+w
+          str += '; height:'+(h+1)+'px; clip:rect(0px '+(w+1)+'px '+(h+1)+'px 0px)'
+          str += '; background-color:'+((jsLAYERcreateLayer.arguments.length>5)?bColor:menuBcolor)+';z-Index:5;"> </DIV>';
+          document.body.insertAdjacentHTML("BeforeEnd",str);
+          }
+        Homeboy.jsLAYERobject=document.all[Homeboy.lyrName];
+        if(systemIsNS)
+          {
+          Homeboy.jsLAYERdocument  =document.layers[Homeboy.lyrName].document;
+          Homeboy.style            =document.layers[Homeboy.lyrName];
+          }else{
+          Homeboy.jsLAYERdocument  =document.all[Homeboy.lyrName];
+          Homeboy.style            =document.all[Homeboy.lyrName].style;
+          Homeboy.style.zIndex     =systemMaxZ++;
+          }
+        Homeboy.jsLAYERobject.HomeBoy=Homeboy;
+        Homeboy.jsLAYERobject.W =w;
+        Homeboy.jsLAYERobject.X =x;
+        Homeboy.jsLAYERobject.Y =y;
+        Homeboy.jsLAYERobject.H =h;
+        Homeboy.jsLAYERobject.MOUSEHANDLER="MOUSEVECTOR";
+        return Homeboy;
+        }
+function jsLAYERsetHandler(Homeboy,szHANDLER) // named function for events
+        {
+        Homeboy.jsLAYERobject.MOUSEHANDLER=szHANDLER;
+        MOUSECAPTURE(Homeboy,Homeboy.lyrName);
+        }
+function jsLAYERhomeboy(layername){return document.all[layername].HomeBoy;}
+function jsLAYERopen(Homeboy){if(systemIsNS){Homeboy.jsLAYERobject.document.open();  }else{  Homeboy.jsLAYERobject.innerHTML="";}}
+function jsLAYERwrite(Homeboy,Text){if(systemIsNS){Homeboy.jsLAYERdocument.write(Text);}else{Homeboy.jsLAYERobject.innerHTML+=Text;}}
+function jsLAYERclose(Homeboy)
+        {
+        if(systemIsNS)
+          {
+          Homeboy.jsLAYERdocument.close();
+          MOUSECAPTURE(Homeboy,Homeboy.lyrName);
+          }
+        }
+function jsLAYERsetContent(Homeboy,text)
+        {
+        jsLAYERopen(Homeboy);
+        jsLAYERwrite(Homeboy,text);
+        jsLAYERclose(Homeboy);return;
+        }
+function jsLAYERshow(Homeboy,vis){Homeboy.style.visibility=((vis)?"visible":"hidden");}
+function jsLAYERgetX(Homeboy){return parseInt(Homeboy.style.left);}
+function jsLAYERgetY(Homeboy){return parseInt(Homeboy.style.top);}
+function jsLAYERxy(Homeboy,x,y,InLayer)
+        {
+        this.InX=x;this.InY=y;
+        if(document.layers)
+          {
+          if(InLayer)
+            {
+            InX+=InLayer.style.left;
+            InY+=InLayer.style.top;
+            }
+          Homeboy.jsLAYERobject.x=this.InX;
+          Homeboy.jsLAYERobject.y=this.InY;
+          }else{
+          if(InLayer)
+            {
+            this.InX+=parseInt(document.all[Homeboy.lyrName].style.left);
+            this.InY+=parseInt(document.all[Homeboy.lyrName].style.top);
+            }
+//alert(document.all[Homeboy.lyrName].style.left+"[]"+this.InX+"[]"+x)
+          document.all[Homeboy.lyrName].style.left=this.InX
+          document.all[Homeboy.lyrName].style.top=this.InY
+
+          }
+
+
+        }
+/*Function      :MEVENT
+**Parameters    :Homeboy        - Layer Class Pointer
+**               Evt            - javascript Browser Event
+**Description   :Noramalizes Netscape/MSIE evnts to 
+**a class containing variables for both, with Netscape names
+**superceding MSIE names. It is this psudeo event class that
+**is passed to all MOUSE... event handler functions.
+*/
+function MEVENT(Homeboy,Evt) //normalizes the differences in NS and MSIE events
+        {
+        this.type=Evt.type;
+        this.screenX=Evt.screenX;
+        this.screenY=Evt.screenY;
+        if(systemIsNS)
+          {
+        this.pageX=Evt.pageX;
+        this.pageY=Evt.pageY;
+        this.locationX=Homeboy.jsLAYERobject.x;
+        this.locationY=Homeboy.jsLAYERobject.y;
+        this.layerX=Evt.layerX;
+        this.layerY=Evt.layerY;
+        this.which=Evt.which;
+        this.target=Evt.target;
+        this.modifiers=Evt.modifiers;
+          }else{
+        this.pageX=Evt.x;
+        this.pageY=Evt.y;
+        if(document.body.scrollTop)this.pageY+=document.body.scrollTop;
+        this.locationX=parseInt(Homeboy.jsLAYERobject.style.left);
+        this.locationY=parseInt(Homeboy.jsLAYERobject.style.top);
+        this.layerX=this.pageX-this.locationX;
+        this.layerY=this.pageY-this.locationY;
+        this.which=Evt.button+1;
+        this.target=Evt.srcElement;
+        this.modifiers=(((Evt.altKey)?1:0)+((Evt.ctrlKey)?2:0)+((Evt.AltKey)?4:0));
+          }
+        }
+function MOUSEVECTOR(layername,Evt)// handles the actuall prep and call of mouse events
+        {
+        Homeboy=document.all[layername].HomeBoy;return false;
+        }
+// Sets up mouse event NOTE: Use of "new Function" is important
+function MOUSECAPTURE(Homeboy,layername)
+        {
+
+var NFD="return "+Homeboy.jsLAYERobject.MOUSEHANDLER+"('"+layername+"',"+((systemIsNS)?"arguments[0]":"window.event")+")"
+Homeboy.jsLAYERobject.onmouseover=new Function(NFD)
+Homeboy.jsLAYERobject.onmouseout=new Function(NFD)
+Homeboy.jsLAYERdocument.onmousemove=new Function(NFD)
+Homeboy.jsLAYERdocument.onmousedown=new Function(NFD)
+Homeboy.jsLAYERdocument.onmouseup=new Function(NFD)
+if(systemIsNS)Homeboy.jsLAYERdocument.captureEvents(  Event.MOUSEUP |   Event.MOUSEDOWN   | Event.MOUSEMOVE);
+        }
+function NSResizePatch(){document.location.href=document.location.href;}
+function jsNULLvector(layername,Evt){return true;}
+var MPTYPE ="",MSTYPE ="";
+function jsMPANELvector(panelName,Evt)  // Vectors mouse messages for the panel
+        {
+        Homeboy=jsLAYERhomeboy(panelName);
+        if(menuTimeOut)clearTimeout(menuTimeOut);
+        if(Evt.type=="mouseout" || Evt.type=="mouseover") 
+          {
+          MPTYPE=Evt.type;
+          if(MPTYPE==MSTYPE&&MPTYPE=="mouseout")menuTimeOut=setTimeout("menuPOPDN()",100);
+          }
+        if(Evt.type!="mousemove" )return false;
+        EVENT=new MEVENT(Homeboy,Evt);
+
+        EntryNum=0;
+        EntryNotch=EVENT.layerY;
+        if(EntryNotch)
+          {
+          EntryNotch-=(EntryNotch%(menuCharHeight+1));
+          EntryNum=(EntryNotch/(menuCharHeight+1))
+          }
+        if(Homeboy.mParent.Items.length<=EntryNum)return true;
+        lastEVENT=EVENT;
+        if(Homeboy.mParent.EntryNum==EntryNum)return false;
+
+//if(!systemIsNS)
+//{
+//alert(EntryNum+"[]"+EntryNotch+"[]"+EVENT.layerY)
+//Homeboy.mParent.Items[EntryNum].RENDER)
+//}
+        jsLAYERsetContent(Homeboy.mParent.mSELECT,Homeboy.mParent.Items[EntryNum].RENDER);
+
+        jsLAYERxy(Homeboy.mParent.mSELECT,jsLAYERgetX(Homeboy),jsLAYERgetY(Homeboy)+(EntryNum*(menuCharHeight+1)));
+        Homeboy.mParent.EntryNum=EntryNum;
+        if(!menuSubAuto)return false;
+        if(Homeboy.mParent.Items[EntryNum].ACTION.substring(0,1)=="@")
+          {
+          fakeEvt = new Object();
+          fakeEvt.type="mouseup";
+          jsMSELECTvector(Homeboy.mParent.mSELECT.lyrName,fakeEvt);
+          }
+        return false;
+        }
+/*
+** Vectors mouse messages for the menu selector
+*/
+function jsMSELECTvector(panelName,Evt)
+        {
+        if(menuTimeOut)clearTimeout(menuTimeOut);
+        if(Evt.type=="mouseout" || Evt.type=="mouseover") 
+          {
+          MSTYPE=Evt.type;
+          if(MPTYPE==MSTYPE&&MPTYPE=="mouseout")menuTimeOut=setTimeout("menuPOPDN()",100);
+          Homeboy=jsLAYERhomeboy(panelName);
+          return false;
+          }
+        if(Evt.type!="mouseup")return false;
+        Homeboy=jsLAYERhomeboy(panelName);
+        var action = Homeboy.mParent.Items[Homeboy.mParent.EntryNum].ACTION;
+
+        if(menuCurrentPath.indexOf(Homeboy.jsLAYERobject.GROUP)>0)
+          {
+          var FindGroup = ":"+Homeboy.jsLAYERobject.GROUP+":";
+          var killList = menuCurrentPath.substring(menuCurrentPath.indexOf(FindGroup)+FindGroup.length-1);
+          menuPOPDN(killList);
+          }
+        if(action.length<1){window.status="[Not Available]";return false;}
+        var isMenu = action.substring(0,1)=="@";
+        var isJavascript = action.substring(0,1)=="!";
+        if(isJavascript)
+          {
+          eval(action.substring(1))
+          return false;
+          }
+        if(isMenu)
+          {
+          menuPOPUP(jsLAYERgetX(Homeboy)+Homeboy.jsLAYERobject.W+2,jsLAYERgetY(Homeboy),action.substring(1));
+          }else{
+          document.location.href=action;
+          }
+        return false;
+        }
+/*
+** This is the menu panel
+*/
+function jsMPANELclass(group,entry,label,action,x,y,w,h)
+        {
+        this.lyrName            =group+entry;
+        if(!document.all[this.lyrName])jsLAYERcreateLayer(this,x,y,w,h,"#000000");
+        jsLAYERsetHandler(this,"jsMPANELvector");
+        this.jsLAYERobject.GROUP=group;this.jsLAYERobject.ENTRY=entry;
+        this.jsLAYERobject.rtWidth=10;
+        this.jsLAYERobject.rtSymbol="&raquo;";
+        }
+/*
+** This is the highlite bar
+*/
+function jsMSELECTclass(group,entry,label,action,x,y,w,h)
+        {
+        this.lyrName            =group+entry;
+        if(!document.all[this.lyrName])jsLAYERcreateLayer(this,x,y,w,h);
+        jsLAYERsetHandler(this,"jsMSELECTvector");
+        this.jsLAYERobject.GROUP=group;
+        this.jsLAYERobject.ENTRY=entry;
+        this.jsLAYERobject.rtWidth=10;
+        this.jsLAYERobject.rtSymbol="&raquo;";
+        }
+/*
+** Create the menu label obeject string for display
+*/
+function menuLABEL(Homeboy,text,isHighlight,isSub)
+        {
+        var fontstart="<FONT FACE='"+menuFont+"' SIZE="+menuFontSize+" COLOR='"+((isHighlight)?menuHTcolor:menuTcolor)+"'>"+((menuBold)?"<B>":"");
+        var CONTENT="&nbsp;";
+        if(text)CONTENT=text.length?"&nbsp;"+text:"&nbsp;";
+        var lyrtxt="<TABLE BORDER=0 CELLPADDING=0 STYLE='cursor:hand' CELLSPACING='0' BGCOLOR='";
+        lyrtxt+=((isHighlight)?menuHBcolor:menuBcolor);
+        lyrtxt+="' WIDTH='"+Homeboy.jsLAYERobject.W+"' HEIGHT='"+menuCharHeight+"'><TR VALIGN=MIDDLE>";
+        twidth=parseInt(Homeboy.jsLAYERobject.W)-parseInt(Homeboy.jsLAYERobject.rtWidth);
+        lyrtxt+="<TD WIDTH='"+twidth.toString();
+        lyrtxt+="'>"+fontstart+CONTENT+((menuBold)?"</B>":"")+"</FONT></TD>";
+        lyrtxt+="<TD WIDTH='10'>"+fontstart+((isSub)?menuSubSymbol:"&nbsp;")+((menuBold)?"</B>":"")+"</FONT></TD></TR></TABLE>";
+        return lyrtxt;
+        }
+function MenuItem(label,action)
+        {
+        this.LABEL      =label  ;
+        this.ACTION     =action ;
+        this.SUB        =this.ACTION.substring(0,1)=="@";
+        this.RENDER     =""     ;
+        }
+function MenuListAPPEND(label,action)   //Appends an item to the menuobject
+        {
+        this.Items[this.Items.length]=new MenuItem(label,action);
+        if(label.length>this.greatestCharWidth)this.greatestCharWidth=label.length;
+        }
+function menuPop(tobj,imgId,imgSrc) //Pops up menu relative to <A> tag location on screen.
+        {
+        if ((imgId)&&(imgSrc))imgSwap(imgId,imgSrc);
+        objectName=tobj.href.substring(tobj.href.lastIndexOf("/")+1);
+        if(objectName.indexOf(".html")>-1)objectName=objectName.substring(0,objectName.indexOf("."))
+//      if(!menuCurrentPath)return;
+        if(menuCurrentPath.indexOf(":"+objectName+":")==0)return false;
+        if(menuCurrentPath.length>0)menuPOPDN();
+if(szDuds.indexOf(navigator.userAgent)>-1)
+{
+if(tobj.href.indexOf(".html")==-1)tobj.href+=".html";
+return true;
+}
+
+        if(navigator.appVersion.indexOf("MSIE")>-1&&navigator.appVersion.indexOf("Mac")>-1)
+          {// compatible mac
+          if(tobj.href.indexOf(".html")==-1)tobj.href+=".html";
+          return true;
+          }
+
+        this.MX=((systemIsNS)?(tobj.x):window.event.clientX-window.event.offsetX+tobj.offsetLeft);
+        this.MY=((systemIsNS)?(tobj.y):window.event.clientY-window.event.offsetY+tobj.offsetTop);
+        if(!systemIsNS)MSIEmeasure(tobj,this);    
+        this.MY+=menuYpopoff;
+        this.MX+=menuXpopoff;
+        menuPOPUP(this.MX,this.MY,objectName);
+        menuTimeOut=setTimeout("menuPOPDN()",menuAtimeout);
+        return false;
+        }
+function menuPOPUP(x,y,menulist)        //*** Opens named menu at given location
+        {
+        var DL=eval(menulist);
+        if(!DL){alert("menuPOPUP NULL "+menulist);return;}
+        menuSHOW(menulist,x,y);
+        if(!menuScreenWidth)
+          menuScreenWidth=(systemIsNS)?document.width:document.body.offsetWidth;
+        mkw=(DL.greatestCharWidth*menuCharWidth)+10;
+        var atX = ((x+mkw+20)>=menuScreenWidth)?x-mkw:x;
+        if(jsLAYERgetX(DL.mPANEL)!=atX)menuXY(DL,atX,y);
+        }
+function menuCREATE(szMlist,iLeft,iTop)
+        {
+        Left= 20;Top = 40;
+        if(menuCREATE.arguments.length>1)Left=iLeft;
+        if(menuCREATE.arguments.length>2)Top=iTop;
+        Mlist=eval(szMlist);
+        if(Mlist.mPANEL ==null)
+          {
+          Mlist.mPANEL=new jsMPANELclass(szMlist,0,"Hello","alert('hi')",Left,Top,((Mlist.greatestCharWidth+10)*menuCharWidth)+1,((menuCharHeight+1)*Mlist.Items.length)+1);
+          Mlist.mPANEL.mParent=Mlist;
+          var menuContent='';
+          menuContent='<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0><TR><TD>';
+          for(x=0;x<Mlist.Items.length;x++)
+           {
+           menuContent+=menuLABEL(Mlist.mPANEL,Mlist.Items[x].LABEL,false,Mlist.Items[x].SUB);
+           Mlist.Items[x].RENDER=menuLABEL(Mlist.mPANEL,Mlist.Items[x].LABEL,true,Mlist.Items[x].SUB);
+           }
+        menuContent+='</TD><TD BGCOLOR="#000000">&nbsp;</TD>';
+        menuContent+="</TR><TR><TD COLSPAN=2>&nbsp;</TD></TR></TABLE>";
+//alert(menuContent);
+          jsLAYERsetContent(Mlist.mPANEL,menuContent);
+          }
+        if(Mlist.mSELECT==null)
+          {
+          Mlist.mSELECT=new jsMSELECTclass(szMlist,1,"Hello","alert('hi')",Left,Top,(Mlist.greatestCharWidth+10)*menuCharWidth,menuCharHeight);
+          Mlist.mSELECT.mParent=Mlist;
+          jsLAYERsetContent(Mlist.mSELECT,Mlist.Items[0].RENDER);
+          }
+        }
+
+function menuSHOW(szMlist,iLeft,iTop)   // SHOW the menu
+        {
+        Left= 20;Top = 40;
+        if(menuSHOW.arguments.length>1)Left=iLeft;
+        if(menuSHOW.arguments.length>2)Top=iTop;
+        Mlist=eval(szMlist);
+        if(Mlist.mPANEL==null)menuCREATE(szMlist,iLeft,iTop);
+        if(jsLAYERgetX(Mlist.mPANEL)!=Left || jsLAYERgetY(Mlist.mPANEL)!=Top)
+            {
+            jsLAYERxy(Mlist.mPANEL,Left,Top)   
+            jsLAYERxy(Mlist.mSELECT,Left,Top+(Mlist.EntryNum*(menuCharHeight+1)));
+            }; 
+        if(menuCurrentPath.indexOf(":"+szMlist+":")<0)menuCurrentPath+=((menuCurrentPath.length)?"":":")+szMlist+":";
+
+        if(Mlist.mPANEL.style.clip&&!systemIsNS)
+          {
+          Clips= Mlist.mPANEL.style.clip.split("rect(")[1].split(")")[0].split("px")
+          Clips[2]=Mlist.Items.length * (menuCharHeight+1);
+          Mlist.mPANEL.style.clip = "rect("+Array(0,Clips[1],Clips[2],0).join("px ")+"px)";
+          Mlist.mPANEL.style.zIndex=5;
+          Mlist.mSELECT.style.zIndex=6;
+          }
+        Mlist.mPANEL.style.visiblity='visible';
+//alert(Mlist.Items.length +" Item(s) "+ Mlist.mPANEL.style.clip);
+        jsLAYERshow(Mlist.mPANEL,true);
+        jsLAYERshow(Mlist.mSELECT,true);
+        }
+function menuHIDE(szMlist)      //  Hides the named menu
+        {
+        Mlist=eval(szMlist);
+        jsLAYERshow(Mlist.mSELECT,false);
+        jsLAYERshow(Mlist.mPANEL,false);
+        }
+function menuXY(Mlist,x,y)      // Moves the referenced menu
+        {
+        jsLAYERxy(Mlist.mPANEL,x,y)
+        jsLAYERxy(Mlist.mSELECT,x,y+(Mlist.EntryNum*(menuCharHeight+1)));
+        }
+function menuPOPDN(treeList)    // closes a list of menus
+        {
+        if(menuTimeOut)clearTimeout(menuTimeOut);
+        if(menuPOPDN.arguments.length<1)treeList=menuCurrentPath;
+        while(treeList.length>1)
+             {          
+             killboy =treeList.substring(1);
+             killboy =killboy.substring(0,killboy.indexOf(":"));
+             treeList=treeList.substring(killboy.length+1);
+             menuHIDE(killboy);
+             }
+        if(menuPOPDN.arguments.length<1)menuCurrentPath="";
+        };
+/*
+** MAIN MENU OBJECT
+*/
+var mSELECT=null;
+function MenuList(Mlist)
+        {
+        this.mPANEL=null;this.mSELECT=null;
+        this.Items=new Array();this.EntryNum=0;
+        this.APPEND=MenuListAPPEND;
+        this.greatestCharWidth=0;
+        }
+
+/*      Function        :MSIEmeasure
+**      Since I have found no straight forward method of obtaining IE x,y
+**      coords for the clicked link, this function recurses up the object tree
+**      to measure the screen location of the <A> involved
+*/
+function MSIEmeasure(btobj,HB)
+        {
+        var tobj=btobj;
+        HB.MX=tobj.offsetLeft;
+        HB.MY=tobj.offsetTop;
+        while(tobj.parentElement)
+          {
+          if(!tobj.parentElement)break;
+          tobj = tobj.parentElement;
+//        if(tobj.tagName=="TABLE")
+          if(String(":TABLE:TD:DIV:").indexOf(":"+tobj.tagName+":")>-1)
+            {
+            HB.MX+=tobj.offsetLeft;
+            HB.MY+=tobj.offsetTop;
+            }
+          if(!tobj.parentElement)break;
+          if(tobj.parentElement.tagName=="BODY")break;
+          }
+        return ;
+        }
+/****************************************
+** A message window                     *
+*****************************************/
+var StatusMsgWin=null;
+function jsMESSAGEclass(group,entry,x,y,w,h)
+        {
+        this.lyrName            =group+entry;
+        if(!document.all[this.lyrName])jsLAYERcreateLayer(this,x,y,w,h,"#FFFFCC");
+        jsLAYERsetHandler(this,"jsNULLvector");
+        jsLAYERshow(this,true);
+        this.jsLAYERobject.GROUP=group;this.jsLAYERobject.ENTRY=entry;
+        }
+/*
+** Set the contents of the message window;
+*/
+function jsStatusMsg(txtMESSAGE)
+        {
+        if(!StatusMsgWin)
+          {
+          StatusMsgWin= new jsMESSAGEclass("E",1,1,1,355,100);
+          jsLAYERshow(StatusMsgWin,true);
+          }
+        jsLAYERsetContent(StatusMsgWin,txtMESSAGE);
+        }
+var LIBLOADEDJSmenu=true;
+//systemLibCnt++; 
+
+
+      
+
+  
+
+</SCRIPT>
+<!-- /menu.js --><!-- <body bgcolor="#ffffff" link="#0000ff" vlink="#63399"> --><FONT 
+face=verdana,georgia,arial,sans-serif size=2>
+<TABLE cellSpacing=0 cellPadding=0 width=780 border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle colSpan=3><IMG height=3 
+      src="Portable Inheritance and Polymorphism in C_files/spacer.gif" 
+      width=720 border=0><BR><!-- error getting ad: http://as.cmpnet.com/html.ng/pagepos=top&affiliate=embedded&site=electronics&server=atg&target=/97/fe29712.htm&country=india(java.lang.StringIndexOutOfBoundsException: String index out of range: -1) --><IMG 
+      height=3 src="Portable Inheritance and Polymorphism in C_files/spacer.gif" 
+      width=720 border=0>
+      <TABLE cellSpacing=0 cellPadding=0 width=780 border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD><IMG height=24 
+            src="Portable Inheritance and Polymorphism in C_files/top_color.jpg" 
+            width=567 border=0></TD>
+          <TD><A 
+            href="http://www.eet.com/register;jsessionid=5DNGY2OZIS2PSQSNDBCCKHSCJUMEKJVN"><IMG 
+            height=24 alt=NEWSLETTERS 
+            src="Portable Inheritance and Polymorphism in C_files/top_newsletters.jpg" 
+            width=84 border=0></A></TD>
+          <TD><A href="https://www.espsubscribe.com/"><IMG height=24 
+            alt="PRINT SUBSCRIPTION" 
+            src="Portable Inheritance and Polymorphism in C_files/top_printsub.jpg" 
+            width=129 border=0></A></TD></TR></TBODY></TABLE><IMG height=1 
+      src="Portable Inheritance and Polymorphism in C_files/pixel.gif" width=780 
+      border=0>
+      <TABLE cellSpacing=0 cellPadding=0 width=780 border=0>
+        <TBODY>
+        <TR>
+          <TD><A href="http://www.cmp.com/"><IMG height=87 alt="CMP MEDIA" 
+            src="Portable Inheritance and Polymorphism in C_files/cmp.jpg" 
+            width=89 border=0></A></TD>
+          <TD><A href="http://www.embedded.com/"><IMG height=87 
+            alt=EMBEDDED.COM 
+            src="Portable Inheritance and Polymorphism in C_files/embedd_logo.jpg" 
+            width=234 border=0></A></TD>
+          <TD><IMG height=87 
+            src="Portable Inheritance and Polymorphism in C_files/middle_color.jpg" 
+            width=86 border=0></TD>
+          <TD><A href="http://cmpmedia.globalspec.com/ProductFinder"><IMG 
+            height=87 alt=SPECSEARCH 
+            src="Portable Inheritance and Polymorphism in C_files/specsearch.jpg" 
+            width=371 border=0></A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=1 cellPadding=0 width=780 border=0>
+  <TBODY>
+  <TR bgColor=#333366><!-- TopNav.html -->
+    <TD align=middle width=130><A href="http://www.eeproductcenter.com/"><IMG 
+      height=16 alt=eeProductCenter 
+      src="Portable Inheritance and Polymorphism in C_files/eepc.gif" width=111 
+      border=0></A></TD>
+    <TD align=middle width=130><A href="http://www.embedded.com/"><IMG 
+      height=16 alt=Home 
+      src="Portable Inheritance and Polymorphism in C_files/home.gif" width=42 
+      border=0></A></TD>
+    <TD align=middle width=130><A href="http://www.eet.com/register/"><IMG 
+      height=16 alt="Sign up for newletters" 
+      src="Portable Inheritance and Polymorphism in C_files/register.gif" 
+      width=100 border=0></A></TD>
+    <TD align=middle width=130><A href="http://www.embedded.com/contact"><IMG 
+      height=16 alt=Contact 
+      src="Portable Inheritance and Polymorphism in C_files/contact.gif" 
+      width=97 border=0></A></TD>
+    <TD align=middle width=130><A href="http://www.embedded.com/advert"><IMG 
+      height=16 alt=Advertising 
+      src="Portable Inheritance and Polymorphism in C_files/advert.gif" width=97 
+      border=0></A></TD>
+    <TD align=middle width=130><A 
+      href="mailto:wbiondi@cmp.com?subject=Feedback from Embedded.com"><IMG 
+      height=16 alt=Feedback 
+      src="Portable Inheritance and Polymorphism in C_files/feeback.gif" 
+      width=68 border=0></A></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=780 border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top>
+      <TABLE cellSpacing=0 cellPadding=0 width=205 border=0>
+        <TBODY>
+        <TR><!-- LEFT NAV -->
+          <TD vAlign=top align=left width=205 rowSpan=2><!--<droplet src="/surveys/popup.jhtml"/></droplet>-->
+            <TABLE cellSpacing=0 cellPadding=0 width=205 border=0>
+              <TBODY>
+              <TR>
+                <TD vAlign=top align=left width=21 bgColor=#666699>&nbsp;</TD>
+                <TD vAlign=top align=left width=18 bgColor=#ffffcc><IMG 
+                  height=18 
+                  src="Portable Inheritance and Polymorphism in C_files/curve_lav.gif" 
+                  width=18 border=0><BR></TD>
+                <TD vAlign=top align=left width=166 
+              bgColor=#ffffcc>&nbsp;</TD></TR><!-- LEFTTOC -->
+              <TR>
+                <TD bgColor=#666699>&nbsp;</TD>
+                <TD vAlign=top align=left width=184 bgColor=#ffffcc colSpan=2><!--     <center>
+<a href="http://www.esconline.com/boston/register.htm"><img src="http://i.cmpnet.com/embedded/gifs/permabuttons/escBOS_permabttn.gif" border=0 vspace="2"></a>
+<a href="http://www.eetnetwork.com/cs/ee/"><img src="http://i.cmpnet.com/embedded/edge_button2.gif" border="0" vspace="2"></a>
+
+
+      </center>
+--><!-- eetnetwork global search table --><!-- begin search table -->
+                  <CENTER>
+                  <FORM action=/searcheetn.jhtml method=get>
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD align=middle colSpan=2><IMG height=12 
+                        src="Portable Inheritance and Polymorphism in C_files/esearch_network.gif" 
+                        width=132 border=0></TD></TR>
+                    <TR>
+                      <TD align=middle><INPUT class=eetnsearchform 
+                        maxLength=50 name=queryText></TD>
+                      <TD vAlign=top align=left><INPUT type=image height=17 
+                        alt=Search width=17 
+                        src="Portable Inheritance and Polymorphism in C_files/go.gif" 
+                        value=Search border=0 name=Search></TD></TR><!-- spacer -->
+                    <TR>
+                      <TD colSpan=2><IMG height=5 
+                        src="Portable Inheritance and Polymorphism in C_files/x.gif" 
+                        width=132 border=0></TD></TR>
+                    <TR>
+                      <TD vAlign=top align=middle colSpan=2><!-- choose site --><SELECT 
+                        class=eetnsearchsites name=site> <OPTION value=12 
+                          selected>Select Site Below<OPTION 
+                          value=13>Commsdesign<OPTION value=2>My-ESM<OPTION 
+                          value=15>EEdesign<OPTION 
+                          value=900001>eeProductCenter<OPTION 
+                          value=4>EETimes<OPTION value=12>Embedded<OPTION 
+                          value=19>Planet Analog<OPTION value=5>Silicon 
+                          Strategies</OPTION></SELECT> </TD></TR><!-- spacer -->
+                    <TR>
+                      <TD colSpan=2><IMG height=7 
+                        src="Portable Inheritance and Polymorphism in C_files/x.gif" 
+                        width=132 border=0></TD></TR></TBODY></TABLE></FORM></CENTER><!-- end search table -->
+                  <P><!-- <center><form action="/search" method="get"><img src="http://i.cmpnet.com/embedded/redesign/esearch.gif" width="184" height="21"><input type="text" name="queryText" size="20" value=""><br><input type="submit" name="Search" value="Search"><br><font face="verdana, georgia, arial" size="1"><a href="http://www.eetimesnetwork.com/esearchcenter.html"><b>Search the EE Times Network</b></a></font></form></center> --><!-- google search       <droplet src="google_search.jhtml"></droplet>
+--><!-- custom ad position -->
+                  <CENTER><!-- Ad --><!-- error getting ad: http://as.cmpnet.com/html.ng/affiliate=embedded&pagepos=tile4&site=electronics&server=atg&target=/97/fe29712.htm&country=india(java.lang.StringIndexOutOfBoundsException: String index out of range: -1) --><!-- /Ad --></CENTER><!-- end custom ad position --><!-- product news --><A 
+                  href="http://www.embedded.com/products"><IMG height=19 
+                  alt="PRODUCT NEWS" 
+                  src="Portable Inheritance and Polymorphism in C_files/new_prodheader.gif" 
+                  width=184 vspace=1 border=0> </A>
+                  <TABLE table_name="product_news">
+                    <TBODY>
+                    <TR>
+                      <TD align=left><FONT face=verdana size=1><B><A 
+                        href="http://www.embedded.com/showArticle.jhtml?articleID=166403888">Standalone 
+                        radios simplify ZigBee network connection 
+                        </A></B><BR>MaxStream has released standalone radios 
+                        that allow for quick connections to both RS-232 and USB 
+                        enabled devices. </FONT></TD></TR>
+                    <TR>
+                      <TD align=left><FONT face=verdana size=1><B><A 
+                        href="http://www.embedded.com/showArticle.jhtml?articleID=166403545">USB 
+                        class drivers support streaming audio/video applications 
+                        </A></B><BR>The Accelerated Technology division of 
+                        Mentor Graphics has just released two new class drivers 
+                        for its Nucleus USB software designed to allow 
+                        developers to incorporate streaming audio and/or video 
+                        capabilities into their embedded designs. 
+                    </FONT></TD></TR></TBODY></TABLE>
+                  <P align=right><FONT face=verdana size=1><A 
+                  href="http://www.embedded.com/products"><B>More Product 
+                  News</B></A> <IMG 
+                  src="Portable Inheritance and Polymorphism in C_files/blackarrow.gif"><BR></FONT><!-- dateline europe --><A 
+                  href="http://www.embedded.com/columns/de/"><IMG height=19 
+                  alt="DATELINE: EUROPE" 
+                  src="Portable Inheritance and Polymorphism in C_files/new_datelineheader.gif" 
+                  width=184 vspace=1 border=0> </A>
+                  <TABLE table_name="dateline">
+                    <TBODY>
+                    <TR>
+                      <TD align=left><FONT face=verdana size=1><B><A 
+                        href="http://www.embedded.com/showArticle.jhtml?articleID=166402877">Tekmicro 
+                        provides channel for QinetiQ's embedded products 
+                        </A></B><BR>TEK Microsystems and QinetiQ&amp;#8217;s 
+                        Real Time Embedded Systems Group (RTES) have signed a 
+                        deal to jointly develop and distribute advanced embedded 
+                        systems solutions in North America. </FONT></TD></TR>
+                    <TR>
+                      <TD align=left><FONT face=verdana size=1><B><A 
+                        href="http://www.embedded.com/showArticle.jhtml?articleID=166402436">Quantum 
+                        Research CEO awarded US and European patents 
+                        </A></B><BR>Hal Philipp, CEO of Quantum Research Group, 
+                        the charge-transfer (QT) capacitive touch technology 
+                        developer, has been granted both US and European patents 
+                        for a technology that eliminates ambiguity between 
+                        adjacent keys in touch keypads and keyboards. 
+                    </FONT></TD></TR></TBODY></TABLE>
+                  <P align=right><FONT face=verdana size=1><A 
+                  href="http://www.embedded.com/columns/de"><B>More News From 
+                  Europe</B></A> <IMG 
+                  src="Portable Inheritance and Polymorphism in C_files/blackarrow.gif"><BR></FONT><!-- leftToc1.html -->
+                  <TABLE cellSpacing=0 cellPadding=0 width=184 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD vAlign=top align=left bgColor=#ffffcc><!-- EMBEDDED.COM LINKS --><IMG 
+                        height=19 alt="Embedded.com Links" 
+                        src="Portable Inheritance and Polymorphism in C_files/embedd_links.gif" 
+                        width=184 vspace=1><BR><A 
+                        onmouseover="imgSwap('esconf','esconfon',1)" 
+                        onmouseout="imgSwap('esconf','esconfoff',1)" 
+                        href="http://www.esconline.com/sf"><IMG height=49 
+                        src="Portable Inheritance and Polymorphism in C_files/es_conf_off.gif" 
+                        width=184 border=0 name=esconf></A><BR><A 
+                        onmouseover="imgSwap('boston','bostonon',1)" 
+                        onmouseout="imgSwap('boston','bostonoff',1)" 
+                        href="http://www.esconline.com/boston"><IMG height=35 
+                        src="Portable Inheritance and Polymorphism in C_files/es_confboston_off.gif" 
+                        width=184 border=0 name=boston></A><BR><A 
+                        onmouseover="imgSwap('mag','magon',1)" 
+                        onmouseout="imgSwap('mag','magoff',1)" 
+                        href="http://www.embedded.com/mag.htm"><IMG height=35 
+                        src="Portable Inheritance and Polymorphism in C_files/esp_mag.gif" 
+                        width=184 border=0 name=mag></A><BR><A 
+                        onmouseover="imgSwap('euro','euroon',1)" 
+                        onmouseout="imgSwap('euro','eurooff',1)" 
+                        href="http://www.embedded.com/europe/"><IMG height=34 
+                        src="Portable Inheritance and Polymorphism in C_files/esp_euro.gif" 
+                        width=184 border=0 name=euro></A><BR><!--<A HREF="/internet/" onMouseOver="imgSwap('ia','iaon',1)" onMouseOut="imgSwap('ia','iaoff',1)"><IMG SRC="http://i.cmpnet.com/embedded/redesign/ia.gif" WIDTH="184" HEIGHT="20" BORDER="0" NAME="ia"></a><BR>--><A 
+                        onmouseover="imgSwap('down','downon',1)" 
+                        onmouseout="imgSwap('down','downoff',1)" 
+                        href="http://www.embedded.com/code"><IMG height=21 
+                        src="Portable Inheritance and Polymorphism in C_files/code.gif" 
+                        width=184 border=0 name=down></A><BR><A 
+                        onmouseover="imgSwap('demo','demoon',1)" 
+                        onmouseout="imgSwap('demo','demooff',1)" 
+                        href="http://www.embedded.com/demos"><IMG height=19 
+                        src="Portable Inheritance and Polymorphism in C_files/prod_demos.gif" 
+                        width=184 border=0 name=demo></A><BR><A 
+                        onmouseover="imgSwap('res','reson',1)" 
+                        onmouseout="imgSwap('res','resoff',1)" 
+                        href="http://www.embedded.com/links.htm"><IMG height=21 
+                        src="Portable Inheritance and Polymorphism in C_files/resources.gif" 
+                        width=184 border=0 name=res></A><BR><A 
+                        onmouseover="imgSwap('ie','ieon',1)" 
+                        onmouseout="imgSwap('ie','ieoff',1)" 
+                        href="http://www.embedded.com/events"><IMG height=19 
+                        src="Portable Inheritance and Polymorphism in C_files/ind_ev.gif" 
+                        width=184 border=0 name=ie></A><BR><A 
+                        onmouseover="imgSwap('jobs','jobson',1)" 
+                        onmouseout="imgSwap('jobs','jobsoff',1)" 
+                        href="http://www.theworkcircuit.com/"><IMG height=20 
+                        src="Portable Inheritance and Polymorphism in C_files/job.gif" 
+                        width=184 border=0 name=jobs></A><BR><!--<A HREF="/bg/" onMouseOver="imgSwap('guide','guideon',1)" onMouseOut="imgSwap('guide','guideoff',1)"><IMG SRC="http://i.cmpnet.com/embedded/redesign/buyers.gif" WIDTH="184" HEIGHT="20" BORDER="0" NAME="guide"></A><BR>--><A 
+                        onmouseover="imgSwap('site','siteon',1)" 
+                        onmouseout="imgSwap('site','siteoff',1)" 
+                        href="http://www.embedded.com/sitemap.htm"><IMG 
+                        height=21 
+                        src="Portable Inheritance and Polymorphism in C_files/sitemap.gif" 
+                        width=184 border=0 name=site></A><BR><!-- leftToc2.html --><!-- COMPANY STORE PRODUCTS --><IMG 
+                        height=19 alt="Company Store" 
+                        src="Portable Inheritance and Polymorphism in C_files/companystore_header.gif" 
+                        width=184><BR><!--<A HREF="/directories/" onMouseOver="imgSwap('direct','directon',1)" onMouseOut="imgSwap('direct','directoff',1)"><IMG SRC="http://i.cmpnet.com/embedded/redesign/catalogs.gif" WIDTH="184" HEIGHT="22" BORDER="0" NAME="direct"></A><BR>--><A 
+                        onmouseover="imgSwap('cdrom','cdromon',1)" 
+                        onmouseout="imgSwap('cdrom','cdromoff',1)" 
+                        href="http://www.embedded.com/cdrom"><IMG height=22 
+                        src="Portable Inheritance and Polymorphism in C_files/cdrom.gif" 
+                        width=184 border=0 name=cdrom></A><BR><A 
+                        onmouseover="imgSwap('embeddedbooks','embeddedbookson',1)" 
+                        onmouseout="imgSwap('embeddedbooks','embeddedbooksoff',1)" 
+                        href="http://www.embedded.com/books"><IMG height=22 
+                        src="Portable Inheritance and Polymorphism in C_files/embeddedbooks.gif" 
+                        width=184 border=0 name=embeddedbooks></A><BR><!-- SPONSORED MICROSITES --><!--<IMG SRC="http://i.cmpnet.com/embedded/redesign/microsites.gif" ALT="Sponsored Microsites" WIDTH="184" HEIGHT="19">
+
+
+<A HREF="http://embeddeddsp.embedded.com" 
+onMouseOver="imgSwap('welcome','welcomeon',1)" onMouseOut="imgSwap('welcome','welcomeoff',1)"><IMG SRC="http://i.cmpnet.com/embedded/redesign/welcometo.gif" ALT="Welcome to Embedded DSP by TI" WIDTH="184" HEIGHT="33" BORDER="0" NAME="welcome"></A>--></TD></TR></TBODY></TABLE><BR 
+                  clear=all><!-- INTELLITXT BUTTON --><!-- <center><a href="/whatisIntelliTXT.htm"><img src="http://i.cmpnet.com/eetnetwork/green_links.gif" width="125" height="51" border="0" alt="Intellitxt Button"></a></center><br> --><!-- NetSeminarsBox.html --><!-- NetSeminar Box -->
+                  <TABLE borderColor=#000099 cellSpacing=0 cellPadding=0 
+                  width="100%" border=1>
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <TABLE cellSpacing=0 cellPadding=0 width="100%" 
+                        bgColor=#ffffff border=0>
+                          <TBODY>
+                          <TR>
+                            <TD align=middle bgColor=#000099 colSpan=3><IMG 
+                              alt="NeSeminar Services" 
+                              src="Portable Inheritance and Polymorphism in C_files/netsem.gif" 
+                              border=0><BR></TD></TR>
+                          <TR>
+                            <TD align=middle bgColor=#ffffff colSpan=3><FONT 
+                              face=verdana color=#000000 size=1>A list of 
+                              upcoming NetSeminars, plus a link to the <A 
+                              href="http://www.eetimes.com/netseminar.html;jsessionid=5DNGY2OZIS2PSQSNDBCCKHSCJUMEKJVN">archive</A>. 
+                              </FONT><BR><BR></TD></TR>
+                          <TR>
+                            <TD vAlign=top align=left width=5><IMG height=1 
+                              src="D:\Anil\C\Portable Inheritance and Polymorphism in C_files\pixel(1).gif" 
+                              width=5> </TD>
+                            <TD vAlign=top align=left><FONT face=verdana,arial 
+                              size=1><!-- START SEMINAR LISTING -->
+                              <P>• <A 
+                              href="http://cmpnetseminars.com/TSG/?K=HOME&amp;Q=257" 
+                              target=_new>Automotive Networks: Opportunities and 
+                              Challenges</A><BR><BR><!-- August 10, 2005 9:00 AM PT -->• 
+                              <A 
+                              href="http://cmpnetseminars.com/TSG/?K=Home&amp;Q=255" 
+                              target=_new>Jazz-up your user interface with 
+                              PSoC<SUP>TM</SUP>-enabled Capacitive Touch 
+                              Sensing</A><BR><BR><!-- August 18, 2005 11:00 AM PT -->• 
+                              <A 
+                              href="http://cmpnetseminars.com/TSG/?K=ON24&amp;Q=260" 
+                              target=_new>High Performance Delta Sigma ADCs 
+                              Solve Complex Designs, Simply </A><BR><BR><!-- August 25, 2005 1:00 PM PT --><!-- END SEMINAR LISTING --></FONT></P></TD>
+                            <TD vAlign=top align=left width=5><IMG height=1 
+                              src="D:\Anil\C\Portable Inheritance and Polymorphism in C_files\pixel(1).gif" 
+                              width=5> 
+                  </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><BR><!-- top left tile ad -->
+                  <CENTER><!-- error getting ad: http://as.cmpnet.com/html.ng/pagepos=tilelefttop&affiliate=embedded&site=electronics&server=atg&target=/97/fe29712.htm&country=india(java.lang.StringIndexOutOfBoundsException: String index out of range: -1) --></CENTER><BR><!-- Network Navigation -->
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0 
+                  table_name="network_nav">
+                    <TBODY>
+                    <TR>
+                      <TD class=tdHeader>EE TIMES NETWORK</TD></TR>
+                    <TR>
+                      <TD vAlign=top align=left>&nbsp;<SPAN 
+                        class=nnType>Online Editions</SPAN><BR><SPAN 
+                        class=nnLink>&nbsp;<A 
+                        href="http://www.eet.com/;jsessionid=5DNGY2OZIS2PSQSNDBCCKHSCJUMEKJVN">EE 
+                        TIMES</A><BR>&nbsp;<A href="http://www.eetasia.com/">EE 
+                        TIMES ASIA</A><BR>&nbsp;<A 
+                        href="http://www.eetchina.com/">EE TIMES 
+                        CHINA</A><BR>&nbsp;<A href="http://www.eetimes.fr/">EE 
+                        TIMES FRANCE</A><BR>&nbsp;<A 
+                        href="http://www.eetimes.de/">EE TIMES 
+                        GERMANY</A><BR>&nbsp;<A href="http://www.eetimes.jp/">EE 
+                        TIMES JAPAN</A><BR>&nbsp;<A 
+                        href="http://www.eetkorea.com/">EE TIMES 
+                        KOREA</A><BR>&nbsp;<A 
+                        href="http://www.eettaiwan.com/">EE TIMES 
+                        TAIWAN</A><BR>&nbsp;<A href="http://www.eetuk.com/">EE 
+                        TIMES UK</A><BR><BR></SPAN>&nbsp;<SPAN class=nnType>Web 
+                        Sites</SPAN><BR><SPAN class=nnLink>&nbsp;• <A 
+                        href="http://www.automotivedesignline.com/">Automotive 
+                        DesignLine</A><BR>&nbsp;• <A 
+                        href="http://eet.tech-engine.com/">Career 
+                        Center</A><BR>&nbsp;• <A 
+                        href="http://www.commsdesign.com/;jsessionid=5DNGY2OZIS2PSQSNDBCCKHSCJUMEKJVN">CommsDesign</A><BR>&nbsp;• 
+                        <A href="http://www.mwee.com/">Microwave</A><BR>&nbsp; 
+                        &nbsp; <A 
+                        href="http://www.mwee.com/">Engineering</A><BR>&nbsp;• 
+                        <A 
+                        href="http://www.deepchip.com/">Deepchip.com</A><BR>&nbsp;• 
+                        <A href="http://www.us.design-reuse.com/">Design &amp; 
+                        Reuse</A><BR>&nbsp;• <A 
+                        href="http://www.digitaltvdesignline.com/">Digital 
+                        TV</A><BR>&nbsp; &nbsp; <A 
+                        href="http://www.digitaltvdesignline.com/">DesignLine</A><BR>&nbsp;• 
+                        <A 
+                        href="http://www.embedded.com/">Embedded.com</A><BR>&nbsp;• 
+                        <A href="http://www.eetnetwork.com/cs/ee">Embedded 
+                        Edge</A><BR>&nbsp; &nbsp;<A 
+                        href="http://www.eetnetwork.com/cs/ee">Magazine</A><BR>&nbsp;• 
+                        <A href="http://www.edtnscandinavia.com/">Elektronik i 
+                        Norden</A><BR>&nbsp;• <A 
+                        href="http://www.greensupplyline.com/;jsessionid=5DNGY2OZIS2PSQSNDBCCKHSCJUMEKJVN">Green 
+                        SupplyLine</A><BR>&nbsp;• <A 
+                        href="http://www.industrialcontroldesignline.com/">Industrial 
+                        Control</A><BR>&nbsp; &nbsp; <A 
+                        href="http://www.industrialcontroldesignline.com/">DesignLine</A><BR>&nbsp;• 
+                        <A href="http://www.planetanalog.com/">Planet 
+                        Analog</A><BR>&nbsp;• <A 
+                        href="http://www.networksystemsdesignline.com/">Network 
+                        Systems</A><BR>&nbsp; &nbsp; <A 
+                        href="http://www.networksystemsdesignline.com/">DesignLine</A><BR>&nbsp;• 
+                        <A 
+                        href="http://www.powermanagementdesignline.com/">Power 
+                        Management</A><BR>&nbsp; &nbsp; <A 
+                        href="http://www.powermanagementdesignline.com/">DesignLine</A><BR>&nbsp;• 
+                        <A 
+                        href="http://www.pldesignline.com/;jsessionid=5DNGY2OZIS2PSQSNDBCCKHSCJUMEKJVN">Programmable 
+                        Logic</A><BR>&nbsp; &nbsp; <A 
+                        href="http://www.pldesignline.com/;jsessionid=5DNGY2OZIS2PSQSNDBCCKHSCJUMEKJVN">DesignLine</A><BR>&nbsp;• 
+                        <A href="http://www.videsignline.com/">Video | 
+                        Imaging</A><BR>&nbsp; &nbsp; <A 
+                        href="http://www.videsignline.com/">DesignLine</A><BR>&nbsp;• 
+                        <A href="http://www.wirelessnetdesignline.com/">Wireless 
+                        Net</A><BR>&nbsp; &nbsp; <A 
+                        href="http://www.wirelessnetdesignline.com/">DesignLine</A><BR><BR></SPAN></TD></TR><!-- ELECTRONICS GROUP SITES -->
+                    <TR>
+                      <TD class=tdHeader>ELECTRONICS GROUP SITES</TD></TR>
+                    <TR>
+                      <TD vAlign=top align=left><!-- ELECTRONICS GROUP SITES --><SPAN 
+                        class=nnLink>&nbsp;• <A 
+                        href="http://cmpmedia.globalspec.com/"><FONT 
+                        color=#cc0000>NEW!</FONT> SpecSearch</A><BR>&nbsp;• <A 
+                        href="http://www.eeproductcenter.com/">eeProductCenter</A><BR>&nbsp;• 
+                        <A href="http://www.my-esm.com/">Electronics Supply 
+                        &amp;</A><BR>&nbsp; &nbsp; <A 
+                        href="http://www.my-esm.com/">Manufacturing</A><BR>&nbsp;• 
+                        <A href="http://www.insidedsp.com/">Inside [ DSP 
+                        ]</A><BR>&nbsp;• <A 
+                        href="http://www.esconline.com/">Conferences</A><BR>&nbsp; 
+                        &nbsp; <A href="http://www.esconline.com/">and 
+                        Events</A><BR>&nbsp;• <A 
+                        href="http://www.esmchina.com/">Electronics Supply 
+                        &amp;</A><BR>&nbsp; &nbsp; <A 
+                        href="http://www.esmchina.com/">Manufacturing--China</A><BR>&nbsp;• 
+                        <A 
+                        href="http://www.electronics-express.com/">Electronics 
+                        Express</A><BR>&nbsp;• <A 
+                        href="http://webcast.on24.com/clients/cmp/index.html?cb=eetimes&amp;subclientid=375">NetSeminar 
+                        Services</A><BR></SPAN></TD></TR></TBODY></TABLE><BR><!-- leftToc3.html -->
+                  <TABLE cellSpacing=0 cellPadding=0 width=184 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD vAlign=top align=left bgColor=#ffffcc><!-- DESIGN LIBRARY BUTTON -->
+                        <CENTER><A href="http://www.eet.com/designlibrary"><IMG 
+                        height=101 
+                        src="Portable Inheritance and Polymorphism in C_files/deslib_button.gif" 
+                        width=134 border=0></CENTER><BR><BR><!--This has been discontinued
+CMP PRODUCT CATALOGS
+ <table border="0" cellpadding="0" cellspacing="0" width="184">
+ <TR>
+  <TD><a href="/directories"><IMG SRC="http://i.cmpnet.com/embedded/redesign/prod_cat.gif" ALT="Product Catalogs" WIDTH="184" HEIGHT="19" BORDER="0" VSPACE="1"></a></TD>
+ </TR>
+ <TR>
+  <TD BGCOLOR="#FFFFCC">
+<CENTER>
+
+<FONT FACE="verdana, arial, sans-serif" SIZE="1">
+<BR> <CENTER> <A HREF="/directories/embedded/motorola2003/index.html"><IMG SRC="http://i.cmpnet.com/embedded/db_area/motorola2003/gifs/mot_home.gif" ALT="Motorola Smart Networks Resource Guide 2003" BORDER="0"> <br clear="all">
+Motorola Smart Networks Resource Guide 2003</A></CENTER>
+<BR>
+
+</FONT>
+  </TD>
+ </TR>
+ </table>
+End CMP PRODUCT CATALOGS
+--><!-- Network Resources -->
+                        <TABLE cellSpacing=0 cellPadding=0 width=184 border=0>
+                          <TBODY>
+                          <TR>
+                            <TD vAlign=top align=middle bgColor=#ffffcc><IMG 
+                              height=19 
+                              src="Portable Inheritance and Polymorphism in C_files/nr_header.gif" 
+                              border=0 wdth="184"> </TD></TR>
+                          <TR>
+                            <TD vAlign=top align=middle bgColor=#ffffcc><!-- Job Search --><!-- <form action="http://jobs.theworkcircuit.com/wc/ors_jsearch.p_adv_search" method="post" name="search">
+<a href="http://jobs.theworkcircuit.com"><img src="http://i.cmpnet.com/embedded/redesign/nr_jobs.gif" width="184" height="13" border="0" alt="International Job Search"></a>
+&nbsp; &nbsp; <input type="text" name="p_keyword" value="" size="15" maxlength="50">
+<input type="image" name="button" src="http://i.cmpnet.com/embedded/redesign/go.gif" width="17" height="17" border="0"></form> --><!-- e-cyclopedia Search --><!-- removed 7/7/2003 --><!-- <form method="GET" action="/leftResources/encycSearch.jhtml">
+<a href="http://www.eetnetwork.com/encyclopedia"><img src="http://i.cmpnet.com/embedded/redesign/nr_ecyclo.gif" width="184" height="13" border="0" alt="eCyclopedia"></a>
+&nbsp; &nbsp; <input name="term" size="15" type="text">
+<input type="image" src="http://i.cmpnet.com/embedded/redesign/go.gif" width="17" height="17" border="0" ALT="Search"></form> --><!-- eLibrary Search -->
+                              <FORM action=/leftResources/eLibrarySearch.jhtml 
+                              method=get><A href="http://edtn.bitpipe.com/"><IMG 
+                              height=13 alt=eLibrary 
+                              src="Portable Inheritance and Polymorphism in C_files/nr_library.gif" 
+                              width=184 border=0></A><BR><INPUT type=hidden 
+                              value=eet name=site> <INPUT type=hidden 
+                              value=bpres name=cp> <INPUT type=hidden 
+                              value=site_abbrev:edtn name=qp> <INPUT type=hidden 
+                              value=1 name=st> <INPUT type=hidden value=bpres 
+                              name=cr> <INPUT type=hidden value=trm name=ct> 
+                              <INPUT type=hidden value=bporg name=co> &nbsp; 
+                              &nbsp; <INPUT size=15 name=qt> <INPUT 
+                              id=elibrGoButton type=image height=17 alt=Search 
+                              width=17 
+                              src="D:\Anil\C\Portable Inheritance and Polymorphism in C_files\go(1).gif" 
+                              border=0> </FORM><!-- NetSeminar Search --><!-- removed 7/7/2003 --><!-- <form action="/leftResources/seminarSearch.jhtml" METHOD=POST>
+<a href="http://www.eet.com/netseminar.html"><img src="http://i.cmpnet.com/embedded/redesign/nr_netsem.gif" width="184" height="19" border="0" alt="Online Seminars"></a>
+&nbsp; &nbsp; <input type=text size=15 name=generalKeyword maxlength="35" value="">
+<input type="image" name="SEARCH" ALT="Search" src="http://i.cmpnet.com/embedded/redesign/go.gif" width="17" height="17" border="0"><p>
+</form> --></TD></TR></TBODY></TABLE><IMG 
+                        height=10 
+                        src="Portable Inheritance and Polymorphism in C_files/spacer.gif" 
+                        width=184 border=0> <!-- NEWSLETTER BUTTON -->
+                        <CENTER><A 
+                        href="http://www.eetimesnetwork.com/register/newsletters.jhtml"><IMG 
+                        height=99 
+                        src="Portable Inheritance and Polymorphism in C_files/newsletter_left.gif" 
+                        border=0 
+                  wdth="134"></A></CENTER><BR><BR></TD></TR></TBODY></TABLE>
+                  <P></P></TD></TR>
+              <TR>
+                <TD bgColor=#666699>&nbsp;</TD>
+                <TD colSpan=2>&nbsp;</TD></TR>
+              <TR>
+                <TD vAlign=top align=middle colSpan=3><FONT face=verdana,arial 
+                  size=1><A 
+                  href="http://www.cmpnet.com/delivery/copyright.html">Copyright 
+                  © 2005 CMP Media LLC</A><BR><A 
+                  href="http://www.cmpnet.com/delivery/privacy.html">Privacy 
+                  Statement</A></FONT> 
+    </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+    <TD vAlign=top>
+      <TABLE cellSpacing=0 cellPadding=0 width=575>
+        <TBODY>
+        <TR><!-- BODY -->
+          <TD vAlign=top align=left width=433 bgColor=#ffffff>
+            <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD colSpan=2>&nbsp;</TD></TR>
+              <TR>
+                <TD vAlign=top align=left width=18 bgColor=#ffffff><IMG 
+                  height=1 
+                  src="Portable Inheritance and Polymorphism in C_files/spacer.gif" 
+                  width=18> </TD>
+                <TD vAlign=top align=left width=415 bgColor=#ffffff><!-- TITLE Portable Inheritance and Polymorphism in C -->
+                  <META content="Portable Inheritance and Polymorphism in C" 
+                  name=title>
+                  <META content="December  1997" name=issue>
+                  <META content="Miro Samek" name=author>
+                  <TABLE cellSpacing=0 cellPadding=5 width=410 border=0>
+                    <TBODY>
+                    <TR vAlign=top>
+                      <TD colSpan=2>
+                        <CENTER><BR><IMG height=67 
+                        src="Portable Inheritance and Polymorphism in C_files/esplogo.gif" 
+                        width=329><BR><BR></CENTER></TD></TR>
+                    <TR vAlign=top>
+                      <TD><FONT face="verdana, georgia, sans-serif" size=2>
+                        <H3>Portable Inheritance and Polymorphism in C 
+                        </H3><I>by Miro Samek </I>
+                        <P><BR>
+                        <P>Although object-oriented designs are largely 
+                        language-independent, most literature assumes C++, 
+                        Smalltalk, or Java for OO implementations. Here's a 
+                        lower-level view that assumes only a procedural language 
+                        like C for embedded developers who want to apply OO 
+                        without switching to an OO language. 
+                        <P>Is it possible to write object-oriented (OO) programs 
+                        in a non-OO language like C? How can you implement an OO 
+                        design in a small embedded system without a C++ compiler 
+                        available? How can you improve your coding style in C to 
+                        make your code more re-usable, modular, and robust? How 
+                        do inheritance and polymorphism actually work? Is the 
+                        overhead acceptable in your system? How much convenience 
+                        and expressiveness do you have to compromise by 
+                        implementing OO design in C rather than in an OO 
+                        language? In this article I address these questions by 
+                        presenting a small, portable, and efficient C language 
+                        implementation of the following OO concepts: 
+                        <UL>
+                          <LI>Encapsulation-packaging data with functions into 
+                          classes, as well as techniques for information hiding 
+                          and modularity 
+                          <LI>Inheritance-the ability to define new classes and 
+                          behavior based on existing classes to obtain code 
+                          re-use and code organization 
+                          <LI>Polymorphism-the same message sent to different 
+                          objects, which results in behavior that is dependent 
+                          on the nature of the object receiving the message 
+                        </LI></UL>
+                        <P>In my implementation I adopt a Java language approach 
+                        to inheritance and polymorphism.1 Class inheritance (or 
+                        implementation inheritance) is provided only as a single 
+                        inheritance model with the object abstract class at the 
+                        root of the class hierarchy. In contrast, the 
+                        implementation permits multiple implementation 
+                        inheritance, allowing classes to implement many 
+                        Java-style interfaces. 
+                        <P>In spite of unquestioned advantages of OO languages, 
+                        C still remains the best known and widespread 
+                        implementation language. Many embedded systems today 
+                        still simply do not offer any other choice. 
+                        Consequently, most developers still exclusively use 
+                        procedural programming techniques, and many are unaware 
+                        that it's quite easy to implement key OO concepts 
+                        directly in C. Promoting this awareness may be important 
+                        for at least two reasons. 
+                        <P>The first is leveraging OO technology. Most OO 
+                        designs can be implemented in C, but many developers 
+                        wouldn't consider them without the availability of an OO 
+                        language. This unnecessarily limits application of the 
+                        technology. 
+                        <P>The second is smoothing transition from procedural to 
+                        OO thinking. Migrating to OO technology can require 
+                        quite a leap in your way of thinking. Implementing OO 
+                        concepts in currently used and familiar languages gives 
+                        you an opportunity to get exposed to the new programming 
+                        paradigm right away and without major investment. 
+                        <P><B>Encapsulation </B>
+                        <P>You can achieve packaging of data with functions in C 
+                        by making each class attribute (instance variable) a 
+                        field in the C struct. You implement class methods as C 
+                        functions that take as their first argument the pointer 
+                        to the structure of attributes (the this pointer). You 
+                        can further strengthen the association between the 
+                        attributes and methods by a consistent naming convention 
+                        for method names. The most popular convention that I 
+                        adopt is to concatenate the structure name (class name) 
+                        with the operation name. This altering of function names 
+                        is part of name decorating (also known as name mangling) 
+                        and is performed implicitly by most C++ compilers. 
+                        Because name decorating eliminates method name clashes 
+                        between different classes, it effectively partitions the 
+                        flat C function namespace into separate namespaces 
+                        nested within classes. 
+                        <P>The next aspect I address by a coding convention is 
+                        access control. In C, you can only indicate your 
+                        intention for the level of access permitted to a 
+                        particular attribute or a method. Conveying this 
+                        intention through the name of an attribute or a method 
+                        is better than just expressing it in the form of a 
+                        comment at the declaration point. In this way, 
+                        unintentional access to class members in any portion of 
+                        the code will be easier to detect. Most OO designs 
+                        distinguish the following three levels of protection: 
+                        <UL>
+                          <LI>private-accessible only from within the class 
+                          <LI>protected-accessible only by the class and its 
+                          subclasses 
+                          <LI>public-available anywhere (de-fault in C) </LI></UL>
+                        <P>I use a double underscore prefix (__foo) for private 
+                        attributes. Note that there is usually no need to expose 
+                        private methods (helper methods) in the class 
+                        declaration file (.H file). Rather, you should hide them 
+                        completely in the implementation file (declare them 
+                        static in the .C file). For protected members I use a 
+                        single underscore (_foo, String_Foo). I avoid using 
+                        underscores in the public members at all (foo, 
+                        StringFoo). So, with this convention, the presence of 
+                        underscores in a name is a signal that access rights 
+                        should be checked against the context of use. Because 
+                        public members can be used without any constraints, they 
+                        don't need any special adornment. 
+                        <P>Every class must provide at least one constructor 
+                        method for initialization of its attribute structure. 
+                        Constructor calls should be the only method of 
+                        initialization. Otherwise, the internal structure of an 
+                        object must be exposed, thereby compromising 
+                        encapsulation. 
+                        <P>Optionally, a class may provide a destructor, which 
+                        is a method responsible for releasing the resources 
+                        allocated during the lifetime of an object. Whereas 
+                        there may be many ways of instantating a class 
+                        (different constructors taking different arguments), 
+                        there should be only one way of destroying an object. 
+                        <P>Because of the special role of constructors and 
+                        destructors, I again advise a consistent naming pattern. 
+                        I use base names "Con" (FooCon1, FooCon2) and "Des" 
+                        (FooDes) for constructors and destructors, respectively. 
+                        I suggest that constructors return either the pointer to 
+                        a properly initialized attribute structure, or NULL if 
+                        initialization fails. The destructor should take only 
+                        the this argument and should return void. 
+                        <P>Objects can be allocated statically, dynamically (on 
+                        the heap), or automatically (on the stack). Because of C 
+                        syntax limitations, you generally cannot initialize 
+                        objects through a constructor call at the definition 
+                        point. For static objects, you cannot call a constructor 
+                        at all, because function calls aren't permitted in a 
+                        static initializer. Automatic objects must all be 
+                        defined at the beginning of a block and at this point, 
+                        you will generally not have enough initialization 
+                        information to call an appropriate constructor. 
+                        Therefore, you will often have to divorce object 
+                        allocation from initialization. You should treat objects 
+                        as all other C variables, in that you never use them 
+                        before initialization. Typically, you'll want to 
+                        initialize objects as soon as the initialization 
+                        information becomes available. 
+                        <P>Some objects may require destruction, and calling 
+                        destructors for all objects when they become obsolete or 
+                        go out of scope is a good programming practice. Later, 
+                        I'll show that a virtual destructor is available for all 
+                        classes. 
+                        <P><B>Inheritance </B>
+                        <P>Inheritance is a mechanism by which new and more 
+                        specialized classes can be defined in terms of existing 
+                        classes. When a child class (subclass) inherits from a 
+                        parent class (superclass), the subclass then includes 
+                        the definitions of all the attributes and methods that 
+                        the superclass defines. Usually, the subclass extends 
+                        the superclass by adding its own attributes and methods. 
+                        Objects that are instances of the subclass contain all 
+                        data defined by the subclass and its parent classes, and 
+                        they are able to perform all operations defined by this 
+                        subclass and its parents. 
+                        <P>This kind of class relationship can be implemented in 
+                        C by embedding the parent class attribute structure as 
+                        the first member of the child class structure. As shown 
+                        in Figure 1, this structuring results in such an 
+                        attribute alignment that a pointer to the Child class 
+                        can always be safely cast (upcast) on the pointer to the 
+                        Parent class. In particular, this pointer can always be 
+                        passed to any C function expecting a pointer to the 
+                        Parent class. (To be strictly correct in C, you should 
+                        explicitly upcast this pointer.) This means that all 
+                        methods of parent classes are automatically available to 
+                        child classes-in other words, they are inherited. 
+                        <P><A 
+                        href="http://i.cmpnet.com/embedded/gifs/fe971201.gif">Figure 
+                        1</A> 
+                        <P>This simple approach works only for single 
+                        inheritance (one parent class) because a class with many 
+                        parent classes cannot align attributes with all of those 
+                        parents. 
+                        <P>I've named the inherited member super to make the 
+                        inheritance relationship between classes more explicit 
+                        and to increase the similarity to Java. The super member 
+                        provides a handle to access the superclass attributes. 
+                        For example, a grandchild class can access its 
+                        grandparent protected attribute _foo as this-&gt; 
+                        super.super._foo. 
+                        <P>Inheritance adds responsibilities to class 
+                        constructors and the destructor. Because each child 
+                        object contains an embedded parent object, the child 
+                        constructor must take care of initializing the portion 
+                        controlled by the parent. To avoid any potential 
+                        dependencies, the superclass constructor should be 
+                        called before initializing the attributes. Exactly the 
+                        opposite holds true for the destructor. The inherited 
+                        portion should be destroyed as the last step. 
+                        <P>In my implementation, I also adopt from Java the 
+                        concept of a single abstract base class Object. This 
+                        means that no class can be defined as standalone, but 
+                        rather must extend some other class, with the Object 
+                        class at the root of the class hierarchy. This setup is 
+                        especially convenient in this hybrid implementation (OO 
+                        add-on to a procedural language) because every object 
+                        can be ultimately treated as the Object class 
+                        instance-which clearly separates objects from all other 
+                        types. This differs from the C++ approach, in which each 
+                        structure is equivalent to a class. As I will 
+                        demonstrate, my Object class adds important behavior, 
+                        subsequently inherited by all other classes, thus 
+                        enabling polymorphism. 
+                        <P>Listing 1 shows the declaration of a basic class 
+                        String extending the class Object. The class 
+                        encapsulates a character buffer (__buffer), provides two 
+                        ways of construction (StringCon1, StringCon2), a 
+                        destructor, and a method for read-only access to the 
+                        character buffer StringToChar. The class is declared by 
+                        means of preprocessor macros: CLASS, VTABLE, METHODS, 
+                        and END_CLASS, which are defined and documented in 
+                        object.h, available to download at <A 
+                        href="http://www.embedded.com/code.htm">www.embedded.com/code.htm</A>. 
+
+                        <P><B>Polymorphism </B>
+                        <P>An extended class often overrides the behavior of its 
+                        superclass by providing new implementations of one or 
+                        more inherited methods. For example, class Object 
+                        defines destructor Object_Des. Class String, which 
+                        extends Object (refer to Listing 1), overrides this 
+                        behavior with its own destructor, StringDes. Let's 
+                        assume that somewhere in your code you destroy a 
+                        heterogeneous container holding generic Object pointers. 
+                        Because String (as all other classes) inherits from 
+                        Object, some pointers from the collection may actually 
+                        point to String objects. Your code will be polymorphic 
+                        if it invokes the correct implementation StringDes to 
+                        destroy String objects (and possibly other 
+                        implementations for objects of other classes). 
+                        Polymorphic behavior requires method resolution 
+                        depending on the run-time class of the object (String) 
+                        and not the class of the pointer (Object), and is known 
+                        as dynamic binding. 
+                        <P>You can efficiently implement dynamic binding in C by 
+                        introducing an additional level of indirection in method 
+                        resolution. Rather than calling a method (C function) 
+                        directly, you call a function pointed to by a function 
+                        pointer defined in a class descriptor referenced by each 
+                        object.2 The class descriptor (sometimes called the 
+                        virtual table or VTABLE)3 is a record of function 
+                        pointers corresponding to virtual functions-in other 
+                        words, methods intended to be overridden by subclasses. 
+                        <P>In the previous example, the Object class 
+                        implementation of a virtual destructor looks as follows. 
+                        The class descriptor of the Object class declares 
+                        function pointer Des: <BR><BR><B>struct ObjectClass { 
+                        <BR>... <BR>void (*Des)(struct Object*); <BR>}; <BR></B>
+                        <P>Each instance of class Object maintains a pointer 
+                        (called a virtual pointer or VPTR-see Eckel, 1995) to 
+                        this class descriptor: <BR><BR><B>struct Object { 
+                        <BR>struct ObjectClass *__vptr; <BR>}; <BR></B>
+                        <P>Dynamic binding for the virtual destructor now takes 
+                        the form: <BR><BR><B>(*obj-&gt;__vptr-&gt;Des)(obj); 
+                        <BR></B><BR><BR>where obj points to the Object 
+                        structure. 
+                        <P>Note that the pointer obj is used here twice: once 
+                        for resolving the method and once as the this argument. 
+                        Dynamic binding requires two more memory accesses and 
+                        one more addition than a direct function call (Rumbaugh, 
+                        1991). The memory cost of late binding is storing the 
+                        virtual pointer (inherited from Object) in each object, 
+                        plus the cost of storing one VTABLE per class. 
+                        <P>Class descriptors can themselves be treated as sole 
+                        instances of VTABLE classes (a class being represented 
+                        as a VTABLE object). Therefore you can apply the 
+                        technique of nesting VTABLEs to achieve inheritance of 
+                        virtual functions. This is encapsulated in the macro 
+                        VTABLE (see Listing 1). All class descriptors inherit 
+                        directly or indirectly from the ObjectClass descriptor, 
+                        so all inherit the virtual destructor. 
+                        <P>
+                        <TABLE bgColor=#eaffea border=3>
+                          <TBODY>
+                          <TR>
+                            <TD><FONT face="verdana, georgia, sans-serif" 
+                              size=2><B>Listing 1 </B><BR><I>Declaration of 
+                              String class. </I><BR><BR>#include "object.h" 
+                              <BR>/** Character String class */ 
+                              <BR>CLASS(String, Object) <BR>char *__buffer; /* 
+                              private buffer */ <BR>VTABLE(String, Object) 
+                              <BR>METHODS <BR>/* public constructors */ 
+                              <BR>String StringCon1(String this, <BR>const char 
+                              *str); <BR>String StringCon2(String this, 
+                              <BR>String other); <BR><BR>/* public destructor */ 
+                              <BR>void StringDes(String this); <BR><BR>/* public 
+                              to char conversion */ <BR>const char 
+                              *StringToChar(String this); <BR>END_CLASS 
+                              <BR></FONT></TD></TR></TBODY></TABLE>
+                        <P>Inheritance slightly complicates the syntax of 
+                        virtual function calls. In general, you will have to 
+                        upcast the object pointer (on the Object class) and 
+                        downcast the virtual pointer __vptr (on the specific 
+                        class descriptor). These operations, as well as double 
+                        object pointer referencing, are encapsulated in the 
+                        macros VCALL and END_CALL. For example, the virtual 
+                        destructor call for object obj of any class takes the 
+                        form: <BR><BR><B>VCALL(obj, Object, Des)END_CALL; 
+                        </B><BR>
+                        <P>If a virtual function takes arguments other than 
+                        this, they should be listed before macro END_CALL. For 
+                        example: <BR><BR><B>result = VCALL(obj, FooClass, Foo) 
+                        ,5 ,i+j END_CALL; </B><BR><BR>where obj points to a 
+                        FooClass or any subclass of FooClass and virtual 
+                        function Foo is defined in FooClass VTABLE. 
+                        <P>Virtual tables need to be initialized through their 
+                        constructors. The initialization performed by the VTABLE 
+                        constructor can be broken into two steps: copying the 
+                        inherited VTABLE, and customizing it by overriding the 
+                        implementation of the chosen virtual functions. 
+                        <P>The first step is generated automatically by the 
+                        macro BEGIN_VTABLE. Copying the inherited VTABLE 
+                        guarantees that adding new virtual functions to the 
+                        superclass doesn't break any subclasses; in other words, 
+                        no manual changes to subclasses are necessary (you will 
+                        only have to recompile the subclass code). Unless a 
+                        given class explicitly chooses to override the 
+                        superclass behavior, the inherited implementation is 
+                        adequate. Of course if a class declares its own virtual 
+                        functions, the corresponding function pointers will not 
+                        be initialized during this step. 
+                        <P>I also provide the macros VMETHOD and IMETHOD to 
+                        facilitate the second step of binding virtual functions 
+                        to their implementation. If you cannot provide 
+                        implementation for a given method-you intend it to be a 
+                        "pure virtual function" implemented by subclasses-you 
+                        should still initialize the function pointer with an 
+                        Object_NoIm dummy implementation. Object_NoIm interrupts 
+                        execution (through a failing assertion), which helps 
+                        detecting unimplemented abstract methods at run-time. 
+                        <P>As I've mentioned, each object keeps a pointer 
+                        (virtual pointer) to its class descriptor, inherited 
+                        from the object class. The virtual pointer needs to be 
+                        set up correctly during object initialization, that is, 
+                        in the constructor. This must be done after the 
+                        superclass constructor call because the superclass 
+                        constructor will set this pointer to point to the 
+                        superclass VTABLE. If the VTABLE for the object being 
+                        initialized isn't set up yet, the VTABLE constructor 
+                        should be called. These two steps are accomplished by 
+                        invoking the macro VHOOK. Note that by the time the 
+                        superclass constructor has done the same with the 
+                        superclass VTABLE, so the whole class hierarchy is 
+                        initialized properly. 
+                        <P>Listing 2 shows the definition of the class String 
+                        declared in Listing 1. The VTABLE of this class 
+                        overrides only the virtual destructor implementation. I 
+                        used explicit upcasting of the this argument of the 
+                        destructor before assigning it to VMETHOD (Object, Des) 
+                        to avoid compiler warnings. Note also how the 
+                        constructor first calls the superclass constructor, then 
+                        hooks the virtual pointer, and finally initializes 
+                        attributes. 
+                        <P>
+                        <TABLE bgColor=#eaffea border=3>
+                          <TBODY>
+                          <TR>
+                            <TD><FONT face="verdana, georgia, sans-serif" 
+                              size=2><B>Listing 2 </B><BR><I>Definition of class 
+                              String. </I><BR><BR>#include 
+                              <STDLIB.H><BR>#include <STRING.H><BR>#include 
+                              "string.h" <BR>/** implementation of String class 
+                              */ <BR>BEGIN_VTABLE(String, Object) 
+                              <BR>VMETHOD(Object, Des) = (void 
+                              (*)(Object))StringDes; <BR>END_VTABLE <BR>String 
+                              StringCon1(String this, const char *str) { 
+                              <BR>Object_Con(&amp;this-&gt;super); /* construct 
+                              superclass */ <BR>VHOOK(this, String); /* hook 
+                              String VPTR */ <BR>/* allocate and initialize the 
+                              buffer */ <BR>this-&gt;__buffer = 
+                              (char*)malloc(strlen(str) + 1); <BR>if 
+                              (!this-&gt;__buffer) <BR>return NULL; /* failure 
+                              */ <BR>strcpy(this-&gt;__buffer, str); <BR>return 
+                              this; <BR>} <BR>String StringCon2(String this, 
+                              String other) { <BR>return StringCon1(this, 
+                              StringToChar(other)); <BR>} <BR>const char 
+                              *StringToChar(String this) { <BR>return 
+                              this-&gt;__buffer; <BR>} <BR>void StringDes(String 
+                              this) { <BR>free(this-&gt;__buffer); /* release 
+                              buffer */ <BR>Object_Des(&amp;this-&gt;super); /* 
+                              destroy superclass */ <BR>} 
+                          <BR></FONT></TD></TR></TBODY></TABLE>
+                        <P><B>Interfaces </B>
+                        <P>Sometimes you need only to define abstract methods 
+                        that an object must support, but not necessarily commit 
+                        to a specific implementation. Manipulating objects 
+                        solely in terms of the interfaces greatly reduces 
+                        implementation dependencies between subsystems, so that 
+                        one of the major principles of reusable OO design is: 
+                        "program to interface, not to implementation."4 Java 
+                        addresses this design need very elegantly with support 
+                        for interfaces (Gosling, 1995 and Arnold, 1996).5 
+                        <P>My approach to Java-style interfaces in C is just a 
+                        generalization of the VTABLE concept. What if a class 
+                        defined only abstract methods (purely virtual functions) 
+                        but did not define any attributes? Such a class would be 
+                        represented only by its VTABLE. Inheriting from this 
+                        class would only require maintaining a virtual pointer 
+                        to the corresponding VTABLE and of course, implementing 
+                        all abstract methods. An object could easily maintain 
+                        many such pointers, so multiple inheritance from such 
+                        specific classes (interfaces) would be simple. 
+                        <P>This doesn't completely solve the memory alignment 
+                        problem. You cannot simply use a pointer to an object in 
+                        a place where an interface is expected, because there is 
+                        no way of finding the corresponding VTABLE. This is 
+                        because the additional virtual pointers cannot be 
+                        aligned with the virtual pointer __vptr inherited from 
+                        Object. As always in this kind of situation, you can use 
+                        an additional level of indirection to solve the problem. 
+                        As shown in Figure 3, a pointer foo to a Fooable VPTR 
+                        located inside an object that implements interface 
+                        Fooable is a good starting point. This pointer can be 
+                        used both to access the Fooable virtual table (to 
+                        resolve the virtual call) and to reconstruct the 
+                        location of the object (to provide the this argument). 
+                        <P><A 
+                        href="http://i.cmpnet.com/embedded/gifs/fe971202.gif">Figure 
+                        2</A><BR>
+                        <P><A 
+                        href="http://i.cmpnet.com/embedded/gifs/fe971203.gif">Figure 
+                        3</A><BR>
+                        <P>Interfaces differ significantly from classes-they 
+                        don't descend from Object (because they define no 
+                        attributes) and they define different VTABLEs containing 
+                        the __offset field. Note that virtual functions defined 
+                        by interfaces also must use the this pointer, but it 
+                        should be of generic Object type. The sample code I 
+                        discuss in the next section demonstrates how you can use 
+                        interfaces to write code without committing to any 
+                        particular implementation. 
+                        <P><B>Sample Code </B>
+                        <P>To illustrate the concepts I've discussed, I've 
+                        provided an implementation of the simple class hierarchy 
+                        depicted in Figure 3. (Complete listings are provided on 
+                        the ESP Web site, www.embedded.com/ code). Class Shape 
+                        extends Object and implements the Scalable interface. 
+                        This is an abstract class (designed for inheritance 
+                        only), so it protects its constructor and destructor. 
+                        Class Shape contains the String object as its member, 
+                        demonstrating object composition. The Scalable interface 
+                        defines only one abstract method, Scale(). Concrete 
+                        classes Circle and Rect both extend Shape and override 
+                        Scale() and Area() methods. The test case allocates the 
+                        Circle object on the stack frame and array of Rect 
+                        objects on the heap. Test functions for the Shape class 
+                        and Scalable interface demonstrate dynamic binding for 
+                        classes and interfaces, respectively. 
+                        <P>As an exercise, you can modify the code by adding 
+                        attributes or virtual functions to the Shape class (or 
+                        even the Object base class). You can convince yourself 
+                        that these modifications don't require any manual 
+                        changes to subclasses. I also strongly recommend that 
+                        you step through the code using a debugger. 
+                        <P><B>What's to Lose? </B>
+                        <P>So what do you lose by using C rather than an OO 
+                        language? Using the techniques I've presented here, you 
+                        don't have to sacrifice much convenience and 
+                        expressiveness, because you can fairly easily map most 
+                        important OO concepts to C. You don't have to compromise 
+                        much maintainability either, because you can automate 
+                        many tasks. The most important feature of this 
+                        implementation is that adding new attributes and methods 
+                        (including virtual functions and interfaces) to the 
+                        superclass doesn't require any manual changes to 
+                        subclasses. 
+                        <P>The real issue is that C requires significantly 
+                        higher programming discipline in object initialization 
+                        and cleanup than OO languages, especially those with 
+                        garbage collection. But this is a well known deficiency 
+                        of C, which isn't to be repaired easily. (For example, 
+                        C++ is still plagued by most of these problems.) 
+                        <P>Encapsulation, inheritance, and polymorphism are 
+                        nothing but design patterns at the C language level 
+                        (Gamma, 1995). As do all design patterns, they bring a 
+                        higher (OO) level of abstraction by introducing their 
+                        specific naming conventions and idioms. If you aren't 
+                        comfortable with my conventions, you should adopt your 
+                        own. Most important is consistency, which dramatically 
+                        improves code readability and allows for quick 
+                        identification of the patterns. 
+                        <P>If you start using these patterns, you will probably 
+                        notice that they completely change your thinking and 
+                        programming style in C. You'll not only find your C code 
+                        to be more similar to Java, you'll find yourself more 
+                        prepared for Java. 
+                        <P><I>Miro Samek is a software engineer at GE Medical 
+                        Systems, currently developing real-time, embedded 
+                        software for diagnostics x-ray equipment. He holds a PhD 
+                        in physics from Jagiellonian University in Cracow, 
+                        Poland. Miro has previously worked on nuclear physics 
+                        experiments at GSI Darmstadt, Germany. He may be reached 
+                        at miroslaw.samek@med.ge.com. </I>
+                        <P><B>References </B>
+                        <P>1. Gosling, James and Henry McGilton, "The Java 
+                        Language Environment: A White Paper," Sun Microsystems, 
+                        1995. 
+                        <P>2. Rumbaugh, James, Michael Blaha, William 
+                        Premerlani, Frederick Eddy, and William Loernsen. 
+                        <I>Object-Oriented Modelling and Design. </I>Englewood 
+                        Cliffs, NJ: Prentice Hall, 1991. 
+                        <P>3. Eckel, Bruce. <I>Thinking in C++. </I>Englewood 
+                        Cliffs, NJ: Prentice Hall, 1995. 
+                        <P>4. Gamma, Erich, Richard Helm, Ralph Johnson, and 
+                        John Vlissides. <I>Design Patterns: Elements of Reusable 
+                        Object-Oriented Software. </I>Reading, MA: 
+                        Addison-Wesley, 1995. 
+                        <P>5. Arnold, Ken and James Gosling. <I>The Java 
+                        Programming Language. </I>Reading, MA: Addison-Wesley, 
+                        1996. 
+          </P></FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD><!-- RIGHT NAV -->
+          <TD vAlign=top align=right width=142 bgColor=#ffffff><!-- error getting ad: http://as.cmpnet.com/html.ng/pagepos=sky&edtn_pos=nhome&affiliate=embedded&site=electronics&server=atg&target=/97/fe29712.htm&country=india(java.lang.StringIndexOutOfBoundsException: String index out of range: -1) --></TD></TR><!-- SPONSORED LINKS & BOTTOM AD -->
+        <TR>
+          <TD vAlign=top align=middle colSpan=2><BR clear=all>
+            <CENTER>
+            <TABLE cellSpacing=0 cellPadding=0 width=469 border=0>
+              <TBODY>
+              <TR>
+                <TD colSpan=5><IMG 
+                  src="Portable Inheritance and Polymorphism in C_files/em_top.gif" 
+                  border=0></TD></TR><!-- left border -->
+              <TR>
+                <TD width=1 bgColor=#000000 rowSpan=2><IMG 
+                  src="Portable Inheritance and Polymorphism in C_files/trans_spacer.gif" 
+                  width=1 border=0></TD><!-- spacer -->
+                <TD width=5><IMG 
+                  src="Portable Inheritance and Polymorphism in C_files/trans_spacer.gif" 
+                  width=5 border=0></TD>
+                <TD vAlign=top align=left width=457><FONT face=verdana,arial 
+                  size=1><A 
+                  href="http://links.industrybrains.com/click?sid=25&amp;scid=195&amp;rqctid=51&amp;pos=1&amp;lid=233362&amp;cid=7252&amp;pr=2&amp;tstamp=20050801034714&amp;url=http://www.pmc-sierra.com/cgi-bin/track.pl%3fit%3d14%26terms%3dWebinarLinuxIntro"><B>Free 
+                  Webinar: Using Linux in Embedded Applications</B></A><BR>Learn 
+                  in 60 min: Linux Refresher, Embedded Applications, Increase in 
+                  Use of Linux, Embedded Linux Offerings, PMC-Sierra Linux 
+                  Release, Benefits of Using Linux, Development Considerations, 
+                  Customizing the System, Knowledge Resources, Third-Party Tools 
+
+                  <P><A 
+                  href="http://links.industrybrains.com/click?sid=25&amp;scid=195&amp;rqctid=51&amp;pos=2&amp;lid=106043&amp;cid=1196&amp;pr=2&amp;tstamp=20050801034714&amp;url=http://www.mcobject.com/extremedbfamily.shtml"><B>Finally, 
+                  A Database Made For Embedded Systems!</B></A><BR>McObject's 
+                  eXtremeDB in-memory embedded database boasts a footprint as 
+                  small as 50K and can run with no underlying OS. eXtremeDB fits 
+                  where embedded systems live! Check out High Availability and 
+                  Transaction Log File support. Download a free trial. 
+                  <P><A 
+                  href="http://links.industrybrains.com/click?sid=25&amp;scid=195&amp;rqctid=51&amp;pos=3&amp;lid=340722&amp;cid=49282&amp;pr=2&amp;tstamp=20050801034714&amp;url=http://www.dovico.com/indexib.html"><B>DOVICO 
+                  Project Tracking Software</B></A><BR>Award winning DOVICO 
+                  Track-IT Suite saves each employee 1 hour per week on 
+                  timesheet and expense entry. Managers save over 2.5 hours per 
+                  week on business operation efficiency, project tracking, 
+                  reduced billing cycles and real-time reporting. 
+                  <P><A 
+                  href="http://links.industrybrains.com/click?sid=25&amp;scid=195&amp;rqctid=51&amp;pos=4&amp;lid=333197&amp;cid=43646&amp;pr=2&amp;tstamp=20050801034714&amp;url=http://www.doom.com"><B>Electronic 
+                  Components</B></A><BR>FREE TRIAL at Doom.com the online 
+                  marketplace, enabling trade of electronic components stock and 
+                  availability worldwide with pricing from independent and 
+                  franchised distribution.Millions of semiconductors, both 
+                  active and passive are traded each day. 
+                  <P><A 
+                  href="http://links.industrybrains.com/click?sid=25&amp;scid=195&amp;rqctid=51&amp;pos=5&amp;lid=334509&amp;cid=44225&amp;pr=2&amp;tstamp=20050801034714&amp;url=http://www.edatechforum.com%3fv%3dindustry_brains%26p%3dembedded_ros%26s%3d1x1%26g%3dcorp%26c%3dcorp_ocid_759_cfp_52_ceid_1-1x1-%26asid%3d434"><B>EDA 
+                  Tech Forum Series -- 18 locations worldwide</B></A><BR>Gain 
+                  insight on your most complex design challenges at the 
+                  International EDA Tech Forum. This event unites technology 
+                  leaders throughout the industry and provides an excellent 
+                  networking opportunity with fellow designers. 
+                  <P><!-- spacer --><A 
+                  href="http://www.industrybrains.com/cmpelectronics" 
+                  target=new>Click here to get your listing up.</A> 
+                  </FONT><BR><IMG height=1 
+                  src="Portable Inheritance and Polymorphism in C_files/trans_spacer.gif" 
+                  width=457 border=0></P></TD>
+                <TD width=5><IMG 
+                  src="Portable Inheritance and Polymorphism in C_files/trans_spacer.gif" 
+                  width=5 border=0></TD><!-- right border -->
+                <TD width=1 bgColor=#000000 rowSpan=2><IMG 
+                  src="Portable Inheritance and Polymorphism in C_files/trans_spacer.gif" 
+                  width=1 border=0></TD></TR><!-- bottom border -->
+              <TR>
+                <TD width=457 bgColor=#000000 colSpan=3><IMG height=1 
+                  src="Portable Inheritance and Polymorphism in C_files/trans_spacer.gif" 
+                  width=457 border=0></TD></TR></TBODY></TABLE></CENTER>
+            <P>
+            <CENTER><!-- error getting ad: http://as.cmpnet.com/html.ng/pagepos=bottom&affiliate=embedded&site=electronics&server=atg&target=/97/fe29712.htm&country=india(java.lang.StringIndexOutOfBoundsException: String index out of range: -1) --></CENTER></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- for cookie tracking reports --><IMG 
+height=1 alt="" src="Portable Inheritance and Polymorphism in C_files/user.gif" 
+width=5 border=0> <!-- custom ad position for intellitext -->
+<CENTER><!-- Ad --><!-- error getting ad: http://as.cmpnet.com/html.ng/affiliate=embedded&pagepos=intellitxt&site=electronics&server=atg&target=/97/fe29712.htm&country=india(java.lang.StringIndexOutOfBoundsException: String index out of range: -1) --><!-- /Ad --></CENTER><!-- end custom ad position for intellitext --></FONT></BODY></HTML>

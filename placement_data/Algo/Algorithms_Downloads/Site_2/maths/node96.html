@@ -1,0 +1,324 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Timing the FFT</TITLE>
+<META NAME="description" CONTENT="Timing the FFT">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="previous" HREF="node95.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node95.html">
+<LINK REL="up" HREF="node95.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node95.html">
+<LINK REL="next" HREF="node97.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node97.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1716"
+  HREF="node97.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node97.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1710"
+  HREF="node95.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node95.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1706"
+  HREF="node95.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node95.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1712"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1714"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1717"
+  HREF="node97.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node97.html">Convolution as Filtering</A>
+<B> Up:</B> <A NAME="tex2html1711"
+  HREF="node95.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node95.html">The Fast Fourier Transform.</A>
+<B> Previous:</B> <A NAME="tex2html1707"
+  HREF="node95.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node95.html">The Fast Fourier Transform.</A>
+ &nbsp <B>  <A NAME="tex2html1713"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1715"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001061000000000000000"></A><A NAME="9134"></A>
+<BR>
+Timing the FFT
+</H2>
+We analyse the savings this method produces in the usual way.  Let
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$">(<I>m</I>) be the number of additions needed to calculate the FFT on
+a vector of length <I>n</I> = 2<SUP>m</SUP>, and let <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img18.gif"
+ ALT="$ \mu$">(<I>m</I>) be the corresponding number
+of multiplications.
+
+<P>
+<P>
+<DIV><B>Lemma  6.7</B> &nbsp; 
+For <I>m</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$">1, <!-- MATH
+ $\mu(m) = m.2^{(m-1)}$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img18.gif"
+ ALT="$ \mu$">(<I>m</I>) = <I>m</I>.2<SUP>(m - 1)</SUP>, <!-- MATH
+ $\alpha(m) = m.2^m$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$">(<I>m</I>) = <I>m</I>.2<SUP>m</SUP>.</DIV><P></P>
+
+<P>
+<P></P>
+<DIV><I>Proof</I>.
+
+Clearly <!-- MATH
+ $\mu(0) = \alpha(0) = 0$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img18.gif"
+ ALT="$ \mu$">(0) = <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$">(0) = 0,
+while <!-- MATH
+ $\mu(1) = 1$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img18.gif"
+ ALT="$ \mu$">(1) = 1, <!-- MATH
+ $\alpha(1) = 2$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$">(1) = 2. More generally,
+the result follows by induction, since
+<!-- MATH
+ \begin{displaymath}
+\     \mu(m+1) = 2^m + 2\mu(m)
+\     \ensuremath{\quad\text{and}\quad}\     \alpha(m+1) = 2^{(m+1)} + 2\mu(m).
+\end{displaymath}
+ -->
+<P ALIGN="CENTER"><IMG
+ WIDTH="424" HEIGHT="28" BORDER="0"
+ SRC="img330.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img330.gif"
+ ALT="\begin{displaymath}
+\mu(m+1) = 2^m + 2\mu(m)
+\ensuremath{\quad\text{and}\quad} \alpha(m+1) = 2^{(m+1)} + 2\mu(m).
+\end{displaymath}"></P>
+To check this, note that in addition to computing <!-- MATH
+ $f_{\text{even}}$
+ -->
+<I>f</I><SUB>even</SUB>
+and <!-- MATH
+ $f_{\text{odd}}$
+ -->
+<I>f</I><SUB>odd</SUB>, Equation&nbsp;<A HREF="node95.html#E:fft-low" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node95.html#E:fft-low">6.4</A> gives an additional
+2<SUP>m</SUP> multiplications when computing a transform of length 2<SUP>m + 1</SUP>,
+while Equation&nbsp;<A HREF="node95.html#E:fft-high" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node95.html#E:fft-high">6.5</A> shows these same products,
+<!-- MATH
+ $\omega _n^p\hat{f}_{\text{odd}}(p)$
+ -->
+<IMG
+ WIDTH="23" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img331.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img331.gif"
+ ALT="$ \omega_{n}^{p}$"><IMG
+ WIDTH="33" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img332.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img332.gif"
+ ALT="$ \hat{f}_{\text{odd}}^{}$">(<I>p</I>), are all that are needed.  The
+addition formula is even more straightforward.
+ <IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img78.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img78.gif"
+ ALT="$ \qedsymbol$">
+</DIV><P></P>
+
+<P>
+Thus we get the claimed reduction form <I>O</I>(<I>n</I><SUP>2</SUP>) to <!-- MATH
+ $O(n\log n)$
+ -->
+<I>O</I>(<I>n</I> log&nbsp;<I>n</I>).  In
+particular, this gives a method of implementing convolution using only
+<!-- MATH
+ $n + 3n\log(n)/2$
+ -->
+<I>n</I> + 3<I>n</I> log(<I>n</I>)/2 multiplications.  Our original problem in
+Section&nbsp;<A HREF="node89.html#SS:poly-mult" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node89.html#SS:poly-mult">6.1</A> had two polynomials, each of degree <I>n</I> - 1,
+whose product was (of course) of degree 2<I>n</I> - 2.  We saw in
+Exercise&nbsp;<A HREF="node102.html#Q:poly" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node102.html#Q:poly">6.3</A> that the product polynomial could be computed
+using convolution, providing we worked in <!-- MATH
+ $\ensuremath{\mathbb{C}}^{2n}$
+ -->
+<IMG
+ WIDTH="31" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img333.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img333.gif"
+ ALT="$\ensuremath{\mathbb{C}}^{2n}$">, to avoid the
+unwanted ``wrap-around'' part of the definition of convolution.  We
+now see that, provided we work in a space of dimension 2<SUP>m</SUP> where <I>m</I>
+is the smallest integer such that <!-- MATH
+ $2n \leq 2^m$
+ -->
+2<I>n</I> <IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img167.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img167.gif"
+ ALT="$ \leq$"> 2<SUP>m</SUP>, then we replace <I>n</I><SUP>2</SUP>
+multiplications with <!-- MATH
+ $O(m.2^m) = O(n \log n)$
+ -->
+<I>O</I>(<I>m</I>.2<SUP>m</SUP>) = <I>O</I>(<I>n</I> log&nbsp;<I>n</I>).  If <I>n</I> is large, the
+saving can be very significant.
+
+<P>
+In fact a further speed-up can be obtained by arranging the data so it
+can be accessed simply.  In order to compute <IMG
+ WIDTH="14" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img325.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img325.gif"
+ ALT="$ \hat{f}$"> you need the
+values
+<!-- MATH
+ \begin{displaymath}
+\     \underbrace{\underbrace{f(0) f(4)}\underbrace{ f(2) f(6)}}
+	\ensuremath{\qquad\text{and}\qquad}\     \underbrace{\underbrace{f(1) f(5)}\underbrace{ f(3) f(7)}}
+\end{displaymath}
+ -->
+<P ALIGN="CENTER"><IMG
+ WIDTH="347" HEIGHT="51" BORDER="0"
+ SRC="img336.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img336.gif"
+ ALT="\begin{displaymath}
+\underbrace{\underbrace{f(0) f(4)}\underbrace{ f(2) f(6)}}
+...
+...ad} \underbrace{\underbrace{f(1) f(5)}\underbrace{ f(3) f(7)}}
+\end{displaymath}"></P>
+as two 4 - point transforms to combine into the 8 - point transform as
+<!-- MATH
+ \begin{displaymath}
+\     \underbrace{
+	\underbrace{\underbrace{f(0) f(4)}\underbrace{ f(2) f(6)}}
+	\underbrace{\underbrace{f(1) f(5)}\underbrace{ f(3) f(7)}}
+\     }.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;<IMG
+ WIDTH="262" HEIGHT="84" ALIGN="MIDDLE" BORDER="0"
+ SRC="img337.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img337.gif"
+ ALT="$\displaystyle \underbrace{\underbrace{\underbrace{f(0) f(4)}\underbrace{ f(2) f(6)}}
+\underbrace{\underbrace{f(1) f(5)}\underbrace{ f(3) f(7)}}
+} $">.
+</DIV><P></P>
+Each of these 4 - point transforms is calculated as two 2 - point
+transforms, as implied by the bracketing.  Thus in order to do the
+calculation, it is convenient if the input data is re-ordered.  If we
+write <!-- MATH
+ $f(\sigma(j))$
+ -->
+<I>f</I> (<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$">(<I>j</I>)) for the required re-ordering, so <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$"> is a
+permutation of the set <!-- MATH
+ $\{1,2,\ldots,n\}$
+ -->
+{1, 2,..., <I>n</I>}, then <!-- MATH
+ $\sigma(j) =$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$">(<I>j</I>) = the bit
+reversal<A NAME="9162"></A> of the binary expansion of <I>j</I>.  For
+example,
+<!-- MATH
+ \begin{displaymath}
+\     \sigma(6) = \sigma(110_2) = 011_2 = 3.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img95.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img95.gif"
+ ALT="$\displaystyle \sigma$">(6) = <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img95.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img95.gif"
+ ALT="$\displaystyle \sigma$">(110<SUB>2</SUB>) = 011<SUB>2</SUB> = 3.
+</DIV><P></P>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1716"
+  HREF="node97.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node97.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1710"
+  HREF="node95.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node95.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1706"
+  HREF="node95.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node95.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1712"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1714"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1717"
+  HREF="node97.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node97.html">Convolution as Filtering</A>
+<B> Up:</B> <A NAME="tex2html1711"
+  HREF="node95.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node95.html">The Fast Fourier Transform.</A>
+<B> Previous:</B> <A NAME="tex2html1707"
+  HREF="node95.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node95.html">The Fast Fourier Transform.</A>
+ &nbsp <B>  <A NAME="tex2html1713"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1715"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

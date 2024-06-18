@@ -1,0 +1,245 @@
+<html><head>
+<title>Solution for /competition/games/set</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /competition/games/set problem</h1>
+<hr>
+I can get 20:
+
+<ul>
+<li> 1ROL
+<li> 1GDL
+<li> 1GDM
+<li> 1GOM
+<li> 1GSL
+<li> 1PDH
+<li> 1PDM
+<li> 1POL
+<li> 1POM
+<li> 2RSL
+<li> 2PDM
+<li> 3ROL
+<li> 3ROM
+<li> 3RSL
+<li> 3RSH
+<li> 3GDM
+<li> 3GOL
+<li> 3GSL
+<li> 3GSM
+<li> 3POM
+</ul>
+This collection of 20 is a local maximum.
+
+<p>
+The small C progam shown below was used to check for all possible
+extensions to a collection of 21.
+
+<p>
+Of course this leaves open the question whether there exists a completely
+different collection of 21 from which no "set" can be selected.
+
+<pre>
+-- Gene Miller
+
+------- C Program enclosed -------
+#define N 21
+
+static int data[N][4]= {
+    1, 1, 2, 1, /* 00 */
+    1, 2, 1, 1, /* 01 */
+    1, 2, 1, 2, /* 02 */
+    1, 2, 2, 2, /* 03 */
+    1, 2, 3, 1, /* 04 */
+    1, 3, 1, 3, /* 05 */
+    1, 3, 1, 2, /* 06 */
+    1, 3, 2, 1, /* 07 */
+    1, 3, 2, 2, /* 08 */
+    2, 1, 3, 1, /* 09 */
+    2, 3, 1, 2, /* 10 */
+    3, 1, 2, 1, /* 11 */
+    3, 1, 2, 2, /* 12 */
+    3, 1, 3, 1, /* 13 */
+    3, 1, 3, 3, /* 14 */
+    3, 2, 1, 2, /* 15 */
+    3, 2, 2, 1, /* 16 */
+    3, 2, 3, 1, /* 17 */
+    3, 2, 3, 2, /* 18 */
+    3, 3, 2, 2, /* 19 */
+    0, 0, 0, 0  /* 20 */        /* leave space for Nth combo */
+};
+
+main()
+{       
+    int x, y, z, w;
+
+    for (x=1; x&lt;=3; x++)     /* check all combos */
+        for (y=1; y&lt;=3; y++)
+            for (z=1; z&lt;=3; z++)
+                for (w=1; w&lt;=3; w++)
+                    printf ("%d %d %d %d -&gt; sets=%d\n", x, y, z, w,
+                        check (x, y, z, w));
+}
+
+int check(x,y,z,w)
+int x, y, z, w;
+{
+    int i,j,k,m;
+    int errors, sets;
+
+    for (i=0; i&lt;N; i++)              /* check for pre-existing combos */
+        if (x==data[i][0] &amp;&amp;
+            y==data[i][1] &amp;&amp;
+            z==data[i][2] &amp;&amp;
+            w==data[i][3] ) {
+        return -1;              /* discard pre-existing*/
+    }
+
+    data[N-1][0] = x;   /* make this the Nth combo */
+    data[N-1][1] = y;
+    data[N-1][2] = z;
+    data[N-1][3] = w;
+
+    sets = 0;                   /* start counting sets */
+    for (i=0; i&lt;N; i++)              /* look for sets */
+        for (j=i+1; j&lt;N; j++)
+            for (k=j+1; k&lt;N; k++) {
+                errors = 0;
+                for (m=0; m&lt;4; m++) {
+                    if (data[i][m] == data[j][m]) {
+                        if (data[k][m] != data[i][m]) errors++;
+                        if (data[k][m] != data[j][m]) errors++;
+                    }
+                    else {
+                        if (data[k][m] == data[i][m]) errors++;
+                        if (data[k][m] == data[j][m]) errors++;
+                    }
+                }
+                if (errors == 0)        /* no errors means is a set */
+                    sets++; /* increment number of sets */
+            }
+    return sets;
+}
+-- 
+</pre>
+I did some more experimenting. With the enclosed C program, I looked at many
+randomly generated collections. In an earlier version of this program I
+got one collection of 20 from a series of 100 trials. The rest were collections
+ranging in size from 16 to 19. Unfortunately, in an attempt to make this
+program more readable and more general, I changed the algorithm slightly and
+I haven't been able to achieve 20 since then. I can't remember enough about
+my changes to be able to get back to the previous version. In the most recent
+1000 trials all of the maximaml collections range in size from 16 to 18.
+
+<p>
+I think that this experiment has shed very little light on what is the
+global maximum, since the search space is many orders of magnitude larger
+than what can be tried in a reasonable amount of time through random
+searching.
+
+<p>
+I assume that Mr. Ring found his collection of 20 by hand. This indicates
+that an intelligent search may be more fruitful than a purely random one.
+
+<pre>
+------------------ Program enclosed -------------
+int n;
+int data[81][4];
+
+main()
+{
+    int i;
+
+    for (i=0; i&lt;1000; i++) { /* Do 1000 independent trials */
+        printf ("Trial %d:\n", i);
+        try();
+    }
+}
+
+try()
+{       
+    int i;
+    int x, y, z, w;
+
+    n = 0;                      /* set collection size to zero */
+    for (i=0; i&lt;100; i++) {  /* try 100 random combos */
+        x = 1 + rand()%3;
+        y = 1 + rand()%3;
+        z = 1 + rand()%3;
+        w = 1 + rand()%3;
+        check (x, y, z, w);
+    }
+
+    for (x=1; x&lt;=3; x++)     /* check all combos */
+        for (y=1; y&lt;=3; y++)
+            for (z=1; z&lt;=3; z++)
+                for (w=1; w&lt;=3; w++)
+                    check (x, y, z, w);
+
+    printf ("   collection size=%d\n", n);
+}
+
+int check(x, y, z, w)   /* check whether a new combo can be added */
+int x, y, z, w;
+{
+    int i,j,k,m;
+    int errors, sets;
+
+    for (i=0; i&lt;n; i++)              /* check for pre-existing combos */
+        if (x==data[i][0] &amp;&amp;
+            y==data[i][1] &amp;&amp;
+            z==data[i][2] &amp;&amp;
+            w==data[i][3] ) {
+        return -1;              /* discard pre-existing*/
+    }
+
+    data[n][0] = x;     /* make this the nth combo */
+    data[n][1] = y;
+    data[n][2] = z;
+    data[n][3] = w;
+
+    sets = 0;                   /* start counting sets */
+    for (i=0; i&lt;=n; i++)             /* look for sets */
+        for (j=i+1; j&lt;=n; j++)
+            for (k=j+1; k&lt;=n; k++) {
+                errors = 0;
+                for (m=0; m&lt;4; m++) {
+                    if (data[i][m] == data[j][m]) {
+                        if (data[k][m] != data[i][m]) errors++;
+                        if (data[k][m] != data[j][m]) errors++;
+                    }
+                    else {
+                        if (data[k][m] == data[i][m]) errors++;
+                        if (data[k][m] == data[j][m]) errors++;
+                    }
+                }
+                if (errors == 0)        /* no errors means is a set */
+                    sets++; /* increment number of sets */
+            }
+    if (sets == 0) {
+        n++;            /* increment collection size */
+        printf ("%d %d %d %d\n", x, y, z, w);
+    }
+    return sets;
+}
+------------------ end of enclosed program -------------
+-- Gene
+-- 
+Gene Miller                     Multimedia Communications
+NYNEX Science &amp; Technology  Phone:  914 644 2834
+500 Westchester Avenue          Fax:    914 997 2997, 914 644 2260
+White Plains, NY 10604          Email:  gene@nynexst.com
+
+</pre>
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

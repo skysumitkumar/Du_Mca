@@ -1,0 +1,48 @@
+<html><head>
+<title>Solution for /combinatorics/grid.dissection</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /combinatorics/grid.dissection problem</h1>
+<hr>
+Given an n*m grid with n &gt; m.
+
+<p>
+Orient the grid so n is its width.  Divide the grid into two portions, 
+an m*m square on the left and an (n-m)*m rectangle on the right.
+Count the squares that have their upper right-hand corners in the
+m*m square.  There are m^2 of size 1*1, (m-1)^2 of size 2*2, ...
+up to 1^2 of size m*m.  Now look at the n-m columns of lattice points
+in the rectangle on the right, in which we find upper right-hand
+corners of squares not yet counted.  For each column we count m new
+1*1 squares, m-1 new 2*2 squares, ... up to 1 new m*m square.
+
+<p>
+Combining all these counts in summations:
+
+<pre>
+	 m		   m
+total = sum i^2 + (n - m) sum i
+	i=1		  i=1
+
+	(2m + 1)(m + 1)m   (n - m)(m + 1)m
+      = ---------------- + ---------------
+		6		  2
+
+      = (3n - m + 1)(m + 1)m/6
+
+-- David Karr
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

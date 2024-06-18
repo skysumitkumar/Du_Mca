@@ -1,0 +1,43 @@
+\documentclass[english]{article} 
+
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{fancyhdr}
+
+\begin{document}
+
+\pagenumbering{arabic}
+
+%----Header stuff---------------------------
+\pagestyle{fancy}
+ \lhead{\sc Algorithms \& Data Structures}
+ \chead{}
+ \rhead{\sc INF1 -- 2003}
+
+\section*{Tutorial 11}
+\subsection*{Exercise 1}
+\begin{itemize}
+\item
+\begin{algorithmic}
+\STATE{{\bf sort}($A$) =}
+  \FOR{$j:=1$ to $k$}
+    \STATE{$B[j]:=0$}
+  \ENDFOR
+  \FOR{$i:=1$ to $n$}
+    \STATE{$B[A[i]] := B[A[i]] + 1$}
+  \ENDFOR
+  \STATE{$p:=1$}
+  \FOR{$j:=1$ to {$k$}}
+    \FOR{$i:=1$ to $B[j]$}
+	  \STATE{$A[p]:=j$}
+	  \STATE{$p:=p+1$}
+	\ENDFOR
+  \ENDFOR
+\end{algorithmic}
+
+\item There is no contradiction as the algorithm is not comparison-based.
+\end{itemize}
+
+\end{document}

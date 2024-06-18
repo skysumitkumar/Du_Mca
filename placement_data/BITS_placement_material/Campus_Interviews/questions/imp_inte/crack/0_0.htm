@@ -1,0 +1,795 @@
+
+<HTML>
+<HEAD>
+<TITLE>CRACK THE INTERVIEW - How do you reverse a singly linked list? How do you reverse a doubly linked list? Write a C program to do the same.  (www.cracktheinterview.com)</TITLE><style type="text/css">
+<!--
+.breakhere     {page-break-before: always}
+
+A:link         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+A:active       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+A:visited      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+
+H1             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt; font-weight:bold; color:#336699} 
+H2             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; font-weight:bold} 
+.normal        {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+.announce      {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#000000} 
+.announceLink  {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#336699} 
+.note          {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt ! important; font-weight:normal} 
+.system        {font-family:Courier New, Courier; font-size:x-small;
+                font-weight:normal} 
+.stayblue      {color:#336699 ! important}
+.title         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:larger ! important} 
+.error         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; color:#aa0000; font-weight:bold} 
+.notelink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:normal;
+                font-size:9pt ! important} 
+.tableHeader   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableHeaderSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRow      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#f7f7e7} 
+.tableBlank    {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#ffffff} 
+.hardlink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:bold;
+                font-size:8pt ! important} 
+.boxlink       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#000000 ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.hardnote      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:black ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.tableRowSmall {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal} 
+.tableRowSmallBold {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                bold} 
+.blueHeading   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:bold;
+                color:#336699! important} 
+.blueHeadingLarge {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:16pt! important; font-weight:normal;
+                color:#336699} 
+.blueHeadingMid {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:normal;
+                color:#336699}
+.blueHeadingSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt! important; font-weight:bold;
+                color:#336699} 
+.tableHeaderV  {font-family:Verdana,Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRowV     {font-family:Verdana,Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal; background-color:#f7f7e7} 
+.just          {text-align: justify}
+-->
+</style>
+
+<META NAME="keywords" CONTENT="interview,C,linked list,reverse,singly linked list,doubly linked list">
+<META NAME="description" CONTENT="How do you reverse a singly linked list? How do you reverse a doubly linked list? Write a C program to do the same. ">
+<META NAME="robots" CONTENT="FOLLOW,INDEX">
+<META HTTP-EQUIV="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+
+</HEAD>
+<BODY>
+<TABLE BORDER=0 cellpadding=10>
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER><A HREF="http://www.cracktheinterview.com"><IMG SRC=http://www.cracktheinterview.com/images/logo2.jpg border=0></img></A></CENTER></TD>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2>
+<CENTER>
+
+
+<!--START:ADS0-->
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+
+</CENTER>
+</TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER>
+
+<!--START:LINKS-->
+
+
+<TABLE BORDER=0 cellpadding=10>
+<TR><TD NOWRAP>
+<A HREF="http://www.cracktheinterview.com" target="_top"><font class=announcelink>Home</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="http://www.cracktheinterview.com/adfaqpublish.html" target="_top"><font class=announcelink>Questions</font></A><BR>
+</TD>
+
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/search.html" target="_top"><font class=announcelink>Search</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="http://www.cracktheinterview.com/forum" target="_top"><font class=announcelink>Forum</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="mailto:cracktheinterview@gmail.com?subject=Hi!"><font class=announcelink>Contact</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/forum/viewforum.php?f=2" target="_top"><font class=announcelink>Guest Book</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/forum/viewforum.php?f=3" target="_top"><font class=announcelink>Polls!</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/forum/viewforum.php?f=4" target="_top"><font class=announcelink>Got a Question?</font></A><BR>
+</TD>
+
+</TABLE>
+
+<!--END-->
+
+</CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER> &nbsp; </CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=90%% valign=top>
+
+
+
+
+
+<!--START : DATA-->
+
+
+
+<TABLE BORDER=0>
+
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="../adfaqpublish.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=blueHeading>Linked Lists</font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="0_1.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD>
+<TD WIDTH=90%%><CENTER><font class=blueHeading>(1 / 268)</font></center></TD>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%></TD>
+<TD WIDTH=90%%><center>&nbsp;</center></TD>
+<TD WIDTH=5%%></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=announceLink><BR><BR><BR>
+<!--THE QUESTION-->
+
+How do you reverse a singly linked list? How do you reverse a doubly linked list? Write a C program to do the same. <BR>
+<!--END-->
+<BR></font></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=normal>
+<!--THE ANSWER--><BR>
+<!--META:START--><!--interview,C,linked list,reverse,singly linked list,doubly linked list--><!--META:END--><BR>
+<!--UPDATED--><BR>
+<font class=announcelink>This is THE most frequently asked interview question</font>. The most!.<BR>
+<BR>
+<font class=announcelink>Singly linked lists</font><BR>
+<BR>
+Here are a few C programs to reverse a singly linked list.<BR>
+<BR>
+<BR>
+<BR>
+<font class=announcelink>Method1 (Iterative)</font><BR>
+<BR>
+<CODE><BR>
+#include&nbsp;&lt;stdio.h><BR>
+<BR>
+//&nbsp;Variables<BR>
+typedef&nbsp;struct&nbsp;node&nbsp;<BR>
+{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;int&nbsp;value;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;struct&nbsp;node&nbsp;*next;&nbsp;<BR>
+}mynode;<BR>
+<BR>
+<BR>
+//&nbsp;Globals&nbsp;(not&nbsp;required,&nbsp;though).<BR>
+mynode&nbsp;*head,&nbsp;*tail,&nbsp;*temp;&nbsp;<BR>
+<BR>
+<BR>
+//&nbsp;Functions<BR>
+void&nbsp;add(int&nbsp;value);<BR>
+void&nbsp;iterative_reverse();<BR>
+void&nbsp;print_list();<BR>
+<BR>
+<BR>
+//&nbsp;The&nbsp;main()&nbsp;function<BR>
+int&nbsp;main()<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;head=(mynode&nbsp;*)0;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Construct&nbsp;the&nbsp;linked&nbsp;list.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;add(1);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;add(2);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;add(3);<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//Print&nbsp;it<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;print_list();<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Reverse&nbsp;it.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;iterative_reverse();<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//Print&nbsp;it&nbsp;again<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;print_list();<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;return(0);<BR>
+}<BR>
+<BR>
+<BR>
+//&nbsp;The&nbsp;reverse&nbsp;function<BR>
+void&nbsp;iterative_reverse()<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mynode&nbsp;*p,&nbsp;*q,&nbsp;*r;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(head&nbsp;==&nbsp;(mynode&nbsp;*)0)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;head;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;p->next;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p->next&nbsp;=&nbsp;(mynode&nbsp;*)0;<BR>
+&nbsp;&nbsp;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(q&nbsp;!=&nbsp;(mynode&nbsp;*)0)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;q->next;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q->next&nbsp;=&nbsp;p;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;q;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;r;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head&nbsp;=&nbsp;p;<BR>
+}<BR>
+<BR>
+<BR>
+//&nbsp;Function&nbsp;to&nbsp;add&nbsp;new&nbsp;nodes&nbsp;to&nbsp;the&nbsp;linked&nbsp;list<BR>
+void&nbsp;add(int&nbsp;value)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;temp&nbsp;=&nbsp;(mynode&nbsp;*)&nbsp;malloc(sizeof(struct&nbsp;node));<BR>
+&nbsp;&nbsp;&nbsp;temp->next=(mynode&nbsp;*)0;<BR>
+&nbsp;&nbsp;&nbsp;temp->value=value;<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;if(head==(mynode&nbsp;*)0)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head=temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tail=temp;<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tail->next=temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tail=temp;<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+}<BR>
+<BR>
+<BR>
+//&nbsp;Function&nbsp;to&nbsp;print&nbsp;the&nbsp;linked&nbsp;list.<BR>
+void&nbsp;print_list()<BR>
+{<BR>
+&nbsp;&nbsp;printf("\n\n");<BR>
+&nbsp;&nbsp;for(temp=head;&nbsp;temp!=(mynode&nbsp;*)0;&nbsp;temp=temp->next)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("[%d]->",(temp->value));<BR>
+&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;printf("[NULL]\n\n");<BR>
+}<BR>
+<BR>
+<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<font class=announcelink>Method2 (Recursive, without using any temporary variable)</font><BR>
+<BR>
+<CODE><BR>
+#include&nbsp;&lt;stdio.h><BR>
+<BR>
+//&nbsp;Variables<BR>
+typedef&nbsp;struct&nbsp;node&nbsp;<BR>
+{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;int&nbsp;value;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;struct&nbsp;node&nbsp;*next;&nbsp;<BR>
+}mynode;<BR>
+<BR>
+//&nbsp;Globals.<BR>
+mynode&nbsp;*head,&nbsp;*tail,&nbsp;*temp;<BR>
+<BR>
+<BR>
+//&nbsp;Functions<BR>
+void&nbsp;add(int&nbsp;value);<BR>
+mynode*&nbsp;reverse_recurse(mynode&nbsp;*root);<BR>
+void&nbsp;print_list();<BR>
+<BR>
+<BR>
+//&nbsp;The&nbsp;main()&nbsp;function<BR>
+int&nbsp;main()<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;head=(mynode&nbsp;*)0;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Construct&nbsp;the&nbsp;linked&nbsp;list.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;add(1);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;add(2);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;add(3);<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//Print&nbsp;it<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;print_list();<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Reverse&nbsp;it.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;if(head&nbsp;!=&nbsp;(mynode&nbsp;*)0)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;=&nbsp;reverse_recurse(head);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp->next&nbsp;=&nbsp;(mynode&nbsp;*)0;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//Print&nbsp;it&nbsp;again<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;print_list();<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;return(0);<BR>
+}<BR>
+<BR>
+<BR>
+//&nbsp;Reverse&nbsp;the&nbsp;linked&nbsp;list&nbsp;recursively<BR>
+//<BR>
+<BR>
+//&nbsp;This&nbsp;function&nbsp;uses&nbsp;the&nbsp;power&nbsp;of&nbsp;the&nbsp;stack&nbsp;to&nbsp;make&nbsp;this<BR>
+//&nbsp;*magical*&nbsp;assignment<BR>
+//<BR>
+//&nbsp;node->next->next=node;&nbsp;<BR>
+//<BR>
+//&nbsp;:)<BR>
+<BR>
+mynode*&nbsp;reverse_recurse(mynode&nbsp;*root)<BR>
+{&nbsp;<BR>
+&nbsp;&nbsp;if(root->next!=(mynode&nbsp;*)0)&nbsp;<BR>
+&nbsp;&nbsp;{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reverse_recurse(root->next);&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root->next->next=root;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return(root);&nbsp;<BR>
+&nbsp;&nbsp;}&nbsp;<BR>
+&nbsp;&nbsp;else&nbsp;<BR>
+&nbsp;&nbsp;{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head=root;&nbsp;<BR>
+&nbsp;&nbsp;}&nbsp;<BR>
+}&nbsp;<BR>
+<BR>
+<BR>
+<BR>
+//&nbsp;Function&nbsp;to&nbsp;add&nbsp;new&nbsp;nodes&nbsp;to&nbsp;the&nbsp;linked&nbsp;list.<BR>
+void&nbsp;add(int&nbsp;value)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;=&nbsp;(mynode&nbsp;*)&nbsp;malloc(sizeof(struct&nbsp;node));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp->next=(mynode&nbsp;*)0;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp->value=value;<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(head==(mynode&nbsp;*)0)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head=temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tail=temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tail->next=temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tail=temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+}<BR>
+<BR>
+<BR>
+//&nbsp;Function&nbsp;to&nbsp;print&nbsp;the&nbsp;linked&nbsp;list.<BR>
+void&nbsp;print_list()<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("\n\n");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;for(temp=head;&nbsp;temp!=(mynode&nbsp;*)0;&nbsp;temp=temp->next)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("[%d]->",(temp->value));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("[NULL]\n\n");<BR>
+}<BR>
+<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<font class=announcelink>Method3 (Recursive, but without ANY global variables. Slightly messy!)</font><BR>
+<BR>
+<CODE><BR>
+#include&nbsp;&lt;stdio.h><BR>
+<BR>
+//&nbsp;Variables<BR>
+typedef&nbsp;struct&nbsp;node&nbsp;<BR>
+{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;int&nbsp;value;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;struct&nbsp;node&nbsp;*next;&nbsp;<BR>
+}mynode;<BR>
+<BR>
+<BR>
+//&nbsp;Functions<BR>
+void&nbsp;add(mynode&nbsp;**head,&nbsp;mynode&nbsp;**tail,&nbsp;int&nbsp;value);<BR>
+mynode*&nbsp;reverse_recurse(mynode&nbsp;*current,&nbsp;mynode&nbsp;*next);<BR>
+void&nbsp;print_list(mynode&nbsp;*);<BR>
+<BR>
+<BR>
+int&nbsp;main()<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;mynode&nbsp;*head,&nbsp;*tail;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;head=(mynode&nbsp;*)0;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Construct&nbsp;the&nbsp;linked&nbsp;list.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;add(&head,&nbsp;&tail,&nbsp;1);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;add(&head,&nbsp;&tail,&nbsp;2);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;add(&head,&nbsp;&tail,&nbsp;3);<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//Print&nbsp;it<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;print_list(head);<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Reverse&nbsp;it.<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;head&nbsp;=&nbsp;reverse_recurse(head,&nbsp;(mynode&nbsp;*)0);<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;//Print&nbsp;it&nbsp;again<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;print_list(head);<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;getch();<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;return(0);<BR>
+}<BR>
+<BR>
+<BR>
+//&nbsp;Reverse&nbsp;the&nbsp;linked&nbsp;list&nbsp;recursively<BR>
+mynode*&nbsp;reverse_recurse(mynode&nbsp;*current,&nbsp;mynode&nbsp;*next)<BR>
+{&nbsp;<BR>
+&nbsp;&nbsp;mynode&nbsp;*ret;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;if(current==(mynode&nbsp;*)0)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;return((mynode&nbsp;*)0);<BR>
+&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;ret&nbsp;=&nbsp;(mynode&nbsp;*)0;<BR>
+&nbsp;&nbsp;if&nbsp;(current->next&nbsp;!=&nbsp;(mynode&nbsp;*)0)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ret&nbsp;=&nbsp;reverse_recurse(current->next,&nbsp;current);<BR>
+&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ret&nbsp;=&nbsp;current;<BR>
+&nbsp;&nbsp;}<BR>
+&nbsp;<BR>
+&nbsp;&nbsp;current->next&nbsp;=&nbsp;next;<BR>
+&nbsp;&nbsp;return&nbsp;ret;<BR>
+}&nbsp;<BR>
+<BR>
+<BR>
+//&nbsp;Function&nbsp;to&nbsp;add&nbsp;new&nbsp;nodes&nbsp;to&nbsp;the&nbsp;linked&nbsp;list.<BR>
+//&nbsp;Takes&nbsp;pointers&nbsp;to&nbsp;pointers&nbsp;to&nbsp;maintain&nbsp;the&nbsp;<BR>
+//&nbsp;*actual*&nbsp;head&nbsp;and&nbsp;tail&nbsp;pointers&nbsp;(which&nbsp;are&nbsp;local&nbsp;to&nbsp;main()).<BR>
+<BR>
+void&nbsp;add(mynode&nbsp;**head,&nbsp;mynode&nbsp;**tail,&nbsp;int&nbsp;value)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mynode&nbsp;*temp1,&nbsp;*temp2;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp1&nbsp;=&nbsp;(mynode&nbsp;*)&nbsp;malloc(sizeof(struct&nbsp;node));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp1->next=(mynode&nbsp;*)0;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp1->value=value;<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(*head==(mynode&nbsp;*)0)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*head=temp1;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*tail=temp1;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(temp2&nbsp;=&nbsp;*head;&nbsp;temp2->next!=&nbsp;(mynode&nbsp;*)0;&nbsp;temp2=temp2->next);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp2->next&nbsp;=&nbsp;temp1;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*tail=temp1;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+}<BR>
+<BR>
+<BR>
+//&nbsp;Function&nbsp;to&nbsp;print&nbsp;the&nbsp;linked&nbsp;list.<BR>
+void&nbsp;print_list(mynode&nbsp;*head)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;mynode&nbsp;*temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("\n\n");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;for(temp=head;&nbsp;temp!=(mynode&nbsp;*)0;&nbsp;temp=temp->next)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("[%d]->",(temp->value));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("[NULL]\n\n");<BR>
+}<BR>
+<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<font class=announcelink>Doubly linked lists</font> <BR>
+<BR>
+<BR>
+This is really easy, just keep swapping the  <font class=announcelink>prev</font> and <font class=announcelink>next</font> pointers and at the end swap the <font class=announcelink>head</font> and the <font class=announcelink>tail</font>:)<BR>
+<BR>
+<CODE><BR>
+#include&lt;stdio.h><BR>
+#include&lt;ctype.h><BR>
+<BR>
+typedef&nbsp;struct&nbsp;node<BR>
+{<BR>
+&nbsp;&nbsp;int&nbsp;value;<BR>
+&nbsp;&nbsp;struct&nbsp;node&nbsp;*next;<BR>
+&nbsp;&nbsp;struct&nbsp;node&nbsp;*prev;<BR>
+}mynode&nbsp;;<BR>
+<BR>
+mynode&nbsp;*head,&nbsp;*tail;<BR>
+void&nbsp;add_node(int&nbsp;value);<BR>
+void&nbsp;print_list();<BR>
+void&nbsp;reverse();<BR>
+<BR>
+int&nbsp;main()<BR>
+{<BR>
+<BR>
+<BR>
+<BR>
+&nbsp;head=NULL;<BR>
+&nbsp;tail=NULL;<BR>
+<BR>
+&nbsp;add_node(1);<BR>
+&nbsp;add_node(2);<BR>
+&nbsp;add_node(3);<BR>
+&nbsp;add_node(4);<BR>
+&nbsp;add_node(5);<BR>
+<BR>
+&nbsp;print_list();<BR>
+<BR>
+&nbsp;reverse();<BR>
+<BR>
+&nbsp;print_list();<BR>
+<BR>
+&nbsp;return(1);<BR>
+<BR>
+}<BR>
+<BR>
+<BR>
+void&nbsp;add_node(int&nbsp;value)<BR>
+{<BR>
+&nbsp;&nbsp;mynode&nbsp;*temp,&nbsp;*cur;<BR>
+&nbsp;&nbsp;temp&nbsp;=&nbsp;(mynode&nbsp;*)malloc(sizeof(mynode));<BR>
+&nbsp;&nbsp;temp->next=NULL;<BR>
+&nbsp;&nbsp;temp->prev=NULL;<BR>
+<BR>
+&nbsp;&nbsp;if(head&nbsp;==&nbsp;NULL)<BR>
+&nbsp;&nbsp;{<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("\nAdding&nbsp;a&nbsp;head&nbsp;pointer\n");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;head=temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;tail=temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;temp->value=value;<BR>
+<BR>
+&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;{<BR>
+<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;for(cur=head;cur->next!=NULL;cur=cur->next);<BR>
+&nbsp;&nbsp;&nbsp;cur->next=temp;<BR>
+&nbsp;&nbsp;&nbsp;temp->prev=cur;<BR>
+&nbsp;&nbsp;&nbsp;temp->value=value;<BR>
+&nbsp;&nbsp;&nbsp;tail=temp;<BR>
+<BR>
+&nbsp;&nbsp;}<BR>
+<BR>
+}<BR>
+<BR>
+<BR>
+void&nbsp;print_list()<BR>
+{<BR>
+&nbsp;&nbsp;mynode&nbsp;*temp;<BR>
+<BR>
+&nbsp;&nbsp;printf("\n--------------------------------\n");<BR>
+&nbsp;&nbsp;for(temp=head;temp!=NULL;temp=temp->next)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("\n[%d]\n",temp->value);<BR>
+&nbsp;&nbsp;}<BR>
+<BR>
+}<BR>
+<BR>
+<BR>
+<BR>
+void&nbsp;reverse()<BR>
+{<BR>
+&nbsp;&nbsp;mynode&nbsp;*cur,&nbsp;*temp,&nbsp;*save_next;<BR>
+&nbsp;&nbsp;if(head==tail)return;<BR>
+&nbsp;&nbsp;if(head==NULL&nbsp;||&nbsp;tail==NULL)return;<BR>
+&nbsp;&nbsp;for(cur=head;cur!=NULL;)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("\ncur->value&nbsp;:&nbsp;[%d]\n",cur->value);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;temp=cur->next;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;save_next=cur->next;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;cur->next=cur->prev;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;cur->prev=temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;cur=save_next;<BR>
+&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;temp=head;<BR>
+&nbsp;&nbsp;head=tail;<BR>
+&nbsp;&nbsp;tail=temp;<BR>
+}<BR>
+</CODE> <BR>
+<BR>
+<BR>
+<BR>
+Having shown all these different methods, if someone can mail me a really, really good <font class=announcelink>practical application</font> of reversing a linked list (singly or doubly linked list), I would be really thankful to them. I have not found one good application of this. All I see is an urge to understand how well the candidate handles the pointer manipulation. 
+<BR><BR>
+<!--END-->
+</font><BR></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="../adfaqpublish.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=notelink><A href="mailto:cracktheinterview@gmail.com?subject=Comments [How do you reverse a singly linked list? How do you reverse a doubly linked list? Write a C program to do the same. ]&Body=Question : [How do you reverse a singly linked list? How do you reverse a doubly linked list? Write a C program to do the same. ]"><font class=announcelink>COMMENTS</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><A HREF=../adfaqpublish.html>INDEX</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><a href="#" onclick="window.print();return false;">PRINT</a></font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="0_1.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<BR><BR><BR><font class=notelink>
+Last updated:
+
+July 8, 2005<BR><BR>
+<a href=http://www.cracktheinterview.com>www.cracktheinterview.com</a> - Your destination for the most common IT interview questions, answers, frequently asked interview questions (FAQ), C Programs, C Datastructures for interviews conducted by Microsoft, Oracle, Google, IBM, HP, Yahoo, Infosys, Wipro, SAP, CA (Computer Associates), Sun, Adobe, GE, Novell, Cisco, Motorola, TI (Texas Instruments), Intel, TCS, iFlex, Trilogy, MindTree, GS and more...<br><BR>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+
+<!--END-->
+
+
+</TD>
+
+
+
+
+<TD WIDTH=10%% valign="top">
+
+
+<!--START:ADS1-->
+
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_alternate_color = "CCCCCC";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+</TD>
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+</BODY>
+</HTML>
+
+

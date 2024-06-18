@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Algorithms and Data Structures, Aalborg University
+  (INF1, Autumn'04)</title>
+</head>
+<body bgcolor="white">
+ <h3>Algorithms and Data Structures (INF1, Autumn'04)</h3>
+ <h2>Exercise Set 6</h2>
+<br>
+<b>Exercise 1:</b> <br><br>
+
+Assume that you are given a function <b>sum(l:LIST):int</b> which
+for an input list l=< a<sub>1</sub>,a<sub>2</sub>, ..., a<sub>n</sub>>
+returns the sum of all its values, i.e., 
+sum(l)=a<sub>1</sub>.value + a<sub>2</sub>.value + ... + a<sub>n</sub>.value.
+Formally, we know that the function sum is totally correct w.r.t. the following
+pre- and post-conditions. <br><br>
+
+--pre: l=< a<sub>1</sub>,a<sub>2</sub>, ..., a<sub>n</sub>> s.t.
+       VALUE_TYPE=int <br>
+x:=sum(l)<br>
+--post: x=&Sigma;<SUB>i = 1..n</SUB> a<sub>i</sub>.value <br><br>
+
+<UL>
+<LI> Using only this information about sum, can you now prove the following?
+<br><br>
+--pre: l=< a<sub>1</sub>,a<sub>2</sub>, ..., a<sub>n</sub>> s.t.
+       VALUE_TYPE=int <br>
+x:=sum(l)<br>
+y:=sum(l)<br>
+--post: x+y=2.&Sigma;<SUB>i = 1..n</SUB> a<sub>i</sub>.value <br><br>
+<ul>
+<li>If yes, then prove it. <br>
+<li>If no, say why not. Modify the pre- or post-condition
+of the function sum defined in the beginning such that the
+statement above is true, and prove it.
+</ul>
+</UL>
+<br> <br> 
+
+<b>Exercise 2:</b> <br><br>
+
+<ul>
+<li>
+Define a function <b>find(i:int, l:LIST):ENTRY_TYPE</b> such 
+that it is totally correct with regard to the following pre- and
+post- conditions. <br><br>
+
+--pre: l=< a<sub>1</sub>,a<sub>2</sub>, ..., a<sub>n</sub>> and i>0 <br>
+x:=find(i,l)<br>
+--post: x = a<sub>i</sub> &nbsp; if 1 <= i <= n and x = NIL otherwise; and l'=l 
+ <br><br>
+
+<li>When using the doubly-linked list 
+implementation of LIST we know that all the
+basic operations in the worst-case take time O(1). What is the 
+worst-case time complexity
+of your function find, taking |l| (the number of entries in the list l)
+as the size of the input?
+</ul>
+<br><br>
+ 
+<b>Exercise 3 (hand-in):</b><br><br>
+
+Write appropriate pre- and post-conditions for the list operations
+<b>first</b> and <b>next</b>. <br><br>
+
+--pre: ??? <br>
+x:=l.first <br>
+--post: ??? <br><br><br>
+
+--pre: ??? <br>
+y:=l.next(x) <br>
+--post: ??? <br><br>
+
+
+</body>
+</html>
+
+

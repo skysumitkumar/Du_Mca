@@ -1,0 +1,412 @@
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Copyright" content="Brian Brown, 1998, All rights reserved">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0"><title>Operating Systems: Part 2</title><script charset="utf-8" id="injection_graph_func" src="os02_files/injection_graph_func.js"></script></head><body bgcolor="#ffffff">
+
+<p align="center"><a name="start"></a><font color="#000080" size="5">Operating Systems Introduction</font><font color="#ff00ff" size="6"> </font><br>
+Author: Brian Brown, 1995-2000. All rights reserved.<br>
+<a href="http://uva.ulb.ac.be/cit_courseware/opsys/os01.htm"><font size="2">Previous</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/default.htm"><font size="2">Home Page</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/os03.htm"><font size="2">Next</font></a></p>
+
+<hr>
+
+<p><a name="parts"><font size="4"><strong></strong></font></a><font size="4"><strong> </strong></font><a href="#start"><font size="4"><strong><img src="os02_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What are the various parts of an
+Operating System?</font><br>
+In this section we look at that part of the operating system that
+is responsible for running programs, called the real-time
+executive or kernel.</p>
+
+<p>An operating system for a large-scale computer that is used by
+many people at once is a very complex system. It contains many
+millions of lines of instructions (commands that the computer
+executes) written by programmers. To make operating systems
+easier to write, they are constructed as a series of modules (programs),
+each module responsible for one function. Typical modules in a
+larger multi-user operating system could be,</p>
+
+<ul>
+    <li>Kernel (also known as the executive)</li>
+    <li>Process manager</li>
+    <li>Scheduler</li>
+    <li>File manager</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p><a name="exec"><font size="4"><strong></strong></font></a><font size="4"><strong> </strong></font><a href="#start"><font size="4"><strong><img src="os02_files/up.gif" border="0" height="15" width="15"></strong></font></a>
+<font size="4">What is a real-time executive?</font><br>
+The core of all operating systems is called a REAL TIME EXECUTIVE
+(also known as the kernel). Some of the functions that it
+performs are</p>
+
+<ul>
+    <li>switching between programs</li>
+    <li>hardware device control and programming</li>
+    <li>memory management</li>
+    <li>process management</li>
+    <li>scheduling (deciding what programs to run)</li>
+    <li>inter-process communication</li>
+    <li>processing of exceptions and interrupts</li>
+</ul>
+
+<p>Our simple security monitoring system would not have all of
+the above, as it would probably be a single task system, running
+only one program. As such, it would not need to perform
+scheduling of more than one program or allow communication to
+take place between programs (called inter-process communication).
+Memory management would be unnecessary, as the program would
+easily fit into the available memory of the computer.</p>
+
+<p>An operating system designed to handle a large number of
+people would need a real-time executive that performs all of the
+above. User programs are generally stored on disk, thus need to
+be loaded into memory before being executed. This presents the
+need for memory management, as the memory of the computer would
+need to be searched for a free area in which to load a persons
+program into. When the user was finished running the program, the
+memory consumed by it would need to be freed up and made
+available for another user when required.</p>
+
+<p>Process scheduling and management is also necessary, so that
+all programs would be executed and run fairly. There is no point
+if a program by a specific user runs to such an extent that it
+denies the running of any other programs, making every other user
+wait. In addition, some programs might need to be executed more
+frequently than others, for example, checking network
+communications or printing. Some programs may need to be
+temporarily halted, then restarted again later, so this
+introduces the need for inter-program communication.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="program"></a> <a href="#start"><font size="4"><strong><img src="os02_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is a computer program?</font><br>
+Programs are a series of instructions to the computer. When a
+software programmer (a person who writes programs to run on a
+computer system) develops a program, it is converted into a long
+list of instructions that is executed by the computer system.</p>
+
+<p>In operating systems we talk more of a process (part of a
+program that is in some stage of execution) than a program. This
+is because in modern operating systems, only a portion of a
+program is loaded at any one time. The rest of the program sits
+waiting on a disk unit till it is needed. This saves memory space.</p>
+
+<p>Processors execute computer programs. A processor is a chip in
+the computer that executes program instructions. Processors
+execute millions of instructions per second.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="morethanone"></a> <a href="#start"><font size="4"><strong><img src="os02_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>How do operating systems run more than
+one program at once?</font><br>
+Some systems run only a single process at a time, other systems
+run multiple processes at once. Most computer systems are single
+processor based, and a processor can only execute one instruction
+at a time, so how is it possible for such a single processor
+system run multiple processes? The simple answer is that it doesn&#8217;t.
+The processor of the computer runs one process for a short period
+of time, then is switched to the next process and so on. As the
+processor executes millions of instructions per second, this
+gives the appearance of many processes running at once. </p>
+
+<p>&nbsp;</p>
+
+<p><a name="coop"></a> <a href="#start"><font size="4"><strong><img src="os02_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4">What is co-operative and preemptive switching?</font><br>
+In a computer system that supports more than one process at once,
+some mechanism must be used to switch from one task to another.
+There are two main methods used to perform this switching.</p>
+
+<ul>
+    <li>Co-operative switching means that a task that is
+        currently running will voluntarily give up the processor
+        at some time, allowing other processes to run.</li>
+    <li>Preemptive switching means that a running task will be
+        interrupted (forced to give up) and the processor given
+        to another waiting process.</li>
+</ul>
+
+<p>The problem with co-operative switching is one process could
+hang and thus deny execution of other processes, resulting in no
+work being done. An example of a co-operative system was Windows
+3.1</p>
+
+<p>Pre-emptive scheduling is better. It gives more response to
+all processes and helps prevent (or reduce the number of
+occurrences of) the dreaded machine lockup. Windows NT
+workstation is an example of such as operating system.</p>
+
+<p><strong>Note:</strong> Only 32-bit programs in Windows 95 are
+pre-emptive switched. 16-bit programs are still co-operatively
+switched, which means it is still easy for a 16-bit program to
+lock up a Windows 95 computer.</p>
+
+<p>&nbsp;</p>
+
+<table border="0">
+    <tbody><tr>
+        <td valign="top">A multi-user operating system allows
+        more than one user to share the same computer system at
+        the same time. It does this by time-slicing the computer
+        processor at regular intervals between the various
+        programs run by each user. <p>In this example, there are
+        five people that share the processor hardware and main
+        memory on a time basis. Consider a 486 Intel processor
+        running at 50MHz. This processor is capable of about 6
+        million instructions per second. </p>
+        <p>If we decided that we would share the hardware by
+        letting each user run for 1/5th of a second, this would
+        mean each user could execute about 1.2 million
+        instructions each time they have the processor.</p>
+        </td>
+        <td><img src="os02_files/unix01.gif" height="273" width="221"></td>
+    </tr>
+</tbody></table>
+
+<p>We start off by giving the first user (which we will call Bart)
+the processor hardware, and run Barts program for 1/5th of a
+second. When the time is up, we intervene, save Barts program
+state (program code and data) and then start running the second
+user program (for 1/5th of a second).</p>
+
+<p>This process continues till we eventually get back to user
+Bart. To continue running Bart's program, we restore the programs
+code and data and then run for 1/5th of a second.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="dispatch"></a> <a href="#start"><font size="4"><strong><img src="os02_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is dispatching?</font><br>
+It will be noted that it takes time to save/restore the programs
+state and switch from one program to another (called <strong>dispatching</strong>).
+This action is performed by the kernel, and must execute quickly,
+because we want to spend most of our time running user programs,
+not switching between them. </p>
+
+<p>&nbsp;</p>
+
+<p><a name="overhead"></a> <a href="#start"><font size="4"><strong><img src="os02_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is system overhead?</font><br>
+The amount of time that is spent in the system state (running the
+kernel and performing tasks like switching between user programs)
+is called the <strong>system overhead</strong>, and should
+typically be below 10%. Too much time spent performing system
+tasks in preference to running user programs will result in poor
+performance for user programs, which will appear to run very
+slowly.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="required"><font size="4"><strong></strong></font></a><font size="4"><strong> </strong></font><a href="#start"><font size="4"><strong><img src="os02_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is required to switch from one
+program to another?</font><br>
+This switching between user programs is done by part of the
+kernel. To switch from one program to another requires, </p>
+
+<ul>
+    <li>a regular timed interrupt event (provided by a clock)</li>
+    <li>saving the interrupted programs state and data</li>
+    <li>restoring the next programs state and data </li>
+    <li>running that program till the next timed interrupt occurs
+    </li>
+</ul>
+
+<p>The timed event is usually about 1 to 10 milliseconds apart
+and generated by a real-time clock. To save and restore program
+states requires hardware support, a feature supported by Intel
+processors.</p>
+
+<p><font size="4"><strong></strong></font>&nbsp;</p>
+
+<p><a name="context"><font size="4"><strong></strong></font></a><font size="4"><strong> </strong></font><a href="#start"><font size="4"><strong><img src="os02_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is context switching?</font><br>
+When the processor is switched from one process to another, the
+state (processor registers and associated data) must be saved,
+because at some later date the process will be restarted and
+continue as though it was never interrupted. Once this state has
+been saved, the next waiting process is activated. This involves
+loading the processor registers and memory with all the
+previously saved data and restarting it at the instruction that
+was to be executed when it was last interrupted.</p>
+
+<p>The process of switching from one process to another is called
+<strong>context switching</strong>. A time period that a process
+runs for before being context switched is called a <strong>time
+slice</strong> or <strong>quantum period</strong>.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="scheduling"></a> <a href="#start"><font size="4"><strong><img src="os02_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is scheduling?</font><br>
+Deciding which process should run next is called <strong>scheduling</strong>,
+and can be done in a wide variety of ways.</p>
+
+<p>Co-operative schedulers are generally very simple, as the
+processes are arranged in a ROUND ROBIN queue. When a running
+process gives itself up, it goes to the end of the queue. The
+process at the top of the queue is then run, and all processes in
+the queue move up one place. This provides a measure of fairness,
+but does not prevent one process from monopolizing the system (failing
+to give itself up).</p>
+
+<p>Pre-emptive scheduling uses a real-time clock that generates
+interrupts at regular intervals (say every 1/100th of a second).
+Each time an interrupt occurs, the processor is switched to
+another task. Systems employing this type of scheduling generally
+assign priorities to each process, so that some may be executed
+more frequently than others.</p>
+
+<p><strong>First in First Out Scheduling</strong><br>
+A FIFO queue is a list of available processes awaiting execution
+by the processor. New processes arrive and are placed at the end
+of the queue. The process at the start of the queue is assigned
+the processor when it next becomes available, and all other
+processes move up one slot in the queue.</p>
+
+<p><strong>Round Robin Scheduling</strong><br>
+One of the problems with the FIFO approach is that a process may
+in fact take a very long time to complete, and thus holds up
+other waiting processes in the queue. To prevent this from
+happening, we employ a pre-emptive scheduler that lets each
+process run for a little while. When the time-slice is up, the
+running process is interrupted and placed at the rear of the
+queue. The next process at the top of the queue is then started.</p>
+
+<p><font size="4"><strong></strong></font>&nbsp;</p>
+
+<p><a name="others"><font size="4"><strong></strong></font></a><font size="4"><strong> </strong></font><a href="#start"><font size="4"><strong><img src="os02_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>Other ways of scheduling processes</font><br>
+It is common now in operating systems today for processes to be
+treated according to priority. This may involve a number a
+different queues and scheduling mechanisms, using priority based
+on previous process activity, how it has been executing for and
+how long it has been since it last was executed by the processor.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="revision2"></a> <a href="#start"><font size="4"><strong><img src="os02_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>Revision Exercise 2</font><br>
+List FIVE functions that a real time executive does.</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p>What is co-operative switching and how does it differ from pre-emptive
+switching?</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p>What is dispatching?</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p>What happens to the performance of running user programs when
+system overhead increases?</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p>What is a time-slice?</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p>What is scheduling?</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p>What is one problem with First-In-First-Out queues when used
+to schedule processes.</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p><a href="#start"><font size="4"><strong><img src="os02_files/up.gif" border="0" height="15" width="15"></strong></font></a></p>
+
+<p align="center"><a href="http://uva.ulb.ac.be/cit_courseware/opsys/os01.htm"><font size="2">Previous</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/default.htm"><font size="2">Home Page</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/os03.htm"><font size="2">Next</font></a></p>
+<!-- #counter var="compteur_cit" display="false" -->
+
+</body></html>

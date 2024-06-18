@@ -1,0 +1,477 @@
+<html><head>
+<title>Solution for /decision/dowry</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /decision/dowry problem</h1>
+<hr>
+<p>
+Since the commoner knows nothing about the distribution of the dowries,
+the best strategy is to wait until a certain number of daughters have
+been presented then pick the highest dowry thereafter. The exact number to
+skip is determined by the condition that the odds that the highest dowry
+has already been seen is just greater than the odds that it remains to be
+seen AND THAT IF IT IS SEEN IT WILL BE PICKED. This amounts to finding the
+smallest x such that:
+<pre>
+	x/n &gt; x/n * (1/(x+1) + ... + 1/(n-1)).
+</pre>
+Working out the math for n=100 and calculating the probability gives:
+The commoner should wait until he has seen 37 of the daughters,
+then pick the first daughter with a dowry that is bigger than any
+preceding dowry. With this strategy, his odds of choosing the daughter
+with the highest dowry are surprisingly high: about 37%.
+(cf. F. Mosteller, "Fifty Challenging Problems in Probability with Solutions",
+Addison-Wesley, 1965, #47; "Mathematical Plums", edited by Ross Honsberger,
+pp. 104-110)
+
+<p>
+Here's a twist on the sultan's dowry problem I hope hasn't been posted yet.
+I became interested in an iterated version of this problem, which goes as
+follows:
+
+<p>
+There's a long line of suitors outside the sultan's palace, and one by one
+they come in.  If a suitor gets the right girl, he marries her, as before.
+Unfortunately (for the suitor, at least), if he doesn't, he gets his head
+lopped off, and the next suitor comes in.
+
+<p>
+Anyway, the first few dozen guys all know their probability theory, so they
+know that the best strategy is to skip the first 37 girls, and then pick
+the first girl who is the best up to that point.  Alas, each one assumes
+that he's the only one who knows that strategy, so one by one, these few
+dozen guys get their heads lopped off.
+
+<p>
+After the 49th head has just rolled down the hill, and the sultan's vizier
+has just cried out, "Next!" the next guy in line says, "This isn't working
+out.  We might all be doing the same thing.  It doesn't hurt any of us to
+tell the rest what strategy we'll be using, so that none of us sets out to
+pick the same girl over and over again.  I might as well just tell you,
+though, that I'm going to get her!  I know this great strategy where you
+skip the first 37 blah blah blah..."  Naturally, a few moments later, head
+number 50 comes rolling down.
+
+<p>
+"Next!" cries the vizier.
+
+<p>
+Well, suitor number 51 is in a quandary.  He's all set to skip 37, etc, etc,
+except now he knows, that's not the right strategy.  But he doesn't know if
+the last guy skipped the right girl because she was in the first 37, or if
+he didn't meet her yet because he stopped too early.
+
+<p>
+QUESTION 1: What is his best strategy?
+
+<p>
+ANSWER 1: His best strategy is:
+<blockquote>
+    "Skip the first 14.  Take the first girl in [15,37] who is better
+    than the first 14.  If there isn't one, take the SECOND girl in [38,100]
+    who is the best up to that point."
+</blockquote>
+Unfortunately, head number 51 rolls down the hill.  "Next!" cries the vizier,
+who is getting a little hoarse, and wishes he didn't have this job.
+
+<p>
+QUESTION 2: What is suitor number 52's best strategy?
+
+<p>
+ANSWER 2: His best strategy is:
+<blockquote>
+    "Skip the first 5.  Take the first girl in [6,14] who is better than
+    the first 5.  If there isn't one, take the SECOND girl in [15,37]
+    who is the best up to that point.  If there isn't one, take the THIRD
+    girl in [38,100] who is the best up to that point."
+</blockquote>
+
+By the end of the day, of course, a wedding will be set, won't it?
+
+<p>
+MORE QUESTIONS: If each suitor uses the best strategy at that point, how
+    many suitors will it take before the right girl is certain to be found?
+    Does each succeeding suitor always have a better chance of winning
+    than the preceding one?
+    
+<p>
+SPECULATION: The last strategy is "Pick the last girl."  Its probability
+    of success is 1.  And it is strategy number 100.  (The corresponding
+    conditions hold for 3, 4, and 5 daughters.)
+
+<p>
+Does anyone have any observations on this one?
+
+<p>
+byron elbows (mail to brian@cs.ucla.edu)
+
+<p>
+The above formulation of the problem known variously as the
+secretary problem or the sultan's dowry problem is flawed.
+In particular, we cannot leave completely unspecified the
+distribution of the dowries.  Suppose that instead of 100 daughters
+there are only two.  The values of the dowries are two reals drawn
+from an arbitrary distribution.  It can be shown that even if we
+know only one of them, we can determine whether it is higher or
+lower than the other, with probability greater than 1/2 (see
+decision/high.or.low).
+
+<p>
+Therefore, we should make the following emendation.  Instead of
+inspecting the value of the dowry, the suitor is only told how
+it ranks with the ones he has previously seen.  In fact, he only
+needs to know if it is greater than all previous dowries or not,
+because the order of previously seen dowries has no effect on
+the distribution of the dowries to be seen.
+
+<p>
+In that case, the usual solution (to skip the first 37 dowries,
+then pick the first one after that which is better than all
+previous) is correct, and yields a winning probability of about
+37 percent.
+
+<p>
+Almost all solutions of this problem have a flaw as well, in that
+they make an explicit assumption which is almost never justified
+in the text.  This assumption is that (*) the best strategy for the
+suitor is to skip some number of dowries, and then choose the next
+dowry which is better than all previous.  It is not obvious that
+this is the case at all.  Mosteller apparently does demonstrate
+that this is true (thanks to Chris Cole for mentioning this).
+
+<p>
+Then, quite a while ago, I posted to rec.puzzles the following
+extension to the dowry version of the problem:
+
+<blockquote>
+    There's a long line of suitors outside the sultan's palace,
+    and one by one they come in.  If a suitor gets the right girl,
+    he marries her, as before.  Unfortunately (for the suitor, at
+    least), if he doesn't, he gets his head lopped off, and the
+    next suitor comes in.
+
+<p>
+    Anyway, the first few dozen guys all know their probability
+    theory, so they know that the best strategy is to skip the
+    first 37 girls, and then pick the first girl who is the [better
+    than all others] up to that point.  Alas, each one assumes that
+    he's the only one who knows that strategy, so one by one, these
+    few dozen guys get their heads lopped off.
+
+<p>
+   After the 49th head has just rolled down the hill, and the
+    sultan's vizier has just cried out, "Next!" the next guy in
+    line says, "This isn't working out.  We might all be doing the
+    same thing.  It doesn't hurt any of us to tell the rest what
+    strategy we'll be using, so that none of us sets out to pick
+    the same girl over and over again.  I might as well just tell
+    you, though, that I'm going to get her!  I know this great
+    strategy where you skip the first 37 blah blah blah..."
+    Naturally, a few moments later, head number 50 comes rolling
+    down.
+
+<p>
+    "Next!" cries the vizier.
+
+<p>
+    Well, suitor number 51 is in a quandary.  He's all set to skip
+    37, etc, etc, except now he knows that's not the right strategy.
+    But he doesn't know if the last guy skipped the right girl
+    because she was in the first 37, or if he didn't meet her yet
+    because he stopped too early.
+</blockquote>
+
+At this point, I asked, "What is his best strategy?"  Now, the
+solution I presented had the right flavor:
+
+<blockquote>
+    Skip the first 14.  Take the first girl in [15,37] who is better
+    than the first 14.  If there isn't one, take the SECOND girl
+    in [38,100] who is the best up to that point.
+</blockquote>
+I believe the solution is essentially correct, except for that number
+14 (and its neighbor, 15).  The strategy essentially tries both
+possibilities (that the 50th suitor skipped the right girl, or
+that he hadn't got to her yet).  I (incorrectly) assumed that the
+same 1/e factor would apply to the subdividing the first interval
+[1,37], so I calculated [100/(e^2)] = 14.  In fact, I have reason
+to believe that the answer is actually [100/(e^(3/2))] = 19.  (See
+below.)  Note that this answer is predicated on an assumption of
+similar flavor to the basic one (*).
+
+<p>
+I then said:
+
+<blockquote>
+    Unfortunately, head number 51 rolls down the hill.  "Next!"
+    cries the vizier, who is getting a little hoarse, and wishes
+    he didn't have this job.
+</blockquote>
+
+and asked, "What is the next suitor's best strategy?"  I then said
+the answer to this question was:
+
+<blockquote>
+    Skip the first 5.  Take the first girl in [6,14] who is better
+    than the first 5.  If there isn't one, take the SECOND girl in
+    [15,37] who is the best up to that point.  If there isn't one,
+    take the THIRD girl in [38,100] who is the best up to that point.
+</blockquote>
+
+And put my foot even further in my mouth.  For, even ignoring the
+numbers (note that [100/e^3] = 5 is the wrong number here as well),
+I also ignored the possibility that there is only one girl in the
+second interval which is a best-so-far.  (I define a best-so-far to
+be a girl whose dowry exceeds all those before her.  I will use this
+terminology below.)  In that case, the best strategy, I believe (*),
+is to take the second best-so-far in [38,100].  This error was
+pointed out by Jim Waters recently.  What I did was neglect the
+triple (0,1,2) (see below for the meaning of this).  I had already
+resolved the error about a year ago, but didn't realize that it was
+in the archive that way.
+
+<p>
+I further speculated that the maximum number of suitors required
+to guarantee selection of the best overall was 100, and was equal
+to N in general, where N is the number of daughters.  I also
+conjectured that the Nth suitor's strategy (where N is counted
+from the first suitor to share his strategy) is to pick the last
+(Nth) daughter.  I know this to be true for N equal to 3, 4, and
+5, by exhaustive enumeration.  I still hold by these speculations.
+
+<p>
+Now, I will summarize some of the work I've done on this problem
+since then.
+
+<p>
+Most of my work has been on what I call the continuous dowry
+problem.  Intuitively, the objective in this problem is to select
+the "best" number in the interval [0,1] (or whatever interval you
+like), where "goodness" is a complete order on this interval.
+That is, for any numbers x, y, z in [0,1],
+
+    <ul>
+    <li> exactly one of the following is true:
+	<ul>
+        <li> x is better than y
+        <li> y is better than x
+        <li> x = y
+	</ul>
+    <li> if x is better than y, and y is better than z, then x is
+        better than z
+   </ul>
+
+However, you can't just rephrase this problem in the form of a
+question.  No, I mean, you can't just rephrase this problem in
+terms of a continuous interval.
+
+<p>
+Why?  Recall that the suitor only needs to be told whether or not
+each successive dowry is bigger than all previous.  So the exchange
+with him might go something like this:
+
+<pre>
+    "OK, do you want daughter number 1?"
+    "No, what do you take me for, a common fool?"
+    "Well, the next best-so-far is daughter number 5.  Want her?"
+    "No.  Keep going."
+    "OK...the next best-so-far is number 12.  It's a keeper, you
+        know it!"
+    "Uh uh."
+    "I don't know...there might not be any more.  Oops, you're in
+        luck.  Number 25 is a best-so-far.  Want her?"
+    "Not yet."
+    "Hey, you don't get a second shot.  OK, the next best-so-far
+        is number 43.  Geez, I don't know, she looks a bit straggly.
+        But she's loaded."
+    "OK, I'll take her."
+    (shouts aside) "Executioner!  Off with his head!"
+</pre>
+
+Uh, yeah, well.  Note that the first option offered to the suitor
+is daughter number 1, because she is almost by definition the first
+best-so-far.  Well, what's the first best-so-far in the continuous
+interval [0,1]?
+
+<p>
+So, the problem has to be couched differently.  I choose to do it
+the following way, using random variables.
+
+    <p>
+    PROBLEM 1.
+    <p>
+    Let b[0] = 1.  For all l>0, let the lth best-so-far be a
+    random variable b[l] that is uniformly distributed in the
+    interval (0,b[l-1]).  We assume that the player does not
+    know the {b[l]} before making his choice, which he does
+    as follows.  He first picks a number a[0] in the interval
+    (0,1).  Let L = max{l such that b[l] is in (a[0],1)}.
+
+    <p>
+    (That is, b[L] is the lowest of the b[l] greater than
+    a[0].  This avoids the problem of finding the first
+    best-so-far, and actually pushes the responsibility for
+    skipping the first infinity or so of best-so-fars onto
+    the player.)
+
+    <p>
+    For all m, 1<=m<=L+1, let a[m] = b[L+1-m].  We disclose
+    to the player the value of a[1].  He may either
+
+	<ul>
+        <li> select a[1] for his final choice, or
+        <li> if a[1]<1, he may reject a[1]
+	</ul>
+
+    If he rejects a[1], then we disclose to him the value of
+    a[2], and offer him the same choice.  This process continues
+    with a[3], a[4], and so forth, until he makes a selection.
+    Since we do not allow him to reject a[L+1] = b[0] = 1, the
+    process is guaranteed to terminate.  The problem is to find
+    a strategy which maximizes the player's probability of
+    choosing a[L] = b[1].
+
+<p>
+The answer to this problem is, I believe, the usual one, in
+which the player selects a[0] = 1/e, then chooses a[1].  Then,
+I pose the iterated continuous dowry problem.  (Dr Thomas
+Ferguson of UCLA has studied this problem to some degree,
+and as far as he knows, the iterated discrete and continuous
+dowry problems are new to the literature.)
+
+    <p>
+    PROBLEM 2.
+    <p>
+    Suppose a player plays the game described in PROBLEM 1, and
+    loses.  A second player then makes an attempt.  He is told
+    the optimal strategy that the first player used, and he is also
+    told that the first player failed to find b[1].  What
+    strategy maximizes the second player's probability of
+    choosing b[1]?
+
+    <p>
+    In general, suppose n-1 players have played this game, used
+    the best strategy in each case, and failed.  What strategy
+    should the nth player use in order to maximize his probability
+    of winning?
+
+<p>
+Following our practice of making assumptions analogous to (*), we
+claim that the strategy of the second player should be something
+of the form:
+
+    <p>
+    Choose a[0] to be some positive constant C[2]<1/e.  Select
+    the first a[m] in the interval (C2,1/e).  If there is no
+    such a[m], then select the second a[m] in (1/e,1), since
+    the first player would have chosen the first a[m].
+
+<p>
+I haven't looked at Mosteller, so I'm not sure how one would go
+about showing that the above is the correct form of the solution.
+However, I have shown that given that the above assumption is
+correct, the constant C[2] = e^(-3/2).  With this strategy, the
+second player's winning probability is also equal to e^(-3/2).
+
+<p>
+In general, the nth player chooses a[0] = C[n], where C[n]<C[n-1],
+and the nth player's winning probability is also equal to C[n].
+Therefore, the sum over all n of C[n] must be one.  Remember that
+the C[n] are the endpoints of the intervals, not the lengths of
+the intervals, so that this is the case is not obvious.  I haven't
+proven this in the general case, but I believe it to be true.
+(Read, "I'm more confident about this than I should have been
+about my first archive entry.")
+
+<p>
+(So, back in the iterated discrete version, I basically claimed
+(thoughtlessly) that C[2] = e^(-2).  This turns out not to be the
+case.)
+
+<p>
+The basic method of attack is to enumerate the possible ways that
+the nth player might win, and then calculate the probability of
+winning by each one of those ways.  It turns out that the strategy
+of the nth player can be represented as a set of n-tuples.  For
+instance, the strategies of the first three players are:
+
+<pre>
+    {(1)}
+    {(1,0), (0,2)}
+    {(1,0,0), (0,2,0), (0,1,2), (0,0,3)}
+</pre>
+
+The first player's strategy is to skip an interval (of a size which
+is later determined to be 1/e), then take the first best-so-far
+afterward.  This is the 1-tuple (1).
+
+<p>
+If the first player loses, the second player's strategy is to skip a
+smaller interval (of a size which I believe to be e^(-3/2), not e^(-2),
+as claimed in the previous version of the archive entry.  He then
+takes the first best-so-far between e^(-3/2) and 1/e (this is
+the tuple (1,0)).  If there is none, then he takes the second best
+in [1/e, 1] (tuple (0,2)).
+
+<p>
+If the second player loses, the third player's strategy is to skip a
+still smaller interval (which I determine to be e^(-47/24).  He
+then takes the first best-so-far in [e^(-47/24), e^(-3/2)] (tuple
+(1,0,0)).  If there is none, he takes the second best-so-far in
+[e^(-3/2), 1/e] (tuple (0,2,0)).  If there is only one best-so-far
+in that interval, he takes the second best-so-far in [1/e, 1] (tuple
+(0,1,2) aha!).  If there were no best-so-fars in [e^(-3/2), 1/e], he
+takes the third best so far in [1/e, 1] (tuple (0,0,3)).
+
+<p>
+Note how these strategies are represented.  If a tuple represents the
+actual number of best-so-fars in the given intervals, then the player
+wins.  If, on the other hand, the tuple is "less than" the actual
+number of best-so-fars (in other words, he has not reached the best
+overall), then the player loses.  The probability that the player wins,
+then, is just the sum of the probabilities associated with each n-tuple
+in his strategy.
+
+<p>
+But what about the C[n]?  There's no mention of them in this.  Well,
+the probability associated with each tuple is dependent on the values
+of the C[n].  Fortunately, for each player number n, there is only
+one tuple in the strategy which contains an entry (which is always
+1) for the interval (C[n],C[n-1]).  This makes it quite easy to
+compute the optimal C[n].
+
+<p>
+Unfortunately, I don't have a closed form expression for C[n].  I'm
+working on it.  I do have the values of the first five C[n].  Their
+natural logs are, respectively,
+
+<pre>
+    -1, -3/2, -47/24, -2761/1152, -4162637/1474560
+</pre>
+
+If anyone has any insights on this problem, I'd be happy to discuss
+them.
+
+<pre>
+byron elbows
+brian@isi.edu
+http://info.broker.isi.edu/brian/
+
+byron elbows' two rules of human nature:
+    * No one is as weird as they think they are.
+    * Everyone is weirder than others think they are.
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

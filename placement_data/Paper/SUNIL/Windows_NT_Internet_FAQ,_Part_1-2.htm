@@ -1,0 +1,983 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0055)http://www.faqs.org/faqs/windows-nt/internet-faq/part1/ -->
+<HTML><HEAD><TITLE>Windows NT Internet FAQ, Part 1/2</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type><LINK 
+href="mailto:faq-admin@faqs.org" rev=made>
+<META content="MSHTML 5.00.2614.3500" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff text=#000000>
+<DIV align=center><SMALL>Part1 - <A 
+href="http://www.faqs.org/faqs/windows-nt/internet-faq/part2/">Part2</A> 
+</SMALL><BR>
+<HR noShade SIZE=2 width=600>
+
+<P>
+<H1>Windows NT Internet FAQ, Part 1/2</H1>
+<HR noShade SIZE=2 width=600>
+</DIV><PRE>Message-ID: &lt;windows-nt/internet-faq/part1_1025947866@rtfm.mit.edu&gt;
+Supersedes: &lt;windows-nt/internet-faq/part1_1023275681@rtfm.mit.edu&gt;
+Expires: 19 Aug 2002 09:31:06 GMT
+X-Last-Updated: 1994/12/30
+Organization: none
+From: sscoggin@enet.net (Steve Scoggins)
+Newsgroups: <A href="news:comp.os.ms-windows.nt.misc">comp.os.ms-windows.nt.misc</A>,comp.os.ms-windows.nt.setup,<A href="news:comp.answers">comp.answers</A>,<A href="news:news.answers">news.answers</A>
+Subject: Windows NT Internet FAQ, Part 1/2
+Followup-To: poster
+Reply-To: <A href="mailto:sscoggin@enet.net">sscoggin@enet.net</A> (Steve Scoggins)
+Summary: This posting contains a list of Frequently Asked
+         Questions and Answers about how to setup Windows NT 
+         for Internet acccess and various Internet resources 
+         specific to Windows NT. It should be read by anyone 
+         who is using the built-in Windows NT RAS for slip 
+         or ppp connections to an Internet provider.
+Keywords: TCP/IP, WINDOWS NT, SLIP, PPP, RAS
+Date: 06 Jul 2002 09:31:30 GMT
+X-Trace: 1025947890 senator-bedfellow.mit.edu 3963 18.181.0.29
+
+Archive-name: windows-nt/internet-faq/part1
+Posting-Frequency: monthly
+Last-modified: 1994/12/30
+Version: 1.1
+
+==============================================================================
+SECTION 1: Introduction and Table of Contents
+==============================================================================
+
+	Document:	Windows NT Internet FAQ
+	Revision:	December, 30 1994
+
+	Authors:	Steve Scoggins
+			email: <A href="mailto:sscoggin@enet.net">sscoggin@enet.net</A>
+
+			Tom Baltrushaytis
+			email: <A href="mailto:tbaltru@orion.it.luc.edu">tbaltru@orion.it.luc.edu</A>
+			
+	Copyright:	Copyright (C), 1994 Steve Scoggins &amp; Tom Baltrushaytis
+			Permission to copy all or part of this work is granted,
+			provided that the copies are not made or distributed
+			for resale (except nominal copying fee may be charged),
+			and provided that the NO WARRANTY, author-contact, and
+			copyright notice are retained verbatim &amp; are displayed
+			conspicuously.  The incorporation of this FAQ in a
+                        published book and/or a CDROM archive requires written 
+                        authorization. If anyone needs other permissions that 
+                        aren't covered by the above, please contact the authors.
+
+	NO WARRANTY:	THIS WORK IS PROVIDED ON AN "AS IS" BASIS.  THE AUTHOR
+			PROVIDES NO WARRANTY WHATSOEVER, EITHER EXPRESS OR
+			IMPLIED, REGARDING THE WORK, INCLUDING WARRANTIES WITH
+			RESPECT TO ITS MERCHANTABILITY OR FITNESS FOR ANY
+			PARTICULAR PURPOSE.
+
+	Availability:	This is available: 
+			via anonymous ftp from: rtfm.mit.edu
+      			in the file: windows-nt/internet-faq/part1
+                        and via WWW from: <A href="http://www.luc.edu/~tbaltru/faq/">http://www.luc.edu/~tbaltru/faq/</A>
+
+	See also:	
+
+The release of Windows NT V3.5 with slip and ppp support has resulted
+in the following questions being asked frequently in the
+<A href="news:comp.os.ms-windows.nt.misc">comp.os.ms-windows.nt.misc</A> and in comp.os.ms-windows.nt.setup news groups.
+This document is intended to be a starting point for a new users guide to
+internet connectivity and resources using NT or NTAS slip/ppp for dialup
+access.
+
+We welcome your comments on this FAQ.  We also encourage you to send us
+any additional information you would like to see added to this document.
+Send your comments to the authors via the email address listed above.
+If you include attach files use MIME or UUENCODE for the attachments.
+MIME is preferred for attachments.
+
+Third party applications - Your personal experiences with some of the
+commercial add-ons for Internet related products (NFS, Mosaic clients,
+SMTP gateways, etc.) recommendations and installation how-to for
+the multiple COM port cards, and the high speed UART cards.
+
+==============================================================================
+SUBSECTION 1A: Table of Contents
+==============================================================================
+
+SECTION 1: Introduction and Table of Contents
+SUBSECTION 1A: Table of Contents
+
+SECTION 2: General Information
+Q2-1:    Internet Mailing lists for Windows NT
+Q2-2:    Which Internet books are recommended for a Internet beginner?
+Q2-3:    Can I have Linux and NT installed on the same pc?
+Q2-4:    Where can I find the GNU binaries for NT?
+Q2-5:    Where is the port of GNU gcc to NT? Is it version 2.6.+ ?
+
+SECTION 3: Connectivity Hardware
+Q3-1:    Where can I locate the latest Microsoft Windows NT 3.5
+         hardware compatibility list?
+Q3-2:    I'm having trouble installing a SMC 8016 combo network card
+Q3-3:    What is the recommended modem.inf entry for USR 28.8 modems?
+
+SECTION 4: Transport Services
+Q4-1:    Where can I find out more about tcp/IP, slip, ppp, etc.?
+Q4-2:    Where do I find SLIP/PPP for NT?  How do I install SLIP/PPP 
+         for NT? 
+Q4-3:    Help: My RAS PPP/SLIP connection is not working?
+Q4-4:    Where can I find a UUCP implementation for NT?
+
+SUBSECTION 4A: Server
+Q4A-1:   Does 3.5's RAS support dynamic ip addressing?
+Q4A-2:   If a remote user dials into a NT 3.5 PPP server, will this 
+         person be able to:
+         A.)  Use File Manager or Net Use commands to access 
+              NetBIOS-based shared drives?
+         B.)  Use a POP mail client to connect to a POP server?
+Q4A-3:   Where can I get DNS for NT?
+
+SUBSECTION 4B: Client
+Q4B-1:   Where do I configure the RAS TCP/IP settings for PPP connections?
+Q4B-2:   Where do I configure the TCP/IP settings for SLIP connections?
+Q4B-3:   Example login scripts for various Internet providers
+Q4B-4:   How do I automate my slip/ppp login using the switch.inf
+         script language?
+Q4B-5:   How do I avoid having to click on the DONE button to complete the
+         slip/ppp connect when using rasphone?
+Q4B-6:   How do I bypass my slip/ppp service providers long banner text
+         in the script language?
+Q4B-7:   Does anyone know how to put in a delay in switch.inf scripts?
+Q4B-8:   How do I get dynamic IP working for slip or ppp?
+Q4B-9:   Will the NT slip work with TIA?
+Q4B-10:  If I use WFWG V3.11 RAS to connect to a NTAS V3.5
+         server can I use telnet and FTP?
+Q4B-11:  I am using Windows V3.1 or WFWG V3.11. Can I use Peter Tattam's
+         Trumpet winsock software to connect to the NT V3.5 RAS using SLIP 
+         or PPP? What are the required configuration settings for NT and 
+         Trumpet to make this work correctly?
+Q4B-12:  How do I configure the Chameleon NetManage PPP TCP/IP
+         to dial-in using PPP to a NT 3.5 RAS PPP server?
+Q4B-13:  Where can I find a UUCP communications software package for
+         Windows NT?
+
+SUBSECTION 4C: Gateway
+Q4C-1:   How do I enable IP routing between a NTAS server with a PPP/SLIP
+         connection to the internet and the local IP subnet?
+ 
+SECTION 5: Network Applications
+Q5-1:    What winsock software works with Windows NT or NTAS Version 3.5?
+Q5-2:    Where can I find Windows NT WWW or FTP sites with winsock files?
+Q5-3:    Where can I find internet application software for the
+         Digital Alpha AXP servers?
+Q5-4:    Where can I get NFS for NT?
+
+SUBSECTION 5A: Server
+Q5A-1:   Where can I find a WWW server for NT?
+Q5A-2:   I have heard that it is possible to create HTML pages with 
+         MS-Word, is there a template, or a set of macros for that purpose.
+         Does any of you know of such templates/macros, and where can they 
+         be found?
+Q5A-3:   What TELNET Servers are commerically available for Windows NT on 
+         Intel?
+
+SUBSECTION 5B: Client
+Q5B-1:   Does anyone know if there is a program which allows you to send
+         SMTP mail from the command prompt on NT?
+Q5B-2:   Where can I find an archie client for NT?
+Q5B-3:   Where can I find a rsh for Windows NT to use with a UNIX host?
+
+
+
+==============================================================================
+SECTION 2: General Information
+==============================================================================
+
+Q2-1:  Internet Mailing lists for Windows NT
+
+----------
+windows-nt
+----------
+
+A list for general discussions about all aspects of Windows NT in
+both workstation and server forms.
+To subscribe send a mail message to <A href="mailto:mailbase@mailbase.ac.uk">mailbase@mailbase.ac.uk</A> with contents
+
+join windows-nt your_first_name your_last_name
+
+to leave use contents
+
+leave windows-nt
+
+List messages should be sent to <A href="mailto:windows-nt@mailbase.ac.uk">windows-nt@mailbase.ac.uk</A>
+
+The administrator for the list is <A href="mailto:A.Hamilton@ed.ac.uk">A.Hamilton@ed.ac.uk</A> to whom
+any queries or problems should be sent.
+
+
+--------------
+ms-back-office
+--------------
+
+Microsoft's Back Office comprises SQL Server, SNA Server, Systems
+Management Server and Exchange (which is Microsoft's future X400-based
+mail product).  All these require Windows NT Server as their
+host system. Joining instructions and administrator as for the windows-nt list.
+Note: this is a new list as of 15/11/94 so its a bit quiet yet :-)
+
+
+--------
+lanman-l
+--------
+
+This list is for discussions of Lan Manager.  The native networking
+of Windows NT is essentially the same as Lan Manager and interworking with
+MS-DOS, OS/2 and Windows for Workgroups all concern Lan Manager.
+
+To subscribe, send a mail message to <A href="mailto:listserv@list.nih.gov">listserv@list.nih.gov</A> with contents
+
+subscribe lanman-l your_first_name your_last_name
+
+To leave use contents
+
+unsubscribe lanman-l
+
+List messages are sent to LANMAN-L@nihlist.earn or to <A href="mailto:LANMAN-L@nihlist.bitnet">LANMAN-L@nihlist.bitnet</A>
+
+==============================================================================
+
+Q2-2:  Which Internet books are recommended for a Internet beginner?
+
+	Ed Krol, "The Whole Internet User's Guide &amp; Catalog"
+
+==============================================================================
+
+Q2-3:  Can I have Linux and NT installed on the same pc?
+
+
+Thanks to Mark Cooke (<A href="mailto:ee2015@mail.bristol.ac.uk">ee2015@mail.bristol.ac.uk</A>) for the following
+answer.
+
+You can use LILO with the linux partition active
+in the superblock instead of the MBR.  Using LILO
+you can choose between DOS/NT and Linux.  Then I
+use NT's boot manager to choose between Dos and NT.
+
+Installed Dos first, then Linux, and then NT.
+
+==============================================================================
+
+Q2-4:  Where can I find the GNU binaries for NT?
+
+<A href="ftp://ftp.cc.utexas.edu/microlib/nt/gnu">ftp://ftp.cc.utexas.edu/microlib/nt/gnu</A>
+
+==============================================================================
+
+Q2-5:  Where is the port of GNU gcc to NT? Is it version 2.6.+ ?
+
+You can ftp  gcc-2.6.0  from  ftp.cs.yale.edu /pub/gnat
+(This release includes both the C and Ada front ends. There is
+also a .hlp file for gcc in MS-HELP format)
+
+==============================================================================
+SECTION 3: Connectivity Hardware
+==============================================================================
+
+Q3-1:  Where can I locate the latest Microsoft Windows NT 3.5
+hardware compatibility list?
+
+You can locate the HCL on FTP.MICROSOFT.COM in the following URL path:
+
+<A href="ftp://ftp.microsoft.com/bussys/winnt/winnt-docs/hcl/hcl35">ftp://ftp.microsoft.com/bussys/winnt/winnt-docs/hcl/hcl35</A>
+
+==============================================================================
+
+Q3-2:  I'm having trouble installing a SMC 8016 combo network card
+
+The SMC Elite16 cards work with NT V3.5 if you use the latest
+driver.  You can get the latest driver from their bbs.
+They have a bbs at (714) 707-2481 or from the following ftp site.
+<A href="ftp://sjf-lwp.novell.com/">ftp://sjf-lwp.novell.com/</A>
+
+The SMC tech support email address is <A href="mailto:techsupt@ccmail.west.smc.com">techsupt@ccmail.west.smc.com</A>
+
+==============================================================================
+
+Q3-3:  What is the recommended modem.inf entry for USR 28.8 modems?
+
+Thanks to Christopher Browne (<A href="mailto:cbrowne@usr.com">cbrowne@usr.com</A>) at USR for the
+recommended MODEM.INF for various USR modems.
+
+This is the .INF as we have it now. It's been tested on NT 3.1 / 3.5
+andWfW 3.11 with great success. I've been able to use all of our
+modems from the Courier v.34 down to the Sportster 9600 data/fax.
+
+The MAXCONNECTBPS is set at 38400 so that this file works with most
+of the installed base of modems. We only started supporting &gt; 57600
+with the Courier V.32t.
+
+The MAXCARRIERBPS is set but any dce-dce rate that is reported at
+connect isignored since the port is locked. The first release of
+this file was in error since it did not contain the &amp;B1 command
+and this caused considerable pain for a few folks. My apologies!
+
+Using ITU-T as our default allows a USR modem to connect with more
+than USR modems at higher dce rates. This can be changed runtime by
+the user either through the phone number "123-123-1234B0" or by
+changing the INF file. I would prefer to see the phone number used
+so that the modem stays in a more compatible mode by default.
+
+
+; MDMUSR.INF
+;
+; For use with Windows for Workgroups, NT 3.1, NT 3.5
+
+[Responses]
+
+; General non-connect responses that all USR modems generate...
+
+OK=&lt;cr&gt;&lt;lf&gt;OK&lt;cr&gt;&lt;lf&gt;
+LOOP=&lt;cr&gt;&lt;lf&gt;RING&lt;cr&gt;&lt;lf&gt;
+LOOP=&lt;cr&gt;&lt;lf&gt;RINGING&lt;cr&gt;&lt;lf&gt;
+ERROR=&lt;cr&gt;&lt;lf&gt;ERROR&lt;cr&gt;&lt;lf&gt;
+ERROR_NO_CARRIER=&lt;cr&gt;&lt;lf&gt;NO CARRIER&lt;cr&gt;&lt;lf&gt;
+ERROR_VOICE=&lt;cr&gt;&lt;lf&gt;VOICE&lt;cr&gt;&lt;lf&gt;
+ERROR_NO_DIALTONE=&lt;cr&gt;&lt;lf&gt;NO DIAL TONE&lt;cr&gt;&lt;lf&gt;
+ERROR_BUSY=&lt;cr&gt;&lt;lf&gt;BUSY&lt;cr&gt;&lt;lf&gt;
+ERROR_NO_ANSWER=&lt;cr&gt;&lt;lf&gt;NO ANSWER&lt;cr&gt;&lt;lf&gt;
+
+; General connect responses that all USR modems generate...
+
+CONNECT=&lt;cr&gt;&lt;lf&gt;CONNECT &lt;ignore&gt;/NONE&lt;ignore&gt;
+CONNECT_EC=&lt;cr&gt;&lt;lf&gt;CONNECT &lt;ignore&gt;/ARQ&lt;ignore&gt;
+
+; Since serial port is locked, carrier rate is irrelevant.
+; The RAS client calcuates link rate after connection is accepted.
+
+[USRobotics General]
+
+; This selection can be used by almost ALL USRobotics modems!
+
+; * A MAXCONNECTBPS of 38400 allows this to be used by older modems
+; such as the HST 14400.
+
+; * Compression is off by default because of the lower DTE-DCE rate.
+
+; * ITU-T standards are on by default to ensure compatibility with
+; non-USR modems.
+
+; * X4 is set to ensure compatibility with Sportster modems. Advanced
+; dial features for Courier can be activated by placing X7 in the dial
+; string. (i.e. phone number field contains "1-708-676-1059X7"
+
+CALLBACKTIME=10
+DEFAULTOFF=compression
+MAXCARRIERBPS=28800
+MAXCONNECTBPS=38400
+&lt;speaker_on&gt;=m1
+&lt;speaker_off&gt;=m0
+&lt;hwflowcontrol_on&gt;=&amp;h1&amp;r2
+&lt;hwflowcontrol_off&gt;=&amp;h0&amp;r1
+&lt;compression_on&gt;=&amp;k3
+&lt;compression_off&gt;=&amp;k0
+&lt;protocol_on&gt;=&amp;m4
+&lt;protocol_off&gt;=&amp;m0
+&lt;autodial_on&gt;=ATdt
+&lt;autodial_off&gt;=ATd
+COMMAND_INIT=AT&amp;f&amp;a3x4e1q0v1s0=0s7=55s2=128&lt;cr&gt;
+COMMAND_INIT=AT&amp;b1&amp;c1&amp;d2b0x4&lt;cr&gt;
+COMMAND_INIT=&lt;hwflowcontrol&gt;&lt;compression&gt;&lt;protocol&gt;&lt;speaker&gt;&lt;cr&gt;
+
+COMMAND_DIAL=&lt;autodial&gt;&lt;phonenumber&gt;&lt;cr&gt;
+COMMAND_LISTEN=ATS0=1&lt;cr&gt;
+
+; US Robotics modems are defined in original MODEM.INF are
+; maintained here for installation purposes
+
+[US Robotics Courier Dual]
+ALIAS=USRobotics General
+
+[US Robotics Courier HST]
+ALIAS=USRobotics General
+
+[US Robotics Courier V.32bis]
+ALIAS=USRobotics General
+
+[US Robotics Sportster 2400]
+ALIAS=USRobotics General
+
+[US Robotics Sportster 9600]
+ALIAS=USRobotics General
+
+[US Robotics V.FC/V.34]
+ALIAS=USRobotics General
+
+==============================================================================
+SECTION 4: Transport Services
+==============================================================================
+
+Q4-1:  Where can I find out more about tcp/IP, slip, ppp, etc.?
+
+TCP/IP Illustrated Volume 1 The Protocols by W. Richard Stevens
+Published by Addison-Wesley
+ISBN 0-201-63346-9
+
+TCP/IP Network Administration by Craig Hunt
+Published by O'Reilly &amp; Associates, Inc.
+ISBN 0-937175-82-X
+	
+I recommend you check out the following Web HTML document as a
+starting point.  "The PC-Internet Connection Update Page"
+<A href="http://www.zilker.net/users/internaut/update.html">http://www.zilker.net/users/internaut/update.html</A>
+
+
+"<A href="news:comp.protocols.tcp-ip.ibmpc">comp.protocols.tcp-ip.ibmpc</A> Frequently Asked Questions (FAQ)"
+by Aboba, Bernard D.(1994)
+email address: <A href="mailto:aboba@netcom.com">aboba@netcom.com</A> (Bernard Aboba)
+Aboba, Bernard D.(1994) "<A href="news:comp.protocols.tcp-ip.ibmpc">comp.protocols.tcp-ip.ibmpc</A> Frequently
+Asked Questions (FAQ)" Usenet <A href="news:news.answers">news.answers</A>, available via
+<A href="file://ftp.netcom.com/pub/mailcom/IBMTCP/ibmtcp.zip">file://ftp.netcom.com/pub/mailcom/IBMTCP/ibmtcp.zip</A>, 57 pages.
+<A href="http://www.zilker.net/users/internaut/update.html">http://www.zilker.net/users/internaut/update.html</A>
+<A href="http://www.cis.ohio-state.edu/">http://www.cis.ohio-state.edu/</A>
+  /hypertext/faq/usenet/ibmpc-tcp-ip-faq/part1/faq.html
+
+This FAQ is now fully HTML compatible, and is being automatically
+converted to HTML. This means that if you have a WWW browser, you
+can read the FAQ on-line, and click on links to download individual
+files. This is how I read the FAQ myself, and it is highly
+recommended.
+
+	
+The "PPP-FAQ" authored by Ignatios Souvatz (<A href="mailto:isignatios@cs.uni-bonn.de">isignatios@cs.uni-bonn.de</A>)
+
+Archive-name: <A href="http://www.faqs.org/faqs/ppp-faq/part1/">ppp-faq/part1</A> URL: <A href="http://cs.uni-bonn.de/ppp/part1.html">http://cs.uni-bonn.de/ppp/part1.html</A>
+
+Summary: This document contains information about the Internet
+Point-to-Point Protocol, including a bibliography, a list of
+public domain and commercial software and hardware
+implementations, a section on configuration hints and a list of
+frequently asked questions and answers on them. It should be read
+by anybody interested in connecting to Internet via serial lines,
+and by anybody wanting to post to <A href="news:comp.protocols.ppp">comp.protocols.ppp</A>
+(before he/she does it!)
+
+"Personal Internet Access Using SLIPP or PPP: How You Use It,
+How it Works" by Frank Hecker
+FTP//ftp.digex.net/pub/access/hecker/internet/slip-ppp.txt
+
+==============================================================================
+
+Q4-2:  Where do I find SLIP/PPP for NT?  How do I install SLIP/PPP for NT?
+
+
+A.)  Double click on the Main program group
+B.)  Double click on Network
+C.)  Click on add software
+D.)  Choose Remote Access Service
+
+==============================================================================
+
+Q4-3:  Help: My RAS PPP/SLIP connection is not working?
+
+You probably have one of three problems either the slip link is not
+working, or your NT system is not accessing the UNIX service DNS,
+or the IP routing is messed up between your NT system and your slip
+providers UNIX network.
+
+1.) Can you ping any addresses on the other end of the slip or ppp
+link?  Try pinging the UNIX server or the gateway. Drop to DOS and
+use the ping command. Use the numeric IP address.
+
+2.) Try turning VJ compression off.  Sometimes telnet and FTP will
+not work if you have VJ compression on and the system you are
+connected to does not support VJ compression.  If you are using
+TIA be sure and set the NT option for VJ compression to off.
+Since, TIA does not support VJ compression.
+
+3.) Check and confirm that the following are correct:
+Double click on the Main program group icon, then double click on
+the Control Panel icon, then double click on Network icon, select
+the TCP/IP protocol and click on the configure button.  Click on
+
+DNS and verify the following is correct:
+
+A.)  The Host Name for your PC
+B.)  Your Domain Name
+C.)  Add the proper DNS IP address or addresses for your slip/ppp
+     service.
+
+Click on OK to confirm DNS changes
+Click on OK to close out the TCP configuration dialog.
+Click on OK to close the Network configuration dialog.
+
+If you are not sure please ask slip/ppp service providers system
+admin. to confirm them for you.
+
+4.) Drop the baud rate to 9600, some UARTs do not work above 9600
+without UART receiver overruns.
+
+5.) Finally try finding someone else who is using NT slip or ppp
+at your location.  Ask the system admin. if anyone else is
+successfully running NT via slip or ppp.
+
+6.) Can you dial in using slip or ppp from a known working system
+using your username and password?
+
+7.) Are you using dynamic IP addressing (bootp)?
+
+With slip you will have to manually login using Rasphone and
+then type your IP into the little white box at the lower right
+side of the screen and click on the DONE button.  For PPP you
+can automate the login follow the directions under question no.
+27 below.  Also a NT workstation using RAS to dial into a NT
+server will work with dynamic IP if the NT server is configured
+for DHCP.
+
+8.) Are you using a static IP address?
+
+The first time you dial in using the RAS SLIPP use the manual
+login option, you will get a screen a 0.0.0.0 IP address displayed
+in a white box at the bottom of the screen.  Type in your assigned
+SLIP IP address and click on the DONE button.  The IP address will
+be written into the rasphone.pbk as the SlipIpAddress=NNN.NNN.NNN.NNN
+entry under the currently active selection in the rasphone.pbk file
+located in the /winnt35/system32/ras directory.
+
+
+9.) After you dial in and login in shell out to does and see what
+the netstat -rn utility shows.
+
+My netstat -rn returned the following info after my slip link is
+connected.  My IP address is 198.60.143.32 and my slip service
+providers gateway is 168.158.8.5
+
+Network Address Netmask		Gateway Address Interface    Metric
+0.0.0.0		0.0.0.0		198.60.143.32	198.60.143.32   1
+127.0.0.0	255.0.0.0	127.0.0.1	127.0.0.1	1
+198.60.143.32 	255.255.255.255	127.0.0.1	127.0.0.1	1
+198.60.143.255	255.255.255.255	198.60.143.32	198.60.143.32 	1
+224.0.0.0	224.0.0.0	198.60.143.32	198.60.143.32   1
+255.255.255.255	255.255.255.255	198.60.143.32	198.60.143.32   1
+
+Route Table
+
+Active Connections
+Proto	Local Address		Foreign Address		State
+TCP	198.60.143.32:1249	168.158.8.5:119	    ESTABLISHED
+
+==============================================================================
+
+Q4-4:  Where can I find a UUCP implementation for NT?
+
+	You'll find UUCP on ftp.cica.indiana.edu
+
+==============================================================================
+SUBSECTION 4A: Server
+==============================================================================
+
+Q4A-1:  Does 3.5's RAS support dynamic ip addressing?
+
+Yes NTAS V3.5 allows you to setup up a range of address that
+the remote ras clients can request. This is called dynamic addressing
+or bootp.  and it works.  The NTAS server is configured as a DHCP server.
+When the remote pc calls in via RAS and is authenticated the NTAS server
+assigns the remote pc an IP from the pool of unused IP addresses.
+
+==============================================================================
+
+Q4A-2:  If a remote user dials into a NT 3.5 PPP server, will this person
+be able to
+
+A.)  Use File Manager or Net Use commands to access NetBIOS-based shared
+drives?
+
+Yes, if the remote user is using NT Workstation V3.5 or WFWG V3.1 RAS.
+
+No, if the remote user is using most third party PPP implementations
+such as Chameleon TCP/IP, Spry Air Series 3.0, and Trumpet SLIP/PPP
+Winsock.  Most of the third party TCP/IP software packages do not
+support NETBIOS SMB over a remote slip/ppp connection.
+
+
+B.)  Use a POP mail client to connect to a POP server?
+
+
+Yes, if the remote user is using NT Workstation V3.5 and RAS PPP
+with the TCP/IP option enabled on both ends of the RAS link.
+
+Eudora email works great with NT V3.5 for SMTP and POP3
+<A href="ftp://ftp.qualcomm.com/quest/eudora/windows/1.4/beta">ftp://ftp.qualcomm.com/quest/eudora/windows/1.4/beta</A>
+filename eud143b4.exe
+
+No, if the remote user is using WFWG V3.1 RAS.  The WFWG RAS does
+not support PPP and TCP/IP.  WFWG V3.1 RAS supports NETBEUI only.
+
+==============================================================================
+
+Q4A-3:  Where can I get DNS for NT?
+
+The Windows NT 3.5 resource kit is supposed to include a DNS software
+package, there is also a third  party product called 'DNS Magic' that
+runs as a NT Service, company is 'Software Innovations'
+(winnt#innov.com)
+
+==============================================================================
+SUBSECTION 4B: Client
+==============================================================================
+
+Q4B-1:  Where do I configure the RAS TCP/IP settings for PPP connections?
+
+
+Thanks to Tom Horsley (<A href="mailto:Tom.Horsley@mail.csd.harris.com">Tom.Horsley@mail.csd.harris.com</A>) for his
+suggestion of configuring PPP from the Rasphone.
+
+Instead of configuring PPP starting from the Network entry on the
+control panel, I find that I can configure those details
+from the RAS program's phonebook in the Advanced edit dialog. This
+actually makes perfect sense because the details are likely to be
+different for each phone number.
+
+
+For PPP you can configure the TCP/IP settings as follows:
+
+Double click on the Remote Access icon.
+Highlight the proper entry then click on the EDIT button.
+Click on Advanced if set to Basic.
+Click on Network button (Displays the Network Protocol Settings Dialog)
+Check the PPP option.
+Click on TCP/IP Settings
+If using dynamic IP addresses, check "Use server assigned IP addresses".
+If using a static IP address, check "Require specific IP address" and
+fill in your assigned address.
+
+and enter the primary and backup DNS IP addresses.  The
+backup DNS is optional.
+
+If your provider supports compressed ppp, check Use VJ compression.
+and also check the use default gateway on remote network.
+
+==============================================================================
+
+Q4B-2:  Where do I configure the TCP/IP settings for SLIP connections?
+
+Double click on the Main program group icon, then double click on
+the Control Panel icon, then double click on Network icon, select
+the TCP/IP protocol and click on the configure button.  Click on
+
+DNS and verify the following is correct:
+
+A.)  The Host Name for your PC
+B.)  Your Domain Name
+C.)  Add the proper DNS IP address or addresses for your slip/ppp
+     service.
+
+Click on OK to confirm DNS changes
+Click on OK to close out the TCP configuration dialog.
+Click on OK to close the Network configuration dialog.
+
+NOTE: You will have to setup Rasphone to manually dial the first time you
+make a slip connection.  Set the security options to "Use clear text
+Terminal login only", and set the Before and After Scripts to NONE.  Then
+select/highlight your entry and click on Dial. You will manually login
+the first time you dialup for the slip connection, after the valid login
+using your username and password type slip&lt;cr&gt; at the remote servers
+command prompt, then type your IP into the little white box at the
+lower right side of the screen and click on the DONE button.
+
+==============================================================================
+
+Q4B-3:  Example login scripts for various Internet providers
+
+
+Example login script for MCS.Net in Chicago
+
+Macro Computer Solutions (MCS-DOM)
+3217 N. Sheffield
+Chicago, IL  60657
+(312) 248-8649
+
+Domain Name: MCS.COM, MCS.NET
+Administrative Contact, Technical Contact
+Denninger, Karl  <A href="mailto:karl@MCS.NET">karl@MCS.NET</A>
+   	
+substitute your username and password in place of the USERNAME
+and PASSWORD The MCS net server uses the commands login and
+password; if your's uses different words, substitute as needed.
+
+
+Here's the MCS.NET script thanks to Walter S. Arnold
+(<A href="mailto:sculptor@mcs.net">sculptor@mcs.net</A>) switch.inf file, pretty basic but it works
+with both PPP and Slip.
+
+	[McsNet, SLIP]
+
+	COMMAND=&lt;cr&gt;
+	ERROR_NO_CARRIER=&lt;match&gt;"NO CARRIER"
+	OK=&lt;match&gt;"login:"
+
+	COMMAND=sculptor&lt;cr&gt;
+	ERROR_NO_CARRIER=&lt;match&gt;"NO CARRIER"
+	OK=&lt;match&gt;"Password:"
+
+	COMMAND=*************&lt;cr&gt;
+	ERROR_NO_CARRIER=&lt;match&gt;"NO CARRIER"
+	CONNECT=&lt;match&gt;"Packet mode enabled"
+	;ERROR_DIAGNOSTICS=&lt;cr&gt;&lt;lf&gt;&lt;Diagnostics&gt;
+
+	; CONNECT response means that the connection completed fine.
+	; ERROR_DIAGNOISTICS response means connection attempt failed
+	;  DIAGNOSTIC information will be extracted from the response
+	;  and sent to the user.
+	; ERROR_NO_CARRIER means that the remote modem hung up.
+	; ERROR resonses are for generic failures.
+
+==============================================================================
+
+Q4B-4:  How do I automate my slip/ppp login using the switch.inf
+script language?
+
+You will need to edit the switch.inf file in winnt35/system32/ras
+and add an entry for your slip/ppp login script.  The section you
+add must have a label followed by your actual script commands.
+Reference the rasphone.hlp help file and the pad.inf file in
+winnt35/system32/ras for additional information.
+The Microsoft NT V3.5 resource kit (when it is released) will
+have additional documentation on the switch.inf file and the
+script language.
+
+The switch.inf script is as follows:
+
+Substitute your USERNAME, PASSWORD, and IP Address
+
+Note, this script will need to be modified to match your slip
+providers login sequence.
+	;
+
+	[Evergreen]
+	;
+	; Wait until we get the "username:" prompt
+	COMMAND=
+	ERROR_NO_CARRIER=&lt;match&gt;"NO CARRIER"
+	OK=&lt;match&gt;"ame:"
+	;
+	; Give the username and wait for "password:" prompt
+	COMMAND=username&lt;cr&gt;
+	ERROR_NO_CARRIER=&lt;match&gt;"NO CARRIER"
+	OK=&lt;match&gt;"ord:"
+	;
+	; Give the password and ignore response (we're done)
+	COMMAND=password&lt;cr&gt;
+	ERROR_NO_CARRIER=&lt;match&gt;"NO CARRIER"
+	; Wait for "Alpine&gt;" send the SLIP command
+	OK=&lt;match&gt;"ine&gt;"
+	COMMAND=slip&lt;cr&gt;
+	ERROR_NO_CARRIER=&lt;match&gt;"NO CARRIER"
+	; Wait for my IP address
+	CONNECT=&lt;match&gt;"NNN.NNN.NNN.NNN"
+	ERROR_DIAGNOSTICS=&lt;cr&gt;&lt;lf&gt;&lt;Diagnostics&gt;
+	ERROR_DIAGNOSTICS=&lt;lf&gt;&lt;cr&gt;&lt;lf&gt;&lt;Diagnostics&gt;
+	;
+	; CONNECT response means that the connection completed fine.
+	; ERROR_DIAGNOISTICS response means connection attempt failed
+        ; - the DIAGNOSTIC information will be extracted from the
+	; response and sent to the user.
+	;
+	; ERROR_NO_CARRIER means that the remote modem hung up.
+	; ERROR responses are for generic failures.
+	;
+
+	RAS PHONEBOOK SETTINGS for a SLIP connection to Evergreen
+	using Windows NT
+
+	Entryname:			Evergreen
+
+	Modem Settings:	
+
+	Modem type 			Microcom Deskporte FAST 28.8K
+	UART type:			16550 on Com2
+	Enable hardware flow control	yes
+	Enable modem error control	yes
+	Enable modem compression	yes
+	Baud rate 			57600
+	(use 19200 baud if you do not have a 16550 UART chip for
+         your selected COM port)
+
+	Network Settings:  SLIP
+	Force header compression	yes
+	Use default gateway		yes
+	Frame Size = 1006
+
+	Security Settings:
+	Accept any authentication including clear text	yes
+
+	Terminal or Script
+	Before Dialing			none
+	After Dialing   		Evergreen
+
+==============================================================================
+
+Q4B-5:  How do I avoid having to click on the DONE button to complete the
+slip/ppp connect when using rasphone?
+
+I wrote two batch files for using rasdial and it worked great!
+The first rasdial batch file is for initiating the connection.
+I then added to icons one for calling the startnet.bat and one
+for calling the stopnet.bat, you can use the open door icon for
+startnet and the close door icon for stopnet.  Place these batch
+files in the winnt directory so they are in the Win NT path.
+Type path at the command prompt for path details.  You can get
+the command line options for rasdial by typing
+
+rasdial /help
+
+The startnet.bat file contains one line as follows:
+
+rasdial evergreen
+
+and the stopnet.bat file contains one line as follows:
+
+rasdial evergreen /DISCONNECT
+
+==============================================================================
+
+Q4B-6:  How do I bypass my slip/ppp service providers long banner text
+in the script language?
+
+The following is one method submitted by (Chris Pirih)
+<A href="mailto:pirih@eskimo.com">pirih@eskimo.com</A>
+
+Chris indicates that a better way to do this is as follows:
+
+        COMMAND=mypassword&lt;cr&gt;
+        OK=&lt;match&gt;"unity%"
+        LOOP=&lt;ignore&gt;&lt;cr&gt;
+        COMMAND=ppp&lt;cr&gt;
+
+The following is a second method submitted by Jason John Schwarz
+(<A href="mailto:jschwarz@gandalf.ksmith.com">jschwarz@gandalf.ksmith.com</A>)
+
+For the following example:
+
+OK for those other people who's host sends long strings of stuff
+when they initially login here is a fix, I admit it is not pretty,
+and if somebody has a better one I would like to see it, but this
+works at my site, and it seems to be the only thing that does work.
+
+	[cc00du]
+	COMMAND=&lt;cr&gt;
+	ERROR_NO_CARRIER=&lt;match&gt;"NO CARRIER"
+	OK=&lt;match&gt;"login:"
+
+	COMMAND=myusername&lt;cr&gt;
+	ERROR_NO_CARRIER=&lt;match&gt;"NO CARRIER"
+	OK=&lt;match&gt;"Password:"
+
+	COMMAND=mypassword&lt;cr&gt;
+	OK=&lt;ignore&gt;
+
+	COMMAND=
+	OK=&lt;ignore&gt;
+
+	COMMAND=
+	OK=&lt;ignore&gt;
+
+	COMMAND=
+	OK=&lt;ignore&gt;
+
+	COMMAND=
+	OK=&lt;ignore&gt;
+
+	COMMAND=
+	OK=&lt;ignore&gt;
+
+	COMMAND=
+	OK=&lt;ignore&gt;
+
+	COMMAND=
+	OK=&lt;ignore&gt;
+
+	COMMAND=
+	OK=&lt;ignore&gt;
+
+	COMMAND=&lt;cr&gt;
+	OK=&lt;ignore&gt;
+
+	COMMAND=&lt;cr&gt;
+	OK=&lt;match&gt;"unity%"
+
+	COMMAND=ppp&lt;cr&gt;
+	ERROR_NO_CARRIER=&lt;match&gt;"NO CARRIER"
+	CONNECT=&lt;match&gt;"Using name=mario"
+
+==============================================================================
+
+Q4B-7:  Does anyone know how to put in a delay in switch.inf scripts?
+
+Our Shiva system requires about 10 seconds to initialize before
+starting PPP.
+
+Try repeating the following script commands five times in your login
+script.
+
+; The next line will give a delay of 2 secs
+
+COMMAND=
+NoResponse
+
+==============================================================================
+
+Q4B-8:  How do I get dynamic IP working for slip or ppp?
+
+I do not have the dynamic IP working for SLIP connections.
+This is because I do not know how to parse the IP and then transfer
+the dynamically assigned IP to the proper RAS variable.  I asked
+Microsoft for additional information on the script language and I
+was told that the NT 3.5 resource kit is supposed to have
+additional documentation on the switch.inf script language but it
+is not released yet (supposed to be released soon).
+
+SLIP with dynamic IP
+
+You will have to interactively logon to a SLIP server by manually
+entering name, password, and "slip" to enter slip mode and recieve
+the dynamic IP address. I copied the address to the address box in
+the RAS terminal IP address box. Don't forget to enter the DNS IP
+addressby configuring TCP/IP ( control panel \ network \ advanced \
+enable DNS &amp; DNS... ).  Scripting
+examples are included in other sections of this FAQ.
+
+
+After searching for where rasphone stuck my IP address, and I
+found it in the rasphone.pbk entry.
+
+The first time I ran the SLIP login script via Rasphone book
+entry I got a screen with a DONE button and the 0.0.0.0 IP
+
+
+address was in a white box at the bottom of the screen.  I typed
+in my SLIP static IP address and clicked on the DONE button.
+This then was written into the rasphone.pbk as the
+SlipIpAddress=198.60.143.32 entry in the Evergreen section of
+the rasphone.pbk file in /winnt35/system32/ras
+
+
+</PRE>
+<DIV align=center><SMALL>
+<P>
+<HR noShade width=300>
+<BR>Part1 - <A 
+href="http://www.faqs.org/faqs/windows-nt/internet-faq/part2/">Part2</A></SMALL> 
+
+<P>
+<HR noShade SIZE=2 width=450>
+<SMALL><STRONG>[ <A href="http://www.faqs.org/faqs/by-archive-name.html">By 
+Archive-name</A> | <A href="http://www.faqs.org/faqs/by-author/">By Author</A> | 
+<A href="http://www.faqs.org/faqs/by-category.html">By Category</A> | <A 
+href="http://www.faqs.org/faqs/by-newsgroup/">By Newsgroup</A> ] <BR>[ <A 
+href="http://www.faqs.org/faqs/">Home</A> | <A 
+href="http://www.faqs.org/faqs/windows-nt/internet-faq/part1/faqs/changed.html">Latest 
+Updates</A> | <A href="http://www.faqs.org/faqs/stats.html">Archive Stats</A> | 
+<A href="http://www.faqs.org/faqs/faqsearch.html">Search</A> | <A 
+href="http://www.faqs.org/usenet/">Usenet References</A> | <A 
+href="http://www.faqs.org/faqs/WWW-FAQ-Archive-Tech-Info.html">Help</A> ] 
+</STRONG></SMALL><BR>
+<HR noShade SIZE=2 width=450>
+
+<P>
+<ADDRESS>Send corrections/additions to the FAQ Maintainer: <BR><A 
+href="mailto:sscoggin@enet.net">sscoggin@enet.net</A> (Steve Scoggins) 
+</ADDRESS>
+<P><SMALL><STRONG>Last Update July 08 2002 @ 01:05 AM</STRONG> 
+<BR></SMALL></P></DIV></BODY></HTML>

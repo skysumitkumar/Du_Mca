@@ -1,0 +1,949 @@
+
+<html>
+<head>
+<link rel="alternate" type="application/rss+xml" title="LinuxDevices News" href="javascript:if(confirm('http://www.linuxdevices.com/backend/headlines10.rdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linuxdevices.com/backend/headlines10.rdf'" tppabs="http://www.linuxdevices.com/backend/headlines10.rdf">
+<link rel="stylesheet" type="text/css" href="style.css" tppabs="http://linuxdevices.com/style.css" title="MyCSS"/>
+<title>The Linux Thin Client Showcase</title>
+
+<META NAME="keywords" CONTENT="Linux, embedded Linux, Linux embedded, Linux devices, uClinux, RTLinux, RTAI, real time, realtime, real-time Linux, embedding, embed, embedded, computing, applied computing, software, operating system, systems, device drivers, distributions, open source, GNU, news, links, articles, FAQ, forum, jobs, hardware, computers, computer, chips, system-on-chip boards, single board computer, SBC, PC/104, PC-104, PC104, PC 104, CPCI, CompactPCI, EBX, VME, PDA, set top box">
+<META NAME="description" CONTENT="Comprehensive information and resources on using Linux in embedded applications. This site provides embedded Linux news, articles, events, links, jobs, polls, FAQ, interactive forum, and product information.">
+</head>
+<body bgcolor="white" topmargin="0">
+<font size=1><!--  START OF OMNITURE CODE -><!-- SiteCatalyst code version: G.9.Copyright 1997-2004 Omniture, Inc. More info available at http://www.omniture.com -->
+<script language="JavaScript"><!-- 
+var s_pageName=""
+var s_server=""
+var s_channel=""
+var s_pageType=""
+var s_prop1=""
+var s_prop2=""
+var s_prop3=""
+var s_prop4=""
+var s_prop5=""
+var s_campaign=""
+var s_state=""
+var s_zip=""
+var s_events=""
+var s_products=""
+var s_purchaseID=""
+var s_eVar1=""
+var s_eVar2=""
+var s_eVar3=""
+var s_eVar4=""
+var s_eVar5=""
+var s_account="ziffdavisglobal, ziffdavislinuxdevices"
+//--></script>
+<script language="JavaScript" src="s_code_remote.js" tppabs="http://www.linuxdevices.com/cgi-bin/s_code_remote.js"></script>
+<!-- End SiteCatalyst code version: G.9. --><!-- END OF OMNITURE CODE -->
+</font>
+
+<!-- begin banner tag -->
+<table align=center border=0 cellspacing=0 cellpadding=0 width="728"><tr><td><center>
+<IFRAME SRC="home;sz=728x90;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;sz=728x90;ord=[timestamp]?" WIDTH="728" HEIGHT="90" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"><SCRIPT LANGUAGE="JavaScript" SRC="home;sz=728x90;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;sz=728x90;abr=!ie;ord=[timestamp]?" ></SCRIPT></IFRAME>
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;sz=728x90;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;sz=728x90;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;sz=728x90;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;sz=728x90;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;sz=728x90;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="728" HEIGHT="90" BORDER="0" ALT=""></A></NOSCRIPT>
+</center></td></tr></table>
+<!-- End banner tag -->
+<table align=center border=0 cellspacing=0 cellpadding=0 width="100%">
+  <tr>
+    <td valign=middle align=left width=410><table border=0 valign=bottom cellspacing=0 cellpadding=0>
+  <tr>
+    <td width=95 rowspan=2  valign=bottom align=left>
+    <a href="javascript:if(confirm('http://www.linuxdevices.com/index.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linuxdevices.com/index.html'" tppabs="http://www.linuxdevices.com/index.html">
+    <img border=0 src="penguin-short.gif" tppabs="http://linuxdevices.com/images/penguin-short.gif" alt="LinuxDevices"></a>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td width=291 align=left valign=bottom>
+      <a href="javascript:if(confirm('http://linuxdevices.com/index.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/index.html'" tppabs="http://linuxdevices.com/index.html">
+      <img border=0 src="name-short.gif" tppabs="http://linuxdevices.com/images/name-short.gif" alt="LinuxDevices"></a>
+    </td>
+  </tr>
+</table></td>
+    <td valign=middle align=right>
+      <table border=0 width=150 cellpadding=0 cellspacing=0>
+  <!-- vertical spacer follows - remove if not required -->
+        <tr>
+          <td height=5></td>
+        </tr>
+        <tr>
+          <td width=200 align=center nowrap><font face="Arial,Helvetica" size=1>
+           Click here to learn<BR>about this Sponsor:</font></td>
+        </tr>
+        <tr>
+          <td align=center>
+<!-- begin tagline-ad tag -->
+<table cellpadding=0 cellspacing=0 width="170" border=1><tr><td align=center>
+<IFRAME SRC="home;sz=170x60;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;sz=170x60;ord=[timestamp]?" WIDTH="170" HEIGHT="60" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"><SCRIPT LANGUAGE="JavaScript" SRC="home;sz=170x60;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;sz=170x60;abr=!ie;ord=[timestamp]?" ></SCRIPT></IFRAME>
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;sz=170x60;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;sz=170x60;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;sz=170x60;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;sz=170x60;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;sz=170x60;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="170" HEIGHT="60" BORDER="0" ALT=""></A></NOSCRIPT>
+</td></tr></table>
+<!-- end ad tag --></td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr><td height=5></td></tr>
+  <tr><td colspan=2 align=left><font face='Arial,Helvetica' size=2>
+<a href="javascript:if(confirm('http://linuxdevices.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/'" tppabs="http://linuxdevices.com/"><b>home</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/news  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news'" tppabs="http://linuxdevices.com/news"><b>news</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/articles  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/articles'" tppabs="http://linuxdevices.com/articles"><b>articles</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/survey/survey.cgi  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/survey/survey.cgi'" tppabs="http://linuxdevices.com/cgi-bin/survey/survey.cgi"><b>polls</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/board/UltraBoard.pl  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/board/UltraBoard.pl'" tppabs="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl"><b>forum</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/events  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/events'" tppabs="http://linuxdevices.com/events"><b>events</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/links  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/links'" tppabs="http://linuxdevices.com/links"><b>links</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/products  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/products'" tppabs="http://linuxdevices.com/products"><b>products</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/sponsors  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/sponsors'" tppabs="http://linuxdevices.com/sponsors"><b>sponsors</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/search_view.cgi  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/search_view.cgi'" tppabs="http://linuxdevices.com/cgi-bin/search_view.cgi"><b>search</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/printerfriendly.cgi?id=AT4923746399  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/printerfriendly.cgi?id=AT4923746399'" tppabs="http://linuxdevices.com/cgi-bin/printerfriendly.cgi?id=AT4923746399"><b>printable</b></a></font></td></tr>
+  <tr><td height=5></td></tr>
+</table>
+<!-- Search Form ================== -->
+<table width=100% cellspacing=0 cellpadding=0 border=0>
+<tr><td>
+<table width=100% cellspacing=0 cellpadding=0 bgcolor="#FCEC9C" border=1>
+<tr><form action="http://linuxdevices.com/cgi-bin/article_view.cgi" method=POST><td align=center>
+<strong><font face='Arial,Helvetica' size=3>Articles &amp; white papers about Linux based embedded applications ...</font></strong><br>
+      <small>Keywords:</small> <input type=text name=sk size=25 value="">
+      <small>Match:</small>
+      <select name=st size=1>
+        <option value="all"     >All keywords</option>
+        <option value="any"     >Any keyword </option>
+        <option value="exact" >Exact phrase</option>
+      </select>
+      <input type=submit name=view value=Search>
+      <small>Sort by:</small>
+      <select name=ss size=1>
+        <option value="newest" >Newest first</option>
+        <option value="best"     >Best match</option>
+      </select>
+    </td></form></tr></table>
+        </td></tr></table>
+<table width="100%" cellpadding="2">
+  <tr>
+    <td valign="top" width="18%">
+<table width=100% cellspacing=0 cellpadding=0>
+<tr><td>
+
+<!-- columnleft019.html -->
+
+<font face ="arial, helvetica" size="2">
+Got a hot tip? &nbsp; <a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/news_post.cgi  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/news_post.cgi'" tppabs="http://linuxdevices.com/cgi-bin/news_post.cgi"><u>tell us</u></a>
+<br></font>
+
+<table height=10 cellpadding=0 cellspacing=0 border=0><tr><td></td></tr></table>
+
+<center>
+<table bgcolor="#FCEC9C" cellspacing=0 cellpadding=5 border=1><tr><td>
+<form action="http://www.eweek.com/data_process_newsletter_manage/" name="newslettersForm" method="get">	
+<center>
+<font face ="arial, helvetica" size="2" color="#DE0000">
+<B>Free weekly newsletter</B><br></font>
+<font face ="arial, helvetica" size="1">
+<input type='hidden' name='112' value='1'>
+<input type="hidden" name="SelFormat" value="2">
+<input type="hidden" name="component" value="1">Enter your email...<br>
+<input type="text" size="15" maxlength="64" name="email"><br>
+<input type="Submit" name="Submit" value="Subscribe"> &nbsp; ...
+<a href="javascript:if(confirm('http://www.eweek.com/newsletter_manage  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.eweek.com/newsletter_manage'" tppabs="http://www.eweek.com/newsletter_manage" class="Module_Content">
+<u>more</u></a><br>
+</font>
+</center>
+</form>
+</td></tr></table>
+</center>
+
+<table height=10 cellpadding=0 cellspacing=0 border=0><tr><td></td></tr></table>
+
+<font face="arial, helvetica" size="2">
+<B>Check out the latest...</B>
+<center><a href="javascript:if(confirm('http://www.linuxmobilephones.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linuxmobilephones.com/'" tppabs="http://www.linuxmobilephones.com/">
+<img src="smartphones-thm.jpg" tppabs="http://linuxdevices.com/files/misc/smartphones-thm.jpg" vspace=5 border=0><br clear=all>
+<B>Linux smartphones!</B></a></center></font>
+
+<hr>
+<font face="arial, helvetica" size="2">
+<center><a href="AT8728350077.html" tppabs="http://linuxdevices.com/articles/AT8728350077.html">
+<img src="pdas-thm.jpg" tppabs="http://linuxdevices.com/files/misc/pdas-thm.jpg" vspace=5 border=0><br clear=all>
+<B>Linux PDAs</B></a></center></font>
+
+<HR>
+<font face="arial, helvetica" size="2">
+<center><a href="AT4936596231.html" tppabs="http://linuxdevices.com/articles/AT4936596231.html">
+<img src="othercoolstuff-thm.jpg" tppabs="http://linuxdevices.com/files/misc/othercoolstuff-thm.jpg" vspace=5 border=0><br clear=all>
+<b>...and other cool stuff</b></a></center></font>
+
+<HR>
+<font face="arial, helvetica" size="2">
+<B>Don't miss the...</B>
+<center><a href="AT6946253856.html" tppabs="http://linuxdevices.com/articles/AT6946253856.html">
+<img src="wrestlers.jpg" tppabs="http://linuxdevices.com/files/misc/wrestlers.jpg" vspace=5 border=0><br clear=all>
+<b>"Great Gadget Smack-Down"</b></a></center></font>
+
+<HR>
+<font face ="arial, helvetica" size="2" color="#DE0000">
+<B>Hot topics:</B></font><br>
+<font face="arial, helvetica" size="2">
+&#149;<a href="AT4936596231.html" tppabs="http://linuxdevices.com/articles/AT4936596231.html">
+Linux Device Showcase</a><BR>
+&#149;<a href="AT3908389811.html" tppabs="http://linuxdevices.com/articles/AT3908389811.html">
+Linux mobile phones</a><BR>
+&#149;<a href="AT6979783720.html" tppabs="http://linuxdevices.com/articles/AT6979783720.html">
+Executive interviews</a><BR>
+&#149;<a href="AT6957998682.html" tppabs="http://linuxdevices.com/articles/AT6957998682.html">
+Carrier Grade Linux</a><BR>
+&#149;<a href="AT4179133067.html" tppabs="http://linuxdevices.com/articles/AT4179133067.html">
+Mono and DotGNU</a><BR>
+&#149;<a href="javascript:if(confirm('http://linuxdevices.com/news/NS9430710378.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS9430710378.html'" tppabs="http://linuxdevices.com/news/NS9430710378.html">
+Linux 2.6 arrives</a><BR>
+&#149;<a href="javascript:if(confirm('http://linuxdevices.com/news/NS8800432563.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS8800432563.html'" tppabs="http://linuxdevices.com/news/NS8800432563.html">
+Is embedding Windows 4X cheaper than Linux?</a><BR>
+</font>
+
+<HR>
+<font face="arial, helvetica" size="2">
+<b>2005 Embedded Linux market snapshot:</b></font>
+<a href="AT4036830962.html" tppabs="http://linuxdevices.com/articles/AT4036830962.html">
+<center><img src="linux-preference-thm.gif" tppabs="http://linuxdevices.com/files/misc/linux-preference-thm.gif" vspace=5 border=0></center></a>
+
+<HR>
+<font face ="arial, helvetica" size="2" color="#DE0000">
+<B>Quick Reference Guides</B><BR></font>
+<font face ="arial, helvetica" size="2">
+&#149;<a href="AT9888936014.html" tppabs="http://linuxdevices.com/articles/AT9888936014.html">
+Intro & overview</a><BR>
+&#149;<a href="AT2760742655.html" tppabs="http://linuxdevices.com/articles/AT2760742655.html">
+Embedded distributions</a><BR>
+&#149;<a href="AT8073314981.html" tppabs="http://linuxdevices.com/articles/AT8073314981.html">
+Real-time Linux</a><BR>
+&#149;<a href="AT9202043619.html" tppabs="http://linuxdevices.com/articles/AT9202043619.html">
+Embedded GUIs</a><BR>
+&#149;<a href="AT8918758707.html" tppabs="http://linuxdevices.com/articles/AT8918758707.html">
+Embedded Java + Linux</a><BR>
+&#149;<a href="AT8728350077.html" tppabs="http://linuxdevices.com/articles/AT8728350077.html">
+Linux-based PDAs</a><BR>
+&#149;<a href="AT9423084269.html" tppabs="http://linuxdevices.com/articles/AT9423084269.html">
+Linux mobile phones</a><BR>
+&#149;<a href="AT4923746399.html" tppabs="http://linuxdevices.com/articles/AT4923746399.html">
+Linux thin clients</a><BR>
+&#149;<a href="AT2016997232.html" tppabs="http://linuxdevices.com/articles/AT2016997232.html">
+Little Linux systems</a><BR>
+&#149;<a href="AT2614444132.html" tppabs="http://linuxdevices.com/articles/AT2614444132.html">
+Single board computers</a><BR>
+&#149;<a href="AT4313418436.html" tppabs="http://linuxdevices.com/articles/AT4313418436.html">
+Embedded processors</a><BR>
+</font>
+
+<HR>
+
+<font face="arial, helvetica" size="2">
+<B>Embedded Linux books</B></font>
+<a href="AT2969812114.html" tppabs="http://linuxdevices.com/articles/AT2969812114.html">
+<center><img src="elbook.jpg" tppabs="http://linuxdevices.com/files/misc/elbook.jpg" vspace=5 border=0></center></a>
+
+<HR>
+<font face="arial, helvetica" size="2">
+<b>Read ELJonline here:</b></font>
+<a href="javascript:if(confirm('http://linuxdevices.com/products/PD4202339625.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/products/PD4202339625.html'" tppabs="http://linuxdevices.com/products/PD4202339625.html">
+<center><img src="latest.gif" tppabs="http://linuxdevices.com/eljonline/covers/latest.gif" vspace=5 border=0></center></a>
+
+<HR>
+<font face="arial, helvetica" size="2"><B>Popular discussions</B><br>
+&#149;&nbsp;<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=talkbacks  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=talkbacks'" tppabs="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=talkbacks">
+Article talkbacks</a><BR>
+&#149;&nbsp;<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=linuxpda  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=linuxpda'" tppabs="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=linuxpda">
+Linux on PDAs</a><BR>
+&#149;&nbsp;<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=100  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=100'" tppabs="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=100">
+Technical questions</a><BR>
+&#149;&nbsp;<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=realtime  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=realtime'" tppabs="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=realtime">
+Real-time Linux</a><BR>
+&#149;&nbsp;<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=licenses  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=licenses'" tppabs="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=licenses">
+GPL issues, discussion</a><BR>
+&#149;&nbsp;<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=java  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=java'" tppabs="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=java">
+Embedded Java+Linux</a><BR>
+&#149;&nbsp;<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=sbc  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=sbc'" tppabs="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=sbc">
+Little Linux systems</a><BR>
+&#149;&nbsp;<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=general  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=general'" tppabs="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=general">
+General discussion</a><BR></font>
+<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/board/UltraBoard.pl  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/board/UltraBoard.pl'" tppabs="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl"><img border=0 src="moreheadline.gif" tppabs="http://linuxdevices.com/images/moreheadline.gif"></a>
+
+<HR>
+<font face="arial, helvetica" size="2"><B>Submissions...</B><BR>
+<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/news_post.cgi  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/news_post.cgi'" tppabs="http://linuxdevices.com/cgi-bin/news_post.cgi"><u>news</u></a>, 
+<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/event_post.cgi  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/event_post.cgi'" tppabs="http://linuxdevices.com/cgi-bin/event_post.cgi"><u>events</u></a>, 
+<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/product_post.cgi  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/product_post.cgi'" tppabs="http://linuxdevices.com/cgi-bin/product_post.cgi"><u>products</u></a>, 
+<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/link_post.cgi  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/link_post.cgi'" tppabs="http://linuxdevices.com/cgi-bin/link_post.cgi"><u>resource links</u></a>, 
+<a href="javascript:if(confirm('http://linuxdevices.com/contactus.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/contactus.html'" tppabs="http://linuxdevices.com/contactus.html"><u>other</u></a><BR></font>
+
+<HR>
+<font face ="arial, helvetica" size="2">
+<a href="javascript:if(confirm('http://linuxdevices.com/backend/index.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/backend/index.html'" tppabs="http://linuxdevices.com/backend/index.html" target="_blank">
+<img border=0 align=left vspace=5 hspace=5 src="xml.gif" tppabs="http://linuxdevices.com/images/xml.gif">
+<u>news feed</u></a></font>
+<BR>
+
+</td></tr></table>
+
+    </td>
+    <td width="64%" valign="top">
+      <table>
+       <tr><td>
+           <table width=100%>
+<tr>
+        <td>
+          <table border=1 cellpadding=6 width=100% cellspacing=0>
+            <tr>
+              <th width=100%  bgcolor='#FCEC9C'><font face='Arial,Helvetica' size=2>The Linux Thin Client Showcase</font></th>
+            </tr>
+            <tr>
+              <td width=100% height=20><font face='Arial,Helvetica' size=2>(Updated Jun. 29, 2005)</font><br><br>
+                <font face="Arial,Helvetica" size=3>This continually updated guide provides pointers to <cite>LinuxDevices.com's</cite> extensive coverage of Linux-based thin client devices and systems.  Thin clients are minimalist systems, often without moving parts, designed to serve programs that run on remote Linux, Unix, or Windows servers. Thin clients typically use remote access networking protocols such as X (Linux/Unix), RDP (Microsoft), or ICA (Citrix). They are also sometimes called network computers or server-centric computing devices.  <br><br>For additional perspective on this important market for embedded Linux technologies, be sure to also read our <a href="javascript:if(confirm('http://www.linuxdevices.com/articles/AT7230383075.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linuxdevices.com/articles/AT7230383075.html'" tppabs="http://www.linuxdevices.com/articles/AT7230383075.html" target="new"><u>Linux thin client "Hot Topic" article</u></a> which provides a brief overview of thin client technologies, summarizes recent news related to Linux thin clients, and provides a reading list for further study. <br><br><hr><b><center>Linux thin clients</center></b><hr><br><img align="left" hspace="10" vspace="5" src="tcsx-1-angle-thm.jpg" tppabs="http://linuxdevices.com/files/misc/tcsx-1-angle-thm.jpg"><b>Advantage Business Computer Systems TCSX-1</b> -- <i>[Dec. 11, 2001]</i> -- The TCSX-1 is a tiny thin client design based on a PC/104 motherboard with a 75MHz STPC processor that can run embedded Linux. <a href="javascript:if(confirm('http://www.linuxdevices.com/articles/AT3193512578.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linuxdevices.com/articles/AT3193512578.html'" tppabs="http://www.linuxdevices.com/articles/AT3193512578.html" target="new"><u>details</u></a> <br clear="all"><br><hr><br><img align="left" hspace="10" vspace="5" src="amd_geode_gx_thinclient_rdk-thm.jpg" tppabs="http://linuxdevices.com/files/misc/amd_geode_gx_thinclient_rdk-thm.jpg"><b>AMD Geode GX RDK</b> -- <i>[Jun. 1, 2004]</i> -- AMD is now shipping a reference design kit (RDK) for thin clients based on its low-powered Geode GX processor. The RDK includes hardware and drivers for Linux and other embedded operating systems, and targets corporate thin clients, terminal-in-blade PCs, point-of-sale, education, information appliances, and kiosks. <a href="javascript:if(confirm('http://linuxdevices.com/news/NS3918975589.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS3918975589.html'" tppabs="http://linuxdevices.com/news/NS3918975589.html" target="new"><u>details</u></a> <br clear="all"><br><hr><br><img align="left" hspace="10" vspace="5" src="boscom_bosanova_ltc_1000-thm.jpg" tppabs="http://linuxdevices.com/files/misc/boscom_bosanova_ltc_1000-thm.jpg"><b>BOScom LTC 1000</b> -- <i>[Aug. 11, 2004]</i> -- BOScom has launched a high-end, Linux-based thin client capable of running OpenOffice and Java applications locally. The Bosanova LTC 1000 has a fanless VIA embedded processor clocked at 1GHz, legacy and modern ports, and PCMCIA, PCI, and SmartCard expansion slots. <a href="javascript:if(confirm('http://linuxdevices.com/articles/AT2108424310.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/articles/AT2108424310.html'" tppabs="http://linuxdevices.com/articles/AT2108424310.html" target="new"><u>details</u></a> <br clear="all"><br><hr><br><!--    Concept Distribution     --><img align="left" hspace="10" vspace="5" src="concept_distribution_minipc_hand-thm.jpg" tppabs="http://linuxdevices.com/files/misc/concept_distribution_minipc_hand-thm.jpg"><b>Concept Distribution miniPC</b> -- <i>[Jun. 22, 2005]</i> -- A tiny Geode-based PC measuring 5.5 x 5.1 x 1.4 inches (13 x 14 x 3.5cm), and available with thin-client or a  general-purpose Linux OS. <a href="javascript:if(confirm('http://linuxdevices.com/news/NS5147900390.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS5147900390.html'" tppabs="http://linuxdevices.com/news/NS5147900390.html" target="new"><u>details</u></a> <br clear="all"><br><hr><br><img align="left" hspace="10" vspace="5" src="FutroS-thm.jpg" tppabs="http://linuxdevices.com/files/misc/FutroS-thm.jpg"><b>Fujitsu-Siemens Futro S</b> -- <i>[Jul. 12, 2004]</i> -- Fujitsu Siemens has launched a line of solid-state thin clients that use just 25 watts, or 80 percent less power than PCs. The Futro S clients run embedded Linux on Transmeta processors, and are no larger than medium-sized books. <a href="javascript:if(confirm('http://linuxdevices.com/news/NS2253279223.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS2253279223.html'" tppabs="http://linuxdevices.com/news/NS2253279223.html" target="new"><u>details</u></a> <br clear="all"><br><hr><br><img align="left" hspace="10" vspace="5" src="blxcpu_gstb-3602-thm.jpg" tppabs="http://linuxdevices.com/files/misc/blxcpu_gstb-3602-thm.jpg"><b>GLX GSTB 3602 and GSTB-4001</b> -- <i>[Dec. 11, 2003]</i> -- Chip houses Advanced Micro Devices (AMD) and BLX IC Design Corp. Ltd. (BLX) have jointly launched a Computing Client Development Center in Beijing, chartered to produce reference designs targeting thin-client, mobile client, and access/networking applications. The Center has already produced two thin-client reference designs based on AMD's Alchemy and BLX's Godson processors, running embedded Linux. <a href="javascript:if(confirm('http://linuxdevices.com/news/NS5724036154.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS5724036154.html'" tppabs="http://linuxdevices.com/news/NS5724036154.html" target="new"><u>details</u></a> <br clear="all"><br><hr><br><!--    HP        --><img align="left" hspace="10" vspace="5" src="hp_t5525.jpg" tppabs="http://linuxdevices.com/files/misc/hp_t5525.jpg"><b>HP  t5525 and t5125</b> -- <i>[Jun. 7, 2005]</i> -- Two thin clients based on Via embedded processors and embedded Linux, the t5525 and t5125 run on Eden ESP chips clocked at 800MHz and 400MHz, respectively, and have a Linux OS with a 2.4-series kernel that supports Citrix ICA, Microsoft RDP, and X-terminal protocols. <a href="javascript:if(confirm('http://linuxdevices.com/news/NS4837147004.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS4837147004.html'" tppabs="http://linuxdevices.com/news/NS4837147004.html" target="new"><u>details</u></a> <br clear="all"><br><br><img align="left" hspace="10" vspace="5" src="hp_compaq_5515_thin_client-thm.jpg" tppabs="http://linuxdevices.com/files/misc/hp_compaq_5515_thin_client-thm.jpg"><b>HP-Compaq t5515</b> -- <i>[Mar. 24, 2004]</i> -- HP has announced it will partner with Novell to certify and support Novell's SuSE Linux on select HP Compaq client systems. HP cites thin clients as the most promising growth area for Linux on the desktop, and identifies Asia, India, and South America as the most promising growth markets. <a target="new" href="javascript:if(confirm('http://linuxdevices.com/news/NS2681865560.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS2681865560.html'" tppabs="http://linuxdevices.com/news/NS2681865560.html"><u>details</u></a> <br clear="all"><br><hr><br><img align="left" hspace="10" vspace="5" src="igel_clever_client_premium_series-thm.jpg" tppabs="http://linuxdevices.com/files/misc/igel_clever_client_premium_series-thm.jpg"><br><img align=right vspace=5 hspace=10 src="igel_compact_clever_client-thm.jpg" tppabs="http://linuxdevices.com/files/misc/igel_compact_clever_client-thm.jpg"><b>Igel  Clever Clients</b> -- <i>[Sep. 9, 2004]</i> -- Igel sells a <a href="javascript:if(confirm('http://linuxdevices.com/products/PD7229277955.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/products/PD7229277955.html'" tppabs="http://linuxdevices.com/products/PD7229277955.html" target="new"><u>full range</u></a> of thin clients based on <a href="javascript:if(confirm('http://linuxdevices.com/news/NS3432477012.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS3432477012.html'" tppabs="http://linuxdevices.com/news/NS3432477012.html" target="new"><u>Embedded Flash Linux</u></a>, including a <a href="javascript:if(confirm('http://linuxdevices.com/news/NS3199738808.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS3199738808.html'" tppabs="http://linuxdevices.com/news/NS3199738808.html" target="new"><u>Premium</u></a> series (above-left) introduced in December, 2004, and a <a href="javascript:if(confirm('http://linuxdevices.com/news/NS3975350632.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS3975350632.html'" tppabs="http://linuxdevices.com/news/NS3975350632.html" target="new"><u>Compact</u></a> model (above-right) introduced in December, 2003. Igel Technology is not to be confused with Igel USA, previously known as Igel LLC, a US company founded in 1994 which later changed its name to SmartFlex (see listing below). <br clear="all"><br><hr><br><!-- Maxspeed --><img align="left" hspace="10" vspace="5" src="maxspeed_maxterm_301-thm.jpg" tppabs="http://linuxdevices.com/files/misc/maxspeed_maxterm_301-thm.jpg"><b>Maxspeed Maxterm 101 and 301</b> -- <i>[Oct. 5, 2004]</i> --  Two inexpensive embedded Linux thin clients that support ICA (Citrix) and RDP (Microsoft) protocols, and offer legacy and USB ports, the Maxterm 101 and 301 have suggested prices of $299 and $329, respectively. The 301 includes a local browser and terminal emulator suite. <a href="javascript:if(confirm('http://linuxdevices.com/news/NS4269138838.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS4269138838.html'" tppabs="http://linuxdevices.com/news/NS4269138838.html" target="new"><u>details</u></a> <br clear="all"><br><hr><br><!--         mobilis         --><img align="left" hspace="10" vspace="5" src="encore_mobilis_desktop-thm.jpg" tppabs="http://linuxdevices.com/files/misc/encore_mobilis_desktop-thm.jpg"><b>Mobilis SofCore</b> -- <i>[May 17, 2005]</i> -- The SofCore is the least expensive model in Simputer maker Mobilis's line of Linux-based computing devices for the Indian market. <a href="javascript:if(confirm('http://linuxdevices.com/news/NS8377345968.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS8377345968.html'" tppabs="http://linuxdevices.com/news/NS8377345968.html"><u>Details</u></a> <br clear="all"><br><hr><br><img align="left" hspace="10" vspace="5" src="capio_image_one-thm.gif" tppabs="http://linuxdevices.com/files/misc/capio_image_one-thm.gif"><b>Neoware Capio One and Eon</b> -- <i>[Apr. 05, 2004]</i> -- Embedded Linux and <a href="javascript:if(confirm('http://linuxdevices.com/news/NS7951148098.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS7951148098.html'" tppabs="http://linuxdevices.com/news/NS7951148098.html" target="new"><u>VIA processors</u></a> have helped Neoware produce two thin clients it hopes will boost network computing. Neoware claims its $199 Capio and $299 Eon offer security advantages, all the performance, and better centralized management than PCs, at a quarter of the price. <a href="javascript:if(confirm('http://linuxdevices.com/news/NS7364146954.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS7364146954.html'" tppabs="http://linuxdevices.com/news/NS7364146954.html" target="new"><u>details</u></a>  <br clear="all"><br><hr><br><!--       Netvoyager       --><img align="left" hspace="10" vspace="5" src="netvoyager_lx-1040-thm.jpg" tppabs="http://linuxdevices.com/files/misc/netvoyager_lx-1040-thm.jpg"><b>Netvoyager Lithium LX-1040, LX-1030, and LX-1020</b> -- <i>[Jun. 6, 2005]</i> -- Netvoyager is offering three of its thin clients with an optional embedded Linux-based operating system. The "Lithium" OS supports mixed server environments and remote management, and is available on thin clients with integrated 17-inch LCD monitor, wall-mounting rails, PCMCIA and smart card readers, and more. <a href="javascript:if(confirm('http://linuxdevices.com/news/NS7092953383.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS7092953383.html'" tppabs="http://linuxdevices.com/news/NS7092953383.html" target="new"><u>Details</u></a> <br clear="all"><br><hr><br><img align="left" hspace="10" vspace="5" src="nic-front-thm.jpg" tppabs="http://linuxdevices.com/files/misc/nic-front-thm.jpg"><b>New Internet Computer (NIC) thin client</b> -- <i>[Jun. 2, 2003]</i> -- The New Internet Computer (NIC) company, which was founded by Oracle CEO Larry Ellison, sold the "NIC," a small $200 Linux-based "thin client" system that loaded Linux from a built-in CDROM drive. An article at <cite>CNet</cite> attributes the failure of the NIC company to the lack of market for using a "Web-surfing appliance as an alternative to a low-cost PC." <a target="new" href="javascript:if(confirm('http://linuxdevices.com/news/NS4788478084.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS4788478084.html'" tppabs="http://linuxdevices.com/news/NS4788478084.html"><u>details</u></a> <br clear="all"><br><hr><br><img align="left" hspace="10" vspace="5" src="nexterm-se-thm.gif" tppabs="http://linuxdevices.com/files/misc/nexterm-se-thm.gif"><b>Nexterm SE</b> -- <i>[Jun 19, 2002]</i> -- The Nexterm SE is thin-client codeveloped by Nexterm and ELT, two Japanese firms. It runs MontaVista Linux on a 206MHz StrongARM processor. <a target="new" href="javascript:if(confirm('http://linuxdevices.com/news/NS3502077595.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS3502077595.html'" tppabs="http://linuxdevices.com/news/NS3502077595.html"><u>details</u></a>  <br clear="all">  <br><hr>                                      <br><img align="left" hspace="10" vspace="5" src="smartflex_thin_client_line-thm.jpg" tppabs="http://linuxdevices.com/files/misc/smartflex_thin_client_line-thm.jpg"><b>SmartFlex (formerly IGEL) thin clients</b> -- <i>[Sep. 28, 2004]</i> -- SmartFlex operated as IGEL LLC (InteGrated ELectronics) from 1994 to 2000, and then as IGEL USA (InteGrated Easy Linux) until 2001, when the company changed its name to avoid association with IGEL GmbH  of Germany, then undergoing stock market difficulty, according to SmartFlex founder Hans Knobloch. Knobloch claims the company produced the first Linux clients supporting the ICA (Citrix) protocol. It now produces four hardware- and software-customizable thin client products, as well as SmartModules, CompactFlash modules with customizable versions of the company's Linux-based SmartClient OS preinstalled, for use with existing or third-party hardware. Available with <a href="javascript:if(confirm('http://linuxdevices.com/news/NS2671926907.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS2671926907.html'" tppabs="http://linuxdevices.com/news/NS2671926907.html"><u>NX</u></a> compression. <a href="javascript:if(confirm('http://linuxdevices.com/products/PD3484146232.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/products/PD3484146232.html'" tppabs="http://linuxdevices.com/products/PD3484146232.html" target="new"><u>details</u></a> <br clear="all">    <br><hr>                 <br><img align="left" hspace="10" vspace="5" src="the_symbiont_terminals-thm.jpg" tppabs="http://linuxdevices.com/files/misc/the_symbiont_terminals-thm.jpg"><b>The Symbiont</b> -- <i>[May 20, 2004]</i> -- A New York startup selling Linux-based thin-client management software has called foul on HP and Dell for recent efforts to fund computer recycling programs. Symbio Technologies says the computing giants stand to sell more new PCs if old PCs -- which can be re-used as diskless clients -- are destroyed, instead of being donated to schools or resold. Symbio also resells new thin client devices (such as those pictured) that run embedded Linux. <a href="javascript:if(confirm('http://linuxdevices.com/news/NS4964141825.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS4964141825.html'" tppabs="http://linuxdevices.com/news/NS4964141825.html" target="new"><u>details</u></a>  <br clear="all"><br><hr><br><img align="left" hspace="10" vspace="5" src="wyse_winterm_5150se-thm.jpg" tppabs="http://linuxdevices.com/files/misc/wyse_winterm_5150se-thm.jpg"><b>Wyse Winterm 5150SE</b> -- <i>Aug. 2, 2004]</i> -- The Winterm 5150SE is the first model to use Wyse's V6 embedded Linux thin-client OS, which is based on a 2.6-series Linux kernel. It is based on an AMD Geode GX533 processor, and offers both USB and legacy I/O ports. <a href="javascript:if(confirm('http://linuxdevices.com/news/NS7461237334.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS7461237334.html'" tppabs="http://linuxdevices.com/news/NS7461237334.html" target="new"><u>details</u></a>  <br clear="all"><br><br><img align="left" hspace="10" vspace="5" src="wyse_winterm_5225se.jpg" tppabs="http://linuxdevices.com/files/misc/wyse_winterm_5225se.jpg"><b>Wyse Winterm 5125SE and 5455XL</b> -- <i>[Jul. 14, 2003]</i> --  Wyse announced two Linux thin-clients to "address the rapidly expanding Linux thin-client market . . . and allow [Wyse] to maintain its dominance of the worldwide thin-client market." Wyse later <a href="javascript:if(confirm('http://linuxdevices.com/news/NS4989028583.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS4989028583.html'" tppabs="http://linuxdevices.com/news/NS4989028583.html" target="new"><u>revised</u></a> its 2.4-series based thin-client Linux operating system. <a href="javascript:if(confirm('http://linuxdevices.com/news/NS9563702291.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS9563702291.html'" tppabs="http://linuxdevices.com/news/NS9563702291.html" target="new"><u>details</u></a>  <br clear="all"><br><br><img align="left" hspace="10" vspace="5" src="wyse_winterm_5440xl-thm.jpg" tppabs="http://linuxdevices.com/files/misc/wyse_winterm_5440xl-thm.jpg"><b>Wyse 5440XL</b> -- <i>[Jan. 23, 2002]</i> -- The Winterm 5440XL provides an X-terminal, Java, or local execution of Linux applications. It features an expandable chassis, a robust version of Linux, and exceptional remote management solution, Wyse says. Wyse's first Linux-based thin client. <a href="javascript:if(confirm('http://linuxdevices.com/news/NS9214661789.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS9214661789.html'" tppabs="http://linuxdevices.com/news/NS9214661789.html" target="new"><u>details</u></a> <br clear=all><br><hr><center><a href="javascript:if(confirm('http://www.linuxdevices.com/articles/AT4936596231.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linuxdevices.com/articles/AT4936596231.html'" tppabs="http://www.linuxdevices.com/articles/AT4936596231.html"><b>Return to top of guide</b></a></center><hr><br></font>
+                <a href="javascript:if(confirm('http://linuxdevices.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/'" tppabs="http://linuxdevices.com/"><img src="furtherinfo.gif" tppabs="http://linuxdevices.com/images/furtherinfo.gif" border=0 align=right></a></td>
+            </tr>
+          </table>
+        </td>
+      </tr>        </table>
+
+       </td></tr>
+       <tr><td>
+<!-- google marketplace starts here -->
+<font size=1><br></font>
+<style type="text/css">
+/******************************BEGIN: MARKETPLACE & SPONSORS CSS***********************************/ 
+.sponsors_container {BORDER: 1px solid #FFFE08;PADDING:3px 3px 3px 3px;MARGIN-BOTTOM:5px;} 
+.sponsors {BACKGROUND-COLOR:#FFF7D3;PADDING:5px 0px 10px 0px;} 
+.sponsors ul{ 
+				CLEAR:both; 
+				MARGIN:0px 0px 0px 9px; 
+				PADDING:0px; 
+			} 
+.sponsors ul li{ 
+list-style:outside; 
+list-style-type:none; 
+background-image: url(/images/LD-arrow_bluegray.gif);  
+background-repeat: no-repeat;  
+background-position: 0px 4px; 
+padding:0px 0px 0px 3px; 
+vertical-align:top; 
+margin: 0px 0px 3px 0px; 
+} 
+				 
+.sponsors p{FONT-FAMILY:verdana,arial;FONT-SIZE:10px;} 
+.sponsors a{FONT-SIZE:10px;COLOR:#2347B3;TEXT-DECORATION:underline;} 
+.sponsors a:hover{TEXT-DECORATION:none;} 
+.sponsors img.left_ad_image{MARGIN:0px 0px 0px 20px;FLOAT:left;} 
+.sponsors img.left_ad_type_image{MARGIN:0px 0px 5px 20px;FLOAT:left;clear:left;} 
+.sponsors p.right_text{FLOAT:right;MARGIN:3px 3px 0px 0px;} 
+ 
+.sponsors p.sponsor_text {MARGIN:0px 0px 0px 8px;} 
+.sponsors p.sponsor_header {MARGIN:0px 0px 0px 8px;} 
+ 
+.sponsors ul.sponsor_links a{MARGIN:0px 0px 2px 8px;} 
+.sponsors ul.intel_links a{MARGIN:0px 0px 2px 8px;} 
+ 
+ 
+/******************************END: MARKETPLACE & SPONSORS CSS***********************************/
+</style>
+
+<script language="JavaScript">   
+	<!-- 
+	function ws(w){window.status=w;return true;} 
+	 
+	function google_ad_request_done(google_ads)  
+	{   
+		var i; 
+		 
+		 
+ 
+		document.write('<div class="sponsors_container"><div class="sponsors">' + 
+		 
+			 
+				'<img src="LD-marketplace-1.gif"/*tpa=http://linuxdevices.com/images/LD-marketplace-1.gif*/ width="75" height="9" class="left_ad_image">' + 
+				'<p class="right_text"><a href="http://www.google.com/ads_by_google.html">' +  
+					'Ads By Google' +  
+				'</a></p>' + 
+			 
+		 
+			'<img src="LD-marketplace-2.gif"/*tpa=http://linuxdevices.com/images/LD-marketplace-2.gif*/ class="left_ad_type_image">' + 
+			 
+			 
+			 
+			 
+			'<ul>'); 
+		 
+		 
+		 
+		for(i = 0; i < google_ads.length; ++i)  
+		{     
+	 
+			 
+				document.write('<li><p class="sponsor_header">'); 
+				document.write('<a href="' + google_ads[i].url + '" onMouseOver="return ws(\'' + google_ads[i].visible_url + '\')">' + 
+					google_ads[i].line1 + '</p>'); 
+				 
+				document.write('<p class="sponsor_text">' + 
+					'<a href="' +  google_ads[i].url + '" onMouseOver="return ws(\'' + google_ads[i].visible_url + '\')" STYLE="text-decoration: none"><font color=#333333>' + google_ads[i].line2 + ' ' + google_ads[i].line3 +  '<br />' + google_ads[i].visible_url + '</font></a>' +  
+		  			'</p></li>'); 
+	 
+		} 
+		 
+			 
+			document.write('</ul></div></div>'); 
+	 
+		 
+	}  
+	// --> 
+	</script> 
+	 
+	 
+	 
+ 
+	<script language="JavaScript"> 
+	<!--          
+	 
+	         google_ad_client 	= 'ziffdavis-other_js';          
+			 google_ad_output 	= 'js';          
+			 google_max_num_ads = 5;                  
+			 google_safe      	= 'high'; 
+			 google_ad_channel  = 'linuxdevices-1'; 
+		 
+	--> 
+	</script> 
+	<script language="JavaScript" src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script> 
+	
+
+<!-- google market place ends here -->
+       </td></tr>
+       <tr><td height=10></td></tr>
+       <tr><td>
+<!-- sponsored links section begins here -->
+<font size=1><br></font>
+<style type="text/css">
+/******************************BEGIN: MARKETPLACE & SPONSORS CSS***********************************/ 
+.sponsors_container {BORDER: 1px solid #FFFE08;PADDING:3px 3px 3px 3px;MARGIN-BOTTOM:5px;} 
+.sponsors {BACKGROUND-COLOR:#FFF7D3;PADDING:5px 0px 10px 0px;} 
+.sponsors ul{ 
+				CLEAR:both; 
+				MARGIN:0px 0px 0px 9px; 
+				PADDING:0px; 
+			} 
+.sponsors ul li{ 
+list-style:outside; 
+list-style-type:none; 
+background-image: url(/images/LD-arrow_bluegray.gif);  
+background-repeat: no-repeat;  
+background-position: 0px 4px; 
+padding:0px 0px 0px 3px; 
+vertical-align:top; 
+margin: 0px 0px 3px 0px; 
+} 
+				 
+.sponsors p{FONT-FAMILY:verdana,arial;FONT-SIZE:10px;} 
+.sponsors a{FONT-SIZE:10px;COLOR:#2347B3;TEXT-DECORATION:underline;} 
+.sponsors a:hover{TEXT-DECORATION:none;} 
+.sponsors img.left_ad_image{MARGIN:0px 0px 0px 20px;FLOAT:left;} 
+.sponsors img.left_ad_type_image{MARGIN:0px 0px 5px 20px;FLOAT:left;clear:left;} 
+.sponsors p.right_text{FLOAT:right;MARGIN:3px 3px 0px 0px;} 
+ 
+.sponsors p.sponsor_text {MARGIN:0px 0px 0px 8px;} 
+.sponsors p.sponsor_header {MARGIN:0px 0px 0px 8px;} 
+ 
+.sponsors ul.sponsor_links a{MARGIN:0px 0px 2px 8px;} 
+.sponsors ul.intel_links a{MARGIN:0px 0px 2px 8px;} 
+ 
+ 
+/******************************END: MARKETPLACE & SPONSORS CSS***********************************/
+</style>
+
+
+<div class="sponsors_container">
+  <div class="sponsors">
+     <img src="LD-sponsoredlinks.gif" tppabs="http://linuxdevices.com/images/LD-sponsoredlinks.gif" class="left_ad_type_image">
+
+     <ul class="sponsor_links">
+
+       <!-- link ID - date-to-remove -->
+       <li><a href="javascript:if(confirm('http://linuxdevices.com/contactus.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/contactus.html'" tppabs="http://linuxdevices.com/contactus.html" target="new">Find out how to put your company's message here</a></li>
+
+    </ul>
+
+  </div>
+</div>
+
+<!-- end sponsored links section -->
+       </td></tr>
+      </table>
+    </td>
+    <td width="18%" valign="top">
+     <table width=100% cellspacing=0 cellpadding=0><tr><td><!-- column118.htm -->
+<font face="arial, helvetica" size="2">
+Click below for a profile of each sponsor:</font><BR>
+
+<!-- start PLATINUM sponsors -->
+<table width=150 cellpadding=0 cellspacing=0 border=2 bgcolor="white">
+          <tr>
+           <td bgcolor="#fcec9c" height=30 align=center>
+           <font face="arial, helvetica" size="2"><b>Platinum Sponsors:</b></font>
+           </td>
+          </tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+            
+<!-- begin timesys tag --> 
+<IFRAME SRC="home;kw=timesys;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=timesys;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=timesys;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=timesys;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=timesys;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=timesys;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=timesys;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=timesys;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=timesys;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag -->             
+                        
+           </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+
+          <tr>
+            <td border=0 width=150 height=30 align=center bgcolor="white">
+
+<!-- begin metrowerks tag --> 
+<IFRAME SRC="home;kw=metro;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=metro;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=metro;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=metro;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=metro;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=metro;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=metro;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=metro;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=metro;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag --> 
+
+           </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+
+          <tr>
+            <td border=0 width=150 height=30 align=center bgcolor="white">
+
+<!-- begin arcom tag --> 
+<IFRAME SRC="home;kw=arcom;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=arcom;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=arcom;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=arcom;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=arcom;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=arcom;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=arcom;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=arcom;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=arcom;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag --> 
+
+           </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+            
+<!-- begin tri-m tag --> 
+<IFRAME SRC="home;kw=trim;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=trim;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=trim;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=trim;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=trim;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=trim;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=trim;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=trim;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=trim;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag --> 
+          
+           </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+
+<!-- begin viosoft tag -->
+<IFRAME SRC="home;kw=viosoft;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=viosoft;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000">
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=viosoft;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=viosoft;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT>
+</IFRAME>
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=viosoft;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=viosoft;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=viosoft;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=viosoft;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=viosoft;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT>
+<!-- End ad tag -->
+
+           </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+ 
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+
+<!-- begin moxa tag -->
+<IFRAME SRC="home;kw=moxa;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=moxa;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000">
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=moxa;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=moxa;sz=150x30;abr=!ie;ord=[timestamp]?" >
+</SCRIPT>
+</IFRAME>
+<NOSCRIPT>
+<A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=moxa;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=moxa;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=moxa;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank">
+<IMG SRC="home;kw=moxa;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=moxa;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT="">
+</A></NOSCRIPT>
+<!-- End ad tag -->
+
+           </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+
+<!-- begin redhat tag -->
+<IFRAME SRC="home;kw=redhat;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=redhat;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000">
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=redhat;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=redhat;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT>
+</IFRAME>
+<NOSCRIPT>
+<A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=redhat;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=redhat;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=redhat;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank">
+<IMG SRC="home;kw=redhat;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=redhat;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT="">
+</A></NOSCRIPT>
+<!-- End ad tag -->
+
+           </td>
+          </tr>
+
+         <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+
+<!-- begin windriver tag -->
+<IFRAME SRC="home;kw=windriver;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=windriver;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=windriver;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=windriver;sz=150x30;abr=!ie;ord=[timestamp]?" >
+</SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=windriver;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=windriver;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=windriver;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank">
+<IMG SRC="home;kw=windriver;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=windriver;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A>
+</NOSCRIPT> 
+<!-- end ad tag -->
+
+          </td>
+          </tr>
+
+         <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+
+
+<!-- begin devicescape tag -->
+<IFRAME SRC="home;kw=devicescape;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=devicescape;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=devicescape;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=devicescape;sz=150x30;abr=!ie;ord=[timestamp]?" >
+</SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=devicescape;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=devicescape;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=devicescape;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank">
+<IMG SRC="home;kw=devicescape;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=devicescape;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A>
+</NOSCRIPT> 
+<!-- end ad tag -->
+
+          </td>
+          </tr>
+
+         <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+
+<!-- begin versalogic tag --> 
+<IFRAME SRC="home;kw=versalogic;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=versalogic;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=versalogic;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=versalogic;sz=150x30;abr=!ie;ord=[timestamp]?" >
+</SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=versalogic;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=versalogic;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=versalogic;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=versalogic;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=versalogic;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag --> 
+
+          </td>
+          </tr>
+
+         <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+
+<!-- begin jaluna tag --> 
+<IFRAME SRC="home;kw=jaluna;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=jaluna;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=jaluna;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=jaluna;sz=150x30;abr=!ie;ord=[timestamp]?" >
+</SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=jaluna;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=jaluna;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=jaluna;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=jaluna;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=jaluna;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT>
+<!-- End ad tag --> 
+
+          </td>
+          </tr>
+
+</table>
+<!-- end PLATINUM sponsors -->
+
+<table width=150 height=10 cellpadding=0 cellspacing=0 border=0>
+<tr><td></td></tr></table>
+
+<!-- start GOLD sponsors -->
+<table width=150 cellpadding=0 cellspacing=0 border=2 bgcolor="white">
+
+          <tr>
+           <td bgcolor="#fcec9c" height=30 align=center>
+           <font face="arial, helvetica" size="2"><b>Gold Sponsors:</b></font>
+           </td>
+          </tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+          
+<!-- begin montavista tag --> 
+<IFRAME SRC="home;kw=montavista;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=montavista;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=montavista;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=montavista;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=montavista;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=montavista;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=montavista;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=montavista;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=montavista;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag --> 
+          
+          </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+
+          <tr>
+              <td width=150 height=30 align=center bgcolor="white">
+
+<!-- begin lynuxworks tag --> 
+<IFRAME SRC="home;kw=lynux;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=lynux;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=lynux;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=lynux;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=lynux;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=lynux;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=lynux;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=lynux;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=lynux;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag --> 
+
+          </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+            
+<!-- begin octagon tag --> 
+<IFRAME SRC="home;kw=octagon;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=octagon;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=octagon;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=octagon;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=octagon;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=octagon;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=octagon;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=octagon;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=octagon;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag -->             
+
+          </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+
+<!-- begin ibm-ltc tag --> 
+<IFRAME SRC="home;kw=linuxibm;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=linuxibm;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=linuxibm;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=linuxibm;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=linuxibm;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=linuxibm;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=linuxibm;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=linuxibm;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=linuxibm;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag --> 
+
+          </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+
+<!-- begin embedded-planet tag --> 
+<IFRAME SRC="home;kw=ep;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=ep;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=ep;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=ep;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=ep;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=ep;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=ep;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=ep;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=ep;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag -->           
+
+          </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+            
+<!-- begin vibren tag --> 
+<IFRAME SRC="home;kw=vibren;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=vibren;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=vibren;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=vibren;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=vibren;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=vibren;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=vibren;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=vibren;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=vibren;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag -->             
+
+          </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+
+<!-- begin via tag --> 
+<IFRAME SRC="home;kw=via;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=via;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=via;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=via;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=via;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=via;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=via;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=via;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=via;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag --> 
+
+          </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+
+<!-- begin kenati tag --> 
+<IFRAME SRC="home;kw=kenati;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=kenati;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=kenati;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=kenati;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=kenati;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=kenati;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=kenati;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=kenati;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=kenati;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+ <!-- End ad tag --> 
+
+          </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#fcec9c" align=center></td></tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+
+<!-- begin enea tag --> 
+<IFRAME SRC="home;kw=enea;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=enea;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000">
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=enea;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=enea;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT>
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=enea;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=enea;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=enea;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=enea;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=enea;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+ <!-- End ad tag --> 
+
+          </td>
+          </tr>
+
+</table>
+<!-- end GOLD sponsors -->
+
+<table width=150 height=10 cellpadding=0 cellspacing=0 border=0>
+<tr><td></td></tr></table>
+
+<!-- start SILVER sponsors -->
+<table width=156 cellpadding=0 cellspacing=0 border=2 bgcolor="white">
+
+          <tr>
+           <td width=150 bgcolor="#fcec9c" height=30 align=center>
+           <font face="arial, helvetica" size="2"><b>Silver Sponsors:</b></font>
+           </td>
+          </tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+
+<!-- begin microsys tag --> 
+<IFRAME SRC="home;kw=microsys;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;kw=microsys;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=microsys;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=microsys;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=microsys;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=microsys;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=microsys;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=microsys;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;kw=microsys;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag -->           
+
+          </td>
+          </tr>
+
+</table> 
+<!-- end SILVER sponsors -->
+
+<HR>
+<center>
+<font face="arial, helvetica" size="1"><b>ADVERTISEMENT</b></font>
+</center>
+<!-- begin ad tag -->
+<IFRAME SRC="home;sz=160x600;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/linuxdevices.dart/home;sz=160x600;ord=[timestamp]?" WIDTH="160" HEIGHT="600" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000">
+<SCRIPT LANGUAGE="JavaScript" SRC="home;sz=160x600;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/linuxdevices.dart/home;sz=160x600;abr=!ie;ord=[timestamp]?" ></SCRIPT>
+</IFRAME>
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/linuxdevices.dart/home;sz=160x600;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/linuxdevices.dart/home;sz=160x600;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/linuxdevices.dart/home;sz=160x600;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;sz=160x600;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/linuxdevices.dart/home;sz=160x600;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="160" HEIGHT="600" BORDER="0" ALT=""></A></NOSCRIPT>
+<!-- End ad tag -->
+<br>
+
+<hr>
+<table width=160 bgcolor="#FFF7D3" border=1 cellspacing=0 cellpadding=5><tr><td>
+<font face ="arial, helvetica" size="1"><B>CAREER CENTER</B><br>
+Search more than 60,000 tech jobs. Search by keywords, skill, job title, and location.<br>
+<a href="javascript:if(confirm('http://ad.doubleclick.net/clk;16161145;11321417;o?http://www.dice.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/clk;16161145;11321417;o?http://www.dice.com/'" tppabs="http://ad.doubleclick.net/clk;16161145;11321417;o?http://www.dice.com/" target="new">
+<u>Check it out today!</u></a>
+<br></font>
+</td></tr></table>
+
+<hr>
+<center>
+<a href="javascript:if(confirm('http://linuxdevices.com/news/NS7728006050.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news/NS7728006050.html'" tppabs="http://linuxdevices.com/news/NS7728006050.html">
+<img src="lj-editors-choice-2001.gif" tppabs="http://linuxdevices.com/files/misc/lj-editors-choice-2001.gif" VSPACE=5 HSPACE=5 BORDER=0>
+<br clear=all>
+<font face ="arial, helvetica" size="2">
+<b>"Website of the Year"</b></font></a><br>
+</center>
+
+<HR>
+<font face="arial, helvetica" size="2"><B>Submissions...</B><br>
+<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/news_post.cgi  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/news_post.cgi'" tppabs="http://linuxdevices.com/cgi-bin/news_post.cgi"><u>news</u></a>,
+<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/article_post.cgi  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/article_post.cgi'" tppabs="http://linuxdevices.com/cgi-bin/article_post.cgi"><u>articles</u></a>,
+<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/event_post.cgi  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/event_post.cgi'" tppabs="http://linuxdevices.com/cgi-bin/event_post.cgi"><u>events</u></a>,
+<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/product_post.cgi  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/product_post.cgi'" tppabs="http://linuxdevices.com/cgi-bin/product_post.cgi"><u>products</u></a>,
+<a href="javascript:if(confirm('http://linuxdevices.com/contactus.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/contactus.html'" tppabs="http://linuxdevices.com/contactus.html"><u>other</u></a><br></font>
+
+<HR>
+<font face ="arial, helvetica" size="2">
+<a href="javascript:if(confirm('http://linuxdevices.com/backend/index.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/backend/index.html'" tppabs="http://linuxdevices.com/backend/index.html" target="_blank">
+<img border=0 align=left vspace=5 hspace=5 src="xml.gif" tppabs="http://linuxdevices.com/images/xml.gif">
+<u>news feed</u></a></font>
+<BR>
+
+</td></tr></table>
+
+
+    </td>
+  </tr>
+</table>
+<!-------- page footer begins here -------->
+<hr>
+<table align=center border=0 cellspacing=0 cellpadding=0 width="100%">
+  <tr><td><font face='Arial,Helvetica' size=2>
+<a href="javascript:if(confirm('http://linuxdevices.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/'" tppabs="http://linuxdevices.com/"><b>home</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/news  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/news'" tppabs="http://linuxdevices.com/news"><b>news</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/articles  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/articles'" tppabs="http://linuxdevices.com/articles"><b>articles</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/survey/survey.cgi  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/survey/survey.cgi'" tppabs="http://linuxdevices.com/cgi-bin/survey/survey.cgi"><b>polls</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/board/UltraBoard.pl  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/board/UltraBoard.pl'" tppabs="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl"><b>forum</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/events  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/events'" tppabs="http://linuxdevices.com/events"><b>events</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/links  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/links'" tppabs="http://linuxdevices.com/links"><b>links</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/products  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/products'" tppabs="http://linuxdevices.com/products"><b>products</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/sponsors  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/sponsors'" tppabs="http://linuxdevices.com/sponsors"><b>sponsors</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/cgi-bin/search_view.cgi  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/cgi-bin/search_view.cgi'" tppabs="http://linuxdevices.com/cgi-bin/search_view.cgi"><b>search</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/aboutus.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/aboutus.html'" tppabs="http://linuxdevices.com/aboutus.html"><b>aboutus</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://linuxdevices.com/contactus.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://linuxdevices.com/contactus.html'" tppabs="http://linuxdevices.com/contactus.html"><b>contactus</b></a></font></td></tr>
+  <tr><td>&nbsp;</td></tr>
+  <tr>
+    <td><font face='Arial,Helvetica' size=2>
+<a href="javascript:if(confirm('http://www.ziffdavis.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ziffdavis.com/'" tppabs="http://www.ziffdavis.com/"><img align=right vspace=5 hspace=5 border=0 src="zdmlogo.gif" tppabs="http://linuxdevices.com/images/zdmlogo.gif"></a>
+Use of this site is governed by our
+<a href="javascript:if(confirm('http://www.ziffdavis.com/about/terms  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ziffdavis.com/about/terms'" tppabs="http://www.ziffdavis.com/about/terms"><u>Terms of Use</u></a>
+and <a href="javascript:if(confirm('http://www.ziffdavis.com/about/privacy  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ziffdavis.com/about/privacy'" tppabs="http://www.ziffdavis.com/about/privacy"><u>Privacy Policy</u></a>.
+Except where otherwise specified, the contents of this site are copyright &copy; 1999-2005
+<a href="javascript:if(confirm('http://www.ziffdavis.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ziffdavis.com/'" tppabs="http://www.ziffdavis.com/"><u>Ziff Davis Publishing Holdings Inc.</u></a>
+All Rights Reserved. Reproduction in whole or in part without permission is prohibited. Linux is a registered trademark of Linus Torvalds. All other marks are the property of their respective owners.</font></td>
+  </tr>
+</table>
+
+<!-- START RedMeasure V4 - CGI v1.1 Revision: 1.6 -->
+<!-- COPYRIGHT 2000 Red Sheriff Limited -->
+<script language="JavaScript"><!--
+	var pCid="us_us-ziffdavis_0-dvf-3";
+	var w0=1;
+	var refR=escape(document.referrer);
+	if (refR.length>=252) refR=refR.substring(0,252)+"...";
+//--></script>
+<script language="JavaScript1.1"><!--
+	var w0=0;
+//--></script>
+<script language="JavaScript1.1" src="c1.js" tppabs="http://server-us.imrworldwide.com/c1.js"></script>
+<script language="JavaScript"><!--
+	if(w0){
+		document.write('<img src="http://server-us.imrworldwide.com/cgi-bin/count?ref='+        refR+'&cid='+pCid+'" width=1 height=1>');
+	}
+	document.write("<COMMENT>");
+//--></script>
+<noscript><img src="count-cid=us_us-ziffdavis_0-dvf-3" tppabs="http://server-us.imrworldwide.com/cgi-bin/count?cid=us_us-ziffdavis_0-dvf-3" width=1 height=1></noscript>
+<!-- END RedMeasure V4 -->
+
+<!-------- page footer ends here -------->
+</body>
+</html>

@@ -1,0 +1,92 @@
+<html><head>
+<title>Solution for /competition/games/craps</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /competition/games/craps problem</h1>
+<hr>
+The game of craps:
+<p>
+There is a person who rolls the two dice, and then there is the house.
+<ol>
+<li> On the first roll, if a 7 or 11 comes up, the roller wins.
+   If a 2, 3, or 12 comes up the house wins.
+   Anything else is a POINT, and more rolling is necessary, as per rule 2.
+<li> If a POINT appears on the first roll, keep rolling the dice.
+   At each roll, if the POINT appears again, the roller wins.
+   At each roll, if a 7 comes up, the house wins.
+   Keep rolling until the POINT or a 7 comes up.
+</ol>
+Then there are the players, and they are allowed to place their bets with
+either the roller or with the house.
+
+<h2>My computations:</h2>
+
+On the first roll, P.roller.trial(1) = 2/9, and P.house.trial(1) = 1/9.
+Let  P(x) stand for the probability of a 4,5,6,8,9,10 appearing.
+Then on the second and onwards rolls, the probability is:
+
+<h3>Roller:</h3>
+<pre>
+                         ---                        (i - 2)
+P.roller.trial(i) =      \   P(x)   *   ((5/6 - P(x))         *   P(x)
+(i &gt; 1)                  /
+                         ---
+                         x = 4,5,6,8,9,10
+</pre>
+<h3>House:</h3>
+<pre>
+                        ---                        (i - 2)
+P.house.trial(i) =      \   P(x)   *   ((5/6 - P(x))         *   1/6
+(i &gt; 1)                 /
+                        ---
+                        x = 4,5,6,8,9,10
+</pre>
+Reasoning (roller): For the roller to win on the ith trial, a POINT
+should have appeared on the first trial (the first P(x) term), and the
+same POINT should appear on the ith trial (the last P(x) term). All the in
+between trials should come up with a number other than 7 or the POINT
+(hence the (5/6 - P(x)) term).
+Similar reasoning holds for the house.
+
+<p>
+The numbers are:
+<p>
+P.roller.trial(i) (i &gt; 1) =
+<pre>
+                (i-1)                 (i-1)                     (i-1)  
+ 1/72 * (27/36)      + 2/81 * (26/36)        + 25/648 * (25/36)
+</pre>
+
+P.house.trial(i) (i &gt; 1) =
+<pre>
+                (i-1)                 (i-1)                     (i-1)  
+ 2/72 * (27/36)      + 3/81 * (26/36)        + 30/648 * (25/36)
+</pre>
+
+<hr>
+The total probability comes to:
+<pre>
+P.roller = 2/9   +   (1/18 + 4/45 + 25/198)  = 0.4929292929292929..
+P.house  = 1/9   +   (1/9  + 2/15 + 15/99)  =  0.5070707070707070..
+</pre>
+which is not even.
+
+<pre>
+==
+Avinash Chopde                           (with standard disclaimer)
+abc@unhcs.unh.edu, abc@unh.unh.edu            {.....}!uunet!unh!abc
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

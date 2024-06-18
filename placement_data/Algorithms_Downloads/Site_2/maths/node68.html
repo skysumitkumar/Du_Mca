@@ -1,0 +1,170 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Arithmetic Expressions </TITLE>
+<META NAME="description" CONTENT="Arithmetic Expressions ">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node70.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node70.html">
+<LINK REL="previous" HREF="node66.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node66.html">
+<LINK REL="up" HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">
+<LINK REL="next" HREF="node69.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node69.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1303"
+  HREF="node69.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node69.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1297"
+  HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1291"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node67.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node67.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node67.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1299"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1301"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1304"
+  HREF="node69.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node69.html">AE Grammer</A>
+<B> Up:</B> <A NAME="tex2html1298"
+  HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">Grammers and Parsing</A>
+<B> Previous:</B> <A NAME="tex2html1292"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node67.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node67.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node67.html">Property P</A>
+ &nbsp <B>  <A NAME="tex2html1300"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1302"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00850000000000000000">
+Arithmetic Expressions </A>
+</H1>
+
+<P>
+Let's now go back to where we started. Consider the strings that occur
+on the right-hand side of equals signs in programs -- what are known as
+Arithmetic Expressions. I mean things like
+<!-- MATH
+ \begin{displaymath}
+a+b+c*d,\qquad a*(b-c/d)-e/f,\qquad a*b*((c-d)*a-p*(u-v)*(r+s))/t
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>a</I> + <I>b</I> + <I>c</I>*<I>d</I>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>a</I>*(<I>b</I> - <I>c</I>/<I>d</I> )- <I>e</I>/<I>f</I>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>a</I>*<I>b</I>*((<I>c</I> - <I>d</I> )*<I>a</I> - <I>p</I>*(<I>u</I> - <I>v</I>)*(<I>r</I> + <I>s</I>))/<I>t</I>
+</DIV><P></P>
+These expressions are made up of <I>variable names</I>, <I>binary
+operators</I> and <I>brackets</I>. There are many other things that can
+occur in such expressions in actual computer languages. For example, 
+powers (**), unary minus (- <I>a</I> + <I>b</I>), actual numbers (<!-- MATH
+ $1.23*a-3.45$
+ -->
+1.23*<I>a</I> - 3.45), and
+things like function and array references (<!-- MATH
+ $\sin(a+b)-p(4)$
+ -->
+sin(<I>a</I> + <I>b</I>) - <I>p</I>(4)). We are
+going to ignore these complications (they are no more than complications)
+and concentrate on expressions made up of variables, the four basic
+binary operators and brackets. We also ignore <I>spaces</I>. Let us
+restrict things further by assuming that there are just 26 possible
+variables -- the lower-case letters.
+
+<P>
+We are dealing with a language of some kind. An expression is a string of
+symbols from a certain alphabet. Some such strings are `grammatical', as
+in the above examples, and others are not -- for example
+<!-- MATH
+ \begin{displaymath}
+a+(b+ \qquad a(b+c) \qquad ((++a-b-((
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>a</I> + (<I>b</I> + &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>a</I>(<I>b</I> + <I>c</I>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((+ + <I>a</I> - <I>b</I> - ((
+</DIV><P></P>
+What is the underlying grammar. What decides whether a given string is
+or is not grammatical?
+
+<P>
+Let me now introduce the syntax for such  <A NAME="6283"></A><B>Arithmetic
+Expressions</B> (AE's).  It produces the `right' answers.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html1305"
+  HREF="node69.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node69.html">AE Grammer</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1303"
+  HREF="node69.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node69.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1297"
+  HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1291"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node67.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node67.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node67.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1299"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1301"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1304"
+  HREF="node69.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node69.html">AE Grammer</A>
+<B> Up:</B> <A NAME="tex2html1298"
+  HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">Grammers and Parsing</A>
+<B> Previous:</B> <A NAME="tex2html1292"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node67.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node67.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node67.html">Property P</A>
+ &nbsp <B>  <A NAME="tex2html1300"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1302"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

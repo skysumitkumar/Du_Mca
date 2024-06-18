@@ -1,0 +1,30 @@
+	Byte: byte;
+	Buffer, Test, String: string;
+	Table: array[1..4096] of string;
+
+	begin
+		clear Table;	clear Buffer; clear Test; clear String;
+
+		write ClearCode code;
+
+		while (valid data)
+		begin
+			read Byte;
+			Test=String+Byte;
+			if (Test in Table) then String=String+Byte;
+			else 
+			begin
+				write String code;
+				add Test to Table;
+				String=Byte;
+			end;
+		end;
+	
+		write String code;
+		write EndOfInformation code.
+	end.
+
+
+
+
+

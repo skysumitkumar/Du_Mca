@@ -1,0 +1,189 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The Analysis of an Algorithm </TITLE>
+<META NAME="description" CONTENT="The Analysis of an Algorithm ">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node26.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node26.html">
+<LINK REL="previous" HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">
+<LINK REL="up" HREF="node10.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node10.html">
+<LINK REL="next" HREF="node21.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node21.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html581"
+  HREF="node21.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node21.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html575"
+  HREF="node10.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node10.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html569"
+  HREF="node19.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node19.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html577"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html579"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html582"
+  HREF="node21.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node21.html">Timing</A>
+<B> Up:</B> <A NAME="tex2html576"
+  HREF="node10.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node10.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html570"
+  HREF="node19.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node19.html">Hatching Convex Polygons</A>
+ &nbsp <B>  <A NAME="tex2html578"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html580"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00530000000000000000">
+ The Analysis of an Algorithm </A>
+</H1>
+
+<P>
+In this section we will study one simple algorithm in fairly full
+detail. This should clarify  some of the basic ideas, and illustrate
+the type of information we are trying to extract in more general
+situations.  The problem is ``trivial'', but even so, the
+calculations to which we are led, are not completely trivial.
+
+<P>
+Algorithms are methods for solving problems, so we had better start by
+stating the problem:
+
+<P>
+<BLOCKQUOTE>
+Given a list<!-- MATH
+ $(k_1,k_2,\ldots,k_n)$
+ -->
+(<I>k</I><SUB>1</SUB>, <I>k</I><SUB>2</SUB>,..., <I>k</I><SUB>n</SUB>) of numbers, find the smallest one.
+
+</BLOCKQUOTE>
+
+<P>
+This is hardly a profound problem and there is no difficulty in finding
+an algorithm to solve it. The following procedure works: 
+
+<P>
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ algorithm min(x,n) // to find the minimum of x =(x(1),...,x(n)) 
+<BR>
+begin
+<BR>&nbsp;&nbsp;min = x(1) 
+<BR>&nbsp;&nbsp;for i = 2 to n begin
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;if ( x(i)&lt; min )
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min = x(i)
+<BR>&nbsp;&nbsp;end 
+<BR>&nbsp;&nbsp;return (min)
+<BR>
+end
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>
+<P>
+In words, we keep our ``minimum element so far'' in <code>min</code>. We put it
+equal to <code>x(1)</code> at the start and then move along the list, updating
+<code>min</code> whenever we come to an element that is smaller than it. When
+we get to the end of the list <code>min</code> will contain the smallest
+element. Strictly speaking we should now present a <EM>proof</EM> of the
+algorithm, but I think that we can get away with the word `trivial' in
+this case.
+
+<P>
+Now that we have an algorithm for solving the problem the next job is to
+evaluate it. Such evaluations are normally competitive -- there are a
+number of possible algorithms for solving a problem and we have to
+decide which is best. In this case we just have the one method and it is
+difficult to think of a significantly different way to solve the
+problem. Nevertheless we will proceed with our evaluation.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html583"
+  HREF="node21.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node21.html">Timing</A>
+<LI><A NAME="tex2html584"
+  HREF="node22.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node22.html">A More Precise Analysis</A>
+<LI><A NAME="tex2html585"
+  HREF="node23.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node23.html">Computing detours: <I>A</I><SUP>n</SUP><SUB>k</SUB></A>
+<LI><A NAME="tex2html586"
+  HREF="node24.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node24.html">Approximating <I>H</I><SUB>n</SUB></A>
+<LI><A NAME="tex2html587"
+  HREF="node25.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node25.html">Conclusion</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html581"
+  HREF="node21.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node21.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html575"
+  HREF="node10.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node10.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html569"
+  HREF="node19.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node19.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html577"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html579"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html582"
+  HREF="node21.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node21.html">Timing</A>
+<B> Up:</B> <A NAME="tex2html576"
+  HREF="node10.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node10.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html570"
+  HREF="node19.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node19.html">Hatching Convex Polygons</A>
+ &nbsp <B>  <A NAME="tex2html578"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html580"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

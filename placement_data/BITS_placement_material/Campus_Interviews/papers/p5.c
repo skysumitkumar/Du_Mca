@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <math.h>
+#define MAX_SIZE 1000
+#define Pi 3.141592654
+#define f(x) (x)
+#define den(x) (sqrt(1-(x*x)))
+float Gauss_Chebyshev(float,float,int);
+
+main()
+{
+	int n,k;
+	float a,b,result=0;
+	printf("\nEnter the interval limits : ");
+    scanf("%f %f",&a,&b);
+	printf("\nEnter the value of n(greater than 1) : ");
+	scanf(" %d",&n);
+	k=n-1;
+	if(k<1)
+	exit();
+
+    result = Gauss_Chebyshev(a,b,n);
+	printf("\n\nThe Value of integral is : %f\n\n",result);
+}
+
+float Gauss_Chebyshev(float a,float b,int n)
+{
+	int i=0;
+	 float A,x[MAX_SIZE],t[MAX_SIZE],r=0,sum=0;
+	 for(i=0;i<=n;i++)
+	 {
+		 t[i] = (float) cos( ((float)((2*i)+1)/((2*n)+2)) * Pi);
+		 //printf("\t%f",t[i]);
+	 }
+	 A=(float)Pi/(n+1);
+      for(i=0;i<=n;i++)
+	  {
+			  x[i] = a + (b-a)*(t[i]+1)/2;
+             //printf("\t%f",x[i]);
+	  }
+	  sum=0;
+      for(i=0;i<=n;i++)
+	  {
+		//sum = sum + (float)((f(x[i])/den(x[i]))*den(t[i]));   Error Evaluating...
+		  sum = sum + (float)(f(x[i])*den(t[i]));
+	   //	printf("%f\t",sum);
+	  }
+	  r = A  * sum * (b-a)/2;
+	  return r;
+}

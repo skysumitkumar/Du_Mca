@@ -1,0 +1,54 @@
+#include 	<stdio.h>
+
+int	main(void)
+{
+FILE	*in;
+char	flag,version,coding,bits,fname[BUFSIZ];
+int	xmin,ymin,xmax,ymax, xres, yres;
+
+
+	printf("Enter PCX file>>");
+	gets(fname);
+
+	if ((in=fopen(fname,"r"))==NULL)
+	{
+		printf("Can't find file %s\n",fname);
+		return(1);
+	}
+
+	fread(&flag,1,1,in); 	/* read 1 byte from file and put into flag */
+	fread(&version,1,1,in);	/* read 1 byte from file and put in version */
+
+	fread(&coding,1,1,in);	/* read 1 byte from file and put into coding */
+	fread(&bits,1,1,in); /* read 1 byte from file and put into bits */
+
+	fread(&xmin,2,1,in); /* read 2 bytes from file and put into xmin */
+	fread(&ymin,2,1,in); /* read 2 bytes from file and put into ymin */
+
+	fread(&xmax,2,1,in); /* read 2 bytes from file and put into xmax */
+	fread(&ymax,2,1,in); /* read 2 bytes from file and put into ymax */
+
+	printf("Flag %X\n",flag);
+	printf("Version %X\n",version);
+
+	printf("Coding %X\n",coding);
+
+	printf("Bits per pixel %X (%d decimal)\n",bits,bits);
+	printf("Min (%d,%d) Max (%d,%d)\n",xmin,ymin,xmax,ymax);
+
+	fread(&xres,2,1,in); /* read 2 bytes from file and put into xres */
+	fread(&yres,2,1,in); /* read 2 bytes from file and put into yres */
+	printf("Resolution (%d,%d)\n",xres,yres);
+
+	fclose(in);
+	return(0);
+}
+
+
+
+
+
+
+
+
+

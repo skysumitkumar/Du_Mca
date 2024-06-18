@@ -1,0 +1,39 @@
+#include 	<stdio.h>
+
+int	main(void)
+{
+FILE	*in;
+char	fname[BUFSIZ], str[BUFSIZ];
+int	x,y;
+char	color_index, aspect, packed;
+
+	printf("Enter GIF file>>");
+	gets(fname);
+
+	if ((in=fopen(fname,"r"))==NULL)
+	{
+		printf("Can't find file %s\n",fname);
+		return(1);
+	}
+
+	fread(str,3,1,in);	str[3]=NULL; /* terminate string */
+	printf("Signature: %s\n",str);
+	fread(str,3,1,in);	str[3]=NULL; /* terminate string */
+	printf("Version: %s\n",str);
+
+	fread(&x,2,1,in);	str[3]=NULL; /* terminate string */
+	printf("Screen width: %d\n",x);
+	fread(&y,2,1,in);	str[3]=NULL; /* terminate string */
+	printf("Screen height: %d\n",y);
+
+	fread(&packed,1,1,in);
+	printf("Packed: %x\n",packed & 0xff); /* mask-off the bottom 8 bits */
+	fread(&color_index,1,1,in);
+	printf("Color index: %d\n",color_index);
+	fread(&aspect,1,1,in);
+	printf("Aspect ratio: %d\n",aspect);
+
+	fclose(in);
+	return(0);
+}
+

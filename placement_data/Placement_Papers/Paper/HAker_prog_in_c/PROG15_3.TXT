@@ -1,0 +1,35 @@
+/* Encryt.c */
+#include <stdio.h>
+
+int	main(void)
+{
+FILE *f;
+char	fname[BUFSIZ],str[BUFSIZ];
+int	key,ch,i=0;
+
+	printf("Enter output file name >>");
+	gets(fname);
+
+	if ((f=fopen(fname,"w"))==NULL)
+	{
+		puts("Cannot open input file");
+		return(1);
+	}
+	printf("Enter text to be save to file>>");
+	gets(str);
+
+	printf("Enter key value >>");
+	scanf("%d",&key);
+
+	ch=str[0];
+
+	do
+	{
+		ch=ch^key; /* Exclusive-OR character with itself */
+		putc(ch,f);
+		i++;
+		ch=str[i];
+	} while (ch!=NULL); /* test if end of string */
+	fclose(f);
+	return(0);
+}

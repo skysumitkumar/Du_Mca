@@ -1,0 +1,1143 @@
+
+<!-- RESG: 7/7/2005 4:25:38 AM - RESX: 1/1/0001 12:00:00 AM -->
+<!-- (c) 2005 Microsoft Corporation. All Rights Reserved -->
+
+<html><head><link type='text/css' rel='Stylesheet' href="d3e6e07eD.css" tppabs="http://support.microsoft.com/mnpresource/d3e6e07eD.css"><link rel='stylesheet' type='text/css' href="b433593aD.css" tppabs="http://support.microsoft.com/mnpresource/b433593aD.css"><script language='JavaScript'>var doImage=doImage;var TType=TType;function mhHover(tbl,idx,cls){var t,d;if(document.getElementById)t=document.getElementById(tbl);else t=document.all(tbl);if(t==null)return;if(t.getElementsByTagName)d=t.getElementsByTagName("TD");else d=t.all.tags("TD");if(d==null)return;if(d.length<=idx)return;d[idx].className=cls;}function setMSResearch(){var time=new Date();if(document.cookie.indexOf('msresearch=1 ')==-1){document.cookie='msresearch='+time.getTime()+':'+escape(document.location)+':'+escape(document.referrer)+'; path=/; domain=.microsoft.com; ';}}function footerjs(doc){if(doImage==null){var tt=TType==null?"PV":TType;doc.write('<layer visibility="hide"><div style="display:none"><img src="http://c.microsoft.com/trans_pixel.asp?source=localhost&TYPE=' + tt + '&p=MNPGenerator" width=0 height=0 hspace=0 vspace=0 border=0></div></layer>');}if((document.cookie.indexOf('msresearch=1 ')==-1)&&(document.cookie.indexOf('msresearch=')!=-1)){setInterval("setMSResearch()",1000);}}</script><script type="text/javascript" src="common.js-2" tppabs="http://support.microsoft.com/common/script/gsfx/common.js?2"></script><title>TCP/IP and NBT configuration parameters for Windows XP</title><meta name="robots" content="nofollow,noarchive"><meta name="KBParents" content="5917 3221 1173 3223 6728 "><meta name="Keywords" content="kbinfo kbregistry kbenv kbnetwork kbsyssettings KB314053"><meta name="Description" content="Describes how to use Registry Editor to change TCP/IP and NBT configuration parameters in the rare circumstance where you must use this configuration. Defines standard and optional parameters and describes the parameters that should not be changed."><meta name="MS.LOCALE" content="en"><meta http-equiv="content-type" content="text/html; charset=utf-8"><xmlreader><link rel="stylesheet" type="text/css" href="default.css-2.css" tppabs="http://support.microsoft.com/common/css/default/default.css?2"><link rel="stylesheet" type="text/css" href="xmlContent.css-2.css" tppabs="http://support.microsoft.com/common/css/default/xmlContent.css?2"><link rel="stylesheet" type="text/css" href="override.css-2.css" tppabs="http://support.microsoft.com/common/css/default/ie/override.css?2"></xmlreader><style type="text/css">#SendFeedback_tr{display:none;}</style><script type="text/javascript">var PersonalizationInfo='a2IzMTQwNTMIZW4tdXMIVENQL0lQIGFuZCBOQlQgY29uZmlndXJhdGk_';SaveToFavoritesData.savingMsg='Saving Favorites';SaveToFavoritesData.connectionErrorMsg='Cannot Connect';SaveToFavoritesData.savedMsg='Favorites Saved';SaveToFavoritesData.noSaveErrorMsg='Cannot Save';SaveToFavoritesData.surveyUrl='\x2fcommon\x2fsurvey.aspx\x3fscid\x3dsw\x3ben\x3b1076\x26surveystyle\x3dpopup\x26showpage\x3d1\x26site\x3dgn\x26siteregion\x3den-us\x26url\x3d%2fdefault.aspx%2fkb%2f314053%2f\x26p0\x3dkb\x26p1\x3den-us\x26p2\x3d314053';SaveToFavoritesData.noCookieUrl='\x2fgp\x2fnocookies\x2f';var gCookieDomain='';</script></head><body onload="thisLoad();" onunload="thisUnload();"><script type="text/javascript">if (self.name == "MNPMainFrame") top.location.href = self.location.href;</script><div id="msviMasthead" xmlns:Utility="http://www.microsoft.com/MSCOM/VisualIdentity/Utility"><table cellpadding="0" cellspacing="0" width="100%" border="0"><tr><td width="100%"><table cellpadding="0" cellspacing="0" width="100%" height="22" border="0"><tr><td id="msviRegionIdGraphic" bgcolor="#4B92D9"><a href="international.aspx.htm" tppabs="http://support.microsoft.com/common/international.aspx"><img src="99b166acD.gif" tppabs="http://support.microsoft.com/mnpresource/99b166acD.gif" height="22" alt="United States" title="Language Options" border="0"></a></td><td width="100%" bgcolor="#1E77D3"><img src="d80d0ecfD.gif" tppabs="http://support.microsoft.com/mnpresource/d80d0ecfD.gif" width="250" height="22" alt="*" title=""></td></tr></table></td><td id="msviGlobalToolbar" bgcolor="#1E77D3" height="22" nowrap dir="ltr" align="left"><table cellpadding="0" cellspacing="0" border="0"><tr><td class="gt0" nowrap onmouseover="mhHover('msviGlobalToolbar', 0, 'gt1')" onmouseout="mhHover('msviGlobalToolbar', 0, 'gt0')"><a href="javascript:if(confirm('http://www.microsoft.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.microsoft.com/'" tppabs="http://www.microsoft.com/">Microsoft.com Home</a></td><td class="gtsep">|</td><td class="gt0" nowrap onmouseover="mhHover('msviGlobalToolbar', 2, 'gt1')" onmouseout="mhHover('msviGlobalToolbar', 2, 'gt0')"><a href="en-us.mspx.htm" tppabs="http://support.microsoft.com/library/toolbar/3.0/sitemap/en-us.mspx">Site Map</a></td></tr></table></td></tr><tr valign="top"><td width="100%"><table cellpadding="0" cellspacing="0" width="100%" height="42" border="0" style="height: expression(parentElement.offsetHeight)"><tr valign="top"><td id="msviBrandBanner" bgcolor="0A6CCE"><a href="javascript:if(confirm('http://www.microsoft.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.microsoft.com/'" tppabs="http://www.microsoft.com/"><img src="ms_masthead_ltr.gif" tppabs="http://support.microsoft.com/library/toolbar/3.0/images/banners/ms_masthead_ltr.gif" width="136" height="42" alt="Microsoft" title="" border="0"></a></td><td width="100%" bgcolor="#FFFFFF"><img src="a0250c0dD.gif" tppabs="http://support.microsoft.com/mnpresource/a0250c0dD.gif" width="250" height="42" alt="*" title=""></td></tr></table></td><td id="msviGlobalSearch" bgcolor="#FFFFFF">Search Microsoft.com for:<br><form id="msviSearchForm" action="javascript:if(confirm('http://search.microsoft.com/search/results.aspx?st=b&na=88&View=en-us&qu=Go  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://search.microsoft.com/search/results.aspx?st=b&na=88&View=en-us&qu=Go'" tppabs="http://support.microsoft.com/library/toolbar/3.0/search.aspx?View=en-us&charset=iso-8859-1&qu=Go"><input type="hidden" name="View" value="en-us"><input type="hidden" name="charset" value="iso-8859-1"><nobr><div style="height: 18px"><input name="qu" id="msviSearchBox" maxlength="255"><input id="msviGoButton" type="submit" value="Go"></div></nobr></form></td></tr></table><table id="msviSubbanner" bgcolor="#003399" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td><img src="4101ccf1D.gif" tppabs="http://support.microsoft.com/mnpresource/4101ccf1D.gif" width="467" height="26" alt="Help and Support" title="" border="0"></td><td width="100%">&nbsp;</td></tr></table><div id="msviLocalToolbar"><table cellpadding="0" cellspacing="0" width="100%" height="19" border="0"><tr><td nowrap id="msviHomePageLink"><a href="index.htm" tppabs="http://support.microsoft.com/">Help and Support Home</a></td><td><span class="ltsep">|</span></td><td class="lt0" nowrap onmouseover="mhHover('msviLocalToolbar', 2, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 2, 'lt0')"><a href="-target=hub.htm" tppabs="http://support.microsoft.com/select/?target=hub">Select a Product</a></td><td><span class="ltsep">|</span></td><td class="lt0" nowrap onmouseover="mhHover('msviLocalToolbar', 4, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 4, 'lt0')"><a href="-adv=1.htm" tppabs="http://support.microsoft.com/search/?adv=1">Search (KB)</a></td><td width="100%"></td></tr></table></div></div><table cellpadding="0" cellspacing="0" border="0" width="100%" dir="LTR"><tr valign="top">          <td width="100%" dir="LTR">        <XMLREADER><div id="contentArea"><div id="mainRow"><div class="primaryTable"><table cellpadding="0" cellspacing="0" class="primaryTable"><tr><td class="primaryMainColumn"><div id="mainColumn"><div id="kb" class="kb"><div id="default" class="default"><!-- - -KB 3 start- - --><a id="toc"></a><h1 class="title">TCP/IP and NBT configuration parameters for Windows XP</h1><div class="appliesToLink"><a href="#appliesto">View products that this article applies to.</a></div><div class="articleProperty"><table><tr><td class="label">Article ID</td><td class="text">:</td><td class="text">314053</td></tr><tr><td class="label">Last Review</td><td class="text">:</td><td class="text">October 26, 2004</td></tr><tr><td class="label">Revision</td><td class="text">:</td><td class="text">1.0</td></tr></table></div><div class="notice">This article was previously published under Q314053</div><div class="notice"><b>Important</b>   This article contains information about modifying the registry. Before you modify the registry, make sure to back it up and make sure that you understand how to restore the registry if a problem occurs. For information about how to back up, restore, and edit the registry, click the following article number to view the article in the Microsoft Knowledge Base: <div class="indent"><span><a class="KBlink" href="index-15.htm" tppabs="http://support.microsoft.com/kb/256986/">256986</a></span> Description of the Microsoft Windows Registry</div><br><div class="notice">
+
+For a Microsoft Windows 2000 version of this article, see <span><a class="KBlink" href="index-12.htm" tppabs="http://support.microsoft.com/kb/120642/">120642</a></span>.
+
+</div></div><div class="toc"><h5>On this page</h5><table class="tallTable"><tr><td class="image"><a href="#kb1"><img src="downArrow.gif" tppabs="http://support.microsoft.com/library/images/support/kbgraphics/PUBLIC/EN-US/downArrow.gif" alt="INTRODUCTION" title="INTRODUCTION"></a></td><td class="text" colspan="2"><a href="#kb1">INTRODUCTION</a></td></tr><tr><td class="image"><a href="#kb2"><img src="downArrow.gif" tppabs="http://support.microsoft.com/library/images/support/kbgraphics/PUBLIC/EN-US/downArrow.gif" alt="MORE INFORMATION" title="MORE INFORMATION"></a></td><td class="text" colspan="2"><a href="#kb2">MORE INFORMATION</a></td></tr><tr class="subHeader"><td class="space"> </td><td class="image"><a href="#XSLTH3136121123120121120120"><img src="downArrow.gif" tppabs="http://support.microsoft.com/library/images/support/kbgraphics/PUBLIC/EN-US/downArrow.gif" alt="Standard parameters that you can configure by using Registry Editor" title="Standard parameters that you can configure by using Registry Editor"></a></td><td class="text"><a href="#XSLTH3136121123120121120120">Standard parameters that you can configure by using Registry Editor</a></td></tr><tr class="subHeader"><td class="space"> </td><td class="image"><a href="#XSLTH3146121123120121120120"><img src="downArrow.gif" tppabs="http://support.microsoft.com/library/images/support/kbgraphics/PUBLIC/EN-US/downArrow.gif" alt="Optional parameters that you can configure by using Registry Editor" title="Optional parameters that you can configure by using Registry Editor"></a></td><td class="text"><a href="#XSLTH3146121123120121120120">Optional parameters that you can configure by using Registry Editor</a></td></tr><tr class="subHeader"><td class="space"> </td><td class="image"><a href="#XSLTH3124120125120121120120"><img src="downArrow.gif" tppabs="http://support.microsoft.com/library/images/support/kbgraphics/PUBLIC/EN-US/downArrow.gif" alt="Parameters that are configurable from the properties of a network connection" title="Parameters that are configurable from the properties of a network connection"></a></td><td class="text"><a href="#XSLTH3124120125120121120120">Parameters that are configurable from the properties of a network connection</a></td></tr><tr class="subHeader"><td class="space"> </td><td class="image"><a href="#XSLTH3146120125120121120120"><img src="downArrow.gif" tppabs="http://support.microsoft.com/library/images/support/kbgraphics/PUBLIC/EN-US/downArrow.gif" alt="Non-configurable parameters" title="Non-configurable parameters"></a></td><td class="text"><a href="#XSLTH3146120125120121120120">Non-configurable parameters</a></td></tr><tr class="subHeader"><td class="space"> </td><td class="image"><a href="#XSLTH3174120125120121120120"><img src="downArrow.gif" tppabs="http://support.microsoft.com/library/images/support/kbgraphics/PUBLIC/EN-US/downArrow.gif" alt="NBT" title="NBT"></a></td><td class="text"><a href="#XSLTH3174120125120121120120">NBT</a></td></tr><tr><td class="image"><a href="#appliesto"><img src="downArrow.gif" tppabs="http://support.microsoft.com/library/images/support/kbgraphics/PUBLIC/EN-US/downArrow.gif" alt="APPLIES TO" title="APPLIES TO"></a></td><td class="text" colspan="2"><a href="#appliesto">APPLIES TO</a></td></tr></table></div><div class="section"><a id="kb1"></a><h2 class="subTitle">INTRODUCTION</h2><div class="sbody">
+This article defines all the registry parameters that are used to configure
+the protocol driver, Tcpip.sys. Tcpip.sys implements the standard TCP/IP network protocols.
+<br><br>
+The TCP/IP protocol suite implementation for Windows XP reads all its configuration data from the registry. This information is written to the registry by the Network tool in Control Panel as part of the Setup process. Some of this information is also supplied by the Dynamic Host Configuration Protocol (DHCP) Client service if the DHCP Client service is enabled.<br><br>
+
+The implementation of the protocol suite should perform correctly and efficiently in most environments by using only the configuration information that is gathered by DHCP and by the Network tool in Control Panel. Optimal default values for all other configurable aspects of the protocols have been encoded in the drivers.
+<br><br>
+There may be some unusual circumstances in customer installations where changes to certain default values are appropriate. To handle these cases, optional registry parameters can be created to modify the default behavior of some parts of the protocol drivers.<br><br><b>Caution</b> The Windows XP TCP/IP implementation is largely self-tuning. Adjusting registry parameters without careful study may reduce your computer's performance.
+<div class="topOfPage"><table><tr><td class="image"><a href="#toc"><img src="upArrow.gif" tppabs="http://support.microsoft.com/library/images/support/kbgraphics/public/en-us/upArrow.gif" alt="Back to the top" title="Back to the top"></a></td><td class="text"><a href="#toc">Back to the top</a></td></tr></table></div></div><a id="kb2"></a><h2 class="subTitle">MORE INFORMATION</h2><div class="sbody"><b>Warning</b>   If you use Registry Editor incorrectly, you may cause serious problems that may require you to reinstall your operating system. Microsoft cannot guarantee that you can solve problems that result from using Registry Editor incorrectly. Use Registry Editor at your own risk.<br><br>
+
+To change these parameters, follow these steps:
+<table class="list"><tr><td class="number">1.</td><td class="text">Click <strong class="uiterm">Start</strong>, click <strong class="uiterm">Run</strong>, and then type <span class="userInput">regedit</span> in the <strong class="uiterm">Open</strong> box.</td></tr><tr><td class="number">2.</td><td class="text">Locate the following registry key:<div class="indent">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services</div></td></tr><tr><td class="number">3.</td><td class="text">Click <strong class="uiterm">Add Value</strong> on the <strong class="uiterm">Edit</strong> menu, type the value the value that you want, and then set the value type under <strong class="uiterm">Data Type</strong>.</td></tr><tr><td class="number">4.</td><td class="text">Click <strong class="uiterm">OK</strong>.</td></tr><tr><td class="number">5.</td><td class="text">Quit Registry Editor.</td></tr><tr><td class="number">6.</td><td class="text">Restart the computer to make the change take effect.</td></tr></table>
+
+all the TCP/IP parameters are registry values that are located under one of two different subkeys of
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services<div class="indent">
+Tcpip\Parameters<br>
+Tcpip\Parameters\Interfaces\<var>ID for Adapter</var></div><b>Note</b><var>ID for Adapter</var> is the network adapter that TCP/IP is bound to. To determine the relationship between an Adapter ID and a network connection, view HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Network\{4D36E972-E325-11CE-BFC1-08002BE10318}\&lt;ID for Adapter&gt;\Connection. The <strong class="uiterm">Name</strong> value in these keys provides the friendly name for a network connection that is used in the Network Connections folder. Values under these keys are specific to each adapter. Parameters that have a  DHCP configured value and a statically configured value may or may not exist. Their existence depends on whether the computer or the adapter is DHCP configured and whether static override values are specified. You must restart the computer for a change to take effect.<a id="XSLTH3136121123120121120120"></a><h3>Standard parameters that you can configure by using Registry Editor</h3>
+
+The following parameters are installed with default values by the Network tool in Control Panel during the installation of the TCP/IP components. You can use Registry Editor to modify them.<br><br>DatabasePath
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_EXPAND_SZ - Character string<br>
+     Valid Range: A valid Windows NT file path<br>
+     Default: %SystemRoot%\System32\Drivers\Etc<br>
+     Description: This parameter specifies the
+     path of the standard Internet database files
+     (HOSTS, LMHOSTS, NETWORKS, PROTOCOLS). It is
+     used by the Windows Sockets interface.
+</div>
+
+ForwardBroadcasts
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Boolean<br>
+     Valid Range: 0 or 1 (False or True)<br>
+     Default: 0 (False)<br>
+     Description: Forwarding of broadcasts is not
+     supported. This parameter is ignored.
+</div>
+
+UseZeroBroadcast
+<div class="indent">
+     Key: Tcpip\Parameters\Interfaces\<var>ID for Adapter</var><br>
+     Value Type: REG_DWORD - Boolean<br>
+     Valid Range: 0 or 1 (False or True)<br>      Default: 0 (False)<br>
+     Description: If this parameter is set to 1
+     (True), the IP will use zeros-broadcasts
+     (0.0.0.0) instead of ones-broadcasts
+     (255.255.255.255). Most computers use ones-broadcasts, but some computers that are derived from BSD
+     implementations use zeros-broadcasts. Computers
+     that use different broadcasts do not
+     interoperate well on the same network.</div><a id="XSLTH3146121123120121120120"></a><h3>Optional parameters that you can configure by using Registry Editor</h3>
+
+Generally, these parameters do not exist in the registry. You can create them
+to modify the default behavior of the TCP/IP protocol driver.<br><br>
+ArpAlwaysSourceRoute
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Boolean<br>
+     Valid Range: 0,1 (False or True)<br>
+     Default: 0 (False)<br>
+     Description: If you set this parameter to 1,
+     TCP/IP transmits ARP queries with
+     source routing enabled on Token Ring
+     networks. By default, the stack transmits ARP
+     queries without source routing first and
+     retries with source routing enabled if no
+     reply was received.</div>
+
+ArpUseEtherSNAP
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Boolean<br>
+     Valid Range: 0,1 (False or True)<br>
+     Default: 0 (False)<br>
+     Description: If you set this parameter to 1,
+     TCP/IP transmits Ethernet packets
+     using 802.3 SNAP encoding. By default, the
+     stack transmits packets in DIX Ethernet
+     format. It will always receive both formats.</div>
+
+DefaultTTL
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Number of<br>
+     seconds/hops<br>
+     Valid Range: 1-255<br>
+     Default: 128 for Windows XP<br>
+     Description: This parameter specifies the default Time To
+     Live (TTL) value that is set in the header of
+     outgoing IP packets. The TTL determines the
+     maximum time that an IP packet can live
+     in the network without reaching its
+     destination. It is effectively a limit on the
+     number of routers an IP packet can pass
+     through before it is discarded.</div>
+
+EnableDeadGWDetect
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Boolean<br>
+     Valid Range: 0,1 (False, True)<br>
+     Default: 1 (True)<br>
+     Description: If you set this parameter to 1,
+     TCP uses the Dead Gateway Detection feature.
+     With this feature, TCP requests IP to
+     change to a backup gateway if it retransmits
+     a segment several times without receiving a
+     response. Backup gateways may be defined in
+     the <strong class="uiterm">Advanced</strong> section of the <strong class="uiterm">TCP/IP
+     configuration</strong> dialog box in the Network Control
+     Panel.
+</div>
+
+EnablePMTUBHDetect
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Boolean<br>
+     Valid Range: 0,1 (False, True)<br>
+     Default: 0 (False)<br>
+     Description: If you set this parameter to 1
+     (True), TCP tries to detect "Black
+     Hole" routers while doing Path MTU Discovery.
+     A "Black Hole" router does not return ICMP
+     Destination Unreachable messages when it
+     must fragment an IP datagram with the
+     Don't Fragment bit set. TCP must
+     receive these messages to perform Path MTU
+     Discovery. With this feature enabled, TCP
+     will try to send segments without the Don't
+     Fragment bit set if several retransmissions
+     of a segment are unacknowledged. If the
+     segment is acknowledged, the MSS
+     will be decreased and the Don't Fragment bit
+     will be set in future packets on the
+     connection. Enabling black hole detection
+     increases the maximum number of
+     retransmissions that are performed for a particular
+     segment.
+</div>
+
+EnablePMTUDiscovery
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Boolean<br>
+     Valid Range: 0,1 (False, True)<br>
+     Default: 1 (True)<br>
+     Description: If you set this parameter to 1
+     (True), TCP tries to discover the
+     Maximum Transmission Unit (MTU or largest
+     packet size) over the path to a remote host.
+     By discovering the Path MTU and limiting TCP
+     segments to this size, TCP can eliminate
+     fragmentation at routers along the path that
+     connect networks with different MTUs.
+     Fragmentation adversely affects TCP
+     throughput and causes network congestion.  If you set
+     this parameter to 0, an MTU of 576
+     bytes is used for all connections that are
+     not to computers on the local subnet.</div>
+
+ForwardBufferMemory
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Number of bytes<br>
+     Valid Range: <var>network MTU</var> - <var>some reasonable<br>
+     value smaller than 0xFFFFFFFF </var><br>
+     Default: 74240 (sufficient for fifty 1480-byte<br>
+     packets, rounded to a multiple of 256)<br>
+     Description: This parameter determines how
+     much memory IP allocates to store packet data
+     in the router packet queue. When this buffer
+     space is filled, the router starts to discard
+     packets at random from its queue. Packet
+     queue data buffers are 256 bytes in length. Therefore, the value of this parameter must be a
+     multiple of 256. Multiple buffers are chained
+     together for larger packets. The IP header
+     for a packet is stored separately. This
+     parameter is ignored and no buffers are
+     allocated if the IP router is not enabled.
+</div>
+
+IGMPLevel
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Number<br>
+     Valid Range: 0,1,2<br>
+     Default: 2<br>
+     Description: This parameter determines how well the computer supports IP
+     multicasting and participates in the Internet
+     Group Management Protocol. At level 0, the
+     computer provides no multicast support. At
+     level 1, the computer can only send IP
+     multicast packets. At level 2, the computer can
+     send IP multicast packets and fully
+     participate in IGMP to receive multicast
+     packets.</div>
+
+KeepAliveInterval
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Time in milliseconds<br>
+     Valid Range: 1 - 0xFFFFFFFF<br>
+     Default: 1000 (one second)<br>
+     Description: This parameter determines the
+     interval that separates keepalive
+     retransmissions until a response is received.
+     After a response is received, KeepAliveTime again controls the delay until
+     the next keepalive transmission. The
+     connection is aborted after the number
+     of retransmissions that are specified by
+     TcpMaxDataRetransmissions are
+     unanswered.</div>
+
+KeepAliveTime
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Time in milliseconds<br>
+     Valid Range: 1 - 0xFFFFFFFF<br>
+     Default: 7,200,000 (two hours)<br>
+     Description: The parameter controls how frequently
+     TCP tries to verify that an idle
+     connection is still intact by sending a
+     keepalive packet. If the remote computer is
+     still reachable and functioning, the remote computer
+     acknowledges the keepalive transmission.
+     By default, keepalive packets are not sent.
+     A program can turn on this feature
+     on a connection.
+</div>
+
+MTU
+<div class="indent">
+     Key: Tcpip\Parameters\Interfaces\<var>ID for Adapter</var><br>
+     Value Type: REG_DWORD Number<br>
+     Valid Range: 68 - <var>the MTU of the underlying
+     network</var><br>
+     Default: 0xFFFFFFFF<br>
+     Description: This parameter overrides the
+     default Maximum Transmission Unit (MTU) for a
+     network interface. The MTU is the maximum
+     packet size in bytes that the transport transmits over the underlying network. The
+     size includes the transport header. An IP datagram can span multiple packets.
+     Values larger than the default value for the
+     underlying network cause the
+     transport to use the network default MTU.
+     Values smaller than 68 cause the
+     transport to use an MTU of 68.
+</div>
+
+NumForwardPackets
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD Number<br>
+     Valid Range: 1 - <var>some reasonable value<br>
+     smaller than 0xFFFFFFFF</var>
+     Default: 50<br>
+     Description: This parameter determines the
+     number of IP packet headers that are allocated for the
+     router packet queue. When all headers are in
+     use, the router begins to discard packets
+     at random from the queue. This value should
+     be at least as large as the
+     ForwardBufferMemory value divided by the
+     maximum IP data size of the networks that are
+     connected to the router. This value must be no
+     larger than the ForwardBufferMemory value
+     divided by 256 because at least 256 bytes of
+     forward buffer memory are used for each
+     packet. The optimal number of forward packets
+     for a particular ForwardBufferMemory size depends
+     on the type of traffic that is carried on the network
+     and will be somewhere between these two
+     values. This parameter is ignored and no
+     headers are allocated if the router is not
+     enabled.
+</div>
+
+TcpMaxConnectRetransmissions
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Number<br>
+     Valid Range: 0 - 0xFFFFFFFF<br>
+     Default: 2<br>
+     Description: This parameter determines the
+     number of times that TCP retransmits a connect
+     request (SYN) before aborting the attempt.
+     The retransmission timeout is doubled with
+     each successive retransmission in a particular
+     connect attempt. The initial timeout value is
+     three seconds.
+</div><div class="topOfPage"><table><tr><td class="image"><a href="#toc"><img src="upArrow.gif" tppabs="http://support.microsoft.com/library/images/support/kbgraphics/public/en-us/upArrow.gif" alt="Back to the top" title="Back to the top"></a></td><td class="text"><a href="#toc">Back to the top</a></td></tr></table></div></div><div class="sbody">
+
+TcpMaxDataRetransmissions
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Number<br>
+     Valid Range: 0 - 0xFFFFFFFF<br>
+     Default: 5<br>
+
+     Description: This parameter controls the
+     number of times that TCP retransmits an
+     individual data segment (non-connect segment)
+     before it aborts the connection. The
+     retransmission timeout is doubled with each
+     successive retransmission on a connection. It
+     is reset when responses resume. The base
+     timeout value is dynamically determined by
+     the measured round-trip time on the
+     connection.
+</div>
+
+TcpNumConnections
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Number<br>
+     Valid Range: 0 - 0xfffffe<br>
+     Default: 0xfffffe<br>
+     Description: This parameter limits the
+     maximum number of connections that TCP
+     can have open at the same time.
+</div>
+
+TcpTimedWaitDelay
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Time in seconds<br>
+     Valid Range: 30-300 (decimal)<br>
+     Default: 0xF0 (240 decimal)<br>
+     Description: This parameter determines the time that a
+     connection stays in the TIME_WAIT state when it is closing. While a
+     connection is in the TIME_WAIT state, the socket pair cannot be re-used. This is also known as the "2MSL"  state. According to RFC, the value
+     should be two times the maximum segment lifetime on the network. See
+     RFC793 for more details.</div><div class="topOfPage"><table><tr><td class="image"><a href="#toc"><img src="upArrow.gif" tppabs="http://support.microsoft.com/library/images/support/kbgraphics/public/en-us/upArrow.gif" alt="Back to the top" title="Back to the top"></a></td><td class="text"><a href="#toc">Back to the top</a></td></tr></table></div></div><div class="sbody">
+TcpUseRFC1122UrgentPointer
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Boolean<br>
+     Valid Range: 0,1 (False, True)<br>
+     Default: 0 (False)<br>
+     Description: This parameter determines
+     whether TCP uses the RFC 1122 specification
+     for urgent data or the mode that is used by BSD-derived computers. The two mechanisms interpret
+     the urgent pointer in the TCP header and the
+     length of the urgent data differently. They
+     are not interoperable. By default, Windows XP uses the
+     BSD mode.
+</div>
+
+TcpWindowSize
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Number of bytes<br>
+     Valid Range: 0 - 0xFFFF<br>
+     Default: The smaller of 0xFFFF<br>
+     OR<br>
+     (The larger of four times the maximum TCP
+     data size on the network<br>
+     OR<br>
+     8192 rounded up to an even multiple of the
+     network TCP data size.)<br>
+     The default is 8760 for Ethernet.<br>
+     Description: This parameter determines the
+     maximum TCP receive window size of
+     the computer. The receive window specifies the
+     number of bytes a sender can transmit without
+     receiving an acknowledgment. Generally,
+     larger receive windows improve
+     performance over high (delay * bandwidth)
+     networks. For highest efficiency, the receive
+     window must be an even multiple of the TCP
+     Maximum Segment Size (MSS).</div><a id="XSLTH3124120125120121120120"></a><h3>Parameters that are configurable from the properties of a network connection</h3>
+
+The following parameters are created and modified automatically by the
+connection properties interface through user-supplied information.
+You do not have to configure them directly in the registry.
+<br><br>
+DefaultGateway
+<div class="indent">
+     Key: Tcpip\Parameters\Interfaces\<var>ID for Adapter</var><br>
+     Value Type: REG_MULTI_SZ - List of dotted
+     decimal IP addresses<br>
+     Valid Range: Any set of valid IP addresses<br>
+     Default: None<br>
+     Description: This parameter specifies the
+     list of gateways to route packets
+     that are not destined for a subnet that the computer
+     is directly connected to and that do not have a
+     more specific route. This
+     parameter overrides
+     the DhcpDefaultGateway parameter.</div>
+
+Domain
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_SZ - Character string<br>
+     Valid Range: Any valid DNS domain name<br>
+     Default: None<br>
+     Description: This parameter specifies the DNS
+     domain name of the computer. It is used by the
+     Windows Sockets interface.
+</div>
+
+EnableDhcp
+<div class="indent">
+     Key: Tcpip\Parameters\Interfaces\<var>ID for Adapter</var><br>
+     Value Type: REG_DWORD - Boolean<br>
+     Valid Range: 0 or 1 (False or True)<br>
+     Default: 0 (False)<br>
+     Description: If this parameter is set to 1
+     (True), the DHCP client service tries to use DHCP to configure the first IP interface
+     on the adapter.</div>
+
+Hostname
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_SZ - Character string<br>
+     Valid Range: Any valid DNS hostname<br>
+     Default: The computer name of the computer<br>
+     Description: This parameter specifies the DNS
+     hostname of the computer that will be returned
+     by the <b>hostname</b> command.
+</div>
+
+IPAddress
+<div class="indent">
+     Key: Tcpip\Parameters\Interfaces\<var>ID for Adapter</var><br>
+     Value Type: REG_MULTI_SZ - List of dotted-
+     decimal IP addresses<br>
+     Valid Range: Any set of valid IP addresses<br>
+     Default: None<br>
+     Description: This parameter specifies the IP
+     addresses of the IP interfaces to be bound to
+     the adapter. If the first address in the list
+     is 0.0.0.0, the primary interface on the
+     adapter will be configured from DHCP. A
+     computer with more than one IP interface for an
+     adapter is known as "logically multihomed."
+     There must be a valid subnet mask value in
+     the SubnetMask parameter for each IP address
+     that is specified in this parameter.
+</div>
+
+IPEnableRouter
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_DWORD - Boolean<br>
+     Valid Range: 0 or 1 (False or True)<br>
+     Default: 0 (False)<br>
+     Description: Setting this parameter to 1
+     (True) causes the computer to route IP packets
+     between the networks that it is connected to.
+
+</div>
+
+NameServer
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_SZ - A space delimited list
+     of dotted decimal IP addresses<br>
+     Valid Range: Any set of valid IP address<br>
+     Default: None (Blank)<br>
+     Description: This parameter specifies the DNS
+     name servers to be queried by Windows Sockets
+     to resolve names.
+</div>
+
+SearchList
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_SZ - Delimited list of
+     DNS domain name suffixes<br>
+     Valid Range: Any set of valid DNS domain name
+     suffixes<br>
+     Valid Range: Any set of valid DNS domain name suffixes<br>
+     Default: None<br>
+     Description: This parameter specifies a list
+     of domain name suffixes to append to a name
+     to be resolved by the DNS if resolution of
+     the unadorned name fails. By default, the
+     value of the Domain parameter is appended
+     only. This parameter is used by the Windows
+     Sockets interface.
+</div>
+
+SubnetMask
+<div class="indent">
+     Key: Tcpip\Parameters\Interfaces\<var>ID for Adapter</var><br>
+     Value Type: REG_MULTI_SZ - List of dotted
+     decimal IP addresses<br>
+     Valid Range: Any set of valid IP addresses.<br>
+     Default: None<br>
+     Description: This parameter specifies the
+     subnet masks to be used with the IP
+     interfaces bound to the adapter. If the first
+     mask in the list is 0.0.0.0, the primary
+     interface on the adapter will be configured
+     by DHCP. There must be a valid subnet mask
+     value in this parameter for each IP address
+     that is specified in the IPAddress parameter.
+</div><a id="XSLTH3146120125120121120120"></a><h3>Non-configurable parameters</h3>
+
+The following parameters are created and used internally by the TCP/IP components. They should never be modified by using Registry Editor. They are listed here for reference only.
+<br><br>
+DhcpDefaultGateway
+<div class="indent">
+     Key: Tcpip\Parameters\Interfaces\<var>ID for Adapter</var><br>
+     Value Type: REG_MULTI_SZ - List of dotted
+     decimal IP addresses<br>
+     Valid Range: Any set of valid IP addresses<br>
+     Default: None<br>
+     Description: This parameter specifies the
+     list of default gateways to route
+     packets that are not destined for a subnet that the
+     computer is directly connected to, and that do not have a more specific route.
+     This parameter is written by the DHCP client
+     service, if enabled. This parameter is
+     overridden by a valid DefaultGateway
+     parameter value. </div>
+
+DhcpIPAddress
+<div class="indent">
+     Key: Tcpip\Parameters\Interfaces\<var>ID for Adapter</var><br>
+     Value Type: REG_SZ - Dotted decimal IP
+     address<br>
+     Valid Range: Any valid IP address<br>
+     Default: None<br>
+     Description: This parameter specifies the
+     DHCP-configured IP address for the interface.
+     If the IPAddress parameter contains a first
+     value other than 0.0.0.0, that value
+     will override this parameter.
+</div>
+
+DhcpNameServer
+<div class="indent">
+     Key: Tcpip\Parameters<br>
+     Value Type: REG_SZ - A space delimited list
+     of dotted decimal IP addresses<br>
+     Valid Range: Any set of valid IP address<br>
+     Default: None<br>
+     Description: This parameter specifies the DNS
+     name servers to be queried by Windows Sockets
+     to resolve names. It is written by the DHCP
+     client service, if enabled. The NameServer
+     parameter overrides this parameter.
+</div>
+
+DhcpServer
+<div class="indent">
+     Key: Tcpip\Parameters\Interfaces\<var>ID for Adapter</var><br>
+     Value Type: REG_SZ - Dotted decimal IP
+     address<br>
+     Valid Range: Any valid IP address<br>
+     Default: None<br>
+     Description: This parameter specifies the IP
+     address of the DHCP server that granted the
+     lease on the IP address in the DhcpIPAddress
+     parameter.
+</div>
+
+
+DhcpSubnetMask
+<div class="indent">
+     Key: Tcpip\Parameters\Interfaces\<var>ID for Adapter</var><br>
+     Value Type: REG_SZ - Dotted decimal IP subnet
+     mask<br>
+     Valid Range: Any subnet mask that is valid
+     for the configured IP address<br>
+     Default: None<br>
+     Description: This parameter specifies the
+     DHCP-configured subnet mask for the address
+     that is specified in the DhcpIPAddress parameter.
+</div>
+
+IPInterfaceContext
+<div class="indent">
+     Key: Tcpip\Parameters\Interfaces\<var>ID for Adapter</var><br>
+     Value Type: REG_DWORD<br>
+     Valid Range: 0 - 0xFFFFFFFF<br>
+     Default: None<br>
+     Description: This parameter is written by the
+     TCP/IP driver for use by the DHCP client
+     service.
+</div>
+
+Lease
+<div class="indent">
+     Key: Tcpip\Parameters\Interfaces\<var>ID for Adapter</var><br>
+     Value Type: REG_DWORD - Time in seconds<br>
+     Valid Range: 1 - 0xFFFFFFFF<br>
+     Default: None<br>
+     Description: This parameter is used by the
+     DHCP client service to store the time (in
+     seconds) that the lease on the IP address for
+     this adapter is valid for.
+</div>
+
+LeaseObtainedTime
+<div class="indent">
+     Key: Tcpip\Parameters\Interfaces\<var>ID for Adapter</var><br>
+     Value Type: REG_DWORD - Absolute time in
+     seconds since midnight of 1/1/70<br>
+     Valid Range: 1 - 0xFFFFFFFF<br>
+     Default: None<br>
+     Description: This parameter is used by the
+     DHCP client service to store the time that the lease on the IP address for this
+     adapter obtained. </div>
+
+LeaseTerminatesTime
+<div class="indent">
+     Key: Tcpip\Parameters\Interfaces\<var>ID for Adapter</var><br>
+     Value Type: REG_DWORD - Absolute time in
+     seconds since midnight of 1/1/70<br>
+     Valid Range: 1 - 0xFFFFFFFF<br>
+     Default: None<br>
+     Description: This parameter is used by the
+     DHCP client service to store the time that the lease on the IP address for this
+     adapter expires.
+</div>
+
+LLInterface
+<div class="indent">
+     Key: Tcpip\Parameters\Interfaces\<var>ID for Adapter</var><br>
+     Value Type: REG_SZ - NT device name<br>
+     Valid Range: A valid NT device name<br>
+     Default: Empty string (Blank)<br>
+     Description: This parameter is used to direct
+     IP to bind to a different link-layer protocol
+     than the built-in ARP module. The value of the
+     parameter is the name of the Windows NT-based
+     device that IP should bind to. This parameter
+     is used in conjunction with the RAS component,
+     for example.
+</div>
+
+T1
+<div class="indent">
+     Key: Tcpip\Parameters\Interfaces\<var>ID for Adapter</var><br>
+     Value Type: REG_DWORD - Absolute time in
+     seconds since midnight of 1/1/70<br>
+     Valid Range: 1 - 0xFFFFFFFF<br>
+     Default: None<br>
+     Description: This parameter is used by the
+     DHCP client service to store the time that the service will first try to renew the
+     lease on the IP address for the adapter. To renew the lease, he service contacts the server that granted the lease.
+</div>
+
+T2
+<div class="indent">
+     Key: Tcpip\Parameters\Interfaces\<var>ID for Adapter</var><br>
+     Value Type: REG_DWORD - Absolute time in
+     seconds since midnight of 1/1/70<br>
+     Valid Range: 1 - 0xFFFFFFFF<br>
+     Default: None<br>
+     Description: This parameter is used by the
+     DHCP client service to store the time that the service will try to renew the lease
+     on the IP address for the adapter. To renew the lease, the service broadcasts a renewal request. Time T2
+     should be reached only if the service was not able to renew the lease with the
+     original server.
+</div><a id="XSLTH3174120125120121120120"></a><h3>NBT</h3>
+
+all the NBT parameters are registry values that are located under one of two different subkeys of
+<div class="indent"><b>HKEY_LOCAL_MACHINE\computer\CurrentControlSet\Services</b><br><br>
+
+   Netbt\Parameters<br>
+   Netbt\Parameters\Interfaces\Tcpip_<var>ID for Adapter</var></div>
+where <var>ID for Adapter</var> represents the network adapter that NBT is bound to. The relationship between an Adapter ID and Network Connection can be determined by examining HKEY_LOCAL_MACHINE\computer\CurrentControlSet\Control\Network\{4D36E972-E325-11CE-BFC1-08002BE10318}\<var>ID for Adapter</var>\Connection. The Name value in these keys provides the name that is used for a network connection used in the Network Connections folder.
+
+Values under the latter keys are specific to each adapter. If the computer is configured through DHCP, a change in parameters takes effect if the command <b>ipconfig /renew</b> is issued in a command shell. Otherwise, you must restart the computer for a change in any of these parameters to take effect.
+
+<a id="XSLTH4184120125120121120120"></a><h4>Standard Parameters Configurable from Registry Editor</h4>
+
+The following parameters are installed with default values by the Network tool in Control Panel
+during the installation of the TCP/IP components. They may be modified by
+using Registry Editor (Regedit.exe).
+<br><br>
+BcastNameQueryCount
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Count<br>
+     Valid Range: 1 to 0xFFFF<br>
+     Default: 3<br>
+     Description: This value determines the number  of times NetBT broadcasts a query for a particular
+     name without receiving a response.
+</div>
+
+BcastQueryTimeout
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Time in milliseconds<br>
+     Valid Range: 100 to 0xFFFFFFFF<br>
+     Default: 0x2ee ( 750 decimal)<br>
+     Description: This value determines the time
+     interval between successive broadcast name
+     queries for the same name.
+</div>
+
+CacheTimeout
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Time in milliseconds<br>
+     Valid Range: 60000 to 0xFFFFFFFF<br>
+     Default: 0x927c0 ( 600000 milliseconds = 10
+     minutes)<br>
+     Description: This value determines the time
+     interval that names are cached for in the remote
+     name table.
+</div>
+
+NameServerPort
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - UDP port number<br>
+     Valid Range: 0 - 0xFFFF<br>
+     Default: 0x89<br>
+     Description: This parameter determines the
+     destination port number that NetBT sends
+     packets to that are related to name service, such as
+     name queries and name registrations to WINS.
+     The Microsoft WINS listens on port 0x89.
+     NetBIOS name servers from other vendors can
+     listen on different ports.
+</div>
+
+NameSrvQueryCount
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Count<br>
+     Valid Range: 0 - 0xFFFF<br>
+     Default: 3<br>
+     Description: This value determines the number
+     of times NetBT sends a query to a WINS server
+     for a specified name without receiving a
+     response.
+</div>
+
+NameSrvQueryTimeout
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Time in milliseconds<br>
+     Valid Range: 100 - 0xFFFFFFFF<br>
+     Default: 1500 (1.5 seconds)<br>
+     Description: This value determines the time
+     interval between successive name queries to
+     WINS for a particular name.
+</div>
+
+SessionKeepAlive
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Time in milliseconds<br>
+     Valid Range: 60,000 - 0xFFFFFFFF<br>
+     Default: 3,600,000 (1 hour)<br>
+     Description: This value determines the time
+     interval between keepalive transmissions on a
+     session. Setting the value to 0xFFFFFFF
+     disables keepalives.
+</div>
+
+Size/Small/Medium/Large
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD<br>
+     Valid Range: 1, 2, 3 (Small, Medium, Large)<br>
+     Default: 1 (Small)<br>
+     Description: This value determines the size
+     of the name tables that are used to store local and
+     remote names. Generally, Small is adequate.
+     If the computer is acting as a proxy
+     name server, the value is automatically
+     set to Large to increase the size of the name
+     cache hash table. Hash table buckets are
+     sized as follows:
+          Large: 256     Medium: 128    Small: 16
+</div><a id="XSLTH4204120125120121120120"></a><h4>Optional Parameters Configurable from Registry Editor</h4>
+
+These parameters generally do not exist in the registry. They may be
+created
+to modify the default behavior of the NetBT protocol driver.
+<br><br>
+BroadcastAddress
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Four byte, little-
+     endian encoded IP address<br>
+     Valid Range: 0 - 0xFFFFFFFF<br>
+     Default: The ones-broadcast address for each
+     network.<br>
+     Description: This parameter can be used to
+     force NetBT to use a specific address for all
+     broadcast name-related packets. By default,
+     NetBT uses the ones-broadcast address that is
+     appropriate for each net (that is, for a network
+     of 11.101.0.0 with a subnet mask of
+     255.255.0.0, the subnet broadcast address
+     would be 11.101.255.255). This parameter
+     would be set, for example, if the network
+     uses the zeros-broadcast address (set by using
+     the UseZeroBroadcast TCP/IP parameter). The
+     appropriate subnet broadcast address would
+     then be 11.101.0.0 in the earlier example. This
+     parameter would then be set to 0x0b650000.
+     This parameter is global and is
+     used on all subnets that NetBT is bound to.
+</div>
+
+EnableProxyRegCheck
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Boolean<br>
+     Valid Range: 0 or 1 (False or True)<br>
+     Default: 0 (False)<br>
+     Description: If this parameter is set to 1
+     (True), the proxy name server sends
+     a negative response to a broadcast name
+     registration if the name is already
+     registered with WINS or is in the proxy's
+     local name cache with a different IP address.
+      The hazard of enabling this feature is that
+     it prevents a computer from changing its IP
+     address as long as WINS has a mapping for the
+     name. Therefore, it is disabled by
+     default.
+</div>
+
+InitialRefreshT.O.
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Time in milliseconds<br>
+     Valid Range: 960000 - 0xFFFFFFF<br>
+     Default: 960000 (16 minutes)<br>
+     Description: This parameter specifies the
+     initial update timeout used by NBT during
+     name registration. NBT tries to contact the
+     WINS servers at 1/8th of this time interval
+     when it is first registering names. When it
+     receives a successful registration response,
+     that response contains the new update
+     interval to use.
+</div>
+
+LmhostsTimeout
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Time in milliseconds<br>
+     Valid Range: 1000 - 0xFFFFFFFF<br>
+     Default: 6000 (6 seconds)<br>
+     Description: This parameter specifies the
+     timeout value for LMHOSTS and DNS name
+     queries. The timer has a granularity of the
+     timeout value. Therefore, the actual timeout might be
+     as much as two times the value.
+</div>
+
+MaxDgramBuffering
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Count of bytes<br>
+     Valid Range: 0 - 0xFFFFFFFF<br>
+     Default: 0x20000 (128 Kb)<br>
+     Description: This parameter specifies the
+     maximum memory that NetBT
+     dynamically allocates for all outstanding
+     datagram sends. After this limit is reached,
+     additional sends will fail because the available resources are not sufficient
+     resources.
+</div>
+
+NodeType
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Number<br>
+     Valid Range: 1,2,4,8 (B-node, P-node, M-node,
+     H-node)<br>
+     Default: 1 or 8 based on the WINS server
+     configuration<br>
+     Description: This parameter determines what
+     methods NetBT uses to register and
+     resolve names. A B-node computer uses
+     broadcasts. A P-node computer uses only point-
+     to-point name queries to a name server
+     (WINS). An M-node computer broadcasts first, and
+     then queries the name server. An H-node
+     computer queries the name server first, and then
+     broadcasts. Resolution through LMHOSTS or
+     DNS follows these
+     methods. If this key is present, it will
+     override the DhcpNodeType key. If neither key
+     is present, the computer uses B-node if
+     there are no WINS servers configured for the
+     network. The computer uses H-node if
+     there is at least one WINS server configured.
+</div>
+
+RandomAdapter
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Boolean<br>
+     Valid Range: 0 or 1 (False or True)<br>
+     Default: 0 (False)<br>
+     Description: This parameter applies to a
+     multihomed host only. If it is set to 1
+     (True), NetBT will randomly select the
+     IP address to put in a name query response
+     from all its bound interfaces. Frequently,
+     the response contains the address of the
+     interface that the query arrived on. This
+     feature would be used by a server with two
+     interfaces on the same network for load
+     balancing.
+</div>
+
+RefreshOpCode
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Number<br>
+     Valid Range: 8, 9<br>
+     Default: 8<br>
+     Description: This parameter forces NetBT to
+     use a specific opcode in name update
+     packets. The specification for the NetBT
+     protocol is somewhat ambiguous in this area.
+     Although the default of 8 that is used by Microsoft
+     implementations appears to be the intended
+     value, some other implementations, such as
+     those by Ungermann-Bass, use the value 9. Two
+     implementations must use the same opcode to
+     interoperate.
+</div>
+
+SingleResponse
+<div class="indent">      Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Boolean<br>
+     Valid Range: 0 or 1 (False or True)<br>
+     Default: 0 (False)<br>
+     Description: This parameter applies to a
+     multihomed host only. If this parameter is
+     set to 1 (True), NBT will only supply an
+     IP address from one of its bound interfaces
+     in name query responses. By default, the
+     addresses of all bound interfaces are
+     included.
+</div>
+
+WinsDownTimeout
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Time in milliseconds<br>
+     Valid Range: 1000 - 0xFFFFFFFF<br>
+     Default: 15,000 ( 15 seconds)<br>
+     Description: This parameter determines the
+     time that NBT waits before again
+     trying to use WINS after it does not contact
+     any WINS server. With this feature, computers that are temporarily
+     disconnected from the network can proceed through boot processing
+     without waiting to time out each WINS name
+     registration or query individually.
+</div><a id="XSLTH4228120125120121120120"></a><h4>Parameters Configurable from the Connection Properties</h4>
+
+The following parameters can be set through the Connection Properties from the Network Connections folder. You do not have to configure them directly.
+<br><br>
+EnableDns
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Boolean<br>
+     Valid Range: 0 or 1 (False or True)<br>
+     Default: 0 (False)<br>
+     Description: If this value is set to 1
+     (True), NBT queries the DNS for names
+     that cannot be resolved by WINS, broadcast,
+     or the LMHOSTS file.
+</div>
+
+EnableLmhosts
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Boolean<br>
+     Valid Range: 0 or 1 (False or True)<br>
+     Default: 1 (True)<br>
+     Description: If this value is set to 1
+     (True), NBT searches the LMHOSTS
+     file, if it exists, for names that cannot be
+     resolved by WINS or broadcast. By default,
+     there is no LMHOSTS file database directory
+     (specified by Tcpip\Parameters\DatabasePath). Therefore, NBT takes no action. This value is
+     written by the Advanced TCP/IP configuration
+     under the Network tool in Control Panel.
+</div>
+
+EnableProxy
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Boolean<br>
+     Valid Range: 0 or 1 (False or True)<br>
+     Default: 0 (False)<br>
+     Description: If this value is set to 1
+     (True), the computer acts as a proxy
+     name server for the networks that NBT is
+     bound to. A proxy name server answers
+     broadcast queries for names that it has
+     resolved through WINS. With a proxy name server,
+a network of B-node implementations can
+     connect to servers on other subnets that are
+     registered with WINS.
+</div>
+NameServer
+<div class="indent">
+     Key: Netbt\Parameters\Interfaces\Tcpip_<var>ID for Adapter</var><br>
+     Value Type: REG_SZ - Dotted decimal IP
+     address (for example,11.101.1.200)<br>
+     Valid Range: Any valid IP address<br>
+     Default: blank ( no address )<br>
+     Description: This parameter specifies the IP
+     address of the primary WINS server. If this
+     parameter contains a valid value, it
+     overrides the DHCP parameter of the same
+     name.
+</div>
+
+NameServerBackup
+<div class="indent">
+     Key: Netbt\Parameters\Interfaces\Tcpip_<var>ID for Adapter</var><br>
+     Value Type: REG_SZ - Dotted decimal IP
+     address (for example,  11.101.1.200)<br>
+     Valid Range: Any valid IP address.<br>
+     Default: blank ( no address )<br>
+     Description: This parameter specifies the IP
+     address of the backup WINS server. If this
+     parameter contains a valid value, it
+     overrides the DHCP parameter of the same
+     name.
+</div>
+
+ScopeId
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_SZ - Character string<br>
+     Valid Range: Any valid DNS domain name
+     consisting of two dot-separated parts, or a
+     "*".<br>
+     Default: None<br>
+     Description: This parameter specifies the
+     NetBIOS name scope for the node. This value
+     must not start with a period. If this
+     parameter contains a valid value, it will
+     override the DHCP parameter of the same name.
+     A blank value (empty string) will be ignored.
+     Setting this parameter to the value "*"
+     indicates a null scope and will override the
+     DHCP parameter.
+</div><a id="XSLTH4244120125120121120120"></a><h4>Non-Configurable Parameters</h4>
+
+The following parameters are created and used internally by the NetBT
+components. They should never be modified by using Registry Editor. They
+are listed here for reference only.
+<br><br>
+DhcpNameServer
+<div class="indent">
+     Key: Netbt\Parameters\Interfaces\Tcpip_<var>ID for Adapter</var><br>
+     Value Type: REG_SZ - Dotted decimal IP
+     address (for example, 11.101.1.200)<br>
+     Valid Range: Any valid IP address<br>
+     Default: None<br>
+     Description: This parameter specifies the IP
+     address of the primary WINS server. It is
+     written by the DHCP client service, if
+     enabled. A valid NameServer value will
+     override this parameter.
+</div>
+
+DhcpNameServerBackup
+<div class="indent">
+     Key: Netbt\Parameters\Interfaces\Tcpip_<var>ID for Adapter</var><br>
+     Value Type: REG_SZ - Dotted decimal IP
+     address (for example, 11.101.1.200)<br>
+     Valid Range: Any valid IP address<br>
+     Default: None<br>
+     Description: This parameter specifies the IP
+     address of the backup WINS server. It is
+     written by the DHCP client service, if
+     enabled. A valid BackupNameServer value will
+     override this parameter.
+</div>
+
+DhcpNodeType
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_DWORD - Number<br>
+     Valid Range: 1 - 8<br>
+     Default: 1<br>
+     Description: This parameter specifies the NBT
+     node type. It is written by the DHCP client      service, if enabled. A valid NodeType value
+     will override this parameter. See the entry
+     for NodeType for a complete description.
+</div>
+
+DhcpScopeId
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_SZ - Character string<br>
+     Valid Range: a dot-separated name string such
+     as "microsoft.com"<br>
+     Default: None<br>
+     Description: This parameter specifies the
+     NetBIOS name scope for the node. It is
+     written by the DHCP client service, if
+     enabled. This value must not start with a
+     period. See the entry for ScopeId for more
+     information.
+</div>
+
+NbProvider
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_SZ - Character string<br>
+     Valid Range: _tcp<br>
+     Default: _tcp<br>
+     Description: This parameter is used
+     internally by the RPC component. The default
+     value should not be changed.
+</div>
+
+TransportBindName
+<div class="indent">
+     Key: Netbt\Parameters<br>
+     Value Type: REG_SZ - Character string<br>
+     Valid Range: N/A<br>
+     Default: \Device\ <br>
+     Description: This parameter is used
+     internally during product development. The
+     default value should not be changed.
+</div><div class="topOfPage"><table><tr><td class="image"><a href="#toc"><img src="upArrow.gif" tppabs="http://support.microsoft.com/library/images/support/kbgraphics/public/en-us/upArrow.gif" alt="Back to the top" title="Back to the top"></a></td><td class="text"><a href="#toc">Back to the top</a></td></tr></table></div></div></div><div class="appliesTo"><hr><a id="appliesto"></a><h5>APPLIES TO</h5><table class="list"><tr><td class="bullet">•</td><td class="text">Microsoft Windows XP Home Edition</td></tr><tr><td class="bullet">•</td><td class="text">Microsoft Windows XP Professional Edition</td></tr></table></div><div class="topOfPage"><table><tr><td class="image"><a href="#toc"><img src="upArrow.gif" tppabs="http://support.microsoft.com/library/images/support/kbgraphics/public/en-us/upArrow.gif" alt="Back to the top" title="Back to the top"></a></td><td class="text"><a href="#toc">Back to the top</a></td></tr></table></div><div class="keywords"><table cellspacing="1"><tr><td class="header"><h5>Keywords: </h5></td><td class="text">kbinfo kbregistry kbenv kbnetwork kbsyssettings KB314053 </td></tr></table><div class="topOfPage"><table><tr><td class="image"><a href="#toc"><img src="upArrow.gif" tppabs="http://support.microsoft.com/library/images/support/kbgraphics/public/en-us/upArrow.gif" alt="Back to the top" title="Back to the top"></a></td><td class="text"><a href="#toc">Back to the top</a></td></tr></table></div></div><div class="disclaimer"><div class="text"></div></div><!-- - -KB 3 end- - --></div></div></div></td><td class="primaryThinColumn"><div id="thinColumn" style="float: none;"><div class="wp articleTrans"><h1>Article Translations</h1><form name="frmArticleTrans" action="http://support.microsoft.com/" onsubmit="return SwitchLanguage();"><div><table cellpadding="0" cellspacing="0"><tr><td><select name="scid"><option value="kb;pt-br;314053">Brazilian</option><option value="kb;cs;314053">Czech</option><option value="kb;da;314053">Danish</option><option value="kb;fi;314053">Finnish</option><option value="kb;fr;314053">French</option><option value="kb;de;314053">German</option><option value="kb;el;314053">Greek</option><option value="kb;hu;314053">Hungarian</option><option value="kb;it;314053">Italian</option><option value="kb;ja;314053">Japanese</option><option value="kb;ko;314053">Korean</option><option value="kb;no;314053">Norwegian</option><option value="kb;pl;314053">Polish</option><option value="kb;pt;314053">Portuguese</option><option value="kb;ru;314053">Russian</option><option value="kb;zh-cn;314053">Simplified Chinese</option><option value="kb;es;314053">Spanish</option><option value="kb;sv;314053">Swedish</option><option value="kb;zh-tw;314053">Traditional Chinese</option><option value="kb;tr;314053">Turkish</option></select></td><td class="spacer">&nbsp;</td><td><input type="image" alt="Translate the article" width="24" height="24" onmouseover="this.src='go_right_02-over.gif'/*tpa=http://support.microsoft.com/library/images/support/EN-US/go_right_02-over.gif*/;" onmouseout="this.src='GSSSM_rltlngRelatedlanguages.gif'/*tpa=http://support.microsoft.com/library/images/support/en-US/GSSSM_rltlngRelatedlanguages.gif*/;" src="GSSSM_rltlngRelatedlanguages.gif" tppabs="http://support.microsoft.com/library/images/support/en-US/GSSSM_rltlngRelatedlanguages.gif"><a id="KBLangListRedirect" href="" /></td></tr></table></div></form></div><div class="wp" id="RelatedSupportCenters"><table cellpadding="0" cellspacing="0"><tr><td class="textColumn"><h1>Related Support Centers</h1><table class="list" cellpadding="2" cellspacing="0"><tr class="er"><td class="lc0"><table class="innerTable" cellpadding="0" cellspacing="0"><tr><td class="bullet">&#149;</td><td class="text"><a href="-scid=ph;en-us;1173.htm" tppabs="http://support.microsoft.com/?scid=ph;en-us;1173" onclick="return MS_HandleClick(this,'29800', true);">Microsoft Windows XP</a></td></tr></table></td></tr></table></td></tr></table></div><div class="wp" id="AdditionalResources"><table cellpadding="0" cellspacing="0"><tr><td class="textColumn"><h1>Other Support Options</h1><table class="list" cellpadding="2" cellspacing="0"><tr class="er" id="L_85573_tr"><td class="lc0"><table class="innerTable" cellpadding="0" cellspacing="0"><tr><td class="bullet">&#149;</td><td class="text"><a href="javascript:if(confirm('http://support.microsoft.com/contactus/?ws=support  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/contactus/?ws=support'" tppabs="http://support.microsoft.com/contactus/?ws=support" id="L_85573" title="Contact Microsoft" onclick="return MS_HandleClick(this,'29797', true);">Contact Microsoft</a><br>Phone Numbers, Support Options and Pricing, Online Help, and more.</td></tr></table></td></tr><tr class="or" id="L_85574_tr"><td class="lc0"><table class="innerTable" cellpadding="0" cellspacing="0"><tr><td class="bullet">&#149;</td><td class="text"><a href="javascript:if(confirm('http://support.microsoft.com/?scid=gp;[ln];csshome&style=home  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/?scid=gp;[ln];csshome&style=home'" tppabs="http://support.microsoft.com/?scid=gp;[ln];csshome&style=home" id="L_85574" title="Customer Service" onclick="return MS_HandleClick(this,'29797', true);">Customer Service</a><br>For non-technical assistance with product purchases, subscriptions, online services, events, training courses, corporate sales, piracy issues, and more.</td></tr></table></td></tr><tr class="er" id="L_85575_tr"><td class="lc0"><table class="innerTable" cellpadding="0" cellspacing="0"><tr><td class="bullet">&#149;</td><td class="text"><a href="javascript:if(confirm('http://support.microsoft.com/newsgroups/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/newsgroups/'" tppabs="http://support.microsoft.com/newsgroups/" id="L_85575" title="Newsgroups" onclick="return MS_HandleClick(this,'29797', true);">Newsgroups</a><br>Pose a question to other users. Discussion groups and Forums about specific Microsoft products, technologies, and services.</td></tr></table></td></tr></table></td></tr></table></div><div class="wp" id="SupportTools"><table cellpadding="0" cellspacing="0"><tr><td class="textColumn"><h1>Page Tools</h1><table class="list" cellpadding="2" cellspacing="0"><tr class="er" id="PrintPage_tr"><td class="lc0"><table class="innerTable" cellpadding="0" cellspacing="0"><tr><td class="image"><a href="javascript:if(confirm('http://support.microsoft.com/gp/noscript/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/gp/noscript/'" tppabs="http://support.microsoft.com/gp/noscript/" id="PrintPage_i" title="Print this page" onclick="return MS_HandleClick(this,'SupportTools', true);"><img alt="Print this page" id="bi_PrintPage" src="printicon.gif" tppabs="http://support.microsoft.com/library/images/support/cn/printicon.gif"></a></td><td class="text"><a href="javascript:if(confirm('http://support.microsoft.com/gp/noscript/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/gp/noscript/'" tppabs="http://support.microsoft.com/gp/noscript/" id="PrintPage" title="Print this page" onclick="return MS_HandleClick(this,'SupportTools', true);">Print this page</a></td></tr></table></td></tr><tr class="or" id="EmailPage_tr"><td class="lc0"><table class="innerTable" cellpadding="0" cellspacing="0"><tr><td class="image"><a href="mailto:?subject=TCP%2fIP%20and%20NBT%20configuration%20parameters%20for%20Windows%20XP&amp;body=http%3a%2f%2fsupport.microsoft.com%2fdefault.aspx%2fkb%2f314053%2f" id="EmailPage_i" title="E-mail this page" onclick="return MS_HandleClick(this,'SupportTools', true);"><img alt="E-mail this page" id="bi_EmailPage" src="emailicon.gif" tppabs="http://support.microsoft.com/library/images/support/cn/emailicon.gif"></a></td><td class="text"><a href="mailto:?subject=TCP%2fIP%20and%20NBT%20configuration%20parameters%20for%20Windows%20XP&amp;body=http%3a%2f%2fsupport.microsoft.com%2fdefault.aspx%2fkb%2f314053%2f" id="EmailPage" title="E-mail this page" onclick="return MS_HandleClick(this,'SupportTools', true);">E-mail this page</a></td></tr></table></td></tr><tr class="er" id="Worldwide_tr"><td class="lc0"><table class="innerTable" cellpadding="0" cellspacing="0"><tr><td class="image"><a href="javascript:if(confirm('http://support.microsoft.com/common/international.aspx?rdPath=0  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/common/international.aspx?rdPath=0'" tppabs="http://support.microsoft.com/common/international.aspx?rdPath=0" id="Worldwide_i" title="Microsoft Worldwide" onclick="return MS_HandleClick(this,'SupportTools', true);"><img alt="Microsoft Worldwide" id="bi_Worldwide" src="langicon.gif" tppabs="http://support.microsoft.com/library/images/support/cn/langicon.gif"></a></td><td class="text"><a href="javascript:if(confirm('http://support.microsoft.com/common/international.aspx?rdPath=0  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/common/international.aspx?rdPath=0'" tppabs="http://support.microsoft.com/common/international.aspx?rdPath=0" id="Worldwide" title="Microsoft Worldwide" onclick="return MS_HandleClick(this,'SupportTools', true);">Microsoft Worldwide</a></td></tr></table></td></tr><tr class="or" id="SaveToMySupportFavorites_tr"><td class="lc0"><table class="innerTable" cellpadding="0" cellspacing="0"><tr><td class="image"><a href="javascript:if(confirm('http://support.microsoft.com/gp/noscript/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/gp/noscript/'" tppabs="http://support.microsoft.com/gp/noscript/" id="SaveToMySupportFavorites_i" title="Save to My Support Favorites" onclick="return MS_HandleClick(this,'SupportTools', true);"><img alt="Save to My Support Favorites" id="bi_SaveToMySupportFavorites" src="saveicon.gif" tppabs="http://support.microsoft.com/library/images/support/cn/saveicon.gif"></a></td><td class="text"><a href="javascript:if(confirm('http://support.microsoft.com/gp/noscript/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/gp/noscript/'" tppabs="http://support.microsoft.com/gp/noscript/" id="SaveToMySupportFavorites" title="Save to My Support Favorites" onclick="return MS_HandleClick(this,'SupportTools', true);">Save to My Support Favorites</a></td></tr></table></td></tr><tr class="er" id="MySupportFavoritesLink_tr"><td class="lc0"><table class="innerTable" cellpadding="0" cellspacing="0"><tr><td class="image"><a href="javascript:if(confirm('http://support.microsoft.com/gp/noscript/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/gp/noscript/'" tppabs="http://support.microsoft.com/gp/noscript/" id="MySupportFavoritesLink_i" title="Go to My Support Favorites" onclick="return MS_HandleClick(this,'SupportTools', true);"><img alt="Go to My Support Favorites" id="bi_MySupportFavoritesLink" src="gotoicon.gif" tppabs="http://support.microsoft.com/library/images/support/cn/gotoicon.gif"></a></td><td class="text"><a href="javascript:if(confirm('http://support.microsoft.com/gp/noscript/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/gp/noscript/'" tppabs="http://support.microsoft.com/gp/noscript/" id="MySupportFavoritesLink" title="Go to My Support Favorites" onclick="return MS_HandleClick(this,'SupportTools', true);">Go to My Support Favorites</a></td></tr></table></td></tr><tr class="or" id="SendFeedback_tr"><td class="lc0"><table class="innerTable" cellpadding="0" cellspacing="0"><tr><td class="image"><a href="javascript:if(confirm('http://support.microsoft.com/gp/noscript/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/gp/noscript/'" tppabs="http://support.microsoft.com/gp/noscript/" id="SendFeedback_i" target="_blank" title="Send Feedback" onclick="return MS_HandleClick(this,'SupportTools', true);"><img alt="Send Feedback" id="bi_SendFeedback" src="sendicon.gif" tppabs="http://support.microsoft.com/library/images/support/cn/sendicon.gif"></a></td><td class="text"><a href="javascript:if(confirm('http://support.microsoft.com/gp/noscript/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/gp/noscript/'" tppabs="http://support.microsoft.com/gp/noscript/" id="SendFeedback" target="_blank" title="Send Feedback" onclick="return MS_HandleClick(this,'SupportTools', true);">Send Feedback</a></td></tr></table></td></tr><tr class="er"><td class="lc0"><table class="innerTable" cellpadding="0" cellspacing="0"><tr><td class="text"><div class="center"><a href="javascript:if(confirm('https://profile.microsoft.com/RegSysProfileCenter/wizard.aspx?wizid=6182013c-7c1f-40a3-99ae-27651c3668aa&lcid=1033&fu=%2fdefault.aspx%2fkb%2f314053%2f&brand=Microsoft  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?'))window.location='https://profile.microsoft.com/RegSysProfileCenter/wizard.aspx?wizid=6182013c-7c1f-40a3-99ae-27651c3668aa&lcid=1033&fu=%2fdefault.aspx%2fkb%2f314053%2f&brand=Microsoft'" tppabs="https://profile.microsoft.com/RegSysProfileCenter/wizard.aspx?wizid=6182013c-7c1f-40a3-99ae-27651c3668aa&lcid=1033&fu=%2fdefault.aspx%2fkb%2f314053%2f&brand=Microsoft"><IMG SRC="signin.gif" tppabs="http://www.passportimages.com/1033/signin.gif" CLASS="PassportSignIn" BORDER="0" ALT="Sign in to the Microsoft Passport Network" ID="idSI"/></A></div></td></tr></table></td></tr></table></td></tr></table></div></div></td></tr></table></div></div><div id="widthFix"></div></div></XMLREADER></td></tr></table><br clear="all" style="line-height: 1px; overflow: hidden"><table id="msviFooter" width="100%" cellpadding="0" cellspacing="0"><tr valign="bottom"><td id="msviFooter2" style="filter:progid:DXImageTransform.Microsoft.Gradient(startColorStr='#FFFFFF', endColorStr='#3F8CDA', gradientType='1')"><div id="msviLocalFooter"><nobr><a href="javascript:if(confirm('http://go.microsoft.com/?linkid=317027  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://go.microsoft.com/?linkid=317027'" tppabs="http://go.microsoft.com/?linkid=317027">Manage Your Profile</a> |</nobr><wbr><nobr><a href="javascript:if(confirm('http://support.microsoft.com/contactus/?ws=support  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/contactus/?ws=support'" tppabs="http://support.microsoft.com/contactus/?ws=support" target="_parent">Contact Us</a></nobr></div><div id="msviGlobalFooter"><span dir="ltr">&#169;2005 Microsoft Corporation. All rights reserved.&nbsp;</span><nobr><a href="javascript:if(confirm('http://support.microsoft.com/tou/  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/tou/'" tppabs="http://support.microsoft.com/tou/">Terms of Use</a> |</nobr><wbr><nobr><a href="javascript:if(confirm('http://support.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx'" tppabs="http://support.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx">Trademarks</a> |</nobr><wbr><nobr><a href="index-2.htm" tppabs="http://support.microsoft.com/privacy/">Privacy Statement</a></nobr></div></td></tr></table><img id="webmetriximg" alt="" src="onepix.gif" tppabs="http://support.microsoft.com/library/images/support/cn/onepix.gif"><noscript><img id="StatsDotNetImgNoScript" alt="" src="default.aspx-SSID=1&#38;SiteLCID=1033&#38;EventCollectionID=1&#38;URL=%2fdefault.aspx&#38;ContentType=kb&#38;ContentLCID=1033&#38;ContentID=314053&#38;BrandID=1&#38;" tppabs="http://support.microsoft.com/LTS/default.aspx?SSID=1&#38;SiteLCID=1033&#38;EventCollectionID=1&#38;URL=%2fdefault.aspx&#38;ContentType=kb&#38;ContentLCID=1033&#38;ContentID=314053&#38;BrandID=1&#38;"></noscript><img id="StatsDotNetImg" name="StatsDotNetImg" alt="" src="onepix.gif" tppabs="http://support.microsoft.com/library/images/support/cn/onepix.gif" /><script type="text/javascript">StatsDotNet.disabled=false;StatsDotNet.host='http://support.microsoft.com/kb/314053/http/x3a/x2f/x2fsupport.microsoft.com/x2fLTS/x2fdefault.aspx';StatsDotNet.ssId='1';StatsDotNet.siteLcId='1033';StatsDotNet.url='http://support.microsoft.com/x2fdefault.aspx';StatsDotNet.contentType='kb';StatsDotNet.contentLn='1033';StatsDotNet.contentId='314053';StatsDotNet.eventCollectionId=1;StatsDotNet.siteBrandId='1';StatsDotNet.onUnloadTimeout=300;</script><script type="text/javascript">function thisLoad(){MS_WebMetrix('http://support.microsoft.com/kb/314053/http/x3a/x2f/x2fc.microsoft.com/x2ftrans_pixel.asp/x3fTYPE/x3dSSPV/x26SOURCE/x3dSUPPORT/x26GUID/x3d1F4FC18C-F71E-47fb-8FC9-612F8EE59C61/x26URI/x3d/x252fgn/x252fen-us/x252fkb_en-us_314053/x26R/x3dhttp/x253a/x252f/x252fsupport.microsoft.com');StatsDotNet.LogPageOnLoad();g_reSupportedHostnames = new RegExp("\\.microsoft\\.com$|\\.passport\\.com$", "i");ForeignLink_Hookup(true);MNPResizeFix();}function thisUnload(){}</script></body></html>

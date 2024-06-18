@@ -1,0 +1,418 @@
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Copyright" content="Brian Brown, 1998, All rights reserved">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0"><title>Operating Systems: Part 5</title><script charset="utf-8" id="injection_graph_func" src="os05_files/injection_graph_func.js"></script></head><body bgcolor="#ffffff">
+
+<p align="center"><a name="start"></a><font color="#000080" size="5">Operating Systems Introduction</font><font color="#ff00ff" size="6"> </font><br>
+Author: Brian Brown, 1995-2000. All rights reserved.<br>
+<a href="http://uva.ulb.ac.be/cit_courseware/opsys/os04.htm"><font size="2">Previous</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/default.htm"><font size="2">Home Page</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/os06.htm"><font size="2">Next</font></a></p>
+
+<hr>
+
+<p><a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>ALL ABOUT FILE MANAGEMENT</font><br>
+In this section we take a brief look at how the operating system
+deals with files.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="whatis"></a> <a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is a file?</font><br>
+A file of a collection of data that normally is stored on a
+secondary storage device such as a hard disk or floppy diskette.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="operations"></a> <a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What are the typical operations
+performed on files?</font><br>
+An operating system must provide a number of operations
+associated with files so that users can safely store and retrieve
+data.</p>
+
+<p>Typical operations are </p>
+
+<blockquote>
+    <p>Open <br>
+    Close<br>
+    Create<br>
+    Copy<br>
+    Rename<br>
+    List</p>
+</blockquote>
+
+<p>In addition, operations on single data elements within a file
+are supported by</p>
+
+<blockquote>
+    <p>Read<br>
+    Write<br>
+    Seek</p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="fcb"></a> <a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What are File Control Blocks?</font><br>
+File control blocks (FCB), sometimes referred to as file
+descriptors, are data structures that hold information about a
+file. When an operating system needs to access a file, it creates
+an associated file control block to manage the file.</p>
+
+<p>The structure of the file control block differs between
+operating systems, but most file control blocks include the
+following parts</p>
+
+<blockquote>
+    <p>Filename<br>
+    Location of file on secondary storage<br>
+    Length of file<br>
+    Date and time or creation or last access</p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="naming"></a> <a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What about how we name files?</font><br>
+Each operating system uses a specific convention or practice for
+naming files. </p>
+
+<p>MS-DOS Uses eight character file names, a dot, then a three-character
+extension that denotes the type of file. Filenames are not case-sensitive.</p>
+
+<p>UNIX Filenames can be up to 254 characters long and are case-sensitive.</p>
+
+<p>Windows Filenames can be up to 255 characters long and are not
+case-sensitive.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="types"></a> <a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What are file types?</font><br>
+File types refer to classifying the content of the file, such as
+a program, text file, executable program or data file.</p>
+
+<p>In Windows operating systems, the file type is derived from
+the filename extension. Typical file types and their extensions
+are</p>
+
+<table border="1">
+    <tbody><tr>
+        <td><strong>File Extension</strong></td>
+        <td><strong>File Type</strong></td>
+    </tr>
+    <tr>
+        <td>.bas</td>
+        <td>basic source program</td>
+    </tr>
+    <tr>
+        <td>.c </td>
+        <td>c source program</td>
+    </tr>
+    <tr>
+        <td>.dll </td>
+        <td>system library</td>
+    </tr>
+    <tr>
+        <td>.doc </td>
+        <td>Word document</td>
+    </tr>
+    <tr>
+        <td>.exe </td>
+        <td>executable program</td>
+    </tr>
+    <tr>
+        <td>.txt</td>
+        <td>text file</td>
+    </tr>
+</tbody></table>
+
+<p>Windows associates applications (programs) with specific file
+types. For example, the default application that opens to process
+a file of type .txt is the Notepad editor.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="track"></a> <a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>How does an operating system keep
+track of files?</font><br>
+The hard disk is comprised of a large number of sequentially
+numbered sectors. As files are created, free sectors are
+allocated to hold the file contents and marked as allocated.</p>
+
+<p>To keep track of the sectors and whether they are allocated or
+free, and to which file they belong, the operating system
+maintains a number of tables.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="root"></a> <a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is a root file system?</font><br>
+When the operating system is first installed, it creates a root
+file system on the disk that specifies how many sectors are
+available and how they will be allocated.</p>
+
+<p>The root file system is a table of entries like a directory.
+In general, this is a fixed size, and once full, no more entries
+can be added.</p>
+
+<p>Each entry can be either a file or another directory table.
+The following table depicts this structure. </p>
+
+<p align="center"><img src="os05_files/root.jpg" height="228" width="339"></p>
+
+<p align="center">&nbsp;</p>
+
+<p><a name="entry"></a> <a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What does a root file system entry
+look like?</font><br>
+This is highly operating system specific, but an entry might look
+like,</p>
+
+<blockquote>
+    <p>Name of file<br>
+    Beginning cluster number<br>
+    Length of file in bytes<br>
+    Type of file<br>
+    Creation date and last modified right<br>
+    File permissions (an access control list)</p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="cluster"></a> <a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is a cluster?</font><br>
+To make things a little simpler than managing a large number of
+sectors, the operating system groups sectors together into a
+minimum allocation unit called a cluster. When a request to
+create a file occurs, the operating system allocates a cluster at
+a time until the all the data is stored. This raises a question. </p>
+
+<p><strong>How are all the clusters of a file linked together?</strong><br>
+The previous diagram also illustrates the linking of the file
+clusters in a chain, with the last cluster signifying that there
+are no more clusters allocated to the file.</p>
+
+<p>One of the problems of using clusters as a minimum storage
+allocation unit is the wastage of space. Consider a cluster
+allocate of two sectors, each sector storing 1024 bytes (or
+characters). This means a minimum storage allocation of 2048
+bytes. If you stored a file containing the phrase &#8220;Hello&#8221;,
+then this would result in 2043 unused bytes in the cluster (most
+operating systems store the length of the file, so there is no
+need to use an end of file marker, which would occupy an
+additional byte).</p>
+
+<p>You might consider that a smaller allocation size based on the
+size of a sector would be more efficient. However, it becomes
+more complex to manage smaller cluster sizes and they take up
+more space (the table becomes larger and it takes more time to go
+through all the entries).</p>
+
+<p>&nbsp;</p>
+
+<p><a name="free"></a> <a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>How is free space managed?</font><br>
+The operating system can maintain a table of cluster entries, and
+mark each cluster as either free or allocated. This was a
+technique used in the MS-DOS operating system. </p>
+
+<p>Other operating systems maintain a linked list of free
+clusters, each free cluster pointing to the next free cluster. As
+clusters are allocated, they are removed from the free cluster
+list. When a file is deleted, the clusters that were allocated to
+it are added back to the free cluster list.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="windows"></a> <a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What file systems are supported by
+Windows operating systems?</font><br>
+The Windows operating system supports the following file systems.</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td valign="top">FAT</td>
+        <td width="50%">The MS-DOS operating system introduced
+        the File Allocation Table system of keeping track of file
+        entries and free clusters. Filenames where restricted to
+        eight characters with an addition three characters
+        signifying the file type. The FAT tables were stored at
+        the beginning of the storage space.</td>
+    </tr>
+    <tr>
+        <td valign="top">FAT32 </td>
+        <td width="50%">An updated version of the FAT system
+        designed for Windows 98. It supports file compression and
+        long filenames.</td>
+    </tr>
+    <tr>
+        <td valign="top">NTFS</td>
+        <td width="50%">Windows NT introduced the NT File System,
+        designed to be more efficient at handling files than the
+        FAT system. It spreads file tables throughout the disk,
+        beginning at the center of the storage space. It supports
+        file compression and long filenames.</td>
+    </tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+<p><a name="acl"></a> <a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What are access-control lists and file
+permissions?</font><br>
+In multi-user operating systems, files may be accessed by
+multiple users. Permission rights associated with folders (directories)
+and files are used to protect or restrict access to files. In
+UNIX these rights are known as Read, Write and Execute. In
+Windows NT and Windows 2000 (using the NTFS file-system),
+additional file permissions are available.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="symbol"></a> <a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is a symbolic link or shortcut?</font><br>
+A symbol link is a filename that links to another file. Consider
+the case on a UNIX box where three different mail packages are
+available. The administrator only wants to reference the mail
+using the command &#8220;mail&#8221;, so the filename is made to
+point to (or reference) the desired mail package.</p>
+
+<p>When the administrator runs the command &#8220;mail&#8221;, the
+appropriate mail package that is referenced by the symbolic link
+runs.</p>
+
+<p>In Windows, a similar capability is known as a shortcut.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="integrity"></a> <a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is file-system integrity?<br>
+</font>File-system integrity refers to whether the file-system
+contains errors. Sometimes this is caused by a user turning off
+the computer system without first shutting the computer down
+properly.</p>
+
+<p>During the shutdown process, a flag can be written to the file-system.
+At startup, this flag can be detected, and if not present, means
+the computer system was not shut down correctly.</p>
+
+<p>UNIX provides the fsck program to check the file-system. The
+Windows operating systems provide Scandisk or Chkdsk (checkdisk).</p>
+
+<p>&nbsp;</p>
+
+<p><a name="frag"></a> <a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is fragmentation and what does
+defragging a drive do?</font><br>
+When files are created and data written to the file, the
+operating system allocates space for the file from the free
+cluster list. Over a period of time, the clusters that are
+allocated to a file may no longer be sequential (contiguous or
+one after the after) but scattered over the disk.</p>
+
+<p align="center"><img src="os05_files/frag1.jpg" height="170" width="382"></p>
+
+<p>Why is this a problem? An operating system reads data from
+secondary storage in contiguous clusters more efficiently and
+faster than from non-contiguous clusters.</p>
+
+<p>Windows operating systems such as Windows 95/98 provide a
+defragmentation utility that scans the file system for fragmented
+files and moves them to a contiguous space. This results in
+faster loading and accessing of files.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="revision5"></a> <a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>Revision Exercise 5</font><br>
+List FOUR operations that are associated with files.</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+</center></div>
+
+<p>What is a File Control Block?</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+</center></div>
+
+<p>What is a root file-system?</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+</center></div>
+
+<p>What is a cluster?</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+</center></div>
+
+<p>How does an operating system manage free space?</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+</center></div>
+
+<p>What is an access control list?</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+</center></div>
+
+<p><a href="#start"><font size="4"><strong><img src="os05_files/up.gif" border="0" height="15" width="15"></strong></font></a></p>
+
+<p align="center"><a href="http://uva.ulb.ac.be/cit_courseware/opsys/os04.htm"><font size="2">Previous</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/default.htm"><font size="2">Home Page</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/os06.htm"><font size="2">Next</font></a></p>
+<!-- #counter var="compteur_cit" display="false" -->
+
+</body></html>

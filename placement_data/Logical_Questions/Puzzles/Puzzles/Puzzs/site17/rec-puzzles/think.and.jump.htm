@@ -1,0 +1,92 @@
+<html><head>
+<title>Solution for /competition/games/think.and.jump</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /competition/games/think.and.jump problem</h1>
+<hr>
+Three-color the board in the obvious way.  The initial configuration has 12
+of each color, and each jump changes the parity of all three colors.  Thus,
+it is impossible to achieve any position where the colors do not have the
+same parity; in particular, (1,0,0).
+
+<p>
+If you remove the requirement that the initially-empty cell must be at the
+center, the game becomes solvable.  The demonstration is left as an exercise.
+
+<pre>
+Karl Heuer   rutgers!harvard!ima!haddock!karl   karl@haddock.ima.isc.com
+</pre>
+
+Here is one way of reducing Think &amp; Jump to two pegs.
+
+<p>
+Long simplifies Balsley's scintillating snowflake solution:
+
+<pre>
+1  U-S           A - B   C - D
+2  H-U          / \ / \ / \ / \
+3  V-T         E---F---G---H---I
+4  S-H          \ / \ / \ / \ /
+5  D-M       J---K---L---M---N---O
+6  F-S      / \ / \ / \ / \ / \ / \
+7  Q-F     P---Q---R---S---T---U---V
+8  A-L      \ / \ / \ / \ / \ / \ /
+9  S-Q       W---X---Y---Z---a---b
+10 P-R          / \ / \ / \ / \
+11 Z-N         c---d---e---f---g
+12 Y-K          \ / \ / \ / \ /
+13 h-Y           h - i   j - k
+14 k-Z
+</pre>
+
+The board should now be in the snowflake pattern, i.e. look like
+
+<pre>
+         o - *   * - o
+        / \ / \ / \ / \
+       *---o---*---o---*
+        \ / \ / \ / \ /
+     *---*---*---*---*---*
+    / \ / \ / \ / \ / \ / \
+   o---o---o---o---o---o---o
+    \ / \ / \ / \ / \ / \ /
+     *---*---*---*---*---*
+        / \ / \ / \ / \
+       *---o---*---o---*
+        \ / \ / \ / \ /
+         o - *   * - o
+</pre>
+where o is empty and * is a peg.  The top and bottom can now be reduced
+to single pegs individually.  For example, we could continue
+
+<pre>
+15 g-T
+16 Y-a
+17 i-Z
+18 T-e
+19 j-Y
+20 b-Z
+21 c-R
+22 Z-X
+23 W-Y
+24 R-e
+</pre>
+which finishes the bottom.  The top can be done in a similar manner.
+<pre>
+-- 
+Chris Long
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

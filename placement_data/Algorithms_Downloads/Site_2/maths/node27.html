@@ -1,0 +1,229 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Sorting</TITLE>
+<META NAME="description" CONTENT="Sorting">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">
+<LINK REL="previous" HREF="node10.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node10.html">
+<LINK REL="up" HREF="notes.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.html">
+<LINK REL="next" HREF="node28.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node28.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html680"
+  HREF="node28.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node28.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html674"
+  HREF="notes.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html668"
+  HREF="node26.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node26.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html676"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html678"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html681"
+  HREF="node28.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node28.html">Complications</A>
+<B> Up:</B> <A NAME="tex2html675"
+  HREF="notes.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.html">Algorithms MX4028</A>
+<B> Previous:</B> <A NAME="tex2html669"
+  HREF="node26.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node26.html">Questions 1 (Hints and</A>
+ &nbsp <B>  <A NAME="tex2html677"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html679"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00600000000000000000"></A><A NAME="S:sorting"></A>
+<BR>
+Sorting
+</H1>
+
+<P>
+The general problem faced in this topic is to put into some kind of
+order a list of items for which such an ordering is defined. At its
+simplest this might mean putting a list of numbers into ascending order.
+More generally it includes doing things like putting lists of words into
+alphabetical order. 
+
+<P>
+I will be assuming in this section that the <EM>ordering</EM> relation that
+we are using is what is known as a <EM>linear ordering</EM>. Let me be a 
+little bit formal about this. A <EM>partially ordered set</EM> (<I>P</I>, &lt; ) is
+a set <I>P</I> together with a relation &lt; which satisfies the conditions:
+
+<P>
+
+<UL>
+<LI>if <I>x</I> &lt; <I>y</I> then it is not true that <I>y</I> &lt; <I>x</I>.
+ 
+</LI>
+<LI>(in consequence) it is not true that <I>x</I> &lt; <I>x</I>.
+ 
+</LI>
+<LI>if <I>x</I> &lt; <I>y</I> and <I>y</I> &lt; <I>z</I> then <I>x</I> &lt; <I>z</I>.
+</LI>
+</UL>
+
+<P>
+A typical example might be to have <I>P</I> as the set of all citizens of the UK
+with <I>x</I> &lt; <I>y</I> if <I>x</I> is descended from <I>y</I>.
+
+<P>
+A partially ordered set is called a 
+<EM>linearly ordered set</EM><A NAME="2078"></A> if, in
+addition, we have the condition
+
+<P>
+
+<UL>
+<LI>for any <I>x</I><IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img12.gif"
+ ALT="$ \ne$"><I>y</I> either <I>x</I> &lt; <I>y</I> or <I>y</I> &lt; <I>x</I>.
+</LI>
+</UL>
+
+<P>
+This is obviously not true for the previous example. It is true for things
+like the integers or reals ordered in the usual way. It is also true for the
+set of words ordered lexicographically. Most sorting techniques are designed
+primarily to deal with lists taken from linearly ordered sets. Apart from
+that all that we really need to assume is that we have some algorithm for
+deciding whether <I>x</I> &lt; <I>y</I> or <I>x</I> = <I>y</I> or <I>y</I> &lt; <I>x</I>.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html682"
+  HREF="node28.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node28.html">Complications</A>
+<LI><A NAME="tex2html683"
+  HREF="node29.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node29.html">Two Simple Sorting Algorithms</A>
+<UL>
+<LI><A NAME="tex2html684"
+  HREF="node30.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node30.html">Minimum Element Sort</A>
+<LI><A NAME="tex2html685"
+  HREF="node31.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node31.html">Insertion Sort</A>
+<LI><A NAME="tex2html686"
+  HREF="node32.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node32.html">Proof of Algorithm</A>
+<UL>
+<LI><A NAME="tex2html687"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node33.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node33.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node33.html">Claim:</A>
+<LI><A NAME="tex2html688"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node34.html">Approximate Timing</A>
+</UL>
+<LI><A NAME="tex2html689"
+  HREF="node35.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node35.html">A More Precise Analysis of Insertion Sort </A>
+<UL>
+<LI><A NAME="tex2html690"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node36.html">Example <I>n</I> = 3</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html691"
+  HREF="node37.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node37.html">A better sort: Quicksort </A>
+<UL>
+<LI><A NAME="tex2html692"
+  HREF="node38.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node38.html">Timing the algorithm </A>
+</UL>
+<BR>
+<LI><A NAME="tex2html693"
+  HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">Merge Sort </A>
+<UL>
+<LI><A NAME="tex2html694"
+  HREF="node40.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node40.html">Merge Algorithm </A>
+<LI><A NAME="tex2html695"
+  HREF="node41.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node41.html">Merge Sort </A>
+<LI><A NAME="tex2html696"
+  HREF="node42.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node42.html">Timing the Algorithm</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html697"
+  HREF="node43.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node43.html">Timings for Various Sorting Algorithms</A>
+<LI><A NAME="tex2html698"
+  HREF="node44.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node44.html">Optimal Sorting </A>
+<LI><A NAME="tex2html699"
+  HREF="node45.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node45.html">Optimal Merging</A>
+<UL>
+<LI><A NAME="tex2html700"
+  HREF="node46.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node46.html">Some Example Sort Implementations</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html701"
+  HREF="node47.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node47.html">Questions 2 (Hints and solutions start on page <IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/crossref.gif">.)</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html680"
+  HREF="node28.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node28.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html674"
+  HREF="notes.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html668"
+  HREF="node26.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node26.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html676"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html678"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html681"
+  HREF="node28.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node28.html">Complications</A>
+<B> Up:</B> <A NAME="tex2html675"
+  HREF="notes.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.html">Algorithms MX4028</A>
+<B> Previous:</B> <A NAME="tex2html669"
+  HREF="node26.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node26.html">Questions 1 (Hints and</A>
+ &nbsp <B>  <A NAME="tex2html677"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html679"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

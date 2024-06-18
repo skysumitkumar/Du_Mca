@@ -1,0 +1,600 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Huffman Codes</TITLE>
+<META NAME="description" CONTENT="Huffman Codes">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="previous" HREF="node58.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node58.html">
+<LINK REL="up" HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">
+<LINK REL="next" HREF="node60.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node60.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1167"
+  HREF="node60.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node60.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1161"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1157"
+  HREF="node58.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node58.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1163"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1165"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1168"
+  HREF="node60.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node60.html">Heapsort</A>
+<B> Up:</B> <A NAME="tex2html1162"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">Trees</A>
+<B> Previous:</B> <A NAME="tex2html1158"
+  HREF="node58.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node58.html">Binary Trees</A>
+ &nbsp <B>  <A NAME="tex2html1164"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1166"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00724000000000000000">
+Huffman Codes</A>
+</H2>
+We discuss here an example in which the binary tree structure is of
+value.  Consider the problem of coding (in binary) a message
+consisting of a string of characters.  This is routinely done in a
+computer system; the code used almost universally at present is known
+as ASCII<A NAME="tex2html32"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot4516'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot4516"><SUP>3.5</SUP></A>,
+and allocates 8 bits to store each character.  Thus A is represented
+using decimal 65, or 01000001 in binary etc.  A more modern one which
+allows a much wider range of languages to be represented is Unicode,
+which allocates 16 bits to each character.  This is used for example
+by the language Java, and is an extension of ASCII in that any ASCII
+character can be converted to Unicode by prefixing it with the zero
+byte.  Although these codes are simple, there are obvious
+inefficiencies; clearly Unicode wastes at least half of the available
+space when storing plain ASCII.
+
+<P>
+Another source of inefficiency may lie in using the same number of
+bits to represent a common letter, like ``e'' as to represent ``q''
+which occurs much less frequently.  What if we permit character codes
+to have a variable length?  An apparent difficulty is the need to have
+a neutral separator character to indicate the end of one character
+code, and so delimit it from the next.  Say a code has the
+<A NAME="5032"></A><B>prefix property</B> if no character code is the prefix, or start
+of the the code for another character.  Clearly a code with the prefix
+property avoids this need to have additional separators, while
+permitting variable lengths.  An obvious question is:
+
+<P>
+
+<UL>
+<LI>do codes with the prefix property exist; and if so
+</LI>
+<LI>is there a ``best'' one to use?
+</LI>
+</UL>
+
+<P>
+In Table&nbsp;<A HREF="node59.html#T:codes" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html#T:codes">3.1</A> we give an example of such a prefix code for a
+small alphabet, and contrast it with a simple fixed length code.  It
+is clear that there are savings in this case which make it worth going
+further.  We will see shortly why the example has the prefix property;
+in the meantime check that the string ``0000100111'' in Code 2 decodes
+uniquely as ``acbd''.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="4526"></A>
+<TABLE>
+<CAPTION><STRONG>Table 3.1:</STRONG>
+Code 1 has fixed length code; Code 2 has the
+prefix property.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<TABLE COLS=3 BORDER RULES=GROUPS>
+<COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER>
+<TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>
+Symbol	</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>Code 1	</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>Code 2</TD></TR>
+</TBODY><TBODY>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>a	</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>001	</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>000</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+b	</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>001	</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>11</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+c	</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>010	</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>01</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+d	</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>011	</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>001</TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+e	</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>100	</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>10</TD></TR>
+</TBODY>
+</TABLE>
+
+<A NAME="T:codes"></A>
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Consider now a binary tree, in which each leaf node is labelled with a
+symbol.  We can assign a binary code to each symbol as follows:
+associate ``0'' with the path from a node to its left child, and ``1''
+with the corresponding path to the right child.  The code for a symbol
+is obtained by following the path from the root to the leaf node
+containing that symbol.  The code necessarily has the prefix property;
+the tree property means that a leaf node cannot appear on a path to
+another leaf.  Conversely it is clear how to associate a binary tree
+with a binary code having the prefix property; the code describes the
+shape of the tree down to the leaf associated with each symbol.  
+
+<P>
+Of course a fixed length code necessarily has the prefix property.  We
+show in Fig.&nbsp;<A HREF="node59.html#F:prefix-code-tree" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html#F:prefix-code-tree">3.6</A> the binary trees corresponding
+to the two codes given in Table&nbsp;<A HREF="node59.html#T:codes" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html#T:codes">3.1</A>, thus incidentally
+demonstrating that the variable length code in the example does have
+the prefix property.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="F:prefix-code-tree"></A><A NAME="4916"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.6:</STRONG>
+Binary trees representing the codes in Table&nbsp;<A HREF="node59.html#T:codes" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html#T:codes">3.1</A></CAPTION>
+<TR><TD><IMG
+ WIDTH="510" HEIGHT="155" BORDER="0"
+ SRC="img163.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img163.gif"
+ ALT="\begin{figure}
+\centering\begin{tabular}{cc}
+\begin{psTree}[levelsep=10mm,arrows...
+...{$0$}
+\Tcircle{b}\naput{$1$}
+\end{psTree}\end{psTree}\end{tabular}\end{figure}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+We now describe how to build the binary Huffman code for a given
+message.  This code has the prefix property, and in a fairly useful
+sense turns out to be the <I>best</I> such code.  We describe the code
+by building the corresponding binary tree.  We start by analysing the
+message to find the frequencies of each symbol that occurs in it.
+Our basic strategy will be to assign short codes to symbols that occur
+frequently, while still insisting that the code has the prefix
+property.  Our example will be build around the message
+<BLOCKQUOTE>
+A SIMPLE STRING TO BE ENCODED USING A MINIMAL NUMBER OF BITS
+<A NAME="tex2html35"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot4917'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot4917"><SUP>3.6</SUP></A>
+</BLOCKQUOTE>
+The corresponding frequencies are given in Table&nbsp;<A HREF="node59.html#T:huff-freqs" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html#T:huff-freqs">3.2</A>;
+note that in this case, we choose to include the space symbol `` '',
+written in the table as <code> </code>.
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="4608"></A>
+<TABLE>
+<CAPTION><STRONG>Table 3.2:</STRONG>
+Symbol frequencies used to build a Huffman Code.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<TABLE COLS=18 RULES=GROUPS>
+<COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>
+I</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>A</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>B</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>D</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>M</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>E</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>O</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>C</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>F</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>G</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>S</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>T</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>L</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>R</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>N</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>P</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>U</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP><code> </code></TD></TR>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> 
+6</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>5</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>4</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>3</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>5</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>1</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>2</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>11
+</TD></TR>
+</TABLE>
+
+<A NAME="T:huff-freqs"></A>
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Now begin with a collection (a forest) of very simple trees, one for
+each symbol to be coded, with each consisting of a single node,
+labelled by that symbol, and the frequency with which it occurs in the
+string.  The construction is recursive: at each stage the two trees
+which account for the least total frequency in their root nodes are
+selected, and used to produce a new binary tree.  This has, as its
+children the two trees just chosen: the root is then labelled with the
+total frequency accounted for by both subtrees, and the original
+subtrees are removed from the forest.  The construction continues in
+this way until only one tree remains; that is then the Huffman
+encoding tree.<A NAME="tex2html37"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot4919'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot4919"><SUP>3.7</SUP></A>
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="F:huffman"></A><A NAME="4701"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.7:</STRONG>
+The Huffman encoding tree for the string ``A SIMPLE STRING TO BE ENCODED USING A MINIMAL NUMBER OF BITS''.</CAPTION>
+<TR><TD><IMG
+ WIDTH="660" HEIGHT="313" BORDER="0"
+ SRC="img164.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img164.gif"
+ ALT="\begin{figure}\centering\begin{psTree}[levelsep=10mm, arrows=-&gt;,tnpos=b]{\Tcircl...
+...nd{psTree} \end{psTree} \Tcircle{11}&nbsp;{&nbsp;}
+ \end{psTree}\end{psTree}\end{figure}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+The resulting Huffman encoding tree for our example string is shown in
+Fig&nbsp;<A HREF="node59.html#F:huffman" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html#F:huffman">3.7</A>.  By construction, the symbols only occur at leaf
+nodes, and so the corresponding code has the prefix property.  In the
+diagram, these leaf nodes still carry the frequencies used in their
+construction; formally once the tree has been built, the symbols which
+are shown below the leaves should replace the frequencies at the
+nodes.  The right-most node is the symbol <code> </code>.  As already
+described, the character encoding is the read by traversing from the
+root to each leaf, recording ``0'' if the left hand branch is
+traversed, and ``1'' if the right hand one is taken.  Thus ``S'' is
+encoded as ``0100'', while <code> </code> is ``11'' and ``C'' is ``000110''.
+
+<P>
+<P>
+<DIV><B>Definition  3.6</B> &nbsp; 
+Let <I>T</I> be a tree with weigths <!-- MATH
+ $w_1, \ldots w_n$
+ -->
+<I>w</I><SUB>1</SUB>,...<I>w</I><SUB>n</SUB> at its leaf nodes.
+The <I>weighted leaf path length</I> <I>L</I>(<I>T</I>) of <I>T</I> is
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+L(T) = \sum_{i \in \textrm{leaf}(T)} l_iw_i
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><I>L</I>(<I>T</I>) = <IMG
+ WIDTH="56" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img165.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img165.gif"
+ ALT="$\displaystyle \sum_{i \in \textrm{leaf}(T)}^{}$"><I>l</I><SUB>i</SUB><I>w</I><SUB>i</SUB></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(3.2)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <I>l</I><SUB>i</SUB> is the <A NAME="5034"></A><B>path length</B>; the length of the path from
+the root to node <I>i</I>.</DIV><P></P>
+
+<P>
+We are interested in the case when the tree is an encoding tree and
+the weights are the frequency of occurrence of the symbols associated
+with the leaf nodes.  In that case <I>L</I>(<I>T</I>) is the length of the message
+after encoding, since at node <I>i</I>, the character occurs a total of
+<I>w</I><SUB>i</SUB> times, and requires <I>l</I><SUB>i</SUB> bits to encode it.  We now show that a
+Huffman encoding tree gives the <I>best</I> encoding.  Say that a
+binary tree <I>T</I> is <I>optimal</I> if <I>L</I>(<I>T</I>) has its minimum value over
+all possible trees with the same set of leaf nodes.
+
+<P>
+<P>
+<DIV><A NAME="huffman"><B>Theorem  3.7</B></A> &nbsp; 
+A Huffman tree is optimal.</DIV><P></P>
+
+<P>
+<P></P>
+<DIV><I>Proof</I>.
+
+We start with an apparently simple result.
+<P>
+<DIV><A NAME="L:weights-and-lengths"><B>Lemma  3.8</B></A> &nbsp; 
+Suppose that nodes with weights <I>w</I><SUB>i</SUB> and <I>w</I><SUB>j</SUB> satisfy <I>w</I><SUB>i</SUB> &lt; <I>w</I><SUB>j</SUB>.
+Then in an optimal tree the corresponding path lengths <I>l</I><SUB>i</SUB> and <I>l</I><SUB>j</SUB>
+satisfy <!-- MATH
+ $l_j \le l_i$
+ -->
+<I>l</I><SUB>j</SUB><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$"><I>l</I><SUB>i</SUB>.</DIV><P></P>
+
+<P>
+<P></P>
+<DIV><I>Proof</I>.
+This is just the assertion that nodes that occur infrequently have
+long codes.  Suppose we have a tree <I>T</I> associated with a given set of
+nodes having weights {<I>w</I><SUB>k</SUB>}, and that for some pair <I>i</I>, <I>j</I>, we have
+<I>w</I><SUB>i</SUB> &lt; <I>w</I><SUB>j</SUB> but <I>l</I><SUB>i</SUB> &lt; <I>l</I><SUB>j</SUB>.  Then
+<!-- MATH
+ \begin{displaymath}
+(w_j - w_i)(l_j - l_i) > 0
+	\ensuremath{\quad\text{and so}\quad}	w_jl_j + w_il_i > w_jl_i + w_il_j.
+\end{displaymath}
+ -->
+<P ALIGN="CENTER"><IMG
+ WIDTH="402" HEIGHT="29" BORDER="0"
+ SRC="img166.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img166.gif"
+ ALT="\begin{displaymath}
+(w_j - w_i)(l_j - l_i) &gt; 0
+\ensuremath{\quad\text{and so}\quad} w_jl_j + w_il_i &gt; w_jl_i + w_il_j.
+\end{displaymath}"></P>
+Consider now the effect on the weighted leaf path length <I>L</I>(<I>T</I>) of
+interchanging the weights on nodes <I>i</I> and <I>j</I>.  The new weighted leaf
+path length is 
+<!-- MATH
+ \begin{displaymath}
+L(T) - (w_jl_j + w_il_i) + (w_jl_i + w_il_j) < L(T).
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>L</I>(<I>T</I>) - (<I>w</I><SUB>j</SUB><I>l</I><SUB>j</SUB> + <I>w</I><SUB>i</SUB><I>l</I><SUB>i</SUB>) + (<I>w</I><SUB>j</SUB><I>l</I><SUB>i</SUB> + <I>w</I><SUB>i</SUB><I>l</I><SUB>j</SUB>) &lt; <I>L</I>(<I>T</I>).
+</DIV><P></P>
+Thus <I>T</I> was not optimal, since the new tree has a smaller weighted
+leaf path length.
+ <IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img78.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img78.gif"
+ ALT="$ \qedsymbol$">
+</DIV><P></P>
+
+<P>
+<P>
+<DIV><A NAME="L:correct-labelling"><B>Lemma  3.9</B></A> &nbsp; 
+Suppose that nodes in an optimal tree have weights <I>w</I><SUB>i</SUB> labelled so
+that <!-- MATH
+ $w_1 \leq w_2 \leq \dots \leq w_n$
+ -->
+<I>w</I><SUB>1</SUB> <IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img167.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img167.gif"
+ ALT="$ \leq$"> <I>w</I><SUB>2</SUB> <IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img167.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img167.gif"
+ ALT="$ \leq$"> ... <IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img167.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img167.gif"
+ ALT="$ \leq$"> <I>w</I><SUB>n</SUB>.  Then by relabelling if
+necessary subject to this constraint, we can also have
+<!-- MATH
+ $l_1 \geq l_2 \geq \dots \ge l_n$
+ -->
+<I>l</I><SUB>1</SUB> <IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img168.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img168.gif"
+ ALT="$ \geq$"> <I>l</I><SUB>2</SUB> <IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img168.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img168.gif"
+ ALT="$ \geq$"> ...<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$"><I>l</I><SUB>n</SUB>.</DIV><P></P>
+
+<P>
+<P></P>
+<DIV><I>Proof</I>.
+Suppose conversely that <I>i</I> &lt; <I>j</I> but <I>l</I><SUB>i</SUB> &lt; <I>l</I><SUB>j</SUB>.  Since <I>i</I> &lt; <I>j</I>, we
+have <!-- MATH
+ $w_i \leq w_j$
+ -->
+<I>w</I><SUB>i</SUB> <IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img167.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img167.gif"
+ ALT="$ \leq$"> <I>w</I><SUB>j</SUB>.  However if <I>w</I><SUB>i</SUB> &lt; <I>w</I><SUB>j</SUB>, then by
+Lemma&nbsp;<A HREF="node59.html#L:weights-and-lengths" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html#L:weights-and-lengths">3.8</A> we have <!-- MATH
+ $l_j \le l_i$
+ -->
+<I>l</I><SUB>j</SUB><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$"><I>l</I><SUB>i</SUB> since we are
+assuming the tree is optimal.  But <I>l</I><SUB>j</SUB> &gt; <I>l</I><SUB>i</SUB>, showing that we must
+have <I>w</I><SUB>i</SUB> = <I>w</I><SUB>j</SUB>.  There is thus no loss if we interchange the labels
+<I>i</I> and <I>j</I>.  We can continue to do this until we achieve the required
+consistent labelling of the corresponding node lengths.
+ <IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img78.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img78.gif"
+ ALT="$ \qedsymbol$">
+</DIV><P></P>
+
+<P>
+We can now show that a Huffman tree is optimal.  This argument was
+adapted from&nbsp;<A
+ HREF="node112.html#gersting93:_mathem_struc" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node112.html#gersting93:_mathem_struc">Gersting (1993, Page 402)</A>.  We establish
+the result by induction on the number <I>n</I> of leaf nodes in the tree.
+The result is clear for <I>n</I> = 1.
+
+<P>
+Next note that in any optimal binary tree, there are no nodes with
+single children -- replacing the child by the parent produces a
+shorter weighted external path length.
+
+<P>
+Consider now a set of <I>n</I> + 1 weights <I>w</I><SUB>i</SUB> with <I>n</I> + 1<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$">2, which by
+Lemma&nbsp;<A HREF="node59.html#L:correct-labelling" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html#L:correct-labelling">3.9</A> we  suppose to be ordered such that <!-- MATH
+ $w_1
+\le w_2 \le \ldots \le w_{n+1}$
+ -->
+<I>w</I><SUB>1</SUB><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$"><I>w</I><SUB>2</SUB><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$">...<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$"><I>w</I><SUB>n + 1</SUB> in such a way that the corresponding
+paths lengths satisfy <!-- MATH
+ $l_1 \geq l_2 \geq \dots \geq l_n$
+ -->
+<I>l</I><SUB>1</SUB> <IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img168.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img168.gif"
+ ALT="$ \geq$"> <I>l</I><SUB>2</SUB> <IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img168.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img168.gif"
+ ALT="$ \geq$"> ... <IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img168.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img168.gif"
+ ALT="$ \geq$"> <I>l</I><SUB>n</SUB>.  Let <I>T</I><SUB>n + 1</SUB>
+be an optimal tree for these weights with weighted leaf path length
+<!-- MATH
+ $L(T_{n+1})$
+ -->
+<I>L</I>(<I>T</I><SUB>n + 1</SUB>).  By our choice of labelling <I>w</I><SUB>1</SUB> occurs on the longest
+path, as does its sibling <I>w</I><SUB>j</SUB>; since they are siblings, <I>l</I><SUB>1</SUB> = <I>l</I><SUB>j</SUB>.  Since <!-- MATH
+ $l_i \ge l_2 \ge l_j$
+ -->
+<I>l</I><SUB>i</SUB><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$"><I>l</I><SUB>2</SUB><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$"><I>l</I><SUB>j</SUB>, we have <I>l</I><SUB>1</SUB> = <I>l</I><SUB>2</SUB>.  Thus the new
+tree <I>T'</I><SUB>n + 1</SUB> obtained by interchanging nodes 2 and <I>j</I> have the
+same weighted external path length.
+
+<P>
+Next construct a new tree <I>T</I><SUB>n</SUB> with a new ``leaf'' node <!-- MATH
+ $w = w_1 +
+w_2$
+ -->
+<I>w</I> = <I>w</I><SUB>1</SUB> + <I>w</I><SUB>2</SUB> by combining <I>w</I><SUB>1</SUB> and <I>w</I><SUB>2</SUB> from <I>T'</I><SUB>n + 1</SUB> to give a tree with
+<I>n</I> leaf nodes.  Let <I>H</I><SUB>n</SUB> be a Huffman tree on these nodes, and note
+that, by construction the tree obtained by replacing the single node
+<I>w</I> in <I>H</I><SUB>n</SUB> by the nodes <I>w</I><SUB>1</SUB> and <I>w</I><SUB>2</SUB>, the two smallest weights,
+is a Huffman tree <I>H</I><SUB>n + 1</SUB>.  By induction, we have <!-- MATH
+ $L(T_n) \ge
+L(H_n)$
+ -->
+<I>L</I>(<I>T</I><SUB>n</SUB>)<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$"><I>L</I>(<I>H</I><SUB>n</SUB>), since they have the same leaf nodes.  We now calculate:
+<!-- MATH
+ \begin{displaymath}
+L(T_n) + w_1 + w_2 = L(T_{n+1})\ensuremath{\quad\text{and}\quad}H(T_n) + w_1 + w_2 = H(T_{n+1}).
+\end{displaymath}
+ -->
+<P ALIGN="CENTER"><IMG
+ WIDTH="459" HEIGHT="28" BORDER="0"
+ SRC="img169.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img169.gif"
+ ALT="\begin{displaymath}
+L(T_n) + w_1 + w_2 = L(T_{n+1})\ensuremath{\quad\text{and}\quad}H(T_n) + w_1 + w_2 = H(T_{n+1}).
+\end{displaymath}"></P>
+Thus <!-- MATH
+ $L(T_{n+1}) \ge L(H_{n+1})$
+ -->
+<I>L</I>(<I>T</I><SUB>n + 1</SUB>)<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$"><I>L</I>(<I>H</I><SUB>n + 1</SUB>).  But <I>T</I><SUB>n + 1</SUB> was optimal, so this
+inequality is an equality and <I>H</I><SUB>n + 1</SUB> is optimal, as required.
+ <IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img78.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img78.gif"
+ ALT="$ \qedsymbol$">
+</DIV><P></P>
+
+<P>
+<P>
+<DIV><B>Remark  3.10</B> &nbsp; 
+The above proof has to be done a little carefully.  The (complete)
+binary tree having nodes with weights 1, 3, 2 and 2 is
+<I>not</I> a Huffman tree, but is optimal; however interchanging the
+second and third nodes does not affect the weighted leaf path length
+and <I>does</I> give a Huffman Tree.  In the proof, this interchage is
+the step of creating <I>T'</I><SUB>n + 1</SUB> from <I>T</I><SUB>n + 1</SUB></DIV><P></P>
+
+<P>
+A little more can be said, centred round the need to have the coding
+tree available when decoding.  Of course, for ``general purpose''
+language, the letter frequencies are well known, and could be
+assumed.  In general, the need to transmit the coding tree as well as
+the message reduces the effectiveness of the method a little.  And it
+can be impractical to preprocess a message to get the exact
+frequencies of the symbols before any of the message is transmitted.
+There is a variant however, called <I>adaptive</I> Huffman coding, in
+which the frequencies are assumed initially to be all the
+same, and then adjusted in the light of the message being coded to
+reflect the actual frequencies.  Since the decoder has access to the
+same information as the encoder, it can be arranged that the decoder
+changes coding trees at the same point as the encoder does; thus they
+keep in step.  One way to do that is to introduce extra ``control''
+symbols to the alphabet, and use these to pass such information.
+
+<P>
+Modern coding schemes such as zip (or gzip or pkzip) are based on
+these ideas.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1167"
+  HREF="node60.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node60.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1161"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1157"
+  HREF="node58.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node58.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1163"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1165"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1168"
+  HREF="node60.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node60.html">Heapsort</A>
+<B> Up:</B> <A NAME="tex2html1162"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">Trees</A>
+<B> Previous:</B> <A NAME="tex2html1158"
+  HREF="node58.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node58.html">Binary Trees</A>
+ &nbsp <B>  <A NAME="tex2html1164"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1166"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>
