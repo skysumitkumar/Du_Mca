@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0051)http://www.tanyakhovanova.com/Puzzles/solballs.html -->
+<HTML><HEAD><TITLE>Solution for the Two Glass Balls problem</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2800.1491" name=GENERATOR></HEAD>
+<BODY 
+background="Solution for the Two Glass Balls problem_files/bckgrnd.jpg"><BR>
+<CENTER>
+<H1>Solution for the Two Glass Balls problem</H1>
+<P><IMG 
+src="Solution for the Two Glass Balls problem_files/RAIN_LINE.gif"></CENTER>
+<H3>
+<CENTER>Two Glass Balls</A></CENTER></H3>
+<P>I am in a 100-story building. I have with me two glass balls. I know that if 
+I throw the ball out of the window it will never breaks if the floor number is 
+less than X and it will always breaks if the floor number is equal or greater 
+than X. Assuming that I can reuse the balls which didn't break, find X in a 
+minimum number of throws. <BR>
+<CENTER><IMG src="Solution for the Two Glass Balls problem_files/RAIN_LINE.gif"> 
+</CENTER>
+<H3>
+<CENTER>Solution</A></CENTER></H3>
+<P>Suppose we have a strategy with N trows. Then the floor is defined by two 
+numbers: the trow, when the first ball breaks, and the trow, when the second 
+ball breaks. The sum of those two numbers should be less or equal to N. Hence 
+the number of floors we can distinguish is the number of different pairs of such 
+numbers, which is equal to N(N+1)/2. This number should be more than 99. Hence, 
+we need at least 14 trows. 
+<P>Now we would like to build a strategy. To decide the floor for our first 
+throw we observe that if the ball breaks we need to decide between the leftover 
+floors in 13 steps. Which means to maximize our choices for the case when it 
+doesn't break we need to use all the opportunities. That is we should throw the 
+ball from the 14th floor first. If it breaks we use the second ball starting 
+from the first floor up. 
+<P>Second throw should be from the 14 + 13 = 27th floor. And so on. <BR>
+<CENTER><IMG 
+src="Solution for the Two Glass Balls problem_files/RAIN_LINE.gif"></CENTER>
+<UL>
+  <LI>Back to <A href="http://www.tanyakhovanova.com/index.html">Tanya 
+  Khovanova's welcome page</A> 
+  <LI>Send mail to: <A href="mailto:tanyakh@yahoo.com">Tanya Khovanova</A> 
+  <ADDRESS>tanyakh@yahoo.com </ADDRESS></LI></UL>Last revised November 2001 
+</BODY></HTML>

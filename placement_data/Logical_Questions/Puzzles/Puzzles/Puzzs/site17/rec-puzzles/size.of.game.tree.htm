@@ -1,0 +1,110 @@
+<html><head>
+<title>Solution for /competition/games/chess/size.of.game.tree</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /competition/games/chess/size.of.game.tree problem</h1>
+<hr>
+Consider the following assignment of bit strings to square states:
+
+<pre>
+     Square State            Bit String
+     ------ -----            --- ------
+
+     Empty                   0
+     White Pawn              100
+     Black Pawn              101
+     White Rook              11111
+     Black Rook              11110
+     White Knight            11101
+     Black Knight            11100
+     White Bishop            11011
+     Black Bishop            11010
+     White Queen             110011
+     Black Queen             110010
+     White King              110001
+     Black King              110000
+</pre>
+Record a position by listing the bit string for each of the 64 squares.
+For a position with all the pieces still on the board, this will take
+164 bits.  As pieces are captured, the number of bits needed goes down.
+As pawns promote, the number of bits go up.  For positions where a King
+and Rook are in position to castle if castling is legal, we will need
+a bit to indicate if in fact castling is legal.  Same for positions
+where an en-passant capture may be possible.  I'm going to ignore these
+on the grounds that a more clever encoding of a position than the one
+that I am proposing could probably save as many bits as I need for these
+considerations, and thus conjecture that 164 bits is enough to encode a
+chess position.
+
+<p>
+This gives an upper bound of 2^164 positions, or 2.3x10^49 positions.
+
+<p>
+Jurg Nievergelt, of ETH Zurich, quoted the number 2^70 (or about 10^21) in
+e-mail, and referred to his paper "Information content of chess positions",
+ACM SIGART Newsletter 62, 13-14, April 1977, to be reprinted in "Machine
+Intelligence" (ed Michie), to appear 1990.
+
+<p>
+Note that this latest estimate, 10^21, is not too intractable:
+10^7 computers running at 10^7 positions per second could scan those
+in 10^7 seconds, which is less than 6 months.
+
+<p>
+In fact, suppose there is a winning strategy in chess for white.
+Suppose further that the strategy starts from a strong book opening,
+proceeds through middle game with only moves that Deep Thought (DT)
+would pick using the singular extension technique, and finally ends in
+an endgame that DT can analyze completely.  The book opening might take
+you ten moves into the game and DT has demonstrated its ability to
+analyze mates-in-20, so how many nodes would DT really have to visit?
+I suggest that by using external storage such a optical WORM memory,
+you could easily build up a transposition table for such a midgame.  If
+DT did not find a mate, you could progressively expand the width of the
+search window and add to the table until it did.  Of course there would
+be no guarantee of success, but the table built would be useful
+regardless.  Also, you could change the book opening and add to the
+table.  This project could continue indefinitely until finally it must
+solve the game (possibly using denser and denser storage media as
+technology advances).
+
+<p>
+What do you think?
+
+<hr>
+
+I think you are a little bit too optimistic about the feasibility.  Solving
+mate-in-19 when the moves are forcing is one thing, but solving mate-in-19
+when the moves are not forcing is another.  Of course, human beings are no
+better at the latter task.  But to solve the game in the way you described
+would seem to require the ability to handle the latter task.  Anyway, we
+cannot really think about doing the sort of thing you described; DT is just a
+poor man's chess machine project (relatively speaking).
+<pre>
+                                    --Hsu
+<hr>
+</pre>
+i dont think that you understand the numbers involved.
+the size of the tree is still VERY large compared to all
+the advances that you cite. (speed of DT, size of worms,
+endgame projects, etc) even starting a project will probably
+be a waste of time since the next advance will overtake it
+rather than augment it. (if you start on a journey to the
+stars today, you will be met there by humans)
+<pre>
+                                    --ken
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

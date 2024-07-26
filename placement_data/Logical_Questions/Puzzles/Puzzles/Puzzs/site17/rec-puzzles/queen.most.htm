@@ -1,0 +1,214 @@
+<html><head>
+<title>Solution for /competition/games/chess/queen.most</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /competition/games/chess/queen.most problem</h1>
+<hr>
+On an regular chess board, at most eight queens of one color can be
+placed so that there are no mutual attacks.
+
+<p>
+Here is one configuration:
+<pre>
+   +---+---+---+---+---+---+---+---+
+   | Q |   |   |   |   |   |   |   |
+   +---+---+---+---+---+---+---+---+
+   |   |   |   |   | Q |   |   |   |
+   +---+---+---+---+---+---+---+---+
+   |   |   |   |   |   |   |   | Q |
+   +---+---+---+---+---+---+---+---+
+   |   |   |   |   |   | Q |   |   |
+   +---+---+---+---+---+---+---+---+
+   |   |   | Q |   |   |   |   |   |
+   +---+---+---+---+---+---+---+---+
+   |   |   |   |   |   |   | Q |   |
+   +---+---+---+---+---+---+---+---+
+   |   | Q |   |   |   |   |   |   |
+   +---+---+---+---+---+---+---+---+
+   |   |   |   | Q |   |   |   |   |
+   +---+---+---+---+---+---+---+---+
+</pre>
+On an nxn board, if n is not divisible by 2 or 3, n^2 queens can be placed
+such that no two queens of the same color attack each other.
+
+<p>
+The proof is via a straightforward construction.  For n=1, the result
+is obviously true, so assume n&gt;1 and n is not divisible by 2 or 3 (thus n&gt;=5).
+Assume we are given n queens in each of these n "colors" (numbers):
+<pre>
+   0 1 2 ... n-1
+</pre>
+The proof is by construction.  The construction is easier to see then to
+describe, we do both.  Here is what it looks like:
+
+<pre>
+   0       1       2       3       4       ...     n-2     n-1
+   n-2     n-1     0       1       2       ...     n-4     n-3
+   n-4     n-3     n-2     n-1     0       ...     n-6     n-5
+   ...(move one row down =&gt; sub 2 (mod n); one col right =&gt; add 1 (mod n))
+   2       3       4       5       6       ...     0       1
+</pre>
+People who know how a knight moves in chess will note the repetitive knight
+move theme connecting queens of the same color (especially after joining
+opposite edges of the board).
+
+<p>
+Now to describe this: place in each cell a queen whose "color" (number) is:
+<pre>
+     j - 2*i + 1 (mod n),
+     where i is the # of the row, and j is the # of the column.
+</pre>
+Then no 2 queens of the same color are in the same:
+<pre>
+     row, column, or diagonal.
+</pre>
+Actually, we will prove something stronger, namely that no 2 queens of the
+same color are on the same row, column, or "hyperdiagonal".  (The concept, if
+not the term, hyperdiagonal, goes back to 19th century.)  There are n
+hyperdiagonals of negative slope (one of them being a main diagonal) and n
+hyperdiagonals of positive slope (one of them being the other main diagonal).
+Definition:  for k in 0..n-1:
+<pre>
+     the k-th negative hyperdiagonal consists of cells (i,j),
+	     where i-j=k (mod n)
+     the k-th positive hyperdiagonal consists of cells (i,j),
+	     where i+j=k (mod n)
+     Then 0-th negative hyperdiagonal is simply the NW-SE main diagonal.
+     Then "1-th" positive hyperdiagonal is simply the SW-NE main diagonal.
+
+     The other 2*(n-1) hyperdiagonals appear as 2 disconnected diagonal
+	     fragments of cells, but if you join opposite edges of an nxn
+	     board to each other, forming a sphere, these 2 fragments
+	     become linearly connected forming a great circle.
+</pre>
+<h3>Now to the proof:</h3>
+<pre>
+  1) First note that the above color assignment does indeed uniquely define the
+     color of a queen in each of the n^2 cells.
+
+  2) no row contains 2 queens of the same color:
+        cells (i, a) and (i, b) contain queens of the same color =&gt;
+                a-2i-1 = b-2i-1 (mod n) =&gt;
+                a      = b (mod n) =&gt;
+                a = b (since a,b are within 1..n)
+
+  3) no column contains 2 queens of the same color:
+        cells (a, j) and (b, j) contain queens of the same color =&gt;
+                j-2a-1 = j-2b-1 (mod n) =&gt;
+                2a     = 2b (mod n) =&gt;
+                a      = b  (mod n)  (since n and 2 have no common factor) =&gt;
+                a = b (since a,b are within 1..n)
+
+  4) no negative hyperdiagonal contains 2 queens of the same color:
+        cells (a, j) and (b, k) on the same negative hyperdiagonal contain
+            queens of the same color =&gt;
+                a-j    = b-k   (mod n) AND j-2a-1 = k-2b-1 (mod n) =&gt;
+                2a-2j  = 2b-2k (mod n) AND j-2a = k-2b (mod n) =&gt;
+                (adding corresponding sides:)
+                -j     = -k (mod n) =&gt;
+                j = k.
+            And thus a = b, as well (see first equality, 5th line up)
+                
+  5) no positive hyperdiagonal contains 2 queens of the same color:
+        cells (a, j) and (b, k) on the same positive hyperdiagonal contain
+            queens of the same color =&gt;
+                a+j    = b+k   (mod n) AND j-2a-1 = k-2b-1 (mod n) =&gt;
+                2a+2j  = 2b+2k (mod n) AND j-2a = k-2b (mod n) =&gt;
+                (adding corresponding sides:)
+                3j     = 3k (mod n) =&gt;
+                j      = k (mod n)  (since n and 3 have no common factor) =&gt;
+                j = k.  Likewise a = b.
+</pre>                
+As special cases with the 0th negative hyperdiagonal and 1st positive
+hyperdiagonal, no 2 queens on the same main diagonal are colored the same.
+
+<p>
+Now is this condition, than n be not divisible by 2 and 3 also *necessary*?
+
+<pre>
+Mike Konrad
+mdk@sei.cmu.edu
+</pre>
+
+<hr>
+
+<pre>
+ . . . o .  This is a solution for the 5-queen problem
+ o . . . .  at the torus. It has the 90 degree rotation symmetry.
+ . . o . .
+ . . . . o
+ . o . . .
+
+</pre>
+ According to T. Klove, The modular n-queen problem II,
+              Discrete Math. 36 (1981) 33
+ <p>
+ it is unknown how to construct symmetric (90 rot) solutions for 
+ n = 1 or 5 (mod 12) and n has prime factors = 3 (mod 4).
+ He solved the smallest cases 49 and 77.
+ Try the next cases 121 and 133 or find a general solution.
+
+<p>
+A further reference for modular or reflected queen problems is:
+Martin Gardner, Fractal Music, Hypercards and More ..., Freeman (1991)
+
+<hr>
+
+For the 3-D N-queens problem the answer is four, at (1,1,2), (1,3,3),
+(2,3,1), and (3,2,3).
+
+<p>
+You can't have more because with four, you must have at least two in
+at least one of the three horizontal slices of the cube.  For the
+two-or-more-queen slice you must solve the n-queens problem for a 3x3
+planar board, which allows you to place at most 2 queens, and one must
+be in a corner.  The two queens cover all but one spot in the adjacent
+slice, so if the two-queen slice is the middle one we're already 
+limited to no more than 4 queens.  But if we put the 2-queen slice at
+the bottom or top, then the corner queen has line of sight to all 
+corners of the opposite slice, so it can contain at most one queen,
+and so can the middle slice.
+
+<p>
+If they sit in a 4x4x4 cube, the maximum is 7.  Here is a sample.
+
+<ol>
+<li>  4 4 3
+<li>  2 3 4
+<li>  1 2 2
+<li>  2 4 2
+<li>  3 2 1
+<li>  1 1 4
+<li>  3 1 3
+</ol>
+If they sit in a 5x5x5 cube, the maximum is 13.  Here is a sample.
+
+<ol>
+<li>  4 5 4
+<li>  3 5 1
+<li>  5 4 2
+<li>  3 1 2
+<li>  2 1 4
+<li>  2 5 5
+<li>  4 1 5
+<li>  1 5 2
+<li>  5 2 1
+<li>  2 3 1
+<li>  1 3 5
+<li>  1 1 1
+<li>  5 1 3
+</ol>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

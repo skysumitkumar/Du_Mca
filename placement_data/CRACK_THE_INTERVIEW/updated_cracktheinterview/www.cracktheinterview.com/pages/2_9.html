@@ -1,0 +1,526 @@
+
+<HTML>
+
+<!-- Mirrored from www.cracktheinterview.com by HTTrack Website Copier/3.x [XR,YP'2001] -->
+<HEAD>
+<TITLE>CRACK THE INTERVIEW - How do you calculate the maximum subarray of a list of numbers?  (www.cracktheinterview.com)</TITLE><style type="text/css">
+<!--
+.breakhere     {page-break-before: always}
+
+A:link         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+A:active       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+A:visited      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+
+H1             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt; font-weight:bold; color:#336699} 
+H2             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; font-weight:bold} 
+.normal        {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+.announce      {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#000000} 
+.announceLink  {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#336699} 
+.note          {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt ! important; font-weight:normal} 
+.system        {font-family:Courier New, Courier; font-size:x-small;
+                font-weight:normal} 
+.stayblue      {color:#336699 ! important}
+.title         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:larger ! important} 
+.error         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; color:#aa0000; font-weight:bold} 
+.notelink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:normal;
+                font-size:9pt ! important} 
+.tableHeader   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableHeaderSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRow      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#f7f7e7} 
+.tableBlank    {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#ffffff} 
+.hardlink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:bold;
+                font-size:8pt ! important} 
+.boxlink       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#000000 ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.hardnote      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:black ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.tableRowSmall {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal} 
+.tableRowSmallBold {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                bold} 
+.blueHeading   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:bold;
+                color:#336699! important} 
+.blueHeadingLarge {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:16pt! important; font-weight:normal;
+                color:#336699} 
+.blueHeadingMid {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:normal;
+                color:#336699}
+.blueHeadingSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt! important; font-weight:bold;
+                color:#336699} 
+.tableHeaderV  {font-family:Verdana,Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRowV     {font-family:Verdana,Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal; background-color:#f7f7e7} 
+.just          {text-align: justify}
+-->
+</style>
+
+<META NAME="keywords" CONTENT="interview,C,array,maximum subarray,subarray">
+<META NAME="description" CONTENT="How do you calculate the maximum subarray of a list of numbers? ">
+<META NAME="robots" CONTENT="FOLLOW,INDEX">
+<META HTTP-EQUIV="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+
+</HEAD>
+<BODY>
+<TABLE BORDER=0 cellpadding=10>
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER><A HREF="../index.html"><IMG SRC=../images/logo2.jpg border=0></img></A></CENTER></TD>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2>
+<CENTER>
+
+
+<!--START:ADS0-->
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"
+  src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+
+</CENTER>
+</TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER>
+
+<!--START:LINKS-->
+
+
+<TABLE BORDER=0 cellpadding=10>
+<TR><TD NOWRAP>
+<A HREF="../index.html" target="_top"><font class=announcelink>Home</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="../adfaqpublish.html" target="_top"><font class=announcelink>Questions</font></A><BR>
+</TD>
+
+
+<TD NOWRAP>
+<A href="../search.html" target="_top"><font class=announcelink>Search</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="../forum/index.html" target="_top"><font class=announcelink>Forum</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="mailto:cracktheinterview@gmail.com?subject=Hi!"><font class=announcelink>Contact</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum12a3.html" target="_top"><font class=announcelink>Guest Book</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum4d6b.html" target="_top"><font class=announcelink>Polls!</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum31e6.html" target="_top"><font class=announcelink>Got a Question?</font></A><BR>
+</TD>
+
+</TABLE>
+
+<!--END-->
+
+</CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER> &nbsp; </CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=90%% valign=top>
+
+
+
+
+
+<!--START : DATA-->
+
+
+
+<TABLE BORDER=0>
+
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="2_8.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=blueHeading>Programs</font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="2_10.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD>
+<TD WIDTH=90%%><CENTER><font class=blueHeading>(36 / 268)</font></center></TD>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%></TD>
+<TD WIDTH=90%%><center>&nbsp;</center></TD>
+<TD WIDTH=5%%></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=announceLink><BR><BR><BR>
+<!--THE QUESTION-->
+
+How do you calculate the maximum subarray of a list of numbers? <BR>
+<!--END-->
+<BR></font></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=normal>
+<!--THE ANSWER--><BR>
+<!--META:START--><!--interview,C,array,maximum subarray,subarray--><!--META:END--><BR>
+<BR>
+<font class=announcelink>This is a very popular question</font><BR>
+<BR>
+You are given a large array X of integers (both positive and negative) and you need to find the maximum sum found in any <font class=announcelink>contiguous subarray of X</font>.<BR>
+<BR>
+<CODE><BR>
+Example&nbsp;X&nbsp;=&nbsp;[11,&nbsp;-12,&nbsp;15,&nbsp;-3,&nbsp;8,&nbsp;-9,&nbsp;1,&nbsp;8,&nbsp;10,&nbsp;-2]<BR>
+Answer&nbsp;is&nbsp;30.<BR>
+</CODE><BR>
+<BR>
+<BR>
+There are various methods to solve this problem, some are listed below<BR>
+<BR>
+<font class=announcelink>Brute force</font><BR>
+<BR>
+<CODE><BR>
+maxSum&nbsp;=&nbsp;0<BR>
+for&nbsp;L&nbsp;=&nbsp;1&nbsp;to&nbsp;N<BR>
+{<BR>
+&nbsp;&nbsp;for&nbsp;R&nbsp;=&nbsp;L&nbsp;to&nbsp;N<BR>
+&nbsp;&nbsp;{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum&nbsp;=&nbsp;0<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;=&nbsp;L&nbsp;to&nbsp;R<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum&nbsp;=&nbsp;sum&nbsp;+&nbsp;X[i]<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxSum&nbsp;=&nbsp;max(maxSum,&nbsp;sum)<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+}<BR>
+<BR>
+O(N^3)<BR>
+</CODE><BR>
+<BR>
+<BR>
+<font class=announcelink>Quadratic</font><BR>
+<BR>
+Note that sum of [L..R] can be calculated from sum of [L..R-1] very easily.<BR>
+<BR>
+<CODE><BR>
+maxSum&nbsp;=&nbsp;0<BR>
+for&nbsp;L&nbsp;=&nbsp;1&nbsp;to&nbsp;N<BR>
+{<BR>
+&nbsp;&nbsp;sum&nbsp;=&nbsp;0<BR>
+&nbsp;&nbsp;for&nbsp;R&nbsp;=&nbsp;L&nbsp;to&nbsp;N<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;sum&nbsp;=&nbsp;sum&nbsp;+&nbsp;X[R]<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;maxSum&nbsp;=&nbsp;max(maxSum,&nbsp;sum)&nbsp;<BR>
+&nbsp;&nbsp;}<BR>
+}<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+<font class=announcelink>Using divide-and-conquer</font><BR>
+<BR>
+<CODE><BR>
+O(N&nbsp;log(N))<BR>
+<BR>
+maxSum(L,&nbsp;R)<BR>
+{<BR>
+&nbsp;&nbsp;if&nbsp;L&nbsp;>&nbsp;R&nbsp;then<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;0<BR>
+&nbsp;<BR>
+&nbsp;&nbsp;if&nbsp;L&nbsp;=&nbsp;R&nbsp;then<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;max(0,&nbsp;X[L])<BR>
+<BR>
+&nbsp;&nbsp;M&nbsp;=&nbsp;(L&nbsp;+&nbsp;R)/2<BR>
+<BR>
+&nbsp;&nbsp;sum&nbsp;=&nbsp;0;&nbsp;maxToLeft&nbsp;=&nbsp;0<BR>
+&nbsp;&nbsp;for&nbsp;i&nbsp;=&nbsp;M&nbsp;downto&nbsp;L&nbsp;do<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum&nbsp;=&nbsp;sum&nbsp;+&nbsp;X[i]<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxToLeft&nbsp;=&nbsp;max(maxToLeft,&nbsp;sum)<BR>
+&nbsp;&nbsp;}&nbsp;<BR>
+&nbsp;<BR>
+&nbsp;&nbsp;sum&nbsp;=&nbsp;0;&nbsp;maxToRight&nbsp;=&nbsp;0<BR>
+&nbsp;&nbsp;for&nbsp;i&nbsp;=&nbsp;M&nbsp;to&nbsp;R&nbsp;do<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum&nbsp;=&nbsp;sum&nbsp;+&nbsp;X[i]<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxToRight&nbsp;=&nbsp;max(maxToRight,&nbsp;sum)<BR>
+&nbsp;&nbsp;}<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;maxCrossing&nbsp;=&nbsp;maxLeft&nbsp;+&nbsp;maxRight<BR>
+&nbsp;&nbsp;maxInA&nbsp;=&nbsp;maxSum(L,M)<BR>
+&nbsp;&nbsp;maxInB&nbsp;=&nbsp;maxSum(M+1,R)<BR>
+&nbsp;&nbsp;return&nbsp;max(maxCrossing,&nbsp;maxInA,&nbsp;maxInB)<BR>
+}<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+Here is working C code for all the above cases<BR>
+<BR>
+<CODE><BR>
+#include&lt;stdio.h><BR>
+#define&nbsp;N&nbsp;10<BR>
+int&nbsp;maxSubSum(int&nbsp;left,&nbsp;int&nbsp;right);<BR>
+int&nbsp;list[N]&nbsp;=&nbsp;{11,&nbsp;-12,&nbsp;15,&nbsp;-3,&nbsp;8,&nbsp;-9,&nbsp;1,&nbsp;8,&nbsp;10,&nbsp;-2};<BR>
+<BR>
+int&nbsp;main()<BR>
+{<BR>
+&nbsp;&nbsp;int&nbsp;i,j,k;<BR>
+&nbsp;&nbsp;int&nbsp;maxSum,&nbsp;sum;<BR>
+<BR>
+&nbsp;&nbsp;/*---------------------------------------<BR>
+&nbsp;&nbsp;*&nbsp;CUBIC&nbsp;-&nbsp;O(n*n*n)<BR>
+&nbsp;&nbsp;*---------------------------------------*/<BR>
+<BR>
+&nbsp;&nbsp;maxSum&nbsp;=&nbsp;0;<BR>
+&nbsp;&nbsp;for(i=0;&nbsp;i&lt;N;&nbsp;i++)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;for(j=i;&nbsp;j&lt;N;&nbsp;j++)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum&nbsp;=&nbsp;0;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(k=i&nbsp;;&nbsp;k&lt;j;&nbsp;k++)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum&nbsp;=&nbsp;sum&nbsp;+&nbsp;list[k];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxSum&nbsp;=&nbsp;(maxSum>sum)?maxSum:sum;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;printf("\nmaxSum&nbsp;=&nbsp;[%d]\n",&nbsp;maxSum);<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;/*-------------------------------------<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Quadratic&nbsp;-&nbsp;O(n*n)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;------------------------------------&nbsp;*/<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;maxSum&nbsp;=&nbsp;0;<BR>
+&nbsp;&nbsp;&nbsp;for(i=0;&nbsp;i&lt;N;&nbsp;i++)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum=0;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(j=i;&nbsp;j&lt;N&nbsp;;j++)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum&nbsp;=&nbsp;sum&nbsp;+&nbsp;list[j];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxSum&nbsp;=&nbsp;(maxSum>sum)?maxSum:sum;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;printf("\nmaxSum&nbsp;=&nbsp;[%d]\n",&nbsp;maxSum);<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;/*----------------------------------------<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Divide&nbsp;and&nbsp;Conquer&nbsp;-&nbsp;O(nlog(n))<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;--------------------------------------&nbsp;*/<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;printf("\nmaxSum&nbsp;:&nbsp;[%d]\n",&nbsp;maxSubSum(0,9));<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;return(0);<BR>
+}<BR>
+<BR>
+<BR>
+int&nbsp;maxSubSum(int&nbsp;left,&nbsp;int&nbsp;right)<BR>
+{<BR>
+&nbsp;&nbsp;int&nbsp;mid,&nbsp;sum,&nbsp;maxToLeft,&nbsp;maxToRight,&nbsp;maxCrossing,&nbsp;maxInA,&nbsp;maxInB;<BR>
+&nbsp;&nbsp;int&nbsp;i;<BR>
+<BR>
+&nbsp;&nbsp;if(left>right){return&nbsp;0;}<BR>
+&nbsp;&nbsp;if(left==right){return((0>list[left])?0:list[left]);}<BR>
+&nbsp;&nbsp;mid&nbsp;=&nbsp;(left&nbsp;+&nbsp;right)/2;<BR>
+<BR>
+&nbsp;&nbsp;sum=0;<BR>
+&nbsp;&nbsp;maxToLeft=0;<BR>
+&nbsp;&nbsp;for(i=mid;&nbsp;i>=left;&nbsp;i--)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum&nbsp;=&nbsp;sum&nbsp;+&nbsp;list[i];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxToLeft&nbsp;=&nbsp;(maxToLeft>sum)?maxToLeft:sum;<BR>
+&nbsp;&nbsp;}<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;sum=0;<BR>
+&nbsp;&nbsp;maxToRight=0;<BR>
+&nbsp;&nbsp;for(i=mid+1;&nbsp;i&lt;=right;&nbsp;i++)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum&nbsp;=&nbsp;sum&nbsp;+&nbsp;list[i];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxToRight&nbsp;=&nbsp;(maxToRight>sum)?maxToRight:sum;<BR>
+&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;maxCrossing&nbsp;=&nbsp;maxToLeft&nbsp;+&nbsp;maxToRight;<BR>
+&nbsp;&nbsp;maxInA&nbsp;=&nbsp;maxSubSum(left,mid);<BR>
+&nbsp;&nbsp;maxInB&nbsp;=&nbsp;maxSubSum(mid+1,right);<BR>
+&nbsp;&nbsp;return(((maxCrossing>maxInA)?maxCrossing:maxInA)>maxInB?((maxCrossing>maxInA)?maxCrossing:maxInA):maxInB);<BR>
+}<BR>
+<BR>
+</CODE> <BR>
+<BR>
+<BR>
+<font class=announcelink>Note that</font>, if the array has <font class=announcelink>all negative numbers</font>, then this code will return 0. This is <font class=announcelink>wrong</font> because it should return the maximum sum, which is the least negative integer in the array. This happens because we are setting <font class=announcelink>maxSum</font> to 0 initially. A small change in this code can be used to handle such cases. 
+<BR><BR>
+<!--END-->
+</font><BR></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="2_8.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=notelink><A href="mailto:cracktheinterview@gmail.com?subject=Comments [How do you calculate the maximum subarray of a list of numbers? ]&Body=Question : [How do you calculate the maximum subarray of a list of numbers? ]"><font class=announcelink>COMMENTS</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><A HREF=../adfaqpublish.html>INDEX</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><a href="#" onclick="window.print();return false;">PRINT</a></font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="2_10.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<BR><BR><BR><font class=notelink>
+Last updated:
+
+July 8, 2005<BR><BR>
+<a href=../index.html>www.cracktheinterview.com</a> - Your destination for the most common IT interview questions, answers, frequently asked interview questions (FAQ), C Programs, C Datastructures for interviews conducted by Microsoft, Oracle, Google, IBM, HP, Yahoo, Infosys, Wipro, SAP, CA (Computer Associates), Sun, Adobe, GE, Novell, Cisco, Motorola, TI (Texas Instruments), Intel, TCS, iFlex, Trilogy, MindTree, GS and more...<br><BR>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+
+<!--END-->
+
+
+</TD>
+
+
+
+
+<TD WIDTH=10%% valign="top">
+
+
+<!--START:ADS1-->
+
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_alternate_color = "CCCCCC";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript" src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"  src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+</TD>
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+</BODY>
+
+<!-- Mirrored from www.cracktheinterview.com by HTTrack Website Copier/3.x [XR,YP'2001] -->
+</HTML>
+
+

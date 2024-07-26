@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0064)http://www.ami.ac.uk/courses/ami4407_dicdes/u01/unit_01_saqs.asp -->
+<HTML><HEAD><TITLE>Unit 1 - Best Practice Digital Design, Self Assessment Questions</TITLE><!-- InstanceBegin template="/Templates/solutions.dwt" codeOutsideHTMLIsLocked="false" --><!-- InstanceBeginEditable name="doctitle" --><!-- InstanceEndEditable -->
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1"><!-- InstanceBeginEditable name="head" -->
+<SCRIPT language=JavaScript type=text/JavaScript>
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</SCRIPT>
+<!-- InstanceEndEditable -->
+<STYLE type=text/css media=print>@import url( /css_new/modules/pf_solutions.css );
+@import url( /css/modules/pf_module_elements.css );
+</STYLE>
+<LINK media=screen 
+href="Unit 1 - Best Practice Digital Design, Self Assessment Questions_files/solutions.css" 
+type=text/css rel=stylesheet>
+<SCRIPT 
+src="Unit 1 - Best Practice Digital Design, Self Assessment Questions_files/courseware.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT 
+src="Unit 1 - Best Practice Digital Design, Self Assessment Questions_files/structural.js" 
+type=text/javascript></SCRIPT>
+
+<META content="MSHTML 6.00.2800.1543" name=GENERATOR></HEAD>
+<BODY>
+<DIV id=decoration><SPAN><STRONG>Solutions</STRONG></SPAN></DIV>
+<DIV id=solutionsbanner><A href="javascript:onClick=window.self.close()">close 
+window </A></DIV><A name=top></A>
+<DIV id=solutionscontent><!-- InstanceBeginEditable name="content" -->
+<H1>Unit 1 - Best Practice Digital Design</H1>
+<H2>Self Assessment Questions</H2>
+<HR noShade SIZE=1>
+
+<H3>Question 1</H3>
+<P>The circuit shown below has been designed to provide a pseudo random number 
+sequence as follows: <STRONG>A B C D</STRONG> <BR>0 0 0 0 <BR>1 0 0 0 <BR>0 1 0 
+0 <BR>1 0 1 0 <BR>0 1 0 1 <BR>0 0 1 0 <BR>1 0 0 1 <BR>1 1 0 0 <BR>0 1 1 0 <BR>1 
+0 1 1 <BR>1 1 0 1 <BR>1 1 1 0 <BR>0 1 1 1 <BR>0 0 1 1 <BR>0 0 0 1 <BR>0 0 0 0 
+<P>To guard against the sequencer inadvertently assuming the illegal lock-up 
+state of 1111, a circuit reset is provided. 
+<P><IMG height=507 
+src="Unit 1 - Best Practice Digital Design, Self Assessment Questions_files/imageEBJ.gif" 
+width=956> What 
+<P>Would the output of a simulator show for the state of flip-flops ABCD after 
+the fourth clock pulse? <BR>&nbsp; <BR>&nbsp; 
+<FORM><INPUT onclick="MM_showHideLayers('answer1','','show')" type=button value="Show Answer"> 
+<BR><INPUT onclick="MM_showHideLayers('answer1','','hide')" type=button value="Hide Answer"> 
+</FORM></P>
+<DIV id=answer1 
+style="BORDER-RIGHT: 1px ridge; PADDING-RIGHT: 10px; BORDER-TOP: 1px ridge; PADDING-LEFT: 10px; LEFT: 207px; VISIBILITY: hidden; PADDING-BOTTOM: 10px; BORDER-LEFT: 1px ridge; WIDTH: 590px; PADDING-TOP: 10px; BORDER-BOTTOM: 1px ridge; POSITION: absolute; TOP: 1296px; HEIGHT: 52px; BACKGROUND-COLOR: #eeeeee">The 
+circuit contains no means of exerting an external reset so the simulator will 
+show the output as indeterminate for the entire length of the simulation.</DIV>
+<HR noShade SIZE=1>
+
+<H3>Question 2 </H3>
+<P><STRONG>&nbsp;</STRONG>The circuit contains a number of design 
+violations.&nbsp; How many can you detect? 
+<FORM><INPUT onclick="MM_showHideLayers('answer2','','show')" type=button value="Show Answer"> 
+<BR><INPUT onclick="MM_showHideLayers('answer2','','hide')" type=button value="Hide Answer"> 
+</FORM></P>
+<DIV id=answer2 
+style="BORDER-RIGHT: 1px ridge; PADDING-RIGHT: 10px; BORDER-TOP: 1px ridge; PADDING-LEFT: 10px; LEFT: 208px; VISIBILITY: hidden; PADDING-BOTTOM: 10px; BORDER-LEFT: 1px ridge; WIDTH: 507px; PADDING-TOP: 10px; BORDER-BOTTOM: 1px ridge; POSITION: absolute; TOP: 1540px; HEIGHT: 160px; BACKGROUND-COLOR: #eeeeee">No 
+external global reset <BR>Reset circuitry provides wrong phase of signal 
+<BR>Reset is asynchronous <BR>Flip-flop set inputs left open circuit 
+<BR>Flip-flops are level triggered, not edge triggered <BR>Clock signal is 
+double edged (wrong sequence will result) <BR>Clock signal is skewed</DIV>
+<HR noShade SIZE=1>
+
+<H3>Question 3 </H3>
+<P>Propose suitable modifications to the circuit to satisfy the foundry design 
+regulations and provide the correct functionality. 
+<FORM><INPUT onclick="MM_showHideLayers('answer3','','show')" type=button value="Show Answer"> 
+<BR><INPUT onclick="MM_showHideLayers('answer3','','hide')" type=button value="Hide Answer"> 
+</FORM></P>
+<DIV id=answer3 
+style="Z-INDEX: 1; LEFT: 4px; VISIBILITY: hidden; WIDTH: 200px; POSITION: absolute; TOP: 1822px; HEIGHT: 115px"><IMG 
+height=378 
+src="Unit 1 - Best Practice Digital Design, Self Assessment Questions_files/imageINM.gif" 
+width=968></DIV><BR>&nbsp; 
+<META content="Jeff Ormerod" name=Author>
+<META content="Mozilla/4.72 [en] (WinNT; I) [Netscape]" name=GENERATOR>
+<SCRIPT language=JavaScript>
+
+<!--
+var ns4
+var ie4
+
+function detect_browser(){
+	ns4=(document.layers)?true:false
+	ie4=(document.all)?true:false
+}
+
+function showObject(obj) {
+	if (ie4)
+	{
+		obj.style.visibility = "visible"
+	}
+	else if (ns4)
+	{
+		obj.visibility = "show"
+	}
+}
+
+
+function hideObject(obj) {
+	if (ie4)
+	{
+		obj.style.visibility = "hidden"
+	}
+	else if (ns4)
+	{
+		obj.visibility = "hide"
+	}
+}
+
+//-->
+
+</SCRIPT>
+<!-- InstanceEndEditable --></DIV><!-- InstanceEnd --></BODY></HTML>

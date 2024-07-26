@@ -1,0 +1,251 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Generating Random Numbers</TITLE>
+<META NAME="description" CONTENT="Generating Random Numbers">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<LINK REL="previous" HREF="node77.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node77.html">
+<LINK REL="up" HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">
+<LINK REL="next" HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1449"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1443"
+  HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1437"
+  HREF="node77.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node77.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1445"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1447"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1450"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">Applications of Random Numbers</A>
+<B> Up:</B> <A NAME="tex2html1444"
+  HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">Random Numbers</A>
+<B> Previous:</B> <A NAME="tex2html1438"
+  HREF="node77.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node77.html">What is a Random</A>
+ &nbsp <B>  <A NAME="tex2html1446"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1448"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00920000000000000000">
+Generating Random Numbers</A>
+</H1>
+
+<P>
+Most computer languages have software `random number
+generators'. These do not generate random sequences in the above sense
+(almost by definition, no algorithmic process can possibly do
+so). Instead, they produce what are called <I>pseudo-random
+numbers</I>.<A NAME="7766"></A> These are sequences of numbers
+that are sufficiently `random' to pass all current statistical tests
+for randomness in `realistic' cases.
+
+<P>
+Two quotations are in order here:
+
+<P>
+<BLOCKQUOTE>
+A random sequence is a vague notion embodying the idea of a 
+sequence in which each term is unpredictable to the uninitiated 
+and whose digits pass a certain number of tests, traditional with 
+statisticians and depending somewhat on the use to which the 
+sequence is put.  (Lehmer 1951).<A NAME="7768"></A>
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Anyone who considers arithmetical methods of producing random digits
+is, of course, in a state of sin. (Von Neumann 1951).<A NAME="7769"></A>
+``If you think you're a really good programmer,...read [Knuth's] Art of
+Computer Programming....You should definitely send me a resume if you
+can read the whole thing.'' - Bill Gates
+
+</BLOCKQUOTE>
+
+<P>
+There are many algorithms available (see (<A
+ HREF="node112.html#knuth81:_semin_algor" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node112.html#knuth81:_semin_algor">Knuth, 1981</A>)
+for some horror stories) but most languages now use what are called
+linear congruential generators.<A NAME="7772"></A>
+
+<P>
+A <A NAME="7957"></A><B>Linear Congruential Generator</B> is determined by three
+positive integers <I>a</I>, <I>b</I>, <I>m</I>.  We call <I>a</I> the
+<I>multiplier</I>,<A NAME="7775"></A> <I>b</I> the
+<I>increment</I><A NAME="7777"></A> and <I>m</I> the
+<I>modulus</I><A NAME="7779"></A>.  It produces its pseudo-random sequence
+as follows:
+
+<UL>
+<LI> generate a sequence of integers {<I>n</I><SUB>k</SUB>} (<!-- MATH
+ $0\le n_k <m$
+ -->
+0<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$"><I>n</I><SUB>k</SUB> &lt; <I>m</I>) as
+ follows:
+
+<UL>
+<LI>specify <I>n</I><SUB>0</SUB> - the <I>seed</I>; and 
+ 
+</LI>
+<LI>generate the rest by 
+	<!-- MATH
+ \begin{displaymath}
+n_{k+1}  = a n_k + b \pmod{m}.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>n</I><SUB>k + 1</SUB> = <I>an</I><SUB>k</SUB> + <I>b</I>(mod <I>m</I>).
+</DIV><P></P>
+ 
+</LI>
+</UL>
+</LI>
+<LI> then let <!-- MATH
+ $x_k = \frac{n_k}{m}\in [0,1)$
+ -->
+<I>x</I><SUB>k</SUB> = <IMG
+ WIDTH="23" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img192.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img192.gif"
+ ALT="$ {\frac{n_k}{m}}$"> <IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img65.gif"
+ ALT="$ \in$"> [0, 1).
+</LI>
+</UL>
+
+<P>
+This looks ridiculous. The <I>x</I>'s are rational and there are only <I>m</I>
+values available for them: <I>k</I>/<I>m</I> for <!-- MATH
+ $k=0,\ldots,m-1$
+ -->
+<I>k</I> = 0,..., <I>m</I> - 1.  However, in
+practical cases, <I>m</I> is usually something like
+<!-- MATH
+ \begin{displaymath}
+2^{32}   = 4,294,967,296
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+2<SUP>32</SUP> = 4, 294, 967, 296
+</DIV><P></P>
+and <I>a</I> is chosen carefully to give good results. (The choice of <I>a</I>
+is critical, the choice of <I>b</I> less important.)
+
+<P>
+It can be shown that the following conditions should be satisfied if
+we are to have a good generator:
+
+<UL>
+<LI> The modulus <I>m</I> should be large.  This is usually not a problem
+ because values like the one given above are very convenient for
+ computer arithmetic.
+</LI>
+<LI> If, as often happens, <I>m</I> is a power of 2 then pick <I>a</I> such that
+ <!-- MATH
+ $a \mathrm{mod} 8 = 5$
+ -->
+<I>a</I>mod8 = 5. This will have the effect of maximising the
+ period of the necessarily cyclic sequence produced. The choice of
+ value for <I>a</I> is the most delicate part of the whole design. Any
+ suggested value for <I>a</I> should be submitted to a thing called the
+ `spectral test' before being used.<A NAME="7792"></A>
+</LI>
+<LI> The increment <I>b</I> should be coprime to <I>m</I>. A value like <I>b</I> = 1 is
+ perfectly acceptable.
+</LI>
+</UL>
+An acceptable choice of values would be:
+<!-- MATH
+ \begin{displaymath}
+m = 2^{32}  \qquad     a = 1664525  \qquad    b = 1.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>m</I> = 2<SUP>32</SUP>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>a</I> = 1664525&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>b</I> = 1.
+</DIV><P></P>
+The theory behind these conditions is discussed in much more detail in
+(<A
+ HREF="node112.html#knuth81:_semin_algor" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node112.html#knuth81:_semin_algor">Knuth, 1981</A>, Section 3.2.1).
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1449"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1443"
+  HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1437"
+  HREF="node77.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node77.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1445"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1447"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1450"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">Applications of Random Numbers</A>
+<B> Up:</B> <A NAME="tex2html1444"
+  HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">Random Numbers</A>
+<B> Previous:</B> <A NAME="tex2html1438"
+  HREF="node77.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node77.html">What is a Random</A>
+ &nbsp <B>  <A NAME="tex2html1446"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1448"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,575 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head profile="http://gmpg.org/xfn/1">
+	<title>  PHP interview questions, Part 2 &lt; TechInterviews.com</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css" media="screen">
+		@import url( "style.css");
+	</style>
+        <meta name="description" content="The site offers  as well as career tips and preparation guides for a job interview in the field. Interview questions for high-tech companies.">
+	<link rel="stylesheet" type="text/css" media="print" href="print.css" tppabs="http://www.techinterviews.com/print.css" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="-feed=rss2.htm" tppabs="http://www.techinterviews.com/?feed=rss2" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="-feed=rss.htm" tppabs="http://www.techinterviews.com/?feed=rss" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="javascript:if(confirm('http://www.techinterviews.com/?feed=atom  \n\nThis file was not retrieved by Teleport Pro, because it did not meet the project\'s file type specifications.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/?feed=atom'" tppabs="http://www.techinterviews.com/?feed=atom" />
+	<link rel="pingback" href="xmlrpc.php.htm" tppabs="http://www.techinterviews.com/xmlrpc.php" />
+		</head>
+
+<body>
+<h1 id="header"><a href="index.htm" tppabs="http://www.techinterviews.com/">Interview questions for tech companies</a></h1>
+<!-- end header --><table width="100%"><tr><td valign="top" width="200" bgcolor="silver">
+<!--sidebar start-->
+	<p class="categorizer">Full-text search:</p><ul class="menulist2"><li><center>
+		<form id="searchform" method="get" action="">
+			<input type="text" name="s" /><input type="submit" name="submit" value="Search" />
+		</form></center></li></ul>
+
+	<p><p class="categorizer">Categories:</p>
+		<ul class="menulist">
+				<li><a href="index.php-cat=9.htm" tppabs="http://www.techinterviews.com/index.php?cat=9" title="View all posts filed under .NET">.NET</a> (29)
+</li>
+	<li><a href="index.php-cat=2.htm" tppabs="http://www.techinterviews.com/index.php?cat=2" title="View all posts filed under C++">C++</a> (25)
+</li>
+	<li><a href="index.php-cat=12.htm" tppabs="http://www.techinterviews.com/index.php?cat=12" title="View all posts filed under Database">Database</a> (26)
+</li>
+	<li><a href="index.php-cat=1.htm" tppabs="http://www.techinterviews.com/index.php?cat=1" title="View all posts filed under General">General</a> (38)
+</li>
+	<li><a href="index.php-cat=11.htm" tppabs="http://www.techinterviews.com/index.php?cat=11" title="View all posts filed under Hardware">Hardware</a> (16)
+</li>
+	<li><a href="index.php-cat=4.htm" tppabs="http://www.techinterviews.com/index.php?cat=4" title="View all posts filed under Java">Java</a> (48)
+</li>
+	<li><a href="index.php-cat=5.htm" tppabs="http://www.techinterviews.com/index.php?cat=5" title="View all posts filed under Networking">Networking</a> (21)
+</li>
+	<li><a href="index.php-cat=13.htm" tppabs="http://www.techinterviews.com/index.php?cat=13" title="View all posts filed under Testing">Testing</a> (11)
+</li>
+	<li><a href="index.php-cat=7.htm" tppabs="http://www.techinterviews.com/index.php?cat=7" title="View all posts filed under Unix/Linux">Unix/Linux</a> (16)
+</li>
+	<li><a href="index.php-cat=8.htm" tppabs="http://www.techinterviews.com/index.php?cat=8" title="View all posts filed under VB">VB</a> (8)
+</li>
+	<li><a href="index.php-cat=14.htm" tppabs="http://www.techinterviews.com/index.php?cat=14" title="View all posts filed under Web dev">Web dev</a> (13)
+</li>
+	<li><a href="index.php-cat=6.htm" tppabs="http://www.techinterviews.com/index.php?cat=6" title="View all posts filed under Windows">Windows</a> (21)
+</li>
+		<li><a href="mailto:techinterviews@gmail.com?Subject=Submission">Submit yours</a></li>
+		</ul>
+	</p>
+
+	<p>
+	<p class="categorizer">Site sponsors:</p><ul class="menulist2"><li>
+		<center>
+	<script type="text/javascript"><!--
+		google_ad_client = "pub-6610148867873991";
+		google_ad_width = 160;
+		google_ad_height = 600;
+		google_ad_format = "160x600_as";
+		google_ad_channel ="0322550296";
+		google_color_border = "C0C0C0";
+		google_color_bg = "c0c0c0";
+		google_color_link = "000000";
+		google_color_url = "CCCCCC";
+		google_color_text = "CCCCCC";
+		//--></script>
+		<script type="text/javascript"
+		  src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+
+	</center></li></ul>
+	</p>
+<p>
+<p class="categorizer">E-mail updates:</p><ul class="menulist2"><li>
+	 <form action="http://groups-beta.google.com/group/TechInterviewscom-additions/boxsubscribe">
+	  <div align="center">
+	  <table cellpadding="2">
+	  <tr><td>
+		<p align="center">Sign up for updates - win a free book</td></tr>
+	  <tr>
+		<td><center><input type=text name=email value=email@server></center></td>
+	  </tr>
+	  <tr>
+		<td><center>
+			 <input type=submit name="sub" value="Subscribe">
+		</center></td>
+	  </tr>
+	  <tr>
+		<td><p align="center">We give away programming books to e-mail subscribers</p></td>
+	  </tr>
+	  </table>
+	   </div>
+	   </form></li></ul>
+</p>
+
+<p>
+<p class="categorizer">Miscellaneous stuff:</p>
+<div class="menulist2">
+<script type="text/javascript" src="text_group.php-sid=6932&br=1" tppabs="http://1.adbrite.com/mb/text_group.php?sid=6932&br=1"></script>
+<p />
+<div><a class="adHeadline" target="_top" href="javascript:if(confirm('http://www.adbrite.com/mb/commerce/purchase_form.php?opid=7189&afsid=1  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.adbrite.com/mb/commerce/purchase_form.php?opid=7189&afsid=1'" tppabs="http://www.adbrite.com/mb/commerce/purchase_form.php?opid=7189&afsid=1">Your Ad Here</a></div>
+<li><a class="adHeadline" href="javascript:if(confirm('http://new3.mysurvey.com/join.cfm?r=491576  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://new3.mysurvey.com/join.cfm?r=491576'" tppabs="http://new3.mysurvey.com/join.cfm?r=491576">Take a survey, earn money. Get $5 for sign-up.</a></li>
+<li><a class="adHeadline" href="javascript:if(confirm('http://www.dreamhost.com/rewards.cgi?prostoalex  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.dreamhost.com/rewards.cgi?prostoalex'" tppabs="http://www.dreamhost.com/rewards.cgi?prostoalex">2.4 Gigs of storage with 120 GB of bandwidth monthly - great hosting for $7.95 a month</a></li>
+<li><a class="adHeadline" href="javascript:if(confirm('http://www.nobelcom.com/cgi-bin/newActive/nobelcom.cgi?AFFN=168936128  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.nobelcom.com/cgi-bin/newActive/nobelcom.cgi?AFFN=168936128'" tppabs="http://www.nobelcom.com/cgi-bin/newActive/nobelcom.cgi?AFFN=168936128">International phone cards, cheap rates</a></li>
+<li><a class="adHeadline" href="javascript:if(confirm('http://www.satellitesolutions.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.satellitesolutions.com/'" tppabs="http://www.satellitesolutions.com/">Satelite TV</a> - <span class="adText">have satelite television installed at your house with directv</a>. <a href="javascript:if(confirm('http://www.rubberstampchamp.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.rubberstampchamp.com/'" tppabs="http://www.rubberstampchamp.com/">Rubber Stamp</a> - <span class="adText">Shop for custom self-inking stamps, hand stamps, address stamps, label stamps, check endorsement stamps, check deposit stamps, date stamps, pre inks, pocket stamps, ink and much more!</a></li>
+<li> <a class="adHeadline" href="javascript:if(confirm('http://www.daytradeteam.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.daytradeteam.com/'" tppabs="http://www.daytradeteam.com/">Day Trading</a> - <span class="adText">day trading signals for active stock and options traders.</a></li>
+</div>
+</p><p>
+		<p class="categorizer">Good books:</p>
+		<p>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0471383562/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0471383562/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0471383562/moskalyukcom-20"><img src="1.jpg" tppabs="http://www.techinterviews.com/images/1.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0316919160/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0316919160/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0316919160/moskalyukcom-20"><img src="2.jpg" tppabs="http://www.techinterviews.com/images/2.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/007016357X/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/007016357X/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/007016357X/moskalyukcom-20"><img src="3.jpg" tppabs="http://www.techinterviews.com/images/3.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0786865962/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0786865962/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0786865962/moskalyukcom-20"><img src="4.jpg" tppabs="http://www.techinterviews.com/images/4.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0425166864/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0425166864/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0425166864/moskalyukcom-20"><img src="5.gif" tppabs="http://www.techinterviews.com/images/5.gif"></a>
+<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/1580624936/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/1580624936/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/1580624936/moskalyukcom-20"><img src="1580624936.01.THUMBZZZ.jpg" tppabs="http://images.amazon.com/images/P/1580624936.01.THUMBZZZ.jpg" border="0"></a>
+		</p>
+	</p>
+
+	<p>
+	<p class="categorizer">Good links:</p>
+			<ul class="menulist2">
+				<li><a href="javascript:if(confirm('http://www.hotdealsportal.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.hotdealsportal.com/'" tppabs="http://www.hotdealsportal.com/">Deals on PCs</a></li>
+<li><a href="javascript:if(confirm('http://www.techbooksforfree.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.techbooksforfree.com/'" tppabs="http://www.techbooksforfree.com/">Free books</a></li>
+<li><a href="javascript:if(confirm('http://www.itfacts.biz/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.itfacts.biz/'" tppabs="http://www.itfacts.biz/">IT Research</a></li>
+<li><a href="javascript:if(confirm('http://www.sellsbrothers.com/fun/msiview/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.sellsbrothers.com/fun/msiview/'" tppabs="http://www.sellsbrothers.com/fun/msiview/">Interview@MSFT</a></li>
+<li><a href="javascript:if(confirm('http://weblogs.asp.net/JobsBlog/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://weblogs.asp.net/JobsBlog/'" tppabs="http://weblogs.asp.net/JobsBlog/">Career blog @ MSFT</a></li>
+<li><a href="javascript:if(confirm('http://www.c-sharpcorner.com/faq.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.c-sharpcorner.com/faq.asp'" tppabs="http://www.c-sharpcorner.com/faq.asp">C# FAQ</a></li>
+<li><a href="javascript:if(confirm('http://blogs.msdn.com/csharpfaq  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://blogs.msdn.com/csharpfaq'" tppabs="http://blogs.msdn.com/csharpfaq">MSDN C# FAQ</a></li>
+<li><a href="javascript:if(confirm('http://www.everythingfirebird.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.everythingfirebird.com/'" tppabs="http://www.everythingfirebird.com/">Everything Firebird</a></li>
+<li><a href="javascript:if(confirm('http://searchsmallbizit.techtarget.com/sDefinition/0,,sid44_gci826135,00.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://searchsmallbizit.techtarget.com/sDefinition/0,,sid44_gci826135,00.html'" tppabs="http://searchsmallbizit.techtarget.com/sDefinition/0,,sid44_gci826135,00.html">Cheat sheets</a></li>
+<li><a href="javascript:if(confirm('http://www.thatwasfunny.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.thatwasfunny.com/'" tppabs="http://www.thatwasfunny.com/">That was funny</a></li>
+<li><a href="javascript:if(confirm('http://www.collectorcarbuff.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.collectorcarbuff.com/'" tppabs="http://www.collectorcarbuff.com/">Collector cars</a></li>
+<li><a href="javascript:if(confirm('http://www.aspfree.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.aspfree.com/'" tppabs="http://www.aspfree.com/">ASP Free</a></li>
+<li><a href="javascript:if(confirm('http://www.vault.com/survival/center.jsp?type=3&  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.vault.com/survival/center.jsp?type=3&#038;ch_id=262&#038;article_id=9106882&#038;cat_id=1481&#038;listelement=1'" tppabs="http://www.vault.com/survival/center.jsp?type=3&#038;ch_id=262&#038;article_id=9106882&#038;cat_id=1481&#038;listelement=1">What&#039;s your biggest weakness?</a></li>
+<li><a href="javascript:if(confirm('http://www.perlfunc.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.perlfunc.com/'" tppabs="http://www.perlfunc.com/">PerlFunc</a></li>
+<li><a href="javascript:if(confirm('http://www.microsoft.com/smallbusiness/resources/management/recruiting_staffing/hiring_6_interview_questions_you_need_to_ask.mspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.microsoft.com/smallbusiness/resources/management/recruiting_staffing/hiring_6_interview_questions_you_need_to_ask.mspx'" tppabs="http://www.microsoft.com/smallbusiness/resources/management/recruiting_staffing/hiring_6_interview_questions_you_need_to_ask.mspx">Small business interview questions</a></li>
+<li><a href="javascript:if(confirm('http://www.devbistro.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.devbistro.com/'" tppabs="http://www.devbistro.com/">Tech jobs at DevBistro</a></li>
+			</ul>
+<center>
+<form name="search" method="post" action="http://www.meteus.com/search.php">
+<input type="hidden" name="aid" value="32147">
+Search <a href="javascript:if(confirm('http://www.meteus.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.meteus.com/'" tppabs="http://www.meteus.com/" target="_blank">Meteus</a><br />
+<input type="text" name="q" size="20" value="">
+<input type="submit" value="Search" /></form>
+<center>
+	</p>
+
+<!--sidebar end-->
+</td>
+
+<td valign="top" bgcolor="white">
+		<div class="post">
+		<h3><a href="-p=175.htm" tppabs="http://www.techinterviews.com/?p=175" rel="bookmark" title="Interview questions: PHP interview questions, Part 2">PHP interview questions, Part 2</a></h3>
+			<ol>
+<li>How can we repair a MySQL table?</li>
+	<li>What are the advantages of stored procedures, triggers, indexes? </li>
+	<li>What is the maximum length of a table name, database name, and fieldname in MySQL?</li>
+	<li>How many values can the SET function of MySQL take?</li>
+	<li>What are the other commands to know the structure of table using MySQL commands except explain command?</li>
+<a id="more-175"></a></p>
+	<li>How many tables will create when we create table, what are they?</li>
+	<li>What is the purpose of the following files having extensions 1) .frm 2) .myd 3) .myi? What do these files contain?</li>
+	<li>What is maximum size of a database in MySQL?</li>
+	<li>Give the syntax of Grant and Revoke commands?</li>
+	<li>Explain Normalization concept? </li>
+	<li>How can we find the number of rows in a table using MySQL? </li>
+	<li>How can we find the number of rows in a result set using PHP?</li>
+	<li>How many ways we can we find the current date using MySQL?</li>
+	<li>What are the advantages and disadvantages of Cascading Style Sheets?</li>
+	<li>What type of inheritance that PHP supports?</li>
+	<li>How can increase the performance of MySQL select query?</li>
+	<li>The structure of table view buyers is as follows:
+	<pre>
++----------------+-------------+------+-----+---------+----------------+
+| Field | Type | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+----------------+
+| user_pri_id | int(15) | | PRI | NULL | auto_increment |
+| userid | varchar(10) | YES | | NULL | |
++----------------+-------------+------+-----+---------+----------------+
+</pre>
+	<p>the value of user_pri_id the last row 2345 then What will happen in the following conditions?</p>
+	<p><b>Condition1</b>: Delete all the rows and insert another row then. What is the starting value for this auto incremented field user_pri_id ,<br />
+<b>Condition2</b>: Delete the last row(having the field value 2345) and insert another row then. What is the value for this auto incremented field user_pri_id</li>
+	<li>What are the advantages/disadvantages of MySQL and PHP?</li>
+	<li>What is the difference between GROUP BY and ORDER BY in Sql?</li>
+	<li>What is the difference between char and varchar data types?</li>
+	<li>What is the functionality of md5 function in PHP?</li>
+	<li>How can I load data from a text file into a table? </li>
+	<li>How can we know the number of days between two given dates using MySQL? </li>
+	<li>How can we know the number of days between two given dates using PHP?</li>
+	<li>How can we change the name of a column of a table?</li>
+	<li>How can we change the name and data type of a column of a table?</li>
+	<li>What are the differences between drop a table and truncate a table? </li>
+	<li>When you want to show some part of a text displayed on an HTML page in red font color, what different possibilities are there to do this? What are the advantages/disadvantages of these methods?</li>
+	<li>When viewing an HTML page in a Browser, the Browser often keeps this page in its cache. What can be possible advantages/disadvantages of page caching? How can you prevent caching of a certain page (please give several alternate solutions)?</li>
+	<li>What are the different methods of passing data or information between two calls of a web page? What are the advantages/disadvantages of these methods?</li>
+	<li>An Apache web server is running on a Linux system. Suddenly, the web server delivers the pages very slow. How could you find out possible reasons for that (when using system commands, please specify their names)?</li>
+	<li>What are the different ways to login to a remote server? Explain the means, advantages and disadvantages?</li>
+	<li>Please give a regular expression (preferably Perl/PREG style), which can be used to identify the URL from within a HTML link tag. Example: The regular expression should match the tag &lt;A HREF=&#8221;http://www.yoursite.com/&#8221;&gt; and give the URL (&#8221;http://www.yoursite.com /&#8221;) as a return result. Tags should also be matched if they contain other attributes than the HREF attribute.</li>
+	<li>A select query over a large table runs very slow because of the growing number of entries in that table. What different measures could be taken to improve speed?</li>
+	<li>A company wants to store their invoices in a database. They already have their customers and articles in that database. Both customer and article are each identified by an unique integer value. Please create the SQL statements for creating the necessary table(s) for storing the invoices in a MySQL database. An invoice should hold information like invoice number, customer, date, article(s) and quantity etc.</li>
+	<li>For the database from the previous question, please give an SQL query which returns the invoice number of all invoices which contain the article with the number &#8220;1234&#8243;. The query should be able to run under a MySQL 4.0 database.</li>
+	<li>How would you backup and restore a big MySQL database? What are the advantages of the approach which you have taken over the others?</li>
+	<li>Create a PHP web script with the following attributes: on start, three HTML form elements are shown: an string input field, a checkbox field, a dropdown/pull down list with 5 elements and a submit button. On submission, the form should be redisplayed (while remaining all options/inputs as the user has selected/entered them). Additionally, the selections/inputs of the user should be displayed in text. Please solve this without the use of any external libraries.</li>
+	<li>What is MIME?</li>
+	<li>What is PEAR in PHP? </li>
+	<li>How can I use the COM components in PHP?</li>
+	<li>How can I load the DLLs dynamically?</li>
+	<li>How many ways we can give the output to a browser?</li>
+	<li>How can we know that a session is started or not?</li>
+	<li>What is the default session time in PHP and how can I change it?</li>
+	<li>What changes I have to done in PHP.ini file for file uploading?</li>
+	<li>What are the differences between MySQL_fetch_array(), MySQL_fetch_object(), MySQL_fetch_row()?</li>
+	<li>How can I set a cron and how can i execute it in Unix, Linux, and windows?</li>
+	<li>Steps for the payment gateway processing?</li>
+	<li>How many ways I can register the variables into session?</li>
+	<li>Explain different types of errors in PHP (i.e. arguments in errorreporting function)? </li>
+	<li>How many ways I can redirect a PHP page?</li>
+	<li>List out different arguments in PHP header function?</li>
+	<li>What type of headers have to add in the mail function in which file a attached?</li>
+	<li>What is the difference between <?PHP and <? And which can be preferable</li>
+	<li>What are the differences between PHP3 and PHP4 versions?</li>
+	<li>What are the differences between include() and include_once() functions? </li>
+	<li>Describe the importance of DABA BASE ABSTRACTION LAYERS in PHP and database connection?</li>
+	<li>Explain MySQL optimization?</li>
+	<li>What is the difference between using copy() and move() function in PHP file uploading?</li>
+	<li>What is the difference between Reply-to and Return-path in the headers of a mail function?</li>
+	<li>Explain about Type Juggling in PHP?</li>
+	<li>How can I get the only name of the current executing file?</li>
+	<li>How can I embed a java programme in PHP file and what changes have to be done in PHP.ini file?</li>
+	<li>How can I find what type of images that the PHP version supports?</li>
+	<li>The table tbl_sites contains the following data:
+	<pre>
+-----------------------------------------------------
+Userid sitename country
+------------------------------------------------------
+1 sureshbabu indian
+2 PHPprogrammer andhra
+3 PHP.net usa
+4 PHPtalk.com germany
+5 MySQL.com usa
+6 sureshbabu canada
+7 PHPbuddy.com pakistan
+8. PHPtalk.com austria
+9. PHPfreaks.com sourthafrica
+10. PHPsupport.net russia
+11. sureshbabu australia
+12. sureshbabu nepal
+13. PHPtalk.com italy
+</pre>
+	<p>Write a select query that will displayed the duplicated site name and how many times it is duplicated? &#8230;</li>
+	</ol>
+	<p><a href="index.php-p=174.htm" tppabs="http://www.techinterviews.com/index.php?p=174">Make sure you read Part 1</a> of PHP interview questions.
+</p>
+		<p class="feedback">
+			<a href="-p=175.htm" tppabs="http://www.techinterviews.com/?p=175">Read all</a> | Browse topics: <a href="index.php-cat=14.htm" tppabs="http://www.techinterviews.com/index.php?cat=14" title="View all posts in Web dev" rel="category tag">Web dev</a>		</p>
+
+<center>
+<script type="text/javascript"><!--
+google_ad_client = "pub-6610148867873991";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text_image";
+google_ad_channel ="5988513540";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "000066";
+google_color_url = "C0c0c0";
+google_color_text = "c0c0c0";
+//--></script>
+<script type="text/javascript"
+  src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</center>
+
+<h2 id="comments">20 Comments 
+	<a href="#postcomment" title="Please leave a comment">&raquo;</a>
+</h2>
+
+<ol id="commentlist">
+
+	<li id="comment-6329">
+		<p>1. How can we repair a MySQL table?<br />
+The syntex for repairing a mysql table is<br />
+REPAIR TABLENAME, [TABLENAME, ], [Quick],[Extended]</p>
+	<p>This command will repair the table specified<br />
+if the quick is given the mysql will do a repair of only the index tree if the extended is given it will create index row by row
+</p>
+	<p><cite>Tech Interviews comment by <b>Shatabdi</b></cite> </p>
+	</li>
+
+	<li id="comment-6330">
+		<p>3. maximum lenghth of mnames of database, table, columns</p>
+	<p>database- 64<br />
+table -64<br />
+columns-64<br />
+alias-255
+</p>
+	<p><cite>Tech Interviews comment by <b>Shatabdi</b></cite> </p>
+	</li>
+
+	<li id="comment-6331">
+		<p>4.How many values can the SET function of MySQL take?<br />
+Mysql set can take zero or more values but at the maximum it can take 64 values
+</p>
+	<p><cite>Tech Interviews comment by <b>Shatabdi</b></cite> </p>
+	</li>
+
+	<li id="comment-6714">
+		<p>What are the other commands to know the structure of table using MySQL commands except explain command?<br />
+describe table_name;
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://kumarldh.blogspot.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://kumarldh.blogspot.com/'" tppabs="http://kumarldh.blogspot.com/" rel='external nofollow'>Kumar</a></b></cite> </p>
+	</li>
+
+	<li id="comment-6715">
+		<p>How can we find the number of rows in a table using MySQL?<br />
+How can we find the number of rows in a result set using PHP? </p>
+	<p>Use this for mysql<br />
+&gt;SELECT COUNT(*) FROM table_name;<br />
+but if u r particular about no of rows with some special result<br />
+do this<br />
+&gt;SELECT [colms],COUNT(*) FROM table_name [where u put conditions];</p>
+	<p>and for PHP it cant be more simple</p>
+	<p>$result = mysql_query($any_valid_sql, $database_link);<br />
+$num_rows = mysql_num_rows($result);<br />
+echo &#8220;$num_rows rows found&#8221;;
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://kumarldh.blogspot.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://kumarldh.blogspot.com/'" tppabs="http://kumarldh.blogspot.com/" rel='external nofollow'>Kumar</a></b></cite> </p>
+	</li>
+
+	<li id="comment-6719">
+		<p>How many ways we can we find the current date using MySQL?<br />
+SELECT CURDATE();</p>
+	<p>CURRENT_DATE() = CURDATE()<br />
+for time use<br />
+SELECT CURTIME();<br />
+CURRENT_TIME() = CURTIME()
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://kumarldh.blogspot.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://kumarldh.blogspot.com/'" tppabs="http://kumarldh.blogspot.com/" rel='external nofollow'>Kumar</a></b></cite> </p>
+	</li>
+
+	<li id="comment-6727">
+		<p>Give the syntax of Grant and Revoke commands?<br />
+The generic syntax for grant is as following<br />
+&gt; GRANT [rights] on [database/s] TO [username@hostname] IDENTIFIED BY [password]<br />
+now rights can be<br />
+a) All privilages<br />
+b) combination of create, drop, select, insert, update and delete etc.<br />
+we can grant rights on all databse by usingh *.* or some specific database by database.* or a specific table by database.table_name<br />
+<a href="mailto:username@hotsname">username@hotsname</a> can be  either <a href="mailto:username@localhost">username@localhost</a>, <a href="mailto:username@hostname">username@hostname</a> and <a href="mailto:username@%">username@%</a><br />
+where hostname is any valid hostname and % represents any name, the *.* any condition<br />
+password is simply the password of user</p>
+	<p>The generic syntax for revoke is as following<br />
+&gt; REVOKE [rights] on [database/s] FROM [username@hostname]<br />
+now rights can be as explained above<br />
+a) All privilages<br />
+b) combination of create, drop, select, insert, update and delete etc.</p>
+	<p><a href="mailto:username@hotsname">username@hotsname</a> can be  either <a href="mailto:username@localhost">username@localhost</a>, <a href="mailto:username@hostname">username@hostname</a> and <a href="mailto:username@%">username@%</a><br />
+where hostname is any valid hostname and % represents any name, the *.* any condition
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://kumarldh.blogspot.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://kumarldh.blogspot.com/'" tppabs="http://kumarldh.blogspot.com/" rel='external nofollow'>Kumar</a></b></cite> </p>
+	</li>
+
+	<li id="comment-6728">
+		<p>The structure of table view buyers is as follows:<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8211;+&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;-+<br />
+| Field | Type | Null | Key | Default | Extra |<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8211;+&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;-+<br />
+| user_pri_id | int(15) | | PRI | NULL | auto_increment |<br />
+| userid | varchar(10) | YES | | NULL | |<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8211;+&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;-+<br />
+the value of user_pri_id the last row 2345 then What will happen in the following conditions?</p>
+	<p>Condition1: Delete all the rows and insert another row then. What is the starting value for this auto incremented field user_pri_id ,<br />
+Condition2: Delete the last row(having the field value 2345) and insert another row then. What is the value for this auto incremented field user_pri_id </p>
+	<p>In botth cases let the value for auto increment field be n then next row will have value n+1 i.e. 2346
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://kumarldh.blogspot.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://kumarldh.blogspot.com/'" tppabs="http://kumarldh.blogspot.com/" rel='external nofollow'>Kumar</a></b></cite> </p>
+	</li>
+
+	<li id="comment-6730">
+		<p>What is the difference between char and varchar data types?<br />
+Set char to occupy n bytes and it will take n bytes even if u r storing avalue of n-m butes<br />
+Set varchar to occupy n bytes and it will take only the required space and will not use the n bytes<br />
+eg. name char(10) will waste 5 bytes if we store &#8216;kumar&#8217;, if each char takes a byte<br />
+eg. name varchar(10) will just use 5 bytes if we store &#8216;kumar&#8217;, if each char takes a byte. rest 5 bytes will be free.
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://kumarldh.blogspot.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://kumarldh.blogspot.com/'" tppabs="http://kumarldh.blogspot.com/" rel='external nofollow'>Kumar</a></b></cite> </p>
+	</li>
+
+	<li id="comment-6731">
+		<p>What is the functionality of md5 function in PHP?<br />
+string md5(string)<br />
+Calculate the md5 hash of a string. The hash is a 32-character hexadecimal number. I use it to generate keys which I use to identify users etc. If I add random no techniques to it the md5 generated now will be totally different for the same string I am using.
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://kumarldh.blogspot.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://kumarldh.blogspot.com/'" tppabs="http://kumarldh.blogspot.com/" rel='external nofollow'>Kumar</a></b></cite> </p>
+	</li>
+
+	<li id="comment-6732">
+		<p>How can I load data from a text file into a table?<br />
+The mysql provides a LOAD DATA INFILE syntax. U can load data from a file. Gr8 tool but u need to make sure that<br />
+a) data is delimited<br />
+b) u match the colms and data correctly<br />
+dont use w/out first learning the syntax
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://kumarldh.blogspot.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://kumarldh.blogspot.com/'" tppabs="http://kumarldh.blogspot.com/" rel='external nofollow'>Kumar</a></b></cite> </p>
+	</li>
+
+	<li id="comment-6733">
+		<p>How can we know the number of days between two given dates using MySQL?<br />
+Use DATEDIFF()<br />
+&gt;SELECT DATEDIFF(NOW(),&#8217;1947-08-15&#8242;);<br />
+will give u the exact no of days India got independence from British.
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://kumarldh.blogspot.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://kumarldh.blogspot.com/'" tppabs="http://kumarldh.blogspot.com/" rel='external nofollow'>Kumar</a></b></cite> </p>
+	</li>
+
+	<li id="comment-6734">
+		<p>How can we know the number of days between two given dates using PHP?<br />
+Simple arithmetic.<br />
+$date1 = date(&#8221;Y-m-d&#8221;);<br />
+$date2 = &#8220;1947-08-15&#8243;;<br />
+$days = (strtotime() - strtotime()) / (60 * 60 * 24);<br />
+echo &#8221; No of $days we got independence from Britts&#8221;;
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://kumarldh.blogspot.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://kumarldh.blogspot.com/'" tppabs="http://kumarldh.blogspot.com/" rel='external nofollow'>Kumar</a></b></cite> </p>
+	</li>
+
+	<li id="comment-6735">
+		<p>How can we change the name of a column of a table?<br />
+How can we change the name and data type of a column of a table?<br />
+this will change the name of colm<br />
+&gt; ALTER TABLE table_name CHANGE old_colm_name new_colm_name<br />
+this will change the name of colm and also the datatype<br />
+&gt; ALTER TABLE table_name CHANGE old_colm_name new_colm_name [data type]
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://kumarldh.blogspot.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://kumarldh.blogspot.com/'" tppabs="http://kumarldh.blogspot.com/" rel='external nofollow'>Kumar</a></b></cite> </p>
+	</li>
+
+	<li id="comment-6736">
+		<p>What are the differences between drop a table and truncate a table?<br />
+&gt;DROP TABLE table_name<br />
+Will DELETE the table and DATA<br />
+&gt;TRUNCATE TABLE table_name<br />
+Will DELETE the table DATA not the table definition
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://kumarldh.blogspot.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://kumarldh.blogspot.com/'" tppabs="http://kumarldh.blogspot.com/" rel='external nofollow'>Kumar</a></b></cite> </p>
+	</li>
+
+	<li id="comment-6873">
+		<p>The structure of table view buyers is as follows:<br />
++—————-+————-+——+—–+———+—————-+<br />
+| Field | Type | Null | Key | Default | Extra |<br />
++—————-+————-+——+—–+———+—————-+<br />
+| user_pri_id | int(15) | | PRI | NULL | auto_increment |<br />
+| userid | varchar(10) | YES | | NULL | |<br />
++—————-+————-+——+—–+———+—————-+<br />
+the value of user_pri_id the last row 2345 then What will happen in the following conditions?</p>
+	<p>Condition1: Delete all the rows and insert another row then. What is the starting value for this auto incremented field user_pri_id ,<br />
+Condition2: Delete the last row(having the field value 2345) and insert another row then. What is the value for this auto incremented field user_pri_id </p>
+	<p>Mr. Kumar has given its answer but if you have used mysql as backend and if you fire a query &#8220;delete from tablename&#8221; then in mysql it will reset auto index. so for condition one it will start from value 1. </p>
+	<p>for condition 2 it will start from n+1
+</p>
+	<p><cite>Tech Interviews comment by <b>Jigar</b></cite> </p>
+	</li>
+
+	<li id="comment-6874">
+		<p>What is PEAR in PHP</p>
+	<p>PEAR is short for &#8220;PHP Extension and Application Repository&#8221; and is pronounced just like the fruit. The purpose of PEAR is to provide: </p>
+	<p>A structured library of open-sourced code for PHP users </p>
+	<p>A system for code distribution and package maintenance </p>
+	<p>A standard style for code written in PHP</p>
+	<p>The PHP Foundation Classes (PFC), </p>
+	<p>The PHP Extension Community Library (PECL),  </p>
+	<p>A web site, mailing lists and download mirrors to support the PHP/PEAR community </p>
+	<p>PEAR is a community-driven project with the PEAR Group as the governing body. The project has been founded by Stig S. Bakken in 1999 and quite a lot of people have joined the project since then.</p>
+	<p><a href="javascript:if(confirm('http://pear.php.net/manual/en/introduction.php  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://pear.php.net/manual/en/introduction.php'" tppabs="http://pear.php.net/manual/en/introduction.php" rel='nofollow'>http://pear.php.net/manual/en/introduction.php</a>
+</p>
+	<p><cite>Tech Interviews comment by <b>Jigar</b></cite> </p>
+	</li>
+
+	<li id="comment-7043">
+		<p>A .66<br />
+select count(id) id ,sitename from tbl_sites group by sitename having id&gt;1;
+</p>
+	<p><cite>Tech Interviews comment by <b>Nasim Abbas</b></cite> </p>
+	</li>
+
+	<li id="comment-7605">
+		<p>What is the difference between GROUP BY and ORDER BY in Sql?</p>
+	<p>ORDER BY [col1],[col2],&#8230;,[coln]; Tels DBMS according to what columns it should sort the result. If two rows will hawe the same value in col1 it will try to sort them according to col2 and so on.</p>
+	<p>GROUP BY [col1],[col2],&#8230;,[coln]; Tels DBMS to group results with same value of column col1. You can use COUNT(col1), SUM(col1), AVG(col1) with it, if you want to count all items in group, sum all values or view average
+</p>
+	<p><cite>Tech Interviews comment by <b>Sergej</b></cite> </p>
+	</li>
+
+	<li id="comment-7606">
+		<p>39. What is MIME?</p>
+	<p>MIME is Multipurpose Internet Mail Extensions is an internet standard for the format of e-mail. Howewer browsers also uses MIME standart to transmit files. MIME has a header wich is added to a begining of the data. When browser sees such header it shows the data as it would be a file (for example image)</p>
+	<p>some mimes:<br />
+audio/x-ms-wmp<br />
+image/png<br />
+aplication/x-shockwave-flash
+</p>
+	<p><cite>Tech Interviews comment by <b>Sergej</b></cite> </p>
+	</li>
+
+<li>Explore hiring practices of: <a href="javascript:if(confirm('http://www.interviewat.com/infosys/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/infosys/'" tppabs="http://www.interviewat.com/infosys/" title="Infosys">Infosys</a>, <a href="javascript:if(confirm('http://www.interviewat.com/accenture/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/accenture/'" tppabs="http://www.interviewat.com/accenture/" title="Accenture">Accenture</a>, <a href="javascript:if(confirm('http://www.interviewat.com/caritor/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/caritor/'" tppabs="http://www.interviewat.com/caritor/" title="Caritor">Caritor</a>, <a href="javascript:if(confirm('http://www.interviewat.com/cognizant/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/cognizant/'" tppabs="http://www.interviewat.com/cognizant/" title="Cognizant">Cognizant</a>, <a href="javascript:if(confirm('http://www.interviewat.com/wipro/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/wipro/'" tppabs="http://www.interviewat.com/wipro/" title="Wipro">Wipro</a>, <a href="javascript:if(confirm('http://www.interviewat.com/satyam/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/satyam/'" tppabs="http://www.interviewat.com/satyam/" title="Satyam">Satyam</a>, <a href="javascript:if(confirm('http://www.interviewat.com/kanbay/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/kanbay/'" tppabs="http://www.interviewat.com/kanbay/" title="Kanbay">Kanbay</a>, <a href="javascript:if(confirm('http://www.interviewat.com/oracle/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/oracle/'" tppabs="http://www.interviewat.com/oracle/" title="Oracle">Oracle</a>, <a href="javascript:if(confirm('http://www.interviewat.com/tata-infotech/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/tata-infotech/'" tppabs="http://www.interviewat.com/tata-infotech/" title="Tata Infotech">Tata Infotech</a>, <a href="javascript:if(confirm('http://www.interviewat.com/verizon/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/verizon/'" tppabs="http://www.interviewat.com/verizon/" title="Verizon">Verizon</a>, <a href="javascript:if(confirm('http://www.interviewat.com/cts/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/cts/'" tppabs="http://www.interviewat.com/cts/" title="CTS">CTS</a>, <a href="javascript:if(confirm('http://www.interviewat.com/virtusa/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/virtusa/'" tppabs="http://www.interviewat.com/virtusa/" title="Virtusa">Virtusa</a>, <a href="javascript:if(confirm('http://www.interviewat.com/tcs/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/tcs/'" tppabs="http://www.interviewat.com/tcs/" title="TCS">TCS</a>, <a href="javascript:if(confirm('http://www.interviewat.com/sasken-communication/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/sasken-communication/'" tppabs="http://www.interviewat.com/sasken-communication/" title="Sasken Communication">Sasken Communication</a>, <a href="javascript:if(confirm('http://www.interviewat.com/microsoft/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/microsoft/'" tppabs="http://www.interviewat.com/microsoft/" title="Microsoft">Microsoft</a>, <a href="javascript:if(confirm('http://www.interviewat.com/hcl/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/hcl/'" tppabs="http://www.interviewat.com/hcl/" title="HCL">HCL</a>, <a href="javascript:if(confirm('http://www.interviewat.com/mindtree-consulting/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/mindtree-consulting/'" tppabs="http://www.interviewat.com/mindtree-consulting/" title="Mindtree Consulting">Mindtree Consulting</a>, <a href="javascript:if(confirm('http://www.interviewat.com/ibm/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/ibm/'" tppabs="http://www.interviewat.com/ibm/" title="IBM">IBM</a>, <a href="javascript:if(confirm('http://www.interviewat.com/lt/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/lt/'" tppabs="http://www.interviewat.com/lt/" title="Larsen &amp; Toubro">Larsen &amp; Toubro</a>, <a href="javascript:if(confirm('http://www.interviewat.com/siemens/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/siemens/'" tppabs="http://www.interviewat.com/siemens/" title="Siemens">Siemens</a>, <a href="javascript:if(confirm('http://www.interviewat.com/patni/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/patni/'" tppabs="http://www.interviewat.com/patni/" title="Patni">Patni</a>, <a href="javascript:if(confirm('http://www.interviewat.com/icici-bank/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/icici-bank/'" tppabs="http://www.interviewat.com/icici-bank/" title="ICICI Bank">ICICI Bank</a>, <a href="javascript:if(confirm('http://www.interviewat.com/covansys/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/covansys/'" tppabs="http://www.interviewat.com/covansys/" title="Covansys">Covansys</a>, <a href="javascript:if(confirm('http://www.interviewat.com/hexaware/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/hexaware/'" tppabs="http://www.interviewat.com/hexaware/" title="Hexaware">Hexaware</a>, <a href="javascript:if(confirm('http://www.interviewat.com/desis/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/desis/'" tppabs="http://www.interviewat.com/desis/" title="D. E. Shaw India Software">D. E. Shaw India Software</a>, <a href="javascript:if(confirm('http://www.interviewat.com/mascot-systems/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/mascot-systems/'" tppabs="http://www.interviewat.com/mascot-systems/" title="Mascot Systems">Mascot Systems</a>, <a href="javascript:if(confirm('http://www.interviewat.com/sonata-software/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/sonata-software/'" tppabs="http://www.interviewat.com/sonata-software/" title="Sonata Software">Sonata Software</a>, <a href="javascript:if(confirm('http://www.interviewat.com/hewlett-packard/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/hewlett-packard/'" tppabs="http://www.interviewat.com/hewlett-packard/" title="Hewlett Packard">Hewlett Packard</a>, <a href="javascript:if(confirm('http://www.interviewat.com/tcgivega/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/tcgivega/'" tppabs="http://www.interviewat.com/tcgivega/" title="TCGIvega">TCGIvega</a>, <a href="javascript:if(confirm('http://www.interviewat.com/syntel/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/syntel/'" tppabs="http://www.interviewat.com/syntel/" title="Syntel">Syntel</a>
+</li>
+
+</ol>
+
+
+<h2><a href="index.htm" tppabs="http://www.techinterviews.com/">Technical Interview Questions</a> comment policy:</h2>
+<ul>
+	<li>All requests for answers <b>will be deleted</b>. If we don't publish answers, it's because we don't have them.</li>
+	<li>Any personal attacks, obscenities, spam and inappropriate comments will be deleted.</li>
+        <li>Sometimes, if you're a new poster, your comment has to be approved by moderators.</li>
+	</ul>
+<h2 id="postcomment">Leave a comment</h2>
+
+
+<form action="http://www.techinterviews.com/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1" />
+<label for="author"><small>Name (required)</small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2" />
+<label for="email"><small>Mail (will not be published) (required)</small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3" />
+<label for="url"><small>Website</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;code&gt; &lt;em&gt; &lt;i&gt; &lt;strike&gt; &lt;strong&gt; </small></p>-->
+
+<p><textarea name="comment" id="comment" cols="80%" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
+<input type="hidden" name="comment_post_ID" value="175" />
+</p>
+
+
+	<p style="clear: both;" class="subscribe-to-comments">
+        <input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;" />
+        <label for="subscribe">Send new comments to my e-mail</label>
+	</p>
+
+
+
+</form>
+
+
+
+<Script language="Javascript1.1" src="getntag.aspx-action=VIEWAD&run=300&cwformat=728x90&advid=112&pid=700002&dfcat=1104&width=728&height=90&pnet=4&SiteID=tech.3236" tppabs="http://ad.admarketplace.net/TagPublish/getntag.aspx?action=VIEWAD&run=300&cwformat=728x90&advid=112&pid=700002&dfcat=1104&width=728&height=90&pnet=4&SiteID=tech.3236">  </Script>
+	</div>
+	<h4></h4>
+</td></tr></table>
+<!-- begin footer -->
+</div>
+
+
+<h1 id="header"><a href="index.htm" tppabs="http://www.techinterviews.com/">&copy; TechInterviews.com</a></h1>
+<p>Property of <a href="javascript:if(confirm('http://www.digitalmediaventuresllc.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.digitalmediaventuresllc.com/'" tppabs="http://www.digitalmediaventuresllc.com/">Digital Media Ventures LLC</a>. Read <a href="javascript:if(confirm('http://www.techinterviews.com/wp-rdf.php  \n\nThis file was not retrieved by Teleport Pro, because it did not meet the project\'s file type specifications.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/wp-rdf.php'" tppabs="http://www.techinterviews.com/wp-rdf.php">RDF</a>, <a href="wp-rss2.php.htm" tppabs="http://www.techinterviews.com/wp-rss2.php">RSS 2.0</a>, <a href="wp-rss.php.htm" tppabs="http://www.techinterviews.com/wp-rss.php">RSS 0.92</a>, <a href="javascript:if(confirm('http://www.techinterviews.com/wp-atom.php  \n\nThis file was not retrieved by Teleport Pro, because it did not meet the project\'s file type specifications.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/wp-atom.php'" tppabs="http://www.techinterviews.com/wp-atom.php">Atom</a>, <a href="wp-commentsrss2.php.htm" tppabs="http://www.techinterviews.com/wp-commentsrss2.php">Comments RSS</a></p>
+</body>
+</html>

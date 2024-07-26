@@ -1,0 +1,53 @@
+<html><head>
+<title>Solution for /geometry/dissections/hexagon</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /geometry/dissections/hexagon problem</h1>
+<hr>
+What is considered 'identical' for these questions?  If mirror-image shapes
+are allowed, these are all pretty trivial.  If not, the problems are rather
+more difficult...
+
+	<ol>
+<li> Connect the center to every second vertex.
+   <li> Connect the center to the midpoint of each side.
+      <li> This is the hard one.  If you allow mirror images, it's trivial:
+           bisect the hexagon from vertex to vertex, then bisect with a 
+           perpendicular to that, from midpoint of side to midpoint of side.
+        <li> This one's neat.  Let the side length of the hexagon be 2 (WLOG).
+           We can easily partition the hexagon into equilateral triangles 
+           with side 2 (6 of them), which can in turn be quartered into 
+           equilateral triangles with side 1.  Thus, our original hexagon
+           is partitioned into 24 unit equilateral triangles.  Take the
+           trapezoid formed by 3 of these little triangles.  Place one such
+           trapezoid on the inside of each face of the original hexagon, so
+           that the long side of the trapezoid coincides with the side of the
+           hexagon.  This uses 6 trapezoids, and leaves a unit hexagon in the
+           center as yet uncovered.  Cover this little hexagon with two of
+           the trapezoids.  Voila.  An 8-identical-trapezoid partition.
+        <li> Easy.  Do the rhombus partition in #1.  Quarter each rhombus by
+           connecting midpoints of opposite sides.  This produces 12 small
+           rhombi, each of which is equivalent to two adjacent small triangles
+           as in #4.
+</ol>
+Except for #3, all of these partitions can be achieved by breaking up the
+hexagon into unit equilateral triangles, and then building these into the
+shapes desired.  For #3, though, this would require (since there are 24 small
+triangles) trapezoids formed from 6 triangles each.  The only trapezoid that
+can be built from 6 identical triangles is a parallelogram; I assume that the
+poster wouldn't have asked for a trapezoid if you could do it with a special
+case of trapezoid.  At any rate, that parallelogram doesn't work.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

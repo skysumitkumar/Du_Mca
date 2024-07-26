@@ -1,0 +1,345 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0037)http://www.scheib.net/work/questions/ -->
+<HTML><HEAD><TITLE>Technical Interview Questions For Computer Science Programmers - Vince Scheib</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META 
+content="List Of Technical Interview Questions For Computer Science Programmers." 
+name=Description>
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY text=#000000 vLink=#800080 aLink=#0000ff link=#000080 bgColor=#7a10ba>
+<TABLE cellSpacing=0 cellPadding=4 width=600 align=center bgColor=#ffffff 
+border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=20 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD><FONT face=Arial,Helvetica>
+            <H2>Technical Interview Questions For Computer Science 
+            Programmers</H2><PRE>The following is a list of questions which have been floating around some 
+Internet circles. They are excellent prep questions for a technical interview.
+
+I haven't made any attempt to clean them up, spelling or organization wise. 
+
+Don't bother asking me for the answers, 
+ 1) I don't have an answer key. 
+ 2) It'd do you good to think.
+
+  1. Given a rectangular (cuboidal for the puritans) cake with a rectangular
+     piece removed (any size or orientation), how would you cut the remainder
+     of the cake into two equal halves with one straight cut of a knife ?
+ 
+  2. You're given an array containing both positive and negative integers and
+     required to find the subarray with the largest sum (O(N) a la KBL).
+     Write a routine in C for the above.
+ 
+  3. Given an array of size N in which every number is between 1 and N,
+     determine if there are any duplicates in it.  You are allowed to destroy
+     the array if you like. [ I ended up giving about 4 or 5 different solutions
+     for this, each supposedly better than the others ].
+ 
+  4. Write a routine to draw a circle (x ** 2 + y ** 2 = r ** 2) without making
+     use of any floating point computations at all.  [ This one had me stuck for
+     quite some time and I first gave a solution that did have floating point
+     computations ].
+ 
+  5. Given only putchar (no sprintf, itoa, etc.) write a routine putlong that
+     prints out an unsigned long in decimal.  [ I gave the obvious solution of
+     taking % 10 and / 10, which gives us the decimal value in reverse order.
+     This requires an array since we need to print it out in the correct order.
+     The interviewer wasn't too pleased and asked me to give a solution which
+     didn't need the array ].
+ 
+  6. Give a one-line C expression to test whether a number is a power of
+     2. [No loops allowed - it's a simple test.]
+ 
+  7. Given an array of characters which form a sentence of words, give an
+     efficient algorithm to reverse the order of the words (not characters)
+     in it.
+ 
+  8. How many points are there on the globe where by walking one mile south,
+     one mile east and one mile north you reach the place where you started.
+ 
+  9. Give a very good method to count the number of ones in a 32 bit number.
+     (caution: looping through testing each bit is not a solution).
+ 
+ 10. What are the different ways to say, the value of x can be either a 0
+     or a 1. Apparently the if then else solution has a jump when written
+     out in assembly.
+        if (x == 0)
+                y=0
+        else
+                y =x
+
+        There is a logical, arithmetic and a datastructure soln to the above
+        problem.
+
+ 11. Reverse a linked list.
+
+ 12. Insert in a sorted list
+
+ 13. In a X's and 0's game (i.e. TIC TAC TOE) if you write a program for
+     this give a gast way to generate the moves by the computer. I mean this
+     should be the fasteset way possible. The answer is that you need to store
+     all possible configurations of the board and the move that is associated
+     with that. Then it boils down to just accessing the right element and
+     getting the corresponding move for it. Do some analysis and do some more
+     optimization in storage since otherwise it becomes infeasible to get
+     the required storage in a DOS machine.
+
+ 14. I was given two lines of assembly code which found the absolute value
+     of a number stored in two's complement form. I had to recognize what the
+     code was doing. Pretty simple if you know some assembly and some fundaes
+     on number representation.
+
+ 15. Give a fast way to multiply a number by 7.
+
+ 16. How would go about finding out where to find a book in a library. (You
+     don't know how exactly the books are organized beforehand).
+
+ 17. Linked list manipulation.
+
+ 18. Tradeoff between time spent in testing a product and getting into the
+     market first.
+
+ 19. What to test for given that there isn't enough time to test everything
+     you want to.
+
+ 20. First some definitions for this problem:
+    a) An ASCII character is one byte long and the most significant bit
+       in the byte is always '0'.
+    b) A Kanji character is two bytes long. The only characteristic of a
+       Kanji character is that in its first byte the most significant bit
+       is '1'.
+
+     Now you are given an array of a characters (both ASCII and Kanji) and,
+     an index into the array. The index points to the start of some character.
+     Now you need to write a function to do a backspace (i.e. delete the
+     character before the given index).
+
+ 21. Delete an element from a doubly linked list.
+
+ 22. Write a function to find the depth of a binary tree.
+
+ 23. Given two strings S1 and S2. Delete from S2 all those characters which
+     occur in S1 also and finally create a clean S2 with the relevant characters
+     deleted.
+
+ 24. Assuming that locks are the only reason due to which deadlocks can occur
+     in a system. What would be a foolproof method of avoiding deadlocks in
+     the system.
+
+ 25. Reverse a linked list.
+
+ 26. Write a small lexical analyzer - interviewer gave tokens. expressions like
+     "a*b" etc.
+
+ 27. Besides communication cost, what is the other source of inefficiency in RPC?
+
+     (answer : context switches, excessive buffer copying).
+     How can you optimise the communication? (ans : communicate through shared
+     memory on same machine, bypassing the kernel _ A Univ. of Wash. thesis)
+
+ 28. Write a routine that prints out a 2-D array in spiral order!
+
+ 29. How is the readers-writers problem solved? - using semaphores/ada .. etc.
+
+ 30. Ways of optimizing symbol table storage in compilers.
+
+ 31. A walk-through through the symbol table functions, lookup() implementation
+     etc - The interv. was on the Microsoft C team.
+
+ 32. A version of the "There are three persons X Y Z, one of which always lies"..
+
+     etc..
+
+ 33. There are 3 ants at 3 corners of a triangle, they randomly start moving
+     towards another corner.. what is the probability that they don't collide.
+
+ 34. Write an efficient algo and C code to shuffle a pack of cards.. this one
+     was a feedback process until we came up with one with no extra storage.
+
+ 35. The if (x == 0) y  = 0 etc..
+
+ 36. Some more bitwise optimization at assembly level
+
+ 37. Some general questions on Lex Yacc etc.
+
+ 38. Given an array t[100] which contains numbers between 1..99.
+     Return the duplicated value. Try both O(n) and O(n-square).
+
+ 39. Given an array of characters. How would you reverse it. ?
+     How would you reverse it without using indexing in the array.
+
+ 40. GIven a sequence of characters. How will you convert the lower
+     case characters to upper case characters. ( Try using bit vector
+     - sol given in the C  lib -&gt; typec.h)
+
+ 41. Fundas of RPC.
+
+ 42. Given a linked list which is sorted. How will u insert in sorted
+     way.
+
+ 43. Given a linked list How will you reverse it.
+
+ 44. Tell me the courses you liked and why  did you like them.
+
+ 45. Give an instance in your life in which u were faced with a
+     problem and you tackled it successfully.
+
+ 46. What is your ideal working environment. ( They usually
+     to hear that u can work in group also.)
+
+ 47. Why do u think u are smart.
+
+ 48. Questions on the projects listed on the Resume.
+
+ 49. Do you want to know any thing about the company.( Try to ask some
+     relevant and interesting question).
+
+ 50. How long do u want  to stay in USA and why?
+
+ 51. What are your geographical preference?
+
+ 52. What are your expecctations from the job.
+
+ 53. Give a good data structure for having n queues ( n not fixed) in a
+     finite memory segment. You can have some data-structure separate for
+     each queue. Try to use at least 90% of the memory space.
+
+ 54. Do a breadth first traversal of a tree.
+
+ 55. Write code for reversing a linked list.
+
+ 56. Write, efficient code for extracting unique elements from
+     a sorted list of array.  e.g. (1, 1, 3, 3, 3, 5, 5, 5, 9, 9, 9, 9) -&gt;
+     (1, 3, 5, 9).
+
+ 57. C++ ( what is virtual function ?
+     what happens if an error occurs in constructor or destructor.
+     Discussion on error handling, templates, unique features of C++.
+     What is different in C++, ( compare with unix).
+
+ 58. Given a list of numbers ( fixed list) Now given any other list,
+     how can you efficiently find out if there is any element in the
+     second list that is an element of the first list (fixed list).
+
+ 59. GIven 3 lines of assembly code : find it is doing. IT was to find
+     absolute value.
+
+ 60. If you are on a boat and you throw out a suitcase, Will the level of
+     water increase.
+
+ 61. Print an integer using only putchar. Try doing it without using extra
+     storage.
+
+ 62. write C code for
+     deleting an  element from a linked listy
+     traversing a linked list
+     efficient way of elimiating duplicates from an array
+
+ 63. what are various problems unique to distributed databases
+
+ 64. declare a void pointer
+     a)      void    *ptr;
+
+ 65. make the pointer aligned to a 4 byte boundary in a efficient manner
+     a)      assign the pointer to a long number
+             and the number with 11...1100
+             add 4 to the number
+
+ 66. what is  a far pointer (in DOS)
+
+ 67. what is  a balanced tree
+
+ 68. given a linked list with the following property
+     node2 is left child of node1, if node2 &lt; node1
+     els, it is the right child.
+
+        O P
+        |
+        |
+        O A
+        |
+        |
+        O B
+        |
+        |
+        O C
+
+        How do you convert the above linked list to the
+        form without disturbing the property. Write C code
+        for that.
+
+                        O P
+                        |
+                        |
+                        O B
+                       / \
+                      /   \
+                     /     \
+                    O ?     O ?
+
+        determine where do A and C go
+
+
+ 69. Describe the file system layout in the UNIX OS
+     a)  describe boot block, super block, inodes and data layout
+
+ 70. In UNIX, are the files allocated contiguous blocks of data
+     a)      no, they might be fragmented
+     how is the fragmented data kept track of
+     a)      describe the direct blocks and indirect blocks in UNIX
+             file system
+
+ 71. Write an efficient C code for 'tr' program.  'tr' has two command
+     line arguments. They both are strings of same length. tr reads an
+     input file, replaces each character in the first string with the
+     corresponding character in the second string. eg. 'tr abc xyz'
+     replaces all 'a's by 'x's, 'b's by 'y's and so on.
+     a)      have an array of length 26.
+             put 'x' in array element corr to 'a'
+             put 'y' in array element corr to 'b'
+             put 'z' in array element corr to 'c'
+             put 'd' in array element corr to 'd'
+             put 'e' in array element corr to 'e'
+             and so on.
+
+        the code
+                while (!eof)
+                {
+                        c = getc();
+                        putc(array[c - 'a']);
+                }
+
+ 72. what is disk interleaving
+
+ 73. why is disk interleaving adopted
+
+ 74. given a new disk, how do you determine which interleaving is the best
+     a)      give 1000 read operations with each kind of interleaving
+             determine the best interleaving from the statistics
+
+ 75. draw the graph with performace on one axis and 'n' on another, where
+     'n' in the 'n' in n-way disk interleaving. (a tricky question, should
+     be answered carefully)
+
+ 76. I was a c++ code and was asked to find out the bug in that. The bug
+     was that he declared an object locally in a function and tried to
+     return the pointer to that object.  Since the object is local to the
+     function, it no more exists after returning from the function. The
+     pointer, therefore, is invalid outside.
+
+ 77. A real life problem - A square picture is cut into 16 sqaures and
+     they are shuffled.  Write a program to rearrange the 16 squares to
+     get the original big square.
+                </PRE></FONT></TD></TR></TBODY></TABLE></TD>
+    <TD bgColor=#5c3d8d>&nbsp;</TD></TR>
+  <TR>
+    <TD bgColor=#5c3d8d>&nbsp;</TD>
+    <TD bgColor=#5c3d8d>&nbsp;</TD></TR></TBODY></TABLE>
+<CENTER></CENTER>
+<DIV></DIV>
+<P align=center><A href="http://www.scheib.net/work/index.html"><IMG height=20 
+src="tech intvs_files/back.gif" width=50 border=0></A></P><!-- Counter was here. --></BODY></HTML>

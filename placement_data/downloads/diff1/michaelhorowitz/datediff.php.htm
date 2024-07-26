@@ -1,0 +1,134 @@
+<HTML>
+<HEAD>
+<meta name="author" content="Michael Horowitz">
+<meta name="keywords" content="php">
+<meta name="description" content="dates and times in PHP">
+<TITLE>Dates and Times in PHP</TITLE>
+<LINK REL=StyleSheet HREF="mh.css" tppabs="http://www.michaelhorowitz.com/mh.css"  TYPE='text/css'>
+</HEAD>
+
+
+<body>
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#717855">
+    <td align="left" width="257"><img border="0" src="mhlogo.gif" tppabs="http://www.michaelhorowitz.com/pix/mhlogo.gif" width="255" height="29"></td>
+    <td align="right" >
+<a href="index.htm" tppabs="http://www.michaelhorowitz.com/index.htm" class="breadlink">Home</a>
+<span class="bread"> <a name="top"> =></a>
+<a href="index.html" tppabs="http://www.michaelhorowitz.com/php/index.html" class="breadlink">PHP Projects</a> => Dates/Times &nbsp; </span></td></tr>
+</table>
+
+<h1 align=center>Difference Between Dates in P H P</h1>
+
+<p>
+
+<font face="Verdana" size="2">
+PHP does not provide functions to calculate the difference between two
+timestamps. Here are some ways to do it. As of this writing, I have only
+accumulated these from the net, but I have not yet evaluated them.</p>
+
+<hr>
+<pre>if( $date2 &gt; $date1 )
+   { die( &quot;error: date1 has to be &gt;= date2 in calcDateDiff($date1, $date2)&quot; ); }
+
+ $diff = $date1-$date2;
+ $seconds = 0;
+ $hours   = 0;
+ $minutes = 0;
+
+ if($diff % 86400 &lt;= 0)  //there are 86,400 seconds in a day
+    {$days = $diff / 86400;}
+
+ if($diff % 86400 &gt; 0)
+   {   $rest = ($diff % 86400);
+       $days = ($diff - $rest) / 86400;
+       if( $rest % 3600 &gt; 0 )
+       {   $rest1 = ($rest % 3600);
+           $hours = ($rest - $rest1) / 3600;
+           if( $rest1 % 60 &gt; 0 )
+           {   $rest2 = ($rest1 % 60);
+               $minutes = ($rest1 - $rest2) / 60;
+               $seconds = $rest2;
+           }else
+               $minutes = $rest1 / 60;
+       }else
+           $hours = $rest / 3600;}</pre>
+<hr>
+<pre>$month1 = date('n',$timestamp1);
+$month2 = date('n',$timestamp2);
+$diff = $month2-$month1;
+
+echo(($diff &gt; 0 ? $diff-1 : $diff+1));</pre>
+<hr>
+<pre>First date: 920264400 Second date: 974240831
+$differecne = $first - $second;
+echo $difference;
+Returns: Difference: 53976431
+
+$diffday = $difference/86400; echo &quot;$diffday (days)&quot;;
+Returns this: Difference: 624.73377314815 (days)
+
+How can I further format this figure to display like: Difference: 624 days, X hours, X minutes, and X seconds
+
+$string_difference = date(&quot;H:m:s&quot;,mktime(0,0,$diff,0,0,0)) // I think that'll work.</pre>
+<hr>
+<pre>$filemod = filemtime( 'headlines.txt' );
+$now = time();
+$seconds = $now - $filemod;
+/****************************
+Make Minutes
+****************************/
+$minutes = floor( $seconds / ( int )60 );
+/****************************
+Get Left Over Seconds
+****************************/
+$left = $minutes * ( int )60;
+$a_seconds = $seconds - $left;
+/****************************
+Output Message
+****************************/
+echo( 'File last modifed ' . $minutes . ' minute(s) and ' . $a_seconds . ' second(s) ago.' );</pre>
+<hr>
+<pre> /* return the difference in days between two PHP timestamps   */
+    $var_days = ($ts_1 - $ts_2) / 86400; /// 60 / 60 / 24;
+</pre>
+<font face="Verdana" size="2">
+
+
+<br> <br>
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+
+<tr bgcolor="#717855">
+ <td align="left"> <font face="Verdana" size="1" color="#FFFFFF">
+
+&nbsp;Viewed 10202 times since February 3,2004 (19 per day over 541.2 days)</font></td>
+   
+  <td align="right"><span class="bread"><a href="index.htm" tppabs="http://www.michaelhorowitz.com/index.htm" class="breadlink">Home</a>
+     => <a href="index.html" tppabs="http://www.michaelhorowitz.com/php/index.html" class="breadlink">PHP Projects</a> &nbsp; </span> </td></tr>
+
+
+<tr bgcolor="#FFFFFF">
+<td align="left"><font face="Verdana" size="1">Page: www.michaelhorowitz.com/php/datediff.php</font></td>
+  <td align="right"><font face="Verdana" size="1">Last Updated:
+  May 24, 2005 6 PM  &nbsp;</font></td></tr>
+
+ 
+
+<tr><td colspan="2" bgcolor="#717855" height="3"></td></tr>
+<tr bgcolor='#FFFFFF'><td align='right' width='50%'><font face='Verdana' size='1'>Prior to you, the last person to look at this web page did so on </td><td><font face='Verdana' size='1'>Friday, July 29, 2005 3:18:59 AM</td></tr><tr bgcolor='#FFFFFF'><td align=right width='50%'><font face='Verdana' size='1'>Current time on the server is </td><td><font face='Verdana' size='1'>Friday, July 29, 2005 3:48:53 AM</td></tr>
+
+<script language="JavaScript">
+  tempdate = new Date();
+  document.write ("<tr bgcolor='#FFFFFF'><td align='right' width='50%'><font face='Verdana' size='1'>");
+  document.write ("The time on your computer is </td><td><font face='Verdana' size='1'>");
+  document.write (tempdate.toLocaleString() + "</td></tr>");
+</script>
+
+
+<tr><td colspan="2" bgcolor="#717855" height="3"></td></tr>
+</table>
+
+<div align=center><font face='Verdana' size='2'>There have been 23888 page views of these PHP pages since February 10, 2004 for an average of 45 per day over 534.2 days<br>The last 5 people to view this web site were from these IP addresses:<br></font><font face='Courier New'><table border='1'><tr><td>202.141.141.10</td><td>proxy.du.ac.in</td></tr><tr><td>61.11.19.211</td><td>no name found</td></tr><tr><td>139.18.2.68</td><td>aspra10.informatik.uni-leipzig.de</td></tr><tr><td>194.98.7.155</td><td>no name found</td></tr><tr><td>213.139.228.210</td><td>lotus.ankarapatent.com</td></tr></table></div></font>
+<div align="center"><img border="0" src="license_mh.1986.jpg" tppabs="http://www.michaelhorowitz.com/license_mh.1986.jpg" width="150" height="77"></div>
+</body>
+</HTML>

@@ -1,0 +1,764 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head profile="http://gmpg.org/xfn/1">
+	<title>  ASP.NET questions, part 1 &lt; TechInterviews.com</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css" media="screen">
+		@import url( "style.css");
+	</style>
+        <meta name="description" content="The site offers  as well as career tips and preparation guides for a job interview in the field. Interview questions for high-tech companies.">
+	<link rel="stylesheet" type="text/css" media="print" href="print.css" tppabs="http://www.techinterviews.com/print.css" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="-feed=rss2.htm" tppabs="http://www.techinterviews.com/?feed=rss2" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="-feed=rss.htm" tppabs="http://www.techinterviews.com/?feed=rss" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="javascript:if(confirm('http://www.techinterviews.com/?feed=atom  \n\nThis file was not retrieved by Teleport Pro, because it did not meet the project\'s file type specifications.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/?feed=atom'" tppabs="http://www.techinterviews.com/?feed=atom" />
+	<link rel="pingback" href="xmlrpc.php.htm" tppabs="http://www.techinterviews.com/xmlrpc.php" />
+		</head>
+
+<body>
+<h1 id="header"><a href="index.htm" tppabs="http://www.techinterviews.com/">Interview questions for tech companies</a></h1>
+<!-- end header --><table width="100%"><tr><td valign="top" width="200" bgcolor="silver">
+<!--sidebar start-->
+	<p class="categorizer">Full-text search:</p><ul class="menulist2"><li><center>
+		<form id="searchform" method="get" action="">
+			<input type="text" name="s" /><input type="submit" name="submit" value="Search" />
+		</form></center></li></ul>
+
+	<p><p class="categorizer">Categories:</p>
+		<ul class="menulist">
+				<li><a href="index.php-cat=9.htm" tppabs="http://www.techinterviews.com/index.php?cat=9" title="View all posts filed under .NET">.NET</a> (29)
+</li>
+	<li><a href="index.php-cat=2.htm" tppabs="http://www.techinterviews.com/index.php?cat=2" title="View all posts filed under C++">C++</a> (25)
+</li>
+	<li><a href="index.php-cat=12.htm" tppabs="http://www.techinterviews.com/index.php?cat=12" title="View all posts filed under Database">Database</a> (26)
+</li>
+	<li><a href="index.php-cat=1.htm" tppabs="http://www.techinterviews.com/index.php?cat=1" title="View all posts filed under General">General</a> (38)
+</li>
+	<li><a href="index.php-cat=11.htm" tppabs="http://www.techinterviews.com/index.php?cat=11" title="View all posts filed under Hardware">Hardware</a> (16)
+</li>
+	<li><a href="index.php-cat=4.htm" tppabs="http://www.techinterviews.com/index.php?cat=4" title="View all posts filed under Java">Java</a> (48)
+</li>
+	<li><a href="index.php-cat=5.htm" tppabs="http://www.techinterviews.com/index.php?cat=5" title="View all posts filed under Networking">Networking</a> (21)
+</li>
+	<li><a href="index.php-cat=13.htm" tppabs="http://www.techinterviews.com/index.php?cat=13" title="View all posts filed under Testing">Testing</a> (11)
+</li>
+	<li><a href="index.php-cat=7.htm" tppabs="http://www.techinterviews.com/index.php?cat=7" title="View all posts filed under Unix/Linux">Unix/Linux</a> (16)
+</li>
+	<li><a href="index.php-cat=8.htm" tppabs="http://www.techinterviews.com/index.php?cat=8" title="View all posts filed under VB">VB</a> (8)
+</li>
+	<li><a href="index.php-cat=14.htm" tppabs="http://www.techinterviews.com/index.php?cat=14" title="View all posts filed under Web dev">Web dev</a> (13)
+</li>
+	<li><a href="index.php-cat=6.htm" tppabs="http://www.techinterviews.com/index.php?cat=6" title="View all posts filed under Windows">Windows</a> (21)
+</li>
+		<li><a href="mailto:techinterviews@gmail.com?Subject=Submission">Submit yours</a></li>
+		</ul>
+	</p>
+
+	<p>
+	<p class="categorizer">Site sponsors:</p><ul class="menulist2"><li>
+		<center>
+	<script type="text/javascript"><!--
+		google_ad_client = "pub-6610148867873991";
+		google_ad_width = 160;
+		google_ad_height = 600;
+		google_ad_format = "160x600_as";
+		google_ad_channel ="0322550296";
+		google_color_border = "C0C0C0";
+		google_color_bg = "c0c0c0";
+		google_color_link = "000000";
+		google_color_url = "CCCCCC";
+		google_color_text = "CCCCCC";
+		//--></script>
+		<script type="text/javascript"
+		  src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+
+	</center></li></ul>
+	</p>
+<p>
+<p class="categorizer">E-mail updates:</p><ul class="menulist2"><li>
+	 <form action="http://groups-beta.google.com/group/TechInterviewscom-additions/boxsubscribe">
+	  <div align="center">
+	  <table cellpadding="2">
+	  <tr><td>
+		<p align="center">Sign up for updates - win a free book</td></tr>
+	  <tr>
+		<td><center><input type=text name=email value=email@server></center></td>
+	  </tr>
+	  <tr>
+		<td><center>
+			 <input type=submit name="sub" value="Subscribe">
+		</center></td>
+	  </tr>
+	  <tr>
+		<td><p align="center">We give away programming books to e-mail subscribers</p></td>
+	  </tr>
+	  </table>
+	   </div>
+	   </form></li></ul>
+</p>
+
+<p>
+<p class="categorizer">Miscellaneous stuff:</p>
+<div class="menulist2">
+<script type="text/javascript" src="text_group.php-sid=6932&br=1" tppabs="http://1.adbrite.com/mb/text_group.php?sid=6932&br=1"></script>
+<p />
+<div><a class="adHeadline" target="_top" href="javascript:if(confirm('http://www.adbrite.com/mb/commerce/purchase_form.php?opid=7189&afsid=1  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.adbrite.com/mb/commerce/purchase_form.php?opid=7189&afsid=1'" tppabs="http://www.adbrite.com/mb/commerce/purchase_form.php?opid=7189&afsid=1">Your Ad Here</a></div>
+<li><a class="adHeadline" href="javascript:if(confirm('http://new3.mysurvey.com/join.cfm?r=491576  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://new3.mysurvey.com/join.cfm?r=491576'" tppabs="http://new3.mysurvey.com/join.cfm?r=491576">Take a survey, earn money. Get $5 for sign-up.</a></li>
+<li><a class="adHeadline" href="javascript:if(confirm('http://www.dreamhost.com/rewards.cgi?prostoalex  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.dreamhost.com/rewards.cgi?prostoalex'" tppabs="http://www.dreamhost.com/rewards.cgi?prostoalex">2.4 Gigs of storage with 120 GB of bandwidth monthly - great hosting for $7.95 a month</a></li>
+<li><a class="adHeadline" href="javascript:if(confirm('http://www.nobelcom.com/cgi-bin/newActive/nobelcom.cgi?AFFN=168936128  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.nobelcom.com/cgi-bin/newActive/nobelcom.cgi?AFFN=168936128'" tppabs="http://www.nobelcom.com/cgi-bin/newActive/nobelcom.cgi?AFFN=168936128">International phone cards, cheap rates</a></li>
+<li><a class="adHeadline" href="javascript:if(confirm('http://www.satellitesolutions.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.satellitesolutions.com/'" tppabs="http://www.satellitesolutions.com/">Satelite TV</a> - <span class="adText">have satelite television installed at your house with directv</a>. <a href="javascript:if(confirm('http://www.rubberstampchamp.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.rubberstampchamp.com/'" tppabs="http://www.rubberstampchamp.com/">Rubber Stamp</a> - <span class="adText">Shop for custom self-inking stamps, hand stamps, address stamps, label stamps, check endorsement stamps, check deposit stamps, date stamps, pre inks, pocket stamps, ink and much more!</a></li>
+<li> <a class="adHeadline" href="javascript:if(confirm('http://www.daytradeteam.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.daytradeteam.com/'" tppabs="http://www.daytradeteam.com/">Day Trading</a> - <span class="adText">day trading signals for active stock and options traders.</a></li>
+</div>
+</p><p>
+		<p class="categorizer">Good books:</p>
+		<p>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0471383562/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0471383562/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0471383562/moskalyukcom-20"><img src="1.jpg" tppabs="http://www.techinterviews.com/images/1.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0316919160/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0316919160/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0316919160/moskalyukcom-20"><img src="2.jpg" tppabs="http://www.techinterviews.com/images/2.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/007016357X/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/007016357X/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/007016357X/moskalyukcom-20"><img src="3.jpg" tppabs="http://www.techinterviews.com/images/3.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0786865962/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0786865962/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0786865962/moskalyukcom-20"><img src="4.jpg" tppabs="http://www.techinterviews.com/images/4.jpg"></a>
+		<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/0425166864/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/0425166864/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/0425166864/moskalyukcom-20"><img src="5.gif" tppabs="http://www.techinterviews.com/images/5.gif"></a>
+<a href="javascript:if(confirm('http://www.amazon.com/exec/obidos/ASIN/1580624936/moskalyukcom-20  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.amazon.com/exec/obidos/ASIN/1580624936/moskalyukcom-20'" tppabs="http://www.amazon.com/exec/obidos/ASIN/1580624936/moskalyukcom-20"><img src="1580624936.01.THUMBZZZ.jpg" tppabs="http://images.amazon.com/images/P/1580624936.01.THUMBZZZ.jpg" border="0"></a>
+		</p>
+	</p>
+
+	<p>
+	<p class="categorizer">Good links:</p>
+			<ul class="menulist2">
+				<li><a href="javascript:if(confirm('http://www.hotdealsportal.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.hotdealsportal.com/'" tppabs="http://www.hotdealsportal.com/">Deals on PCs</a></li>
+<li><a href="javascript:if(confirm('http://www.techbooksforfree.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.techbooksforfree.com/'" tppabs="http://www.techbooksforfree.com/">Free books</a></li>
+<li><a href="javascript:if(confirm('http://www.itfacts.biz/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.itfacts.biz/'" tppabs="http://www.itfacts.biz/">IT Research</a></li>
+<li><a href="javascript:if(confirm('http://www.sellsbrothers.com/fun/msiview/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.sellsbrothers.com/fun/msiview/'" tppabs="http://www.sellsbrothers.com/fun/msiview/">Interview@MSFT</a></li>
+<li><a href="javascript:if(confirm('http://weblogs.asp.net/JobsBlog/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://weblogs.asp.net/JobsBlog/'" tppabs="http://weblogs.asp.net/JobsBlog/">Career blog @ MSFT</a></li>
+<li><a href="javascript:if(confirm('http://www.c-sharpcorner.com/faq.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.c-sharpcorner.com/faq.asp'" tppabs="http://www.c-sharpcorner.com/faq.asp">C# FAQ</a></li>
+<li><a href="javascript:if(confirm('http://blogs.msdn.com/csharpfaq  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://blogs.msdn.com/csharpfaq'" tppabs="http://blogs.msdn.com/csharpfaq">MSDN C# FAQ</a></li>
+<li><a href="javascript:if(confirm('http://www.everythingfirebird.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.everythingfirebird.com/'" tppabs="http://www.everythingfirebird.com/">Everything Firebird</a></li>
+<li><a href="javascript:if(confirm('http://searchsmallbizit.techtarget.com/sDefinition/0,,sid44_gci826135,00.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://searchsmallbizit.techtarget.com/sDefinition/0,,sid44_gci826135,00.html'" tppabs="http://searchsmallbizit.techtarget.com/sDefinition/0,,sid44_gci826135,00.html">Cheat sheets</a></li>
+<li><a href="javascript:if(confirm('http://www.thatwasfunny.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.thatwasfunny.com/'" tppabs="http://www.thatwasfunny.com/">That was funny</a></li>
+<li><a href="javascript:if(confirm('http://www.collectorcarbuff.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.collectorcarbuff.com/'" tppabs="http://www.collectorcarbuff.com/">Collector cars</a></li>
+<li><a href="javascript:if(confirm('http://www.aspfree.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.aspfree.com/'" tppabs="http://www.aspfree.com/">ASP Free</a></li>
+<li><a href="javascript:if(confirm('http://www.vault.com/survival/center.jsp?type=3&  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.vault.com/survival/center.jsp?type=3&#038;ch_id=262&#038;article_id=9106882&#038;cat_id=1481&#038;listelement=1'" tppabs="http://www.vault.com/survival/center.jsp?type=3&#038;ch_id=262&#038;article_id=9106882&#038;cat_id=1481&#038;listelement=1">What&#039;s your biggest weakness?</a></li>
+<li><a href="javascript:if(confirm('http://www.perlfunc.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.perlfunc.com/'" tppabs="http://www.perlfunc.com/">PerlFunc</a></li>
+<li><a href="javascript:if(confirm('http://www.microsoft.com/smallbusiness/resources/management/recruiting_staffing/hiring_6_interview_questions_you_need_to_ask.mspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.microsoft.com/smallbusiness/resources/management/recruiting_staffing/hiring_6_interview_questions_you_need_to_ask.mspx'" tppabs="http://www.microsoft.com/smallbusiness/resources/management/recruiting_staffing/hiring_6_interview_questions_you_need_to_ask.mspx">Small business interview questions</a></li>
+<li><a href="javascript:if(confirm('http://www.devbistro.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.devbistro.com/'" tppabs="http://www.devbistro.com/">Tech jobs at DevBistro</a></li>
+			</ul>
+<center>
+<form name="search" method="post" action="http://www.meteus.com/search.php">
+<input type="hidden" name="aid" value="32147">
+Search <a href="javascript:if(confirm('http://www.meteus.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.meteus.com/'" tppabs="http://www.meteus.com/" target="_blank">Meteus</a><br />
+<input type="text" name="q" size="20" value="">
+<input type="submit" value="Search" /></form>
+<center>
+	</p>
+
+<!--sidebar end-->
+</td>
+
+<td valign="top" bgcolor="white">
+		<div class="post">
+		<h3><a href="-p=5.htm" tppabs="http://www.techinterviews.com/?p=5" rel="bookmark" title="Interview questions: ASP.NET questions, part 1">ASP.NET questions, part 1</a></h3>
+			<ol>
+	<li><b>Explain the differences between Server-side and Client-side code? </b>Server side scripting means that all the script will be executed by the server and interpreted as needed. ASP doesn&#8217;t have some of the functionality like sockets, uploading, etc. For these you have to make a custom components usually in VB or VC++. Client side scripting means that the script will be executed immediately in the browser such as form field validation, clock, email validation, etc. Client side scripting is usually done in VBScript or JavaScript. Download time, browser compatibility, and visible code - since JavaScript and VBScript code is included in the HTML page, then anyone can see the code by viewing the page source. Also a possible security hazards for the client computer.</li>
+<a id="more-5"></a></p>
+	<li><b>What type of code (server or client) is found in a Code-Behind class?</b> C#
+	<li><b>Should validation (did the user enter a real date) occur server-side or client-side? Why?</b> Client-side validation because there is no need to request a server side date when you could obtain a date from the client machine.
+	<li><b>What does the &#34;EnableViewState&#34; property do? Why would I want it on or off?</b> Enable ViewState turns on the automatic state management feature that enables server controls to re-populate their values on a round trip without requiring you to write any code. This feature is not free however, since the state of a control is passed to and from the server in a hidden form field. You should be aware of when ViewState is helping you and when it is not. For example, if you are binding a control to data on every round trip (as in the datagrid example in tip #4), then you do not need the control to maintain it&#8217;s view state, since you will wipe out any re-populated data in any case. ViewState is enabled for all server controls by default. To disable it, set the EnableViewState property of the control to false.
+	<li><b>What is the difference between Server.Transfer and Response.Redirect? Why would I choose one over the other?</b> Server.Transfer() : client is shown as it is on the requesting page only, but the all the content is of the requested page. Data can be persist accros the pages using Context.Item collection, which is one of the best way to transfer data from one page to another keeping the page state alive. Response.Dedirect() :client know the physical loation (page name and query string as well). Context.Items loses the persisitance when nevigate to destination page. In earlier versions of IIS, if we wanted to send a user to a new Web page, the only option we had was Response.Redirect. While this method does accomplish our goal, it has several important drawbacks. The biggest problem is that this method causes each page to be treated as a separate transaction. Besides making it difficult to maintain your transactional integrity, Response.Redirect introduces some additional headaches. First, it prevents good encapsulation of code. Second, you lose access to all of the properties in the Request object. Sure, there are workarounds, but they&#8217;re difficult. Finally, Response.Redirect necessitates a round trip to the client, which, on high-volume sites, causes scalability problems. As you might suspect, Server.Transfer fixes all of these problems. It does this by performing the transfer on the server without requiring a roundtrip to the client.
+	<li><b>Can you give an example of when it would be appropriate to use a web service as opposed to a non-serviced .NET component?</b> <i>When to Use Web Services</i><b>:</b>
+	<ul>
+	<li><b>Communicating through a Firewall </b> When building a distributed application with 100s/1000s of users spread over multiple locations, there is always the problem of communicating between client and server because of firewalls and proxy servers. Exposing your middle tier components as Web Services and invoking the directly from a Windows UI is a very valid option.</li>
+	<li><b>Application Integration </b> When integrating applications written in various languages and running on disparate systems. Or even applications running on the same platform that have been written by separate vendors. </li>
+	<li><b>Business-to-Business Integration </b> This is an enabler for B2B intergtation which allows one to expose vital business processes to authorized supplier and customers. An example would be exposing electronic ordering and invoicing, allowing customers to send you purchase orders and suppliers to send you invoices electronically.
+</li>
+	<li> <b>Software Reuse </b> This takes place at multiple levels. Code Reuse at the Source code level or binary componet-based resuse. The limiting factor here is that you can reuse the code but not the data behind it. Webservice overcome this limitation. A scenario could be when you are building an app that aggregates the functionality of serveral other Applicatons. Each of these functions could be performed by individual apps, but there is value in perhaps combining the the multiple apps to present a unifiend view in a Portal or Intranet.</li>
+	<li><i>When not to use Web Services:</i><b> Single machine Applicatons </b> When the apps are running on the same machine and need to communicate with each other use a native API. You also have the options of using component technologies such as COM or .NET Componets as there is very little overhead.</li>
+	<li><b>Homogeneous Applications on a LAN </b> If you have Win32 or Winforms apps that want to communicate to their server counterpart. It is much more efficient to use DCOM in the case of Win32 apps and .NET Remoting in the case of .NET Apps.</li>
+	</ul>
+	</li>
+	<li><b>Let&#8217;s say I have an existing application written using Visual Studio (VBInterDevand this application utilizes WindowsCOM+ transaction services. How would you approach migrating this application to .NET?</b> </li>
+	<li><b>Can you explain the difference between an ADO.NET Dataset and an ADO Recordset? </b>In ADO, the in-memory representation of data is the recordset. In ADO.NET, it is the dataset. There are important differences between them.
+</li>
+	<ul>
+	<li>A recordset looks like a single table. If a recordset is to contain data from multiple database tables, it must use a JOIN query, which assembles the data from the various database tables into a single result table. In contrast, a dataset is a collection of one or more tables. The tables within a dataset are called data tables; specifically, they are DataTable objects. If a dataset contains data from multiple database tables, it will typically contain multiple DataTable objects. That is, each DataTable object typically corresponds to a single database table or view. In this way, a dataset can mimic the structure of the underlying database. A dataset usually also contains relationships. A relationship within a dataset is analogous to a foreign-key relationship in a database &#8212;that is, it associates rows of the tables with each other. For example, if a dataset contains a table about investors and another table about each investor&#8217;s stock purchases, it could also contain a relationship connecting each row of the investor table with the corresponding rows of the purchase table. Because the dataset can hold multiple, separate tables and maintain information about relationships between them, it can hold much richer data structures than a recordset, including self-relating tables and tables with many-to-many relationships. </li>
+	<li>In ADO you scan sequentially through the rows of the recordset using the ADO MoveNext method. In ADO.NET, rows are represented as collections, so you can loop through a table as you would through any collection, or access particular rows via ordinal or primary key index. DataRelation objects maintain information about master and detail records and provide a method that allows you to get records related to the one you are working with. For example, starting from the row of the Investor table for &#34;Nate Sun,&#34; you can navigate to the set of rows of the Purchase table describing his purchases. A cursor is a database element that controls record navigation, the ability to update data, and the visibility of changes made to the database by other users. ADO.NET does not have an inherent cursor object, but instead includes data classes that provide the functionality of a traditional cursor. For example, the functionality of a forward-only, read-only cursor is available in the ADO.NET DataReader object. For more information about cursor functionality, see Data Access Technologies.</li>
+	<li> Minimized Open Connections: In ADO.NET you open connections only long enough to perform a database operation, such as a Select or Update. You can read rows into a dataset and then work with them without staying connected to the data source. In ADO the recordset can provide disconnected access, but ADO is designed primarily for connected access. There is one significant difference between disconnected processing in ADO and ADO.NET. In ADO you communicate with the database by making calls to an OLE DB provider. In ADO.NET you communicate with the database through a data adapter (an OleDbDataAdapter, SqlDataAdapter, OdbcDataAdapter, or OracleDataAdapter object), which makes calls to an OLE DB provider or the APIs provided by the underlying data source. The important difference is that in ADO.NET the data adapter allows you to control how the changes to the dataset are transmitted to the database &#8212; by optimizing for performance, performing data validation checks, or adding any other extra processing. Data adapters, data connections, data commands, and data readers are the components that make up a .NET Framework data provider. Microsoft and third-party providers can make available other .NET Framework data providers that can be integrated into Visual Studio.</li>
+	<li>Sharing Data Between Applications. Transmitting an ADO.NET dataset between applications is much easier than transmitting an ADO disconnected recordset. To transmit an ADO disconnected recordset from one component to another, you use COM marshalling. To transmit data in ADO.NET, you use a dataset, which can transmit an XML stream.</li>
+	<li>Richer data types.COM marshalling provides a limited set of data types &#8212; those defined by the COM standard. Because the transmission of datasets in ADO.NET is based on an XML format, there is no restriction on data types. Thus, the components sharing the dataset can use whatever rich set of data types they would ordinarily use.</li>
+	<li>Performance. Transmitting a large ADO recordset or a large ADO.NET dataset can consume network resources; as the amount of data grows, the stress placed on the network also rises. Both ADO and ADO.NET let you minimize which data is transmitted. But ADO.NET offers another performance advantage, in that ADO.NET does not require data-type conversions. ADO, which requires COM marshalling to transmit records sets among components, does require that ADO data types be converted to COM data types.</li>
+	<li> Penetrating Firewalls.A firewall can interfere with two components trying to transmit disconnected ADO recordsets. Remember, firewalls are typically configured to allow HTML text to pass, but to prevent system-level requests (such as COM marshalling) from passing.</li>
+	</ul>
+	<li><b>Can you give an example of what might be best suited to place in the Application_Start and Session_Start subroutines?</b> The Application_Start event is guaranteed to occur only once throughout the lifetime of the application. It&#8217;s a good place to initialize global variables. For example, you might want to retrieve a list of products from a database table and place the list in application state or the Cache object. SessionStateModule exposes both Session_Start and Session_End events.</li>
+	<li><b>If I&#8217;m developing an application that must accomodate multiple security levels though secure login and my ASP.NET web appplication is spanned across three web-servers (using round-robbin load balancing) what would be the best approach to maintain login-in state for the users?</b> </li>
+	<li><b>What are ASP.NET Web Forms? How is this technology different than what is available though ASP?</b> <a href="javascript:if(confirm('http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dndotnet/html/introwebforms.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dndotnet/html/introwebforms.asp'" tppabs="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dndotnet/html/introwebforms.asp">Web Forms are the heart and soul of ASP.NET</a>. Web Forms are the User Interface (UI) elements that give your Web applications their look and feel. Web Forms are similar to Windows Forms in that they provide properties, methods, and events for the controls that are placed onto them. However, these UI elements render themselves in the appropriate markup language required by the request, e.g. HTML. If you use Microsoft Visual Studio .NET, you will also get the familiar drag-and-drop interface used to create your UI for your Web application.
+	<li><b>How does VB.NET/C# achieve polymorphism? </b>By using Abstract classes/functions.
+	<li><b>Can you explain what inheritance is and an example of when you might use it? </b>Inheritance is a fundamental feature of an object oriented system and it is simply the ability to inherit data and functionality from a parent object. Rather than developing new objects from scratch, new code can be based on the work of other programmers, adding only new features that are needed.
+	<li><b>How would you implement inheritance using VB.NET/C#?</b> When we set out to implement a class using inheritance, we must first start with an existing class from which we will derive our new subclass. This existing class, or base class, may be part of the .NET system class library framework, it may be part of some other application or .NET assembly, or we may create it as part of our existing application. Once we have a base class, we can then implement one or more subclasses based on that base class. Each of our subclasses will automatically have all of the methods, properties, and events of that base class ? including the implementation behind each method, property, and event. Our subclass can add new methods, properties, and events of its own - extending the original interface with new functionality. Additionally, a subclass can replace the methods and properties of the base class with its own new implementation - effectively overriding the original behavior and replacing it with new behaviors. Essentially inheritance is a way of merging functionality from an existing class into our new subclass. Inheritance also defines rules for how these methods, properties, and events can be merged.
+</ol>
+	<p><a href="index.php-p=78&.htm#038;more=1&#038;c=1" tppabs="http://www.techinterviews.com/index.php?p=78&#038;more=1&#038;c=1">ASP.NET questions, Part 2</a>
+</p>
+		<p class="feedback">
+			<a href="-p=5.htm" tppabs="http://www.techinterviews.com/?p=5">Read all</a> | Browse topics: <a href="index.php-cat=9.htm" tppabs="http://www.techinterviews.com/index.php?cat=9" title="View all posts in .NET" rel="category tag">.NET</a>,  <a href="index.php-cat=14.htm" tppabs="http://www.techinterviews.com/index.php?cat=14" title="View all posts in Web dev" rel="category tag">Web dev</a>		</p>
+
+<center>
+<script type="text/javascript"><!--
+google_ad_client = "pub-6610148867873991";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text_image";
+google_ad_channel ="5988513540";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "000066";
+google_color_url = "C0c0c0";
+google_color_text = "c0c0c0";
+//--></script>
+<script type="text/javascript"
+  src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</center>
+
+<h2 id="comments">51 Comments 
+</h2>
+
+<ol id="commentlist">
+
+	<li id="comment-9">
+		<p>Not all questions have answers, some require additional research. It&#8217;s assumed you know the .NET framework essentials well enough to just go over the review questions. I might post some in the future, when I have time.
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://techinterviews.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://techinterviews.com/'" tppabs="http://techinterviews.com/" rel='external nofollow'>admin</a></b></cite> </p>
+	</li>
+
+	<li id="comment-119">
+		<p>Questions are real good, but would be helpful if we get some more .</p>
+	<p>Thanks,<br />
+~bnr.
+</p>
+	<p><cite>Tech Interviews comment by <b>bnr</b></cite> </p>
+	</li>
+
+	<li id="comment-234">
+		<p>ANS 23.</p>
+	<p>Every Page object (which your .aspx page is) has nine events, most of which you will not have to worry about in your day to day dealings with ASP.NET.  The three that you will deal with the most are:</p>
+	<p>Page_Init<br />
+Page_Load<br />
+Page_PreRender
+</p>
+	<p><cite>Tech Interviews comment by <b>raj</b></cite> </p>
+	</li>
+
+	<li id="comment-235">
+		<p>ANS 24. Dataadapter.Fill(dataset)
+</p>
+	<p><cite>Tech Interviews comment by <b>raj</b></cite> </p>
+	</li>
+
+	<li id="comment-236">
+		<p>ANS39. False
+</p>
+	<p><cite>Tech Interviews comment by <b>raj</b></cite> </p>
+	</li>
+
+	<li id="comment-237">
+		<p>ANS 40.WSDL=Web Services Description Language
+</p>
+	<p><cite>Tech Interviews comment by <b>raj</b></cite> </p>
+	</li>
+
+	<li id="comment-289">
+		<p>Question : 45</p>
+	<p>In VB.NET</p>
+	<p>Public ReadOnly Property PropertyName As ReturnType<br />
+        Get<br />
+            &#8216;Your Property Implementation goes in here<br />
+        End Get<br />
+End Property</p>
+	<p>in C#</p>
+	<p>public returntype  propertyname<br />
+{<br />
+	get{<br />
+            //property implementation goes here<br />
+	    }<br />
+           // Do not write the set implementation<br />
+ }
+</p>
+	<p><cite>Tech Interviews comment by <b>Nikhil</b></cite> </p>
+	</li>
+
+	<li id="comment-340">
+		<p>Here are some of the answers:</p>
+	<p>Explain the differences between Server-side and Client-side code?<br />
+<b>Server-side runs on a server, client side bitches about the server code not running.</b></p>
+	<p>What type of code (server or client) is found in a Code-Behind class?<br />
+Neither, its a trick question.</p>
+	<p>Should validation (did the user enter a real date) occur server-side or client-side? Why?<br />
+It doesn&#8217;t matter.  If the user didn&#8217;t enter a real date, then he&#8217;s a moron.</p>
+	<p>What does the &#8220;EnableViewState&#8221; property do? Why would I want it on or off?<br />
+You can peak into China&#8217;s deep dark secret, Margret Chan.  Because she&#8217;s scary!
+</p>
+	<p><cite>Tech Interviews comment by <b>Anonymous</b></cite> </p>
+	</li>
+
+	<li id="comment-365">
+		<p>Ans 1)<br />
+ASP is a &#8220;server side scripting&#8221; which is used in a web pages like e-commerce, database, guest book, etc. Server side scripting means that all the script will be executed by the server and interpreted as needed.<br />
+ASP doesn&#8217;t have some of the functionality like sockets, uploading, etc. For these you have to make a custom components usually in VB or VC++.</p>
+	<p>Client side scripting means that the script will be executed immediately in the browser such as form field validation, clock, email validation, etc. Client side scripting is usually done in VBScript or JavaScript.</p>
+	<p>VBScript , JavaScript ???</p>
+	<p>VBScript is the client side scripting (script which is executed in your browser). This script looks like VB and it is only supported by Internet Explorer.<br />
+JavaScript is also another client side scripting based on Java. This script is supported by Internet Explorer and also Netscape browser</p>
+	<p>Ans 5)<br />
+Server.Transfer() : client is shown as it is on the requesting page only, but the all the content is of the requested page. Data can be persist accros the pages using Context.Item collection, which is one of the best way to transfer data from one page to another keeping the page state alive. </p>
+	<p>Response.Dedirect() :client know the physical loation (page name and query string as well). Context.Items loses the persisitance when nevigate to destination page
+</p>
+	<p><cite>Tech Interviews comment by <b>Sri</b></cite> </p>
+	</li>
+
+	<li id="comment-412">
+		<p>1.	Explain the differences between Server-side and Client-side code?<br />
+Client-side codes are scripts executed on the client machine when a web page is requested from a web server while server-side codes are executed on the server. Client side programs or scripts have a number of limitations, for example:<br />
+Download time, browser compatibility, and visible code &#8211; since JavaScript and VBScript code is included in the HTML page, then anyone can see the code by viewing the page source. Also a possible security hazards for the client computer.</p>
+	<p>Alternatively, there are some benefits to server-side programs:<br />
+Benefits<br />
+Programs run on a known computer &#8211; not dependent on browser.<br />
+Greater flexibility in what scripts can do &#8211; e.g. access databases, modify files on server.<br />
+Code is not viewable by users.<br />
+Limitations<br />
+You must have your site on a server, which is capable of running your scripts, and permission to create your own scripts.<br />
+Can sometimes be slower to run than client side since server access is required.
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-413">
+		<p>2.	What type of code (server or client) is found in a Code-Behind class?<br />
+C-Sharp or c#
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-414">
+		<p>3.	Should validation (did the user enter a real date) occur server-side or client-side? Why?<br />
+Client-side validation because there is no need to request a server side date when you could obtain a date from the client machine. so many other reasons, see answer #1
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-415">
+		<p>4.	What does the &#8220;EnableViewState&#8221; property do? Why would I want it on or off?<br />
+1.	Enable ViewState turns on the automatic state management feature that enables server controls to re-populate their values on a round trip without requiring you to write any code. This feature is not free however, since the state of a control is passed to and from the server in a hidden form field. You should be aware of when ViewState is helping you and when it is not. For example, if you are binding a control to data on every round trip (as in the datagrid example in tip #4), then you do not need the control to maintain it&#8217;s view state, since you will wipe out any re-populated data in any case.<br />
+ViewState is enabled for all server controls by default. To disable it, set the EnableViewState property of the control to false, as in the following example:
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-416">
+		<p>&#8220;&#8221;
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-417">
+		<p>5.	What is the difference between Server.Transfer and Response.Redirect? Why would I choose one over the other?<br />
+In earlier versions of IIS, if we wanted to send a user to a new Web page, the only option we had was Response.Redirect. While this method does accomplish our goal, it has several important drawbacks. The biggest problem is that this method causes each page to be treated as a separate transaction. Besides making it difficult to maintain your transactional integrity, Response.Redirect introduces some additional headaches. First, it prevents good encapsulation of code. Second, you lose access to all of the properties in the Request object. Sure, there are workarounds, but they&#8217;re difficult. Finally, Response.Redirect necessitates a round trip to the client, which, on high-volume sites, causes scalability problems.<br />
+As you might suspect, Server.Transfer fixes all of these problems. It does this by performing the transfer on the server without requiring a roundtrip to the client.
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-418">
+		<p>6.	Can you give an example of when it would be appropriate to use a web service as opposed to a non-serviced .NET component?<br />
+When to Use Web Services<br />
+======================<br />
+1) Communicating through a Firewall<br />
+- When building a distributed application with 100s/1000s of users spread<br />
+over multiple locations, there is always the problem of communicating<br />
+between client and server because of firewalls and proxy servers. Exposing<br />
+your middle tier components as Web Services and invoking the directly from a<br />
+Windows UI is a very valid option.</p>
+	<p>2) Application Integration<br />
+- When integrating applications written in various languages and running on<br />
+disparate systems. Or even applications running on the same platform that<br />
+have been written by separate vendors.</p>
+	<p>3) Business-to-Business Integration<br />
+- This is an enabler for B2B intergtation which allows one to expose vital<br />
+business processes to authorized supplier and customers. An example would be<br />
+exposing electronic ordering and invoicing, allowing customers to send you<br />
+purchase orders and suppliers to send you invoices electronically.</p>
+	<p>4) Software Reuse<br />
+- This takes place at multiple levels. Code Reuse at the Source code level<br />
+or binary componet-based resuse. The limiting factor here is that you can<br />
+reuse the code but not the data behind it. Webservice overcome this<br />
+limitation. A scenario could be when you are building an app that aggregates<br />
+the functionality of serveral other Applicatons. Each of these functions<br />
+could be performed by individual apps, but there is value in perhaps<br />
+combining the the multiple apps to present a unifiend view in a Portal or<br />
+Intranet.</p>
+	<p>Of course there is the Reverse as well &#8211;</p>
+	<p>When NOT to use Web Services<br />
+=========================<br />
+1) Single machine Applicatons<br />
+- When the apps are running on the same machine and need to communicate with<br />
+each other use a native API. You also have the options of using component<br />
+technologies such as COM or .NET Componets as there is very little overhead.</p>
+	<p>2) Homogeneous Applications on a LAN<br />
+- If you have Win32 or Winforms apps that want to communicate to their<br />
+server counterpart. It is much more efficient to use DCOM in the case of<br />
+Win32 apps and .NET Remoting in the case of .NET Apps.
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-419">
+		<p>Working on 7</p>
+	<p>8.	Can you explain the difference between an ADO.NET Dataset and an ADO Recordset? <a href="javascript:if(confirm('http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vbcon/html/vbconadopreviousversionsofado.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vbcon/html/vbconadopreviousversionsofado.asp'" tppabs="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vbcon/html/vbconadopreviousversionsofado.asp" rel='nofollow'>http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vbcon/html/vbconadopreviousversionsofado.asp</a>
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-420">
+		<p>9.	Can you give an example of what might be best suited to place in the Application_Start and Session_Start subroutines?<br />
+The Application_Start event is guaranteed to occur only once throughout the lifetime of the application. It&#8217;s a good place to initialize global variables. For example, you might want to retrieve a list of products from a database table and place the list in application state or the Cache object.<br />
+SessionStateModule exposes both Session_Start and Session_End events.
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-421">
+		<p>Disclaimer: I have done quite a research for the answers to the above questions and I do realize that I have unintentionally left out my sources hence plagiarized by providing these answers. If I offended anyone please note that this is purely for the edification of .NET/C#/ASPX developers. I stand to make no profit or fame from this. Thank you.
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-422">
+		<p>12.	How does VB.NET/C# achieve polymorphism?<br />
+By using Abstract classes /functions<br />
+13.	Can you explain what inheritance is and an example of when you might use it?<br />
+Inheritance is a fundamental feature of an object oriented system and it is simply the ability to inherit data and functionality from a parent object.  Rather than developing new objects from scratch, new code can be based on the work of other programmers, adding only new features that are needed.
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-423">
+		<p>37.	Which method do you use to redirect the user to another page without performing a round trip to the client?<br />
+Server.transport()<br />
+38.	What is the transport protocol you use to call a Web service SOAP (HTTP Protocol)<br />
+39.	True or False: A Web service can only be written in .NET (false can also be written in Java)<br />
+40.	What does WSDL stand for? Web Service Definition Language (WSDL)
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-424">
+		<p>47.	True or False: To test a Web service you must create a windows application or Web application to consume this service?  (FALSE)
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-425">
+		<p>43.	What tags do you need to add within the asp:datagrid tags to bind columns manually. </p>
+	<p>Column tag and an ASP:databound tag
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-426">
+		<p>34.	How do you create a permanent cookie?<br />
+This is a trick question. You can&#8217;t really set a cookie to permanent but you can use the maxAge property to set a time in seconds.
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-429">
+		<p>Hello Admin,<br />
+I wanted to added to answer 38.<br />
+source: <a href="javascript:if(confirm('http://www.w3.org/2001/03/WSWS-popa/paper12  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.w3.org/2001/03/WSWS-popa/paper12'" tppabs="http://www.w3.org/2001/03/WSWS-popa/paper12" rel='nofollow'>http://www.w3.org/2001/03/WSWS-popa/paper12</a><br />
+Transport Protocols<br />
+It is essential for the acceptance of Web Services that they are based on established Internet infrastructure. This in fact imposes the usage of of the HTTP, SMTP and FTP protocols based on the TCP/IP family of transports. </p>
+	<p>Messaging Protocol<br />
+The format of messages exchanged between Web Services clients and Web Services should be vendor neutral and should not carry details about the technology used to implement the service. Also, the message format should allow for extensions and different bindings to specific transport protocols. SOAP and ebXML Transport are specifications which fulfill these requirements. We expect that the W3C XML Protocol Working Group defines a successor standard. </p>
+	<p>I believe you can say HTTP, SMTP, FTP, SOAP and still have the correct answer.
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-430">
+		<p>11.	What are ASP.NET Web Forms? How is this technology different than what is available though ASP?<br />
+Web Forms are the heart and soul of ASP.NET. Web Forms are the User Interface (UI) elements that give your Web applications their look and feel. Web Forms are similar to Windows Forms in that they provide properties, methods, and events for the controls that are placed onto them. However, these UI elements render themselves in the appropriate markup language required by the request, e.g. HTML. If you use Microsoft Visual Studio&#174; .NET, you will also get the familiar drag-and-drop interface used to create your UI for your Web application.</p>
+	<p>Web Forms are made up of two components: the visual portion (the ASPX file), and the code behind the form, which resides in a separate class file<br />
+The Purpose of Web Forms<br />
+Web Forms and ASP.NET were created to overcome some of the limitations of ASP. These new strengths include: </p>
+	<p>Separation of HTML interface from application logic<br />
+A rich set of server-side controls that can detect the browser and send out appropriate markup language such as HTML<br />
+Less code to write due to the data binding capabilities of the new server-side .NET controls<br />
+Event-based programming model that is familiar to Microsoft Visual Basic&#174; programmers<br />
+Compiled code and support for multiple languages, as opposed to ASP which was interpreted as Microsoft Visual Basic Scripting (VBScript) or Microsoft Jscript&#174;<br />
+Allows third parties to create controls that provide additional functionality </p>
+	<p>source: <a href="javascript:if(confirm('http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dndotnet/html/introwebforms.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dndotnet/html/introwebforms.asp'" tppabs="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dndotnet/html/introwebforms.asp" rel='nofollow'>http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dndotnet/html/introwebforms.asp</a>
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-431">
+		<p>14.	How would you implement inheritance using VB.NET/C#?<br />
+Implementing Inheritance</p>
+	<p>When we set out to implement a class using inheritance, we must first start with an existing class from which we will derive our new subclass. This existing class, or base class, may be part of the .NET system class library framework, it may be part of some other application or .NET assembly, or we may create it as part of our existing application.</p>
+	<p>Once we have a base class, we can then implement one or more subclasses based on that base class. Each of our subclasses will automatically have all of the methods, properties, and events of that base class &#8211; including the implementation behind each method, property, and event. Our subclass can add new methods, properties, and events of its own &#8211; extending the original interface with new functionality. Additionally, a subclass can replace the methods and properties of the base class with its own new implementation &#8211; effectively overriding the original behavior and replacing it with new behaviors.</p>
+	<p>Essentially inheritance is a way of merging functionality from an existing class into our new subclass. Inheritance also defines rules for how these methods, properties, and events can be merged &#8211; including control over how they can be changed or replaced, and how the subclass can add new methods, properties, and events of its own. This is what we&#8217;ll explore as we go forward &#8211; what are these rules and what syntax do we use in VB.NET to make it all work.?</p>
+	<p>source: <a href="javascript:if(confirm('http://www.vbip.com/books/1861004974/chapter_4974_03.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.vbip.com/books/1861004974/chapter_4974_03.asp'" tppabs="http://www.vbip.com/books/1861004974/chapter_4974_03.asp" rel='nofollow'>http://www.vbip.com/books/1861004974/chapter_4974_03.asp</a>
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-432">
+		<p>15.	Whats an assembly?<br />
+Assemblies are the building blocks of .NET Framework applications; they form the fundamental unit of deployment, version control, reuse, activation scoping, and security permissions. An assembly is a collection of types and resources that are built to work together and form a logical unit of functionality. An assembly provides the common language runtime with the information it needs to be aware of type implementations. To the runtime, a type does not exist outside the context of an assembly.</p>
+	<p>source: <a href="javascript:if(confirm('http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconassemblies.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconassemblies.asp'" tppabs="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconassemblies.asp" rel='nofollow'>http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconassemblies.asp</a>
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-433">
+		<p>16.	Describe the difference between inline and code behind - which is best in a loosely coupled solution? </p>
+	<p>Inline Versus Code-Behind Programming Models<br />
+ASP.NET supports two modes of page development:<br />
+Page logic code that is written inside  blocks within an .aspx file and dynamically compiled the first time the page is requested on the server.<br />
+Page logic code that is written within an external class that is compiled prior to deployment on a server and linked &#8220;behind&#8221; the .aspx file at run time.</p>
+	<p>source: <a href="javascript:if(confirm('http://support.microsoft.com/default.aspx?sckb;EN-US;305141  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/default.aspx?sckb;EN-US;305141'" tppabs="http://support.microsoft.com/default.aspx?sckb;EN-US;305141" rel='nofollow'>http://support.microsoft.com/default.aspx?sckb;EN-US;305141</a></p>
+	<p>more sources: <a href="javascript:if(confirm('http://www.123aspx.com/redir.aspx?res=30544  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.123aspx.com/redir.aspx?res=30544'" tppabs="http://www.123aspx.com/redir.aspx?res=30544" rel='nofollow'>http://www.123aspx.com/redir.aspx?res=30544</a>
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-434">
+		<p>17.	Explain what a diffgram is, and a good use for one? </p>
+	<p>A DiffGram is an XML format that is used to identify current and original versions of data elements. The DataSet uses the DiffGram format to load and persist its contents, and to serialize its contents for transport across a network connection. When a DataSet is written as a DiffGram, it populates the DiffGram with all the necessary information to accurately recreate the contents, though not the schema, of the DataSet, including column values from both the Original and Current row versions, row error information, and row order.</p>
+	<p>The DiffGram format that is used by the .NET Framework can also be used by other platforms to send and receive information to a .NET Framework application.</p>
+	<p>When sending and retrieving a DataSet from an XML Web service, the DiffGram format is implicitly used. Additionally, when loading the contents of a DataSet from XML using the ReadXml method, or when writing the contents of a DataSet in XML using the WriteXml method, you can select that the contents be read or written as a DiffGram. For more information, see Loading a DataSet from XML and Writing a DataSet as XML Data.</p>
+	<p>While the DiffGram format is primarily used by the .NET Framework as a serialization format for the contents of a DataSet, <em>you can also use DiffGrams to modify data in tables in a Microsoft SQL Server&#8482; 2000 database</em>. For more information, see the XML for SQL Server 2000 Web Release 2 (WR2) located at <a href="javascript:if(confirm('http://msdn.microsoft.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/'" tppabs="http://msdn.microsoft.com/" rel='nofollow'>http://msdn.microsoft.com</a>.
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-435">
+		<p>18.	Where would you use an iHTTPModule, and what are the limitations of anyapproach you might take in implementing one? </p>
+	<p>One of ASP.NET&#8217;s most useful features is the extensibility of the HTTP pipeline, the path that data takes between client and server. You can use them to extend your ASP.NET applications by adding pre- and post-processing to each HTTP request coming into your application. For example, if you wanted custom authentication facilities for your application, the best technique would be to intercept the request when it comes in and process the request in a custom HTTP module. </p>
+	<p>source: <a href="javascript:if(confirm('http://www.dotnet247.com/247reference/articles/1/8066.aspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.dotnet247.com/247reference/articles/1/8066.aspx'" tppabs="http://www.dotnet247.com/247reference/articles/1/8066.aspx" rel='nofollow'>http://www.dotnet247.com/247reference/articles/1/8066.aspx</a>
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-436">
+		<p>Hello Admin,<br />
+thanks for acting speedily.<br />
+AndrewO</p>
+	<p>Man must eat, I will continue providing answers later.
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-453">
+		<p>48. How many classes can a single .NET DLL contain? </p>
+	<p>The simple answer off the top of my head is as many CLASSES as possible. In simple terms, .NET compiles the project into a DLL and as you know you can have as many classes in your project as your server can hold. :-)
+</p>
+	<p><cite>Tech Interviews comment by <b>Anonymous</b></cite> </p>
+	</li>
+
+	<li id="comment-461">
+		<p>24. Which method do you invoke on the DataAdapter control to load your generated<br />
+dataset with data? </p>
+	<p>System.Data.Common.DataAdapter.Fill(System.Data.DataSet);</p>
+	<p>if my DataAdapter is sqlDataAdapter and my DataSet is dsUsers then it is called like so:<br />
+sqlDataAdapter.Fill(dsUsers);</p>
+	<p>source: .NET Framework General Reference</p>
+	<p>25. Can you edit data in the Repeater control?<br />
+Not sure. I would say NO during an Interview. No member function that supports editting in the Repeater Class.</p>
+	<p>26. Which template must you provide, in order to display data in a Repeater<br />
+control?<br />
+itemTemplate<br />
+source: .NET Framework General Reference</p>
+	<p>27. How can you provide an alternating color scheme in a Repeater control?<br />
+AlternatingItemTemplate Like the ItemTemplate element, but rendered for every other<br />
+row (alternating items) in the Repeater control. You can specify a different appearance<br />
+for the AlternatingItemTemplate element by setting its style properties.<br />
+source: .NET Framework General Reference</p>
+	<p>28. What property must you set, and what method must you call in your code,<br />
+in order to bind the data from some data source to the Repeater control?<br />
+DataBind:Use this method to bind data from a source to a server control.<br />
+This method is commonly used after retrieving a data set through a database query.<br />
+source: .NET Framework General Reference
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-462">
+		<p>28. you must set the DataMember which Gets or sets the specific table in the DataSource to bind to the control.
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-473">
+		<p>If any body has the important questions or Interview questions pls kindly help me , Iam having the Interview on Mar 15th&#8230;
+</p>
+	<p><cite>Tech Interviews comment by <b>swapna</b></cite> </p>
+	</li>
+
+	<li id="comment-532">
+		<p>30)What method do you use to explicitly kill a user s session?  session.abandon
+</p>
+	<p><cite>Tech Interviews comment by <b>nayan</b></cite> </p>
+	</li>
+
+	<li id="comment-533">
+		<p>32)Which two properties are on every validation control? Ans : ControlToValidate , ErrorMessage
+</p>
+	<p><cite>Tech Interviews comment by <b>nayan</b></cite> </p>
+	</li>
+
+	<li id="comment-534">
+		<p>35)What tag do you use to add a hyperlink column to the DataGrid?ANS:
+</p>
+	<p><cite>Tech Interviews comment by <b>nayan</b></cite> </p>
+	</li>
+
+	<li id="comment-535">
+		<p>44)Which property on a Combo Box do you set with a column name, prior to setting the DataSource, to Display data in the combo box? ANS : DataValueField
+</p>
+	<p><cite>Tech Interviews comment by <b>nayan</b></cite> </p>
+	</li>
+
+	<li id="comment-536">
+		<p>46)Which control would you use if you needed to make sure the values in two different controls Matched?     Ans : CompareFieldValidator
+</p>
+	<p><cite>Tech Interviews comment by <b>nayan</b></cite> </p>
+	</li>
+
+	<li id="comment-537">
+		<p>31)How do you turn off cookies for one page in your site? ANS: cookie.discard
+</p>
+	<p><cite>Tech Interviews comment by <b>nayan</b></cite> </p>
+	</li>
+
+	<li id="comment-538">
+		<p>28)What property must you set, and what method must you call in your code,in order to bind the data from some data source to the Repeater control? Ans: Datasource property  and databind() method
+</p>
+	<p><cite>Tech Interviews comment by <b>nayan</b></cite> </p>
+	</li>
+
+	<li id="comment-540">
+		<p>Ans-:30    Session.Abandon method can be used to explicitly kill the session.
+</p>
+	<p><cite>Tech Interviews comment by <b><a href="javascript:if(confirm('http://www.mahindrabt.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.mahindrabt.com/'" tppabs="http://www.mahindrabt.com/" rel='external nofollow'>Vipin</a></b></cite> </p>
+	</li>
+
+	<li id="comment-541">
+		<p>26)Which template must you provide, in order to display data in a Repeater control? Ans: ItemTemplate
+</p>
+	<p><cite>Tech Interviews comment by <b>nayan</b></cite> </p>
+	</li>
+
+	<li id="comment-542">
+		<p>35)What tag do you use to add a hyperlink column to the DataGrid?ANS:
+</p>
+	<p><cite>Tech Interviews comment by <b>nayan</b></cite> </p>
+	</li>
+
+	<li id="comment-543">
+		<p>35)What tag do you use to add a hyperlink column to the DataGrid?ANS:
+</p>
+	<p><cite>Tech Interviews comment by <b>nayan</b></cite> </p>
+	</li>
+
+	<li id="comment-545">
+		<p>19)What are the disadvantages of viewstate/what are the benefits?<br />
+AnS :<br />
+ Disadvantages</p>
+	<p> 1)Performance becoz the viewstate is stored in the page itself, storing large values can cause the page to slowdown.It can carry only up to 10 KB of data very easily without causing any degraded perfomance. 2) As view state is stored in a hidden field on the page although it stores data in a hashed base64 encoded format, it can be tampered.</p>
+	<p>Advantages :</p>
+	<p>*No server resources are required<br />
+*simple Implementation<br />
+*Automatic retention of page &#38; view state
+</p>
+	<p><cite>Tech Interviews comment by <b>nayan</b></cite> </p>
+	</li>
+
+	<li id="comment-547">
+		<p>Interview questions</p>
+	<p>1) what is the difference between sortedList and Hashtable ?<br />
+Ans: Hash table and sorted list classes manage a collection of key value pairs the only difference between them is that in sorted list ,the values are sorted by keys and accesible by key as well as by index.</p>
+	<p>2)What are the different parameter passing techniques c# supports?<br />
+byvalue (default),byreference,out and paramarray</p>
+	<p>3)What is the difference between arraylist and array classes ?<br />
+Ans : arraylist size can be dynamically increased where as array size can&#8217;t be increased.</p>
+	<p>4)what is the difference between ref and out parameters ?<br />
+Ans : ref &#8211;> inout<br />
+      out &#8211;> Out<br />
+Argument passed as ref must be initialized before it is passed to the method,where as incase of Out it&#8217;s not neccssary.but after a call to the method as an out parameter the variable must be initialized .out parameter can be used when you want to return more than one value from a method.</p>
+	<p>5)If all the objects of a class need to be share the same variable, how must you declare that variable ?<br />
+Ans : shared variables must declared static</p>
+	<p>6)what is the difference between a class and a interface?<br />
+Ans: You can instantiate a class but you cannot instantiate an interface,you can only offer the funtionality of that interface not the implementation.</p>
+	<p>7)what is a singleton class?<br />
+Ans : singleton class can be instantiated only once.</p>
+	<p>8)what is the purpose of &#8220;base&#8221; keyword in c# ?<br />
+Ans: There are two uses<br />
+1) used to access a base class constructor<br />
+2) used to access a base class member in the derived class.</p>
+	<p>9)What is dynamic binding ? How is it different from static binding?</p>
+	<p>Ans:With dynamic binding, the decision on which object method to call is made at runtime.Dynamic binding is polymorphism. with static binding, the decision to on which method to call is made at compile time.c# uses static binding as the default method dispatching mechanism.</p>
+	<p>10)What is a virtual function ?<br />
+Ans : is a function that you want to force derived classes to override. if a class  has any overridden pure virtuals, it is an &#8220;abstract&#8221; class and you can&#8217;t create objects of that type.</p>
+	<p>11)what are the differences between Datalist  DataGrid and datarepeater ?</p>
+	<p>Ans: DataList<br />
+*Has table appearence by default<br />
+*Has no autoformat option<br />
+*has no default paging &#38; sorting options<br />
+*can define separators between elements using template</p>
+	<p>                DataGrid<br />
+*Has a grid appearence by default<br />
+*has a autoformat option<br />
+*has default paging and sorting<br />
+*has no separator between elements</p>
+	<p>                 DataRepeater</p>
+	<p>simple,read-only output, has no built in support for selecting or editing items, has no DEFAULT APPEARENCE,<br />
+has no default paging.
+</p>
+	<p><cite>Tech Interviews comment by <b>nayan</b></cite> </p>
+	</li>
+
+	<li id="comment-552">
+		<p>33 &#38; 43 are the same question!!!
+</p>
+	<p><cite>Tech Interviews comment by <b>Andrew O</b></cite> </p>
+	</li>
+
+	<li id="comment-557">
+		<p>What tag do you use to add a hyperlink column to the DataGrid?<br />
+ANS :- This code is useful if the hyper-link is in the datagrid &#38; If the user click on the link it redirect to the ABC.aspx page.</p>
+	<p>Thanks<br />
+PP
+</p>
+	<p><cite>Tech Interviews comment by <b>pp</b></cite> </p>
+	</li>
+
+<li>Explore hiring practices of: <a href="javascript:if(confirm('http://www.interviewat.com/infosys/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/infosys/'" tppabs="http://www.interviewat.com/infosys/" title="Infosys">Infosys</a>, <a href="javascript:if(confirm('http://www.interviewat.com/accenture/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/accenture/'" tppabs="http://www.interviewat.com/accenture/" title="Accenture">Accenture</a>, <a href="javascript:if(confirm('http://www.interviewat.com/caritor/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/caritor/'" tppabs="http://www.interviewat.com/caritor/" title="Caritor">Caritor</a>, <a href="javascript:if(confirm('http://www.interviewat.com/cognizant/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/cognizant/'" tppabs="http://www.interviewat.com/cognizant/" title="Cognizant">Cognizant</a>, <a href="javascript:if(confirm('http://www.interviewat.com/wipro/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/wipro/'" tppabs="http://www.interviewat.com/wipro/" title="Wipro">Wipro</a>, <a href="javascript:if(confirm('http://www.interviewat.com/satyam/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/satyam/'" tppabs="http://www.interviewat.com/satyam/" title="Satyam">Satyam</a>, <a href="javascript:if(confirm('http://www.interviewat.com/kanbay/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/kanbay/'" tppabs="http://www.interviewat.com/kanbay/" title="Kanbay">Kanbay</a>, <a href="javascript:if(confirm('http://www.interviewat.com/oracle/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/oracle/'" tppabs="http://www.interviewat.com/oracle/" title="Oracle">Oracle</a>, <a href="javascript:if(confirm('http://www.interviewat.com/tata-infotech/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/tata-infotech/'" tppabs="http://www.interviewat.com/tata-infotech/" title="Tata Infotech">Tata Infotech</a>, <a href="javascript:if(confirm('http://www.interviewat.com/verizon/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/verizon/'" tppabs="http://www.interviewat.com/verizon/" title="Verizon">Verizon</a>, <a href="javascript:if(confirm('http://www.interviewat.com/cts/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/cts/'" tppabs="http://www.interviewat.com/cts/" title="CTS">CTS</a>, <a href="javascript:if(confirm('http://www.interviewat.com/virtusa/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/virtusa/'" tppabs="http://www.interviewat.com/virtusa/" title="Virtusa">Virtusa</a>, <a href="javascript:if(confirm('http://www.interviewat.com/tcs/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/tcs/'" tppabs="http://www.interviewat.com/tcs/" title="TCS">TCS</a>, <a href="javascript:if(confirm('http://www.interviewat.com/sasken-communication/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/sasken-communication/'" tppabs="http://www.interviewat.com/sasken-communication/" title="Sasken Communication">Sasken Communication</a>, <a href="javascript:if(confirm('http://www.interviewat.com/microsoft/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/microsoft/'" tppabs="http://www.interviewat.com/microsoft/" title="Microsoft">Microsoft</a>, <a href="javascript:if(confirm('http://www.interviewat.com/hcl/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/hcl/'" tppabs="http://www.interviewat.com/hcl/" title="HCL">HCL</a>, <a href="javascript:if(confirm('http://www.interviewat.com/mindtree-consulting/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/mindtree-consulting/'" tppabs="http://www.interviewat.com/mindtree-consulting/" title="Mindtree Consulting">Mindtree Consulting</a>, <a href="javascript:if(confirm('http://www.interviewat.com/ibm/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/ibm/'" tppabs="http://www.interviewat.com/ibm/" title="IBM">IBM</a>, <a href="javascript:if(confirm('http://www.interviewat.com/lt/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/lt/'" tppabs="http://www.interviewat.com/lt/" title="Larsen &amp; Toubro">Larsen &amp; Toubro</a>, <a href="javascript:if(confirm('http://www.interviewat.com/siemens/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/siemens/'" tppabs="http://www.interviewat.com/siemens/" title="Siemens">Siemens</a>, <a href="javascript:if(confirm('http://www.interviewat.com/patni/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/patni/'" tppabs="http://www.interviewat.com/patni/" title="Patni">Patni</a>, <a href="javascript:if(confirm('http://www.interviewat.com/icici-bank/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/icici-bank/'" tppabs="http://www.interviewat.com/icici-bank/" title="ICICI Bank">ICICI Bank</a>, <a href="javascript:if(confirm('http://www.interviewat.com/covansys/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/covansys/'" tppabs="http://www.interviewat.com/covansys/" title="Covansys">Covansys</a>, <a href="javascript:if(confirm('http://www.interviewat.com/hexaware/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/hexaware/'" tppabs="http://www.interviewat.com/hexaware/" title="Hexaware">Hexaware</a>, <a href="javascript:if(confirm('http://www.interviewat.com/desis/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/desis/'" tppabs="http://www.interviewat.com/desis/" title="D. E. Shaw India Software">D. E. Shaw India Software</a>, <a href="javascript:if(confirm('http://www.interviewat.com/mascot-systems/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/mascot-systems/'" tppabs="http://www.interviewat.com/mascot-systems/" title="Mascot Systems">Mascot Systems</a>, <a href="javascript:if(confirm('http://www.interviewat.com/sonata-software/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/sonata-software/'" tppabs="http://www.interviewat.com/sonata-software/" title="Sonata Software">Sonata Software</a>, <a href="javascript:if(confirm('http://www.interviewat.com/hewlett-packard/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/hewlett-packard/'" tppabs="http://www.interviewat.com/hewlett-packard/" title="Hewlett Packard">Hewlett Packard</a>, <a href="javascript:if(confirm('http://www.interviewat.com/tcgivega/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/tcgivega/'" tppabs="http://www.interviewat.com/tcgivega/" title="TCGIvega">TCGIvega</a>, <a href="javascript:if(confirm('http://www.interviewat.com/syntel/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.interviewat.com/syntel/'" tppabs="http://www.interviewat.com/syntel/" title="Syntel">Syntel</a>
+</li>
+
+</ol>
+
+
+<p>Sorry, the comment form is closed at this time.</p>
+
+<Script language="Javascript1.1" src="getntag.aspx-action=VIEWAD&run=300&cwformat=728x90&advid=112&pid=700002&dfcat=1104&width=728&height=90&pnet=4&SiteID=tech.3236" tppabs="http://ad.admarketplace.net/TagPublish/getntag.aspx?action=VIEWAD&run=300&cwformat=728x90&advid=112&pid=700002&dfcat=1104&width=728&height=90&pnet=4&SiteID=tech.3236">  </Script>
+	</div>
+	<h4></h4>
+</td></tr></table>
+<!-- begin footer -->
+</div>
+
+
+<h1 id="header"><a href="index.htm" tppabs="http://www.techinterviews.com/">&copy; TechInterviews.com</a></h1>
+<p>Property of <a href="javascript:if(confirm('http://www.digitalmediaventuresllc.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.digitalmediaventuresllc.com/'" tppabs="http://www.digitalmediaventuresllc.com/">Digital Media Ventures LLC</a>. Read <a href="javascript:if(confirm('http://www.techinterviews.com/wp-rdf.php  \n\nThis file was not retrieved by Teleport Pro, because it did not meet the project\'s file type specifications.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/wp-rdf.php'" tppabs="http://www.techinterviews.com/wp-rdf.php">RDF</a>, <a href="wp-rss2.php.htm" tppabs="http://www.techinterviews.com/wp-rss2.php">RSS 2.0</a>, <a href="wp-rss.php.htm" tppabs="http://www.techinterviews.com/wp-rss.php">RSS 0.92</a>, <a href="javascript:if(confirm('http://www.techinterviews.com/wp-atom.php  \n\nThis file was not retrieved by Teleport Pro, because it did not meet the project\'s file type specifications.  \n\nDo you want to open it from the server?'))window.location='http://www.techinterviews.com/wp-atom.php'" tppabs="http://www.techinterviews.com/wp-atom.php">Atom</a>, <a href="wp-commentsrss2.php.htm" tppabs="http://www.techinterviews.com/wp-commentsrss2.php">Comments RSS</a></p>
+</body>
+</html>

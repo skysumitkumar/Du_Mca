@@ -1,0 +1,42 @@
+<html><head>
+<title>Solution for /induction/paradox</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /induction/paradox problem</h1>
+<hr>
+Consider the sequences defined by:
+s(1) = a; s(2) = b; s(n) = least integer such that s(n)/s(n-1) &gt; s(n-1)/s(n-2).
+In other words, s(n) = 1+floor(s(n-1)^2/s(n-2)) for n &gt;= 3.  These
+sequences are similar in some ways to the classically-studied Pisot
+sequences.  For example, if a = 1, b = 2, then we get the odd-indexed
+Fibonacci numbers.
+
+<p>
+D. Boyd of UBC, an expert in Pisot sequences, pointed out the following.
+If we let a = 8, b = 55 in the definition above, then the resulting
+sequence s(n) appears to satisfy the following linear recurrence
+of order 4:
+
+<pre>
+   s(n) = 6s(n-1) + 7s(n-2) - 5s(n-3) - 6s(n-4)
+</pre>
+Indeed, it does satisfy this linear recurrence for the
+first 11,056 terms.  However, it fails at the 11,057th term!
+And s(11057) is a 9270 digit number.
+(The reason for this coincidence depends on a remarkable fact
+about the absolute values of the roots of the polynomial
+x^4 - 6x^3 - 7x^2 + 5x + 6.)
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

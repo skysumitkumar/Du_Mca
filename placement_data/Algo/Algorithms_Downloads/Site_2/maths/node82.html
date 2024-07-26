@@ -1,0 +1,157 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Choosing `with probability p' </TITLE>
+<META NAME="description" CONTENT="Choosing `with probability p' ">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node83.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node83.html">
+<LINK REL="previous" HREF="node81.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node81.html">
+<LINK REL="up" HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<LINK REL="next" HREF="node83.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node83.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1512"
+  HREF="node83.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node83.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1506"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1500"
+  HREF="node81.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node81.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1508"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1510"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1513"
+  HREF="node83.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node83.html">Random Shuffles</A>
+<B> Up:</B> <A NAME="tex2html1507"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">Applications of Random Numbers</A>
+<B> Previous:</B> <A NAME="tex2html1501"
+  HREF="node81.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node81.html">Generating Random Integers</A>
+ &nbsp <B>  <A NAME="tex2html1509"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1511"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00933000000000000000">
+Choosing `with probability <I>p</I>' </A>
+</H2><A NAME="7841"></A>
+Very often random algorithms require you to `choose this object with
+probability <I>p</I>' or `take this option with probability <I>p</I>'. What does
+this mean and how do we do it?  The basic meaning is that in a large
+number of such decisions you will perform the action proportion <I>p</I> of
+the time.  But we're not doing it lots of times, we're just doing it
+once.  Well, in that case you have to make a random decision as to
+whether or not to perform the action and the decision must be biased
+so as to give the correct proportion `in the long run'.
+
+<P>
+The simplest case is that of choosing with probability 1/2. This
+means that we are equally likely to choose or not choose. The
+traditional method is to toss a coin. If we had to make a choice with
+probability 1/6 we might decide to throw a dice and take the action
+if it shows a six.
+
+<P>
+The general case can be handled by means of a standard random number
+generator. Suppose we want to take an option `with probability <I>p</I>'.
+Then we use our random number generator to generate a random real in
+[0, 1).  If this number is less than <I>p</I> we take the option,
+otherwise we do not. This is correct, in terms of probability, because
+[0, <I>p</I>) is proportion <I>p</I> of [0, 1).
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ x = &nbsp;rand()
+<BR>
+if(x &lt; p) take option
+<BR>
+else don't take option.
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>So, for example, tossing a coin can be simulated by<A NAME="7846"></A>
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ x = rand()
+<BR>
+if(x &lt; 0.5) then say Heads
+<BR>
+else say Tails
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1512"
+  HREF="node83.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node83.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1506"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1500"
+  HREF="node81.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node81.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1508"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1510"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1513"
+  HREF="node83.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node83.html">Random Shuffles</A>
+<B> Up:</B> <A NAME="tex2html1507"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">Applications of Random Numbers</A>
+<B> Previous:</B> <A NAME="tex2html1501"
+  HREF="node81.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node81.html">Generating Random Integers</A>
+ &nbsp <B>  <A NAME="tex2html1509"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1511"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

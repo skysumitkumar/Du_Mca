@@ -1,0 +1,42 @@
+/*	UNENCODE.C		*/
+#include <stdio.h>
+
+int	main(void)
+{
+FILE	*in,*out;
+char	ch;
+int	count,i;
+
+	if ((in=fopen("out.dat","r"))==NULL)
+	{
+		printf("Cannot open <out.dat>");
+		return(1);
+	}
+	if ((out=fopen("in1.dat","w"))==NULL)
+	{
+		printf("Cannot open <in1.dat>");
+		return(1);
+	}
+
+	do
+	{
+		ch=fgetc(in);
+
+		if (ch=='Z')
+		{
+			ch=fgetc(in);
+			if (ch=='Z')
+			{
+				fscanf(in,"%c%02d",&ch,&count);
+				for (i=0;i<count;i++)
+					fprintf(out,"%c",ch);
+			}
+			else ungetc(ch,in);
+		}
+		else fprintf(out,"%c",ch);
+
+	}	while (!feof(in));
+	fclose(in);
+	fclose(out);
+	return(0);
+}

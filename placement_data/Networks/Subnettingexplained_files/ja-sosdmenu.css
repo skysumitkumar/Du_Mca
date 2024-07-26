@@ -1,0 +1,150 @@
+/*------------------------------------------------------------------------
+# JA Mercury 1.0 - Oct, 2006
+# ------------------------------------------------------------------------
+# Copyright (C) 2004-2006 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - Copyrighted Commercial Software
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites:  http://www.joomlart.com -  http://www.joomlancers.com
+-------------------------------------------------------------------------*/
+
+/* Son of Suckerfish Dropdowns
+---------------------------------------------------------
+Originally developed by Patrick Griffiths and Dan Webb
+http://www.htmldog.com/articles/suckerfish/dropdowns/
+---------------------------------------------------------
+NOTE: After a deep research, we decide to divide this
+CSS into 2 parts. The first part will define the layout.
+The second part will define the visual look for this menu.
+---------------------------------------------------------*/
+
+#ja-cssmenu { /* all lists */
+	margin: 0;
+	padding: 0;
+}
+
+#ja-cssmenu ul { /* all lists */
+	margin: 0;
+	padding: 0;
+}
+	
+#ja-cssmenu li { /* all list items */
+	margin: 0;
+	padding: 0;
+	background: none;
+	display: block;
+	float: left;
+	height: 20px;
+	line-height: 20px;
+	cursor: pointer;
+}
+
+#ja-cssmenu li ul { /* second-level lists */
+	position: absolute;
+	z-index: 99;
+	left: -999em; /* using left instead of display to hide menus because display: none isn't read by screen readers */
+	width: 14.4em;
+	w\idth: 13.9em;
+	height: auto;
+}
+
+#ja-cssmenu li ul ul { /* third-and-above-level lists */
+	margin: -1.5em 0 0 12em;
+}
+
+#ja-cssmenu li li {
+	padding: 0 1em 0 0;
+	margin: 0;
+	width: 13em;
+}
+
+#ja-cssmenu ul a {
+	width: 13em;
+	w\idth: 9em;
+}
+
+#ja-cssmenu li:hover ul ul, #ja-cssmenu li:hover ul ul ul,
+#ja-cssmenu li.sfhover ul ul, #ja-cssmenu li.sfhover ul ul ul {
+	left: -999em;
+}
+
+/* This "unhides" the sub-menus (left: -999em is what hides them) */
+#ja-cssmenu li:hover ul, #ja-cssmenu li li:hover ul, #ja-cssmenu li li li:hover ul,
+#ja-cssmenu li.sfhover ul, #ja-cssmenu li li.sfhover ul, #ja-cssmenu li li li.sfhover ul {
+	left: auto;
+}
+
+/* STYLING THE MENU
+-----------------------------------*/
+#ja-cssmenu li ul {
+	background: url(opaque-default.png) bottom;
+	border: 1px solid #B0B0B0;
+}
+
+#ja-cssmenu li ul a {
+	text-transform: none;
+	font-family: Tahoma, Arial, sans-serif;
+	font-size: 11px;
+	border-right: none;
+	height: 20px;
+	line-height: 20px;
+}
+
+#ja-cssmenu li ul a:hover {
+	color: #404040;
+}
+
+#ja-cssmenu li a {
+	padding: 0 25px;
+	display: block;
+	text-decoration: none;
+	border-right: 1px solid #868686;
+}
+
+#ja-cssmenu li a:hover {
+	color: #404040;
+	background: url(topnav-bg-a-hover.gif) repeat-x #6D6D6D;
+}
+
+#ja-cssmenu li a.active { /* 1st class active */
+	background: url(topnav-bg-a-active.gif) repeat-x #6D6D6D;
+	color: #404040;
+}
+
+#ja-cssmenu li a.active:hover,
+#ja-cssmenu li a.active:active {
+	color: #404040;
+}
+
+#ja-cssmenu li li a.active {
+	background: none;
+	font-weight: bold;
+}
+
+/* #ja-cssmenu li.havechild {
+	background: url(img/arrow-on.gif) 90% 45% no-repeat;
+}
+*/
+
+/* #ja-cssmenu li.havesubchild {
+	background: url(img/arrow-off.gif) 90% 45% no-repeat;
+}
+*/
+
+#ja-cssmenu li:hover, /* 1st class hover */
+#ja-cssmenu li.sfhover {
+	background: url(topnav-bg-a-hover.gif) repeat-x #6D6D6D;
+}
+
+#ja-cssmenu ul li:hover, #ja-cssmenu ul ul li:hover, /* 2nd class hover */
+#ja-cssmenu ul li.sfhover, #ja-cssmenu ul ul li.sfhover {
+	background: url(topnav-bg-a-hover.gif) repeat-x;
+	color: #404040;
+}
+
+#ja-cssmenu ul li a,
+#ja-cssmenu ul ul li a {
+	background: none;
+	font-weight: normal;
+	padding: 0 10px;
+	color: #404040;
+}

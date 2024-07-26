@@ -1,0 +1,189 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Optimal Merging</TITLE>
+<META NAME="description" CONTENT="Optimal Merging">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node47.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node47.html">
+<LINK REL="previous" HREF="node44.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node44.html">
+<LINK REL="up" HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">
+<LINK REL="next" HREF="node46.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node46.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html956"
+  HREF="node46.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node46.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html950"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html944"
+  HREF="node44.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node44.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html952"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html954"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html957"
+  HREF="node46.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node46.html">Some Example Sort Implementations</A>
+<B> Up:</B> <A NAME="tex2html951"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">Sorting</A>
+<B> Previous:</B> <A NAME="tex2html945"
+  HREF="node44.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node44.html">Optimal Sorting</A>
+ &nbsp <B>  <A NAME="tex2html953"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html955"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00670000000000000000">
+Optimal Merging</A>
+</H1>
+
+<P>
+The earlier discussion of the algorithm for merging two files leads
+to the following problem. We know that if we have two ordered files
+of lengths <I>n</I> and <I>m</I> respectively then they can be merged into
+a single ordered file in time proportional to <I>n</I> + <I>m</I>.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="F:merge-tree"></A><A NAME="2484"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 2.3:</STRONG>
+Merging files of different sizes.</CAPTION>
+<TR><TD><IMG
+ WIDTH="521" HEIGHT="254" BORDER="0"
+ SRC="img118.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img118.gif"
+ ALT="\begin{figure}
+\centering\begin{psTree}[treemode=U,levelsep=1cm,arrows=&gt;]{\Toval...
+...50$}}
+\Toval{$70$}
+\Toval{$80$}
+\end{psTree} }
+}
+}
+\end{psTree}\end{figure}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+Now suppose we have a number of ordered files of lengths <!-- MATH
+ $n_1,n_2,\ldots,n_k$
+ -->
+<I>n</I><SUB>1</SUB>, <I>n</I><SUB>2</SUB>,..., <I>n</I><SUB>k</SUB>.
+We want to combine them all into one big ordered file. We do it by 
+combining files two at a time until they have all been combined. The 
+question is: in what order do we combine the files?
+
+<P>
+As a simple example, suppose we have three files of lengths 20, 30 and
+40. Call them A, B and C. If we combine A with B and then combine the
+result with C then the time taken is (up to a proportionality factor)
+<!-- MATH
+ $(20+30) + (50+40)= 140$
+ -->
+(20 + 30) + (50 + 40) = 140. If, instead, we first combine B and C and
+combine the result with A the time taken is <!-- MATH
+ $(30+50)+(80+20)=180$
+ -->
+(30 + 50) + (80 + 20) = 180 
+which is significantly slower.
+
+<P>
+There is a very simple algorithm which tells you how to combine the
+files in a way that is as efficient as possible:
+
+<P>
+<A NAME="2576"></A><B>Algorithm</B>: Of all the files available for combining at any
+stage, combine the two smallest (or two of the smallest if there is
+a choice).
+
+<P>
+As an illustration, suppose we have files <!-- MATH
+ $x_1,x_2,x_3,\ldots,x_8$
+ -->
+<I>x</I><SUB>1</SUB>, <I>x</I><SUB>2</SUB>, <I>x</I><SUB>3</SUB>,..., <I>x</I><SUB>8</SUB> of
+sizes 10, 20, 20, 40, 50, 50, 70, 80. The tree diagram in
+Fig.&nbsp;<A HREF="node45.html#F:merge-tree" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node45.html#F:merge-tree">2.3</A> shows the
+sequence in which these files should be combined.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html958"
+  HREF="node46.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node46.html">Some Example Sort Implementations</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html956"
+  HREF="node46.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node46.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html950"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html944"
+  HREF="node44.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node44.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html952"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html954"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html957"
+  HREF="node46.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node46.html">Some Example Sort Implementations</A>
+<B> Up:</B> <A NAME="tex2html951"
+  HREF="node27.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node27.html">Sorting</A>
+<B> Previous:</B> <A NAME="tex2html945"
+  HREF="node44.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node44.html">Optimal Sorting</A>
+ &nbsp <B>  <A NAME="tex2html953"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html955"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

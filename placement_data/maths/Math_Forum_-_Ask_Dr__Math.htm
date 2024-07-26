@@ -1,0 +1,344 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0051)http://mathforum.org/library/drmath/view/65653.html -->
+<HTML><HEAD><TITLE>Math Forum - Ask Dr. Math</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="Probability and Random Numbers" name=title>
+<META 
+content="Can you use a coin (which has 2 events of equal probability) to devise&#10;three events with 1/3rd probability each?  I find devising 4 events&#10;easy; toss the coin twice and interpret the results 00, 01, 10, 11&#10;(i.e. HH, HT, TH, TT) as the 4 events.  But, is it okay to disregard&#10;any one result (say 00) and claim that the other three events are of&#10;equal probability?  I find it hard to believe that a coin can be used&#10;to have three events of equal probability." 
+name=description>
+<META content=GVK name=author>
+<META content=02/28/2004 name=date>
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff><!-- Snippet begins --><!-- /var/www/html/snippets/drexel_top -->
+<TABLE width="100%" align=center bgColor=#ffffff>
+  <TBODY>
+  <TR align=middle>
+    <TD><A href="http://mathforum.org/pow/free_mentoring.html"><IMG 
+      src="Math Forum - Ask Dr_ Math_files/20071004PoWbannerMulti580.gif" 
+      border=0></A> </TD></TR></TBODY></TABLE>
+<CENTER>
+<P><NOBR><A href="http://www.drexel.edu/"><IMG alt="Drexel dragon" 
+src="Math Forum - Ask Dr_ Math_files/dragon_line4.jpg" border=0></A><IMG 
+alt="The Math Forum" src="Math Forum - Ask Dr_ Math_files/drexel_line4.jpg" 
+border=0><A href="http://www.drexel.edu/ia/mathforum/"><IMG 
+alt="Donate to the Math Forum" 
+src="Math Forum - Ask Dr_ Math_files/donate_line4.gif" 
+border=0></A></NOBR></P></CENTER><!-- /var/www/html/snippets/drexel_top --><!-- Snippet ends -->
+<CENTER><IMG alt="Ask Dr. Math - Questions and Answers from our Archives" 
+src="Math Forum - Ask Dr_ Math_files/dr.mathQA.gif"> </CENTER>
+<CENTER><IMG alt=_____________________________________________ 
+src="Math Forum - Ask Dr_ Math_files/forum.blueline.gif"><BR><A 
+href="http://mathforum.org/library/drmath/view/65653.html#assoc">Associated 
+Topics</A> || <A href="http://mathforum.org/dr.math/">Dr. Math Home</A> || <A 
+href="http://mathforum.org/library/drmath/view/65653.html#search">Search Dr. 
+Math</A><BR><IMG alt=_____________________________________________ 
+src="Math Forum - Ask Dr_ Math_files/forum.blueline.gif"><BR><BR>
+<TABLE width=580 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <H3>Probability and Random Numbers</H3><PRE>Date: 02/28/2004 at 10:23:49
+From: GVK
+Subject: Probability and Random Numbers
+
+Let me start with an example first.  If I have a six-faced die, I can 
+be sure that rolling it will produce 6 events of equal probability 
+(1/6 each).  Suppose I blacken one of the faces and roll the die.  I 
+will ignore the result and roll the die again if the blackened face 
+shows up.  Can I be sure that the other five will show up with a 
+probability of 1/5 each? 
+
+The original problem asks if I can use a coin (which has 2 events of 
+equal probability) to devise three events with 1/3rd probability each?  
+I find devising 4 events easy; toss the coin twice and interpret the 
+results 00, 01, 10, 11 (ie HH, HT, TH, TT) as the 4 events.  But, is 
+it okay to disregard any one result (say 00), similar to blackening 
+the die above, and claim that the other three events are of equal 
+probability?  I find it hard to believe that a coin can be used to 
+have three events of equal probability.
+
+I tried devising various versions of the problem, like using the 
+function rand5() to generate a function rand7(), and the blackened 
+six-faced die, etc.
+
+</PRE>
+      <HR>
+<PRE>
+Date: 02/29/2004 at 09:15:20
+From: Doctor Jacques
+Subject: Re: Probability and Random Numbers
+
+Hi GVK,
+
+The method does work.  However, there is a catch; the number of coin 
+tosses is theoretically unbounded.  Although it is quite unlikely, you 
+can have a very long run of "00" results.  This means that you cannot 
+guarantee that you will generate the next number in a predetermined 
+amount of time.  There is no method that would allow you to generate 
+those events with a finite number of bits, since 3 never divides any 
+power of 2 (another way to see this is to notice that the binary 
+expansion of 1/3 is a repeating infinite string of bits).
+
+As the probability of failure is 1/4, the expected number of coin 
+tosses is:
+
+  2*(1 + 1/4 + (1/4)^2 ...) = 8/3 = 2.66...
+
+This is rather wasteful, as the theoretical number of bits required 
+to generate an event with probability 1/3 is:
+
+  log(3) / log(2) = 1.585
+
+If you want to generate a single event, you cannot do better.  If you 
+want to produce a large number of such events, with an exact 
+probability of 1/3, and without wasting too many bits, you can still 
+do better.
+
+The first question would be "why bother?".  There are several reasons
+for doing this, beyond the fact that this is fun!
+
+In some applications, such as those related to high-security
+cryptography, it is really important to have exact probabilities and
+truly random numbers.  The numbers returned by the random() routines
+found in programming languages are not random at all; they are
+produced by a deterministic algorithm.  They are called random because
+their distributions are statistically similar to true random numbers.
+
+When really random numbers are required, we use external devices
+based, for example, on radioactive decay or thermal noise--these 
+processes cannot be reproduced.  If you are interested in this, you
+could read:
+
+     <A href="http://www.fourmilab.ch/hotbits/">http://www.fourmilab.ch/hotbits/</A> 
+
+However, those devices usually have a very low rate; if you want to 
+produce large amounts of numbers in a short time, you may want to use 
+as few random bits as possible.
+
+Let us look at a method for generating random integers between 0 and 
+(n - 1), with an exact uniform distribution.  This is similar to the 
+random(n) function.  However, that function, as it is implemented, is 
+not exact; it generates integers in a large range (for example,
+between 0 and 65535), and returns the integer part of (n*x)/65536.  If 
+n is not a power of 2, some numbers will have a slightly larger 
+probability than others, although the difference will be small if n 
+is small.  In this case, we will generate numbers between 0 and 
+(n - 1) with an exact probability of 1/n.
+
+We assume that we have available a function NextBit(), that returns a 
+single random bit (and we assume that calls to that function are 
+expensive).  We assume also that we have to generate many numbers, so 
+that only the average cost matters.
+
+A first idea would be to collect many random bits, and to generate 
+random numbers in batches.  For example, for a probability of 1/3, we 
+could collect 8 bits at a time to produce a number between 0 and 255. 
+As 3^5 = 243 &lt; 256, we could discard the result if it is greater than 
+242; otherwise, we will produce five numbers between 0 and 2. The 
+probability of failure is 13/256, so the average number of 
+experiments is:
+
+  1 + 13/256 + (13/256)^2 ... = 256/243 = 1.053...
+
+In each experiment, we consume 8 bits and produce 5 numbers, so the 
+average number of bits per number is:
+
+  1.053 * 8/5 = 1.686
+
+which is already much closer to the theoretical figure of 1.585.
+
+We can still do better.  The idea is that, in case of failure, the 
+difference (x - 243) is a random number between 0 and 12, which is 
+equivalent to log(13)/log(2) = 3.7 bits, and we could try to take 
+advantage of it.
+
+The following algorithm uses a similar (but slightly different) idea. 
+It uses two internal integer variables, m and r, which are not reset 
+at the beginning of the algorithm (in C, you would declare them 
+as "static").  Initially, m = 1 and r = 0.  We also have a parameter
+N, which is a large integer such that 2N can still be represented 
+exactly in the computer.  As said before, n is the modulus of the 
+numbers you want to produce (they will be between 0 and (n - 1)), we 
+must have n &lt; N, and we have a function NextBit() that returns a 
+truly random bit.
+
+1. WHILE m &lt; N DO r : = 2*r + NextBit(); m = 2*m; (r is a random
+   variable of modulus m)
+
+2. Divide m by n : m = n*q + b
+
+3. IF r &gt;= n*q, let m : = m - n*q, r : = r - n*q (r is still a random
+   variable of modulus m), and go to step 1.
+
+4. Otherwise, let x : = r mod n, r : = [r/n], and m : = q, and return 
+   x.
+
+In step 4, as r is between 0 and (n*q - 1), we can consider r as a 
+random variable of modulus n*q.  As this is divisble by n, (r mod n) 
+will be uniformly distributed, and the quotient [r/n] will be 
+uniformly distributed between 0 and n - 1.
+
+Note that the running time is still unbounded, since you can return 
+to step 1 arbitrarily often, but, in practice, this will give you an 
+exact distribution while consuming a number of bits quite close to 
+the theoretical minimum.
+
+For example, assume that we want to generate decimal digits (n = 10) 
+and we let N = 256.  A typical run would be as follows:
+
+* We start with m = 1, r = 0, and get 8 bits. Assume they are
+  1, 1, 1, 1, 1, 1, 0, 1.
+  At the end of step 1, we have m = 256, r = 253.
+
+* We divide 256 by 10, giving q = 25, n*q = 250.
+
+* As 253 &gt;= 250, we are out of luck.  The excess, r - n*q = 253 - 250
+  = 3, is a random variable of modulus 256 - 250 = 6. We let
+  therefore m = 6 and r = 3 (note that we have saved more than two
+  bits, instead of throwing them away).
+
+* We start again at step 1.  This time, we need to generate 6 bits, in
+  order to have m &gt;= 256.  Assume the process runs as follows
+  (starting with m = 6, r = 3:
+
+   NextBit() |  m  |  r
+  -----------+-----+----
+      0      |  12 |   6
+      1      |  24 |  13
+      1      |  48 |  27
+      0      |  96 |  54
+      0      | 192 | 108
+      1      | 384 | 217
+
+* Step 2 gives q = 38, n*q = 380
+
+* As 217 &lt; 380, we will return (217 mod 10) = 7.  As we were in the
+  21st decade out of 38, we let r = 21, m = 38 to be used for the
+  next call.  This means that we already have more than 5 bits in
+  store.
+
+We have used 14 bits to generate the first number, but this is merely 
+the "startup cost".  As m = 38, the next call will need only 3 new 
+bits in step 1.  In the long run, the average number of bits per 
+number will be close to the theoretical value log(10)/log(2) = 3.32. 
+The probability of failure at step 3 is at most 9/m &lt;= 9/256.
+
+A nice feature of this algorithm is that n is used only inside the 
+routine.  You can use a different n for each call, without re-
+initializing the variables m and r.
+
+Does this help?  Write back if you'd like to talk about this some 
+more, or if you have any other questions.
+
+- Doctor Jacques, The Math Forum
+  <A href="http://mathforum.org/dr.math/">http://mathforum.org/dr.math/</A> 
+</PRE>
+      <HR>
+<PRE>
+Date: 03/10/2004 at 10:43:15
+From: GVK
+Subject: Probability and Random Numbers
+
+Hello Dr. Jacques,
+
+Thanks a lot for your reply.  I have just one question.  In your 
+reply, you wrote:
+
+   since 3 never divides any power of 2 (another way to see this is to
+   notice that the binary expansion of 1/3 is a repeating infinite
+   string of bits).
+
+Are the two equivalent?  5 never divides any power of 2 either, 
+however 1/5 is not an infinite sequence of bits.  Is it possible to 
+get 5 events of 1/5 probability using a coin?
+</PRE>
+      <HR>
+<PRE>
+Date: 03/12/2004 at 02:04:45
+From: Doctor Jacques
+Subject: Re: Probability and Random Numbers
+
+Hi again GVK,
+
+The two are equivalent.  In base N, the N-ary expansion of 1/k is 
+infinite (and repeating) unless all prime factors of k are also prime 
+factors of N, which amounts to saying that k divides some power of N. 
+If N = 2, the only allowed prime factor is 2, so any fraction whose 
+denominator (in lowest terms) is not a power of 2 will have an 
+infinite binary expansion.
+
+For your specific example, the binary expansion of 1/5 is:
+
+  1/5 = 0. 0011 0011.... = (3/16) + (3/16)^2 + ...
+
+and this is a repeating binary number.
+
+It is indeed quite possible to generate events with probability 1/5 
+by tossing coins--you can use the algorithm I gave you with n = 5 
+and N &gt;= 8).
+
+By the way, note that that algorithm also works in the opposite 
+direction; you can also use it to convert "base n" events to "base 
+m" events for any different m and n.  For example, you can use it to 
+generate random binary strings using six-faced dice; you must 
+essentially modify step 1 and the choice of N.
+
+- Doctor Jacques, The Math Forum
+  <A href="http://mathforum.org/dr.math/">http://mathforum.org/dr.math/</A> 
+</PRE></TD></TR></TBODY></TABLE></CENTER>
+<CENTER><A name=assoc><B>Associated Topics</B>:</A><BR><A 
+href="http://mathforum.org/library/drmath/sets/college_probability.html">College 
+Probability</A><BR></CENTER>
+<P><A name=search></A>
+<TABLE cellSpacing=0 cellPadding=4 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle><A name=search>
+      <P><IMG src="Math Forum - Ask Dr_ Math_files/forum.greenline.gif"></P></A>
+      <P align=center><FONT color=#33cc33 size=4><B>Search the Dr. Math 
+      Library:</B></FONT></P></TD></TR>
+  <TR>
+    <TD>
+      <FORM action=/library/drmath/results.html method=get>
+      <TABLE cellSpacing=1 cellPadding=3 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=4>
+            <CENTER><NOBR></NOBR></CENTER><BR>Find items containing (put spaces 
+            between keywords):<BR><INPUT size=50 name=textsearch> &nbsp; 
+            <BR><B><FONT color=red>Click only once for faster 
+            results:</FONT></B> 
+            <INPUT type=submit value=SEARCH valign="middle"><BR>
+            <P><FONT size=-1>[ Choose "whole words" when searching for a word 
+            like <I>age.</I>]</FONT> </P></TD></TR>
+        <TR>
+          <TD colSpan=4>
+            <CENTER><NOBR><INPUT type=radio CHECKED value=and 
+            name=textsearch_bool_type>all keywords, in any order <INPUT 
+            type=radio value=or name=textsearch_bool_type>at least one, <INPUT 
+            type=radio value=phrase name=textsearch_bool_type>that exact phrase 
+            <BR><INPUT type=radio CHECKED value=no 
+            name=textsearch_whole_words>parts of words <INPUT type=radio 
+            value=yes name=textsearch_whole_words>whole words </NOBR></CENTER>
+            <P></P></TD></TR>
+        <TR>
+          <TD vAlign=center align=middle colSpan=4>
+            <CENTER>
+            <P></P></CENTER></TD></TR></FORM></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<CENTER><B><A href="http://mathforum.org/dr.math/ask.html">Submit your own 
+question to Dr. Math</A></B> 
+<P>[<B><A href="http://mathforum.org/announce/privacy.html">Privacy 
+Policy</A></B>] [<B><A href="http://mathforum.org/announce/terms.html">Terms of 
+Use</A></B>]</P><IMG alt=_____________________________________ 
+src="C:\WINDOWS\Desktop\Math Forum - Ask Dr_ Math_files\forum.blueline(1).gif"><BR><A 
+href="http://mathforum.org/">Math Forum Home</A> || <A 
+href="http://mathforum.org/library/">Math Library</A> || <A 
+href="http://mathforum.org/special.html">Quick Reference</A> || <A 
+href="http://mathforum.org/grepform.html">Math Forum Search</A> <BR><IMG 
+alt=_____________________________________ 
+src="C:\WINDOWS\Desktop\Math Forum - Ask Dr_ Math_files\forum.blueline(1).gif">
+<P><FONT size=-1>Ask Dr. Math</FONT><FONT size=1><SUP>TM</SUP></FONT><BR><FONT 
+size=-1>© 1994-2007 The Math Forum<BR>http://mathforum.org/dr.math/<BR></FONT><A 
+href="http://mathforum.org/drexel/"><IMG 
+src="Math Forum - Ask Dr_ Math_files/small_dragon.gif" border=0></A> </CENTER>
+<P></P></BODY></HTML>

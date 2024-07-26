@@ -1,0 +1,120 @@
+<html><head>
+<title>Solution for /competition/games/chess/knight.tour</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /competition/games/chess/knight.tour problem</h1>
+<hr>
+A tour exists for boards of size 1x1, 3x4, 3xN with N &gt;= 7, 4xN with N &gt;= 5,
+and MxN with N &gt;= M &gt;= 5.  In other words, for all rectangles except 1xN
+(excluding the trivial 1x1), 2xN, 3x3, 3x5, 3x6, 4x4.
+
+<p>
+With the exception of 3x8 and 4xN, any even-sized board which allows a tour
+will also allow a closed (reentrant) tour.
+
+<p>
+On an odd-sided board, there is one more square of one color than
+of the other.  Every time a knight moves, it moves to a square of
+the other color than the one it is on.  Therefore, on an odd-sided
+board, it must end the last move but one of the complete, reentrant
+tour on a square of the same color as that on which it started.
+It is then impossible to make the last move, for that move would end
+on a square of the same color as it begins on.
+
+<p>
+Here is a solution for the 7x7 board (which is not reentrant).
+<pre>
+     ------------------------------------
+     | 17 |  6 | 33 | 42 | 15 |  4 | 25 |
+     ------------------------------------
+     | 32 | 47 | 16 |  5 | 26 | 35 | 14 |
+     ------------------------------------
+     |  7 | 18 | 43 | 34 | 41 | 24 |  3 |
+     ------------------------------------
+     | 46 | 31 | 48 | 27 | 44 | 13 | 36 |
+     ------------------------------------
+     | 19 |  8 | 45 | 40 | 49 |  2 | 23 |
+     ------------------------------------
+     | 30 | 39 | 10 | 21 | 28 | 37 | 12 |
+     ------------------------------------
+     |  9 | 20 | 29 | 38 | 11 | 22 |  1 |
+     ------------------------------------
+</pre>
+Here is a solution for the 5x5 board (which is not reentrant).
+<pre>
+     --------------------------
+     |  5 | 10 | 15 | 20 |  3 |
+     --------------------------
+     | 16 | 21 |  4 |  9 | 14 |
+     --------------------------
+     | 11 |  6 | 25 |  2 | 19 |
+     --------------------------
+     | 22 | 17 |  8 | 13 | 24 |
+     --------------------------
+     |  7 | 12 | 23 | 18 |  1 |
+     --------------------------
+</pre>
+Here is a reentrant 2x4x4 tour:
+<pre>
+    0 11 16  3    15  4  1 22
+   19 26  9 24     8 23 14 27
+   10  5 30 17    31 12 21  2
+   29 18 25  6    20  7 28 13
+</pre>
+A reentrant 4x4x4 tour can be constructed by splicing two copies.
+
+<p>
+It shouldn't be much more work now to completely solve the problem of which 3D
+rectangular boards allow tours.
+
+<p>
+Warnsdorff's rule: at each stage of the knight's tour, choose the
+square with the fewest remaining exits:
+
+<pre>
+    1 12 23 44  3 14 25
+   22 43  2 13 24 35  4
+   11 28 45 40 47 26 15
+   42 21 48 27 34  5 36
+   29 10 41 46 39 16 33
+   20 49  8 31 18 37  6
+    9 30 19 38  7 32 17
+</pre>
+Mr. Beverley published in the Philosophical Magazine in 1848 this
+knight's tour that is also a magic square:
+
+<pre>
+    1 30 47 52  5 28 43 54
+   48 51  2 29 44 53  6 27
+   31 46 49  4 25  8 55 42
+   50  3 32 45 56 41 26  7
+   33 62 15 20  9 24 39 58
+   16 19 34 61 40 57 10 23
+   63 14 17 36 21 12 59 38
+   18 35 64 13 60 37 22 11 
+</pre>
+
+<h3>References:</h3>
+``The Construction of Magic Knight Tours,'' by T. H. Willcocks,
+J. Rec. Math. 1:225-233 (1968).
+
+<p>
+"Games Ancient and Oriental and How to Play Them"
+by Edward Falkener published by Dover in 1961 (first published 1892)
+
+<p>
+"Mathematical Magic Show", Martin Gardner, ch. 14
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

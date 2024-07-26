@@ -1,0 +1,96 @@
+"Size of the Internet" 
+
+Q: What is the current number of computers attached to the internet? 
+
+
+A tough question, and one that makes book writing difficult. For example, when I was revising the fourth edition of: 
+
+Internetworking With TCP/IP volume 1 
+
+which just came out out this Spring, the best estimate of Internet size was 43,230,000 individual host computers. Within two months after I completed the revision, a new estimate came out indicating that there were approximately 72,398,092 host computers as of January, 2000. 
+
+Q: How can I know the current existing number of computers attached to the internet? 
+
+These are merely estimates; it is impossible to know the exact size because: 
+
+* Many users access the Internet through dialup, meaning that their computers are only ``connected'' temporarily. 
+
+* Companies often prevent automated probing of computers at their site (e.g., they prohibit ping and traceroute), and do not publish information about the number of host addresses they have allocated (only network prefixes are needed for routing). 
+
+* Many companies now use Network Address Translation (NAT), which allows many computers within the organization to use a small number of external IP addresses. You may also have heard the terms ``Internet Connection Sharing'', ``slirp'', or ``Masquerade'' used for specific implementations of NAT. 
+
+If you want to look at an estimate of size (taken twice a year) or the description of how the estimate is obtained, look at the Internet Software Consortium web site: 
+
+http://www.isc.org/ 
+
+-------------------------------------------------------------------------------------------------
+
+
+Types of Ethernet 
+
+
+The 802 numbers come from the IEEE standards. Standard 802.3 specifies the Ethernet Medium Access Control (MAC) details. Among other things, 802.3 defines the Ethernet frame format. IEEE standard 802.2 specifies Logical Link Control (LLC) layer, and is an alternative to having a type field in the header. 
+
+The term "Ethernet SNAP" refers to the LLC/SNAP header defined by the 802.2 standard. 
+
+-------------------------------------------------------------------------------------------------
+
+
+
+RTT - Round Trip Time 
+
+
+Q: How is RTT used in networking? 
+
+A: Transport protocols like TCP which expect an acknowledgment to arrive after data has been successfully received, keep an estimate of the current RTT on each connection. They use the RTT estimate to determine how long to wait for an acknowledgment before retransmitting. 
+
+
+
+Q: Do TCP, UDP, or both compute RTT? 
+
+A: TCP does; UDP does not. 
+
+Q: What value does TCP use for the RTT when it sends the very first segment (i.e., the first SYN segment in the 3-way handshake to get the connection started)? 
+
+A: TCP chooses a very long timeout as an initial guess (it cannot have an accurate RTT estimate until it receives at least one acknowledgment). 
+
+Q: What is the transit time? 
+
+A: The time it takes to cross a network in one direction. The transit time can be estimated as: 
+
+
+
+	RTT/2
+
+Q: If I want to send the time of day to another computer, either the sender or receiver should add the transit time to the time in the packet, correct? 
+
+A: Yes. On a LAN, the transmit time is small enough to be insignificant (a few milliseconds). The transit time across a wide area network can be tenths of seconds. So, the adjustment can be important. 
+
+Q: Can I get the RTT from TCP, divide it by 2, and use that? 
+
+A: No. The RTT is internal to TCP; there is no way for an application to get the value. Instead, you should do the same thing TCP does: arrange to exchange a few messages, compute your own estimate of the round trip time, then divide that by 2, and add it to the clock before sending the time. 
+
+==============================================================================================
+
+Switches and routers 
+
+
+
+Q: If I have a big switch, do I also need a router? 
+
+A: Although they are both electronic devices, switches and routers perform quite different functions. 
+
+Switch 
+
+In general, a switch can be thought of as the central component of a single network -- it interconnects computers and passes frames among them. The chief difference between a switch and a hub lies in speed. A hub only allows one computer to transmit at a time, but a switch permits simultaneous communication between disjoint pairs of computers. 
+
+Router 
+
+A router interconnects two or more _networks_, and passes IP traffic among them. The networks can be heterogeneous (i.e., the frame formats and addressing can differ). For example, a router can interconnect an Ethernet and an FDDI ring. 
+
+
+So, the answer is that if all you need is one large, homogeneous network, a switch will suffice (assuming you can fine one with enough capacity). If you have multiple, heterogeneous networks, a router is required. 
+=================================================================================================
+
+
+

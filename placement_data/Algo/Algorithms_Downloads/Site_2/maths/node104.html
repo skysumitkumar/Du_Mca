@@ -1,0 +1,260 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Big O</TITLE>
+<META NAME="description" CONTENT="Big O">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node105.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node105.html">
+<LINK REL="previous" HREF="node103.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node103.html">
+<LINK REL="up" HREF="node103.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node103.html">
+<LINK REL="next" HREF="node105.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node105.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1834"
+  HREF="node105.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node105.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1828"
+  HREF="node103.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node103.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1822"
+  HREF="node103.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node103.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1830"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1832"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1835"
+  HREF="node105.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node105.html">Solutions to Exercises</A>
+<B> Up:</B> <A NAME="tex2html1829"
+  HREF="node103.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node103.html">Appendices</A>
+<B> Previous:</B> <A NAME="tex2html1823"
+  HREF="node103.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node103.html">Appendices</A>
+ &nbsp <B>  <A NAME="tex2html1831"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1833"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001110000000000000000">
+Big O</A>
+</H1>
+We often end up with messy timing formulas like
+
+<P>
+<!-- MATH
+ \begin{displaymath}
+T(n) = 2.456n^2 + \pi\ln(3n) + \frac{5}{7}[\sqrt{n+1}].
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>T</I>(<I>n</I>) = 2.456<I>n</I><SUP>2</SUP> + <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img72.gif"
+ ALT="$\displaystyle \pi$">ln(3<I>n</I>) + <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img389.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img389.gif"
+ ALT="$\displaystyle {\textstyle\frac{5}{7}}$">[<IMG
+ WIDTH="54" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img390.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img390.gif"
+ ALT="$\displaystyle \sqrt{n+1}$">].
+</DIV><P></P>
+This sort of detail is rarely of any use to anyone. Users of algorithms
+usually want simpler results that are easier to understand. They want
+to know whether a given program is going to take seconds, minutes or
+years to complete. They are not usually interested in the difference
+between 1.23 seconds and 1.24 seconds.
+
+<P>
+Now, in the above formula the last two terms are quite small compared
+to the first, particularly if <I>n</I> is large.
+
+<P>
+For <I>n</I> = 10 it gives <!-- MATH
+ $T(10) = 245.6 + 10.69 + 2.14$
+ -->
+<I>T</I>(10) = 245.6 + 10.69 + 2.14
+
+<P>
+For <I>n</I> = 100 it gives <!-- MATH
+ $T(100) = 24560 + 17.92 + 7.14$
+ -->
+<I>T</I>(100) = 24560 + 17.92 + 7.14
+
+<P>
+We would like to be able to say that <I>T</I>(<I>n</I>) behaves essentially like
+<I>n</I><SUP>2</SUP> (modulo a proportionality factor). This is much easier to
+understand and is essentially true.
+
+<P>
+I now want to introduce a notation that goes some way towards making
+this idea precise.
+
+<P>
+Let <!-- MATH
+ $f,g: \ensuremath{\mathbb{R}}\to\ensuremath{\mathbb{R}}$
+ -->
+<IMG
+ WIDTH="89" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img391.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img391.gif"
+ ALT="$f,g: \ensuremath{\mathbb{R}}\to\ensuremath{\mathbb{R}}$"> be functions. We say that <I>f</I> = <I>O</I>(<I>g</I>) if there are
+<I>x</I><SUB>0</SUB>, <I>M</I> &gt; 0 such that
+<!-- MATH
+ \begin{displaymath}
+|f(x)| < M|g(x)| \ensuremath{\quad\text{for}\quad}x>x_0
+\end{displaymath}
+ -->
+<P ALIGN="CENTER"><IMG
+ WIDTH="212" HEIGHT="28" BORDER="0"
+ SRC="img392.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img392.gif"
+ ALT="\begin{displaymath}\vert f(x)\vert &lt; M\vert g(x)\vert \ensuremath{\quad\text{for}\quad}x&gt;x_0 \end{displaymath}"></P>
+i.e. there is some fixed multiple of <I>g</I> that eventually dominates <I>f</I>.
+Another way to say this is that <I>f</I> (<I>x</I>)/<I>g</I>(<I>x</I>) is eventually bounded.
+
+<P>
+For example
+<P></P>
+<DIV ALIGN="CENTER"><TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><I>n</I><SUP>2</SUP> + <I>n</I> + 1</TD>
+<TD NOWRAP ALIGN="LEFT">= <I>O</I>(<I>n</I><SUP>2</SUP>)&nbsp;&nbsp;&nbsp;&nbsp;since, for&nbsp;&nbsp;&nbsp;&nbsp;<I>n</I> &gt; 1,&nbsp;&nbsp;&nbsp;&nbsp;3<I>n</I><SUP>2</SUP> &gt; <I>n</I><SUP>2</SUP> + <I>n</I> + 1</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD>&nbsp;</TD>
+<TD NOWRAP ALIGN="LEFT"><IMG
+ WIDTH="185" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img393.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img393.gif"
+ ALT="$\displaystyle = O(n^3) \ensuremath{\quad\text{even more so}\quad}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD>&nbsp;</TD>
+<TD NOWRAP ALIGN="LEFT"><IMG
+ WIDTH="355" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img394.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img394.gif"
+ ALT="$\displaystyle \ne O(n) \ensuremath{\quad\text{because}\quad}\frac{n^2+n+1}{n}\to\infty \ensuremath{\quad\text{as}\quad}n\to\infty$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+Similarly, <!-- MATH
+ $n^3-4n^2+n = O(n^3)$
+ -->
+<I>n</I><SUP>3</SUP> - 4<I>n</I><SUP>2</SUP> + <I>n</I> = <I>O</I>(<I>n</I><SUP>3</SUP>) and <!-- MATH
+ $\ne O(n^2)$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img12.gif"
+ ALT="$ \ne$"><I>O</I>(<I>n</I><SUP>2</SUP>).
+
+<P>
+Note that <!-- MATH
+ $n^2+n+1 = O(n^{100})$
+ -->
+<I>n</I><SUP>2</SUP> + <I>n</I> + 1 = <I>O</I>(<I>n</I><SUP>100</SUP>) is true, but not very helpful. We usually
+try to make Big-O statements as `limiting' as possible.
+
+<P>
+
+<P><P>
+<BR>
+
+<P>
+A standard kind of statement in this subject is: <I>Algorithm A has
+<!-- MATH
+ $T(n) = O(n^2)$
+ -->
+<I>T</I>(<I>n</I>) = <I>O</I>(<I>n</I><SUP>2</SUP>) and algorithm B has <!-- MATH
+ $T(n)=O(n^3)$
+ -->
+<I>T</I>(<I>n</I>) = <I>O</I>(<I>n</I><SUP>3</SUP>). So A is the faster
+algorithm</I>. Be careful! This is usually correct, but could in some
+cases be misleading. To take a very silly example: if <!-- MATH
+ $f(n)=10^{10}n^2$
+ -->
+<I>f</I> (<I>n</I>) = 10<SUP>10</SUP><I>n</I><SUP>2</SUP>
+and <!-- MATH
+ $g(n)=10^{-10}n^3$
+ -->
+<I>g</I>(<I>n</I>) = 10<SUP>-10</SUP><I>n</I><SUP>3</SUP> then <I>f</I> = <I>O</I>(<I>n</I><SUP>2</SUP>) and <I>g</I> = <I>O</I>(<I>n</I><SUP>3</SUP>) but <I>f</I> (<I>n</I>) &gt; <I>g</I>(<I>n</I>)
+so long as <!-- MATH
+ $n < 10^{20}$
+ -->
+<I>n</I> &lt; 10<SUP>20</SUP>. In real life the proportionality factors are
+rarely that different, so Big-O statements are usually fairly safe for
+reasonably large values of <I>n</I>.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1834"
+  HREF="node105.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node105.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1828"
+  HREF="node103.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node103.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1822"
+  HREF="node103.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node103.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1830"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1832"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1835"
+  HREF="node105.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node105.html">Solutions to Exercises</A>
+<B> Up:</B> <A NAME="tex2html1829"
+  HREF="node103.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node103.html">Appendices</A>
+<B> Previous:</B> <A NAME="tex2html1823"
+  HREF="node103.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node103.html">Appendices</A>
+ &nbsp <B>  <A NAME="tex2html1831"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1833"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

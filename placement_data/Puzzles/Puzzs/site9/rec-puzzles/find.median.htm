@@ -1,0 +1,63 @@
+<html><head>
+<title>Solution for /logic/weighing/find.median</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /logic/weighing/find.median problem</h1>
+<hr>
+Consider median of three numbers {a,b,c}.
+<pre>
+   Let G[a,b]=max(a,b) and L[a,b]=min(a,b)
+</pre>
+If we assume that median of {a,b,c} can be computed by two
+comparisons, then the solution must be one of the following:
+<pre>
+   G[c,G[a,b]], G[c,L[a,b]], L[c,G[a,b]], L[c,L[a,b]].
+</pre>
+However, it is easily seen that none of these provides
+a solution. Therefore, we need more than two comparisons to
+get median of three numbers.
+ 
+<p>
+Now, consider median of 5 numbers {a,b,c,d,e}.
+There are two possible ways to start the computation.
+Let Ci[a,b] denote the ith comparison between {a} and {b}.
+First, we could start with C1[a,b] and C2[c,d].
+Second, we could start with C2[a,C1[b,c]].
+We ignore other trivialities such as C1[a,a] or C2[a,C1[a,b]].
+ 
+<p>
+In the first case, the next operation is to find
+median of S={e,C1[a,b],C2[c,d]} which requires at least three
+comparisons in addition to the two comparisons already performed.
+So the total cost of the first approach is at least 5 comparisons.
+However, if the median is not equal to {e} then we can always
+choose C1 and C2 such that the median is not in S.
+ 
+<p>
+In the second case, the next step is to find median of S={C2[a,C1[b,c]],d,e}.
+Again, the total cost of this approach is at least five comparisons.
+If median is not equal to {d} or {e}, we can again always
+choose C1 and C2 such that the median is not in S.
+ 
+<p>
+Other starting sets, such as {e,d,c,b,a}, can always be ordered
+as {a,b,c,d,e}. This shows that the argument covers all possible cases.
+ 
+<pre>
+Navid,
+haddadi@sipi.usc.edu
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

@@ -1,0 +1,178 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>A More Precise Analysis</TITLE>
+<META NAME="description" CONTENT="A More Precise Analysis">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node23.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node23.html">
+<LINK REL="previous" HREF="node21.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node21.html">
+<LINK REL="up" HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+<LINK REL="next" HREF="node23.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node23.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html614"
+  HREF="node23.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node23.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html608"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html602"
+  HREF="node21.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node21.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html610"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html612"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html615"
+  HREF="node23.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node23.html">Computing detours: A<SUP>n</SUP><SUB>k</SUB></A>
+<B> Up:</B> <A NAME="tex2html609"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">The Analysis of an</A>
+<B> Previous:</B> <A NAME="tex2html603"
+  HREF="node21.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node21.html">Timing</A>
+ &nbsp <B>  <A NAME="tex2html611"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html613"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00532000000000000000">
+A More Precise Analysis</A>
+</H2>
+Nevertheless, it would be nice to have some more precise information
+about the value of <I>d</I>. That is the problem that we are going to study
+next.
+
+<P>
+We know that <I>d</I> varies from one list to another. What we really want to
+know is its general behaviour. In particular, it would be nice to know
+the <EM>average value</EM> of <I>d</I> for lists of length <I>n</I>. The usual
+difficulty with averages is that we have to know what we are averaging
+over and how we are taking that average. That seems simple enough in
+this case. We are, surely, averaging over all lists of length <I>n</I>.
+Perhaps so, but in that case we also need to know that probability of
+any particular list being chosen, so that we know how to weight the
+average. That's more difficult. It would seem silly to claim that all
+lists of <I>n</I> numbers are equally likely to be presented to the
+algorithm. Computers rarely deal with numbers of the order of
+<!-- MATH
+ $10^{10000}$
+ -->
+10<SUP>10000</SUP>.
+
+<P>
+We will instead adopt a rather different approach. This will be used
+again in later chapters. Notice that as far as the algorithm is
+concerned the actual numbers in the list are irrelevant. All that
+matters is their relative ordering. What I mean by this is that the
+algorithm takes the same time to process the list
+<!-- MATH
+ $(3000,2000,1000,4000)$
+ -->
+(3000, 2000, 1000, 4000) as it does to process the lists (3, 2, 1, 4) or
+<!-- MATH
+ $(300,22,9,1000)$
+ -->
+(300, 22, 9, 1000). All that matters is that in each case the first
+element is the third smallest, the third element is the smallest and so
+on. <A NAME="tex2html11"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot694'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot694"><SUP>1.1</SUP></A>
+<P>
+Because of this observation we can make a critical simplification. Let
+us assume that we are dealing with lists of <I>n</I> distinct elements (I
+will leave consideration of lists with repeated elements to you). Then
+we may as well assume that the lists that we are dealing with are all
+the permutations of the list <!-- MATH
+ $(1,2,3,4,\ldots,n)$
+ -->
+(1, 2, 3, 4,..., <I>n</I>). There is nothing
+limiting about this assumption.  Let us now go further and make
+another assumption, this time a genuine one. Let us assume that <EM>all</EM> these permutations are <EM>equally likely</EM> to be presented to
+the algorithm. This may not be a reasonable assumption in some
+situations. It may be the case that in a certain application the vast
+majority of lists supplied to the algorithm are only slightly shuffled
+and as such do not represent a random sample from the set of all
+possible permutations. In that case the following analysis would not
+be correct. Our assumption is really a neutral assumption made in the
+absence of other information (and happens to make the mathematics
+easier, which is a very significant point!).  So now we have a
+mathematically precise problem to solve. 
+<BLOCKQUOTE>
+What is the average number of detours executed when applying the
+algorithm to the permutations of <!-- MATH
+ $(1,2,3,\ldots,n)$
+ -->
+(1, 2, 3,..., <I>n</I>), granted that all
+such permutations are equally probable?
+
+</BLOCKQUOTE>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html614"
+  HREF="node23.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node23.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html608"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html602"
+  HREF="node21.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node21.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html610"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html612"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html615"
+  HREF="node23.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node23.html">Computing detours: A<SUP>n</SUP><SUB>k</SUB></A>
+<B> Up:</B> <A NAME="tex2html609"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">The Analysis of an</A>
+<B> Previous:</B> <A NAME="tex2html603"
+  HREF="node21.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node21.html">Timing</A>
+ &nbsp <B>  <A NAME="tex2html611"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html613"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

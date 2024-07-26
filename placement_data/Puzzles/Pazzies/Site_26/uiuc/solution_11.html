@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>Solution</title>
+</head>
+
+<body bgcolor=lightyellow>
+<center>
+<h1>Solution</h1>
+</center>
+<center>
+</center>  
+
+<blockquote>
+<hr>
+<font color="blue">Question:</font><br>
+How can you test a number for divisibility by 11
+
+<p>
+<font color="blue">Answer:</font><br>
+Thanks to Dan Higgins for his explanation!
+<p>
+<ol>
+<li>Add the digits in odd number columns (ones, hundreds, ten-thousands, etc.)
+<li> Add the digits in even number columns (tens, thousands, hundred-thousands,
+etc.)
+<li>If the difference is divisible by 11, the number is divisible by 11.
+</ol>
+
+<p>
+Example:
+<br>
+Number:  22846193705192
+<br>
+1.  2+1+0+3+1+4+2=13
+<br>
+2.  9+5+7+9+6+8+2=46
+<br>
+3.  46-13=33.  Divisible by 11 (22846193705192 / 11 = 2076926700472).
+
+<hr>
+John Tripp adds another very amazing test, that even yields the divisor!<p>
+<pre>
+   Take the number  For example 7029 and write it down.
+
+   Now put .0 just under the units position.
+
+   7 0 2 9
+        .0
+
+   now we will work right to left.
+
+   Subtract number just put down from number directly above, put result in
+ next position to left.
+   7 0 2 9
+       9.0
+   Repeat step
+
+   7 0 2 9
+     3 9.0
+
+   Repeat Step
+
+   7 0 2 9
+   6 3 9.0
+
+  If the last subtraction, using left most digit from tested number yields 0
+ then number is divisible by 11, and the number on line 2 is the divisor.
+</pre>
+<hr>
+<center>
+</center>  
+
+</blockquote>
+</body>
+</html>

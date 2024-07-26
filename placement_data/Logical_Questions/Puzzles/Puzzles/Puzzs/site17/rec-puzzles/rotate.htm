@@ -1,0 +1,63 @@
+<html><head>
+<title>Solution for /arithmetic/digits/rotate</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/digits/rotate problem</h1>
+<hr>
+<pre>
+2 105263157894736842
+3 1034482758620689655172413793
+4 102564 153846 179487 205128 230769
+5 142857 102040816326530612244897959183673469387755
+6 1016949152542372881355932203389830508474576271186440677966
+  1186440677966101694915254237288135593220338983050847457627
+  1355932203389830508474576271186440677966101694915254237288
+  1525423728813559322033898305084745762711864406779661016949
+7 1014492753623188405797 1159420289855072463768 1304347826086956521739
+8 1012658227848 1139240506329
+9 10112359550561797752808988764044943820224719
+
+</pre>
+In base B, suppose you have an N-digit answer A whose digits are
+rotated when multiplied by K.  If D is the low-order digit of A, we
+have
+
+<pre>
+    (A-D)/B + D B^(N-1) = K A .
+</pre>
+
+Solving this for A we have
+<pre>
+        D (B^N - 1)
+    A = ----------- .
+          B K - 1
+</pre>
+In order for A &gt;= B^(N-1) we must have D &gt;= K.  Now we have to find N
+such that B^N-1 is divisible by R=(BK-1)/gcd(BK-1,D).  This always has
+a minimal solution N0(R,B)&lt;R, and the set of all solutions is the set
+of multiples of N0(R,B).  N0(R,B) is the length of the repeating part
+of the fraction 1/R in base B.
+
+<p>
+N0(ST,B)=N0(S,B)N0(T,B) when (S,T)=1, and for prime powers, N0(P^X,B)
+divides (P-1)P^(X-1). Determining which divisor is a little more
+complicated but well-known (cf. Hardy &amp; Wright).
+
+<p>
+So given B and K, there is one minimal solution for each
+D=K,K+1,...,B-1, and you get all the solutions by taking repetitions
+of the minimal solutions.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

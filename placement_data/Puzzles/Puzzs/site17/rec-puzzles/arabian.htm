@@ -1,0 +1,133 @@
+<html><head>
+<title>Solution for /arithmetic/digits/arabian</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/digits/arabian problem</h1>
+<hr>
+The first answer is 450!.
+
+<p>
+Determining the number of zeroes at the end of x! is relatively easy once
+you realize that each such zero comes from a factor of 10 in the product
+
+<pre>
+   1 * 2 * 3 * ... * x
+</pre>
+Each factor of 10, in turn, comes from a factor of 5 and a factor of 2.
+Since there are many more factors of 2 than factors of 5, the number of 5s
+determines the number of zeroes at the end of the factorial.
+
+<p>
+The number of 5s in the set of numbers 1 .. x (and therefore the number
+of zeroes at the end of x!) is:
+
+<pre>
+  z(x) = int(x/5) + int(x/25) + int(x/125) + int(x/625) + ...
+</pre>
+This series terminates when the powers of 5 exceed x.
+
+<p>
+I know of no simple way to invert the above formula (i.e., to find x for
+a given z(x)), but I can approximate it by noting that, except for the "int"
+function,
+
+<pre>
+   5*z(x) - x = z(x)
+</pre>
+
+which gives:
+
+<pre>
+   x = 4*z(x) (approximately).
+</pre>
+The given problem asked, "For what prime x is z(x)=1001".  By the above forumla,
+this is approximately 4*1001=4004.  However, 4004! has only
+
+<pre>
+  800 + 160 + 32 + 6 + 1 = 999 zeroes at the end of it.
+</pre>
+
+The numbers 4005! through 4009! all have 1000 zeroes at their end and
+the numbers 4010! through 4014! all have 1001 zeroes at their end.
+
+<p>
+Since the problem asked for a prime x, and 4011 = 3*7*191, the only solution
+is x=4013.
+
+<p>
+The problem of determining the rightmost nonzero digit in x! is somewhat more
+difficult.  If we took the numbers 1, 2, ... , x and removed all factors of 5
+(and an equal number of factors of 2), the remaining numbers multiplied
+together modulo 10 would be the answer.  Note that since there are still many
+factors of 2 left, the rightmost nonzero digit must be 2, 4, 6, or 8 (x &gt; 1).
+
+<p>
+Letting r(x) be the rightmost nonzero digit in x!, an expression for r(x) is:
+
+<pre>
+  r(x) = (r(int(x/5)) * w * r(x mod 10)) mod 10, x &gt;= 10.
+</pre>
+
+where w is 4 if int(x/10) is odd and 6 if it is even.
+
+<p>
+The values of r(x) for 0 &lt;= x &lt;= 9 are 1, 1, 2, 6, 4, 2, 2, 4, 2, and 8.
+
+<p>
+The way to see this is true is to take the numbers 1, 2, ..., x in groups
+of 10.  In each group, remove 2 factors of 10.  For example, from the
+set 1, 2, ..., 10, choose a factor of 2 from 2 and 6 and a factor of 5 from
+5 and 10.  This leaves 1, 1, 3, 4, 1, 3, 7, 8, 9, 2.  Next, separate all the
+factors that came from multiples of 5.  The rightmost nonzero digit of x!
+can now (hopefully) be seen to be:
+
+<pre>
+  r(x) = (r(int(x/5)) * w * r(x mod 10)) mod 10
+</pre>
+
+where w is the rightmost digit in the number formed by multiplying the numbers
+1, 2, 3, ..., 10*int(x/10) after the factors of 10 and the factors left over
+by the multiples of 5 have been removed.  In the example with x = 10, this
+would be (1 * 1 * 3 * 4 * 3 * 7 * 8 * 9) mod 10 = 4.  The "r(x mod 10)" term
+takes care of the numbers from 10*int(x/10)+1 up to x.
+
+<p>
+The "w" term can be seen to be 4 or 6 depending on whether int(x/10) is odd or
+even since, after removing 10*n+5 and 10*n+10 and a factor of 2 each from
+10*n+2 and 10*n+6 from the group of numbers 10*n+1 through 10*n+10, the
+remaining factors (mod 10) always equals 4 and 4^t mod 10 = 4 if t is odd and
+6 when t is even (t != 0).
+
+<p>
+So, finally, the rightmost nonzero digit in 4013! is found as follows:
+
+<pre>
+  r(4013) = (r(802) * 4 * 6) mod 10
+  r(802)  = (r(160) * 6 * 2) mod 10
+  r(160)  = (r(32)  * 6 * 1) mod 10
+  r(32)   = (r(6)   * 4 * 2) mod 10
+</pre>
+
+Using a table of r(x) for 0 &lt;= x &lt;= 9, r(6) = 2.  Then,
+
+<pre>
+  r(32)   = (2 * 4 * 2) mod 10 = 6
+  r(160)  = (6 * 6 * 1) mod 10 = 6
+  r(802)  = (6 * 6 * 2) mod 10 = 2
+  r(4013) = (2 * 4 * 6) mod 10 = 8
+</pre>
+
+Thus, the rightmost nonzero digit in 4013! is 8.
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

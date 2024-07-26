@@ -1,0 +1,668 @@
+
+<HTML>
+<HEAD>
+<TITLE>CRACK THE INTERVIEW - What is an AVL tree?  (www.cracktheinterview.com)</TITLE><style type="text/css">
+<!--
+.breakhere     {page-break-before: always}
+
+A:link         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+A:active       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+A:visited      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+
+H1             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt; font-weight:bold; color:#336699} 
+H2             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; font-weight:bold} 
+.normal        {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+.announce      {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#000000} 
+.announceLink  {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#336699} 
+.note          {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt ! important; font-weight:normal} 
+.system        {font-family:Courier New, Courier; font-size:x-small;
+                font-weight:normal} 
+.stayblue      {color:#336699 ! important}
+.title         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:larger ! important} 
+.error         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; color:#aa0000; font-weight:bold} 
+.notelink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:normal;
+                font-size:9pt ! important} 
+.tableHeader   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableHeaderSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRow      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#f7f7e7} 
+.tableBlank    {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#ffffff} 
+.hardlink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:bold;
+                font-size:8pt ! important} 
+.boxlink       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#000000 ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.hardnote      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:black ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.tableRowSmall {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal} 
+.tableRowSmallBold {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                bold} 
+.blueHeading   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:bold;
+                color:#336699! important} 
+.blueHeadingLarge {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:16pt! important; font-weight:normal;
+                color:#336699} 
+.blueHeadingMid {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:normal;
+                color:#336699}
+.blueHeadingSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt! important; font-weight:bold;
+                color:#336699} 
+.tableHeaderV  {font-family:Verdana,Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRowV     {font-family:Verdana,Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal; background-color:#f7f7e7} 
+.just          {text-align: justify}
+-->
+</style>
+
+<META NAME="keywords" CONTENT="interview,C,tree,AVL">
+<META NAME="description" CONTENT="What is an AVL tree? ">
+<META NAME="robots" CONTENT="FOLLOW,INDEX">
+<META HTTP-EQUIV="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+
+</HEAD>
+<BODY>
+<TABLE BORDER=0 cellpadding=10>
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER><A HREF="http://www.cracktheinterview.com"><IMG SRC=http://www.cracktheinterview.com/images/logo2.jpg border=0></img></A></CENTER></TD>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2>
+<CENTER>
+
+
+<!--START:ADS0-->
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+
+</CENTER>
+</TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER>
+
+<!--START:LINKS-->
+
+
+<TABLE BORDER=0 cellpadding=10>
+<TR><TD NOWRAP>
+<A HREF="http://www.cracktheinterview.com" target="_top"><font class=announcelink>Home</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="http://www.cracktheinterview.com/adfaqpublish.html" target="_top"><font class=announcelink>Questions</font></A><BR>
+</TD>
+
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/search.html" target="_top"><font class=announcelink>Search</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="http://www.cracktheinterview.com/forum" target="_top"><font class=announcelink>Forum</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="mailto:cracktheinterview@gmail.com?subject=Hi!"><font class=announcelink>Contact</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/forum/viewforum.php?f=2" target="_top"><font class=announcelink>Guest Book</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/forum/viewforum.php?f=3" target="_top"><font class=announcelink>Polls!</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/forum/viewforum.php?f=4" target="_top"><font class=announcelink>Got a Question?</font></A><BR>
+</TD>
+
+</TABLE>
+
+<!--END-->
+
+</CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER> &nbsp; </CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=90%% valign=top>
+
+
+
+
+
+<!--START : DATA-->
+
+
+
+<TABLE BORDER=0>
+
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="3_20.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=blueHeading>Trees</font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="3_22.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD>
+<TD WIDTH=90%%><CENTER><font class=blueHeading>(105 / 290)</font></center></TD>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%></TD>
+<TD WIDTH=90%%><center>&nbsp;</center></TD>
+<TD WIDTH=5%%></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=announceLink><BR><BR><BR>
+<!--THE QUESTION-->
+
+What is an AVL tree? <BR>
+<!--END-->
+<BR></font></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=normal>
+<!--THE ANSWER--><BR>
+<!--META:START--><!--interview,C,tree,AVL--><!--META:END--><BR>
+<!--UPDATED--><BR>
+<font class=announcelink>AVL trees</font> are self-adjusting, height-balanced <font class=announcelink>binary search trees</font> and are named after the inventors: <font class=announcelink>Adelson-Velskii and Landis</font>. A balanced binary search tree has <font class=announcelink>O(log n)</font> height and hence <font class=announcelink>O(log n)</font> worst case search and insertion times. However, ordinary binary search trees have a bad worst case. When sorted data is inserted, the binary search tree is very unbalanced, essentially more of a linear list, with <font class=announcelink>O(n)</font> height and thus <font class=announcelink>O(n)</font> worst case insertion and lookup times. AVL trees overcome this problem. <BR>
+<BR>
+An AVL tree is a binary search tree in which every node is height balanced, that is, the difference in the heights of its two subtrees is at most 1. The balance factor of a node is the height of its right subtree minus the height of its left subtree (right minus left!). An equivalent definition, then, for an AVL tree is that it is a binary search tree in which each node has a balance factor of -1, 0, or +1. Note that a balance factor of -1 means that the subtree is left-heavy, and a balance factor of +1 means that the subtree is right-heavy. Each node is associated with a <font class=announcelink>Balancing factor</font>.<BR>
+<BR>
+<CODE><BR>
+Balance&nbsp;factor&nbsp;of&nbsp;each&nbsp;node&nbsp;=&nbsp;height&nbsp;of&nbsp;right&nbsp;subtree&nbsp;at&nbsp;that&nbsp;node&nbsp;-&nbsp;height&nbsp;of&nbsp;left&nbsp;subtree&nbsp;at&nbsp;that&nbsp;node.<BR>
+</CODE><BR>
+<BR>
+<BR>
+Please be <font class=announcelink>aware</font> that we are talking about the <font class=announcelink>height</font> of the subtrees and <font class=announcelink>not</font> the <font class=announcelink>weigths</font> of the subtrees. This is a very important point. We are talking about the <font class=announcelink>height!</font>. <BR>
+<BR>
+<BR>
+Here is some <font class=announcelink>recursive, working!</font> C code that sets the <font class=announcelink>Balance factor</font> for all nodes starting from the root....<BR>
+<BR>
+<CODE><BR>
+#include&nbsp;&lt;stdio.h><BR>
+<BR>
+typedef&nbsp;struct&nbsp;node<BR>
+{<BR>
+&nbsp;&nbsp;int&nbsp;value;<BR>
+&nbsp;&nbsp;int&nbsp;visited;<BR>
+&nbsp;&nbsp;int&nbsp;bf;<BR>
+&nbsp;&nbsp;struct&nbsp;node&nbsp;*right;<BR>
+&nbsp;&nbsp;struct&nbsp;node&nbsp;*left;<BR>
+}mynode;<BR>
+<BR>
+mynode&nbsp;*root;<BR>
+<BR>
+mynode&nbsp;*add_node(int&nbsp;value);<BR>
+void&nbsp;levelOrderTraversal(mynode&nbsp;*root);<BR>
+int&nbsp;setbf(mynode&nbsp;*p);<BR>
+<BR>
+<BR>
+//&nbsp;The&nbsp;main&nbsp;function<BR>
+int&nbsp;main(int&nbsp;argc,&nbsp;char*&nbsp;argv[])<BR>
+{&nbsp;<BR>
+&nbsp;&nbsp;root&nbsp;=&nbsp;NULL;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;//&nbsp;Construct&nbsp;the&nbsp;tree..<BR>
+&nbsp;&nbsp;add_node(5);<BR>
+&nbsp;&nbsp;add_node(1);<BR>
+&nbsp;&nbsp;add_node(-20);<BR>
+&nbsp;&nbsp;add_node(100);<BR>
+&nbsp;&nbsp;add_node(23);<BR>
+&nbsp;&nbsp;add_node(67);<BR>
+&nbsp;&nbsp;add_node(13);<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;//&nbsp;Set&nbsp;the&nbsp;balance&nbsp;factors<BR>
+&nbsp;&nbsp;setbf(root);<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;printf("\n\n\nLEVEL&nbsp;ORDER&nbsp;TRAVERSAL\n\n");<BR>
+&nbsp;&nbsp;levelOrderTraversal(root);<BR>
+&nbsp;&nbsp;getch();<BR>
+}<BR>
+<BR>
+//&nbsp;Function&nbsp;to&nbsp;add&nbsp;a&nbsp;new&nbsp;node&nbsp;to&nbsp;the&nbsp;tree...<BR>
+mynode&nbsp;*add_node(int&nbsp;value)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;mynode&nbsp;*prev,&nbsp;*cur,&nbsp;*temp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;temp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;(mynode&nbsp;*)&nbsp;malloc(sizeof(mynode));<BR>
+&nbsp;&nbsp;&nbsp;temp->value&nbsp;=&nbsp;value;<BR>
+&nbsp;&nbsp;&nbsp;temp->visited&nbsp;=&nbsp;0;<BR>
+&nbsp;&nbsp;&nbsp;temp->bf&nbsp;=&nbsp;0;<BR>
+&nbsp;&nbsp;&nbsp;temp->right&nbsp;=&nbsp;NULL;<BR>
+&nbsp;&nbsp;&nbsp;temp->left&nbsp;&nbsp;=&nbsp;NULL;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;if(root==NULL)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//printf("\nCreating&nbsp;the&nbsp;root..\n");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;=&nbsp;temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;prev=NULL;<BR>
+&nbsp;&nbsp;&nbsp;cur=root;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;while(cur!=NULL)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev=cur;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cur=(value&lt;cur->value)?cur->left:cur->right;<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;if(value&nbsp;<&nbsp;prev->value)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev->left=temp;<BR>
+&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev->right=temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;return(temp);&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+}<BR>
+<BR>
+<BR>
+//&nbsp;Recursive&nbsp;function&nbsp;to&nbsp;set&nbsp;the&nbsp;balancing&nbsp;factor<BR>
+//&nbsp;of&nbsp;each&nbsp;node&nbsp;starting&nbsp;from&nbsp;the&nbsp;root!<BR>
+int&nbsp;setbf(mynode&nbsp;*p)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;int&nbsp;templ,&nbsp;tempr;<BR>
+&nbsp;&nbsp;&nbsp;int&nbsp;count;<BR>
+&nbsp;&nbsp;&nbsp;count&nbsp;=&nbsp;1;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;if(p&nbsp;==&nbsp;NULL)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return(0);<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;templ&nbsp;=&nbsp;setbf(p->left);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tempr&nbsp;=&nbsp;setbf(p->right);<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(templ&nbsp;<&nbsp;tempr)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count&nbsp;=&nbsp;count&nbsp;+&nbsp;tempr;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count&nbsp;=&nbsp;count&nbsp;+&nbsp;templ;<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;//&nbsp;Set&nbsp;the&nbsp;nodes&nbsp;balancing&nbsp;factor.<BR>
+&nbsp;&nbsp;&nbsp;printf("\nNode&nbsp;=&nbsp;[%3d],&nbsp;Left&nbsp;sub-tree&nbsp;height&nbsp;=&nbsp;[%1d],&nbsp;Right&nbsp;sub-tree&nbsp;height&nbsp;=&nbsp;[%1d],&nbsp;BF&nbsp;=&nbsp;[%1d]\n",&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p->value,&nbsp;templ,&nbsp;tempr,&nbsp;(tempr&nbsp;-&nbsp;templ));<BR>
+&nbsp;&nbsp;&nbsp;p->bf&nbsp;=&nbsp;tempr&nbsp;-&nbsp;templ;<BR>
+&nbsp;&nbsp;&nbsp;return(count);<BR>
+}<BR>
+<BR>
+<BR>
+<BR>
+//&nbsp;Level&nbsp;order&nbsp;traversal..<BR>
+void&nbsp;levelOrderTraversal(mynode&nbsp;*root)<BR>
+{<BR>
+&nbsp;&nbsp;mynode&nbsp;*queue[100]&nbsp;=&nbsp;{(mynode&nbsp;*)0};<BR>
+&nbsp;&nbsp;int&nbsp;size&nbsp;=&nbsp;0;<BR>
+&nbsp;&nbsp;int&nbsp;queue_pointer&nbsp;=&nbsp;0;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;while(root)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("\n[%3d]&nbsp;(BF&nbsp;:&nbsp;%3d)&nbsp;",&nbsp;root->value,&nbsp;root->bf);<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(root->left)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[size++]&nbsp;=&nbsp;root->left;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(root->right)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[size++]&nbsp;=&nbsp;root->right;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;=&nbsp;queue[queue_pointer++];&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;}<BR>
+}<BR>
+</CODE><BR>
+<BR>
+And here is the output...<BR>
+<BR>
+<CODE><BR>
+Node&nbsp;=&nbsp;[-20],&nbsp;Left&nbsp;sub-tree&nbsp;height&nbsp;=&nbsp;[0],&nbsp;Right&nbsp;sub-tree&nbsp;height&nbsp;=&nbsp;[0],&nbsp;BF&nbsp;=&nbsp;[0]<BR>
+Node&nbsp;=&nbsp;[&nbsp;&nbsp;1],&nbsp;Left&nbsp;sub-tree&nbsp;height&nbsp;=&nbsp;[1],&nbsp;Right&nbsp;sub-tree&nbsp;height&nbsp;=&nbsp;[0],&nbsp;BF&nbsp;=&nbsp;[-1]<BR>
+Node&nbsp;=&nbsp;[&nbsp;13],&nbsp;Left&nbsp;sub-tree&nbsp;height&nbsp;=&nbsp;[0],&nbsp;Right&nbsp;sub-tree&nbsp;height&nbsp;=&nbsp;[0],&nbsp;BF&nbsp;=&nbsp;[0]<BR>
+Node&nbsp;=&nbsp;[&nbsp;67],&nbsp;Left&nbsp;sub-tree&nbsp;height&nbsp;=&nbsp;[0],&nbsp;Right&nbsp;sub-tree&nbsp;height&nbsp;=&nbsp;[0],&nbsp;BF&nbsp;=&nbsp;[0]<BR>
+Node&nbsp;=&nbsp;[&nbsp;23],&nbsp;Left&nbsp;sub-tree&nbsp;height&nbsp;=&nbsp;[1],&nbsp;Right&nbsp;sub-tree&nbsp;height&nbsp;=&nbsp;[1],&nbsp;BF&nbsp;=&nbsp;[0]<BR>
+Node&nbsp;=&nbsp;[100],&nbsp;Left&nbsp;sub-tree&nbsp;height&nbsp;=&nbsp;[2],&nbsp;Right&nbsp;sub-tree&nbsp;height&nbsp;=&nbsp;[0],&nbsp;BF&nbsp;=&nbsp;[-2]<BR>
+Node&nbsp;=&nbsp;[&nbsp;&nbsp;5],&nbsp;Left&nbsp;sub-tree&nbsp;height&nbsp;=&nbsp;[2],&nbsp;Right&nbsp;sub-tree&nbsp;height&nbsp;=&nbsp;[3],&nbsp;BF&nbsp;=&nbsp;[1]<BR>
+<BR>
+<BR>
+LEVEL&nbsp;ORDER&nbsp;TRAVERSAL<BR>
+<BR>
+[&nbsp;&nbsp;5]&nbsp;(BF&nbsp;:&nbsp;&nbsp;&nbsp;1)<BR>
+[&nbsp;&nbsp;1]&nbsp;(BF&nbsp;:&nbsp;&nbsp;-1)<BR>
+[100]&nbsp;(BF&nbsp;:&nbsp;&nbsp;-2)<BR>
+[-20]&nbsp;(BF&nbsp;:&nbsp;&nbsp;&nbsp;0)<BR>
+[&nbsp;23]&nbsp;(BF&nbsp;:&nbsp;&nbsp;&nbsp;0)<BR>
+[&nbsp;13]&nbsp;(BF&nbsp;:&nbsp;&nbsp;&nbsp;0)<BR>
+[&nbsp;67]&nbsp;(BF&nbsp;:&nbsp;&nbsp;&nbsp;0)<BR>
+<BR>
+</CODE><BR>
+<BR>
+<BR>
+Here is the tree which we were dealing with above<BR>
+<BR>
+<CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100<BR>
+-20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;23<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;13&nbsp;&nbsp;&nbsp;67<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+After insertion, the tree might have to be readjusted as needed in order to maintain it as an AVL tree. A node with balance factor -2 or 2 is considered unbalanced and requires rebalancing the tree. The balance factor is either stored directly at each node or computed from the heights of the subtrees, possibly stored at nodes. If, due to an instertion or deletion, the tree becomes <font class=announcelink>unbalanced</font>, a corresponding <font class=announcelink>left rotation</font> or a <font class=announcelink>right rotation</font> is performed on that tree at a particular node. A <font class=announcelink>balance factor</font> > 1 requires a left rotation (i.e. the right subtree is heavier than the left subtree) and a <font class=announcelink>balance factor</font> < -1 requires a right rotation (i.e. the left subtree is heavier than the right subtree).<BR>
+<BR>
+<BR>
+Here is some pseudo code to demonstrate the two types of rotations...<BR>
+<BR>
+<BR>
+<font class=announcelink>Left rotation</font><BR>
+<BR>
+<CODE><BR>
+BEFORE&nbsp;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;(par)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;(p)<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;(tmp)<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;0&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(a)&nbsp;(b)<BR>
+</CODE><BR>
+<BR>
+<BR>
+Here we <font class=announcelink>left rotate</font> the tree around node <font class=announcelink>p</font><BR>
+<BR>
+<BR>
+<CODE><BR>
+tmp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;p->right;<BR>
+p->right&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;tmp->left;<BR>
+tmp->left&nbsp;&nbsp;&nbsp;=&nbsp;p;<BR>
+<BR>
+if(par)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;if(p&nbsp;is&nbsp;the&nbsp;left&nbsp;child&nbsp;of&nbsp;par)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;par->left=tmp;<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;else&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;par->right=tmp;<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+}<BR>
+else<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;root=tmp;<BR>
+}<BR>
+<BR>
+//&nbsp;Reclaculate&nbsp;the&nbsp;balance&nbsp;factors<BR>
+setbf(root);<BR>
+</CODE><BR>
+<BR>
+<BR>
+<CODE><BR>
+AFTER<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;(par)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(tmp)<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(p)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(b)<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(a)<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<font class=announcelink>Right rotation</font><BR>
+<BR>
+<CODE><BR>
+BEFORE<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;(par)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;(p)<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;(tmp)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(a)&nbsp;&nbsp;(b)<BR>
+<BR>
+</CODE><BR>
+<BR>
+Here we <font class=announcelink>right rotate</font> the tree around node <font class=announcelink>p</font><BR>
+<BR>
+<CODE><BR>
+tmp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;p->left;<BR>
+p->left&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;tmp->right;<BR>
+tmp->right&nbsp;&nbsp;=&nbsp;p;<BR>
+<BR>
+if(par)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;if(p&nbsp;is&nbsp;the&nbsp;left&nbsp;child&nbsp;of&nbsp;par)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;par->left=tmp;<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;else&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;par->right=tmp;<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+}<BR>
+else<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;root=tmp;<BR>
+}<BR>
+<BR>
+//&nbsp;Recalculate&nbsp;the&nbsp;balancing&nbsp;factors...<BR>
+setbf(root);<BR>
+</CODE> <BR>
+<BR>
+<BR>
+<CODE><BR>
+AFTER<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;(par)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;(tmp)<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(p)<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(b)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0<BR>
+<BR>
+</CODE><BR>
+<BR>
+<BR>
+<font class=announcelink>**</font><BR>
+<BR>
+<!--<BR>
+Insertion:<BR>
+<BR>
+-	In an unbalanced tree, the balance factors are limited to -2, -1, 0, 1, 2.<BR>
+-	A node with a balance factor 2 had a balance factor 1 before the insertion. Similarly, a node iwith balance factor -2 had a balance factor -1 before the insertion.<BR>
+-	The balance factors of only those nodes on the path from the root to the newly inserted node can change as a result of the insertion.<BR>
+-	Let A denote the nearest ancestor of the newly inserted node whose balance factor is either -2 or 2. <BR>
+<BR>
+LL type<BR>
+RR type<BR>
+LR type<BR>
+RL type <BR>
+--> 
+<BR><BR>
+<!--END-->
+</font><BR></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="3_20.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=notelink><A href="mailto:cracktheinterview@gmail.com?subject=Comments [What is an AVL tree? ]&Body=Question : [What is an AVL tree? ]"><font class=announcelink>COMMENTS</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><A HREF=../adfaqpublish.html>INDEX</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><a href="#" onclick="window.print();return false;">PRINT</a></font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="3_22.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<BR><BR><BR><font class=notelink>
+Last updated:
+
+July 18, 2005<BR><BR>
+<a href=http://www.cracktheinterview.com>www.cracktheinterview.com</a> - Your destination for the most common IT interview questions, answers, frequently asked interview questions (FAQ), C Programs, C Datastructures for interviews conducted by Microsoft, Oracle, Google, IBM, HP, Yahoo, Infosys, Wipro, SAP, CA (Computer Associates), Sun, Adobe, GE, Novell, Cisco, Motorola, TI (Texas Instruments), Intel, TCS, iFlex, Trilogy, MindTree, GS and more...<br><BR>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+
+<!--END-->
+
+
+</TD>
+
+
+
+
+<TD WIDTH=10%% valign="top">
+
+
+<!--START:ADS1-->
+
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_alternate_color = "CCCCCC";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+</TD>
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+</BODY>
+</HTML>
+
+

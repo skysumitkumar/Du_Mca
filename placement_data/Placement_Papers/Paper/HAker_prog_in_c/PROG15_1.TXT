@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int	main(void)
+{
+int	key,ch,i=0,inch;
+char	text[BUFSIZ];
+char input[26]="abcdefghijklmnopqrstuvwxyz";
+char output[26]="mgqoafzbcdiehxjklntqrwsuvy";
+
+	printf("Enter text >>");
+	gets(text);
+
+	ch=text[0];
+	do
+	{
+		if (ch!=' ')	inch=output[(tolower(ch)-'a')];
+		else inch='#';
+
+		putchar(inch);
+		i++;
+		ch=text[i];
+	} while (ch!=NULL);
+	return(0);
+}

@@ -1,0 +1,195 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Multiplying Polynomials</TITLE>
+<META NAME="description" CONTENT="Multiplying Polynomials">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node90.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node90.html">
+<LINK REL="previous" HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<LINK REL="up" HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<LINK REL="next" HREF="node90.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node90.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1620"
+  HREF="node90.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node90.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1614"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1608"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1616"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1618"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1621"
+  HREF="node90.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node90.html">Fourier Series</A>
+<B> Up:</B> <A NAME="tex2html1615"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">The Fast Fourier Transform</A>
+<B> Previous:</B> <A NAME="tex2html1609"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">The Fast Fourier Transform</A>
+ &nbsp <B>  <A NAME="tex2html1617"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1619"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001010000000000000000"></A>
+<A NAME="SS:poly-mult"></A><A NAME="8792"></A>
+<BR>
+Multiplying Polynomials
+</H1>
+Suppose we have two polynomials
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="E:two-polys"></A><!-- MATH
+ \begin{equation}
+p(x) = a_0 + a_1x + a_2x^2+\cdots a_{n-1}x^{n-1}\ensuremath{\quad\text{and}\quad}q(x)=b_0 + b_1x + b_2x^2+\cdots b_{n-1}x^{n-1},
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><I>p</I>(<I>x</I>) = <I>a</I><SUB>0</SUB> + <I>a</I><SUB>1</SUB><I>x</I> + <I>a</I><SUB>2</SUB><I>x</I><SUP>2</SUP> + <SUP> ... </SUP><I>a</I><SUB>n - 1</SUB><I>x</I><SUP>n - 1</SUP>&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;&nbsp;&nbsp;&nbsp;<I>q</I>(<I>x</I>) = <I>b</I><SUB>0</SUB> + <I>b</I><SUB>1</SUB><I>x</I> + <I>b</I><SUB>2</SUB><I>x</I><SUP>2</SUP> + <SUP> ... </SUP><I>b</I><SUB>n - 1</SUB><I>x</I><SUP>n - 1</SUP>,</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(6.1)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+each of degree <I>n</I>-1.  We consider the problem of computing their
+product
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{multline*}
+p(x)q(x) = a_0b_0 + (a_1b_0 + a_0b_1)x + (a_2b_0 + a_1b_1
++ a_0b_2)x^2 + \cdots \\
++ (a_{n-1}b_0+ \cdots +a_0b_{n-1})x^{n-1} + \cdots \\
++ (a_{n-1}b_{n-2}+ a_{n-2}b_{n-1})x^{2n-3}+ a_{n-1}b_{n-1}x^{2n-2}.
+\end{multline*}
+ -->
+<IMG
+ WIDTH="686" HEIGHT="86" ALIGN="BOTTOM" BORDER="0"
+ SRC="img244.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img244.gif"
+ ALT="\begin{multline*}
+p(x)q(x) = a_0b_0 + (a_1b_0 + a_0b_1)x + (a_2b_0 + a_1b_1
++ a...
+...a_{n-1}b_{n-2}+ a_{n-2}b_{n-1})x^{2n-3}+ a_{n-1}b_{n-1}x^{2n-2}.
+\end{multline*}"></DIV>
+<BR CLEAR="ALL">
+<P><P></P>
+As written, this product involves 2<I>n</I> - 1 terms and a total of
+<!-- MATH
+ \begin{displaymath}
+2(1 + 2 + \cdots + n-1) + n = n^2
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+2(1 + 2 + <SUP> ... </SUP> + <I>n</I> - 1) + <I>n</I> = <I>n</I><SUP>2</SUP>
+</DIV><P></P>
+multiplications to compute all the coefficients.  A natural question
+then arises as to whether we can manage with fewer multiplications.
+The aim of this section is to show that the work can be suitably
+re-arranged so that only <!-- MATH
+ $O(n\log n)$
+ -->
+<I>O</I>(<I>n</I> log&nbsp;<I>n</I>) multiplications are needed.  The
+constant in the <!-- MATH
+ $O(n\log n)$
+ -->
+<I>O</I>(<I>n</I> log&nbsp;<I>n</I>) is really quite small; unlike
+Strassen's<A NAME="8815"></A>
+method of matrix multiplication, the underlying algorithm is of great
+practical importance.
+
+<P>
+The idea is simple, although we don't discuss it directly in this
+form.  In order to determine <I>p</I>(<I>x</I>)<I>q</I>(<I>x</I>), a polynomial of degree
+2<I>n</I> - 2, it is enough to know its value at 2<I>n</I> - 1 points.  Each of
+<I>p</I>(<I>x</I>) and <I>q</I>(<I>x</I>) can be determined at a fixed set of 2<I>n</I> - 1 points,
+and so the product polynomial can be determined at these points with
+2<I>n</I> - 1 multiplications in <!-- MATH
+ $\ensuremath{\mathbb{R}}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img246.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img246.gif"
+ ALT="$\ensuremath{\mathbb{R}}$"> or <!-- MATH
+ $\ensuremath{\mathbb{C}}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img248.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img248.gif"
+ ALT="$\ensuremath{\mathbb{C}}$">.  Thus provided we can
+efficiently evaluate each polynomial at the 2<I>n</I> - 1 points, and then
+reconstruct the product polynomial from its 2<I>n</I> - 1 known values, we
+have another way of multiplying the two polynomials.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1620"
+  HREF="node90.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node90.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1614"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1608"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1616"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1618"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1621"
+  HREF="node90.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node90.html">Fourier Series</A>
+<B> Up:</B> <A NAME="tex2html1615"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">The Fast Fourier Transform</A>
+<B> Previous:</B> <A NAME="tex2html1609"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">The Fast Fourier Transform</A>
+ &nbsp <B>  <A NAME="tex2html1617"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1619"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,46 @@
+<html><head>
+<title>Solution for /combinatorics/subsets</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /combinatorics/subsets problem</h1>
+<hr>
+There are 2^10 = 1,024 subsets of the 10 integers, but there can be only 901
+possible sums, the number of integers between the minimum and maximum sums.
+With more subsets than possible sums, there must exist at least one sum that
+corresponds to at least two subsets.  Call two subsets with equal sums A and B.
+Let C = A intersect B; define S = A - C, T = B - C.  Then S is disjoint from T,
+and sum(S) = sum(A-C) = sum(A) - sum(C) = sum(B) - sum(C) = sum(B-C) = sum(T).
+QED
+
+<p>
+Addendum: 9 integers suffice.  This was part of my Westinghouse project
+in 1981 (the above problem was in Martin Gardner's Scientific American
+column not long before).  The argument is along the same lines, but
+a bit more complicated; for starters you only work with the subsets
+consisting of 3, 4, 5, or 6 of the 9 elements.
+
+<p>
+Let M(n) be the smallest integer such that there exists an n-element
+set {a1,a2,a3,...,an=M(n)} of positive integers all 2^n of whose
+subsums are distinct.  The pigeonhole argument of subsets.s shows that
+M(n)&gt;2^n/n, and it is known that M(n)&gt;c*2^n/sqrt(n) for some c&gt;0.
+It is still an unsolved problem (with an Erdos bounty) whether
+there is a positive constant c such that M(n)&gt;c*2^n for all n.
+
+<pre>
+--Noam D. Elkies (elkies@zariski.harvard.edu)
+  Dept. of Mathematics, Harvard University
+</pre>
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

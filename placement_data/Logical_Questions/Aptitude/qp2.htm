@@ -1,0 +1,1129 @@
+
+ 
+
+
+<html>
+
+<head>
+<title> Message.Read </title>
+
+
+
+
+<script language="JavaScript">
+     
+<!--
+function OpenPrintScreen()
+{
+   document.ppreviewForm.Q.value = "094egZiRZ0175Mla:-4";
+   document.ppreviewForm.FolderID.value = "-4";
+   window.open( "", "winname", "scrollbars=yes,toolbar=no,menubar=yes,resizable=yes,width=550,height=600" ); 
+   document.ppreviewForm.submit();
+}
+
+function MoveToFolder(SelectList)
+{
+   SelectList.form.submit();
+}
+
+function ChangeFolder()
+{
+   document.Change.submit();
+}
+
+function SubmitForRead(qAndFolder)
+{
+    document.MsgReadForm.Q.value = qAndFolder;
+    //
+    // alert(document.MsgReadForm.Q.value);
+    document.MsgReadForm.submit(); 
+}
+
+function SubmitForReadHeaders(qAndFolder, theHeaders)
+{
+    document.MsgReadForm.Headers.value = theHeaders; 
+    SubmitForRead(qAndFolder);
+}
+
+function SubmitForForward(theQ)
+{
+
+  document.MsgForwardForm.Q.value = theQ;
+  document.MsgForwardForm.submit();
+
+}
+
+function SubmitForReply(theQ)
+{
+    document.MsgReplyForm.Q.value = theQ;
+    document.MsgReplyForm.submit();
+}
+ 
+function SubmitForReplyAll(theQ)
+{
+    document.MsgReplyAllForm.Q.value = theQ;
+    document.MsgReplyAllForm.submit();
+}
+
+function SubmitForDelete()
+{
+  document.MsgDeleteForm.submit();
+}
+
+function addToAddrBkPopup()
+{
+  iFrom = 'mohan karthikeyanm <karthikenm@usa.net>';
+  if (iFrom.indexOf("<") > 0)
+  {
+    iAddress = iFrom.substring(iFrom.indexOf("<")+1, iFrom.lastIndexOf(">"));
+    firstQt=iFrom.indexOf('"');
+
+    if (firstQt == 0)
+    {
+      iName = iFrom.substring(firstQt + 1, iFrom.lastIndexOf('"'));
+      j = iName.indexOf('"');
+      while (j >= 0)
+      {
+        var tmpName;
+        tmpName = iName.substring(0, j) + "'" + iName.substring(j+1, iName.length);
+        iName = tmpName;
+        j = iName.indexOf('"');
+      }
+      j = iName.indexOf(' ');
+      while (j >= 0)
+      {
+       var tmpName;
+       tmpName = iName.substring(0, j) + "+" + iName.substring(j+1, iName.length);
+       iName = tmpName;
+       j = iName.indexOf(' ');
+      }
+    }
+    else if (firstQt < 0)
+    {
+      iName = iFrom.substring(0,iFrom.indexOf("<"));
+      j = iName.indexOf(' ');
+      while (j >= 0)
+      {
+        var tmpName;
+        tmpName = iName.substring(0, j) + "+" + iName.substring(j+1, iName.length);
+        iName = tmpName;
+        j = iName.indexOf(' ');
+      }
+      }
+     else
+      {
+      iName = iFrom.substring(0,iFrom.indexOf("<"));
+      j = iName.indexOf('"');
+      while (j >= 0)
+      {
+       var tmpName;
+       tmpName = iName.substring(0, j) + "'" + iName.substring(j+1, iName.length);
+       iName = tmpName;
+       j = iName.indexOf('"');
+      }
+
+      j = iName.indexOf(' ');
+      while (j >= 0)
+      {
+        var tmpName;
+        tmpName = iName.substring(0, j) + "+" + iName.substring(j+1, iName.length);
+        iName = tmpName;
+        j = iName.indexOf(' ');
+       }
+     }
+  }
+  else
+  {
+	  if (iFrom.lastIndexOf(">") > 0)
+	  {
+      	iAddress = iFrom.substring(iFrom.indexOf("<")+1, iFrom.lastIndexOf(">"));
+	  }
+	  else
+	  {
+		iAddress = iFrom;
+	  }
+      iName ="";
+   }
+   kiosk = window.open("/tpl/AddrBook/724PRVHJI/Individual?Action=close&PopUp=Yes&Reading=Yes&EmailAddress="+iAddress+"&NickName="+iName,
+   "PopupAddressEntry", "resizable=yes,scrollbars=yes,width=540,height=440");
+
+
+}
+
+function addToJunkMailBlock()
+{
+  iFrom = 'mohan karthikeyanm <karthikenm@usa.net>';
+  if (iFrom.indexOf("<") > 0)
+  {
+    iAddress = iFrom.substring(iFrom.indexOf("<")+1, iFrom.lastIndexOf(">"));
+    firstQt=iFrom.indexOf('"');
+
+    if (firstQt == 0)
+    {
+      iName = iFrom.substring(firstQt + 1, iFrom.lastIndexOf('"'));
+      j = iName.indexOf('"');
+      while (j >= 0)
+      {
+        var tmpName;
+        tmpName = iName.substring(0, j) + "'" + iName.substring(j+1, iName.length);
+        iName = tmpName;
+        j = iName.indexOf('"');
+      }
+      j = iName.indexOf(' ');
+      while (j >= 0)
+      {
+       var tmpName;
+       tmpName = iName.substring(0, j) + "+" + iName.substring(j+1, iName.length);
+       iName = tmpName;
+       j = iName.indexOf(' ');
+      }
+    }
+    else if (firstQt < 0)
+    {
+      iName = iFrom.substring(0,iFrom.indexOf("<"));
+      j = iName.indexOf(' ');
+      while (j >= 0)
+      {
+        var tmpName;
+        tmpName = iName.substring(0, j) + "+" + iName.substring(j+1, iName.length);
+        iName = tmpName;
+        j = iName.indexOf(' ');
+      }
+      }
+     else
+      {
+      iName = iFrom.substring(0,iFrom.indexOf("<"));
+      j = iName.indexOf('"');
+      while (j >= 0)
+      {
+       var tmpName;
+       tmpName = iName.substring(0, j) + "'" + iName.substring(j+1, iName.length);
+       iName = tmpName;
+       j = iName.indexOf('"');
+      }
+
+      j = iName.indexOf(' ');
+      while (j >= 0)
+      {
+        var tmpName;
+        tmpName = iName.substring(0, j) + "+" + iName.substring(j+1, iName.length);
+        iName = tmpName;
+        j = iName.indexOf(' ');
+       }
+     }
+  }
+  else
+  {
+	  if (iFrom.lastIndexOf(">") > 0)
+	  {
+      	iAddress = iFrom.substring(iFrom.indexOf("<")+1, iFrom.lastIndexOf(">"));
+	  }
+	  else
+	  {
+		iAddress = iFrom;
+	  }
+      iName ="";
+   }
+   kiosk = window.open("", "JunkMailBlock", "resizable=no,scrollbars=no,width=200,height=200");
+	document.JunkMailForm.Condition.value = "~When~from|contains|"+ iAddress +"|~";
+	document.JunkMailForm.submit();
+}
+
+function CheckAttach()
+{
+  VirusScanWindow = top.OpenWindow('Virus Scan','/tpl/Mail/724PRVHJI/AttachAdd?Q=094egZiRZ0175Mla&O=&AttachmentName=',0);
+}
+
+function SubmitForTranslate()
+{
+   if ( document.Transfer.Translate.selectedIndex != 0 )
+   {
+     document.MsgTranslate.Q.value = "094egZiRZ0175Mla:-4";
+     document.MsgTranslate.Translate.value = document.Transfer.Translate.options[document.Transfer.Translate.selectedIndex].value;
+     document.MsgTranslate.submit();
+   }
+   else if ( document.Transfer2.Translate.selectedIndex != 0 )
+   {
+     document.MsgTranslate.Q.value = "094egZiRZ0175Mla:-4";
+     document.MsgTranslate.Translate.value = document.Transfer2.Translate.options[document.Transfer2.Translate.selectedIndex].value;
+     document.MsgTranslate.submit();
+   } 
+}
+
+
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" 
+    background="http://images02.netaddress.usa.net/images/en/netaddress/background_body.gif"
+    link="#3330FF" vlink="#3330FF" alink="#3330FF">
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+     
+ <tr>
+  <!-- give a little push from the left gutter -->
+  <td width="2%">
+   &nbsp;
+  </td>
+  <td width="98%">
+   <table border="0" cellpadding="0" cellspacing="0" width="98%">
+    <tr>
+     <td width="30%" valign="bottom">
+      <font size="4" face="Arial, Helvetica, Condensed">
+        <b>Folder:</b> 
+        <a href="/tpl/Mail/724PRVHJI/List?FolderID=-4&Skip=20&SortUseCase=True"
+        onMouseOver="window.status='Back to  Inbox message index'; return true;"
+        onMouseOut="window.status=' '; return true;">Inbox
+		</a>
+     </font>
+     </td>
+	 <form>
+     <td width="70%" align="right" valign="bottom">
+         <font face="Arial, Helvetica, Condensed" size="-1">
+         <b>Message 34 of 69</b> (NEW)
+         </font>
+
+       
+     </td>
+     </form>
+    </tr>
+   </table><hr width="98%" align="left">
+  </td>
+ </tr>
+ <tr>
+  <td>&nbsp;</td>
+     <form name="Transfer" action="/tpl/Message/724PRVHJI/Move" Target="bodyframe" method="POST">
+     <td>
+     <input type="hidden" name="FolderID" value="-4">  
+<table border="1" cellpadding="0" cellspacing="0" width="98%" bgcolor="#DDDDDD">
+   <tr>
+    <td align="center">
+     <table border="0" cellpadding="1" cellspacing="0" bgcolor="#DDDDDD">
+      <tr>
+       <td>
+        <!-- previous -->
+          <font  SIZE="-1">
+            <input type="button" value=" &lt; " onClick="SubmitForRead('904egZiZT0106M10:-4')">
+          </font>
+
+       </td>
+       <td>
+         <!-- next -->
+            <font  SIZE="-1">
+              <input type="button" value=" &gt; " onClick="SubmitForRead('232egyDmn1158M24:-4')">
+            </font>
+
+        </td>
+          <td></td>
+         <td>&nbsp;&nbsp;&nbsp;</td>
+         <td>
+          <!-- delete -->
+            <font  SIZE="-1">
+             <input type="button" value="Delete" onClick="SubmitForDelete()">
+            </font>
+
+         </td>
+         <td>
+          <!-- forward -->
+           <font  SIZE="-1">
+            <input type="button" value="Forward" onClick="SubmitForForward('094egZiRZ0175Mla')">
+           </font>
+
+         </td>
+         <td>
+          <!-- reply -->
+           <font  SIZE="-1">
+           <input type="button" value="Reply" onClick="SubmitForReply('094egZiRZ0175Mla');">
+           </font>
+
+         </td>
+         <td>
+          <!-- reply all -->
+             <font  SIZE="-1">
+             <input type="button" value="Reply All" onClick="SubmitForReplyAll('094egZiRZ0175Mla');">
+             </font>
+
+         </td>
+         <td>
+       <INPUT TYPE="HIDDEN" NAME="Q" VALUE="094egZiRZ0175Mla">
+       <INPUT TYPE="HIDDEN" NAME="N" VALUE="232egyDmn1158M24:-4">
+            <input type="hidden" name="Sort" value="Date">
+            <input type="hidden" name="Skip" value="20">
+       &nbsp;&nbsp;&nbsp;
+         <font  SIZE="-1">
+           <input type="submit" value="Move To:">
+         </font>
+
+         </td>
+         <td valign="top">
+        <font face="Arial, Helvetica, Condensed" size="-2">
+       <select name="F">
+               <option value="-10">
+                Junk Mail               </option>
+             <option value="-3">
+              Sent             </option>
+             <option value="-1">
+              Trash             </option>
+        </select>
+        </font>
+       </td>
+           <td valign="middle">
+             &nbsp;&nbsp;&nbsp;
+             <!-- E-greeting -->
+                 <font  SIZE="-1"><nobr>
+                   <input type="button" value="Send Greetings" onClick="window.open('http://www.egreetings.com/e-products/m_netadd_read/cgi/homepage');">
+                   <a href="http://www.egreetings.com/e-products/m_netadd_read/cgi/homepage"
+                     target="_blank"
+                     onMouseOver="window.status=''; return true;" 
+                     onMouseOut="window.status=''; return true;"
+                     ><img src="http://images02.netaddress.usa.net/images/en/netaddress/e-greetings_new.gif" width="40" height="17" border=0 alt=""
+                   ></a>  
+                 </nobr></font>
+           </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ </form> 
+     </td>
+     </form>
+ </tr>
+
+
+ <tr>
+  <td>&nbsp;</td>
+   <td>
+     <table border="0" width="90%" cellspacing="0" cellpadding="2">
+      <tr>
+       <!-- date -->
+       <td align=right width="10%">
+        <font face="Arial, Helvetica, Condensed" size="2">
+         <b>Date:</b>
+        </font>
+       </td> 
+       <td align=left>
+          <font face="Arial, Helvetica, Condensed" size="2">Wed, 26 Jul 00 02:17AM MDT
+          </font>
+    </td>
+   </tr>
+
+   <!-- from and to-->
+     <tr>
+      <td align="right" valign="top">
+       <font face="Arial, Helvetica, Condensed" size="2">
+        <b>From:</b>
+       </font>
+      </td>
+      <form>
+      <td align="left" valign="top">
+       <font face="Arial, Helvetica, Condensed" size="2">
+        mohan&nbsp;karthikeyanm&nbsp;&lt;karthikenm@usa.net&gt; 
+       </font>
+       &nbsp;&nbsp;
+       <!-- //-->
+           <font  SIZE="-1">
+           <input type="button" value="Add To Address Book" onClick="addToAddrBkPopup();">
+           </font>
+       <!--- //-->
+      </td>
+     </form>
+    </tr>
+    <tr>
+     <td align="right" valign="top">
+      <font face="Arial, Helvetica, Condensed" size="2">
+       <b>To:</b>
+      </font>
+     </td>
+     <td align="left" valign="top">
+      <font face="Arial, Helvetica, Condensed" size="2">
+       basustonecold@usa.net 
+      </font>
+     </td>
+    </tr>
+
+
+
+    <tr>
+     <td align=right valign="top">
+      <font face="Arial, Helvetica, Condensed" size="2">
+       <b>Subject:</b>
+      </font>
+     </td>
+     <td align=left valign="top">
+      <font face="Arial, Helvetica, Condensed" size="2">
+        Fwd: [Forward this mail to Basu (Papers for Campus)]
+      </font>
+     </td>
+    </tr>
+   </table>
+   </td>
+  </tr>
+
+  <tr>
+   <td>&nbsp;&nbsp;</td>
+     <form>
+         <td valign="bottom">
+                 <font  SIZE="-1">
+                 <input type="button" value="More Details" onClick="SubmitForReadHeaders('094egZiRZ0175Mla:-4', 'True')">
+                 </font>
+             <font  SIZE="-1">
+             <input type="button" value="Print Preview" onClick="OpenPrintScreen()">
+             </font>
+         </td>
+      </form>
+   </tr>
+
+  <tr>
+   <td>&nbsp;&nbsp;</td>
+   <td>
+    <table border="0" cellspacing="0" cellpadding="0" width="98%">
+     <tr>  
+      <td align=left><hr align=left>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+	
+  <tr>
+   <td>&nbsp;&nbsp;</td>
+   <td>
+    <!-- Data -->
+    <TABLE border="0" WIDTH="100%" cellpadding=3 cellspacing=0>
+     <TR>
+      <TD WIDTH="98%" ALIGN="LEFT">
+
+        <TABLE border="0" WIDTH="98%" cellpadding=0 cellspacing=0>
+		</TABLE>
+
+        <TABLE border="0" WIDTH="98%" cellpadding=0 cellspacing=0>
+		<tr><td>
+		</td></tr>
+        </TABLE>
+
+
+<!-- -->
+
+
+        <TABLE border="0" WIDTH="98%" cellpadding=0 cellspacing=0>
+		</TABLE>
+
+        <TABLE border="0" WIDTH="98%" cellpadding=0 cellspacing=0>
+		<tr><td>
+		</td></tr>
+        </TABLE>
+
+
+       <font face="Arial, Helvetica, Condensed" size="-1">
+<br>
+<br>
+____________________________________________________________________<br>
+Get free email and a permanent address at <A HREF ="/tpl/Info/Popup?hidden___url=http%3A%2F%2Fwww.netaddress.com%2F%3FN%3D1" target="_blank">http://www.netaddress.com/?N=1</a><br>
+
+      </font>
+<!-- -->
+
+           <TABLE border="0" WIDTH="100%" CELLPADDING="5" cellspacing="0">
+            <TH colspan=2>
+             Attached Message</TH>
+            <TR> 
+             <TD align=left>
+
+        <TABLE border="0" WIDTH="98%" cellpadding=0 cellspacing=0>
+		</TABLE>
+
+        <TABLE border="0" WIDTH="98%" cellpadding=0 cellspacing=0>
+		<tr><td>
+		</td></tr>
+        </TABLE>
+
+
+<!-- -->
+
+
+        <TABLE border="0" WIDTH="98%" cellpadding=0 cellspacing=0>
+		</TABLE>
+
+        <TABLE border="0" WIDTH="98%" cellpadding=0 cellspacing=0>
+		<tr><td>
+		</td></tr>
+        </TABLE>
+
+
+       <font face="Arial, Helvetica, Condensed" size="-1">
+<br>
+<br>
+<br>
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0<br>
+Transitional//EN"&gt;<br>
+&lt;!-- saved from<br>
+url=(0055)<A HREF ="/tpl/Info/Popup?hidden___url=http%3A%2F%2Fvvasan.hypermart.net%2Fpaper%2Fhughes%2Fhughes99_5.txt" target="_blank">http://vvasan.hypermart.net/paper/hughes/hughes99_5.txt</a><br>
+--&gt;<br>
+&lt;HTML&gt;&lt;HEAD&gt;<br>
+&lt;META content="text/html; charset=windows-1252"<br>
+http-equiv=Content-Type&gt;<br>
+&lt;META content="MSHTML 5.00.2014.210"<br>
+name=GENERATOR&gt;&lt;/HEAD&gt;<br>
+&lt;BODY&gt;&lt;XMP&gt;There were two papers one was aptitude ( 36<br>
+questions) and other was <br>
+technical(20 questions)<br>
+<br>
+1: given an expression tree and asked us to write the<br>
+in fix of that expression<br>
+<br>
+four choices<br>
+<br>
+<br>
+2:<br>
+  global variables in different files are<br>
+<br>
+a:at compiletime<br>
+b) loading time<br>
+c) linking time<br>
+d)execution time<br>
+<br>
+3)size of(int)<br>
+a) always 2 bytes<br>
+b) depends on compiler that is being used<br>
+c) always 32 bits<br>
+d) can't tell<br>
+<br>
+4)which one will over flow given two programs<br>
+2<br>
+prog 1:                                 prog2:<br>
+<br>
+main()                                  main()<br>
+{                                       {<br>
+int fact;                                       int<br>
+fact=0<br>
+long int x;                            <br>
+for(i=1;i&lt;=n;i++)<br>
+fact=factoral(x);                              <br>
+fact=fact*i;<br>
+<br>
+}                                       }<br>
+<br>
+<br>
+int factorial(long int x)<br>
+{<br>
+<br>
+if(x&gt;1) return(x*factorial(x-1);<br>
+}<br>
+<br>
+a) program 1;<br>
+b) program 2;<br>
+c) both 1 &2<br>
+d) none<br>
+<br>
+}<br>
+<br>
+5) variables of fuction call are allocated in<br>
+a) registers and stack<br>
+b) registers and heap<br>
+c) stack and  heap<br>
+d)<br>
+<br>
+6)<br>
+<br>
+    avg and worst case time of sorted binary tree<br>
+<br>
+<br>
+7) data structure used for proority queue<br>
+   a) linked list b) double linkedd list c)array d)<br>
+tree<br>
+<br>
+8)<br>
+<br>
+ main(){<br>
+char str[5]="hello";<br>
+if(str==NULL) printf("string null");<br>
+else printf("string not null");<br>
+}<br>
+what is out put of the program?<br>
+a) string is null b) string is not null c) error in<br>
+program d) it executes but p<br>
+rint nothing<br>
+<br>
+<br>
+<br>
+9)there are 0ne 5 pipe line and another 12 pipe line<br>
+sates are there and flushed<br>
+ time taken to execute five instructions<br>
+<br>
+a) 10,17<br>
+b) 9,16<br>
+c)25,144<br>
+d)<br>
+<br>
+<br>
+10)<br>
+<br>
+for hashing which is best on terms of buckets<br>
+a)100 b)50 c)21 d)32  ans 32<br>
+<br>
+11)<br>
+<br>
+<br>
+void f(int value){<br>
+for (i=0;i&lt;16;i++){<br>
+if(value &0x8000&gt;&gt;1) printf("1")<br>
+else printf("0");<br>
+}<br>
+}<br>
+what is printed?<br>
+a) bineray value of argument b)bcd value c) hex value<br>
+d) octal value<br>
+<br>
+12)<br>
+<br>
+<br>
+void f(int *p){<br>
+static val=100;<br>
+val=&p;<br>
+}<br>
+main(){<br>
+int a=10;<br>
+printf("%d ",a);<br>
+f(&a);<br>
+printf("%d ",a);<br>
+}<br>
+what will be out put?<br>
+a)10,10<br>
+<br>
+13)<br>
+<br>
+struck a{<br>
+int x;<br>
+float y;<br>
+char c[10];<br>
+}<br>
+union b{<br>
+int x;<br>
+float y;<br>
+char c[10];<br>
+}<br>
+which is true?<br>
+a) size of(a)!=sizeof(b);<br>
+b)<br>
+c)<br>
+d)<br>
+<br>
+14)<br>
+<br>
+<br>
+# define f(a,b) a+b<br>
+#defiune g(c,d) c*d<br>
+<br>
+find valueof f(4,g(5,6))<br>
+a)26 b)51 c) d)<br>
+<br>
+15)<br>
+<br>
+find avg access time of cache<br>
+a)tc*h+(1-h)*tm b)tcH+tmH<br>
+<br>
+c)    d)   tc is time to access cache tm is time to<br>
+access when miss occure<br>
+<br>
+16)<br>
+<br>
+main()<br>
+{<br>
+char a[10]="hello";<br>
+strcpy(a,'\0');<br>
+printf("%s",a);<br>
+}<br>
+out put of the program?<br>
+a) string is null b) string is not null  c) program<br>
+error d)<br>
+<br>
+17)<br>
+<br>
+simplyfy k map<br>
+<br>
+1 x x 0<br>
+1 x 0 1<br>
+<br>
+18)<br>
+<br>
+int f(int a)<br>
+{<br>
+a=+b;<br>
+<br>
+//some stuff<br>
+<br>
+<br>
+}<br>
+<br>
+main()<br>
+{<br>
+x=fn(a);<br>
+y=&fn;<br>
+what are x & y types<br>
+a) x is int y is pointer to afunction which takes<br>
+integer value<br>
+<br>
+<br>
+<br>
+19)  char a[5][15];<br>
+int b[5][15];<br>
+address of a 0x1000 and b is 0x2000 find address of<br>
+a[3][4] and b[3][4]<br>
+assume char is 8 bits and int is 32 bits<br>
+<br>
+a) b) c) d)<br>
+<br>
+there are 20 questions all in techinical paper and 36<br>
+questions in appititude te<br>
+st<br>
+<br>
+in appititude thay have given all diagrams and asked<br>
+to find what comes next<br>
+<br>
+thay are quite easy and i hope if u practice r.s<br>
+aggraval u can do it easily<br>
+<br>
+for tecnical thay have given 1 hr for 20 questions and<br>
+for not technical thay ha<br>
+ve given only 40 min<br>
+and 36 questions<br>
+<br>
+this is the paper i have right now<br>
+<br>
+1. main()<br>
+   {<br>
+    fork();<br>
+fork();<br>
+fork();<br>
+printf("\n hello");<br>
+}<br>
+<br>
+How many times print command is executed?<br>
+<br>
+2.main()<br>
+{<br>
+ int i,*j;<br>
+  i=5;<br>
+j=&i;<br>
+printf("\ni= %d",i);<br>
+ f(j);<br>
+<br>
+printf("\n i= %d",i);<br>
+}<br>
+<br>
+void f(int*j)<br>
+{<br>
+int k=10;<br>
+  j= &k;<br>
+}  <br>
+<br>
+output is<br>
+a 5 10<br>
+b 10 5<br>
+c 5 5<br>
+d none<br>
+<br>
+3.<br>
+  some question on pipeline like you have to findout<br>
+the total time <br>
+by which execution is completed for a pipeline of 5<br>
+stages.<br>
+<br>
+4.<br>
+<br>
+  main()<br>
+{<br>
+   int *s = "\0";<br>
+<br>
+   if(strcmp(s,NULL)== 0)<br>
+     printf("\n s is null")p<br>
+    else<br>
+     printf("\n s is not null");<br>
+}<br>
+<br>
+5. <br>
+  some syntax which returns a pointer to function<br>
+<br>
+6.  size of integer is<br>
+    a. 2 bytes<br>
+    b 4 bytes<br>
+    c. machine dependant<br>
+    d compiler dependent.<br>
+<br>
+7.max and avg. height of sorted binary tree<br>
+<br>
+a. logn n<br>
+b n logn<br>
+<br>
+8.<br>
+  some question. like the number was shifted everytime<br>
+by one and bitwise and with 10000000.<br>
+  one was supposed to find what the code was doing.<br>
+  I feel the answer was most probably finding decimal<br>
+value.<br>
+<br>
+9. int a[5][4]<br>
+   int is 2 bytes base address for array is 4000(Hexa)<br>
+   what will be addr for a[3][4]?<br>
+   int is 4 bytes same question.<br>
+<br>
+10.<br>
+  implementation of priority queue<br>
+  a. tree<br>
+   b linked list <br>
+    c doubly linked list.<br>
+&lt;/XMP&gt;&lt;/BODY&gt;&lt;/HTML&gt;<br>
+<br>
+<br>
+<br>
+<br>
+__________________________________________________<br>
+Do You Yahoo!?<br>
+Get Yahoo! Mail – Free email you can access from anywhere!<br>
+<A HREF ="/tpl/Info/Popup?hidden___url=http%3A%2F%2Fmail.yahoo.com%2F" target="_blank">http://mail.yahoo.com/</a><br>
+<br>
+
+      </font>
+<!-- -->
+
+       </td>
+      </tr>
+     </table>
+     <br>
+  <br>
+  <br>
+  <form name="Transfer2" action="/tpl/Message/724PRVHJI/Move" Target="bodyframe" method="POST">
+   <input type="hidden" name="FolderID" value="-4">  
+<table border="1" cellpadding="0" cellspacing="0" width="98%" bgcolor="#DDDDDD">
+   <tr>
+    <td align="center">
+     <table border="0" cellpadding="1" cellspacing="0" bgcolor="#DDDDDD">
+      <tr>
+       <td>
+        <!-- previous -->
+          <font  SIZE="-1">
+            <input type="button" value=" &lt; " onClick="SubmitForRead('904egZiZT0106M10:-4')">
+          </font>
+
+       </td>
+       <td>
+         <!-- next -->
+            <font  SIZE="-1">
+              <input type="button" value=" &gt; " onClick="SubmitForRead('232egyDmn1158M24:-4')">
+            </font>
+
+        </td>
+          <td></td>
+         <td>&nbsp;&nbsp;&nbsp;</td>
+         <td>
+          <!-- delete -->
+            <font  SIZE="-1">
+             <input type="button" value="Delete" onClick="SubmitForDelete()">
+            </font>
+
+         </td>
+         <td>
+          <!-- forward -->
+           <font  SIZE="-1">
+            <input type="button" value="Forward" onClick="SubmitForForward('094egZiRZ0175Mla')">
+           </font>
+
+         </td>
+         <td>
+          <!-- reply -->
+           <font  SIZE="-1">
+           <input type="button" value="Reply" onClick="SubmitForReply('094egZiRZ0175Mla');">
+           </font>
+
+         </td>
+         <td>
+          <!-- reply all -->
+             <font  SIZE="-1">
+             <input type="button" value="Reply All" onClick="SubmitForReplyAll('094egZiRZ0175Mla');">
+             </font>
+
+         </td>
+         <td>
+       <INPUT TYPE="HIDDEN" NAME="Q" VALUE="094egZiRZ0175Mla">
+       <INPUT TYPE="HIDDEN" NAME="N" VALUE="232egyDmn1158M24:-4">
+            <input type="hidden" name="Sort" value="Date">
+            <input type="hidden" name="Skip" value="20">
+       &nbsp;&nbsp;&nbsp;
+         <font  SIZE="-1">
+           <input type="submit" value="Move To:">
+         </font>
+
+         </td>
+         <td valign="top">
+        <font face="Arial, Helvetica, Condensed" size="-2">
+       <select name="F">
+               <option value="-10">
+                Junk Mail               </option>
+             <option value="-3">
+              Sent             </option>
+             <option value="-1">
+              Trash             </option>
+        </select>
+        </font>
+       </td>
+           <td valign="middle">
+             &nbsp;&nbsp;&nbsp;
+             <!-- E-greeting -->
+                 <font  SIZE="-1"><nobr>
+                   <input type="button" value="Send Greetings" onClick="window.open('http://www.egreetings.com/e-products/m_netadd_read/cgi/homepage');">
+                   <a href="http://www.egreetings.com/e-products/m_netadd_read/cgi/homepage"
+                     target="_blank"
+                     onMouseOver="window.status=''; return true;" 
+                     onMouseOut="window.status=''; return true;"
+                     ><img src="http://images02.netaddress.usa.net/images/en/netaddress/e-greetings_new.gif" width="40" height="17" border=0 alt=""
+                   ></a>  
+                 </nobr></font>
+           </td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ </form> 
+  </form>
+   </td>
+  </tr>
+  <tr>
+
+    
+   <td>
+    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+   <tr>
+     <td align="center"><font face="Arial, Helvetica, Condensed" size="1" color="#000000">
+       <hr size="1" width="100%">
+       &#169; 1998-2000 USA.NET<sup>&#174;</sup>, Inc. 
+       All Rights Reserved. U.S. Patent # 5,937,161.
+       <br>
+       Users of this site agree to be bound by USA.NET
+       Net@ddress<sup>&#174;</sup>
+       <a href="javascript:top.OpenWindow('terms', '/tpl/Info/724PRVHJI/SubAgreement', 0)" 
+         onMouseOver="window.status='View Subscriber Agreement'; return true;" 
+         onMouseOut="window.status=' '; return true;"
+       ><b>Subscriber Agreement</b></a>.
+       <br>
+       USA.NET adheres to a strict
+       <a href="javascript:top.OpenWindow('terms', '/tpl/Info/724PRVHJI/PrivacyPolicy', 0)" 
+         onMouseOver="window.status='View Privacy Policy'; return true;" 
+         onMouseOut="window.status=' '; return true;"
+       ><b>Privacy Policy</b></a> to protect our customers.
+     </font></td>
+   </tr>
+</table>   </td>
+  </tr>
+ </table>
+   </td>
+  </tr>
+ </table>
+
+ <form name="MailListForm" method=POST action="/tpl/Mail/724PRVHJI/List">
+  <input type="hidden" name="FolderID" value="-4">
+  <input type="hidden" name="Sort" value="Date">
+  <input type="hidden" name="Skip" value="20">
+  <input type="hidden" name="SortUseCase" value="True">
+ </form>
+
+ <form name="ppreviewForm" method="GET" action="/tpl/Message/724PRVHJI/PrintPreview" target="winname">
+  <input type="hidden" name="Q" value="">
+  <input type="hidden" name="Headers" value="False">
+  <input type="hidden" name="FolderID" value="-4">
+  <input type="hidden" name="Sort" value="Date">
+  <input type="hidden" name="Skip" value="20">
+ </form>
+ 
+ <form name="MsgReadForm" method=POST action="/tpl/Message/724PRVHJI/Read">
+  <input type="hidden" name="Q" value="">
+  <input type="hidden" name="Headers" value="False">
+  <input type="hidden" name="FolderID" value="-4">
+  <input type="hidden" name="Sort" value="Date">
+  <input type="hidden" name="Skip" value="20">
+ </form>
+
+ <form name="MsgTranslate" method=POST action="/tpl/Message/724PRVHJI/Read">
+  <input type="hidden" name="Q" value="">
+  <input type="hidden" name="Headers" value="False">
+  <input type="hidden" name="FolderID" value="-4">
+  <input type="hidden" name="Sort" value="Date">
+  <input type="hidden" name="Skip" value="20">
+  <input type="hidden" name="Translate" value="">
+ </form>
+
+ <form name="MsgForwardForm" method=POST action="/tpl/Message/724PRVHJI/Forward">
+  <input type="hidden" name="Q" value="">
+  <input type="hidden" name="FolderID" value="-4">
+  <input type="hidden" name="Sort" value="Date">
+  <input type="hidden" name="Skip" value="20">
+  <input type="hidden" name="Subject" value="Fwd: [Forward this mail to Basu (Papers for Campus)]">
+ </form>
+
+ <form name="MsgReplyForm" method=POST action="/tpl/Message/724PRVHJI/Reply">
+  <input type="hidden" name="Q" value="">
+  <input type="hidden" name="FolderID" value="-4">
+  <input type="hidden" name="Sort" value="Date">
+  <input type="hidden" name="Skip" value="20">
+ </form>
+
+ <form name="MsgReplyAllForm" method=POST action="/tpl/Message/724PRVHJI/Reply">
+  <input type="hidden" name="Q" value="">
+  <input type="hidden" name="ReplyAll" value="True">
+  <input type="hidden" name="FolderID" value="-4">
+  <input type="hidden" name="Sort" value="Date">
+  <input type="hidden" name="Skip" value="20">
+ </form>
+ 
+ <form name="MsgDeleteForm" method=POST action="/tpl/Message/724PRVHJI/Move">
+  <input type="hidden" name="Q" value="094egZiRZ0175Mla">
+  <input type="hidden" name="N" value="232egyDmn1158M24:-4">
+  <input type="hidden" name="F" value="-1">
+  <input type="hidden" name="FolderID" value="-4">
+  <input type="hidden" name="Sort" value="Date">
+  <input type="hidden" name="Skip" value="20">
+ </form>
+
+ <form name="ReadReceiptForm" method=POST target="ReturnReceipt" action="/tpl/Send/724PRVHJI/Message">
+  <input type="hidden" name="MFrom" value="basustonecold@usa.net">
+  <input type="hidden" name="MTo" value="mohan&nbsp;karthikeyanm&nbsp;&lt;karthikenm@usa.net&gt;">
+  <input type="hidden" name="FLine" value="basustonecold@usa.net">
+  <input type="hidden" name="MSubject" value="Rcpt: [Fwd: [Forward this mail to Basu (Papers for Campus)]]">
+  <input type="hidden" name="MText" value="Your message was read!">
+  <input type="hidden" name="RedirectSuccess" value="/Message/ReadReceipt">
+  <input type="hidden" name="RedirectFailure" value="/Message/ReadReceipt">
+ </form>
+
+  <form name="JunkMailForm" target="JunkMailBlock" method="POST" action="/tpl/Rules/724PRVHJI/EditFilter">
+  <input type="hidden" name="Editing" value="True">
+  <input type="hidden" name="ServiceID" value="-10">
+  <input type="hidden" name="ServiceTypeCode" value="6">
+  <input type="hidden" name="Condition" value="">
+  <input type="hidden" name="ConditionCnt" value="1">
+  <input type="hidden" name="Destination" value="Junk Mail">
+  <input type="hidden" name="RedirectSuccess" value="/Message/AddJunkMail">
+  <input type="hidden" name="RedirectFail" value="/Message/AddJunkMail">
+  <input type="hidden" name="FilterID" value="">
+  </form>
+
+<form name="DownloadAttachmentForm" action="/tpl/Download/724PRVHJI/Attachment" method="GET">
+     <INPUT TYPE="hidden" NAME="FileAttachment" VALUE="">
+     <INPUT TYPE="hidden" NAME="ContentType" VALUE="">
+     <INPUT TYPE="hidden" NAME="AttachmentName" VALUE="">
+     <INPUT TYPE="hidden" NAME="FileAttachmentAction" VALUE="Download">
+</form>
+
+
+<SCRIPT language="Javascript">
+<!--
+if (self != top)
+{
+   top.RefreshBanner();
+}
+//-->
+</SCRIPT>
+</body>
+</html>

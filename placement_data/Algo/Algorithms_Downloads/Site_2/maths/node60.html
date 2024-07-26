@@ -1,0 +1,289 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Heapsort</TITLE>
+<META NAME="description" CONTENT="Heapsort">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node61.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html">
+<LINK REL="previous" HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">
+<LINK REL="up" HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">
+<LINK REL="next" HREF="node61.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1181"
+  HREF="node61.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1175"
+  HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1169"
+  HREF="node59.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1177"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1179"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1182"
+  HREF="node61.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html">Questions 3 (Hints and</A>
+<B> Up:</B> <A NAME="tex2html1176"
+  HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">Abstract Data Types</A>
+<B> Previous:</B> <A NAME="tex2html1170"
+  HREF="node59.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html">Huffman Codes</A>
+ &nbsp <B>  <A NAME="tex2html1178"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1180"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00730000000000000000">
+Heapsort</A>
+</H1>
+So far we have argued that algorithms can often be best expressed in
+terms of an  Abstract Data Type; in this section we reveres the process, and show
+how, thinking in terms of an ADT can give an algorithm.  Implementing
+the algorithm is then the same as implementing the Abstract Data Type.  Our problem
+is again one of sorting, but this time we base the algorithm on the
+priority queue of Section&nbsp;<A HREF="node54.html#D:priority-queue" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node54.html#D:priority-queue">3.1.5</A>.  Since we are sorting
+we have a natural priority associated with each item, namely the value
+that determines its sort order.<A NAME="tex2html39"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot4755'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot4755"><SUP>3.8</SUP></A>  The algorithm is then trivial: we
+add elements as they are given to the priority queue, and when the
+queue is full, simply retrieve them in order.
+
+<P>
+Of course this begs many questions; certainly we can't get a useful
+algorithm without discussing an implementation.  We thus chose a
+representation of a priority queue as a complete binary tree (Section
+<A HREF="node58.html#D:cpte-binary-tree" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node58.html#D:cpte-binary-tree">3.2.3</A>) in which each node contains an element and
+its associated key or priority.  In addition, we assume that these
+keys satisfy the <A NAME="5040"></A><B>heap condition</B>, that:
+<BLOCKQUOTE>
+at each node, the associated key is larger than the keys associated
+with either child of that node.
+
+</BLOCKQUOTE>
+
+<P>
+Note that the node with the highest priority is necessarily at the
+root of the tree, thus we can clearly represent a one element priority
+queue in this way.  We now show that the required operations of
+addition and removal can be done in such a way that the heap condition
+is still satisfied.  Rather than give formal definitions of the
+operations, we illustrate them with an example, so consider a priority
+queue whose keys are the letters from the string ``A SORTING EXAMP''.
+We associate a priority with alphabetical order, with letters at the
+end of the alphabet being given the highest priority.  The
+corresponding tree is drawn with each key used to label the associated
+node.  Assume for the moment that Fig.&nbsp;<A HREF="node60.html#F:sort-ex0" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node60.html#F:sort-ex0">3.8</A>, without the
+letter ``P'' represents an intermediate stage in the construction; you
+can certainly check that it satisfies the heap condition, and consider
+the situation when the letter ``P'' is added to this priority queue
+formed from the earlier letters from our string.  The result is the
+complete binary tree shown in Fig.&nbsp;<A HREF="node60.html#F:sort-ex0" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node60.html#F:sort-ex0">3.8</A>.  To maintain the
+tree as a complete binary tree, there was no choice about where the
+new node was created, and the new tree no longer satisfies the heap
+condition.  To restore that, we allow interchanges which permit the
+new node, with key ``P'' to move up the tree, swapping places with
+elements whose priority is lower.  Doing this set of swaps gives
+Fig.&nbsp;<A HREF="node60.html#F:sort-ex1" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node60.html#F:sort-ex1">3.9</A>, which now does satisfy the heap condition.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER">
+
+<P><A NAME="F:sort-ex0"></A><A NAME="F:sort-ex1"></A></P>
+<TABLE><CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.8:</STRONG>
+Adding the element ``P'' to a priority queue.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<BR>
+<IMG
+ WIDTH="366" HEIGHT="178" ALIGN="BOTTOM" BORDER="0"
+ SRC="img170.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img170.gif"
+ ALT="\begin{psTree}[levelsep=12mm]{\Tcircle{X}}
+ \begin{psTree}{\Tcircle{T}}
+\begin...
+...
+\Tcircle{I}
+\Tcircle{P}
+\end{psTree} \Tcircle{N}
+ \end{psTree}\end{psTree}">
+<BR>
+</DIV></TD></TR>
+</TABLE>
+<TABLE><CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.9:</STRONG>
+The resulting priority queue, after the heap condition is restored.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<BR>
+<IMG
+ WIDTH="366" HEIGHT="178" ALIGN="BOTTOM" BORDER="0"
+ SRC="img171.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img171.gif"
+ ALT="\begin{psTree}[levelsep=12mm]{\Tcircle{X}}
+ \begin{psTree}{\Tcircle{T}}
+\begin...
+...
+\Tcircle{I}
+\Tcircle{M}
+\end{psTree} \Tcircle{N}
+ \end{psTree}\end{psTree}">
+<BR>
+</DIV></TD></TR>
+</TABLE>
+</DIV>
+<P></P>
+
+<P>
+The ``remove'' operation is similar; we first get the shape right, and
+then restore the heap condition.  Since removing an element leaves a
+complete binary tree with one fewer element, the first step can be
+done by removing the root element, and replacing it by the last
+element in the tree.  This is shown in Fig.&nbsp;<A HREF="node60.html#F:sort-ex2" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node60.html#F:sort-ex2">3.10</A>,
+where the <code>remove</code> operation is applied to the priority queue of
+Fig&nbsp;<A HREF="node60.html#F:sort-ex1" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node60.html#F:sort-ex1">3.9</A>.  In order to restore the heap condition, the new
+root element must be allowed to ``drop down'' the tree until the tree
+satisfies the heap condition again.  At each stage, if the heap
+condition is violated, the root element is swapped for the larger of
+its two children, thus restoring the heap condition at that level.
+the resulting priority queue is shown in Fig&nbsp;<A HREF="node60.html#F:sort-ex3" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node60.html#F:sort-ex3">3.11</A>.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER">
+
+<P><A NAME="F:sort-ex2"></A><A NAME="F:sort-ex3"></A></P>
+<TABLE><CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.10:</STRONG>
+Removing the element ``X'' of highest priority 
+	from Fig.&nbsp;<A HREF="node60.html#F:sort-ex1" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node60.html#F:sort-ex1">3.9</A>.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<BR>
+<IMG
+ WIDTH="334" HEIGHT="176" ALIGN="BOTTOM" BORDER="0"
+ SRC="img172.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img172.gif"
+ ALT="\begin{psTree}[levelsep=12mm]{\Tcircle{M}}
+ \begin{psTree}{\Tcircle{T}}
+\begin...
+...{\Tcircle{O}}
+\Tcircle{I}
+\end{psTree} \Tcircle{N}
+ \end{psTree}\end{psTree}">
+<BR>
+</DIV></TD></TR>
+</TABLE>
+<TABLE><CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.11:</STRONG>
+The resulting priority queue, after the heap condition is restored.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<BR>
+<IMG
+ WIDTH="338" HEIGHT="178" ALIGN="BOTTOM" BORDER="0"
+ SRC="img173.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img173.gif"
+ ALT="\begin{psTree}[levelsep=12mm]{\Tcircle{T}}
+ \begin{psTree}{\Tcircle{S}}
+\begin...
+...{\Tcircle{O}}
+\Tcircle{I}
+\end{psTree} \Tcircle{N}
+ \end{psTree}\end{psTree}">
+<BR>
+</DIV></TD></TR>
+</TABLE>
+</DIV>
+<P></P>
+
+<P>
+Finally note that in Example&nbsp;<A HREF="node58.html#E:cpte-binary-tree-implementation" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node58.html#E:cpte-binary-tree-implementation">3.5</A>
+we presented an array-based implementation of a complete binary tree
+in which moving up and down the tree was efficient.  Certainly both
+the ``add'' and ``remove'' operations can be implemented in a time
+proportional to the depth of the tree, and hence in time <I>O</I>(log&nbsp;<I>n</I>)
+where <I>n</I> is the number of elements to be sorted.  Since we do a total
+of 2<I>n</I> such operations in a complete implementation of Heapsort, we
+thus get a total time of <!-- MATH
+ $O(n\log n)$
+ -->
+<I>O</I>(<I>n</I> log&nbsp;<I>n</I>).
+
+<P>
+We already saw in Section&nbsp;<A HREF="node44.html#SS:optimal-sorting" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node44.html#SS:optimal-sorting">2.6</A> that we were not
+going to improve on this order of magnitude.  And in fact the time
+constant is worse than that for quicksort by a factor of about 2, so
+quicksort remains the method of choice.  So what is special about
+Heapsort?  Note that we <I>always</I> complete the ``add'' and
+``remove'' operations in <I>O</I>(log&nbsp;<I>n</I>) time; there is no ``worst case''.
+Thus unlike quicksort, the worst case running time of Heapsort is the
+same as its average running time.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1181"
+  HREF="node61.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1175"
+  HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1169"
+  HREF="node59.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1177"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1179"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1182"
+  HREF="node61.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node61.html">Questions 3 (Hints and</A>
+<B> Up:</B> <A NAME="tex2html1176"
+  HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">Abstract Data Types</A>
+<B> Previous:</B> <A NAME="tex2html1170"
+  HREF="node59.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node59.html">Huffman Codes</A>
+ &nbsp <B>  <A NAME="tex2html1178"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1180"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

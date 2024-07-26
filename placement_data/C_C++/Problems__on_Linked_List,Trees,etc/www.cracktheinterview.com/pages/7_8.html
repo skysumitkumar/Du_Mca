@@ -1,0 +1,448 @@
+
+<HTML>
+
+<!-- Mirrored from www.cracktheinterview.com by HTTrack Website Copier/3.x [XR,YP'2001] -->
+<HEAD>
+<TITLE>CRACK THE INTERVIEW - How can I write a function that takes a variable number of arguments? What are the limitations with this? What is vprintf()?  (www.cracktheinterview.com)</TITLE><style type="text/css">
+<!--
+.breakhere     {page-break-before: always}
+
+A:link         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+A:active       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+A:visited      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+
+H1             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt; font-weight:bold; color:#336699} 
+H2             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; font-weight:bold} 
+.normal        {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+.announce      {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#000000} 
+.announceLink  {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#336699} 
+.note          {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt ! important; font-weight:normal} 
+.system        {font-family:Courier New, Courier; font-size:x-small;
+                font-weight:normal} 
+.stayblue      {color:#336699 ! important}
+.title         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:larger ! important} 
+.error         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; color:#aa0000; font-weight:bold} 
+.notelink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:normal;
+                font-size:9pt ! important} 
+.tableHeader   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableHeaderSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRow      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#f7f7e7} 
+.tableBlank    {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#ffffff} 
+.hardlink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:bold;
+                font-size:8pt ! important} 
+.boxlink       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#000000 ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.hardnote      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:black ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.tableRowSmall {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal} 
+.tableRowSmallBold {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                bold} 
+.blueHeading   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:bold;
+                color:#336699! important} 
+.blueHeadingLarge {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:16pt! important; font-weight:normal;
+                color:#336699} 
+.blueHeadingMid {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:normal;
+                color:#336699}
+.blueHeadingSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt! important; font-weight:bold;
+                color:#336699} 
+.tableHeaderV  {font-family:Verdana,Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRowV     {font-family:Verdana,Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal; background-color:#f7f7e7} 
+.just          {text-align: justify}
+-->
+</style>
+
+<META NAME="keywords" CONTENT="interview,C,function,variable number of arguments,va_list,va_arg,va_end,stdarg.h">
+<META NAME="description" CONTENT="How can I write a function that takes a variable number of arguments? What are the limitations with this? What is vprintf()? ">
+<META NAME="robots" CONTENT="FOLLOW,INDEX">
+<META HTTP-EQUIV="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+
+</HEAD>
+<BODY>
+<TABLE BORDER=0 cellpadding=10>
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER><A HREF="../index.html"><IMG SRC=../images/logo2.jpg border=0></img></A></CENTER></TD>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2>
+<CENTER>
+
+
+<!--START:ADS0-->
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"
+  src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+
+</CENTER>
+</TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER>
+
+<!--START:LINKS-->
+
+
+<TABLE BORDER=0 cellpadding=10>
+<TR><TD NOWRAP>
+<A HREF="../index.html" target="_top"><font class=announcelink>Home</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="../adfaqpublish.html" target="_top"><font class=announcelink>Questions</font></A><BR>
+</TD>
+
+
+<TD NOWRAP>
+<A href="../search.html" target="_top"><font class=announcelink>Search</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="../forum/index.html" target="_top"><font class=announcelink>Forum</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="mailto:cracktheinterview@gmail.com?subject=Hi!"><font class=announcelink>Contact</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum12a3.html" target="_top"><font class=announcelink>Guest Book</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum4d6b.html" target="_top"><font class=announcelink>Polls!</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum31e6.html" target="_top"><font class=announcelink>Got a Question?</font></A><BR>
+</TD>
+
+</TABLE>
+
+<!--END-->
+
+</CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER> &nbsp; </CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=90%% valign=top>
+
+
+
+
+
+<!--START : DATA-->
+
+
+
+<TABLE BORDER=0>
+
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="7_7.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=blueHeading>C Functions</font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="7_9.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD>
+<TD WIDTH=90%%><CENTER><font class=blueHeading>(149 / 268)</font></center></TD>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%></TD>
+<TD WIDTH=90%%><center>&nbsp;</center></TD>
+<TD WIDTH=5%%></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=announceLink><BR><BR><BR>
+<!--THE QUESTION-->
+
+How can I write a function that takes a variable number of arguments? What are the limitations with this? What is vprintf()? <BR>
+<!--END-->
+<BR></font></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=normal>
+<!--THE ANSWER--><BR>
+<!--META:START--><!--interview,C,function,variable number of arguments,va_list,va_arg,va_end,stdarg.h--><!--META:END--><BR>
+<BR>
+The header <font class=announcelink>stdarg.h</font> provides this functionality. All functions like <font class=announcelink>printf()</font>, <font class=announcelink>scanf()</font> etc use this functionality.<BR>
+<BR>
+<BR>
+The program below uses a <font class=announcelink>var_arg</font> type of function to count the overall length of strings passed to the function.<BR>
+<BR>
+<CODE><BR>
+#include&nbsp;&lt;stdarg.h><BR>
+<BR>
+int&nbsp;myfunction(char&nbsp;*first_argument,...)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;int&nbsp;length;<BR>
+&nbsp;&nbsp;&nbsp;va_list&nbsp;argp;<BR>
+&nbsp;&nbsp;&nbsp;va_start(argp,&nbsp;first);<BR>
+&nbsp;&nbsp;&nbsp;char&nbsp;*p;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;length&nbsp;=&nbsp;strlen(first_argument);<BR>
+&nbsp;&nbsp;&nbsp;while((p&nbsp;=&nbsp;va_arg(argp,&nbsp;char&nbsp;*))&nbsp;!=&nbsp;NULL)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;length&nbsp;=&nbsp;length&nbsp;+&nbsp;strlen(p);<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;va_end(argp);<BR>
+&nbsp;&nbsp;&nbsp;return(length);<BR>
+}<BR>
+<BR>
+int&nbsp;main()<BR>
+{<BR>
+&nbsp;&nbsp;int&nbsp;length;<BR>
+&nbsp;&nbsp;length&nbsp;=&nbsp;myfunction("Hello","Hi","Hey!",(char&nbsp;*)NULL);<BR>
+&nbsp;&nbsp;return(0);<BR>
+}<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+How can I <font class=announcelink>find how many arguments a function was passed</font>?<BR>
+<BR>
+Any function which takes a variable number of arguments must be able to determine <font class=announcelink>from the arguments themselves</font>, how many of them there have been passed. <font class=announcelink>printf()</font> and some similar functions achieve this by looking for the <font class=announcelink>format string</font>. This is also why these functions fail badly if the format string does not match the argument list. Another common technique, applicable when the arguments are all of the same type, is to use a sentinel value (often 0, -1, or an appropriately-cast null pointer) at the end of the list. Also, one can pass an explicit count of the number of variable arguments. Some older compilers did provided a <font class=announcelink>nargs()</font> function, but it was never portable.<BR>
+<BR>
+<BR>
+<BR>
+Is this <font class=announcelink>allowed?</font><BR>
+<BR>
+<CODE><BR>
+int&nbsp;f(...)<BR>
+{<BR>
+&nbsp;&nbsp;...<BR>
+}<BR>
+</CODE><BR>
+<BR>
+<font class=announcelink>No!</font> Standard C requires at least one fixed argument, in part so that you can hand it to <font class=announcelink>va_start()</font>.<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+So how do I get <font class=announcelink>floating point numbers passed as arguments</font>?<BR>
+<BR>
+Arguments of type <font class=announcelink>float are always promoted to type double</font>, and types <font class=announcelink>char and short int are promoted to int</font>. Therefore, it is <font class=announcelink>never correct</font> to invoke <BR>
+<BR>
+<CODE><BR>
+va_arg(argp,&nbsp;float);&nbsp;<BR>
+</CODE><BR>
+<BR>
+instead you should always use <BR>
+<BR>
+<CODE><BR>
+va_arg(argp,&nbsp;double)<BR>
+</CODE> <BR>
+<BR>
+Similarly, use <BR>
+<BR>
+<CODE><BR>
+va_arg(argp,&nbsp;int)<BR>
+</CODE><BR>
+<BR>
+to retrieve arguments which were originally <font class=announcelink>char, short, or int</font>.<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+How can I <font class=announcelink>create a function which takes a variable number of arguments and passes them to some other function (which takes a variable number of arguments)</font>?<BR>
+<BR>
+You should provide a version of that other function which accepts a <font class=announcelink>va_list</font> type of pointer. <BR>
+<BR>
+<BR>
+<BR>
+So how can I call a <font class=announcelink>function with an argument list built up at run time</font>?<BR>
+<BR>
+There is no portable way to do this. Instead of an actual argument list, you might want to pass an array of generic (void *) pointers. The called function can then step through the array, much like main() steps through char *argv[]. <BR>
+<BR>
+<BR>
+<BR>
+<BR>
+What is the use of <font class=announcelink>vprintf()</font>, <font class=announcelink>vfprintf()</font> and <font class=announcelink>vsprintf()</font>?<BR>
+<BR>
+Below, the  myerror() function prints an error message, preceded by the string "error: " and terminated with a newline:<BR>
+<BR>
+<CODE><BR>
+#include&nbsp;&lt;stdio.h><BR>
+#include&nbsp;&lt;stdarg.h><BR>
+void&nbsp;myerror(char&nbsp;*fmt,&nbsp;...)<BR>
+{<BR>
+&nbsp;&nbsp;va_list&nbsp;argp;<BR>
+&nbsp;&nbsp;fprintf(stderr,&nbsp;"error:&nbsp;");<BR>
+&nbsp;&nbsp;va_start(argp,&nbsp;fmt);<BR>
+&nbsp;&nbsp;vfprintf(stderr,&nbsp;fmt,&nbsp;argp);<BR>
+&nbsp;&nbsp;va_end(argp);<BR>
+&nbsp;&nbsp;fprintf(stderr,&nbsp;"\n");<BR>
+}<BR>
+</CODE> 
+<BR><BR>
+<!--END-->
+</font><BR></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="7_7.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=notelink><A href="mailto:cracktheinterview@gmail.com?subject=Comments [How can I write a function that takes a variable number of arguments? What are the limitations with this? What is vprintf()? ]&Body=Question : [How can I write a function that takes a variable number of arguments? What are the limitations with this? What is vprintf()? ]"><font class=announcelink>COMMENTS</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><A HREF=../adfaqpublish.html>INDEX</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><a href="#" onclick="window.print();return false;">PRINT</a></font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="7_9.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<BR><BR><BR><font class=notelink>
+Last updated:
+
+July 8, 2005<BR><BR>
+<a href=../index.html>www.cracktheinterview.com</a> - Your destination for the most common IT interview questions, answers, frequently asked interview questions (FAQ), C Programs, C Datastructures for interviews conducted by Microsoft, Oracle, Google, IBM, HP, Yahoo, Infosys, Wipro, SAP, CA (Computer Associates), Sun, Adobe, GE, Novell, Cisco, Motorola, TI (Texas Instruments), Intel, TCS, iFlex, Trilogy, MindTree, GS and more...<br><BR>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+
+<!--END-->
+
+
+</TD>
+
+
+
+
+<TD WIDTH=10%% valign="top">
+
+
+<!--START:ADS1-->
+
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_alternate_color = "CCCCCC";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript" src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"  src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+</TD>
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+</BODY>
+
+<!-- Mirrored from www.cracktheinterview.com by HTTrack Website Copier/3.x [XR,YP'2001] -->
+</HTML>
+
+

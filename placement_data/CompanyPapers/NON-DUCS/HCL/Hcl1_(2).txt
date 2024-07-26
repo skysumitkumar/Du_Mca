@@ -1,0 +1,715 @@
+Section I - C Programming
+1. Which of the following about the following two declaration is 
+true
+i ) int *F()
+ii) int (*F)()
+Choice :
+a) Both are identical
+b) The first is a correct declaration and the second is wrong
+c) The first declaraion is a function returning a pointer to an 
+integer
+and
+the
+second is a pointer to function returning int
+d) Both are different ways of declarin pointer to a function
+Answer : c) The first de...
+2. What are the values printed by the following program?
+#define dprint(expr) printf(#expr "=%d\n",expr)
+main()
+{
+int x=7;
+int y=3;
+dprintf(x/y);
+}
+Choice:
+a) #2 = 2 b) expr=2 c) x/y=2 d) none
+Answer: c)x/y=2
+3. Which of the following is true of the following program
+main()
+{
+char *c;
+int *p;
+c =(char *)malloc(100);
+ip=(int *)c;
+free(ip);
+}
+ans: The code functions properly releasing all the memory 
+allocated
+4.output of the following.
+main()
+{
+int i;
+char *p;
+i=0X89;
+p=(char *)i;
+p++;
+ printf("%x\n",p);
+}
+ans:0X8A
+5.which of the following is not a ANSI C language keyword?
+ans:Function.
+6. When an array is passed as parameter to a function, which of 
+the
+following
+statement is correct
+choice:
+a) The function can change values in the original array
+b) In C parameters are passed by value. The funciton cannot change 
+the
+original
+value in the array
+c) It results in compilation error when the function tries to 
+access
+the
+elements in the array
+d) Results in a run time error when the funtion tries to access 
+the
+elements
+in
+the array
+Answer: a) The fu...
+7. The type of the controlling _expression of a switch statement 
+cannot
+be of
+the type
+a) int b) char c) short d)float e) none
+Answer : d)float
+8.What is the value of the _expression (3^6) + (a^a)?
+a) 3 b) 5 c) 6 d) a+18 e) None
+Answer : 5
+9. What is the value assigned to the variable X if b is 7 ?
+X = b>8 ? b <<3 : b>4 ? b>>1:b;
+a) 7 b) 28 c) 3 d) 14 e) None
+ans: 3;
+10. Which is the output produced by the following program
+main()
+{
+int n=2;
+printf("%d %d\n", ++n, n*n);
+}
+a) 3,6 b) 3,4 c) 2,4 d) cannot determine
+Answer : b) 3,4
+11. What is th output of the following program?
+int x= 0x65;
+main()
+{
+char x;
+printf("%d\n",x)
+}
+a) compilation error b) 'A' c) 65 d) unidentified
+12. What is the output of the following program
+main()
+{
+int a=10;
+int b=6;
+if(a=3)
+b++;
+printf("%d %d\n",a,b++);
+}
+a) 10,6 b)10,7 c) 3,6 d) 3,7 e) none
+Answer : d) 3,7
+13. What can be said of the following program?
+main()
+{
+enum Months {JAN =1,FEB,MAR,APR};
+Months X = JAN;
+if(X==1)
+{
+printf("Jan is the first month");
+}
+}
+a) Does not print anything
+b) Prints : Jan is the first month
+c) Generates compilation error
+d) Results in runtime error
+Answer: b) Prints : Jan..
+14. What is the output of the following program?
+main()
+{
+char *src = "Hello World";
+char dst[100];
+strcpy(src,dst);
+printf("%s",dst);
+}
+strcpy(char *dst,char *src)
+{
+while(*src) *dst++ = *src++;
+}
+a) "Hello World" b)"Hello" c)"World" d) NULL e) unidentified
+Answer: d) NULL
+15. What is the output of the following program?
+main()
+{
+int l=6;
+switch(l)
+{ default : l+=2;
+case 4: l=4;
+case 5: l++;
+break;
+}
+printf("%d",l);
+}
+a)8 b)6 c)5 d)4 e)none
+Answer : c)5
+16. What is the output of the following program?
+main()
+{
+int x=20;
+int y=10;
+swap(x,y);
+printf("%d %d",y,x+2);
+}
+swap(int x,int y)
+{
+int temp;
+temp =x;
+x=y;
+y=temp;
+}
+a)10,20 b) 20,12 c) 22,10 d)10,22 e)none
+Answer:d)10,22
+17. What is the output of the following problem ?
+#define INC(X) X++
+main()
+{
+int X=4;
+printf("%d",INC(X++));
+}
+a)4 b)5 c)6 d)compilation error e) runtime error
+Answer : d) compilation error
+
+18. what can be said of the following
+struct Node {
+char *word;
+int count;
+struct Node left;
+struct Node right;
+}
+a) Incorrect definition
+b) structures cannot refer to other structure
+c) Structures can refer to themselves. Hence the statement is OK
+d) Structures can refer to maximum of one other structure
+Answer :c)
+19. What is the size of the following union.
+Assume that the size of int =2, size of float =4 and size of char 
+=1.
+Union Tag{
+int a;
+flaot b;
+char c;
+};
+a)2 b)4 c)1 d) 7
+ 
+20) What is the output of the following program? (. has been used 
+to
+indicate
+a
+space)
+main()
+{
+char s[]="Hello,.world";
+printf(%15.10s",s);
+}
+a)Hello,.World...
+b)....Hello,.Wor
+c)Hello,.Wor....
+d)None of the above
+
+SECTION II - ANALYSIS PROGRAM SEGMENTS
+---------------------------------------
+1) Here is the structure declaration of a doubly linked list
+struct dlink {
+int nodeid;
+struct dlink *next;
+struct dlink *prev;
+} dlink_t;
+A pointer of the head of the linked list is maintained as a 
+global
+variable,
+whose definition is
+dlink_t *head;
+The funtion remove_element(dlink_t *rp), needs to remove the 
+node
+pointed to
+the rp and adjust the head.
+The first node's prev and the last node's next are NULL.
+remove_element(dlink_t *rp)
+{
+rp->prev->next = rp->next;
+rp->next->prev = rp->prev;
+if( head == rp)
+head = rp->next;
+Which of the following statement is true about the fution
+remove_element
+A) It work when head is the same as rp
+B) It does not work when rp is the last element on the list
+c) It sets the head of the list correctly
+D) It works in all cases
+Answer :B) It does...
+2) Consider the following function written in c:
+#define NULL 0
+char *
+index(sp,c)
+register char *sp,c;
+{
+do {
+if(*sp == c)
+return (sp);
+} while (*sp++);
+return NULL;
+}
+The first argument sp, is a pointer to a C string. The second
+argument, c, is a character. This function scarches for the 
+character
+c, in the string. If it is found a pointer to that location is 
+returned
+else NULL is returned.
+This function works
+a) Always
+b) Always, but fails when the first byte contais the character c
+c) works when c is a non NULL character only
+d) Works only when the character c is found in the string
+ans: a
+03) What is printed when this program is executed
+main()
+{
+printf ("%d\n",f(7));
+}
+f(X)
+{
+if (x<= 4)
+return x;
+return f(--x);
+}
+a) 4
+b) 5
+c) 6
+d) 7
+ans: a
+04) On a machine where pointers are 4 bytes long, what happens 
+when the
+following code is executed.
+main()
+{
+int x=0,*p=0;
+x++; p++;
+printf ("%d and %d\n",x,p);
+}
+a) 1 and 1 is printed
+b) 1 and 4 is printed
+c) 4 and 4 is printed
+d) causes an exception
+05) Which of the following is the correct code for strcpy, that 
+is
+used to copy the contents from src to dest?
+a) strcpy (char *dst,char *src)
+{
+while (*src)
+*dst++ = *src++;
+}
+b) strcpy (char *dst,char *src)
+{
+while(*dst++ = *src++)
+}
+c) strcpy (char *dst,char *src)
+{
+while(*src)
+{ *dst = *src;
+dst++; src++;
+}
+}
+d) strcpy(char *dst, char *src)
+{
+while(*++dst = *++src);
+}
+ans:b
+6) Consider the following program
+main()
+{
+int i=20,*j=&i;
+f1(j);
+*j+=10;
+f2(j);
+printf("%d and %d",i,*j);
+}
+f1(k)
+int *k;
+{
+*k +=15;
+}
+f2(x)
+int *x;
+{
+int m=*x,*n=&m;
+*n += 10;
+}
+The values printed by the program will be
+a) 20 and 55
+b) 20 and 45
+c) 45 and 45
+d) 45 and 55
+e) 35 and 35
+
+7) what is printed when the following program is compiled and 
+executed?
+
+int
+func (int x)
+{
+if (x<=0)
+return(1);
+return func(x -1) +x;
+}
+main()
+{
+printf("%d\n",func(5));
+}
+a) 12
+b) 16
+c) 15
+d) 11
+08) COnsider the following of c code in two files which will be 
+linked
+together
+and executed .
+a.c
+___
+int i;
+main()
+{
+i = 30;
+f1();
+printf("
+Section A
+1. Which of the following involves context switch,
+(a) system call
+(b) priviliged instruction
+(c) floating poitnt exception
+(d) all the above
+(e) none of the above
+Ans: (a)
+
+2. In OST, terminal emulation is done in
+(a) sessions layer
+(b) application layer
+(c) presentation layer
+(d) transport layer
+Ans: (b)
+
+3. For a  25MHz processor , what is the time taken by the 
+instruction
+which needs 3 clock cycles,
+(a)120 nano secs
+(b)120 micro secs
+(c)75 nano secs
+(d)75 micro secs
+
+4. For 1 MB memory, the  number of address lines required,
+(a)11
+(b)16
+(c)22
+(d) 24
+Ans. (b)
+
+5. Semaphore is used for
+(a) synchronization
+(b) dead-lock avoidence
+(c) box
+(d) none
+Ans. (a)
+
+6. Which holds true for the following statement
+      class c: public A, public B
+a) 2 member in class A, B should not have same name
+b) 2 member in class A, C should not have same name
+c) both
+d) none
+Ans. (a)
+7. Question related to java
+8. OLE is used in
+a) inter connection in unix
+b) interconnection in WINDOWS
+c) interconnection in WINDOWS NT
+9. Convert a given HEX number to OCTAL
+10. Macros and function are related in what aspect?
+(a)recursion
+(b)varying no of arguments
+(c)hypochecking
+(d)type declaration
+11.Preproconia.. does not do which one of the following
+(a) macro
+(b) conditional compliclation
+(c) in type checking
+(d) including load file
+Ans. (c)
+12. Piggy backing is a technique for
+) Flow control
+b) Sequence
+c) Acknowledgement
+d) retransmition
+Ans. (c)
+13. In signed magnitude notation what is the minimum value that 
+can be
+represented with 8 bits
+(a) -128
+(b) -255
+(c) -127
+(d) 0
+Section B
+1. Given the following statement
+enum day = { jan = 1 ,feb=4, april, may}
+What is the value of may?
+(a) 4
+(b) 5
+(c) 6
+(d) 11
+(e) None of the above
+2. Find the output for the following C program
+main
+{int x,j,k;
+j=k=6;x=2;
+x=j*k;
+printf("%d", x);
+
+3. Find the output for the following C program
+fn f(x)
+{ if(x<=0)
+return;
+else f(x-1)+x;
+}
+
+4. Find the output for the following C program
+i=20,k=0;
+for(j=1;j<i;j=1+4*(i/j))
+{k+=j<10?4:3;
+}
+printf("%d", k);
+Ans. k=4
+
+5. Find the output for the following C program
+int i =10
+main()
+{int i =20,n;
+for(n=0;n<=i;)
+{int i=10;
+i++;
+}
+printf("%d", i);
+Ans. i=20
+
+6. Find the output for the following C program
+int x=5;
+y= x&y
+
+7.Find the output for the following C program
+Y=10;
+if( Y++>9 && Y++!=10 && Y++>10)
+{printf("%d", Y);
+else
+printf("%d", Y);
+}
+Ans. 13
+
+8. Find the output for the following C program
+f=(x>y)?x:y
+a) f points to max of x and y
+b) f points to min of x and y
+c)error
+Ans. (a)
+
+9. What is the sizeof(long int)
+(a) 4 bytes
+(b) 2 bytes
+(c) compiler dependent
+(d) 8 bytes
+ 
+10. Which of the function operator cannot be over loaded
+(a)  <=
+(b) ?:
+(c) ==
+(d) *
+
+11. Find the output for the following C program
+main()
+{intx=2,y=6,z=6;
+x=y==z;
+printf(%d",x)
+}
+ 
+Section C (Programming Skills)
+Answer the questions based on the following program
+STRUCT DOUBLELIST
+{ DOUBLE CLINKED
+INT DET; LIST VOID
+STRUCT PREVIOUS; (BE GIVEN AND A PROCEDURE TO DELETE)
+STRUCT NEW; (AN ELEMENT WILL BE GIVEN)
+}
+DELETE(STRUCT NODE)
+{NODE-PREV-NEXT NODE-NEXT;
+NODE-NEXT-PREV NODE-PREV;
+IF(NODE==HEAD)
+NODE
+}
+Q. In what case the prev was
+(a) All cases
+(b) It does not work for the last element
+(c) It does not for the first element
+(d) None of these
+ 
+Answer the questions based on the following program
+VOID FUNCTION(INT KK)
+{KK+=20;
+}
+VOID FUNCTION (INT K)
+INT MM,N=&M
+KN = K
+KN+-=10;
+}
+
+Q. What is the output of the following program
+main()
+{ int var=25,varp;
+varp=&var;
+varp p = 10;
+fnc(varp)
+printf("%d%d,var,varp);
+}
+(a) 20,55
+(b) 35,35
+(c) 25,25
+(d)55,55
+ 
+Section D
+1. a=2, b=3, c=6
+     Find the value of c/(a+b)-(a+b)/c
+
+2. What does the hexanumber E78 in radix 7.
+(a) 12455
+(b) 14153
+(c) 14256
+(d) 13541
+(e) 131112
+Ans. (d)
+
+3. 10 : 4 seconds :: ? : 6 minutes
+Ans. 900
+
+4. Q is not equal to zero and k = (Q x n - s)/2.What is  n?
+(a) (2 x k + s)/Q
+(b) (2 x s x k)/Q
+(c) (2 x k - s)/Q
+(d) (2 x k + s x Q)/Q
+(e) (k + s)/Q
+Questions 6 - 10 are to be answered on the following data
+A causes B or C, but not both
+F occurs only if B occurs
+D occurs if B or C occurs
+E occurs only if C occurs
+J occurs only if E or F occurs
+D causes G,H or both
+H occurs if E occurs
+G occurs if F occurs
+6. If A occurs which of the following must occurs
+I.  F and G
+II. E and H
+III. D
+(a) I only
+(b) II only
+(c) III only
+(d) I,II, & III
+(e) I & II (or) II & III but not both
+Ans. (e)
+
+7. If B occurs which must occur
+(a) D
+(b) D and G
+(c) G and H
+(d) F and G
+(e) J
+Ans. (a)
+
+8. If J occurs which must have occured
+(a) E
+(b) either B or C
+(c) both E & F
+(d) B
+(e) both B & C
+Ans. (b)
+
+9. Which may occurs as a result of cause not mentioned
+I. D
+II. A
+III. F
+(a) I only
+(b) II only
+(c) I & II
+(d) II & III
+(e) I,II & III
+Ans. (c)
+10. E occurs which one cannot occurs
+(a) A
+(b) F
+(c) D
+(d) C
+(e) J
+
+HCL Technology Interview
+------------------------------------
+Technical interview is held for 30 min to 1 hr 20min depending 
+upon
+the stuff. Concentrated areas are
+1) OS Concepts
+2) C Programming skill
+3) OOPs concepts
+4) Basics of Networking
+5) Data structures
+Only basic QP like
+1) What is fragmentation? How do overcome?
+2) What is semaphore?
+3) What are the IPC Mechanism available? Illustrate with example
+4) What is structure and union in c? write the code and explain
+how they are storing in the memory?
+5) They will ask to write one c program ?
+6) Explain the data struture (code) for the data structures
+i) Double linklist
+ii) Minimum spanning tree
+v) Reverse the linklist
+7) Difference between malloc and calloc?
+8) write a prg in macro in c?
+9) Write a simple MFC program to create a window? (They aaked me
+write a prg to create a window)
+10) Tell about the existing scheduling algorithm?
+11) what are all E.F.Codd rule?
+12) what is bit slice processor?
+13) what is a deadlock? explain it?
+14) what is virtual memory?
+15) what is circuit switching and packet switching
+16) What is the significance of friend keyword in C++?
+17) Different types of inheritance?
+18) do u want to ask anything from us?
+HR interview
+------------
+This ranges from 20 min to 45 min. They expecting ur
+i) Focussing towards the technology
+ii) Adaptability
+iii) Family Background
+iv) Team spirit
+i) Tell abt yourself?
+ii) what are all ur hobbies?
+iii)why did u prefer your area of interest?
+iv) why did u wanna be in HCL?
+v) why did u choose MCA?
+vi) howz interview is going on?
+vii) Some general technical qp from ur area of interest?
+viii) how'll u react if u r assigned in the non area of 
+interest?
+(adaptability)
+ix) how're getting information abt the company?
+(weightage is given to communciating with the seniors)
+x) In which project do u want to work in HCL?
+xi) do u want to ask anything from us?
+___________________________________________________
+
+ SMS using the Yahoo! Messenger; Download latest version. 
+
+

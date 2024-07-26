@@ -1,0 +1,74 @@
+<html><head>
+<title>Solution for /logic/hofstadter</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /logic/hofstadter problem</h1>
+<hr>
+Well, one summer, I decided to tackle the problem. Not having any great
+knowledge of number theory, I used a more brute force approach. Note
+that for greater comprehensibility, I have broken the resulting formula
+up into several stages, but it would not be difficult to put it
+back together into one vast formula:
+
+<pre>
+{e is prime:}
+PRIME(e) := 
+   ~Eb:Ec:((b+2)*(c+2) = e)
+
+{if e is a prime, true iff a is a power of e:}
+PPOWER(a,e) :=
+   Ab:Ac:((b*c = a) -&gt; ((b = 1) or (Ed: (e*d) = b)))
+
+{if e is a prime, and a is a power of e, true iff d is the
+ (log_e a)th digit (counting from the right, starting with 0)
+ in the base-e expansion of n:}
+DIG(a,e,d,n) :=
+   (d &lt; e) &amp; Eb:Ec:((c &lt; a) &amp; (n = (b*e*a) + (d*a) + c))
+
+{if e is prime, and a is a power of e, true iff n has exactly
+ (log_e a) digits in its base-e expansion (0 is counted as having 0
+ digits:}
+LENGTH(e,a,n):=
+   (n &lt; a) &amp; Ab:((PPOWER(b,e) &amp; (b &lt; a)) -&gt; (b &lt;= n))
+
+POWER_OF_TEN(x):=
+   Ee:(PRIME(e) &amp; (e &gt; x) &amp;
+       En:Ea:(LENGTH(e,a,n) &amp;
+              DIG(1,e,1,n) &amp;
+              Ai:Aj:Au:(  (PPOWER(u,e) &amp; ((e*u) &lt; a)
+			   &amp; DIG(u,e,i,n) &amp; DIG(e*u,e,j,n))
+                          -&gt; j = (10 * i)  ) &amp;
+              Eu:(PPOWER(u,e) &amp; (e*u = a) &amp; DIG(u,e,x,n))
+       )     )
+</pre>
+The basic idea is that you are asserting that for some prime e greater
+than x, we can find a number n which, when expressed in base-e notation,
+will have 1 in its units place, 10 in its e's place, 100 in its (e^2)'s
+place, and in general have the "digit" in each place be 10 times
+greater than the one to its right, such that the leftmost digit is our x.
+
+<p>
+To translate into Hofstadter's notation, of course, we must use horse-shoes
+instead of -&gt;'s, big carets instead of &amp;'s, letters a through e (followed
+by however many ''s) exclusively, and so forth. (We must also replace &lt;'s
+and &lt;= with appropriate expansions, and substitute in for our capitalized
+formula abbreviations.) This is left as an exercise to the reader.
+
+<pre>
+Kevin Wald
+wald2@husc.harvard.edu
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

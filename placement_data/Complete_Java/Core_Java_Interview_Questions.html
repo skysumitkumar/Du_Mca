@@ -1,0 +1,2070 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+
+<title>Core Java Interview Questions</title>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.java-interview.com/-Java-interview-Questions-.xml">
+<style type="text/css">
+#addSiteTo {
+width:90%;
+font-size:85%;
+text-align:center;
+padding:8px 0;
+border:1px solid #000;
+margin:12px auto;
+background-color: ;
+}
+
+#addSiteTo p {
+padding:2px 2px 4px;
+margin:0;
+}
+
+#addSiteTo img {
+width:91px;
+border:0;
+padding:1px 0;
+}
+</style>
+<meta name="Description" content="This Page covers the core java interview Questions and answers and covers Language fundamentals, exception handling, conversion and casting, threads, files, collection framework, util package etc">
+<meta name="Keywords" content="Core java interview Questions">
+
+
+<script language="JavaScript" type="text/javascript">
+<!--
+
+function MM_swapImgRestore() 
+{
+    var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() 
+{
+    var d=document; 
+    if(d.images)
+    { 
+	if(!d.MM_p) d.MM_p=new Array();
+	var i,j=d.MM_p.length,a=MM_preloadImages.arguments; 
+	for(i=0; i<a.length; i++)
+	    if (a[i].indexOf("#")!=0)
+	    { 
+		d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];
+	    }
+    }
+}
+
+function MM_swapImage() 
+{
+    var i,j=0,x,a=MM_swapImage.arguments; 
+    document.MM_sr=new Array; 
+    for(i=0;i<(a.length-2);i+=3)
+	if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_openBrWindow(theURL,winName,features) 
+{
+    window.open(theURL,winName,features);
+}
+
+function MM_findObj(n, d) 
+{
+    var p,i,x;  
+    if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) 
+    {
+	d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);
+    }
+    if(!(x=d[n])&&d.all) 
+	x=d.all[n]; 
+    for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+    for(i=0;!x&&d.layers&&i<d.layers.length;i++) 
+	x=MM_findObj(n,d.layers[i].document);
+    if(!x && d.getElementById) 
+	x=d.getElementById(n); 
+    return x;
+			
+}
+//-->
+</script>
+
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_displayStatusMsg(msgStr) { //v1.0
+  status=msgStr;
+  document.MM_returnValue = true;
+}
+//-->
+</script>
+
+
+
+<style type="text/css" media="all">
+body, td
+{
+	font:13px Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color:#000;
+	margin: 0px;
+	}
+</style>
+</head><body oncontextmenu="return false" style="font-family: Arial;" onload="  MM_preloadImages('http://www.java-interview.com/imgs/index-over.gif', 'http://www.java-interview.com/imgs/java_interview_questions-over.gif', 'http://www.java-interview.com/imgs/jdbc_interview_questions-over.gif', 'http://www.java-interview.com/imgs/servlets_interview_questions-over.gif', 'http://www.java-interview.com/imgs/jsp_interview_questions-over.gif', 'http://www.java-interview.com/imgs/ejb_interview_questions-over.gif', 'http://www.java-interview.com/imgs/JMS_Interview_Questions-over.gif', 'http://www.java-interview.com/imgs/struts_interview_questions-over.gif', 'http://www.java-interview.com/imgs/Spring_Framework_Interview_Questions_Page1-over.gif', 'http://www.java-interview.com/imgs/Hibernate_Interview_Questions-over.gif', 'http://www.java-interview.com/imgs/jsf_interview_questions-over.gif', 'http://www.java-interview.com/imgs/RMI_Interview_Questions-over.gif', 'http://www.java-interview.com/imgs/Corba_Interview_Questions-over.gif', 'http://www.java-interview.com/imgs/J2ME_Interview_Questions_1-over.gif', 'http://www.java-interview.com/imgs/Java_Performance_Interview_Questions-over.gif', 'http://www.java-interview.com/imgs/Tomcat_Interview_Questions-over.gif', 'http://www.java-interview.com/imgs/Weblogic_Interview_Questions-over.gif', 'http://www.java-interview.com/imgs/design_patterns_interview_questions-over.gif', 'http://www.java-interview.com/imgs/Junit_Interview_Questions-over.gif', 'http://www.java-interview.com/imgs/XML_Interview_questions-over.gif', 'http://www.java-interview.com/imgs/UML_Interview_Questions-over.gif', 'http://www.java-interview.com/imgs/DB2_SQL_Interview_Questions_Page_1-over.gif', 'http://www.java-interview.com/imgs/Oracle_Interview_Questions_Page_1-over.gif', 'http://www.java-interview.com/imgs/Ant_interview_questions-over.gif', 'http://www.java-interview.com/imgs/Share_java_interview_site-over.gif', 'http://www.java-interview.com/imgs/Contact_Us-over.gif')" vlink="Purple" alink="Red" background="Core_Java_Interview_Questions_files/BACK.gif" bgcolor="#ffffff" link="Blue">
+<table width="725" align="center" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td colspan="2"><img src="Core_Java_Interview_Questions_files/logo.gif"></td>
+</tr>
+
+<tr>
+<td valign="top" width="130" background="Core_Java_Interview_Questions_files/leftimage.gif">
+<div id="Layer1" style="position: absolute; width: 130px; z-index: 1; top: 120px;">
+
+
+<a href="http://www.java-interview.com/index.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('index','','http://www.java-interview.com/imgs/index-over.gif',1)"><img name="index" src="Core_Java_Interview_Questions_files/index.gif" alt="Home" border="0"></a><br>
+<img src="Core_Java_Interview_Questions_files/Core_Java_Interview_Questions-ON.gif" alt="Core Java" border="0"><br>
+<a href="http://www.java-interview.com/java_interview_questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image1','','http://www.java-interview.com/imgs/java_interview_questions-over.gif',1)"><img name="Image1" src="Core_Java_Interview_Questions_files/java_interview_questions.gif" alt="Java" border="0"></a><br>
+<a href="http://www.java-interview.com/jdbc_interview_questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image2','','http://www.java-interview.com/imgs/jdbc_interview_questions-over.gif',1)"><img name="Image2" src="Core_Java_Interview_Questions_files/jdbc_interview_questions.gif" alt="JDBC" border="0"></a><br>
+<a href="http://www.java-interview.com/servlets_interview_questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image3','','http://www.java-interview.com/imgs/servlets_interview_questions-over.gif',1)"><img name="Image3" src="Core_Java_Interview_Questions_files/servlets_interview_questions.gif" alt="Servlets" border="0"></a><br>
+<a href="http://www.java-interview.com/jsp_interview_questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image4','','http://www.java-interview.com/imgs/jsp_interview_questions-over.gif',1)"><img name="Image4" src="Core_Java_Interview_Questions_files/jsp_interview_questions.gif" alt="JSP" border="0"></a><br>
+<a href="http://www.java-interview.com/ejb_interview_questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image5','','http://www.java-interview.com/imgs/ejb_interview_questions-over.gif',1)"><img name="Image5" src="Core_Java_Interview_Questions_files/ejb_interview_questions.gif" alt="EJB" border="0"></a><br>
+<a href="http://www.java-interview.com/JMS_Interview_Questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image6','','http://www.java-interview.com/imgs/JMS_Interview_Questions-over.gif',1)"><img name="Image6" src="Core_Java_Interview_Questions_files/JMS_Interview_Questions.gif" alt="JMS" border="0"></a><br>
+<a href="http://www.java-interview.com/struts_interview_questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image7','','http://www.java-interview.com/imgs/struts_interview_questions-over.gif',1)"><img name="Image7" src="Core_Java_Interview_Questions_files/struts_interview_questions.gif" alt="Struts" border="0"></a><br>
+<a href="http://www.java-interview.com/Spring_Framework_Interview_Questions_Page1.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image8','','http://www.java-interview.com/imgs/Spring_Framework_Interview_Questions_Page1-over.gif',1)"><img name="Image8" src="Core_Java_Interview_Questions_files/Spring_Framework_Interview_Questions_Page1.gif" alt="Spring" border="0"></a><br>
+<a href="http://www.java-interview.com/Hibernate_Interview_Questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','http://www.java-interview.com/imgs/Hibernate_Interview_Questions-over.gif',1)"><img name="Image9" src="Core_Java_Interview_Questions_files/Hibernate_Interview_Questions.gif" alt="Hibernate" border="0"></a><br>
+<a href="http://www.java-interview.com/jsf_interview_questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','http://www.java-interview.com/imgs/jsf_interview_questions-over.gif',1)"><img name="Image10" src="Core_Java_Interview_Questions_files/jsf_interview_questions.gif" alt="JSF" border="0"></a><br>
+<a href="http://www.java-interview.com/RMI_Interview_Questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image11','','http://www.java-interview.com/imgs/RMI_Interview_Questions-over.gif',1)"><img name="Image11" src="Core_Java_Interview_Questions_files/RMI_Interview_Questions.gif" alt="RMI" border="0"></a><br>
+<a href="http://www.java-interview.com/Corba_Interview_Questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','http://www.java-interview.com/imgs/Corba_Interview_Questions-over.gif',1)"><img name="Image12" src="Core_Java_Interview_Questions_files/Corba_Interview_Questions.gif" alt="CORBA" border="0"></a><br>
+<a href="http://www.java-interview.com/J2ME_Interview_Questions_1.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image13','','http://www.java-interview.com/imgs/J2ME_Interview_Questions_1-over.gif',1)"><img name="Image13" src="Core_Java_Interview_Questions_files/J2ME_Interview_Questions_1.gif" alt="J2ME" border="0"></a><br>
+<a href="http://www.java-interview.com/Java_Performance_Interview_Questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image14','','http://www.java-interview.com/imgs/Java_Performance_Interview_Questions-over.gif',1)"><img name="Image14" src="Core_Java_Interview_Questions_files/Java_Performance_Interview_Questions.gif" alt="Performance" border="0"></a><br>
+<a href="http://www.java-interview.com/Tomcat_Interview_Questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image15','','http://www.java-interview.com/imgs/Tomcat_Interview_Questions-over.gif',1)"><img name="Image15" src="Core_Java_Interview_Questions_files/Tomcat_Interview_Questions.gif" alt="Tomcat" border="0"></a><br>
+<a href="http://www.java-interview.com/Weblogic_Interview_Questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image16','','http://www.java-interview.com/imgs/Weblogic_Interview_Questions-over.gif',1)"><img name="Image16" src="Core_Java_Interview_Questions_files/Weblogic_Interview_Questions.gif" alt="Weblogic" border="0"></a><br>
+<a href="http://www.java-interview.com/design_patterns_interview_questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image17','','http://www.java-interview.com/imgs/design_patterns_interview_questions-over.gif',1)"><img name="Image17" src="Core_Java_Interview_Questions_files/design_patterns_interview_questions.gif" alt="Design Patterns" border="0"></a><br>
+<a href="http://www.java-interview.com/Junit_Interview_Questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image18','','http://www.java-interview.com/imgs/Junit_Interview_Questions-over.gif',1)"><img name="Image18" src="Core_Java_Interview_Questions_files/Junit_Interview_Questions.gif" alt="Junit" border="0"></a><br>
+<a href="http://www.java-interview.com/XML_Interview_questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image19','','http://www.java-interview.com/imgs/XML_Interview_questions-over.gif',1)"><img name="Image19" src="Core_Java_Interview_Questions_files/XML_Interview_questions.gif" alt="XML" border="0"></a><br>
+<a href="http://www.java-interview.com/UML_Interview_Questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image20','','http://www.java-interview.com/imgs/UML_Interview_Questions-over.gif',1)"><img name="Image20" src="Core_Java_Interview_Questions_files/UML_Interview_Questions.gif" alt="UML" border="0"></a><br>
+<a href="http://www.java-interview.com/DB2_SQL_Interview_Questions_Page_1.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image21','','http://www.java-interview.com/imgs/DB2_SQL_Interview_Questions_Page_1-over.gif',1)"><img name="Image21" src="Core_Java_Interview_Questions_files/DB2_SQL_Interview_Questions_Page_1.gif" alt="DB2 &amp; SQL" border="0"></a><br>
+<a href="http://www.java-interview.com/Oracle_Interview_Questions_Page_1.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image22','','http://www.java-interview.com/imgs/Oracle_Interview_Questions_Page_1-over.gif',1)"><img name="Image22" src="Core_Java_Interview_Questions_files/Oracle_Interview_Questions_Page_1.gif" alt="Oracle" border="0"></a><br>
+<a href="http://www.java-interview.com/Ant_interview_questions.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image23','','http://www.java-interview.com/imgs/Ant_interview_questions-over.gif',1)"><img name="Image23" src="Core_Java_Interview_Questions_files/Ant_interview_questions.gif" alt="ANT" border="0"></a><br>
+<a href="http://www.java-interview.com/Share_java_interview_site.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image24','','http://www.java-interview.com/imgs/Share_java_interview_site-over.gif',1)"><img name="Image24" src="Core_Java_Interview_Questions_files/Share_java_interview_site.gif" alt="Free Gift" border="0"></a><br>
+<a href="http://www.java-interview.com/Contact_Us.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image25','','http://www.java-interview.com/imgs/Contact_Us-over.gif',1)"><img name="Image25" src="Core_Java_Interview_Questions_files/Contact_Us.gif" alt="Contact Us" border="0"></a><br>
+
+<br><div id="addSiteTo"><p>[<a href="#RSSExplain" onclick="javascript:window.open('http://www.java-interview.com/help/rss.html','help','resizable,status,scrollbars,width=600,height=500');return false;"><span style="font-weight: bold; font-size: 110%;">?</span></a>] Subscribe To<br>This Site</p><a href="http://www.java-interview.com/-Java-interview-Questions-.xml" target="new" onclick="alert('Sorry, please right-click on this button, and then copy the shortcut (the URL of this link). Paste that URL into your RSS reader. If this message is confusing, close this window and then please click on the question mark next to &quot;Subscribe to This Site&quot;.'); return false;"><img style="padding-top: 2px;" src="Core_Java_Interview_Questions_files/rss.jpg" alt="XML RSS"></a><br><a href="http://fusion.google.com/add?feedurl=http://www.java-interview.com/-Java-interview-Questions-.xml" target="new"><img src="Core_Java_Interview_Questions_files/googleplus.gif" alt="Add to Google"></a><br><a href="http://add.my.yahoo.com/rss?url=http://www.java-interview.com/-Java-interview-Questions-.xml" target="new"><img src="Core_Java_Interview_Questions_files/addtomyyahoo4.gif" alt="Add to My Yahoo!"></a><br><a href="http://my.msn.com/addtomymsn.armx?id=rss&amp;ut=http://www.java-interview.com/-Java-interview-Questions-.xml" target="new"><img src="Core_Java_Interview_Questions_files/add-mymsn2.gif" alt="Add to My MSN"></a><br><a href="http://www.newsgator.com/ngs/subscriber/subext.aspx?url=http://www.java-interview.com/-Java-interview-Questions-.xml" target="new"><img src="Core_Java_Interview_Questions_files/ngsub1.gif" alt="Add to Newsgator"></a><br><a href="http://www.bloglines.com/sub/http://www.java-interview.com/-Java-interview-Questions-.xml" target="new"><img src="Core_Java_Interview_Questions_files/bloglines.gif" alt="Subscribe with Bloglines"></a></div>
+</div>
+<img src="Core_Java_Interview_Questions_files/leftimage.gif"></td>
+<td valign="top" width="595">
+<table width="550" border="0" cellpadding="8" cellspacing="0">
+<tbody><tr>
+<td width="15">&nbsp;</td>
+<td>
+<h2 style="text-align: center;">Core Java Interview Questions</h2>
+<p style="text-align: center;">
+<script type="text/javascript">
+var omitformtags=["input", "textarea", "select"]
+omitformtags=omitformtags.join("|")
+function disableselect(e){
+if (omitformtags.indexOf(e.target.tagName.toLowerCase())==-1)
+return false
+}
+function reEnable(){
+return true
+}
+if (typeof document.onselectstart!="undefined")
+document.onselectstart=new Function ("return false")
+else{
+document.onmousedown=disableselect
+document.onmouseup=reEnable
+}
+</script><table style="width: 80%; margin-left: auto; margin-right: auto; text-align: justify;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr align="left">
+<td style="vertical-align: top;">
+<!-- Begin: AdBrite --><script type="text/javascript">
+var AdBrite_Title_Color = '000000';
+var AdBrite_Text_Color = '000000';
+var AdBrite_Background_Color = 'FFFFFF';
+var AdBrite_Border_Color = 'FFFFFF';
+</script><span style="white-space: nowrap;"><script src="Core_Java_Interview_Questions_files/text_group.js" type="text/javascript"></script><iframe name="AdBriteFrame_bfafa5f7_cf34_40aa_b4e4_5f253b197052" scrolling="no" width="728" frameborder="0" height="90"></iframe><script type="text/javascript"><!--
+AdBriteRender_bfafa5f7_cf34_40aa_b4e4_5f253b197052();
+//--></script><span id="adbriteinline_931210571" name="undefined"><script type="text/javascript" src="Core_Java_Interview_Questions_files/inline_url_keywords.txt"></script><script type="text/javascript" src="Core_Java_Interview_Questions_files/inline_keywords.txt"></script><script type="text/javascript" src="Core_Java_Interview_Questions_files/inline_ad.js"></script></span><!----><a target="_top" href="http://www.adbrite.com/mb/commerce/purchase_form.php?opid=199624&amp;afsid=1"><img src="Core_Java_Interview_Questions_files/adbrite-your-ad-here-leaderboard.gif" style="background-color: rgb(255, 255, 255);" alt="Your Ad Here" width="14" border="0" height="90"></a></span><!-- End: AdBrite --></td>
+</tr>
+</tbody>
+</table>
+</p><p style="text-align: center;" align="center"><span style="font-size: 14pt; font-family: Arial;"><b>Following topics are
+covered under Core java.</b><br>
+</span></p>
+<table style="width: 80%; margin-left: auto; margin-right: auto;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top; text-align: left;"><a href="#Language_Fundamentals">Language Fundamentals</a><br>
+</td>
+<td style="vertical-align: top; text-align: left;"><a href="#Operators_and_assignment">Operators and assignment</a><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top; text-align: left;"><a href="#Modifiers">Modifiers</a><br>
+</td>
+<td style="vertical-align: top; text-align: left;"><a href="#Conversion_Casting_and_Promotion">Conversion Casting and
+Promotion</a><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top; text-align: left;"><a href="#Flow_Control_and_exception">Flow Control and exception</a><br>
+</td>
+<td style="vertical-align: top; text-align: left;"><a href="#Objects_and_Classes">Objects and Classes</a><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top; text-align: left;"><a href="#Threads">Threads</a><br>
+</td>
+<td style="vertical-align: top; text-align: left;"><a href="#java.lang__java.util_Packages">java.lang &amp; java.util
+Packages</a><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top; text-align: left;"><br>
+</td>
+<td style="vertical-align: top; text-align: left;"><br>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: center;" align="center"><span style="font-size: 11pt; font-family: Arial;"><o:p></o:p></span></p>
+<b style=""><span style="font-size: 16pt; font-family: Arial;"><o:p></o:p></span></b><br>
+<p>
+</p>
+<table style="width: 80%; margin-left: auto; margin-right: auto; text-align: justify;" border="0" cellpadding="2" cellspacing="2">
+<tbody>
+<tr align="left">
+<td style="vertical-align: top;">
+<h3><a name="Language_Fundamentals"></a>Language
+Fundamentals</h3>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><b style="">How many
+<a style="background: transparent url(http://files.adbrite.com/mb/images/green-double-underline-006600.gif) repeat-x scroll center bottom; cursor: pointer; color: rgb(0, 102, 0); text-decoration: none; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; margin-bottom: -2px; padding-bottom: 2px;" name="AdBriteInlineAd_number" id="AdBriteInlineAd_number" target="_top">number</a> of
+non-public class definitions can a source file have</b></td>
+</tr>
+<tr>
+<td style="vertical-align: top;"> A source
+file can
+contain
+unlimited number of non-public class definitions </td>
+</tr>
+<tr>
+<td style="vertical-align: top;"> <b style=""><a href="http://click.svx.adbrite.com/mb/click.php?sid=199624&amp;banner_id=11980422&amp;variation_id=964328&amp;uts=1238060356&amp;cpc=302e30313639&amp;keyword_id=42043&amp;inline=y&amp;ab=168296527&amp;sscup=3b23b954868c01b02a8dc223af228171&amp;sscra=e75bdf3e468ac736e4a31d6d12ae0b36&amp;ub=2504740944&amp;guid=0456002be1774c1df98c3836841f8e3a&amp;rs=&amp;r=" style="background: transparent url(http://files.adbrite.com/mb/images/green-double-underline-006600.gif) repeat-x scroll center bottom; cursor: pointer; color: rgb(0, 102, 0); text-decoration: none; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; margin-bottom: -2px; padding-bottom: 2px;" name="AdBriteInlineAd_List" id="AdBriteInlineAd_List" target="_top">List</a>
+primitive data
+types, there size and there range (min, max)</b> </td>
+</tr>
+<tr>
+<td style="vertical-align: top;">
+<table style="text-align: left; width: 80%;" border="1" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top;"><b style="">Data
+Type</b></td>
+<td style="vertical-align: top;"><b style="">Bytes</b></td>
+<td style="vertical-align: top;"><b style="">bits</b></td>
+<td style="vertical-align: top;"><b style="">min</b></td>
+<td style="vertical-align: top;"><b style="">max</b></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">boolean<br>
+</td>
+<td style="vertical-align: top;">-<br>
+</td>
+<td style="vertical-align: top;">1<br>
+</td>
+<td style="vertical-align: top;">-<br>
+</td>
+<td style="vertical-align: top;">-<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">char<br>
+</td>
+<td style="vertical-align: top;">2<br>
+</td>
+<td style="vertical-align: top;">16<br>
+</td>
+<td style="vertical-align: top;">0<br>
+</td>
+<td style="vertical-align: top;">2^16-1<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">byte<br>
+</td>
+<td style="vertical-align: top;">1<br>
+</td>
+<td style="vertical-align: top;">8<br>
+</td>
+<td style="vertical-align: top;">-2^7<br>
+</td>
+<td style="vertical-align: top;">2^7-1</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">short<br>
+</td>
+<td style="vertical-align: top;">2<br>
+</td>
+<td style="vertical-align: top;">16<br>
+</td>
+<td style="vertical-align: top;">-2^15</td>
+<td style="vertical-align: top;">2^15-1</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">int<br>
+</td>
+<td style="vertical-align: top;">4<br>
+</td>
+<td style="vertical-align: top;">32<br>
+</td>
+<td style="vertical-align: top;">-2^31</td>
+<td style="vertical-align: top;">2^31-1</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">long<br>
+</td>
+<td style="vertical-align: top;">8<br>
+</td>
+<td style="vertical-align: top;">64<br>
+</td>
+<td style="vertical-align: top;">-2^63</td>
+<td style="vertical-align: top;">2^63-1</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">float <br>
+</td>
+<td style="vertical-align: top;">4<br>
+</td>
+<td style="vertical-align: top;">32<br>
+</td>
+<td style="vertical-align: top;">-<br>
+</td>
+<td style="vertical-align: top;">-<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">double<br>
+</td>
+<td style="vertical-align: top;">8<br>
+</td>
+<td style="vertical-align: top;">64<br>
+</td>
+<td style="vertical-align: top;">-<br>
+</td>
+<td style="vertical-align: top;">-<br>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><b>What
+types of values does boolean
+variables take</b> </td>
+</tr>
+<tr>
+<td style="vertical-align: top;">It only takes values true
+and false<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Which
+primitive datatypes
+are signed</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">All except char and
+Boolean<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Is
+char type signed or
+unsigned</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">char type is integral but
+unsigned. It range is 0 to 2^7-1<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+forms an integral
+literal can be</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">decimal, octal and
+hexadecimal, hence example it can be 28, 034 and 0x1c respectively<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is the default value
+of boolean</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">False<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Why
+is the main method
+static</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">So that it can be invoked
+without creating an instance of that class<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is the difference
+between class variable, member variable and <a style="background: transparent url(http://files.adbrite.com/mb/images/green-double-underline-006600.gif) repeat-x scroll center bottom; cursor: pointer; color: rgb(0, 102, 0); text-decoration: none; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; margin-bottom: -2px; padding-bottom: 2px;" name="AdBriteInlineAd_automatic" id="AdBriteInlineAd_automatic" target="_top">automatic</a>(local) variable</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">class
+variable is a
+static variable and does not belong to instance of class but rather
+shared across all the instances<br>
+member variable belongs to a particular instance of class and can be
+called from any method of the class<br>
+automatic or local variable is created on entry to a method and has
+only method scope<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">When
+are static and non
+static variables of the class initialized</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">The static variables are
+initialized when the class is loadedNon static variables are
+initialized just before the constructor is called<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">When
+are automatic
+variable initialized</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Automatic variable have
+to be initialized explicitly<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">How
+is an argument passed
+in java, by copy or by reference</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">If the variable is
+primitive datatype then it is passed by copy.<br>
+If the variable is an object then it is passed by reference<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is garbage collection</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">The runtime system keeps
+track of the memory that is allocated and is able to determine whether
+that memory is still useable. This <a style="background: transparent url(http://files.adbrite.com/mb/images/green-double-underline-006600.gif) repeat-x scroll center bottom; cursor: pointer; color: rgb(0, 102, 0); text-decoration: none; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; margin-bottom: -2px; padding-bottom: 2px;" name="AdBriteInlineAd_work" id="AdBriteInlineAd_work" target="_top">work</a> is usually done in background
+by a low-priority thread that is referred to as garbage collector. When
+the gc finds memory that is no longer accessible from any live thread
+it takes steps to release it back to the heap for reuse<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Does
+System.gc and
+Runtime.gc() guarantee garbage collection</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">No<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">
+<h3><a name="Operators_and_assignment"></a>Operators and
+assignment</h3>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are different types
+of operators in java</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Uniary ++, --, +, -, |, ~, ()<br>
+Arithmetic *, /, %,+, -<br>
+Shift &lt;&lt;, &gt;&gt;, &gt;&gt;&gt;<br>
+Comparison =, instanceof, = =,!=Bitwise &amp;, ^, |Short Circuit
+&amp;&amp;, ||Ternary ?:Assignment =<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">How
+does bitwise (~)
+operator work</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">It converts all the 1
+bits in a binary value to 0s and all the 0 bits to 1s, e.g 11110000
+coverts to 00001111<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is a modulo operator
+%</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">This operator gives the
+value which is related to the remainder of a divisione.g x=7%4 gives
+remainder 3 as an answer<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Can
+shift operators be
+applied to float types.</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">No, shift operators can
+be applied only to integer or long types<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+happens to the bits
+that fall off after shifting</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">They are discarded<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+values of the bits
+are shifted in after the shift</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">In case of signed left
+shift &gt;&gt; the new bits are set to zero<br>
+<br>
+But in case of signed <a style="background: transparent url(http://files.adbrite.com/mb/images/green-double-underline-006600.gif) repeat-x scroll center bottom; cursor: pointer; color: rgb(0, 102, 0); text-decoration: none; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; margin-bottom: -2px; padding-bottom: 2px;" name="AdBriteInlineAd_right" id="AdBriteInlineAd_right" target="_top">right</a> shift it takes the value of most
+significant bit before the shift, that is if the most significant bit
+before shift is 0 it will introduce 0, else if it is 1, it will
+introduce 1<br>
+<br>
+</td>
+</tr>
+<tr align="left">
+<td style="vertical-align: top;">
+<!-- Begin: AdBrite --><script type="text/javascript">
+var AdBrite_Title_Color = '000000';
+var AdBrite_Text_Color = '000000';
+var AdBrite_Background_Color = 'FFFFFF';
+var AdBrite_Border_Color = 'FFFFFF';
+</script><span style="white-space: nowrap;"><script src="Core_Java_Interview_Questions_files/text_group.js" type="text/javascript"></script><iframe name="AdBriteFrame_a0f3498a_0a53_4538_9d42_8bcfb822eea3" scrolling="no" width="728" frameborder="0" height="90"></iframe><script type="text/javascript"><!--
+AdBriteRender_a0f3498a_0a53_4538_9d42_8bcfb822eea3();
+//--></script><!----><a target="_top" href="http://www.adbrite.com/mb/commerce/purchase_form.php?opid=199624&amp;afsid=1"><img src="Core_Java_Interview_Questions_files/adbrite-your-ad-here-leaderboard.gif" style="background-color: rgb(255, 255, 255);" alt="Your Ad Here" width="14" border="0" height="90"></a></span><!-- End: AdBrite --></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">
+<h3><a name="Modifiers"></a>Modifiers</h3>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are access modifiers</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">These public, protected
+and private, these can be applied to class, variables, constructors and
+methods. But if you don&#8217;t specify an access modifier then it is
+considered as Friendly<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Can
+protected or friendly
+features be accessed from different packages</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">No when features are
+friendly or protected they can be accessed from all the classes in that
+package but not from classes in another package<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">How
+can you access
+protected features from another package</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">You can access protected
+features from other classes by subclassing the that class in another
+package, but this cannot be done for friendly features<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are the rules for
+overriding </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Private method can be
+overridden by private, friendly, protected or public methods<br>
+Friendly method can be overridden by friendly, protected or public
+methods<br>
+Protected method can be overridden by protected or public methods<br>
+Public method can be overridden by public method<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Explain
+modifier final</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Final can be applied to
+classes, methods and variables and the features cannot be changed.
+Final class cannot be subclassed, methods cannot be overridden<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Can
+you change the
+reference of the final object</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">No the reference cannot
+be change, but the data in that object can be changed<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Can
+abstract modifier be
+applied to a variable</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">No it is applied only to
+class and methods<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Can
+abstract class be
+instantiated</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">No abstract class cannot
+be instantiated i.e you cannot <a style="background: transparent url(http://files.adbrite.com/mb/images/green-double-underline-006600.gif) repeat-x scroll center bottom; cursor: pointer; color: rgb(0, 102, 0); text-decoration: none; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; margin-bottom: -2px; padding-bottom: 2px;" name="AdBriteInlineAd_create" id="AdBriteInlineAd_create" target="_top">create</a> a new object of this class<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">When
+does the compiler
+insist that the class must be abstract</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">If one or more methods of
+the class are abstract.<br>
+If class inherits one or more abstract methods from the parent abstract
+class and no implementation is <a style="background: transparent url(http://files.adbrite.com/mb/images/green-double-underline-006600.gif) repeat-x scroll center bottom; cursor: pointer; color: rgb(0, 102, 0); text-decoration: none; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; margin-bottom: -2px; padding-bottom: 2px;" name="AdBriteInlineAd_provided" id="AdBriteInlineAd_provided" target="_top">provided</a> for that method<br>
+If class implements an interface and provides no implementation for
+those methods<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">How
+is abstract class
+different from final class</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Abstract class must be
+subclassed and final class cannot be subclassed<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Where
+can static
+modifiers be used</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">They can be applied to
+variables, methods and even a block of code, static methods and
+variables are not associated with any instance of class<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">When
+are the static
+variables loaded into the memory</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">During the class load <a style="background: transparent url(http://files.adbrite.com/mb/images/green-double-underline-006600.gif) repeat-x scroll center bottom; cursor: pointer; color: rgb(0, 102, 0); text-decoration: none; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; margin-bottom: -2px; padding-bottom: 2px;" name="AdBriteInlineAd_time" id="AdBriteInlineAd_time" target="_top">time</a><br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">When
+are the non static
+variables loaded into the memory</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">They are loaded just
+before the constructor is called<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">How
+can you reference
+static variables</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Via reference to any
+instance of the class <br>
+<div style="margin-left: 40px;">Computer comp = new
+Computer (); <br>
+comp.harddisk where hardisk is a static variable <br>
+comp.compute() where compute is a method</div>
+<ul style="margin-left: 40px;">
+</ul>
+Via the class name<br>
+<div style="margin-left: 40px;">Computer.harddisk <br>
+Computer.compute() </div>
+<ul>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Can
+static method use non
+static features of there class</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">No they are not allowed
+to use non static features of the class, they can only call static
+methods and can use static data<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is static
+initializer code</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">A class can have a block
+of initializer code that is simply surrounded by curly braces and
+labeled as static e.g.<br>
+public class Demo{<br>
+static int =10;<br>
+static{<br>
+System.out.println(&#8220;Hello world&#8217;);<br>
+}<br>
+}<br>
+<br>
+And this code is executed exactly once at the time of class load<br>
+<br>
+</td>
+</tr>
+<tr style="font-weight: bold;">
+<td style="vertical-align: top;">Where is native modifier
+used</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">It can refer only to
+methods and it indicates that the body of the
+method is to be found else where and it is usually written in non java
+language<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are transient
+variables</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">A transient variable is
+not stored as part of objects persistent state and they cannot be final
+or static<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is synchronized
+modifier used for</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">It is used to control
+access of critical code in multithreaded programs<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are volatile
+variables</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">It indicates that these
+variables can be modified asynchronously<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">
+<h3><a name="Conversion_Casting_and_Promotion"></a>Conversion
+Casting and Promotion</h3>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are wrapped classes</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Wrapped classes are
+classes that allow primitive types to be accessed as objects.<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are the four general
+cases for Conversion and Casting</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Conversion of primitives<br>
+Casting of primitives<br>
+Conversion of object references<br>
+Casting of object references<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">When
+can conversion happen</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">It can happen during<br>
+<div style="margin-left: 40px;">Assignment <br>
+Method call <br>
+Arithmetic promotion </div>
+<ul>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are the rules for
+primitive assignment and method call conversion</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">A boolean can not be
+converted to any other type<br>
+A non Boolean can be converted to another non boolean type, if the
+conversion is widening conversion<br>
+A non Boolean cannot be converted to another non boolean type, if the
+conversion is narrowing conversion<br>
+See figure below for simplicity<br>
+<img style="width: 579px; height: 123px;" alt="assignment" src="Core_Java_Interview_Questions_files/assignment_rule.gif"><br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are the rules for
+primitive arithmetic promotion conversion</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">For Unary operators : <br>
+<div style="margin-left: 40px;">If
+operant is byte, short or a char it is converted to an int <br>
+If
+it is any other type it is not converted<br>
+</div>
+For binary operands : <br>
+<div style="margin-left: 40px;">If one of the
+operands is double, the other operand is converted
+to double <br>
+Else
+If one of the operands is float, the other operand is converted
+to float <br>
+Else
+If one of the operands is long, the other operand is converted to
+long <br>
+Else
+both the operands are converted to int<br>
+</div>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are the rules for
+casting primitive types</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">You can cast any non
+Boolean type to any other non boolean type<br>
+You cannot cast a boolean to any other type; you cannot cast any other
+type to a boolean<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are the rules for
+object reference assignment and method call conversion</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">An interface type can
+only be converted to an interface type or to object. If the new type is
+an interface, it must be a superinterface of the old type<br>
+A class type can be converted to a class type or to an interface type.
+If converting to a class type the new type should be superclass of the
+old type. If converting to an interface type new type the old class
+must implement the interface<br>
+An array maybe converted to class object, to the interface cloneable,
+or to an array. Only an array of object references types may be
+converted to an array, and the old element type must be convertible to
+the new element<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are the rules for
+Object reference casting</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Casting from Old types to
+Newtypes<br>
+Compile time rules<br>
+<ul>
+<li>When both Oldtypes and Newtypes are classes, one
+should be subclass of the other </li>
+<li>When both Oldtype ad Newtype are arrays, both arrays
+must contain reference types (not primitive), and it must be legal to
+cast an element of Oldtype to an element of Newtype </li>
+<li>You can always cast between an interface and a
+non-final object </li>
+</ul>
+Runtime rules<br>
+<ul>
+<li>If Newtype is a class. The class of the expression
+being converted must be Newtype or must inherit from Newtype </li>
+<li>If NewType is an interface, the class of the
+expression being converted must implement Newtype </li>
+</ul>
+<br>
+</td>
+</tr>
+<tr align="left">
+<td style="vertical-align: top;">
+<!-- Begin: AdBrite --><script type="text/javascript">
+var AdBrite_Title_Color = '000000';
+var AdBrite_Text_Color = '000000';
+var AdBrite_Background_Color = 'FFFFFF';
+var AdBrite_Border_Color = 'FFFFFF';
+</script><span style="white-space: nowrap;"><script src="Core_Java_Interview_Questions_files/text_group.js" type="text/javascript"></script><iframe name="AdBriteFrame_bac28a45_abed_4125_b563_d916d3f0d796" scrolling="no" width="728" frameborder="0" height="90"></iframe><script type="text/javascript"><!--
+AdBriteRender_bac28a45_abed_4125_b563_d916d3f0d796();
+//--></script><!----><a target="_top" href="http://www.adbrite.com/mb/commerce/purchase_form.php?opid=199624&amp;afsid=1"><img src="Core_Java_Interview_Questions_files/adbrite-your-ad-here-leaderboard.gif" style="background-color: rgb(255, 255, 255);" alt="Your Ad Here" width="14" border="0" height="90"></a></span><!-- End: AdBrite --></td>
+</tr>
+<tr>
+<td style="vertical-align: top;">
+<h3><a name="Flow_Control_and_exception"></a>Flow Control
+and exception</h3>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is the difference
+between while and do while loop</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Do while loop walways
+executes the body of the loop at least once, since the test is
+performed at the end of the body<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">When
+do you use continue
+and when do you use break statements</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">When continue statement
+is applied it prematurely completes the iteration of a loop.<br>
+When break statement is applied it causes the entire loop to be
+abandoned.<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is the base class
+from which all exceptions are subclasses</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">All exceptions are
+subclasses of a class called java.lang.Throwable<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">How
+do you intercept and
+thereby control exceptions</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">We can do this by using
+try/catch/finally blocks<br>
+You place the normal processing code in try block<br>
+You put the code to deal with exceptions that might arise in try block
+in catch block<br>
+Code that must be executed no matter what happens must be place in
+finally block<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">When
+do we say an
+exception is handled</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">When an exception is
+thrown in a try block and is caught by a matching catch block, the
+exception is considered to have been handled<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">When
+do we say an
+exception is not handled</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">There is no catch block
+that names either the class of exception that has been thrown or a
+class of exception that is a parent class of the one that has been
+thrown, then the exception is considered to be unhandled, in such
+condition the execution leaves the method directly as if no try has
+been executed<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">In
+what sequence does the
+finally block gets executed</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">If you put finally after
+a try block without a matching catch block then it will be executed
+after the try block<br>
+If it is placed after the catch block and there is no exception then
+also it will be executed after the try block<br>
+If there is an exception and it is handled by the catch block then it
+will be executed after the catch block<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+can prevent the
+execution of the code in finally block</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">
+<ul>
+<li>The death of thread</li>
+<li>Use of system.exit()</li>
+<li>Turning off the power to CPU</li>
+<li>An exception arising in the finally block itself</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">What
+are the rules for
+catching
+multiple exceptions<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">A more specific catch
+block must precede a more general one in the source, else it gives
+compilation error<br>
+Only one catch block, that is first applicable one, will be executed<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+does throws
+statement declaration in a method indicate</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">This indicates that the
+method throws some exception and the caller method should take care of
+handling it<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are checked exception</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Checked exceptions are
+exceptions that arise in a correct program, typically due to user
+mistakes like entering wrong data or I/O problems<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are runtime
+exceptions</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Runtime exceptions are
+due to programming bugs like out of bond arrays or null pointer
+exceptions.<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is difference
+between Exception and errors</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Errors are usually
+compile time and exceptions can be runtime or checked<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">How
+will you handle the
+checked exceptions</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">You can provide a
+try/catch block to handle it. OR<br>
+Make sure method declaration includes a throws clause that informs the
+calling method an exception might be thrown from this particular method<br>
+When you extend a class and override a method, can this new method
+throw exceptions other than those that were declared by the original
+method<br>
+No it cannot throw, except for the subclasses of those exceptions<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Is
+it legal for the
+extending class which overrides a method which throws an exception, not
+o throw in the overridden class</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Yes it is perfectly legal<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Explain
+the user defined
+Exceptions?</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">User defined Exceptions
+are the separate Exception classes defined by the user for specific
+purposed. An user defined can created by simply sub-classing it to the
+Exception class. This allows custom exceptions to be generated (using
+throw) and caught in the same way as normal exceptions. <br>
+Example:<br>
+class myCustomException extends Exception {<br>
+// The class simply has to exist to be an
+exception <br>
+} <br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">
+<h3><a name="Objects_and_Classes"></a>Objects and Classes</h3>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What's
+the difference
+between constructors and other methods</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Constructors must have
+the same name as the class and can not return a value. They are only
+called once while regular methods could be called many times.<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is the difference
+between Overloading and Overriding</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Overloading :
+Reusing the same method name with different arguments and
+perhaps a different return type is called as overloading<br>
+Overriding : Using the same method name with identical arguments and
+return type is know as overriding<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+do you understand by
+late binding or virtual method Invocation. (Example of runtime
+polymorphism)</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">When a compiler for a non
+object oriented language comes across a method invocation, it
+determines exactly what target code should be called and build machine
+language to represent that call. In an object oriented language, this
+is not possible since the proper code to invoke is determined based
+upon the class if the object being used to make the call, not the type
+of the variable. Instead code is generated that will allow the decision
+to be made at run time. This delayed decision making is called as late
+binding<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Can
+overriding methods
+have different return types</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">No they cannot have
+different return types<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">If
+the method to be
+overridden has access type protected, can subclass have the access type
+as private</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">No, it must have access
+type as protected or public, since an overriding method must not be
+less accessible than the method it overrides<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Can
+constructors be
+overloaded</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Yes constructors can be
+overloaded<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+happens when a
+constructor of the subclass is called</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">A constructor delays
+running its body until the parent parts of the class have been
+initialized. This commonly happens because of an implicit call to
+super() added by the compiler. You can provide your own call to
+super(arguments..) to control the way the parent parts are initialized.
+If you do this, it must be the first statement of the constructor.<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">If
+you use super() or
+this() in a constructor where should it appear in the constructor</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">It should always be the
+first statement in the constructor<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is an inner class</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">An inner class is same as
+any other class, but is declared inside some other class<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">How
+will you reference
+the inner class</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">To reference it you will
+have to use OuterClass$InnerClass<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Can
+objects that are
+instances of inner class access the members of the outer class</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Yes they can access the
+members of the outer class<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+modifiers may be
+used with an inner class that is a member of an outer class?</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">A (non-local) inner class
+may be declared as public, protected, private, static, final, or
+abstract<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Can
+inner classes be
+static</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Yes inner classes can be
+static, but they cannot access the non static data of the outer
+classes, though they can access the static data<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Can
+an inner class be
+defined inside a method</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Yes it can be defined
+inside a method and it can access data of the enclosing methods or a
+formal parameter if it is final<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is an anonymous class</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Some classes defined
+inside a method do not need a name, such classes are called anonymous
+classes<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are the rules of
+anonymous class</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">The class is instantiated
+and declared in the same place <br>
+The declaration and instantiation takes the form <br>
+new Xxxx () {// body}<br>
+Where Xxxx is an interface name.<br>
+An anonymous class cannot have a constructor. Since you do not specify
+a name for the class, you cannot use that name to specify a constructor
+<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">
+<h3><a name="Threads"></a>Threads</h3>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Where
+does java thread
+support reside </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">It resides in three places<br>
+<div style="margin-left: 40px;">The java.lang.Thread class
+(Most of the support resides here) <br>
+The java.lang.Object class <br>
+The java language and virtual machine<br>
+</div>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is the difference between Thread and a Process</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Threads run inside process and
+they share data.<br>
+One process can have multiple threads, if the process is killed all the
+threads inside it are killed, they dont share data<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+happens when you
+call the start() method of the thread </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">This registers the thread
+with a piece of system code called thread scheduler<br>
+The schedulers determines which thread is actually running<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Does
+calling start ()
+method of the thread causes it to run </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">No it merely makes it
+eligible to run. The thread still has to wait for the CPU time along
+with the other threads, then at some time in future, the scheduler will
+permit the thread to run<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">When
+the thread gets to
+execute, what does it execute </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">The thread executes a
+method call run(). It can execute run() method of either of the two
+choices given below :<br>
+The thread can execute it own run() method.<br>
+The thread can execute the run() method of some other objects<br>
+For the first case you need to subclass the Thread class and give your
+subclass a run() method<br>
+For the second method you need to have a class implement the interface
+runnable. Define your run method. Pass this object as an argument to
+the Thread constructor<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">How
+many methods are
+declared in the interface runnable </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">The runnable method
+declares only one method :<br>
+public void run();<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Which
+way would you
+prefer to implement threading , by extending Thread class or
+implementing Runnable interface </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">The preferred way will be
+to use Interface Runnable, because by subclassing the Thread class you
+have single inheritance i.e you wont be able to extend any other class<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+happens when the
+run() method returns </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">When the run() method
+returns, the thread has finished its task and is considered dead. You
+can&#8217;t restart a dead thread. You can call the methods of dead
+thread<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are the different
+states of the thread </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">They are as follows:<br>
+<div style="margin-left: 40px;">Running: The state that
+all thread aspire to be <br>
+Various waiting states : Waiting, Sleeping, Suspended and
+Bloacked <br>
+Ready : Waiting only for the CPU <br>
+Dead : All done<br>
+</div>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is Thread priority </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Every thread has a
+priority, the higher priorit thread gets preference over the lower
+priority thread by the thread scheduler<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is the range of priority integer </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">It is from 1 to 10. 10
+beings the highest priority and 1 being the lowest<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is the default priority of the thread</span> <br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">The default priority is 5<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+happens when you call Thread.yield() </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">It caused the currently
+executing thread to move to the ready state if the scheduler is willing
+to run any other thread in place of the yielding thread.<br>
+Yield is a static method of class Thread<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is the advantage of yielding </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">It allows a time
+consuming thread to permit other threads to execute<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+happens when you call Thread.sleep() </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">It passes time without
+doing anything and without using the CPU. A call to sleep method
+requests the currently executing thread to cease executing for a
+specified amount of time.<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Does
+the thread method start executing as
+soon as the sleep time is over </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">No, after the specified
+time is over the thread enters into ready state and will only execute
+when the scheduler allows it to do so.<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+do you mean by thread blocking </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">If a method needs to wait
+an indeterminable amount of time until some I/O occurrence takes place,
+then a thread executing that method should graciously step out of the
+Running state. All java I/O methods behave this way. A thread that has
+graciously stepped out in this way is said to be blocked<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+threading related methods are there in
+object class </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">wait(), notify() and
+notifyAll() are all part of Object class and they have to be called
+from synchronized code only<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is preemptive scheduling </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">In preemptive scheduling
+there are only two ways for the thread to leave the running state
+without ecplicitly calling wait() or suspended()<br>
+It can cease t be ready to execute ()by calling a blocking I/O method)<br>
+It can get moved out by CPU by a higher priorit thread that becomes
+ready to execute<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is non-preemptive or Time sliced or
+round robin scheduling </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">With time slicing the
+thread is allowd to execute for a limited amount of time. It is then
+moved to ready state, where it must contend with all the other ready
+threads.<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are the two ways of synchronizing the
+code </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Synchronizing an entire
+method by putting the synchronized modifier in the methods declaration.
+To execute the method, a thread must acquire the lock of the object
+that owns the method<br>
+<br>
+Synchronize a subset of a method by surrounding the desired lines of
+code with curly brackets and inserting the synchronized
+expression before the opening curly. This allows you to synchronize the
+block on the lock of any object at all, not necessarily the object that
+owns the code<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+happens when the wait() method is
+called</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">The calling thread gives
+up CPU<br>
+The calling thread gives up the lock<br>
+The calling thread goes into the monitor&#8217;s waiting pool<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+happens when the notify() method is
+called</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">One thread gets moved out
+of monitors waiting pool and into the ready state<br>
+The thread that was notified ust reacquire the monitors locl before it
+can proceed<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Using
+notify () method how you can specify
+which thread should be notified</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">You cannot specify which
+thread is to be notified, hence it is always better to call notifyAll()
+method<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">
+<h3><a name="java.lang__java.util_Packages"></a>java.lang
+&amp; java.util Packages</h3>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is the ultimate ancestor of all java
+classes</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Object class is the
+ancestor of all the java classes<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are important methods of Object class</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">wait(), notify(),
+notifyAll(), equals(), toString().<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is the difference between &#8220;= =&#8221; and
+&#8220;equals()&#8221;</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">&#8220;= =&#8221; does shallow
+comparison, It retuns true if the two object points to the same address
+in the memory, i.e if the same the same reference<br>
+&#8220;equals()&#8221; does deep comparison, it checks if the values of the data in
+the object are same <br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+would you use to compare two String
+variables - the operator == or the method equals()?</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"> I'd use the method
+equals() to compare the values of the Strings and the == to check if
+two variables point at the same instance of a String object<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Give
+example of a final class</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Math class is final class
+and hence cannot be extended<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is the difference between String and
+StringBuffer </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">String is an immutable
+class, i.e you cannot change the values of that class<br>
+Example :<br>
+String str = &#8220;java&#8221;; // address in memory say 12345<br>
+And now if you assign a new value to the variable str then <br>
+str = &#8220;core java&#8221;; then the value of the variable at address 12345 will
+not change but a new memory is allocated for this variable say 54321<br>
+So in the memory address 12345 will have value &#8220;java&#8221;<br>
+And the memory address 54321 will have value &#8220;core java&#8221; and the
+variable str will now be pointing to address 54321 in memory<br>
+<br>
+StringBuffer can be modified dynamically<br>
+Example:<br>
+StringBuffer strt =&#8221;java&#8221; // address in memory is say 12345<br>
+And now if you assign a new value to the variable str then <br>
+Str = &#8220;core java&#8221;; then value in the address of memory will get
+replaced, a new memory address is not allocated in this case.<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+will be the result if you compare
+StringBuffer with String if both have same values </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">It will return false as
+you cannot compare String with StringBuffer<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+is Collection API</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">The Collection API is a
+set of classes and interfaces that support operation on collections of
+objects. These classes and interfaces are more flexible, more powerful,
+and more regular than the vectors, arrays, and hashtables if
+effectively replaces. <br>
+Example of classes: HashSet, HashMap, ArrayList, LinkedList, TreeSet
+and TreeMap.<br>
+Example of interfaces: Collection, Set, List and Map.<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">What
+are different types of collections</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">A collection has no
+special order and does not reject duplicates<br>
+A list is ordered and does not reject duplicates<br>
+A set has no special order but rejects duplicates <br>
+A map supports searching on a key field, values of which must be unique<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Tell
+me something about Arrays </span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Arrays are fast to
+access, but are inefficient if the number of elements grow and if you
+have to insert or delete an element<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Difference
+between ArrayList and Vector</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Vector methods are
+synchronized while ArrayList methods are not <br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Iterator
+a Class or Interface? What is its
+use?</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Iterator is an interface
+which is used to step through the elements of a Collection<br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><span style="font-weight: bold;">Difference
+between Hashtable and HashMap</span><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">Hashtable does not store
+null value, while HashMap does<br>
+Hashtable is synchronized, while HashMap is not <br>
+<br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">
+<!-- Begin: AdBrite --><script type="text/javascript">
+var AdBrite_Title_Color = '000000';
+var AdBrite_Text_Color = '000000';
+var AdBrite_Background_Color = 'FFFFFF';
+var AdBrite_Border_Color = 'FFFFFF';
+</script><span style="white-space: nowrap;"><script src="Core_Java_Interview_Questions_files/text_group.js" type="text/javascript"></script><iframe name="AdBriteFrame_54d5dbd8_5432_4c27_ad9b_cb0bd934365c" scrolling="no" width="728" frameborder="0" height="90"></iframe><script type="text/javascript"><!--
+AdBriteRender_54d5dbd8_5432_4c27_ad9b_cb0bd934365c();
+//--></script><!----><a target="_top" href="http://www.adbrite.com/mb/commerce/purchase_form.php?opid=199624&amp;afsid=1"><img src="Core_Java_Interview_Questions_files/adbrite-your-ad-here-leaderboard.gif" style="background-color: rgb(255, 255, 255);" alt="Your Ad Here" width="14" border="0" height="90"></a></span><!-- End: AdBrite -->
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<p></p><p style="text-align: center;">
+</p>
+<br>
+<p align="center"><img src="Core_Java_Interview_Questions_files/FOOTER.gif" alt="footer for Core java interview Questions page" width="500" border="0" height="80"><br></p>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<ispan style="overflow: hidden; display: none; position: absolute; z-index: 32767; width: 325px; height: 135px; background-image: url(http://files.adbrite.com/mb/images/adbrite-inline-bk-w-arr.gif); background-position: center top; background-repeat: no-repeat; opacity: 0.95; text-align: left; left: 396px; top: 367px;" id="adbrite_inline_div" class="noadbriteinline"><ispan style="display: inline; white-space: nowrap; position: absolute; top: 9px; right: 14px; width: 40px; cursor: pointer; font-size: 14px; line-height: 14px;">&nbsp;</ispan><ispan style="font-size: 11px; display: inline; font-weight: bold; color: rgb(255, 255, 255); position: absolute; font-family: Arial,Helvetica,sans-serif; top: 8px; left: 10px; cursor: pointer;">About this advertisement</ispan><ispan style="display: block; width: 291px;"><a target="_top" href="http://click.svx.adbrite.com/mb/click.php?sid=199624&amp;banner_id=11980422&amp;variation_id=964328&amp;uts=1238060356&amp;cpc=302e30313639&amp;keyword_id=42043&amp;inline=y&amp;ab=168296527&amp;sscup=3b23b954868c01b02a8dc223af228171&amp;sscra=e75bdf3e468ac736e4a31d6d12ae0b36&amp;ub=2504740944&amp;guid=0456002be1774c1df98c3836841f8e3a&amp;rs=&amp;r=" style="border: medium none ; margin: 0pt; padding: 0pt; background: transparent none repeat scroll 0% 0%; color: rgb(0, 0, 0); font-weight: normal; text-decoration: none; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; cursor: pointer; position: relative; top: 33px; left: 24px;" id="adbrite-inline-target-url"><ispan style="font-size: 20px; font-family: Arial,Helvetica,sans-serif; font-weight: bold; color: rgb(0, 0, 255); text-decoration: underline; white-space: nowrap;" id="adbrite-inline-headline">Link Building Service</ispan><br><ispan style="font-size: 13px; line-height: 15px; font-family: Verdana,Arial,Helvetica,sans-serif;" id="adbrite-inline-adtext">Rank High in Google.  Ethical SEO Firm Offers Link Building.</ispan><br><ispan style="font-size: 11px; line-height: 18px; font-family: Verdana,Arial,Helvetica,sans-serif; text-decoration: underline; color: rgb(0, 128, 0);" id="adbrite-inline-display-url">www.submitedge.com</ispan></a></ispan><ispan style="display: inline; position: absolute; bottom: 13px; right: 15px; font-family: Verdana,Arial,Helvetica,sans-serif; font-size: 11px; cursor: pointer; color: rgb(0, 0, 255); text-decoration: underline;" id="adbrite-inline-your-ad-here">Your Ad Here</ispan></ispan></body></html>

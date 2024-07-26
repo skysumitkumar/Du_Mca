@@ -1,0 +1,287 @@
+<html><head>
+<title>Solution for /logic/dell</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /logic/dell problem</h1>
+<hr>
+<pre>
+#include	&lt;setjmp.h&gt;
+
+#define	EITHER		if (S[1] = S[0], ! setjmp((S++)-&gt;jb)) {
+#define	OR		} else EITHER
+#define	REJECT		longjmp((--S)-&gt;jb, 1)
+#define	END_EITHER	} else REJECT;
+
+/* values in tmat: */
+#define	T_UNK	0
+#define	T_YES	1
+#define	T_NO	2
+
+#define	Val(t1,t2)	(S-&gt;tmat[t1][t2])
+#define	CLASS(x)		\
+		(((x) / NUM_ITEM) * NUM_ITEM)
+#define	EVERY_TOKEN(x)		\
+		(x = 0; x &lt; TOT_TOKEN; x++)
+#define	EVERY_ITEM(x, class)	\
+		(x = CLASS(class); x &lt; CLASS(class) + NUM_ITEM; x++)
+
+#define	BEGIN						\
+struct state {						\
+	char	tmat[TOT_TOKEN][TOT_TOKEN];		\
+	jmp_buf jb;					\
+} States[100], *S = States;				\
+							\
+main()							\
+{							\
+	int	token;					\
+							\
+	for EVERY_TOKEN(token)				\
+		yes(token, token);			\
+	EITHER
+
+/* Here is the problem-specific data */
+#define	NUM_ITEM	5
+#define	NUM_CLASS	6
+#define	TOT_TOKEN	(NUM_ITEM * NUM_CLASS)
+
+#define	HOUSE_0		0
+#define	HOUSE_1		1
+#define	HOUSE_2		2
+#define	HOUSE_3		3
+#define	HOUSE_4		4
+
+#define	ENGLISH		5
+#define	SPANISH		6
+#define	NORWEG		7
+#define	UKRAIN		8
+#define	JAPAN		9
+
+#define	GREEN		10
+#define	RED		11
+#define	IVORY		12
+#define	YELLOW		13
+#define	BLUE		14
+
+#define	COFFEE		15
+#define	TEA		16
+#define	MILK		17
+#define	OJUICE		18
+#define	WATER		19
+
+#define	DOG		20
+#define	SNAIL		21
+#define	FOX		22
+#define	HORSE		23
+#define	ZEBRA		24
+
+#define	OGOLD		25
+#define	PLAYER		26
+#define	CHESTER		27
+#define	LSTRIKE		28
+#define	PARLIA		29
+
+char *names[] = {
+	"HOUSE_0", "HOUSE_1", "HOUSE_2", "HOUSE_3", "HOUSE_4",
+	"ENGLISH", "SPANISH", "NORWEG", "UKRAIN", "JAPAN",
+	"GREEN", "RED", "IVORY", "YELLOW", "BLUE",
+	"COFFEE", "TEA", "MILK", "OJUICE", "WATER",
+	"DOG", "SNAIL", "FOX", "HORSE", "ZEBRA",
+	"OGOLD", "PLAYER", "CHESTER", "LSTRIKE", "PARLIA",
+};
+
+	BEGIN
+
+	yes(ENGLISH, RED);	/* Clue 1 */
+	yes(SPANISH, DOG);	/* Clue 2 */
+	yes(COFFEE, GREEN);	/* Clue 3 */
+	yes(UKRAIN, TEA);	/* Clue 4 */
+
+	EITHER			/* Clue 5 */
+		yes(IVORY, HOUSE_0);
+		yes(GREEN, HOUSE_1);
+	OR
+		yes(IVORY, HOUSE_1);
+		yes(GREEN, HOUSE_2);
+	OR
+		yes(IVORY, HOUSE_2);
+		yes(GREEN, HOUSE_3);
+	OR
+		yes(IVORY, HOUSE_3);
+		yes(GREEN, HOUSE_4);
+	END_EITHER
+
+	yes(OGOLD, SNAIL);	/* Clue 6 */
+	yes(PLAYER, YELLOW);	/* Clue 7 */
+	yes(MILK, HOUSE_2);	/* Clue 8 */
+	yes(NORWEG, HOUSE_0);	/* Clue 9 */
+
+	EITHER			/* Clue 10 */
+		yes(CHESTER, HOUSE_0);
+		yes(FOX, HOUSE_1);
+	OR
+		yes(CHESTER, HOUSE_4);
+		yes(FOX, HOUSE_3);
+	OR
+		yes(CHESTER, HOUSE_1);
+		EITHER	yes(FOX, HOUSE_0);
+		OR	yes(FOX, HOUSE_2);
+		END_EITHER
+	OR
+		yes(CHESTER, HOUSE_2);
+		EITHER	yes(FOX, HOUSE_1);
+		OR	yes(FOX, HOUSE_3);
+		END_EITHER
+	OR
+		yes(CHESTER, HOUSE_3);
+		EITHER	yes(FOX, HOUSE_2);
+		OR	yes(FOX, HOUSE_4);
+		END_EITHER
+	END_EITHER
+
+	EITHER			/* Clue 11 */
+		yes(PLAYER, HOUSE_0);
+		yes(HORSE, HOUSE_1);
+	OR
+		yes(PLAYER, HOUSE_4);
+		yes(HORSE, HOUSE_3);
+	OR
+		yes(PLAYER, HOUSE_1);
+		EITHER	yes(HORSE, HOUSE_0);
+		OR	yes(HORSE, HOUSE_2);
+		END_EITHER
+	OR
+		yes(PLAYER, HOUSE_2);
+		EITHER	yes(HORSE, HOUSE_1);
+		OR	yes(HORSE, HOUSE_3);
+		END_EITHER
+	OR
+		yes(PLAYER, HOUSE_3);
+		EITHER	yes(HORSE, HOUSE_2);
+		OR	yes(HORSE, HOUSE_4);
+		END_EITHER
+	END_EITHER
+
+	yes(LSTRIKE, OJUICE);	/* Clue 12 */
+	yes(JAPAN, PARLIA);	/* Clue 13 */
+
+	EITHER			/* Clue 14 */
+		yes(NORWEG, HOUSE_0);
+		yes(BLUE, HOUSE_1);
+	OR
+		yes(NORWEG, HOUSE_4);
+		yes(BLUE, HOUSE_3);
+	OR
+		yes(NORWEG, HOUSE_1);
+		EITHER	yes(BLUE, HOUSE_0);
+		OR	yes(BLUE, HOUSE_2);
+		END_EITHER
+	OR
+		yes(NORWEG, HOUSE_2);
+		EITHER	yes(BLUE, HOUSE_1);
+		OR	yes(BLUE, HOUSE_3);
+		END_EITHER
+	OR
+		yes(NORWEG, HOUSE_3);
+		EITHER	yes(BLUE, HOUSE_2);
+		OR	yes(BLUE, HOUSE_4);
+		END_EITHER
+	END_EITHER
+
+/* End of problem-specific data */
+
+		solveit();
+	OR
+		printf("All solutions found\n");
+		exit(0);
+	END_EITHER
+}
+
+no(a1, a2)
+{
+	int	non1, non2, token;
+
+	if (Val(a1, a2) == T_YES)
+		REJECT;
+	else if (Val(a1, a2) == T_UNK) {
+		Val(a1, a2) = T_NO;
+		no(a2, a1);
+		non1 = non2 = -1;
+
+		for EVERY_ITEM(token, a1)
+			if (Val(token, a2) != T_NO)
+				if (non1 == -1)
+					non1 = token;
+				else
+					break;
+		if (non1 == -1)
+			REJECT;
+		else if (token == CLASS(a1) + NUM_ITEM)
+			yes(non1, a2);
+
+		for EVERY_TOKEN(token)
+			if (Val(token, a1) == T_YES)
+				no(a2, token);
+	}
+}
+
+yes(a1, a2)
+{
+	int	token;
+
+	if (Val(a1, a2) == T_NO)
+		REJECT;
+	else if (Val(a1, a2) == T_UNK) {
+		Val(a1, a2) = T_YES;
+		yes(a2, a1);
+		for EVERY_ITEM(token, a1)
+			if (token != a1)
+				no(token, a2);
+		for EVERY_TOKEN(token)
+			if (Val(token, a1) == T_YES)
+				yes(a2, token);
+			else if (Val(token, a1) == T_NO)
+				no(a2, token);
+	}
+}
+
+solveit()
+{
+	int	token, tok2;
+
+	for EVERY_TOKEN(token)
+		for (tok2 = token; tok2 &lt; TOT_TOKEN; tok2++)
+			if (Val(token, tok2) == T_UNK) {
+				EITHER
+					yes(token, tok2);
+				OR
+					no(token, tok2);
+				END_EITHER;
+				return solveit();
+			}
+	printf("Solution:\n");
+	for EVERY_ITEM(token, 0) {
+		for (tok2 = NUM_ITEM; tok2 &lt; TOT_TOKEN; tok2++)
+			if (Val(token, tok2) == T_YES)
+				printf("\t%s %s\n",names[token],names[tok2]);
+		printf("\n");
+	}
+	REJECT;
+}
+
+---
+james@crc.ricoh.com (James Allen)
+
+</pre>
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

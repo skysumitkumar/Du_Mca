@@ -1,0 +1,228 @@
+<html><head>
+<title>Solution for /competition/games/risk</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /competition/games/risk problem</h1>
+<hr>
+Odds calculated with program by David Karr (karr@cs.cornell.edu):
+
+<p>
+Attacker rolls 3 dice, defender rolls 2 dice:
+
+<pre>
+Attacker   Defender   Probability
+  loses      loses
+    0          2       2890/7776  =  0.3716563786
+    1          1       2611/7776  =  0.3357767490
+    2          0       2275/7776  =  0.2925668724
+</pre>
+
+Attacker rolls 3 dice, defender rolls 1 dice:
+
+<pre>
+Attacker   Defender   Probability
+  loses      loses
+    0          1        855/1296  =  0.6597222222
+    1          0        441/1296  =  0.3402777778
+</pre>
+
+Attacker rolls 2 dice, defender rolls 2 dice:
+
+<pre>
+Attacker   Defender   Probability
+  loses      loses
+    0          2        295/1296  =  0.2276234568
+    1          1        420/1296  =  0.3240740741
+    2          0        581/1296  =  0.4483024691
+</pre>
+
+Attacker rolls 2 dice, defender rolls 1 dice:
+
+<pre>
+Attacker   Defender   Probability
+  loses      loses
+    0          1        125/216  =  0.5787037037
+    1          0         91/216  =  0.4212962963
+</pre>
+
+Attacker rolls 1 dice, defender rolls 2 dice:
+
+<pre>
+Attacker   Defender   Probability
+  loses      loses
+    0          1         55/216  =  0.2546296296
+    1          0        161/216  =  0.7453703704
+</pre>
+
+Attacker rolls 1 dice, defender rolls 1 dice:
+
+<pre>
+Attacker   Defender   Probability
+  loses      loses
+    0          1         15/36  =  0.4166666667
+    1          0         21/36  =  0.5833333333
+
+---------------------8&lt;------snip here--------8&lt;--------------------
+/*
+ * riskdice.c  --  prints Risk dice odds
+ *
+ * This program calculates probabilities for one roll of the dice in Risk.
+ * For each possible number of dice that the attacker might roll, for each
+ * possible number of dice that the defender might roll, this program
+ * lists all the possible outcomes (number of armies lost by attacker
+ * and defender) and the probability of each outcome.
+ *
+ * Copyright 1993 by David A. Karr.
+ */
+
+#define MAX_ATTACK      3       /* max # of dice attacker may roll */
+#define MAX_DEFEND      2       /* max # of dice defender may roll */
+#define MAX_DICE        MAX_ATTACK + MAX_DEFEND
+
+void main()
+{
+    int a;      /* number of dice rolled by attacker */
+    int d;      /* number of dice rolled by defender */
+    void calc();
+
+    for (a = MAX_ATTACK; a &gt; 0; --a) {
+        for (d = MAX_DEFEND; d &gt; 0; --d) {
+            calc( a, d );
+        }
+    }
+}
+
+void calc( a_dice, d_dice )
+/*
+ * Purpose:  Print odds for the given numbers of dice rolled
+ */
+int a_dice;     /* number of dice rolled by attacker */
+int d_dice;     /* number of dice rolled by defender */
+{
+    int num_dice;       /* total number of dice rolled */
+    int num_armies;     /* # armies that will be lost by both sides, total */
+    int kill_count[MAX_DEFEND + 1];
+                /* entry [i] counts # of times attacker loses i armies */
+    int roll[MAX_DICE + 1];     /* holds one roll of the dice */
+    int a_roll[MAX_ATTACK];     /* holds attacker's dice */
+    int d_roll[MAX_DEFEND];     /* holds defender's dice */
+    int n;              /* cursor into the arrays */
+    int num_lost;       /* # of armies lost by the attacker */
+    int cases;          /* total # of events counted */
+    void dsort();
+
+    /*
+     * The method is pure brute force.  roll[] is set successively to
+     * all possible rolls of the total number of dice; for each roll
+     * the number of armies lost by the attacker (the outcome) is
+     * computed and the event is counted.
+     * Since all the counted events are equiprobable, the count of each
+     * outcome merely needs to be scaled down by the total count to
+     * obtain the probability of that outcome.
+     */
+    /* The number of armies at stake is  min(a_dice, d_dice) */
+    num_armies = a_dice &lt; d_dice ? a_dice : d_dice;
+    /* initialize event counters */
+    for (n = 0; n &lt;= num_armies; ++n)
+        kill_count[n] = 0;
+    /*
+     * The roll[] array is treated as a funny odometer whose wheels each
+     * go from 1 to 6.  Each roll of the dice appears in roll[0] through
+     * roll[num_dice - 1], starting with all 1s and counting up to all 6s.
+     * roll[num_dice] is used to detect when the other digits have
+     * finished a complete cycle (it is tripped when they go back to 1s).
+     */
+    num_dice = a_dice + d_dice;
+    for (n = 0; n &lt;= num_dice; ++n)
+        roll[n] = 1;
+    while (roll[num_dice] == 1) {
+        /* examine a new possible roll of the dice */
+        /*
+         * copy attacker's and defender's dice so as not to disturb
+         * the "odometer" reading.
+         */
+        for (n = 0; n &lt; a_dice; ++n)
+            a_roll[n] = roll[n];
+        for (n = 0; n &lt; d_dice; ++n)
+            d_roll[n] = roll[n + a_dice];
+        /*
+         * sort attacker's and defender's dice, highest first.
+         */
+        dsort(a_roll, a_dice);
+        dsort(d_roll, d_dice);
+        /*
+         * compare attacker's and defender's dice, count attacker's loss
+         */
+        num_lost = 0;
+        for (n = 0; n &lt; num_armies; ++n)
+            if (d_roll[n] &gt;= a_roll[n]) 
+                ++num_lost;
+        ++kill_count[num_lost];
+        /*
+         * Find next roll values (bump the "odometer" up one tick).
+         */
+        n = 0;
+        roll[0] += 1;
+        while (roll[n] &gt; 6) {
+            /* place [n] rolled over */
+            roll[n] = 1;
+            /* Carry 1 into the next place (which may in turn roll over) */
+            ++n;
+            roll[n] += 1;
+        }
+    }
+    cases = 0;
+    for (n = 0; n &lt;= num_armies; ++n)
+        cases += kill_count[n];
+    printf( "Attacker rolls %d dice, defender rolls %d dice:\n\n",
+                a_dice, d_dice );
+    printf( "Attacker   Defender   Probability\n" );
+    printf( "  loses      loses\n" );
+    for (n = 0; n &lt;= num_armies; ++n)
+        printf( "%5d      %5d      %5d/%d  =  %12.10lf\n",
+                n, num_armies - n, kill_count[n], cases,
+                ((double) kill_count[n]) / ((double) cases) );
+    printf( "\n\n" );
+}
+
+
+void dsort( array, length )
+/*
+ * Sort the given array in descending order.
+ */
+int *array;
+int length;     /* number of slots in the array */
+{
+    int level, n, tmp;
+
+    /* Use bubble sort since the array will be tiny in this application */
+    for (level = 0; level &lt; length - 1; ++level) {
+        /*
+         * Slots [0] through [level - 1] are already "stable."
+         * Bubble up the value that belongs in the [level] slot.
+         */
+        for (n = length - 1; n &gt; level; --n) {
+            if (array[n - 1] &lt; array[n]) {
+                /* swap them */
+                tmp = array[n - 1];
+                array[n - 1] = array[n];
+                array[n] = tmp;
+            }
+        }
+    }
+}
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

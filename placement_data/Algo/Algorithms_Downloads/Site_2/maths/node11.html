@@ -1,0 +1,212 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Algorithms; Computer languages</TITLE>
+<META NAME="description" CONTENT="Algorithms; Computer languages">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">
+<LINK REL="previous" HREF="node10.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node10.html">
+<LINK REL="up" HREF="node10.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node10.html">
+<LINK REL="next" HREF="node12.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node12.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html452"
+  HREF="node12.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node12.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html446"
+  HREF="node10.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node10.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html440"
+  HREF="node10.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node10.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html448"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html450"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html453"
+  HREF="node12.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node12.html">Programming</A>
+<B> Up:</B> <A NAME="tex2html447"
+  HREF="node10.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node10.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html441"
+  HREF="node10.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node10.html">Introduction</A>
+ &nbsp <B>  <A NAME="tex2html449"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html451"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00510000000000000000">
+Algorithms; Computer languages</A>
+</H1>
+This course is going to study <EM>algorithms</EM>. Before we start to
+study them it would help if we knew what they were. A full and
+rigorous definition of what is meant by an algorithm is complicated
+and may be confusing at this stage.  However, all the essential ideas
+about algorithms can be encapsulated in the single statement that an
+algorithm for solving a problem is a technique for solving that
+problem that can be programmed for a computer.
+
+<P>
+In rather more detail, an Algorithm is a finite and definite procedure
+for solving a problem. The finiteness is important; we cannot accept as
+algorithms methods which, for example, involve us in taking limits
+unless we have available a finite procedure for evaluating those limits.
+The definiteness is also important. We cannot accept as algorithms
+methods which involve making inspired guesses, like finding a clever
+substitution for an integral.
+
+<P>
+You may already have met the word <EM>algorithm</EM> in the context of
+Euclid's Algorithm for the calculation of the highest common factor of
+two integers. This is indeed an algorithm in our sense of the word. Let
+me write it down in the form of a procedure, using the kind of semi-
+formal language that we will normally adopt for describing algorithms.
+
+<P>
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ algorithm &nbsp;hcf(n,m) &nbsp;&nbsp;// calculate hcf of positive integers n,m
+<BR>
+begin
+<BR>&nbsp;&nbsp;repeat begin
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;l = remainder on dividing n by m.
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;n = m
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;m = l
+<BR>&nbsp;&nbsp;until m = 0 &nbsp;// required hcf is n.
+<BR>
+end
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>You should have no difficulty in translating this into a program in
+whatever computer language you happen to use. It can be proved to be
+<EM>finite</EM> -- each operation in the procedure is finite and we only
+go round the loop a finite number of times (these things have to be
+proved, of course). It is manifestly <EM>definite</EM>, no guesses or
+choices are being made.
+
+<P>
+On the other hand, the problem of finding the decimal representation of
+<IMG
+ WIDTH="25" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img2.gif"
+ ALT="$ \sqrt{2}$"> cannot be solved by an algorithm, so far as we know, because
+there are infinitely many decimal digits to be found and they cannot be
+described `finitely' because they neither repeat nor follow a clear
+pattern. The problem of finding a specified finite number of the decimal
+digits of <IMG
+ WIDTH="25" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img2.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img2.gif"
+ ALT="$ \sqrt{2}$"> <EM>is</EM> an algorithmic problem.
+
+<P>
+What is involved in the study of algorithms? Firstly, of course, there
+is the problem of actually finding algorithms to solve important
+problems. In addition there is the problem of evaluating those
+algorithms. Are they good or bad? Could we expect to do better by
+studying the problem further?
+
+<P>
+The usual measure of quality of an algorithm is its <EM>speed</EM> --
+does it do its job efficiently? Other significant criteria are: does it
+require a lot of computer space, is it easy to generalise, is it simple
+and logical and consequently easy to program without error?
+
+<P>
+Euclid's Algorithm is an example of a very good algorithm. It is
+undoubtedly a simple algorithm. It does not require much adjustment to
+cover all integers rather than just positive ones. It turns out that it
+is almost the quickest known way to solve the problem. Compare it, for
+example, with the equally correct method which starts with the lesser of
+<I>n</I> and <I>m</I> and successively reduces it by 1 until it divides both <I>n</I>
+and <I>m</I>. It would be a good first exercise for you to program these two
+methods and then compare their running times when required to find the
+h.c.f. of two six digit numbers.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html454"
+  HREF="node12.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node12.html">Programming</A>
+<LI><A NAME="tex2html455"
+  HREF="node13.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node13.html">An Implementation of the Euclidean Algorithm</A>
+<LI><A NAME="tex2html456"
+  HREF="node14.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node14.html">Recursion</A>
+<LI><A NAME="tex2html457"
+  HREF="node15.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node15.html">Algorithm Types</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html452"
+  HREF="node12.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node12.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html446"
+  HREF="node10.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node10.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html440"
+  HREF="node10.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node10.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html448"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html450"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html453"
+  HREF="node12.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node12.html">Programming</A>
+<B> Up:</B> <A NAME="tex2html447"
+  HREF="node10.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node10.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html441"
+  HREF="node10.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node10.html">Introduction</A>
+ &nbsp <B>  <A NAME="tex2html449"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html451"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

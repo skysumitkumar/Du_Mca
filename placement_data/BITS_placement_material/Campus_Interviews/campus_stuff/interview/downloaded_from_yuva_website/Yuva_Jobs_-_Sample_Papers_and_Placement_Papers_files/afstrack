@@ -1,0 +1,86 @@
+var T=Math.random();
+var Ref=document.referrer;
+if (typeof(parent.document)!="unknown")
+{
+var F=parent.document.URL;
+if (document.referrer==F) Ref=parent.document.referrer;
+}
+var S="usr="+AFS_Account+"P"+AFS_Tracker+"&js=1";
+if (typeof AFS_Page == "undefined") var AFS_Page="unknown";
+if (typeof AFS_Url == "undefined") var AFS_Url="unknown";
+if (AFS_Page=="DetectName") {AFS_Page=document.title;}
+if (AFS_Url=="DetectUrl") {AFS_Url=window.document.URL;}
+S+="&title="+escape(AFS_Page);
+S+="&url="+escape(AFS_Url);
+S+="&refer="+escape(Ref);
+if(typeof(screen)=="object")
+{
+S+="&resolution="+screen.width+"x"+screen.height;
+S+="&color="+screen.colorDepth;
+}
+S+="&Tips="+T;
+document.write("<a href='http://top.addfreestats.com/cgi-bin/main.cgi?usr="+AFS_Account+"' >");
+document.write("<img border=0 src='http://"+AFS_Server+".addfreestats.com/cgi-bin/connect.cgi?");
+document.write(S);
+document.write("' border=0 title='AddFreeStats.com Free Web Stats'></a>");
+document.write("<a href='http://www.addfreestats.com'></a>");
+function lsover()
+{
+window.status=this.href;
+}
+function lsout()
+{
+window.status="";
+}
+var ln=document.links.length;
+for (var i=0; i<ln; i++)
+{
+var currentOver = document.links[i].onmouseover;
+var currentOut = document.links[i].onmouseout;
+if (!currentOver && !currentOut)
+{
+document.links[i].onmouseover = lsover;
+document.links[i].onmouseout = lsout;
+}
+}
+function stloga()
+{
+ window.focus();
+ if (window.status)
+ {
+ bug = new Image();
+ bug.src = 'http://' + AFS_Server + '.addfreestats.com/cgi-bin/click.cgi?usr=' + AFS_Account + '&exit=Adsense->' + escape(window.status);
+ }
+}
+function stlogc()
+{
+var temp=window.location.href.split("/");
+var domain=temp[2];
+window.focus();
+ if (window.status.indexOf(domain) == -1)
+ {
+  if (window.status)
+  {
+  bug = new Image();
+  bug.src = 'http://' +AFS_Server + '.addfreestats.com/cgi-bin/click.cgi?usr='+ AFS_Account + '&exit='+escape(window.status);
+  }
+ }
+}
+var elements;
+elements = document.getElementsByTagName("iframe");
+for (var i = 0; i < elements.length; i++)
+{
+ if(elements[i].src.indexOf('googlesyndication.com') > -1)
+ {
+ elements[i].onfocus = stloga;
+ }
+ else
+ {
+ elements[i].onfocus = stlogc;
+ }
+}
+elements = document.getElementsByTagName("a");
+for (var i = 0; i < elements.length; i++)
+{
+     elements[i].onfocus = stlogc;
+}

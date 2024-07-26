@@ -1,0 +1,76 @@
+<html><head>
+<title>Solution for /decision/division</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /decision/division problem</h1>
+<hr>
+<h2>N-Person Fair Division</h2>
+
+Number the people from 1 to N. Person 1 cuts off a piece of the pie.
+Person 2 can either diminish the size of the cut off piece or pass.
+The same for persons 3 through N. The last person to touch the piece
+must take it and is removed from the process. Repeat this procedure
+with the remaining N - 1 people, until everyone has a piece.
+
+<p>
+References:<br>
+Luce and Raiffa, "Games and Decisions", Wiley, 1957, p. 366
+Kenneth Rebman, "How To Get (At Least) A Fair Share of the Cake",
+    in Mathematical Plums, Ross Honsberger, ed, Dolciani Mathematical
+    Expostions Number 4, published by the MAA.
+
+<p>
+There is a cute result in combinatorics called the Marriage Theorem.
+A village has n men and n women, such that for all 0 &lt; k &lt;= n and for any
+set of k men there are at least k women, each of whom is in love with at least
+one of the k men.  All of the men are in love with all of the women :-}.
+The theorem asserts that there is a way to arrange the village into n
+monogamous couplings.
+
+<p>
+The Marriage Theorem can be applied to the Fair Pie-Cutting Problem.
+
+<p>
+One player cuts the pie into n pieces.  Each of the players labels
+some non-null subset of the pieces as acceptable to him.  For reasons
+given below he should "accept" each piece of size &gt; 1/n, not just the
+best piece(s).  The pie-cutter is required to "accept" all of the pieces.
+
+<p>
+Given a set S of players let S' denote the set of pie-pieces
+acceptable to at least one player in S.  Let t be the size of the largest
+set (T) of players satisfying  |T| &gt; |T'|.  If there is no such set, the
+Marriage Theorem can be applied directly.  Since the pie-cutter accepts
+every piece we know that  t &lt; n.
+
+<p>
+Choose  |T| - |T'|  pieces at random from outside T', glue them
+together with the pieces in T' and let the players in T repeat the game
+with this smaller (t/n)-size pie.  This is fair since they all rejected
+the other n-t pieces, so they believe this pie is larger than t/n.
+
+<p>
+The remaining n-t players can each be assigned one of the remaining
+n-t pie-pieces without further ado due to the Marriage Theorem.  (Otherwise
+the set T above was not maximal.)
+
+<p>
+The problem of getting not just a fair solution, but an envy-free solution,
+is not solved.  A reference to this problem:<br>
+David Gale, "Dividing a Cake," in Mathematical Entertainments,
+    Mathematical Intelligencer, Vol. 15, No. 1, Winter 1993, p. 50,
+    contains references to work by Steven Breams and Alan Taylor.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

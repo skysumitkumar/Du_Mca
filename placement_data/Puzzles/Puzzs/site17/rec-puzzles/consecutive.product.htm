@@ -1,0 +1,100 @@
+<html><head>
+<title>Solution for /arithmetic/consecutive.product</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/consecutive.product problem</h1>
+<hr>
+<h2>Three consecutive numbers:</h2>
+  If a and b are relatively prime, and ab is a square,
+  then a and b are squares. (This is left as an exercise.)
+
+<p>
+  Suppose (n - 1)n(n + 1) = k^2, where n &gt; 1.  
+  Then n(n^2 - 1) = k^2.  But n and (n^2 - 1) are relatively prime.
+  Therefore n^2 - 1 is a perfect square, which is a contradiction.
+
+<h2>Four consecutive numbers:</h2>
+  n(n + 1)(n + 2)(n + 3) = (n^2 + 3n + 1)^2 - 1
+
+<h2>Five consecutive numbers:</h2>
+  Assume the product is a integer square, call it m.
+
+<p>
+  The prime factorization of m must have even numbers of each prime factor.
+
+<p>
+  For each prime factor, p, of m, p &gt;= 5, p^2k must divide one of the
+consecutive naturals in the product.  (Otherwise, the difference between two
+of the naturals in the product would be a positive multiple of a prime &gt;= 5.
+But in this problem, the greatest difference is 4.) So we need only consider
+the primes 2 and 3.
+
+<p>
+  Each of the consecutive naturals is one of:
+<pre>
+   1)	a perfect square
+   2)	2 times a perfect square
+   3)	3 times a perfect square
+   4)	6 times a perfect square.
+</pre>
+  By the shoe box principle, two of the five consecutive numbers must fall into
+the same category.
+
+<p>
+  If there are two perfect squares, then their difference being less than five
+limits their values to be 1 and 4.  (0 is not a natural number, so 0 and 1
+and 0 and 4 cannot be the perfect squares.)  But 1*2*3*4*5=120!=x*x where x
+is an integer.
+
+<p>
+  If there are two numbers that are 2 times a perfect square, then their
+difference being less than five implies that the perfect squares (which are
+multiplied by 2) are less than 3 apart, and no two natural squares differ by
+only 1 or 2.
+
+<p>
+  A similar argument holds for two numbers which are 3 times a perfect square.
+
+<p>
+  We cannot have the case that two of the 5 consecutive numbers are multiples
+(much less square multiples) of 6, since their difference would be &gt;= 6, and
+our span of five consecutive numbers is only 4.
+
+<p>
+  Therefore the assumption that m is a perfect square does not hold.
+
+<p>
+  QED.
+
+<p>
+In general the equation:
+
+<pre>
+y^2 = x(x+1)(x+2)...(x+n),    n &gt; 3
+</pre>
+
+has only the solution corresponding to y = 0.
+
+<p>
+This is a theorem of Rigge [O. Rigge, ``Uber ein diophantisches Problem'',
+IX Skan. Math. Kong. Helsingfors (1938)] and Erdos [P. Erdos, ``Note on
+products of consecutive integers,'' J. London Math. Soc. #14 (1939),
+pages 194-198].
+
+<p>
+A proof can be found on page 276 of [L. Mordell, ``Diophantine
+Equations'', Academic Press 1969].
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

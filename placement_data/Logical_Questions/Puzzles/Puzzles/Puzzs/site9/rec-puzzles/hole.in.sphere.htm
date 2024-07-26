@@ -1,0 +1,104 @@
+<html><head>
+<title>Solution for /geometry/hole.in.sphere</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /geometry/hole.in.sphere problem</h1>
+<hr>
+The volume of the leftover material is equal to the volume of a 6" sphere.
+
+<p>
+First, lets look at the 2 dimensional equivalent of this problem.  Two
+concentric circles where the chord of the outer circle that is tangent
+to the inner circle has length D.  What is the annular area between the
+circles?
+
+<p>
+It is pi * (D/2)^2. The same area as a circle with that diameter.
+<h3>Proof:</h3>
+<pre>
+   big circle radius is R
+   little circle radius is r
+        
+                         2          2
+   area of donut = pi * R   - pi * r
+
+                          2    2
+   =               pi * (R  - r )
+</pre>
+
+Draw a right triangle and apply the Pythagorean Theorem to see that
+<pre>
+     2      2          2
+    R  -   r   =  (D/2)
+</pre>
+so the area is
+<pre>
+                2
+    = pi * (D/2)
+</pre>
+
+
+Start with a sphere of radius R (where R &gt; 6"), drill out the 6"
+high hole.  We will now place this large "ring" on a plane.  Next to it 
+place a 6" high sphere.  By Archemedes' theorem, it suffices
+to show that for any plane parallel to the base plane, the cross-
+sectional area of these two solids is the same.
+
+<p>
+Take a general plane at height h above (or below) the center
+of the solids. The radius of the circle of intersection on the sphere is 
+
+<pre>
+   radius = srqt(3^2 - h^2)
+</pre>
+so the area is  
+
+<pre>
+   pi * ( 3^2  - h^2 ) 
+</pre>
+
+For the ring, once again we are looking at the area between two concentric 
+circles.  The outer circle has radius sqrt(R^2 - h^2), 
+The area of the outer circle is therefore
+
+<pre>
+   pi (R^2 - h^2)
+</pre>
+The inner circle has
+radius sqrt(R^2 - 3^2).  So the area  of the inner circle is
+
+<pre>
+   pi * ( R^2  - 3^2 ) 
+</pre>
+the area of the doughnut is therefore
+
+<pre>
+     pi(R^2 - h^2)  - pi( R^2  - 3^2 ) 
+               
+   = pi (R^2 - h^2 - R^2 + 3^2)
+
+   =       pi (3^2  - h^2)
+</pre>
+Therefore the areas are the same for every plane intersecting the solids.
+Therefore their volumes are the same.
+QED
+
+<p>
+There also is a meta-theoretic answer to this puzzle.  Assume the puzzle
+can be solved.  Then it must be solvable with a hole of any diameter, even
+zero.  But if you drill a hole of zero diameter that is six inches long,
+you leave behind the volume of a six inch diameter sphere.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

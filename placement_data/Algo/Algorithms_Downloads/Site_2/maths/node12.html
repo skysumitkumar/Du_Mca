@@ -1,0 +1,156 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Programming</TITLE>
+<META NAME="description" CONTENT="Programming">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node13.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node13.html">
+<LINK REL="previous" HREF="node11.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node11.html">
+<LINK REL="up" HREF="node11.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node11.html">
+<LINK REL="next" HREF="node13.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node13.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html470"
+  HREF="node13.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node13.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html464"
+  HREF="node11.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node11.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html458"
+  HREF="node11.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node11.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html466"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html468"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html471"
+  HREF="node13.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node13.html">An Implementation of the</A>
+<B> Up:</B> <A NAME="tex2html465"
+  HREF="node11.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node11.html">Algorithms; Computer languages</A>
+<B> Previous:</B> <A NAME="tex2html459"
+  HREF="node11.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node11.html">Algorithms; Computer languages</A>
+ &nbsp <B>  <A NAME="tex2html467"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html469"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00511000000000000000">
+Programming</A>
+</H2>
+This is probably the place to talk about programming, and the
+languages involved. Everything I do can be programmed in FORTRAN,
+M<SMALL>APLE</SMALL> or in any other language that you know, and you will benefit by
+actually trying the algorithms out on a computer. It is worthwhile
+developing enough facility to try the last example quickly to get a
+feel for the times taken by various algorithms. However, this is <EM>not</EM> a programming course, and you should not spend too much time
+doing this. Unfortunately, although it is very good for numerical
+work, FORTRAN is by no means the most suitable language with which to
+investigate algorithms, both because it is hard to write it both
+legally and clearly, and also because it lacks certain facilities. To
+make the first point, note that the language used to describe the
+Euclidean Algorithm above is <EM>not</EM> FORTRAN. It is in fact a kind
+of pidgin C or Pascal. I hope you will find this <I>pseudocode</I>
+easy to use on paper without a formal description of what is
+acceptable; the idea is that anything that communicates is OK!
+
+<P>
+To see FORTRAN's lack of facilities, consider the following equivalent
+description of the Euclidean Algorithm.
+
+<P>
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ algorithm hcf(n,m) // sets result to hcf of positive integers n,m
+<BR>
+begin
+<BR>&nbsp;&nbsp;if (m = 0)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;return(n)
+<BR>&nbsp;&nbsp;else
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;return(hcf(m, n mod m))
+<BR>&nbsp;&nbsp;endif
+<BR>
+end
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>
+<P>
+Arguably it is easier to see why this version of the algorithm is valid.
+The first statement is clear; if one of the numbers is zero, then we
+take the hcf to be the other one. The rest of the algorithm is the
+statement that the hcf of two numbers is the same as the hcf of the
+smaller, and of the remainder when the larger is divided by the smaller.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html470"
+  HREF="node13.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node13.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html464"
+  HREF="node11.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node11.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html458"
+  HREF="node11.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node11.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html466"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html468"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html471"
+  HREF="node13.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node13.html">An Implementation of the</A>
+<B> Up:</B> <A NAME="tex2html465"
+  HREF="node11.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node11.html">Algorithms; Computer languages</A>
+<B> Previous:</B> <A NAME="tex2html459"
+  HREF="node11.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node11.html">Algorithms; Computer languages</A>
+ &nbsp <B>  <A NAME="tex2html467"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html469"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

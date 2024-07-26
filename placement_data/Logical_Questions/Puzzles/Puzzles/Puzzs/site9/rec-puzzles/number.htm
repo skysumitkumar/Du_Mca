@@ -1,0 +1,146 @@
+<html><head>
+<title>Solution for /logic/number</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /logic/number problem</h1>
+<hr>
+The answer depends upon the ranges from which the numbers are chosen.
+
+<p>
+The unique solution for the ranges [2,62] through [2,500+] is:
+
+<pre>
+  SUM   PRODUCT   X   Y
+   17      52     4  13
+</pre>
+
+The unique solution for the ranges [3,94] through [3,500+] is:
+
+<pre>
+  SUM   PRODUCT   X   Y
+   29     208    13  16
+</pre>
+There are no unique solutions for the ranges starting with 1,
+and there are no solutions for ranges starting with numbers above 3.
+
+<p>
+A program to compute the possible pairs is included below.
+
+<hr>
+<pre>
+#include &lt;stdio.h&gt;
+
+/*
+
+BEGINNING OF PROBLEM STATEMENT:
+Mr. S. and Mr. P. are both perfect logicians, being able to correctly deduce
+any truth from any set of axioms.  Two integers (not necessarily unique) are
+somehow chosen such that each is within some specified range.  Mr. S.
+is given the sum of these two integers; Mr. P. is given the product of these
+two integers.  After receiving these numbers, the two logicians do not
+have any communication at all except the following dialogue:
+&lt;&lt;1&gt;&gt;   Mr. P.:  I do not know the two numbers.
+&lt;&lt;2&gt;&gt;   Mr. S.:  I knew that you didn't know the two numbers.
+&lt;&lt;3&gt;&gt;   Mr. P.:  Now I know the two numbers.
+&lt;&lt;4&gt;&gt;   Mr. S.:  Now I know the two numbers.
+
+Given that the above statements are absolutely truthful, what are the two
+numbers?
+
+END OF PROBLEM STATEMENT
+
+ */
+
+#define SMALLEST_MIN	1
+#define LARGEST_MIN	10
+#define SMALLEST_MAX	50
+#define LARGEST_MAX	500
+
+long P[(LARGEST_MAX + 1) * (LARGEST_MAX + 1)];		/* products */
+long S[(LARGEST_MAX + 1) + (LARGEST_MAX + 1)];		/*   sums   */
+
+find(long min, long max)
+{
+	long i, j;
+	/*
+	 *	count factorizations in P[]
+	 *	all P[n] &gt; 1 satisfy &lt;&lt;1&gt;&gt;.
+	 */
+	for(i = 0; i &lt;= max * max; ++i)
+		P[i] = 0;
+
+	for(i = min; i &lt;= max; ++i)
+		for(j = i; j &lt;= max; ++j)
+			++P[i * j];
+
+	/*
+	 *	decompose possible SUMs and check factorizations
+	 *		all S[n] == min - 1 satisfy &lt;&lt;2&gt;&gt;.
+	 */
+	for(i = min + min; i &lt;= max + max; ++i) {
+
+		for(j = i / 2; j &gt;= min; --j)
+			if(P[j * (i - j)] &lt; 2)
+				break;
+
+		S[i] = j;
+	}
+
+	/*
+	 *	decompose SUMs which satisfy &lt;&lt;2&gt;&gt; and see which products
+	 *	they produce.  All (P[n] / 1000 == 1) satisfy &lt;&lt;3&gt;&gt;.
+	 */
+	for(i = min + min; i &lt;= max + max; ++i)
+		if(S[i] == min - 1)
+			for(j = i / 2; j &gt;= min; --j)
+				if(P[j * (i - j)] &gt; 1)
+					P[j * (i - j)] += 1000;
+	/*
+	 *	decompose SUMs which satisfy &lt;&lt;2&gt;&gt; again and see which products
+	 *	satisfy &lt;&lt;3&gt;&gt;.  Any (S[n] == 999 + min) satisfies &lt;&lt;4&gt;&gt;
+	 */
+	for(i = min + min; i &lt;= max + max; ++i)
+		if(S[i] == min - 1)
+			for(j = i / 2; j &gt;= min; --j)
+				if(P[j * (i - j)] / 1000 == 1)
+					S[i] += 1000;
+	/*
+	 *	find the answer(s) and print them
+	 */
+	printf("[%d,%d]\n",min,max);
+	for(i = min + min; i &lt;= max + max; ++i)
+		if(S[i] == 999 + min)
+			for(j = i / 2; j &gt;= min; --j)
+				if(P[j * (i - j)] / 1000 == 1)
+					printf("{ %d %d }: S = %d, P = %d\n",
+						i - j, j, i, (i - j)  * j);
+}
+
+main()
+{
+	long min, max;
+
+	for (min = SMALLEST_MIN; min &lt;= LARGEST_MIN; min ++)
+	    for (max = SMALLEST_MAX; max &lt;= LARGEST_MAX; max++)
+		find(min,max);
+}
+
+-------------------------------------------------------------------------
+=			Jeff Kenton	(617) 894-4508			=
+=			    jkenton@world.std.com			=
+-------------------------------------------------------------------------
+
+</pre>
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

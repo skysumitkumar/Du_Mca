@@ -1,0 +1,951 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0050)http://cslibrary.stanford.edu/110/BinaryTrees.html -->
+<HTML><HEAD><TITLE>Binary Trees</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.2873" name=GENERATOR>
+<META content="Nick Parlante" name=Author>
+<META 
+content="Stanford CS Education Library: this article introduces the basic concepts of binary trees, and then works through a series of practice problems with solution code in C/C++ and Java. Binary trees have an elegant recursive pointer structure, so they make a good introduction to recursive pointer algorithms." 
+name=Description>
+<META 
+content="binary trees, binary tree problems, binary search trees, pointer, recursion, problems, solutions, code, introduction, C, C++, Java" 
+name=KeyWords></HEAD>
+<BODY text=#000000 vLink=#551a8b aLink=#0000ff link=#0000ff bgColor=#ffffff>
+<CENTER>
+<H1>Binary Trees</H1></CENTER>
+<CENTER>by Nick Parlante</CENTER>
+<P>This article introduces the basic concepts of binary trees, and then works 
+through a series of practice problems with solution code in C/C++ and Java. 
+Binary trees have an elegant recursive pointer structure, so they are a good way 
+to learn recursive pointer algorithms. 
+<H3>Contents</H3><A 
+href="http://cslibrary.stanford.edu/110/BinaryTrees.html#s1">Section 1</A>. 
+Binary Tree Structure -- a quick introduction to binary trees and the code that 
+operates on them <BR><A 
+href="http://cslibrary.stanford.edu/110/BinaryTrees.html#s2">Section 2</A>. 
+Binary Tree Problems -- practice problems in increasing order of difficulty 
+<BR><A href="http://cslibrary.stanford.edu/110/BinaryTrees.html#csoln">Section 
+3</A>. C Solutions -- solution code to the problems for C and C++ programmers 
+<BR><A href="http://cslibrary.stanford.edu/110/BinaryTrees.html#java">Section 
+4</A>. Java versions -- how binary trees work in Java, with solution code 
+<H3>Stanford CS Education Library -- #110</H3>This is article #110 in the 
+Stanford CS Education Library. This and other free CS materials are available at 
+the library (<A 
+href="http://cslibrary.stanford.edu/">http://cslibrary.stanford.edu/</A>). That 
+people seeking education should have the opportunity to find it. This article 
+may be used, reproduced, excerpted, or sold so long as this paragraph is clearly 
+reproduced. Copyright 2000-2001, Nick Parlante, nick.parlante@cs.stanford.edu. 
+<H3>Related CSLibrary Articles</H3>
+<UL>
+  <LI>Linked List Problems (<A 
+  href="http://cslibrary.stanford.edu/105/">http://cslibrary.stanford.edu/105/</A>) 
+  -- a large collection of linked list problems using various pointer techniques 
+  (while this binary tree article concentrates on recursion) 
+  <LI>Pointer and Memory (<A 
+  href="http://cslibrary.stanford.edu/102/">http://cslibrary.stanford.edu/102/</A>) 
+  -- basic concepts of pointers and memory 
+  <LI>The Great Tree-List Problem (<A 
+  href="http://cslibrary.stanford.edu/109/">http://cslibrary.stanford.edu/109/</A>) 
+  -- a great pointer recursion problem that uses both trees and lists </LI></UL>
+<H2><A name=s1></A>Section 1 -- Introduction To Binary Trees</H2>A binary tree 
+is made of nodes, where each node contains a "left" pointer, a "right" pointer, 
+and a data element. The "root" pointer points to the topmost node in the tree. 
+The left and right pointers recursively point to smaller "subtrees" on either 
+side. A null pointer represents a binary tree with no elements -- the empty 
+tree. The formal recursive definition is: a <B>binary tree </B>is either empty 
+(represented by a null pointer), or is made of a single node, where the left and 
+right pointers (recursive definition ahead) each point to a <B>binary tree</B>. 
+<BR>&nbsp; 
+<P><IMG height=264 alt="a drawing of a little binary tree" 
+src="Binary Trees_files/binarytree.gif" width=420 border=0> <BR>&nbsp; 
+<P>A "binary search tree" (BST) or "ordered binary tree" is a type of binary 
+tree where the nodes are arranged in order: for each node, all elements in its 
+left subtree are less-or-equal to the node (&lt;=), and all the elements in its 
+right subtree are greater than the node (&gt;). The tree shown above is a binary 
+search tree -- the "root" node is a 5, and its left subtree nodes (1, 3, 4) are 
+&lt;= 5, and its right subtree nodes (6, 9) are &gt; 5. Recursively, each of the 
+subtrees must also obey the binary search tree constraint: in the (1, 3, 4) 
+subtree, the 3 is the root, the 1 &lt;= 3 and 4 &gt; 3. Watch out for the exact 
+wording in the problems -- a "binary search tree" is different from a "binary 
+tree". 
+<P>The nodes at the bottom edge of the tree have empty subtrees and are called 
+"leaf" nodes (1, 4, 6) while the others are "internal" nodes (3, 5, 9). 
+<H3>Binary Search Tree Niche</H3>Basically, binary search trees are fast at 
+insert and lookup. The next section presents the code for these two algorithms. 
+On average, a binary search tree algorithm can locate a node in an N node tree 
+in order lg(N) time (log base 2). Therefore, binary search trees are good for 
+"dictionary" problems where the code inserts and looks up information indexed by 
+some key. The lg(N) behavior is the average case -- it's possible for a 
+particular tree to be much slower depending on its shape. 
+<H3>Strategy</H3>Some of the problems in this article use plain binary trees, 
+and some use binary search trees. In any case, the problems concentrate on the 
+combination of pointers and recursion. (See the articles linked above for 
+pointer articles that do not emphasize recursion.) 
+<P>For each problem, there are two things to understand... 
+<UL>
+  <LI>The node/pointer structure that makes up the tree and the code that 
+  manipulates it 
+  <LI>The algorithm, typically recursive, that iterates over the tree 
+</LI></UL>When thinking about a binary tree problem, it's often a good idea to 
+draw a few little trees to think about the various cases. 
+<H3>Typical Binary Tree Code in C/C++</H3>As an introduction, we'll look at the 
+code for the two most basic binary search tree operations -- lookup() and 
+insert(). The code here works for C or C++. Java programers can read the 
+discussion here, and then look at the Java versions in <A 
+href="http://cslibrary.stanford.edu/110/BinaryTrees.html#java">Section 4</A>. 
+<P>In C or C++, the binary tree is built with a node type like this... 
+<P><TT>struct node {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; int data;</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; struct node* left;</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+struct node* right;</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<H3>Lookup()</H3>Given a binary search tree and a "target" value, search the 
+tree to see if it contains the target. The basic pattern of the lookup() code 
+occurs in many recursive tree algorithms: deal with the base case where the tree 
+is empty, deal with the current node, and then use recursion to deal with the 
+subtrees. If the tree is a binary search tree, there is often some sort of 
+less-than test on the node to decide if the recursion should go left or right. 
+<P><TT>/*</TT> <BR><TT>&nbsp;Given a binary tree, return true if a node</TT> 
+<BR><TT>&nbsp;with the target data is found in the tree. Recurs</TT> 
+<BR><TT>&nbsp;down the tree, chooses the left or right</TT> <BR><TT>&nbsp;branch 
+by comparing the target to each node.</TT> <BR><TT>*/</TT> <BR><TT>static int 
+lookup(struct node* node, int target) {</TT> <BR><TT>&nbsp; // 1. Base case == 
+empty tree</TT> <BR><TT>&nbsp; // in that case, the target is not found so 
+return false</TT> <BR><TT>&nbsp; if (node == NULL) {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; return(false);</TT> <BR><TT>&nbsp; }</TT> 
+<BR><TT>&nbsp; else {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; // 2. see if found 
+here</TT> <BR><TT>&nbsp;&nbsp;&nbsp; if (target == node-&gt;data) 
+return(true);</TT> <BR><TT>&nbsp;&nbsp;&nbsp; else {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 3. otherwise recur down the correct 
+subtree</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (target &lt; 
+node-&gt;data) return(lookup(node-&gt;left, target));</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else return(lookup(node-&gt;right, 
+target));</TT> <BR><TT>&nbsp;&nbsp;&nbsp; }</TT> <BR><TT>&nbsp; }</TT> 
+<BR><TT>}</TT> <BR>&nbsp; 
+<P>The lookup() algorithm could be written as a while-loop that iterates down 
+the tree. Our version uses recursion to help prepare you for the problems below 
+that require recursion. 
+<H3>Pointer Changing Code</H3>There is a common problem with pointer intensive 
+code: what if a function needs to change one of the pointer parameters passed to 
+it? For example, the insert() function below may want to change the root 
+pointer. In C and C++, one solution uses pointers-to-pointers (aka "reference 
+parameters"). That's a fine technique, but here we will use the simpler 
+technique that a function that wishes to change a pointer passed to it will 
+<B>return</B> the new value of the pointer to the caller. The caller is 
+responsible for using the new value. Suppose we have a change() function that 
+may change the the root, then a call to change() will look like this... 
+<P><TT>// suppose the variable "root" points to the tree</TT> <BR><TT>root = 
+change(root);</TT> 
+<P>We take the value returned by change(), and use it as the new value for root. 
+This construct is a little awkward, but it avoids using reference parameters 
+which confuse some C and C++ programmers, and Java does not have reference 
+parameters at all. This allows us to focus on the recursion instead of the 
+pointer mechanics. (For lots of problems that use reference parameters, see 
+CSLibrary #105, Linked List Problems, <A 
+href="http://cslibrary.stanford.edu/105/">http://cslibrary.stanford.edu/105/</A>). 
+
+<H3>Insert()</H3>Insert() -- given a binary search tree and a number, insert a 
+new node with the given number into the tree in the correct place. The insert() 
+code is similar to lookup(), but with the complication that it modifies the tree 
+structure. As described above, insert() returns the new tree pointer to use to 
+its caller. Calling insert() with the number 5 on this tree... 
+<P><TT>&nbsp;&nbsp;&nbsp; 2</TT> <BR><TT>&nbsp;&nbsp; / \</TT> <BR><TT>&nbsp; 
+1&nbsp;&nbsp; 10</TT> 
+<P>returns the tree... 
+<P><TT>&nbsp;&nbsp;&nbsp; 2</TT> <BR><TT>&nbsp;&nbsp; / \</TT> <BR><TT>&nbsp; 
+1&nbsp;&nbsp; 10</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp; /</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; 5</TT> 
+<P>The solution shown here introduces a newNode() helper function that builds a 
+single node. The base-case/recursion structure is similar to the structure in 
+lookup() -- each call checks for the NULL case, looks at the node at hand, and 
+then recurs down the left or right subtree if needed. 
+<P><TT>/*</TT> <BR><TT>&nbsp;Helper function that allocates a new node</TT> 
+<BR><TT>&nbsp;with the given data and NULL left and right</TT> 
+<BR><TT>&nbsp;pointers.</TT> <BR><TT>*/</TT> <BR><TT>struct node* NewNode(int 
+data) {</TT> <BR><TT>&nbsp; struct node* node = new(struct 
+node);&nbsp;&nbsp;&nbsp; // "new" is like "malloc"</TT> <BR><TT>&nbsp; 
+node-&gt;data = data;</TT> <BR><TT>&nbsp; node-&gt;left = NULL;</TT> 
+<BR><TT>&nbsp; node-&gt;right = NULL;</TT> 
+<P><TT>&nbsp; return(node);</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<P><TT>/*</TT> <BR><TT>&nbsp;Give a binary search tree and a number, inserts a 
+new node</TT> <BR><TT>&nbsp;with the given number in the correct place in the 
+tree.</TT> <BR><TT>&nbsp;Returns the new root pointer which the caller 
+should</TT> <BR><TT>&nbsp;then use (the standard trick to avoid using 
+reference</TT> <BR><TT>&nbsp;parameters).</TT> <BR><TT>*/</TT> <BR><TT>struct 
+node* insert(struct node* node, int data) {</TT> <BR><TT>&nbsp; // 1. If the 
+tree is empty, return a new, single node</TT> <BR><TT>&nbsp; if (node == NULL) 
+{</TT> <BR><TT>&nbsp;&nbsp;&nbsp; return(newNode(data));</TT> <BR><TT>&nbsp; 
+}</TT> <BR><TT>&nbsp; else {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; // 2. Otherwise, 
+recur down the tree</TT> <BR><TT>&nbsp;&nbsp;&nbsp; if (data &lt;= 
+node-&gt;data) node-&gt;left = insert(node-&gt;left, data);</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; else node-&gt;right = insert(node-&gt;right, 
+data);</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp; return(node); // return the (unchanged) node 
+pointer</TT> <BR><TT>&nbsp; }</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<P>The shape of a binary tree depends very much on the order that the nodes are 
+inserted. In particular, if the nodes are inserted in increasing order (1, 2, 3, 
+4), the tree nodes just grow to the right leading to a linked list shape where 
+all the left pointers are NULL. A similar thing happens if the nodes are 
+inserted in decreasing order (4, 3, 2, 1). The linked list shape defeats the 
+lg(N) performance. We will not address that issue here, instead focusing on 
+pointers and recursion. 
+<H2 page-break-before="always"><A name=s2></A>Section 2 -- Binary Tree 
+Problems</H2>Here are 14 binary tree problems in increasing order of difficulty. 
+Some of the problems operate on binary search trees (aka "ordered binary trees") 
+while others work on plain binary trees with no special ordering. The next 
+section, <A 
+href="http://cslibrary.stanford.edu/110/BinaryTrees.html#csoln">Section 3,</A> 
+shows the solution code in C/C++. <A 
+href="http://cslibrary.stanford.edu/110/BinaryTrees.html#java">Section 4</A> 
+gives the background and solution code in Java. The basic structure and 
+recursion of the solution code is the same in both languages -- the differences 
+are superficial. 
+<P>Reading about a data structure is a fine introduction, but at some point the 
+only way to learn is to actually try to solve some problems starting with a 
+blank sheet of paper. To get the most out of these problems, you should at least 
+attempt to solve them before looking at the solution. Even if your solution is 
+not quite right, you will be building up the right skills. With any 
+pointer-based code, it's a good idea to make memory drawings of a a few simple 
+cases to see how the algorithm should work. 
+<H3>1. build123()</H3>This is a very basic problem with a little pointer 
+manipulation. (You can skip this problem if you are already comfortable with 
+pointers.) Write code that builds the following little 1-2-3 binary search 
+tree... 
+<P><TT>&nbsp;&nbsp;&nbsp; 2</TT> <BR><TT>&nbsp;&nbsp; / \</TT> <BR><TT>&nbsp; 
+1&nbsp;&nbsp; 3</TT> 
+<P>Write the code in three different ways... 
+<UL>
+  <LI>a: by calling newNode() three times, and using three pointer variables 
+  <LI>b: by calling newNode() three times, and using only one pointer variable 
+  <LI>c: by calling insert() three times passing it the root pointer to build up 
+  the tree </LI></UL>(In Java, write a build123() method that operates on the 
+receiver to change it to be the 1-2-3 tree with the given coding constraints. 
+See <A href="http://cslibrary.stanford.edu/110/BinaryTrees.html#java">Section 
+4</A>.) 
+<P>struct node* build123() { <BR>&nbsp; 
+<H3>2. size()</H3>This problem demonstrates simple binary tree traversal. Given 
+a binary tree, count the number of nodes in the tree. 
+<P>int size(struct node* node) { <BR>&nbsp; 
+<H3>3. maxDepth()</H3>Given a binary tree, compute its "maxDepth" -- the number 
+of nodes along the longest path from the root node down to the farthest leaf 
+node. The maxDepth of the empty tree is 0, the maxDepth of the tree on the first 
+page is 3. 
+<P>int maxDepth(struct node* node) { <BR>&nbsp; 
+<H3>4. minValue()</H3>Given a non-empty binary search tree (an ordered binary 
+tree), return the minimum data value found in that tree. Note that it is not 
+necessary to search the entire tree. A maxValue() function is structurally very 
+similar to this function. This can be solved with recursion or with a simple 
+while loop. 
+<P>int minValue(struct node* node) { <BR>&nbsp; 
+<H3>5. printTree()</H3>Given a binary search tree (aka an "ordered binary 
+tree"), iterate over the nodes to print them out in increasing order. So the 
+tree... 
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / \</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp; 
+2&nbsp;&nbsp; 5</TT> <BR><TT>&nbsp;&nbsp;&nbsp; / \</TT> <BR><TT>&nbsp;&nbsp; 
+1&nbsp;&nbsp; 3</TT> 
+<P>Produces the output "1 2 3 4 5". This is known as an "inorder" traversal of 
+the tree. 
+<P><B>Hint:</B> For each node, the strategy is: recur left, print the node data, 
+recur right. 
+<P>void printTree(struct node* node) { <BR>&nbsp; 
+<H3>6. printPostorder()</H3>Given a binary tree, print out the nodes of the tree 
+according to a bottom-up "postorder" traversal -- both subtrees of a node are 
+printed out completely before the node itself is printed, and each left subtree 
+is printed before the right subtree. So the tree... 
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / \</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp; 
+2&nbsp;&nbsp; 5</TT> <BR><TT>&nbsp;&nbsp;&nbsp; / \</TT> <BR><TT>&nbsp;&nbsp; 
+1&nbsp;&nbsp; 3</TT> 
+<P>Produces the output "1 3 2 5 4". The description is complex, but the code is 
+simple. This is the sort of&nbsp; bottom-up traversal that would be used, for 
+example, to evaluate an expression tree where a node is an operation like '+' 
+and its subtrees are, recursively, the two subexpressions for the '+'. 
+<P>void printPostorder(struct node* node) { <BR>&nbsp; 
+<H3>7. hasPathSum()</H3>We'll define a "root-to-leaf path" to be a sequence of 
+nodes in a tree starting with the root node and proceeding downward to a leaf (a 
+node with no children). We'll say that an empty tree contains no root-to-leaf 
+paths. So for example, the following tree has exactly four root-to-leaf paths: 
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+5</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+/ \</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+4&nbsp;&nbsp; 8</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+/&nbsp;&nbsp; / \</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11&nbsp; 13&nbsp; 
+4</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /&nbsp; 
+\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7&nbsp;&nbsp;&nbsp; 
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1</TT> 
+<P>Root-to-leaf paths: <BR><TT>&nbsp;&nbsp; path 1: 5 4 11 7</TT> 
+<BR><TT>&nbsp;&nbsp; path 2: 5 4 11 2</TT> <BR><TT>&nbsp;&nbsp; path 3: 5 8 
+13</TT> <BR><TT>&nbsp;&nbsp; path 4: 5 8 4 1</TT> 
+<P>For this problem, we will be concerned with the sum of the values of such a 
+path -- for example, the sum of the values on the 5-4-11-7 path is 5 + 4 + 11 + 
+7 = 27. 
+<P>Given a binary tree and a sum, return true if the tree has a root-to-leaf 
+path such that adding up all the values along the path equals the given sum. 
+Return false if no such path can be found. (Thanks to Owen Astrachan for 
+suggesting this problem.) 
+<P>int hasPathSum(struct node* node, int sum) { <BR>&nbsp; 
+<H3>8. printPaths()</H3>Given a binary tree, print out all of its root-to-leaf 
+paths as defined above. This problem is a little harder than it looks, since the 
+"path so far" needs to be communicated between the recursive calls. <B>Hint:</B> 
+In C, C++, and Java, probably the best solution is to create a recursive helper 
+function printPathsRecur(node, int path[], int pathLen), where the path array 
+communicates the sequence of nodes that led up to the current call. Alternately, 
+the problem may be solved bottom-up, with each node returning its list of paths. 
+This strategy works quite nicely in Lisp, since it can exploit the built in list 
+and mapping primitives. (Thanks to Matthias Felleisen for suggesting this 
+problem.) 
+<P>Given a binary tree, print out all of its root-to-leaf paths, one per line. 
+<P>void printPaths(struct node* node) { <BR>&nbsp; 
+<H3>9. mirror()</H3>Change a tree so that the roles of the left and right 
+pointers are swapped at every node. 
+<P>&nbsp;So the tree... <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / \</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp; 
+2&nbsp;&nbsp; 5</TT> <BR><TT>&nbsp;&nbsp;&nbsp; / \</TT> <BR><TT>&nbsp;&nbsp; 
+1&nbsp;&nbsp; 3</TT> 
+<P>&nbsp;is changed to... <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / \</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp; 
+5&nbsp;&nbsp; 2</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / \</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; 1</TT> 
+<P>The solution is short, but very recursive. As it happens, this can be 
+accomplished without changing the root node pointer, so the return-the-new-root 
+construct is not necessary. Alternately, if you do not want to change the tree 
+nodes, you may construct and return a new mirror tree based on the original 
+tree. 
+<P>void mirror(struct node* node) { <BR>&nbsp; 
+<H3>10. doubleTree()</H3>For each node in a binary search tree, create a new 
+duplicate node, and insert the duplicate as the left child of the original node. 
+The resulting tree should still be a binary search tree. 
+<P>&nbsp;So the tree... <BR><TT>&nbsp;&nbsp;&nbsp; 2</TT> <BR><TT>&nbsp;&nbsp; / 
+\</TT> <BR><TT>&nbsp; 1&nbsp;&nbsp; 3</TT> 
+<P>&nbsp;is changed to... <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / \</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp; 
+2&nbsp;&nbsp; 3</TT> <BR><TT>&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp; /</TT> 
+<BR><TT>&nbsp;&nbsp; 1&nbsp;&nbsp; 3</TT> <BR><TT>&nbsp; /</TT> 
+<BR><TT>&nbsp;1</TT> 
+<P>As with the previous problem, this can be accomplished without changing the 
+root node pointer. 
+<P>void doubleTree(struct node* node) { <BR>&nbsp; 
+<H3>11. sameTree()</H3>Given two binary trees, return true if they are 
+structurally identical -- they are made of nodes with the same values arranged 
+in the same way. (Thanks to Julie Zelenski for suggesting this problem.) 
+<P>int sameTree(struct node* a, struct node* b) { <BR>&nbsp; 
+<H3>12. countTrees()</H3>This is not a binary tree programming problem in the 
+ordinary sense -- it's more of a math/combinatorics recursion problem that 
+happens to use binary trees. (Thanks to Jerry Cain for suggesting this problem.) 
+
+<P>Suppose you are building an N node binary search tree with the values 1..N. 
+How many structurally different&nbsp; binary search trees are there that store 
+those values? Write a recursive function that, given the number of distinct 
+values, computes the number of structurally unique binary search trees that 
+store those values. For example, countTrees(4) should return 14, since there are 
+14&nbsp; structurally unique binary search trees that store 1, 2, 3, and 4. The 
+base case is easy, and the recursion is short but dense. Your code should not 
+construct any actual trees; it's just a counting problem. 
+<P>int countTrees(int numKeys) { <BR>&nbsp; <BR>&nbsp; 
+<H3>Binary Search Tree Checking (for problems 13 and 14)</H3>This background is 
+used by the next two problems: Given a plain binary tree, examine the tree to 
+determine if it meets the requirement to be a binary search tree. To be a binary 
+search tree, for every node, all of the nodes in its left tree must be &lt;= the 
+node, and all of the nodes in its right subtree must be &gt; the node. Consider 
+the following four examples... 
+<P><TT>a.&nbsp; 5&nbsp;&nbsp; -&gt; TRUE</TT> <BR><TT>&nbsp;&nbsp; / \</TT> 
+<BR><TT>&nbsp; 2&nbsp;&nbsp; 7</TT> <BR>&nbsp; 
+<P><TT>b.&nbsp; 5&nbsp;&nbsp; -&gt; FALSE, because the 6 is not ok to the left 
+of the 5</TT> <BR><TT>&nbsp;&nbsp; / \</TT> <BR><TT>&nbsp; 6&nbsp;&nbsp; 7</TT> 
+<BR>&nbsp; 
+<P><TT>c.&nbsp;&nbsp; 5&nbsp; -&gt; TRUE</TT> <BR><TT>&nbsp;&nbsp;&nbsp; / 
+\</TT> <BR><TT>&nbsp;&nbsp; 2&nbsp;&nbsp; 7</TT> <BR><TT>&nbsp; /</TT> 
+<BR><TT>&nbsp;1</TT> 
+<P><TT>d.&nbsp;&nbsp; 5&nbsp; -&gt; FALSE, the 6 is ok with the 2, but the 6 is 
+not ok with the 5</TT> <BR><TT>&nbsp;&nbsp;&nbsp; / \</TT> <BR><TT>&nbsp;&nbsp; 
+2&nbsp;&nbsp; 7</TT> <BR><TT>&nbsp; / \</TT> <BR><TT>&nbsp;1&nbsp;&nbsp; 6</TT> 
+<P>For the first two cases, the right answer can be seen just by comparing each 
+node to the two nodes immediately below it. However, the fourth case shows how 
+checking the BST quality may depend on nodes which are several layers apart -- 
+the 5 and the 6 in that case. <BR>&nbsp; 
+<H3>13 isBST() -- version 1</H3>Suppose you have helper functions minValue() and 
+maxValue() that return the min or max int value from a non-empty tree (see 
+problem 3 above). Write an isBST() function that returns true if a tree is a 
+binary search tree and false otherwise. Use the helper functions, and don't 
+forget to check every node in the tree. It's ok if your solution is not very 
+efficient. (Thanks to Owen Astrachan for the idea of having this problem, and 
+comparing it to problem 14) 
+<P>Returns true if a binary tree is a binary search tree. 
+<P>int isBST(struct node* node) { <BR>&nbsp; 
+<H3>14. isBST() -- version 2</H3>Version 1 above runs slowly since it traverses 
+over some parts of the tree many times. A better solution looks at each node 
+only once. The trick is to write a utility helper function isBSTRecur(struct 
+node* node, int min, int max) that traverses down the tree keeping track of the 
+narrowing min and max allowed values as it goes, looking at each node only once. 
+The initial values for min and max should be INT_MIN and INT_MAX -- they narrow 
+from there. 
+<P>/* <BR>&nbsp;Returns true if the given tree is a binary search tree 
+<BR>&nbsp;(efficient version). <BR>*/ <BR>int isBST2(struct node* node) { 
+<BR>&nbsp; return(isBSTRecur(node, INT_MIN, INT_MAX)); <BR>} 
+<P>/* <BR>&nbsp;Returns true if the given tree is a BST and its <BR>&nbsp;values 
+are &gt;= min and &lt;= max. <BR>*/ <BR>int isBSTRecur(struct node* node, int 
+min, int max) { <BR>&nbsp; 
+<H3>15. Tree-List</H3>The Tree-List problem is one of the greatest recursive 
+pointer problems ever devised, and it happens to use binary trees as well. 
+CLibarary #109 <A 
+href="http://cslibrary.stanford.edu/109/">http://cslibrary.stanford.edu/109/</A>&nbsp; 
+works through the Tree-List problem in detail and includes solution code in C 
+and Java. The problem requires an understanding of binary trees, linked lists, 
+recursion, and pointers. It's a great problem, but it's complex. <BR>&nbsp; 
+<BR>&nbsp; 
+<H2><A name=csoln></A>Section 3 -- C/C++ Solutions</H2>Make an attempt to solve 
+each problem before looking at the solution -- it's the best way to learn. 
+<H3>1. Build123() Solution (C/C++)</H3><TT>// call newNode() three times</TT> 
+<BR><TT>struct node* build123a() {</TT> <BR><TT>&nbsp; struct node* root = 
+newNode(2);</TT> <BR><TT>&nbsp; struct node* lChild = newNode(1);</TT> 
+<BR><TT>&nbsp; struct node* rChild = newNode(3);</TT> 
+<P><TT>&nbsp; root-&gt;left = lChild;</TT> <BR><TT>&nbsp; root-&gt;right= 
+rChild;</TT> 
+<P><TT>&nbsp; return(root);</TT> <BR><TT>}</TT> 
+<P><TT>// call newNode() three times, and use only one local variable</TT> 
+<BR><TT>struct node* build123b() {</TT> <BR><TT>&nbsp; struct node* root = 
+newNode(2);</TT> <BR><TT>&nbsp; root-&gt;left = newNode(1);</TT> <BR><TT>&nbsp; 
+root-&gt;right = newNode(3);</TT> 
+<P><TT>&nbsp; return(root);</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<P><TT>/*</TT> <BR><TT>&nbsp;Build 123 by calling insert() three times.</TT> 
+<BR><TT>&nbsp;Note that the '2' must be inserted first.</TT> <BR><TT>*/</TT> 
+<BR><TT>struct node* build123c() {</TT> <BR><TT>&nbsp; struct node* root = 
+NULL;</TT> <BR><TT>&nbsp; root = insert(root, 2);</TT> <BR><TT>&nbsp; root = 
+insert(root, 1);</TT> <BR><TT>&nbsp; root = insert(root, 3);</TT> <BR><TT>&nbsp; 
+return(root);</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<H3>2. size() Solution (C/C++)</H3><TT>/*</TT> <BR><TT>&nbsp;Compute the number 
+of nodes in a tree.</TT> <BR><TT>*/</TT> <BR><TT>int size(struct node* node) 
+{</TT> <BR><TT>&nbsp; if (node==NULL) {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+return(0);</TT> <BR><TT>&nbsp; } else {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+return(size(node-&gt;left) + 1 + size(node-&gt;right));</TT> <BR><TT>&nbsp; 
+}</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<H3>3. maxDepth() Solution (C/C++)</H3><TT>/*</TT> <BR><TT>&nbsp;Compute the 
+"maxDepth" of a tree -- the number of nodes along</TT> <BR><TT>&nbsp;the longest 
+path from the root node down to the farthest leaf node.</TT> <BR><TT>*/</TT> 
+<BR><TT>int maxDepth(struct node* node) {</TT> <BR><TT>&nbsp; if (node==NULL) 
+{</TT> <BR><TT>&nbsp;&nbsp;&nbsp; return(0);</TT> <BR><TT>&nbsp; }</TT> 
+<BR><TT>&nbsp; else {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; // compute the depth of 
+each subtree</TT> <BR><TT>&nbsp;&nbsp;&nbsp; int lDepth = 
+maxDepth(node-&gt;left);</TT> <BR><TT>&nbsp;&nbsp;&nbsp; int rDepth = 
+maxDepth(node-&gt;right);</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp; // use the larger one</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+if (lDepth &gt; rDepth) return(lDepth+1);</TT> <BR><TT>&nbsp;&nbsp;&nbsp; else 
+return(rDepth+1);</TT> <BR><TT>&nbsp; }</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<H3>4. minValue() Solution (C/C++)</H3><TT>/*</TT> <BR><TT>&nbsp;Given a 
+non-empty binary search tree,</TT> <BR><TT>&nbsp;return the minimum data value 
+found in that tree.</TT> <BR><TT>&nbsp;Note that the entire tree does not need 
+to be searched.</TT> <BR><TT>*/</TT> <BR><TT>int minValue(struct node* node) 
+{</TT> <BR><TT>&nbsp; struct node* current = node;</TT> 
+<P><TT>&nbsp; // loop down to find the leftmost leaf</TT> <BR><TT>&nbsp; while 
+(current-&gt;left != NULL) {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; current = 
+current-&gt;left;</TT> <BR><TT>&nbsp; }</TT> 
+<P><TT>&nbsp; return(current-&gt;data);</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<H3>5. printTree() Solution (C/C++)</H3><TT>/*</TT> <BR><TT>&nbsp;Given a binary 
+search tree, print out</TT> <BR><TT>&nbsp;its data elements in increasing</TT> 
+<BR><TT>&nbsp;sorted order.</TT> <BR><TT>*/</TT> <BR><TT>void printTree(struct 
+node* node) {</TT> <BR><TT>&nbsp; if (node == NULL) return;</TT> 
+<P><TT>&nbsp; printTree(node-&gt;left);</TT> <BR><TT>&nbsp; printf("%d ", 
+node-&gt;data);</TT> <BR><TT>&nbsp; printTree(node-&gt;right);</TT> 
+<BR><TT>}</TT> <BR>&nbsp; 
+<H3>6. printPostorder() Solution (C/C++)</H3><TT>/*</TT> <BR><TT>&nbsp;Given a 
+binary tree, print its</TT> <BR><TT>&nbsp;nodes according to the 
+"bottom-up"</TT> <BR><TT>&nbsp;postorder traversal.</TT> <BR><TT>*/</TT> 
+<BR><TT>void printPostorder(struct node* node) {</TT> <BR><TT>&nbsp; if (node == 
+NULL) return;</TT> 
+<P><TT>&nbsp; // first recur on both subtrees</TT> <BR><TT>&nbsp; 
+printTree(node-&gt;left);</TT> <BR><TT>&nbsp; printTree(node-&gt;right);</TT> 
+<P><TT>&nbsp; // then deal with the node</TT> <BR><TT>&nbsp; printf("%d ", 
+node-&gt;data);</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<H3>7. hasPathSum() Solution (C/C++)</H3><TT>/*</TT> <BR><TT>&nbsp;Given a tree 
+and a sum, return true if there is a path from the root</TT> <BR><TT>&nbsp;down 
+to a leaf, such that adding up all the values along the path</TT> 
+<BR><TT>&nbsp;equals the given sum.</TT> 
+<P><TT>&nbsp;Strategy: subtract the node value from the sum when recurring 
+down,</TT> <BR><TT>&nbsp;and check to see if the sum is 0 when you run out of 
+tree.</TT> <BR><TT>*/</TT> <BR><TT>int hasPathSum(struct node* node, int sum) 
+{</TT> <BR><TT>&nbsp; // return true if we run out of tree and sum==0</TT> 
+<BR><TT>&nbsp; if (node == NULL) {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; return(sum == 
+0);</TT> <BR><TT>&nbsp; }</TT> <BR><TT>&nbsp; else {</TT> <BR><TT>&nbsp; // 
+otherwise check both subtrees</TT> <BR><TT>&nbsp;&nbsp;&nbsp; int subSum = sum - 
+node-&gt;data;</TT> <BR><TT>&nbsp;&nbsp;&nbsp; return(hasPathSum(node-&gt;left, 
+subSum) ||</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+hasPathSum(node-&gt;right, subSum));</TT> <BR><TT>&nbsp; }</TT> <BR><TT>}</TT> 
+<BR>&nbsp; 
+<H3>8. printPaths() Solution (C/C++)</H3><TT>/*</TT> <BR><TT>&nbsp;Given a 
+binary tree, print out all of its root-to-leaf</TT> <BR><TT>&nbsp;paths, one per 
+line. Uses a recursive helper to do the work.</TT> <BR><TT>*/</TT> <BR><TT>void 
+printPaths(struct node* node) {</TT> <BR><TT>&nbsp; int path[1000];</TT> 
+<P><TT>&nbsp; printPathsRecur(node, path, 0);</TT> <BR><TT>}</TT> 
+<P><TT>/*</TT> <BR><TT>&nbsp;Recursive helper function -- given a node, and an 
+array containing</TT> <BR><TT>&nbsp;the path from the root node up to but not 
+including this node,</TT> <BR><TT>&nbsp;print out all the root-leaf paths.</TT> 
+<BR><TT>*/</TT> <BR><TT>void printPathsRecur(struct node* node, int path[], int 
+pathLen) {</TT> <BR><TT>&nbsp; if (node==NULL) return;</TT> 
+<P><TT>&nbsp; // append this node to the path array</TT> <BR><TT>&nbsp; 
+path[pathLen] = node-&gt;data;</TT> <BR><TT>&nbsp; pathLen++;</TT> 
+<P><TT>&nbsp; // it's a leaf, so print the path that led to here</TT> 
+<BR><TT>&nbsp; if (node-&gt;left==NULL &amp;&amp; node-&gt;right==NULL) {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; printArray(path, pathLen);</TT> <BR><TT>&nbsp; }</TT> 
+<BR><TT>&nbsp; else {</TT> <BR><TT>&nbsp; // otherwise try both subtrees</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; printPathsRecur(node-&gt;left, path, pathLen);</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; printPathsRecur(node-&gt;right, path, pathLen);</TT> 
+<BR><TT>&nbsp; }</TT> <BR><TT>}</TT> 
+<P><TT>// Utility that prints out an array on a line.</TT> <BR><TT>void 
+printArray(int ints[], int len) {</TT> <BR><TT>&nbsp; int i;</TT> <BR><TT>&nbsp; 
+for (i=0; i&lt;len; i++) {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; printf("%d ", 
+ints[i]);</TT> <BR><TT>&nbsp; }</TT> <BR><TT>&nbsp; printf("\n");</TT> 
+<BR><TT>}</TT> <BR>&nbsp; 
+<H3>9. mirror() Solution (C/C++)</H3><TT>/*</TT> <BR><TT>&nbsp;Change a tree so 
+that the roles of the</TT> <BR><TT>&nbsp;left and right pointers are swapped at 
+every node.</TT> 
+<P><TT>&nbsp;So the tree...</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+4</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / \</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp; 5</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+/ \</TT> <BR><TT>&nbsp;&nbsp; 1&nbsp;&nbsp; 3</TT> 
+<P><TT>&nbsp;is changed to...</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+4</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / \</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp;&nbsp; 2</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / \</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; 1</TT> 
+<BR><TT>*/</TT> <BR><TT>void mirror(struct node* node) {</TT> <BR><TT>&nbsp; if 
+(node==NULL) {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; return;</TT> <BR><TT>&nbsp; 
+}</TT> <BR><TT>&nbsp; else {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; struct node* 
+temp;</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp; // do the subtrees</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+mirror(node-&gt;left);</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+mirror(node-&gt;right);</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp; // swap the pointers in this node</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; temp = node-&gt;left;</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+node-&gt;left = node-&gt;right;</TT> <BR><TT>&nbsp;&nbsp;&nbsp; node-&gt;right = 
+temp;</TT> <BR><TT>&nbsp; }</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<H3>10. doubleTree() Solution (C/C++)</H3><TT>/*</TT> <BR><TT>&nbsp;For each 
+node in a binary search tree,</TT> <BR><TT>&nbsp;create a new duplicate node, 
+and insert</TT> <BR><TT>&nbsp;the duplicate as the left child of the original 
+node.</TT> <BR><TT>&nbsp;The resulting tree should still be a binary search 
+tree.</TT> 
+<P><TT>&nbsp;So the tree...</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 2</TT> 
+<BR><TT>&nbsp;&nbsp; / \</TT> <BR><TT>&nbsp; 1&nbsp;&nbsp; 3</TT> 
+<P><TT>&nbsp;Is changed to...</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+2</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / \</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp; 3</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+/&nbsp;&nbsp; /</TT> <BR><TT>&nbsp;&nbsp; 1&nbsp;&nbsp; 3</TT> <BR><TT>&nbsp; 
+/</TT> <BR><TT>&nbsp;1</TT> 
+<P><TT>*/</TT> <BR><TT>void doubleTree(struct node* node) {</TT> <BR><TT>&nbsp; 
+struct node* oldLeft;</TT> 
+<P><TT>&nbsp; if (node==NULL) return;</TT> 
+<P><TT>&nbsp; // do the subtrees</TT> <BR><TT>&nbsp; 
+doubleTree(node-&gt;left);</TT> <BR><TT>&nbsp; doubleTree(node-&gt;right);</TT> 
+<P><TT>&nbsp; // duplicate this node to its left</TT> <BR><TT>&nbsp; oldLeft = 
+node-&gt;left;</TT> <BR><TT>&nbsp; node-&gt;left = newNode(node-&gt;data);</TT> 
+<BR><TT>&nbsp; node-&gt;left-&gt;left = oldLeft;</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<H3>11. sameTree() Solution (C/C++)</H3><TT>/*</TT> <BR><TT>&nbsp;Given two 
+trees, return true if they are</TT> <BR><TT>&nbsp;structurally identical.</TT> 
+<BR><TT>*/</TT> <BR><TT>int sameTree(struct node* a, struct node* b) {</TT> 
+<BR><TT>&nbsp; // 1. both empty -&gt; true</TT> <BR><TT>&nbsp; if (a==NULL 
+&amp;&amp; b==NULL) return(true);</TT> 
+<P><TT>&nbsp; // 2. both non-empty -&gt; compare them</TT> <BR><TT>&nbsp; else 
+if (a!=NULL &amp;&amp; b!=NULL) {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; return(</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a-&gt;data == b-&gt;data &amp;&amp;</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sameTree(a-&gt;left, b-&gt;left) 
+&amp;&amp;</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sameTree(a-&gt;right, 
+b-&gt;right)</TT> <BR><TT>&nbsp;&nbsp;&nbsp; );</TT> <BR><TT>&nbsp; }</TT> 
+<BR><TT>&nbsp; // 3. one empty, one not -&gt; false</TT> <BR><TT>&nbsp; else 
+return(false);</TT> <BR><TT>}</TT> <BR>&nbsp; <BR>&nbsp; 
+<H3>12. countTrees() Solution (C/C++)</H3><TT>/*</TT> <BR><TT>&nbsp;For the key 
+values 1...numKeys, how many structurally unique</TT> <BR><TT>&nbsp;binary 
+search trees are possible that store those keys.</TT> 
+<P><TT>&nbsp;Strategy: consider that each value could be the root.</TT> 
+<BR><TT>&nbsp;Recursively find the size of the left and right subtrees.</TT> 
+<BR><TT>*/</TT> <BR><TT>int countTrees(int numKeys) {</TT> 
+<P><TT>&nbsp; if (numKeys &lt;=1) {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+return(1);</TT> <BR><TT>&nbsp; }</TT> <BR><TT>&nbsp; else {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; // there will be one value at the root, with whatever 
+remains</TT> <BR><TT>&nbsp;&nbsp;&nbsp; // on the left and right each forming 
+their own subtrees.</TT> <BR><TT>&nbsp;&nbsp;&nbsp; // Iterate through all the 
+values that could be the root...</TT> <BR><TT>&nbsp;&nbsp;&nbsp; int sum = 
+0;</TT> <BR><TT>&nbsp;&nbsp;&nbsp; int left, right, root;</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp; for (root=1; root&lt;=numKeys; root++) {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; left = countTrees(root - 1);</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; right = countTrees(numKeys - root);</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // number of possible trees with this root 
+== left*right</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sum += 
+left*right;</TT> <BR><TT>&nbsp;&nbsp;&nbsp; }</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp; return(sum);</TT> <BR><TT>&nbsp; }</TT> <BR><TT>}</TT> 
+<BR>&nbsp; <BR>&nbsp; 
+<H3>13. isBST1() Solution (C/C++)</H3><TT>/*</TT> <BR><TT>&nbsp;Returns true if 
+a binary tree is a binary search tree.</TT> <BR><TT>*/</TT> <BR><TT>int 
+isBST(struct node* node) {</TT> <BR><TT>&nbsp; if (node==NULL) 
+return(true);</TT> 
+<P><TT>&nbsp; // false if the max of the left is &gt; than us</TT> 
+<P><TT>&nbsp; // (bug -- an earlier version had min/max backwards here)</TT> 
+<BR><TT>&nbsp; if (node-&gt;left!=NULL &amp;&amp; maxValue(node-&gt;left) &gt; 
+node-&gt;data)</TT> <BR><TT>&nbsp;&nbsp;&nbsp; return(false);</TT> 
+<P><TT>&nbsp; // false if the min of the right is &lt;= than us</TT> 
+<BR><TT>&nbsp; if (node-&gt;right!=NULL &amp;&amp; minValue(node-&gt;right) 
+&lt;= node-&gt;data)</TT> <BR><TT>&nbsp;&nbsp;&nbsp; return(false);</TT> 
+<P><TT>&nbsp; // false if, recursively, the left or right is not a BST</TT> 
+<BR><TT>&nbsp; if (!isBST(node-&gt;left) || !isBST(node-&gt;right))</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; return(false);</TT> 
+<P><TT>&nbsp; // passing all that, it's a BST</TT> <BR><TT>&nbsp; 
+return(true);</TT> <BR><TT>}</TT> <BR>&nbsp; <BR>&nbsp; 
+<H3>14. isBST2() Solution (C/C++)</H3><TT>/*</TT> <BR><TT>&nbsp;Returns true if 
+the given tree is a binary search tree</TT> <BR><TT>&nbsp;(efficient 
+version).</TT> <BR><TT>*/</TT> <BR><TT>int isBST2(struct node* node) {</TT> 
+<BR><TT>&nbsp; return(isBSTUtil(node, INT_MIN, INT_MAX));</TT> <BR><TT>}</TT> 
+<P><TT>/*</TT> <BR><TT>&nbsp;Returns true if the given tree is a BST and 
+its</TT> <BR><TT>&nbsp;values are &gt;= min and &lt;= max.</TT> <BR><TT>*/</TT> 
+<BR><TT>int isBSTUtil(struct node* node, int min, int max) {</TT> <BR><TT>&nbsp; 
+if (node==NULL) return(true);</TT> 
+<P><TT>&nbsp; // false if this node violates the min/max constraint</TT> 
+<BR><TT>&nbsp; if (node-&gt;data&lt;min || node-&gt;data&gt;max) 
+return(false);</TT> 
+<P><TT>&nbsp; // otherwise check the subtrees recursively,</TT> <BR><TT>&nbsp; 
+// tightening the min or max constraint</TT> <BR><TT>&nbsp; return</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; isBSTUtil(node-&gt;left, min, node-&gt;data) 
+&amp;&amp;</TT> <BR><TT>&nbsp;&nbsp;&nbsp; isBSTUtil(node-&gt;right, 
+node-&gt;data+1, max)</TT> <BR><TT>&nbsp; );</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<H3>15. TreeList Solution (C/C++)</H3>The solution code in C and Java to the 
+great Tree-List recursion problem is in CSLibrary #109&nbsp; <A 
+href="http://cslibrary.stanford.edu/109/">http://cslibrary.stanford.edu/109/</A> 
+
+<H2><A name=java></A>Section 4 -- Java Binary Trees and Solutions</H2>In Java, 
+the key points in the recursion are exactly the same as in C or C++. In fact, I 
+created the Java solutions by just copying the C solutions, and then making the 
+syntactic changes. The recursion is the same, however the outer structure is 
+slightly different. 
+<P>In Java, we will have a BinaryTree object that contains a single root 
+pointer. The root pointer points to an internal Node class that behaves just 
+like the node struct in the C/C++ version. The Node class is private -- it is 
+used only for internal storage inside the BinaryTree and is not exposed to 
+clients. With this OOP structure, almost every operation has two methods: a 
+one-line method on the BinaryTree that starts the computation, and a recursive 
+method that works on the Node objects. For the lookup() operation, there is a 
+BinaryTree.lookup() method that the client uses to start a lookup operation. 
+Internal to the BinaryTree class, there is a private recursive lookup(Node) 
+method that implements the recursion down the Node structure. This second, 
+private recursive method is basically the same as the recursive C/C++ functions 
+above -- it takes a Node argument and uses recursion to iterate over the pointer 
+structure. 
+<H3>Java Binary Tree Structure</H3>To get started, here are the basic 
+definitions for the Java BinaryTree class, and the lookup() and insert() methods 
+as examples... 
+<P><TT>// BinaryTree.java</TT> <BR><TT>public class BinaryTree {</TT> 
+<BR><TT>&nbsp; // Root node pointer. Will be null for an empty tree.</TT> 
+<BR><TT>&nbsp; private Node root;</TT> <BR>&nbsp; 
+<P><TT>&nbsp; /*</TT> <BR><TT>&nbsp;&nbsp; --Node--</TT> <BR><TT>&nbsp;&nbsp; 
+The binary tree is built using this nested node class.</TT> <BR><TT>&nbsp;&nbsp; 
+Each node stores one data element, and has left and right</TT> 
+<BR><TT>&nbsp;&nbsp; sub-tree pointer which may be null.</TT> 
+<BR><TT>&nbsp;&nbsp; The node is a "dumb" nested class -- we just use it 
+for</TT> <BR><TT>&nbsp;&nbsp; storage; it does not have any methods.</TT> 
+<BR><TT>&nbsp; */</TT> <BR><TT>&nbsp; private static class Node {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; Node left;</TT> <BR><TT>&nbsp;&nbsp;&nbsp; Node 
+right;</TT> <BR><TT>&nbsp;&nbsp;&nbsp; int data;</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp; Node(int newData) {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; left = null;</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; right = null;</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data = newData;</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; }</TT> <BR><TT>&nbsp; }</TT> 
+<P><TT>&nbsp; /**</TT> <BR><TT>&nbsp;&nbsp; Creates an empty binary tree -- a 
+null root pointer.</TT> <BR><TT>&nbsp; */</TT> <BR><TT>&nbsp; public void 
+BinaryTree() {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; root = null;</TT> <BR><TT>&nbsp; 
+}</TT> <BR>&nbsp; 
+<P><TT>&nbsp; /**</TT> <BR><TT>&nbsp;&nbsp; Returns true if the given target is 
+in the binary tree.</TT> <BR><TT>&nbsp;&nbsp; Uses a recursive helper.</TT> 
+<BR><TT>&nbsp; */</TT> <BR><TT>&nbsp; public boolean lookup(int data) {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; return(lookup(root, data));</TT> <BR><TT>&nbsp; 
+}</TT> <BR>&nbsp; 
+<P><TT>&nbsp; /**</TT> <BR><TT>&nbsp;&nbsp; Recursive lookup&nbsp; -- given a 
+node, recur</TT> <BR><TT>&nbsp;&nbsp; down searching for the given data.</TT> 
+<BR><TT>&nbsp; */</TT> <BR><TT>&nbsp; private boolean lookup(Node node, int 
+data) {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; if (node==null) {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return(false);</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; }</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp; if (data==node.data) {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return(true);</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; }</TT> <BR><TT>&nbsp;&nbsp;&nbsp; else if 
+(data&lt;node.data) {</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return(lookup(node.left, data));</TT> <BR><TT>&nbsp;&nbsp;&nbsp; }</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; else {</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+return(lookup(node.right, data));</TT> <BR><TT>&nbsp;&nbsp;&nbsp; }</TT> 
+<BR><TT>&nbsp; }</TT> <BR>&nbsp; 
+<P><TT>&nbsp; /**</TT> <BR><TT>&nbsp;&nbsp; Inserts the given data into the 
+binary tree.</TT> <BR><TT>&nbsp;&nbsp; Uses a recursive helper.</TT> 
+<BR><TT>&nbsp; */</TT> <BR><TT>&nbsp; public void insert(int data) {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; root = insert(root, data);</TT> <BR><TT>&nbsp; }</TT> 
+<BR>&nbsp; 
+<P><TT>&nbsp; /**</TT> <BR><TT>&nbsp;&nbsp; Recursive insert -- given a node 
+pointer, recur down and</TT> <BR><TT>&nbsp;&nbsp; insert the given data into the 
+tree. Returns the new</TT> <BR><TT>&nbsp;&nbsp; node pointer (the standard way 
+to communicate</TT> <BR><TT>&nbsp;&nbsp; a changed pointer back to the 
+caller).</TT> <BR><TT>&nbsp; */</TT> <BR><TT>&nbsp; private Node insert(Node 
+node, int data) {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; if (node==null) {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; node = new Node(data);</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; }</TT> <BR><TT>&nbsp;&nbsp;&nbsp; else {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (data &lt;= node.data) {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; node.left = insert(node.left, 
+data);</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; node.right = 
+insert(node.right, data);</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; }</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp; return(node); // in any case, return the new pointer 
+to the caller</TT> <BR><TT>&nbsp; }</TT> <BR>&nbsp; 
+<H3>OOP Style vs. Recursive Style</H3>From the client point of view, the 
+BinaryTree class demonstrates good OOP style -- it encapsulates the binary tree 
+state, and the client sends messages like lookup() and insert() to operate on 
+that state. Internally, the Node class and the recursive methods <B>do not 
+</B>demonstrate OOP style. The recursive methods like insert(Node) and lookup 
+(Node, int) basically look like recursive functions in any language. In 
+particular, they do not operate against a "receiver" in any special way. 
+Instead, the recursive methods operate on the arguments that are passed in which 
+is the classical way to write recursion. My sense is that the OOP style and the 
+recursive style do not be combined nicely for binary trees, so I have left them 
+separate. Merging the two styles would be especially awkward for the "empty" 
+tree (null) case, since you can't send a message to the null pointer. It's 
+possible to get around that by having a special object to represent the null 
+tree, but that seems like a distraction to me. I prefer to keep the recursive 
+methods simple, and use different examples to teach OOP. 
+<H3>Java Solutions</H3>Here are the Java solutions to the 14 binary tree 
+problems. Most of the solutions use two methods:a one-line OOP method that 
+starts the computation, and a recursive method that does the real operation. 
+Make an attempt to solve each problem before looking at the solution -- it's the 
+best way to learn. 
+<H3>1. Build123() Solution (Java)</H3><TT>/**</TT> <BR><TT>&nbsp;Build 123 using 
+three pointer variables.</TT> <BR><TT>*/</TT> <BR><TT>public void build123a() 
+{</TT> <BR><TT>&nbsp; root = new Node(2);</TT> <BR><TT>&nbsp; Node lChild = new 
+Node(1);</TT> <BR><TT>&nbsp; Node rChild = new Node(3);</TT> 
+<P><TT>&nbsp; root.left = lChild;</TT> <BR><TT>&nbsp; root.right= rChild;</TT> 
+<BR><TT>}</TT> 
+<P><TT>/**</TT> <BR><TT>&nbsp;Build 123 using only one pointer variable.</TT> 
+<BR><TT>*/</TT> <BR><TT>public void build123b() {</TT> <BR><TT>&nbsp; root = new 
+Node(2);</TT> <BR><TT>&nbsp; root.left = new Node(1);</TT> <BR><TT>&nbsp; 
+root.right = new Node(3);</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<P><TT>/**</TT> <BR><TT>&nbsp;Build 123 by calling insert() three times.</TT> 
+<BR><TT>&nbsp;Note that the '2' must be inserted first.</TT> <BR><TT>*/</TT> 
+<BR><TT>public void build123c() {</TT> <BR><TT>&nbsp; root = null;</TT> 
+<BR><TT>&nbsp; root = insert(root, 2);</TT> <BR><TT>&nbsp; root = insert(root, 
+1);</TT> <BR><TT>&nbsp; root = insert(root, 3);</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<H3>2. size() Solution (Java)</H3><TT>/**</TT> <BR><TT>&nbsp;Returns the number 
+of nodes in the tree.</TT> <BR><TT>&nbsp;Uses a recursive helper that 
+recurs</TT> <BR><TT>&nbsp;down the tree and counts the nodes.</TT> 
+<BR><TT>*/</TT> <BR><TT>public int size() {</TT> <BR><TT>&nbsp; 
+return(size(root));</TT> <BR><TT>}</TT> 
+<P><TT>private int size(Node node) {</TT> <BR><TT>&nbsp; if (node == null) 
+return(0);</TT> <BR><TT>&nbsp; else {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+return(size(node.left) + 1 + size(node.right));</TT> <BR><TT>&nbsp; }</TT> 
+<BR><TT>}</TT> <BR>&nbsp; 
+<H3>3. maxDepth() Solution (Java)</H3><TT>/**</TT> <BR><TT>&nbsp;Returns the max 
+root-to-leaf depth of the tree.</TT> <BR><TT>&nbsp;Uses a recursive helper that 
+recurs down to find</TT> <BR><TT>&nbsp;the max depth.</TT> <BR><TT>*/</TT> 
+<BR><TT>public int maxDepth() {</TT> <BR><TT>&nbsp; return(maxDepth(root));</TT> 
+<BR><TT>}</TT> 
+<P><TT>private int maxDepth(Node node) {</TT> <BR><TT>&nbsp; if (node==null) 
+{</TT> <BR><TT>&nbsp;&nbsp;&nbsp; return(0);</TT> <BR><TT>&nbsp; }</TT> 
+<BR><TT>&nbsp; else {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; int lDepth = 
+maxDepth(node.left);</TT> <BR><TT>&nbsp;&nbsp;&nbsp; int rDepth = 
+maxDepth(node.right);</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp; // use the larger + 1</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+return(Math.max(lDepth, rDepth) + 1);</TT> <BR><TT>&nbsp; }</TT> <BR><TT>}</TT> 
+<BR>&nbsp; 
+<H3>4. minValue() Solution (Java)</H3><TT>/**</TT> <BR><TT>&nbsp;Returns the min 
+value in a non-empty binary search tree.</TT> <BR><TT>&nbsp;Uses a helper method 
+that iterates to the left to find</TT> <BR><TT>&nbsp;the min value.</TT> 
+<BR><TT>*/</TT> <BR><TT>public int minValue() {</TT> <BR><TT>&nbsp;return( 
+minValue(root) );</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<P><TT>/**</TT> <BR><TT>&nbsp;Finds the min value in a non-empty binary search 
+tree.</TT> <BR><TT>*/</TT> <BR><TT>private int minValue(Node node) {</TT> 
+<BR><TT>&nbsp; Node current = node;</TT> <BR><TT>&nbsp; while (current.left != 
+null) {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; current = current.left;</TT> 
+<BR><TT>&nbsp; }</TT> 
+<P><TT>&nbsp; return(current.data);</TT> <BR><TT>}</TT> 
+<H3>5. printTree() Solution (Java)</H3><TT>/**</TT> <BR><TT>&nbsp;Prints the 
+node values in the "inorder" order.</TT> <BR><TT>&nbsp;Uses a recursive helper 
+to do the traversal.</TT> <BR><TT>*/</TT> <BR><TT>public void printTree() {</TT> 
+<BR><TT>&nbsp;printTree(root);</TT> <BR><TT>&nbsp;System.out.println();</TT> 
+<BR><TT>}</TT> 
+<P><TT>private void printTree(Node node) {</TT> <BR><TT>&nbsp;if (node == null) 
+return;</TT> 
+<P><TT>&nbsp;// left, node itself, right</TT> 
+<BR><TT>&nbsp;printTree(node.left);</TT> 
+<BR><TT>&nbsp;System.out.print(node.data + "&nbsp; ");</TT> 
+<BR><TT>&nbsp;printTree(node.right);</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<H3>6. printPostorder() Solution (Java)</H3><TT>/**</TT> <BR><TT>&nbsp;Prints 
+the node values in the "postorder" order.</TT> <BR><TT>&nbsp;Uses a recursive 
+helper to do the traversal.</TT> <BR><TT>*/</TT> <BR><TT>public void 
+printPostorder() {</TT> <BR><TT>&nbsp;printPostorder(root);</TT> 
+<BR><TT>&nbsp;System.out.println();</TT> <BR><TT>}</TT> 
+<P><TT>public void printPostorder(Node node) {</TT> <BR><TT>&nbsp; if (node == 
+null) return;</TT> 
+<P><TT>&nbsp; // first recur on both subtrees</TT> <BR><TT>&nbsp; 
+printPostorder(node.left);</TT> <BR><TT>&nbsp; printPostorder(node.right);</TT> 
+<P><TT>&nbsp; // then deal with the node</TT> 
+<BR><TT>&nbsp;System.out.print(node.data + "&nbsp; ");</TT> <BR><TT>}</TT> 
+<BR>&nbsp; 
+<H3>7. hasPathSum() Solution (Java)</H3><TT>/**</TT> <BR><TT>&nbsp;Given a tree 
+and a sum, returns true if there is a path from the root</TT> <BR><TT>&nbsp;down 
+to a leaf, such that adding up all the values along the path</TT> 
+<BR><TT>&nbsp;equals the given sum.</TT> 
+<P><TT>&nbsp;Strategy: subtract the node value from the sum when recurring 
+down,</TT> <BR><TT>&nbsp;and check to see if the sum is 0 when you run out of 
+tree.</TT> <BR><TT>*/</TT> <BR><TT>public boolean hasPathSum(int sum) {</TT> 
+<BR><TT>&nbsp;return( hasPathSum(root, sum) );</TT> <BR><TT>}</TT> 
+<P><TT>boolean hasPathSum(Node node, int sum) {</TT> <BR><TT>&nbsp; // return 
+true if we run out of tree and sum==0</TT> <BR><TT>&nbsp; if (node == null) 
+{</TT> <BR><TT>&nbsp;&nbsp;&nbsp; return(sum == 0);</TT> <BR><TT>&nbsp; }</TT> 
+<BR><TT>&nbsp; else {</TT> <BR><TT>&nbsp; // otherwise check both subtrees</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; int subSum = sum - node.data;</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; return(hasPathSum(node.left, subSum) || 
+hasPathSum(node.right, subSum));</TT> <BR><TT>&nbsp; }</TT> <BR><TT>}</TT> 
+<BR>&nbsp; 
+<H3>8. printPaths() Solution (Java)</H3><TT>/**</TT> <BR><TT>&nbsp;Given a 
+binary tree, prints out all of its root-to-leaf</TT> <BR><TT>&nbsp;paths, one 
+per line. Uses a recursive helper to do the work.</TT> <BR><TT>*/</TT> 
+<BR><TT>public void printPaths() {</TT> <BR><TT>&nbsp; int[] path = new 
+int[1000];</TT> <BR><TT>&nbsp; printPaths(root, path, 0);</TT> <BR><TT>}</TT> 
+<P><TT>/**</TT> <BR><TT>&nbsp;Recursive printPaths helper -- given a node, and 
+an array containing</TT> <BR><TT>&nbsp;the path from the root node up to but not 
+including this node,</TT> <BR><TT>&nbsp;prints out all the root-leaf paths.</TT> 
+<BR><TT>*/</TT> <BR><TT>private void printPaths(Node node, int[] path, int 
+pathLen) {</TT> <BR><TT>&nbsp; if (node==null) return;</TT> 
+<P><TT>&nbsp; // append this node to the path array</TT> <BR><TT>&nbsp; 
+path[pathLen] = node.data;</TT> <BR><TT>&nbsp; pathLen++;</TT> 
+<P><TT>&nbsp; // it's a leaf, so print the path that led to here</TT> 
+<BR><TT>&nbsp; if (node.left==null &amp;&amp; node.right==null) {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; printArray(path, pathLen);</TT> <BR><TT>&nbsp; }</TT> 
+<BR><TT>&nbsp; else {</TT> <BR><TT>&nbsp; // otherwise try both subtrees</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; printPaths(node.left, path, pathLen);</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; printPaths(node.right, path, pathLen);</TT> 
+<BR><TT>&nbsp; }</TT> <BR><TT>}</TT> 
+<P><TT>/**</TT> <BR><TT>&nbsp;Utility that prints ints from an array on one 
+line.</TT> <BR><TT>*/</TT> <BR><TT>private void printArray(int[] ints, int len) 
+{</TT> <BR><TT>&nbsp; int i;</TT> <BR><TT>&nbsp; for (i=0; i&lt;len; i++) {</TT> 
+<BR><TT>&nbsp;&nbsp; System.out.print(ints[i] + " ");</TT> <BR><TT>&nbsp; }</TT> 
+<BR><TT>&nbsp; System.out.println();</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<H3>9. mirror() Solution (Java)</H3>
+<P><BR><TT>/**</TT> <BR><TT>&nbsp;Changes the tree into its mirror image.</TT> 
+<P><TT>&nbsp;So the tree...</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+4</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / \</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp; 5</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+/ \</TT> <BR><TT>&nbsp;&nbsp; 1&nbsp;&nbsp; 3</TT> 
+<P><TT>&nbsp;is changed to...</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+4</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / \</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp; 5&nbsp;&nbsp; 2</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / \</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; 1</TT> 
+<P><TT>&nbsp;Uses a recursive helper that recurs over the tree,</TT> 
+<BR><TT>&nbsp;swapping the left/right pointers.</TT> <BR><TT>*/</TT> 
+<BR><TT>public void mirror() {</TT> <BR><TT>&nbsp; mirror(root);</TT> 
+<BR><TT>}</TT> 
+<P><TT>private void mirror(Node node) {</TT> <BR><TT>&nbsp; if (node != null) 
+{</TT> <BR><TT>&nbsp;&nbsp;&nbsp; // do the sub-trees</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; mirror(node.left);</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+mirror(node.right);</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp; // swap the left/right pointers</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; Node temp = node.left;</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; node.left = node.right;</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; node.right = temp;</TT> <BR><TT>&nbsp; }</TT> 
+<BR><TT>}</TT> <BR>&nbsp; 
+<H3>10. doubleTree() Solution (Java)</H3><TT>/**</TT> <BR><TT>&nbsp;Changes the 
+tree by inserting a duplicate node</TT> <BR><TT>&nbsp;on each nodes's 
+.left.</TT> <BR>&nbsp; <BR>&nbsp; 
+<P><TT>&nbsp;So the tree...</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 2</TT> 
+<BR><TT>&nbsp;&nbsp; / \</TT> <BR><TT>&nbsp; 1&nbsp;&nbsp; 3</TT> 
+<P><TT>&nbsp;Is changed to...</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+2</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; / \</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp; 3</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+/&nbsp;&nbsp; /</TT> <BR><TT>&nbsp;&nbsp; 1&nbsp;&nbsp; 3</TT> <BR><TT>&nbsp; 
+/</TT> <BR><TT>&nbsp;1</TT> 
+<P><TT>&nbsp;Uses a recursive helper to recur over the tree</TT> 
+<BR><TT>&nbsp;and insert the duplicates.</TT> <BR><TT>*/</TT> <BR><TT>public 
+void doubleTree() {</TT> <BR><TT>&nbsp;doubleTree(root);</TT> <BR><TT>}</TT> 
+<P><TT>private void doubleTree(Node node) {</TT> <BR><TT>&nbsp; Node 
+oldLeft;</TT> 
+<P><TT>&nbsp; if (node == null) return;</TT> 
+<P><TT>&nbsp; // do the subtrees</TT> <BR><TT>&nbsp; doubleTree(node.left);</TT> 
+<BR><TT>&nbsp; doubleTree(node.right);</TT> 
+<P><TT>&nbsp; // duplicate this node to its left</TT> <BR><TT>&nbsp; oldLeft = 
+node.left;</TT> <BR><TT>&nbsp; node.left = new Node(node.data);</TT> 
+<BR><TT>&nbsp; node.left.left = oldLeft;</TT> <BR><TT>}</TT> <BR>&nbsp; 
+<H3>11. sameTree() Solution (Java)</H3><TT>/*</TT> <BR><TT>&nbsp;Compares the 
+receiver to another tree to</TT> <BR><TT>&nbsp;see if they are structurally 
+identical.</TT> <BR><TT>*/</TT> <BR><TT>public boolean sameTree(BinaryTree 
+other) {</TT> <BR><TT>&nbsp;return( sameTree(root, other.root) );</TT> 
+<BR><TT>}</TT> 
+<P><TT>/**</TT> <BR><TT>&nbsp;Recursive helper -- recurs down two trees in 
+parallel,</TT> <BR><TT>&nbsp;checking to see if they are identical.</TT> 
+<BR><TT>*/</TT> <BR><TT>boolean sameTree(Node a, Node b) {</TT> <BR><TT>&nbsp; 
+// 1. both empty -&gt; true</TT> <BR><TT>&nbsp; if (a==null &amp;&amp; b==null) 
+return(true);</TT> 
+<P><TT>&nbsp; // 2. both non-empty -&gt; compare them</TT> <BR><TT>&nbsp; else 
+if (a!=null &amp;&amp; b!=null) {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; return(</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a.data == b.data &amp;&amp;</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sameTree(a.left, b.left) &amp;&amp;</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sameTree(a.right, b.right)</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; );</TT> <BR><TT>&nbsp; }</TT> <BR><TT>&nbsp; // 3. 
+one empty, one not -&gt; false</TT> <BR><TT>&nbsp; else return(false);</TT> 
+<BR><TT>}</TT> <BR>&nbsp; 
+<H3>12. countTrees() Solution (Java)</H3><TT>/**</TT> <BR><TT>&nbsp;For the key 
+values 1...numKeys, how many structurally unique</TT> <BR><TT>&nbsp;binary 
+search trees are possible that store those keys?</TT> 
+<P><TT>&nbsp;Strategy: consider that each value could be the root.</TT> 
+<BR><TT>&nbsp;Recursively find the size of the left and right subtrees.</TT> 
+<BR><TT>*/</TT> <BR><TT>public static int countTrees(int numKeys) {</TT> 
+<BR><TT>&nbsp; if (numKeys &lt;=1) {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+return(1);</TT> <BR><TT>&nbsp; }</TT> <BR><TT>&nbsp; else {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; // there will be one value at the root, with whatever 
+remains</TT> <BR><TT>&nbsp;&nbsp;&nbsp; // on the left and right each forming 
+their own subtrees.</TT> <BR><TT>&nbsp;&nbsp;&nbsp; // Iterate through all the 
+values that could be the root...</TT> <BR><TT>&nbsp;&nbsp;&nbsp; int sum = 
+0;</TT> <BR><TT>&nbsp;&nbsp;&nbsp; int left, right, root;</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp; for (root=1; root&lt;=numKeys; root++) {</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; left = countTrees(root-1);</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; right = countTrees(numKeys - root);</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // number of possible trees with this root 
+== left*right</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sum += 
+left*right;</TT> <BR><TT>&nbsp;&nbsp;&nbsp; }</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp; return(sum);</TT> <BR><TT>&nbsp; }</TT> <BR><TT>}</TT> 
+<BR>&nbsp; 
+<H3>13. isBST1() Solution (Java)</H3><TT>/**</TT> <BR><TT>&nbsp;Tests if a tree 
+meets the conditions to be a</TT> <BR><TT>&nbsp;binary search tree (BST).</TT> 
+<BR><TT>*/</TT> <BR><TT>public boolean isBST() {</TT> <BR><TT>&nbsp; 
+return(isBST(root));</TT> <BR><TT>}</TT> 
+<P><TT>/**</TT> <BR><TT>&nbsp;Recursive helper -- checks if a tree is a BST</TT> 
+<BR><TT>&nbsp;using minValue() and maxValue() (not efficient).</TT> 
+<BR><TT>*/</TT> <BR><TT>private boolean isBST(Node node) {</TT> <BR><TT>&nbsp; 
+if (node==null) return(true);</TT> 
+<P><TT>&nbsp; // do the subtrees contain values that do not</TT> <BR><TT>&nbsp; 
+// agree with the node?</TT> <BR><TT>&nbsp; if (node.left!=null &amp;&amp; 
+maxValue(node.left) &gt; node.data) return(false);</TT> <BR><TT>&nbsp; if 
+(node.right!=null &amp;&amp; minValue(node.right) &lt;= node.data) 
+return(false);</TT> 
+<P><TT>&nbsp; // check that the subtrees themselves are ok</TT> <BR><TT>&nbsp; 
+return( isBST(node.left) &amp;&amp; isBST(node.right) );</TT> <BR><TT>}</TT> 
+<BR>&nbsp; <BR>&nbsp; 
+<H3>14. isBST2() Solution (Java)</H3><TT>/**</TT> <BR><TT>&nbsp;Tests if a tree 
+meets the conditions to be a</TT> <BR><TT>&nbsp;binary search tree (BST). Uses 
+the efficient</TT> <BR><TT>&nbsp;recursive helper.</TT> <BR><TT>*/</TT> 
+<BR><TT>public boolean isBST2() {</TT> <BR><TT>&nbsp;return( isBST2(root, 
+Integer.MIN_VALUE, Integer.MAX_VALUE) );</TT> <BR><TT>}</TT> 
+<P><TT>/**</TT> <BR><TT>&nbsp; Efficient BST helper -- Given a node, and min and 
+max values,</TT> <BR><TT>&nbsp; recurs down the tree to verify that it is a BST, 
+and that all</TT> <BR><TT>&nbsp; its nodes are within the min..max range. Works 
+in O(n) time --</TT> <BR><TT>&nbsp; visits each node only once.</TT> 
+<BR><TT>*/</TT> <BR><TT>private boolean isBST2(Node node, int min, int max) 
+{</TT> <BR><TT>&nbsp; if (node==null) {</TT> <BR><TT>&nbsp;&nbsp;&nbsp; 
+return(true);</TT> <BR><TT>&nbsp; }</TT> <BR><TT>&nbsp; else {</TT> 
+<BR><TT>&nbsp;&nbsp; // left should be in range&nbsp; min...node.data</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; boolean leftOk = isBST2(node.left, min, 
+node.data);</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp; // if the left is not ok, bail out</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; if (!leftOk) return(false);</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp; // right should be in range node.data+1..max</TT> 
+<BR><TT>&nbsp;&nbsp;&nbsp; boolean rightOk = isBST2(node.right, node.data+1, 
+max);</TT> 
+<P><TT>&nbsp;&nbsp;&nbsp; return(rightOk);</TT> <BR><TT>&nbsp; }</TT> 
+<BR><TT>}</TT> <BR>&nbsp; <BR>&nbsp; <BR>&nbsp; </P></BODY></HTML>

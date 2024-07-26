@@ -1,0 +1,160 @@
+<html><head>
+<title>Solution for /arithmetic/digits/equations/123456789</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/digits/equations/123456789 problem</h1>
+<hr>
+<pre>
+ 1-2 3+4 5+6 7-8 9 = 1
++1-2 3+4 5+6 7-8 9 = 1
+ 1+2 3+4-5+6 7-8 9 = 1
++1+2 3+4-5+6 7-8 9 = 1
+-1+2 3-4+5+6 7-8 9 = 1
+ 1+2 3-4 5-6 7+8 9 = 1
++1+2 3-4 5-6 7+8 9 = 1
+ 1-2 3-4+5-6 7+8 9 = 1
++1-2 3-4+5-6 7+8 9 = 1
+ 1-2-3-4 5+6 7-8-9 = 1
++1-2-3-4 5+6 7-8-9 = 1
+ 1+2-3 4+5 6-7-8-9 = 1
++1+2-3 4+5 6-7-8-9 = 1
+-1+2 3+4+5-6-7-8-9 = 1
+-1 2+3 4-5-6+7-8-9 = 1
+ 1+2+3+4-5+6+7-8-9 = 1
++1+2+3+4-5+6+7-8-9 = 1
+-1+2+3-4+5+6+7-8-9 = 1
+ 1-2-3+4+5+6+7-8-9 = 1
++1-2-3+4+5+6+7-8-9 = 1
+ 1+2 3+4 5-6 7+8-9 = 1
++1+2 3+4 5-6 7+8-9 = 1
+ 1+2 3-4-5-6-7+8-9 = 1
++1+2 3-4-5-6-7+8-9 = 1
+ 1+2+3+4+5-6-7+8-9 = 1
++1+2+3+4+5-6-7+8-9 = 1
+-1+2+3+4-5+6-7+8-9 = 1
+ 1-2+3-4+5+6-7+8-9 = 1
++1-2+3-4+5+6-7+8-9 = 1
+-1-2-3+4+5+6-7+8-9 = 1
+ 1-2+3+4-5-6+7+8-9 = 1
++1-2+3+4-5-6+7+8-9 = 1
+ 1+2-3-4+5-6+7+8-9 = 1
++1+2-3-4+5-6+7+8-9 = 1
+-1-2+3-4+5-6+7+8-9 = 1
+-1+2-3-4-5+6+7+8-9 = 1
+-1+2 3+4 5-6 7-8+9 = 1
+ 1-2 3-4 5+6 7-8+9 = 1
++1-2 3-4 5+6 7-8+9 = 1
+-1+2 3-4-5-6-7-8+9 = 1
+-1+2+3+4+5-6-7-8+9 = 1
+ 1-2+3+4-5+6-7-8+9 = 1
++1-2+3+4-5+6-7-8+9 = 1
+ 1+2-3-4+5+6-7-8+9 = 1
++1+2-3-4+5+6-7-8+9 = 1
+-1-2+3-4+5+6-7-8+9 = 1
+ 1+2-3+4-5-6+7-8+9 = 1
++1+2-3+4-5-6+7-8+9 = 1
+-1-2+3+4-5-6+7-8+9 = 1
+-1+2-3-4+5-6+7-8+9 = 1
+ 1-2-3-4-5+6+7-8+9 = 1
++1-2-3-4-5+6+7-8+9 = 1
+ 1-2 3+4+5+6+7-8+9 = 1
++1-2 3+4+5+6+7-8+9 = 1
+ 1+2+3+4 5-6 7+8+9 = 1
++1+2+3+4 5-6 7+8+9 = 1
+ 1 2+3 4+5-6 7+8+9 = 1
++1 2+3 4+5-6 7+8+9 = 1
+ 1+2+3-4-5-6-7+8+9 = 1
++1+2+3-4-5-6-7+8+9 = 1
+-1+2-3+4-5-6-7+8+9 = 1
+ 1-2-3-4+5-6-7+8+9 = 1
++1-2-3-4+5-6-7+8+9 = 1
+-1-2-3-4-5+6-7+8+9 = 1
+-1-2 3+4+5+6-7+8+9 = 1
+ 1-2+3 4-5 6+7+8+9 = 1
++1-2+3 4-5 6+7+8+9 = 1
+ 1 2-3 4+5-6+7+8+9 = 1
++1 2-3 4+5-6+7+8+9 = 1
+</pre>
+Total solutions  = 69 (26 of which have a leading "+", which is redundant)
+
+<p>
+69/19683 = 0.35 %
+
+<p>
+for those who care (it's not very elegant but it did the trick):
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+main (argc,argv)
+     int argc;
+     char *argv[];
+{
+  int sresult, result, operator[10],thisop;
+  char buf[256],ops[3];
+  int i,j,tot=0,temp;
+  
+  ops[0] = ' ';
+  ops[1] = '-';
+  ops[2] = '+';
+
+  for (i=1; i&lt;10; i++) operator[i] = 0;
+  
+  for (j=0; j &lt; 19683; j++) {
+    result = 0;
+    sresult = 0;
+    thisop = 1;
+    for (i=1; i&lt;10; i++) {
+      switch (operator[i]) {
+      case 0:
+	sresult = sresult * 10 + i;
+	break;
+      case 1:
+	result = result + sresult * thisop;
+	sresult = i;
+	thisop = -1;
+	break;
+      case 2:
+	result = result + sresult * thisop;
+	sresult = i;
+	thisop = 1;
+	break;
+      }
+    }
+  
+    result  = result + sresult * thisop;
+    if (result == 1) {
+      tot++;
+      for  (i=1;i&lt;10;i++) 
+	printf("%c%d",ops[operator[i]],i);
+      printf(" = %d\n",result);
+    }
+    temp = 0;
+    operator[1] += 1;
+    for (i=1;i&lt;10;i++) {
+      operator[i] += temp;
+      if (operator[i] &gt; 2) { operator[i] = 0; temp = 1;}
+      else temp = 0;
+    }
+  
+  }
+  
+  printf("Total solutions  = %d\n" , tot);
+}
+
+cwren@media.mit.edu (Christopher Wren)
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

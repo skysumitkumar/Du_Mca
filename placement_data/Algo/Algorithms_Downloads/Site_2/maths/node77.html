@@ -1,0 +1,248 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>What is a Random Number?</TITLE>
+<META NAME="description" CONTENT="What is a Random Number?">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node78.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node78.html">
+<LINK REL="previous" HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">
+<LINK REL="up" HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">
+<LINK REL="next" HREF="node78.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node78.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1435"
+  HREF="node78.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node78.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1429"
+  HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1423"
+  HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1431"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1433"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1436"
+  HREF="node78.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node78.html">Generating Random Numbers</A>
+<B> Up:</B> <A NAME="tex2html1430"
+  HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">Random Numbers</A>
+<B> Previous:</B> <A NAME="tex2html1424"
+  HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">Random Numbers</A>
+ &nbsp <B>  <A NAME="tex2html1432"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1434"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00910000000000000000">
+What is a Random Number?</A>
+</H1>
+Many computer programs, particularly those involved in `simulation',
+require random choices of various kinds to be made. How does a
+computer, which is a totally deterministic device, make `random'
+choices?  What is a random choice for that matter? (see
+(<A
+ HREF="node112.html#knuth81:_semin_algor" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node112.html#knuth81:_semin_algor">Knuth, 1981</A>))
+
+<P>
+We will see later that most of the situations that require random
+choices to be made can be handled once we have `random numbers'
+available. So, what's a random number? You will realise that this is a
+silly question as soon as you rephrase it in the form `is 2 a random
+number?'.  Randomness is not a property of individual numbers. More
+properly it is a property of infinite sequences of
+numbers.<A NAME="7746"></A>
+
+<P>
+I am now going to try to clarify what we mean by a random sequence of
+numbers. To keep things definite I will assume that we are talking
+about real numbers in the range [0, 1).
+
+<P>
+What we are eventually aiming to define and construct is what is known
+as a random number generator. This is a function (black box) which,
+when given an input value <A NAME="7955"></A><B>seed</B><A NAME="7748"></A> (usually an
+integer), produces as output an infinite random sequence of real
+numbers {<I>x</I><SUB>k</SUB>} with <!-- MATH
+ $x_k\in [0,1)$
+ -->
+<I>x</I><SUB>k</SUB> <IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img65.gif"
+ ALT="$ \in$"> [0, 1).
+<!-- MATH
+ \begin{displaymath}
+\     \mbox{\texttt{seed}}\qquad \to \boxed{\mbox{RAND}}\to \qquad  \{x_k\}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;<TT>seed</TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img75.gif"
+ ALT="$\displaystyle \to$"><IMG
+ WIDTH="152" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img189.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img189.gif"
+ ALT="$\displaystyle \boxed {\mbox{RAND}}\to \qquad \{x_k\}
+$">
+</DIV><P></P>
+Furthermore, we require that different seeds produce different
+sequences and that, in some sense, 'related' seeds do not produce
+related sequences.
+
+<P>
+As far as I am aware, nobody has ever given an entirely convincing
+definition of the term `random sequence'. On the other hand, everybody
+has a common-sense idea of what it means. We say things like: `the
+sequence should have no pattern or structure'.  More directly we might
+say that knowing <!-- MATH
+ $x_1,\ldots,x_n$
+ -->
+<I>x</I><SUB>1</SUB>,..., <I>x</I><SUB>n</SUB> tells us nothing about
+<!-- MATH
+ $x_{n+1},\ldots$
+ -->
+<I>x</I><SUB>n + 1</SUB>,....
+
+<P>
+One of the simplest attempts at a mathematical definition goes as 
+follows.
+<P>
+<DIV><B>Definition  5.1</B> &nbsp; 
+A sequence {<I>p</I><SUB>k</SUB>} in [0, 1)<SUP>n</SUP> is <I>uniformly
+distributed</I><A NAME="7754"></A> on [0, 1)<SUP>n</SUP> if, for any box
+<!-- MATH
+ \begin{displaymath}
+\     A= [r_1,l_1]\times[r_2,l_2]\times\cdots\times[r_n,l_n]
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;<I>A</I> = [<I>r</I><SUB>1</SUB>, <I>l</I><SUB>1</SUB>]&#215;[<I>r</I><SUB>2</SUB>, <I>l</I><SUB>2</SUB>]&#215;<SUP> ... </SUP>&#215;[<I>r</I><SUB>n</SUB>, <I>l</I><SUB>n</SUB>]
+</DIV><P></P>
+in [0, 1)<SUP>n</SUP>,
+<!-- MATH
+ \begin{displaymath}
+\     \lim_{k\to\infty} \frac{|\{p_1,p_2,\ldots,p_k\}\cap A|}{k}
+\       =  |A|
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;<IMG
+ WIDTH="36" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img190.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img190.gif"
+ ALT="$\displaystyle \lim_{k\to\infty}^{}$"><IMG
+ WIDTH="154" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img191.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img191.gif"
+ ALT="$\displaystyle {\frac{\vert\{p_1,p_2,\ldots,p_k\}\cap A\vert}{k}}$">&nbsp; = | <I>A</I>|
+</DIV><P></P>
+where | <I>A</I>| is the volume of <I>A</I>.</DIV><P></P>
+
+<P>
+<DIV><B>Definition  5.2</B> &nbsp; 
+A sequence {<I>x</I><SUB>k</SUB>} on [0, 1) is <I>n</I>-distributed 
+on [0, 1) if the sequence {<I>p</I><SUB>k</SUB>} given by
+<!-- MATH
+ \begin{displaymath}
+\      p_k = (x_{kn},x_{kn+1},\ldots,x_{kn+n-1}) \in  [0,1)^n
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;<I>p</I><SUB>k</SUB> = (<I>x</I><SUB>kn</SUB>, <I>x</I><SUB>kn + 1</SUB>,..., <I>x</I><SUB>kn + n - 1</SUB>) <IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img142.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img142.gif"
+ ALT="$\displaystyle \in$"> [0, 1)<SUP>n</SUP>
+</DIV><P></P>
+is uniformly distributed on [0, 1)<SUP>n</SUP>.</DIV><P></P>
+
+<P>
+We will require that a random sequence in [0, 1) be
+<IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img55.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img55.gif"
+ ALT="$ \infty$">-distributed on [0, 1), i.e. <I>k</I>-distributed for all <I>k</I>.
+
+<P>
+This turns out to be an inadequate definition of randomness, but it is
+good enough for all practical purposes.  In particular, an
+<IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img55.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img55.gif"
+ ALT="$ \infty$">-distributed sequence will pass all the standard statistical
+tests for randomness. (If you want to be thoroughly perverse you could
+argue that the fact that it passes all such test is itself evidence of
+a certain non-randomness!)
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1435"
+  HREF="node78.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node78.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1429"
+  HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1423"
+  HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1431"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1433"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1436"
+  HREF="node78.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node78.html">Generating Random Numbers</A>
+<B> Up:</B> <A NAME="tex2html1430"
+  HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">Random Numbers</A>
+<B> Previous:</B> <A NAME="tex2html1424"
+  HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">Random Numbers</A>
+ &nbsp <B>  <A NAME="tex2html1432"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1434"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

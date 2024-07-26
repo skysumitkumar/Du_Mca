@@ -1,0 +1,115 @@
+\documentclass[english]{article} 
+
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage[all]{xypic}
+
+\begin{document}
+
+\pagenumbering{arabic}
+
+%----Header stuff---------------------------
+\pagestyle{fancy}
+ \lhead{\sc Algorithms \& Data Structures}
+ \chead{}
+ \rhead{\sc INF1 -- 2003}
+
+
+
+\section*{Tutorial 12}
+\subsection*{Exercise 1}
+\begin{itemize}
+\item $1$
+\item $4$
+\item $9$
+\item $25$
+\item $n^2$
+\end{itemize}
+
+\begin{tabular}{l|ll}
+ & Adjacency Matrix & Adjacency List \\
+ \hline
+Nothing known & $O(n^2)$ & $O(n+m)$ \\
+$m= O(n)$ & $O(n^2)$ & $O(n)$ \\
+$m=\Omega(n^2)$ & $O(n^2)$ & $O(n^2)$ \\
+$n=\Omega(m^2)$ & $O(n^2)$ & $O(n)$ \\
+$m=O(n \cdot \log n)$ & $O(n^2)$ & $O(n \cdot \log n)$\\
+\end{tabular}
+
+\begin{itemize}
+\item
+Adjacency list is more space efficient, the 2nd, 4th and 5th row 
+from the table above demonstrate this. If the graph is sparse
+(only a few edges) then adjacency list is much more space efficient
+compared to adjacency matrix. On the other hand if the graph contains
+almost all possible edges, the space complexity of both implementations
+is asymptotically the same. 
+ \end{itemize}
+\subsection*{Exercise 2}
+
+\begin{itemize}
+\item  \mbox{}
+  \xymatrix@R=5ex@C=4ex{
+A\ar[r] & B \ar[d] & C \ar[l] \ar[d]\\
+& E\ar[r] & D
+  }
+
+One sequence of topologically ordered nodes of the DAG G 
+      is e.g  A, C, B, E, D.
+\item
+
+The following DAG has exactly one topologically ordered sequence of nodes. \\[3mm]
+
+  \xymatrix@R=5ex@C=4ex{
+A\ar[r] & B \ar[r] & C \ar[r] & D \ar[r] & E
+  }
+\mbox{} \\[3mm]
+
+This one has also exactly one topologically ordered sequence of nodes
+but contains more edges. \\[3mm]
+
+  \xymatrix@R=5ex@C=4ex{
+A\ar[r] \ar@/^1pc/[rr] & B \ar[r] & C \ar[r] \ar@/^1pc/[r]& D \ar[r] & E
+  }
+\mbox{} \\[3mm]
+\item Consider e.g. the following DAG.  \\[3mm]
+
+ \xymatrix@R=2ex@C=2ex{
+A \ar[rd] & & D \\
+& C \ar[ru] \ar[rd] \\
+B \ar[ru] & & E
+  }
+\mbox{}\\[3mm]
+All sequences of topologically ordered nodes are:
+\begin{itemize}
+\item A, B, C, D, E
+\item A, B, C, E, D
+\item B, A, C, D, E
+\item B, A, C, E, D 
+\end{itemize}
+\item Maximal number of topologically ordered sequences is in a DAG with
+no edges, in our case it consists of 5 isolated nodes. The number of
+all topological orders is 120 in this case.
+\item $n!$
+\end{itemize}
+
+\subsection*{Exercise 3}
+$g.make$\\
+$a:=g.new\_vertex(A)$\\
+$b:=g.new\_vertex(B)$\\
+$c:=g.new\_vertex(C)$\\
+$d:=g.new\_vertex(D)$\\
+$g.insert\_vertex(a)$\\
+$g.insert\_vertex(b)$\\
+$g.insert\_vertex(c)$\\
+$g.insert\_vertex(d)$\\
+$g.insert\_edge(g.new\_edge(1),a,b)$\\
+$g.insert\_edge(g.new\_edge(3),b,b)$\\
+$g.insert\_edge(g.new\_edge(7),c,d)$\\
+
+
+\end{document}

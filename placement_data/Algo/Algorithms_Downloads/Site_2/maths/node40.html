@@ -1,0 +1,177 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Merge Algorithm </TITLE>
+<META NAME="description" CONTENT="Merge Algorithm ">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node41.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node41.html">
+<LINK REL="previous" HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">
+<LINK REL="up" HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">
+<LINK REL="next" HREF="node41.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node41.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html888"
+  HREF="node41.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node41.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html882"
+  HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html876"
+  HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html884"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html886"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html889"
+  HREF="node41.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node41.html">Merge Sort</A>
+<B> Up:</B> <A NAME="tex2html883"
+  HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">Merge Sort</A>
+<B> Previous:</B> <A NAME="tex2html877"
+  HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">Merge Sort</A>
+ &nbsp <B>  <A NAME="tex2html885"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html887"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00641000000000000000">
+Merge Algorithm </A>
+</H2>
+ This is an algorithm to merge the lists <!-- MATH
+ $x_1,\ldots,x_n$
+ -->
+<I>x</I><SUB>1</SUB>,..., <I>x</I><SUB>n</SUB> and
+<!-- MATH
+ $y_1,\ldots,y_m$
+ -->
+<I>y</I><SUB>1</SUB>,..., <I>y</I><SUB>m</SUB> into a single ordered list <!-- MATH
+ $z_1,\ldots,z_{n+m}$
+ -->
+<I>z</I><SUB>1</SUB>,..., <I>z</I><SUB>n + m</SUB>. The
+lists <I>x</I> and <I>y</I> are initially in order.
+
+<P>
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ algorithm merge(x,n,y,m,z)
+<BR>
+begin
+<BR>&nbsp;&nbsp;xp = 1
+<BR>&nbsp;&nbsp;yp = 1
+<BR>&nbsp;&nbsp;zp = 1
+<BR>&nbsp;&nbsp;while( xp &lt;= n and yp &lt;= m ) begin
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;if(x(xp) &lt; y(yp) ) then begin
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(zp) = x(xp) 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xp = xp + 1
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;else
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(zp) = y(yp)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yp = yp + 1
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;end
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;zp = zp + 1
+<BR>&nbsp;&nbsp;end
+<BR>&nbsp;&nbsp;if( xp &gt; n ) then begin // x ran out first
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;for j = yp to m begin
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(zp) = y(j)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zp = zp + 1
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;end
+<BR>&nbsp;&nbsp;end
+<BR>&nbsp;&nbsp;if( yp &gt; m ) then begin // y ran out first
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;for j = xp to n begin
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z(zp) = x(j)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zp = zp + 1
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;end
+<BR>&nbsp;&nbsp;end
+<BR>
+end
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>
+<P>
+In this algorithm <TT>xp, yp, zp</TT> point to the `current position' in the
+x,y and z lists respectively. If the current x-value is smaller than the
+current y-value we add the x-value to z and move up <TT>xp</TT>. Otherwise
+we move the current y-value to z and move up <TT>yp</TT>. We then move up
+<TT>zp</TT>. This carries on until one or other of the original lists dries up.
+We then copy the remainder of the other list to z. The algorithm obviously
+works.
+
+<P>
+The time taken by this algorithm to merge the two lists is roughly
+proportional to the sum of the lengths of the two lists. This would be
+almost exact if both lists were exhausted at more or less the same time. The
+algorithm runs a bit faster if there is a long tail left to copy at the end.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html888"
+  HREF="node41.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node41.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html882"
+  HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html876"
+  HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html884"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html886"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html889"
+  HREF="node41.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node41.html">Merge Sort</A>
+<B> Up:</B> <A NAME="tex2html883"
+  HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">Merge Sort</A>
+<B> Previous:</B> <A NAME="tex2html877"
+  HREF="node39.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node39.html">Merge Sort</A>
+ &nbsp <B>  <A NAME="tex2html885"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html887"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

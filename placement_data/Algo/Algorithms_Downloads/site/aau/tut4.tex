@@ -1,0 +1,135 @@
+\documentclass[english]{article} 
+
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{fancyhdr}
+
+\begin{document}
+
+\pagenumbering{arabic}
+
+%----Header stuff---------------------------
+\pagestyle{fancy}
+ \lhead{\sc Algorithms \& Data Structures}
+ \chead{}
+ \rhead{\sc INF1 -- 2003}
+
+
+\section*{Tutorial 4}
+
+\subsection*{Example 1}
+\begin{itemize}
+\item The space/memory requirements ($S(n)$)
+ of an algorithm is usually measured by investigating the size of the most expensive data structure used (how many memory cells are needed to store it).
+The characteristic data structure of the given algorithm fib$(n)$ is
+{\tt table}. 
+% {\tt table} is initiated with values for {\tt table[0]} and {\tt table[1]} and is added an element for each $n>2$ additionally the $i$ variable used in the {\tt FOR} construct uses a constant size.
+In a call fib$(n)$ the size of the table is
+$n+1$ hence $S(n)$ is $O(n)$.
+\item
+\begin{algorithmic}
+  \STATE{{\bf fib}($n$) =}
+  \IF {$n=0$}       
+   \STATE{$fib:=0$}
+  \ELSE
+   \STATE{$fib:=1$}
+  \ENDIF
+  \STATE{$fib_{-1}:=1$}
+  \STATE{$fib_{-2}:=0$}
+  \FOR{$i=2$ to $n$}
+    \STATE{$fib := fib_{-1} + fib_{-2}$}
+	\STATE{$ fib_{-2}:= fib_{-1} $}
+	\STATE{$fib_{-1}:= fib$}
+  \ENDFOR
+  \STATE{{\bf return} $fib$}
+\end{algorithmic}
+\end{itemize}
+
+\subsection*{Example 2}
+\begin{description}
+\item[Pre:] $A[a..b]$ is an array such that $a\leq b$
+\item[] res:= largest$(a,b)$
+\item[Post:] res $\geq A[a..b]$ and res $\in A[a..b]$ and $A'=A$
+\\[4mm]
+\begin{algorithmic}
+  \STATE{{\bf largest}($a$,$b$) =}
+  \IF{$a=b$}
+    \STATE{$res := A[a]$}
+  \ELSE
+    \STATE{$mid:= \lfloor \frac{a+b}{2} \rfloor$}
+        \STATE{$sol_1 := \mbox{\bf largest}(a,mid)$}
+        \STATE{$sol_2 := \mbox{\bf largest}(mid+1,b)$}
+	\STATE{$res:=${\bf max}$(sol_1,sol_2)$} 
+  \ENDIF
+  \STATE{{\bf return} $res$}
+\end{algorithmic}
+\end{description}
+
+\newpage
+\subsection*{Example 3}
+\begin{itemize}
+\item Let $n$ be the size of the considered array, i.e., $n = b-a+1$.
+\item[] $W(1)=1$
+\item[] $W(n)= 1 + 2W(\lceil \frac{n}{2} \rceil)$ \ \ \ for $n>1$
+\item We solve the equation only in points where $n=2^k$
+      for all $k = 0, 1, 2, \ldots$. Hence we consider the following 
+      recurrence equation.
+     
+\item[] $W(2^0)=1$
+\item[] $W(2^k)= 1 + 2W(2^{k-1})$ \ \ \ for $k>0$
+
+\item We shall use repeated substitutions to solve this system.
+ \begin{eqnarray*}
+      W(n) = W(2^k) &=& 1 +2W(2^{k-1}) \\
+			    &=& 1 +2(1+2W(2^{k-2}))\\
+				&=& 1 +2 +4W(2^{k-2})\\
+				&=& 2^0 + 2^1 + \ldots + 2^{i}W(2^{k-i}), \ \ \
+(0\leq i\leq k)\\
+				&=& 2^0 + 2^1 + \ldots + 2^{k}\underbrace{W(2^{k-k})}_{= W(2^0) = 1}, \ \ \
+(i=k) \\
+				&=& 2^0 + 2^1 + \ldots + 2^{k} \\
+				&=& 2^{k+1}-1\\
+				&=& 2^{(\log n)+1}-1\\
+				&=& 2 \cdot 2^{\log n} - 1\\
+				&=& 2n-1\\
+				&=& O(n)
+        \end{eqnarray*}
+\end{itemize}
+
+\subsection*{Example 4}
+\begin{algorithmic}
+ \STATE{$i:=1$}
+ \STATE{$j:=2$}
+ \WHILE{$max(i,j)<n$}
+   \IF{$i$ knows $j$}
+     \STATE{$i:=max(i,j)+1$}
+   \ELSE
+     \STATE{$j:=max(i,j)+1$}
+   \ENDIF
+ \ENDWHILE
+ \STATE{$candidate := min(i,j)$}
+ \STATE{}
+ \STATE{*** Now we check whether $candidate$ is indeed a celebrity ***}
+ \STATE{}
+  \STATE{OK:=true; \  $i:=1$}
+  \WHILE {OK and $i\leq n$} 
+  \IF {$candidate \not= i$}
+  \IF {$candidate$ knows $i$} 
+   \STATE{OK := false} 
+  \ELSE \IF {$i$ does not know $candidate$} 
+   \STATE{OK := false} 
+  \ENDIF
+  \ENDIF
+  \ENDIF
+  \STATE{i:=i+1}
+  \ENDWHILE 
+  \IF {OK=true} 
+   \STATE{{\bf return} "$candidate$ is a celebrity"}
+  \ELSE
+   \STATE{{\bf return} "there is no celebrity"}
+  \ENDIF
+\end{algorithmic}
+
+\end{document}

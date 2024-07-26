@@ -1,0 +1,251 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0068)http://www.cs.uiuc.edu/class/fa05/cs400/_quiz/_quizsol/quiz2sol.html -->
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META content="MSHTML 6.00.5730.11" name=GENERATOR></HEAD>
+<BODY><PRE></PRE><STRONG>Question 0 :</STRONG> <PRE>   Which of the the following is a correct way of declaring a local variable
+   character string s1 that will eventually hold the word "Hello"?
+
+   a) char *s1;
+   b) char s1[5];
+   c) char s1[6];
+   d) char s1[7];
+<EM>Answer:</EM>
+   c
+</PRE><STRONG>Question 1 :</STRONG> <PRE>   True or False (Enter t or f)
+
+   "Big 3" refers to the No-Argument Constructor, the Destructor 
+    and the Copy Constructor.
+<EM>Answer:</EM>
+   f
+</PRE><STRONG>Question 2 :</STRONG> <PRE>   What's wrong with the constructor for the Employee class?
+
+   void Employee::Employee(int id) { id = 0;}
+
+   a) Semicolon missing at the end of the definition.
+   b) Constructors never have return type.
+   c) It's wrong to add "Employee::" in the definition.
+   d) There should not be a semicolon after "id = 0".
+<EM>Answer:</EM>
+   b
+</PRE><STRONG>Question 3 :</STRONG> <PRE>   True or False (Enter t or f)
+
+   Destructors can be overloaded.
+<EM>Answer:</EM>
+   f
+</PRE><STRONG>Question 4 :</STRONG> <PRE>   True or False (Enter t or f)
+
+   You generally don't have to explicitly define the Big 3 functions
+   if there are no pointer data members. (An answer of false would be
+   saying that you *do* have to define such functions even if there
+   *aren't* any pointer data members.)
+<EM>Answer:</EM>
+   t
+</PRE><STRONG>Question 5 :</STRONG> <PRE>   Which of the following statements is NOT true?
+
+   a) Operators can be overloaded when both operands are of built-in types.
+   b) Operators can be overloaded when one operand is of a built-in type
+       and the other is of user-defined type.
+   c) Operators can be overloaded when both operands are of user-defined
+       types.
+<EM>Answer:</EM>
+   a
+</PRE><STRONG>Question 6 :</STRONG> <PRE>   The following declaration of the Array class template is incorrect
+   because 
+
+   template<CLASS Etype>
+   class MyArray
+   {
+     public:
+     MyArray(int);
+     MyArray(const MyArray&amp; origVal);
+     ... ...
+
+     private:
+     int size;
+     Etype *array;
+   }
+
+   a) The constructor and copy contructor should have started with
+       "MyArray<ETYPE>" instead of "MyArray".
+   b) The type of data member "array" should have been "<CLASS Etype>"
+       instead of "Etype"
+   c) Instead of using size, lower and upper bounds should be used
+       as member data.
+   d) Semicolon missing at the end of the declaration block.
+<EM>Answer:</EM>
+   d
+</PRE><STRONG>Question 7 :</STRONG> <PRE>   When overloaded as a **member function**, a binary operator can have
+   how many parameters?
+   a) 0
+   b) 1
+   c) 2
+   d) All of the above
+<EM>Answer:</EM>
+   b
+</PRE><STRONG>Question 8 :</STRONG> <PRE>   True or False (Enter t or f)
+
+   The operator &lt;&lt; is automatically overloaded for user-defined types.
+<EM>Answer:</EM>
+   f
+</PRE><STRONG>Question 9 :</STRONG> <PRE>   Which of the following statements are true?
+
+   1. const can be put before or after a parameter of a function.
+   2. const can be put after the parameter list of a function.
+   3. const can be put in front of the return type of a function.
+
+   a) Only 1.
+   b) Only 1 and 2.
+   c) Only 1 and 3.
+   d) All of the above.
+<EM>Answer:</EM>
+   d
+</PRE><STRONG>Question 10 :</STRONG> <PRE>   Which of the following techniques can be used to define two 
+   functions that have the same name and are in the same class?
+
+   a) Function Templates
+   b) Function Overloading
+   c) Virtual Functions
+   d) Class Templates
+<EM>Answer:</EM>
+    b
+</PRE><STRONG>Question 11 :</STRONG> <PRE>   Why are we *required* to pass a value to a copy constructor
+   by reference?
+
+        a) We use the copy constructor frequently and thus
+              want to avoid the expensive copying time  
+        b) Passing-by-value will simply call the copy constructor
+              again, resulting in an infinite loop 
+        c) We will want to alter this value inside the constructor 
+        d) There is no way to pass-by-pointer because we cannot
+              use pointers-to-user-types as parameters
+<EM>Answer:</EM>
+   b
+</PRE><STRONG>Question 12 :</STRONG> <PRE>   Why is it bad for a function to return the memory address of 
+   one of its local variables?
+
+        a) We cannot store addresses in any type of variable,
+            so we cannot make use of the value we are returning
+        b) It results in allocated memory not being freed
+        c) It is easier to return the value in the variable 
+        d) It gives you access to a memory cell that 
+            can be overwritten by a new function call 
+<EM>Answer:</EM>
+   d
+</PRE><STRONG>Question 13 :</STRONG> <PRE>   What will be the output of the following code? 
+ 
+                int x, y, z; 
+                x=1; y=2; z=3; 
+                int* a = &amp;x; 
+                *a = y; 
+                cout &lt;&lt; x &lt;&lt; endl; 
+
+        a) 1
+        b) 2
+        c) 3
+        d) a memory address
+<EM>Answer:</EM>
+   b
+</PRE><STRONG>Question 14 :</STRONG> <PRE>   Which of the following lines will correctly output the contents
+   of the variables x and y in the form (x, y), i.e. the
+   **values stored in** x and y, in parenthesis, with a comma and 
+   space between them?
+
+        a) cout &lt;&lt; x, y;
+        b) cout &lt;&lt; "(x, y)";
+        c) cout &lt;&lt; "(" &lt;&lt; x, y &lt;&lt; ")"; 
+        d) cout &lt;&lt; "(" &lt;&lt; x &lt;&lt; ", " &lt;&lt; y &lt;&lt; ")";
+<EM>Answer:</EM>
+   d
+</PRE><STRONG>Question 15 :</STRONG> <PRE>   What are the two types of memory we have studied?
+
+        a) Stack memory and heap memory
+        b) Local memory and random memory 
+        c) User memory and system memory 
+        d) Consistent memory and dynamic memory 
+<EM>Answer:</EM>
+   a
+</PRE><STRONG>Question 16 :</STRONG> <PRE>   Why do built-in strings (such as those in use in the 
+   implementation of our String class) have the type char*?
+
+        a) char* is a special expression that is understood
+            to mean "string"
+        b) A string's characters are accessed by changing the  
+            value in the char* variable to refer to different
+            characters in the string
+        c) A string is an array of characters; the char*
+             variable holds the starting address of the array 
+        d) The expression "char*" means "many characters" 
+<EM>Answer:</EM>
+   c
+</PRE><STRONG>Question 17 :</STRONG> <PRE>   Which of the following is NOT a reason for using an
+   #include statement in a given file?
+
+        a) If the file uses a user-defined type, you should
+            include the .h for that type
+        b) If the file uses a built-in library function, you
+            should include the .h containing that function header
+        c) If the file implements an interface, you should
+            include the .h containing that interface 
+        d) If the file code is used by some user-defined class, 
+            you should include the .h of that user-defined class  
+<EM>Answer:</EM>
+  d
+</PRE><STRONG>Question 18 :</STRONG> <PRE>   Consider the following code:
+
+   void negate(int&amp; x) {
+      x = -1 * x;
+   }
+
+   What would happen during a call "negate(&amp;y);" in main?
+  (y is an integer variable.)
+
+        a) x is negated, y is not
+        b) y is negated, x is not
+        c) Both x and y are negated
+        d) This code will not correctly compile
+<EM>Answer:</EM>
+   d
+</PRE><STRONG>Question 19 :</STRONG> <PRE>   What is the purpose of a template in C++?
+
+        a) It provides the means for the creation of
+             user-defined types
+        b) It allows functions and classes to be written
+             independent of type
+        c) It allows you to create arrays of many
+             different types
+        d) It allows you to swap two elements of the
+             same type 
+<EM>Answer:</EM>
+   b
+</PRE><STRONG>Question 20 :</STRONG> <PRE>   Consider the following code:
+
+   void negate(int x) {
+      x = -1 * x 
+   }
+
+   What would happen during a call "negate(y);" in main?
+  (y is an integer variable.)
+
+        a) x is negated, y is not 
+        b) y is negated, x is not 
+        c) Both x and y are negated 
+        d) This code will not correctly compile 
+<EM>Answer:</EM>
+   a
+</PRE><STRONG>Question 21 :</STRONG> <PRE>   Consider the following code:
+
+   void negate(int&amp; x) {
+      x = -1 * x; 
+   }
+
+   What would happen during a call "negate(y);" in main?
+  (y is an integer variable.)
+
+        a) x is negated, y is not 
+        b) y is negated, x is not 
+        c) Both x and y are negated 
+        d) This code will not correctly compile 
+<EM>Answer:</EM>
+   c
+</PRE></BODY></HTML>

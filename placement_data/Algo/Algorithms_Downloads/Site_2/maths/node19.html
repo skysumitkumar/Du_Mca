@@ -1,0 +1,146 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Hatching Convex Polygons </TITLE>
+<META NAME="description" CONTENT="Hatching Convex Polygons ">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="previous" HREF="node18.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node18.html">
+<LINK REL="up" HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">
+<LINK REL="next" HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html567"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html561"
+  HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html557"
+  HREF="node18.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node18.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html563"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html565"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html568"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">The Analysis of an</A>
+<B> Up:</B> <A NAME="tex2html562"
+  HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">An Algorithm  </A>
+<B> Previous:</B> <A NAME="tex2html558"
+  HREF="node18.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node18.html">General Method</A>
+ &nbsp <B>  <A NAME="tex2html564"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html566"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00523000000000000000">
+Hatching Convex Polygons </A>
+</H2>
+
+<P>
+If we happen to know that the polygon we are dealing with is convex
+then the above general algorithm for shading is very inefficient.  The
+problem can be solved much more efficiently in this case.  The idea,
+which avoids the sorting step above, is shown in
+Fig.&nbsp;<A HREF="node19.html#F:hatch-convex" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node19.html#F:hatch-convex">1.6</A>.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="F:hatch-convex"></A><A NAME="670"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 1.6:</STRONG>
+Hatching a convex polygon.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><!-- MATH
+ $\includegraphics[height=1.3in ]{xfig/hatched-convex.eps}$
+ -->
+<IMG
+ WIDTH="314" HEIGHT="147" ALIGN="BOTTOM" BORDER="0"
+ SRC="img16.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img16.gif"
+ ALT="\includegraphics [height=1.3in ] {xfig/hatched-convex.eps}">
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+For the sake of variety let's start at the top this time. The advantage
+in this case is that we do not need to go searching through all the
+edges all the time. At any particular stage we are dealing with one
+`left' edge and one `right' edge.  Whenever the horizontal level drops
+below the bottom end of one of these edges we move on to the next edge
+on that side. The starting and ending points of the hatches are
+calculated from the equations of the edges.  The procedure stops when
+the <I>h</I> value drops below that of <I>B</I>.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html567"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html561"
+  HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html557"
+  HREF="node18.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node18.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html563"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html565"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html568"
+  HREF="node20.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node20.html">The Analysis of an</A>
+<B> Up:</B> <A NAME="tex2html562"
+  HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">An Algorithm  </A>
+<B> Previous:</B> <A NAME="tex2html558"
+  HREF="node18.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node18.html">General Method</A>
+ &nbsp <B>  <A NAME="tex2html564"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html566"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

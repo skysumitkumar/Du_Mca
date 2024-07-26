@@ -1,0 +1,104 @@
+<html><head>
+<title>Solution for /analysis/minimum.time</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /analysis/minimum.time problem</h1>
+<hr>
+Let the speed of the car be v, the speed of a walking person be u, and
+the distance between cities by L.  We want to minimize T, the time t
+at which all persons are at displacement x=L (city B), when they all
+start at displacement x=0 (city A) at time t=0.
+
+<p>
+I'll assume that the solution has everyone starting out from city A at
+the same time t=0 arriving in city B at the same time t=T so nobody is
+standing around idly waiting.  Let's plot everyone's movements on a
+graph showing coordinates (t,x).  Then at time t just after 0, (N-2)
+walkers are on the line L0 through (0,0) with slope dx/dt = u, and 2
+in the car are on a line through (0,0) with slope v, and at t just
+before T, (N-2) walkers are on the line L1 through (T,L) with slope u,
+and 2 in the car are on a line through (T,L) with slope v.  Obviously
+L1 lies "above" L0 (greater x coordinate given the same t coordinate).
+In between t=0 and t=T, the car zigzags between L0 and L1 along lines
+of slope v and -v, picking up people from L0 and dropping them off at
+L1.  I will not prove that this is the optimal strategy; in fact you
+can make an infinite number of variations on it which all come up with
+the same elapsed time.
+
+<p>
+Now examine the graph again.  Say the car travels distance r between
+picking someone up and dropping that person off, and distance s back
+to pick up the next person.  The car makes (N-1) trips forward and
+(N-2) trips back to pick up and ferry everyone, so its total travel is
+
+<pre>
+	vT = (N - 1)r + (N - 2)s = (N - 2)(r + s) + r
+</pre>
+
+Moreover the car makes (r-s) net displacement on each round trip, plus
+r displacement on the extra forward trip, so
+
+<pre>
+	L = (N - 2)(r - s) + r
+</pre>
+
+Note that a person walks distance (r-s) in the time it takes the car to
+go (r+s), so 
+
+<pre>
+	r - s = (u/v)(r + s)
+</pre>
+
+A little algebraic manipulation of this equation shows us that
+
+<pre>
+	r - s = r * 2u/(v + u)
+	r + s = r * 2v/(v + u)
+</pre>
+
+Plug this into the equation for L, and we get the first important
+piece of information, how far the car should drive before dropping off
+the passenger (once you know this, you tell it to the driver and this
+guarantees the people get to B in minimum time):
+
+<pre>
+	L = r + (N - 2) r * 2u/(v + u)
+	  = r * (v + u + (N - 2)*2u)/(v + u)
+
+	       v + u
+	r = ------------ L
+	    2uN + v - 3u
+</pre>
+
+We can also find out what the elapsed time T will be:
+<pre>
+	vT = (N - 2)r*2v/(v + u) + r
+	   = r * ((N - 2)*2v + v + u)/(v + u)
+
+	    1   2vN - 3v + u
+	T = - * ------------ r
+	    v      v + u
+</pre>
+
+Therefore
+<pre>
+	    2vN - (3v - u)
+	T = -------------- (L/v)
+	     2uN + v - 3u
+</pre>
+
+<p>
+-- David Karr (karr@cs.cornell.edu)
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

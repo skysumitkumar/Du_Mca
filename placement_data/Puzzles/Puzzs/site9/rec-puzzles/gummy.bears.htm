@@ -1,0 +1,95 @@
+<html><head>
+<title>Solution for /logic/weighing/gummy.bears</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /logic/weighing/gummy.bears problem</h1>
+<hr>
+Spike uses 51 gummy drop bears:  from the 7 boxes he takes respectively
+0, 1, 2, 4, 7, 13, and 24 bears.
+
+<p>
+The notion is that each box of imitation bears will subtract its
+number of bears from the total "ideal" weight of 510 grams (1 gram of
+missing weight per bear), so Spike weighs the bears, subtracts the
+result from 510 to obtain a number N, and finds the unique combination
+of 3 numbers from the above list (since there are 3 "imitation" boxes)
+that sum to N.
+
+<p>
+The trick is for the sums of all triples selected from the set S of
+numbers of bears to be unique.  To accomplish this, I put numbers into
+S one at a time in ascending order, starting with the obvious choice,
+0.  (Why is this obvious?  If I'd started with k &gt; 0, then I could
+have improved on the resulting solution by subtracting k from each
+number) Each new number obviously had to be greater than any previous,
+because otherwise sums are not unique, but also the sums it made when
+paired with any previous number had to be distinct from all previous
+pairs (otherwise when this pair is combined with a third number you
+can't distinguish it from the other pair)--except for the last box,
+where we can ignore this point.  And most obviously all the new
+triples had to be distinct from any old triples; it was easy to find
+what the new triples were by adding the newest number to each old sum
+of pairs.
+
+<p>
+Now, in case you're curious, the possible weight deficits and their
+unique decompositions are:
+
+<pre>
+3       = 0 + 1 + 2
+5       = 0 + 1 + 4
+6       = 0 + 2 + 4
+7       = 1 + 2 + 4
+8       = 0 + 1 + 7
+9       = 0 + 2 + 7
+10      = 1 + 2 + 7
+11      = 0 + 4 + 7
+12      = 1 + 4 + 7
+13      = 2 + 4 + 7
+14      = 0 + 1 + 13
+15      = 0 + 2 + 13
+16      = 1 + 2 + 13
+17      = 0 + 4 + 13
+18      = 1 + 4 + 13
+19      = 2 + 4 + 13
+20      = 0 + 7 + 13
+21      = 1 + 7 + 13
+22      = 2 + 7 + 13
+24      = 4 + 7 + 13
+25      = 0 + 1 + 24
+26      = 0 + 2 + 24
+27      = 1 + 2 + 24
+28      = 0 + 4 + 24
+29      = 1 + 4 + 24
+30      = 2 + 4 + 24
+31      = 0 + 7 + 24
+32      = 1 + 7 + 24
+33      = 2 + 7 + 24
+35      = 4 + 7 + 24
+37      = 0 + 13 + 24
+38      = 1 + 13 + 24
+39      = 2 + 13 + 24
+41      = 4 + 13 + 24
+44      = 7 + 13 + 24
+</pre>
+Note that there had to be (7 choose 3) distinct values; they end up
+ranging from 3 to 44 inclusive with 7 numbers missing:  4, 23, 34, 36,
+40, 42, and 43.
+
+<pre>
+-- David Karr (karr@cs.cornell.edu)
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

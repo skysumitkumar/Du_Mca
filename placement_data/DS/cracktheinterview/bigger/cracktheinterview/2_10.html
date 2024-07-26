@@ -1,0 +1,571 @@
+
+<HTML>
+<HEAD>
+<TITLE>CRACK THE INTERVIEW - How to generate fibonacci numbers? How to find out if a given number is a fibonacci number or not? Write C programs to do both.  (www.cracktheinterview.com)</TITLE><style type="text/css">
+<!--
+.breakhere     {page-break-before: always}
+
+A:link         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+A:active       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+A:visited      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+
+H1             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt; font-weight:bold; color:#336699} 
+H2             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; font-weight:bold} 
+.normal        {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+.announce      {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#000000} 
+.announceLink  {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#336699} 
+.note          {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt ! important; font-weight:normal} 
+.system        {font-family:Courier New, Courier; font-size:x-small;
+                font-weight:normal} 
+.stayblue      {color:#336699 ! important}
+.title         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:larger ! important} 
+.error         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; color:#aa0000; font-weight:bold} 
+.notelink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:normal;
+                font-size:9pt ! important} 
+.tableHeader   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableHeaderSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRow      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#f7f7e7} 
+.tableBlank    {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#ffffff} 
+.hardlink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:bold;
+                font-size:8pt ! important} 
+.boxlink       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#000000 ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.hardnote      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:black ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.tableRowSmall {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal} 
+.tableRowSmallBold {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                bold} 
+.blueHeading   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:bold;
+                color:#336699! important} 
+.blueHeadingLarge {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:16pt! important; font-weight:normal;
+                color:#336699} 
+.blueHeadingMid {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:normal;
+                color:#336699}
+.blueHeadingSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt! important; font-weight:bold;
+                color:#336699} 
+.tableHeaderV  {font-family:Verdana,Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRowV     {font-family:Verdana,Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal; background-color:#f7f7e7} 
+.just          {text-align: justify}
+-->
+</style>
+
+<META NAME="keywords" CONTENT="interview,fibonacci,numbers,generate,nth fibonacci,recursive,iteractive,program,generate">
+<META NAME="description" CONTENT="How to generate fibonacci numbers? How to find out if a given number is a fibonacci number or not? Write C programs to do both. ">
+<META NAME="robots" CONTENT="FOLLOW,INDEX">
+<META HTTP-EQUIV="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+
+</HEAD>
+<BODY>
+<TABLE BORDER=0 cellpadding=10>
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER><A HREF="index.htm" tppabs="http://www.cracktheinterview.com/"><IMG SRC="logo2.jpg" tppabs="http://www.cracktheinterview.com/images/logo2.jpg" border=0></img></A></CENTER></TD>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2>
+<CENTER>
+
+
+<!--START:ADS0-->
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"
+  src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+
+</CENTER>
+</TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER>
+
+<!--START:LINKS-->
+
+
+<TABLE BORDER=0 cellpadding=10>
+<TR><TD NOWRAP>
+<A HREF="index.htm" tppabs="http://www.cracktheinterview.com/" target="_top"><font class=announcelink>Home</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="adfaqpublish.html" tppabs="http://www.cracktheinterview.com/adfaqpublish.html" target="_top"><font class=announcelink>Questions</font></A><BR>
+</TD>
+
+
+<TD NOWRAP>
+<A href="search.html" tppabs="http://www.cracktheinterview.com/search.html" target="_top"><font class=announcelink>Search</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="javascript:if(confirm('http://www.cracktheinterview.com/forum/  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.cracktheinterview.com/forum/'" tppabs="http://www.cracktheinterview.com/forum" target="_top"><font class=announcelink>Forum</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="mailto:cracktheinterview@gmail.com?subject=Hi!"><font class=announcelink>Contact</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="viewforum.php-f=2.htm" tppabs="http://www.cracktheinterview.com/forum/viewforum.php?f=2" target="_top"><font class=announcelink>Guest Book</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="viewforum.php-f=3.htm" tppabs="http://www.cracktheinterview.com/forum/viewforum.php?f=3" target="_top"><font class=announcelink>Polls!</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="viewforum.php-f=4.htm" tppabs="http://www.cracktheinterview.com/forum/viewforum.php?f=4" target="_top"><font class=announcelink>Got a Question?</font></A><BR>
+</TD>
+
+</TABLE>
+
+<!--END-->
+
+</CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER> &nbsp; </CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=90%% valign=top>
+
+
+
+
+
+<!--START : DATA-->
+
+
+
+<TABLE BORDER=0>
+
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="2_9.html" tppabs="http://www.cracktheinterview.com/pages/2_9.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=blueHeading>Programs</font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="2_11.html" tppabs="http://www.cracktheinterview.com/pages/2_11.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD>
+<TD WIDTH=90%%><CENTER><font class=blueHeading>(37 / 268)</font></center></TD>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%></TD>
+<TD WIDTH=90%%><center>&nbsp;</center></TD>
+<TD WIDTH=5%%></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=announceLink><BR><BR><BR>
+<!--THE QUESTION-->
+
+How to generate fibonacci numbers? How to find out if a given number is a fibonacci number or not? Write C programs to do both. <BR>
+<!--END-->
+<BR></font></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=normal>
+<!--THE ANSWER--><BR>
+<!--META:START--><!--interview,fibonacci,numbers,generate,nth fibonacci,recursive,iteractive,program,generate--><!--META:END--><BR>
+<BR>
+Lets first refresh ourselves with the <font class=announcelink>Fibonacci sequence</font><BR>
+<BR>
+<CODE><BR>
+1,&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;5,&nbsp;8,&nbsp;13,&nbsp;21,&nbsp;34,&nbsp;55,&nbsp;.....<BR>
+</CODE><BR>
+<BR>
+Fibonacci numbers obey the following rule<BR>
+<BR>
+<CODE><BR>
+F(n)&nbsp;=&nbsp;F(n-1)&nbsp;+&nbsp;F(n-2)<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+Here is an <font class=announcelink>iterative</font> way to generate fibonacci numbers and also return the nth number.<BR>
+<BR>
+<CODE><BR>
+int&nbsp;fib(int&nbsp;n)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;int&nbsp;f[n+1];<BR>
+&nbsp;&nbsp;&nbsp;f[1]&nbsp;=&nbsp;f[2]&nbsp;=&nbsp;1;<BR>
+&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;printf("\nf[1]&nbsp;=&nbsp;%d",&nbsp;f[1]);<BR>
+&nbsp;&nbsp;&nbsp;printf("\nf[2]&nbsp;=&nbsp;%d",&nbsp;f[2]);<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;3;&nbsp;i&nbsp;&lt;=&nbsp;n;&nbsp;i++)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f[i]&nbsp;=&nbsp;f[i-1]&nbsp;+&nbsp;f[i-2];<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("\nf[%d]&nbsp;=&nbsp;[%d]",i,f[i]);<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;return&nbsp;f[n];<BR>
+}<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+Here is a <font class=announcelink>recursive</font> way to generate fibonacci numbers.<BR>
+<BR>
+<CODE><BR>
+int&nbsp;fib(int&nbsp;n)<BR>
+{<BR>
+&nbsp;&nbsp;if&nbsp;(n&nbsp;&lt;=&nbsp;2)&nbsp;return&nbsp;1<BR>
+&nbsp;&nbsp;else&nbsp;return&nbsp;fib(n-1)&nbsp;+&nbsp;fib(n-2)<BR>
+}<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+Here is an <font class=announcelink>iterative</font> way to just compute and return the nth number (without storing the previous numbers).<BR>
+<BR>
+<CODE><BR>
+int&nbsp;fib(int&nbsp;n)<BR>
+{<BR>
+&nbsp;&nbsp;int&nbsp;a&nbsp;=&nbsp;1,&nbsp;b&nbsp;=&nbsp;1;<BR>
+&nbsp;&nbsp;for&nbsp;(int&nbsp;i&nbsp;=&nbsp;3;&nbsp;i&nbsp;&lt;=&nbsp;n;&nbsp;i++)&nbsp;<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;c&nbsp;=&nbsp;a&nbsp;+&nbsp;b;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;=&nbsp;b;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;=&nbsp;c;<BR>
+&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;return&nbsp;a;<BR>
+}<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+There are a few <font class=announcelink>slick</font> ways to generate fibonacci numbers, a few of them are listed below<BR>
+<BR>
+<BR>
+<font class=announcelink>Method1</font><BR>
+<BR>
+If you know some <font class=announcelink>basic math</font>, its easy to see that<BR>
+<BR>
+<CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n<BR>
+&nbsp;[&nbsp;1&nbsp;1&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;[&nbsp;F(n+1)&nbsp;F(n)&nbsp;&nbsp;&nbsp;]<BR>
+&nbsp;[&nbsp;1&nbsp;0&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;F(n)&nbsp;&nbsp;&nbsp;F(n-1)&nbsp;]<BR>
+</CODE><BR>
+<BR>
+or <BR>
+<BR>
+<CODE><BR>
+(f(n)&nbsp;f(n+1))&nbsp;[&nbsp;0&nbsp;1&nbsp;]&nbsp;=&nbsp;(f(n+1)&nbsp;f(n+2))<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;1&nbsp;1&nbsp;]<BR>
+</CODE><BR>
+<BR>
+or<BR>
+<BR>
+<CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n<BR>
+(f(0)&nbsp;f(1))&nbsp;[&nbsp;0&nbsp;1&nbsp;]&nbsp;&nbsp;=&nbsp;(f(n)&nbsp;f(n+1))<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;1&nbsp;1&nbsp;]<BR>
+</CODE><BR>
+<BR>
+The n-th power of the 2 by 2 matrix can be computed efficiently in O(log n) time. <font class=announcelink>This implies an O(log n) algorithm for computing the n-th Fibonacci number</font>.<BR>
+<BR>
+<BR>
+<BR>
+Here is the pseudocode for this<BR>
+<BR>
+<CODE><BR>
+int&nbsp;Matrix[2][2]&nbsp;=&nbsp;{{1,0}{0,1}}<BR>
+<BR>
+int&nbsp;fib(int&nbsp;n)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;matrixpower(n-1);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;Matrix[0][0];<BR>
+}<BR>
+<BR>
+void&nbsp;matrixpower(int&nbsp;n)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;if&nbsp;(n&nbsp;>&nbsp;1)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrixpower(n/2);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Matrix&nbsp;=&nbsp;Matrix&nbsp;*&nbsp;Matrix;<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;if&nbsp;(n&nbsp;is&nbsp;odd)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Matrix&nbsp;=&nbsp;Matrix&nbsp;*&nbsp;{{1,1}{1,0}}<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+}<BR>
+</CODE><BR>
+<BR>
+<BR>
+And here is a program in C which calculates fib(n)<BR>
+<BR>
+<CODE><BR>
+#include&lt;stdio.h>&nbsp;<BR>
+&nbsp;&nbsp;<BR>
+int&nbsp;M[2][2]={{1,0},{0,1}};&nbsp;<BR>
+int&nbsp;A[2][2]={{1,1},{1,0}};&nbsp;<BR>
+int&nbsp;C[2][2]={{0,0},{0,0}};&nbsp;&nbsp;//&nbsp;Temporary&nbsp;matrix&nbsp;used&nbsp;for&nbsp;multiplication.<BR>
+&nbsp;&nbsp;<BR>
+void&nbsp;matMul(int&nbsp;n);&nbsp;<BR>
+void&nbsp;mulM(int&nbsp;m);&nbsp;<BR>
+&nbsp;&nbsp;<BR>
+int&nbsp;main()&nbsp;<BR>
+{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;int&nbsp;n;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;n=6;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;matMul(n-1);&nbsp;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;//&nbsp;The&nbsp;nth&nbsp;fibonacci&nbsp;will&nbsp;be&nbsp;stored&nbsp;in&nbsp;M[0][0]<BR>
+&nbsp;&nbsp;&nbsp;printf("\n%dth&nbsp;Fibonaci&nbsp;number&nbsp;:&nbsp;[%d]\n\n",&nbsp;n,&nbsp;M[0][0]);&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;return(0);&nbsp;<BR>
+<BR>
+}&nbsp;<BR>
+<BR>
+<BR>
+//&nbsp;Recursive&nbsp;function&nbsp;with&nbsp;divide&nbsp;and&nbsp;conquer&nbsp;strategy<BR>
+<BR>
+void&nbsp;matMul(int&nbsp;n)<BR>
+{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;if(n>1)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matMul(n/2);&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mulM(0);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;M&nbsp;*&nbsp;M<BR>
+&nbsp;&nbsp;&nbsp;}&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;if(n%2!=0)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;mulM(1);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;M&nbsp;*&nbsp;{{1,1}{1,0}}<BR>
+&nbsp;&nbsp;&nbsp;}&nbsp;<BR>
+}&nbsp;<BR>
+&nbsp;&nbsp;<BR>
+<BR>
+//&nbsp;Function&nbsp;which&nbsp;does&nbsp;some&nbsp;basic&nbsp;matrix&nbsp;multiplication.<BR>
+<BR>
+void&nbsp;mulM(int&nbsp;m)&nbsp;<BR>
+{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;int&nbsp;i,j,k;&nbsp;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;if(m==0)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;C&nbsp;=&nbsp;M&nbsp;*&nbsp;M<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(i=0;i&lt;2;i++)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(j=0;j&lt;2;j++)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C[i][j]=0;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(k=0;k&lt;2;k++)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C[i][j]+=M[i][k]*M[k][j];&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;}&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;else&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;C&nbsp;=&nbsp;M&nbsp;*&nbsp;&nbsp;{{1,1}{1,0}}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(i=0;i&lt;2;i++)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(j=0;j&lt;2;j++)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C[i][j]=0;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(k=0;k&lt;2;k++)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C[i][j]+=A[i][k]*M[k][j];&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;}&nbsp;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;//&nbsp;Copy&nbsp;back&nbsp;the&nbsp;temporary&nbsp;matrix&nbsp;in&nbsp;the&nbsp;original&nbsp;matrix&nbsp;M<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;for(i=0;i&lt;2;i++)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(j=0;j&lt;2;j++)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M[i][j]=C[i][j];&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<BR>
+}&nbsp;&nbsp;<BR>
+<BR>
+</CODE><BR>
+<BR>
+<BR>
+<font class=announcelink>Method2</font><BR>
+<BR>
+<CODE><BR>
+f(n)&nbsp;=&nbsp;(1/sqrt(5))&nbsp;*&nbsp;(((1+sqrt(5))/2)&nbsp;^&nbsp;n&nbsp;-&nbsp;((1-sqrt(5))/2)&nbsp;^&nbsp;n)<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+So now, how does one find out if a number <font class=announcelink>is a fibonacci or not?</font>.<BR>
+<BR>
+The cumbersome way is to generate fibonacci numbers till this number and see if this number is one of them. But there is another <font class=announcelink>slick</font> way to check if a number is a fibonacci number or not. <BR>
+<BR>
+<CODE><BR>
+N&nbsp;is&nbsp;a&nbsp;Fibonacci&nbsp;number&nbsp;if&nbsp;and&nbsp;only&nbsp;if&nbsp;(5*N*N&nbsp;+&nbsp;4)&nbsp;or&nbsp;(5*N*N&nbsp;-&nbsp;4)&nbsp;is&nbsp;a&nbsp;<font&nbsp;class=announcelink>perfect&nbsp;square</font>!<BR>
+<BR>
+</CODE><BR>
+<BR>
+Dont believe me?<BR>
+<BR>
+<CODE><BR>
+3&nbsp;is&nbsp;a&nbsp;Fibonacci&nbsp;number&nbsp;since&nbsp;(5*3*3&nbsp;+&nbsp;4)&nbsp;is&nbsp;49&nbsp;which&nbsp;is&nbsp;7*7<BR>
+5&nbsp;is&nbsp;a&nbsp;Fibonacci&nbsp;number&nbsp;since&nbsp;(5*5*5&nbsp;-&nbsp;4)&nbsp;is&nbsp;121&nbsp;which&nbsp;is&nbsp;11*11<BR>
+4&nbsp;is&nbsp;not&nbsp;a&nbsp;Fibonacci&nbsp;number&nbsp;since&nbsp;neither&nbsp;(5*4*4&nbsp;+&nbsp;4)&nbsp;=&nbsp;84&nbsp;nor&nbsp;(5*4*4&nbsp;-&nbsp;4)&nbsp;=&nbsp;76&nbsp;are&nbsp;perfect&nbsp;squares.<BR>
+</CODE><BR>
+<BR>
+To check if a number is a perfect square or not, one can take the square root, round it to the nearest integer and then square the result. If this is the same as the original whole number then the original was a perfect square. 
+<BR><BR>
+<!--END-->
+</font><BR></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="2_9.html" tppabs="http://www.cracktheinterview.com/pages/2_9.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=notelink><A href="mailto:cracktheinterview@gmail.com?subject=Comments [How to generate fibonacci numbers? How to find out if a given number is a fibonacci number or not? Write C programs to do both. ]&Body=Question : [How to generate fibonacci numbers? How to find out if a given number is a fibonacci number or not? Write C programs to do both. ]"><font class=announcelink>COMMENTS</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><A HREF="adfaqpublish.html" tppabs="http://www.cracktheinterview.com/adfaqpublish.html">INDEX</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><a href="#" onclick="window.print();return false;">PRINT</a></font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="2_11.html" tppabs="http://www.cracktheinterview.com/pages/2_11.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<BR><BR><BR><font class=notelink>
+Last updated:
+
+July 8, 2005<BR><BR>
+<a href="index.htm" tppabs="http://www.cracktheinterview.com/">www.cracktheinterview.com</a> - Your destination for the most common IT interview questions, answers, frequently asked interview questions (FAQ), C Programs, C Datastructures for interviews conducted by Microsoft, Oracle, Google, IBM, HP, Yahoo, Infosys, Wipro, SAP, CA (Computer Associates), Sun, Adobe, GE, Novell, Cisco, Motorola, TI (Texas Instruments), Intel, TCS, iFlex, Trilogy, MindTree, GS and more...<br><BR>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+
+<!--END-->
+
+
+</TD>
+
+
+
+
+<TD WIDTH=10%% valign="top">
+
+
+<!--START:ADS1-->
+
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_alternate_color = "CCCCCC";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript" src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"  src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+</TD>
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+</BODY>
+</HTML>
+
+

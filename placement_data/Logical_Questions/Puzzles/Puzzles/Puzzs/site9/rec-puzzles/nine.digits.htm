@@ -1,0 +1,70 @@
+<html><head>
+<title>Solution for /arithmetic/digits/nine.digits</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/digits/nine.digits problem</h1>
+<hr>
+First, reduce the sample set. For each digit of ABCDEFGHI, such that the last
+digit, (current digit), is the same as a multiple of N :
+
+<pre>
+A: Any number 1-9
+B: Even numbers 2,4,6,8 (divisible by 2).
+C: Any number 1-9 (21,12,3,24,15,6,27,18,9).
+D: Even numbers 2,4,6,8 (divisible by 4, every other even).
+E: 5 (divisible by 5 and 0 not allowed).
+F: Even numbers (12,24,6,18)
+G: Any number 1-9 (21,42,63,14,35,56,7,28,49).
+H: Even numbers (32,24,16,8)
+I: Any number 1-9 (81,72,63,54,45,36,27,18,9)
+</pre>
+Since E must be 5, I can eliminate it everywhere else.
+Since I will use up all the even digits, (2,4,6,8) filling in those spots
+   that must be even. Any number becomes all odds, except 5.
+<pre>
+A: 1,3,7,9
+B: 2,4,6,8
+C: 1,3,7,9
+D: 2,4,6,8
+E: 5
+F: 2,4,6,8
+G: 1,3,7,9
+H: 2,4,6,8
+I: 1,3,7,9
+
+</pre>
+We have that 2C+D=0 (mod 4), and since C is odd,
+this implies that D is 2 or 6; similarly we find that H is 2 or 6 ==&gt;
+{B,F} = {4,8}.  D+5+F=0 (mod 3) ==&gt; if D=2 then F=8, if D=6 then F=4.
+
+<p>
+We have two cases.
+
+<p>
+Assume our number is of the form A4C258G6I0.  Now the case n=8 ==&gt;
+G=1,9; case n=3 ==&gt; A+1+C=0 (mod 3) ==&gt; {A,C}={1,7} ==&gt; G=9, I=3.
+The two numbers remaining fail for n=7.
+
+<p>
+Assume our number is of the form A8C654G2I0.  The case n=8 ==&gt; G=3,7.
+If G=3, we need to check to see which of 1896543, 9816543, 7896543, 
+and 9876543 are divisible by 7; none are.
+
+<p>
+If G=7, we need to check to see which of 1896547, 9816547, 1836547,
+and 3816547 are divisible by 7; only the last one is, which yields
+the solution 3816547290.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Solution</title>
+</head>
+
+<body bgcolor=lightyellow>
+<center>
+<h1>Solution</h1>
+</center>
+<blockquote>
+<hr>
+<font color="blue">Question:</font><br>
+Consider n people (1...n) placed in a circle. Starting from person 1, you have to remove every second person.
+                       Thus, first you would remove person 2, then 4, and so on. The question is, given n, how do you determine who will
+                       be the last person left? 
+
+<p>
+<font color="blue">Answer:</font><br>
+
+Thanks to <font color="blue">John Tripp</font> for the explanation.
+<p>
+Follow these steps:
+<ol>
+<li> Represent n as a binary number,
+<li> Eliminate leftmost digit (essentially subtracting highest power of 2 in n)
+<li> Multiply remainder by 2
+<li> Add 1.
+This gives you the number of the last person left.
+</ol>
+<p>
+
+Examples.
+<p>
+n=3:
+<ol>
+<li> 11
+<li> 01
+<li> 10
+<li> 11
+</ol>
+Answer = 3
+<p>
+n=14:
+<ol>
+<li> 1110
+<li> 0110
+<li> 1100
+<li> 1101
+</ol>
+Answer = 13
+<p>
+n=128:
+<ol>
+<li> 10000000
+<li> 00000000
+<li> 00000000
+<li> 00000001
+</ol>
+Answer = 1
+</pre>
+
+<hr>
+<p>
+<p><br><br><br>
+</blockquote>
+</body>
+</html>

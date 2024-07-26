@@ -1,0 +1,236 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The Problem</TITLE>
+<META NAME="description" CONTENT="The Problem">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node18.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node18.html">
+<LINK REL="previous" HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">
+<LINK REL="up" HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">
+<LINK REL="next" HREF="node18.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node18.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html541"
+  HREF="node18.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node18.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html535"
+  HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html529"
+  HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html537"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html539"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html542"
+  HREF="node18.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node18.html">General Method</A>
+<B> Up:</B> <A NAME="tex2html536"
+  HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">An Algorithm  </A>
+<B> Previous:</B> <A NAME="tex2html530"
+  HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">An Algorithm  </A>
+ &nbsp <B>  <A NAME="tex2html538"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html540"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00521000000000000000">
+The Problem</A>
+</H2>
+
+<P>
+Suppose we have a <EM>polygon</EM> in the plane defined by a sequence of
+vertices <!-- MATH
+ $v_1,v_2,\ldots,v_n$
+ -->
+<I>v</I><SUB>1</SUB>, <I>v</I><SUB>2</SUB>,..., <I>v</I><SUB>n</SUB>.  The polygon can be arbitrarily
+complicated but we will assume that it is not
+<I>re-entrant</I><A NAME="588"></A>; that is to say, no two edges of the
+polygon cross.  Fig&nbsp;<A HREF="node17.html#F:re-entrant" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node17.html#F:re-entrant">1.1</A> illustrates this.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="F:re-entrant"></A><A NAME="596"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 1.1:</STRONG>
+A polygon, and a re-entrant polygon.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><TABLE COLS=3>
+<COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>
+<!-- MATH
+ $\includegraphics[height=3cm ]{xfig/ok-poly.eps}$
+ -->
+<IMG
+ WIDTH="255" HEIGHT="128" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img4.gif"
+ ALT="\includegraphics [height=3cm ]{xfig/ok-poly.eps}"></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP> but not</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>
+<!-- MATH
+ $\includegraphics[height=3cm ]{xfig/re-entrant-poly.eps}$
+ -->
+<IMG
+ WIDTH="130" HEIGHT="129" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img5.gif"
+ ALT="\includegraphics [height=3cm ]{xfig/re-entrant-poly.eps}"></TD></TR>
+</TABLE>
+
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+With this qualification, our polygon will define a region -- the
+<EM>inside</EM> of the polygon (not so clear in the re-entrant case).
+Our basic problem is going to be to <EM>shade in</EM> this region.  To be
+precise, and to avoid computer technicalities, we want to <EM>hatch</EM><A NAME="602"></A> the region with a set of equally spaced straight
+lines, as shown in Fig&nbsp;<A HREF="node17.html#F:hatched" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node17.html#F:hatched">1.2</A>.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="F:hatched"></A><A NAME="606"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 1.2:</STRONG>
+Hatching a polygon with horizontal lines.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><!-- MATH
+ $\includegraphics[ height=3cm ]{xfig/hatched.eps}$
+ -->
+<IMG
+ WIDTH="255" HEIGHT="128" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img6.gif"
+ ALT="\includegraphics [ height=3cm ] {xfig/hatched.eps}">
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+To keep things simple we will assume that the hatching lines are to be
+horizontal (constant <I>y</I>), though the generalisation to sloping lines
+is very easy.  We will assume that we have available the single
+computer-graphics instruction:
+
+<P>
+<DIV ALIGN="CENTER">
+<code> draw a line from </code>(<I>x</I><SUB>1</SUB>, <I>y</I><SUB>1</SUB>)<code> to </code>(<I>x</I><SUB>2</SUB>, <I>y</I><SUB>2</SUB>) 
+
+</DIV>
+
+<P>
+A polygon is <EM>convex</EM><A NAME="612"></A> if it is not re-entrant and if
+the join of any two points in the region lies entirely within the
+region.  Examples of a convex and a non-convex polygon are shown in
+Fig.&nbsp;<A HREF="node17.html#F:convex-or-not" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node17.html#F:convex-or-not">1.3</A>; the non-convex one has an example line
+drawn with both end points in the polygon, but which does not remain
+completely within the polygon.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="F:convex-or-not"></A><A NAME="620"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 1.3:</STRONG>
+A convex polygon, and a non-convex polygon.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><TABLE COLS=3>
+<COL ALIGN=CENTER><COL ALIGN=CENTER><COL ALIGN=CENTER>
+<TR><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>
+<!-- MATH
+ $\includegraphics[height=2.5cm ]{xfig/convex-poly.eps}$
+ -->
+<IMG
+ WIDTH="134" HEIGHT="110" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img7.gif"
+ ALT="\includegraphics [height=2.5cm ]{xfig/convex-poly.eps}"></TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>but not</TD><TD VALIGN=BASELINE ALIGN=CENTER NOWRAP>
+<!-- MATH
+ $\includegraphics[height=3cm ]{xfig/non-convex-poly.eps}$
+ -->
+<IMG
+ WIDTH="161" HEIGHT="133" ALIGN="BOTTOM" BORDER="0"
+ SRC="img8.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img8.gif"
+ ALT="\includegraphics [height=3cm ]{xfig/non-convex-poly.eps}"></TD></TR>
+</TABLE>
+
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+There is obviously a difference in difficulty between the problem of
+hatching a <EM>convex</EM> polygon and that of hatching a general one.
+We will start by solving the general case and then try to see whether
+we can simplify, and speed up, the method if we know that the polygon
+is convex.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html541"
+  HREF="node18.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node18.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html535"
+  HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html529"
+  HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html537"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html539"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html542"
+  HREF="node18.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node18.html">General Method</A>
+<B> Up:</B> <A NAME="tex2html536"
+  HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">An Algorithm  </A>
+<B> Previous:</B> <A NAME="tex2html530"
+  HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">An Algorithm  </A>
+ &nbsp <B>  <A NAME="tex2html538"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html540"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

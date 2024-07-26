@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><!-- Source is http://mail.google.com/mail/?ui=2&ik=b365ff9031&view=att&th=1230e420e1ad46b4&attid=0.1&disp=vah&realattid=f_feegod660&zw --><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><title>notes.doc</title><style type="text/css" media="print">.hide{display:none}</style></head><body style="margin:0;padding:0"><div class="hide"><div style="background:#ffffcc;padding:4 8;border-bottom:thin solid #eeeeee;font-family:Arial,sans-serif"><a href="http://mail.google.com/mail/?view=att&th=1230e420e1ad46b4&attid=0.1&disp=attd&realattid=f_feegod660&zw">Download the original attachment</a></div></div><div style="margin:1ex">
+
+
+
+
+
+<div>
+
+  <h2><a name="0.1_SECTION00623000000000000000"></a><font size="5" face="Times New Roman"><b>User-level 
+and Kernel-level Threads </b></font></h2>
+<p><font size="3" face="Times New Roman">There are two distinct models 
+of thread controls, and they are <i>user-level threads</i> and <i>kernel-level 
+threads</i>. The thread function library to implement user-level threads 
+usually runs on top of the system in user mode. Thus, these threads 
+within a process are invisible to the operating system. User-level threads 
+have extremely low overhead, and can achieve high performance in computation. 
+However, using the blocking system calls like </font><font size="2" face="Courier New">read()</font><font size="3" face="Times New Roman">, the <i>entire</i> process would block. 
+Also, the scheduling control by the thread runtime system may cause 
+some threads to gain exclusive access to the CPU and prevent other threads 
+from obtaining the CPU. Finally, access to multiple processors is not 
+guaranteed since the operating system is not aware of existence of these 
+types of threads. </font></p>
+<p><font size="3" face="Times New Roman">On the other hand, kernel-level 
+threads will guarantee multiple processor access but the computing performance 
+is lower than user-level threads due to load on the system. The synchronization 
+and sharing resources among threads are still less expensive than multiple-process 
+model, but more expensive than user-level threads. The thread function 
+library available today is often implemented as a <i>hybrid model</i>, 
+as having advantages from both user-level and kernel-level threads. 
+The design consideration of thread packages today consists of how to 
+minimize the system overhead while providing access to the multiple 
+processors</font></p>
+<p><font size="3" face="Times New Roman">An important distinction may 
+be made between user-level threads and kernel-supported threads. A user-level 
+thread maintains all its state in user space. A consequence of this 
+is that no kernel resources need to be allocated per thread, and switching 
+between threads can be done without changing address space. A disadvantage 
+is that user level threads cannot execute while the kernel is busy, 
+for instance, with paging or I/O. This would require some knowledge 
+and participation on the part of the kernel.</font> <br> <br>
+ <br> <br> <br> <br> <br> <br>
+ <br> <br> <br> <br> <br></p>
+<p><font size="3" face="Times New Roman">User-Level Threads</font></p>
+<ul><p><font size="3" face="Times New Roman">User-level avoids the kernel 
+and manages the tables itself. Often this is called &quot;cooperative 
+multitasking&quot; where the task defines a set of routines that get 
+&quot;switched to&quot; by manipulating the stack pointer. Typically 
+each thread &quot;gives-up&quot; the CPU by calling an explicit switch, 
+sending a signal or doing an operation that involves the switcher. Also, 
+a timer signal can force switches. User threads typically can switch 
+faster than kernel threads [however, Linux kernel threads&#39; switching 
+is actually pretty close in performance].</font></p></ul>
+<ul><p><font size="3" face="Times New Roman">Disadvantages. User-level 
+threads have a problem that a single thread can monopolize the timeslice 
+thus starving the other threads within the task. Also, it has no way 
+of taking advantage of SMPs (Symmetric MultiProcessor systems, e.g. 
+dual-/quad-Pentiums). Lastly, when a thread becomes I/O blocked, all 
+other threads within the task lose the timeslice as well.</font></p></ul>
+<p><a name="0.1_KernelLevel"></a><font size="3" face="Times New Roman">Kernel-Level 
+Threads</font></p>
+<ul><p><font size="3" face="Times New Roman">Kernel-level threads often 
+are implemented in the kernel using several tables (each task gets a 
+table of threads). In this case, the kernel schedules each thread within 
+the timeslice of each process. There is a little more overhead with 
+mode switching from user-&gt;kernel-&gt; user and loading of larger 
+contexts, but initial performance measures indicate a negligible increase 
+in time.</font></p></ul>
+<ul><p><font size="3" face="Times New Roman">Advantages. Since the clocktick 
+will determine the switching times, a task is less likely to hog the 
+timeslice from the other threads within the task. Also I/O blocking 
+is not a problem. Lastly, if properly coded, the process automatically 
+can take advantage of SMPs and will run incrementally faster with each 
+added CPU.</font></p></ul>
+<p><font size="3" face="Times New Roman">Combination</font></p>
+<ul><p><font size="3" face="Times New Roman">Some implementations support 
+both user- and kernel-level threads. This gives the advantages of each 
+to the running task. However, since Linux&#39;s kernel-level threads nearly 
+perform as well as user-level, the only advantage of using user-threads 
+would be the cooperative multitasking.</font></p></ul>
+
+
+</div>
+
+</div></body></html>

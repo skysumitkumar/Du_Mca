@@ -1,0 +1,18 @@
+function popupinfo(msg) {
+  mywin = window.open('http://chatter.flooble.com/infopop.php?info=' + escape(msg),'info','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbar=no,resizable=no,copyhistory=no,width=300,height=200,screenX=100,screenY=100');
+}
+document.write('<a href="http://chatter.flooble.com/" target="_blank"><img src="http://img.flooble.com/images/chatter/chaticon.gif" border="0" width="30" height="20" alt="This is a flooble chatterbox. Want one?"></a>\n');
+document.write('<a id="chatterpopup" href="http://chatter.flooble.com/chatter.php?id=perplexus&sid=8&popup=true&w=495&h=400&name=Visitor&title=&nopost=Visitor posting is disabled" target="flooblechatterbox" onClick="window.open(\'about:blank\',\'flooblechatterbox\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=no,width=495,height=400\');return true;"><img src="http://img.flooble.com/images/chatter/popup.gif" border="0" alt="pop it up!"></a>');
+document.write(' <a href="http://chatter.flooble.com/hist.php?id=8" target="_blank"><img src="http://img.flooble.com/images/chatter/hist.gif" border="0" alt="Previous Messages" title="Previous Messages"></a>');
+document.write('<br><form name="chatterform" action="http://chatter.flooble.com/chatter.php" method="post" style="margin: 0px; display: inline;" target="chat_submit" autoComplete="off">\n');
+document.write('<input type="hidden" name="id" value="perplexus">\n');
+document.write('<input type="hidden" name="uid" value="8">\n');
+document.write('<input type="hidden" name="action" value="submit">\n');
+document.write('<br><iframe src="http://chatter.flooble.com/chatterframe.php?sid=8&col=%23FFFFFF%7C%23000000%7C%23000077" width="160" height="370" name="chat_submit" frameborder="0" style="border:1px solid #000000;"></iframe><br>');
+document.write('<input type="hidden" name="iframe" value="true">');
+document.write('<p><b>Visitor posting is disabled</b><br>\n');
+document.write('<br><a href="http://chatter.flooble.com/" target="_blank">get a free chatterbox</a>\n');
+document.write('<br><a href="http://perplexus.info/" target="_top">Something ');
+document.write('<b>Puzzling</b> you?</a>');
+document.write('</form>\n');
+chatterbox = 'ok';

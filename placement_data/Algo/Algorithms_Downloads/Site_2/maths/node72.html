@@ -1,0 +1,155 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Converting Infix to Postfix </TITLE>
+<META NAME="description" CONTENT="Converting Infix to Postfix ">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node74.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node74.html">
+<LINK REL="previous" HREF="node70.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node70.html">
+<LINK REL="up" HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">
+<LINK REL="next" HREF="node73.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node73.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1357"
+  HREF="node73.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node73.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1351"
+  HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1345"
+  HREF="node71.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node71.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1353"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1355"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1358"
+  HREF="node73.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node73.html">FBIE Grammer</A>
+<B> Up:</B> <A NAME="tex2html1352"
+  HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">Grammers and Parsing</A>
+<B> Previous:</B> <A NAME="tex2html1346"
+  HREF="node71.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node71.html">Postfix Grammer</A>
+ &nbsp <B>  <A NAME="tex2html1354"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1356"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00870000000000000000">
+Converting Infix to Postfix </A>
+</H1>
+
+<P>
+The expression syntax that we started with (the usual one) is called
+an <I>infix</I> system, because the binary operator comes <I>between</I>
+its operands ( <I>a</I> + <I>b</I> ). The other system is called <I>postfix</I>
+because the operator comes <I>after</I> its operands ( ab+ ). To every
+infix expression there corresponds a postfix expression that has the 
+same effect. The converse is not true because, as we have seen, there is
+an ambiguity. The infix expression <I>a</I> + <I>b</I> + <I>c</I> can be represented as either
+abc++ or ab+c+ in infix. The reason for the ambiguity is the lack of
+brackets in the infix expression. If the infix expression were `fully
+bracketed' there would be no ambiguity. Thus (<I>a</I> + <I>b</I>) + <I>c</I> pairs with ab+c+
+and <I>a</I> + (<I>b</I> + <I>c</I>) pairs with  abc++.
+
+<P>
+I now want to look at the problem of converting infix expressions to
+postfix expressions. I will first simplify the problem by only considering
+`fully bracketed' infix expressions. I will then look at the more 
+difficult problem of handling general infix expressions.
+
+<P>
+The `fully bracketed' version of an expression like <I>a</I> + <I>b</I>*<I>c</I>/<I>d</I> is
+<!-- MATH
+ $(a+((b*c)/d))$
+ -->
+(<I>a</I> + ((<I>b</I>*<I>c</I>)/<I>d</I> )). Note at once that there is a very serious problem here.
+The above expression should not be bracketed as <!-- MATH
+ $((a+b)*(c/d))$
+ -->
+((<I>a</I> + <I>b</I>)*(<I>c</I>/<I>d</I> )) -- that's
+something entirely different. This is where we meet the concept of 
+<I>operator precedence</I>. You do multiplications <I>before</I>
+additions, and so on. The main reason for restricting to fully bracketed
+expressions is to avoid this problem.
+
+<P>
+Let me now introduce the syntax for <A NAME="6354"></A><B>Fully Bracketed Infix Expressions</B> (fbie's).
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html1359"
+  HREF="node73.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node73.html">FBIE Grammer</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1357"
+  HREF="node73.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node73.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1351"
+  HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1345"
+  HREF="node71.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node71.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1353"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1355"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1358"
+  HREF="node73.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node73.html">FBIE Grammer</A>
+<B> Up:</B> <A NAME="tex2html1352"
+  HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">Grammers and Parsing</A>
+<B> Previous:</B> <A NAME="tex2html1346"
+  HREF="node71.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node71.html">Postfix Grammer</A>
+ &nbsp <B>  <A NAME="tex2html1354"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1356"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

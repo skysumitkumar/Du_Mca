@@ -1,0 +1,123 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The Fast Fourier Transform</TITLE>
+<META NAME="description" CONTENT="The Fast Fourier Transform">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node103.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node103.html">
+<LINK REL="previous" HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">
+<LINK REL="up" HREF="notes.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.html">
+<LINK REL="next" HREF="node89.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node89.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1592"
+  HREF="node89.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node89.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1586"
+  HREF="notes.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1580"
+  HREF="node87.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node87.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1588"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1590"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1593"
+  HREF="node89.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node89.html">Multiplying Polynomials</A>
+<B> Up:</B> <A NAME="tex2html1587"
+  HREF="notes.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.html">Algorithms MX4028</A>
+<B> Previous:</B> <A NAME="tex2html1581"
+  HREF="node87.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node87.html">Questions 5 (Hints and</A>
+ &nbsp <B>  <A NAME="tex2html1589"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1591"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001000000000000000000">
+The Fast Fourier Transform</A>
+</H1>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html1594"
+  HREF="node89.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node89.html">Multiplying Polynomials</A>
+<LI><A NAME="tex2html1595"
+  HREF="node90.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node90.html">Fourier Series</A>
+<LI><A NAME="tex2html1596"
+  HREF="node91.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node91.html">The Fourier Matrix</A>
+<LI><A NAME="tex2html1597"
+  HREF="node92.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node92.html">Products</A>
+<LI><A NAME="tex2html1598"
+  HREF="node93.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node93.html">Properties of the Fourier Transform</A>
+<UL>
+<LI><A NAME="tex2html1599"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node94.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node94.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node94.html">Remark:</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1600"
+  HREF="node95.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node95.html">The Fast Fourier Transform.</A>
+<UL>
+<LI><A NAME="tex2html1601"
+  HREF="node96.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node96.html">Timing the FFT</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1602"
+  HREF="node97.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node97.html">Convolution as Filtering</A>
+<LI><A NAME="tex2html1603"
+  HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">An application to Image Processing</A>
+<UL>
+<LI><A NAME="tex2html1604"
+  HREF="node99.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node99.html">Gaussian Blur</A>
+<LI><A NAME="tex2html1605"
+  HREF="node100.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node100.html">The Laplace Operator</A>
+<UL>
+<LI><A NAME="tex2html1606"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html">Summary</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html1607"
+  HREF="node102.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node102.html">Questions 6 (Hints and solutions start on page <IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/crossref.gif">.)</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

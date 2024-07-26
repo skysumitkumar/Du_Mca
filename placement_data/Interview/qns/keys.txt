@@ -1,0 +1,80 @@
+main()
+{
+		int i = 258;
+	int *iPtr = &i;
+		printf("%d %d", *((char*)iPtr), *((char*)iPtr+1) );
+}	
+Answer:
+		2 1 
+Explanation:
+The integer value 257 can be represented in binary as, 00000001 00000001. 
+Remember that the INTEL machines are ‘small-endian’ machines. 
+Small-endian means that the lower order bytes are stored in the higher memory addresses 
+and the higher order bytes are stored in lower addresses. The integer value 258 is stored in 
+memory as: 00000001 00000010.   
+
+
+
+
+
+main()
+{
+char *p="GOOD";
+char a[ ]="GOOD";
+printf("\n sizeof(p) = %d, sizeof(*p) = %d, strlen(p) = %d", sizeof(p), sizeof(*p), strlen(p));
+printf("\n sizeof(a) = %d, strlen(a) = %d", sizeof(a), strlen(a));
+}
+Answer:
+		sizeof(p) = 2, sizeof(*p) = 1, strlen(p) = 4
+	sizeof(a) = 5, strlen(a) = 4
+
+
+
+
+
+)	main()
+{	
+char a[4]="HELL";
+printf("%s",a);
+}
+Answer: 
+		HELL%@!~@!@???@~~!
+
+
+
+
+
+main()
+{
+char a[4]="HELLO";
+printf("%s",a);
+}	
+Answer: 
+		Compiler error: Too many initializers
+
+
+
+
+
+A full N-ary tree has M non-leaf nodes, how many leaf nodes does it have?
+M*(N-1)+1
+
+***************************************************
+MAX sum of subarray....
+ 
+
+int lbound=0, sum = a[0]; 
+int maxsum=a[0]; 
+for(i=1;i<n;i++) 
+{ 
+ sum+=a[i]; 
+ if(sum < 0) 
+ { 
+ lbound = i; 
+ sum = 0; 
+ } 
+ if(sum > maxsum) 
+ maxsum = sum; 
+
+}
+******************************************************** 

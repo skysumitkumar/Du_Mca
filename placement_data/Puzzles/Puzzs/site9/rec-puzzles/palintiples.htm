@@ -1,0 +1,205 @@
+<html><head>
+<title>Solution for /arithmetic/digits/palintiples</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/digits/palintiples problem</h1>
+<hr>
+We are asked to find numbers that are integer multiples of their
+reversals, which I call palintiples.  Of course, all the palindromic
+numbers are a trivial example, but if we disregard the unit multiples,
+the field is narrowed considerably.
+
+<p>
+Rouse Ball (_Mathematical_recreations_and_essays_) originated the
+problem, and G. H. Hardy (_A_mathematician's_apology_) used the result
+that 9801 and 8712 are the only four-digit palintiples as an example
+of a theorem that is not ``serious''.  Martin Beech (_The_mathema-
+tical_gazette_, Vol 74, #467, pp 50-51, March '90) observed that
+989*01 and 879*12 are palintiples, an observation he ``confirmed'' on
+a hand calculator, and conjectured that these are all that exist.
+
+<p>
+I confirm that Beech's numbers are palintiples, I will show that they
+are not all of the palintiples.  I will show that the palintiples do
+not form a regular language.  And then I will prove that I have found
+all the palintiples, by describing the them with a generalized form
+of regular expression.  The results become more interesting in other
+bases.
+
+<p>
+First, I have a more reasonable method of confirming that these
+numbers are palintiples:
+
+    <p>
+    Proof:  First, letting "9*" and "0*" refer an arbitrary string of
+    nines and a string of zeroes of the same length, I note that
+
+<pre>
+        879*12 = 879*00 + 12 = (880*00 - 100) + 12 = 880*00 - 88
+        219*78 = 219*00 + 78 = (220*00 - 100) + 78 = 220*00 - 22
+
+        989*01 = 989*00 +  1 = (990*00 - 100) +  1 = 990*00 - 99
+        109*89 = 109*00 + 89 = (110*00 - 100) + 89 = 110*00 - 11
+</pre>
+
+    It is obvious that 4x(220*00 - 22) = 880*00 - 88 and that
+    9x(110*00 - 11) = 990*00 - 99.  QED.
+
+<p>
+Now, to show that these palintiples are not all that exist, let us
+take the (infinite) language L[4] = (879*12 + 0*), and let Pal(L[4])
+refer to the set of palindromes over the alphabet L[4].  It is
+immediate that the numbers in Pal(L[4]) are palintiples.  For
+instance,
+
+<pre>
+          8712 000 87912 879999912 879999912 87912 000 8712
+    = 4 x 2178 000 21978 219999978 219999978 21978 000 2178
+</pre>
+(where I have inserted spaces to enhance readability) is a palintiple.
+Similarly, taking L[9] = (989*01 + 0*), the numbers in Pal(L[9]) are
+palintiples.  We exclude numbers starting with zeroes.
+
+<p>
+The reason these do not form a regular language is that the
+sub-palintiples on the left end of the number must be the same (in
+reverse order) as the sub-palintiples on the right end of the number:
+
+<pre>
+         8712 8712 87999912 = 4 x 2178 2178 21999978
+</pre>
+
+is not a palintiple, because 8712 8712 87999912 is not the reverse of
+2178 2178 21999978.  The pumping lemma can be used to prove that
+Pal(L[4])+Pal(L[9]) is not a regular language, just as in the familiar
+proof that the palindromes over a non-singleton alphabet do not form a
+regular language.
+
+<p>
+Now to characterize all the palintiples, let N be a palintiple,
+N=CxR(N), where R(.) signifies reversal, and C&gt;1 is an integer.  (I
+use "x" for multiplication, to avoid confusion with the Kleene star
+"*", which signifies the concatenated closure.)  If D is a digit of N,
+let D' refer to the corresponding digit of R(N).  Since N=CxR(N),
+D+10T = CxD'+S, where S is the carry in to the position occupied by D'
+when R(N) is multiplied by C, and T is the carry out of that position.
+Similarly, D'+10T'=CxD+S', where S', T' are carries in and out of the
+position occupied by D when R(N) is multiplied by C.
+
+<p>
+Since D and D' are so closely related, I will use the symbol D:D' to
+refer to a digit D on the left side of a string with a corresponding
+digit D' on the right side of the string.  More formally, an
+expression "x[1]:y[1] x[2]:y[2] ... x[n]:y[n] w" will refer to a
+string "x[1] x[2] ... x[n] w y[n] ... y[2] y[1]", where the x[i] and
+y[i] are digits and w is a string of zero or one digits.  So 989901
+may be written as 9:1 8:0 9:9 and 87912 may be written as 8:2 7:1 9.
+Thus Pal(L[4])+Pal(L[9]) (omitting numbers with leading zeroes) can be
+represented as
+
+<pre>
+            (8:2 7:1 9:9* 1:7 2:8 0:0*)*
+              (0:0* + 0 + 8:2 7:1 ( 9:9* + 9:9* 9))
+          + (9:1 8:0 9:9* 0:8 1:9 0:0*)*
+              (0:0* + 0 + 9:1 8:0 ( 9:9* + 9:9* 9)).      (1)
+</pre>
+For each pair of digits D:D', there are a very limited--and often
+empty--set of quadruples S,T,S',T' of digits that satisfy the
+equations
+
+<pre>
+                    D +10T =CxD'+S
+                    D'+10T'=CxD +S',                      (2)
+</pre>
+yet such a quadruple must exist for "D:D'" to appear in a palintiple
+with multiplier C.  Furthermore, the S and T' of one D:D' must be T
+and S', respectively, of the next pair of digits that appear.  This
+enables us to construct a finite state machine to recognize those
+palintiples.  The states [X#Y] refer to a pair of carries in D and D',
+and we allow a transition from state [T#S'] to state [S#T'] on input
+symbol D:D' exactly when equations (2) are satisfied.  Special
+transitions for a single-digit input symbol (the central digit of
+odd-length palintiples) and the criteria for the initial and the
+accepting states are left as exercises.  The finite state machines
+thus formed are
+
+<pre>
+   State         Symbol  New     Symbol  New      Symbol   New
+        Accept?         State           State             State
+
+--&gt; [0#0]  Y       8:2  [0#3]      0:0  [0#0]         0   [A]
+    [0#3]  N       7:1  [3#3]
+    [3#3]  Y       1:7  [3#0]      9:9  [3#3]         9   [A]
+    [3#0]  N       2:8  [0#0]
+     [A]   Y
+</pre>
+for constant C=4, and
+
+<pre>
+   State         Symbol  New     Symbol  New      Symbol   New
+        Accept?         State           State             State
+
+--&gt; [0#0]  Y       1:9  [0#8]      0:0  [0#0]         0   [A]
+    [0#8]  N       8:0  [8#8]
+    [8#8]  Y       0:8  [8#0]      9:9  [8#8]         9   [A]
+    [8#0]  N       9:1  [0#0]
+     [A]   Y
+</pre>
+for constant C=9, and the finite state machines for other constants
+accept only strings of zeroes.  It is not hard to verify that the
+proposed regular expression (1) represents the union of the languages
+accepted by these machines, omitting the empty string and strings
+beginning with zero.
+
+<p>
+I have written a computer program that constructs finite state
+machines for recognizing palintiples for various bases and constants.
+I found that base 10 is actually an unusually boring base for this
+problem.  For instance, the machine for base 8, constant C=5 is
+
+<pre>
+   State         Symbol  New     Symbol  New      Symbol  New
+        Accept?         State           State            State
+
+--&gt; [0#0]  Y       0:0  [0#0]      5:1  [0#3]         0  [A]
+    [0#3]  N       1:0  [1#1]      6:1  [1#4]
+    [1#1]  Y       0:1  [3#0]      5:2  [3#3]
+    [3#0]  N       1:5  [0#0]      6:6  [0#3]         6  [A]
+    [3#3]  Y       2:5  [1#1]      7:6  [1#4]
+    [1#4]  N       1:1  [4#1]      6:2  [4#4]         1  [A]
+    [4#4]  Y       2:6  [4#1]      7:7  [4#4]         7  [A]
+    [4#1]  N       1:6  [3#0]      6:7  [3#3]
+     [A]   Y
+</pre>
+for which I invite masochists to write the regular expression.  If
+anyone wants more, I should remark that the base 29 machine for
+constant C=18 has 71 states!
+
+<p>
+By the way, I did not find any way of predicting the size or form of
+the machines for the various bases, except that the machines for C=B-1
+all seem to be isomorphic to each other.  If anyone investigates the
+general behavior, I would be most happy to hear about it.
+
+<pre>
+Dan Hoey
+Hoey@AIC.NRL.Navy.Mil
+May, 1992
+[ A preliminary version of this message appeared in April, 1991. ]
+================================================================
+Dan
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

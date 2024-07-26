@@ -1,0 +1,1528 @@
+Wipro paper(System software)
+July-1997
+------------
+
+PART --A
+------------------------------------------------------
+1) abcD+abcd+aBCd+aBCD
+   then the simplified function is
+   ( Capital letters are copliments of corresponding letters
+     A=compliment of a)
+
+  [a] a   [b] ab  [c] abc  [d] a(bc)* [e] mone
+  (bc)*=compliment of bc
+
+  Ans:  e
+
+-------------------------------------
+2) A 12 address lines maps to the memory of
+
+ [a] 1k bytes  [b] 0.5k bytes [c] 2k bytes  [d] none
+
+ Ans: b
+
+----------------------------------------
+3) In a processor these are 120 instructions . Bits needed to impliment
+   this instructions
+   [a] 6  [b] 7  [c] 10  [d] none
+
+  Ans: b
+
+-----------------------------------------
+4) In 8085 microprocessor READY signal does.which of the following
+   is incorrect statements
+   [a]It is input to the microprocessor
+   [b] It sequences the instructions
+
+  Ans : b
+----------------------------------------
+
+5) Return address will be returned by function to
+  [a] Pushes to the stack by call
+  Ans : a
+------------------------------------------
+6)
+   n=7623
+   {
+        temp=n/10;
+        result=temp*10+ result;
+       n=n/10
+   }
+
+Ans : 3267
+----------------------------------------------
+7) If A>B then
+      F=F(G);
+   else B>C then
+      F=G(G);
+   in this , for 75% times A>B and 25% times B>C then,is 10000 instructions
+   are there ,then the ratio of F to G
+   [a] 7500:2500  [b]  7500:625  [c] 7500:625 if a=b=c else
+                                     7500:2500
+--------------------------------------------------
+8) In a compiler there is 36 bit for a word and to store a character 8bits are
+needed. IN this to store
+ a character two words are appended .Then for storing a K characters string,
+ How many words are needed.
+ [a] 2k/9  [b] (2k+8)/9  [c]  (k+8)/9 [d] 2*(k+8)/9 [e] none
+
+ Ans: a
+---------------------------------------------------------
+9) C program code
+
+   int zap(int n)
+   {
+    if(n<=1)then zap=1;
+    else  zap=zap(n-3)+zap(n-1);
+   }
+   then the call zap(6) gives the values of zap
+   [a] 8  [b]  9  [c] 6  [d]  12  [e] 15
+
+  Ans: b
+---------------------------------------------------------------
+
+
+PART-B
+-------
+1) Virtual memory size depends on
+   [a] address lines    [b] data bus
+   [c] disc space       [d] a & c    [e] none
+
+ Ans :  a
+-----------------------------------------------
+2) Critical section is
+   [a]
+   [b] statements which are accessing shared resourses
+   Ans : b
+-------------------------------------------------
+
+3) load a
+   mul  a
+   store t1
+   load  b
+   mul   b
+   store t2
+   mul t2
+   add t1
+
+  then the content in accumulator is
+
+Ans : a**2+b**4
+---------------------------------------------------
+4) question (3) in old paper
+5) q(4) in old paper
+6) question (7) in old paper
+7) q(9) in old paper
+------------------------------
+
+
+
+
+
+
+
+1]. The following variable is available in file1.c
+
+ 
+static int average_float;
+
+        all the functions in the file1.c can access the variable
+
+
+[2]. extern int x;
+
+        Check the answer
+
+[3]. Another Problem with 
+
+        # define TRUE 0
+
+        some code
+
+        while(TRUE)
+        {
+                some code 
+
+        }
+        
+
+        This won't go into the loop as TRUE is defined as 0
+
+
+[4].   A question in structures where the memebers are dd,mm,yy.
+
+        mm:dd:yy
+        09:07:97
+
+[5]. Another structure question         
+
+        1 Rajiv System Analyst
+
+[6].    INFILE.DAT is copied to OUTFILE.DAT
+
+
+[7]. A question with argc and argv . 
+
+        Input will be
+
+        c:\TEMP.EXE Ramco Systems India
+
+
+-----------------------------------------------------------------------
+
+
+main()
+{
+        int x=10,y=15;
+        x=x++;
+        y=++y;
+        printf("%d %d\n",x,y);
+}
+
+
+
+
+----------------------------------------------------------------------
+
+
+int x;
+main()
+{
+        int x=0;
+        {
+                int x=10;
+                x++;
+                change_value(x);
+                x++;
+                Modify_value();
+                printf("First output: %d\n",x);
+        }
+        x++;
+        change_value(x);
+        printf("Second Output : %d\n",x);
+        Modify_value();
+        printf("Third Output : %d\n",x);
+}
+
+Modify_value()
+{
+        return (x+=10);
+}
+
+change_value()
+{
+        return(x+=1);
+}
+
+----------------------------------------------------------------------------
+
+main()
+{
+        int x=20,y=35;
+        x = y++ + x++;
+        y = ++y + ++x;
+        printf("%d %d\n",x,y);
+}
+
+-----------------------------------------------------------------------
+
+
+main()
+{
+        char *p1="Name";
+        char *p2;
+        p2=(char *)malloc(20);
+        while(*p2++=*p1++);
+        printf("%s\n",p2);
+}
+----------------------------------------------------------------------
+
+
+main()
+{
+        int x=5;
+        printf("%d %d %d\n",x,x<<2,x>>2);
+}
+
+--------------------------------------------------------------------
+
+#define swap1(a,b) a=a+b;b=a-b;a=a-b;
+main()
+{
+        int x=5,y=10;
+        swap1(x,y);
+        printf("%d %d\n",x,y);
+        swap2(x,y);
+        printf("%d %d\n",x,y);
+}
+
+int swap2(int a,int b)
+{
+        int temp;
+        temp=a;
+        b=a;
+        a=temp;
+        return;
+}
+----------------------------------------------------------------------
+
+
+main()
+{
+        char *ptr = "Ramco Systems";
+        (*ptr)++;
+        printf("%s\n",ptr);
+        ptr++;
+        printf("%s\n",ptr);
+}
+
+---------------------------------------------------------------------
+
+#include
+main()
+{
+        char s1[]="Ramco";
+        char s2[]="Systems";
+        s1=s2;
+        printf("%s",s1);
+}
+
+-----------------------------------------------------------------
+
+
+
+#include
+main()
+{
+        char *p1;
+        char *p2;
+        p1=(char *) malloc(25);
+        p2=(char *) malloc(25);
+        strcpy(p1,"Ramco");
+        strcpy(p2,"Systems");
+        strcat(p1,p2);
+        printf("%s",p1);
+}
+
+
+
+
+                            HCL
+    
+    Here HCL came yesterday. They are taking students in 3 streams at 
+present.
+    one:
+        Application software
+            - Open to Computer Science and Non-computer science 
+students
+            - Written test of 1 hour duration consisting of 4 sections
+              
+              
+System software:
+            - Open to all
+            Written test of 90 minutes duration
+            
+    * Computer awareness section
+        -Questions from Computer Science (network, windows, OLE, 
+Internet, OSI)
+    * C Prgramming fundamentals (c/c++/java) (Comparision of c and 
+java)
+    * Analysis of program code (c/c++/java) (only one question from 
+java)
+    * General aptitude (quantitative aptitude, analytical ability)
+    
+*********************************************************************
+Questions from systems:
+Section 1:
+1. Piggy backing refers to....
+2. OSI emulation layer ?
+3. Parity error checking is used for.........?
+4. In a 20 Mhz computer, the time taken for a 3clock cycle 
+instruction is:........
+ans: 120 ns (check)
+5. convert 0xFFE into radix 7
+6. Internet IP address is unique for..
+ans: domain of the node (check)
+
+Section 2:
+1. Comparision of java and C
+     The feature present in C but not in java
+     (a) recursion (b)Passing variable arguments (c).... (d)...
+Programs
+1.
+main()
+{
+int y = 10;
+if(y++ == 10 && y++ != 10 && y++ > 11)
+ printf("%d",y);
+else
+ printf("2y = %d",2*y);
+}     
+2.
+void funca(p)
+int *p;
+{
+ *p += 20;
+}
+
+void funcb(m)
+int *m;
+{
+ int n;
+ m = &n;
+ *m += 10;
+}
+
+main()
+{
+ int var = 25;
+ int *varp;
+ varp = &var;
+ funca(varp);
+ *varp += 10;
+ funcb(varp);
+ printf("%d...%d",var,*varp);
+}
+3.
+main()
+{
+static int *p = 100;
+char *q = p;
+p++;
+q++;
+printf("%d...%d",p,q);
+}
+/* don't run it. Its a Java program  */
+/* find the error if any */
+class A
+{
+ static final int var = 10;
+ private :
+      int obj1;
+ public  :
+          char obj2[]="some string";
+      func()
+      {
+       var = 15;
+       system.out.obj1;
+       system.out.obj2;
+      }
+}
+choices:
+1) There is no semicolon at the end of the class
+2) The variable var cann't be changed after declaration
+3) Class A has not been declared as of public type
+4) string can not be printed directly
+ans: ?
+5.
+/* declare  static int i; globally
+ 1) the variable is available for all the functions after its 
+declaration
+ 2) the variable is not available for other than the current program
+ 3) .....
+ 4) .....
+*/
+
+static int i;
+main()
+{
+void fun1();
+printf("%d\n",i);
+fun1();
+}
+
+void fun1()
+{
+printf("%d\n",i);
+}
+
+Aptitude:
+    GRE book, page no. 300 range, anlaytical ability question
+        A causes B or C but not both....
+*********************************************************************
+
+All the best and good luck.
+
+Reply to me soon.
+
+  
+  
+
+    ****************************************************************
+                     V. Subramanian,
+                     69, Sapphire Hostel,
+                     Regional Engineering College,
+                     Tiruchirappalli - 620 015.
+    ****************************************************************
+       Today is made for you.
+       
+
+
+
+>>From sushant@me.iitb.ernet.in Tue Nov  4 22:08:31 1997
+Date: Tue, 4 Nov 1997 22:06:23 +0530 (IST)
+From: "k.s .sushant kumar" 
+To: susant@urja.me.iitb.ernet.in
+
+
+
+This is the TCS paper held at IITM.
+
+                  TCS is as follows.
+
+
+HAI GUYS
+
+
+107 members were selected out of 400+ attentd for written and 200+ were short
+listed for intv's. 40+ from m.tech 30+ from b.tech and remaining from ms.
+intv's for PHDs are yet to be started.
+
+There is a rumour that, If age is above 24 TCS will not take.
+It is absolutely wrong. Here they took fellows who having less cgpa and who
+does't know minimum basics about compuer knowledge.
+
+So what I am saying is we should have some fate at that time.
+
+                     PAPER-97
+               ___________________
+
+
+
+--------------------------------------------------------------------------------             CALICUT  TCS paper --1997
+--------------------------------------------------------------------------------
+
+
+SECTION 1 INTURN CONSISTS OF THREE PARTS.
+
+PART 1
+      VERBAL---
+		IT CONSISTS OF 40 WORDS WHICH HAS 5 MULTIPLE ANSWERS
+    FOR THEM.THE MAIN WORDS WHICH I REMEMBER ARE AS FOLLOWS FOR WHICH
+    YOU SHOULD LEARN THE SYNONYMS OF THESE---
+merry = gay
+
+alienate = isolate, antagonize, separate, estranged
+
+solicit = request, ask
+
+heep = gather
+
+cargo = consignment, goods (wool)
+
+momentary = short time, temporary
+
+volume = 
+
+veer = change of direction
+
+disperse = scatter 
+
+admonish = rebuke , scolding
+
+meager = small amount
+
+latitude = parallel, scope
+
+latent = hidden
+
+covet = desire
+
+discretion = tact, judicially
+
+potential = capacity
+
+emanicipate = Liberate
+
+lethargy = Dull
+
+concur = agree
+
+confiscate = seize, impound, bannish
+
+dispel = away
+
+baffle = puzzle
+
+subside = reduce the value
+
+misery = sorrow
+
+pretentious = pompous, showy
+
+tranquil = calm
+
+efface = erase, rub out
+
+effigee = image, carving statue
+
+abstinate = refraining, to resist
+
+obstinate = self willed, stubborn
+
+hover = hang over
+
+caprice = vagry, impulse, changes mind without any reason, whim
+
+belate = late
+
+renaissance =  interest on particular topic, revival of interest
+
+abstriate = forming abstract
+
+brim = edge
+
+divulge  = disclose
+
+lament = express sadness
+
+belief = 
+
+embrace = hug
+
+adhesive = tenatitous
+
+miserable = grief
+
+furtue = secrete
+
+SECTION 1        PART B        20MIN    30 marks 15 QUANTITATIVE.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+THESE ARE SOME PROBLEMS :
+1.)  two pencils cost 8 cents. then 5 pencils cost?
+(20 cents)
+
+2. A work is done by the people in 24 minutes.  One of them can do
+this work alonely in 40 minutes.  How much time to do the same work
+for the second person?
+(60 minutes) 1/24-1/40=1/60
+
+3. A car is filled with four and half gallons of fuel for a round trip.
+Fuel is taken 1/4 more in going then coming.  What is the fuel 
+consumed in coming up? (2 gallons)
+	(1+1.25)x=4.5
+	x = 2 gallons
+
+4.Low temperature at the night in a city is 1/3 more than 1/2 high as 
+higher temperature in a day.  Sum of the low tem. and highest temp. 
+is 100 degrees.  Then what is the low temp? (40 deg.)
+
+ans.
+(x/2)+x/3+x=100
+x=600/11
+5x/6=500/11=45.45
+
+5. A person, who decided to go to weekened trip should not 
+exceed 8 hours driving in a day.  Average speed of forward journey
+is 40 m/h. Due to traffic in sundays, the return journey average speed
+is 30 m/h. How far he can select a picnic spot?
+	a) 120 miles
+	b) between 120 and 140 miles
+	c) 160 miles
+x/40+x/30=8
+x=120*8/7=137.14
+
+6. A salesperson multiplied a number and get the answer 3,
+instead of that number devided by 3.
+what is the answer he actually has to get?
+		1 x 3 = 3
+		so number = 1
+		devided by 3, the ans. is 1/3.
+
+7. A ship started from port and moving with I miles per hour and another
+ship started from L and moving with H miles per hour.
+At which place these two ships meet?
+
+    |----|----|----|----|----|----|
+  port	 G    H    I    J    K    L
+
+ans.
+	IX+HX=L
+	X=L/(I+H)
+	XI=LI/(I+H)
+
+8. A building with height D shadow upto G. A neighbour building with 
+what height shadows C feet.
+
+    |----|----|----|----|----|----|----|
+    A    B    C    D    E    F    G    H
+
+		CD/G
+
+
+9. A person was fined for exceeding the speed limit by 10 mph.
+Another person was also fined for exceeding the same speed limit 
+by twice the same.  If the second person was travelling at a 
+speed of 35 mph, find the speed limit.  (15 mph)
+
+10*2=20
+35-20=15 mph
+
+10.A bus started from bustand at 8.00am, and after 30 minutes staying
+ at destination, it returned back to the busstand.  The destination 
+ is 27 miles from the busstand.  The speed of the bus is 18mph.  In
+ return journey bus travels with 50% fast speed.
+ At what time it returns to the busstand? (11.00am).
+
+
+11.In a mixture, R is 2 parts, S is 1 part. In aoder to make S to 
+ 25% of the mixture, howmuch r is to be added?
+
+
+
+SECTION-1   PART-3	marks-50  questions-50  30 min
+		
+		CRITICAL REASONING
+
+It is very difficult to reproduce them and so we are giving here the 
+first question of the section so that you may have a general idea of the
+section.Be careful time management is important.
+YOU HAVE TO MARK YES, NO OR WE CAN'T SAY..
+My father is only child to his father.My father has three sisters.
+All are married and have two children each.
+
+1) My grandfather has two sons.
+2) I am having six cousins.
+3) I have three uncles.
+
+
+SECTION-2        PSYCHOMETRIC TEST   150 QUESTIONS    50 MARKS.
+
+
+     IN THIS SECTION THERE WILL BE QUESTIONS RELATED TO YOUR PSYCHOLOGY
+     YOU WILL HAVE TO SAY YES ,NO OR I CANT SAY. YOU MARK THEM IN THE 
+     MOST POSITIVE WAY .BUT WE ARE NOT CERTAIN WEATHER THE PAPER IS
+     CORRECTED OR NOT .
+
+		
+
+--------------------------------
+--------------------------------
+
+NOTE:
+
+
+In addition  the above CALICUT paper we are adding some passages below ,
+whichever not covered by them.
+
+
+VOCAB
+some corrections are there in your paper please make a note
+
+admonish = to caution, to warn (not usurp)
+adhesive = tenatious
+incentive = -------------
+
+
+QUANT
+
+CRITICAL REASONING
+
+madhu here in this section time is very less that you just can't even read
+the total passages. that's why you should have an idea about the passage
+before going to the test. and put the ans just studying the q's.
+8 passages which you have sent are OK i am sending the remaining ones
+with this info you can answer the q's.I am sending only that portion of the 
+passage which is useful in answering the q's.
+
+*)passage related to concious and un concious world
+----------------------------------------------------
+There is an influence of dreams on the waking state(sleeping can be creative)
+The other q's given in under this passage can not be answered just with
+the info given in it so don't struggle to read it.
+
+q's
+1) sleeping can be creative
+2) It's difficult to tell whether a person is dreaming.
+3) If we could record the drems of prenatal >.........some conclusion.
+
+*)Passage related to pests
+--------------------------
+
+Funda is that though pests offer threat to flora and fauna two methods are
+there to prevent. One is natureal and the other is some engg.. pest controller.
+Both the methods should be regarded as potential ones.
+
+JUst two q's under this
+1)Engg pest controller should be regarded as potential method
+2)this q can be answered with the first two lines of the passage.
+
+*)Passage related to words
+--------------------------
+
+Words have unhealthy importance in totalitarian days. People have to chose the
+words cautiously. The words have political importance in those days.
+Words are devalued in democratic rule people are free to chose them and we
+can say that they come free of cost.
+
+q's
+1)words have no importance in totalitarian days.
+2)poets ----------
+3)
+
+*)Passage related to Tagore works
+---------------------------------
+Every form of lit.. comes under copy write act. People having tagore works
+are earning more,there should be a trust for that.
+
+q's
+1)Tagore works comes under the copy write act.
+2)Regarding the trust
+3)People going for movies are paying for the devolopment of arts .......
+
+
+*)Passage related to facial feelings
+------------------------------------
+
+Natural expressions have symmetric facial expressions. Negetive expressions
+have assymetric facial expressions. Left sided expression dominates for a personwith negetive feelings (Some thin is given about acters and this passage is very simple you can do it.)
+ 
+q's
+1)
+2)An actor when smiling poses symmetrical face feelings
+3)An angry man poses more lop sided face feelings
+(Madhu you better go through this passage it's very easy).
+
+
+PSYCHO.. TEST
+
+Don't worry about this section. You should make sure that you are choosing the 
+same alternative when ever you encounter the same q.. in different forms.
+the most repeating ones i am sending . You must answer all the 150 q's and
+eliminate can't say as far as possible.
+
+*)You can work for a long time with out rest.
+the other forms are like this
+*)You want to relax freq..
+
+*)you feel difficult to introduce to new friends.
+*)you can easily make new friends
+*)you want to limit your friends circle
+*)you feel good at talking with new people
+-----
+----
+ the importaant thing is that you should fill all the 150 pshycometry quetions.
+
+
+
+
+
+1]. The following variable is available in file1.c
+
+ 
+static int average_float;
+
+        all the functions in the file1.c can access the variable
+
+
+[2]. extern int x;
+
+        Check the answer
+
+[3]. Another Problem with 
+
+        # define TRUE 0
+
+        some code
+
+        while(TRUE)
+        {
+                some code 
+
+        }
+        
+
+        This won't go into the loop as TRUE is defined as 0
+
+
+[4].   A question in structures where the memebers are dd,mm,yy.
+
+        mm:dd:yy
+        09:07:97
+
+[5]. Another structure question         
+
+        1 Rajiv System Analyst
+
+[6].    INFILE.DAT is copied to OUTFILE.DAT
+
+
+[7]. A question with argc and argv . 
+
+        Input will be
+
+        c:\TEMP.EXE Ramco Systems India
+
+
+-----------------------------------------------------------------------
+
+
+main()
+{
+        int x=10,y=15;
+        x=x++;
+        y=++y;
+        printf("%d %d\n",x,y);
+}
+
+
+
+
+----------------------------------------------------------------------
+
+
+int x;
+main()
+{
+        int x=0;
+        {
+                int x=10;
+                x++;
+                change_value(x);
+                x++;
+                Modify_value();
+                printf("First output: %d\n",x);
+        }
+        x++;
+        change_value(x);
+        printf("Second Output : %d\n",x);
+        Modify_value();
+        printf("Third Output : %d\n",x);
+}
+
+Modify_value()
+{
+        return (x+=10);
+}
+
+change_value()
+{
+        return(x+=1);
+}
+
+----------------------------------------------------------------------------
+
+main()
+{
+        int x=20,y=35;
+        x = y++ + x++;
+        y = ++y + ++x;
+        printf("%d %d\n",x,y);
+}
+
+-----------------------------------------------------------------------
+
+
+main()
+{
+        char *p1="Name";
+        char *p2;
+        p2=(char *)malloc(20);
+        while(*p2++=*p1++);
+        printf("%s\n",p2);
+}
+----------------------------------------------------------------------
+
+
+main()
+{
+        int x=5;
+        printf("%d %d %d\n",x,x<<2,x>>2);
+}
+
+--------------------------------------------------------------------
+
+#define swap1(a,b) a=a+b;b=a-b;a=a-b;
+main()
+{
+        int x=5,y=10;
+        swap1(x,y);
+        printf("%d %d\n",x,y);
+        swap2(x,y);
+        printf("%d %d\n",x,y);
+}
+
+int swap2(int a,int b)
+{
+        int temp;
+        temp=a;
+        b=a;
+        a=temp;
+        return;
+}
+----------------------------------------------------------------------
+
+
+main()
+{
+        char *ptr = "Ramco Systems";
+        (*ptr)++;
+        printf("%s\n",ptr);
+        ptr++;
+        printf("%s\n",ptr);
+}
+
+---------------------------------------------------------------------
+
+#include
+main()
+{
+        char s1[]="Ramco";
+        char s2[]="Systems";
+        s1=s2;
+        printf("%s",s1);
+}
+
+-----------------------------------------------------------------
+
+
+
+#include
+main()
+{
+        char *p1;
+        char *p2;
+        p1=(char *) malloc(25);
+        p2=(char *) malloc(25);
+        strcpy(p1,"Ramco");
+        strcpy(p2,"Systems");
+        strcat(p1,p2);
+        printf("%s",p1);
+}
+
+
+
+
+                       - TCS- 
+ > SECTION 1 INTURN CONSISTS OF THREE PARTS.
+> 
+> PART 1
+>       VERBAL---
+> 		IT CONSISTS OF 40 WORDS WHICH HAS 5 MULTIPLE ANSWERS
+>     FOR THEM.THE MAIN WORDS WHICH I REMEMBER ARE AS FOLLOWS FOR WHICH
+>     YOU SHOULD LEARN THE SYNONYMS OF THESE---
+> 
+> merry
+> alienate
+> solicit
+> heap
+> cargo
+> momentary
+> volume
+> veer
+> dispel
+> admonish
+> meager
+> latitude
+> latent
+> covet
+> discretion
+> latent
+> emanicipate
+> lethargy
+> concur
+> confiscate
+> baffle
+> subside
+> misery
+> pretentious
+> tranquil
+> efface
+> obstinate
+> hover
+> caprice
+> belate
+> renounce
+> brim
+> divulge
+> lament
+> bileaf
+> adhesive
+> hamper
+> to merit
+> 
+> 
+> SECTION 1        PART B        20MIN    30 marks 15 QUANTITATIVE.
+> ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> THESE ARE SOME PROBLEMS :
+> 
+> 1.)  two pencils cost 8 cents. then 5 pencils cost?
+> (20 cents)
+> 
+> 2. A work is done by the people in 24 minutes.  One of them can do
+> this workalonely in 40 minutes.  How much time to do the same work
+> for the second person?
+> (60 minutes)
+> 
+> 3. A car is filled with four and half gallons of fuel for a round trip.
+> Fuel is taken 1/4 more in going then coming.  What is the fuel 
+> consumed in coming up? (2 gallons)
+> 
+> 4.Low temperature at the night in a city is 1/3 more than 1/2 high as 
+> higher temperature in a day.  Sum of the low tem. and highest temp. 
+> is 100 degrees.  Then what is the low temp? (40 deg.)
+> 
+> 5. A person, who decided to go to weekened trip should not 
+> exceed 8 hours driving in a day.  Average speed of forward journey
+> is 40 m/h. Due to traffic in sundays, the return journey average speed
+> is 30 m/h. How far he can select a picnic spot?
+> 	a) 120 miles
+> 	b) between 120 and 140 miles
+> 	c) 160 miles
+> ans: 120 miles
+> 
+> 6. A salesperson multiplied a number and get the answer 3,
+> instead of that number devided by 3.
+> what is the answer he actually has to get?
+> 		1 x 3 = 3
+> 		so number = 1
+> 		devided by 3, the ans. is 1/3.
+> 
+> 7. A ship started from port and moving with I miles per hour and another
+> ship started from L and moving with H miles per hour.
+> At which place these two ships meet?
+> 
+>     |----|----|----|----|----|----|
+>   port	 G    H    I    J    K    L
+> 
+> 8. A building with height D shadow upto G. A neighbour building with 
+> what height shadows C feet.
+> 
+>     |----|----|----|----|----|----|----|
+>     A    B    C    D    E    F    G    H
+> 
+> 9. A person was fined for exceeding the speed limit by 10 mph.
+> Another person was also fined for exceeding the same speed limit 
+> by twice the same.  If the second person was travelling at a 
+> speed of 35 mph, find the speed limit.  (15 mph)
+> 
+> 10.A bus started from bustand at 8.00am, and after 30 minutes staying
+>  at destination, it returned back to the busstand.  The destination 
+>  is 27 miles from the busstand.  The speed of the bus is 18mph.  In
+>  return journey bus travels with 50% fast speed.
+>  At what time it returns to the busstand? (11.00am).
+> 
+> 11.In a mixture, R is 2 parts, S is 1 part. In aoder to make S to 
+>  25% of the mixture, howmuch r is to be added?
+> 
+> 
+> 12. with 4/5 full tank vehicle travels 12 miles, with 1/3 full tank
+>     how much distance travels    ( 5 miles )
+> 
+> 13. two trees are there. one grows at 3/5 of the other in 4 years,
+>     total growth of trees is 8 ft. what growth will smaller tree will have
+>     in 2 years  (  < 2 ft. ) 
+> 
+> 
+> SECTION-1   PART-3	marks-50  questions-50  30 min
+> 		
+> 
+>    CRITICAL REASONING
+> 
+> 
+> 
+>   1.  My father has no brothers. he has three sisters who has two childs each.
+>       My grandfather has sons.
+> 
+>     a) my grandfather has two sons
+>     b) three of my aunts have two sons
+>     c) my father is only child to his father
+>     d) i have six cousins from jmy mother side
+>     e) i have one uncle
+> 
+>  2. Ether injected into gallablader to dissolve galstones. this type oneday
+>  treatment is enough for gallastones not for calcium stones. this method is
+>  alternative to surgery for millions of people who are suffering from this 
+>  disease.
+> 
+>     a) calcium stones can be cured in oneday
+>     b) hundreds of people contains calcium stones
+>     c) surgery is the only treatment to calcium stones
+>    
+>   3. Hacking is illegal entry into other computer. this is done mostly because
+>  of lack of knowledge of computer networking with networks one machine can
+>  access to another machine. hacking go about without knowing that each network
+>  is accredited to use network facility.
+> 
+>    a) Hacking people never break the code of the company which they work for
+>    b) Hacking is the only vulnerability of the computers for the usage
+>       of the data.
+>    c) Hacking is done mostly due to the lack of computer knowledge.
+> (there will be some more questions in this one)
+> 
+> 
+>   4. In the past helicopters are forced to ground or crash because of
+the
+>  formation of the ice on the rotors and engines. a new electronic device 
+>  has been developed which can detect the watercontent in the atmosphere and
+>  warns the pilot if the temp. is below freezing temp. about the formation
+>  of the ice on the rotors and wings.
+> 
+>    a) the electronic device can avoid formation of the ice on the wings
+>    b) there will be the malfunction of rotor & engine because of formation
+>       of ice
+>    c) the helicopters are to be crashed or down
+>    d) there is only one device that warn about the formation of ice. 
+> 
+> 
+> 
+>   6. In confucius days the technology development was less and it took
+weeks
+>  to communicate a message. wherein we can send it through satellite with in
+>  no time........ even with this fast developments it has become difficult to
+>  understand each other.
+> 
+>     a) people were not intelligent during confucius days
+>     b) transport facilities are very much improved in now-a-days
+>     c) even with the fast developments of the technology we cannot live
+>        happily.
+>     d) we can understand the people very much with the development of 
+>        communication.
+> 
+>    7. Senior manager in a big company said that new japanies company
+invades
+>  in India for transfering the cars from industrial and warned that jobs were
+>  under threat from japanies company.  They stated that increasing competence
+>  would be coupled with an inevitable down term in car market and recent rise
+>  in interest rate which has already hit demand.
+> 
+>    a) manager issue their warning after a rise in interest rate
+>    b) manager told workers that japanies workers are taking jobs away from
+>       indian workers
+>    c) manager said that more people want to buy new cars in future
+>    d) increasing rate of interest mean that japanies firm will create into
+>       operate in the country
+> 
+>    8. Human existence is suspecious of arbitrary divide between concise
+and
+>  unconcise. The concise world invades shape activity of the unconcise, while
+>  many of great activity of humanity waking as whole or partially improved
+>  by dreams. Even it could be ignored that dreams precede exceptional such a
+>  dichotomy could not be drawn as the influence of dream on waking state would
+>  reamin unclear. But as yet no company rebuilt exists to record the substitute
+>  of prendtl dreaming.
+> 
+>    a) sleepy can be creative state
+>    b) it is difficult to tell whether a sleeper is dream or not
+>    c) if we know what babies would dream about before they are born we could
+>       show that the concise and unconcise mind influence on one another
+>    d) it is untrue claim that concise and unconcise world never impinge
+>       one another
+> 
+>   9. Any one who has has systematic exam phases will have perceived a
+>  profound although not a prolif of asymmetry whether or not the exception
+>  is volitions and self control of spontoneous appeal to predict facial as
+>  symmetry as does the type of emotion potrayed. position can not displace
+>  symmetric at left side regret of a negative emotion is more common posed
+>  expression negation emotions are likely to be symmetric representation
+>  and where as symmetric occurs relative left sided expression is more common.
+> 
+>     a) any angry person is more likely to have left sided expression than
+>        some one who has smiling
+>     b) an actor is likely to smile symmetric when acting
+>     c) delecious facial expression will always be as symmetrical
+> 
+> 
+>    10. There should be copyright for all arts. the rule has come that
+all the
+>  arts has come under one copy right society, they were use the money that 
+>  come from the arts for the developments.  There may be a lot of money will
+>  come from the Tagore works. we have to ask the benifiters from Tagore work
+>  to help for the development of his works.
+> 
+>      a) Tagore works are come under this copy right rule
+>      b) people gives to theater and collect the money for development
+>      c) people are free to go to the      because of the copy right rule
+>      d) we have ask the Tagore residents to help for the developments of art.
+> 
+
+
+
+
+
+
+#include
+#define N 8
+typedef struct rt
+{
+  int num;
+  int deno;
+}rational;
+void reduce();
+main()
+{
+  rational a[N][N],b[N],c[N],delta[N],z,m;
+  rational n,min1,min2,ratio[4],t,p,x1[4];
+  void sum(),sub(),mult(),div();
+  void setrational(),min(),minm();
+  int c1[N],b1[N],a1[N][N],x[4];
+  int index1,index2,ct=1,y[4]={0,4,5,6};
+  register int i,j; 
+  system("clear");
+printf("*******************************************\n");
+  printf("\n\tENTER COEFFICIENT OF  OBJECTIVE FUNCTION ::\n ");
+  for(i=1;i<=3;i++)
+   scanf("%d",&c1[i]);
+  c1[4]=c1[5]=c1[6]=0;
+  for(i=1;i<=3;i++)
+  {
+    printf("\n\tENTER THE COEFFICIENT OF %dth CONSTRAINT: ",i); 
+    for(j=1;j<=3;j++)
+      scanf("%d",&a1[i][j]);
+  /*   scanf("%d",&b1[i]);*/
+   }
+for(i=1;i<=3;i++)
+{
+printf("\n\tENTER THE R.H.S. OF  CONSTRAINTS ::");
+/* for(j=1;j<3;j++)
+scanf("%d",&a1[i][j]);*/
+scanf("%d",&b1[i]);                      
+}
+   a1[1][4]=a1[2][5]=a1[3][6]=1;
+   a1[1][5]=a1[1][6]=a1[2][4]=a1[2][6]=a1[3][4]=a1[3][5]=0;
+  printf("\n\t THE GIVEN L.P.P. IS\n\n");
+  printf("\t max Z = %d x1 + %d x2 + %d x3\n",c1[1],c1[2],c1[3]); 
+  printf("\n\tSUBJECTED TO\n\n");
+  for(i=1;i<=3;i++)
+printf("\t%d x1 + %d x2 + %d x3 <= %d\n",a1[i][1],a1[i][2],a1[i][3],b1[i]); 
+ getchar();
+ getchar(); 
+ printf("\nAFTER ADDING SLACK VARIABLE THE LPP BECOMES :\n\n");
+ printf("\t max Z = ");
+ for(i=1;i<=6;i++)
+   printf("%d X%d + ",c1[i],i);
+/* printf("%d X6",c1[6]);*/
+ printf("\n\nSUBJECTED TO\n\t");
+ for(i=1;i<=3;i++)
+ {
+    for(j=1;j<=5;j++)
+      printf("%d X%d + ",a1[i][j],j);
+    printf("%d X6 <= %d\n\t",a1[i][6],b1[i]);
+ }
+
+/*******MAIN-PROCEDURE BEGINS*****/
+
+ for(i=1;i<=3;i++)
+   for(j=1;j<=6;j++)
+     setrational(a1[i][j],&a[i][j]);
+ for(i=1;i<=6;i++)
+   setrational(c1[i],&c[i]);
+ for(i=1;i<=3;i++)
+   setrational(b1[i],&b[i]);
+
+ x[1]=c1[4],x[2]=c1[5],x[3]=c1[6];
+ for(i=1;i<=3;i++)
+   setrational(x[i],&x1[i]);
+/* printf("\n\tTHE SIMPLEX TABLE IS:\n");*/
+while(1)
+ {
+    getchar();
+    getchar();
+    z.num=0;
+    z.deno=1;
+    for(i=1;i<=6;i++)
+    {
+      delta[i].num=0;      
+      delta[i].deno=1;
+    }
+    printf("\n\tTHE SIMPLEX TABLE %dth ITERATION: \n\n\t\t\t",ct);
+    for(i=1;i<=6;i++)
+       printf("%d\t",c1[i]);
+    printf("\n***************************************************************");
+    printf("******************************\n");
+    printf("Cb\tB.V.\tXb\tX1\tX2\tX3\tX4\tX5\tX6\n");
+    printf("*******************************************************");
+    printf("******************************\n");
+    for(i=1;i<=3;i++)
+    {
+     printf("\n%d\tX%d\t%d/%d\t",x[i],y[i],b[i].num,b[i].deno);
+     for(j=1;j<=6;j++)
+     printf("%d/%d\t",a[i][j].num,a[i][j].deno);
+    }
+    printf("\n********************************************************");
+    printf("**********************************\n");
+    for(i=1;i<=3;i++)
+    {
+       mult(x1[i],b[i],&m);
+       sum(z,m,&z);
+    }
+    for(i=1;i<=6;i++)
+    {
+      for(j=1;j<=3;j++)
+      {
+         mult(x1[j],a[j][i],&n);
+         sum(delta[i],n,&delta[i]);
+      } 
+      sub(delta[i],c[i],&delta[i]);
+    }
+    printf("\t\t%d/%d",z.num,z.deno);
+    for(i=1;i<=6;i++)
+      printf("\t%d/%d",delta[i].num,delta[i].deno);
+    min(delta,&index1,&min1);
+    if(min1.num>=0)
+       break;
+    for(i=1;i<=3;i++)
+      div(b[i],a[i][index1],&ratio[i]);
+    minm(ratio,&index2,&min2);
+    printf("\n\n\t\tX%d WILL ENTER AND X%d WILL LEAVE\n",index1,y[index2]);
+    x[index2]=c1[index1];
+    setrational(x[index2],&x1[index2]);
+    y[index2]=index1;
+    for(j=1;j<=3;j++)
+    {
+      if(j==index2)
+      {
+        t.num=a[j][index1].num;
+        t.deno=a[j][index1].deno;
+        for(i=1;i<=6;i++)
+           div(a[j][i],t,&a[j][i]);
+        div(b[j],t,&b[j]);
+       }
+       else
+       {
+         div(a[j][index1],a[index2][index1],&t);
+         for(i=1;i<=6;i++)
+         {
+            mult(t,a[index2][i],&p);
+            sub(a[j][i],p,&a[j][i]);
+         }
+         mult(t,b[index2],&p);
+         sub(b[j],p,&b[j]);
+        }
+       }ct++;
+     }  /***end while***/ 
+printf("\n***********************************\n");
+printf("\n\nTHE SOLUTION OF GIVEN LPP IS :\n");
+printf("**************************************");
+     for(i=1;i<=3;i++)
+        printf("X%d = %d/%d\t",y[i],b[i].num,b[i].deno);
+     printf("\n\t max Z = %d/%d\n",z.num,z.deno);
+  }
+
+ void setrational(x,z)
+ rational *z;
+ int x;
+ {
+    z->num=x;
+    z->deno=1;
+    return;
+  }
+
+ void sum(x,y,z)
+ rational x,y,*z;
+ {
+   z->num=(x.num)*(y.deno)+(x.deno)*(y.num);
+   z->deno=(x.deno)*(y.deno);
+   reduce(z);
+   return;
+ }  
+ 
+
+ void sub(x,y,z)
+ rational x,y,*z;
+ {
+   z->num=(x.num)*(y.deno)-(x.deno)*(y.num);
+   z->deno=(x.deno)*(y.deno);
+   reduce(z);
+   return;
+ }
+
+ void mult(x,y,z)
+ rational x,y,*z;
+ {
+   z->num=(x.num)*(y.num);
+   z->deno=(x.deno)*(y.deno);
+   reduce(z);
+   return;
+ }
+
+ void div(x,y,z)
+ rational x,y,*z;
+ {
+   z->num=(x.num)*(y.deno);
+   z->deno=(x.deno)*(y.num);
+   reduce(z);
+   return;
+ }
+
+ void reduce(z)
+ rational *z;
+ {
+   rational q;
+   int flag=0,u,v,rem;
+   if(z->num<0)
+   {
+      z->num=-(z->num);
+      flag=1;
+   } 
+   q.num=z->num;
+   q.deno=z->deno;  
+   if(q.num>q.deno)
+   {
+     u=q.num;
+     v=q.deno;
+   }
+   else
+   {
+      u=q.deno;
+      v=q.num;
+   }
+   while(v!=0)
+   {
+      rem=u%v;
+      u=v;
+      v=rem;
+   }
+   z->num=q.num/u;
+   z->deno=q.deno/u;
+   if(flag==1)
+     z->num=-(z->num);
+   return;
+ }
+        
+ void min(x,y,z)
+ rational x[N],*z;
+ int *y;
+ {
+  int i;
+  z->num=x[1].num;
+  z->deno=x[1].deno;
+  *y=1;
+  for(i=2;i<=6;i++)
+  {
+    if((((z->num)*x[i].deno)-((z->deno)*x[i].num))>0)
+    {
+       z->num=x[i].num;
+       z->deno=x[i].deno;
+       *y=i;
+     }
+  }
+  reduce(z);
+  return;
+}
+
+void minm(x,y,z)
+rational x[4],*z; 
+int *y;
+{
+  int i;
+  z->num=1000;
+  z->deno=1;
+  for(i=1;i<=3;i++)
+  {
+     if(x[i].num>0)
+     {
+       if((((z->num)*x[i].deno)-((z->deno)*x[i].num))>0)
+       {
+          z->num=x[i].num;
+          z->deno=x[i].deno;
+          *y=i;
+       }
+     }
+   }
+   reduce(z);
+   return;
+ }      
+
+
+--------------------------------------------------------------------------------

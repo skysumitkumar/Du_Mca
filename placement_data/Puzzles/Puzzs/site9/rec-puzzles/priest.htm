@@ -1,0 +1,93 @@
+<html><head>
+<title>Solution for /logic/smullyan/priest</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /logic/smullyan/priest problem</h1>
+<hr>
+Yes.  Let's start with the simple case that N = 1.  The offended spouse
+reasons as follows: the priest knows there is at least one adulterer,
+but I don't know who this person is, and I would if it were anyone
+other than me, so it must be me.  What happens if N = 2?  On the first
+Sunday, the two offended spouses each calmly wait for the other to get
+up and condemn their spouses.  When the other doesn't stand, they
+think:  They do not think that they are a victim.  But if they do not
+think they are victims, then they must think there are no adulterers,
+contrary to what the priest said.  But everyone knows the priest speaks
+with the authority of God, so it is unthinkable that he is mistaken.
+The only remaining possibility is that they think there WAS another
+adulterer, and the only possibility is: MY SPOUSE!  So, they know that
+they too must be victims.  So on the next Sunday, they will get up.
+What if N = 3?  On the first Sunday, each victim believes that the other
+two will not get up because they did not know about the other person
+(in other words, they believe that each of the two other victims thought
+there was only one adulterer).  However, each victim reasons, the two
+will now realize that there must be two victims, for the reasons given
+under the N = 2 case above.  So they will get up next Sunday.  This
+excuse lasts until the next Sunday, when still no one gets up, and now
+each victim realizes that either the priest was mistaken (unthinkable!)
+or there are really three victims, and I am ONE!  So, on the third
+Sunday, all three get up.  This reasoning can be repeated inductively
+to show that no one will do anything (except use up N - 1 excuses as to
+why no one got up) until the Nth Sunday, when all N victims will arise
+in unison.
+
+<p>
+The induction can also be run "top down" on the priest's statement.  What
+must everyone believe about what everyone else believes?
+
+<pre>
+N victims of adultery believe there are N - 1 victims, and that all of these
+ N - 1 victims believe that there are N - 2 victims, and that all of these
+  N - 2 victims believe that there are N - 3 victims, and that all of these
+  ...
+   2 victims believe that there is 1 victim, and that this
+    1 victim believes there are no victims.
+</pre>
+
+Suppose the priest says, "There are N adulterers in this town."  Then
+all the adulterers will know immediately that their spouses have been
+unfaithful, and will denounce them the next Sunday.  Now, suppose the
+priest says, "There are at least N - 1 adulterers in this town."  On
+the first Sunday, the offended spouses all wait for each other to stand
+up.  When none do, they all know that they have all been horribly
+mistaken, and they stand up on the following Sunday.  But what if the
+priest says, "There are at least N - 2 adulterers in this town."  On
+the first Sunday, the victims reason, those N - 1 victims are going to
+be surprised when no one stands up, and they'll stand up next Sunday.
+On the second Sunday, the victims reason, wait a minute, since they
+didn't stand up, I must be one of the deluded victims.  And everyone
+stands up on the third Sunday.  This resoning applies inductively,
+adding one Sunday at each step, until the priest's original statement
+is reached, which takes N Sundays for everyone to unravel.
+
+<p>
+By the way, the rest of the town, which thinks there are N adulterers,
+is about to conclude that their perfectly innocent spouses have been
+unfaithful too.  This includes the adulterous spouses, who are about to
+conclude that the door swings both ways.  So the priest is playing a
+dangerous game.  A movie plot in there somewhere?
+
+<p>
+This problem is an analogue of the "dirty children" problem discussed in
+the seminal paper on common knowledge by Halpern and Moses (JACM 1990).
+
+<p>
+If the information of each victim is less than perfect, the problem is
+related to the "frame" problem of AI, cf. J. M. McCarthy &amp; P. J. Hayes,
+"Some philosophical problems from the standpoint of artificial intelligence"
+(1968) in _Readings in Artificial Intelligence_ (pp. 431-450),
+Tioga Publishing Co., Palo Alto, CA (1981).
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

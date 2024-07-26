@@ -1,0 +1,1013 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>A bit-o&#39;-power: digitally controlled power conversion - 7/21/2005 - EDN - CA624951</title>
+
+<meta name="description" content="Ironically, perhaps, the last subsystem to undergo a substantive shift from an analog- to a digital-control architecture is the most universal: the power supply. Beware the hype, however. Digital power control may bring performance benefits to some applications, but until you become familiar with the inner machinations, their sophistication will exact a price in application-development time.">
+<meta name="keywords" content="Analog,Digital ICs,Processors & Tools,Power Sources/Controllers,Ironically, perhaps, the last subsystem to undergo a substantive shift from an analog- to a digital-control architecture is the most universal: the power supply. Beware the hype, however. Digital power control may bring performance benefits to some applications, but until you become familiar with the inner machinations, their sophistication will exact a price in application-development time.">
+<meta name="robots" content="follow,noarchive,index">
+<meta http-equiv="pragma" content="no-cache">
+<meta name="author" content="By Joshua Israelsohn, Technical Editor">
+<meta name="copyright" content="Reed Business Information">
+<meta name="language" content="English">
+<meta name="MSSmartTagsPreventParsing" content="TRUE">
+<meta name="distribution" content="Global">
+<meta name="rating" content="General">
+<meta name="expires" content="Never">
+<meta name="revisit-after" content="7 Days">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+
+<script type="text/javascript" language="javascript">
+
+function makeCookie(name,value,days)
+{
+	if (days)
+	{
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = "; expires="+date.toGMTString();
+	}
+	else var expires = "";
+	document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function getCookie(name)
+{
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++)
+	{
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+
+function deleteCookie(name)
+{
+	makeCookie(name,"",-1);
+}
+</script>
+
+<link href="edn.css" tppabs="http://a330.g.akamai.net/7/330/2540/20050714182330/www.edn.com/css/edn.css" rel="stylesheet" type="text/css"/>
+
+<style type="text/css">
+
+/*Global Structure*/
+body {margin: 8px; padding:0px; background-color: #fff;}
+
+#bodycontainer {border: 1px solid #333; width: 758px; margin:0px; padding:0px; position:relative; }
+
+
+#bodytable {width: 100%; margin-top: 3px; padding:0px;}
+
+
+ /*article*/
+.leftcol{width: 170px; background-color: #DDE6ED;}
+#leftcolcontainer{margin: 0px; padding: 0px; position:relative;}
+.rightcol{margin: 0px; padding:5px 0px 0px 0px; width: 586px; voice-family: "\"}\""; voice-family:inherit; width: 588px;}
+#rightcolcontainer {padding-left: 2px;}
+
+
+.centercol {}
+/*#centercolcontainer table {background-color: #fff;}*/
+#centercolcontainer {}
+
+</style>
+<script language="JavaScript" src="edn.js" tppabs="http://a330.g.akamai.net/7/330/2540/20050603182324/www.edn.com/js/edn.js" type="text/javascript"></script><SCRIPT LANGUAGE="JavaScript1.2">
+<!--// 
+function openWindow()
+{
+  with (document.termForm)
+  {
+    term.value = escape(term.value);
+    newURL="index.asp?layout=term&brand=edn&term="+term.value;
+  }
+  
+newwindow=open(newURL,"termWindow","scrollbars=yes,toolbar=no,directories=no,menubar=no,location=no,resizable=yes,status=no,width=800,height=625,screenX=0,screenY=0");
+
+  return false;
+}
+//-->
+</SCRIPT>
+
+</head>
+<body>
+<div id="bodycontainer"><!--Header-->
+	<div id="headercontainer">
+		<a href="javascript:if(confirm('http://www.reed-electronics.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/'" tppabs="http://www.reed-electronics.com/" class="reedlogo">Reed Electronics Group</a><br /><a href="javascript:if(confirm('http://www.edn.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/'" tppabs="http://www.edn.com/" class="logo">EDN: The Voice of the Electronics Engineer</a>
+		<div id="headernav">
+			<a href="javascript:if(confirm('http://www.ednasia.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ednasia.com/'" tppabs="http://www.ednasia.com/">EDN Asia</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.ednc.com.cn/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ednc.com.cn/'" tppabs="http://www.ednc.com.cn/">EDN China</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.ednjapan.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ednjapan.com/'" tppabs="http://www.ednjapan.com/">EDN Japan</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.edn.com/info/123787.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/123787.html'" tppabs="http://www.edn.com/info/123787.html">EDN Europe</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.electronicsnews.com.au/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.electronicsnews.com.au/'" tppabs="http://www.electronicsnews.com.au/">EDN Australia</a>
+		</div>
+		<div style="clear:right;"></div>
+	</div>
+
+<div id="topnav">
+			<div class="tnleft"><SCRIPT LANGUAGE = "JavaScript">var now = new Date();
+var dayNames = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+var monNames = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+document.write("" + dayNames[now.getDay()] + ", " + monNames[now.getMonth()] + " " + now.getDate() + ", " + now.getFullYear());</SCRIPT></div>
+			<ul>
+				<li id="tn1"><a href="javascript:if(confirm('http://www.edn.com/info/CA528811.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/CA528811.html'" tppabs="http://www.edn.com/info/CA528811.html">Subscriptions</a></li>
+				<li id="tn2"><a href="javascript:if(confirm('http://www.edn.com/toc-archive/2005/20050721.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/toc-archive/2005/20050721.html'" tppabs="http://www.edn.com/toc-archive/2005/20050721.html">Current Issue</a></li>
+				<li id="tn3"><a href="javascript:if(confirm('http://www.edn.com/archive  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/archive'" tppabs="http://www.edn.com/archive">Archives</a></li>
+				<li id="tn4"><a href="javascript:if(confirm('http://www.edn.com/info/CA528782.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/CA528782.html'" tppabs="http://www.edn.com/info/CA528782.html">Tools &amp; Services</a></li>
+				<li id="tn5"><a href="javascript:if(confirm('http://www.edn.com/info/CA528812.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/CA528812.html'" tppabs="http://www.edn.com/info/CA528812.html">Blogs</a></li>
+				<li id="tn6"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=Learn_RSS  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=Learn_RSS'" tppabs="http://www.edn.com/index.asp?layout=Learn_RSS">RSS</a></li>
+				<li id="tn7"><a href="javascript:if(confirm('http://www.edn.com/info/30955.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/30955.html'" tppabs="http://www.edn.com/info/30955.html">About EDN</a></li>
+				<li id="tn8"><a href="javascript:if(confirm('http://www.edn.com/info/31091.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/31091.html'" tppabs="http://www.edn.com/info/31091.html">Contact Us</a></li>
+			</ul>
+			<div style="clear:left;"></div>
+	</div>
+
+<!--will be communityMenuEDN-->
+<div id="channelnav">
+<div class="cnreg">
+<form style="display:inline;" method="post" name="emailLookUp" onSubmit="submitForm()" action="http://www.edn.com/subscribe.asp">
+<input type="hidden" name="screen" value="ei1">
+<input type="hidden" name="lastscreen" value="ei1">
+<div style="padding-top:5px;"><b>Register for EDN Newsletters</b></div>
+<div style="padding: 2px;" class="byline"><input type="text" name="email" value="Enter your e-mail address" class="regInput" onClick="clearInput()"></div>
+<div style="padding: 2px;"><a href="#" onClick="submitForm()">Register</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"onClick="submitForm()">Change Profile</a></div></form></div>
+		<div class="cnimage">Technical Channels</div>
+		<div class="cnchan1">
+<a href="javascript:if(confirm('http://www.edn.com/community/2281/Analog.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2281/Analog.html'" tppabs="http://www.edn.com/community/2281/Analog.html">Analog</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/2282/Communications.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2282/Communications.html'" tppabs="http://www.edn.com/community/2282/Communications.html">Communications</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/2280/Components%2FInterconnect.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2280/Components%2FInterconnect.html'" tppabs="http://www.edn.com/community/2280/Components%2FInterconnect.html">Components/Interconnect</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/2283/Computers+%26+Boards.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2283/Computers+%26+Boards.html'" tppabs="http://www.edn.com/community/2283/Computers+%26+Boards.html">Computers &amp; Boards</a><br />
+		</div>
+		<div class="cnchan2">
+<a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas'" tppabs="http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas">Design Ideas</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/42871/Digital+Den.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/42871/Digital+Den.html'" tppabs="http://www.edn.com/community/42871/Digital+Den.html">Digital Den</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/2813/EDA%2FIP.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2813/EDA%2FIP.html'" tppabs="http://www.edn.com/community/2813/EDA%2FIP.html">EDA/IP</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/42872/High+Speed+Design.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/42872/High+Speed+Design.html'" tppabs="http://www.edn.com/community/42872/High+Speed+Design.html">High-Speed Design</a>
+		</div>
+		<div class="cnchan3">
+<a href="javascript:if(confirm('http://www.edn.com/community/2816/Power+Sources%2FControllers.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2816/Power+Sources%2FControllers.html'" tppabs="http://www.edn.com/community/2816/Power+Sources%2FControllers.html">Power Sources/Controllers</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/42873/Processors%2FSoftware%2FTools.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/42873/Processors%2FSoftware%2FTools.html'" tppabs="http://www.edn.com/community/42873/Processors%2FSoftware%2FTools.html">Processors/Software/Tools</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/42874/Programmable+Logic%2FMemory.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/42874/Programmable+Logic%2FMemory.html'" tppabs="http://www.edn.com/community/42874/Programmable+Logic%2FMemory.html">Programmable Logic/Memory</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/2817/Test+%26+Measurement.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2817/Test+%26+Measurement.html'" tppabs="http://www.edn.com/community/2817/Test+%26+Measurement.html">Test &amp; Measurement</a>
+		</div>
+		<div style="clear:left;"></div>
+	</div>
+
+<!--will have searchResultsAutoFill-->
+<div id="searchnav">
+		<div id="searchnavcontent"><form name="SearchForm" onsubmit="checkSearch()" action="javascript:if(confirm('http://www.edn.com/index.asp?content=Go&original=all&layout=searchResults  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?content=Go&original=all&layout=searchResults'" tppabs="http://www.edn.com/index.asp?content=Go&original=all&layout=searchResults" method="get" id="searchform">Search&nbsp;&nbsp; <script language=javascript type="text/javascript">
+<!--
+function stripQts2(name){
+var newName = "";
+var test = name.split(unescape("%27%27")); //split the field on ascii code for double ''
+for(i=0;i<test.length;i++){
+	if(i!=(test.length - 1)){		
+		newName = newName + test[i] + "'"  // put it back together with an "'" 
+	}
+	else{
+		newName = newName + test[i] // make sure end of string has no "'"
+	}
+}
+	userQuery = newName;
+}
+
+var tempQuery="";
+userQuery = "";
+for (i = 0; i < tempQuery.length; i++)
+  if ((tempQuery.charAt(i)=='%') &&
+     (tempQuery.charAt(i+1)=='2') &&
+     (tempQuery.charAt(i+2)=='2'))
+       {userQuery = userQuery + '&quot;';
+        i=i+2;
+       }
+  else
+       {if (tempQuery.charAt(i)=="+")
+	     userQuery = userQuery + " "
+		else
+		 userQuery = userQuery + tempQuery.charAt(i);
+       }
+userQuery=unescape(userQuery);
+stripQts2(userQuery);
+document.write('<input type=text name=text value="' + userQuery + '" class="searchtext" />')
+//-->
+</script>&nbsp; <input type="submit" value="Go" class="searchsubmit" /><INPUT type="hidden" name="content" value="all"><INPUT type="hidden" name="original"><INPUT type="hidden" name="layout" value="searchResults"></form>
+		</div>
+	</div>
+<div id="leaderboard"><img src="edn_adv_top.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050517180213/www.edn.com/contents/images/edn_adv_top.gif" width="20" height="90" style="padding-top:10px;" alt=""/></div>
+
+<!--End Header-->
+<!--Main Content-->
+	<table  id="bodytable">
+		<tr>
+		<td class= "leftcol" valign="top">
+				<div id="leftcolcontainer"><a name="talkBack"></a>
+
+
+
+<h3><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=talkback  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=talkback'" tppabs="http://www.edn.com/index.asp?layout=talkback">Feedback Loop</a></h3><br/>
+<div align="center" id="talkback"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=talkBackPost&articleid=CA624951&talk_back_header_id=624951  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=talkBackPost&articleid=CA624951&talk_back_header_id=624951'" tppabs="http://www.edn.com/index.asp?layout=talkBackPost&articleid=CA624951&talk_back_header_id=624951" class="feedbackinvite">Post a comment on this article</a></div>
+<br/>
+
+<p align="center" style="padding:0 5px;">There are no comments posted for this article.</p>
+</div>
+
+
+<h3>More By This Author</h3>
+<div id="sideNav">
+<ul><li><a href="CA608153.html-ref=nbsa.htm" tppabs="http://www.edn.com/article/CA608153.html?ref=nbsa">Politically correct power</a></li><li><a href="CA529389.html-ref=nbsa.htm" tppabs="http://www.edn.com/article/CA529389.html?ref=nbsa">Sine construction: DDSs form precision oscillators</a></li><li><a href="CA514947.html-ref=nbsa.htm" tppabs="http://www.edn.com/article/CA514947.html?ref=nbsa">Circuit-protection methods yield more robust products</a></li></ul>
+</div>
+<div id="more">
+  <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=moreByThisAuthor&articleid=CA624951  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=moreByThisAuthor&articleid=CA624951'" tppabs="http://www.edn.com/index.asp?layout=moreByThisAuthor&articleid=CA624951">More &gt;&gt;</a>
+ 
+ <previousPage
+ </previousPage>
+ 
+ 
+</div>
+
+<script language="JavaScript" type="text/javascript">
+<!-- // display a new window when not enews article
+function displayWin(publisher,docid) {
+var brand = "";
+switch (publisher) {
+case "CommVerge":
+  brand = "edn";
+  break;
+case "Electronic Business":
+  brand = "eb-mag";
+  break;
+case "ECN":
+  brand = "ecnmag";
+  break;
+case "EDN":
+  brand = "edn";
+  break;
+case "EPP":
+  brand = "semiconductor"
+  break;
+case "Electronic News":
+  brand = "electronicnews";
+  break;
+case "Semiconductor International":
+  brand = "semiconductor";
+  break;
+case "Test & Measurement World":
+  brand = "tmworld";
+  break;
+default:
+  brand = "electronicnews";
+  break;
+  }
+
+var location = "";
+
+if (brand == "edn")
+{
+ location = "http://www.edn.com/article/" + docid + "?ref=nbra";
+}
+else
+{
+ location = "http://www.reed-electronics.com/" + brand + "/article/" + docid + "?ref=nbra";
+}
+
+{
+	makeCookie('tcm-searchquery','',1);
+	window.location = location;
+}
+}
+//-->
+</script>
+
+<a name="related">
+<div id="relart">
+<h3>Related Articles</h3>
+<div id="sideNav">
+<ul>
+
+<li><script language="JavaScript" type="text/javascript">
+<!--
+document.write("<a href=\"javascript: displayWin('EDN','CA603903');\" onclick=\"makeCookie('tcm-searchquery','',1);\">www.edn.com: It&#39;s all about you </a>")
+//-->
+</script><noscript><a href="CA603903.html-ref=nbra.htm" tppabs="http://www.edn.com/article/CA603903?ref=nbra" title="Take a quick tour of your new site." onclick="makeCookie('tcm-searchquery','',1);">www.edn.com: It&#39;s all about you </a></noscript><br />06/06/2005, EDN</li>
+<li><script language="JavaScript" type="text/javascript">
+<!--
+document.write("<a href=\"javascript: displayWin('EDN','CA513923');\" onclick=\"makeCookie('tcm-searchquery','',1);\">Silicon East Summit: IP and silicon startups bloom</a>")
+//-->
+</script><noscript><a href="javascript:if(confirm('http://www.edn.com/article/CA513923.html?ref=nbra  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/article/CA513923.html?ref=nbra'" tppabs="http://www.edn.com/article/CA513923?ref=nbra" title="Small players are alive and perhaps even well, judging by activity at the Silicon East Summit." onclick="makeCookie('tcm-searchquery','',1);">Silicon East Summit: IP and silicon startups bloom</a></noscript><br />03/30/2005, EDN</li>
+<li><script language="JavaScript" type="text/javascript">
+<!--
+document.write("<a href=\"javascript: displayWin('EDN','CA509581');\" onclick=\"makeCookie('tcm-searchquery','',1);\">And the statuette goes to ...</a>")
+//-->
+</script><noscript><a href="javascript:if(confirm('http://www.edn.com/article/CA509581.html?ref=nbra  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/article/CA509581.html?ref=nbra'" tppabs="http://www.edn.com/article/CA509581?ref=nbra" title="The electronics industry had a very good year in 2004, with consumer and other high-volume designs driving demand to new highs. At the same time, forecasters and vendors see some areas of concern and are predicting a relatively flat 2005, at best. EDN&#39;s 15th Annual Innovation Awards demonstrate that these uncertainties failed to squelch the cornerstone of our industry." onclick="makeCookie('tcm-searchquery','',1);">And the statuette goes to ...</a></noscript><br />03/17/2005, EDN</li>
+<li><script language="JavaScript" type="text/javascript">
+<!--
+document.write("<a href=\"javascript: displayWin('EDN','CA495685');\" onclick=\"makeCookie('tcm-searchquery','',1);\">Books still offer serious design help</a>")
+//-->
+</script><noscript><a href="javascript:if(confirm('http://www.edn.com/article/CA495685.html?ref=nbra  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/article/CA495685.html?ref=nbra'" tppabs="http://www.edn.com/article/CA495685?ref=nbra" title="With the wide availability of vendor application notes, Web-based sources, reference designs, and EDA tools, books may seem to be outmoded information sources for engineers. But that&#8217;s not at all the case." onclick="makeCookie('tcm-searchquery','',1);">Books still offer serious design help</a></noscript><br />02/03/2005, EDN</li>
+<li><script language="JavaScript" type="text/javascript">
+<!--
+document.write("<a href=\"javascript: displayWin('EDN','CA495736');\" onclick=\"makeCookie('tcm-searchquery','',1);\">You be the judge</a>")
+//-->
+</script><noscript><a href="javascript:if(confirm('http://www.edn.com/article/CA495736.html?ref=nbra  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/article/CA495736.html?ref=nbra'" tppabs="http://www.edn.com/article/CA495736?ref=nbra" title="EDN's editors have chosen this year's finalists from the scores of candidates in our annual Innovator and Innovation Program. Now, we're calling on you to help select the winners. Go to our Innovation Web Site, www.edn.com/innovation, to read detailed descriptions of the products listed on these pages, and carefully consider the entries for the most innovative products and people of 2004." onclick="makeCookie('tcm-searchquery','',1);">You be the judge</a></noscript><br />01/20/2005, EDN</li>
+</ul></div>
+<h3>News &amp; New Products</h3>
+<div id="sideNav">
+<ul><li><a href="CA631462.html-ref=nbnp.htm" tppabs="http://www.edn.com/article/CA631462.html?ref=nbnp">Sigma-C gets new CEO for DFM push</a><br />
+EDN, 8/2/2005</li>
+
+
+
+<li><a href="CA631515.html-ref=nbnp.htm" tppabs="http://www.edn.com/article/CA631515.html?ref=nbnp">Atmel joins Z-Alliance's digital-power effort</a><br />
+EDN, 8/1/2005</li>
+
+
+
+<li><a href="CA631473.html-ref=nbnp.htm" tppabs="http://www.edn.com/article/CA631473.html?ref=nbnp">Small driver IC controls multiple LEDs in handhelds</a><br />
+EDN, 8/1/2005</li>
+
+
+
+</ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=news&spacedesc=newProducts  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=news&spacedesc=newProducts'" tppabs="http://www.edn.com/index.asp?layout=news&spacedesc=newProducts">More &gt;&gt;</a></div><h3>Design Ideas</h3>
+<div id="sideNav">
+<ul><li><a href="CA608155.html-ref=nbdi.htm" tppabs="http://www.edn.com/article/CA608155.html?ref=nbdi">Wide-range regulator delivers 12V, 3A output from 16 to 100V		source</a><br />
+EDN, 6/23/2005</li>
+
+
+
+<li><a href="CA605506.html-ref=nbdi.htm" tppabs="http://www.edn.com/article/CA605506.html?ref=nbdi">CMOS hex inverter generates low-distortion sine waves</a><br />
+EDN, 6/9/2005</li>
+
+
+
+<li><a href="CA608156.html-ref=nbdi.htm" tppabs="http://www.edn.com/article/CA608156.html?ref=nbdi">Stable, 18-MHz oscillator features automatic level control,		clean-sine-wave output</a><br />
+EDN, 6/23/2005</li>
+
+
+
+</ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas'" tppabs="http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas">More &gt;&gt;</a></div><h3>Features</h3>
+<div id="sideNav">
+<ul><li><a href="CA624945.html-ref=nbfe.htm" tppabs="http://www.edn.com/article/CA624945.html?ref=nbfe">Thinking inside the box: Buildings get a brain</a><br />
+EDN, 7/21/2005</li>
+
+
+
+<li><a href="CA624967.html-ref=nbfe.htm" tppabs="http://www.edn.com/article/CA624967.html?ref=nbfe">Sun sets on IEEE 488, LAN and PC standards vie for its
+		role</a><br />
+EDN, 7/21/2005</li>
+
+
+
+<li><a href="CA624951.html-ref=nbfe.htm" tppabs="http://www.edn.com/article/CA624951.html?ref=nbfe">A bit-o&#39;-power: digitally controlled power conversion</a><br />
+EDN, 7/21/2005</li>
+
+
+
+</ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=news&spacedesc=features  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=news&spacedesc=features'" tppabs="http://www.edn.com/index.asp?layout=news&spacedesc=features" class="more">More &gt;&gt;</a></div><h3>Columnists</h3>
+<div id="sideNav">
+<ul><li><a href="CA621636.html-ref=nbop.htm" tppabs="http://www.edn.com/article/CA621636.html?ref=nbop">One in a million</a><br />
+By Bonnie Baker, EDN, 7/7/2005</li>
+
+
+
+<li><a href="CA628274.html-ref=nbop.htm" tppabs="http://www.edn.com/article/CA628274.html?ref=nbop">No SOC is an island</a><br />
+By Gabe Moretti, EDA consultant, EDN, 7/21/2005</li>
+
+
+
+<li><a href="CA624952.html-ref=nbop.htm" tppabs="http://www.edn.com/article/CA624952.html?ref=nbop">Some products fall down on the job&#8212;literally!</a><br />
+By John Dodge, Editor in Chief, EDN, 7/21/2005</li>
+
+
+
+</ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=news&spacedesc=opinions  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=news&spacedesc=opinions'" tppabs="http://www.edn.com/index.asp?layout=news&spacedesc=opinions">More &gt;&gt;</a></div><h3>Blogs</h3>
+<div id="sideNav">
+<ul><li><a href="javascript:if(confirm('http://www.edn.com/blog/150000015/post/1360001136.html?ref=nbbl  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/blog/150000015/post/1360001136.html?ref=nbbl'" tppabs="http://www.edn.com/blog/150000015/post/1360001136.html?ref=nbbl" title="WiMax gains momentum with deployments worldwide">WiMax gains momentum with deployments worldwide</a> - 08/01/2005</li><li><a href="javascript:if(confirm('http://www.edn.com/blog/400000040/post/1340001134.html?ref=nbbl  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/blog/400000040/post/1340001134.html?ref=nbbl'" tppabs="http://www.edn.com/blog/400000040/post/1340001134.html?ref=nbbl" title="I Love LA!">I Love LA!</a> - 08/01/2005</li><li><a href="javascript:if(confirm('http://www.edn.com/blog/400000040/post/1290001129.html?ref=nbbl  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/blog/400000040/post/1290001129.html?ref=nbbl'" tppabs="http://www.edn.com/blog/400000040/post/1290001129.html?ref=nbbl" title="Startup Tips">Startup Tips</a> - 07/30/2005</li></ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=siteinfo&articleid=CA528812  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=siteinfo&articleid=CA528812'" tppabs="http://www.edn.com/index.asp?layout=siteinfo&articleid=CA528812">More &gt;&gt;</a></div><h3 class="sponsorhead">Affiliate Network</h3>
+<div id="sideNav">
+<ul><li><span style="font:10px verdana, sans-serif;">
+<script language="JavaScript1.1" SRC=";type=affiliate;sz=1x1;tile=1;u=-1176500494-521400098-946378881-0-article-CA624951--;ord=1122972018-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=affiliate;sz=1x1;tile=1;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">
+</script><script language="JavaScript1.1" SRC=";type=affiliate;sz=1x1;tile=2;u=-1176500494-521400098-946378881-0-article-CA624951--;ord=1122972018-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=affiliate;sz=1x1;tile=2;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">
+</script><script language="JavaScript1.1" SRC=";type=affiliate;sz=1x1;tile=3;u=-1176500494-521400098-946378881-0-article-CA624951--;ord=1122972018-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=affiliate;sz=1x1;tile=3;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">
+</script><script language="JavaScript1.1" SRC=";type=affiliate;sz=1x1;tile=4;u=-1176500494-521400098-946378881-0-article-CA624951--;ord=1122972018-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=affiliate;sz=1x1;tile=4;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">
+</script><script language="JavaScript1.1" SRC=";type=affiliate;sz=1x1;tile=5;u=-1176500494-521400098-946378881-0-article-CA624951--;ord=1122972018-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=affiliate;sz=1x1;tile=5;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">
+</script></span></li></ul>
+</div><h3 class="sponsorhead">Tool Center</h3>
+<div id="sideNav">
+<ul><li><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=19  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=19'" tppabs="http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=19">Software</a></li>
+<li><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=26  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=26'" tppabs="http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=26">Catalogs &amp; Brochures</a></li>
+<li><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=partnerAllArticles  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=partnerAllArticles'" tppabs="http://www.edn.com/index.asp?layout=partnerAllArticles">White Papers</a></li>
+</ul>
+</div>
+<h3><a href="javascript:if(confirm('http://www.edn.com/toc-events  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/toc-events'" tppabs="http://www.edn.com/toc-events">Events</a></h3>
+<div id="sideNav">
+<ul><li><a href="javascript:if(confirm('http://www.edn.com/event/14097.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/event/14097.html'" tppabs="http://www.edn.com/event/14097.html">EDA Tech Forum</a><br/>
+<span class="byline"><strong>Dates:</strong> 8/15/2005 - 8/15/2005<br/>
+<strong>Location:</strong> Penang, Malaysia</span></li><li><a href="javascript:if(confirm('http://www.edn.com/event/14098.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/event/14098.html'" tppabs="http://www.edn.com/event/14098.html">EDA Tech Forum</a><br/>
+<span class="byline"><strong>Dates:</strong> 8/17/2005 - 8/17/2005<br/>
+<strong>Location:</strong> Bangalore, India</span></li><li><a href="javascript:if(confirm('http://www.edn.com/event/14099.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/event/14099.html'" tppabs="http://www.edn.com/event/14099.html">EDA Tech Forum</a><br/>
+<span class="byline"><strong>Dates:</strong> 8/19/2005 - 8/19/2005<br/>
+<strong>Location:</strong> Delhi, India</span></li></ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/toc-events  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/toc-events'" tppabs="http://www.edn.com/toc-events">More &gt;&gt;</a></div>
+</div><br/>
+<img src="pixel.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050404164317/www.edn.com/contents/images/pixel.gif" width="170" alt=""/><br/>
+		</td><!--end leftcol-->
+		
+		<td class= "rightcol" valign="top">
+				<div id="rightcolcontainer"><div id="centercolcontainer">
+<script>
+<!--
+function appendLocation(theLink) {
+    var thisPage = "" + location;
+    var bits = thisPage.split("&");
+    var s = ""
+    for (var i = 0; i < bits.length; i++) {
+      s += bits[i] + "^"
+    }
+    if (s == "") {
+      theLink.href = theLink.href + "&refPage=" + thisPage
+     } else {
+       theLink.href = theLink.href + "&refPage=" + s
+    }
+    return true;
+}
+// -->
+</script>
+<div id="printSubEmail"><div><a href="javascript:if(confirm('http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article'" tppabs="http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article"><img src="ednIconSubscribe.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222505/www.edn.com/contents/images/redesign/ednIconSubscribe.gif" alt="Free Print Subscriptions" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article'" tppabs="http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article">Free Print Subscription</a></div>
+
+<div><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articlePrint&articleID=CA624951  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articlePrint&articleID=CA624951'" tppabs="http://www.edn.com/index.asp?layout=articlePrint&articleID=CA624951"><img src="ednIconPrint.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222321/www.edn.com/contents/images/redesign/ednIconPrint.gif" alt="Printer Friendly Version" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articlePrint&articleID=CA624951  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articlePrint&articleID=CA624951'" tppabs="http://www.edn.com/index.asp?layout=articlePrint&articleID=CA624951">Printer Friendly Version</a></div>
+
+<div><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articleEmail&articleID=CA624951  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articleEmail&articleID=CA624951'" tppabs="http://www.edn.com/index.asp?layout=articleEmail&articleID=CA624951" onclick="return appendLocation(this)"><img src="ednIconEmail.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222407/www.edn.com/contents/images/redesign/ednIconEmail.gif" alt="Email to a Friend" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articleEmail&articleID=CA624951  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articleEmail&articleID=CA624951'" tppabs="http://www.edn.com/index.asp?layout=articleEmail&articleID=CA624951" onclick="return appendLocation(this)">Email to a Friend</a></div></div><br/>
+<div id="articleContainer">
+<h4><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=news&spacedesc=features  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=news&spacedesc=features'" tppabs="http://www.edn.com/index.asp?layout=news&spacedesc=features">Feature</a></h4>
+
+<script type="text/javascript" language="javascript">
+<!-- // display magazine logo when not e-inSITE story
+function get_publication(publication_name) {
+var pub_id = 'EDN';
+if (publication_name == 'EDN' && pub_id == 'CV')
+return 'EDN/CommVerge';
+else
+return publication_name;
+}
+function displayLogo() {
+var pubId = "EDN";
+var brand = "edn";
+if (brand != "default") return;
+switch (pubId) {
+case 'EDN':
+  document.write('<A href="http://www.edn.com/"><IMG border=0 src="edn.gif"/*tpa=http://www.edn.com/contents/images/edn.gif*/ align=right></A>');
+  break;
+default:
+  break;
+  }
+}
+//-->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+displayLogo();
+//-->
+</script>
+
+<h1>A bit-o&#39;-power: digitally controlled power conversion</h1>
+<h2>Ironically, perhaps, the last subsystem to undergo a substantive
+		shift from an analog- to a digital-control architecture is the most universal:
+		the power supply. Beware the hype, however. Digital power control may bring
+		performance benefits to some applications, but until you become familiar with
+		the inner machinations, their sophistication will exact a price in
+		application-development time.</h2>
+
+<span class="byline">By Joshua Israelsohn, Technical Editor -- <script language="javascript">document.write(get_publication('EDN'));</script>, 7/21/2005</span><br/>
+
+<span class="copy"><br/><table id="infobox" cellSpacing="0" cellPadding="0" width="180" align="right" border="0"><tbody><tr><td bgcolor="#cccccc">
+
+
+<table cellspacing="1" cellpadding="4" width="100%" border="0"><tbody><tr><td class="table" bgcolor="#ffffff"><strong>AT A GLANCE</strong></td></tr><tr bgcolor="#eeeeee"><td class="table"><font color="#666666"><ul><li>Recent arrivals of digital power 
+              controllers mark the beginning of what many believe is an 
+              important new trend in power control. Expect several competing 
+              parts to emerge over the coming quarters.<li>Digital power controllers allow you to 
+              exploit DSP-based filtering methods and build a range of supplies 
+              from a common core set of parts with model differentiation managed 
+              in software.<li>DPWM (digital-PWM) edge placement requires extremely high-speed     clocks, which on-chip PLLs generally provide. Though the fastest signals stay     on chip, use good high-frequency-layout practices to maintain switching-edge     fidelity.</li></ul></font></td></tr><tr bgcolor="#eeeeee"><td class="table" bgcolor="#ffffff"><strong>Online
+        extra</strong></td></tr><tr bgcolor="#eeeeee"><td class="table"><font color="#666666"><A href="#this">This
+        just in: More parts, and an upcoming panel discussion</A><br>
+        After this article went to press, Joshua Israelsohn contributed information on some more
+        ICs coming to the market and an upcoming panel discussion in which he's taking part.</font></td></tr></tbody></table>
+
+</td></tr></tbody></table><span>
+    <p>Within reasonable limits of voltage and current ranges, disparate
+		applications often put remarkably similar demands on power-management
+		subsystems. This initially counterintuitive observation derives from the facts
+		that many applications draw on common core technologies, exploit similar
+		functional partitioning schemes, and operate dominantly on only a few different
+		energy sources. Independently of what you design, declining operating voltages
+		for major subsystems have marked the evolutionary track of many of the
+		technologies you use. The supply tolerances that these technologies impose upon
+		power subsystems have been in decline, too, in rough proportion to the supply
+		voltages. Simultaneously, standing currents have been on the rise, and,
+		disproportionately, dynamic currents have as well.</p>
+    <a name="In the loop"><strong>In the loop</strong></a>
+    <p>The typical SMPS (switch-mode-power-supply) control loop modulates the
+		timing of its power switches depending on the subsystem's output voltage
+		(<strong><A 
+href="javascript:if(confirm('http://www.edn.com/contents/images/624951f1.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/624951f1.pdf'" tppabs="http://www.edn.com/contents/images/624951f1.pdf">Figure 1</A></strong>). Working clockwise from the output,
+		a scaling network samples the output voltage, multiplying it by V<sub>O</sub>(ideal)/V<sub>REF</sub>. The term "error amplifier" is something of a
+		misnomer. The device compares the scaling network's output with the reference
+		voltage and produces a drive signal for the PWM sufficient to force the two
+		input voltages to match. (Some literature describes the error amplifier as
+		developing an output signal proportional to the difference between its two
+		input signals, which is not the case as long as the loop is operating within
+		its linear range.) A compensation network scales the amplifier's dc and
+		low-frequency gain appropriately to the PWM's sensitivity and also provides a
+		local high-frequency feedback path to ensure adequate phase margin for loop
+		stability. This basic structure applies to both isolated and nonisolated
+		supplies. You can provide isolation (not shown) either at the power entry or
+		within the power-switching block.</p>
+    <p>Beyond the basic issues of voltage regulation, this architecture
+		accommodates a variety of common ancillary functions with little additional
+		complexity. For example, one additional resistor between the reference's output
+		and the error amplifier's noninverting input provides a tracking option, which
+		allows a regulator to follow another supply rail or voltage source. Here, an
+		external voltage source can take control of the regulator's output target as
+		long as it can adequately source (or sink as necessary) the reference current:
+		|V<sub>TRACK</sub>&#8211;V<sub>REF</sub>|&#247;R<sub>R</sub>. Few functions are implemented so simply, but the
+		architecture accommodates such common features as overvoltage protection,
+		undervoltage protection, overcurrent protection, and current reporting with
+		moderate additional complexity and with little impact on the regulator's loop
+		performance.</p>
+    <p>Outside the context of a switching regulator, servo circuits similar to
+		this one date back to the days of vacuum tubes and are among the best studied,
+		characterized, and documented control topologies in the literature (<strong><A href="#ref">Reference 1</A></strong>). Considering the levels of performance that
+		modern implementations provide, this loop is a remarkably simple and efficient
+		structure, and, until recently, not easy to replace with a digital equivalent.
+		Indeed, little more than a year ago, Astec Power Vice President Geof Potter
+		stated, "Peripheral functions have long been within the scope of
+		digital-control methods because [the] necessary speed and complexity are not
+		great. On the other hand, digital control of an active feedback loop, including
+		a pulse-modulation process ... has been an elusive prize due to size, cost, and
+		power consumption of components needed for practical operation. To successfully
+		compete with a low-cost analog-control system, a digital equivalent requires
+		data resolution and latency numbers that have been available only in large,
+		expensive DSP and ADC products. To compound the difficulty, there are few, if
+		any, integrated devices on the market ... that contain all the necessary
+		functions to constitute a reasonable [digital] power 'controller'" (<strong><A href="#ref">Reference 2</A></strong>).</p>
+    <a name="Bits of empowerment"><strong>Bits of empowerment</strong></a>
+    <p><table cellpadding="0" cellspacing="0" border="0" align="right" valign="top" id="boombox" style="background-color:#DDE6ED;padding:19px;">
+
+
+
+
+<tr><td align="center" style="font: normal 10px verdana, sans-serif; color: #333;">ADVERTISEMENT<br />
+<script language=Javascript1.1 src="fi000011." tppabs="http://ad.doubleclick.net/adj/edn.rbi/;abr=!webtv;desc=;desc=CA624951;type=boombox;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">
+</script>
+<script>
+<!--
+if ((!document.images && navigator.userAgent.indexOf('Mozilla/2.') >= 0) || (navigator.userAgent.indexOf("WebTV") >= 0))
+{
+document.write('<a href="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=;desc=CA624951;type=boombox;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">');
+document.write('<img src="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=;desc=CA624951;type=boombox;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?" border="0"></a>');
+}
+//-->
+</script>
+<noscript>
+<!-- for non JavaScript browsers and Netscape 2.x -->
+<a href="javascript:if(confirm('http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=;desc=CA624951;type=boombox;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=;desc=CA624951;type=boombox;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?'" tppabs="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=;desc=CA624951;type=boombox;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">
+<img src="javascript:if(confirm('http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=;desc=CA624951;type=boombox;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=;desc=CA624951;type=boombox;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?'" tppabs="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=;desc=CA624951;type=boombox;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?" border="0" align="right" vspace=5 hspace=5>
+</a>
+</noscript>
+
+</td></tr></table>
+
+The motivation for such devices is multifold: Supplies for product
+		variants within a family can use identical power-management circuits with
+		model-specific tuning and optimization coded in software or by operational
+		coefficients. Onboard self-test programs can reduce, enhance, or eliminate
+		production testing of power-management functions, depending on your
+		organization's design and test-method policies. A digital power-management
+		section can automatically compensate or replace components subject to
+		parametric variation over population, time, or temperature. Product and
+		accessory identification and recognition schemes can fit into a
+		digital-power-management design with little additional hardware and provide
+		enhanced safety, product-tracking, and diagnostic information.</p>
+    <p>The digitally controlled loop replaces the error amplifier and its
+		compensation network with an ADC and a control-law processor; the processor
+		often implements a PI (proportional-integral) or PID
+		(proportional-integral-derivative) compensator (<strong><A 
+href="javascript:if(confirm('http://www.edn.com/contents/images/624951f2.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/624951f2.pdf'" tppabs="http://www.edn.com/contents/images/624951f2.pdf">Figure 2</A></strong>). The processor can access stored coefficients that determine the
+		loop dynamics and can modify those coefficients to optimize operation during
+		various normal operating modes, transient events, and faults. The processor's
+		output drives the input to a DPWM (digital PWM), which in turn determines the
+		switching-edge positions by calculating and timing as opposed to exploiting the
+		analog loop's threshold-detection method.</p>
+    <p>The macroscopic similarities between the analog- and the
+		digital-control-loop topologies mask the complexity of such a replacement. For
+		example, both analog- and digital-control loops must compensate for the phase
+		lags that the forward path imposes between the power-switch inputs and the
+		filter output. The digital implementation must also contend with the additional
+		phase lag due to analog-to-digital-conversion delays and computational
+		latencies through the control-law processor.</p>
+    <p>In addition to operating as a discrete time circuit, the digital-control
+		loop is a quantizer, whereas the analog-control loop operates in continuous
+		time and amplitude. These distinctions impose structural requirements and
+		performance limitations on the digital loop. These constraints have until
+		recently made high loop bandwidths and tight output tolerances difficult to
+		attain on a large mixed-signal IC. For example, the ADC determines the
+		resolution of the output-voltage setting&#8212;the first line item on your
+		output-voltage-error budget. You can calculate your minimum resolution from
+		your nominal output voltage, V<sub>O</sub>, and the
+		setting resolution, &#916;V<sub>O</sub>:</p>
+<P><IMG src="15df1eq1.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050713150940/www.edn.com/articles/images/EDN/20050721/15df1eq1.gif"></P>
+<P>To prevent limit-cycle oscillations in the output, quantizers that
+		follow the ADC, including the DPWM, must exhibit a greater resolution than the
+		ADC (<strong><A 
+href="javascript:if(confirm('http://www.edn.com/contents/images/624951f3.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/624951f3.pdf'" tppabs="http://www.edn.com/contents/images/624951f3.pdf">Figure 3</A></strong>). This requirement ensures that
+		a stable output value will exist for each possible ADC quantity. Referring to
+		<strong><A 
+href="javascript:if(confirm('http://www.edn.com/contents/images/624951f2.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/624951f2.pdf'" tppabs="http://www.edn.com/contents/images/624951f2.pdf">Figure 2</A></strong>,</P>
+<P><IMG src="15df1eq2.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050713150940/www.edn.com/articles/images/EDN/20050721/15df1eq2.gif"></P>
+<P>The DPWM essentially translates bits of amplitude into bits of time. The
+		power section's switching rate and the converter's amplitude resolution set the
+		DPWM's minimum timing resolution: The DPWM must fit 2<sup>m</sup> bits within the power section's switching interval. 
+For example, in a controller that follows an 8-bit DAC with a 9-bit DPWM 
+controlling a power section with a 1-MHz switching rate, the DPWM timing 
+resolution is</P>
+<P><IMG src="15df1eq3.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050713150940/www.edn.com/articles/images/EDN/20050721/15df1eq3.gif"></P>
+    <p>The reciprocal of the DPWM timing resolution gives the DPWM clock rate,
+		which for this modest example is</p>
+<P><IMG src="15df1eq4.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050713150940/www.edn.com/articles/images/EDN/20050721/15df1eq4.gif"></P>
+    <p>As the voltage-setting resolution increases, the DPWM clock does
+		likewise: one octave per bit. Because some emission is likely at both the
+		system and the DPWM, consider the radiated-noise spectrum of a power supply
+		that uses a digitally controlled loop in the context of your application's
+		signal band before committing to the power-subsystem design. Also, be sure to
+		observe good high-frequency-layout practices, particularly in the regions of
+		the switch-drive and clock signals. Conduction of RF from the regulated dc
+		output, V<sub>O</sub>, is unlikely due to the output
+		filter, but radiated RF emissions are still a layout concern (<strong><A href="#ref">Reference 3</A></strong>).</p>
+    <a name="Power in numbers"><strong>Power in numbers</strong></a>
+    <p>The theoretical and technological-development work behind digital power
+		controllers has been ongoing for some years, but this spring brought the
+		announcement of ICs that implement the architecture from Texas Instruments and
+		Silicon Laboratories. The Texas Instruments approach is a two-chip set with
+		several options to accommodate a variety of SMPS topologies (<strong><A href="javascript:if(confirm('http://www.edn.com/contents/images/624951f4.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/624951f4.pdf'" tppabs="http://www.edn.com/contents/images/624951f4.pdf">Figure 
+4</A></strong>). ICs from the UCD9k and UCD7k families combine
+		with your power-switching and filter sections to form a complete power
+		subsystem.</p>
+    <p>The UCD7100 and 7201 single- and dual-channel, low-side MOSFET gate
+		drivers feature microcontroller- and DSP-compatible inputs and can operate at
+		switching rates as fast as 2 MHz. The drivers can typically source or sink 4A
+		and feature maximum rise and fall times of 20 and 15 nsec, respectively, when
+		driving 2.2-nF loads. The maximum input-to-output propagation delay is 35 nsec.
+		Both drivers provide cycle-by-cycle current limiting, programmable limit
+		thresholds, and logic-level limit-status flag outputs. The ICs can operate
+		supplies in the range of 4.5 to 15V and include an on-chip 3.3V regulator rated
+		for 10 mA, which you can use to power external circuits, such as a low-power
+		microcontroller or ASIC. The 99-cent, single-channel and $1.20, dual-channel
+		drivers are available in QFN-14 and QFN-16 packages, respectively. Both parts
+		are also available in HTSSOP-14 packages and are rated for operation at &#8211;40 to
+		+105&#176;C.</p>
+    <p>TI also currently offers four other drivers in the UCD7k family. Various
+		members include a synchronous-buck driver with current sensing, and single- and
+		dual-channel, low-side drivers with 110V start-up capability. The dual-channel
+		ICs are available with either independent or common current sensing. Members of
+		the UCD7k-family drivers mate with a variety of processors, including the
+		UCD9501 and its kin. The 9501, the first of the UCD9k family, comprises a
+		100-MHz, 32-bit Harvard DSP core; a clock- and timing-control block; a 12-bit,
+		6.25M-sample/sec ADC; extensive digital I/O, including PWM outputs; and
+		memory.</p>
+    <p>The ADC features a 16-channel multiplexer and a sample-and-hold
+		amplifier and operates over a 3V unipolar range. You can program the ADC to
+		synchronize with the PWM outputs or initiate a conversion by either software
+		command or hardware interrupt. A built-in sequencer can take as many as 16
+		samples with one command. You can program the sequencer to take each sample
+		from any of the 16 input channels. The converter's INL (integral nonlinearity)
+		and DNL (differential nonlinearity) are typically 1.5 and 1 LSBs, respectively,
+		at 6.25M samples/sec; the manufacturer provides no limit specs. Similarly,
+		ac-converter specifications are available only as typical values: 76-dB SFDR
+		(spurious-free dynamic range), 67-dB SNR, and 10.6-bit ENOB (effective number
+		of bits), all at 100 kHz, suggest that the converter is largely noise-limited
+		but at sufficiently low values for power-management applications. When the
+		device is operating with a 100-MHz system clock, on-chip timers can set the
+		output edge positions of the three high-resolution PWM channels to a nominal
+		granularity of 150 psec. At a 1-MHz power-switching rate, errors due to the
+		PWM's finite-edge-placement resolution fall below the converter's noise
+		floor.</p>
+    <p>TI offers the $5.79 (1000) digital power controller in an LQFP-100
+		package with three temperature-range options extending to 125&#176;C. The IC
+		operates on 3.3 and 1.8V supplies and typically dissipates &#189;W. Support tools
+		include a $495 eZdsp starter kit, a C/C++ compiler/assembler/linker, TI's Code
+		Composer Studio IDE, evaluation modules, JTAG controllers, and TI's DSP/BIOS.
+		</p>
+    <p>Silicon Labs takes a dual-processor approach that separates all of the
+		communication and housekeeping activities from the primary task of loop control
+		(<strong><A 
+href="javascript:if(confirm('http://www.edn.com/contents/images/624951f5.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/624951f5.pdf'" tppabs="http://www.edn.com/contents/images/624951f5.pdf">Figure 5</A></strong>). At the block-diagram level, the
+		Si8250 digital-power-controller family performs the functions of TI's UCD9k
+		family, though their internal architectures significantly differ. That fact
+		leaves you to provide the driver and current sensing that the TI UCD7k family
+		provides. However, a cursory search reveals some 15 reputable vendors of
+		power-MOSFET drivers, so it is reasonable that Silicon Labs didn't reinvent the
+		wheel when developing its first power-controller ICs.</p>
+    <p> One advantage of the Si8250 that is evident at first glance is its
+		size: The dual-processor controller fits into QFN-28 and LQFP-32 packages.
+		In exchange for the reduced pinout, the SiLabs part does without some of the
+		ADC's multiplexer width&#8212;eight rather than 16 channels&#8212;and the
+		8250 family provides a somewhat more modest complement of digital-I/O
+		facilities than does the UCD9k, which devotes more pins that
+		function&#8212;35&#8212;than does the entirety of the 8250's package. (Ironically, perhaps, the Si8250
+		manages to fit in six PWM outputs&#8212;the business end of these
+		devices&#8212;compared with the UCD9k's three.) If you can do with the more
+		modest facilities of the $2.49 (1000) Si8250, another benefit in addition to
+		its relatively reduced girth is a maximum dissipation of 69 mW.</p>
+    <p>The 8250 operates with an internal 25-MHz system clock. An internal
+		PLL-based clock multiplier derives 50-, 100-, and 200-MHz clocks for the
+		loop-control ADC, DPWM, and some peripherals. Programmable options include
+		operation with an external clock with an on-chip, 3-bit programmable prescaler
+		and an integrated 80-kHz, low-frequency clock, which is useful for certain
+		low-power, nonoperational modes.</p>
+    <p>Silicon Labs provides a dedicated 10-MHz, 6-bit loop-control ADC and a
+		separate 12-bit ADC with an eight-channel multiplexer for current, temperature,
+		and other housekeeping measurements. The loop-control ADC meets 2- and 1-bit
+		INL- and DNL-limit specs, respectively&#8212;a bit chubby for a 6-bit
+		converter from a specsmanship perspective, perhaps, but adequate for many
+		power-controller applications. A reference DAC allows you to program the LSB
+		size from 2 to 20 mV for a dynamic range of 128 mV to 1.28V. As yet, SiLabs has
+		neither specified the loop-control ADC's ac performance, nor announced an
+		intention to do so.</p>
+    <p>One unusual "feature"&#8212;in the "it's-not-a-bug-it's-a-feature"
+		sense of the word&#8212;of the Si8250's 300-page data sheet is that the
+		specification table does not exist in a single section. Instead, the document
+		tucks away pieces of the table at the end of each table segment's relative
+		text. This approach distributes information critical to the part-selection
+		process and early-design phases throughout the book-sized data sheet. In many
+		cases, you'll find spec-table fragments under subparagraphs that you might
+		otherwise hardly notice. Although this organization may be useful for those who
+		assembled the data-sheet source materials, it can be cumbersome for users of
+		the resultant document. You may, therefore, wish to have the data sheet in PDF
+		form on a laptop for quick text searches, particularly if you are developing
+		your first application using the 8250. Alternatively, you can arm yourself with
+		a healthy supply of Post-it Notes.</p>
+    <p>Among the support tools for the Si8250 family is a $199 IDK, which
+		features a GUI-based design interface and timing design wizard. The tool set
+		comprises a real-time firmware kernel with C source code,
+		microcontroller-configuration software, and a USB debugging adapter.</p><hr><table border="0" width="100%" cellPadding="4" cellSpacing="0">
+        <tbody>
+            <tr>
+                <td colspan="3" bgColor="#eeeeee" class="table"><strong>FOR MORE INFORMATION</strong></td>
+            </tr>
+            <tr>
+                <td valign="top" class="table"><STRONG>Digital power 
+      controllers</STRONG>  </td>
+            </tr><tr><td valign="top" class="table"><strong>Primarion</strong>: <BR>
+				<a href="javascript:if(confirm('http://www.primarion.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.primarion.com/'" tppabs="http://www.primarion.com/">www.primarion.com</a></td><td valign="top" class="table"><strong>Silicon Laboratories</strong>: 
+				<a href="javascript:if(confirm('http://www.silabs.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.silabs.com/'" tppabs="http://www.silabs.com/">www.silabs.com</a></td><td valign="top" class="table"><strong>Texas Instruments</strong>: 
+				<a href="javascript:if(confirm('http://www.ti.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ti.com/'" tppabs="http://www.ti.com/">www.ti.com</a></td></tr><tr bgcolor="#eeeeee"><td valign="top" class="table"><strong>Zilker Labs</strong>: <BR><a href="javascript:if(confirm('http://www.zilkerlabs.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.zilkerlabs.com/'" tppabs="http://www.zilkerlabs.com/">www.zilkerlabs.com</a></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr>
+                <td valign="top" class="table"><STRONG>Power-MOSFET 
+      drivers</STRONG> </td>
+            </tr><tr><td valign="top" class="table"><strong>Allegro</strong>: <BR>
+				<a href="javascript:if(confirm('http://www.allegromicro.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.allegromicro.com/'" tppabs="http://www.allegromicro.com/">www.allegromicro.com</a></td><td valign="top" class="table"><strong>Fairchild Semiconductor</strong>: 
+				<a href="javascript:if(confirm('http://www.fairchildsemi.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.fairchildsemi.com/'" tppabs="http://www.fairchildsemi.com/">www.fairchildsemi.com</a></td><td valign="top" class="table"><strong>International Rectifier</strong>: 
+				<a href="javascript:if(confirm('http://www.irf.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.irf.com/'" tppabs="http://www.irf.com/">www.irf.com</a></td></tr><tr bgcolor="#eeeeee"><td valign="top" class="table"><strong>Intersil</strong>: <BR>
+				<a href="javascript:if(confirm('http://www.intersil.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.intersil.com/'" tppabs="http://www.intersil.com/">www.intersil.com</a></td><td valign="top" class="table"><strong>Ixys</strong>: <BR>
+				<a href="javascript:if(confirm('http://www.ixys.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ixys.com/'" tppabs="http://www.ixys.com/">www.ixys.com</a></td><td valign="top" class="table"><strong>Linear Technology</strong>: 
+				<a href="javascript:if(confirm('http://www.linear.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linear.com/'" tppabs="http://www.linear.com/">www.linear.com</a></td></tr><tr><td valign="top" class="table"><strong>Maxim Integrated Products</strong>: 
+				<a href="javascript:if(confirm('http://www.maxim-ic.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.maxim-ic.com/'" tppabs="http://www.maxim-ic.com/">www.maxim-ic.com</a></td><td valign="top" class="table"><strong>Micrel</strong>: <BR>
+				<a href="javascript:if(confirm('http://www.micrel.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.micrel.com/'" tppabs="http://www.micrel.com/">www.micrel.com</a></td><td valign="top" class="table"><strong>Microchip</strong>: 
+				<a href="javascript:if(confirm('http://www.microchip.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.microchip.com/'" tppabs="http://www.microchip.com/">www.microchip.com</a></td></tr><tr bgcolor="#eeeeee"><td valign="top" class="table"><strong>National Semiconductor</strong>: 
+				<a href="javascript:if(confirm('http://www.national.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.national.com/'" tppabs="http://www.national.com/">www.national.com</a></td><td valign="top" class="table"><strong>On Semiconductor</strong>: 
+				<a href="javascript:if(confirm('http://www.onsemi.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.onsemi.com/'" tppabs="http://www.onsemi.com/">www.onsemi.com</a></td><td valign="top" class="table"><strong>Semtech</strong>: 
+				<a href="javascript:if(confirm('http://www.semtech.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.semtech.com/'" tppabs="http://www.semtech.com/">www.semtech.com</a></td></tr><tr><td valign="top" class="table"><strong>Siliconix</strong>: <BR>
+				<a href="javascript:if(confirm('http://www.vishay.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.vishay.com/'" tppabs="http://www.vishay.com/">www.vishay.com</a></td><td valign="top" class="table"><strong>STMicroelectronics</strong>: <BR>
+				<a href="javascript:if(confirm('http://www.st.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.st.com/'" tppabs="http://www.st.com/">www.st.com</a></td><td valign="top" class="table"><STRONG>Texas 
+      Instruments</STRONG>: <a href="javascript:if(confirm('http://www.ti.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ti.com/'" tppabs="http://www.ti.com/">www.ti.com</a></td></tr></tbody>
+    </table><br><br>
+<a name="this">&nbsp;</a>
+<table border="1" width="100%" bordercolor="#c0c0c0" cellspacing="0">
+  <tr>
+    <td width="100%"><b>This just in: More parts, and an upcoming panel
+      discussion</b>
+      <p>In addition to the digitally controlled power-conversion ICs from Texas
+      Instruments and Silicon Laboratories, devices are now or soon-to-be
+      available from Primarion and Zilker Labs, respectively.</p>
+      <p>Primarion's PX3535 generates power-switching signals for configurations
+      operating one to six power-stage phases. The controller provides
+      individual phase-current monitor inputs, which share a common ADC, and a
+      high-speed voltage-feedback path that provides a typical bandwidth of 1.5
+      MHz. Over temperature, the current-sense amplifier's linearity error and
+      current-sense ADC's error contribute a maximum of 2% and 2.2%,
+      respectively, to the current-sense INL. Also over temperature, the
+      voltage-channel's maximum error contributions include a 0.75%
+      voltage-conversion gain term and 9-mV of conversion INL. Typical setpoint
+      accuracy is &#177;10 mV over the operating temperature range of 0 to 85&#176;C.
+      When comparing several parts for these kinds of specifications, be sure to
+      distinguish between performance guarantees that apply over a part's full
+      operating-temperature range from those that apply only to room-temperature
+      operation.</p>
+      <p>The controller allows programmable offsets in the phase-currents for
+      thermal balancing in applications that do not afford all phases equal
+      cooling. These can include designs that cannot economically provide
+      identical air flow for all phases or where some phases are nearer than
+      others to dissipating components.</p>
+      <p>The IC supports programmable switching frequencies of 100-kHz to 2-MHz,
+      which allows significant flexibility in filter- and switching-stage
+      design. In addition to common features that enhance the power subsystem's
+      robustness, such as on-chip temperature monitoring, output under- and
+      over-voltage protection, and per-phase and total-current limits.</p>
+      <p>The $1.95 (1000) PX3535 is available in LQFP-48 and QFN-48 packages and
+      dissipates less than 0.5W when operating on 3.3V supplies. The controller
+      is compatible with VID code maps for Intel and AMD products. It also
+      provides space for an OEM programmable code map.</p>
+      <p><b>More on the horizon</b></p>
+      <p>Expect more semiconductor companies to enter this segment in the coming
+      quarters, and with them, a wider variety of architectures. One recent
+      startup, Zilker Labs, is taking a hybrid mixed-signal approach in which
+      much of the loop's dynamic-control processing remains in the analog domain
+      and monitoring and management functions are implemented in digital
+      circuitry. This segmentation supports a high-performance controller that
+      requires no loop programming and dissipates less power than more
+      thoroughly digital architectures. Parts are currently sampling to beta
+      customers and a formal announcement of the part is due at the upcoming
+      second-annual Digital Power Forum (<a href="javascript:if(confirm('http://www.darnell.com/digitalpower  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.darnell.com/digitalpower'" tppabs="http://www.darnell.com/digitalpower">www.darnell.com/digitalpower</a>)
+      in Boston Sept. 12 through 14.</p>
+      <p>The Digital Power Forum will also be hosting a 
+      roundtable discussion entitled "Digital Power:&nbsp; Ready for Prime 
+      Time?" in which I will be discussing the current state of digital power 
+      technologies with panelists Dave Freeman, systems engineering manager at 
+      Texas Instruments; Jim Templeton, founder and vice president of marketing 
+      at Zilker Labs; Geoff Potter, vice president of Astec; and Phillip Roux, 
+      power systems manager at EMC. Howard Abramowitz from Systel will moderate 
+      the session. Given the rapid pace of technology development in this 
+      segment and the keen interest in deploying systems that realize the 
+      advantages these architectures offer, I expect a lively session and look 
+      forward to seeing you there.</p>          
+               
+                
+              
+                
+                
+                
+                 
+               
+                 
+       </td>
+  </tr>
+</table>
+
+<br><hr><table border="0" width="100%" cellPadding="2" cellSpacing="0">
+        <tbody>
+            <tr>
+                <td bgColor="#eeeeee" class="table"><strong>Author Information</strong></td>
+            </tr>
+            <tr>
+                <td class="table"><IMG style="WIDTH: 72px; HEIGHT: 88px" 
+      alt="" hspace=5 
+      src="xxjosh.jpg" tppabs="http://a330.g.akamai.net/7/330/2540/20050713151112/www.edn.com/articles/images/EDN/20050721/xxjosh.jpg" 
+      align=left vspace=5 border=0>You can reach Technical Editor Joshua Israelsohn at
+		  <A href="mailto:jisraelsohn@edn.com">jisraelsohn@edn.com</A>.</td>
+            </tr>
+        </tbody>
+    </table><br><hr><table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tbody>
+            <tr>
+                <td bgcolor="#eeeeee" class="table"><strong><a name="#ref">References</a></strong></td>
+            </tr>
+            <tr>
+                <td class="table">
+      <OL>
+                        <li>Black, Harry, "Stabilized Feedback Amplifiers," <i>Bell
+				System Technical Journal</i>, Volume 13, 
+        January 1934. 
+                        <li>Potter, Geof, "An introduction to digital 
+        control of switching power converters," Astec, April 2004. 
+                        <li>Israelsohn, Joshua, Gary Levy, and Ron Gatzke, "A circuit board
+				layout guide for RFICs," EOEM Design Expo, June 2005, 
+				<a href="javascript:if(confirm('http://www.eoemdesignexpo.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.eoemdesignexpo.com/'" tppabs="http://www.eoemdesignexpo.com/">www.eoemdesignexpo.com</a>.</li></OL>
+      <P>&nbsp;</P>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</span><A 
+href="javascript:if(confirm('http://www.edn.com/contents/images/624951.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/624951.pdf'" tppabs="http://www.edn.com/contents/images/624951.pdf"><IMG 
+src="pdfbutton-2.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050719150304/www.edn.com/articles/images/EDN/20050721/pdfbutton.gif"></A></span></div><br clear="all"/>
+<div style="margin-top: 20px;clear:all;">
+<script>
+<!--
+function appendLocation(theLink) {
+    var thisPage = "" + location;
+    var bits = thisPage.split("&");
+    var s = ""
+    for (var i = 0; i < bits.length; i++) {
+      s += bits[i] + "^"
+    }
+    if (s == "") {
+      theLink.href = theLink.href + "&refPage=" + thisPage
+     } else {
+       theLink.href = theLink.href + "&refPage=" + s
+    }
+    return true;
+}
+// -->
+</script>
+<div id="printSubEmail"><div><a href="javascript:if(confirm('http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article'" tppabs="http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article"><img src="ednIconSubscribe.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222505/www.edn.com/contents/images/redesign/ednIconSubscribe.gif" alt="Free Print Subscriptions" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article'" tppabs="http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article">Free Print Subscription</a></div>
+
+<div><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articlePrint&articleID=CA624951  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articlePrint&articleID=CA624951'" tppabs="http://www.edn.com/index.asp?layout=articlePrint&articleID=CA624951"><img src="ednIconPrint.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222321/www.edn.com/contents/images/redesign/ednIconPrint.gif" alt="Printer Friendly Version" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articlePrint&articleID=CA624951  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articlePrint&articleID=CA624951'" tppabs="http://www.edn.com/index.asp?layout=articlePrint&articleID=CA624951">Printer Friendly Version</a></div>
+
+<div><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articleEmail&articleID=CA624951  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articleEmail&articleID=CA624951'" tppabs="http://www.edn.com/index.asp?layout=articleEmail&articleID=CA624951" onclick="return appendLocation(this)"><img src="ednIconEmail.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222407/www.edn.com/contents/images/redesign/ednIconEmail.gif" alt="Email to a Friend" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articleEmail&articleID=CA624951  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articleEmail&articleID=CA624951'" tppabs="http://www.edn.com/index.asp?layout=articleEmail&articleID=CA624951" onclick="return appendLocation(this)">Email to a Friend</a></div></div></div><br/>
+
+
+<div id="sponsorlink">
+<h3 class="sponsorhead">Sponsor Links</h3>
+<ul><script language="JavaScript1.1" SRC=";type=sponsorlink;sz=1x1;tile=1;u=-1176500494-521400098-946378881-0-article-CA624951--;ord=1122972018-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=sponsorlink;sz=1x1;tile=1;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">
+</script><script language="JavaScript1.1" SRC=";type=sponsorlink;sz=1x1;tile=2;u=-1176500494-521400098-946378881-0-article-CA624951--;ord=1122972018-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=sponsorlink;sz=1x1;tile=2;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">
+</script><script language="JavaScript1.1" SRC=";type=sponsorlink;sz=1x1;tile=3;u=-1176500494-521400098-946378881-0-article-CA624951--;ord=1122972018-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=sponsorlink;sz=1x1;tile=3;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">
+</script><script language="JavaScript1.1" SRC=";type=sponsorlink;sz=1x1;tile=4;u=-1176500494-521400098-946378881-0-article-CA624951--;ord=1122972018-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=sponsorlink;sz=1x1;tile=4;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">
+</script><script language="JavaScript1.1" SRC=";type=sponsorlink;sz=1x1;tile=5;u=-1176500494-521400098-946378881-0-article-CA624951--;ord=1122972018-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=sponsorlink;sz=1x1;tile=5;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">
+</script></ul>
+</div>
+<br/>
+<IFRAME SRC="showct-sid=102&ct=EDN_HP_ROS&num=5&layt=3" tppabs="http://ilinks.industrybrains.com/showct?sid=102&ct=EDN_HP_ROS&num=5&layt=3" width="100%" height="400" frameborder="no" border="0" marginwidth="0" marginheight="0" SCROLLING="no"></IFRAME>
+
+
+</div></div>
+		</td><!--end rightcol-->
+		
+		</tr>
+	</table> <!--end bodytable-->
+<!--End Main Content-->	
+<!--Footer--><div align="center" id="leaderboard" style="margin-bottom:5px;"><img src="edn_adv_top.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050517180213/www.edn.com/contents/images/edn_adv_top.gif" width="20" height="90" style="padding-top:10px;" alt=""/><script language=Javascript1.1 src="fi000012." tppabs="http://ad.doubleclick.net/adj/edn.rbi/;dcopt=ist;abr=!webtv;desc=CA624951;type=leaderboard;pos=2;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">
+</script>
+<script>
+<!--
+if ((!document.images && navigator.userAgent.indexOf('Mozilla/2.') >= 0) || (navigator.userAgent.indexOf("WebTV") >= 0))
+{
+document.write('<a href="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA624951;type=leaderboard;pos=2;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">');
+document.write('<img src="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA624951;type=leaderboard;pos=2;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?" border="0" align="right" height="90" width="728"></a>');
+}
+//-->
+</script>
+<noscript>
+<!-- for non JavaScript browsers and Netscape 2.x -->
+<a href="javascript:if(confirm('http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA624951;type=leaderboard;pos=2;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA624951;type=leaderboard;pos=2;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?'" tppabs="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA624951;type=leaderboard;pos=2;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">
+<img src="javascript:if(confirm('http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA624951;type=leaderboard;pos=2;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA624951;type=leaderboard;pos=2;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?'" tppabs="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA624951;type=leaderboard;pos=2;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?" border="0" align="right" height="90" width="728">
+</a>
+</noscript></div>
+
+
+<div id="footercontainer">
+<div id="footercontent1">
+			<div style="font-size: 11px;"><a href="javascript:if(confirm('http://www.reed-electronics.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/'" tppabs="http://www.reed-electronics.com/">Reed Electronics Group</a></div>
+			<div><a href="javascript:if(confirm('http://www.edn.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/'" tppabs="http://www.edn.com/">EDN</a> | <a href="javascript:if(confirm('http://www.ecnmag.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ecnmag.com/'" tppabs="http://www.ecnmag.com/">ECN</a> | <a href="javascript:if(confirm('http://www.reed-electronics.com/eb-mag  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/eb-mag'" tppabs="http://www.reed-electronics.com/eb-mag">Electronic Business</a> | <a href="javascript:if(confirm('http://www.reed-electronics.com/electronicnews  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/electronicnews'" tppabs="http://www.reed-electronics.com/electronicnews">Electronic News</a><br /></div>
+			<div><a href="javascript:if(confirm('http://www.instat.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.instat.com/'" tppabs="http://www.instat.com/">In-Stat</a> | <a href="javascript:if(confirm('http://www.reed-electronics.com/semiconductor  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/semiconductor'" tppabs="http://www.reed-electronics.com/semiconductor">Semiconductor International</a> | <a href="javascript:if(confirm('http://www.reed-electronics.com/tmworld  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/tmworld'" tppabs="http://www.reed-electronics.com/tmworld">Test and Measurement World</a></div>
+		</div><!--end footercontent1-->
+
+<div id="footercontent2">
+			<div><a href="javascript:if(confirm('http://www.edn.com/info/30955.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/30955.html'" tppabs="http://www.edn.com/info/30955.html">ABOUT EDN</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.edn.com/info/CA528811.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/CA528811.html'" tppabs="http://www.edn.com/info/CA528811.html">FREE SUBSCRIPTIONS</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.edn.com/info/31091.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/31091.html'" tppabs="http://www.edn.com/info/31091.html">CONTACT US</a><br /><br /><br /></div>
+			<div>
+				<div class="footerrbi"><a href="javascript:if(confirm('http://www.reedbusiness.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reedbusiness.com/'" tppabs="http://www.reedbusiness.com/"><img src="ednRBILogo.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050407022207/www.edn.com/contents/images/redesign/ednRBILogo.gif" width="141" height="18" border="0" alt="" /></a></div>
+				<div class="footercopyright">1997-2005 Reed Business Information, a division of Reed Elsevier Inc. All rights reserved.<br />Use of this web site is subject to its <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=page&module=terms  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=page&module=terms'" tppabs="http://www.edn.com/index.asp?layout=page&module=terms">Terms of Use</a> | <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=page&module=privacy  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=page&module=privacy'" tppabs="http://www.edn.com/index.asp?layout=page&module=privacy">Privacy Policy</a></div>
+				<br clear="all" />
+			</div>
+		</div> <!--end footercontent2-->
+		
+	</div> <!--end footercontainer-->
+
+<!--End Footer--><!--ads-->
+
+<div id="topad"><script language=Javascript1.1 src="fi000013." tppabs="http://ad.doubleclick.net/adj/edn.rbi/;dcopt=ist;abr=!webtv;desc=CA624951;type=leaderboard;pos=1;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">
+</script>
+<script>
+<!--
+if ((!document.images && navigator.userAgent.indexOf('Mozilla/2.') >= 0) || (navigator.userAgent.indexOf("WebTV") >= 0))
+{
+document.write('<a href="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA624951;type=leaderboard;pos=1;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">');
+document.write('<img src="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA624951;type=leaderboard;pos=1;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?" border="0" align="right" height="90" width="728"></a>');
+}
+//-->
+</script>
+<noscript>
+<!-- for non JavaScript browsers and Netscape 2.x -->
+<a href="javascript:if(confirm('http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA624951;type=leaderboard;pos=1;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA624951;type=leaderboard;pos=1;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?'" tppabs="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA624951;type=leaderboard;pos=1;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?">
+<img src="javascript:if(confirm('http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA624951;type=leaderboard;pos=1;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA624951;type=leaderboard;pos=1;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?'" tppabs="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA624951;type=leaderboard;pos=1;indid=2281;indid=2284;indid=2815;indid=2816;indid=21363;indid=21368;indid=21373;indid=22113;indid=23432;indid=42873;indid=43310;indid=43313;verid=156;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA624951||;ord=1122972018?" border="0" align="right" height="90" width="728">
+</a>
+</noscript></div>
+
+<!-- end ads -->
+
+</div> <!-- end bodycontainer -->
+
+</body>
+</html>

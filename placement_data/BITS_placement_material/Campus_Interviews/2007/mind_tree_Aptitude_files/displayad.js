@@ -1,0 +1,1 @@
+document.write('<a target="_top" href="http://ads.aspalliance.com/adredir.asp?id=1265&m=107&amp;s=&amp;">Free Development Management Tool</a><br />Define, Enforce &amp; Track your Development and Test efforts to Ship Software OnTime.  <a target="_top" href="http://ads.aspalliance.com/adredir.asp?id=1265&m=107&amp;s=&amp;">Download Now</a>');

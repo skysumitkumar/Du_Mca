@@ -1,0 +1,234 @@
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Copyright" content="Brian Brown, 1998, All rights reserved">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0"><title>Operating Systems: Part 4</title><script charset="utf-8" id="injection_graph_func" src="os04_files/injection_graph_func.js"></script></head><body bgcolor="#ffffff">
+
+<p align="center"><a name="start"></a><font color="#000080" size="5">Operating Systems Introduction</font><font color="#ff00ff" size="6"> </font><br>
+Author: Brian Brown, 1995-2000. All rights reserved.<br>
+<a href="http://uva.ulb.ac.be/cit_courseware/opsys/os03.htm"><font size="2">Previous</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/default.htm"><font size="2">Home Page</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/os05.htm"><font size="2">Next</font></a></p>
+
+<hr>
+
+<p><a name="howload"><font size="4"><strong></strong></font></a><font size="4"><strong> </strong></font><a href="#start"><font size="4"><strong><img src="os04_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>How does an Operating System load
+itself?</font><br>
+In this section we look at how the operating system loads when
+the computer is first turned on.</p>
+
+<p>The operating system may be loaded into the computers memory
+in two ways.</p>
+
+<ul>
+    <li>it is already present in ROM (so is permanent,
+        immediately accessible and difficult to update)</li>
+    <li>it is loaded from disk when the computer is turned on. </li>
+</ul>
+
+<p>If the operating system is already present in ROM (for systems
+like industrial controllers, petrol pumps etc), it will gain
+control immediately the processor is powered on. This method is
+best suited for small appliances and hand held devices where the
+operating system is relatively simple and small.</p>
+
+<p>For more complex systems, the operating system is usually
+stored on secondary media (such as disk), and is loaded into the
+computer memory (RAM) when the computer is powered on. Advantages
+of this type of system are that changes to the operating system
+are easier to make and implement.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="bootstrap"></a> <a href="#start"><font size="4"><strong><img src="os04_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is the BOOTSTRAP PROCESS?</font><br>
+The bootstrap process describes the task of initially loading the
+operating system from disk into RAM. A small routine stored in
+ROM, called the BOOTSTRAP LOADER or IPL (Initial Program Loader),
+reads a special load routine from the diskette. </p>
+<div align="left">
+
+<table border="0">
+    <tbody><tr>
+        <td valign="top">In floppy based system, this routine is
+        normally located on Track 00, sector 00 (or 01), and is
+        called the <b>boot sector</b>. <p>The code contained in
+        the sector is transferred into RAM, then executed. </p>
+        <p>It has the sole responsibility for loading the rest of
+        the operating system into memory.</p>
+        </td>
+        <td><img src="os04_files/bootstra.gif" alt="Bootstrap process" height="260" width="342"></td>
+    </tr>
+</tbody></table>
+</div>
+
+<p>&nbsp;</p>
+
+<p><a name="types"></a> <a href="#start"><font size="4"><strong><img src="os04_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What are the different types of
+Operating Systems?</font><br>
+Operating systems are divided into categories that define their
+characteristics. Modern systems may use combinations of those
+described below.</p>
+<div align="center"><center>
+
+<table border="1" width="80%">
+    <tbody><tr>
+        <td valign="top" width="50%"><strong>BATCH</strong></td>
+        <td width="50%">The earliest type, allowed only one
+        program to run at a time. The program was entered into
+        the computer, then run till completed. The data used by
+        the program could not be modified whilst the program was
+        running. Any errors in the program or data mean starting
+        all over again.</td>
+    </tr>
+    <tr>
+        <td valign="top" width="50%"><strong>INTER-ACTIVE</strong></td>
+        <td width="50%">These allow the modification and entry of
+        data whilst the program is running. Typical systems are
+        airline reservations and languages such as BASIC.</td>
+    </tr>
+    <tr>
+        <td valign="top" width="50%"><strong>TIME-SHARING/MULTI-USER</strong></td>
+        <td width="50%">These share the computer system amongst
+        more than one user, and employ pre-emptive scheduling
+        techniques.</td>
+    </tr>
+    <tr>
+        <td valign="top" width="50%"><strong>MULTI-TASKING</strong></td>
+        <td width="50%">More than one process may be executed at
+        once. The processor is switched rapidly between the
+        processes. A user may run more than one process at a time.</td>
+    </tr>
+    <tr>
+        <td valign="top" width="50%"><strong>REAL-TIME</strong></td>
+        <td width="50%">Primarily used in process control,
+        telecommunications, etc. The OS monitors various inputs
+        which affect the execution of processes, changing the
+        computers model of the environment, thus affecting the
+        outputs, within a guaranteed time period (usually &lt; 1
+        second).</td>
+    </tr>
+    <tr>
+        <td valign="top" width="50%"><strong>MULTI-PROCESSOR</strong></td>
+        <td width="50%">A computer that has more than one
+        processor dedicated to running processes.</td>
+    </tr>
+    <tr>
+        <td valign="top" width="50%"><strong>EMBEDDED</strong></td>
+        <td width="50%">An embedded operating system means the
+        operating system is self-contained in the device and
+        resident in ROM. Typical systems that use embedded
+        operating systems are household appliances, car
+        management systems, traffic control systems and energy
+        management systems.</td>
+    </tr>
+</tbody></table>
+</center></div>
+
+<p>&nbsp;</p>
+
+<table border="0">
+    <tbody><tr>
+        <td width="50%">These are examples of embedded systems. <br>
+        <img src="os04_files/watch.jpg" height="116" width="96"></td>
+        <td width="50%"><img src="os04_files/calc.jpg" height="129" width="144"></td>
+    </tr>
+</tbody></table>
+
+<p>Embedded systems are also known as <strong>dedicated systems</strong>.
+This is because they only perform a specific task, and cannot run
+a wide variety of programs like a home computer (which we
+previously identified as a general purpose system).</p>
+
+<p>Windows NT workstation is an interactive, multitasking
+multiprocessor operating system.</p>
+
+<p>Windows 98 is an interactive, multitasking operating system.</p>
+
+<p>Linux is an interactive, multitasking, multiprocessor, multi-user
+operating system.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="shell"></a> <a href="#start"><font size="4"><strong><img src="os04_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is a shell?</font><br>
+A shell is a program that handles user input and output. It
+provides routines for handling user input from a keyboard or
+mouse, as well as routines for displaying information on the
+terminal screen.</p>
+
+<p>A shell also provides a mechanism to interpret user commands
+and run additional programs that users request.</p>
+
+<p>In program called command.com was the shell in MS-DOS. In
+Windows 98 and NT workstation this shell is still present (it is
+called the command prompt and you run it by accessing the command
+prompt icon).</p>
+
+<p>The UNIX shell is called the bourne shell, and is a program
+called sh. There are other UNIX shell programs, notably the
+kourne shell and the c shell.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="revision4"></a> <a href="#start"><font size="4"><strong><img src="os04_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>Revision Exercise 4</font><br>
+Briefly explain the bootstrap process.</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p>Briefly explain how the batch operating system worked.</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p>Briefly explain what an embedded operating system is.</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p>How does an embedded operating system differ from a general
+purpose operating system?</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p><a href="#start"><font size="4"><strong><img src="os04_files/up.gif" border="0" height="15" width="15"></strong></font></a></p>
+
+<p align="center"><a href="http://uva.ulb.ac.be/cit_courseware/opsys/os03.htm"><font size="2">Previous</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/default.htm"><font size="2">Home Page</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/os05.htm"><font size="2">Next</font></a></p>
+<!-- #counter var="compteur_cit" display="false" -->
+
+</body></html>

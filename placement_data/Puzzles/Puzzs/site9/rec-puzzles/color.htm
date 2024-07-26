@@ -1,0 +1,55 @@
+<html><head>
+<title>Solution for /combinatorics/color</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /combinatorics/color problem</h1>
+<hr>
+(n-1)^2.
+
+<p>
+If the color classes have sizes k1, k2, ..., km, then the expected number of
+steps from here is (dropping the subscript on k):
+
+<pre>
+     2               k(k-1)              (j-1) (k-j)
+(n-1)  -  SUM      ( ------  +   SUM   --------------- )
+         classes,      2        1&lt;j&lt;k      (n-j)
+      class.size=k
+</pre>
+
+The verification goes roughly as follows.  Defining  phi(k) as  (k(k-1)/2 +
+sum[j]...), we first show that  phi(k+1) + phi(k-1) - 2*phi(k) = (n-1)/(n-k)
+except when k=n; the k(k-1)/2 contributes 1, the term j=k contributes
+(j-1)/(n-j)=(k-1)/(n-k), and the other summands j&lt;k contribute nothing.
+Then we say that the expected change in phi(k) on a given color class is
+k*(n-k)/(n*(n-1)) times (phi(k+1) + phi(k-1) - 2*phi(k)), since with
+probability k*(n-k)/(n*(n-1)) the class goes to size k+1 and with the same
+probability it goes to size k-1.  This expected change comes out to k/n.
+Summing over the color classes (and remembering the minus sign), the
+expected change in the "cost from here" on one step is -1, except when we're
+already monochromatic, where the handy exception k=n kicks in.
+
+<p>
+One can rewrite the contribution from k as
+
+<pre>
+   (n-1) SUM (k-j)/(n-j)
+        0&lt;j&lt;k
+</pre>
+
+which incorporates both the k(k-1)/2 and the previous sum over j.
+That makes the proof a little cleaner.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

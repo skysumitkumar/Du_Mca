@@ -1,0 +1,578 @@
+
+From fd96451@bits-pilani.ac.in Tue Aug 17 13:13:11 1999
+Received: from asura.bits-pilani.ac.in (root@asura.bits-pilani.ac.in [192.168.1.254]) by ipc.bits-pilani.ac.in (8.6.8.1/SCA-6.6)  with ESMTP
+	id NAA21998 for <fd96231@ipc.bits-pilani.ac.in>; Tue, 17 Aug 1999 13:13:09 GMT
+Return-Path: <fd96451@bits-pilani.ac.in>
+Received: from ipc.bits-pilani.ac.in (ipc.bits-pilani.ac.in [192.168.1.1])
+	by asura.bits-pilani.ac.in (8.8.7/8.8.7) with SMTP id SAA30139
+	for <fd96231@bits-pilani.ac.in>; Tue, 17 Aug 1999 18:33:36 +0530
+Date: Tue, 17 Aug 1999 18:43:08 +0530 (IST)
+From: abhi <fd96451@bits-pilani.ac.in>
+To: Vajrala Pallavi <fd96231@bits-pilani.ac.in>
+Message-ID: <Pine.SCO.3.96.990817184256.20404I-100000@ipc.bits-pilani.ac.in>
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII
+Status: RO
+X-Status: 
+
+
+>From trident@mech.iitkgp.ernet.in Sun Nov  8 09:14:49 1998
+Date: Thu, 5 Nov 1998 16:09:10 +0530 (IST)
+From: "V.VIKRAM" <trident@mech.iitkgp.ernet.in>
+To: "CH.KRISHNA MOHAN" <hd97423@bits-pilani.ac.in>
+Subject: tcs cobol paper!! (fwd)
+
+
+
+---------- Forwarded message ----------
+Date: Mon, 2 Nov 1998 17:01:35 +0530 (IST)
+From: "V.VIKRAM" <trident@mech.iitkgp.ernet.in>
+To: merla@mailcity.com
+Subject: tcs cobol paper!! (fwd)
+
+
+
+
+
+
+                                TCS COBOL PAPER
+                                   QUESTIONS
+
+1) Consider the following piece of code:
+	01 GROSS PAY
+		05 BASIC PAY      pic   9(5)
+		05 allowances     pic   9(3)
+
+  If basic pay has a value of 1000 and allowances has the value 250, what 
+will be displayed by
+  the following statement
+
+	Display gross pay
+
+  a)1250    b) 0 1000 250   c) 0 1250  d) 1,250
+
+2) 77  W-A PIC 9(3) v99 value 23.75
+   77  W-B PIC zzgv99   value 123.75
+
+  Move W-A to W-B, then W-B=?
+
+  a)123.75  b)623.75  c)023.75  d)invalid
+
+3) Divide A into B giving C
+
+  a)C=A/B  b) the remainder of B/A is stored in C
+  c)C=B/A  d) the remainder of A/B is stored in C
+
+4) If A(numeric) Display A
+  
+  A is
+  a) numeric  b) alpha  c) alphanumeric  d) numeric/alpha numeric
+
+5) Which is check protection symbol
+  a) Z  b) $  c) *  d) +
+
+6)..........PIC  A(1)
+   01   c   PIC  9(4)
+   
+  If B(numeric) add 10 to C
+
+ a) the condition 'if' is wrong
+ b) nothing is wrong
+ c) C is not initialized, 'add 10 to c' is wrong
+ d) both b and c should be same size.
+
+7) 01  A1
+       05  b  pic  99
+       05  c  pic  X(4)
+   01  A2
+       05  b  pic  99v99
+       05  c  pic  A(4)
+
+  which is true?
+
+ a) A1 and A2 cannot have same subordinates
+ b) A1 and A2 can have same subordinates but should be same pic clause
+ c) nothing wrong
+ d) A1 and A2 cannot have same subordinate provided they are not at a level
+
+8) 01 A pic 99v9 value 5
+   01 B pic 9v9  value 6
+   01 C pic 99v9 value 2.5
+   01 D pic 99   value 3
+
+  compute A rounded B,C=(A+B+C/D) on size error perform point error.
+  A,B,C are
+ a) 10,0,10  b)10,0,9.9  c)10,9.9,9.9  d)10,6,10
+
+9)How many time para A is performed
+  Perform para A varying time counter
+  from 1 by 1 until timer counter > 10
+
+  PARA-A
+     Move p to 9
+     Move 10 to times counter
+
+  a) 10  b) 1  c) 11  d) 0
+
+10) 01 group item
+    05 amount-1 pic 99v9 usage comp value 50
+    05 amount-2 pic 9(4)v99 usage comp
+    Move zero to group from
+    Add 50 to amount-1
+
+    amount-1?
+
+  a) 50  b) 100  c) 0  d) not defined
+
+11) Move to sw no of REC
+    Perform PRT-OUT until sw=1
+    Display no of REC
+    Stop run
+    PRT-OUT
+    READ IN FILE AT END MOVE 1 TO SW
+    WRITE OUT-REC FROM IN-REC
+    Add 1 to no of REC
+
+    File has 1000 RECS .......... displayed the perform.
+    Assume NO_OF REC pic 9(4)
+
+  a) 1000  b)100  c)1  d) mere syntax error
+
+12) Big question
+
+13) C1,C2,C3        C1-true     C2-false     C3-true
+
+  A. C1 AND (NOT C2) OR C3
+  B. (NOT C1) OR (NOT C2 AND NOT C3)
+  C. (C1 OR C2) AND C3
+  D. C1 AND C2 OR C3
+
+  a) A,B,C are true
+  b) A,C,D are true
+  c) A,B,C,D are true
+  d) C,D are true
+
+14) FD FILE-1
+    01 REC-1 pic X(80)
+    working storage section
+    01 W-REC pic X(90)
+    PROCEDURE DIVISION
+    FIRST-PARA
+    READ FILE-1 into W-REC
+    At END MOVE 1 to EOF flag
+
+
+   which is true
+
+  a) REC-1 contains nothing and W-REC has contents of record read
+  b) REC-1 and W-REC contain the same data
+  c) Syntax invalid and syntax error
+  d) REC-1 and W-REC must have same size
+
+15) PERFORM ACCUMULATE Totals if executed
+
+    varying A from 1 by 2 until A>2
+    Alter B from 1 by 1 until B>2
+    Alter C from 2 by -1 until C<1
+
+   a) 18 times  b) 4 times  c) 8 times  d) 24 times
+
+16) FILE-ORGANIZATION IS INDEXED
+    read, records in random also sequentially in which access mode ?
+   a) sequential  b) random  c) dynamic  d) nothing
+
+17) This is PROCEDURE DIVISION ENTRY
+         OPEN EXTENDED IN FILE
+    correct organization of IN-FILE is sequential and.........
+   a) sequential & records can be added in beginning
+   b) sequential & records can be added in the end
+   c) Index and records can be added in the beginning
+   d) Index and records can be added in the end
+
+18) size of W-REC
+    01 W-REC
+       05 A pic 9(4)v99
+       05 B redefine A
+          10  C pic XX
+          10  D pic 89(4)
+       05 E occurs 7 pic ZZ ZZ
+       05 F occurs 5
+         10 occurs pic zz,zzz 99
+           ...................
+             15 J pic  59(8)
+	     15 K pic  v99
+
+ a) 177  b)161  c)150  d) none
+
+
+19) If X and Not Y move A to B
+    If Z=1 or 9 MOVE A to B
+    select one of the following data division which gives result
+
+   a) 01  z  pic  9
+         88  X  VALUE  1,9
+         88  y  VALUE  0,2 through 8
+
+   b) 01  z  pic  9
+         88  X value 0,2 through 8
+         88  Y value 1,9
+
+   c) 01  z  pic  9
+         88  X value  1,9
+         88  NOT-Y value 0,2 through 8
+
+   d) NONE
+
+20) MOVE 10 TO N
+    PERFORM PARA-X N TIMES
+    STOP RUN
+    PARA-X
+    Move 5 to n
+   
+    Para-x will be executed how many times?
+
+  a) 10  b) 5  c) 0  d) error
+
+21) If A less 1200 ( if B greater than 25)
+    Move 47 to c
+    Else move 57 to c
+    If A greater 249 Move 67 to c else next sentence
+    else if B less 67 move 27 to c
+
+   what is c if A=137 and B=25
+
+  a) 27  b) 57  c) 67  d) none
+
+22) 77A pic 9v9 value 9.5
+    77A pic 9 value 9
+    77C pic v9 value 0.8
+    77D pic 9
+    77E pic 9
+    77f pic 9v999
+ D,E,F are ?
+
+  a)F=9.589  E=8  D=1   b) F=9.589  E=8  D=9
+  c) F=9.589 E=7  D=9   d) F=9.589  E=7  D=1
+
+23) 77 w-NUN PIC 9 value 0
+       MOVE  To w-NUN
+       PERFORM PARA-X UNTIL W-NUN>9
+       PARA - X  
+       add 1 to w-NUN
+      How many times PARA x would be created ?
+ a) 10 b) 9 c) 11 d) 0
+
+24) 77 A PIC 99V99 value 55 35
+    77B PIC 99V999 value 32754
+    Add B to A on size erreor display error results
+
+ a) A = 88.10 B = 32.754   b) A = 87.60  B =32.754
+ c) A = 87.10 B = 32.754   d) error  
+
+25) 77 A pic 9(10)
+    77 B pic 9(10)
+    77 C pic 9(19)
+
+    Multiply A by B giving C, which is true
+
+   a) execution may give on size error
+   b) execution will give on size error 
+   c) det of C invalid  results in compile error
+   d) No error
+
+26) A paragraph para-x is executed when none of the data names A,B,C have 
+value of 1 which
+ achieves this:
+
+  a) If A not= 1 or B not= 1 or C not= 1
+  b) if Not A =1 and B=1 and C=1
+  c) if A not=1  if not B=1 or C=1
+  d) if A not=1 and B not=1 and C not =1.
+
+27)		Expression		|	Class
+   
+--------------------------------------------------------------------------------------       
+    1. "Spaces"				|  figurative constant
+    2. "Depreciation schedule"		|  non numeric literal
+    3. "12%"				|  non numeric literal
+    4. zeros				|  figurative constant
+   
+--------------------------------------------------------------------------------------- 
+
+
+  a) 1 and 3 are incorrect
+  b) 1 and 4 are correct
+  c) 3 and 4 are correct
+  d) all are correct
+
+28) Identify Invalid Dynamic
+    a) SAVING-ACCOUNT    b) ANNUAL-ALLOCATION-FOR-OVERHEAD
+    c) $AMOUNT 250       d) AIZDN
+
+29)End-of -file-switch pic xxx
+   88 No-More-RECS value "yes"
+   88 More RECS    value "No"
+
+   i) Read sample-file at END MOVE "yes" to
+   ii) No-More-RECs
+   iii) If No-More-RECs-EQUL "yes" GO TO LAST PARA
+   iv) if No-More-RECs Go to LAST PARA
+
+   a) i and ii are wrong
+   b) ii and iii are correct
+   c) i and iii are correct
+   d) all are correct
+
+30) Working storage section
+    01 DATE-TODAY
+       05 yy pic xx value "90"
+       05 mm pic xx value "12"
+       05 dd pic xx value "31"
+    DATE-ELIT pic xx/xx/xx
+    .....DATE TODAY TO DATE EDIT
+
+31) How many bytes allocated?
+
+    REC A
+    05  A  pic  89(4)
+    05  B  pic  XXXBXXX
+    05  C  pic  XX,XX9.99
+    05  D  pic  89(5) comp-3
+    05  E  pic  9(3) comp
+
+   a) 9  b) 26  c) 25   d) 28.
+
+32) W-DATE pic X(6)
+    05 DD pic 99
+    05 MM pic 99
+    05 YY pic 99
+
+   a) nothing wrong  b) under W-C all level 05 items are having pic 99 
+but level has pic X(6)
+   c) pic can't be group item   d) DD,MM,YY invalid data names
+
+33) If
+    consider the following 
+    05 X pic 99 value 10
+    SUBTRACT 20 FROM X . result = ___________
+
+  a)10  b) infinity  c) compile error  d) none
+
+34) 88 lead used for
+  a) data item in W-5 section   b) item with ................
+  c) condition names            d) none
+
+35) compute X= A*B-C*D and
+    compute X= (A*B)-(C*D)
+
+   a) are not same	      b) are same
+   c) syntactically wrong     d) will lead to run time error
+
+36) occurs always used in data division 100 data name at
+
+   a) 01 level  b) 77 level   c) 88 level   d) 02 to 49
+
+37) 05 X pic 99 value 10
+    Add 40x to X
+    compute X= 3X-40.  X=_______________
+
+   a) 10  b) 40  c) compile and run error  d) none
+
+38) The hierarchy of execution of logical operator is
+  a) NOT,AND,OR   b) AND,OR,NOT  c) OR,AND,NOT   d) OR,NOT,AND
+
+39) Given the following piece of code:
+    call sub-pgm using A,B,C
+    call sub-pgm using A,B,C
+    
+   a) both call statements will always produce the same result
+   b) both call statements may produce same result
+   c) compile time error because sub-prg is .........
+   d) compile time error because  A,B,C is used .........
+	
+
+40) The order of precedence of arithmetic operators can be overridden by:
+  a)[  ]   b) ()   c){ }   d) any of the above
+
+41)What para is compulsory for every COBOL programmming
+
+  a) SPECIAL NAME    b) PROGRAM ID   c) FILE CONTROL   d) object compute
+
+
+42) which of the following can be opened in all modes INP,I-O,O/P etc..,
+   a) Indexed  b) relative   c) sequential   d) all
+
+43)which of the following editing pic symbol is to be used if negative is 
+to appear before the
+   value if the value is positive?
+
+  a) +   b) -   c) + or -   d) not possible
+
+44)some loop program
+
+
+For Questions 45 to 49 read the following:
+
+   under the following condition
+
+   01 PRICE-LIST
+      03 BRAND OCCURS 25
+      05 BRAND SIZE OCCURS 4
+      07 PRICE PIC 999
+      07 DISCOUNT PIC 99
+
+   Pick out the valid identifiers for the following
+
+45) How many data names?
+
+46) Total amount
+ 
+47) Amount for item
+
+48) No of if and else states
+
+49) What is in Madras.
+
+#######################################################################
+
+                                  SOLUTIONS
+	1. B
+
+	2. B
+
+	3. C
+ 
+	4. C
+
+	5. C
+
+	6. A
+
+	7. C
+
+	8. B
+
+	9. B
+
+	10. A
+
+	11. C
+
+	12. C
+
+	13. B
+	
+	14. B
+
+	15. B
+
+	16. C
+
+	17. B
+
+	18. B
+
+	19. D
+
+	20. A
+
+	21. B
+
+	22. C
+
+	23. B
+	
+	24. A
+
+	25. A
+
+	26. D
+
+	27. A
+
+	28. C
+
+	29. A
+
+	30. 90/12/31
+
+	31. C
+
+	32. C
+
+	33. A
+
+	34. C
+
+	35. B
+
+	36. D
+
+	37. C
+
+	38. A
+
+	39. B
+
+	40. B
+
+	41. B
+
+	42. C 
+
+	43. A
+
+	44. STD IN 1
+	    STD IN 2
+    	    END	
+
+	45. 5
+
+	46. 9(8)V99
+
+	47. 9(8)V99
+
+	48. 3
+	
+	49. ZZ,ZZ,Z99V99
+
+
+################################################################################################
+
+
+
+
+
+
+
+
+
+
+          , '`''''~,                             ,,,,_
+         /            ''~-,,_               ,-'        ';~-,
+         |                    /'~-,       ,'    /          ;  '-,
+         ',                          '-,    |   /            ;   ,'
+          '~-,                       \   |  |             ;    /
+              ''''~~~~~'           |,,,\ \           ;   /
+                            \'-,   '  ~ ~' '-,       , /
+                               /'       OO    ' ~--;
+                              ,-'-    ,-~//~-,          '-,
+                         ,-'         '~-,,,-~'             ',
+  luv-                  /                  \     ,_,-      /
+     abhi              |          ,_;'     |      /     ,'
+                        '-,         '''~-~"~~"   ,~'
+                             '~--,,_    '~~'  ,- '
+  fd96451@bits-pilani.ac.in       |''      ~',-,/
+                                /    '~-~""~-,_   _
+                             /    ,,--'~--,,_,,-   )   )
+                            /    -'              '~,~'""
+                          /  ~                       )
+                          |                          }
+                          \,_             _,,,--~'/
+                             /,'~-      ~ \, ,,,,\,,~,,~,,--_
+                                '-,            '~-,,,~,,~,,~,__;)"
+                                  ( ~-,,,,,,,,,,,,,,,,,,,,,,,,,,,,)"
+  
+
+
+

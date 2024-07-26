@@ -1,0 +1,613 @@
+
+<HTML>
+
+<!-- Mirrored from www.cracktheinterview.com by HTTrack Website Copier/3.x [XR,YP'2001] -->
+<HEAD>
+<TITLE>CRACK THE INTERVIEW - Find the closest ancestor of two nodes in a tree.  (www.cracktheinterview.com)</TITLE><style type="text/css">
+<!--
+.breakhere     {page-break-before: always}
+
+A:link         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+A:active       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+A:visited      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+
+H1             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt; font-weight:bold; color:#336699} 
+H2             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; font-weight:bold} 
+.normal        {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+.announce      {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#000000} 
+.announceLink  {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#336699} 
+.note          {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt ! important; font-weight:normal} 
+.system        {font-family:Courier New, Courier; font-size:x-small;
+                font-weight:normal} 
+.stayblue      {color:#336699 ! important}
+.title         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:larger ! important} 
+.error         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; color:#aa0000; font-weight:bold} 
+.notelink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:normal;
+                font-size:9pt ! important} 
+.tableHeader   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableHeaderSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRow      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#f7f7e7} 
+.tableBlank    {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#ffffff} 
+.hardlink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:bold;
+                font-size:8pt ! important} 
+.boxlink       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#000000 ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.hardnote      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:black ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.tableRowSmall {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal} 
+.tableRowSmallBold {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                bold} 
+.blueHeading   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:bold;
+                color:#336699! important} 
+.blueHeadingLarge {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:16pt! important; font-weight:normal;
+                color:#336699} 
+.blueHeadingMid {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:normal;
+                color:#336699}
+.blueHeadingSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt! important; font-weight:bold;
+                color:#336699} 
+.tableHeaderV  {font-family:Verdana,Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRowV     {font-family:Verdana,Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal; background-color:#f7f7e7} 
+.just          {text-align: justify}
+-->
+</style>
+
+<META NAME="keywords" CONTENT="interview,C,tree,ancestor,closest">
+<META NAME="description" CONTENT="Find the closest ancestor of two nodes in a tree. ">
+<META NAME="robots" CONTENT="FOLLOW,INDEX">
+<META HTTP-EQUIV="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+
+</HEAD>
+<BODY>
+<TABLE BORDER=0 cellpadding=10>
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER><A HREF="../index.html"><IMG SRC=../images/logo2.jpg border=0></img></A></CENTER></TD>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2>
+<CENTER>
+
+
+<!--START:ADS0-->
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"
+  src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+
+</CENTER>
+</TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER>
+
+<!--START:LINKS-->
+
+
+<TABLE BORDER=0 cellpadding=10>
+<TR><TD NOWRAP>
+<A HREF="../index.html" target="_top"><font class=announcelink>Home</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="../adfaqpublish.html" target="_top"><font class=announcelink>Questions</font></A><BR>
+</TD>
+
+
+<TD NOWRAP>
+<A href="../search.html" target="_top"><font class=announcelink>Search</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="../forum/index.html" target="_top"><font class=announcelink>Forum</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="mailto:cracktheinterview@gmail.com?subject=Hi!"><font class=announcelink>Contact</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum12a3.html" target="_top"><font class=announcelink>Guest Book</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum4d6b.html" target="_top"><font class=announcelink>Polls!</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum31e6.html" target="_top"><font class=announcelink>Got a Question?</font></A><BR>
+</TD>
+
+</TABLE>
+
+<!--END-->
+
+</CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER> &nbsp; </CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=90%% valign=top>
+
+
+
+
+
+<!--START : DATA-->
+
+
+
+<TABLE BORDER=0>
+
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="3_17.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=blueHeading>Trees</font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="3_19.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD>
+<TD WIDTH=90%%><CENTER><font class=blueHeading>(102 / 268)</font></center></TD>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%></TD>
+<TD WIDTH=90%%><center>&nbsp;</center></TD>
+<TD WIDTH=5%%></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=announceLink><BR><BR><BR>
+<!--THE QUESTION-->
+
+Find the closest ancestor of two nodes in a tree. <BR>
+<!--END-->
+<BR></font></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=normal>
+<!--THE ANSWER--><BR>
+<!--META:START--><!--interview,C,tree,ancestor,closest--><!--META:END--><BR>
+<!--NEW--><BR>
+Here is some working C code...<BR>
+<BR>
+<CODE><BR>
+#include&nbsp;&lt;stdio.h><BR>
+<BR>
+typedef&nbsp;struct&nbsp;node<BR>
+{<BR>
+&nbsp;&nbsp;int&nbsp;value;<BR>
+&nbsp;&nbsp;struct&nbsp;node&nbsp;*right;<BR>
+&nbsp;&nbsp;struct&nbsp;node&nbsp;*left;<BR>
+}mynode;<BR>
+<BR>
+mynode&nbsp;*root;<BR>
+<BR>
+mynode&nbsp;*add_node(int&nbsp;value);<BR>
+void&nbsp;levelOrderTraversal(mynode&nbsp;*root);<BR>
+mynode&nbsp;*closestAncestor(mynode*&nbsp;root,&nbsp;mynode*&nbsp;p,&nbsp;mynode*&nbsp;q);<BR>
+<BR>
+<BR>
+int&nbsp;main(int&nbsp;argc,&nbsp;char*&nbsp;argv[])<BR>
+{&nbsp;<BR>
+&nbsp;&nbsp;mynode&nbsp;*node_pointers[7],&nbsp;*temp;<BR>
+&nbsp;&nbsp;root&nbsp;=&nbsp;NULL;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;//&nbsp;Create&nbsp;the&nbsp;BST.&nbsp;<BR>
+&nbsp;&nbsp;//&nbsp;Store&nbsp;the&nbsp;node&nbsp;pointers&nbsp;to&nbsp;use&nbsp;later...<BR>
+&nbsp;&nbsp;node_pointers[0]&nbsp;=&nbsp;add_node(5);<BR>
+&nbsp;&nbsp;node_pointers[1]&nbsp;=&nbsp;add_node(1);<BR>
+&nbsp;&nbsp;node_pointers[2]&nbsp;=&nbsp;add_node(-20);<BR>
+&nbsp;&nbsp;node_pointers[3]&nbsp;=&nbsp;add_node(100);<BR>
+&nbsp;&nbsp;node_pointers[4]&nbsp;=&nbsp;add_node(23);<BR>
+&nbsp;&nbsp;node_pointers[5]&nbsp;=&nbsp;add_node(67);<BR>
+&nbsp;&nbsp;node_pointers[6]&nbsp;=&nbsp;add_node(13);<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;printf("\n\n\nLEVEL&nbsp;ORDER&nbsp;TRAVERSAL\n\n");<BR>
+&nbsp;&nbsp;levelOrderTraversal(root);<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;//&nbsp;Calculate&nbsp;the&nbsp;closest&nbsp;ancestors&nbsp;of&nbsp;a&nbsp;few&nbsp;nodes..<BR>
+<BR>
+&nbsp;&nbsp;temp&nbsp;=&nbsp;closestAncestor(root,&nbsp;node_pointers[5],&nbsp;node_pointers[6]);<BR>
+&nbsp;&nbsp;printf("\n\nClosest&nbsp;ancestor&nbsp;of&nbsp;[%d]&nbsp;and&nbsp;[%d]&nbsp;is&nbsp;[%d]\n\n",<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node_pointers[5]->value,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node_pointers[6]->value,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp->value);<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;temp&nbsp;=&nbsp;closestAncestor(root,&nbsp;node_pointers[2],&nbsp;node_pointers[6]);<BR>
+&nbsp;&nbsp;printf("\n\nClosest&nbsp;ancestor&nbsp;of&nbsp;[%d]&nbsp;and&nbsp;[%d]&nbsp;is&nbsp;[%d]\n\n",<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node_pointers[2]->value,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node_pointers[6]->value,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp->value);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;temp&nbsp;=&nbsp;closestAncestor(root,&nbsp;node_pointers[4],&nbsp;node_pointers[5]);<BR>
+&nbsp;&nbsp;printf("\n\nClosest&nbsp;ancestor&nbsp;of&nbsp;[%d]&nbsp;and&nbsp;[%d]&nbsp;is&nbsp;[%d]\n\n",<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node_pointers[4]->value,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node_pointers[5]->value,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp->value);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;temp&nbsp;=&nbsp;closestAncestor(root,&nbsp;node_pointers[1],&nbsp;node_pointers[3]);<BR>
+&nbsp;&nbsp;printf("\n\nClosest&nbsp;ancestor&nbsp;of&nbsp;[%d]&nbsp;and&nbsp;[%d]&nbsp;is&nbsp;[%d]\n\n",<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node_pointers[1]->value,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node_pointers[3]->value,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp->value);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+<BR>
+<BR>
+&nbsp;&nbsp;temp&nbsp;=&nbsp;closestAncestor(root,&nbsp;node_pointers[2],&nbsp;node_pointers[6]);<BR>
+&nbsp;&nbsp;printf("\n\nClosest&nbsp;ancestor&nbsp;of&nbsp;[%d]&nbsp;and&nbsp;[%d]&nbsp;is&nbsp;[%d]\n\n",<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node_pointers[2]->value,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node_pointers[6]->value,<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp->value);&nbsp;&nbsp;<BR>
+&nbsp;<BR>
+}<BR>
+<BR>
+<BR>
+//&nbsp;Function&nbsp;to&nbsp;add&nbsp;a&nbsp;new&nbsp;node&nbsp;to&nbsp;the&nbsp;tree..<BR>
+mynode&nbsp;*add_node(int&nbsp;value)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;mynode&nbsp;*prev,&nbsp;*cur,&nbsp;*temp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;temp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;(mynode&nbsp;*)&nbsp;malloc(sizeof(mynode));<BR>
+&nbsp;&nbsp;&nbsp;temp->value&nbsp;=&nbsp;value;<BR>
+&nbsp;&nbsp;&nbsp;temp->right&nbsp;=&nbsp;NULL;<BR>
+&nbsp;&nbsp;&nbsp;temp->left&nbsp;&nbsp;=&nbsp;NULL;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;if(root==NULL)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("\nCreating&nbsp;the&nbsp;root..\n");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;=&nbsp;temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;prev=NULL;<BR>
+&nbsp;&nbsp;&nbsp;cur=root;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;while(cur!=NULL)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev=cur;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cur=(value&lt;cur->value)?cur->left:cur->right;<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;if(value&nbsp;<&nbsp;prev->value)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev->left=temp;<BR>
+&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev->right=temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;return(temp);&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+}<BR>
+<BR>
+<BR>
+<BR>
+//&nbsp;Level&nbsp;order&nbsp;traversal..<BR>
+void&nbsp;levelOrderTraversal(mynode&nbsp;*root)<BR>
+{<BR>
+&nbsp;&nbsp;mynode&nbsp;*queue[100]&nbsp;=&nbsp;{(mynode&nbsp;*)0};<BR>
+&nbsp;&nbsp;int&nbsp;size&nbsp;=&nbsp;0;<BR>
+&nbsp;&nbsp;int&nbsp;queue_pointer&nbsp;=&nbsp;0;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;while(root)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("[%d]&nbsp;",&nbsp;root->value);<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(root->left)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[size++]&nbsp;=&nbsp;root->left;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(root->right)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[size++]&nbsp;=&nbsp;root->right;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;=&nbsp;queue[queue_pointer++];&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;}<BR>
+}<BR>
+<BR>
+<BR>
+//&nbsp;Function&nbsp;to&nbsp;find&nbsp;the&nbsp;closest&nbsp;ancestor...<BR>
+mynode&nbsp;*closestAncestor(mynode*&nbsp;root,&nbsp;mynode*&nbsp;p,&nbsp;mynode*&nbsp;q)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;mynode&nbsp;*l,&nbsp;*r,&nbsp;*tmp;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;if(root&nbsp;==&nbsp;NULL)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return(NULL);<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;if(root->left==p&nbsp;||&nbsp;root->right==p&nbsp;||&nbsp;root->left==q&nbsp;||&nbsp;root->right==q)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return(root);<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l&nbsp;=&nbsp;closestAncestor(root->left,&nbsp;p,&nbsp;q);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r&nbsp;=&nbsp;closestAncestor(root->right,&nbsp;p,&nbsp;q);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(l!=NULL&nbsp;&&&nbsp;r!=NULL)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return(root);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp&nbsp;=&nbsp;(l!=NULL)&nbsp;?&nbsp;l&nbsp;:&nbsp;r;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return(tmp);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+}<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+Here is the tree for you to visualize...<BR>
+<BR>
+<CODE><BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;(node=0)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;(node=1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100&nbsp;(node=3)<BR>
+<BR>
+-20&nbsp;(node=2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;23&nbsp;(node=4)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;13&nbsp;(node=5)&nbsp;&nbsp;&nbsp;67&nbsp;(node=6)&nbsp;&nbsp;<BR>
+<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+Here is the output...<BR>
+<BR>
+<CODE><BR>
+LEVEL&nbsp;ORDER&nbsp;TRAVERSAL<BR>
+<BR>
+[5]&nbsp;[1]&nbsp;[100]&nbsp;[-20]&nbsp;[23]&nbsp;[13]&nbsp;[67]<BR>
+<BR>
+<BR>
+Closest&nbsp;ancestor&nbsp;of&nbsp;[67]&nbsp;and&nbsp;[13]&nbsp;is&nbsp;[23]<BR>
+<BR>
+Closest&nbsp;ancestor&nbsp;of&nbsp;[-20]&nbsp;and&nbsp;[13]&nbsp;is&nbsp;[5]<BR>
+<BR>
+Closest&nbsp;ancestor&nbsp;of&nbsp;[23]&nbsp;and&nbsp;[67]&nbsp;is&nbsp;[100]<BR>
+<BR>
+Closest&nbsp;ancestor&nbsp;of&nbsp;[1]&nbsp;and&nbsp;[100]&nbsp;is&nbsp;[5]<BR>
+<BR>
+Closest&nbsp;ancestor&nbsp;of&nbsp;[-20]&nbsp;and&nbsp;[13]&nbsp;is&nbsp;[5]<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<font class=announcelink>**</font><BR>
+<BR>
+<!--<BR>
+<BR>
+Question: [Find the closest ancestor of two nodes in a tree]<BR>
+<BR>
+Perform an Euler tour on the tree.<BR>
+<BR>
+Let the tree is like<BR>
+<BR>
+                                                            1<BR>
+<BR>
+2                                                                                            2<BR>
+<BR>
+3                      3                      3                      3<BR>
+<BR>
+                4           4          4          4            4         4           4<BR>
+<BR>
+                                                                5              5<BR>
+<BR>
+If we want to find out the closest ancestor of 5 and 4 (see the bold ones) then perform an Euler tour like<BR>
+<BR>
+1 2 3 4 3 4 3 2 3 4 3 4 3 2 1 2 3 4 5 4 3 4 5 4 3 2 3 4             this is very much similar to inorder traversal.<BR>
+<BR>
+Now we can find the minimum (level-1) node between the two nodes that are bold. In this case, level is (2 ? 1).<BR>
+<BR>
+The recursion for left and right hand side sub trees will give us the particular node at a level else we can perform a traversal till 2 (in this case).<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+----------------------------<BR>
+<BR>
+node* lca(node* t,node* p,node* q)<BR>
+{<BR>
+<BR>
+   if(t==NULL)<BR>
+    return NULL;<BR>
+   <BR>
+   if(t->left==p || t->right==p ||t->left==q || t->right==q)<BR>
+     return t;<BR>
+   <BR>
+   else<BR>
+   {<BR>
+<BR>
+      node* l=(lca(t->left,p,q));<BR>
+      node* r=(lca(t->right,p,q));<BR>
+      <BR>
+      if(l!=NULL && r!=NULL))<BR>
+        return t;<BR>
+<BR>
+      else<BR>
+      {<BR>
+         node* a=(l!=NULL) ? l : r;<BR>
+         return a;<BR>
+      }<BR>
+   }<BR>
+}<BR>
+<BR>
+<BR>
+--> 
+<BR><BR>
+<!--END-->
+</font><BR></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="3_17.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=notelink><A href="mailto:cracktheinterview@gmail.com?subject=Comments [Find the closest ancestor of two nodes in a tree. ]&Body=Question : [Find the closest ancestor of two nodes in a tree. ]"><font class=announcelink>COMMENTS</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><A HREF=../adfaqpublish.html>INDEX</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><a href="#" onclick="window.print();return false;">PRINT</a></font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="3_19.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<BR><BR><BR><font class=notelink>
+Last updated:
+
+July 8, 2005<BR><BR>
+<a href=../index.html>www.cracktheinterview.com</a> - Your destination for the most common IT interview questions, answers, frequently asked interview questions (FAQ), C Programs, C Datastructures for interviews conducted by Microsoft, Oracle, Google, IBM, HP, Yahoo, Infosys, Wipro, SAP, CA (Computer Associates), Sun, Adobe, GE, Novell, Cisco, Motorola, TI (Texas Instruments), Intel, TCS, iFlex, Trilogy, MindTree, GS and more...<br><BR>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+
+<!--END-->
+
+
+</TD>
+
+
+
+
+<TD WIDTH=10%% valign="top">
+
+
+<!--START:ADS1-->
+
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_alternate_color = "CCCCCC";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript" src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"  src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+</TD>
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+</BODY>
+
+<!-- Mirrored from www.cracktheinterview.com by HTTrack Website Copier/3.x [XR,YP'2001] -->
+</HTML>
+
+

@@ -1,0 +1,759 @@
+
+<html>
+<head>
+<link rel="alternate" type="application/rss+xml" title="WindowsForDevices News" href="headlines10.rdf.htm" tppabs="http://www.windowsfordevices.com/backend/headlines10.rdf">
+<link rel="stylesheet" type="text/css" href="style.css" tppabs="http://www.windowsfordevices.com/style.css" title="MyCSS"/>
+<title>Customizing Windows XP Embedded thin clients</title>
+
+<META NAME="keywords" CONTENT="embedded, embedded Windows, Windows Embedded, Windows Mobile, embedded windows, Windows CE .NET, Windows CE, Windows XP Embedded, devices, Windows devices, embedding, embed, embedded, computing, software, operating system, drivers, real time, realtime, real-time, news, links, articles, FAQ, forum, directory, hardware, computer, chips, system-on-chip, system on chip, boards, single board computers, SBC, PC/104, PC-104, PC104, PC 104, CPCI, CompactPCI, EBX, VME, PDA, smart phone, smartphone, set top box, STB, VoIP">
+<META NAME="description" CONTENT="The independent Windows Mobile and Embedded community, featuring the news, views, cool device info, discussion forums, resource links, and original technical content.">
+</head>
+<body bgcolor="white" topmargin="0">
+<font size=1><!--  START OF OMNITURE CODE -><!-- SiteCatalyst code version: G.9.Copyright 1997-2004 Omniture, Inc. More info available at http://www.omniture.com -->
+<script language="JavaScript"><!-- 
+var s_pageName=""
+var s_server=""
+var s_channel=""
+var s_pageType=""
+var s_prop1=""
+var s_prop2=""
+var s_prop3=""
+var s_prop4=""
+var s_prop5=""
+var s_campaign=""
+var s_state=""
+var s_zip=""
+var s_events=""
+var s_products=""
+var s_purchaseID=""
+var s_eVar1=""
+var s_eVar2=""
+var s_eVar3=""
+var s_eVar4=""
+var s_eVar5=""
+var s_account="ziffdavisglobal, ziffdaviswindowsfordevices"
+//--></script>
+<script language="JavaScript" src="s_code_remote.js" tppabs="http://www.windowsfordevices.com/cgi-bin/s_code_remote.js"></script>
+<!-- End SiteCatalyst code version: G.9. --><!-- END OF OMNITURE CODE -->
+</font>
+
+<!-- begin banner tag -->
+<table align=center border=0 cellspacing=0 cellpadding=0 width="728"><tr><td><center>
+<IFRAME SRC="home;sz=468x60;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/windowsfordevices.dart/home;sz=468x60;ord=[timestamp]?" WIDTH="468" HEIGHT="60" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"><SCRIPT LANGUAGE="JavaScript" SRC="home;sz=468x60;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/windowsfordevices.dart/home;sz=468x60;abr=!ie;ord=[timestamp]?" ></SCRIPT></IFRAME>
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/windowsfordevices.dart/home;sz=468x60;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/windowsfordevices.dart/home;sz=468x60;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/windowsfordevices.dart/home;sz=468x60;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;sz=468x60;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/windowsfordevices.dart/home;sz=468x60;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="468" HEIGHT="60" BORDER="0" ALT=""></A></NOSCRIPT>
+</center></td></tr></table>
+<!-- End banner tag -->
+<table align=center border=0 cellspacing=0 cellpadding=0 width="100%">
+  <tr>
+    <td valign=middle align=left width=410><table border=0 valign=bottom cellspacing=0 cellpadding=0>
+  <tr><td height=5></td></tr>
+  <tr><td><a href="index.htm" tppabs="http://www.windowsfordevices.com/"><img border=0 src="win4dev-logo-short.gif" tppabs="http://www.windowsfordevices.com/images/win4dev-logo-short.gif"></a></td></tr>
+</table></td>
+    <td valign=middle align=right>
+      <table border=0 width=150 cellpadding=0 cellspacing=0>
+  <!-- vertical spacer follows - remove if not required -->
+        <tr>
+          <td height=5></td>
+        </tr>
+        <tr>
+          <td width=200 align=center nowrap><font face="Arial,Helvetica" size=1>
+           Click here to learn<BR>about this Sponsor:</font></td>
+        </tr>
+        <tr>
+          <td align=center>
+<!-- begin tagline-ad tag -->
+<table cellpadding=0 cellspacing=0 width="170" border=1><tr><td align=center>
+<!-- begin tagline-ad tag --> 
+<IFRAME SRC="home;sz=170x60;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/windowsfordevices.dart/home;sz=170x60;ord=[timestamp]?" WIDTH="170" HEIGHT="60" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;sz=170x60;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/windowsfordevices.dart/home;sz=170x60;abr=!ie;ord=[timestamp]?" ></SCRIPT> </IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/windowsfordevices.dart/home;sz=170x60;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/windowsfordevices.dart/home;sz=170x60;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/windowsfordevices.dart/home;sz=170x60;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank">
+<IMG SRC="home;sz=170x60;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/windowsfordevices.dart/home;sz=170x60;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="170" HEIGHT="60" BORDER="0" ALT=""></A></NOSCRIPT> <!-- End ad tag --> 
+<!-- end ad tag -->
+</td></tr></table>
+<!-- end ad tag --></td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr><td height=5></td></tr>
+  <tr><td colspan=2 align=left><font face='Arial,Helvetica' size=2>
+<a href="index.htm" tppabs="http://www.windowsfordevices.com/"><b>home</b></a> &nbsp;|&nbsp;
+<a href="news.htm" tppabs="http://www.windowsfordevices.com/news"><b>news</b></a> &nbsp;|&nbsp;
+<a href="articles.htm" tppabs="http://www.windowsfordevices.com/articles"><b>articles</b></a> &nbsp;|&nbsp;
+<a href="survey.cgi.htm" tppabs="http://www.windowsfordevices.com/cgi-bin/survey/survey.cgi"><b>polls</b></a> &nbsp;|&nbsp;
+<a href="UltraBoard.pl.htm" tppabs="http://www.windowsfordevices.com/cgi-bin/board/UltraBoard.pl"><b>forum</b></a> &nbsp;|&nbsp;
+<a href="events.htm" tppabs="http://www.windowsfordevices.com/events"><b>events</b></a> &nbsp;|&nbsp;
+<a href="products.htm" tppabs="http://www.windowsfordevices.com/products"><b>products</b></a> &nbsp;|&nbsp;
+<a href="sponsors.htm" tppabs="http://www.windowsfordevices.com/sponsors"><b>sponsors</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://www.windowsfordevices.com/directory/  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.windowsfordevices.com/directory/'" tppabs="http://www.windowsfordevices.com/directory"><b>directory</b></a> &nbsp;|&nbsp;
+<a href="search_view.cgi.htm" tppabs="http://www.windowsfordevices.com/cgi-bin/search_view.cgi"><b>search</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://www.windowsfordevices.com/cgi-bin/printerfriendly.cgi?id=AT6152425094  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.windowsfordevices.com/cgi-bin/printerfriendly.cgi?id=AT6152425094'" tppabs="http://www.windowsfordevices.com/cgi-bin/printerfriendly.cgi?id=AT6152425094"><b>printable</b></a></font></td></tr>
+  <tr><td height=5></td></tr>
+</table>
+<!-- Search Form ================== -->
+<table width=100% cellspacing=0 cellpadding=0 border=0>
+<tr><td>
+<table width=100% cellspacing=0 cellpadding=0 bgcolor="#9CE29C" border=1>
+<tr><form action="http://www.windowsfordevices.com/cgi-bin/article_view.cgi" method=POST><td align=center>
+<strong><font face='Arial,Helvetica' size=3>Articles &amp; white papers about Windows based embedded applications ...</font></strong><br>
+      <small>Keywords:</small> <input type=text name=sk size=25 value="">
+      <small>Match:</small>
+      <select name=st size=1>
+        <option value="all"     >All keywords</option>
+        <option value="any"     >Any keyword </option>
+        <option value="exact" >Exact phrase</option>
+      </select>
+      <input type=submit name=view value=Search>
+      <small>Sort by:</small>
+      <select name=ss size=1>
+        <option value="newest" >Newest first</option>
+        <option value="best"     >Best match</option>
+      </select>
+    </td></form></tr></table>
+        </td></tr></table>
+<table width="100%" cellpadding="2">
+  <tr>
+    <td valign="top" width="18%">
+<table width=100% cellspacing=0 cellpadding=0>
+<tr><td>
+
+<!-- columnleft020.html -->
+
+<font face ="arial, helvetica" size="2">
+Got a hot tip? &nbsp; <a href="news_post.cgi.htm" tppabs="http://www.windowsfordevices.com/cgi-bin/news_post.cgi"><u>tell us</u></a>
+<br></font>
+
+<table height=10 cellpadding=0 cellspacing=0 border=0><tr><td></td></tr></table>
+
+<center>
+<table bgcolor="#9CE29C" cellspacing=0 cellpadding=5 border=1><tr><td>
+<form action="http://www.eweek.com/data_process_newsletter_manage/" name="newslettersForm" method="get">	
+<center>
+<font face ="arial, helvetica" size="2" color="#DE0000">
+<B>Free weekly newsletter</B><br></font>
+<font face ="arial, helvetica" size="1">
+<input type='hidden' name='113' value='1'>
+<input type="hidden" name="SelFormat" value="2">
+<input type="hidden" name="component" value="1">Enter your email...<br>
+<input type="text" size="15" maxlength="64" name="email"><br>
+<input type="Submit" name="Submit" value="Subscribe"> &nbsp; ...
+<a href="javascript:if(confirm('http://www.eweek.com/newsletter_manage  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.eweek.com/newsletter_manage'" tppabs="http://www.eweek.com/newsletter_manage" class="Module_Content">
+<u>more</u></a><br>
+</font>
+</center>
+</form>
+</td></tr></table>
+</center>
+
+<table height=10 cellpadding=0 cellspacing=0 border=0><tr><td></td></tr></table>
+
+<a href="survey.cgi-id=02142005172129.htm" tppabs="http://www.windowsfordevices.com/cgi-bin/survey/survey.cgi?id=02142005172129">
+<img align=left src="wfd-vote.jpg" tppabs="http://www.windowsfordevices.com/files/misc/wfd-vote.jpg" vspace=5 hspace=10 border=0>
+<font face="arial, helvetica" size="2" color="#DE0000"><b>2005</b></font> 
+<font face="arial, helvetica" size="2"><b>market survey</b></font>
+</a>
+
+<hr>
+<font face="arial, helvetica" size="2">
+<b>Check out the latest...</b><br>
+<center><a href="AT2468909181.html" tppabs="http://www.windowsfordevices.com/articles/AT2468909181.html">
+<img src="ms-smartphones-thm.gif" tppabs="http://www.windowsfordevices.com/files/misc/ms-smartphones-thm.gif" vspace=5 border=0><br>
+<b>Smartphones!</b></a></center></font>
+
+<HR>
+<font face="arial, helvetica" size="2">
+<center><a href="AT5654689489.html" tppabs="http://www.windowsfordevices.com/articles/AT5654689489.html">
+<img src="ms-pocketpc-thm.jpg" tppabs="http://www.windowsfordevices.com/files/misc/ms-pocketpc-thm.jpg" vspace=5 border=0><br>
+<b>Pocket PCs</b></a></center></font>
+
+<HR>
+<center><a href="AT5422326956.html" tppabs="http://www.windowsfordevices.com/articles/AT5422326956.html">
+<img src="gametrac-thm.jpg" tppabs="http://www.windowsfordevices.com/files/misc/gametrac-thm.jpg" vspace=5 border=0><br>
+<font face="arial, helvetica" size="2">
+<b>...and other cool stuff</b></font></a></center>
+
+<HR>
+<font face="arial, helvetica" size="2">
+<B>Don't miss the . . .</B>
+<center><a href="AT4813237524.html" tppabs="http://www.windowsfordevices.com/articles/AT4813237524.html">
+<img src="wrestlers.jpg" tppabs="http://www.windowsfordevices.com/files/misc/wrestlers.jpg" vspace=5 border=0><br clear=all>
+<b>"Great Gadget Smack-Down"</b></a></center></font>
+
+<HR>
+<font face="arial, helvetica" size="2" color="#DE0000">
+<b>Quick Reference Guides and Special Reports</B></font><br>
+<font face="arial, helvetica" size="2">
+&#149; <a href="AT5422326956.html" tppabs="http://www.windowsfordevices.com/articles/AT5422326956.html">
+Windows Device Showcase</a><br>
+&#149; <a href="AT5002761393.html" tppabs="http://www.windowsfordevices.com/articles/AT5002761393.html">
+Intro to Windows Embedded</a><br>
+&#149; <a href="AT2750205240.html" tppabs="http://www.windowsfordevices.com/articles/AT2750205240.html">
+Intro to Shared Source</a><br>
+&#149; <a href="AT5376962137.html" tppabs="http://www.windowsfordevices.com/articles/AT5376962137.html">
+Real-time Windows Embedded</a><br>
+&#149; <a href="NS7959634906.html" tppabs="http://www.windowsfordevices.com/news/NS7959634906.html">
+Portable Media Centers</a><br>
+&#149; <a href="AT6914689493.html" tppabs="http://www.windowsfordevices.com/articles/AT6914689493.html">
+Spotlight on spot watches</a><br>
+&#149; <a href="AT2254456644.html" tppabs="http://www.windowsfordevices.com/articles/AT2254456644.html">
+IP set-top boxes</a><br>
+&#149; <a href="AT7118576212.html" tppabs="http://www.windowsfordevices.com/articles/AT7118576212.html">
+Embedded VoIP</a><br>
+&#149; <a href="NS3540266275.html" tppabs="http://www.windowsfordevices.com/news/NS3540266275.html">
+Embedding Windows is 4X cheaper than Linux</a><br>
+&#149; <a href="NS8969975443.html" tppabs="http://www.windowsfordevices.com/news/NS8969975443.html">
+CE "core" reduced to $3</a><br>
+&#149; <a href="AT8980639129.html" tppabs="http://www.windowsfordevices.com/articles/AT8980639129.html">
+Windows Embedded books</a><br>
+</font>
+
+<hr>
+<font face="arial, helvetica" size="2">
+<B>Popular discussions</B><br>
+&#149; <a href="UltraBoard.pl-Action=ShowBoard&Board=discussionXP.htm" tppabs="http://www.windowsfordevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=discussionXP">
+Windows XP Embedded</a><br>
+&#149; <a href="UltraBoard.pl-Action=ShowBoard&Board=discussionCE.htm" tppabs="http://www.windowsfordevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=discussionCE">
+Windows CE</a><br>
+&#149; <a href="UltraBoard.pl-Action=ShowBoard&Board=discussionMobile.htm" tppabs="http://www.windowsfordevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&Board=discussionMobile">
+Windows Mobile</a><br>
+<a href="index-1.htm" tppabs="http://www.windowsfordevices.com/forum/" target="new"><img border=0 src="moreheadline.gif" tppabs="http://www.windowsfordevices.com/images/moreheadline.gif"></a>
+</font>
+
+<HR>
+<font face ="arial, helvetica" size="2">
+<B>Windows Embedded developer newsgroups</B><br>
+&#149; <a href="javascript:if(confirm('http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&group=microsoft.public.windowsce.embedded  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&group=microsoft.public.windowsce.embedded'" tppabs="http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&group=microsoft.public.windowsce.embedded" target="new">
+Windows CE</a><br>
+&#149; <a href="javascript:if(confirm('http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&group=microsoft.public.windowsxp.embedded  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&group=microsoft.public.windowsxp.embedded'" tppabs="http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&group=microsoft.public.windowsxp.embedded" target="new">
+XP Embedded</a><br>
+&#149; <a href="javascript:if(confirm('http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&group=microsoft.public.pocketpc.developer  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&group=microsoft.public.pocketpc.developer'" tppabs="http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&group=microsoft.public.pocketpc.developer" target="new">
+PocketPC</a><br>
+&#149; <a href="javascript:if(confirm('http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&group=microsoft.public.smartphone.developer  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&group=microsoft.public.smartphone.developer'" tppabs="http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&group=microsoft.public.smartphone.developer" target="new">
+Smartphone</a><br></font>
+<a href="javascript:if(confirm('http://msdn.microsoft.com/embedded/community/newsgrp/default.aspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/embedded/community/newsgrp/default.aspx'" tppabs="http://msdn.microsoft.com/embedded/community/newsgrp/default.aspx" target="new">
+<img border=0 src="moreheadline.gif" tppabs="http://www.windowsfordevices.com/images/moreheadline.gif"></a>
+
+<HR>
+<font face ="arial, helvetica" size="2">
+<B>Recommended sites:</B><br>
+&#149; <a href="javascript:if(confirm('http://www.microsoft-watch.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.microsoft-watch.com/'" tppabs="http://www.microsoft-watch.com/" target="new">
+microsoft-watch</a><br>
+&#149; <a href="javascript:if(confirm('http://www.wirelessdevnet.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.wirelessdevnet.com/'" tppabs="http://www.wirelessdevnet.com/" target="new">
+wirelessdevnet</a><br>
+&#149; <a href="javascript:if(confirm('http://www.wecomasia.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.wecomasia.com/'" tppabs="http://www.wecomasia.com/" target="new">
+wecomasia</a><br>
+&#149; <a href="javascript:if(confirm('http://www.devbuzz.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.devbuzz.com/'" tppabs="http://www.devbuzz.com/" target="new">
+devbuzz</a><br>
+&#149; <a href="javascript:if(confirm('http://www.cewindows.net/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.cewindows.net/'" tppabs="http://www.cewindows.net/" target="new">
+cewindows</a><br>
+&#149; <a href="javascript:if(confirm('http://www.opennetcf.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.opennetcf.org/'" tppabs="http://www.opennetcf.org/" target="new">
+opennetcf</a><br>
+&#149; <a href="javascript:if(confirm('http://www.pocketpcthoughts.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.pocketpcthoughts.com/'" tppabs="http://www.pocketpcthoughts.com/" target="new">
+pocketpcthoughts</a><br>
+&#149; <a href="javascript:if(confirm('http://www.smartphonethoughts.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.smartphonethoughts.com/'" tppabs="http://www.smartphonethoughts.com/" target="new">
+smartphonethoughts</a><br>
+&#149; <a href="javascript:if(confirm('http://pdaphonehome.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://pdaphonehome.com/'" tppabs="http://pdaphonehome.com/" target="new">
+pdaphonehome</a><BR></font>
+
+<HR>
+<font face="arial, helvetica" size="2"><B>Submissions...</B><BR>
+<a href="news_post.cgi.htm" tppabs="http://www.windowsfordevices.com/cgi-bin/news_post.cgi"><u>news</u></a>, 
+<a href="event_post.cgi.htm" tppabs="http://www.windowsfordevices.com/cgi-bin/event_post.cgi"><u>events</u></a>, 
+<a href="dcd.cgi-az=add_form.htm" tppabs="http://www.windowsfordevices.com/cgi-bin/dcd/dcd.cgi?az=add_form"><u>directory</u></a>, 
+<a href="contactus.html" tppabs="http://www.windowsfordevices.com/contactus.html"><u>other</u></a><BR></font>
+
+<HR>
+<font face ="arial, helvetica" size="2">
+<a href="index.html" tppabs="http://www.windowsfordevices.com/backend/index.html" target="_blank">
+<img border=0 align=left vspace=5 hspace=5 src="xml.gif" tppabs="http://www.windowsfordevices.com/images/xml.gif">
+<u>news feed</u></a></font>
+<BR>
+
+</td></tr></table>
+
+    </td>
+    <td width="64%" valign="top">
+      <table>
+       <tr><td>
+           <table width=100%>
+<tr>
+        <td>
+          <table border=1 cellpadding=6 width=100% cellspacing=0>
+            <tr>
+              <th width=100%  bgcolor='#9CE29C'><font face='Arial,Helvetica' size=2>Customizing Windows XP Embedded thin clients</font></th>
+            </tr>
+            <tr>
+              <td width=100% height=20><font face='Arial,Helvetica' size=2>by Sean Liming and John Malin (Apr. 13, 2005)</font><br><br>
+                <font face="Arial,Helvetica" size=3><B>Foreword:</B>   This tutorial by Sean Liming and John Malin examines the issues involved in customizing thin client devices based on Windows XP Embedded.  The authors note that there have been several requests on the Windows XP Embedded newsgroups asking about modifying either thin client hardware or the underlying operating system.<br><br>Things like changing the TCP/IP address or domain name are relatively easy, as they can be handled within the existing OS image, according to the authors.  However, many other types of changes require reconfiguring and rebuilding the XPe image, which can lead to problems if not done systematically.  The authors offer step-by-step guidance for working through the required process successfully.<br><br><hr><br><center><B>Configuring a Windows XP Embedded thin client</b><br><br>by Sean Liming and John Malin</center><br><b>Introduction</b><br><br>Thin clients are becoming increasingly popular computing platforms among IT departments. The ability to run an operating system with all the major applications -- word processing, spreadsheets, and other company software -- on remote servers saves companies millions in computing service fees.  Thin client architecture requires very little local storage, and acts like a window to the backend servers that host the major applications.<br><br>IT departments like thin clients because they save hundreds of dollars versus the cost of a fully configured PC, and they also reduce application software maintenance costs for deployment and upgrading. Of course, no two IT departments are alike -- each has its own approach to security or custom implementation to access the network.  Therefore, easy configurability of thin clients is important. <br><br>There have been several requests on the Windows XP Embedded (XPe) newsgroups asking to modify either thin client hardware or make some change to the software. The customization requests are quite diverse in scope and complexity, but many would involve modifying the whole underline operating system image.  Minor changes for TCP/IP address and domain names can be handled within the existing image, but changing the whole image takes some reverse engineering.  This article provides the first steps to customizing Windows XP Embedded thin client platforms.<br><br><b>The hardware inside</b><br><br>An XPe image consists of a hardware layer (HAL, device drives) and a software layer (TCP/IP, notepad, Explorer). The XPe database groups the OS components into these two categories. Every image includes device drivers that interface to the hardware. A little understanding of the hardware is very helpful when make changes to the XPe OS image.<br><br>First, processor technology is an important aspect of the performance and the physical size of a thin client. Many thin client terminals are based on either VIA or Transmeta processors. These processors are ideal for thin client hardware platforms due to their low power, good performance, and the fact that they do not require a cooling fan. <br><br>The boot media is the next, if not the most important, piece of hardware that you need to understand. Many thin clients use solid state technology such as CompactFlash and mini-IDE flash drives as the boot and storage medium. The use of non-rotating media makes thin client systems a little more robust then their larger PC counterparts.  The usable lifespan of flash memory devices is a bit of an issue, though.<br><br>Windows XP Pro and XP Embedded are constantly reading from and writing to a disk. This translates into many flash erase cycles, of which CompactFlash and mini-IDE flash memory devices have a limited number. Without sophisticated wear-leveling technology, CompactFlash and mini-IDE flash cards will wear out much faster than in normal consumer-electronic style use.<br><br>To protect the life of the flash, thin client manufacturers implement XP Embedded's Enhanced Write Filter (EWF) to prevent writes (erase cycles) to the flash drive. All writes are redirected to the RAM disk (a.k.a. overlay). If you need to make any changes to the OS -- such as domain connectivity or change TCP/IP static address -- the EWF can be disabled to allow updating of this data, and then re-enabled. Setting up EWF is a bit tricky, especially when it comes to CompactFlash cards. When you are recreating an XPe image for your thin client you will have to get familiar with EWF setup.<br><br>Another drawback of these flash memory devices is their boot time. CompactFlash and mini-IDE flash devices typically boot with Port I/O mode at a rate of 3 to 5 MB/s.  At that rate, a system could take as long as 90 seconds to boot. In contrast, an SATA hard drive uses DMA to speed up access to 155 MB/s.<br><br>If your target has an internal header for USB 2.0 and has BIOS support to boot USB 2.0 devices, you could upgrade to an M-Systems <a href="javascript:if(confirm('http://www.windowsfordevices.com/news/NS4861366072.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.windowsfordevices.com/news/NS4861366072.html'" tppabs="http://www.windowsfordevices.com/news/NS4861366072.html" target="new"><u>uDiskOnChip</u></a> (uDOC). The uDOC offers security, reliability, performance, and cost effective solutions for embedded systems. You don't have to worry about flash life since the uDOC features M-System’s TrueFFS wear-leveling technology. The boot times are just as fast as a hard drive, since the uDOC is operating over USB 2.0. The overall system performance will improve with the uDOC in your system.<br><br>Finally, you will need to be familiar with other devices on the platform such as the Ethernet, audio, and video controllers. You may need to create components for these devices, if the drivers are not in the database.<br><br><b>Running Target Analyzer (TAP.EXE)</b><br><br>Creating a custom XP Embedded image implies that we have to create a custom configuration in Target Designer. To get the baseline components for the target hardware configuration, we need to run Target Analyzer (TAP.EXE) on the thin client system to get a PMQ file that contains a list of the devices in the system. <br><br>It shouldn't be too difficult to run TAP, since XP Embedded is already running on the thin client. This is where understanding the hardware becomes important. In order to run TAP, you need to get TAP on the thin client. Here are some options: <ol><li>Attach a USB floppy drive or USB flash key to the thin client and run TAP.EXE from that device.<br><br><li>Copy TAP directly to the internal storage media. EWF can get in the way, so one way is to remove the CF or mini-IDE from the thin client, connect the media to your development PC using an adapter, copy TAP to the media, then place the media back into the thin client, boot the thin client, and finally run TAP. You will also need a method to copy the PMQ file that TAP generates to the development machine or save the PMQ file to the media, keeping in mind the EWF issues.<br><br><li>Alternatively, if you can get to a network share, you could download TAP to the thin client and then run TAP so the output is placed back onto the network share. </ol>Of course, if you are trying to upgrade the thin client from another OS, then you will need to perform some additional steps. The MS-DOS version of Target Analyzer (TA.EXE) could be used, but it is doesn't produce all the components needed to develop a bootable image. You may need to add a few extra components to get the image to boot. Here is a list of some of the components to add: <ul><li>PCI standard host CPU bridge<br><li>PCI standard ISA bridge <br><li>Plug and Play Software Device Enumerator<br><li>Primary IDE Channel <br><li>Secondary IDE Channel<br><li>Disk Drive<br><li>Standard Dual Channel PCI IDE Controller<br><li>Standard IDE/ESDI Hard Disk Controller </ul>There may be more components to add. Ideally, you want to install XP Pro on the target system and then run TAP.EXE under XP Pro. The resulting PMQ file will have the complete list of system components. You may have limited local storage space so installing XP Pro might not be possible. One solution I have used is to build an image based on the MinLogon Sample Macro component to host the TAP session: <ol><li><b>Open</b> Target Designer<br><li>Create a new configuration called <b>TAPrun</b>.<br><li>Add the <b>MinLogon Sample Macro</b> component to the configuration.<br><li>Run a <b>Dependency Check</b> with Auto-resolve enabled.<br><li><b>Build</b> the image<br><li>Once the build has completed, copy TAP.EXE to the root of the image </ol>The final XPe image uses the Standard PC HAL so the image should run on all PC platforms that can run XP. The image size is about 25MB. Download the image, with TAP.EXE in the root of the image, to the target device and let FBA run. Once FBA completes, you can run TAP.EXE to get the PMQ file.<br><br>The resulting PMQ file will not have a complete list of components, but it will have found the critical components to boot the OS. Follow the steps outlined in the next section to import and create a Platform Macro Component. The only problem with this technique is that the Standard PC component will be in the PMQ list instead of another possible Computer component like ACPI. Many systems today support the ACPI specification for power management and other BIOS features.<br><br>If you want to get the exact Computer components, run TA.EXE from DOS on the target, import the resulting PMQ file, and compare the Computer component results of the TA.EXE analysis under DOS to the TAP.EXE analysis under MinLogon. TA.EXE under DOS will reveal the Computer component that is best suited for the system. You may have to replace the Standard PC component with "Advanced Computer and Power Interface" or "ACPI Uniprocessor PC" components if your hardware has ACPI support, and you will want to add any other missed components that TA found.<br><br><b>Platform Macro Component and missing drivers</b><br><br>Capturing the PMQ file with TAP on the target system is the most challenging aspect of this process. The next step is to create a Platform Macro Component that contains the hardware components and basing line for the configuration. <ol><li>Open <b>Component Designer</b><br><li>From the menu, select <b>File->Import</b>. This will bring up the open import file dialog.<br><li>Locate and <b>OPEN</b> the devices.PMQ file.<br><li>The Import File dialog appears. Enter a log file name: <code>\deviceMacro.log</code> and click the <b>Start</b> button. When completed, the import dialog lists the number of components found out of the number of devices in the PMQ list. A new SLD file is created with a component titled devicesTAP. <br><li>In the details pane of the devicesTAP component, change the name of the component to XPES_target.<br><li>Next to Prototype in the details pane, click <b>Browse</b>.<br><li>The Select Prototype Component dialog appears. Traverse the component tree <b>Software->Test & Development->Selector Prototype Component</b>. Highlight the component and click <b>OK</b>.<br><li>Select <b>Group Membership</b>, and from either the menu or right click the mouse select <b>Add Group Membership</b>.<br><li>The Add Component Group Membership dialog appears. The logical place to put the platform is under platforms. Expand the tree until you locate platforms: <b>Categories->Hardware->Platforms</b>, and then click <b>OK</b>.<br><li><b>Save</b> the SLD file to the hard drive.<br><li>Open <b>Component Database Manager</b> and import the newly created SLD file into the database. </ol>If there were any missing components, such as network, audio, or video devices, you will have to create custom components for them. The deviceMacro.log file will list the names of the missing device components and their PCI IDs. Sometimes the hardware vendor will supply the drivers on CD, but most of the time you will have to search and download these drivers from the chip manufacturer. Since  VIA and Transmeta processors typically involve a two chip solution, finding the drivers should be straightforward.<br><br>Most of the time, the driver's INF file can be imported into Component Designer to create the SLD and component. Other components sometimes require a little more work with the help of Component Helper, DependencyWalker, and FilMon/RegMon tools.<br><br>Once you have created the components and imported them into the database, you should edit the Platform Macro Component and add the newly created hardware components as dependencies.<br><br><b>Configuring the software</b><br><br>Now that the hardware layer is ready, the next part is the software customization of the image from within Platform Builder. You can mold the image to your specification since the configuration is being created from scratch. Some of the possible changes are: <ul><li>Custom Shell -- instead of a stock shell such as Explorer, you can create a custom shell with its own look and feel, or create multiple shells for specific user types such as administrator and user. <br><li>Security Settings -- custom security settings can be added to lock users out of specific applications, directories, or drives. <br><li>Third Party Software -- there are many companies that develop software for thin client solutions and most of these companies have XPe components that can be imported into the XPe database.<br><li>Administration Support -- the thin client should have some basic administration support components for networking, display, etc. </ul><center><table border=1 cellspacing=0 cellpadding=5><tr><td><b><center>Component</td> <td><b><center>Thin client usage</td></tr> <tr><td>Domain Participation</td> <td>The Domain Participation component is a macro component that bundles components which make it possible for an embedded device to participate in Windows domain security.</td></tr> <tr><td>Netshell</td> <td>Command line utility to set the TCP/IP settings for network adapters. Required to access the network settings in the network control panel.</td></tr> <tr><td>TCP/IP Utilities</td> <td>Contains a number if TCP/IP utilities including ipconfig.exe</td></tr> <tr><td>System Control Panel</td> <td>Provides the interface to change the Domain and computer name</td></tr> <tr><td>Display Control Panel</td> <td>Change video resolution</td></tr> <tr><td>Date/Time Control Panel</td> <td>Set the local time zone, date, and time</td></tr> <tr><td>Audio Control Panel</td> <td>Support systems with sound and audio</td></tr></table></center><br>The most important feature to enable and the most challenging is EWF (Enhanced Write Filter). Unless you are using the uDOC, you will need to implement EWF to protect the flash drive. Mini-IDE flash drives shouldn't be a problem since they are IDE flash disks that are fixed devices. Many manufacturers set up EWF with a second partition as the EWF volume. You have your choice of EWF implementation and overlay type, since you're recreating the image from scratch. Since this is flash media, RAM or RAM-REG overlays are the two best choices. <br><br>CF cards are a different story. Most off-the-shelf CF cards are ID'd as removable, which creates most of the headaches to set up EWF on CF. XP/XPe will only view one partition on a removable medium, thus RAM-REG is the only overlay type choice that can be made. CF cards that are ID'd as fixed devices can be ordered special from the manufacturer. The choice of using the RAM overlay with the second partition is possible. You may find that the thin client manufacturer has already configured the flash drive as fixed so all you need to do is replace the image on the drive.<br><br>Not only will you have to enable EWF, but you will want to control EWF; so updates and modifications to the image can be made within a working image. The EWF API can be used to add custom controls to shells or EWF administrator applications. EWFMGR.EXE and the EWF API can only be accessed via Administrator accounts. Power Users, Users, Guest accounts cannot change the state of EWF.<br><br>If you need to duplicate the image, you will have to add the System Cloning Tool component to the configuration and add a special reseal library to address EWF.<br><br>Once the configuration is completed and the image is built, the image will need to run FBA on the target system. The image will have to be copied down to the target media, either through physically removing the device from the target system or using a software solution like Remote Recover.<br><br><b>Reading Further</b><br><br>The overview presented in this article provides basic tips for getting started with configuring a thin client with a custom image.  The real work is in the details. There are many solutions for working with Windows XP Embedded that can be found in a number of books, articles, and websites: <ul><li><a href="javascript:if(confirm('http://msdn.microsoft.com/embedded  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/embedded'" tppabs="http://msdn.microsoft.com/embedded" target=new><u>msdn.microsoft.com/embedded</u></a><br><br><li><b><i>Windows XP Embedded Advanced</i></b>, Sean D. Liming, RTC Books, 2003, ISBN:0-929392-77-9<br><br><li><b><i>Windows XP Embedded Supplemental Toolkit</i></b>, Sean D. Liming, Cedar Hill Publishing, February 2005, ISBN: 1-932373-96-9.<br><br><li><a href="javascript:if(confirm('http://www.seanliming.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.seanliming.com/'" tppabs="http://www.seanliming.com/" target=new><u>www.seanliming.com</u></a> -- XPe Center @ seanliming.com -- contains various articles and links to different resources on Windows XP Embedded. </ul><b>XP Embedded thin client solutions</b><br><br>Thin clients come in many form factors: terminal, notebook, and tablet. There are many companies that are building hardware and software solutions for XPe thin clients. The table below lists a few companies and websites that have a solution for XP Embedded thin clients. Also refer to the WindowsForDevices <a href="javascript:if(confirm('http://www.windowsfordevices.com/articles/AT6684581766.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.windowsfordevices.com/articles/AT6684581766.html'" tppabs="http://www.windowsfordevices.com/articles/AT6684581766.html" target=new><u>Windows-powered thin client quick reference guide</u></a>.<br><br><center><table border=1 cellspacing=0 cellpadding=5><tr><td><b><center>Company</td> <td><b>Product Type</td></tr> <tr><td><a href="javascript:if(confirm('http://www.acutetech.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.acutetech.com/'" tppabs="http://www.acutetech.com/" target=new><u>Acute Network Technologies</u></a></td> <td>Terminals</td></tr> <tr><td><a href="javascript:if(confirm('http://www.atlabs.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.atlabs.com/'" tppabs="http://www.atlabs.com/" target=new><u>Amir Technology Lab, Inc. (ATLabs)</u></a></td> <td>Terminals</td></tr> <tr><td><a href="javascript:if(confirm('http://www.bosweb.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.bosweb.com/'" tppabs="http://www.bosweb.com/" target=new><u>BOSaNOVA, Inc.</u></a></td> <td>Wireless Tablets, Terminals</td></tr> <tr><td><a href="javascript:if(confirm('http://www.citrix.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.citrix.com/'" tppabs="http://www.citrix.com/" target=new><u>Citrix</u></a></td> <td>Software Add-on</td></tr> <tr><td><a href="javascript:if(confirm('http://www.graphon.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.graphon.com/'" tppabs="http://www.graphon.com/" target=new><u>GraphOn</u></a></td> <td>Software Add-on</td></tr> <tr><td><a href="javascript:if(confirm('http://h18004.www1.hp.com/products/thinclients/index_t5000.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://h18004.www1.hp.com/products/thinclients/index_t5000.html'" tppabs="http://h18004.www1.hp.com/products/thinclients/index_t5000.html" target=new><u>Hewlett Packard</u></a></td> <td>Terminals</td></tr> <tr><td><a href="javascript:if(confirm('http://www.jp-inc.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.jp-inc.com/'" tppabs="http://www.jp-inc.com/" target=new><u>Jetro Platforms, Ltd.</u></a></td> <td>Software Add-on</td></tr> <tr><td><a href="javascript:if(confirm('http://www.maxspeed.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.maxspeed.com/'" tppabs="http://www.maxspeed.com/" target=new><u>Maxspeed</u></a></td> <td>Notebook, Terminals</td></tr> <tr><td><a href="javascript:if(confirm('http://www.neoware.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.neoware.com/'" tppabs="http://www.neoware.com/" target=new><u>Neoware Systems</u></a></td> <td>Terminals</td></tr> <tr><td><a href="javascript:if(confirm('http://www.nlynx.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.nlynx.com/'" tppabs="http://www.nlynx.com/" target=new><u>NLynx Technologies</u></a></td> <td>Terminals</td></tr> <tr><td><a href="javascript:if(confirm('http://www.ntavo.com/ntaterminal.php  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ntavo.com/ntaterminal.php'" tppabs="http://www.ntavo.com/ntaterminal.php" target=new><u>Devon IT, inc.</u></a></td> <td>Terminals</td></tr> <tr><td><a href="javascript:if(confirm('http://www.praim.com/default.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.praim.com/default.htm'" tppabs="http://www.praim.com/default.htm" target=new><u>Praim</u></a></td> <td>Wireless Tablets, Terminals</td></tr> <tr><td><a href="javascript:if(confirm('http://remote-scan.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://remote-scan.com/'" tppabs="http://remote-scan.com/" target=new><u>RemoteScan</u></a></td> <td>Software Add-on</td></tr> <tr><td><a href="javascript:if(confirm('http://www.tarantella.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.tarantella.com/'" tppabs="http://www.tarantella.com/" target=new><u>Tarantella, Inc.</u></a></td> <td>Software Add-on</td></tr> <tr><td><a href="javascript:if(confirm('http://www.thinpathsystems.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.thinpathsystems.com/'" tppabs="http://www.thinpathsystems.com/" target=new><u>ThinPATH Systems</u></a></td> <td>Software Add-on</td></tr> <tr><td><a href="javascript:if(confirm('http://www.vxl.net/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.vxl.net/'" tppabs="http://www.vxl.net/" target=new><u>VXL</u></a></td> <td>Terminals</td></tr> <tr><td><a href="javascript:if(confirm('http://www.wyse.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.wyse.com/'" tppabs="http://www.wyse.com/" target=new><u>Wyse</u></a></td> <td>Terminals</td></tr></table></center><br>We like to keep the table up to date. Please let us know if you find a company that makes an XPe thin client solution that is not in the table.<br><br><b>Bibliography</b> <ul> <li> <b><i>Windows XP Embedded Advanced</i></b>, Sean D. Liming, RTC Books, 2003, ISBN:0-929392-77-9<br><br><Li> <b><i>Windows XP Embedded Supplemental Toolkit</i></b>, Sean D. Liming, Cedar Hill Publishing, February 2005, ISBN: 1-932373-96-9. </ul> <hr><center><b>About the authors</b></center><hr><br><img align=left vspace=5 hspace=10 src="seanliming.jpg" tppabs="http://www.windowsfordevices.com/files/misc/seanliming.jpg">Sean Liming is a Microsoft eMVP and is the author of three books on Windows Embedded.  Liming is currently the Managing Director of <a href="javascript:if(confirm('http://www.sjjmicro.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.sjjmicro.com/'" tppabs="http://www.sjjmicro.com/" target="new"><u>SJJ Embedded Micro Solutions</u></a>, which offers books, toolkits,  training courses, and consulting services covering all aspects of embedded design hardware, software, manufacturing, and life-cycle management.<br><br><img align=left vspace=5 hspace=10 src="JohnMalin.jpg" tppabs="http://www.windowsfordevices.com/files/misc/JohnMalin.jpg">John Malin has a BS and MS in Solid State Physics from Case Western Reserve University.  John was an early pioneer in using PC’s to develop embedded software for x86-based embedded devices in the mid 80's.  Over the past 20 years John has worked with a number of real-time, multitasking, embedded operating systems starting with VRTX, Nucleus, PharLap, ThreadX, and Windows CE. John has also been active in XP Embedded development and co-authored the XPe MOC updates for XPe SP1 and SP2.  John admits that when he started working with embedded systems, he had a lot more hair.<br><br></font>
+                <a href="javascript:if(confirm('http://www.sjjmicro.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.sjjmicro.com/'" tppabs="http://www.sjjmicro.com/"><img src="furtherinfo.gif" tppabs="http://www.windowsfordevices.com/images/furtherinfo.gif" border=0 align=right></a></td>
+            </tr>
+          </table>
+        </td>
+      </tr>        </table>
+
+       </td></tr>
+       <tr><td>
+<!-- google marketplace starts here -->
+<font size=1><br></font>
+<style type="text/css">
+/******************************BEGIN: MARKETPLACE & SPONSORS CSS***********************************/ 
+.sponsors_container {BORDER: 1px solid #9CE29C;PADDING:3px 3px 3px 3px;MARGIN-BOTTOM:5px;} 
+.sponsors {BACKGROUND-COLOR:#D2F2D2;PADDING:5px 0px 10px 0px;} 
+.sponsors ul{ 
+				CLEAR:both; 
+				MARGIN:0px 0px 0px 9px; 
+				PADDING:0px; 
+			} 
+.sponsors ul li{ 
+list-style:outside; 
+list-style-type:none; 
+background-image: url(/images/WFD-arrow_bluegray.gif);  
+background-repeat: no-repeat;  
+background-position: 0px 4px; 
+padding:0px 0px 0px 3px; 
+vertical-align:top; 
+margin: 0px 0px 3px 0px; 
+} 
+				 
+.sponsors p{FONT-FAMILY:verdana,arial;FONT-SIZE:10px;} 
+.sponsors a{FONT-SIZE:10px;COLOR:#2347B3;TEXT-DECORATION:underline;} 
+.sponsors a:hover{TEXT-DECORATION:none;} 
+.sponsors img.left_ad_image{MARGIN:0px 0px 0px 20px;FLOAT:left;} 
+.sponsors img.left_ad_type_image{MARGIN:0px 0px 5px 20px;FLOAT:left;clear:left;} 
+.sponsors p.right_text{FLOAT:right;MARGIN:3px 3px 0px 0px;} 
+ 
+.sponsors p.sponsor_text {MARGIN:0px 0px 0px 8px;} 
+.sponsors p.sponsor_header {MARGIN:0px 0px 0px 8px;} 
+ 
+.sponsors ul.sponsor_links a{MARGIN:0px 0px 2px 8px;} 
+.sponsors ul.intel_links a{MARGIN:0px 0px 2px 8px;} 
+ 
+ 
+/******************************END: MARKETPLACE & SPONSORS CSS***********************************/
+</style>
+
+<script language="JavaScript">   
+	<!-- 
+	function ws(w){window.status=w;return true;} 
+	 
+	function google_ad_request_done(google_ads)  
+	{   
+		var i; 
+		 
+		 
+ 
+		document.write('<div class="sponsors_container"><div class="sponsors">' + 
+		 
+			 
+				'<img src="WFD-marketplace-1.gif"/*tpa=http://www.windowsfordevices.com/images/WFD-marketplace-1.gif*/ width="75" height="9" class="left_ad_image">' + 
+				'<p class="right_text"><a href="http://www.google.com/ads_by_google.html">' +  
+					'Ads By Google' +  
+				'</a></p>' + 
+			 
+		 
+			'<img src="WFD-marketplace-2.gif"/*tpa=http://www.windowsfordevices.com/images/WFD-marketplace-2.gif*/ class="left_ad_type_image">' + 
+			 
+			 
+			 
+			 
+			'<ul>'); 
+		 
+		 
+		 
+		for(i = 0; i < google_ads.length; ++i)  
+		{     
+	 
+			 
+				document.write('<li><p class="sponsor_header">'); 
+				document.write('<a href="' + google_ads[i].url + '" onMouseOver="return ws(\'' + google_ads[i].visible_url + '\')">' + 
+					google_ads[i].line1 + '</p>'); 
+				 
+				document.write('<p class="sponsor_text">' + 
+					'<a href="' +  google_ads[i].url + '" onMouseOver="return ws(\'' + google_ads[i].visible_url + '\')" STYLE="text-decoration: none"><font color=#333333>' + google_ads[i].line2 + ' ' + google_ads[i].line3 +  '<br />' + google_ads[i].visible_url + '</font></a>' +  
+		  			'</p></li>'); 
+	 
+		} 
+		 
+			 
+			document.write('</ul></div></div>'); 
+	 
+		 
+	}  
+	// --> 
+	</script> 
+	 
+	 
+	 
+ 
+	<script language="JavaScript"> 
+	<!--          
+	 
+	         google_ad_client 	= 'ziffdavis-other_js';          
+			 google_ad_output 	= 'js';          
+			 google_max_num_ads = 5;                  
+			 google_safe      	= 'high'; 
+			 google_ad_channel  = 'windowsfordevices-1'; 
+		 
+	--> 
+	</script> 
+	<script language="JavaScript" src="show_ads.js" tppabs="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script> 
+	
+
+<!-- google market place ends here -->
+       </td></tr>
+       <tr><td height=10></td></tr>
+       <tr><td>
+<!-- sponsored links section begins here -->
+<font size=1><br></font>
+<style type="text/css">
+/******************************BEGIN: MARKETPLACE & SPONSORS CSS***********************************/ 
+.sponsors_container {BORDER: 1px solid #9CE29C;PADDING:3px 3px 3px 3px;MARGIN-BOTTOM:5px;} 
+.sponsors {BACKGROUND-COLOR:#D2F2D2;PADDING:5px 0px 10px 0px;} 
+.sponsors ul{ 
+				CLEAR:both; 
+				MARGIN:0px 0px 0px 9px; 
+				PADDING:0px; 
+			} 
+.sponsors ul li{ 
+list-style:outside; 
+list-style-type:none; 
+background-image: url(/images/WFD-arrow_bluegray.gif);  
+background-repeat: no-repeat;  
+background-position: 0px 4px; 
+padding:0px 0px 0px 3px; 
+vertical-align:top; 
+margin: 0px 0px 3px 0px; 
+} 
+				 
+.sponsors p{FONT-FAMILY:verdana,arial;FONT-SIZE:10px;} 
+.sponsors a{FONT-SIZE:10px;COLOR:#2347B3;TEXT-DECORATION:underline;} 
+.sponsors a:hover{TEXT-DECORATION:none;} 
+.sponsors img.left_ad_image{MARGIN:0px 0px 0px 20px;FLOAT:left;} 
+.sponsors img.left_ad_type_image{MARGIN:0px 0px 5px 20px;FLOAT:left;clear:left;} 
+.sponsors p.right_text{FLOAT:right;MARGIN:3px 3px 0px 0px;} 
+ 
+.sponsors p.sponsor_text {MARGIN:0px 0px 0px 8px;} 
+.sponsors p.sponsor_header {MARGIN:0px 0px 0px 8px;} 
+ 
+.sponsors ul.sponsor_links a{MARGIN:0px 0px 2px 8px;} 
+.sponsors ul.intel_links a{MARGIN:0px 0px 2px 8px;} 
+ 
+ 
+/******************************END: MARKETPLACE & SPONSORS CSS***********************************/
+</style>
+
+<div class="sponsors_container">
+  <div class="sponsors">
+     <img src="WFD-sponsoredlinks.gif" tppabs="http://www.windowsfordevices.com/images/WFD-sponsoredlinks.gif" class="left_ad_type_image">
+
+     <ul class="sponsor_links">
+
+       <!-- textlink promo - leave up -->
+       <li><a href="contactus.html" tppabs="http://www.windowsfordevices.com/contactus.html" target="new">Find out how to put your company's message here</a></li>
+
+    </ul>
+
+  </div>
+</div>
+
+<!-- end sponsored links section -->
+       </td></tr>
+      </table>
+    </td>
+    <td width="18%" valign="top">
+     <table width=100% cellspacing=0 cellpadding=0><tr><td><!-- column076.htm -->
+<font face="arial, helvetica" size="2">
+Click below for a profile of each sponsor:</font>
+<BR>
+
+<!-- start PLATINUM sponsors -->
+<table width=150 cellpadding=0 cellspacing=0 border=2 bgcolor="white">
+          <tr>
+           <td bgcolor="#9ce29c" height=30 align=center>
+           <font face="arial, helvetica" size="2"><b>Platinum Sponsors:</b></font>
+           </td>
+          </tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+            
+<!-- begin md-embedded tag --> 
+<IFRAME SRC="home;kw=msembedded;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/windowsfordevices.dart/home;kw=msembedded;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=msembedded;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/windowsfordevices.dart/home;kw=msembedded;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=msembedded;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=msembedded;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=msembedded;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=msembedded;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/windowsfordevices.dart/home;kw=msembedded;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag -->
+            
+            </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#9ce29c" align=center></td></tr>
+
+          <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+            
+<!-- begin ms-mobile tag --> 
+<IFRAME SRC="home;kw=msphone;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/windowsfordevices.dart/home;kw=msphone;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=msphone;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/windowsfordevices.dart/home;kw=msphone;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=msphone;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=msphone;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=msphone;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=msphone;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/windowsfordevices.dart/home;kw=msphone;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag --> 
+
+            </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#9ce29c" align=center></td></tr>
+
+          <tr>
+             <td width=150 height=30 align=center bgcolor="white">
+            
+<!-- begin ms-tools tag --> 
+<IFRAME SRC="home;kw=vsnet;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/windowsfordevices.dart/home;kw=vsnet;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=vsnet;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/windowsfordevices.dart/home;kw=vsnet;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=vsnet;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=vsnet;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=vsnet;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=vsnet;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/windowsfordevices.dart/home;kw=vsnet;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag --> 
+            
+            </td>
+          </tr>
+
+</table>
+<!-- end PLATINUM sponsors -->
+
+<table border=0 width=150 cellpadding=0 cellspacing=0 height=5>
+<tr><td></td></tr></table>
+
+<!-- start GOLD sponsors -->
+<table width=150 cellpadding=0 cellspacing=0 border=2 bgcolor="white">
+
+          <tr>
+           <td bgcolor="#9ce29c" height=30 align=center>
+           <font face="arial, helvetica" size="2"><b>Gold Sponsors:</b></font>
+           </td>
+          </tr>
+
+          <tr>
+             <td width=150 height=30 align=center bgcolor="white">
+            
+<!-- begin vibren tag --> 
+<IFRAME SRC="home;kw=vibren;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/windowsfordevices.dart/home;kw=vibren;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=vibren;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/windowsfordevices.dart/home;kw=vibren;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=vibren;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=vibren;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=vibren;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=vibren;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/windowsfordevices.dart/home;kw=vibren;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag --> 
+
+           </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#9ce29c" align=center></td></tr>
+
+          <tr>
+             <td width=150 height=30 align=center bgcolor="white">
+            
+<!-- begin datalight tag --> 
+<IFRAME SRC="home;kw=datalight;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/windowsfordevices.dart/home;kw=datalight;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=datalight;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/windowsfordevices.dart/home;kw=datalight;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> </IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=datalight;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=datalight;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=datalight;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=datalight;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/windowsfordevices.dart/home;kw=datalight;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag --> 
+            
+            </td>
+          </tr>
+
+</table>
+<!-- end GOLD sponsors -->
+
+<table border=0 width=150 cellpadding=0 cellspacing=0 height=5>
+<tr><td></td></tr></table>
+
+<!-- start SILVER sponsors -->
+<table width=156 cellpadding=0 cellspacing=0 border=2 bgcolor="white">
+
+          <tr>
+           <td bgcolor="#9ce29c" height=30 align=center>
+           <font face="arial, helvetica" size="2"><b>Silver Sponsors:</b></font>
+           </td>
+          </tr>
+
+         <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+
+<!-- begin advantech tag --> 
+<IFRAME SRC="home;kw=advantech;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/windowsfordevices.dart/home;kw=advantech;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=advantech;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/windowsfordevices.dart/home;kw=advantech;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=advantech;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=advantech;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=advantech;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=advantech;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/windowsfordevices.dart/home;kw=advantech;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag --> 
+            
+            </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#9ce29c" align=center></td></tr>
+
+         <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+            
+
+<!-- begin intrinsyc tag --> 
+<IFRAME SRC="home;kw=intrinsyc;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/windowsfordevices.dart/home;kw=intrinsyc;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=intrinsyc;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/windowsfordevices.dart/home;kw=intrinsyc;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT>
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=intrinsyc;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=intrinsyc;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=intrinsyc;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=intrinsyc;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/windowsfordevices.dart/home;kw=intrinsyc;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag -->      
+
+            </td>
+          </tr>
+
+          <tr height=5><td bgcolor="#9ce29c" align=center></td></tr>
+
+         <tr>
+            <td width=150 height=30 align=center bgcolor="white">
+
+<!-- begin bsquare tag --> 
+<IFRAME SRC="home;kw=bsquare;sz=150x30;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/windowsfordevices.dart/home;kw=bsquare;sz=150x30;ord=[timestamp]?" WIDTH="150" HEIGHT="30" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="home;kw=bsquare;sz=150x30;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/windowsfordevices.dart/home;kw=bsquare;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME> 
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=bsquare;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=bsquare;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/windowsfordevices.dart/home;kw=bsquare;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;kw=bsquare;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/windowsfordevices.dart/home;kw=bsquare;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="150" HEIGHT="30" BORDER="0" ALT=""></A></NOSCRIPT> 
+<!-- End ad tag -->                        
+
+            </td>
+          </tr>
+
+</table>
+<!-- end SILVER sponsors -->
+
+<hr>
+<center>
+<font face="arial, helvetica" size="1"><b>ADVERTISEMENT</b></font>
+</center>
+<!-- begin ad tag -->
+<IFRAME SRC="home;sz=160x600;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adi/windowsfordevices.dart/home;sz=160x600;ord=[timestamp]?" WIDTH="160" HEIGHT="600" MARGINWIDTH="0" MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=no BORDERCOLOR="#000000">
+<SCRIPT LANGUAGE="JavaScript" SRC="home;sz=160x600;abr=!ie;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/adj/windowsfordevices.dart/home;sz=160x600;abr=!ie;ord=[timestamp]?" ></SCRIPT>
+</IFRAME>
+<NOSCRIPT><A HREF="javascript:if(confirm('http://ad.doubleclick.net/jump/windowsfordevices.dart/home;sz=160x600;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/windowsfordevices.dart/home;sz=160x600;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?'" tppabs="http://ad.doubleclick.net/jump/windowsfordevices.dart/home;sz=160x600;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" TARGET="_blank"><IMG SRC="home;sz=160x600;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]-" tppabs="http://ad.doubleclick.net/ad/windowsfordevices.dart/home;sz=160x600;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" WIDTH="160" HEIGHT="600" BORDER="0" ALT=""></A></NOSCRIPT>
+<!-- End ad tag -->
+
+<hr>
+<table width=160 bgcolor="#D2F2D2" border=1 cellspacing=0 cellpadding=5><tr><td>
+<font face ="arial, helvetica" size="1"><B>CAREER CENTER</B><br>
+Search more than 60,000 tech jobs. Search by keywords, skill, job title, 
+and location.<br>
+<a href="javascript:if(confirm('http://ad.doubleclick.net/clk;16161145;11321419;q?http://www.dice.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/clk;16161145;11321419;q?http://www.dice.com/'" tppabs="http://ad.doubleclick.net/clk;16161145;11321419;q?http://www.dice.com/" target="new">
+<u>Check it out today!</u></a><br>
+</font>
+</td></tr></table>
+
+<HR>
+<font face="arial, helvetica" size="2">
+<B>Microsoft's Windows Embedded resources</B><br>
+&#149; <a href="javascript:if(confirm('http://msdn.microsoft.com/embedded/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/embedded/'" tppabs="http://msdn.microsoft.com/embedded/" target="new">
+Embedded dev center</a><br>
+&#149; <a href="javascript:if(confirm('http://msdn.microsoft.com/mobility  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/mobility'" tppabs="http://msdn.microsoft.com/mobility" target="new">
+Mobile dev center</a><br>
+&#149; <a href="javascript:if(confirm('http://msdn.microsoft.com/embedded/getstart/basics/tutorialsce/default.aspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/embedded/getstart/basics/tutorialsce/default.aspx'" tppabs="http://msdn.microsoft.com/embedded/getstart/basics/tutorialsce/default.aspx" target="new">
+Windows CE tutorials</a><br>
+&#149; <a href="javascript:if(confirm('http://msdn.microsoft.com/embedded/getstart/basics/tutorialsxpe/default.aspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/embedded/getstart/basics/tutorialsxpe/default.aspx'" tppabs="http://msdn.microsoft.com/embedded/getstart/basics/tutorialsxpe/default.aspx" target="new">
+XP Embedded tutorials</a><br>
+&#149; <a href="javascript:if(confirm('http://www.mswep.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.mswep.com/'" tppabs="http://www.mswep.com/" target="new">
+3rd-party partners</a><br>
+</font>
+
+<HR>
+<font face="arial, helvetica" size="2">
+<B>Learn about Microsoft's Windows Embedded "Device Platforms"</B><br>
+&#149; <a href="javascript:if(confirm('http://msdn.microsoft.com/embedded/getstart/devplat/gateways/default.aspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/embedded/getstart/devplat/gateways/default.aspx'" tppabs="http://msdn.microsoft.com/embedded/getstart/devplat/gateways/default.aspx" target="new">
+Gateways</a><br>
+&#149; <a href="javascript:if(confirm('http://msdn.microsoft.com/embedded/getstart/devplat/iiauto/default.aspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/embedded/getstart/devplat/iiauto/default.aspx'" tppabs="http://msdn.microsoft.com/embedded/getstart/devplat/iiauto/default.aspx" target="new">
+Instrumentation &amp; Industrial Automation</a><br>
+&#149; <a href="javascript:if(confirm('http://msdn.microsoft.com/embedded/getstart/devplat/atm/default.aspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/embedded/getstart/devplat/atm/default.aspx'" tppabs="http://msdn.microsoft.com/embedded/getstart/devplat/atm/default.aspx" target="new">
+Kiosk/ATM</a><br>
+&#149; <a href="javascript:if(confirm('http://msdn.microsoft.com/embedded/getstart/devplat/meddevsys/default.aspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/embedded/getstart/devplat/meddevsys/default.aspx'" tppabs="http://msdn.microsoft.com/embedded/getstart/devplat/meddevsys/default.aspx" target="new">
+Medical Devices</a><br>
+&#149; <a href="javascript:if(confirm('http://msdn.microsoft.com/embedded/getstart/devplat/csmrelec/default.aspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/embedded/getstart/devplat/csmrelec/default.aspx'" tppabs="http://msdn.microsoft.com/embedded/getstart/devplat/csmrelec/default.aspx" target="new">
+Networked Consumer Electronics</a><br>
+&#149; <a href="javascript:if(confirm('http://msdn.microsoft.com/embedded/getstart/devplat/pos/default.aspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/embedded/getstart/devplat/pos/default.aspx'" tppabs="http://msdn.microsoft.com/embedded/getstart/devplat/pos/default.aspx" target="new">
+Point-of-Sale Terminals</a><br>
+&#149; <a href="javascript:if(confirm('http://msdn.microsoft.com/embedded/getstart/devplat/lrgscreen/default.aspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/embedded/getstart/devplat/lrgscreen/default.aspx'" tppabs="http://msdn.microsoft.com/embedded/getstart/devplat/lrgscreen/default.aspx" target="new">
+Projectors &amp; Large Screen Displays</a><br>
+&#149; <a href="javascript:if(confirm('http://msdn.microsoft.com/embedded/getstart/devplat/stb/default.aspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/embedded/getstart/devplat/stb/default.aspx'" tppabs="http://msdn.microsoft.com/embedded/getstart/devplat/stb/default.aspx" target="new">
+Set-top Boxes</a><br>
+&#149; <a href="javascript:if(confirm('http://msdn.microsoft.com/embedded/getstart/devplat/specserv/default.aspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/embedded/getstart/devplat/specserv/default.aspx'" tppabs="http://msdn.microsoft.com/embedded/getstart/devplat/specserv/default.aspx" target="new">
+Specialized Servers</a><br>
+&#149; <a href="javascript:if(confirm('http://msdn.microsoft.com/embedded/getstart/devplat/thin/default.aspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/embedded/getstart/devplat/thin/default.aspx'" tppabs="http://msdn.microsoft.com/embedded/getstart/devplat/thin/default.aspx" target="new">
+Thin Client Devices</a><br>
+&#149; <a href="javascript:if(confirm('http://msdn.microsoft.com/embedded/getstart/devplat/voip/default.aspx  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/embedded/getstart/devplat/voip/default.aspx'" tppabs="http://msdn.microsoft.com/embedded/getstart/devplat/voip/default.aspx" target="new">
+VoIP Devices</a><br>
+&#149; <a href="javascript:if(confirm('http://www.microsoft.com/windowsautomotive  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.microsoft.com/windowsautomotive'" tppabs="http://www.microsoft.com/windowsautomotive" target="new">
+Windows Automotive</a><br>
+</font>
+
+<HR>
+<font face="arial, helvetica" size="2"><B>Submissions...</B><BR>
+<a href="news_post.cgi.htm" tppabs="http://www.windowsfordevices.com/cgi-bin/news_post.cgi"><u>news</u></a>, 
+<a href="event_post.cgi.htm" tppabs="http://www.windowsfordevices.com/cgi-bin/event_post.cgi"><u>events</u></a>, 
+<a href="dcd.cgi-az=add_form.htm" tppabs="http://www.windowsfordevices.com/cgi-bin/dcd/dcd.cgi?az=add_form"><u>directory</u></a>, 
+<a href="contactus.html" tppabs="http://www.windowsfordevices.com/contactus.html"><u>other</u></a><BR></font>
+
+<HR>
+<font face ="arial, helvetica" size="2">
+<a href="index.html" tppabs="http://www.windowsfordevices.com/backend/index.html" target="_blank">
+<img border=0 align=left vspace=5 hspace=5 src="xml.gif" tppabs="http://www.windowsfordevices.com/images/xml.gif">
+<u>news feed</u></a></font>
+<BR>
+</td></tr></table>
+
+
+    </td>
+  </tr>
+</table>
+<!-------- page footer begins here -------->
+<hr>
+<table align=center border=0 cellspacing=0 cellpadding=0 width="100%">
+  <tr><td><font face='Arial,Helvetica' size=2>
+<a href="index.htm" tppabs="http://www.windowsfordevices.com/"><b>home</b></a> &nbsp;|&nbsp;
+<a href="news.htm" tppabs="http://www.windowsfordevices.com/news"><b>news</b></a> &nbsp;|&nbsp;
+<a href="articles.htm" tppabs="http://www.windowsfordevices.com/articles"><b>articles</b></a> &nbsp;|&nbsp;
+<a href="survey.cgi.htm" tppabs="http://www.windowsfordevices.com/cgi-bin/survey/survey.cgi"><b>polls</b></a> &nbsp;|&nbsp;
+<a href="UltraBoard.pl.htm" tppabs="http://www.windowsfordevices.com/cgi-bin/board/UltraBoard.pl"><b>forum</b></a> &nbsp;|&nbsp;
+<a href="events.htm" tppabs="http://www.windowsfordevices.com/events"><b>events</b></a> &nbsp;|&nbsp;
+<a href="products.htm" tppabs="http://www.windowsfordevices.com/products"><b>products</b></a> &nbsp;|&nbsp;
+<a href="sponsors.htm" tppabs="http://www.windowsfordevices.com/sponsors"><b>sponsors</b></a> &nbsp;|&nbsp;
+<a href="javascript:if(confirm('http://www.windowsfordevices.com/directory/  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.windowsfordevices.com/directory/'" tppabs="http://www.windowsfordevices.com/directory"><b>directory</b></a> &nbsp;|&nbsp;
+<a href="search_view.cgi.htm" tppabs="http://www.windowsfordevices.com/cgi-bin/search_view.cgi"><b>search</b></a> &nbsp;|&nbsp;
+<a href="aboutus.html" tppabs="http://www.windowsfordevices.com/aboutus.html"><b>aboutus</b></a> &nbsp;|&nbsp;
+<a href="contactus.html" tppabs="http://www.windowsfordevices.com/contactus.html"><b>contactus</b></a></font></td></tr>
+  <tr><td>&nbsp;</td></tr>
+  <tr>
+    <td><font face='Arial,Helvetica' size=2>
+<a href="javascript:if(confirm('http://www.ziffdavis.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ziffdavis.com/'" tppabs="http://www.ziffdavis.com/"><img align=right vspace=5 hspace=5 border=0 src="zdmlogo.gif" tppabs="http://www.windowsfordevices.com/images/zdmlogo.gif"></a>
+Use of this site is governed by our
+<a href="javascript:if(confirm('http://www.ziffdavis.com/about/terms  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ziffdavis.com/about/terms'" tppabs="http://www.ziffdavis.com/about/terms"><u>Terms of Use</u></a>
+and <a href="javascript:if(confirm('http://www.ziffdavis.com/about/privacy  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ziffdavis.com/about/privacy'" tppabs="http://www.ziffdavis.com/about/privacy"><u>Privacy Policy</u></a>.
+Except where otherwise specified, the contents of this site are copyright &copy; 1999-2005
+<a href="javascript:if(confirm('http://www.ziffdavis.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ziffdavis.com/'" tppabs="http://www.ziffdavis.com/"><u>Ziff Davis Publishing Holdings Inc.</u></a>
+All Rights Reserved. Reproduction in whole or in part without permission is prohibited. Windows is a trademark or registered trademark of Microsoft Corporation in the United States and/or other countries and is used by WindowsForDevices under license from owner. All other marks are the property of their respective owners. WindowsForDevices is an independent publication not affiliated with Microsoft Corporation.</font></td>
+  </tr>
+</table>
+
+<!-- START RedMeasure V4 - CGI v1.1 Revision: 1.6 -->
+<!-- COPYRIGHT 2000 Red Sheriff Limited -->
+<script language="JavaScript"><!--
+	var pCid="us_us-ziffdavis_0-dvf-3";
+	var w0=1;
+	var refR=escape(document.referrer);
+	if (refR.length>=252) refR=refR.substring(0,252)+"...";
+//--></script>
+<script language="JavaScript1.1"><!--
+	var w0=0;
+//--></script>
+<script language="JavaScript1.1" src="c1.js" tppabs="http://server-us.imrworldwide.com/c1.js"></script>
+<script language="JavaScript"><!--
+	if(w0){
+		document.write('<img src="http://server-us.imrworldwide.com/cgi-bin/count?ref='+        refR+'&cid='+pCid+'" width=1 height=1>');
+	}
+	document.write("<COMMENT>");
+//--></script>
+<noscript><img src="count-cid=us_us-ziffdavis_0-dvf-3" tppabs="http://server-us.imrworldwide.com/cgi-bin/count?cid=us_us-ziffdavis_0-dvf-3" width=1 height=1></noscript>
+<!-- END RedMeasure V4 -->
+
+<!-------- page footer ends here -------->
+</body>
+</html>

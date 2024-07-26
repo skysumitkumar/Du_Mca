@@ -1,0 +1,44 @@
+#include 	<stdio.h>
+
+int	main(void)
+{
+FILE	*in;
+int	i,ch,version,length,units,pixelden_X,pixelden_Y;
+char	fname[BUFSIZ],str[BUFSIZ];
+char	*Units[3]={"Artibrary","Pixels per inch","Pixels per cm"};
+
+	printf("Enter JPG file>>");
+	gets(fname);
+
+	if ((in=fopen(fname,"r"))==NULL)
+	{
+		printf("Can't find file %s\n",fname);
+		return(1);
+	}
+
+	do
+	{
+		ch=getc(in);
+
+		if (ch==0xff)
+		{
+			ch=getc(in);
+			if (ch==0xe0)
+			{
+				fread(&length,2,1,in); printf("Length: %d\n",length);
+				fread(str,5,1,in); printf("Marker: %s\n",str);
+				fread(&version,2,1,in); printf("Version: %0x\n",version);
+				fread(&units,1,1,in); printf("Units: %s\n",Units[units]);
+				fread(&pixelden_X,2,1,in); printf("X den: %d\n",pixelden_X);
+				fread(&pixelden_Y,2,1,in); printf("Y den: %d\n",pixelden_Y);
+			}
+		}
+
+	} while (!feof(in));
+
+	fclose(in);
+	return(0);
+}
+
+
+

@@ -1,0 +1,315 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The Laplace Operator</TITLE>
+<META NAME="description" CONTENT="The Laplace Operator">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="previous" HREF="node99.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node99.html">
+<LINK REL="up" HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">
+<LINK REL="next" HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1773"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1767"
+  HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1763"
+  HREF="node99.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node99.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1769"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1771"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1774"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html">Summary</A>
+<B> Up:</B> <A NAME="tex2html1768"
+  HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">An application to Image</A>
+<B> Previous:</B> <A NAME="tex2html1764"
+  HREF="node99.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node99.html">Gaussian Blur</A>
+ &nbsp <B>  <A NAME="tex2html1770"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1772"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001082000000000000000">
+The Laplace Operator</A>
+</H2>
+We give one more example of why (linear) digital filtering,
+implemented via the FTT may be of interest.  This involves the
+Laplacian filter<A NAME="9268"></A> given by the mask
+<!-- MATH
+ \begin{displaymath}
+\frac{1}{ 5}
+\begin{pmatrix}
+\     0&-1& 0\\
+\    -1& 4&-1\\
+\     0&-1& 0
+\end{pmatrix}.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img46.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img46.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{5}}$"><IMG
+ WIDTH="133" HEIGHT="74" ALIGN="MIDDLE" BORDER="0"
+ SRC="img364.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img364.gif"
+ ALT="$\displaystyle \begin{pmatrix}
+ 0&amp;-1&amp; 0\\
+ -1&amp; 4&amp;-1\\
+ 0&amp;-1&amp; 0
+\end{pmatrix}$">.
+</DIV><P></P>
+This is the digital analogue of the negative Laplacian operator, ie
+<!-- MATH
+ \begin{displaymath}
+-\left(\frac{\partial}{\partial x^2}
+\   + \frac{\partial}{\partial y^2}\right).
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+- <IMG
+ WIDTH="18" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img365.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img365.gif"
+ ALT="$\displaystyle \left(\vphantom{\frac{\partial}{\partial x^2}
++ \frac{\partial}{\partial y^2}}\right.$"><IMG
+ WIDTH="34" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img366.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img366.gif"
+ ALT="$\displaystyle {\frac{\partial}{\partial x^2}}$">&nbsp; + <IMG
+ WIDTH="33" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img367.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img367.gif"
+ ALT="$\displaystyle {\frac{\partial}{\partial y^2}}$"><IMG
+ WIDTH="18" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img368.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img368.gif"
+ ALT="$\displaystyle \left.\vphantom{\frac{\partial}{\partial x^2}
++ \frac{\partial}{\partial y^2}}\right)$">.
+</DIV><P></P>
+The second derivative is evaluated as
+<!-- MATH
+ \begin{displaymath}
+\     \Big(f(y,x+\delta x) - f(y,x)\Big)
+	- \Big(f(y,x) - f(y,x-\delta x)\Big).
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;<IMG
+ WIDTH="14" HEIGHT="44" ALIGN="MIDDLE" BORDER="0"
+ SRC="img369.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img369.gif"
+ ALT="$\displaystyle \Big($"><I>f</I> (<I>y</I>, <I>x</I> + <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img370.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img370.gif"
+ ALT="$\displaystyle \delta$"><I>x</I>) - <I>f</I> (<I>y</I>, <I>x</I>)<IMG
+ WIDTH="14" HEIGHT="44" ALIGN="MIDDLE" BORDER="0"
+ SRC="img371.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img371.gif"
+ ALT="$\displaystyle \Big)$"> - <IMG
+ WIDTH="14" HEIGHT="44" ALIGN="MIDDLE" BORDER="0"
+ SRC="img369.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img369.gif"
+ ALT="$\displaystyle \Big($"><I>f</I> (<I>y</I>, <I>x</I>) - <I>f</I> (<I>y</I>, <I>x</I> - <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img370.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img370.gif"
+ ALT="$\displaystyle \delta$"><I>x</I>)<IMG
+ WIDTH="14" HEIGHT="44" ALIGN="MIDDLE" BORDER="0"
+ SRC="img371.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img371.gif"
+ ALT="$\displaystyle \Big)$">.
+</DIV><P></P>
+Adding two orthogonal such approximations gives the mask shown. An
+example of the output of the Laplacian filter is given in
+Fig.&nbsp;<A HREF="node100.html#F:laplace" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node100.html#F:laplace">6.4</A>.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER">
+
+<P><A NAME="F:laplace"></A><A NAME="F:sharp"></A></P>
+<TABLE><CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.4:</STRONG>
+Output of Laplacian filter.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><!-- MATH
+ $\includegraphics[width=0.5\textwidth]{susie-laplace.eps}$
+ -->
+<IMG
+ WIDTH="359" HEIGHT="360" ALIGN="BOTTOM" BORDER="0"
+ SRC="img372.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img372.gif"
+ ALT="\includegraphics [width=0.5\textwidth]{susie-laplace.eps}">
+</DIV></TD></TR>
+</TABLE>
+<TABLE><CAPTION ALIGN="BOTTOM"><STRONG>Figure 6.5:</STRONG>
+Output of sharpening filter.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><!-- MATH
+ $\includegraphics[width=0.5\textwidth]{susie-sharp.eps}$
+ -->
+<IMG
+ WIDTH="359" HEIGHT="360" ALIGN="BOTTOM" BORDER="0"
+ SRC="img373.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img373.gif"
+ ALT="\includegraphics [width=0.5\textwidth]{susie-sharp.eps}">
+</DIV></TD></TR>
+</TABLE>
+</DIV>
+<P></P>
+
+<P>
+There is another interpretation of the operator, which although
+completely unjustifiable, may indicate why the output from the
+Laplacian gives a ``sharpened'' version of the original image.  We
+have seen above how to create an image <!-- MATH
+ $\text{blur}(f)$
+ -->
+blur(<I>f</I> ) from <I>f</I>,
+using, for example, the mask
+<!-- MATH
+ \begin{displaymath}
+\frac{1}{5}
+\   \begin{pmatrix}
+\            0&1& 0\\
+\            1& 1&1\\
+\            0&1& 0
+\   \end{pmatrix}.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img46.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img46.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{5}}$">&nbsp;<IMG
+ WIDTH="101" HEIGHT="74" ALIGN="MIDDLE" BORDER="0"
+ SRC="img374.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img374.gif"
+ ALT="$\displaystyle \begin{pmatrix}
+ 0&amp;1&amp; 0\\
+ 1&amp; 1&amp;1\\
+ 0&amp;1&amp; 0
+ \end{pmatrix}$">.
+</DIV><P></P>
+It can thus be argued that <!-- MATH
+ $(f - \text{blur}(f))$
+ -->
+(<I>f</I> - blur(<I>f</I> )) defines a function
+called, perhaps <!-- MATH
+ $\text{sharp}(f)$
+ -->
+sharp(<I>f</I> ).  But <!-- MATH
+ $\text{sharp}(f)$
+ -->
+sharp(<I>f</I> ) has mask
+<!-- MATH
+ \begin{displaymath}
+\begin{pmatrix}0&0&0\\0&1&0\\0&0&0\end{pmatrix} -
+\frac{1}{ 5}
+\   \begin{pmatrix}
+\             0&1&0\\
+\             1&1&1\\
+\             0&1&0
+\   \end{pmatrix},
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="90" HEIGHT="74" ALIGN="MIDDLE" BORDER="0"
+ SRC="img375.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img375.gif"
+ ALT="$\displaystyle \begin{pmatrix}0&amp;0&amp;0  0&amp;1&amp;0  0&amp;0&amp;0\end{pmatrix}$"> - <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img46.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img46.gif"
+ ALT="$\displaystyle {\textstyle\frac{1}{5}}$">&nbsp;<IMG
+ WIDTH="101" HEIGHT="74" ALIGN="MIDDLE" BORDER="0"
+ SRC="img374.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img374.gif"
+ ALT="$\displaystyle \begin{pmatrix}
+ 0&amp;1&amp; 0\\
+ 1&amp; 1&amp;1\\
+ 0&amp;1&amp; 0
+ \end{pmatrix}$">,
+</DIV><P></P>
+and this is precisely the Laplacian mask.  We can thus argue that the
+Laplacian sharpens.<A NAME="9306"></A> In practice, the image in
+Fig.&nbsp;<A HREF="node100.html#F:laplace" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node100.html#F:laplace">6.4</A> is almost dark; we are seeing <EM>only</EM> the
+sharpness; to see more useful output, we need to add the sharpness
+back to the original image; this gives Fig.&nbsp;<A HREF="node100.html#F:sharp" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node100.html#F:sharp">6.5</A>.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><UL>
+<LI><A NAME="tex2html1775"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html">Summary</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1773"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1767"
+  HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1763"
+  HREF="node99.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node99.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1769"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1771"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1774"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node101.html">Summary</A>
+<B> Up:</B> <A NAME="tex2html1768"
+  HREF="node98.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node98.html">An application to Image</A>
+<B> Previous:</B> <A NAME="tex2html1764"
+  HREF="node99.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node99.html">Gaussian Blur</A>
+ &nbsp <B>  <A NAME="tex2html1770"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1772"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

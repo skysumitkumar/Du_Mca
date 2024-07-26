@@ -1,0 +1,56 @@
+<html><head>
+<title>Solution for /analysis/functional/distributed</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /analysis/functional/distributed problem</h1>
+<hr>
+<ol>
+<li>  Assuming f finite everywhere, (*) ==&gt; x&lt;&gt;y ==&gt; f(x)&lt;&gt;f(y)
+
+<li>  Exchanging x and y in (*) we see that f(-x) = -f(x).
+
+<li>  a &lt;&gt; 0 ==&gt; f((a-a)/(a+a)) = (f(a)-f(a))/(f(a)+f(a)) ==&gt; f(0) = 0.
+
+<li>  a &lt;&gt; 0 ==&gt; f((a+0)/(a-0)) = f(a)/f(a) ==&gt; f(1) = 1.
+
+<li>  x&lt;&gt;y, y&lt;&gt;0 ==&gt; f(x/y) =
+f( ((x+y)/(x-y) + (x-y)/(x-y)) / ((x+y)/(x-y) - (x-y)/(x-y)) = f(x)/f(y)
+==&gt; f(xy) = f(x)f(y) by replacing x with xy and by noting that
+f(x*1) = f(x)*1 and f(x*0) = f(x)*f(0).
+
+<li>  f(x*x) = f(x)*f(x) ==&gt; f(x) &gt; 0 if x&gt;0.
+
+<li>  Let a=1+\/2, b=1-\/2; a,b satisfy (x+1)/(x-1) = x ==&gt;
+f(x) = (f(x)+1)/(f(x)-1) ==&gt; f(a)=a, f(b)=b.  f(1/\/2) = f((a+b)/(a-b))
+= (a+b)/(a-b) = 1/\/2 ==&gt; f(2) = 2.
+
+<li>  By induction and the relation f((n+1)/(n-1)) = (f(n)+1)/(f(n)-1)
+we get that f(n)=n for all integer n.  #5 now implies that f fixes
+the rationals.
+
+<li>  If x&gt;y&gt;0 (*) ==&gt; f(x) - f(y) = f(x+y)/f((x+y)/(x-y)) &gt; 0 by #6.
+</ol>
+Thus f is order-preserving.
+
+<p>
+Since f fixes the rationals *and* f is order-preserving, f must be the
+identity function.
+
+<p>
+This was E2176 in _The American Mathematical Monthly_ (the proposer was
+R. S. Luthar).
+
+</pre>
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

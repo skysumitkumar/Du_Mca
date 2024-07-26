@@ -1,0 +1,135 @@
+<html><head>
+<title>Solution for /geometry/duck.and.fox</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /geometry/duck.and.fox problem</h1>
+<hr>
+Assume the ratio of the fox's speed to the duck's is a, and the radius
+of the pond is r.  The duck's best strategy is:
+
+<ol>
+<li>  Swim around a circle of radius (r/a - delta) concentric with the
+pond until you are diametrically opposite the fox (you, the fox, and
+the center of the pond are colinear).
+
+<li>  Swim a distance delta along a radial line toward the bank opposite
+the fox.
+
+<li>  Observe which way the fox has started to run around the circle.
+Turn at a RIGHT ANGLE in the opposite direction (i.e. if you started
+swimming due south in step 2 and the fox started running to the east,
+i.e. clockwise around the pond, then start swimming due west).  (Note:
+If at the beginning of step 3 the fox is still in the same location as
+at the start of step 2, i.e.  directly opposite you, repeat step 2
+instead of turning.)
+
+<li>  While on your new course, keep track of the fox.  If the fox slows
+down or reverses direction, so that you again become diametrically
+opposite the fox, go back to step 2.  Otherwise continue in a straight
+line until you reach the bank.
+
+<li>  Fly away.
+</ol>
+The duck should make delta as small as necessary in order to be able
+to escape the fox.
+
+<p>
+The key to this strategy is that the duck initially follows a
+radial path away from the fox until the fox commits to running either
+clockwise or counterclockwise around the pond.  The duck then turns onto
+a new course that intersects the circle at a point MORE than halfway
+around the circle from the fox's starting position.  In fact, the duck
+swims along a tangent of the circle of radius r/a.  Let 
+
+<pre>
+  theta = arc cos (1/a)
+</pre>
+then the duck swims a path of length
+
+<pre>
+  r sin theta + delta
+</pre>
+
+but the fox has to run a path of length
+
+<pre>
+  r*(pi + theta) - a*delta
+</pre>
+
+around the circle.  In the limit as delta goes to 0, the duck will
+escape as long as
+
+<pre>
+  r*(pi + theta) &lt; a*r sin theta
+</pre>
+
+that is,
+<pre>
+  pi + arc cos (1/a) - a * sqrt(a^2 - 1) &lt; 0
+</pre>
+
+Maximize a in the above:  a = 4.6033388487517003525565820291030165130674...
+The fox can catch the duck as long as he can run about 4.6 times as fast as
+the duck can swim.
+
+<p>
+"But wait," I hear you cry, "When the duck heads off to that spot
+'more than halfway' around the circle, why doesn't the fox just double
+back?  That way he'll reach that spot much quicker."  That is why the
+duck's strategy has instructions to repeat step 2 under certain
+circumstances.  Note that at the end of step 2, if the fox has started
+to run to head off the duck, say in a clockwise direction, he and the
+duck are now on the same side of some diameter of the circle.  This
+continues to be true as long as both travel along their chosen paths
+at full speed.  But if the fox were now to try to reach the duck's
+destination in a counterclockwise direction, then at some instant he
+and the duck must be on a diameter of the pond.  At that instant, they
+have exactly returned to the situation that existed at the end of step
+1, except that the duck is a little closer to the edge than she was
+before.  That's why the duck always repeats step 2 if the fox is ever
+diametrically opposite her.  Then the fox must commit again to go one
+way or the other.  Every time the fox fails to commit, or reverses his
+commitment, the duck gets a distance delta closer to the edge.  This
+is a losing strategy for the fox.
+
+<p>
+The limiting ratio of velocities that this strategy works against
+cannot be improved by any other strategy, i.e., if the ratio of
+the duck's speed to the fox's speed is less than a then the duck
+cannot escape given the best fox strategy.
+
+<p>
+Given a ratio R of speeds less than the above a, the fox is sure to
+catch the duck (or keep it in water indefinitely) by pursuing the
+following strategy: 
+Do nothing so long as the duck is in a radius of R around the centre.
+As soon as it emerges from this circle, run at top speed around the
+circumference. If the duck is foolish enough not to position itself
+across from the center when it comes out of this circle, run "the short
+way around", otherwise run in either direction.
+
+<p>
+To see this it is enough to verify that at the circumference of the
+circle of radius R, all straight lines connecting the duck to points
+on the circumference (in the smaller segment of the circle cut out
+by the tangent to the smaller circle) bear a ratio greater than R
+with the corresponding arc the fox must follow. That this is enough
+follows from the observation that the shortest curve from a point on
+a circle to a point on a larger concentric circle (shortest among all
+curves that don't intersect the interior of the smaller circle) is
+either a straight line or an arc of the smaller circle followed by a
+tangential straight line.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

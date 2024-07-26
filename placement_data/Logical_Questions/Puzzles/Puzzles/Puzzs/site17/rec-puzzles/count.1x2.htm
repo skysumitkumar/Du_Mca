@@ -1,0 +1,89 @@
+<html><head>
+<title>Solution for /geometry/tiling/count.1x2</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /geometry/tiling/count.1x2 problem</h1>
+<hr>
+The number of ways to tile an MxN rectangle with 1x2 dominos is
+2^(M*N/2) times the product of
+<pre>
+   { cos^2(m*pi/(M+1)) + cos^2(n*pi/(N+1)) } ^ (1/4)
+</pre>
+over all m,n in the range 0&lt;m&lt;M+1, 0&lt;n&lt;N+1.
+
+<h3>Exercises:</h3>
+<ol>
+ <li> Why does this work for M*N odd?
+ <li> When M&lt;3 the count can be determined directly;
+   check that it agrees with the above formula.
+ <li> Prove directly this formula gives an integer for all M,N, and
+   further show that if M=N it is a perfect square when 4|N and
+   twice a square otherwise.
+</ol>
+
+Where does this come from?  For starters note that, with the usual checker-
+board coloring, each domino must cover one light and one dark square.  Assume
+that M*N is even (but as it happens our formula will work also when both
+M,N are odd --- see exercise 1 above).  Form a square matrix of size
+M*N/2 whose rows and columns are indexed by the light and dark squares,
+and whose (j,k) entry is 1 if the j-th light and k-th dark square are
+adjacent and zero otherwise.  There are now three key ideas:
+
+First, the number of tilings is the number of ways to match each light
+square with an adjacent dark square; thus it is the _permanent_ of our
+matrix (recall that the permanent of a rxr matrix is a sum of the same
+r! terms that occur in its determinant, except without the usual +1/-1
+sign factors).
+
+Second, that by modifying this matrix slightly we can convert the
+permanent to a determinant; this is nice because determinants are generally
+much easier to evaluate than permanents.  One way to do this is to replace
+all the 1's that correspond to vertical adjacency to i's, and multiply the
+whole thing by a suitable power of i (which will disappear when we raise
+it to a fourth power).
+
+<h3>Exercise 4:</h3> check that this transformation actually works as advertised!
+<p>
+Third, that we can diagonalize the resulting matrix A --- or, more
+conveniently, the square matrix of A' order M*N whose order-(M*N/2)
+blocks are 0,A;A-transpose,0 , whence det(A') = +-(det(A))^2.  Then
+the rows and columns of A' are indexed by squares of either hue on our
+generalized checkerboard, and its entries are 1 for horizontally adjacent
+squares, i for vertically adjacent ones, and 0 for nonadjacent (including
+coincident) squares.  This A' can be diagonalized by using the trigonometric
+basis of vectors v_ab (a,b as in the formula above) whose coordinate at
+the (m,n)-th square is  sin(a*m*pi/(M+1)) * sin(b*n*pi/(N+1)).
+
+<h3>Exercise 5:</h3>
+verify that these are in fact orthogonal eigenvectors of A',
+determine their eigenvalues, and complete the proof of the above formula.
+
+<p>
+(None of this is new, but it does not seem to be well-known: indeed
+each of the above steps seems to have been discovered independently
+several times, and I'm not sure whom to credit with the first discovery
+of this particular application of the method.  For different approaches
+to exactly solvable problems involving the enumeration of domino tilings,
+see the two papers of G.Kuperberg, Larsen, Propp and myself on
+"Alternating-Sign Matrices and Domino Tilings" in the first volume of
+the _Journal of Algebraic Combinatorics_.)
+
+<pre>
+--Noam D. Elkies (elkies@zariski.harvard.edu)
+  Dept. of Mathematics, Harvard University
+</pre>
+
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

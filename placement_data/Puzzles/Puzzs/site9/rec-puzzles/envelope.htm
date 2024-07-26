@@ -1,0 +1,126 @@
+<html><head>
+<title>Solution for /decision/envelope</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /decision/envelope problem</h1>
+<hr>
+Let's follow the argument carefully, substituting real numbers for
+variables, to see where we went wrong.  In the following, we will assume
+the envelopes contain $100 and $200.  We will consider the two equally
+likely cases separately, then average the results.
+
+<p>
+First, take the case that X=$100.
+
+<blockquote>
+"I have $100 in my hand.  If I exchange I get $200.  The value of the exchange
+is $200.  The value from not exchanging is $100.  Therefore, I gain $100
+by exchanging."
+</blockquote>
+
+Second, take the case that X=$200.
+
+<blockquote>
+"I have $200 in my hand.  If I exchange I get $100.  The value of the exchange
+is $100.  The value from not exchanging is $200.  Therefore, I lose $100
+by exchanging."
+</blockquote>
+
+Now, averaging the two cases, I see that the expected gain is zero.
+
+<p>
+So where is the slip up?  In one case, switching gets X/2 ($100), in the
+other case, switching gets 2X ($200), but X is different in the two
+cases, and I can't simply average the two different X's to get 1.25X.
+I can average the two numbers ($100 and $200) to get $150, the expected
+value of switching, which is also the expected value of not switching,
+but I cannot under any circumstances average X/2 and 2X.
+
+<p>
+This is a classic case of confusing variables with constants.
+
+<p>
+OK, so let's consider the case in which I looked into the envelope and
+found that it contained $100.  This pins down what X is: a constant.
+
+<p>
+Now the argument is that the odds of $50 is .5 and the odds of $200
+is .5, so the expected value of switching is $125, so we should switch.
+However, the only way the odds of $50 could be .5 and the odds of $200
+could be .5 is if all integer values are equally likely.  But any
+probability distribution that is finite and equal for all integers
+would sum to infinity, not one as it must to be a probability distribution.
+Thus, the assumption of equal likelihood for all integer values is
+self-contradictory, and leads to the invalid proof that you should
+always switch.  This is reminiscent of the plethora of proofs that 0=1;
+they always involve some illegitimate assumption, such as the validity
+of division by zero.
+
+<p>
+Limiting the maximum value in the envelopes removes the self-contradiction
+and the argument for switching.  Let's see how this works.
+
+<p>
+Suppose all amounts up to $1 trillion were equally likely to be
+found in the first envelope, and all amounts beyond that would never
+appear.  Then for small amounts one should indeed switch, but not for
+amounts above $500 billion.  The strategy of always switching would pay
+off for most reasonable amounts but would lead to disastrous losses for
+large amounts, and the two would balance each other out.
+
+<p>
+For those who would prefer to see this worked out in detail:
+Assume the smaller envelope is uniform on [$0,$M], for some value
+of $M.  What is the expectation value of always switching?  A quarter of
+the time $100 &gt;= $M (i.e. 50% chance $X is in [$M/2,$M] and 50% chance
+the larger envelope is chosen).  In this case the expected switching
+gain is -$50 (a loss).  Thus overall the always switch policy has an
+expected (relative to $100) gain of (3/4)*$50 + (1/4)*(-$50) = $25.
+However the expected absolute gain (in terms of M) is:
+<pre>
+  / M 
+  |    g f(g) dg,   [ where f(g) = (1/2)*Uniform[0,M)(g) +
+  /-M                              (1/2)*Uniform(-M,0](g). ]
+
+  = 0.  QED.
+</pre>
+OK, so always switching is not the optimal switching strategy.  Surely
+there must be some strategy that takes advantage of the fact that we
+looked into the envelope and we know something we did not know before
+we looked.
+
+<p>
+Well, if we know the maximum value $M that can be in the smaller envelope,
+then the optimal decision criterion is to switch if $100 &lt; $M, otherwise stick.
+The reason for the stick case is straightforward. The reason for the
+switch case is due to the pdf of the smaller envelope being twice as
+high as that of the larger envelope over the range [0,$M). That is, the
+expected gain in switching is (2/3)*$100 + (1/3)*(-$50) = $50.
+
+<p>
+What if we do not know the maximum value of the pdf?  You can exploit
+the "test value" technique to improve your chances.  The trick here is
+to pick a test value T.  If the amount in the envelope is less than the
+test value, switch; if it is more, do not.  This works in that if T happens
+to be in the range [M,2M] you will make the correct decision.  Therefore,
+assuming the unknown pdf is uniform on [0,M], you are slightly better off
+with this technique.
+
+<p>
+Of course, the pdf may not even be uniform, so the "test value" technique
+may not offer much of an advantage.  If you are allowed to play the game
+repeatedly, you can estimate the pdf, but that is another story...
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

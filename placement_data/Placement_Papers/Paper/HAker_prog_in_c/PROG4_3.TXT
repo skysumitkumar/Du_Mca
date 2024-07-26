@@ -1,0 +1,51 @@
+
+#include 	<stdio.h>
+
+int	main(void)
+{
+FILE	*in;
+char	fname[BUFSIZ], str[BUFSIZ];
+int	x,y,i;
+char	color_index, aspect, packed,red,blue,green;
+
+	printf("Enter GIF file>>");
+	gets(fname);
+	if ((in=fopen(fname,"r"))==NULL)
+	{
+		printf("Can't find file %s\n",fname);
+		return(1);
+	}
+
+	fread(str,3,1,in);	str[3]=NULL; /* terminate string */
+	printf("Signature: %s\n",str);
+	fread(str,3,1,in);	str[3]=NULL; /* terminate string */
+	printf("Version: %s\n",str);
+
+	fread(&x,2,1,in);	str[3]=NULL; /* terminate string */
+	printf("Screen width: %d\n",x);
+	fread(&y,2,1,in);	str[3]=NULL; /* terminate string */
+	printf("Screen height: %d\n",y);
+
+	fread(&packed,1,1,in);
+	printf("Packed: %x\n",packed & 0xff); /* mask-off the bottom 8 bits */
+	fread(&color_index,1,1,in);
+	printf("Color index: %d\n",color_index);
+	fread(&aspect,1,1,in);
+	printf("Aspect ratio: %d\n",aspect);
+
+	for (i=0;i<64;i++)
+	{
+		fread(&red,1,1,in);
+		printf("Red: %x ",red & 0xff); 		/* display 8 bits */
+		fread(&green,1,1,in);
+		printf("Green: %x ",green & 0xff); 	/* display 8 bits */
+		fread(&blue,1,1,in);
+		printf("Blue: %x\n",blue & 0xff); 	/* display 8 bits */
+	}
+
+	fclose(in);
+	return(0);
+}
+
+
+

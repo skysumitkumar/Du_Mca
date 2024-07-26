@@ -1,0 +1,29 @@
+/* Decryt.c */
+#include <stdio.h>
+#include <ctype.h>
+int	main(void)
+{
+FILE	*f;
+char	fname[BUFSIZ];
+int	key,ch;
+
+	printf("Enter encrypted filename >>");
+	gets(fname);
+	if ((f=fopen(fname,"r"))==NULL)
+	{
+		puts("Cannot open input file");
+		return(1);
+	}
+
+	printf("Enter key value >>");
+	scanf("%d",&key);
+
+	do
+	{
+		ch=getc(f);
+		ch=ch^key;
+		if (isascii(ch)) putchar(ch); /* only print ASCII char */
+	} while (!feof(f));
+	fclose(f);
+	return(0);
+}

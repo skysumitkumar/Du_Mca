@@ -1,0 +1,87 @@
+<html><head>
+<title>Solution for /language/english/spelling/sets.of.words/ladder</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /language/english/spelling/sets.of.words/ladder problem</h1>
+<hr>
+<pre>
+Using every unabridged dictionary available, the best yet found are:
+hit ait act ace
+pig peg seg sey sty
+four foud fond find fine five
+play blay bray bras baas bams gams game
+green grees greys grays grass
+wheat theat treat tread bread
+order older elder eider cider cides codes coles colls coals chals chaos
+order ormer armer ammer amper imper impel
+sixth sixty silty silly sally sably sabby nabby nubby hubby
+speedy speeds steeds steers sheers shyers sayers payers papers papery popery
+popely pomely comely comedy
+griming priming prising poising toising toiling coiling colling collins collies
+dollies doilies dailies bailies bailees bailers failers fablers gablers gabbers
+gibbers gibbets gobbets goblets
+chasing ceasing cessing messing massing masting marting martins martens martels
+cartels carpels carpers campers cambers combers cobbers combers robbers
+vainest fainest fairest sairest saidest saddest maddest middest mildest wildest
+wiliest winiest waniest caniest cantest contest confest confess confers conners
+canners fanners fawners pawners pawnees pawnces paunces jaunces jaunced jaunted
+saunted stunted stented stenned steined stained spained splined splines salines
+savines savings pavings parings earings enrings endings ondings ondines undines
+unlines unlives unwives unwires unwares unbares unbared unpared unpaged uncaged
+incaged incased incised incises incites indites indices indicts inducts indults
+insults insulas insulae infulae
+
+This is not another travelling salesman - it is merely finding the diameter of 
+connected components of that graph.  The simple algorithm for this is to do 
+one depth first search from each word, resulting in an O(n*m) worst case 
+algorithm (where n is the number of words, and m is the number of arcs).  In 
+practice, it is actually somewhat better, since the graph breaks down into 
+many connected components.  However, the diameters (and solutions) depend on 
+what dictionary is used.  Here are the results from various dictionaries:
+
+From /usr/dict/words (restricted to words all lower case alphabetical) (19,694 
+words): sixth - hubby (46 steps)
+
+From the official scrabble players dictionary (94,276 words): effaces - 
+cabaret (57 steps)
+
+From the british official scrabble words (134,051 words): vainest - infulae 
+(73 steps)
+
+From webster's ninth new collegiate dictionary (abridged) (78, 167 words): 
+griming - goblets (56 steps)
+
+From all of the above, merged  (180,676 words): vainest - injects (58 steps)
+
+To see the effect the dictionary has on paths, here are the lengths of the 
+shortest paths these pairs, and for the ones mentioned in previous posts, for 
+each dictionary (a - means that there is no path using only words from that 
+dictionary):
+
+                  UDW OSPD OSW  W9 ALL
+    hit - ace      5    3   3   5   3
+    pig - sty      -    5   4   5   4
+   four - five     6    6   5   7   5
+   play - game     8    7   7   8   7
+  green - grass   13    4   4   7   4
+  wheat - bread    6    6   6   6   6
+  sixth - hubby   46    9   9   -   9
+effaces - cabaret  -   57   -   -  33
+vainest - infulae  -    -  73   -  52
+griming - goblets  -   22  19  56  15
+vainest - injects  -    -  72   -  58
+
+</pre>
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

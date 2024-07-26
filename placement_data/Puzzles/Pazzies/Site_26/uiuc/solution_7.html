@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>Solution</title>
+</head>
+
+<body bgcolor=lightyellow>
+<center>
+<h1>Solution</h1>
+</center>
+<center>
+</center>  
+
+<blockquote>
+<hr>
+<font color="blue">Question:</font><br>
+How can you test a number for divisibility by 7? 
+
+<p>
+<font color="blue">Answer:</font><br>
+Multiply the last digit by 2. Subtract this answer from the remaining digits. 
+If this new number is evenly divisible by 7, then so is the original number.
+<p>For example, for a 3 digit number, here is Kathy Dunham's example (Thanks!):
+"...Try 378.  The last digit is 8.
+Multiply by 2 and you get 16.  Subtract 16 from 37 and get 21.  21 is
+divisible by 7 which means that 378 is as well."
+<p>For a larger number you would keep repeating these steps until you ended up with something smaller!
+<p><font color="blue">Honorary Mention:</font><br>
+Here is what Eric Smith added: <br>
+works for numbers less than 7000...
+<br> 
+ multiply the number by 143. If the result is less than 6 digits, pad it
+ on the left end with zeroes until it is 6 digits (i.e., 12012 becomes
+ 012012). If the the first three digits are the same as the last three,
+ the inital number is divisible by 7.
+<p>Thanks to Fred for this cool algorithm (it worked for all the numbers that we tried!):<br>
+    Taking the digits from right to left, multiply by the following repeating 
+sequence:
+        x1,x3,x2,x6,x4,x5 etc.  Add the results and see if they are divisible 
+by 7.
+
+        i.e.:    5201 would be  (1x1)+(0x3)+(2x2)+(5x6)=35, 35 is divisible 
+by 7, 
+            therefore 5201 is divisible by 7.
+<p>
+Here is some more insight from <font color="blue">Etamar Olpiner </font><br>
+<pre>
+Use the fact that 7 divides 49.
+So, if 7 divides X, 7 also divides X-49 = X-50+1
+If X = Q*50 + R, you can reduce X by 49, and do it Q times.
+So divide X by 50 (multipie X by 2 and divide by 100), add the remainder (R)
+to the result (Q), and check for division by 7.
+i.e.
+To check if 7 divides 1232 = 24*50  +  32
+just check if 7 divides 24 + 32= 56 (which is 1232- 50+1 -50+1 ... -50+1 (24
+times))
+and it does.
+
+Note: if the result is too big, just do it again, like this:
+does 7 divide 355348 ?
+355300 / 50 = 7106
+so 355348 = 50*7106 + 48
+7106+48 = 7154
+
+7150 / 50 = 143
+so 7154 = 50 * 143 + 4
+143+4 = 147
+
+147 = 2*50 + 47
+2+47 = 49
+
+and 7 divides 49
+
+</pre>
+ 
+
+<hr>
+<center>
+</center>  
+
+
+</blockquote>
+</body>
+</html>

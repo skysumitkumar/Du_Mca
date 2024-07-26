@@ -1,0 +1,285 @@
+<html><head>
+<title>Solution for /logic/monty.52</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /logic/monty.52 problem</h1>
+<hr>
+The fair price for large N is $0.6321205588285576784; I will offer
+a proof along with optimal strategies.
+
+<p>
+Denote the game as G_N().  After (N-M) rounds of play, the game will have
+the same form as G_M().  Depending on the strategies each of the M boxes
+will have a probability p_i of containing the dollar.  Let Waldo lock
+the M'th box (renumbering the boxes if necessary).  Denote the game and
+Waldo's expected winnings in the game by
+<pre>
+	G_M(p_1, p_2, ..., p_M)
+</pre>
+where
+<pre>
+	p_1 + p_2 + ... + p_M = 1
+</pre>
+When
+<pre>
+	p_2 = p_3 = p_4 = ... = p_M
+</pre>
+we adopt the abbreviation
+<pre>
+	G_M(b) = G_M(1 + b - Mb, b, b, b, b, ..., b)
+</pre>
+and note that since probabilities are never negative:
+<pre>
+	1 + b - Mb &gt;= 0, or
+	0 &lt;= b &lt;= 1 / (M-1)
+</pre>
+Various G_M(p_1, p_2, ..., p_M) have difficult solutions but we are asked
+only to solve G_M(1/M) and it turns out we can accomplish this by
+considering only the games
+<pre>
+	G_M(b)  where	1/M  &lt;=  b  &lt;=  1/(M-1)		[1]
+</pre>
+Games of this form will be said to satisfy constraint [1].
+
+Induction is used for one of the theorems, so we'd better solve G_2 and G_3
+for our basis.
+<pre>
+	G_2(p_1, p_2) = max (p_1, p_2)
+	G_3(p_1, p_2, p_3) = max (p_1 + p_2, p_3)
+</pre>
+since after Monty opens box #1, box #2 will have probability (p_1 + p_2)
+and vice versa.  When the probabilities satisfy constraint [1]: 
+<pre>
+	G_2(b) = G_2(1-b, b) = b
+	G_3(b) = G_3(1-2b, b, b) = 1 - b
+</pre>
+The proof of Theorem 1 is based on the probability p_i that box #i
+contains the dollar.  (Of course this is Waldo's perceived probability:
+Monty's probability would be 0 or 1.)  It may seem wrong for Waldo to
+"forget" the game history and remember only the computed p_i.  For
+example he may have previously locked some but not all of the boxes
+and this fact is ignored except in the calculation of p_i.  Or Monty may
+have some higher level "plan" which mightn't seem to translate directly
+into probabilities.  But probability algebra obeys some simplifying
+linearity rules and, if Monty keeps a "poker face", the probability model
+is the only thing Waldo has to act on.
+
+<p>
+Especially paradoxical is the derivation of Waldo's p_i in his trivial
+strategy below: he can adopt inferior but "correct" p_i to simplify the
+analysis.
+
+<h3>Theorem 1</h3>
+<pre>
+	If   b &gt;= 1/M   then
+	G_M(b) = G_[M-1]( (1-b) / (M-2) )
+</pre>
+
+<h3>Proof</h3>
+	We will show that Monty and Waldo each have a strategy in G_M(b) to
+	reduce the game to G_[M-1](b, q, q, ..., q) where q = (1-b) / (M-2)
+	and where the boxes have been renumbered so that box #1 was box #M
+	(the one Waldo locked) from the prior round and the new box #(M-1)
+	is the one Waldo locks next.  Note that if Monty indeed arranges
+	the probability mixture G_[M-1](b, q, q, q, q, ..., q) it won't
+	matter which box Waldo locks (Box #1 has the only non-equal
+	probability but Waldo cannot lock the same box twice in a row);
+	this is a typical property of "saddlepoint" strategy.
+
+<p>
+	We will derive the necessary and sufficient condition for Monty to
+	reduce any game G_M(p_1, p_2, p_3, ..., p_M) to a single game with
+	the form G_[M-1](b, q, q, ..., q).  Using the numbering of G_M()
+	let R(i,j) be the joint probability that Box #i contains the dollar
+	and Box #j is opened by Monty in G_M().  We need consider only
+<pre>
+	M &gt;= 3
+</pre>
+	Clearly,
+<pre>
+	R(i, j) &gt;= 0
+	R(i, i) = 0
+	R(i, M) = 0, i &lt; M
+	sum_over_j R(i,j) = p_i
+	and to achieve q_2 = q_3 = ... = q_[M-1] in G_[M-1],
+	R(1, j) = R(k, j)
+		for 1 &lt; j,k &lt; M and j != k
+	R(2, 1) = R(k, 1)
+		for 2 &lt; k &lt; M
+        and to make G_[M-1] be independent of Monty's play
+	R(M, j)/R(1, j) = R(M, 2)/R(1, 2)
+		for 2 &lt; j &lt; M
+	R(M, 2)/R(1, 2) = R(M, 1)/R(2, 1)
+</pre>
+	The above have a simple unique solution:
+<pre>
+	R(i, j) = (1 - p_M) / (M - 2)  - p_j		[2]
+		for i,j &lt; M and i != j
+	R(M, j) = p_M - p_j * p_M / (1 - p_M)		[3]
+		for j &lt; M
+	p_j * (M-2) + p_M &lt;= 1				[4]
+</pre>
+	For the theorem we are given that G_M(b) satisfies constraint [1]
+<pre>
+	1 / M  &lt;=  b  &lt;=  1 / (M - 1)
+</pre>
+        which implies the weaker inequality
+<pre>
+	(M - 3) / (M^2 - 3M + 1)  &lt;=  b  &lt;=  1 / (M - 1)
+</pre>
+	and since for the constraint-[1] compliant G_M()
+<pre>
+	p_j = b   or   p_j = (1+b-Mb)   for all j
+</pre>
+	the inequality [4] follows directly.
+<p>
+	Hence Monty can transpose G_M(b) into G_[M-1]( (1-b) / (M-2) )
+	whenever b &gt;= 1/M and M &gt;= 3.  (This G_[M-1] also happens to
+	satisfy constraint [1] as needed for the next theorem.)
+<p>
+	It should be easy to argue that this strategy is optimal for Monty,
+	but we want to derive Waldo's best strategy anyway and if it
+	guarantees the same value we know we're at the "saddlepoint".
+	If Waldo knows Monty has a non-optimal strategy he can take
+	advantage of it, but we will just derive a strategy good enough
+	to achieve the saddle-point value.
+<p>
+	Monty must transform G_M(b) into some
+<pre>
+		G_[M-1](b, q_2, q_3, ..., q_[M-1])
+</pre>
+	where Waldo has the choice of locking any of boxes #2 through #(M-1).
+	If Waldo locks each of the (M-2) available boxes with probability
+	1/(M-2) it is easily seen that the average probability that he
+	locks the box with the dollar is (1-b) / (M-2) and the probabilities
+	q_2, q_3, ..., q_[M-2] will also have the average value (1-b)/(M-2).
+	If Waldo pretends to "forget" which box he picked before, he can
+	take q_2 = q_3 = ... = (1-b)/(M-2) thereby constructing the same
+	game Monty constructed with his saddlepoint strategy!
+
+<p>
+	In the above Waldo in effect "degraded" the accuracy of his
+	probability estimates with the substitutions
+<pre>
+	q_2' = (q_2 + q_3 + ... + q_[M-1]) / (M - 2)
+	q_3' = (q_2 + q_3 + ... + q_[M-1]) / (M - 2)
+	  et cetera
+</pre>
+	If Waldo "knows" more than this, he can pretend he doesn't!
+	For example he can ask Monty to secretly shuffle the boxes.
+
+<p>
+	Thus either player can reduce
+<pre>
+		G_M(b), b &gt;= 1/M
+</pre>
+	to
+<pre>
+		G_[M-1]((1-b)/(M-2))
+</pre>
+	so this must be the saddlepoint.
+<p>
+
+	Q.E.D.
+
+<h3>Theorem 2</h3>
+
+<pre>
+	If   b &gt;= 1/M   then
+	G_M(b) = 1 - 1/2! + 1/3! - ... - (1-b)(-1)^M/(M-2)!
+	       = - sum (-1)^i/i! - (1-b)(-1)^M/(M-2)!
+	where the sum is over i = 1, 2, 3, ..., M-3
+</pre>
+
+<h3>Proof</h3>
+	The proof is by induction.  We know the theorem holds for M = 3
+	and we will assume it holds for (M-1).  Set
+<pre>
+	c = (1-b) / (M-2)
+</pre>
+	We noted earlier that b &lt;= 1/(M-1): otherwise p_1 = (1 + b - Mb)
+	is negative; hence we obtain
+<pre>
+	c = (1-b)/(M-2) &gt;= (1 - 1/(M-1)) / (M-2)
+</pre>
+	or simply
+<pre>
+	c &gt;= 1/(M-1)
+</pre>
+	Thus the condition of the inductive hypothesis is satisfied and
+<pre>
+	G_[M-1](c) = 1 - 1/2! + 1/3! - ... + (1-c)(-1)^M/(M-3)!
+</pre>
+	But from Theorem 1
+<pre>
+	G_M(b) = G_[M-1](c)
+</pre>
+	and from the definition of c,
+<pre>
+	c/(M-3)! = (1-b)/(M-2)!
+</pre>
+	which establishes the theorem.
+
+<h3>theorem 3</h3>
+<pre>
+	G_M(1/M) = G_M(1/M, ..., 1/M) = 1 - 1/2! + 1/3! - ... -(-1)^M/M!
+</pre>
+<h3>Proof</h3>
+	This follows directly from Theorem 2 and the observation that
+<pre>
+	(1/M)/(M-2)! = 1/(M-1)! - 1/M!
+</pre>
+
+For large M, G_M(1/M) approaches (1 - 1/e).  It will be a little bigger
+when M is odd and a little smaller when M is even.  I've appended the
+numeric values below.
+
+<pre>
+% dc
+[[Solution for M =]Plb1+pdsb]sy
+65k1sa1sblyx2sc[la1lc/-dsaplclyx*scla1lc/+dsaplclyx*sclzx]dszx
+Solution for M =2
+0.50000000000000000000000000000000000000000000000000000000000000000
+Solution for M =3
+0.66666666666666666666666666666666666666666666666666666666666666666
+Solution for M =4
+0.62500000000000000000000000000000000000000000000000000000000000000
+Solution for M =5
+0.63333333333333333333333333333333333333333333333333333333333333333
+Solution for M =6
+0.63194444444444444444444444444444444444444444444444444444444444445
+Solution for M =7
+0.63214285714285714285714285714285714285714285714285714285714285714
+Solution for M =8
+0.63211805555555555555555555555555555555555555555555555555555555556
+Solution for M =9
+0.63212081128747795414462081128747795414462081128747795414462081129
+Solution for M =10
+0.63212053571428571428571428571428571428571428571428571428571428572
+	. . .
+Solution for M =52
+0.63212055882855767840447622983853913255418886896823216549216319831
+</pre>
+P. S. There are related unsolved problems:
+<ul>
+<li> what about G_M(p_1, p_2, ..., p_M) that do not fit the pattern used
+in the above solution?
+<li> what if two boxes contain dollars?  (first, what should the rules be?)
+</ul>
+<pre>
+-- james@crc.ricoh.com (James Allen)
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

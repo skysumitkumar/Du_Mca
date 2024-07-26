@@ -1,0 +1,105 @@
+<html><head>
+<title>Solution for /geometry/touching.blocks</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /geometry/touching.blocks problem</h1>
+<hr>
+<ul>
+<li> n=0: 6 separate blocks
+<li> n=1: 3 pairs
+<li> n=2: 2 threesomes
+<li> n=3: a 3x3 grid
+<li> n=4: a box (each sides touches the four adjoining sides, but not the opposite)
+<li> n=5:
+</ul>
+
+Crude ascii:
+<pre>
+Front view:                  Side view:
+
+         /\  /\               ----- 
+        /  \/  \              | | |
+       /   /\   \             | | |
+      /   /  \   \            | | |
+      \  /----\  /         ---|.|.|---
+       \/|    |\/          |  | | |  |
+      -----------          -----------
+      |         |             |   |
+      -----------             -----
+
+-- 
+stein.kulseth@tf.tele.no [X.400] stein.kulseth@nta.no [internet]
+</pre>
+<hr>
+Place block A onto the x-y plane so that four of its corners are at
+(0,0), (0,1), (4,0), (4,1) (I give x and y coordinates only because
+the z coordinate will always be obvious).  Place block B so four of
+its corners are at (2,1), (2,2), (6,1), (6,2).  Now place block C with
+one 4x1 face on the x-y plane with one corner at (0,1) (tangent to
+block A) and tangent to block B at (2,1).  Note that the angle between
+block A and block C is arctan(1/2), and a corner of block C will be at
+a point with approximate coordinates (3.5777, 2.7888).  Call this
+point P.
+
+<p>
+Now place an identical configuration of blocks on top of the first
+three as follows: block D with corners at (3.4,0.4), (4.4,0.4),
+(3.4,4.4), (4.4,4.4), block E with corners at (2.4,2.4), (3.4,2.4),
+(2.4,-1.6), (3.4,-1.6), and block F with one corner tangent to D at
+(3.4,4.4) and one side tangent to E at (2.4,2.4).
+
+<p>
+If you have been plotting this on graph paper, then the following
+will be clear:
+
+<p>
+Every block touches every other in its own layer.  And A and B each
+touch D and E, and block C touches F.  Point P falls under block D, so
+blocks C and D touch, and by symmetry so do blocks F and A.  And the
+edge of block C intersects the edge of block E at (2.4,2.2) so blocks
+C and E touch, and by symmetry so do blocks F and B.  Done!
+
+<pre>
+-- David Karr (karr@cs.cornell.edu)
+</pre>
+<hr>
+All the blocks are placed with their 2x4 face UP, although any face up
+would have worked, as it turns out.  The blocks are called AAAA BBBB CCCC,
+etc.
+<pre>
+      AAAA
+      AAAA /_______
+      BBCC \
+      BBCC
+      BBCC
+      BBCC
+       /\
+       ||
+</pre>
+The two arrows point to the intersection of AC and BC.
+
+<p>
+Now take block "D" and place the top edge along the diagonal (between the
+two arrows) so that the block extends SOUTH EAST of the line.  Likely now
+the block does not touch either A or B.  So slide the block towards the
+NORTH WEST so that it just touches A and B.  You can now easily place
+blocks E and F perpendicular to block "D" so that they both touch all of
+ABC.....QED
+<pre>
+-- 
+Guy Cousineau
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

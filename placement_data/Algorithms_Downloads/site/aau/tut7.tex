@@ -1,0 +1,138 @@
+\documentclass[english]{article} 
+
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{fancyhdr}
+
+\begin{document}
+
+\pagenumbering{arabic}
+
+%----Header stuff---------------------------
+\pagestyle{fancy}
+ \lhead{\sc Algorithms \& Data Structures}
+ \chead{}
+ \rhead{\sc INF1 -- 2003}
+
+\section*{Tutorial 7}
+
+\subsection*{Exercise 1} 
+
+pre: $s=\langle a_1, a_2, \ldots, a_n\rangle$ and $x \not\in s$ \\[2mm]
+\mbox{} \hspace{5mm} s.push(x) \\[2mm]
+post: $s'=\langle a_1, a_2, \ldots, a_n, x\rangle$ and $x'=x$ \\[6mm]
+pre: $s=\langle a_1, a_2, \ldots, a_n\rangle$ and $n \geq 1$ \\[2mm]
+\mbox{} \hspace{5mm} res:=s.top \\[2mm]
+post: $\mbox{res}=a_n$ and $s'=s$ \\[6mm]
+pre: $s=\langle a_1, a_2, \ldots, a_n\rangle$ and $n\geq 1$ \\[2mm]
+\mbox{} \hspace{5mm} res:=s.pop \\[2mm]
+post: $\mbox{res}=a_n$ and $s'=\langle a_1, a_2, \ldots, a_{n-1}\rangle$ 
+ 
+\subsection*{Exercise 2} 
+
+push(x:ENTRY\_TYPE) = \\
+x.next\_entry:=last \\
+last:=x \\
+end \\[6mm]
+top:ENTRY\_TYPE = \\
+return last  \\[6mm]
+pop:ENTRY\_TYPE = \\
+res:=last \\
+last:=last.next\_entry \\
+return res \\[4mm]
+Worst-case time complexity of all operations is $O(1)$.
+
+\subsection*{Exercise 3} 
+Let $s$ be a temporary stack. We define the procedure reverse
+as follows. \\
+
+\begin{algorithmic}
+\STATE {reverse(l:LIST) = }
+\STATE {s.make}
+\WHILE {(NOT l.empty)}
+\STATE {x:=l.first}
+\STATE s.push(x)
+\STATE l.delete(x)
+\ENDWHILE
+\WHILE {(NOT s.empty)} 
+\STATE l.insert\_last(s.pop)
+\ENDWHILE
+\end{algorithmic}
+\mbox{} \\
+Worst-case time complexity of reverse(l) is $O(|l|)$ where
+$|l|$ is the number of entries in the list $l$.  \\[3mm]
+{\bf Remark:} To be absolutely correct we should also realize
+that ENTRY\_TYPE in lists and stacks are not the same. Hence
+instead of 
+
+\centerline{s.push(x)}
+
+we should rather write:
+
+\centerline{s.push(s.new\_entry(x.value)).}
+
+Similarly instead of
+
+\centerline{l.insert\_last(s.pop)}
+
+we should write
+
+\centerline{l.insert\_last(l.new\_entry(s.pop.value)).}
+
+
+\subsection*{Exercise 4}
+
+pre: $q=\langle a_1, a_2, \ldots, a_n\rangle$ and $x \not\in q$ \\[2mm]
+\mbox{} \hspace{5mm} q.enqueue(x) \\[2mm]
+post: $q'=\langle a_1, a_2, \ldots, a_n, x\rangle$ and $x'=x$ \\[6mm]
+pre: $q=\langle a_1, a_2, \ldots, a_n\rangle$ and $n \geq 1$\\[2mm]
+\mbox{} \hspace{5mm} res:=q.front \\[2mm]
+post: $\mbox{res}=a_1$ and $q'=q$ \\[6mm]
+pre: $q=\langle a_1, a_2, \ldots, a_n\rangle$ and $n\geq 1$ \\[2mm]
+\mbox{} \hspace{5mm} res:=q.dequeue \\[2mm]
+post: $\mbox{res}=a_1$ and $q'=\langle a_2, a_3\ldots, a_n\rangle$ 
+
+\subsection*{Exercise 5}
+
+enqueue(x:ENTRY\_TYPE) = \\
+if (last = void) then x.next\_entry := x \\
+else x.next\_entry:=last.next\_entry;
+last.next\_entry:=x \\
+endif \\
+last := x \\
+end \\[6mm]
+front:ENTRY\_TYPE = \\
+return last.next\_entry \\[6mm]
+dequeue:ENTRY\_TYPE = \\
+res:=last.next\_entry \\
+if last.next\_entry = last then last:= void \\
+else last.next\_entry:=res.next\_entry \\
+endif \\
+return res \\[4mm]
+Worst-case time complexity of all operations is $O(1)$.
+
+\subsection*{Exercise 6}
+
+\begin{algorithmic}
+    \STATE {member(x:ENTRY\_TYPE; q:QUEUE):boolean = }
+    \STATE {res:= false}
+    \IF {(NOT q.empty)} 
+            \STATE { first\_entry:=q.front}
+            \REPEAT 
+            \STATE {y:=q.dequeue}
+            \IF {y=x} 
+            \STATE {res:=true}
+            \ENDIF
+            \STATE {q.enqueue(y)}
+            \UNTIL {first\_entry = q.front}
+   \ENDIF  
+   \STATE {{\bf return} res}
+\end{algorithmic}
+
+\mbox{}\\
+Worst-case time complexity of member(x,q) is $O(|q|)$ where
+$|q|$ is the number of entries in $q$.
+
+\end{document}

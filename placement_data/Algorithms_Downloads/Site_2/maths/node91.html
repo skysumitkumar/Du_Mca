@@ -1,0 +1,551 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The Fourier Matrix</TITLE>
+<META NAME="description" CONTENT="The Fourier Matrix">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node92.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node92.html">
+<LINK REL="previous" HREF="node90.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node90.html">
+<LINK REL="up" HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<LINK REL="next" HREF="node92.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node92.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1648"
+  HREF="node92.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node92.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1642"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1636"
+  HREF="node90.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node90.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1644"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1646"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1649"
+  HREF="node92.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node92.html">Products</A>
+<B> Up:</B> <A NAME="tex2html1643"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">The Fast Fourier Transform</A>
+<B> Previous:</B> <A NAME="tex2html1637"
+  HREF="node90.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node90.html">Fourier Series</A>
+ &nbsp <B>  <A NAME="tex2html1645"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1647"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001030000000000000000"></A><A NAME="Fourier_matrix"></A>
+<BR>
+The Fourier Matrix
+</H1>
+We need a simple result about complex numbers.
+<P>
+<DIV><A NAME="L:one-plus-omega-etc"><B>Lemma  6.1</B></A> &nbsp; 
+Let <I>z</I><SUP>n</SUP> = 1, and assume that <I>z</I>&nbsp;<IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img12.gif"
+ ALT="$ \ne$">&nbsp;1. Then
+<!-- MATH
+ \begin{displaymath}
+1 + z + z^2 + \cdots + z^{n-1} = 0.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+1 + <I>z</I> + <I>z</I><SUP>2</SUP> + <SUP> ... </SUP> + <I>z</I><SUP>n - 1</SUP> = 0.
+</DIV><P></P></DIV><P></P>
+
+<P>
+<P></P>
+<DIV><I>Proof</I>.
+
+It is trivial to verify the factorisation
+<!-- MATH
+ \begin{displaymath}
+z^n - 1 = (z-1)(1 + z + z^2 + \cdots + z^{n-1}).
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>z</I><SUP>n</SUP> - 1 = (<I>z</I> - 1)(1 + <I>z</I> + <I>z</I><SUP>2</SUP> + <SUP> ... </SUP> + <I>z</I><SUP>n - 1</SUP>).
+</DIV><P></P>
+The result follows, since we are given a zero of the
+left hand side.
+ <IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img78.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img78.gif"
+ ALT="$ \qedsymbol$">
+</DIV><P></P>
+
+<P>
+It is easy to describe the <I>n</I><SUP>th</SUP> roots of unity.  Let 
+<!-- MATH
+ $\omega = \exp(-2\pi i/n)$
+ -->
+<IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img253.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img253.gif"
+ ALT="$ \omega$"> = exp(- 2<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$"><I>i</I>/<I>n</I>); 
+then the roots are all of the form <IMG
+ WIDTH="22" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img254.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img254.gif"
+ ALT="$ \omega^{k}_{}$"> for some <I>k</I> with 
+<!-- MATH
+ $0 \le k < n$
+ -->
+0<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$"><I>k</I> &lt; <I>n</I>.  Note also that <IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img253.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img253.gif"
+ ALT="$ \omega$"> satisfies the condition of the
+lemma. We now define the Fourier matrix <!-- MATH
+ $\mathcal{F}_n$
+ -->
+<IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img255.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img255.gif"
+ ALT="$ \mathcal {F}$"><SUB>n</SUB> for any
+integer <I>n</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$">1 by:
+<!-- MATH
+ \begin{displaymath}
+\mathcal{F}_n = \frac{1}{\sqrt n}
+\   \begin{pmatrix}
+\      1&1&1&\ldots&1\\
+\      1&\omega &\omega ^2&\ldots&\omega ^{n-1}\\
+\      1&\omega ^2&\omega ^4&\ldots&\omega ^{2(n-1)}\\
+\      \vdots&\vdots&\vdots&\ddots&\vdots\\
+\      1&\omega ^{n-1}&\omega ^{2(n-1)}&\ldots&\omega ^{(n-1)(n-1)}
+\   \end{pmatrix}.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="15" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img256.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img256.gif"
+ ALT="$\displaystyle \mathcal {F}$"><SUB>n</SUB> = <IMG
+ WIDTH="31" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img257.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img257.gif"
+ ALT="$\displaystyle {\frac{1}{\sqrt n}}$">&nbsp;<IMG
+ WIDTH="306" HEIGHT="125" ALIGN="MIDDLE" BORDER="0"
+ SRC="img258.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img258.gif"
+ ALT="$\displaystyle \begin{pmatrix}
+ 1&amp;1&amp;1&amp;\ldots&amp;1\\
+ 1&amp;\omega &amp;\omega ^2&amp;\ldots...
+...
+ 1&amp;\omega ^{n-1}&amp;\omega ^{2(n-1)}&amp;\ldots&amp;\omega ^{(n-1)(n-1)}
+ \end{pmatrix}$">.
+</DIV><P></P>
+Note that <!-- MATH
+ $\mathcal{F}_n$
+ -->
+<IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img255.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img255.gif"
+ ALT="$ \mathcal {F}$"><SUB>n</SUB> is a complex symmetric matrix; so is the
+same as its transpose. Thus its adjoint (the transposed complex
+conjugate of the given matrix) is just the complex conjugate. We write
+this as <!-- MATH
+ $\bar{\mathcal{F}}_n$
+ -->
+<IMG
+ WIDTH="23" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img259.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img259.gif"
+ ALT="$ \bar{\mathcal{F}}_{n}^{}$">. It is given simply by replacing <IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img253.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img253.gif"
+ ALT="$ \omega$"> in
+the above by <!-- MATH
+ $\bar{\omega}= \exp(2\pi i/n)$
+ -->
+<IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img260.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img260.gif"
+ ALT="$ \bar{\omega}$"> = exp(2<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img22.gif"
+ ALT="$ \pi$"><I>i</I>/<I>n</I>).
+
+<P>
+A word about notation: we shall have quite a lot to do with <IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img253.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img253.gif"
+ ALT="$ \omega$">. Note
+the choice of sign in the exponent; it was arbitrary, but this way the
+definition of <!-- MATH
+ $\mathcal{F}_n$
+ -->
+<IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img255.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img255.gif"
+ ALT="$ \mathcal {F}$"><SUB>n</SUB> is correct.  When we need to
+emphasise that we have an <!-- MATH
+ $n^{\textrm{th}}$
+ -->
+<I>n</I><SUP>th</SUP> root of unity, we shall write
+<IMG
+ WIDTH="23" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img261.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img261.gif"
+ ALT="$ \omega_{n}^{}$">.
+
+<P>
+In the study of complex vector spaces, an interesting class of
+matrices are the <EM>unitary</EM> ones;<A NAME="8861"></A> those whose inverse is the
+adjoint. They are the complex equivalent of the <EM>orthogonal</EM>
+matrices, in which the inverse is just the transpose. An orthogonal
+matrix represents a rotation of given orthonormal axes (possibly with
+a reflection); a unitary matrix could be considered for this reason,
+as a complex rotation.<A NAME="8863"></A>
+
+<P>
+<P>
+<DIV><B>Theorem  6.2</B> &nbsp; 
+The Fourier matrix <!-- MATH
+ $\mathcal{F}_n$
+ -->
+<IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img255.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img255.gif"
+ ALT="$ \mathcal {F}$"><SUB>n</SUB> is a
+unitary matrix.</DIV><P></P>
+
+<P>
+<P></P>
+<DIV><I>Proof</I>.
+
+It is enough to show that 
+<!-- MATH
+ $\bar{\mathcal{F}}_n\mathcal{F}_n = I_n$
+ -->
+<IMG
+ WIDTH="23" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img259.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img259.gif"
+ ALT="$ \bar{\mathcal{F}}_{n}^{}$"><IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img255.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img255.gif"
+ ALT="$ \mathcal {F}$"><SUB>n</SUB> = <I>I</I><SUB>n</SUB>, where <I>I</I><SUB>n</SUB> is the
+identity matrix. Since the <I>j</I><SUP>th</SUP> row of <!-- MATH
+ $\bar{\mathcal{F}}_n$
+ -->
+<IMG
+ WIDTH="23" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img259.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img259.gif"
+ ALT="$ \bar{\mathcal{F}}_{n}^{}$"> is
+<!-- MATH
+ \begin{displaymath}
+\   \frac{1}{\sqrt n}(1,\bar{\omega}^j,\bar{\omega}^{2j},\ldots,\bar{\omega}^{(n-1)j})
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;<IMG
+ WIDTH="31" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img257.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img257.gif"
+ ALT="$\displaystyle {\frac{1}{\sqrt n}}$">(1,<IMG
+ WIDTH="21" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img262.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img262.gif"
+ ALT="$\displaystyle \bar{\omega}^{j}_{}$">,<IMG
+ WIDTH="28" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img263.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img263.gif"
+ ALT="$\displaystyle \bar{\omega}^{2j}_{}$">,...,<IMG
+ WIDTH="55" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img264.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img264.gif"
+ ALT="$\displaystyle \bar{\omega}^{(n-1)j}_{}$">)
+</DIV><P></P>
+while the <I>k</I><SUP>th</SUP> column of <!-- MATH
+ $\mathcal{F}_n$
+ -->
+<IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img255.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img255.gif"
+ ALT="$ \mathcal {F}$"><SUB>n</SUB> is
+<!-- MATH
+ \begin{displaymath}
+\   \frac{1}{\sqrt n} (1,\omega ^k,\omega ^{2k},\ldots,\omega ^{(n-1)k}),
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;<IMG
+ WIDTH="31" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img257.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img257.gif"
+ ALT="$\displaystyle {\frac{1}{\sqrt n}}$">(1,<IMG
+ WIDTH="22" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img265.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img265.gif"
+ ALT="$\displaystyle \omega^{k}_{}$">,<IMG
+ WIDTH="29" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img266.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img266.gif"
+ ALT="$\displaystyle \omega^{2k}_{}$">,...,<IMG
+ WIDTH="57" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img267.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img267.gif"
+ ALT="$\displaystyle \omega^{(n-1)k}_{}$">),
+</DIV><P></P>
+and since <!-- MATH
+ $\bar{\omega}^k = w^{-k}$
+ -->
+<IMG
+ WIDTH="22" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img268.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img268.gif"
+ ALT="$ \bar{\omega}^{k}_{}$"> = <I>w</I><SUP>-k</SUP>, the entry in the <!-- MATH
+ $(j,k)^{th}$
+ -->
+(<I>j</I>, <I>k</I>)<SUP>th</SUP> place of
+the product is just
+<!-- MATH
+ \begin{displaymath}
+\   \frac{1}{n} (1+\omega ^{(j-k)}+\omega ^{2(j-k)}+\cdots+\omega ^{(n-1)(j-k)}).
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;<IMG
+ WIDTH="17" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img41.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img41.gif"
+ ALT="$\displaystyle {\frac{1}{n}}$">(1 + <IMG
+ WIDTH="48" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img269.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img269.gif"
+ ALT="$\displaystyle \omega^{(j-k)}_{}$"> + <IMG
+ WIDTH="55" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img270.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img270.gif"
+ ALT="$\displaystyle \omega^{2(j-k)}_{}$"> + <SUP> ... </SUP> + <IMG
+ WIDTH="82" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img271.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img271.gif"
+ ALT="$\displaystyle \omega^{(n-1)(j-k)}_{}$">).
+</DIV><P></P>
+We now distinguish two cases. If <I>j</I> = <I>k</I>, this is just
+<!-- MATH
+ $(1+1+\cdots+1)/n = 1$
+ -->
+(1 + 1 + <SUP> ... </SUP> + 1)/<I>n</I> = 1, while if <I>j</I><IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img12.gif"
+ ALT="$ \ne$"><I>k</I>, it is zero by the lemma,
+since <!-- MATH
+ $\omega ^{(j-k)}$
+ -->
+<IMG
+ WIDTH="48" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img272.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img272.gif"
+ ALT="$ \omega^{(j-k)}_{}$"> is an <I>n</I><SUP>th</SUP> root of unity, but is not equal to
+1.  It follows that the product is the identity matrix as claimed.
+ <IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img78.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img78.gif"
+ ALT="$ \qedsymbol$">
+</DIV><P></P>
+
+<P>
+We can identify a complex valued function defined on <!-- MATH
+ $\ensuremath{\mathbb{Z}}^n$
+ -->
+<IMG
+ WIDTH="23" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img273.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img273.gif"
+ ALT="$\ensuremath{\mathbb{Z}}^n$"> with an
+element of <!-- MATH
+ $\ensuremath{\mathbb{C}}^n$
+ -->
+<IMG
+ WIDTH="24" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img274.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img274.gif"
+ ALT="$\ensuremath{\mathbb{C}}^n$"> by <!-- MATH
+ $f \to \mathbf{f}= (f(0),f(1),\ldots,f(n-1))$
+ -->
+<I>f</I><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><B>f</B> = (<I>f</I> (0), <I>f</I> (1),..., <I>f</I> (<I>n</I> - 1)).<A NAME="tex2html50"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot8892'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot8892"><SUP>6.1</SUP></A>  The discrete
+Fourier transform of <!-- MATH
+ $\mathbf{f}$
+ -->
+<B>f</B> is then defined to be the action of the
+Fourier matrix on <!-- MATH
+ $(f(0),f(1),\ldots,f(n-1))$
+ -->
+(<I>f</I> (0), <I>f</I> (1),..., <I>f</I> (<I>n</I> - 1)).  It will be convenient
+to write <!-- MATH
+ $\mathbf{f}\in \ensuremath{\mathbb{C}}^n$
+ -->
+<IMG
+ WIDTH="51" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img275.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img275.gif"
+ ALT="$\mathbf{f}\in \ensuremath{\mathbb{C}}^n$">, or <!-- MATH
+ $\mathbf{f}=(f_1,f_2,\ldots,f_{n-1})$
+ -->
+<B>f</B> = (<I>f</I><SUB>1</SUB>, <I>f</I><SUB>2</SUB>,..., <I>f</I><SUB>n - 1</SUB>) although we
+think of <!-- MATH
+ $\ensuremath{\mathbb{C}}^n$
+ -->
+<IMG
+ WIDTH="24" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img274.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img274.gif"
+ ALT="$\ensuremath{\mathbb{C}}^n$"> in this form as periodic functions on <!-- MATH
+ $\ensuremath{\mathbb{Z}}^n$
+ -->
+<IMG
+ WIDTH="23" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img273.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img273.gif"
+ ALT="$\ensuremath{\mathbb{Z}}^n$">.
+
+<P>
+Identifying the Fourier matrix as unitary gives one way of thinking of
+the discrete Fourier transform; as a complex rotation in <!-- MATH
+ $\ensuremath{\mathbb{C}}^n$
+ -->
+<IMG
+ WIDTH="24" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img274.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img274.gif"
+ ALT="$\ensuremath{\mathbb{C}}^n$">.  The
+idea that a rotation of the co-ordinate axes will preserve essential
+features of a problem, while possibly making the new co-ordinate
+representation easier to work with, is a familiar one.  We thus begin
+a study which will show there are indeed some things which are easier
+to describe and manipulate in the transformed representation.
+
+<P>
+<P>
+<DIV><B>Corollary  6.3</B> &nbsp; 
+Let <!-- MATH
+ $\mathbf{f}= (f_0,f_1,\ldots,f_{n-1})$
+ -->
+<B>f</B> = (<I>f</I><SUB>0</SUB>, <I>f</I><SUB>1</SUB>,..., <I>f</I><SUB>n - 1</SUB>) be a vector in <!-- MATH
+ $\ensuremath{\mathbb{R}}^n$
+ -->
+<IMG
+ WIDTH="24" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img276.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img276.gif"
+ ALT="$\ensuremath{\mathbb{R}}^n$"> or <!-- MATH
+ $\ensuremath{\mathbb{C}}^n$
+ -->
+<IMG
+ WIDTH="24" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img274.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img274.gif"
+ ALT="$\ensuremath{\mathbb{C}}^n$">,
+and define <!-- MATH
+ $\mathbf{F}$
+ -->
+<B>F</B> in <!-- MATH
+ $\ensuremath{\mathbb{C}}^n$
+ -->
+<IMG
+ WIDTH="24" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img274.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img274.gif"
+ ALT="$\ensuremath{\mathbb{C}}^n$"> by
+<A NAME="E:ift"></A><A NAME="E:dft"></A><IMG
+ WIDTH="716" HEIGHT="136" ALIGN="BOTTOM" BORDER="0"
+ SRC="img277.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img277.gif"
+ ALT="% Just to be careful - because of intertext
+\begin{align}
+F_p &amp;= \frac{1}{\sqrt ...
+...{\sqrt n}\sum_{p = 0}^{n-1}F_p\omega ^{-jp}
+\qquad(0\le j \le n-1).
+\end{align}">
+<BR>
+</DIV><P></P>
+
+<P>
+<P></P>
+<DIV><I>Proof</I>.
+
+Our definition gives
+<!-- MATH
+ $\mathbf{F}= \mathcal{F}_n (\mathbf{f})$
+ -->
+<B>F</B> = <IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img255.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img255.gif"
+ ALT="$ \mathcal {F}$"><SUB>n</SUB>(<B>f</B>).
+Since the Fourier matrix is unitary, we have
+<!-- MATH
+ $\mathbf{f}= \bar{\mathcal{F}}_n(\mathbf{F})$
+ -->
+<B>f</B> = <IMG
+ WIDTH="23" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img259.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img259.gif"
+ ALT="$ \bar{\mathcal{F}}_{n}^{}$">(<B>F</B>), which is the required result.
+ <IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img78.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img78.gif"
+ ALT="$ \qedsymbol$">
+</DIV><P></P>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1648"
+  HREF="node92.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node92.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1642"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1636"
+  HREF="node90.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node90.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1644"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1646"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1649"
+  HREF="node92.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node92.html">Products</A>
+<B> Up:</B> <A NAME="tex2html1643"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">The Fast Fourier Transform</A>
+<B> Previous:</B> <A NAME="tex2html1637"
+  HREF="node90.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node90.html">Fourier Series</A>
+ &nbsp <B>  <A NAME="tex2html1645"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1647"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

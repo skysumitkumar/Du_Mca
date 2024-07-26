@@ -1,0 +1,1123 @@
+Subject: infoiitm
+
+
+test
+
+Status: RO
+
+1) A - G are 7 consecutive +ve integers not necessarily in the same order
+	1) B is the middle number
+	2) D is 3 less than c
+	3) the difference between F & A is equal in magnitude and sign
+	   to the difference between E & C
+	4) Neither F nor C lie between E & G
+
+	a) What is the value of B-F
+
+		1   	2 	-1	-2 	cannot be determined
+
+	b) which is greatest
+
+		F	C	A	E	cannot be determined
+
+	c) Given both A & B are primes what is the lowest value of E
+
+		8	6	9	12 	cannot
+
+
+2) Given that a,b,c,d,e each represent one of the digits between
+   1-9 and that the following multiplication holds
+
+	   a b c d e 
+		   4
+	   ----------
+	   e d c b a 
+
+    What digit does e represent
+
+	a) 4
+	b) 6
+	c) 7
+	d) 8
+	e) none
+
+
+1. How many butes does an array A(1:8,-2:2,1:5) require for storage if
+   each element of the array is 24 bits long.
+
+	200	480	600	800	none
+
+
+2. 	begin
+		
+		i:=0;	
+		j:=0;	| block d
+
+	loop:
+
+		if(i != 0) 
+			i := i-1;
+		else
+			i := i+1;
+	
+		i := i+1;	| block a
+		j := j+1;	| block b
+
+		if (j <= 25)
+			goto loop;
+
+	end			| block c
+
+
+	a) What is the value of i at [c] 
+		2 ?
+	b) How many times is the goto executed 
+		25 ?
+	c) How many times is the loop executed if i is initialized to 1
+	   in [d]  26
+	d) How many times is the loop entered if the block [b] is changed
+	   to j=j+1 ?
+
+	e) What is the value of i at [c] interchanging blocks [a] and [b] ?
+	   2 ?
+
+Follow the instructions given below [ From 1 to 8 ]
+
+1. A cause B or C but not both
+
+2. F occurs only if B occurs
+
+3. D occurs if B or C occurs
+
+4. E occurs if only c occurs
+
+5. J occurs only if E or F occurs
+
+6. H occurs if E occurs
+
+7. D causes G, H or Both.
+
+8. G occurs if F occurs.
+
+
+Questions
+---------
+
+1. If A occurs which of the following may occur
+
+   1. F & G   (ii) E & H  (iii) D
+
+Ans
+---
+ (a) 1 only  (b) 2 only (c) 3 only (d) 1,2,3 or 2 & 3 but not 1
+
+(e) 1,2 & 3
+
+
+2. If B occurs which must occur
+
+Ans
+---  (a) F & G (b) D & G (c) D (d) G & H (e) J
+
+3. If J occurs which must occur
+
+Ans
+---
+(a) E (b) Both E & F (c) Either B or C (d) B (e) Both B & c
+
+
+4. Which may occur as a result by a cause not mentioned.
+
+(I) D (II) A (III) F
+
+Ans
+---
+(a) I only (b) II (c) I & II (d) II & III (e) I,II,III
+
+
+5. If E occurs which cannot occur.
+
+(a) F (b) A (c) D (d) C (e) J
+
+
+
+#include<stdio.h>
+int SumElement(int *,int);
+void main(void)
+{
+	int x[10];
+	int i=10;
+	for(;i;)
+	{
+		i--;
+		*(x+i)=i;
+	}
+	printf("%d",SumElement(x,10));
+}
+int SumElement(int array[],int size)
+{
+	int i=0;
+	float sum=0;
+	for(;i<size;i++)
+		sum+=array[i];
+	return sum;
+}
+
+
+#include<stdio.h>
+void main(void);
+int printf(const char*,...);
+void main(void)
+{
+	int i=100,j=10,k=20;
+	int sum;
+	float ave;
+	char myformat[]="ave=%.2f";
+	sum=i+j+k;
+	ave=sum/3.0;
+	printf(myformat,ave);
+}
+
+
+#include<stdio.h>
+void main(void);
+void main(void)
+{
+	int a[10];
+	printf("%d",((a+9) + (a+1)));
+B
+}
+
+
+#include<stdio.h>
+void main(void);
+void main(void)
+{
+	struct s{
+		int x;
+		float y;
+	}s1={25,45.00};
+	union u{
+		int x;
+		float y;
+	} u1;
+	u1=(union u)s1;
+	printf("%d and %f",u1.x,u1.y);
+}
+
+
+#include<stdio.h>
+void main(void)
+{
+	unsigned int c;
+	unsigned x=0x3;
+	scanf("%u",&c);
+	switch(c&x)
+	{
+		case 3: printf("Hello!\t");
+		case 2: printf("Welcome\t");
+		case 1: printf("To All\t");
+		default:printf("\n");
+	}
+}
+
+
+#include<stdio.h>
+int fn(void);
+void print(int,int(*)());
+int i=10;
+void main(void)
+{
+	int i=20;
+	print(i,fn);
+}
+void print(int i,int (*fn1)())
+{
+	printf("%d\n",(*fn1)());
+}
+
+int fn(void)
+{
+	return(i-=5);
+}
+
+
+#include<stdio.h>
+void main(void);
+void main(void)
+{
+	char numbers[5][6]={"Zero","One","Two","Three","Four"};
+	printf("%s is %c",&numbers[4][0],numbers[0][0]);
+}
+
+
+int bags[5]={20,5,20,3,20};
+void main(void)
+{
+	int pos=5,*next();
+	*next()=pos;
+	printf("%d %d %d",pos,*next(),bags[0]);
+}
+int *next()
+{
+	int i;
+	for(i=0;i<5;i++)
+		if (bags[i]==20)
+			return(bags+i);
+		printf("Error!");
+	exit(0);
+}
+
+
+
+#include<stdio.h>
+void main(void)
+{
+	int y,z;
+	int x=y=z=10;
+	int f=x;
+	float ans=0.0;
+	f *=x*y;
+	ans=x/3.0+y/3;
+	printf("%d %.2f",f,ans);
+B
+}
+
+
+#include<stdio.h>
+void main(void);
+double dbl=20.4530,d=4.5710,dblvar3;
+void main(void)
+{
+	double dbln(void);
+	dblvar3=dbln();
+	printf("%.2f\t%.2f\t%.2f\n",dbl,d,dblvar3);
+}
+double dbln(void)
+{
+	double dblvar3;
+	dbl=dblvar3=4.5;
+	return(dbl+d+dblvar3);
+}
+
+
+
+#include<stdio.h>
+static int i=5;
+void main(void)
+{
+	int sum=0;
+	do
+	{
+		sum+=(1/i);
+	}while(0<i--);
+}
+
+
+
+B
+#include<stdio.h>
+void main(void)
+{
+	int oldvar=25,newvar=-25;
+	int swap(int,int);
+	swap(oldvar,newvar);
+	printf("Numbers are %d\t%d",newvar,oldvar);
+}
+int swap(int oldval,int newval)
+{
+	int tempval=oldval;
+	oldval=newval;
+	newval=tempval;
+}
+
+
+
+#include<stdio.h>
+void main(void);
+void main(void)
+{
+	int i=100,j=20;
+	i++=j;
+	i*=j;
+	printf("%d\t%d\n",i,j);
+}
+
+
+
+#include<stdio.h>
+void main(void);
+int newval(int);
+void main(void)
+{
+	int ia[]={12,24,45,0};
+	int i;
+	int sum=0;
+	for(i=0;ia[i];i++)
+	{
+		sum+=newval(ia[i]);
+	}
+	printf("Sum= %d",sum);
+}
+int newval(int x)
+{
+	static int div=1;
+	return(x/div++);
+}
+
+
+
+#include<stdio.h>
+void main(void);
+void main(void)
+{
+	int var1,var2,var3,minmax;
+	var1=5;
+	var2=5;
+	var3=6;
+	minmax=(var1>var2)?(var1>var3)?var1:var3:(var2>var3)?var2:var3;
+	printf("%d\n",minmax);
+}
+	
+
+
+#include<stdio.h>
+void main(void);
+void main(void)
+{
+	void pa(int *a,int n);
+	int arr[5]={5,4,3,2,1};
+	pa(arr,5);
+}
+
+void pa(int *a,int n)
+{
+	int i;
+	for(i=0;i<n;i++)
+	printf("%d\n",*(a++)+i);
+}
+
+
+
+#include<stdio.h>
+void main(void);
+void print(void);
+void main(void)
+{
+	print();
+}
+void f1(void)
+{
+	printf("\nf1():");
+}
+
+#include "6.c"
+B
+void print(void)
+{
+	extern void f1(void);
+	f1();
+}
+static void f1(void)
+{
+	printf("\n static f1().");
+}
+
+
+
+#include<stdio.h>
+void main(void);
+static int i=50;
+int print(int i);
+void main(void)
+{
+	static int i=100;
+	while(print(i))
+	{
+		printf("%d\n",i);
+		i--;
+	}
+}
+int print(int x)
+{
+	static int i=2;
+	return(i--);
+}
+
+
+
+#include<stdio.h>
+void main(void);
+typedef struct NType
+{
+	int i;
+	char c;
+	long x;
+} NewType;
+void main(void)
+{
+	NewType *c;
+	c=(NewType *)malloc(sizeof(NewType));
+	c->i=100;
+	c->c='C';
+	(*c).x=100L;
+	printf("(%d,%c,%4Ld)",c->i,c->c,c->x);
+}
+
+
+
+#include<stdio.h>
+void main(void);
+const int k=100;
+void main(void)
+{
+	int a[100];
+	int sum=0;
+	for(k=0;k<100;k++)
+		*(a+k)=k;
+	sum+=a[--k];
+	printf("%d",sum);
+}
+Status: RO
+
+        GEORGE SUMMERS puzzle books are suggested.
+	         -----------------------------
+		 INFOSYS TECHNOLOGIES LIMITED.
+		 -----------------------------
+		 Question Paper
+		 --------------
+                   Part 1.
+		   ------
+       (1) 9 cards are there. u have to arrange them in a 3*3 matrix.
+       cards are of 4 colors.they are red,yellow,blue,green.
+       conditions for arrangement: one red card must be in first row
+       or second row.2 green cards should be in 3rd column.Yellow 
+       cards must be in the 3 corners only. Two blue cards must be in 
+       the 2nd row. Atleast one green card in each row.
+       Solution:
+       Yello     Red        Gren
+       Blu       Blu        Gren
+       Yello     Gren       Yello
+       2. 4 cards are placed on a table, each card has two colors. U 
+       don't know the color of the back side of eachcard.4 persons A
+       B C and D are sitting on the table before the cards. They can 
+       see Red, Green Red and blue .Out of the 4 poeple 2 always lie.
+       They see the color on the reverse side and give the following 
+       comment
+       A: Yello/green
+       B: Neither Blue/nor Green
+       c: Blue/Yello
+       D: Blue/ Yello
+       find out the color on the other side of the 4 cards.
+
+       3.Red and brown tribes [FROM BARRONS GRE] Conditions to 
+       get married with each other.
+
+       4. Venn diagram regarding Rich, muscular, soft-skinned, 
+       employed, etc.,( Refer BARRONS GRE GUIDE) 
+	
+------------------------------------------------------------------------
+			 PART 2.
+			 -------
+         1. SAKUNTALA DEVI'S PUZZLE BOOK : PUZZLES TO PUZZLE YOU.
+	    problem no: 3. ( Brothers and Sisters)
+            A family I know has several children. Each boy in this 
+	    family has as many sisters as brothers but each girl has 
+	    twice as many brothers as sisters. How many brothers 
+	    and sisters are there?
+            ans: 4 boys and 3 girls.
+         2. No. of animals is 11 more than the no. of birds. If the
+	    no. of birds were the no. of animals and no. of animals 
+	    were the no. of birds( ie., interchanging no.s of animals
+	    and birds.), the total no. of legs get reduced by one fifth
+	    (1/5). How many no. of birds and animals were there?
+            ans: birds:11,animals:22
+	 3. In a soap company  a soap is manufactured with 11 parts.
+	    For making one soap you will get 1 part as scrap. At the 
+	    end of the day u have 251 such scraps. From that how many
+	    soaps can be manufactured? ans: 22 + 2+ 1 = 25.
+         4.        2 * *            |   
+		   3 * *            | No. 7 does not occur in this 
+             ----------------       | 
+		   5 * *            | multiplication.
+                 * 4 *              |
+               * * 3                | Find the product.  
+             ----------------       |
+	       * * * * *            |
+             ----------------       |
+            --------------------------------------------------
+	    ans   2 8 1
+		  3 2 2
+		  -----
+		  5 6 2
+                5 6 2 0
+              8 4 3 0 0
+	      ---------
+	      9	0 4 8 2
+	      ---------
+           5.  There is a 5digit no. 3 pairs of sum is eleven each.
+	      Last digit is 3 times the first one.
+	      3 rd digit is 3 less than the second.
+	      4 th digit is 4 more than the second one.
+	      Find the digit.
+	      ans : 25296.
+           6. There are five thieves, each loot a bakery one after the 
+	     other such that the first one takes 1/2 of the total no.
+	     of the breads plus 1/2 of a bread. Similarly 2nd, 3rd,4th
+	     and 5fth also did the same. After the fifth one no. of 
+	     breads remained are 3. Initially how many breads were there?
+	     ans : 31.
+           7.ESCALATOR PROBLEM OF SAKUNTALA DEVI 'PUZZLES TO PUZZLE'book.
+	     Problem No: Problem 27( Down the escalator)
+	     ans : the no of steps in the stair way : 46.
+           8.Harbour line and Main line Problem of Sakuntala Devi Puzzle
+	     book. Ans : 4/5.
+	     ( More Puzzles book)
+           9.There are some chicken in a poultry. They are fed with corn
+	     One sack of corn will come for 9 days.The farmer decides to
+	     sell some chicken and wanted to hold 12 chicken with him.
+	     He cuts the feed by 10% and sack of corn comes for 30 days.
+	     So initially how many chicken are there?
+           10.Two people X & Y walk on the wall of a godown in opposite
+	     direction. They meet at a point on one side and then go
+	     ahead. X after walking for some time, walks in opposite 
+	     direction for 15 mtrs.Then again he turns back and walks 
+	     in the original direction. What distance did Y walk before
+	     they met again, if X walks 11 mtrs by the time Y walks
+	     8 mtrs.
+           11.Problem from SAKUNTALA DEVI 'PUZZLES TO PUZZLE U'.
+	      Problem no: 23( Walking back to happiness.)
+	      The walking time : 55 mins.
+
+           With this The paper has been completed. For the lack time
+	   I have'nt typed those probs, which are in Sakuntala Devi
+	   Puzzle books. I wish all of you the best.
+	   Send me the mail immediately after the written test will
+	   be over. thank you.
+						     -Sarma. B. Y.
+
+
+
+
+Status: RO
+
+
+                              DBSS 
+			     ------
+      This paper is containing the Aptitude and Programming parts.
+
+	                   APTITUDE PART
+			   -------------
+      (1)A man bought two horses for Rs.924 each and sold one horse for 
+      15% profit and the other for 15% loss.What is the net gain?
+      (2) Two pumps fill atank in 20 hrs. One pump fills the same
+      tank 10hrs. faster than the other pump. In what time the
+      other pump fills the tank?
+      (3) X men in Xhrs/day finish a work in x days. Y men in y hours
+      per day finish the work in 
+      B
+      (a) X**2/Y**2 (b)X**3/Y**2 (c) Y**2/X**2 (d) Y**3/X**2
+      B
+      (4)8 men + 2 boys finish a work in 16 days. 
+      2 men + 5 boys finish a work in 20 days. 8 men and 8 boys
+      finish the same work in how many days?
+      (5)A & B are two trains, travell from X & Y stations to Y & X
+      stations after crossing each other A takes 4 hrs.48 mins. to
+      reach Y station. B takes 3hrs.20 mins. to reach X station.
+      The speed A is 45kmph. Speed of B is ?
+      (6) 5 questions on series
+	(a) ab--bbc---ac----accc
+	(b) &(c) like this 5.  
+      (7)5 questions on alfabets.
+      (8) 10 questions on English Grammer.
+      (9) 20 questions on reasoning.
+         
+		  PROGRAMMING
+		  -----------
+                                 Section 1.
+				 ---------
+       1. To display the contents of a executable file the following 
+       command can be used
+       (a) cat  (b) od (c) vi   (d) ed                   ans : b
+       2. Assume the current directory contains 10 files and does'nt
+       contain 'temp'. What will be the output of the follwing 
+       commands?
+       $ls > temp
+       $wc -l temp
+       (a) 9  (b) 10 (c) 11 (d) undefined.   ans : b
+       3. If one wants the output of one command( command1) to be 
+       printed inthe printer as well as to be added to another file
+       (outfile) which one of the following is a currect command 
+       he can give?
+       (a) $command1 >>outfile|tee lpr
+       (b) $tee -a command1 | lpr
+       (c) $ command1 | tee outfile | lpr
+       (d) $ command | tee -a outfile |lpr          ans : d
+       (4) In the shell program set -x will cause 
+       A. Execution of the commands in the background
+       B. Execution of the commands in verbose mode
+       C. Exit from the shell program.
+       D. Exit from the shell program after executing the next command
+       (5)   ACL in UNIX refers to
+       A.     Acces Control List
+       B.    Action Control List
+       C.    Application Command Language
+       D.    Advanced C lanuage
+       (6)    The command echo*
+       A. will print * on the screen
+       B. will print contents of all the files in the current 
+       directory
+       C. will list the files in the current directory
+       D.   will print the contents of all shell variables
+       (7)    ls || date will
+       A.  print the name of the files in the current directory
+       B. print today's date and time
+       C. (A) followed by (B)
+       D. none of the above
+       (8) The built-in shell variable $$ refers to
+       A.   printing numbers in dollar format
+       B.   proces id_ of last command 
+       C.   proces id_ of last background command issued
+       D.   proces-id of current shell
+       (9)   dd is mainly used for 
+       A.  dealing with raw, unformated data, whatever the source
+       B.  dealing with data dictionary
+       C.  deleting a directory
+       D.  none of the above
+       (10) vis  in UNIX is 
+       A. a command that takes only one input
+       B. a command for deleting strange or unwanted charectors that
+       may have crept into files.
+       C. points non-printable characters in understandable format
+       D. all of the above
+       (11) Which of the following is true regarding the UNIX
+       (i) Multiuser Operating System
+       (ii)Multitasking Operating System
+       (iii) Real timing Operating System
+       A. i only  B. i and ii only  C. i and ii and iii only
+       D. i and ii 
+       (12) ln command is used to
+       A. link object codes into a executable code
+       B. give two names to the same file
+       C. set line numbers for the file
+       D. none of the above
+       (13) nohup command is used for 
+       A. protecting the execution of programmes from aborting when 
+       hangup signal is received
+       B. changing the execution priority of the programes
+       C. not hanging up of the modem
+       D. disconnecting a node from the system
+       (14)  SCCS is a 
+       A. Tool for maintaining large programmes in a production 
+       environment 
+       B. Communication Protocol
+       C. Shell Programming Language
+       D.  String processing utility
+       (15)  Which one of the following is true as long as UNIX is 
+       concerned
+       A. One can do programming in C only
+       B. It can support terminals capable of printing only uppercase
+       characters
+       C. The text files are sorted as it is in MS-DOS
+       D. None of the above
+       (16) Inside vi editor to replace the string /10/$/94 with 
+       10/$$/92 globally the following command can be used
+       A.  :1,$ s/\/10\/\$\/94/10\/\$\$\/92/g
+       B.  :1,$ s/\/10\/\$\/94/10\/\$\/$92/
+       C.  :s/10/$/94/10/$$/92/g
+       D.  :1,$ s/\/10\/$\/94/10\/$$\/92/g
+       (17) The ed command without any argument
+       A. will print the current working directory
+       B. will make the home directory as current directory
+       C. will ask for the directory to be used as the current 
+	  directory
+       D. will go to the previous directory
+       (18)  nice command is used 
+       A. to increase/decrease execution priority of a command
+       B. to compress a file
+       C. to run a programme at latter time
+       D. to set the key board responce slower
+       (19)  What will be the output of the following command sequence
+	  $ x='I am x'
+	  $sh
+	  $echo $x
+        A. I am x  B. Blank line C. x D. None of the above
+       (20) The command tr a-z 0-9 < x
+       A. converts all the digits to lowercase alphabets
+       B. converts all the lowercase alphabets to digits
+       C. will give syntax error
+       D. none of the above
+	
+                             SECTION 2:
+			     ----------
+1)study the following program
+   B
+   #define MAX(x,y) ((x)>(y)?(x):(y)
+   main()
+   {
+   intx=5,y=5;
+   printf("maximum is %d",MAX(++x,++y));
+   }
+   the outpput of the programis
+   a)maximum is 7 (b)maximum is 5 (c)maximum is 6
+   d)none of the above 
+   2)given the following definitions
+   int *p,*q,r;
+   int values[30];
+   p=&values[0];
+   q=values+29;
+   r=++q-p;
+   what will be the value of r ?
+   a)address of q minus p
+   b)number of elements in the array
+   c)(value pointed by q)+1-(value pointed by p)
+   d)none of the above
+   3)what will the output of the program?
+   #include<stdio.h>
+   //print the sum of the series 1/5+1/4+....
+   static int =5;
+   main()
+   {
+   int sum=0;
+   do
+   	{
+	sum+=(1/i);
+	}while(0<i--);
+	printf("sum of the series is %d",sum);
+	}
+a)it will print the sum of the series 1/5+1/4+....+1/1
+b)it will produce a compolation error
+c)it will produce a runtime error
+d)none of the above
+
+4)study the following program
+#include<stdio.h>
+main()
+{
+	intoldvar=80;newvar=-80;
+	int swap(int,int);
+	swap(oldvar,newvar);
+	printf("numbers are %d\t%d",newvar ,oldvar);
+	}
+ int swap(intolval,int neval)
+	{
+	int temval=olval;
+	olval=neval;
+	neval=temval;
+	}
+	the output of the program is
+a)numbers are 80-80
+b)numbers are 80 80
+c)numbers are -80 80
+d)numbers are -80 -80
+
+5	STUDY THE PROGRAM BELOW, WHICH OF THE FOLLOWING STATEMENT WILL MAKE
+PROGRAM WORK :-
+	main ()
+	{
+	int *! = 10 , *j=20;
+	i=i*j;
+	}
+
+A)	Replace i = i*j; as i = (int) ((int) i * (int)j);
+B)	No error
+C)	Replacei= i*j;as i = (int*) ((int)i*(int)j);
+D)	Replace i+i*j ; as i = (int) i* (int)j;
+
+6	Study the following program 
+#include<stdio.h>
+enum mode = {green,red,orange,blue ,white};
+main ()
+{
+	green = green +!;
+	printf("%d,%d",green,red );
+
+}
+
+The output of the program will be :-
+
+A)  1,1	B) 0,1	C)  No output, error in compilation  
+d)  None of the above
+
+
+7	Study th following statements.
+
+#define DELAYTIME  1000
+volatile extern int k;
+intj;
+
+for (i=0;i<DELAYTIME;i++);
+j=k;
+
+A)	Volatile is meaningless for the variable k
+B)	Volatile is meaningful for the variable k since k is external
+and can change
+C)	Volatile is meaningless for the variable k since k is loop invariant 
+D)	None of the above.
+
+8	Study the following program :
+
+#include<stdio.h>
+main()
+{
+char buff[] = "this is a test";
+int i, *ptr;
+ptr = (int*)buff;
+for (i=0;*ptr; i++);
+printf("%c",*ptr++);
+}
+
+The following will be the output
+
+A) This is a test  	B) It'll print junk  C) Compilation error
+D)  None of the above
+
+9	Select  the explanation for the following declaration
+	itn (*(*ptr)(int)) (void)
+A) 	ptr is apointer pointing to a integer function that takes an 
+	intvalues returns an integer which will points to a function with
+	no argument.
+B)	ptr is pointer to function that takes an int value returns a pointer
+	to a function with ano argument which returns a integer		
+c)	This is not a valid C statement.
+D)	None of the above.
+   
+10	Study the following program
+
+# include <stdio.h>
+char *c[] ={
+	"FILE",
+	"EDIT",
+	"SEARCH",
+	"COMPILE",
+	};
+	
+HAR **cp[] = {c+3,c+2,c+1,c};
+char ***cpp = cp;
+main()
+{
+	printf("%s", **cpp);
+	printf("%s"< *--*++cpp+3);
+	printf("%s", *cpp[-2]+3);
+	printf("%s\n",cpp[-1][-1]+1);
+
+}
+
+The output of this program is 
+
+A) SEARCHFILEEDITCOMPILE 	B) SEARCHCOMPILEEDIT
+C) SEARCHEPILEDIT		D) None of the above
+
+11	What is the size of ptr1 and ptr2.
+
+struct  x {
+	int j;
+	char k[100];
+	unsigned i;
+};
+int *ptr1:
+struct X *ptr2;
+
+A) Same depending on the model used      	B) 2,104
+C) 2, Undefined for memory is not allocated	D)   2,4
+
+12	If
+
+i = i * 16;
+	Which of the following is a better approach to do the operation
+A)  Multiply i by 16 and keep it 	B)  Shift left by 4 bits
+C)  Add i 16 times			D)  None of the above
+
+13	What is the output of the following program 
+
+#include<stdio.h>
+main()
+{
+int i = 0;
+switc(i) {
+case 0 : i++;
+	case 1 : i++2;
+case2 : ++i;
+}
+printf("%d",i++);
+}
+
+output of the program :-
+A) 1  	B) 3	C) 4	D)  5
+
+14	In the following , where means
+
+lseek(fd,0L,SEEK_END);
+where = tell(fd);
+A) End of file.	B)  Head of file 	C) Cannot be defined
+D)  In between head and end of file.
+
+15	Assuming that you are using IBM PC ,you have to a file of 128 intergers into a character array of 256 characters . Which statement you use ?
+
+char buf[256];
+int word[128]'
+int i;
+i varies from 0 to 255 in steps of 2
+
+a) 	word[i]=buf[i+1]*0x100 + buf[i];
+b)	word[i]=buf[i]*0x100 +buf[i+1];
+c)	word[i/2] = buf[i] *0x100 + buf[i+1];
+d)	word[i/2]=buf[i+1]*0x100 +buf[i];
+
+16	If i=5, what is the output for printf( " %d %d %d", ++i,i,i++);
+
+a) 5,6,7	b) 6,6,7	c)  7,6,5 	d)  6,5,6
+
+17	For the following code how many times the printf function is executed 
+
+int i,j ;
+ 
+for(i=0;i<=10;i++);
+	for(j=0;j<=10;j++);
+		printf("i=%d,j=%d\n",i,j);
+
+a)121	b) 11	c) 10	d)  None of the above
+
+18	What is the output generated for the following code
+#define square (a) (a*a)
+printf("%d",square(4+5));
+
+a) 81	b) 4	C) 29  D) None of the above
+
+19	For the following statement find the values generated for p and q?
+
+int p = 0, q =1;
+p = q++;
+p = ++q;
+p = q--;
+p = --q;
+
+The value of p and q are:-
+a)  1,1		b) 0,0	c) 3,2	D)  1,2
+
+20	What is the output generated by the following program ?
+#include<stdio.h>
+main()
+{
+	int a , count;
+	int func(int);
+	for (count = 1 ;count <=5;++count)
+		{
+		a = func(count);
+		printf("%d", a);
+		}
+}
+	int func(int x)
+	{
+	int y;
+	y=x*x;
+	return(y);
+
+A) 1234567	b) 2516941 	C)  9162514   D)   1491625
+
+------------------------
+
+1. Helmet:Head::?
+   ans: Breakplate:chest
+2. Writer:Pen::?            ans:Carpenter:Saw
+3. cargo:lorry::?
+4. In one shocking instance of ________________ research, one of the 
+nations influential researchers in the field of genetics reported on 
+experiments that were never carried out and published deliberately
+_________ scinetific papers on existed work.
+ans: Fradulent- deceptive
+5. We need more men of culture eligitent we have too many ____ among us
+ans: philistines
+6. Hide-bound choose nearest antonym
+ans: Open minded
+7. She has been in her Bonnet She cantell ______
+ans:Anto
+8.If x-2y=2;2x+y=4 which of the following is right
+ans:d
+9. If 2men and 7boys can do a work in 16days.3men and 8boys cand do in
+12 days 8menand 8boys ?
+ans;6
+10. Aperson wants 30% discount. But shopper gave 20% and 12%succesively
+discount then the person gets
+ans:29.6
+11. The distance between A and B stations is 110 km. apart on a st.line.
+ One train starts at A at 7am. and travels towards B at 20kmph. Another
+ starts at B at 8am.and travels towards A at a speed of 25kmph.  AT
+ what time they will meet?
+ ans:10am.
+ 12. 2,2,6,52.5,157.5,630  find the wrong number
+ ans:replace 52.5 by 45
+13. 02,12,28,722,152,312,632 find thef wrong number
+ans. replace 28 by 32
+14. Air resistance is proportional to square of the velocity at a speed
+of 3kmph. the resistance is 0.000045 gm/cm.  An aeroplance is 
+travelling at a speed of 250 kmph.  What is the air resistance offered 
+in kg/mit
+ans:0.03125
+15. A person gives 10% discount and he revenues 10% in bargaining.  The
+printed price is 330.  What is actual price?
+ans:270
+16. For what period of time for 1800 at 5% interest will give interest
+of 390% 
+ans:13/3
+17. 10 years back thef father age is 7 times of his son.  After 2 years
+twice the age of the father is equal to 5 times of the son.  What are
+their ages?
+ans;f->38,S->14
+18.  Train travels 100km. in first 2hrs. and 200 km. in 3hrs. and 150
+km. in 2.5hrs.  What is the avg. speex?
+ans;60kmph
+19. A number when divided by 342 gives remainder 47 When the same 
+number is divided by 19,what would be the remainder ?
+ans:9
+20. A and B can do work in 6 days. B alone can do in 16 days.  After
+3 days of combined work B left.  In how many days further A completes
+remaining work?
+ans:24/5 days
+21. In a parking place there are 36 vehicles. After first one scooter
+is there. AFter 2nd car two scooters, after 34d car and  so on....
+How many scooters are there in second half of the row?
+ans; (YOU PLEASE DO THIS PROBLEM)
+22. How many times do the hands of clock concide in a day?
+ans;22
+23. Fraction and simplification one problem is there. The exact answer
+is 7/13.(this damn correct)
+24. The least/greatest 4 digit numbers which when divided by 15,27,35,
+42 leaves in each case a remainder 7 is
+ans: 1897,9457
+THERE IS SEPERATE SECTION FOR CRITICAL REASONING(GMAT TYPE) 6 QUESTIONS
+LIKE THE FOLLOWING.
+25.  All fans are vans.  No vans are fans
+ans :
+26.All young scientists are optimistic.  All optimists are open minded.
+ans:
+27. Assertion:  Comets belong to the solar family.
+    REason: Comets burst into pieces and revolve around the sun
+ans; Both A&R are true but R is not
+
+
+	 Correct the sentence questions 4.
+
+	8 figures are there. Among these for 4 problems you have to find
+	the next figure. for remaing  you have find odd figure.(ALL ARE 
+	EASY )
+
+	ONE ANALYTICAL QUESTION AS FOLLOWS (THIS ALSO VERY EASY)
+
+five people in a family named A,B,C,D,E.
+probable answers confirm by reading the question carefully.
+ans: A,B -sons
+doctor C -daughter
+officer D - daughter in law  ie. wife of B
+
+using this you have to solve five questions. that is very easy
+if you confirm the above. 
+
+ie.  don't confuse with the sentance who learns music. he clearly 
+mension that daughter in law is offcier. he also mension that A is 
+brother in law of officer. And C is a doctor.
+  
+
+
+
+

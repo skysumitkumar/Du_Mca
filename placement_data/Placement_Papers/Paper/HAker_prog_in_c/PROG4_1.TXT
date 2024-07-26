@@ -1,0 +1,26 @@
+#include 	<stdio.h>
+
+int	main(void)
+{
+FILE	*in;
+char	fname[BUFSIZ], str[BUFSIZ];
+
+	printf("Enter GIF file>>");
+	gets(fname);
+
+	if ((in=fopen(fname,"r"))==NULL)
+	{
+		printf("Can't find file %s\n",fname);
+		return(1);
+	}
+
+	fread(str,3,1,in);
+	str[3]=NULL; /* terminate string */
+	printf("Signature: %s\n",str);
+	fread(str,3,1,in);
+	str[3]=NULL; /* terminate string */
+	printf("Version: %s\n",str);
+
+	fclose(in);
+	return(0);
+}

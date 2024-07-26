@@ -1,0 +1,239 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0033)http://maxnoy.com/interviews.html -->
+<HTML><HEAD><TITLE>Programming Interview Questions</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8"><!-- BODY bgcolor="#ffffff" text="#000099" link="#000066" vlink="#000066" alink="#100066" -->
+<META content="MSHTML 6.00.2600.0" name=GENERATOR></HEAD>
+<BODY><BR>
+<H2>Intro</H2>This is a summary of the questions I got in 9 in-person interviews 
+with 5 companies and about 10 phone screens 8/02-11/02. The interviews were 
+pretty evenly split between very large, large, and startup-sized tech companies.
+<P>The good news is that interview question repertoire is generally very 
+limited. The <A 
+href="http://www.amazon.com/exec/obidos/redirect?tag=maxnoycom-20&amp;path=tg/detail/-/0471383562">Programming 
+Interviews Exposed</A> book covered or helped on probably 60-70% of questions I 
+got. Well worth the $20. 
+<H2>Linked Lists</H2>This is an extremely popular topic. I've had linked lists 
+on every interview.<BR>You <B>must</B> be able to produce simple clean linked 
+list implementations quickly.<BR>
+<UL>
+  <LI>Implement <CODE>Insert</CODE> and <CODE>Delete</CODE> for 
+  <UL>
+    <LI>singly-linked linked list 
+    <LI>sorted linked list 
+    <LI>circular linked list </LI></UL><BR><CODE>int Insert(node** head, int 
+  data)</CODE><BR><CODE>int Delete(node** head, int deleteMe)</CODE>
+  <P></P>
+  <LI>Split a linked list given a pivot value<BR><CODE>void Split(node* head, 
+  int pivot, node** lt, node** gt)</CODE> 
+  <LI>Find if a linked list has a cycle in it. Now do it without marking nodes. 
+  <LI>Find the middle of a linked list. Now do it while only going through the 
+  list once. (same solution as finding cycles) </LI></UL>
+<H2>Strings</H2>
+<UL>
+  <LI>Reverse words in a string (words are separated by one or more spaces). Now 
+  do it in-place. <B>By far the most popular string question!</B> 
+  <LI>Reverse a string 
+  <LI>Strip whitespace from a string in-place<BR><CODE>void 
+  StripWhitespace(char* szStr)</CODE> 
+  <LI>Remove duplicate chars from a string ("AAA BBB" -&gt; "A B")<BR><CODE>int 
+  RemoveDups(char* szStr)</CODE> 
+  <LI>Find the first non-repeating character in a string:("ABCA" -&gt; B 
+  )<BR><CODE>int FindFirstUnique(char* szStr)</CODE> 
+  <P></P>
+  <LI><I>More Advanced Topics: </I>
+  <UL>
+    <LI>You may be asked about using Unicode strings. What the interviewer is 
+    usually looking for is: 
+    <UL>
+      <LI>each character will be two bytes (so, for example, char lookup table 
+      you may have allocated needs to be expanded from 256 to 256 * 256 = 65536 
+      elements) 
+      <LI>that you would need to use wide char types (wchar_t instead of char) 
+      <LI>that you would need to use wide string functions (like wprintf instead 
+      of printf) </LI></UL>
+    <LI>Guarding against being passed invalid string pointers or non 
+    nul-terminated strings (using walking through a string and catching memory 
+    exceptions </LI></UL></LI></UL>
+<H2>Binary Trees</H2>
+<UL>
+  <LI>Implement the following functions for a binary tree: <CODE>
+  <UL>
+    <LI>Insert 
+    <LI>PrintInOrder 
+    <LI>PrintPreOrder 
+    <LI>PrintPostOrder </LI></UL></CODE>
+  <LI>Implement a non-recursive <CODE>PrintInOrder</CODE> </LI></UL>
+<H2>Arrays</H2>
+<UL>
+  <LI>You are given an array with integers between 1 and 1,000,000. One integer 
+  is in the array twice. How can you determine which one? Can you think of a way 
+  to do it using little extra memory. 
+  <LI>You are given an array with integers between 1 and 1,000,000. One integer 
+  is missing. How can you determine which one? Can you think of a way to do it 
+  while iterating through the array only once. Is overflow a problem in the 
+  solution? Why not? 
+  <LI>Returns the largest sum of contiguous integers in the array<BR>Example: if 
+  the input is (-10, 2, 3, -2, 0, 5, -15), the largest sum is 8<BR><CODE>int 
+  GetLargestContiguousSum(int* anData, int len)</CODE> 
+  <LI>Implement <CODE>Shuffle</CODE> given an array containing a deck of cards 
+  and the number of cards. Now make it O(n). 
+  <LI>Return the sum two largest integers in an array<BR><CODE>int 
+  SumTwoLargest(int* anData, int size)</CODE> 
+  <LI>Sum n largest integers in an array of integers where every integer is 
+  between 0 and 9<BR><CODE>int SumNLargest(int* anData, int size, int n)</CODE> 
+  </LI></UL>
+<H2>Queues</H2>
+<UL>
+  <LI>Implement a Queue class in C++ (which data structure to use internally? 
+  why? how to notify of errors?) </LI></UL>
+<H2>Other</H2>
+<UL>
+  <LI>Count the number of set bits in a byte/int32 (<A 
+  href="http://www-db.stanford.edu/~manku/bitcount.html">7 different 
+  solutions</A>) 
+  <LI>Difference between heap and stack? Write a function to figure out if stack 
+  grows up or down. 
+  <LI>SQL query to select some rows out of a table (only because I had SQL on 
+  the resume) 
+  <LI>Open a file as securely as possible (assume the user is hostile -- list 
+  all the nasty things that could happen and checks you would have to do to) 
+  <LI>Implement a function to return a ratio from a double (ie 0.25 -&gt; 1/4). 
+  The function will also take a tolerance so if toleran ce is .01 then 
+  FindRatio(.24, .01) -&gt; 1/4<BR><CODE>int FindRatio(double val, double 
+  tolerance, int&amp; numerator, int&amp; denominator)</CODE> </LI></UL>
+<H2>Puzzles</H2>
+<UL>
+  <LI>You have 2 supposedly unbreakable light bulbs and a 100-floor building. 
+  Using fewest possible drops, determine how much of an impact this type of 
+  light bulb can withstand. (i.e. it can withstand a drop from 17th floor, but 
+  breaks from the 18th).<BR>Note that the ever-popular binary search will give 
+  you a worst case of 50 drops. You should be able to do it with under 20. 
+  <LI>There are n gas stations positioned along a circular road. Each has a 
+  limited supply of gas. You can only drive clockwise around the road. You start 
+  with zero gas. Knowing how much gas you need to get from each gas station to 
+  the next and how much gas you can get at each station, design an algorithm to 
+  find the gas station you need to start at to get all the way around the 
+  circle. 
+  <LI>Out of 10 coins, one weighs less then the others. You have a scale. 
+  <UL>
+    <LI>How can you determine which one weighs less in 3 weighs? 
+    <LI>Now how would you do it if you didn't know if the odd coin weighs less 
+    or more? </LI></UL>
+  <LI>What is the next line in the following 
+  sequence:<BR><CODE>1<BR>11<BR>21<BR>Answer: it's 1211 and the next is 111221 
+  </CODE></LI></UL>
+<H2>Design Questions</H2>
+<UL>
+  <LI>How would you design a server that has to process a fair number of good 
+  number of requests a second. What if you didn't know how many requests you'd 
+  be getting? What if requests had different priorities? (I always think of the 
+  <A 
+  href="http://httpd.apache.org/docs-2.0/mod/prefork.html#how-it-works">Apache 
+  design</A> for this question) 
+  <LI>Design <CODE>malloc</CODE> and <CODE>free</CODE>. (give up? see <A 
+  href="http://g.oswego.edu/dl/html/malloc.html">how G++ malloc works</A> or <A 
+  href="http://www.cs.colorado.edu/~zorn/Malloc.html">this page for more 
+  examples</A>) 
+  <LI>Design an elevator control system. Don't forget buttons on every floor and 
+  supporting multiple elevators. (What objects/methods/properties/how components 
+  communicate) 
+  <LI>Design a chess game (what objects? what methods? which data where? how 
+  will it work?) 
+  <LI>Design a deck of cards class (object/methods/data) 
+  <LI>How would you design the infrastructure front half of a very large web 
+  ecommerce site? what if it was very personalized? (how sessions are handled? 
+  where and what you can cache? how to load-balance?) <!-- Design a function to return the flight time given the departure and arrival times and airports of a flight in local times of respective airports. Don't forget that daylight savings time is done differently (and sometimes not at all) in different locals. --!></LI></UL>
+<H2>Concurrency</H2>
+<UL>
+  <LI>Difference between Mutexes and Critical Sections? 
+  <LI>What are Reentrant Locks? Implement a Reentrant Lock with Mutexes. 
+  <LI>Implement a thread-safe class that will read/write to/from a 
+  buffer<BR><CODE>TSBuffer::TSBuffer(int size)</CODE><BR><CODE>int 
+  TSBuffer::Read(char* buff, int max_size)</CODE><BR><CODE>int 
+  TSBuffer::Write(char* buff, int size)</CODE> </LI></UL>
+<H2>Windows-specific Questions</H2>
+<UL>
+  <LI>What is the IUnknown COM interface? 
+  <LI>Synchronization primitives available in Windows (see <A 
+  href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dllproc/base/synchronization.asp">MSDN 
+  documentation</A>) 
+  <LI>Basic structure of a Win32 program (WinMain, Message processing) </LI></UL>
+<H2>Networking</H2>I got most of these because I have a lot of networking on my 
+resume. 
+<UL>
+  <LI>Difference between TCP and UDP? When would you want to use one over the 
+  other? 
+  <LI>How would approach guaging performance of webpages/parts on a very large 
+  website? 
+  <LI>Questions you are unlikely to get unless you claim a lot of IP experience 
+  <UL>
+    <LI>How does traceroute work? 
+    <LI>How does path MTU discovery work? 
+    <LI>How can one poison a BGP peer? </LI></UL></LI></UL>
+<H2>Non-Technical Questions</H2>All of the following are very common. It's best 
+to have canned answers. 
+<UL>
+  <LI>What do you want to do? 
+  <LI>Describe your perfect job? 
+  <LI>How did your interview go? How did you like the group you interviewed 
+  with? 
+  <LI>Rate your C++ proficiency on the scale of 1 to 10. 
+  <LI>What have you been up to since you were laid off or finished school? 
+  <LI>Why do you want to work at X? 
+  <LI>What reservations do you have working at X? 
+  <LI>Do you like working alone or in a group? 
+  <LI>Discuss your greatest accomplishment over the last couple years. 
+  <LI>Discuss one big problem you solved in a work/school project. 
+  <LI>How do you handle conflict in a group? 
+  <LI>How much do you want to make? How much did you make at your previous 
+  position? </LI></UL>
+<H2>Marketing Questions</H2>Questions for Marketing candidates. 
+<UL>
+  <LI>How would you market a [specific product this company makes] to a 
+  [specific population you are familiar with]? (Example: How would you market 
+  Word to college students?) 
+  <LI>How would you expand a [business you are familar with]? </LI></UL>
+<H2>Links:</H2>
+<UL>
+  <LI><A 
+  href="http://www.amazon.com/exec/obidos/redirect?tag=maxnoycom-20&amp;path=tg/detail/-/0471383562">The 
+  best book for tech interviews, in my opinion - "Programming Interviews 
+  Exposed"</A> 
+  <LI><A href="http://www.joelonsoftware.com/articles/ResumeRead.html">Joel On 
+  Software article about resumes - must read</A> 
+  <LI><A href="http://discuss.fogcreek.com/techinterview/">Joel On Software 
+  techInterview section - more questions and answers</A> 
+  <LI><A href="http://joelonsoftware.com/">Joel On Software</A> </LI></UL>
+<P>
+<H2>Programming Books:</H2>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><A 
+      href="http://www.amazon.com/exec/obidos/ASIN/0131103628/maxnoycom-20"><IMG 
+      alt=cover hspace=3 
+      src="Programming Interview Questions_files/0131103628.01.TZZZZZZZ.jpeg" 
+      vspace=3 border=0></A></TD>
+    <TD vAlign=center>The original and best C reference by the creators of 
+      C:<BR><A 
+      href="http://www.amazon.com/exec/obidos/ASIN/0131103628/maxnoycom-20">C 
+      Programming Language (2nd Edition)</A> by <A 
+      href="http://www.cs.bell-labs.com/~bwk">Brian W. Kernighan</A> and <A 
+      href="http://www.cs.bell-labs.com/~dmr">Dennis M. Ritchie</A> 
+  </TD></TR></TBODY></TABLE>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><A 
+      href="http://www.amazon.com/exec/obidos/ASIN/0201700735/maxnoycom-20"><IMG 
+      alt=cover hspace=3 
+      src="Programming Interview Questions_files/0201700735.01.TZZZZZZZ.jpeg" 
+      align=center vspace=3 border=0></A></TD>
+    <TD vAlign=center>The original and best C++ reference by the creator of 
+      C++:<BR><A 
+      href="http://www.amazon.com/exec/obidos/ASIN/0201700735/maxnoycom-20">The 
+      C++ Programming Language (Special 3rd Edition)</A> by <A 
+      href="http://www.research.att.com/~bs/homepage.html">Bjarne Stroustrup</A> 
+      (creator of C++) </TD></TR></TBODY></TABLE>
+<UL></UL>Mail <A href="mailto:mnoy_AT_u.washington.edu">me</A>. 
+<P>Copyright © 2002-2004 Maksim Noy. All rights reserved. </P></BODY></HTML>

@@ -1,0 +1,67 @@
+3.
+void main()
+{
+char *s="\12345s\n";
+printf("%d",sizeof(s));
+}
+
+Ans: 6
+
+4. 
+void main()
+{
+unsigned i=1; /* unsigned char k= -1 => k=255; */
+signed j=-1; /* char k= -1 => k=65535 */
+/* unsigned or signed int k= -1 =>k=65535 */
+if(i<j)
+printf("less");
+else
+if(i>j)
+printf("greater");
+else
+if(i==j)
+printf("equal");
+}
+
+Ans: less
+
+5.
+void main()
+{
+float j;
+j=1000*1000;
+printf("%f",j);
+}
+
+1. 1000000
+2. Overflow
+3. Error
+4. None 
+
+Ans: 4 
+
+11. 
+#define one 0
+#ifdef one 
+printf("one is defined ");
+#ifndef one
+printf("one is not defined ");
+
+Ans: "one is defined"
+
+void main()
+{
+char *s[]={ "dharma","hewlett-packard","siemens","ibm"};
+char **p;
+p=s;
+printf("%s",++*p);
+printf("%s",*p++);
+printf("%s",++*p);
+}
+
+Ans: "harma" (p->add(dharma) && (*p)->harma)
+"harma" (after printing, p->add(hewlett-packard) &&(*p)->harma)
+"ewlett-packard" 
+
+
+

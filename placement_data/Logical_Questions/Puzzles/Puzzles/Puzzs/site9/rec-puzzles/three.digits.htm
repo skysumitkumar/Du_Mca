@@ -1,0 +1,218 @@
+<html><head>
+<title>Solution for /arithmetic/digits/squares/three.digits</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/digits/squares/three.digits problem</h1>
+<hr>
+The full set of solutions up to 10**12 is
+<pre>
+              1 -&gt;                            1
+              2 -&gt;                            4
+              3 -&gt;                            9
+              7 -&gt;                           49
+             12 -&gt;                          144
+             21 -&gt;                          441
+             38 -&gt;                         1444
+            107 -&gt;                        11449
+            212 -&gt;                        44944
+          31488 -&gt;                   9914 94144
+          70107 -&gt;                  49149 91449
+        3 87288 -&gt;               14 99919 94944
+      956 10729 -&gt;          9 14141 14499 11441
+     4466 53271 -&gt;        199 49914 44949 99441
+    31487 17107 -&gt;       9914 41941 99144 49449
+  2 10810 79479 -&gt;    4 44411 91199 99149 11441
+</pre>
+If the algorithm is used in the form I presented it before, generating
+the whole set P_n before starting on P_{n+1}, the store requirements
+begin to become embarassing. For n&gt;8 I switched to a depth-first
+strategy, generating all the elements in P_i (i=9..12) congruent to
+a particular x in P_8 for each x in turn. This means the solutions
+don't come out in any particular order, of course. CPU time was 16.2
+seconds (IBM 3084).
+
+<p>
+In article &lt;1990Feb6.025205.28153@sun.soe.clarkson.edu&gt;, Steven
+Stadnicki suggests alternate triples of digits, in particular {1,4,6}
+(with many solutions) and {2,4,8} (with few). I ran my program on
+these as well, up to 10**12 again:
+<pre>
+              1 -&gt;                            1
+              2 -&gt;                            4
+              4 -&gt;                           16
+              8 -&gt;                           64
+             12 -&gt;                          144
+             21 -&gt;                          441
+             38 -&gt;                         1444
+            108 -&gt;                        11664
+            119 -&gt;                        14161
+            121 -&gt;                        14641
+            129 -&gt;                        16641
+            204 -&gt;                        41616
+            408 -&gt;                      1 66464
+            804 -&gt;                      6 46416
+           2538 -&gt;                     64 41444
+           3408 -&gt;                    116 14464
+           6642 -&gt;                    441 16164
+          12908 -&gt;                   1666 16464
+          25771 -&gt;                   6641 44441
+          78196 -&gt;                  61146 14416
+          81619 -&gt;                  66616 61161
+        3 33858 -&gt;               11 14611 64164
+     2040 00408 -&gt;         41 61616 64641 66464
+     6681 64962 -&gt;        446 44441 64444 61444
+     8131 18358 -&gt;        661 16146 41166 16164
+    40182 85038 -&gt;      16146 61464 66146 61444  (Steven's last soln.)
+  1 20068 50738 -&gt;    1 44164 46464 46111 44644
+  1 26941 38988 -&gt;    1 61141 16464 66616 64144
+  1 27069 43631 -&gt;    1 61466 41644 14114 64161
+  4 01822 24262 -&gt;   16 14611 14664 16614 44644
+  4 05784 63021 -&gt;   16 46611 66114 66644 46441
+ 78 51539 12392 -&gt; 6164 66666 14446 44111 61664
+</pre>
+and
+<pre>
+              2 -&gt;                            4
+             22 -&gt;                          484
+            168 -&gt;                        28224
+            478 -&gt;                      2 28484
+           2878 -&gt;                     82 82884 (Steven's last soln.)
+     2109 12978 -&gt;         44 48428 42888 28484
+</pre>
+(so the answer to Steven's "Are there any more at all?" is "Yes".)
+
+<p>
+The CPU times were 42.9 seconds for {1,4,6}, 18.7 for {2,4,8}. This
+corresponds to an interesting point: the abundance of solutions for
+{1,4,6} is associated with abnormally large sets P_n (|P_8| = 16088
+for {1,4,6} compared to |P_8| = 5904 for {1,4,9}) but the deficiency
+of solutions for {2,4,8} is *not* associated with small P_n's (|P_8|
+= 6816 for {2,4,8}). Can anyone wave a hand convincingly to explain
+why the solutions for {2,4,8} are so sparse?
+
+<p>
+I suspect we are now getting to the point where an improved algorithm
+is called for. The time to determine all the n-digit solutions (i.e.
+2n-digit squares) using this last-significant-digit-first is essentially
+constant * 3**n. Dean Hickerson in &lt;90036.134503HUL@PSUVM.BITNET&gt;, and
+Ilan Vardi in &lt;1990Feb5.214249.22811@Neon.Stanford.EDU&gt;, suggest using
+a most-significant-digit-first strategy, based on the fact that the
+first n digits of the square determine the (integral) square root; this
+also has a running time constant * 3**n. Can one attack both ends at
+once and do better?
+
+<pre>
+Chris Thompson
+JANET:    cet1@uk.ac.cam.phx
+Internet: cet1%phx.cam.ac.uk@nsfnet-relay.ac.uk
+</pre>
+<hr>
+Hey guys, what about
+
+<p>
+648070211589107021 ^ 2 = 419994999149149944149149944191494441
+
+<p>
+This was found by David Applegate and myself (about 5 minutes on a DEC 3100,
+program in C).
+
+<p>
+This is the largest square less than 10^42 with the 149-property; checking
+took a bit more than an hour of CPU time.
+
+<p>
+As somebody suggested, we used a combined most-significant/least-significant
+digits attack.  First we make a table of p-digit prefixes (most significant
+p digits) that could begin a root whose square has the 149 property in its
+first p digits.  We organize this table into buckets by the least
+significant q digits of the prefixes.  Then we enumerate the s digit
+suffixes whose squares have the 149 property in their last s digits.  For
+each such suffix, we look in the table for those prefixes whose last q
+digits match the first q of the suffix.  For each match, we consider the p +
+s - q digit number formed by overlapping the prefix and the suffix by q
+digits.  The squares of these overlap numbers must contain all the squares
+with the 149 property.
+
+<p>
+The time expended is O(3^p) to generate the prefix table, O(3^s) to
+enumerate the suffixes, and O(3^(p+s) / 10^q) to check the overlaps (being
+very rough and ignoring the polynomial factors) By judiciously chosing p, q,
+and s, we can fix things so that each bucket of the table has around O(1)
+entries: set q = p log10(3).  Setting p = s, we end up looking for squares
+whose roots have n = 2 - log10(3) digits, with an algorithm that takes time
+O( 3 ^ [n / (2 - log10(3)]) ), roughly time O(3^[.66n]).  Compared to the
+O(3^n) performance of either single-ended algorithm, this lets us check 50%
+more digits in the same amount of time (ignoring polynomial factors).  Of
+course, the space cost of the combined-ends method is high.
+
+<pre>
+-- Guy and Dave
+-- 
+Guy Jacobson			  School of Computer Science
+Carnegie Mellon 	arpanet : guy@cs.cmu.edu
+Pittsburgh, PA  15213	csnet   : Guy.Jacobson%a.cs.cmu.edu@csnet-relay
+(412) 268-3056		uucp    : ...!{seismo, ucbvax, harvard}!cs.cmu.edu!guy
+</pre>
+<hr>
+Here is an algorithm which takes O(sqrt(n)log(n)) steps to find all perfect
+squares &lt; n whose only digits are 1, 4 and 9.
+
+<p>
+This doesn't sound too great *but* it doesn't use a lot of memory and only
+requires addition and &lt;.  Also, the actual run time will depend on where the
+first non-{1,4,9} digit appears in each square.
+
+<pre>
+	set n = 1
+	set odd = 1
+
+	while(n &lt; MAXVAL)
+	{
+		if(all digits of n are in {1,4,9})
+		{
+			print n
+		}
+
+		add 2 to odd
+		add odd to n
+	}
+</pre>
+This works because (X+1)^2 - x^2 = 2x+1.
+That is, if you start with 0 and add successive odd
+numbers to it you get 0+1=1, 1+3=4, 4+5=9, 9+7=16 etc.
+I've started the algorithm at 1 for convenience.
+
+<p>
+The "O" value comes from looking at at most all digits
+(log(n)) of all perfect squares &lt; n (sqrt(n) of them)
+at most a constant number of times. 
+
+<p>
+I didn't save the articles with algorithms claiming to be
+O(3^log(n)) so I don't know if their calculations needed
+to (or did) account for multiplication or sqrt() of large
+numbers.  O(3^log(n)) sounds reasonable so I'm going to
+assume they did unless I hear otherwise.
+
+<p>
+Any comments? Please email if you just want to refresh my memory
+on the other algorithms.
+
+<pre>
+Andrew Charles
+acgd@ihuxy.ATT.COMM
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

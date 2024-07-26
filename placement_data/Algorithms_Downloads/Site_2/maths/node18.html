@@ -1,0 +1,303 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>General Method</TITLE>
+<META NAME="description" CONTENT="General Method">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node19.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node19.html">
+<LINK REL="previous" HREF="node17.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node17.html">
+<LINK REL="up" HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">
+<LINK REL="next" HREF="node19.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node19.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html555"
+  HREF="node19.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node19.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html549"
+  HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html543"
+  HREF="node17.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node17.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html551"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html553"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html556"
+  HREF="node19.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node19.html">Hatching Convex Polygons</A>
+<B> Up:</B> <A NAME="tex2html550"
+  HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">An Algorithm  </A>
+<B> Previous:</B> <A NAME="tex2html544"
+  HREF="node17.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node17.html">The Problem</A>
+ &nbsp <B>  <A NAME="tex2html552"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html554"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00522000000000000000">
+General Method</A>
+</H2>
+
+<P>
+The method is based on the
+following observation. Suppose we have any polygonal (non-reentrant)
+region in the plane. Then, special cases excepted, any line <I>l</I> either
+misses the region completely or else meets the polygon in an even number
+of points which, in order, are <EM>into, out of, into, out of,...,
+into, out of</EM> the region.  (The special cases come when an edge lies
+on the line or when two intersection points degenerate into a single
+intersection at a vertex.)
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="F:hatching-line"></A><A NAME="628"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 1.4:</STRONG>
+A single hatching line passing in and out.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><!-- MATH
+ $\includegraphics[height=1.3in ]{xfig/hatched-intersect.eps}$
+ -->
+<IMG
+ WIDTH="539" HEIGHT="146" ALIGN="BOTTOM" BORDER="0"
+ SRC="img9.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img9.gif"
+ ALT="\includegraphics [height=1.3in ] {xfig/hatched-intersect.eps}">
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+If we are using the line <I>l</I> to hatch the region then we will want to
+join the first point to the second one, the third to the fourth, the
+fifth to the sixth and so on.  With this observation we can now solve
+the hatching problem. The outline of the procedure is this:
+
+<P>
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ for each hatching line:
+<BR>&nbsp;&nbsp;Go through the edges of the polygon in sequence, 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;find out which ones cut the hatching line
+<BR>&nbsp;&nbsp;For each edge that does, store the intersection points in a list
+<BR>&nbsp;&nbsp;Sort the list of intersection points into order to give
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;<!-- MATH
+ $(p_{1},p_{2},p_{3},p_{4},\ldots,p_{2n-1},p_{2n})$
+ -->
+(<I>p</I><SUB>1</SUB>, <I>p</I><SUB>2</SUB>, <I>p</I><SUB>3</SUB>, <I>p</I><SUB>4</SUB>,..., <I>p</I><SUB>2n - 1</SUB>, <I>p</I><SUB>2n</SUB>)
+<BR>&nbsp;&nbsp;Finally, draw in the lines 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- MATH
+ $(p_{1},p_{2}), (p_{3},p_{4}), \ldots{} (p_{2n-1},p_{2n})$
+ -->
+(<I>p</I><SUB>1</SUB>, <I>p</I><SUB>2</SUB>),(<I>p</I><SUB>3</SUB>, <I>p</I><SUB>4</SUB>),...(<I>p</I><SUB>2n - 1</SUB>, <I>p</I><SUB>2n</SUB>)
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>
+<P>
+Like most such outlines this still leaves us with lots of
+work to do, but at least the remaining problems are more standard ones:
+
+<P>
+
+<OL>
+<LI>how do we describe the hatching lines;
+</LI>
+<LI>how do we decide whether or not a hatching line meets a given
+edge; and
+</LI>
+<LI>how do we sort the intersection points into order?
+</LI>
+</OL>
+
+<P>
+The first question is reasonable easy if the hatching is
+horizontal.  The hatching lines are of the form <I>y</I> = <I>h</I>. To find the
+range of values of <I>h</I> we firstly find the lowest and highest vertices
+of the polygon, and let the corresponding values of <I>h</I> be <code>hmax</code>
+and <code>hmin</code>.  The situation is shown in Fig.&nbsp;<A HREF="node18.html#F:range-of-h" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node18.html#F:range-of-h">1.5</A>.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="F:range-of-h"></A><A NAME="652"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 1.5:</STRONG>
+The range for <I>h</I>.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><!-- MATH
+ $\includegraphics[height=1.3in ]{xfig/range-of-h.eps}$
+ -->
+<IMG
+ WIDTH="244" HEIGHT="145" ALIGN="BOTTOM" BORDER="0"
+ SRC="img10.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img10.gif"
+ ALT="\includegraphics [height=1.3in ] {xfig/range-of-h.eps}">
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+This involves running through the <I>n</I> vertices and picking out the min
+and max values of their <I>y</I>-coordinates. We then decide on the spacing
+between the lines.
+
+<P>
+Having done this our program will become
+
+<P>
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ algorithm hatch // hatch a polygon with horizontal lines
+<BR>
+begin
+<BR>&nbsp;&nbsp;h = hmin
+<BR>&nbsp;&nbsp;repeat begin
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;do job for y = h
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;h = h + dh
+<BR>&nbsp;&nbsp;until h &gt;= hmax.
+<BR>
+end
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>
+<P>
+For the second question, horizontal hatch lines make life very easy. The edge
+joining <I>v</I><SUB>i</SUB> to <I>v</I><SUB>i + 1</SUB> will <EM>fail</EM> to meet the line <I>y</I> = <I>h</I> if
+<EM>either</EM> both the <I>y</I>-coordinates of the vertices are less than
+<I>h</I> <EM>or</EM> both are greater than <I>h</I>. Algebraically, we could
+express the intersection condition as <!-- MATH
+ \begin{displaymath}
+(y_{i+1}-h)(y_i-h) \le 0
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+(<I>y</I><SUB>i + 1</SUB> - <I>h</I>)(<I>y</I><SUB>i</SUB> - <I>h</I>)<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img11.gif"
+ ALT="$\displaystyle \le$"> 0
+</DIV><P></P>
+If
+we have decided that an edge does meet the hatch line then we will want
+to find the intersection point (its <I>x</I>-coordinate will be a suitable
+number to store as a parameter along the hatch line). This is now just
+good old-fashioned coordinate geometry.
+
+<P>
+The equation of the line joining (<I>x</I><SUB>i</SUB>, <I>y</I><SUB>i</SUB>) to (<I>x</I><SUB>j</SUB>, <I>y</I><SUB>j</SUB>) can be
+written as  <!-- MATH
+ \begin{displaymath}
+(x_j-x_i)(y-y_i) = (y_j-y_i)(x-x_i)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+(<I>x</I><SUB>j</SUB> - <I>x</I><SUB>i</SUB>)(<I>y</I> - <I>y</I><SUB>i</SUB>) = (<I>y</I><SUB>j</SUB> - <I>y</I><SUB>i</SUB>)(<I>x</I> - <I>x</I><SUB>i</SUB>)
+</DIV><P></P>
+We want <I>x</I> when
+<I>y</I> = <I>h</I>. If <!-- MATH
+ $y_i\ne y_j$
+ -->
+<I>y</I><SUB>i</SUB><IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img12.gif"
+ ALT="$ \ne$"><I>y</I><SUB>j</SUB> then we have <!-- MATH
+ \begin{displaymath}
+x = x_i + \left(\frac{x_j-x_i}{y_j-y_i}\right)(h-y_i)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>x</I> = <I>x</I><SUB>i</SUB> + <IMG
+ WIDTH="18" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img13.gif"
+ ALT="$\displaystyle \left(\vphantom{\frac{x_j-x_i}{y_j-y_i}}\right.$"><IMG
+ WIDTH="58" HEIGHT="47" ALIGN="MIDDLE" BORDER="0"
+ SRC="img14.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img14.gif"
+ ALT="$\displaystyle {\frac{x_j-x_i}{y_j-y_i}}$"><IMG
+ WIDTH="18" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img15.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img15.gif"
+ ALT="$\displaystyle \left.\vphantom{\frac{x_j-x_i}{y_j-y_i}}\right)$">(<I>h</I> - <I>y</I><SUB>i</SUB>)
+</DIV><P></P>
+If <I>y</I><SUB>i</SUB> = <I>y</I><SUB>j</SUB> then we have a problem. It is
+best to ignore the intersection.
+
+<P>
+We will consider the third question in detail later in the course.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html555"
+  HREF="node19.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node19.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html549"
+  HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html543"
+  HREF="node17.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node17.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html551"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html553"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html556"
+  HREF="node19.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node19.html">Hatching Convex Polygons</A>
+<B> Up:</B> <A NAME="tex2html550"
+  HREF="node16.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node16.html">An Algorithm  </A>
+<B> Previous:</B> <A NAME="tex2html544"
+  HREF="node17.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node17.html">The Problem</A>
+ &nbsp <B>  <A NAME="tex2html552"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html554"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,605 @@
+
+<HTML>
+
+<!-- Mirrored from www.cracktheinterview.com by HTTrack Website Copier/3.x [XR,YP'2001] -->
+<HEAD>
+<TITLE>CRACK THE INTERVIEW - Implement Breadth First Search (BFS) and Depth First Search (DFS)  (www.cracktheinterview.com)</TITLE><style type="text/css">
+<!--
+.breakhere     {page-break-before: always}
+
+A:link         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+A:active       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+A:visited      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+
+H1             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt; font-weight:bold; color:#336699} 
+H2             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; font-weight:bold} 
+.normal        {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+.announce      {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#000000} 
+.announceLink  {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#336699} 
+.note          {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt ! important; font-weight:normal} 
+.system        {font-family:Courier New, Courier; font-size:x-small;
+                font-weight:normal} 
+.stayblue      {color:#336699 ! important}
+.title         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:larger ! important} 
+.error         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; color:#aa0000; font-weight:bold} 
+.notelink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:normal;
+                font-size:9pt ! important} 
+.tableHeader   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableHeaderSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRow      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#f7f7e7} 
+.tableBlank    {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#ffffff} 
+.hardlink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:bold;
+                font-size:8pt ! important} 
+.boxlink       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#000000 ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.hardnote      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:black ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.tableRowSmall {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal} 
+.tableRowSmallBold {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                bold} 
+.blueHeading   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:bold;
+                color:#336699! important} 
+.blueHeadingLarge {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:16pt! important; font-weight:normal;
+                color:#336699} 
+.blueHeadingMid {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:normal;
+                color:#336699}
+.blueHeadingSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt! important; font-weight:bold;
+                color:#336699} 
+.tableHeaderV  {font-family:Verdana,Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRowV     {font-family:Verdana,Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal; background-color:#f7f7e7} 
+.just          {text-align: justify}
+-->
+</style>
+
+<META NAME="keywords" CONTENT="interview,C,graph,BFS,DFS,breadth first search,depth first search">
+<META NAME="description" CONTENT="Implement Breadth First Search (BFS) and Depth First Search (DFS) ">
+<META NAME="robots" CONTENT="FOLLOW,INDEX">
+<META HTTP-EQUIV="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+
+</HEAD>
+<BODY>
+<TABLE BORDER=0 cellpadding=10>
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER><A HREF="../index.html"><IMG SRC=../images/logo2.jpg border=0></img></A></CENTER></TD>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2>
+<CENTER>
+
+
+<!--START:ADS0-->
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"
+  src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+
+</CENTER>
+</TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER>
+
+<!--START:LINKS-->
+
+
+<TABLE BORDER=0 cellpadding=10>
+<TR><TD NOWRAP>
+<A HREF="../index.html" target="_top"><font class=announcelink>Home</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="../adfaqpublish.html" target="_top"><font class=announcelink>Questions</font></A><BR>
+</TD>
+
+
+<TD NOWRAP>
+<A href="../search.html" target="_top"><font class=announcelink>Search</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="../forum/index.html" target="_top"><font class=announcelink>Forum</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="mailto:cracktheinterview@gmail.com?subject=Hi!"><font class=announcelink>Contact</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum12a3.html" target="_top"><font class=announcelink>Guest Book</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum4d6b.html" target="_top"><font class=announcelink>Polls!</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum31e6.html" target="_top"><font class=announcelink>Got a Question?</font></A><BR>
+</TD>
+
+</TABLE>
+
+<!--END-->
+
+</CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER> &nbsp; </CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=90%% valign=top>
+
+
+
+
+
+<!--START : DATA-->
+
+
+
+<TABLE BORDER=0>
+
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="3_23.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=blueHeading>Trees</font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="3_25.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD>
+<TD WIDTH=90%%><CENTER><font class=blueHeading>(108 / 268)</font></center></TD>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%></TD>
+<TD WIDTH=90%%><center>&nbsp;</center></TD>
+<TD WIDTH=5%%></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=announceLink><BR><BR><BR>
+<!--THE QUESTION-->
+
+Implement Breadth First Search (BFS) and Depth First Search (DFS) <BR>
+<!--END-->
+<BR></font></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=normal>
+<!--THE ANSWER--><BR>
+<!--META:START--><!--interview,C,graph,BFS,DFS,breadth first search,depth first search--><!--META:END--><BR>
+<!--UPDATED--><BR>
+<font class=announcelink>Depth first search (DFS)</font><BR>
+<BR>
+Depth First Search (DFS) is a generalization of the <font class=announcelink>preorder</font> traversal. Starting at some arbitrarily chosen vertex v, we mark v so that we know we've visited it, process v, and then recursively traverse all unmarked vertices adjacent to v (v will be a different vertex with every new method call). When we visit a vertex in which all of its neighbors have been visited, we return to its calling vertex, and visit one of its unvisited neighbors, repeating the recursion in the same manner. We continue until we have visited all of the starting vertex's neighbors, which means that we're done. The recursion (stack) guides us through the graph. <BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<CODE><BR>
+public&nbsp;void&nbsp;depthFirstSearch(Vertex&nbsp;v)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v.visited&nbsp;=&nbsp;true;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;print&nbsp;the&nbsp;node<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(each&nbsp;vertex&nbsp;w&nbsp;adjacent&nbsp;to&nbsp;v)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!w.visited)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;depthFirstSearch(w);		<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+}<BR>
+</CODE> <BR>
+<BR>
+<BR>
+<BR>
+<BR>
+Here is some working C code for a DFS on a BST..<BR>
+<BR>
+<CODE><BR>
+#include&nbsp;&lt;stdio.h><BR>
+<BR>
+typedef&nbsp;struct&nbsp;node<BR>
+{<BR>
+&nbsp;&nbsp;int&nbsp;value;<BR>
+&nbsp;&nbsp;int&nbsp;visited;<BR>
+&nbsp;&nbsp;struct&nbsp;node&nbsp;*right;<BR>
+&nbsp;&nbsp;struct&nbsp;node&nbsp;*left;<BR>
+}mynode;<BR>
+<BR>
+mynode&nbsp;*root;<BR>
+<BR>
+mynode&nbsp;*add_node(int&nbsp;value);<BR>
+void&nbsp;treeDFS(mynode&nbsp;*root);<BR>
+<BR>
+<BR>
+int&nbsp;main(int&nbsp;argc,&nbsp;char*&nbsp;argv[])<BR>
+{&nbsp;<BR>
+&nbsp;&nbsp;root&nbsp;=&nbsp;NULL;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;//&nbsp;Construct&nbsp;the&nbsp;tree..<BR>
+&nbsp;&nbsp;add_node(5);<BR>
+&nbsp;&nbsp;add_node(1);<BR>
+&nbsp;&nbsp;add_node(-20);<BR>
+&nbsp;&nbsp;add_node(100);<BR>
+&nbsp;&nbsp;add_node(23);<BR>
+&nbsp;&nbsp;add_node(67);<BR>
+&nbsp;&nbsp;add_node(13);<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;//&nbsp;Do&nbsp;a&nbsp;DFS..<BR>
+&nbsp;&nbsp;printf("\n\nDFS&nbsp;:&nbsp;");<BR>
+&nbsp;&nbsp;treeDFS(root);<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;getch();<BR>
+}<BR>
+<BR>
+//&nbsp;Function&nbsp;to&nbsp;add&nbsp;a&nbsp;new&nbsp;node&nbsp;to&nbsp;the&nbsp;tree...<BR>
+mynode&nbsp;*add_node(int&nbsp;value)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;mynode&nbsp;*prev,&nbsp;*cur,&nbsp;*temp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;temp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;(mynode&nbsp;*)&nbsp;malloc(sizeof(mynode));<BR>
+&nbsp;&nbsp;&nbsp;temp->value&nbsp;=&nbsp;value;<BR>
+&nbsp;&nbsp;&nbsp;temp->visited&nbsp;=&nbsp;0;<BR>
+&nbsp;&nbsp;&nbsp;temp->right&nbsp;=&nbsp;NULL;<BR>
+&nbsp;&nbsp;&nbsp;temp->left&nbsp;&nbsp;=&nbsp;NULL;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;if(root==NULL)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("\nCreating&nbsp;the&nbsp;root..\n");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;=&nbsp;temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;prev=NULL;<BR>
+&nbsp;&nbsp;&nbsp;cur=root;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;while(cur!=NULL)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev=cur;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cur=(value&lt;cur->value)?cur->left:cur->right;<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;if(value&nbsp;<&nbsp;prev->value)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev->left=temp;<BR>
+&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev->right=temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;return(temp);&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+}<BR>
+<BR>
+<BR>
+<BR>
+//&nbsp;DFS..<BR>
+void&nbsp;treeDFS(mynode&nbsp;*root)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("[%d]&nbsp;",&nbsp;root->value);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;root->visited&nbsp;=&nbsp;1;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(root->left)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(root->left->visited==0)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;treeDFS(root->left);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(root->right)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(root->right->visited==0)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;treeDFS(root->right);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+}<BR>
+</CODE><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<font class=announcelink>Breadth First Search</font><BR>
+<BR>
+<BR>
+Breadth First Search (BFS) searches the graph <font class=announcelink>one level (one edge away from the starting vertex) at a time</font>. In this respect, it is <font class=announcelink>very similar to the level order traversal</font> that we discussed for trees. Starting at some arbitrarily chosen vertex v, we mark v so that we know we've visited it, process v, and then visit and process all of v's neighbors. Now that we've visited and processed all of v's neighbors, we need to visit and process all of v's neighbors neighbors. So we go to the first neighbor we visited and visit all of its neighbors, then the second neighbor we visited, and so on. We continue this process until we've visited all vertices in the graph. We don't use recursion in a BFS because we don't want to traverse recursively. We want to traverse one level at a time. So imagine that you visit a vertex v, and then you visit all of v's neighbors w. Now you need to visit each w's neighbors. How are you going to remember all of your w's so that you can go back and visit their neighbors? You're already marked and processed all of the w's. How are you going to find each w's neighbors if you don't remember where the w's are? After all, you're not using recursion, so there's no stack to keep track of them. To perform a BFS, we use a queue. Every time we visit vertex w's neighbors, we dequeue w and enqueue w's neighbors. In this way, we can keep track of which neighbors belong to which vertex. This is the same technique that we saw for the level-order traversal of a tree. The only new trick is that we need to makr the verticies, so we don't visit them more than once -- and this isn't even new, since this technique was used for the blobs problem during our discussion of recursion. <BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<CODE><BR>
+public&nbsp;void&nbsp;breadthFirstSearch(vertex&nbsp;v)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;Queue&nbsp;q&nbsp;=&nbsp;new&nbsp;Queue();<BR>
+	<BR>
+&nbsp;&nbsp;&nbsp;v.visited&nbsp;=&nbsp;true;<BR>
+&nbsp;&nbsp;&nbsp;q.enQueue(v);<BR>
+	<BR>
+&nbsp;&nbsp;&nbsp;while(&nbsp;!q.isEmpty()&nbsp;)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vertex&nbsp;w&nbsp;=&nbsp;(Vertex)q.deQueue();<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Print&nbsp;the&nbsp;node.<BR>
+&nbsp;&nbsp;		<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(each&nbsp;vertex&nbsp;x&nbsp;adjacent&nbsp;to&nbsp;w)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{			<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(&nbsp;!x.visited&nbsp;)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x.visited&nbsp;=&nbsp;true;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q.enQueue(x);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+}<BR>
+</CODE><BR>
+<BR>
+<BR>
+BFS traversal can be used to produce a tree from a graph. <BR>
+<BR>
+<BR>
+Here is some C code which does a BFS (level order traversal) on a BST...<BR>
+<BR>
+<CODE><BR>
+#include&nbsp;&lt;stdio.h><BR>
+<BR>
+typedef&nbsp;struct&nbsp;node<BR>
+{<BR>
+&nbsp;&nbsp;int&nbsp;value;<BR>
+&nbsp;&nbsp;struct&nbsp;node&nbsp;*right;<BR>
+&nbsp;&nbsp;struct&nbsp;node&nbsp;*left;<BR>
+}mynode;<BR>
+<BR>
+mynode&nbsp;*root;<BR>
+<BR>
+add_node(int&nbsp;value);<BR>
+<BR>
+void&nbsp;levelOrderTraversal(mynode&nbsp;*root);<BR>
+<BR>
+int&nbsp;main(int&nbsp;argc,&nbsp;char*&nbsp;argv[])<BR>
+{&nbsp;<BR>
+&nbsp;&nbsp;root&nbsp;=&nbsp;NULL;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;add_node(5);<BR>
+&nbsp;&nbsp;add_node(1);<BR>
+&nbsp;&nbsp;add_node(-20);<BR>
+&nbsp;&nbsp;add_node(100);<BR>
+&nbsp;&nbsp;add_node(23);<BR>
+&nbsp;&nbsp;add_node(67);<BR>
+&nbsp;&nbsp;add_node(13);<BR>
+&nbsp;&nbsp;<BR>
+<BR>
+&nbsp;&nbsp;printf("\n\n\nLEVEL&nbsp;ORDER&nbsp;TRAVERSAL\n\n");<BR>
+&nbsp;&nbsp;levelOrderTraversal(root);<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;getch();<BR>
+}<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+//&nbsp;Function&nbsp;to&nbsp;add&nbsp;a&nbsp;new&nbsp;node...<BR>
+add_node(int&nbsp;value)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;mynode&nbsp;*prev,&nbsp;*cur,&nbsp;*temp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;temp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;(mynode&nbsp;*)&nbsp;malloc(sizeof(mynode));<BR>
+&nbsp;&nbsp;&nbsp;temp->value&nbsp;=&nbsp;value;<BR>
+&nbsp;&nbsp;&nbsp;temp->right&nbsp;=&nbsp;NULL;<BR>
+&nbsp;&nbsp;&nbsp;temp->left&nbsp;&nbsp;=&nbsp;NULL;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;if(root==NULL)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("\nCreating&nbsp;the&nbsp;root..\n");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;=&nbsp;temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;prev=NULL;<BR>
+&nbsp;&nbsp;&nbsp;cur=root;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;while(cur!=NULL)<BR>
+&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev=cur;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cur=(value&lt;cur->value)?cur->left:cur->right;<BR>
+&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;if(value&nbsp;<&nbsp;prev->value)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev->left=temp;<BR>
+&nbsp;&nbsp;&nbsp;else<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev->right=temp;<BR>
+}<BR>
+<BR>
+<BR>
+<BR>
+//&nbsp;Level&nbsp;order&nbsp;traversal..<BR>
+void&nbsp;levelOrderTraversal(mynode&nbsp;*root)<BR>
+{<BR>
+&nbsp;&nbsp;mynode&nbsp;*queue[100]&nbsp;=&nbsp;{(mynode&nbsp;*)0};&nbsp;//&nbsp;Important&nbsp;to&nbsp;initialize!<BR>
+&nbsp;&nbsp;int&nbsp;size&nbsp;=&nbsp;0;<BR>
+&nbsp;&nbsp;int&nbsp;queue_pointer&nbsp;=&nbsp;0;<BR>
+&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;while(root)<BR>
+&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("[%d]&nbsp;",&nbsp;root->value);<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(root->left)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[size++]&nbsp;=&nbsp;root->left;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(root->right)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;queue[size++]&nbsp;=&nbsp;root->right;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;=&nbsp;queue[queue_pointer++];&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;}<BR>
+}<BR>
+</CODE> 
+<BR><BR>
+<!--END-->
+</font><BR></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="3_23.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=notelink><A href="mailto:cracktheinterview@gmail.com?subject=Comments [Implement Breadth First Search (BFS) and Depth First Search (DFS) ]&Body=Question : [Implement Breadth First Search (BFS) and Depth First Search (DFS) ]"><font class=announcelink>COMMENTS</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><A HREF=../adfaqpublish.html>INDEX</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><a href="#" onclick="window.print();return false;">PRINT</a></font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="3_25.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<BR><BR><BR><font class=notelink>
+Last updated:
+
+July 8, 2005<BR><BR>
+<a href=../index.html>www.cracktheinterview.com</a> - Your destination for the most common IT interview questions, answers, frequently asked interview questions (FAQ), C Programs, C Datastructures for interviews conducted by Microsoft, Oracle, Google, IBM, HP, Yahoo, Infosys, Wipro, SAP, CA (Computer Associates), Sun, Adobe, GE, Novell, Cisco, Motorola, TI (Texas Instruments), Intel, TCS, iFlex, Trilogy, MindTree, GS and more...<br><BR>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+
+<!--END-->
+
+
+</TD>
+
+
+
+
+<TD WIDTH=10%% valign="top">
+
+
+<!--START:ADS1-->
+
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_alternate_color = "CCCCCC";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript" src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"  src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+</TD>
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+</BODY>
+
+<!-- Mirrored from www.cracktheinterview.com by HTTrack Website Copier/3.x [XR,YP'2001] -->
+</HTML>
+
+

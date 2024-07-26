@@ -1,0 +1,89 @@
+\documentclass[english]{article} 
+
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{fancyhdr}
+
+\begin{document}
+
+\pagenumbering{arabic}
+
+%----Header stuff---------------------------
+\pagestyle{fancy}
+ \lhead{\sc Algorithms \& Data Structures}
+ \chead{}
+ \rhead{\sc INF1 -- 2003}
+
+
+\section*{Tutotial 6}
+
+\subsection*{Example 1}
+
+It is NOT possible to prove
+\begin{description}
+\item[Pre:] $l=\langle a_1,a_2,\ldots,a_n \rangle$ s.t. VALUE\_TYPE=int
+\item[]$x:=sum(l)$
+\item[]$y:=sum(l)$
+\item[Post:]$x+y=2\cdot\sum_{i=1\ldots n}a_i.value$
+\end{description}
+because it is not in general guaranteed that the list $l$
+is not modified after the execution of $x:=sum(l)$.
+However, by changing the specification for the {\tt sum} function
+as follows
+\begin{description}
+\item[Pre:] $l=\langle a_1,a_2,\ldots,a_n \rangle$ s.t. VALUE\_TYPE=int
+\item[]$x:=sum(l)$
+\item[Post:]$x=\sum_{i=1\ldots n}a_i.value$ and \underline{$l^\prime=l$}
+\end{description}
+we can now prove the original claim:
+\begin{description}
+\item[Pre:] $l=\langle a_1,a_2,\ldots,a_n \rangle$ s.t. VALUE\_TYPE=int
+\item[]\hspace{1cm}\{$l=\langle a_1,a_2,\ldots,a_n \rangle$\  \mbox{ and \ 
+ VALUE\_TYPE=int} \}
+\item[]$x:=sum(l)$
+\item[]\hspace{1cm}\{$x=\sum_{i=1\ldots n}a_i.value \ \mbox{ and } \
+l=\langle a_1,a_2,\ldots,a_n \rangle$   \mbox{ and \ 
+ VALUE\_TYPE=int} \}
+\item[]$y:=sum(l)$
+\item[]\hspace{1cm}\{$y=x=\sum_{i=1\ldots n}a_i.value$\}
+\item[Post:]$x+y=2\cdot\sum_{i=1\ldots n}a_i.value$
+\end{description}
+
+
+\subsection*{Example 2}
+\begin{itemize}
+\item
+\begin{algorithmic}
+  \STATE{{\bf find}($i,l$) =}
+  \STATE{$j:=1$}
+  \STATE{$x:=l.first$}
+  \WHILE{(NOT $l.nil\_entry(x)$) and $j<i$}
+    \STATE{$x:=l.next(x)$}
+	\STATE{$j:=j+1$}
+  \ENDWHILE
+  \STATE{{\bf return} $x$}
+\end{algorithmic}
+\item $O(|l|)$
+\end{itemize}
+
+\subsection*{Example 3}
+\begin{description}
+\item[Pre:] $l=\langle a_1,a_2,\ldots,a_n\rangle$
+\item[] $res:=l.first$
+\item[Post:] $res= a_1$ if $l\neq\langle\rangle$ and $res=$NIL otherwise
+($l=\langle\rangle$),
+and $l'=l$
+\end{description}
+\vspace{5mm}
+\begin{description}
+\item[Pre:] $l=\langle a_1,a_2,\ldots,x,\ldots,a_n\rangle$
+\item[] $res:=l.next(x)$
+\item[Post:] $res = a_i$ if $l=\langle a_1,a_2,\ldots,x,a_i,\ldots,a_n\rangle$
+(i.e. $x$ is not the last entry) and
+$res=$NIL if $x=a_n$ (i.e. $x$ is the last entry), and
+$l'=l$
+\end{description}
+
+\end{document}

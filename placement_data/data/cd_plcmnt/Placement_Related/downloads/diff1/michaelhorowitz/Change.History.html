@@ -1,0 +1,213 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="description" content="TimeKeeper Change History">
+<meta name="keywords" content="TimeKeeer, change history,JavaScript">
+<title>TimeKeeper Change History</title>
+<LINK REL=StyleSheet HREF="mh.css" tppabs="http://www.michaelhorowitz.com/mh.css"  TYPE='text/css'>
+</head>
+
+<body>
+ <table border="0" cellpadding="3" cellspacing="0" width="100%">
+ <tr bgcolor="#717855">
+     <td align="left" width="257"><img border="0" src="mhlogo.gif" tppabs="http://www.michaelhorowitz.com/pix/mhlogo.gif" width="255" height="29"></td>
+     <td align="right"><a href="index.htm" tppabs="http://www.michaelhorowitz.com/index.htm" class="breadlink">Home</a>
+      <span class="bread"><a name="top">=></a>&nbsp; </span>
+      <a href="index-1.htm" tppabs="http://www.michaelhorowitz.com/Timekeeper/index.htm" class="breadlink" target="_top">TimeKeeper</a> &nbsp;</td></tr>
+ </table>
+<script language="JavaScript" src="timekeeperheader.js" tppabs="http://www.michaelhorowitz.com/Timekeeper/timekeeperheader.js"> </script>
+
+<img border="0" src="timekeeperhourglass.smalll.gif" tppabs="http://www.michaelhorowitz.com/pix/timekeeperhourglass.smalll.gif" align="right" width="76" height="110">
+<h1 align="center">TimeKeeper Change History</h1>
+
+<font face="Verdana" size="2">&nbsp;This page documents the changes <i> already made</i> to TimeKeeper.&nbsp;<br>
+&nbsp;For planned changes, see the <a href="Planned.Enhancements.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Planned.Enhancements.html">planned enhancements</a>.</font><br> &nbsp;
+
+<table border="0" width="100%"><tr><td width="100%">
+<p><font face="Verdana" size="2"><b>May 7, 2004</b></p>
+<p>Minor changes.&nbsp; First time users will now have the
+Resume, Suspend and End buttons disabled. No longer restrict the changing of the background color feature to
+only IE. Neatened up the UI a bit (the stuff at the bottom is now centered). The Help window now has a white background.</font></p>
+<p><font face="Verdana" size="2"><b>February&nbsp; 9, 2004&nbsp;</b></p>
+<p>Changes to web pages only, to bring them more in line with the design of the
+rest of the web site (headers, footers, CSS). Minor cosmetic changes to the
+TimeKeeper OnLine page.&nbsp;</p>
+<p><b>November 7, 2001&nbsp;</b></p>
+<p>The four buttons that drive TimeKeeper are now dynamically disabled when
+appropriate. For example, when the timer is off (you are not working), the only
+active button is the one to start a new work day. Disabling buttons has been tested with IE5.
+It should also work with IE4, IE6 and Netscape Navigator v6. It does not work
+with Navigator v4. If you click an inappropriate button in Navigator v4 a JavaScript
+error window is displayed which is the way TimeKeeper used to work up until
+now.&nbsp;</p>
+
+<p><b>September 9, 2001</b></p>
+
+<p>Minor stuff: The main status window now says current directory rather than current project.
+Upped the max number of minutes allowed in a reminder from 360 to 540. Added
+maxlength=99 parameter to input text boxes for comments and reminders. Added
+maxlength=3  parameter to input text box for reminder minutes. Bolded keywords in the help window.
+Added tests for the success of both window.open commands</p>
+
+<p><b>September 5, 2001&nbsp;</b></p>
+<p>Minor tweaks to reminders: The title of the reminder window now has the first
+20 characters of the reminder text so that it's visible in the Windows Task Bar.
+The reminder windows now say that they can be minimized and warn about loading
+another web page into them. Updated the usage notes page.&nbsp;Both the online
+and offline versions are now in synch, previously the online version was older
+code.&nbsp;</p>
+<p><b>September 4, 2001</b></p>
+<p> Added reminders to the off-line version and a write-up about them to the
+online usage notes. Also added a technical discussion of how the reminders are
+implemented to the Technical Notes page. Note that reminders work much better
+with IE5 than with Netscape Navigator v4.&nbsp;</p>
+
+<p><b>September 3, 2001</b></p>
+
+<p>Got rid of the debugging information in the online version of TimeKeeper.
+Neatened up the comments section on both the online and offline versions.&nbsp;</p>
+
+<p><b>September 2, 2001</b></p>
+
+<p>Fixed new user problem in the offline version. The first time a new user
+invokes TimeKeeper, there are no TimeKeeper cookies to be found. The cookie
+parsing routine, incorrectly issued an alert saying there was an error. The only
+error was in issuing the alert.&nbsp;Finished the usage notes page. Made the
+debugging information (the display of current cookie values) optional which
+cleared up a lot of junk at the bottom of the page (it defaults to being off).
+This was only of interest to me and the look of TimeKeeper is much cleaner. See the Technical
+Notes page for more on debug mode.</p>
+
+<p><b>September 1, 2001&nbsp;</b></p>
+
+<p>Major re-write to the offline version. In the old days, TimeKeeper used a
+separate cookie for each data field. The online version still works this way.
+The offline version now has a single cookie with all twelve variables needed to
+maintain the current state of a project. User interface changes were minimal.
+This change was made in preparation for giving TimeKeeper the ability to handle
+multiple projects.&nbsp;</p>
+
+<p>The TimeKeeper cookie is named &quot;TimeKeeperProject&quot;. Any other input
+cookies are ignored. In the cookie, all the variables for a project
+are mushed together and separated by the &quot;|&quot; character. Up front, the new cookie is read
+and parsed into a bunch of globally shared variables. At the end, all the
+globally shared variables that have a value are saved back into the single
+TimeKeeper cookie. Variables that have no value are always indicated by the string
+&quot;*not found*&quot;.&nbsp;</p>
+
+<p>The new function getCookieByName returns one cookie. The
+old function, getCookieData has been deleted. The new function
+ReadCookieSetupVariables is the only function that reads the input cookies. It
+sets up the globally shared variables. All processing is
+done on these globally shared variables. This too was done in preparation for
+handling multiple projects, code that references the globally shared variables
+will not need to be changed.&nbsp;</p>
+
+<p>The code used to zap the background color when the page is being loaded has
+been improved. A count of the cookies has been added to the debugging section
+when displaying formatted cookies.&nbsp;</p>
+
+<p><b>August 29, 2001&nbsp;</b></p>
+
+<p>Fixed looping problem in the offline version in the routine that reads the
+cookies. It caused IE to say that the script was running slowly and offering to
+abort it.&nbsp;</p>
+
+<p><b>August 2, 2001&nbsp;</b></p>
+
+<p>The page is now re-loaded after the
+background color is changed. This was done to write out the cookie with the new
+background color.&nbsp;Debugging information was moved to the very bottom of the
+web page.</p>
+
+<p><b>August 1, 2001&nbsp;</b></p>
+
+<p>The duration of a work interval is now calculated in one place rather than
+two. It's in function CalculateMinsWorked(). Three globally used date/time
+fields are now calculated in one place rather than multiple places. They are
+consolidated in function SetupDates(). For use in Reset processing, I verified
+that subtracting 7 seconds from a date object that is only a couple seconds past
+the hour, appropriately reduces the minutes field. Deleted all references to the
+deprecated variable TimeStarted.&nbsp;Debugging information now includes a
+formatted display of the cookie values in addition to the unformatted display it
+always had.&nbsp;</p>
+
+<p><b>July 30, 2001&nbsp;
+</b></p>
+
+<p>The background color is now saved in a cookie when the user changes it. This
+cookie is read back every time the page is loaded and used to dynamically
+generate the &lt;BODY&gt; tag with the appropriate background color.&nbsp;Also
+fixed links at the bottom of page, some were relative rather than
+absolute.&nbsp;Current project is now displayed in the main status box next to
+the timer information.&nbsp;</p>
+
+<p><b>July 27, 2001&nbsp;
+</b></p>
+
+<p>Got rid of the <b>Help on Tech</b> button. Full technology notes and comments
+are now on this web site.&nbsp;</p>
+
+<p><b>July 26, 2001&nbsp;</b></p>
+
+<p>Added ability for IE users to change the background color. This is only
+implemented in the off-line version because the on-line version should keep the
+same color scheme as the rest of the web site. It is not implemented for
+Netscape Navigator users (see technical notes). It is not yet saved in a cookie,
+so the color change is reset on every page load.&nbsp;Modified the help text in
+the offline version to link to the online usage notes.&nbsp;</p>
+
+<p><b>July 24, 2001&nbsp;<br>
+</b>Changed the background color to be consistent with the rest of the gripes
+web site. Also started to maintain a version intended for on-line use and
+another version intended for off-line use, downloaded by users.&nbsp;</p>
+
+<p><b>June 2, 2001<i><br>
+</i></b>Dynamically adjust the title bar. Every time the TimeKeeper web page is
+loaded, the first word of the title bar is always set to ON or OFF for the
+benefit of the task bar. The Windows task bar displays the first few characters
+of the window title. With this change, the first few characters are always ON or
+OFF, thus making it obvious whether the timer is on or off.&nbsp;</p>
+<p><b>May 11, 2001&nbsp;</b><br>
+Changed background color to light green</p>
+<p><b>February 13, 2001</b><br>
+When suspend, it no longer puts out a message box with the length of just ended
+interval. It was getting annoying.&nbsp;<br>
+Display hours and minutes vs. just minutes&nbsp;</p>
+<p><b>Very old changes</b></p>
+<ul>
+  <li>Added 'Save This' warning at end of day.&nbsp;</li>
+  <li>Fixed problem with deleting comments, now set to 'none'.&nbsp;</li>
+  <li>Added a Welcome for new users.&nbsp;</li>
+  <li>Renamed 'TimeStarted' cookie field to 'CItimeStarted' to better reflect
+    its true purpose.</li>
+  <li>Save date that a work interval starts both at start of day and when
+    resume.&nbsp;</li>
+  <li>Suspend now calculates length of current work interval using <b><i>date</i></b>
+    and time, before it only used time. This means you can work past midnight.</li>
+  <li>Fixed problem displaying backslashes</li>
+</ul> </font>
+ </td>  </tr>
+</table>
+
+<table width="100%" cellspacing="0" cellpadding="3">
+<tr bgcolor="#717855">
+    <td align="left" >&nbsp; <a href="#top" class="toplink">Top of Page</a></td>
+    <td align="right" ><a href="index.htm" tppabs="http://www.michaelhorowitz.com/index.htm" class="breadlink">Home</a>
+   <span class="bread"> <a name="top"> =></a>&nbsp;</span>
+   <a href="index-1.htm" tppabs="http://www.michaelhorowitz.com/Timekeeper/index.htm" class="breadlink" target="_top">TimeKeeper</a> &nbsp;</td></tr>
+<tr bgcolor="white">
+<td align="left"><font face="Verdana" size="1">Last updated: May 7, 2004 &nbsp;</font></td>
+<td align="right" ><font face="Verdana" size="2">
+TimeKeeper: <a href="Download.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Download.html">Download</a>
+| <a href="Usage.Notes.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Usage.Notes.html">Usage Notes</a>
+| <a href="Change.History.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Change.History.html">Change History</a>
+| <a href="timekeeper.online.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/timekeeper.online.html">Run On-Line</a>
+| <a href="Technical.Notes.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Technical.Notes.html">Tech Notes</a>
+| <a href="Planned.Enhancements.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Planned.Enhancements.html">Enhancements</a></font></td></tr>
+
+<tr bgcolor="#717855"><td colspan=2 height="3"></td></tr>
+</table>
+
+<script language="JavaScript" src="timekeeperfooter2.js" tppabs="http://www.michaelhorowitz.com/Timekeeper/timekeeperfooter2.js"> </script>
+</body>
+</html>

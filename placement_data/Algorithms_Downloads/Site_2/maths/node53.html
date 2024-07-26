@@ -1,0 +1,236 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The ADT List</TITLE>
+<META NAME="description" CONTENT="The ADT List">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node54.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node54.html">
+<LINK REL="previous" HREF="node52.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node52.html">
+<LINK REL="up" HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">
+<LINK REL="next" HREF="node54.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node54.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1083"
+  HREF="node54.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node54.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1077"
+  HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1071"
+  HREF="node52.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node52.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1079"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1081"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1084"
+  HREF="node54.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node54.html">The ADT Priority Queue</A>
+<B> Up:</B> <A NAME="tex2html1078"
+  HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html1072"
+  HREF="node52.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node52.html">The ADT Array</A>
+ &nbsp <B>  <A NAME="tex2html1080"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1082"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00714000000000000000">
+The ADT List</A>
+</H2>
+A (linked) list is another fundamental data type, which can be
+considered almost as basic as the array.  Just as eg FORTRAN regards
+the array as central, so the language <A NAME="5006"></A><B>lisp</B> takes the list as
+the object in terms of which everything else is described.<A NAME="tex2html27"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot4896'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot4896"><SUP>3.4</SUP></A> If you want to take a closer look,
+try&nbsp;(<A
+ HREF="node112.html#winston:lisp3" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node112.html#winston:lisp3">Winston &amp; Horn, 1989</A>) or&nbsp;(<A
+ HREF="node112.html#wilensky" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node112.html#wilensky">Wilensky, 1986</A>).
+
+<P>
+An <A NAME="5008"></A><B>list</B> is a finite sequence of storage cells, for which the
+following operations are defined:
+
+<P>
+<DL>
+<DT></DT>
+<DD><code>create(l)</code> creates an empty list <code>l</code>;
+</DD>
+<DT></DT>
+<DD><code>insert(item,i,list)</code> changes the list from the form
+<!-- MATH
+ $(a_1,\ldots,a_{i-1},a_i,\ldots a_n)$
+ -->
+(<I>a</I><SUB>1</SUB>,..., <I>a</I><SUB>i - 1</SUB>, <I>a</I><SUB>i</SUB>,...<I>a</I><SUB>n</SUB>) by inserting <code>item</code> between
+<I>a</I><SUB>a - 1</SUB> and <I>a</I><SUB>i</SUB>; it is an error to call this unless <code>list</code>
+has at least <I>i</I> - 1 items before the call.
+</DD>
+<DT></DT>
+<DD><code>delete(i,list)</code> deletes the item at position <code>i</code>
+from the list, returning <code>list</code> containing one fewer item; and
+</DD>
+<DT></DT>
+<DD><code>read(i,list)</code> returns the item at position <code>i</code>
+in the list, without changing the list.
+</DD>
+</DL>
+
+<P>
+Note what is missing; it is easy (at least based on the assumption
+that the operations specified are quick) to traverse the list in the order it
+was created; but going ``backwards'' along the list may be hard.  It
+is often convenient to speak of the first item as the <I>head</I> of
+the list, and the remainder of the list as the <I>tail</I>.
+
+<P>
+<P>
+<DIV><B>Example  3.3</B> &nbsp; 
+Show how to implement a stack in terms of the  Abstract Data Type list.</DIV><P></P>
+
+<P>
+<I>Solution</I> This is clear; <code>push</code> simply adds the item to the head of the
+list, while <code>pop</code> returns the head of the list, and replaces the
+list by its tail.
+<P>
+
+<P>
+<BR>
+
+<P>
+There is an obvious implementation of a list in terms of an array;
+simply treat the list as a stack.  However the additional operations,
+particularly those involved in inserting elements in the middle of the
+list, involve a great deal of copying.  An alternative implementation
+is in terms of <I>pairs</I>, one member of which contains the item,
+while the other member points to the next pair in the list.  A special
+pointer indicates that the list has come to an end.  Such an
+arrangement is represented diagrammatically in Fig&nbsp;<A HREF="node53.html#F:list-cells" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node53.html#F:list-cells">3.2</A>, which
+shows a list of five elements.  The first pointer (ie the one pointing
+to ``value1'') can the be stored as the list.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="F:list-cells"></A><A NAME="4402"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.2:</STRONG>
+A list implemented using cells and pointers.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><!-- MATH
+ $\includegraphics[height=0.5cm ]{list-cells.eps}$
+ -->
+<IMG
+ WIDTH="544" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img159.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img159.gif"
+ ALT="\includegraphics [height=0.5cm ] {list-cells.eps}">
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+Surgery on such a list is then a simple matter of altering a few
+pointer values.  Such surgery is shown in Fig&nbsp;<A HREF="node53.html#F:list-cells-1" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node53.html#F:list-cells-1">3.3</A>.  A
+common feature of list implementations is shown there in the hanging
+pointer attached to ``value3''.  It could be considered as a list in
+its own right, with the pointer still pointing to ``value4''.  However
+it is usually difficult to tell this just by examining the pair
+itself, and the surgery shown might well have marooned this storage;
+it appears to be used, but nothing refers to it.  In this
+circumstance, it is known as ``garbage'', and a specialised program
+known as a ``garbage collector'' is often used to recover such
+storage.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="F:list-cells-1"></A><A NAME="4408"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.3:</STRONG>
+The same list after an addition and a deletion.</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><!-- MATH
+ $\includegraphics[height=1.75cm ]{list-cells-1.eps}$
+ -->
+<IMG
+ WIDTH="570" HEIGHT="76" ALIGN="BOTTOM" BORDER="0"
+ SRC="img160.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img160.gif"
+ ALT="\includegraphics [height=1.75cm ] {list-cells-1.eps}">
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+We shall not make a great deal of use of lists; but you should be
+aware that they form a real alternative to an array as a primitive
+ Abstract Data Type, indeed computers have been built on this premise.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1083"
+  HREF="node54.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node54.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1077"
+  HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1071"
+  HREF="node52.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node52.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1079"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1081"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1084"
+  HREF="node54.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node54.html">The ADT Priority Queue</A>
+<B> Up:</B> <A NAME="tex2html1078"
+  HREF="node49.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node49.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html1072"
+  HREF="node52.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node52.html">The ADT Array</A>
+ &nbsp <B>  <A NAME="tex2html1080"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1082"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

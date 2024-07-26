@@ -1,0 +1,239 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Generating Random Reals</TITLE>
+<META NAME="description" CONTENT="Generating Random Reals">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node81.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node81.html">
+<LINK REL="previous" HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<LINK REL="up" HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<LINK REL="next" HREF="node81.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node81.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1484"
+  HREF="node81.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node81.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1478"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1472"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1480"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1482"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1485"
+  HREF="node81.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node81.html">Generating Random Integers</A>
+<B> Up:</B> <A NAME="tex2html1479"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">Applications of Random Numbers</A>
+<B> Previous:</B> <A NAME="tex2html1473"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">Applications of Random Numbers</A>
+ &nbsp <B>  <A NAME="tex2html1481"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1483"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00931000000000000000"></A><A NAME="7799"></A>
+<BR>
+Generating Random Reals
+</H2>
+
+<P>
+It is common to want a stream of random numbers uniformly distributed
+between, say, <I>X</I> and <I>Y</I> -- rather than between 0 and 1.
+This is easily arranged
+<!-- MATH
+ \begin{displaymath}
+\     \mathrm{xrand}(X,Y) = X + (Y-X)*\mathrm{rand}()
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;xrand(<I>X</I>, <I>Y</I>) = <I>X</I> + (<I>Y</I> - <I>X</I>)*rand()
+</DIV><P></P>
+i.e. just scale and shift. This does not affect the randomness in any
+way. Let me give a partial argument to justify that claim. We know
+that <!-- MATH
+ $\mathrm{rand}()$
+ -->
+rand() generates a sequence <!-- MATH
+ $\{x_k\}\subset [0,1)$
+ -->
+{<I>x</I><SUB>k</SUB>} <IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img177.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img177.gif"
+ ALT="$ \subset$"> [0, 1) which is
+uniformly distributed. We want to show that the sequence produced by
+<!-- MATH
+ $\mathrm{xrand}(X,Y)$
+ -->
+xrand(<I>X</I>, <I>Y</I>) has the same kind of property with respect to the
+interval [<I>X</I>, <I>Y</I>). It is easiest to say this in probability
+language. Let [<I>u</I>, <I>v</I>) be an interval in [<I>X</I>, <I>Y</I>). We want the
+probability that a number produced by <!-- MATH
+ $\mathrm{xrand}(X,Y)$
+ -->
+xrand(<I>X</I>, <I>Y</I>) falls in this range
+to be <!-- MATH
+ $(v-u)/(Y-X)$
+ -->
+(<I>v</I> - <I>u</I>)/(<I>Y</I> - <I>X</I>) -- i.e. the subset gets precisely its fair share
+of elements. Now
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT">&nbsp;<I>u</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img11.gif"
+ ALT="$\displaystyle \le$">xrand(<I>X</I>, <I>Y</I>) &lt; <I>v</I>&nbsp;</TD>
+<TD NOWRAP ALIGN="LEFT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG
+ WIDTH="42" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img193.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img193.gif"
+ ALT="$\displaystyle \iff$">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>u</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img11.gif"
+ ALT="$\displaystyle \le$"><I>X</I> + (<I>Y</I> - <I>X</I>)*rand() &lt; <I>v</I></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD>&nbsp;</TD>
+<TD NOWRAP ALIGN="LEFT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG
+ WIDTH="42" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img193.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img193.gif"
+ ALT="$\displaystyle \iff$">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG
+ WIDTH="55" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img194.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img194.gif"
+ ALT="$\displaystyle {\frac{u-X}{Y-X}}$"><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img11.gif"
+ ALT="$\displaystyle \le$">rand() &lt; <IMG
+ WIDTH="55" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img195.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img195.gif"
+ ALT="$\displaystyle {\frac{v-X}{Y-X}}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+Now, you can easily check that this range for <!-- MATH
+ $\mathrm{rand}()$
+ -->
+rand() lies in [0, 1).
+The length of the range is
+<!-- MATH
+ \begin{displaymath}
+\     \frac{v-X}{Y-X} - \frac{u-X}{Y-X} = \frac{v-u}{Y-X}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;<IMG
+ WIDTH="55" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img195.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img195.gif"
+ ALT="$\displaystyle {\frac{v-X}{Y-X}}$"> - <IMG
+ WIDTH="55" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img194.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img194.gif"
+ ALT="$\displaystyle {\frac{u-X}{Y-X}}$"> = <IMG
+ WIDTH="55" HEIGHT="47" ALIGN="MIDDLE" BORDER="0"
+ SRC="img196.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img196.gif"
+ ALT="$\displaystyle {\frac{v-u}{Y-X}}$">
+</DIV><P></P>
+So the probability that <!-- MATH
+ $\mathrm{rand}()$
+ -->
+rand() falls in this range is, by the
+uniform distribution of <!-- MATH
+ $\mathrm{rand}()$
+ -->
+rand(), <!-- MATH
+ $(v-u)/(Y-X)$
+ -->
+(<I>v</I> - <I>u</I>)/(<I>Y</I> - <I>X</I>). So this is the
+probablity that <!-- MATH
+ $\mathrm{xrand}(X,Y)$
+ -->
+xrand(<I>X</I>, <I>Y</I>) gives a value in [<I>u</I>, <I>v</I>). This is
+the value that we wanted.
+
+<P>
+Similar arguments would show that the sequence produced by
+<!-- MATH
+ $\mathrm{xrand}(X,Y)$
+ -->
+xrand(<I>X</I>, <I>Y</I>) is <I>k</I>-distributed on [<I>X</I>, <I>Y</I>) for all <I>k</I>.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1484"
+  HREF="node81.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node81.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1478"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1472"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1480"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1482"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1485"
+  HREF="node81.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node81.html">Generating Random Integers</A>
+<B> Up:</B> <A NAME="tex2html1479"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">Applications of Random Numbers</A>
+<B> Previous:</B> <A NAME="tex2html1473"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">Applications of Random Numbers</A>
+ &nbsp <B>  <A NAME="tex2html1481"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1483"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

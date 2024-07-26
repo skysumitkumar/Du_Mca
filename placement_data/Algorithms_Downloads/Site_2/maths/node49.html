@@ -1,0 +1,185 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Introduction</TITLE>
+<META NAME="description" CONTENT="Introduction">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">
+<LINK REL="previous" HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">
+<LINK REL="up" HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">
+<LINK REL="next" HREF="node50.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node50.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1022"
+  HREF="node50.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node50.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1016"
+  HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1010"
+  HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1018"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1020"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1023"
+  HREF="node50.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node50.html">The ADT Stack</A>
+<B> Up:</B> <A NAME="tex2html1017"
+  HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">Abstract Data Types</A>
+<B> Previous:</B> <A NAME="tex2html1011"
+  HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">Abstract Data Types</A>
+ &nbsp <B>  <A NAME="tex2html1019"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1021"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00710000000000000000">
+Introduction</A>
+</H1>
+One of the simplifications made in modern abstract algebra is the
+identification of appropriate structures in which to consider
+different problems.  Thus for example Galois theory is most natural
+expressed working over a field, while the study of the abstract
+Euclidean algorithm is done in an integral domain.  Each is a type of
+ring with additional structure, and each has the properties in common
+to all (commutative) rings.  The gain is often suggested to be one of
+generality -- that as soon as you know something is an integral
+domain, then you can use all the available results.  But another gain
+is that the set of allowed operations is constrained.  Thus there is
+no point in thinking about dividing in an integral domain, because the
+concept is not available, even though in a practical example of an
+integral domain, such as <!-- MATH
+ $\ensuremath{\mathbb{Z}}$
+ -->
+<IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img155.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img155.gif"
+ ALT="$\ensuremath{\mathbb{Z}}$">, given <!-- MATH
+ $n \in \ensuremath{\mathbb{Z}}$
+ -->
+<IMG
+ WIDTH="44" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img156.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img156.gif"
+ ALT="$n \in \ensuremath{\mathbb{Z}}$">, the inverse, 1/<I>n</I> is
+perfectly well defined.
+
+<P>
+A similar abstraction is useful when considering algorithms.  It
+forces attention on the underlying structure, and disallows ad-hoc
+manipulations.  The abstraction is known as an  Abstract Data Type or (sometimes,
+for brevity) ADT.  And like the abstract structures of algebra, an
+understanding of their utility can only follow a set of definitions,
+and simple examples to illustrate that the structures occur frequently
+in practice.  
+
+<P>
+As a first example consider a restricted class of integers, say
+<!-- MATH
+ $\{n \in \ensuremath{\mathbb{Z}}: 0 \le n \le 100000000\}$
+ -->
+<IMG
+ WIDTH="205" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img157.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img157.gif"
+ ALT="$\{n \in \ensuremath{\mathbb{Z}}: 0 \le n \le 100000000\}$">.  There are some situations
+when it would be helpful to have a name for such a class.  And it may
+be helpful to name an object of this type as
+<code>annualSalaryInPence</code>.  The set of allowed operations can then be
+sensibly restricted.  Thus while it makes sense
+to compute <!-- MATH
+ $1000000 - 25$
+ -->
+1000000 - 25, doing arithmetical operations with an item
+of type <code>AnnualSalaryInPence</code> and an item of type
+<code>AgeInYears</code> is likely to be nonsense.<A NAME="tex2html23"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot4316'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/footnode.html#foot4316"><SUP>3.1</SUP></A>  
+
+<P>
+We next consider some  Abstract Data Types.
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html1024"
+  HREF="node50.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node50.html">The ADT Stack</A>
+<LI><A NAME="tex2html1025"
+  HREF="node51.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node51.html">The ADT Queue</A>
+<LI><A NAME="tex2html1026"
+  HREF="node52.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node52.html">The ADT Array</A>
+<LI><A NAME="tex2html1027"
+  HREF="node53.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node53.html">The ADT List</A>
+<LI><A NAME="tex2html1028"
+  HREF="node54.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node54.html">The ADT Priority Queue</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1022"
+  HREF="node50.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node50.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1016"
+  HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1010"
+  HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1018"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1020"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1023"
+  HREF="node50.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node50.html">The ADT Stack</A>
+<B> Up:</B> <A NAME="tex2html1017"
+  HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">Abstract Data Types</A>
+<B> Previous:</B> <A NAME="tex2html1011"
+  HREF="node48.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node48.html">Abstract Data Types</A>
+ &nbsp <B>  <A NAME="tex2html1019"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1021"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

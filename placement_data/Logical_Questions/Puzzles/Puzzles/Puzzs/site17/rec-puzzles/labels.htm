@@ -1,0 +1,38 @@
+<html><head>
+<title>Solution for /arithmetic/digits/labels</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/digits/labels problem</h1>
+<hr>
+The method I used for this problem involved first coming up with a
+formula that says how many times a digit has been used in all n models.
+
+<pre>
+n = k*10^i + m for some k,m with 0 &lt;k &lt;10, m &lt; 10^i
+f(d,n) = (number of d's used getting to k*10^i from digits 0 to (i-1)) +
+	(number of d's used by #'s 10^i to n from digit i) + f(d,m)
+f(d,n) = i*k*10^(i-1) + (if (d &lt; k) 10^i else if (d == k) m+1 else 0) + f(d,m)
+</pre>
+This doesn't count 0's, which should be ok as they are not used as often
+as other digits.  From the formula, it is clear that f(1,n) is never
+less than f(d,n) for 1&lt;d&lt;10.
+So I just calculated f(1,n) for various n (with some help from bc).
+
+<p>
+I quickly discovered that for n = 2*10^15, f(1,n) = 2*n.  After further
+trials I determined that for n = 1999919999999981, f(1,n) = 2*n + 1. 
+This appears to be the smallest n with f(1,n) &gt; 2*n.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

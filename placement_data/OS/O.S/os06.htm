@@ -1,0 +1,464 @@
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Copyright" content="Brian Brown, 1998, All rights reserved">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0"><title>Operating Systems: Part 6</title><script charset="utf-8" id="injection_graph_func" src="os06_files/injection_graph_func.js"></script></head><body bgcolor="#ffffff">
+
+<p align="center"><a name="start"></a><font color="#000080" size="5">Operating Systems Introduction</font><font color="#ff00ff" size="6"> </font><br>
+Author: Brian Brown, 1995-2000. All rights reserved.<br>
+<a href="http://uva.ulb.ac.be/cit_courseware/opsys/os05.htm"><font size="2">Previous</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/default.htm"><font size="2">Home Page</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/os07.htm"><font size="2">Next</font></a></p>
+
+<hr>
+
+<p><a href="#start"><font size="4"><strong><img src="os06_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>SOFTWARE TOOLS</font><br>
+This section introduces you to some of the utilities associated
+with the development of programs. These program development tools
+allow users to write and construct programs that the operating
+system (or another) can run.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="editor"></a> <a href="#start"><font size="4"><strong><img src="os06_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>EDITORS</font><br>
+Editors are programs used to create documents. They provide
+facilities for</p>
+
+<ul>
+    <li>Loading/Editing/Saving of source documents</li>
+    <li>Change/Replace text strings, characters or words</li>
+    <li>Find/Search for text strings, characters or words</li>
+    <li>Move/Copy/Delete blocks of text </li>
+</ul>
+
+<p>Editors consist of two basic types, line based and screen
+based.</p>
+
+<p><font size="3"><strong>Line Based Editors</strong></font><br>
+The line based editor presents a single line for editing. Each
+line may be called up in turn. The left and right cursor keys may
+be used to edit the line of text. Standard facilities exist to
+perform search/find/replace/move items of text. These types of
+editors are cheap, provide a basic set of functions, and are
+reasonably small in terms of code size. A limited number of
+commands are offered that people can quickly learn. Examples of
+line-based editors are edlin and vi.</p>
+
+<p><strong>Screen Based Editors</strong><br>
+These provide a range of enhanced features, and editing is
+performed using the whole screen (multiple lines are shown at a
+time). The cursor may be moved in any of the four directions.
+Provision is made for scrolling the text when the cursor exceeds
+the boundary of the display window. Screen based editors are
+normally written for specific types of computers, and thus tend
+to be more costly, but provide a greater range of facilities, and
+can be more readily customized for particular applications (such
+as standard mail/form generation).</p>
+
+<p>The screen editors may be command driven, where all functions
+to be performed are entered as commands on a single command line,
+or may be key generated, where pressing certain keys perform the
+desired function. Command driven editors tend to be the easiest
+and quickest to learn.</p>
+
+<p>By displaying more than one line at a time, screen editors
+facilitate the speedy modifications required for source documents.
+Examples of screen-based editors are Notepad, WordPad, and Word
+2000.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="xlat"></a> <a href="#start"><font size="4"><strong><img src="os06_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>THE PROGRAM TRANSLATION SEQUENCE</font><br>
+In developing a software program to accomplish a particular task,
+the program developer chooses an appropriate language, develops
+the algorithm (a sequence of steps, which when carried out in the
+order prescribed, achieve the desired result), implements this
+algorithm in the chosen language (coding), then tests and debugs
+the final result. There is also a probable maintenance phase.</p>
+
+<p>When you write a program in a source language such as Pascal
+or C, the program statements (in the source text file) needs to
+be converted into the binary bit-patterns which make sense to the
+target processor (the processor on which the software will be run).
+This process of conversion is called translation. </p>
+
+<p><img src="os06_files/progtran.gif" height="125" width="418"></p>
+
+<p>&nbsp;</p>
+
+<p><a name="asm"></a> <a href="#start"><font size="4"><strong><img src="os06_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>ASSEMBLERS</font><br>
+Assemblers are programs that generate machine code instructions
+from a source code program written in assembly language. The
+features provided by an assembler are,</p>
+
+<ul>
+    <li>allows the programmer to use mnemonics when writing
+        source code programs. </li>
+    <li>variables are represented by symbolic names, not as
+        memory locations</li>
+    <li>symbolic code is easier to read and follow</li>
+    <li>error checking is provided</li>
+    <li>changes can be quickly and easily incorporated with a re-assembly</li>
+    <li>programming aids are included for relocation and
+        expression evaluation. </li>
+</ul>
+
+<p><strong>What is an assembler mnemonic?</strong><br>
+A mnemonic is an abbreviation for a machine code statement.
+During the translation phase, each mnemonic is translated to an
+equivalent machine code instruction.</p>
+
+<blockquote>
+    <p>MOV AX, 0ffh</p>
+</blockquote>
+
+<p>is translated to the binary bit patterns</p>
+
+<blockquote>
+    <p>10111000 (this means MOV AX)<br>
+    11111111 (this is ff hexadecimal)<br>
+    00000000 (this is 0)<br>
+    </p>
+</blockquote>
+
+<p><strong>What are assembler pseudo-ops?</strong><br>
+Assemblers also provide keywords called pseudo-ops. These
+keywords provide directions (hence they are also called assembler
+directives) to the assembler. Pseudo-ops do not generate machine
+instructions. The following pseudo-op</p>
+
+<blockquote>
+    <p>DB 'ab'</p>
+</blockquote>
+
+<p>allocates and initializes a byte of storage for each character
+of the string, thus two bytes will be allocated, one initialized
+to the character 'a' whilst the other byte would be initialized
+to the character 'b'.</p>
+
+<p>&nbsp;</p>
+
+<p><strong>What type of code does an assembler generate?</strong><br>
+The assembler does not normally generate executable code. An
+assembler produces an object code file that must be further
+processed (linked) in order to generate a file that can be
+executed directly.</p>
+
+<p><strong>An example assembly language program</strong></p>
+
+<pre>				; H means hexadecimal values
+		ORG 0100H	;This program starts at address 0100 hex
+STATUS:		DFB 23H		;This byte is identified as STATUS, and is
+				;initialized to a value of 23 hex
+CODE:		LDAA STATUS	;The label called CODE is identified as a
+				;machine code instruction which loads the
+				;A accumulator with the contents of the
+				;memory location associated with the label
+				;STATUS, ie, the value 23
+		JMP CODE	;Jump to the address associated with CODE</pre>
+
+<p>&nbsp;</p>
+
+<p><a name="hll"></a> <a href="#start"><font size="4"><strong><img src="os06_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>WHAT IS A HIGH LEVEL LANGUAGE?</font><br>
+In a HLL, one English type statement represents a sequence of
+machine code statements. Examples of a high level language are
+Pascal, Basic and C. High level languages are useful in
+developing complex software, as they support complex data
+structures, and increase programmer productivity (the number of
+lines of code generated per hour). Unlike assembly language, it
+also means that the programmer does not need to learn the
+instruction set of each computer being worked with.</p>
+
+<p>All HLL statements must be converted to machine code in order
+for a processor to run them. There are two ways in which high
+level language statements are converted into machine code, either
+at runtime (interpreted) or before runtime (compiled).</p>
+
+<p>&nbsp;</p>
+
+<p><a name="interp"></a> <a href="#start"><font size="4"><strong><img src="os06_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>WHAT IS AN INTERPRETER?</font><br>
+The source code program is run through a program called an
+interpreter. Each line of the program is sent to the interpreter
+that converts it into equivalent machine code instructions. These
+machine code instructions are then executed. The next source line
+is then fetched from memory, converted and executed. This process
+is repeated till the entire program has been executed.</p>
+
+<p>Examples of interpreted languages are BASIC (Beginners All
+Purpose Symbolic Instruction Code) and Java.</p>
+
+<p><strong>An example BASIC program</strong></p>
+
+<pre>	10 REM Program by ..................
+	20 REM Initialize variables
+	30 Time = 6
+	40 Speed = 500
+	50 Distance = Time * Speed
+	60 PRINT Distance
+	70 END</pre>
+
+<p>&nbsp;</p>
+
+<p><a name="compiler"></a> <a href="#start"><font size="4"><strong><img src="os06_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>WHAT DOES A COMPILER DO?</font><br>
+Compilers accept source programs written in a high level language
+and produce object code programs that are then linked with
+standard libraries to produce an executable file. Compilers
+generate code that is reasonably fast, but is target specific (it
+only runs on a particular computer system).</p>
+
+<table border="0">
+    <tbody><tr>
+        <td valign="top" width="30%">The source program is
+        written using an editor. Most compiled languages do not
+        use line numbers.The example on the right is a C program.</td>
+        <td>&nbsp;</td>
+        <td><pre>#include &lt;stdio.h&gt;</pre>
+        <pre>main {
+	printf("Hello world\n');
+	return 1;
+}</pre>
+        </td>
+    </tr>
+</tbody></table>
+
+<p>Once the program has been written using the appropriate source
+statements, it is then passed to a compiler that converts the
+entire program into object code. The object code cannot be run on
+the computer system, so the object code file is then sent to a
+linker that combines it with libraries (other object code) to
+create an executable program. Because the entire program is
+converted to machine code, it runs very quickly.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="linker"></a> <a href="#start"><font size="4"><strong><img src="os06_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>WHAT DOES A LINKER DO?</font><br>
+The BASIC interpreter already has its own libraries for Input and
+Output (I/O), so BASIC programs don't need linking. The source
+program is converted directly into executable code.</p>
+
+<p>Compiled languages (as well as assembled) need both linking
+and loading. The output of compilers and assemblers are stored in
+an intermediate format called object code. This is stored as a
+file on disk. The object code must be combined with other object
+code files or libraries (special object code files) before
+execution.</p>
+
+<p>The linker combines the programs object code with the runtime
+object code files (for handling files, screen output, the
+keyboard etc) into an executable format.</p>
+
+<p>The types of files that exist at each phase of the program
+translation sequence are,</p>
+<div align="center"><center>
+
+<table border="1">
+    <tbody><tr>
+        <td>myprog.c </td>
+        <td>source code program</td>
+    </tr>
+    <tr>
+        <td>myprog.obj </td>
+        <td>object code produced by compiler</td>
+    </tr>
+    <tr>
+        <td>myprog.exe </td>
+        <td>executable file produced by linker</td>
+    </tr>
+</tbody></table>
+</center></div>
+
+<p>&nbsp;</p>
+
+<p><a name="loader"></a> <a href="#start"><font size="4"><strong><img src="os06_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>LOADERS</font><br>
+It is normally the responsibility of the Operating System to load
+and execute files. The part of the operating system that performs
+this function is called a <strong>loader</strong>.</p>
+
+<p><strong>The absolute loader</strong><br>
+There are two types of loaders, relocating and absolute. The
+absolute loader is the simplest and quickest of the two. The
+loader loads the file into memory at the location specified by
+the beginning portion (header) of the file, then passes control
+to the program. If the memory space specified by the header is
+currently in use, execution cannot proceed, and the user must
+wait until the requested memory becomes free.</p>
+
+<p><strong>The relocating loader</strong><br>
+The relocating loader will load the program anywhere in memory,
+altering the various addresses as required to ensure correct
+referencing. The decision as to where in memory the program is
+placed is done by the Operating System, not the programs header
+file. This is obviously more efficient, but introduces a slight
+overhead in terms of a small delay whilst all the relative
+offsets are calculated. The relocating loader can only relocate
+code that has been produced by a linker capable of producing
+relative code.</p>
+
+<p>A loader is unnecessary for interpreted languages, as the
+executable code is built up into the memory of the computer.</p>
+
+<p>&nbsp;</p>
+
+<p><a href="#start"><font size="4"><strong><img src="os06_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong></font><strong>WHAT IS A LOCATOR?</strong><br>
+Program locators convert the output of the linker (the executable
+file) into an absolute load format file. This type of file will
+eventually reside in specific memory locations, and is used to
+embed software into EPROM chips.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="xref"></a> <a href="#start"><font size="4"><strong><img src="os06_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>WHAT DOES A CROSS REFERENCE UTILITY DO?</font><br>
+These allow the programmer to generate a table that lists all
+symbols, labels, names, modules etc. Each occurrence is listed,
+and generally the source program is given line numbers to
+facilitate this process.</p>
+
+<p>The cref utility should detect data variables and assign
+symbols to them, presenting a variety of formats (by name, module
+etc). The cref table is useful in debugging, as the programmer
+can ascertain in which modules a particular variable is
+referenced.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="disasm"></a> <a href="#start"><font size="4"><strong><img src="os06_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>WHAT IS A DISASSEMBLER?</font><br>
+Disassemblers convert machine code instructions into mnemonic
+opcodes and operands, facilitating debugging at the machine code
+level. The more sophisticated disassemblers provide for</p>
+
+<ul>
+    <li>generation of symbols and labels </li>
+    <li>cross reference tools</li>
+    <li>disassembly of memory or disk files</li>
+    <li>output of disassembly to disk file</li>
+    <li>relocation information </li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p><a name="debug"></a> <a href="#start"><font size="4"><strong><img src="os06_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>WHAT ARE DEBUGGERS AND MONITORS?</font><br>
+A monitor is a small program that allows machine code access. A
+monitor provides,</p>
+
+<ul>
+    <li>manipulation of memory </li>
+    <li>manipulation of processor registers</li>
+    <li>simple trace, single step, go commands</li>
+    <li>breakpoints </li>
+    <li>maybe a disassembler and inline assembler </li>
+    <li>disk/tape i/o </li>
+</ul>
+
+<p>Debuggers provide much the same facilities as monitors, but
+generally provide a wider range of features,</p>
+
+<ul>
+    <li>provision for HLL source debugging </li>
+    <li>split screens, windowing</li>
+    <li>reference by symbols, module names and labels</li>
+    <li>radix changing</li>
+    <li>dynamic tracing of hardware interrupts</li>
+    <li>Operating System calls and stack tracing </li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p><a name="xasm"></a> <a href="#start"><font size="4"><strong><img src="os06_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>WHAT IS A CROSS ASSEMBLER?</font><br>
+Cross assemblers allow a programmer to develop machine code
+programs on one computer system for another system (target). In
+this way, a programmer can develop a machine code program for a
+Macintosh computer system using an IBM-PC. The cross-assembler
+running on the PC generates the machine code instructions
+necessary for the Macintosh.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="revision6"></a> <a href="#start"><font size="4"><strong><img src="os06_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>Revision Exercise 6</font><br>
+List FOUR features of a line based editor.</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+</center></div>
+
+<p>What does an assembler do?</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+</center></div>
+
+<p>What does a linker do?</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+</center></div>
+
+<p>How does an interpreter differ from a compiler?</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+</center></div>
+
+<p>What is a cross-assembler?</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+</center></div>
+
+<p><a href="#start"><font size="4"><strong><img src="os06_files/up.gif" border="0" height="15" width="15"></strong></font></a></p>
+
+<p align="center"><a href="http://uva.ulb.ac.be/cit_courseware/opsys/os05.htm"><font size="2">Previous</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/default.htm"><font size="2">Home Page</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/os07.htm"><font size="2">Next</font></a></p>
+<!-- #counter var="compteur_cit" display="false" -->
+
+</body></html>

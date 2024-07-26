@@ -1,0 +1,26 @@
+Q) write an ALP to find sum of First n natural numbers using the following Instructions
+
+LDA num ; load Accumulator with num
+DCR R ; decrement Register R
+INR R ; increment Register R
+MOV x,y ; move the contents of register y into register x
+JZ label ; jump to label if A=0
+DJNZ label; Decrement & Jump if A <> 0
+you can use B & C registers in addition to A register
+
+
+
+
+LDA 0
+MOV C,A
+
+LDA num
+MOV B,A
+
+L1 : INR C
+     DJNZ L1
+     
+MOV A,B
+DCR B
+DJNZ L1
+    

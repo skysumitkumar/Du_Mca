@@ -1,0 +1,463 @@
+
+<HTML>
+<HEAD>
+<TITLE>CRACK THE INTERVIEW - What is infix, prefix, postfix? How can you convert from one representation to another? How do you evaluate these expressions?  (www.cracktheinterview.com)</TITLE><style type="text/css">
+<!--
+.breakhere     {page-break-before: always}
+
+A:link         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+A:active       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+A:visited      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+
+H1             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt; font-weight:bold; color:#336699} 
+H2             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; font-weight:bold} 
+.normal        {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+.announce      {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#000000} 
+.announceLink  {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#336699} 
+.note          {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt ! important; font-weight:normal} 
+.system        {font-family:Courier New, Courier; font-size:x-small;
+                font-weight:normal} 
+.stayblue      {color:#336699 ! important}
+.title         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:larger ! important} 
+.error         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; color:#aa0000; font-weight:bold} 
+.notelink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:normal;
+                font-size:9pt ! important} 
+.tableHeader   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableHeaderSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRow      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#f7f7e7} 
+.tableBlank    {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#ffffff} 
+.hardlink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:bold;
+                font-size:8pt ! important} 
+.boxlink       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#000000 ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.hardnote      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:black ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.tableRowSmall {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal} 
+.tableRowSmallBold {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                bold} 
+.blueHeading   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:bold;
+                color:#336699! important} 
+.blueHeadingLarge {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:16pt! important; font-weight:normal;
+                color:#336699} 
+.blueHeadingMid {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:normal;
+                color:#336699}
+.blueHeadingSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt! important; font-weight:bold;
+                color:#336699} 
+.tableHeaderV  {font-family:Verdana,Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRowV     {font-family:Verdana,Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal; background-color:#f7f7e7} 
+.just          {text-align: justify}
+-->
+</style>
+
+<META NAME="keywords" CONTENT="interview,C,infix,postfix,prefix,conversion,convert">
+<META NAME="description" CONTENT="What is infix, prefix, postfix? How can you convert from one representation to another? How do you evaluate these expressions? ">
+<META NAME="robots" CONTENT="FOLLOW,INDEX">
+<META HTTP-EQUIV="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+
+</HEAD>
+<BODY>
+<TABLE BORDER=0 cellpadding=10>
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER><A HREF="http://www.cracktheinterview.com"><IMG SRC=http://www.cracktheinterview.com/images/logo2.jpg border=0></img></A></CENTER></TD>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2>
+<CENTER>
+
+
+<!--START:ADS0-->
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+
+</CENTER>
+</TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER>
+
+<!--START:LINKS-->
+
+
+<TABLE BORDER=0 cellpadding=10>
+<TR><TD NOWRAP>
+<A HREF="http://www.cracktheinterview.com" target="_top"><font class=announcelink>Home</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="http://www.cracktheinterview.com/adfaqpublish.html" target="_top"><font class=announcelink>Questions</font></A><BR>
+</TD>
+
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/search.html" target="_top"><font class=announcelink>Search</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="http://www.cracktheinterview.com/forum" target="_top"><font class=announcelink>Forum</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="mailto:cracktheinterview@gmail.com?subject=Hi!"><font class=announcelink>Contact</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/forum/viewforum.php?f=2" target="_top"><font class=announcelink>Guest Book</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/forum/viewforum.php?f=3" target="_top"><font class=announcelink>Polls!</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="http://www.cracktheinterview.com/forum/viewforum.php?f=4" target="_top"><font class=announcelink>Got a Question?</font></A><BR>
+</TD>
+
+</TABLE>
+
+<!--END-->
+
+</CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER> &nbsp; </CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=90%% valign=top>
+
+
+
+
+
+<!--START : DATA-->
+
+
+
+<TABLE BORDER=0>
+
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="19_11.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=blueHeading>General Concepts</font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="19_13.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD>
+<TD WIDTH=90%%><CENTER><font class=blueHeading>(252 / 268)</font></center></TD>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%></TD>
+<TD WIDTH=90%%><center>&nbsp;</center></TD>
+<TD WIDTH=5%%></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=announceLink><BR><BR><BR>
+<!--THE QUESTION-->
+
+What is infix, prefix, postfix? How can you convert from one representation to another? How do you evaluate these expressions? <BR>
+<!--END-->
+<BR></font></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=normal>
+<!--THE ANSWER--><BR>
+<!--META:START--><!--interview,C,infix,postfix,prefix,conversion,convert--><!--META:END--><BR>
+<BR>
+There are three different ways in which an expression like <font class=announcelink>a+b</font> can be represented. <BR>
+<BR>
+<font class=announcelink>Prefix (Polish)</font><BR>
+<CODE><BR>
++ab<BR>
+</CODE><BR>
+<BR>
+<font class=announcelink>Postfix (Suffix or reverse polish)</font><BR>
+<CODE><BR>
+ab+<BR>
+</CODE><BR>
+<BR>
+<font class=announcelink>Infix</font><BR>
+<CODE><BR>
+a+b<BR>
+</CODE><BR>
+<BR>
+Note than an <font class=announcelink>infix</font> expression can have parathesis, but <font class=announcelink>postfix</font> and <font class=announcelink>prefix</font> expressions are <font class=announcelink>paranthesis free</font> expressions.<BR>
+<BR>
+<BR>
+<BR>
+<font class=announcelink>Conversion from infix to postfix</font><BR>
+<BR>
+Suppose this is the infix expresssion<BR>
+<BR>
+<CODE><BR>
+((A&nbsp;+&nbsp;(B&nbsp;-&nbsp;C)&nbsp;*&nbsp;D)&nbsp;^&nbsp;E&nbsp;+&nbsp;F)<BR>
+</CODE><BR>
+<BR>
+To convert it to postfix, we add an extra <font class=announcelink>special</font> value <font class=announcelink>]</font> at the end of the infix string and push <font class=announcelink>[</font> onto the stack.<BR>
+<BR>
+<CODE><BR>
+((A&nbsp;+&nbsp;(B&nbsp;-&nbsp;C)&nbsp;*&nbsp;D)&nbsp;^&nbsp;E&nbsp;+&nbsp;F)]<BR>
+<BR>
+---------><BR>
+</CODE><BR>
+<BR>
+We move from <font class=announcelink>left to right</font> in the infix expression. We keep on pushing elements onto the stack till we reach a <font class=announcelink>operand</font>. Once we reach an <font class=announcelink>operand</font>, we add it to the output. If we reach a <font class=announcelink>)</font> symbol, we pop elements off the stack  till we reach a corresponding <font class=announcelink>{</font> symbol. If we reach an <font class=announcelink>operator</font>, we pop off any <font class=announcelink>operators</font> on the stack which are of higher precedence than this one and push this <font class=announcelink>operator</font> onto the stack. <BR>
+<BR>
+As an example<BR>
+<BR>
+<CODE><BR>
+Expresssion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stack&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Output<BR>
+----------------------------------------------------------------------------<BR>
+((A&nbsp;+&nbsp;(B&nbsp;-&nbsp;C)&nbsp;*&nbsp;D)&nbsp;^&nbsp;E&nbsp;+&nbsp;F)]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<BR>
+^<BR>
+<BR>
+((A&nbsp;+&nbsp;(B&nbsp;-&nbsp;C)&nbsp;*&nbsp;D)&nbsp;^&nbsp;E&nbsp;+&nbsp;F)]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[((&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A<BR>
+&nbsp;&nbsp;^<BR>
+<BR>
+((A&nbsp;+&nbsp;(B&nbsp;-&nbsp;C)&nbsp;*&nbsp;D)&nbsp;^&nbsp;E&nbsp;+&nbsp;F)]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[((+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;^<BR>
+<BR>
+((A&nbsp;+&nbsp;(B&nbsp;-&nbsp;C)&nbsp;*&nbsp;D)&nbsp;^&nbsp;E&nbsp;+&nbsp;F)]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[((+(-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ABC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^<BR>
+<BR>
+((A&nbsp;+&nbsp;(B&nbsp;-&nbsp;C)&nbsp;*&nbsp;D)&nbsp;^&nbsp;E&nbsp;+&nbsp;F)]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ABC-D*+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^<BR>
+<BR>
+((A&nbsp;+&nbsp;(B&nbsp;-&nbsp;C)&nbsp;*&nbsp;D)&nbsp;^&nbsp;E&nbsp;+&nbsp;F)]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ABC-D*+E^F+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^<BR>
+<BR>
+((A&nbsp;+&nbsp;(B&nbsp;-&nbsp;C)&nbsp;*&nbsp;D)&nbsp;^&nbsp;E&nbsp;+&nbsp;F)]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ABC-D*+E^F+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^<BR>
+</CODE><BR>
+<BR>
+<font class=announcelink>Is there a way to find out if the converted postfix expression is valid or not</font><BR>
+<BR>
+<font class=announcelink>Yes</font>. We need to associate a <font class=announcelink>rank</font> for each symbol of the expression. The rank of an <font class=announcelink>operator</font> is <font class=announcelink>-1</font> and the rank of an operand is <font class=announcelink>+1</font>. The total rank of an expression can be determined as follows:<BR>
+<BR>
+<CODE><BR>
+-&nbsp;If&nbsp;an&nbsp;operand&nbsp;is&nbsp;placed&nbsp;in&nbsp;the&nbsp;post&nbsp;fix&nbsp;expression,&nbsp;increment&nbsp;the&nbsp;rank&nbsp;by&nbsp;1.<BR>
+-&nbsp;If&nbsp;an&nbsp;operator&nbsp;is&nbsp;placed&nbsp;in&nbsp;the&nbsp;post&nbsp;fix&nbsp;expression,&nbsp;decrement&nbsp;the&nbsp;rank&nbsp;by&nbsp;1.<BR>
+</CODE><BR>
+<BR>
+At any point of time, while converting an infix expression to a postfix expression, the rank of the expression can be greater than or equal to one. If the rank is anytime less than one, the expression is invalid. Once the entire expression is converted, the rank must be equal to 1. Else the expression is invalid.<BR>
+<BR>
+<BR>
+<BR>
+<font class=announcelink>Conversion from infix to prefix</font><BR>
+<BR>
+This is very similar to the method mentioned above, except the fact that we add the <font class=announcelink>special</font> value <font class=announcelink>[</font> at the start of the expression and <font class=announcelink>]</font> to the stack and we move through the infix expression from <font class=announcelink>right to left</font>. Also at the end, reverse the output expression got to get the prefix expression.<BR>
+<BR>
+<BR>
+<BR>
+<font class=announcelink>Evaluation of a postfix expression</font><BR>
+<BR>
+Here is the pseudocode. As we scan from left to right<BR>
+<BR>
+<UL><BR>
+<LI>If we encounter an operand, push it onto the stack.<BR>
+<LI>If we encounter an operator, pop 2 operand from the stack. The first one popped is called operand2 and the second one is called operand1.<BR>
+<LI>Perform Result=operand1 operator operand2. <BR>
+<LI>Push the result onto the stack.<BR>
+<LI>Repeat the above steps till the end of the input.<BR>
+</UL> <BR>
+<BR>
+<BR>
+<font class=announcelink>Convert from postfix expression to infix</font><BR>
+<BR>
+This is the same as postfix evaluation, the only difference being that we wont evaluate the expression, but just present the answer. The scanning is done from left to right.<BR>
+<BR>
+<CODE><BR>
+ABC-D*+<BR>
+<BR>
+A(B-C)D*+<BR>
+<BR>
+A((B-C)*D)+<BR>
+<BR>
+A+((B-C)*D)<BR>
+</CODE><BR>
+<BR>
+<BR>
+<font class=announcelink>Convert from postfix expression to infix</font><BR>
+<BR>
+The scanning is done from right to left and is similar to what we did above.<BR>
+<BR>
+<CODE><BR>
++A*-BCD<BR>
+<BR>
+Reverse&nbsp;it<BR>
+<BR>
+DCB-*A+<BR>
+<BR>
+D(B-C)*A+<BR>
+<BR>
+((B-C)*D)A+<BR>
+<BR>
+A+((B-C)*D)<BR>
+</CODE> 
+<BR><BR>
+<!--END-->
+</font><BR></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="19_11.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=notelink><A href="mailto:cracktheinterview@gmail.com?subject=Comments [What is infix, prefix, postfix? How can you convert from one representation to another? How do you evaluate these expressions? ]&Body=Question : [What is infix, prefix, postfix? How can you convert from one representation to another? How do you evaluate these expressions? ]"><font class=announcelink>COMMENTS</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><A HREF=../adfaqpublish.html>INDEX</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><a href="#" onclick="window.print();return false;">PRINT</a></font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="19_13.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<BR><BR><BR><font class=notelink>
+Last updated:
+
+July 8, 2005<BR><BR>
+<a href=http://www.cracktheinterview.com>www.cracktheinterview.com</a> - Your destination for the most common IT interview questions, answers, frequently asked interview questions (FAQ), C Programs, C Datastructures for interviews conducted by Microsoft, Oracle, Google, IBM, HP, Yahoo, Infosys, Wipro, SAP, CA (Computer Associates), Sun, Adobe, GE, Novell, Cisco, Motorola, TI (Texas Instruments), Intel, TCS, iFlex, Trilogy, MindTree, GS and more...<br><BR>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+
+<!--END-->
+
+
+</TD>
+
+
+
+
+<TD WIDTH=10%% valign="top">
+
+
+<!--START:ADS1-->
+
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_alternate_color = "CCCCCC";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+</TD>
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+</BODY>
+</HTML>
+
+

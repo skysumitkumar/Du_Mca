@@ -1,0 +1,1029 @@
+<html>
+<head>
+<meta name="author" content="Michael Horowitz">
+<meta name="keywords" content="Backup, Script, vb, file, WSH, Backup Script">
+<meta name="description" content="A Backup Script for Windows Scripting Host - WSH">
+<title>Michael's File Backup Script </title>
+<LINK REL=StyleSheet HREF="mh.css" tppabs="http://www.michaelhorowitz.com/mh.css"  TYPE='text/css'>
+<STYLE TYPE="text/css"><!--
+    body { font-family: Verdana, Arial, Helvetica; font-size: 80%;  }
+    P  { font-family: Verdana, Arial, Helvetica; font-size: 100%; }
+    TD { font-family: Verdana, Arial, Helvetica; font-size: 80%; }
+    UL { font-family: Verdana, Arial, Helvetica; font-size: 90%; }
+--></STYLE>
+</head>
+
+<body>
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#717855">
+    <td align="left" width="257"><img border="0" src="mhlogo.gif" tppabs="http://www.michaelhorowitz.com/pix/mhlogo.gif" width="255" height="29"></td>
+    <td align="right" >
+<a href="index.htm" tppabs="http://www.michaelhorowitz.com/index.htm" class="breadlink">Home</a>
+<span class="bread"> <a name="top"> =></a> Backup Script &nbsp;</span></td></tr>
+</table>
+
+<h1 align="center">Michael's Backup Script</h1>
+
+<table border="2" cellpadding="8" cellspacing="0" width="100%" bordercolor="#717855" bgcolor="#FFFFFF"> <tr>
+<td width="100%" onMouseOver="this.style.backgroundColor='#FFFAFE';" onMouseOut="this.style.backgroundColor='#fff4e1';">
+Topics on this page: <a href="#WhatItDoes"> What This Script Does</a>,&nbsp; <a href="#ConfigurationVariables">Configuration
+Variables</a>,&nbsp; <a href="#INPUT&nbsp;">Input</a>,&nbsp;
+<a href="#OUTPUT&nbsp;">Output</a>, &nbsp;<a href="#Profiles">Profiles</a>,&nbsp;
+<a href="#GetScript">Get the Script</a>,&nbsp;
+<a href="#Requirements">Requirements</a>,&nbsp; <a href="#RunScript">Running the Script</a>,&nbsp;
+<a href="#BELLS">Bells and
+Whistles</a>,&nbsp; <a href="#ProsAndCons">Pros and Cons</a>,&nbsp;
+<a href="#WSHsecurity">WSH Security</a>,&nbsp;<a href="#AfterTheBackup">After
+the Backup</a>,&nbsp; <a href="#SampleLogFile">Sample Log File</a>,&nbsp;<a href="#UserExperiences">Problems</a> and
+<a href="#RevisionHistory">Revision History</a>
+</td></tr>
+</table>
+
+<img border="0" src="CopyFolders.gif" tppabs="http://www.michaelhorowitz.com/pix/CopyFolders.gif" Title="Copying Folders" align="right" width="170" height="157">
+<h3><a name="WhatItDoes">WHAT</a> THIS SCRIPT DOES</h3>
+
+<p>This script (a type of computer program) backs up directories (a.k.a.
+folders). Why did I write a script to do
+something so trivial? I needed it for myself. On my main computer, I was backing up a multitude of
+folders with Windows explorer. This was error prone (I might forget to backup a directory) and time consuming. I copied one directory, waited for it
+to complete, then copied another. Often the directories took a long time to
+back-up which meant twiddling my thumbs at my computer. Then there was the other
+computer where I wasn't backing up anything <b>. . .&nbsp;</b></p>
+
+<p> Backups have to be easy to do, or
+most people won't do them. With this in mind, my goal with this script was to
+make it as easy to run as possible. Towards that end, it can be configured for
+one click backup. That is, you can set up an icon on your Windows desktop for
+this script, click on the icon to run the script and that's it. It will do
+everything from soup to nuts without asking any questions or posing any prompts.
+There are other ways to run the script, and it can provide much information if
+you so desire, but my goal was the easiest possible backup <b>to run</b>. When
+I'm in the middle of doing something else and need to make backups, the last
+thing I wanted to have to do was <i>think</i> about the backups.&nbsp;</p>
+
+<p>The tradeoff is that it may entail some waste (backup some files that don't
+really need to be backed up) and there are fewer backup options compared to many
+other backup programs.&nbsp;For example, this script only backs up entire directories. It does not back  up individual files.
+If you need to back up some files in a directory but not others, this is not the
+product for you. On the other hand, it can back up any number of
+directories.&nbsp;&nbsp;</p>
+
+<p>Almost everyone needs to backup files from multiple directories. You fall into this category if you don't keep <i>every</i> important file in the My Documents folder.
+It should be especially useful to people who need to back up different directories on
+different computers. Copy the script to each computer and customize it as needed.&nbsp;</p>
+
+<p>Even if you are brutally organized, and keep all your files in a single
+directory, you may still want to backup files in multiple directories. For
+example, you might want copies of your E-mail and web browser
+Favorites/Bookmarks. AOL users might want to backup
+the AOL download directory. If you use the Outlook calendar, you may want a copy
+of the file holding your schedule. Windows 2000 users might
+want to back up the WINNT/Repair directory.&nbsp;</p>
+
+<p>This script is most useful in cases where you are backing up files to a location that is large enough to store multiple copies of them. For example, if you were backing up 200 KB of files, you could fit 6 copies of your files on a single floppy disk. If you back up your files to media that can only hold one or two copies, then this script
+may not be your best option.&nbsp;</p>
+
+<p>The script is written in VBScript and intended to be run under Windows
+Scripting Host (WSH). For more on WSH, see the <a href="#GetScript">Get The
+Script</a> section below.&nbsp;</p>
+
+<h3><a name="ConfigurationVariables">CONFIGURATION
+VARIABLES</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Arial" size="1"><a href="#top">back to top</a></font></h3>
+
+<p>You control the action of the script by modifying configuration variables
+(a.k.a. controlling parameters) in the script. Like all scripts, this one is
+distributed as source code and can be edited with Notepad.&nbsp; Below is a sample of these
+variables. The rest of this document describes the meaning of each of these
+variables in detail.&nbsp;</p>
+
+<p><font face="Courier New" size="2">&nbsp;'**************************************************************<br>
+&nbsp;'&nbsp;&nbsp;&nbsp; Configuration Variables&nbsp;<br>
+&nbsp;'**************************************************************<br>
+&nbsp;OutputDrive = "D"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'Output Drive letter<br>
+&nbsp;dim sourcefolders(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'Define a list of 2 directories to be
+copied&nbsp;<br>
+&nbsp;sourcefolders(0) = &quot;F:\FamilyPix"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'Back up this directory<br>
+&nbsp;sourcefolders(1) = &quot;C:\WINNT\repair&quot;&nbsp;&nbsp;&nbsp; 'Back up
+this directory<br>
+&nbsp;AutoOpMode = "no"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'Auto operations mode? Use "yes" or "no"<br>
+&nbsp;MinBkupsToKeep = 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+'Minimum number of backup generations to keep&nbsp;<br>
+&nbsp;MinDaysToKeep = 8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'Minimum number of days to keep every backup generation<br>
+&nbsp;OutputFilePrefix = "MikeBkup"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'File name prefix&nbsp;<br>
+&nbsp;LogComment = "Look ma, no hands!"&nbsp; 'A comment that is written to the log file<br>
+&nbsp;SystemLogging = "no"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+'Enable system logging? "yes" or "no"<br>
+&nbsp;</font></p>
+
+
+<h3><a name="INPUT&nbsp;">INPUT</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font face="Arial" size="1"><a href="#top">back to top</a></font></h3>
+
+<p>As noted above, the script backs up all files in a list of directories. It can back up any  number of
+directories and the directories can reside on any drive letter available on your
+computer. Each directory to be backed up has to be specified as a  member of the
+<b><font face="Courier"> sourcefolders</font></b>  array (an array in this
+context refers to a list of similar things). You do this by modifying the source code of the script as follows:&nbsp;</p>
+
+<p><font face="Courier New" size="2">
+&nbsp; dim sourcefolders(2) </font><i><font color="#008000">'Declare an array
+with three elements, the folders to backup&nbsp;</font></i><font face="Courier New" size="2"><br>
+&nbsp; sourcefolders(0) = &quot;C:\My Documents&quot;&nbsp;&nbsp;&nbsp;<br>
+&nbsp; sourcefolders(1) = &quot;C:\WINNT\repair&quot;&nbsp;<br>
+&nbsp; sourcefolders(2) = &quot;F:\anydirectory\subdirx&quot;&nbsp;</font></p>
+<p>The sample above backs up three directories. The <i><b> <font color="#FF0000"> gotcha</font></b></i>
+here is that when declaring or defining an array (&quot;dim&quot; in VBScript) the number of
+elements is one more than the number in the array declaration. This is because
+VBScript arrays start with element zero. In this example, the <b><font face="Courier">sourcefolders</font></b>
+array is declared (the dim statement) to contain 2 elements, which Microsoft has
+decreed really means three.&nbsp;&nbsp;</p>
+<p>The script can reside in any directory on your computer. However, I advise
+against using the script to back up the directory that the script resides in. In
+general, not just with this script, backing up files that are in-use at the time
+they are backed up is a bad thing.&nbsp;</p>
+
+
+<h3><a name="OUTPUT&nbsp;">OUTPUT</a>&nbsp;&nbsp;&nbsp;&nbsp;<font face="Arial" size="1"><a href="#top">back to top</a></font></h3>
+
+<p>The backups are normal files, that is, they are not created in a proprietary
+data format. It is as if you copied them with Windows Explorer. Restoring the
+backups is as simple as could be, just copy the desired files as you would copy
+any files. The script is not needed for restores.&nbsp;</p>
+
+<p><b> All</b> files in the
+source directories are copied (this is typically referred to as a <i> full</i> backup).&nbsp;</p>
+
+<p>The output drive letter is specified in a configuration variable called <b><font face="Courier"> OutputDrive</font></b><font face="Courier New" size="2">
+as follows:&nbsp;<br>
+</font>&nbsp; <font face="Courier New" size="2">&nbsp; OutputDrive = "F"&nbsp;&nbsp;&nbsp;
+</font><i><font color="#008000">'Drive Letter where output
+backups go&nbsp;</font></i></p>
+
+<p> This&nbsp; causes the backups to be written to the F disk. In
+auto-operations mode (explained more below) this setting is used
+unconditionally. In manual mode, the user gets a chance to change the output
+drive letter at run time.&nbsp;</p>
+
+<p> All the backups created in a single execution of the script reside in a
+single backup
+directory.&nbsp;The backed-up directories end up as sub-directories of this
+main output directory (explained in the next paragraph). The main backup directory is created in the root directory of the
+output disk drive (<font face="Courier New">F</font> in the example above). The
+directory name will look something like:&nbsp;<br>
+&nbsp;&nbsp; &nbsp;&nbsp; <font face="Courier New" size="2">F:\MikeBkup_Full_mmmdd.yyyy_hh.mm&nbsp;</font></p>
+
+<p> For example, a backup that starts on January 24, 2002 at 1:22 PM will
+create a backup folder called:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <font face="Courier New" size="2">F:\MikeBkup_Full_Jan24.2002_13.22&nbsp;&nbsp;</font><br>
+The hour and minute in the file name will always be two digits.&nbsp;&nbsp;</p>
+<p>As noted above, the directories backed up in a single execution of the
+script, end up as sub-directories of the main output directory. The input directory name is slightly transformed.
+To illustrate how, the directories specified above would cause the following to be
+created in the main output
+directory:&nbsp;</p>
+
+<div align="center"> <center>
+<table border="0" cellpadding="0" cellspacing="0" width="90%" bgcolor="#FFEFD5" bordercolor="#800000">
+<tr><th bgcolor="#C0C0C0"><font face="Arial">INPUT</font></th> <th bgcolor="#C0C0C0"><font face="Arial">OUTPUT</font></th></tr>
+<tr><td><font face="Courier New" size="2">C:\My Documents&nbsp;</font><b><font face="Courier New" size="2">&nbsp;</font></b></td>
+    <td><font face="Courier New" size="2">&nbsp;F:\MikeBkup_Full_mmmdd.yyyy_hh.mm\My Documents</font></td> </tr>
+<tr><td><font face="Courier New" size="2">C:\WINNT\repair&nbsp;</font></td>
+    <td><font face="Courier New" size="2">&nbsp;F:\MikeBkup_Full_mmmdd.yyyy_hh.mm\WINNT__repair</font></td></tr>
+<tr><td><font face="Courier New" size="2">F:\anydirectory\subdirx</font></td>
+    <td><font face="Courier New" size="2">&nbsp;F:\MikeBkup_Full_mmmdd.yyyy_hh.mm\anydirectory__subdirx</font></td></tr>
+</table> </center></div>
+
+<p>The back slashes in the input directory names are changed to double underscores. This was done for two
+reasons. One was a technical issue with creating new folders from VBScript that
+I won't bore you with. The other reason was to make it very simple, clear and
+obvious which directories were backed up. Had I preserved the exact directory
+structure (for example by creating a repair directory under the WINNT directory)
+then it would not have been immediately obvious which sub-directories of the
+WINNT directory were backed up. The &quot;My Documents&quot; folder name was not
+changed at all because it was not a subfolder, that is, there were no
+backslashes in the name.&nbsp;</p>
+
+<p> Note that the source drive letter is not
+reflected in the output directory name. I didn't think it was all that
+important since the full name is documented in the log file, but I might add
+this at some time in the future.&nbsp;&nbsp;</p>
+<p>The script also creates a plain text log file of its activities. A sample of the log
+file is shown <a href="#SampleLogFile">elsewhere on this page</a>. Two copies of the log file are
+created. One copy goes to the same directory where the script is run from. If you isolate
+the script in its own directory, this provides a neat grouping of the script and
+all the logs of its activities. Old log files are not deleted. The other copy goes to the main output
+directory.&nbsp;</p>
+<p>Backups can only be written to devices that appear to Windows as a drive
+letter. If Windows Explorer can copy files to it, this script can write to it.
+Since writing to CD-Rs involves special software, the script can't write to
+them.&nbsp;It can write to USB based keychain flash storage devices and USB
+based external hard disks.&nbsp;</p>
+
+
+<h3><a name="Profiles">PROFILES</a>&nbsp;&nbsp;&nbsp; <font face="Arial" size="1"><a href="#top">back to top</a></font></h3>
+
+Every backup program has to deal with a profile of the files being backed up.
+The profile is the definition of the files to be copied along with all the
+options and parameters to use for the copy. Some backup programs refer to this
+as a backup set.&nbsp;
+<p>Typically a backup program will let you define multiple backup profiles and
+handle them all. This script does not, it can only deal with a single backup
+profile. That is, you can only define one set of files/directories to back up
+and can only define one set of options/parameters to use with those files (more
+on this in the next topic).&nbsp;</p>
+<p>To implement multiple backup profiles, make multiple copies of the script.
+Name each copy appropriately and be sure that each copy of the script specifies
+a different value for the
+<b>Output File Prefix.</b> </p>
+<p>The configuration variable, <font face="Courier New"><b>OutputFilePrefix</b></font>,
+controls the file name prefix that is used when creating the   log file and the main output directory.
+The default value is &quot;MikeBkup&quot; and this is what's used in examples on this page.
+Someone named Harvey can have their backups labeled <i>HarveysBkups</i>.
+This would result in a backup directory being created with a name
+like&nbsp; <font face="Courier New" size="2">F:HarveysBkup_Full_mmmdd.yyyy_hh.mm.</font>
+
+</p>
+
+<p>If Bill and Ted share a computer and want to have an excellent
+backup adventure, Bill can customize his copy of the script with the directories
+he wants to copy and an output file prefix of <i>BillsBackups</i>. Ted can
+customize a different copy of the script with his directories and an output file
+prefix of <i>TedsBackups</i>. Both Bill and Ted can run the backup script
+whenever they chose and keep as many copies of their backups as they like. Each
+set of backups is separate and independent due to the different output file
+prefixes.&nbsp;
+</p>
+
+<p>Backup profiles can also be used to back up
+directories at different times. For example, one set of directories can be
+backed up daily with one rule (number of generations and/or days) for how many
+backups to keep. Another set of directories, specified in a separate copy of the
+script, can be backed up monthly with a different rule for how many backups to
+keep. As long as each set of directories uses a different <font face="Courier New"><b>OutputFilePrefix</b></font>,
+they are separate and independent.&nbsp;
+</p>
+
+<p>For example, suppose user Mo wanted to backup some files daily, user Larry
+wanted to backup other files weekly and user Curly wanted to backup still other
+files on a monthly basis. To accomplish this, set up three copies of the script
+as shown below. Again, it is suggested that all copies of the script reside in a
+single dedicated directory.&nbsp;&nbsp;&nbsp;
+</p>
+
+<div align="center">
+  <center>
+  <table border="1" cellpadding="3" cellspacing="0" width="80%" bordercolor="#008000">
+    <tr>
+      <td bgcolor="#C0C0C0" align="center"><b><font face="Arial" size="3">Script
+        File Name&nbsp;</font></b></td>
+      <td bgcolor="#C0C0C0" align="center"><b><font face="Arial" size="3">Value
+        of</font></b> <font face="Courier New"><b>OutputFilePrefix</b></font></td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor="#FFEFD5">      MoDaily.vbs</td>
+      <td align="center" bgcolor="#FFEFD5">MoDailyBkup</td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor="#FFEFD5">      LarryWeekly.vbs&nbsp;</td>
+      <td align="center" bgcolor="#FFEFD5">LarryWeeklyBkup</td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor="#FFEFD5">      CurlyMonthly.vbs&nbsp;</td>
+      <td align="center" bgcolor="#FFEFD5">CurlyMonthlyBkup&nbsp;</td>
+    </tr>
+  </table>
+  </center>
+</div>
+
+<p>The output file prefix can be any character string, but I suggest that
+&quot;backup&quot; or &quot;bkup&quot; be included for the sake of
+clarity.&nbsp;</p>
+
+
+<h3><a name="GetScript">GET</a> THE SCRIPT&nbsp;&nbsp; &nbsp;&nbsp;<font face="Arial" size="1"><a href="#Top">back to top</a></font></h3>
+<p>
+Like any script, this backup script is distributed as source code.&nbsp;WSH scripts have a file type of VBS.&nbsp; However, this script is
+distributed as a plain text file (.TXT) rather than as a VBS file for two
+reasons. First, anti-virus programs are on the lookout for
+VBS files because they can contain viruses. Second, you have to modify the
+source code anyway before it can be of any use to you.&nbsp;</p>
+
+<p>To view the script as a plain text file in a new window <a href="MikeBkup.txt" tppabs="http://www.michaelhorowitz.com/MikeBkup.txt" target="_blank"><b><font size="3">click
+here</font></b></a>. Save it on your computer with&nbsp; <font face="Courier New" size="2">File-&gt;SaveAs&nbsp;</font>
+in your
+web browser.&nbsp;Then edit the configuration variables and changed the file
+type to &quot;.VBS&quot;).&nbsp;&nbsp;</p>
+
+
+<h3><a name="Requirements">REQUIREMENTS</a>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<font face="Arial" size="1"><a href="#Top">back to top</a></font></h3>
+
+<p>Running the script requires Windows Scripting Host (WSH) version 2.0 or later.
+WSH is a component of Windows (it is the replacement for BAT files) that allows
+you to run scripts written in VBScript and JavaScript. WSH is included in Windows 98, ME, 2000 and XP.
+It was not included in Windows 95 and NT4 but users of those operating systems can
+<a href="javascript:if(confirm('http://msdn.microsoft.com/scripting  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://msdn.microsoft.com/scripting'" tppabs="http://msdn.microsoft.com/scripting">download it, for free</a>, from
+Microsoft.&nbsp;</p>
+
+<p> As of January 2002, the latest version of WSH is v5.6.
+The script was developed under version 5.6, but according to the Microsoft
+documentation, should run on versions as old as 2.0, which is pretty darn old. IE4 and Outlook 98 supported WSH version 3.0. The first version of IE5 supported WSH
+version 5.0. Windows 2000 comes with WSH version 5.1 (and updating it to SP3
+does not update the WSH version). Windows XP comes with WSH version 5.6.&nbsp;</p>
+
+<p> As noted above, the script can run from any directory on your computer.
+However, I suggest keeping it a dedicated directory for two reasons. One, it
+avoids the issue of backing up the directory where the script resides. One copy
+of the log file is written to the directory that the script is running from.
+Isolating the script, also isolates these log files.&nbsp;</p>
+
+<hr width="90%" size="1">
+
+<p>If this is your first encounter with Windows Scripting Host, there are a
+number of ways to test if WSH is installed on your computer, and if it is, which
+version.&nbsp;&nbsp;</p>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td width="100%">
+
+<p><img border="2" src="Backup3.gif" tppabs="http://www.michaelhorowitz.com/pix/Backup3.gif" align="right" width="60" height="64">Perhaps
+the simplest way is create a file with a file type of VBS (for this purpose, the
+file can be anything at all). Then view the file in Windows Explorer, using the
+large icons view. The icon shown here on the right indicates
+that it is installed.&nbsp;</p>
+
+    </td>
+  </tr>
+</table>
+
+<div align="center">
+  <center>
+  <table border="0" width="100%">
+    <tr>
+      <td><p>You can also run the script shown below to see what version of WSH is
+        installed on your computer. It displays a pop-up window similar to one shown here at
+        the right.</p>
+
+        <p>Copy the script source code below into Notepad. Save the file
+        with a name of your choosing and a file type of &quot;vbs&quot;. The
+        file should have three lines, it is not case sensitive.&nbsp;</p>
+
+        <p> Run the
+        script by double clicking on the file name from Windows Explorer.&nbsp; If
+Windows does not know what to do with VBS files, WSH is not installed.
+        <div align="center">
+          <table border="2" bordercolor="#008000" bgcolor="#FFEFD5" cellpadding="7" cellspacing="0">            <tr>
+              <td><font face="Courier New" size="2">Wscript.Echo "Name = " &amp; Wscript.Name &amp;vbCrLf &amp;_<br>
+                &nbsp; "Version = " &amp; Wscript.Version &amp;vbCrLf &amp;_<br>
+                &nbsp;  "At "        &amp; Wscript.Fullname</font></td> </tr>
+          </table>
+        </div>
+      </td>
+      <td valign="top" width="202"><img border="2" src="wsh.version.gif" tppabs="http://www.michaelhorowitz.com/pix/wsh.version.gif" width="201" height="107"></td></tr>
+ </table> </center></div>
+
+<p>When you run the script, the log file (<a href="#SampleLogFile">below</a>)
+includes a display of the
+version of WSH on your computer.&nbsp;&nbsp;</p>
+
+
+<h3><a name="RunScript">RUNNING</a> THE
+SCRIPT&nbsp;&nbsp;&nbsp; <font face="Arial" size="1"><a href="#Top">back to top</a></font></h3>
+
+<p>As with all backups, you should shut down any applications for which you are backing up their data. For example, if you are backing up your email messages, then shut down your email program. Specifically, this script will fail if you try to back up Outlook’s data files while Outlook is running.&nbsp;</p>
+
+<p>The script runs in one of two modes: manual or Auto-Operations. Manual mode
+is intended for when you want to run the script yourself, that is, you manually
+invoke it. Auto-Operations mode is intended for use with scheduled backups where
+there is no human being sitting at the computer. This is backups taken in the
+middle of the night, typically over a network.&nbsp;</p>
+
+<p>The mode is determined by the <font face="Courier New"><b> AutoOpMode</b></font>
+configuration variable. It should be set to either &quot;yes&quot; or &quot;no&quot; (it is case sensitive).
+&quot;yes&quot; means Auto-Operations mode, &quot;no&quot; means manual
+mode.&nbsp;</p>
+
+<p>The cheat sheet below illustrates the differences between manual mode and
+auto-operations mode. In Auto-Operations mode, the script asks the user no
+questions and displays no status messages while it is running. The automatic
+deletion of old backups only occurs in Auto-Operations mode.&nbsp;</p>
+
+<div align="center"> <center>
+  <table border="1" cellpadding="3" width="95%" cellspacing="0" bordercolor="#008000">  <tr>
+      <td width="62%" align="center" bgcolor="#C0C0C0"><font face="Arial"><b>&nbsp;Action</b></font></td>
+      <td width="17%" align="center" bgcolor="#C0C0C0"><font face="Arial" size="3"><b>Manual Mode<br>
+        </b></font><font face="Courier New" size="2">AutoOpMode=&quot;no&quot;&nbsp;</font></td>
+      <td width="21%" align="center" bgcolor="#C0C0C0"><b><font face="Arial" size="3">Auto-Operations Mode<br>
+        </font></b><font face="Courier New" size="2">AutoOpMode=&quot;yes&quot;&nbsp;</font></td> </tr>
+    <tr>
+      <td width="62%" bgcolor="#FFEFD5">Before the backup starts, the user is
+        shown the available space and the required space and asked whether to
+        continue with the backup&nbsp;</td>
+      <td width="17%" bgcolor="#FFEFD5" align="center">Yes</td>
+      <td width="21%" bgcolor="#FFEFD5" align="center">No</td> </tr>
+    <tr>
+      <td width="62%" bgcolor="#FFEFD5">After each directory is backed up an
+        information message is displayed&nbsp;</td>
+      <td width="17%" bgcolor="#FFEFD5" align="center">Yes</td>
+      <td width="21%" bgcolor="#FFEFD5" align="center">No</td> </tr>
+    <tr>
+      <td width="62%" bgcolor="#FFEFD5">After the backup is complete, old
+        backups are evaluated for possible automatic deletion&nbsp;</td>
+      <td width="17%" bgcolor="#FFEFD5" align="center">No</td>
+      <td width="21%" bgcolor="#FFEFD5" align="center">Yes</td> </tr>
+    <tr>
+      <td width="62%" bgcolor="#FFEFD5">After the script is complete, Notepad is
+        run to show the user the contents of the log file</td>
+      <td width="17%" bgcolor="#FFEFD5" align="center">Yes</td>
+      <td width="21%" bgcolor="#FFEFD5" align="center">No</td>  </tr>
+  </table></center></div>
+
+<br>
+
+<div align="center"> <center>
+<table border="0" cellpadding="0" width="95%"> <tr>
+<td><p><i><b><font color="#FF0000">Gotcha: </font></b></i>One not-so-obvious
+        implication of the <font face="Courier New"> <b> AutoOpMode</b></font>  variable
+        is that you can manually run the script with this variable set to
+        &quot;yes&quot; to enable Auto-Ops mode. This is fine. Likewise, you can run the
+        script via a job scheduler and mistakenly have <font face="Courier New"> <b> AutoOpMode</b></font>
+        set to &quot;no&quot;.&nbsp;This would be a problem as the script will
+  pause (see below) waiting for confirmation of the output drive letter.&nbsp;</p> </td> </tr>
+  </table> </center></div>
+
+<p><b><font face="Arial">Running Manually</font></b></p>
+
+<p>The simplest way to manually run a WSH script with a file type of VBS, is just double click on it in
+Windows Explorer.&nbsp;WSH scripts can also be run from a command prompt or you can create a shortcut on the desktop for
+the script in the usual way (right click on the file in Windows Explorer and select
+Create Shortcut).&nbsp;</p>
+
+<p>In manual mode, the user sees a number of prompts as described below.&nbsp;</p>
+
+<div align="left">
+<table border="0" cellpadding="0" width="100%"> <tr>
+<td width="100%"><img border="2" src="Backup4.gif" tppabs="http://www.michaelhorowitz.com/pix/Backup4.gif" align="right" width="356" height="187">First,
+        the script calculates the total size of all directories that are
+        being backed up and the amount of free space on all available disk
+        drives. All this is displayed to the user (see right) who can chose the
+        output disk drive letter. The default drive letter is taken from the <b><font face="Courier New"> OutputDrive</font></b>
+        variable. By clicking on the Cancel button, the user can bypass the
+        backup process altogether.&nbsp;
+  <p>If there is floppy disk in the computer, the A drive will appear in this
+  prompt. It's unlikely however to have enough free space. Likewise, if there is
+  a CD in the CD-ROM drive, its drive letter will also appear in this list with
+  a free space value of &quot;N/A&quot;.&nbsp;&nbsp;</p>
+  <p>Due to cluster waste it is possible that a backup may not fit on disk drive
+  that seems to have enough room. For more on this see the topic below on <a href="#WastedSpace">wasted
+  space</a>.&nbsp;</p>
+  <p>If, at run time, there is not enough space on the output drive letter, the
+  script fails. It does not check before starting the backup whether there is
+  sufficient space on the output drive.&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;</p>
+</td></tr>
+<tr><td><p><img border="2" src="Backup2.gif" tppabs="http://www.michaelhorowitz.com/pix/Backup2.gif" align="left" width="200" height="90">
+        After each directory is backed up, a pop-up message is
+        briefly displayed on
+        the screen (see left) with the name of the directory and the time taken to back it
+        up.&nbsp;There is no need to click the OK button, the window will close
+        itself after three seconds.&nbsp;</p></td></tr>
+</table></div>
+
+<p>When this script finishes, the user is put into Notepad to view the log file.&nbsp;In manual mode, there is no automatic deletion of old backups. The log file
+shows all the existing backups and their fate is left to the user.&nbsp;&nbsp;</p>
+
+
+
+<p><b><font face="Arial">Running Automatically via a Scheduler</font></b></p>
+<p>Like any windows program, the script can be invoked by an automated scheduler program.
+Unlike most WSH scripts, there are no input parameters to worry about. All
+configuration options are specified by editing the source code of the
+script.&nbsp;&nbsp;</p>
+
+<div align="center"><center>
+<table border="1" cellpadding="0" cellspacing="0" width="90%" bordercolor="#008000" bgcolor="#FFEFD5"><tr>
+<td width="100%">
+<p><img border="0" src="nav_warn.gif" tppabs="http://www.michaelhorowitz.com/pix/nav_warn.gif" align="right" width="399" height="276"><b><font face="Arial"><i><font color="#FF0000">A</font></i></font></b><b><font face="Arial"><i><font color="#FF0000">nti-virus Gotcha</font></i>&nbsp;
+</font></b></p> <p>If you use Norton
+Anti-Virus 2001, 2002 or 2003 with script blocking enabled (and possibly other anti-virus programs), the first time you run this script, NAV will
+popup an alert window like the one show here from Norton Anti-Virus 2003.&nbsp;</p> <p> The script does a handful of things, such as creating the
+log file, that Norton Anti-Virus does not like . If you select "authorize this script"
+from the Action drop down box, you will be able
+to run the script repeatedly with no additional alerts from NAV, at least until the script is
+changed in any way (even if only comments are changed).&nbsp;</p> </td>  </tr>
+</table>  </center></div>
+
+
+<p>Many flavors of Windows include a scheduling application. The following are
+instructions for scheduling this script using the scheduler in Windows 2000.&nbsp;</p>
+
+<p>First insure that the Task Scheduler service is running. Most likely you will
+want to set this service to run automatically at boot time (Control Panel -&gt;
+Administrative Tools -&gt; Services). Run the scheduler using the Scheduled
+Tasks application in the Control Panel. Double click on the option to add a
+scheduled task. Click on the Next button, then the Browse button. Navigate to
+the .VBS file that you want to schedule. Give a name to the scheduled task,
+select a schedule and a time (you can change these later), enter a username and
+password. After the script is scheduled, you can double click on the scheduled
+event to bring up more advanced scheduling options. As noted above, the first
+time the script is run (either by the scheduler or by you) NAV will
+complain.&nbsp;</p>
+
+<p>Be careful about the password when scheduling the script. If it is wrong, at
+least on my computer, there were no errors or warnings, the script just did not
+run. Nothing was logged to any of the three system logs.&nbsp;</p>
+
+<p>There is an option for scheduled events in Windows 2000 to &quot;Wake the computer
+to run this task&quot;. I tried this with my computer sleeping (called Stand by mode
+in Windows 2000). The machine woke up and the scheduled backup ran. Cool. The
+screen remained black, but status lights indicated that it came out of sleep
+mode and that disk I/O was performed. I then tried it with the computer turned
+off. It stayed off.&nbsp;</p>
+
+<p> Norton Anti-Virus also
+has a scheduler, I have not used it to schedule backups.&nbsp;</p>
+
+
+<h3><img border="0" src="BellWhistle.gif" tppabs="http://www.michaelhorowitz.com/pix/BellWhistle.gif" align="right" width="140" height="141">
+ <a name="BELLS">BELLS</a> AND WHISTLES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font face="Arial" size="1"><a href="#Top">back to top</a></font></h3>
+
+<p>This section describes the other configuration variables and additional
+concepts and messages used by the script.</p>
+
+<p><b>Automatic deletion of old backups:&nbsp; </b>To prevent backups created in
+Auto-Operations mode from growing forever, the script can automatically delete old backups based on
+<i> both</i> the age of the backup <i> and</i> the number of existing generations of backup.
+For an old backup to be automatically deleted:&nbsp;</p>
+
+<ul>
+  <li>Auto-ops mode must be on&nbsp; AND</li>
+  <li>There must be X newer backups (you set value of X) AND</li>
+  <li>The backup must be at least Y days old (you set value of Y)&nbsp;</li>
+</ul>
+<p>The X above is controlled by configuration variable <font face="Courier New"> <b> MinBkupsToKeep</b></font>
+which determines the minimum number of backup generations to keep. If you set
+this to 4, for example, the backup script will not consider deleting old backups
+until there five or more backups. Whether the fifth or later generation of
+backup will be deleted, depends on the next variable.&nbsp;</p>
+The Y above is controlled by configuration variable <font face="Courier"> <b> MinDaysToKeep</b></font> that
+determines the minimum age of kept backups. For example, if you set this to 20,
+the backup script will never delete an old backup that is less than or equal to 20 days old.
+Backups older than 20 days <i>may</i> be deleted based on the value of <font face="Courier New"> MinBkupsToKeep</font>.&nbsp;Note
+that if you specify zero for <font face="Courier">MinDaysToKeep</font>  the
+script will not delete old generations created on the same day the script is
+run. A backup made today is considered zero days old and this field specifies
+the minimum age, in days, of backups that are to be kept.
+<div align="right">
+<table border="0" cellpadding="0" cellspacing="0" width="80%"> <tr>
+      <td width="100%"><b><i>Note:</i></b> If you would like to change the way this works,
+        look at the source code for the section &quot; Delete old backup generations&quot;.
+        Change the greater than test in &quot;<font size="2" face="Courier New">IF
+        age4 > MinDaysToKeep&quot;</font>
+        to greater than or equal (<font size="2" face="Courier New">&gt;=</font>)</td></tr>
+</table></div>
+<p>Both these settings are <i>minimum</i> values, there are no maximum
+limits. They were implemented to insure that a reasonable number of backups are constantly available. However, since backup generations that are over both
+minimum limits are deleted, these parameters also function to limit the amount
+of stored backups.&nbsp;</p>
+<p>The determination of
+which, if any, old backups are deleted by the script is based on satisfying all
+the above criteria. To
+illustrate this interaction between <font face="Courier New"> MinBkupsToKeep</font> and
+<font face="Courier New"> MinDaysToKeep</font> consider the following configurations:&nbsp;</p>
+
+<div align="center"> <center>
+<table border="1" cellpadding="3" width="90%" cellspacing="0" bordercolor="#008000" bgcolor="#FFEFD5"><tr>
+      <td nowrap><font face="Courier New" size="2">&nbsp;AutoOpMode
+        = &quot;yes&quot;<br>
+        &nbsp;MinBkupsToKeep = 4&nbsp;<br>
+        &nbsp;MinDaysToKeep = 2</font></td>
+      <td>If this backup
+        script is run daily, this results in four generations of the backup
+        being kept, the oldest of which is 4 days old. If the script is run
+        weekly, this results in four generations being kept, the oldest of which
+        is 4 weeks old.&nbsp;</td>  </tr>  <tr>
+      <td nowrap><font face="Courier New" size="2">&nbsp;AutoOpMode
+        = &quot;yes&quot;<br>
+        &nbsp;MinBkupsToKeep = 4&nbsp;<br>
+        &nbsp;MinDaysToKeep = 20</font></td>
+      <td><font face="Courier New" size="2"></font>If this backup
+        script is run daily, this results in twenty generations of the backup
+        being kept, the oldest of which is 19 days old. If the script is run
+        weekly, this results in four generations being kept, the oldest of which
+        is 3 weeks old.&nbsp;</td>   </tr>    <tr>
+      <td nowrap ><font face="Courier New" size="2">&nbsp;AutoOpMode
+        = &quot;yes&quot;<br>
+        &nbsp;MinBkupsToKeep = 4&nbsp;<br>
+        &nbsp;MinDaysToKeep = 31</font></td>
+      <td>If this backup
+        script is run daily, this results in thirty one generations of the backup
+        being kept, the oldest of which is 30 days old. If the script is run
+        weekly, this results in five generations being kept, the oldest of which
+        is 28 days old.&nbsp;</td>   </tr>
+  </table>
+  </center></div>
+<b><i><font color="#FF0000">
+Note:</font></i></b> When there are multiple old generations, all created on the same day, the
+script does not delete the oldest one first. I judged this as being too much
+programming for too small a payback (it requires re-sorting the backups by date
+and time). For example, if there were three backups made on Tuesday and as a
+result of applying the deletion rules, one of them needs to be deleted, it is a
+tossup as to which one will actually be deleted.&nbsp; &nbsp;
+
+<hr size="1">
+
+<p><b>Copy Speed:</b> After a folder has been copied, the total elapsed seconds for the
+copy is calculated and externalized in the log file. If the copy took at least 4 seconds, then the
+speed of the copy operation is calculated. Small directories are ignored on purpose because the sample size is too small to produce
+useful speed numbers. The speed of the backup is shown as both bytes/second and
+MegaBits/second. The first number is useful as a
+point of comparison when backing up from and to a local hard disk. The second number is useful when backing up a computer on your LAN.&nbsp;
+Are you really getting the 10 MegaBits/second the LAN was advertised&nbsp; as being capable of? Probably not. Both these rates are externalized&nbsp;
+in the log file.</p>
+
+<hr size="1">
+
+<br><b>Wasted <a name="WastedSpace">Space</a>:</b> After copying all the source directories, the free space on the output disk drive is re-examined. This is done to compare the number of
+bytes that should have been needed for the backup to the actual number of bytes used. The bytes used is taken from the difference in
+the amount of free space on the output drive before and after the copy operation. This calculation gives you some idea of the wasted space
+due to poor cluster sizes. This waste/overhead will vary depending on the file system and the partition size. The worst case is a FAT
+partition of 2 gigabytes. This depends on the file size, the cluster size and
+the file system. It is not an issue with the script itself. I once ran a copy of 219 Megabytes of data to a disk drive that had 278 free Megabytes. The copy got only halfway
+though before running out of space due to extreme cluster size waste. Disk space
+wasted due to the cluster size is less an issue with FAT32 than with FAT and
+less with NTFS than with FAT32.&nbsp;
+
+<hr size="1">
+
+<br><b>Comments: </b>To aid in documentation, there is a configuration variable
+called <font face="Courier New"><b>LogComment</b></font> for user comments. The value
+of this variable is written out, unchanged, to the log file.
+
+<hr size="1">
+
+<p><b><a name="SystemLogging">System Logging</a>:&nbsp; </b>The concept of an Operating System
+log is usually only associated with Windows NT/2000/XP. However, WSH provides
+system logging capability under Windows 9x/Me also. Under Windows NT/2000/XP,
+WSH writes to the application log (as opposed to the system or security logs).
+It can be viewed with the Event Viewer (in Windows 2000: Control Panel -&gt;
+Administrative Tools -&gt; Event Viewer). Under Windows 9x/Me, events are logged to file <font face="Courier New">wsh.log</font> in the Windows directory.&nbsp;</p>
+
+<p>As of version 2.8, the
+script can write messages to the system log. Should system logging cause a problem,
+the configuration variable <b><font face="Courier New" size="2">SystemLogging</font></b>
+can be used to turn it off. A value &quot;no&quot; disables
+it, anything else enables it. It is highly suggested that a value of &quot;yes&quot; be used to
+enable it.&nbsp;As of version 2.9, the default is &quot;no&quot;. This is
+because Windows 98SE, with its default of WSH v5.0, does not support system
+logging. Also, under Windows 9x system logging can fail if the <font face="Courier New">wsh.log</font>
+file is locked.&nbsp;</p>
+
+<p>At the start of script it logs all the configuration variables and the script name and source.
+At the end it simply logs the fact that it ended. If there is no end of script
+message, it died mid-stream. Eventually I might use the system logging feature to log errors,
+especially those involving creating the <a href="#SampleLogFile">normal text
+file log</a>. You can use the log data as input for a reporting system based
+on the system logs.&nbsp;</p>
+<p>Under Windows 2000, when the script is run manually (both in manual mode and
+auto-operations mode), the log file will show a source of &quot;WSH&quot;, a
+category of &quot;none&quot;, a user of &quot;N/A&quot; and an event of 4, which
+simply means the message is informational.&nbsp;I haven't yet tried system
+logging when running the script from the Windows scheduler.&nbsp;&nbsp;</p>
+
+<h3><a name="ProsAndCons">PROs</a>
+and CONs&nbsp;&nbsp;&nbsp;&nbsp; <font face="Arial" size="1"><a href="#Top">back to top</a></font></h3>
+
+<p>You could, of course, use a dedicated backup program instead of this script.
+For many people, this will be the right decision. This script however has some
+advantages.&nbsp;</p>
+<ul>
+  <li>The backups are normal files. The script copies files just as you would
+    with Windows Explorer. The backup files are immediately usable. In contrast,
+    some backup software, such as that included with Windows, stores the backup files in a proprietary data
+    format which requires the backup program at restore time.</li>
+  <li>The script is free.&nbsp;</li>
+  <li>It was designed to make backups while requiring the least amount of
+    intellectual thought. This is especially true if you use automatic
+    mode.&nbsp;</li>
+  <li>The script can automatically delete old backups using criteria you
+    define. This lets you continually take backups and be insured that you always
+    have the number of backups you want and not have to worry about old backups
+    continually consuming hard disk space.&nbsp;</li>
+  <li>All the effort in using this script is up-front and should be one-time.
+    Subsequent backups should be easy and when backups are easy to make, it's more likely
+    people will do them.&nbsp;</li>
+  <li>It backs up multiple directories</li>
+  <li>The script does extensive logging of its activities.</li>
+  <li>The script automatically assigns, what I think are, good names for the
+    backup files&nbsp;</li>
+  <li>The script can run either interactively (manual mode) and in batch mode
+    (non-interactive, auto-operations).&nbsp;</li>
+  <li>The script reports on cluster waste and the speed of the backups.&nbsp;</li>
+  <li>It is easily scheduled using the Windows scheduler.&nbsp;</li>
+  <li>It may be easier to define a backup set (the list of directories to back
+    up) with this script than with dedicated backup software. Of course, the
+    definition of easier is subjective.&nbsp;</li>
+  <li>The documentation is reasonably thorough (you're reading it
+    now)&nbsp;</li>
+</ul>
+
+<p>Then again, there are dis-advantages of the script&nbsp;</p>
+<ul>
+  <li>It does not back up to Windows &quot;shares&quot;, that is, to a
+    destination in the form of \\servername\shared_directory1. It only backs up
+    to drive letters. Note though, that it can write to a CD-RW disc that is
+    formatted with the UDF file system. Then again, so can any Windows
+    program.&nbsp;</li>
+  <li>It does not do incremental or differential backups (the flip side is
+    simplicity)&nbsp;&nbsp;</li>
+  <li>There is no GUI and editing the script using Notepad can be error
+    prone&nbsp;</li>
+  <li>It only copies entire directories. You can not pick and choose individual
+    files and there is no option to include/exclude subdirectories.&nbsp;</li>
+  <li>It requires WSH which may not be installed on old versions of Windows such
+    as 95 and 98.&nbsp;</li>
+  <li>It does not compress the output backup files&nbsp;</li>
+  <li>It does not span a backup across removable media such as zip disks or
+    floppy disks. Then again, in manual mode it will tell you the space needed
+    for the backup and the available space on every drive letter.&nbsp;</li>
+  <li>Implementing multiple backup profiles requires multiple versions of the
+    script. To me, this is not a big deal.&nbsp;</li>
+  <li>Backups are always created in the root directory of the output drive
+    letter. For more on this, see the <a href="#UserExperiences">User
+    Experiences</a> section below&nbsp;</li>
+  <li>There is almost no error handling (it was my first WSH script).&nbsp;This
+    has been a problem with files in use and files that generate a security
+    error. The script stops cold. Perhaps I could have it continue, but it
+    copies entire folders at once, not individual files. If it continued, that
+    would still leave the folder with problem file, partially copied. <img border="0" src="new.small.gif" tppabs="http://www.michaelhorowitz.com/pix/new.small.gif" width="31" height="12">&nbsp;</li>
+</ul>
+
+<h3><a name="WSHsecurity">WSH SECURITY</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <font face="Arial" size="1"><a href="#Top">back to top</a></font></h3>
+
+<p>WSH has been associated with viruses causing some people security concerns.
+Norton Anti-Virus 2001 and 2002 protect you
+against WSH scripts. From personal experience, I can say that NAV 2001 is
+particularly good at catching the execution of scripts. If the script blocking
+feature is enabled, and it should be by default, it pops up a window before a
+script runs. There are options to prevent the script from running, to let it run
+once and only once, and to authorize it to run all the time. The full
+authorization is lost if any changes at all are made to the script.&nbsp;</p>
+<p>For anyone not using NAV 2001 or 2002, there are options to partially disable WSH. In Windows 95 and 98 you can
+rename the main WSH executables (wscript.exe and cscript.exe) to prevent scripts
+from being run automatically. Desired scripts can be run by executing the
+renamed executables directly. In Windows 2000 you need to make extensive
+registry changes to do the same thing. I don't know about Windows
+XP.&nbsp;&nbsp;&nbsp;</p>
+
+<p>Symantec has an item on their web site called <a href="javascript:if(confirm('http://www.symantec.com/avcenter/venc/data/win.script.hosting.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.symantec.com/avcenter/venc/data/win.script.hosting.html'" tppabs="http://www.symantec.com/avcenter/venc/data/win.script.hosting.html">How
+to disable or remove the Windows Scripting Host</a> that provides more
+background on this and offers a free program to enable and disable WSH.&nbsp;</p>
+
+<h3><a name="AfterTheBackup">AFTER THE BACKUP</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<font face="Arial" size="1"><a href="#Top">back to top</a></font></h3>
+
+<p>I know of two programs that can be used to to run the backup script and then shut down the computer.&nbsp;</p>
+
+<p>A free program called <a href="javascript:if(confirm('http://tinnes.org.uk/shutdown/faq.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://tinnes.org.uk/shutdown/faq.htm'" tppabs="http://tinnes.org.uk/shutdown/faq.htm">Timed Shutdown</a>
+can shut down your computer at a specific time. If your backups take 30 minutes,
+set Timed Shutdown to turn off your computer in 45 minutes. I have not used this
+program and did not write it. It is for Windows 9x and 2000.&nbsp;</p>
+
+<p>Another free
+program, Karen Kenworthy's <a href="javascript:if(confirm('http://www.karenware.com/powertools/ptstopper.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.karenware.com/powertools/ptstopper.asp'" tppabs="http://www.karenware.com/powertools/ptstopper.asp">Show Stopper</a>
+can be used to manually invoke a shutdown of your computer. It intercepts the
+shutdown and runs one or more programs, before letting the shutdown continue.
+Backup and Defrag before powering off! You can read about the program in her <a href="javascript:if(confirm('http://www.karenware.com/newsletters/2003/2003-03-11.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.karenware.com/newsletters/2003/2003-03-11.asp'" tppabs="http://www.karenware.com/newsletters/2003/2003-03-11.asp">newsletter
+of March 11, 2003</a>. I have not used Show Stopper but I have used enough of
+Karen's programs to vouch for her as an excellent source of good, free
+software.&nbsp;</p>
+
+<p>Windows XP users can <a href="javascript:if(confirm('http://support.microsoft.com/default.aspx?scid=kb;en-us;814761  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://support.microsoft.com/default.aspx?scid=kb;en-us;814761'" tppabs="http://support.microsoft.com/default.aspx?scid=kb;en-us;814761">schedule</a>
+their computer to shut down by using the Windows scheduler to run program <font face="Courier New">shutdown.exe</font>.&nbsp;This
+is not available in older versions of Windows.&nbsp;</p>
+
+<h3><a name="SampleLogFile">SAMPLE</a> LOG FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+<font face="Arial" size="1"><a href="#Top">back to top</a></font></h3>
+
+<p> The format of the log  file name is MikeBkup_Log_mmmdd.yyyy_hh.mm.txt. For
+example, a log file created on January 26, 2002 at 1:22 PM would be called&nbsp;
+<font face="Courier New">MikeBkup_Log_Jan26.2002_13.22.txt</font>. The hour and
+minute will always be two digits. A copy of the  log is written to the directory the script is running out of.  An additional copy is written to the backup directory.&nbsp;</p>
+
+<div align="center"><center>
+<table border="2" cellpadding="5" width="90%" bordercolor="#008000" cellspacing="1" bgcolor="#FFF4E1">
+    <tr>
+      <td width="100%"><font face="Courier New" size="2">*** Mike's backup script started at:
+        1/26/2002 12:32:17 PM ***<br>
+        <br>
+        Script: MikeBkup.vbs  Version 2.11<br>
+        Environment:<br>
+        &nbsp; OS: Windows_NT  Computer: NEWDELL User: Linda&nbsp; WSH version: 5.6<br>
+        Running from: C:\somedir\MikeBkup.vbs by Windows Script Host<br>
+        Comment: Look Ma, no hands!&nbsp;&nbsp;<br>
+        Controlling parameters:<br>
+        &nbsp; AutoOpMode=yes MinBkupsToKeep=2 MinDaysToKeep=2 OutputFilePrefix=MikeBkup<br>
+        &nbsp; OutputDrive=F SystemLogging=no<br>
+        Output drive:&nbsp;<br>
+        &nbsp; F SHAREALL(Fixed) FAT32  Total Size: 1,621 Megabytes Free Space: 660.7 Megabytes<br>
+        Input Folders to be copied:<br>
+        &nbsp; F:\Mystuff\ToRead 4.1 Megabytes<br>
+        &nbsp; C:\WINNT\repair 7.5 Megabytes<br>
+        &nbsp; Total size of input folders 11.6 Megabytes<br>
+        Created output folder F:\MikeBkup_Full_Jan24.2002_12.32<br>
+        <br>
+        Copy starting...<br>
+        &nbsp; Start F:\Mystuff\ToRead 1/24/2002 12:32:57 PM 4,280,940 bytes<br>
+        &nbsp;&nbsp;&nbsp; End F:\Mystuff\ToRead 1/24/2002 12:33:01 PM 4 seconds to copy<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; Speed of copy: 1,070,235 bytes/second 8.2 MegaBits/second<br>
+        &nbsp; Start C:\WINNT\repair 1/24/2002 12:33:04 PM 7,839,182 bytes<br>
+        &nbsp;&nbsp;&nbsp; End C:\WINNT\repair 1/24/2002 12:33:10 PM 6 seconds to copy<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Speed of copy: 1,306,530 bytes/second 10.0 MegaBits/second<br>
+        Copy completed.<br>
+        <br>
+        Output Drive Freespace: Before 660.7 After: 648.0<br>
+        Backups that should have used 11.6 Megabytes, actually used 12.6 Megabytes<br>
+        Searching for existing backup folders . . .&nbsp;<br>
+        &nbsp; looking in root of F disk for directories starting with MikeBkup<br>
+        &nbsp; F:\MikeBkup_Full_Jan24.2002_15.46 (11.6 Meg) 1/24/2002 3:46:16 PM<br>
+        &nbsp; F:\MikeBkup_Full_Jan23.2002_20.16 (11.6 Meg) 1/23/2002 8:16:53 PM<br>
+        &nbsp; F:\MikeBkup_Full_Jan25.2002_19.22 (11.6 Meg) 1/25/2002 7:22:42 PM<br>
+        Search completed<br>
+        Examining old backups for possible deletion...<br>
+        &nbsp; Deleting F:\MikeBkup_Full_Jan23.2002_20.16 It is 3 days old. Limit is
+        2 days<br>
+        Examination complete, 1 backup generations deleted.<br>
+        <br>
+        *** Mike's backup script ended at: 1/26/2002 12:33:13 PM ***&nbsp;&nbsp;&nbsp;</font></td></tr>
+  </table>
+  </center></div>
+
+<h3><a name="UserExperiences">PROBLEMS</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<font face="Arial" size="1"><a href="#Top">back to top</a></font></h3>
+
+<p> <img border="0" src="new.small.gif" tppabs="http://www.michaelhorowitz.com/pix/new.small.gif" width="31" height="12">May 28, 2005.
+If the total length of all the sub-directories gets too long the script fails
+with an error code of 800A004C.
+I'm not sure the longest length that Windows and/or WSH can handle. I have to
+test for a long name as it's being created and take some remedial action to
+shorten it. Perhaps just use single letters for sub-sub-sub directory names.
+<hr align="left" width="40%" size="1" color="#717855">
+
+<p> <img border="0" src="new.small.gif" tppabs="http://www.michaelhorowitz.com/pix/new.small.gif" width="31" height="12">The error
+handling is non-existent. I need to modify the part of the script that actually
+does the directory copy to ignore errors during the copy. This way I can
+externalize an error message and copy any other later directories.
+
+<hr align="left" width="40%" size="1" color="#717855">
+
+<p> <img border="0" src="new.small.gif" tppabs="http://www.michaelhorowitz.com/pix/new.small.gif" width="31" height="12">May 5, 2005. A user wrote asking for the ability to direct the output to a
+specific folder. Currently&nbsp;you can only direct your backups to, for
+example, the F disk (as in F:\). You can not direct them to a specific folder on
+the F disk (as in F:\MyBackups). I had been meaning to add this feature for a
+while.&nbsp;If you want this feature, I am pretty sure the below source code
+changes will work, but I have not yet been able to test it.&nbsp;</p>
+
+<p>In the section of code labeled &quot;To Copy or Not To Copy&quot; there is a
+line&nbsp;<br>
+<font face="Courier New">&nbsp;&nbsp; outfoldername = OutputDrive &amp; <b> ":\"</b> &amp; OutputFilePrefix &amp; "_Full" &amp; filenamedate&nbsp;<br>
+</font><br>
+If you change this to&nbsp;<br>
+<font face="Courier New">&nbsp;&nbsp; outfoldername = OutputDrive &amp; <b>&quot;:\MyBackups\&quot;</b> &amp; OutputFilePrefix &amp; "_Full" &amp; filenamedate&nbsp;</font></p>
+
+<p>then the script should write the backups to the MyBackups folder rather than to the root
+of the disk drive. If anyone tries it, let me know how it goes. One advantage of
+this is that when the backups are stored on an NTFS partition you can compress
+the backups without compressing other folders.<br>
+<b>Update:</b>
+May 12, 2005. A user of the script was nice enough to let me know that the above
+change does work. However, there is a missing piece - the script still looks in
+the root directory of the output disk drive for old backups to delete. I'll get
+to this....&nbsp;
+<hr align="left" width="40%" size="1" color="#717855">
+
+<p>One user of
+the script could run it manually without a problem, but had the exact same
+script fail when run by the Windows 2000 scheduler. The scheduled version of the
+script even ran with the same userid as the manually run version. The problem
+was with the output drive, a shared directory on his LAN that was mapped to a
+drive letter. This should work. Upgrading WSH to version 5.6 solved the
+problem.&nbsp;See <a href="javascript:if(confirm('http://www.winscriptingsolutions.com/Articles/Index.cfm?ArticleID=20769  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.winscriptingsolutions.com/Articles/Index.cfm?ArticleID=20769'" tppabs="http://www.winscriptingsolutions.com/Articles/Index.cfm?ArticleID=20769">Making a Script Work as a Scheduled Task
+</a>from Windows Scripting Solutions June 2001.
+<hr align="left" width="40%" size="1" color="#717855">
+
+<p>Another user
+has a different problem with the Windows 2000 scheduler. Her backup scripts stop
+working each time the machine changed to or from daylight savings time. I have
+no idea why.&nbsp;</p>
+
+<h3><a name="RevisionHistory">REVISION</a> HISTORY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; <font face="Arial" size="1"><a href="#Top">back to top</a></font></h3>
+
+<b><font face="Courier">
+
+January 24,2002</font></b>&nbsp; First GA version.&nbsp;<br>
+<b>
+<font face="Courier">
+January 25,2002</font></b> Added auto-operations mode for running the script by a job scheduler.
+In auto-ops mode no questions are asked of the user and no
+informational messages are displayed. Also added the ability to automatically delete
+old backups so that scheduled runs of the script don't blindly create more and
+more backups. This is done using two new configuration parameters, a minimum
+number of generations to keep and a minimum number of days to keep each backup
+generation.<br>
+<b>
+<font face="Courier">
+January 26,2002</font></b>&nbsp; Added&nbsp; a version number that is displayed on the
+first line of the log file. This is version 2.1&nbsp;<br>
+<font face="Courier">
+<b>January 28,2002</b> Version 2.2</font> Variable <font face="Courier New">AutoOpMode</font>
+used to be case sensitive. No more. Changed name of the log file. It used to start
+with &quot;MikeBkupLog&quot;. It now starts with &quot;MikeBkup_Log&quot;.&nbsp;Added a new configuration
+variable <font face="Courier New"> LogComment</font> for user comments that are
+written to the log file.&nbsp;<br>
+<font face="Courier">
+<b>January 29,2002</b> Version 2.3</font> Added a new configuration variable that governs the file name prefix to be used when creating the
+log file and the main output directory. Previously the file name prefix was always
+&quot;MikeBkup&quot;.
+Now this is merely the default.&nbsp;<br>
+<font face="Courier">
+<b>January 30, 2002</b> Version 2.4</font>&nbsp; Minor changes to the log file
+output.&nbsp;<br>
+<font face="Courier">
+<b>February 1,2002</b>  Version 2.5 </font> Changed home URL of this script<br>
+<font face="Courier">
+<b>March 23,2002 </b>Version 2.6&nbsp; </font>Added the force option to the folder delete command
+used to delete old backup generations.<br>
+<font face="Courier">
+<b>May     24,2002</b> Version 2.7</font>&nbsp;<br>
+In manual mode, added a display of all available disk drives and their freespace.
+The user can now direct the backups to any available disk drive at run time
+without changing the script source code. As before, the user can still bypass
+the backups if, for example, none of the disk drives has sufficient free space.
+The new display is shown on this page in the Running The Script section. Other
+minor changes include: logging changes to reflect this new processing, added a count of the number of backup generations
+deleted (mostly of interest when zero), changed messages in the log to be more
+specific about why old backups were not examined for possible deletion, and
+renamed some variables.&nbsp;<br>
+<font face="Courier"><b>May 27,2002</b> Version 2.8&nbsp;<br>
+</font>Write to a system log to note start and end of script.
+At the start of script it logs all the controlling parameters and the script name and source.
+At the end it simply logs the fact that it ended. Also made a minor change to message displayed to user in manual mode at end of backup processing.
+Added new configuration variable <b>SystemLogging</b> which is <a href="#SystemLogging">documented
+above</a>.&nbsp;<br>
+<font face="Courier"><b>May 28,2002</b> Version 2.9&nbsp;</font>System logging
+can be troublesome under Windows 98, so the default was changed from
+&quot;yes&quot; to &quot;no&quot;.&nbsp;<font face="Courier"><b><br>
+June 30,2002</b> Version 2.10&nbsp;One b</font>ug fix, no new features. Under
+some circumstances (I can't narrow them down) there is a bug with the For-Each
+statement under WSH when looping through an array. I have not seen the problem
+when looping through a collection. The nature of the bug was that the loop
+continued past the end of the array resulting in a null variable rather than an
+array element. In effect, it was doing For-Each+1. There were two places in the script that used a For-Each loop to
+navigate the array of the source folders to be backed up. These loops no
+longer use For-Each.&nbsp;<font face="Courier"><b><br>
+August 30,2002</b> Version 2.11&nbsp;One b</font>ug fix, no new features. In
+making the changes for v2.10 the upper bounds of the array were not tested
+correctly. As a result, the script would not back up the last directory.&nbsp;<br>
+<font face="Courier"><b>January 14,2005</b> </font>Updated comments in source
+code&nbsp;<br>
+<font face="Courier"><b>May 5, 2005 </b></font>Updated comments with
+instructions for patching the script to send output to a directory. See <a href="#UserExperiences">User
+Experiences</a> &nbsp;
+
+<hr noshade>
+
+<p><b><i>FYI: </i></b>An article <a href="javascript:if(confirm('http://www.pcworld.com/howto/article/0,aid,73824,00.asp  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.pcworld.com/howto/article/0,aid,73824,00.asp'" tppabs="http://www.pcworld.com/howto/article/0,aid,73824,00.asp">about
+making backups</a> by Lincoln Spector in the February 2002 issue of PC World magazine</p>
+
+<p><i><b>FYI: </b></i>This script was featured in the August 26, 2002 issue of
+the Langa List newsletter. Fred Langa has a free and paid version of his
+newsletter. The <a href="javascript:if(confirm('http://www.langa.com/plus.htm  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.langa.com/plus.htm'" tppabs="http://www.langa.com/plus.htm">paid version</a>
+(referred to as &quot;plus&quot;) is longer than the <a href="javascript:if(confirm('http://www.langa.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.langa.com/'" tppabs="http://www.langa.com/">free
+(standard) edition</a>. This script was one of the extras that readers of the
+paid version got to learn about.&nbsp;</p>
+
+<font face="Verdana" size="2">
+
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr>
+  <td bgcolor="#717855" align="left"><font face="Verdana" size="2" color="#FFFFFF"><b>michael @ michaelhorowitz.com</b></font></td>
+  <td bgcolor="#717855" align="right"><span class="bread">
+      <a href="index.htm" tppabs="http://www.michaelhorowitz.com/index.htm" class="breadlink">Home</a> => Backup Script&nbsp; </span><a href="#top" class="toplink">Top of Page</a></td></tr>
+<tr bgcolor="#FFFFFF">
+<td><font face="Verdana" size="1">Viewed
+  <img src="Count.cgi-df=bkupscript.dat-display=Counter-ft=0-md=6-frgb=100;139;216-dd=B.gif" tppabs="http://www.michaelhorowitz.com/cgi-sys/Count.cgi?df=bkupscript.dat|display=Counter|ft=0|md=6|frgb=100;139;216|dd=B">
+  times since May 26, 2005</font></td>
+<td align="right"><font face="Verdana" size="1">Last Updated: May 2</font></font><font face="Verdana" size="1">8</font><font face="Verdana" size="2"><font face="Verdana" size="1">, 2005 </font></td></tr>
+<tr><td colspan="2" bgcolor="#717855" height="3"></td></tr>
+</table>
+
+<div align=center><img border="0" src="license_mh.1986.jpg" tppabs="http://www.michaelhorowitz.com/license_mh.1986.jpg" width="150" height="77"> </div>
+
+</body>
+</html>

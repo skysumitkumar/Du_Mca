@@ -1,0 +1,88 @@
+<html><head>
+<title>Solution for /induction/party</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /induction/party problem</h1>
+<hr>
+Here is an easy solution by induction. Let P be the set of people in the
+party, and n the size of P. If n=2 or 3, the result is trivial. Suppose now
+that n&gt;3 and that the result is true for n-1.
+
+<p>
+For any two distinct x,y in P, write x &amp; y to mean that `x is a friend of y',
+and x ~&amp; y to mean that `x is not a friend of y'.
+
+<p>
+Take q in P. The hypothesis on the relation &amp; is still satisfied on P-{q}; by
+induction, the result is thus true for P-{q}, and there is some p in P-{q}
+such that p &amp; x for any x in P-{p,q}. We have two cases:
+
+<ol>
+<li> p &amp; q. Then the result holds for P with p.
+
+<li> p ~&amp; q. By hypothesis, there is a unique r in P-{p,q} such that p &amp; r &amp; q.
+</ol>
+For any x in P-{p,q}, if x &amp; q, then p &amp; x &amp; q, and so x=r. Thus r is the
+unique friend of q. Now for any s in P-{q,r} there exists some x such that s &amp;
+x &amp; q, and so x=r. This means that r &amp; s for any s in P-{q,r}, and as r &amp; q,
+the results holds in P with r.
+
+<p>
+The problem can also be solved by applying the spectral theory of graphs
+(see for instance Bollobas' excellent book, _Extremal Graph Theory_).
+
+<p>
+The problem's condition is vacuous if there is only N=1 person at the "party", 
+impossible if N=2 (If you aren't your own friend, nor I mine, somebody *else*
+must be our mutual friend), and trivial if N=3 (everybody must be everyone
+else's friend).  Henceforth assume N&gt;3.
+
+<p>
+Let A,B be two friends, and C their mutual friend.  Let a be the number
+of A's friends other than B and C, and likewise b,c.  Each of A's friends
+is also friendly with exactly one other of A's friends, and with none of
+B and C's other friends (if A1,B1 are friends of A,B resp. and of each other
+then A1 and B have more than one mutual friend); likewise for B and C.
+Let M=N-(a+b+c+3) be the number of people not friendly with any of A,B,C.
+Each of them is friendly with exactly one of A's and one of B's friends;
+and each pair of a friend of A and a friend of B must have exactly
+one of them as a mutual friend.  Thus M=ab; likewise M=ab=ac=bc. Thus
+either M and two of a,b,c vanish, or a=b=c=k (say), M=k^2, and N=k^3+3k+3.
+In the first case, say b=c=0; necessarily a is even, and A is a friend of
+everybody else at the party, each of whom is friendly with exactly one other
+person; clearly any such configuration (a graph of k/2+1 triangles with a
+common vertex) satisfies the problem's conditions).
+
+<p>
+It remains to show that the second case is impossible.  Since N=k^2+3k+3
+does not depend on A,B,C, neither does k, and it quickly follows that the
+party's friendship graph is regular with reduced matrix
+
+<pre>
+     [  0   k+2   0  ]
+     [  1    1    k  ]
+     [  0    1   k+1 ]
+</pre>
+
+and eigenvalues k+2 and +-sqrt(k+1) and multiplicities 1,m1,m2 for some
+*integers* m1 and m2 such that (m1-m2)*sqrt(k+1)=-(k+2) (because the graph's 
+matrix has trace zero).  Thus sqrt(k+1) divides k+2 and k+1 divides
+
+<pre>
+    (k+2)^2=(k+1)(k+3)+1
+</pre>
+which is only possible if k=0,  Q.E.D.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

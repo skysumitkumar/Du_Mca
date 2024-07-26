@@ -1,0 +1,40 @@
+#include 	<stdio.h>
+int	main(void)
+{
+FILE	*in;
+int		i,ch,length;
+char	fname[BUFSIZ], table, entry;
+
+	printf("Enter JPG file>>");
+	gets(fname);
+
+	if ((in=fopen(fname,"r"))==NULL)
+	{
+		printf("Can't find file %s\n",fname);
+		return(1);
+	}
+
+	do
+	{
+		ch=getc(in);
+
+		if (ch==0xff)
+		{
+			ch=getc(in);
+			if (ch==0xdb)
+			{
+				fread(&length,2,1,in); printf("Length: %d\n",length);
+				fread(&table,1,1,in); printf("Marker: %x\n",table);
+
+				for (i=0;i<64;i++)
+				{
+					fread(&entry,1,1,in);
+					printf("%d ",entry);
+				}
+			}
+		}
+
+	} while (!feof(in));
+	fclose(in);
+	return(0);
+}

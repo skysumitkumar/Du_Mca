@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Algorithms and Data Structures, Aalborg University
+  (INF1, Autumn'04)</title>
+</head>
+<body bgcolor="white">
+ <h3>Algorithms and Data Structures (INF1, Autumn'04)</h3>
+ <h2>Exercise Set 10</h2> <br> <br>
+
+
+<b>Exercise 1:</b> <br><br>
+Suppose we are hashing finite strings over the alphabet {a,b,c}.
+(examples of strings are: a, bc, abcab, aaaa). 
+
+<ul>
+<li> Write a function <b>f(S:string):int</b>
+which will translate any given string S[1..n] into an integer.
+It is up to you to decide how the function should compute the integer.
+<li> Compute the translations of the strings: a, b, ab, aab, cab, c. 
+<li> Assume a hash function <em>h(n)= n mod 7</em>. <br>
+     Show the result after inserting the strings above (in the given
+     order) into a hash table A[0..6] and use linear probing to resolve
+     conflicts. 
+<li> Assume a hash function <em>h(n)= n mod 3</em>. <br>
+     Show the result after inserting the strings above into a 5-bucket hash 
+     table A[0..2].
+<li> Assume a hash function <em>h(n)= n mod 3</em>. <br>
+     Show the result after inserting the strings above into a hash 
+     table A[0..2] and use chaining to resolve conflicts.
+</ul>
+
+<br><br>
+
+<b>Exercise 2 (hand-in):</b> <br><br>
+
+<UL>
+<li>
+Design a sorting algorithm called <b>bubble_sort</b> which works
+as follows: given an array A[1..n] it goes in a loop
+through the elements A[1], A[2], ..., A[n-1] and whenever
+it discovers a successive pair which is not ordered
+(i.e. A[i] > A[i+1]) it will exchange these two elements.
+If no exchange has been made the algorithm terminates (the array is sorted),
+otherwise the whole procedure repeats. 
+<li> For every size n of the array A provide a worst-case instance.
+ What is the worst-case time complexity of your algorithm
+(using big-O notation)?
+<li> In which situations the algorithm performs fast? Can
+it have any practical use?
+</UL>
+
+<br><br>
+
+<b>Exercise 3:</b> <br><br>
+Assume that we have two nonempty sets of elements of the same size:
+s1={a<sub>1</sub>, a<sub>2</sub>, ..., a<sub>n</sub>} 
+and s2={b<sub>1</sub>, b<sub>2</sub>, ..., b<sub>n</sub>}.
+The sets are stored as sequences in arrays A[1..n] and B[1..n]
+such that A[i]=a<sub>i</sub> and B[i]=b<sub>i</sub> for all
+i=1 to n.
+<ul>
+<li> Design an efficient algorithm to test whether the two
+sets are equal (the algorithm recieves the arrays A and B as input).
+Hint: after the execution of the algorithm the 
+arrays can be modified. 
+<li> Analyze the worst-case time complexity of your algorithm.
+</ul>
+
+
+</body>
+</html>
+
+

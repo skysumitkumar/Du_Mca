@@ -1,0 +1,306 @@
+<html><head>
+<title>Solution for /competition/games/bridge</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /competition/games/bridge problem</h1>
+<hr>
+I'll enclose my Double-Dummy solver for bridge.  I like this program
+because it contains a wildly unstructured "goto" -- which I claim is the
+most readable way to write the program.
+<p>
+        Included are two test problems for the bridge-solver: a 6-card
+ending and a complete 13-card position.  The former should be very fast;
+the latter about 20 minutes on Sparcstation-2.  Each is *very*
+challenging for humans.
+<p>
+Regards, James
+
+<hr>
+<pre>
+=============== clip; chmod +x; execute =============
+#!/bin/sh
+cat &gt; bridge.c &lt;&lt; 'EOF'
+/*
+ * DOUBLE_DUMMY
+ * Copyright (c) 1990 by
+ *      James D. Allen
+ *      19785 Stanton Ave
+ *      Castro Valley, CA
+ * Permission granted to use for any non-commercial purpose
+ *      as long as this notice is not removed.
+ *
+ * This program will solve double-dummy bridge problems.
+ * The algorithm is trivial: brute-force alpha-beta search (also known
+ *      as "backtracking").  The alpha-beta is trivial since we do not
+ *      consider overtricks or extra undertricks.
+ * The control flow is neat; this is a rare exception where software is
+ *      more readable with a "goto".  (Although I've tersified this to
+ *      the point where it is perhaps unreadable anyway :-)
+ */
+
+#define NUMP    4       /* The Players:  N, E, S, W */
+#define         NORTH   0
+#define         IS_CONT(x)      (!((x) &amp; 1))        /* Is x on N/S team? */
+#define         LHO(x)          (((x) + 1) % NUMP)
+#define         RHO(x)          (((x) + NUMP - 1) % NUMP)
+char    *Playername[] = { "North", "East", "South", "West" };
+
+#define NUMS    4       /* The Suits:   S, H, D, C */
+char    Suitname[] = "SHDC";
+char    *Fullname[] = { "Spades\t", "Hearts\t", "Diamonds", "Clubs\t" };
+
+/*
+ * Rank indices are 2 (Ace), 3 (King), ... 14 (Deuce)
+ * There is also a CARD Index which can be converted to from Rank and Suit.
+ */
+#define CARD(Suit, Rank)        (((Suit) &lt;&lt; 4) | (Rank))
+#define SUIT(Card)              ((Card) &gt;&gt; 4)
+#define RANK(Card)              ((Card) &amp; 0xf)
+char    Rankname[] = "??AKQJT98765432";
+#define INDEX(s, c)     ((char *)index(s, c) - (s))
+
+/* A "SuitSet" is used to cope with more than one card at once: */
+typedef unsigned short SuitSet;
+#define MASK(Card)              (1 &lt;&lt; RANK(Card))
+#define REMOVE(Set, Card)       ((Set) &amp;= ~(MASK(Card)))
+
+/* And a CardSet copes with one SuitSet for each suit: */
+typedef struct cards {
+        SuitSet cc[NUMS];
+} CardSet;
+
+/* Everything we wish to remember about a trick: */
+struct status {
+        CardSet st_hold[NUMP];  /* The players' holdings */
+        CardSet st_lgl[NUMP];   /* The players' remaining legal plays */
+        short   st_play[NUMP];  /* What the players played */
+        SuitSet st_trick;       /* Led-suit Cards eligible to win trick */
+        SuitSet st_trump;       /* Trump Cards eligible to win trick */
+        short   st_leader;      /* Who led to the trick */
+        short   st_suitled;     /* Which suit was led */
+}
+Status[14]; /* Status of 13 tricks and a red zone" */
+#define Hold    Statp-&gt;st_hold
+#define Resid   (Statp+1)-&gt;st_hold
+#define Lgl     Statp-&gt;st_lgl
+#define Play    Statp-&gt;st_play
+#define Trick   Statp-&gt;st_trick
+#define Trtrick Statp-&gt;st_trump
+#define Leader  Statp-&gt;st_leader
+#define Suitled Statp-&gt;st_suitled
+
+/* Pick a card from the set and return its index */
+pick(set)
+        SuitSet set;
+{
+        return set &amp; 0xff ? set &amp;  1 ? 0 : set &amp;  2 ? 1 : set &amp;  4 ? 2
+                          : set &amp;  8 ? 3 : set &amp; 16 ? 4 : set &amp; 32 ? 5
+                          : set &amp; 64 ? 6 : 7 : pick(set &gt;&gt; 8) + 8;
+}
+
+#define highcard(set)   pick(set) /* Pick happens to return the best card */
+
+main()
+{
+        register struct status *Statp = Status; /* Point to current status */
+        int     tnum;   /* trick number */
+        int     won;    /* Total tricks won by North/South */
+        int     nc;     /* cards on trick */
+        int     ohsize; /* original size of hands */
+        int     mask;
+        int     trump;
+        int     player; /* player */
+        int     pwin;   /* player who won trick */
+        int     suit;   /* suit to play */
+        int     wincard; /* card which won the trick */
+        int     need;   /* Total tricks needed by North/South */
+        int     cardx;  /* Index of a card under consideration */
+        int     success; /* Was the trick or contract won by North/South ? */
+        int     last_t; /* Decisive trick number */
+        char    asciicard[60];
+        SuitSet inplay; /* cards still in play for suit */
+        SuitSet pr_set; /* Temp for printing */
+
+        /* Read in the problem */
+        printf("Enter trump suit (0-S,1-H,2-D,3-C,4-NT): ");
+        scanf("%d", &amp;trump);
+        printf("Enter how many tricks remain to be played: ");
+        scanf("%d", &amp;ohsize);
+        printf("Enter how many tricks North/South need to win: ");
+        scanf("%d", &amp;need);
+        printf("Enter who is on lead now (0=North,etc.): ");
+        scanf("%d", &amp;pwin);
+        printf("Enter the %d cards beginning with North:\n", NUMP * ohsize);
+        for (player = NORTH; player &lt; NUMP; player++) {
+                for (tnum = 0; tnum &lt; ohsize; tnum++) {
+                        scanf("%s", asciicard);
+                        cardx = CARD(INDEX(Suitname, asciicard[1]),
+                                        INDEX(Rankname, asciicard[0]));
+                        Hold[player].cc[SUIT(cardx)] |= MASK(cardx);
+                }
+        }
+
+        /* Handle the opening lead */
+        printf("Enter the directed opening lead or XX if none:\n");
+        Lgl[pwin] = Hold[pwin];
+        scanf("%s", asciicard);
+        if (asciicard[0] == 'X') {
+                strcpy(asciicard, "anything");
+        } else {
+                cardx = CARD(INDEX(Suitname, asciicard[1]),
+                                INDEX(Rankname, asciicard[0]));
+                for (suit = 0; suit &lt; NUMS; suit++)
+                        if (suit != SUIT(cardx))
+                                Lgl[pwin].cc[suit] = 0;
+                        else if (!(Lgl[pwin].cc[suit] &amp;= MASK(cardx))) {
+                                printf("He can't lead card he doesn't have\n");
+                                exit(1);
+                        }
+        }
+
+        /* Print the problem */
+        for (player = NORTH; player &lt; NUMP; player++) {
+                printf("\n---- %s Hand ----:\n", Playername[player]);
+                for (suit = 0; suit &lt; NUMS; suit++) {
+                        printf("\t%s\t", Fullname[suit]);
+                        for (pr_set = Hold[player].cc[suit]; pr_set;
+                                        REMOVE(pr_set, pick(pr_set)))
+                                printf("%c ", Rankname[RANK(pick(pr_set))]);
+                        printf("\n");
+                }
+        }
+        printf("\n%s%s Trumps; %s leads %s; N-S want %d tricks; E-W want %d\n",
+                trump &lt; NUMS ? Fullname[trump] : "",
+                trump &lt; NUMS ? " are" : "No",
+                Playername[pwin], asciicard, need, ohsize + 1 - need);
+
+      /* Loop to play tricks forward until the outcome is conclusive */
+        for (tnum = won = success = 0;
+                        success ? ++won &lt; need : won + ohsize &gt;= need + tnum;
+                        tnum++, Statp++, success = IS_CONT(pwin)) {
+                for (nc = 0, player = Leader = pwin; nc &lt; NUMP;
+                                        nc++, player = LHO(player)) {
+                      /* Generate legal plays except opening lead */
+                        if (nc || tnum)
+                                Lgl[player] = Hold[player];
+                      /* Must follow suit unless void */
+                        if (nc &amp;&amp; Lgl[player].cc[Suitled])
+                                for (suit = 0; suit &lt; NUMS; suit++)
+                                        if (suit != Suitled)
+                                                Lgl[player].cc[suit] = 0;
+                        goto choose_suit; /* this goto is easily eliminated */
+                      /* Comes back right away after choosing "suit"  */
+                        make_play:
+                        Play[player] = cardx =
+                                CARD(suit, pick(Lgl[player].cc[suit]));
+                        if (nc == 0) {
+                                Suitled = suit;
+                                Trick = Trtrick = 0;
+                        }
+                      /* Set the play into "Trick" if it is win-eligible */
+                        if (suit == Suitled)
+                                Trick |= MASK(cardx);
+                        if (suit == trump)
+                                Trtrick |= MASK(cardx);
+
+                      /* Remove card played from player's holding */
+                        Resid[player] = Hold[player];
+                        REMOVE(Resid[player].cc[suit], cardx);
+                }
+
+              /* Finish processing the trick ... who won? */
+                if (Trtrick)
+                        wincard = CARD(trump, highcard(Trtrick));
+                else
+                        wincard = CARD(Suitled, highcard(Trick));
+                for (pwin = 0; Play[pwin] != wincard; pwin++)
+                        ;
+        }
+
+      /* Loop to back up and let the players try alternatives */
+        for (last_t = tnum--, Statp--; tnum &gt;= 0; tnum--, Statp--) {
+                won -= IS_CONT(pwin);
+                pwin = Leader;
+                for (player = RHO(Leader), nc = NUMP-1; nc &gt;= 0;
+                                        player = RHO(player), nc--) {
+                      /* What was the play? */
+                        cardx = Play[player];
+                        suit = SUIT(cardx);
+                      /* Retract the played card */
+                        if (suit == Suitled)
+                                REMOVE(Trick, cardx);
+                        if (suit == trump)
+                                REMOVE(Trtrick, cardx);
+                      /* We also want to remove any redundant adjacent plays */
+                        inplay =  Hold[0].cc[suit] | Hold[1].cc[suit]
+                                | Hold[2].cc[suit] | Hold[3].cc[suit];
+                        for (mask = MASK(cardx); mask &lt;= 0x8000; mask &lt;&lt;= 1)
+                                if (Lgl[player].cc[suit] &amp; mask)
+                                        Lgl[player].cc[suit] &amp;= ~mask;
+                                else if (inplay &amp; mask)
+                                        break;
+                      /* If the card was played by a loser, try again */
+                        if (success ? !(IS_CONT(player)) : IS_CONT(player)) {
+                                choose_suit:
+                              /* Pick a suit if any untried plays remain */
+                                for (suit = 0; suit &lt; NUMS; suit++)
+                                        if (Lgl[player].cc[suit])
+                                                /* This goto is really nice!! */
+                                                goto make_play;
+                        }
+                }
+        }
+
+        /*
+         * We're done.  We know the answer.
+         * We can't remember all the variations; fortunately the
+         *  succeeders played correctly in the last variation examined,
+         * so we'll just print it.
+         */
+        printf("Contract %s, for example:\n",
+                        success ? "made" : "defeated");
+        for (tnum = 0, Statp = Status; tnum &lt; last_t; tnum++, Statp++) {
+                printf("Trick %d:", tnum + 1);
+                for (player = 0; player &lt; Leader; player++)
+                        printf("\t");
+                for (nc = 0; nc &lt; NUMP; nc++, player = LHO(player))
+                        printf("\t%c of %c",
+                                Rankname[RANK(Play[player])],
+                                Suitname[SUIT(Play[player])]);
+                printf("\n");
+        }
+        return 0;
+}
+EOF
+cc -O -o bridge bridge.c
+bridge &lt;&lt; EOF
+4 6 5 2
+AS JS 4S QD 8D 2C
+KS QS 9H 8H AD 2D
+AH 2H KD 9D 7D AC
+TS 3S 2S TH TD TC
+XX
+EOF
+bridge &lt;&lt; EOF
+1 13 13 3
+3C                3H 2H                   AD KD 2D      AS KS 7S 6S 5S 4S 3S
+8C 7C 6C 5C 4C    QH TH 8H 7H             8D 7D 6D      2S
+AC QC JC 9C       AH KH JH 9H 6H 5H       5D 4D 3D
+KC TC 2C          4H                      QD JD TD 9D   QS JS TS 9S 8S
+QS
+EOF
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

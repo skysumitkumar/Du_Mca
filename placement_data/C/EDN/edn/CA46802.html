@@ -1,0 +1,603 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Implementing object-oriented designs in ANSI-standard C - 4/13/2000 - EDN - CA46802</title>
+
+<meta name="description" content="In the 1990s, object-oriented analysis (OOA) and object-oriented design (OOD) offered software designers the promise of improved code expandability and reusability. These techniques also offered portability and reduced maintenance with early-life-cycle error discovery and correction.">
+<meta name="keywords" content="Processors & Tools,Software,In the 1990s, object-oriented analysis (OOA) and object-oriented design (OOD) offered software designers the promise of improved code expandability and reusability. These techniques also offered portability and reduced maintenance with early-life-cycle error discovery and correction.">
+<meta name="robots" content="follow,noarchive,index">
+<meta http-equiv="pragma" content="no-cache">
+<meta name="author" content="Edward F Binder, Motorola Computer Group">
+<meta name="copyright" content="Reed Business Information">
+<meta name="language" content="English">
+<meta name="MSSmartTagsPreventParsing" content="TRUE">
+<meta name="distribution" content="Global">
+<meta name="rating" content="General">
+<meta name="expires" content="Never">
+<meta name="revisit-after" content="7 Days">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Language" content="en-us">
+
+<script type="text/javascript" language="javascript">
+
+function makeCookie(name,value,days)
+{
+	if (days)
+	{
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = "; expires="+date.toGMTString();
+	}
+	else var expires = "";
+	document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function getCookie(name)
+{
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++)
+	{
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+
+function deleteCookie(name)
+{
+	makeCookie(name,"",-1);
+}
+</script>
+
+<link href="edn.css" tppabs="http://a330.g.akamai.net/7/330/2540/20050714182330/www.edn.com/css/edn.css" rel="stylesheet" type="text/css"/>
+
+<style type="text/css">
+
+/*Global Structure*/
+body {margin: 8px; padding:0px; background-color: #fff;}
+
+#bodycontainer {border: 1px solid #333; width: 758px; margin:0px; padding:0px; position:relative; }
+
+
+#bodytable {width: 100%; margin-top: 3px; padding:0px;}
+
+
+ /*article*/
+.leftcol{width: 170px; background-color: #DDE6ED;}
+#leftcolcontainer{margin: 0px; padding: 0px; position:relative;}
+.rightcol{margin: 0px; padding:5px 0px 0px 0px; width: 586px; voice-family: "\"}\""; voice-family:inherit; width: 588px;}
+#rightcolcontainer {padding-left: 2px;}
+
+
+.centercol {}
+/*#centercolcontainer table {background-color: #fff;}*/
+#centercolcontainer {}
+
+</style>
+<script language="JavaScript" src="edn.js" tppabs="http://a330.g.akamai.net/7/330/2540/20050603182324/www.edn.com/js/edn.js" type="text/javascript"></script><SCRIPT LANGUAGE="JavaScript1.2">
+<!--// 
+function openWindow()
+{
+  with (document.termForm)
+  {
+    term.value = escape(term.value);
+    newURL="index.asp?layout=term&brand=edn&term="+term.value;
+  }
+  
+newwindow=open(newURL,"termWindow","scrollbars=yes,toolbar=no,directories=no,menubar=no,location=no,resizable=yes,status=no,width=800,height=625,screenX=0,screenY=0");
+
+  return false;
+}
+//-->
+</SCRIPT>
+
+</head>
+<body>
+<div id="bodycontainer"><!--Header-->
+	<div id="headercontainer">
+		<a href="javascript:if(confirm('http://www.reed-electronics.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/'" tppabs="http://www.reed-electronics.com/" class="reedlogo">Reed Electronics Group</a><br /><a href="javascript:if(confirm('http://www.edn.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/'" tppabs="http://www.edn.com/" class="logo">EDN: The Voice of the Electronics Engineer</a>
+		<div id="headernav">
+			<a href="javascript:if(confirm('http://www.ednasia.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ednasia.com/'" tppabs="http://www.ednasia.com/">EDN Asia</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.ednc.com.cn/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ednc.com.cn/'" tppabs="http://www.ednc.com.cn/">EDN China</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.ednjapan.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ednjapan.com/'" tppabs="http://www.ednjapan.com/">EDN Japan</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.edn.com/info/123787.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/123787.html'" tppabs="http://www.edn.com/info/123787.html">EDN Europe</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.electronicsnews.com.au/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.electronicsnews.com.au/'" tppabs="http://www.electronicsnews.com.au/">EDN Australia</a>
+		</div>
+		<div style="clear:right;"></div>
+	</div>
+
+<div id="topnav">
+			<div class="tnleft"><SCRIPT LANGUAGE = "JavaScript">var now = new Date();
+var dayNames = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+var monNames = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+document.write("" + dayNames[now.getDay()] + ", " + monNames[now.getMonth()] + " " + now.getDate() + ", " + now.getFullYear());</SCRIPT></div>
+			<ul>
+				<li id="tn1"><a href="javascript:if(confirm('http://www.edn.com/info/CA528811.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/CA528811.html'" tppabs="http://www.edn.com/info/CA528811.html">Subscriptions</a></li>
+				<li id="tn2"><a href="javascript:if(confirm('http://www.edn.com/toc-archive/2005/20050721.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/toc-archive/2005/20050721.html'" tppabs="http://www.edn.com/toc-archive/2005/20050721.html">Current Issue</a></li>
+				<li id="tn3"><a href="javascript:if(confirm('http://www.edn.com/archive  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/archive'" tppabs="http://www.edn.com/archive">Archives</a></li>
+				<li id="tn4"><a href="javascript:if(confirm('http://www.edn.com/info/CA528782.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/CA528782.html'" tppabs="http://www.edn.com/info/CA528782.html">Tools &amp; Services</a></li>
+				<li id="tn5"><a href="javascript:if(confirm('http://www.edn.com/info/CA528812.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/CA528812.html'" tppabs="http://www.edn.com/info/CA528812.html">Blogs</a></li>
+				<li id="tn6"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=Learn_RSS  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=Learn_RSS'" tppabs="http://www.edn.com/index.asp?layout=Learn_RSS">RSS</a></li>
+				<li id="tn7"><a href="javascript:if(confirm('http://www.edn.com/info/30955.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/30955.html'" tppabs="http://www.edn.com/info/30955.html">About EDN</a></li>
+				<li id="tn8"><a href="javascript:if(confirm('http://www.edn.com/info/31091.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/31091.html'" tppabs="http://www.edn.com/info/31091.html">Contact Us</a></li>
+			</ul>
+			<div style="clear:left;"></div>
+	</div>
+
+<!--will be communityMenuEDN-->
+<div id="channelnav">
+<div class="cnreg">
+<form style="display:inline;" method="post" name="emailLookUp" onSubmit="submitForm()" action="http://www.edn.com/subscribe.asp">
+<input type="hidden" name="screen" value="ei1">
+<input type="hidden" name="lastscreen" value="ei1">
+<div style="padding-top:5px;"><b>Register for EDN Newsletters</b></div>
+<div style="padding: 2px;" class="byline"><input type="text" name="email" value="Enter your e-mail address" class="regInput" onClick="clearInput()"></div>
+<div style="padding: 2px;"><a href="#" onClick="submitForm()">Register</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"onClick="submitForm()">Change Profile</a></div></form></div>
+		<div class="cnimage">Technical Channels</div>
+		<div class="cnchan1">
+<a href="javascript:if(confirm('http://www.edn.com/community/2281/Analog.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2281/Analog.html'" tppabs="http://www.edn.com/community/2281/Analog.html">Analog</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/2282/Communications.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2282/Communications.html'" tppabs="http://www.edn.com/community/2282/Communications.html">Communications</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/2280/Components%2FInterconnect.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2280/Components%2FInterconnect.html'" tppabs="http://www.edn.com/community/2280/Components%2FInterconnect.html">Components/Interconnect</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/2283/Computers+%26+Boards.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2283/Computers+%26+Boards.html'" tppabs="http://www.edn.com/community/2283/Computers+%26+Boards.html">Computers &amp; Boards</a><br />
+		</div>
+		<div class="cnchan2">
+<a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas'" tppabs="http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas">Design Ideas</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/42871/Digital+Den.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/42871/Digital+Den.html'" tppabs="http://www.edn.com/community/42871/Digital+Den.html">Digital Den</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/2813/EDA%2FIP.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2813/EDA%2FIP.html'" tppabs="http://www.edn.com/community/2813/EDA%2FIP.html">EDA/IP</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/42872/High+Speed+Design.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/42872/High+Speed+Design.html'" tppabs="http://www.edn.com/community/42872/High+Speed+Design.html">High-Speed Design</a>
+		</div>
+		<div class="cnchan3">
+<a href="javascript:if(confirm('http://www.edn.com/community/2816/Power+Sources%2FControllers.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2816/Power+Sources%2FControllers.html'" tppabs="http://www.edn.com/community/2816/Power+Sources%2FControllers.html">Power Sources/Controllers</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/42873/Processors%2FSoftware%2FTools.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/42873/Processors%2FSoftware%2FTools.html'" tppabs="http://www.edn.com/community/42873/Processors%2FSoftware%2FTools.html">Processors/Software/Tools</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/42874/Programmable+Logic%2FMemory.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/42874/Programmable+Logic%2FMemory.html'" tppabs="http://www.edn.com/community/42874/Programmable+Logic%2FMemory.html">Programmable Logic/Memory</a><br />
+<a href="javascript:if(confirm('http://www.edn.com/community/2817/Test+%26+Measurement.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/community/2817/Test+%26+Measurement.html'" tppabs="http://www.edn.com/community/2817/Test+%26+Measurement.html">Test &amp; Measurement</a>
+		</div>
+		<div style="clear:left;"></div>
+	</div>
+
+<!--will have searchResultsAutoFill-->
+<div id="searchnav">
+		<div id="searchnavcontent"><form name="SearchForm" onsubmit="checkSearch()" action="javascript:if(confirm('http://www.edn.com/index.asp?content=Go&original=all&layout=searchResults  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?content=Go&original=all&layout=searchResults'" tppabs="http://www.edn.com/index.asp?content=Go&original=all&layout=searchResults" method="get" id="searchform">Search&nbsp;&nbsp; <script language=javascript type="text/javascript">
+<!--
+function stripQts2(name){
+var newName = "";
+var test = name.split(unescape("%27%27")); //split the field on ascii code for double ''
+for(i=0;i<test.length;i++){
+	if(i!=(test.length - 1)){		
+		newName = newName + test[i] + "'"  // put it back together with an "'" 
+	}
+	else{
+		newName = newName + test[i] // make sure end of string has no "'"
+	}
+}
+	userQuery = newName;
+}
+
+var tempQuery="";
+userQuery = "";
+for (i = 0; i < tempQuery.length; i++)
+  if ((tempQuery.charAt(i)=='%') &&
+     (tempQuery.charAt(i+1)=='2') &&
+     (tempQuery.charAt(i+2)=='2'))
+       {userQuery = userQuery + '&quot;';
+        i=i+2;
+       }
+  else
+       {if (tempQuery.charAt(i)=="+")
+	     userQuery = userQuery + " "
+		else
+		 userQuery = userQuery + tempQuery.charAt(i);
+       }
+userQuery=unescape(userQuery);
+stripQts2(userQuery);
+document.write('<input type=text name=text value="' + userQuery + '" class="searchtext" />')
+//-->
+</script>&nbsp; <input type="submit" value="Go" class="searchsubmit" /><INPUT type="hidden" name="content" value="all"><INPUT type="hidden" name="original"><INPUT type="hidden" name="layout" value="searchResults"></form>
+		</div>
+	</div>
+<div id="leaderboard"><img src="edn_adv_top.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050517180213/www.edn.com/contents/images/edn_adv_top.gif" width="20" height="90" style="padding-top:10px;" alt=""/></div>
+
+<!--End Header-->
+<!--Main Content-->
+	<table  id="bodytable">
+		<tr>
+		<td class= "leftcol" valign="top">
+				<div id="leftcolcontainer">
+<script language="JavaScript" type="text/javascript">
+<!-- // display a new window when not enews article
+function displayWin(publisher,docid) {
+var brand = "";
+switch (publisher) {
+case "CommVerge":
+  brand = "edn";
+  break;
+case "Electronic Business":
+  brand = "eb-mag";
+  break;
+case "ECN":
+  brand = "ecnmag";
+  break;
+case "EDN":
+  brand = "edn";
+  break;
+case "EPP":
+  brand = "semiconductor"
+  break;
+case "Electronic News":
+  brand = "electronicnews";
+  break;
+case "Semiconductor International":
+  brand = "semiconductor";
+  break;
+case "Test & Measurement World":
+  brand = "tmworld";
+  break;
+default:
+  brand = "electronicnews";
+  break;
+  }
+
+var location = "";
+
+if (brand == "edn")
+{
+ location = "http://www.edn.com/article/" + docid + "?ref=nbra";
+}
+else
+{
+ location = "http://www.reed-electronics.com/" + brand + "/article/" + docid + "?ref=nbra";
+}
+
+{
+	makeCookie('tcm-searchquery','implementing AND Inheritance AND In AND "C"',1);
+	window.location = location;
+}
+}
+//-->
+</script>
+
+<a name="related">
+<div id="relart">
+<h3>Related Articles</h3>
+<div id="sideNav">
+<ul>
+
+<li><script language="JavaScript" type="text/javascript">
+<!--
+document.write("<a href=\"javascript: displayWin('EDN','CA622674');\" onclick=\"makeCookie('tcm-searchquery','implementing AND Inheritance AND In AND "C"',1);\">Software targets communications design</a>")
+//-->
+</script><noscript><a href="CA622674.html-ref=nbra.htm" tppabs="http://www.edn.com/article/CA622674?ref=nbra" title="The MathWorks recently rolled out Communications Blockset 3, an upgraded  version of a software program that offers engineers added functions for  designing and simulating the physical layer of communications systems and  components for wireless and wire-line systems using model-based  design." onclick="makeCookie('tcm-searchquery','implementing AND Inheritance AND In AND "C"',1);">Software targets communications design</a></noscript><br />06/30/2005, EDN</li>
+<li><script language="JavaScript" type="text/javascript">
+<!--
+document.write("<a href=\"javascript: displayWin('EDN','CA609125');\" onclick=\"makeCookie('tcm-searchquery','implementing AND Inheritance AND In AND "C"',1);\">Reaching new performance levels in white goods </a>")
+//-->
+</script><noscript><a href="CA609125.html-ref=nbra.htm" tppabs="http://www.edn.com/article/CA609125?ref=nbra" title="DSP-based motor control delivers benefits for home-appliance engineers and users alike. " onclick="makeCookie('tcm-searchquery','implementing AND Inheritance AND In AND "C"',1);">Reaching new performance levels in white goods </a></noscript><br />06/23/2005, EDN</li>
+<li><script language="JavaScript" type="text/javascript">
+<!--
+document.write("<a href=\"javascript: displayWin('EDN','CA608154');\" onclick=\"makeCookie('tcm-searchquery','implementing AND Inheritance AND In AND "C"',1);\">Digital countdown timer may never need battery  replacement</a>")
+//-->
+</script><noscript><a href="CA608154.html-ref=nbra.htm" tppabs="http://www.edn.com/article/CA608154?ref=nbra" title="Processor-based timer draws microamps." onclick="makeCookie('tcm-searchquery','implementing AND Inheritance AND In AND "C"',1);">Digital countdown timer may never need battery  replacement</a></noscript><br />06/23/2005, EDN</li>
+<li><script language="JavaScript" type="text/javascript">
+<!--
+document.write("<a href=\"javascript: displayWin('EDN','CA605504');\" onclick=\"makeCookie('tcm-searchquery','implementing AND Inheritance AND In AND "C"',1);\">Microprocessor-based dual timer features four outputs</a>")
+//-->
+</script><noscript><a href="CA605504.html-ref=nbra.htm" tppabs="http://www.edn.com/article/CA605504?ref=nbra" title="Simple code, switches yields two timers in microcontroller." onclick="makeCookie('tcm-searchquery','implementing AND Inheritance AND In AND "C"',1);">Microprocessor-based dual timer features four outputs</a></noscript><br />06/09/2005, EDN</li>
+<li><script language="JavaScript" type="text/javascript">
+<!--
+document.write("<a href=\"javascript: displayWin('EDN','CA603903');\" onclick=\"makeCookie('tcm-searchquery','implementing AND Inheritance AND In AND "C"',1);\">www.edn.com: It&#39;s all about you </a>")
+//-->
+</script><noscript><a href="CA603903.html-ref=nbra.htm" tppabs="http://www.edn.com/article/CA603903?ref=nbra" title="Take a quick tour of your new site." onclick="makeCookie('tcm-searchquery','implementing AND Inheritance AND In AND "C"',1);">www.edn.com: It&#39;s all about you </a></noscript><br />06/06/2005, EDN</li>
+</ul></div>
+<h3>News &amp; New Products</h3>
+<div id="sideNav">
+<ul><li><a href="CA631462.html-ref=nbnp.htm" tppabs="http://www.edn.com/article/CA631462.html?ref=nbnp">Sigma-C gets new CEO for DFM push</a><br />
+EDN, 8/2/2005</li>
+
+
+
+<li><a href="CA631515.html-ref=nbnp.htm" tppabs="http://www.edn.com/article/CA631515.html?ref=nbnp">Atmel joins Z-Alliance's digital-power effort</a><br />
+EDN, 8/1/2005</li>
+
+
+
+<li><a href="CA631473.html-ref=nbnp.htm" tppabs="http://www.edn.com/article/CA631473.html?ref=nbnp">Small driver IC controls multiple LEDs in handhelds</a><br />
+EDN, 8/1/2005</li>
+
+
+
+</ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=news&spacedesc=newProducts  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=news&spacedesc=newProducts'" tppabs="http://www.edn.com/index.asp?layout=news&spacedesc=newProducts">More &gt;&gt;</a></div><h3>Design Ideas</h3>
+<div id="sideNav">
+<ul><li><a href="CA608155.html-ref=nbdi.htm" tppabs="http://www.edn.com/article/CA608155.html?ref=nbdi">Wide-range regulator delivers 12V, 3A output from 16 to 100V		source</a><br />
+EDN, 6/23/2005</li>
+
+
+
+<li><a href="CA605506.html-ref=nbdi.htm" tppabs="http://www.edn.com/article/CA605506.html?ref=nbdi">CMOS hex inverter generates low-distortion sine waves</a><br />
+EDN, 6/9/2005</li>
+
+
+
+<li><a href="CA608156.html-ref=nbdi.htm" tppabs="http://www.edn.com/article/CA608156.html?ref=nbdi">Stable, 18-MHz oscillator features automatic level control,		clean-sine-wave output</a><br />
+EDN, 6/23/2005</li>
+
+
+
+</ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas'" tppabs="http://www.edn.com/index.asp?layout=news&spacedesc=designIdeas">More &gt;&gt;</a></div><h3>Features</h3>
+<div id="sideNav">
+<ul><li><a href="CA624945.html-ref=nbfe.htm" tppabs="http://www.edn.com/article/CA624945.html?ref=nbfe">Thinking inside the box: Buildings get a brain</a><br />
+EDN, 7/21/2005</li>
+
+
+
+<li><a href="CA624967.html-ref=nbfe.htm" tppabs="http://www.edn.com/article/CA624967.html?ref=nbfe">Sun sets on IEEE 488, LAN and PC standards vie for its
+		role</a><br />
+EDN, 7/21/2005</li>
+
+
+
+<li><a href="CA624951.html-ref=nbfe.htm" tppabs="http://www.edn.com/article/CA624951.html?ref=nbfe">A bit-o&#39;-power: digitally controlled power conversion</a><br />
+EDN, 7/21/2005</li>
+
+
+
+</ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=news&spacedesc=features  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=news&spacedesc=features'" tppabs="http://www.edn.com/index.asp?layout=news&spacedesc=features" class="more">More &gt;&gt;</a></div><h3>Columnists</h3>
+<div id="sideNav">
+<ul><li><a href="CA621636.html-ref=nbop.htm" tppabs="http://www.edn.com/article/CA621636.html?ref=nbop">One in a million</a><br />
+By Bonnie Baker, EDN, 7/7/2005</li>
+
+
+
+<li><a href="CA628274.html-ref=nbop.htm" tppabs="http://www.edn.com/article/CA628274.html?ref=nbop">No SOC is an island</a><br />
+By Gabe Moretti, EDA consultant, EDN, 7/21/2005</li>
+
+
+
+<li><a href="CA624952.html-ref=nbop.htm" tppabs="http://www.edn.com/article/CA624952.html?ref=nbop">Some products fall down on the job&#8212;literally!</a><br />
+By John Dodge, Editor in Chief, EDN, 7/21/2005</li>
+
+
+
+</ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=news&spacedesc=opinions  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=news&spacedesc=opinions'" tppabs="http://www.edn.com/index.asp?layout=news&spacedesc=opinions">More &gt;&gt;</a></div><h3>Blogs</h3>
+<div id="sideNav">
+<ul><li><a href="javascript:if(confirm('http://www.edn.com/blog/150000015/post/1360001136.html?ref=nbbl  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/blog/150000015/post/1360001136.html?ref=nbbl'" tppabs="http://www.edn.com/blog/150000015/post/1360001136.html?ref=nbbl" title="WiMax gains momentum with deployments worldwide">WiMax gains momentum with deployments worldwide</a> - 08/01/2005</li><li><a href="javascript:if(confirm('http://www.edn.com/blog/400000040/post/1340001134.html?ref=nbbl  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/blog/400000040/post/1340001134.html?ref=nbbl'" tppabs="http://www.edn.com/blog/400000040/post/1340001134.html?ref=nbbl" title="I Love LA!">I Love LA!</a> - 08/01/2005</li><li><a href="javascript:if(confirm('http://www.edn.com/blog/400000040/post/1290001129.html?ref=nbbl  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/blog/400000040/post/1290001129.html?ref=nbbl'" tppabs="http://www.edn.com/blog/400000040/post/1290001129.html?ref=nbbl" title="Startup Tips">Startup Tips</a> - 07/30/2005</li></ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=siteinfo&articleid=CA528812  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=siteinfo&articleid=CA528812'" tppabs="http://www.edn.com/index.asp?layout=siteinfo&articleid=CA528812">More &gt;&gt;</a></div><h3 class="sponsorhead">Affiliate Network</h3>
+<div id="sideNav">
+<ul><li><span style="font:10px verdana, sans-serif;">
+<script language="JavaScript1.1" SRC=";type=affiliate;sz=1x1;tile=1;u=-1176500494-521400098-946378881-0-article-CA46802--;ord=1122971903-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=affiliate;sz=1x1;tile=1;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">
+</script><script language="JavaScript1.1" SRC=";type=affiliate;sz=1x1;tile=2;u=-1176500494-521400098-946378881-0-article-CA46802--;ord=1122971903-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=affiliate;sz=1x1;tile=2;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">
+</script><script language="JavaScript1.1" SRC=";type=affiliate;sz=1x1;tile=3;u=-1176500494-521400098-946378881-0-article-CA46802--;ord=1122971903-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=affiliate;sz=1x1;tile=3;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">
+</script><script language="JavaScript1.1" SRC=";type=affiliate;sz=1x1;tile=4;u=-1176500494-521400098-946378881-0-article-CA46802--;ord=1122971903-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=affiliate;sz=1x1;tile=4;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">
+</script><script language="JavaScript1.1" SRC=";type=affiliate;sz=1x1;tile=5;u=-1176500494-521400098-946378881-0-article-CA46802--;ord=1122971903-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=affiliate;sz=1x1;tile=5;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">
+</script></span></li></ul>
+</div><h3 class="sponsorhead">Tool Center</h3>
+<div id="sideNav">
+<ul><li><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=19  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=19'" tppabs="http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=19">Software</a></li>
+<li><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=26  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=26'" tppabs="http://www.edn.com/index.asp?layout=referralMain&referralCenter_id=26">Catalogs &amp; Brochures</a></li>
+<li><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=partnerAllArticles  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=partnerAllArticles'" tppabs="http://www.edn.com/index.asp?layout=partnerAllArticles">White Papers</a></li>
+</ul>
+</div>
+<h3><a href="javascript:if(confirm('http://www.edn.com/toc-events  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/toc-events'" tppabs="http://www.edn.com/toc-events">Events</a></h3>
+<div id="sideNav">
+<ul><li><a href="javascript:if(confirm('http://www.edn.com/event/14097.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/event/14097.html'" tppabs="http://www.edn.com/event/14097.html">EDA Tech Forum</a><br/>
+<span class="byline"><strong>Dates:</strong> 8/15/2005 - 8/15/2005<br/>
+<strong>Location:</strong> Penang, Malaysia</span></li><li><a href="javascript:if(confirm('http://www.edn.com/event/14098.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/event/14098.html'" tppabs="http://www.edn.com/event/14098.html">EDA Tech Forum</a><br/>
+<span class="byline"><strong>Dates:</strong> 8/17/2005 - 8/17/2005<br/>
+<strong>Location:</strong> Bangalore, India</span></li><li><a href="javascript:if(confirm('http://www.edn.com/event/14099.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/event/14099.html'" tppabs="http://www.edn.com/event/14099.html">EDA Tech Forum</a><br/>
+<span class="byline"><strong>Dates:</strong> 8/19/2005 - 8/19/2005<br/>
+<strong>Location:</strong> Delhi, India</span></li></ul>
+</div>
+<div id="more"><a href="javascript:if(confirm('http://www.edn.com/toc-events  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/toc-events'" tppabs="http://www.edn.com/toc-events">More &gt;&gt;</a></div>
+</div><br/>
+<img src="pixel.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050404164317/www.edn.com/contents/images/pixel.gif" width="170" alt=""/><br/>
+		</td><!--end leftcol-->
+		
+		<td class= "rightcol" valign="top">
+				<div id="rightcolcontainer"><div id="centercolcontainer">
+<script>
+<!--
+function appendLocation(theLink) {
+    var thisPage = "" + location;
+    var bits = thisPage.split("&");
+    var s = ""
+    for (var i = 0; i < bits.length; i++) {
+      s += bits[i] + "^"
+    }
+    if (s == "") {
+      theLink.href = theLink.href + "&refPage=" + thisPage
+     } else {
+       theLink.href = theLink.href + "&refPage=" + s
+    }
+    return true;
+}
+// -->
+</script>
+<div id="printSubEmail"><div><a href="javascript:if(confirm('http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article'" tppabs="http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article"><img src="ednIconSubscribe.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222505/www.edn.com/contents/images/redesign/ednIconSubscribe.gif" alt="Free Print Subscriptions" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article'" tppabs="http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article">Free Print Subscription</a></div>
+
+<div><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articlePrint&articleID=CA46802  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articlePrint&articleID=CA46802'" tppabs="http://www.edn.com/index.asp?layout=articlePrint&articleID=CA46802"><img src="ednIconPrint.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222321/www.edn.com/contents/images/redesign/ednIconPrint.gif" alt="Printer Friendly Version" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articlePrint&articleID=CA46802  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articlePrint&articleID=CA46802'" tppabs="http://www.edn.com/index.asp?layout=articlePrint&articleID=CA46802">Printer Friendly Version</a></div>
+
+<div><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articleEmail&articleID=CA46802  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articleEmail&articleID=CA46802'" tppabs="http://www.edn.com/index.asp?layout=articleEmail&articleID=CA46802" onclick="return appendLocation(this)"><img src="ednIconEmail.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222407/www.edn.com/contents/images/redesign/ednIconEmail.gif" alt="Email to a Friend" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articleEmail&articleID=CA46802  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articleEmail&articleID=CA46802'" tppabs="http://www.edn.com/index.asp?layout=articleEmail&articleID=CA46802" onclick="return appendLocation(this)">Email to a Friend</a></div></div><br/>
+<div id="articleContainer">
+<h4></h4>
+
+<script type="text/javascript" language="javascript">
+<!-- // display magazine logo when not e-inSITE story
+function get_publication(publication_name) {
+var pub_id = 'EDN';
+if (publication_name == 'EDN' && pub_id == 'CV')
+return 'EDN/CommVerge';
+else
+return publication_name;
+}
+function displayLogo() {
+var pubId = "EDN";
+var brand = "edn";
+if (brand != "default") return;
+switch (pubId) {
+case 'EDN':
+  document.write('<A href="http://www.edn.com/"><IMG border=0 src="edn.gif"/*tpa=http://www.edn.com/contents/images/edn.gif*/ align=right></A>');
+  break;
+default:
+  break;
+  }
+}
+//-->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+displayLogo();
+//-->
+</script>
+
+<h1>Implementing object-oriented designs in ANSI-standard C</h1>
+<h2>You can design software with object-oriented techniques using a familiar language, such as ANSI-standard C. You</h2>
+
+<span class="byline">Edward F Binder, Motorola Computer Group -- <script language="javascript">document.write(get_publication('EDN'));</script>, 4/13/2000</span><br/>
+
+<span class="copy"><br/><P><A href="javascript:if(confirm('http://www.edn.com/contents/images/46802.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/contents/images/46802.pdf'" tppabs="http://www.edn.com/contents/images/46802.pdf"><IMG  src="Pdf3.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20010517154145/www.edn.com/articles/images/EDN/20000413/Pdf3.gif"></A></P> <P>In the 1990s, object-oriented analysis (OOA) and object-oriented design (OOD)  offered software designers the promise of improved code expandability and  reusability. These techniques also offered portability and reduced maintenance  with early-life-cycle error discovery and correction. To promote implementation  of these new design techniques, the software industry fostered the development  of object-oriented-programming (OOP) languages. Some of the best-known of these  languages are Smalltalk; Eiffel; Objective C and Pascal; later revisions of Ada;  and the most widely used language, C++. </P> <P>OOP languages provide a unique, sometimes proprietary, interpretation of typical OOD components, making implementation of object-based designs a basic process of translating class/object diagrams into a high-level OOP language. However, this benefit includes several drawbacks, which slowed industry acceptance of the new languages and the OOD methodology. </P> <P>Critics often cited poor code performance due to the increased language overhead and resource demands needed for a complete polymorphic object model. The interpretive nature of these early languages was largely to blame for their so-called inefficiency. As hardware performance improved and the required storage resources became increasingly cost-effective, efficiency concerns evaporated, and C++ emerged as the software industry's first choice in OOP languages.</P> <P><table cellpadding="0" cellspacing="0" border="0" align="right" valign="top" id="boombox" style="background-color:#DDE6ED;padding:19px;">
+
+
+
+
+<tr><td align="center" style="font: normal 10px verdana, sans-serif; color: #333;">ADVERTISEMENT<br />
+<script language=Javascript1.1 src=";abr=!webtv;desc=;desc=CA46802;type=boombox;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=336x280;ptile=2;u=-1176500494-521400098-946378881-0-article-CA46802--;ord=1122971903-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;abr=!webtv;desc=;desc=CA46802;type=boombox;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">
+</script>
+<script>
+<!--
+if ((!document.images && navigator.userAgent.indexOf('Mozilla/2.') >= 0) || (navigator.userAgent.indexOf("WebTV") >= 0))
+{
+document.write('<a href="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=;desc=CA46802;type=boombox;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">');
+document.write('<img src="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=;desc=CA46802;type=boombox;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?" border="0"></a>');
+}
+//-->
+</script>
+<noscript>
+<!-- for non JavaScript browsers and Netscape 2.x -->
+<a href="javascript:if(confirm('http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=;desc=CA46802;type=boombox;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=;desc=CA46802;type=boombox;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?'" tppabs="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=;desc=CA46802;type=boombox;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">
+<img src="javascript:if(confirm('http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=;desc=CA46802;type=boombox;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=;desc=CA46802;type=boombox;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?'" tppabs="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=;desc=CA46802;type=boombox;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=336x280;ptile=2;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?" border="0" align="right" vspace=5 hspace=5>
+</a>
+</noscript>
+
+</td></tr></table>
+
+With its roots in ANSI C, C++ gained popularity by extending its predecessor's familiar form and style. C++ appealed to the broad base of C-programming talent, beating out syntactically foreign languages, such as Ada and Eiffel, which were often mired in proprietary-licensing complexities, large resource requirements, and extensive learning periods.</P> <P>Although C++  is now in wide use, it still presents new challenges to even the most seasoned ANSI-C software designer. Because the language's powerful object-oriented operation is hidden and dynamic, debugging methods are frequently obscure and time-consuming. Compiler variations introduce subtle operational and declarative idiosyncrasies, which you must overcome, sometimes with substantial creativity and in-depth understanding. Mastering the object-oriented extensions and understanding new language behaviors requires training, so if you have experience with only standard C and you lack the support of previously developed C++ class libraries, C++ may be unsuitable for your project. However, you may still use OOD as a methodology or as an implementation style.</P><P>OOD provides logical benefits regardless of the chosen programming language. You can use it with almost any syntax&#8212;even those syntaxes lacking object-oriented specifics. You cannot exploit all OOP features when using a typical procedural language, but you can achieve many organizational advantages. By following a few straightforward rules and conventions, you can achieve a logically cohesive, loosely coupled, object-based design that facilitates reuse, future feature expansion, and substantial error localization and isolation. Moreover, you can apply the methodology and coding technique to all levels of software&#8212;from end-user applications to device drivers.</P> <P>When you couple implementation-independent techniques with design experience in a procedural language, you are on your way to well-organized object-based code. You need only visualize and construct the object components of your programming solution within the restrictions of a language whose syntax and behavior is already known and understood. Some challenge remains in accomplishing this task, but beneficial results come quickly without the extended learning periods necessary for mastering true object-oriented languages. </P> <P>Because of its near-universal acceptance and the depth of its user base, ANSI- standard C is an excellent choice for implementing object-based designs. The following guidelines show how to create the main components of the object-oriented methodology with standard C syntax and without adversely increasing execution overhead or code complexity. These guidelines may also help you to write coding standards and to later port object-based designs in C to C++. </P> <P><B>The components of OOD</B></P><P>OOD emphasizes encapsulation of information and operations to form a single conceptual unit. Such a unit, or object, has a distinct public interface and private representation (<A href="javascript:if(confirm('http://www.edn.com/articles/pdfs/EDN/20000413/08ms6261.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/articles/pdfs/EDN/20000413/08ms6261.pdf'" tppabs="http://www.edn.com/articles/pdfs/EDN/20000413/08ms6261.pdf">Figure 1</A>). This principle of information hiding separates the publicized ability to perform a specific task from the private steps necessary to accomplish the task. It allows abstraction of objects during design and for later internal improvement, extension, and error correction of the object without affecting the surrounding system. </P> <P>Objects access each other by sending messages allowed by each object's public interface. When an object receives a message, the object performs the requested operation. The set of messages to which a given object can respond defines the object's behavior. However, all messages need not be a part of the object's public interface. An object can privately send messages to itself as necessary to carry out its public operations. A message comprises an operation name and any required parameters.</P> <P>A method is the algorithm that the object executes in response to receiving a message. It is part of an object's private representation. The method name always matches the corresponding message name. When an operation has methods on multiple object types, all such methods should have a consistent intent and the same message signature across types. The signature is the formal message specification, comprising the type, the order and number of parameters, and the resultant value type. Consistent method intent and message signature over multiple object types allows you to group and classify objects into conceptual hierarchies of common properties and behavior.</P> <P>Objects that share the same attributes and behaviors belong to the same class. A class is a generic specification, or template, for producing an object at an abstract, conceptual level. Objects derive their identities from variations in their class values and associations with other objects. Each object's private instance variables maintain the object's attribute values.</P> <P>Classes that do not create instances of themselves are called abstract. They exist so that you can extract and collect common behavior among classes in one location. An abstract class specifies its default behavior so that subclass methods will refine, augment, or overload its implementations. A concrete subclass adds new abilities to the behaviors inherited from its abstract superclass as the subclass's function and purpose require. You must always fully implement a concrete class, because the class creates object instances of itself to perform within a software system.</P> <P>Although inheritance allows you to create object classes by extending the behavior and structure of superclasses, you may also associate classes through aggregation to form new, more complex assembly classes. You associate classes representing the components of an object to form a class representing the entire assembly. This concept allows you to create complex objects by combining simpler, lesser objects and eases testing and error isolation. Simpler objects become easier to debug and, once these objects are operational, you can reuse them to build entire systems.</P> <P>Object encapsulation and inherited class properties allow for polymorphism, a powerful object-oriented concept. It provides a mechanism for recognizing and exploiting similarities among object classes by allowing objects from two or more classes to respond to the same message. The sending object need not be characteristically aware of the object receiving the message. However, it must be aware that the receiver will execute a corresponding method appropriate for its class. So, objects of classes derived from the same superclass respond to the same inherited messages (because the signatures match) but do so in a manner that their class methods define.</P> <P>Unfortunately, effective use of polymorphism requires substantial support from the implementation language, making an OOP language, such as C++, a necessity. You can code for polymorphism using a procedural language, but the limited results may not be worth the effort. Such implementations involve using case statements and variant records within superclass methods yielding increased program complexity and obscurity. These classes must be aware a priori of all subclasses that  you will derive, thus limiting their general and long-term usefulness. Considering these drawbacks, polymorphism is best reserved for use with real OOP languages.</P> <P>However, you should keep polymorphism in mind when designing classes and class hierarchies, even though you will ultimately simulate the system in a conventional procedural language. Polymorphic concepts can lead to more effective class decompositions and associations. Following such concepts can also simplify later porting of the object-based design to a true OOP language. </P> <P>Once you select ANSI C as the implementation language, you must adopt some new disciplines and conventions to overcome C's global-name-space limitation and its lack of private data structures to implement the most basic object-based systems. You must also restrict or eliminate the use of global accesses. Object-based designs rarely, if ever, require global data or embedded external declarations. Proper encapsulation, naming conventions, class specifications, and respect for private attribute data make free-floating functions and global data unnecessary for most applications, even when you are using a weakly typed language, such as C.</P> <P>You can effectively specify object classes by following a few general rules that you can directly apply to C constructs. Classes readily correspond to source-file pairs in C. The header file contains the public-message specifications and attribute-data declaration to form the class interface. The corresponding definition file contains the implementations of all public and private methods and maintains any internal class-data values. The file name should also be the class name; it is usually a singular noun. The name is plural only when it represents a collection. Because of C's global-function name space, you must use the class name as a prefix to all other publicly visible message and data declarations in the class to guarantee distinction. </P> <P><B>Attribute and message declarations</B></P><P>The attribute-data declaration in the header file is the main class type. You should name the declaration using a class name with the suffix "class." The declaration is generally a compound data structure containing the instance variables that you use to define individual objects of the class. It can contain state information, other objects, relational information, and any information necessary to maintain the object. You should always treat this structure privately. Unlike C++, C does not enforce this privacy, so programming discipline is necessary to avoid creating unwanted data dependencies. If you plan to dynamically allocate the structure, you should define a reference type with the suffix "pointer" and use it as the primary public type. <A href="javascript:if(confirm('http://www.edn.com/articles/pdfs/EDN/20000413/08ms626l1.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/articles/pdfs/EDN/20000413/08ms626l1.pdf'" tppabs="http://www.edn.com/articles/pdfs/EDN/20000413/08ms626l1.pdf">Listing 1</A> shows a partial header file declaring a class of software queue called "pipe."</P><P>A class specification uses two general message types. First is the instance message, which always contains a reference to the specific object (instance) that receives the message. Next is the class message, which the class receives with no object references. When you implement these message types, you provide access to attribute data only through messages in the class's public interface. Messaging must be adequate to provide any required attribute manipulation or visibility and keep private the form of the data. </P> <P>Each instance message should access or modify at least one instance-attribute value. The message contains a parameter referencing the specific object. You should not access class attributes. Each class message should access or modify at least one class-attribute value. The message does not contain a parameter referencing an object. You should not access instance-data values. No message of a class should operate on objects of different classes unless the class is an aggregate or relational association of classes. In those cases, some messages require arguments of all related class types.</P> <P>In true OOP languages, you implicitly use the object reference that instance messages require. In C++, such a reference is called the "this" pointer. Because C has no implicit passing or usage of parameters, you must declare the object reference as a formal parameter in each instance message. Borrowing from SmallTalk, you should name this parameter "self" in all classes, and the name should declare it to be of the class's primary public type (for example, "class" or "pointer").</P> <P>Message names should be short verb phrases. Direct, concise names precipitate smaller and simpler method implementations. Accurate naming promotes "self-documenting" code, which requires less supporting commentary within the code flow. Operations with similar intent in different classes should use the same verb across those classes, allowing the prefixed class name to provide the necessary name distinction. </P> <P>The following list contains some useful names for common operations and their functions: <UL><LI>Reset&#8212;Use to return all class or object attributes to specific defaults.</LI></UL> <UL><LI>Set&#8212;Use as a prefix to an attribute name to make an attribute true or a given value.</LI></UL><UL><LI>Get&#8212;Use as a prefix to an attribute name to return an attribute value without changing it.</LI></UL><UL><LI>Is&#8212;Use as a prefix to a Boolean determination to return an attribute's condition or object state</LI></UL> <UL><LI>Clear&#8212;Use as a prefix to an attribute name to zero or make false an attribute.</LI></UL> <UL><LI>Open, close&#8212;Use to begin or end the complete use of an object.</LI></UL> <UL><LI>Add, insert&#8212;Use to add an object at an available location within a collection or at a given location.</LI></UL> <UL><LI>Remove, replace&#8212;Use to delete an object from a collection or to add another object to the same location.</LI></UL> <UL><LI>Read, store, write, retrieve&#8212;Use to input or output persistent objects or collections.</LI></UL><UL><LI>Make, break&#8212;Use to set or return all object or class attributes with one function call.</LI></UL> <P></P><P>Because C, unlike C++,  has no implicit function execution upon object creation, you must declare object constructors and destructors and then explicitly execute them when an object enters and exits its scope of use. You should name a constructor that dynamically allocates an object, returning an object reference, "create." You should name a constructor that readies a statically declared object before using "initialize." You should name the object destructor "delete." You must create or initialize an object before any other usage or reference, and you should delete the object when the system no longer needs it.</P><P>Message declarations are ordinary function prototypes and macros that you use like functions. Functions are generally better for debugging, but macros are more efficient for simple, instance-variable accesses. Macros keep instance data private from the external code without the execution overhead of a full function call. Messages generally return an error status unless the function returns a Boolean state or a simple number. The pipe-class specification continuing in <A href="javascript:if(confirm('http://www.edn.com/articles/pdfs/EDN/20000413/08ms626l2.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/articles/pdfs/EDN/20000413/08ms626l2.pdf'" tppabs="http://www.edn.com/articles/pdfs/EDN/20000413/08ms626l2.pdf">Listing 2</A> shows some illustrative message declarations. </P><P>If a class specification consists of class messages only, the class is a singular instance that internally maintains all defining attribute data. Usually, you statically declare the attribute structure, but the instance may have dynamically allocated component objects that require runtime initialization by an appropriate class message. A look-up table is an example of such an object. Its class messages store, retrieve, match items, and return table status while hiding the actual form of the table structure. Only one table is available in the system. <A href="javascript:if(confirm('http://www.edn.com/articles/pdfs/EDN/20000413/08ms626l3.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/articles/pdfs/EDN/20000413/08ms626l3.pdf'" tppabs="http://www.edn.com/articles/pdfs/EDN/20000413/08ms626l3.pdf">Listing 3</A> shows a partial specification for a table of pipes.</P><P>A class-specification header file typically contains the ancillary type declarations (#includes and #defines) that are necessary to support the main class type, some message parameters, and some argument values. Aggregate class specifications always include the component classes that make up the class. Each message declaration should also have an associated textual description. Each description should contain complete instructions for proper message use and describe the message parameters and return values. The instructions should explain the function that each message accomplishes and the effects of the message on the rest of the system. The information should be complete enough that you need not reference the implementing code when using the class. You can often place this information directly into a developers guide or manual. </P> <P>Inheritance is most beneficial when you can exploit polymorphism. Because the language supports neither use of these features, using inheritance in C is a limited and manual process. However, the effort may still be worthwhile to represent the design of the class hierarchy in the code. </P><P>Subclass specifications require explicit use of macros to rename inherited superclass messages. The new subclass type is often called the typedef'ed superclass's main type. The superclass's type could also become a component of the new subclass structure, which may also define its own additional or overriding attributes. You declare adjunct subclass messages as previously described. Because it is an inheritance relationship, direct access of superclass instance-attribute data from within the subclass methods is appropriate, but maintaining private treatment is usually better in the long term. </P> <P>At best, inheritance without polymorphism provides only some organizational benefits that you can often realize anyway using aggregation associations from the outset. Weigh the perceived benefits against the required effort before proceeding with an inheritance implementation using C.</P><P><B>Implementing class methods</B></P><P>Generally, each class message declared in the header file corresponds with method that has a matching signature in the associated definition file. This file also contains localized type declarations, #defines and #includes, and any class-attribute data and private-method definitions required to maintain the overall class state and to support the implementations of the public-class methods. In every case, the file includes its corresponding class-declaration header file.</P> <P>Both private and public methods can freely and directly use class attributes, but only class messages should allow external access or modification. The attributes provide data values that are common to and vary uniformly across all instances that the class produces. Class attributes may track simple class states or may completely define the structure of a singular class instance.</P> <P>Private methods are statically declared C-function definitions. You invoke them from within the public methods. This process is internal message sending. They help to keep the public methods smaller and logically efficient by factoring out any repeated or complex code sequences into single-function operations. Because the methods are private to the file, you declare them without a prototype. The function definition serves as the internal-message signature. No class-name prefix is required, but you should use a "self" parameter whenever you pass instance variables to maintain convention.</P> <P>Private methods can send messages to other objects, use class attributes to form attribute values for specific instances, and call the class's own public methods whenever appropriate. They should not manipulate data external to the class definition. Each private method should have an associated textual description documenting the algorithmic execution of the operation, including inputs and outputs. <A href="javascript:if(confirm('http://www.edn.com/articles/pdfs/EDN/20000413/08ms626l4.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/articles/pdfs/EDN/20000413/08ms626l4.pdf'" tppabs="http://www.edn.com/articles/pdfs/EDN/20000413/08ms626l4.pdf">Listing 4</A> shows the class attributes and methods in a partial definition file for the pipe class.</P><P>A class's public methods are the complete implementations of its corresponding messages. By following the same naming conventions, each public method's signature matches a corresponding message prototype. If you use macros to directly implement some messages, no corresponding method will exist in the definition file for those messages. Limit the use of macro implementations to simple attribute modification or retrieval that requires no interdependent manipulation or to situations in which execution efficiency is a concern.</P> <P>Public-instance methods carry out the major behaviors of the class's created objects. Each method may declare objects of other classes, send messages to new objects and component objects, and invoke private or other public methods from its class. They should neither provide external access to class-attribute values nor directly manipulate data outside the class definition. As with private methods, each public-instance method should have an associated algorithmic description stating how you perform the operation. It should also describe the method's parameters and return values. </P> <P>Instance methods should be concise. Operations should have only one exit whenever possible. Conforming to this convention helps reduce surprises in runtime execution when debugging or enhancing code. It is also easier for developers to work on components designed by others when all the components follow a similar form.</P> <P>he same guidelines govern public-class methods and instance methods. The only variance is that public-class methods affect the whole class, by operating solely on class-attribute data instead of instance variables.</P><P><A href="javascript:if(confirm('http://www.edn.com/articles/pdfs/EDN/20000413/08ms626l5.pdf  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/articles/pdfs/EDN/20000413/08ms626l5.pdf'" tppabs="http://www.edn.com/articles/pdfs/EDN/20000413/08ms626l5.pdf">Listing 5</A> illustrates partial method implementations for the pipe-class definition.</P><P><B>A class template for C</B></P><P>Once you understand OOD components and how they are mapped into ANSI C, you can easily distill a template for organizing C constructs into classes. Even if you do not religiously follow these constructs, a template can help produce more uniform, consistent, and conceptually organized code. </P> <P>The class-specification layout in a C header file generally conforms to the following sequence: </P><P>1. All #includes for component and associated classes that are required to declare the class type and message parameters;</P><P>2. Ancillary #defines,constants, and types needed to support the class types and message arguments;</P><P>3. The typedef'ed main class type declaration containing the instance attribute declarations; </P><P>4. The typedef'ed pointer type referring to the main class type if necessary;</P><P>5. The function prototype declarations for the object constructors and destructors;</P><P>6. The function prototype declarations or macro definitions for all instance messages;</P><P>7. The function prototype declarations or macro definitions for all class messages.</P><P>For singular class instances, omit the class type, the class-type reference, and all instance messages. </P><P>The class-implementation layout in a C definition file generally conforms to the following sequence: </P><P>1. The <I>#include</I> of the class's public specification header file; </P><P>2. All <I>#includes</I> for component and associated classes that are required locally to declare the class attributes and to support method algorithms;</P><P>3. Ancillary <I>#defines</I>, constants, and types needed to support the class attributes and method algorithms;</P><P>4. Class-attribute declarations, if any;</P><P>5. Local internal method definitions, if any;</P><P>6. Public-instance-method definitions for each instance message that a macro does not already define;</P><P>7. Public-class-method definitions for each class message that a macro does not already define.</P><P>For singular class instances, omit all instance methods and use class attributes.</P><P>Although a true OOP language best serves OODs, you can still effectively use the methodology with a conventional procedural language, such as ANSI C. You can easily master the straightforward coding conventions and bring many of the benefits of OOD to projects that you implement in standard C. </P> <P>By following these conventions, programs and their component objects become more robust, changeable, and reusable. Coding standards based on these guidelines encourage uniform implementation of object-based designs, regardless of language, and help promote the correct use of the OOD methodology. They bring the ultimate goal of better software systems for everyone a few steps closer.</P> <P><B>Author info</B></P>Edward Binder is a software staff engineer at Motorola Computer Group, where he has worked for 15 years. He designs and implements validation-test software for single-board-computer products and has worked on Motorola Power PC embedded- computer products. He has a BSEE from Arizona State University (Tempe) and enjoys astronomy, photography, and hiking.Booch, Grady, <I>Object oriented design with applications</I>, The Benjamin/Cummings Publishing Co, 1991.<P><STRONG>REFERENCE</STRONG>           </P>
+<P>1. EVB Software Engineering Inc, "Object oriented development for Ada 
+software," 1989.</P><P>2. Kernighan, Brian W, and Dennis M Richie, <I>The C Programming Language</I>, Second Edition, Prentice Hall, 1988.</P><P>3. Lippman, Stanley B, <I>C++ Primer</I>, Second Edition, Addison Wesley, 1991.</P><P>4. Rumbaugh, James, Michael Blaha, et al, <I>Object-Oriented Modeling and Design</I>, Prentice Hall, 1991.</P><P>5. Sphar, Chuck, <I>Object-Oriented Programming Power</I>, Microsoft Press, 1991.</P><P>6. Wirfs-Brock, Rebecca, Brian Wilkerson, and Lauren Wiener, <I>Designing object-oriented software</I>, Prentice 
+Hall, 1990.<BR >   </P></span></div><br clear="all"/>
+<div style="margin-top: 20px;clear:all;">
+<script>
+<!--
+function appendLocation(theLink) {
+    var thisPage = "" + location;
+    var bits = thisPage.split("&");
+    var s = ""
+    for (var i = 0; i < bits.length; i++) {
+      s += bits[i] + "^"
+    }
+    if (s == "") {
+      theLink.href = theLink.href + "&refPage=" + thisPage
+     } else {
+       theLink.href = theLink.href + "&refPage=" + s
+    }
+    return true;
+}
+// -->
+</script>
+<div id="printSubEmail"><div><a href="javascript:if(confirm('http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article'" tppabs="http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article"><img src="ednIconSubscribe.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222505/www.edn.com/contents/images/redesign/ednIconSubscribe.gif" alt="Free Print Subscriptions" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article'" tppabs="http://www.edn.com/jumplink.asp?target=http%3A//www.reed4success.com/default.asp%3Fmagid%3D002%26promocode%3DWBA01EB4&sponsor=r4s+EDN&loc=buttoncentercol&layout=article">Free Print Subscription</a></div>
+
+<div><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articlePrint&articleID=CA46802  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articlePrint&articleID=CA46802'" tppabs="http://www.edn.com/index.asp?layout=articlePrint&articleID=CA46802"><img src="ednIconPrint.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222321/www.edn.com/contents/images/redesign/ednIconPrint.gif" alt="Printer Friendly Version" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articlePrint&articleID=CA46802  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articlePrint&articleID=CA46802'" tppabs="http://www.edn.com/index.asp?layout=articlePrint&articleID=CA46802">Printer Friendly Version</a></div>
+
+<div><a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articleEmail&articleID=CA46802  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articleEmail&articleID=CA46802'" tppabs="http://www.edn.com/index.asp?layout=articleEmail&articleID=CA46802" onclick="return appendLocation(this)"><img src="ednIconEmail.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050418222407/www.edn.com/contents/images/redesign/ednIconEmail.gif" alt="Email to a Friend" border="0"/></a>  <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=articleEmail&articleID=CA46802  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=articleEmail&articleID=CA46802'" tppabs="http://www.edn.com/index.asp?layout=articleEmail&articleID=CA46802" onclick="return appendLocation(this)">Email to a Friend</a></div></div></div><br/>
+
+
+<div id="sponsorlink">
+<h3 class="sponsorhead">Sponsor Links</h3>
+<ul><script language="JavaScript1.1" SRC=";type=sponsorlink;sz=1x1;tile=1;u=-1176500494-521400098-946378881-0-article-CA46802--;ord=1122971903-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=sponsorlink;sz=1x1;tile=1;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">
+</script><script language="JavaScript1.1" SRC=";type=sponsorlink;sz=1x1;tile=2;u=-1176500494-521400098-946378881-0-article-CA46802--;ord=1122971903-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=sponsorlink;sz=1x1;tile=2;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">
+</script><script language="JavaScript1.1" SRC=";type=sponsorlink;sz=1x1;tile=3;u=-1176500494-521400098-946378881-0-article-CA46802--;ord=1122971903-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=sponsorlink;sz=1x1;tile=3;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">
+</script><script language="JavaScript1.1" SRC=";type=sponsorlink;sz=1x1;tile=4;u=-1176500494-521400098-946378881-0-article-CA46802--;ord=1122971903-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=sponsorlink;sz=1x1;tile=4;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">
+</script><script language="JavaScript1.1" SRC=";type=sponsorlink;sz=1x1;tile=5;u=-1176500494-521400098-946378881-0-article-CA46802--;ord=1122971903-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;type=sponsorlink;sz=1x1;tile=5;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">
+</script></ul>
+</div>
+<br/>
+<IFRAME SRC="showct-sid=102&ct=EDN_HP_ROS&num=5&layt=3" tppabs="http://ilinks.industrybrains.com/showct?sid=102&ct=EDN_HP_ROS&num=5&layt=3" width="100%" height="400" frameborder="no" border="0" marginwidth="0" marginheight="0" SCROLLING="no"></IFRAME>
+
+
+</div></div>
+		</td><!--end rightcol-->
+		
+		</tr>
+	</table> <!--end bodytable-->
+<!--End Main Content-->	
+<!--Footer--><div align="center" id="leaderboard" style="margin-bottom:5px;"><img src="edn_adv_top.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050517180213/www.edn.com/contents/images/edn_adv_top.gif" width="20" height="90" style="padding-top:10px;" alt=""/><script language=Javascript1.1 src=";dcopt=ist;abr=!webtv;desc=CA46802;type=leaderboard;pos=2;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;u=-1176500494-521400098-946378881-0-article-CA46802--;ord=1122971903-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;dcopt=ist;abr=!webtv;desc=CA46802;type=leaderboard;pos=2;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">
+</script>
+<script>
+<!--
+if ((!document.images && navigator.userAgent.indexOf('Mozilla/2.') >= 0) || (navigator.userAgent.indexOf("WebTV") >= 0))
+{
+document.write('<a href="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA46802;type=leaderboard;pos=2;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">');
+document.write('<img src="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA46802;type=leaderboard;pos=2;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?" border="0" align="right" height="90" width="728"></a>');
+}
+//-->
+</script>
+<noscript>
+<!-- for non JavaScript browsers and Netscape 2.x -->
+<a href="javascript:if(confirm('http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA46802;type=leaderboard;pos=2;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA46802;type=leaderboard;pos=2;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?'" tppabs="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA46802;type=leaderboard;pos=2;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">
+<img src="javascript:if(confirm('http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA46802;type=leaderboard;pos=2;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA46802;type=leaderboard;pos=2;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?'" tppabs="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA46802;type=leaderboard;pos=2;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?" border="0" align="right" height="90" width="728">
+</a>
+</noscript></div>
+
+
+<div id="footercontainer">
+<div id="footercontent1">
+			<div style="font-size: 11px;"><a href="javascript:if(confirm('http://www.reed-electronics.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/'" tppabs="http://www.reed-electronics.com/">Reed Electronics Group</a></div>
+			<div><a href="javascript:if(confirm('http://www.edn.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/'" tppabs="http://www.edn.com/">EDN</a> | <a href="javascript:if(confirm('http://www.ecnmag.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.ecnmag.com/'" tppabs="http://www.ecnmag.com/">ECN</a> | <a href="javascript:if(confirm('http://www.reed-electronics.com/eb-mag  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/eb-mag'" tppabs="http://www.reed-electronics.com/eb-mag">Electronic Business</a> | <a href="javascript:if(confirm('http://www.reed-electronics.com/electronicnews  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/electronicnews'" tppabs="http://www.reed-electronics.com/electronicnews">Electronic News</a><br /></div>
+			<div><a href="javascript:if(confirm('http://www.instat.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.instat.com/'" tppabs="http://www.instat.com/">In-Stat</a> | <a href="javascript:if(confirm('http://www.reed-electronics.com/semiconductor  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/semiconductor'" tppabs="http://www.reed-electronics.com/semiconductor">Semiconductor International</a> | <a href="javascript:if(confirm('http://www.reed-electronics.com/tmworld  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reed-electronics.com/tmworld'" tppabs="http://www.reed-electronics.com/tmworld">Test and Measurement World</a></div>
+		</div><!--end footercontent1-->
+
+<div id="footercontent2">
+			<div><a href="javascript:if(confirm('http://www.edn.com/info/30955.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/30955.html'" tppabs="http://www.edn.com/info/30955.html">ABOUT EDN</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.edn.com/info/CA528811.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/CA528811.html'" tppabs="http://www.edn.com/info/CA528811.html">FREE SUBSCRIPTIONS</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:if(confirm('http://www.edn.com/info/31091.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/info/31091.html'" tppabs="http://www.edn.com/info/31091.html">CONTACT US</a><br /><br /><br /></div>
+			<div>
+				<div class="footerrbi"><a href="javascript:if(confirm('http://www.reedbusiness.com/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.reedbusiness.com/'" tppabs="http://www.reedbusiness.com/"><img src="ednRBILogo.gif" tppabs="http://a330.g.akamai.net/7/330/2540/20050407022207/www.edn.com/contents/images/redesign/ednRBILogo.gif" width="141" height="18" border="0" alt="" /></a></div>
+				<div class="footercopyright">1997-2005 Reed Business Information, a division of Reed Elsevier Inc. All rights reserved.<br />Use of this web site is subject to its <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=page&module=terms  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=page&module=terms'" tppabs="http://www.edn.com/index.asp?layout=page&module=terms">Terms of Use</a> | <a href="javascript:if(confirm('http://www.edn.com/index.asp?layout=page&module=privacy  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.edn.com/index.asp?layout=page&module=privacy'" tppabs="http://www.edn.com/index.asp?layout=page&module=privacy">Privacy Policy</a></div>
+				<br clear="all" />
+			</div>
+		</div> <!--end footercontent2-->
+		
+	</div> <!--end footercontainer-->
+
+<!--End Footer--><!--ads-->
+
+<div id="topad"><script language=Javascript1.1 src=";dcopt=ist;abr=!webtv;desc=CA46802;type=leaderboard;pos=1;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;ptile=1;u=-1176500494-521400098-946378881-0-article-CA46802--;ord=1122971903-" tppabs="http://ad.doubleclick.net/adj/edn.rbi/;dcopt=ist;abr=!webtv;desc=CA46802;type=leaderboard;pos=1;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">
+</script>
+<script>
+<!--
+if ((!document.images && navigator.userAgent.indexOf('Mozilla/2.') >= 0) || (navigator.userAgent.indexOf("WebTV") >= 0))
+{
+document.write('<a href="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA46802;type=leaderboard;pos=1;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">');
+document.write('<img src="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA46802;type=leaderboard;pos=1;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?" border="0" align="right" height="90" width="728"></a>');
+}
+//-->
+</script>
+<noscript>
+<!-- for non JavaScript browsers and Netscape 2.x -->
+<a href="javascript:if(confirm('http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA46802;type=leaderboard;pos=1;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA46802;type=leaderboard;pos=1;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?'" tppabs="http://ad.doubleclick.net/jump/edn.rbi/;abr=!webtv;desc=CA46802;type=leaderboard;pos=1;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?">
+<img src="javascript:if(confirm('http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA46802;type=leaderboard;pos=1;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA46802;type=leaderboard;pos=1;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?'" tppabs="http://ad.doubleclick.net/ad/edn.rbi/;abr=!webtv;desc=CA46802;type=leaderboard;pos=1;indid=2815;indid=2818;indid=21373;indid=22113;indid=22115;indid=42873;indid=43312;sz=728x90;ptile=1;u=-1176500494|521400098|946378881|0|article|CA46802||;ord=1122971903?" border="0" align="right" height="90" width="728">
+</a>
+</noscript></div>
+
+<!-- end ads -->
+
+</div> <!-- end bodycontainer -->
+
+</body>
+</html>

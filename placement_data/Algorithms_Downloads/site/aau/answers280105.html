@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Algorithms and Data Structures, Aalborg University
+  (INF1, Autumn'04)</title>
+</head>
+<body bgcolor="white">
+ <h3>Algorithms and Data Structures (INF1, Autumn'04)</h3>
+ <h2>Answers for Exam Questions from 28.1.2004</h2>
+<br>
+
+<h3> Question 1</h3>
+<ul>
+<li> a) False, True, True 
+<li> b) No, Yes
+<li> c) G, D, B, E, A, C, F, H 
+<li> d) O(n<sup>2</sup>) and O(n<sup>3</sup>)
+<li> e) 3, 2, 1
+<li> f) A is an isolated node and there is an edge from B to C
+<li> g) 1st column: 0, 8, 6, infinity; 2nd column: 0, 7, 6, 4;
+        3rd column: 0, 1, 6, 4  
+</ul>
+
+<h3> Question 2 (sketch)</h3>
+
+<UL>
+<li> a) s1.make; s1.insert(3); s1.insert(2); s1.insert(5);  <br>
+s1.delete_min returns 2
+<li> b) remove in loop one minimal element from s1 and one from s2 and compare
+if they are the same; if both s1 and s2 become empty at the same time
+and all the removed numbers were the same, return TRUE, otherwise return FALSE
+<li> c) all are O(1) except for delete_min which is O(n)
+<li> d) first insert all elements from A to a temporary MIN_SET and then
+remove one by one elements from MIN_SET and insert them in this order into A.
+The elements in A has to be all different. Using singly-linked list the
+complexity is O(n<sup>2</sup>), using Fibonacci heaps it is O(n * log n).
+</UL>
+
+<h3> Question 3 (sketch)</h3>
+
+This is a minimum spanning tree problem.
+<UL>
+<li> a) yes, there is another solution with the same total cost
+<li> b) the problem is a graph problem with undirected edges, the question
+is to find a minimum spanning tree
+<li> c) e.g. by using Kruskal's algorithm, complexity is O(m * log n)  
+<li> d) e.g. by modifying Kruskal's algorithm, first order the edges in such
+a way that they start with the links that are already built (and these
+edges are ordered) and then continues with the other edges (and these
+are again ordered). Do not include any edge which cannot be in the
+graph due to incompatibility. Finally run Kruskal's algorithm which 
+processes the edges in this order.
+</UL>
+ 
+</body>
+</html>
+
+

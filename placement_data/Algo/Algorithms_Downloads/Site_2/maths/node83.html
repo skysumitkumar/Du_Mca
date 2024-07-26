@@ -1,0 +1,206 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Random Shuffles</TITLE>
+<META NAME="description" CONTENT="Random Shuffles">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node84.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node84.html">
+<LINK REL="previous" HREF="node82.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node82.html">
+<LINK REL="up" HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<LINK REL="next" HREF="node84.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node84.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1526"
+  HREF="node84.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node84.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1520"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1514"
+  HREF="node82.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node82.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1522"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1524"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1527"
+  HREF="node84.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node84.html">Random Samples</A>
+<B> Up:</B> <A NAME="tex2html1521"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">Applications of Random Numbers</A>
+<B> Previous:</B> <A NAME="tex2html1515"
+  HREF="node82.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node82.html">Choosing `with probability p'</A>
+ &nbsp <B>  <A NAME="tex2html1523"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1525"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00934000000000000000"></A><A NAME="7852"></A>
+<BR>
+Random Shuffles
+</H2>
+This is more difficult. We have a list <!-- MATH
+ $(x_1,\ldots,x_n)$
+ -->
+(<I>x</I><SUB>1</SUB>,..., <I>x</I><SUB>n</SUB>) and we want
+to shuffle it randomly.
+
+<P>
+The following, surprisingly simple, algorithm does the trick:
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ algorithm shuffle(<I>x</I>,<I>n</I>) &nbsp;&nbsp;// shuffle <!-- MATH
+ $x_{1},\ldots,x_{n}$
+ -->
+<I>x</I><SUB>1</SUB>,..., <I>x</I><SUB>n</SUB>
+<BR>
+begin
+<BR>&nbsp;&nbsp;for i = n downto 2 begin
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;k = irand(1,i)
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;swap over <I>x</I><SUB>i</SUB> and <I>x</I><SUB>k</SUB>
+<BR>&nbsp;&nbsp;end
+<BR>
+end
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>
+<P>
+Why does this work? It seems that it is not doing enough `mixing up'
+to produce a genuinely random shuffle. We can only prove that it works
+if we have some notion of what we mean by a `random shuffle'. Let me
+keep things simple and say that a shuffling process is random if each
+element of the list can end up in any position in the list with equal
+probability.  That is to say, in a list of <I>n</I> items there are <I>n</I>
+possible places that any given element can eventually occupy. I want
+each of these places to be equally likely.
+
+<P>
+So we now have to calculate the probability that our algorithm puts
+element <I>x</I><SUB>i</SUB> into position <I>j</I>, where <!-- MATH
+ $1\le i,j \le n$
+ -->
+1<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$"><I>i</I>, <I>j</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$"><I>n</I>. If you look
+carefully at the algorithm you will see that element <I>x</I><SUB>i</SUB> end up in
+position <I>j</I> if it is <B>not</B> chosen on the first <I>n</I> - <I>j</I> steps of
+the algorithm and <B>is</B> chosen on the step <I>n</I> - <I>j</I> + 1. Since we know
+that <!-- MATH
+ $\mathrm{irand}(n,m)$
+ -->
+irand(<I>n</I>, <I>m</I>) is genuine we can use elementary methods to
+find that the probability of <I>x</I><SUB>i</SUB> ending up in position <I>j</I> is
+<!-- MATH
+ \begin{displaymath}
+\     \frac{n-1}{n}\cdot\frac{n-2}{n-1}\cdot\frac{n-3}{n-2}
+	\cdots\frac{j}{j+1} \cdot\frac{1}{j}
+\     = \frac{j}{n}\cdot\frac{1}{j} = \frac{1}{n},
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+&nbsp;<IMG
+ WIDTH="45" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img39.gif"
+ ALT="$\displaystyle {\frac{n-1}{n}}$"><SUP> . </SUP><IMG
+ WIDTH="45" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img199.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img199.gif"
+ ALT="$\displaystyle {\frac{n-2}{n-1}}$"><SUP> . </SUP><IMG
+ WIDTH="45" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img200.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img200.gif"
+ ALT="$\displaystyle {\frac{n-3}{n-2}}$"><SUP> ... </SUP><IMG
+ WIDTH="43" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img201.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img201.gif"
+ ALT="$\displaystyle {\frac{j}{j+1}}$"><SUP> . </SUP><IMG
+ WIDTH="16" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img202.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img202.gif"
+ ALT="$\displaystyle {\frac{1}{j}}$">&nbsp; = <IMG
+ WIDTH="17" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img203.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img203.gif"
+ ALT="$\displaystyle {\frac{j}{n}}$"><SUP> . </SUP><IMG
+ WIDTH="16" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img202.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img202.gif"
+ ALT="$\displaystyle {\frac{1}{j}}$"> = <IMG
+ WIDTH="17" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img41.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img41.gif"
+ ALT="$\displaystyle {\frac{1}{n}}$">,
+</DIV><P></P>
+which is exactly what we wanted.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1526"
+  HREF="node84.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node84.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1520"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1514"
+  HREF="node82.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node82.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1522"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1524"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1527"
+  HREF="node84.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node84.html">Random Samples</A>
+<B> Up:</B> <A NAME="tex2html1521"
+  HREF="node79.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node79.html">Applications of Random Numbers</A>
+<B> Previous:</B> <A NAME="tex2html1515"
+  HREF="node82.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node82.html">Choosing `with probability p'</A>
+ &nbsp <B>  <A NAME="tex2html1523"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1525"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

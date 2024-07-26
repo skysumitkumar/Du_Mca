@@ -1,0 +1,307 @@
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Copyright" content="Brian Brown, 1998, All rights reserved">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0"><title>Operating Systems: Part 3</title><script charset="utf-8" id="injection_graph_func" src="os03_files/injection_graph_func.js"></script></head><body bgcolor="#ffffff">
+
+<p align="center"><a name="start"></a><font color="#000080" size="5">Operating Systems Introduction</font><font color="#ff00ff" size="6"> </font><br>
+Author: Brian Brown, 1995-2000. All rights reserved.<br>
+<a href="http://uva.ulb.ac.be/cit_courseware/opsys/os02.htm"><font size="2">Previous</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/default.htm"><font size="2">Home Page</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/os04.htm"><font size="2">Next</font></a></p>
+
+<hr>
+
+<p><a name="process"><font size="4"><strong></strong></font></a><font size="4"><strong> </strong></font><a href="#start"><font size="4"><strong><img src="os03_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is a Process?</font><br>
+In this section we look at how the operating system manages the
+various programs or tasks that need to be run.</p>
+
+<p>A process or task is a portion of a program in some stage of
+execution. A program can consist of several tasks, each working
+on their own or as a unit (perhaps periodically communicating
+with each other).</p>
+
+<p>Each process that runs in an operating system is assigned a
+process control block that holds information about the process,
+such as a unique process ID (a number used to identify the
+process), the saved state of the process, the process priority
+and where it is located in memory.</p>
+
+<p>The process priority is used to determine how often the
+process receives processor time. The operating system may run all
+processes with the same priority, or it may run some processes
+more often that others. Processes that have been waiting a long
+time for execution by the processor may have their priority
+increased so that they will be more likely to be executed in the
+future.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="states"></a> <a href="#start"><font size="4"><strong><img src="os03_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What about process states?</font><br>
+A process in a computer system may be in one of a number of
+different possible states, such as</p>
+
+<blockquote>
+    <p><strong>ready</strong> - if it can run when the processor
+    becomes free <br>
+    <strong>running</strong> - it currently has the processor <br>
+    <strong>blocked</strong> - it cannot run when the processor
+    becomes free </p>
+</blockquote>
+
+<p>When a running process is interrupted by the processor after
+completing its allotted time, its state is saved in its process
+control block, its process state changed to ready and its
+priority adjusted.</p>
+
+<p>When a running process accesses an input or output device, or
+for some reason cannot continue, it is interrupted by the
+processor, the process state and associated data is saved in the
+associated process control block. The process state is changed to
+blocked and the priority adjusted.</p>
+
+<p>When the scheduler decides the next task to run, it changes
+the process state of the selected process to running and loads
+the saved data associated with that process back into the
+processor.</p>
+
+<p>Typically, an operating system will provide a number of
+program function calls that can be used to control processes.
+These are similar to those shown below,</p>
+
+<blockquote>
+    <p>block() <br>
+    wakeup()<br>
+    suspend()<br>
+    sleep()<br>
+    change_priority()</p>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="pcb"></a> <a href="#start"><font size="4"><strong><img src="os03_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is a process control block?</font><br>
+A process control block or PCB is a data structure (a table) that
+holds information about a process. Every process or program that
+runs needs a PCB. When a user requests to run a particular
+program, the operating system constructs a process control block
+for that program.</p>
+
+<p>Typical information that is stored in a process control block
+is</p>
+
+<blockquote>
+    <ul>
+        <li>the location in memory of where the process is</li>
+        <li>the priority of the process</li>
+        <li>a unique process identification number (called PID)</li>
+        <li>the current process state (ready, running, blocked)</li>
+        <li>associated data for the process</li>
+    </ul>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<p><a name="intercommunicate"></a> <a href="#start"><font size="4"><strong><img src="os03_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>How
+do processes inter-communicate?</font><br>
+Processes can intercommunicate by sending messages, data or code
+between them. A process can use OS calls like sendmessage() and
+getmessage() to exchange messages. </p>
+
+<p>Two processes might want to co-operate in performing a
+particular task. For example a process might want to print to
+document in response to a user request, so it starts another
+process to handle the printing and sends a message to it to start
+printing. Once the process handling the printing request finishes,
+it sends a message back to the original process, which reads the
+message and uses this to pop up a dialog box informing the user
+that the document has been printed.</p>
+
+<p>There are other ways in which processes can communicate with
+each other, such as using a shared memory space.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="synchronize"></a> <a href="#start"><font size="4"><strong><img src="os03_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>How do processes synchronize their
+activity?</font><br>
+Sometimes a process may need to wait for some other process to
+finish before it can continue. In this instance, the two
+processes need to be synchronized together. There are a number of
+ways in which this can be done. A common method in operating
+systems is to use a variable called a <strong>semaphore</strong>
+that only one process can own at a time. There are two calls
+associated with a semaphore, one to lock it and one to unlock it.
+When a process attempts to lock a semaphore, it will be
+successful if the semaphore is free. If the semaphore is already
+locked, the process requesting the lock will be blocked and
+remain blocked till the process that has the semaphore unlocks it.
+When that happens, the process that was blocked will be unblocked
+and the semaphore can then be locked by it.</p>
+
+<p><strong>System semaphores</strong> are used by the operating
+system to control system resources. A program can be assigned a
+resource by getting a semaphore (via a system call to the
+operating system). When the resource is no longer needed, the
+semaphore is returned to the operating system, which can then
+allocate it to another program. </p>
+
+<p>&nbsp;</p>
+
+<p><a name="critical"></a> <a href="#start"><font size="4"><strong><img src="os03_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>How do processes protect critical data
+(Critical sections)?</font><br>
+When two or more processes access shared data, often the data
+must be protected during access. Typically, a process that reads
+data from a shared queue cannot read it whilst the data is
+currently being written or its value being changed. Where a
+process is considered that it cannot be interrupted whilst
+performing a critical function such as updating data, it is
+prevented from being interrupted by the operating system till it
+has completed the update. During this time, the process is said
+to be in its <strong>critical section</strong>. Once the process
+has written the data, it can then be interrupted and other
+processes can also run.</p>
+
+<p>Problems occur only when both tasks attempt to read and write
+the data at the same time. The answer is simple, lock the data
+structure whilst accessing (semaphores or interrupts disabled).
+There is no need for data locking if both processes only read at
+same time. Critical sections of a process should be small so that
+they do not take long to execute and thus other processes can run.
+</p>
+
+<p>&nbsp;</p>
+
+<p><a name="thread"></a> <a href="#start"><font size="4"><strong><img src="os03_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is a thread?</font><br>
+A thread is a separate part of a process. A process can consist
+of several threads, each of which execute separately. For example,
+one thread could handle screen refresh and drawing, another
+thread printing, another thread the mouse and keyboard. This
+gives good response times for complex programs. Windows NT is an
+example of an operating system which supports multi-threading.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="backfore"></a> <a href="#start"><font size="4"><strong><img src="os03_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>What is a background and foreground
+process?</font><br>
+Multi-tasking systems support foreground and background processes
+(tasks). A foreground task is one that the user interacts
+directly with using the keyboard and screen. A background task is
+one that runs in the background (it does not have access to the
+screen or keyboard). Background tasks are usually used for
+printing. Windows NT Workstation and Windows 95/98 assign a
+higher priority to foreground tasks.</p>
+
+<p>&nbsp;</p>
+
+<p><a name="revision3"></a> <a href="#start"><font size="4"><strong><img src="os03_files/up.gif" border="0" height="15" width="15"></strong></font></a><font size="4"><strong> </strong>Revision Exercise 3</font><br>
+What is a process?</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p>Complete the following process state transition diagram.</p>
+
+<p align="center"><img src="os03_files/process2.jpg" height="226" width="364"></p>
+
+<p>What is a process control block?</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p>List FOUR things a process control block holds.</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p>What is a semaphore?</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p>What is a critical section?</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p>What is a thread?</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p>Why does operating systems such as Windows NT and Windows 98
+give a higher priority to the foreground task compared to that of
+background tasks.</p>
+
+<table border="1" width="100%">
+    <tbody><tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</tbody></table>
+
+<p><a href="#start"><font size="4"><strong><img src="os03_files/up.gif" border="0" height="15" width="15"></strong></font></a></p>
+
+<p align="center"><a href="http://uva.ulb.ac.be/cit_courseware/opsys/os02.htm"><font size="2">Previous</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/default.htm"><font size="2">Home Page</font></a><font size="2"> | </font><a href="http://uva.ulb.ac.be/cit_courseware/opsys/os04.htm"><font size="2">Next</font></a></p>
+<!-- #counter var="compteur_cit" display="false" -->
+
+</body></html>

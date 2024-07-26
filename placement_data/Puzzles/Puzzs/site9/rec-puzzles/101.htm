@@ -1,0 +1,50 @@
+<html><head>
+<title>Solution for /arithmetic/digits/prime/101</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/digits/prime/101 problem</h1>
+<hr>
+Note that the sequence
+<pre>
+101 , 10101, 1010101, ....
+</pre>
+can be viewed as 
+<pre>
+100**1 +1, 100**2 + 100**1 + 1, 100**3 + 100**2 + 100**1 +1 ....
+</pre>
+that is, 
+the k-th term in the sequence is 
+<pre>
+100**k + 100**(k-1) + 100**(k-2) + ...+ 100**(1) + 1
+
+= (100)**(k+1) - 1
+  ----------------
+    11 * 9
+
+= (10)**(2k+2) - 1
+  ----------------
+    11 * 9
+
+= ((10)**(k+1) - 1)*((10)**(k+1) +1)
+   ---------------------------------
+       11*9
+</pre>
+thus either 11 and 9 divide the numerator. Either they both divide the
+same factor in the numerator or different factors in the numerator. In
+any case, after dividing, they leave the numerators as a product of two
+integers.  Only in the case of k = 1, one of the integers is 1. Thus
+there is exactly one prime in the above sequence: 101.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

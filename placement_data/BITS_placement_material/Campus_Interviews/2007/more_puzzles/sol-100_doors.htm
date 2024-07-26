@@ -1,0 +1,183 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0057)http://www.techinterview.org/Solutions/fog0000000095.html -->
+<HTML><HEAD><TITLE>answers to technical interview questions</TITLE>
+<META 
+content="Pryor, Michael, Michael Pryor, Michael H. Pryor, Fog Creek Software, interview questions, microsoft style interview, technical interview, programming questions, brain teasers, puzzles" 
+name=keywords>
+<META content="Answers to technical interview questions" name=description>
+<META http-equiv=Content-Type content="text/html; charset=UTF-8">
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR>
+<META content=3D98C6AC/95 name=citydesk>
+<META http-equiv=Expires content="Mon, 01 Jan 1990 01:00:00 GMT">
+<STYLE type=text/css>BODY {
+	FONT-SIZE: 11px; COLOR: #555555; LINE-HEIGHT: 20px; FONT-FAMILY: geneva, verdana
+}
+TD {
+	FONT-SIZE: 11px; COLOR: #555555; LINE-HEIGHT: 20px; FONT-FAMILY: geneva, verdana
+}
+P {
+	FONT-SIZE: 11px; COLOR: #555555; LINE-HEIGHT: 20px; FONT-FAMILY: geneva, verdana
+}
+BLOCKQUOTE {
+	FONT-SIZE: 11px; COLOR: #555555; LINE-HEIGHT: 20px; FONT-FAMILY: geneva, verdana
+}
+BODY {
+	MARGIN: 0px; BACKGROUND-COLOR: #ffffff
+}
+A {
+	TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff9900; TEXT-DECORATION: underline
+}
+.grid {
+	LINE-HEIGHT: 15px
+}
+</STYLE>
+</HEAD>
+<BODY text=#000000 vLink=#800080 aLink=#ff0000 link=#0000ff bgColor=#ffffff>
+<TABLE cellSpacing=0 cellPadding=0 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle colSpan=5>
+      <SCRIPT type=text/javascript><!--
+google_ad_client = "pub-1798023138596629";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "FDEFD2";
+google_color_bg = "FDEFD2";
+google_color_link = "0000CC";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></SCRIPT>
+
+      <SCRIPT src="sol-100 doors_files/show_ads.js" type=text/javascript>
+</SCRIPT>
+    </TD></TR>
+  <TR>
+    <TD colSpan=5>
+      <P><B><A 
+      href="http://www.techinterview.org/index.html"><B>techInterview</B></A></B><BR><I>Answers 
+      to technical interview questions - <A 
+      href="http://www.techinterview.org/Comments/fog0000000171.html">accepting 
+      donations for dogs</A></I></P></TD></TR>
+  <TR height=25>
+    <TD colSpan=5>&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=top align=right><A 
+      href="http://www.techinterview.org/index.html">home</A><BR><A 
+      href="http://www.techinterview.org/faq.html">faq</A><BR><A 
+      href="http://www.techinterview.org/Comments/books.html">reading</A><BR><A 
+      href="http://www.techinterview.org/feedback.html">feedback</A><BR><A 
+      href="http://discuss.fogcreek.com/techInterview/">discuss</A><BR><A 
+      href="http://www.techinterview.org/archive/index.html">archive</A><BR><A 
+      href="http://www.fogcreek.com/">fogcreek</A><BR><A 
+      href="http://www.fogcreek.com/FogBUGZ">bug&nbsp;tracking</A><BR><A 
+      href="http://www.geocities.com/Heartland/Plains/5418/home.html">pets in 
+      ny</A><BR><A href="http://www.petfinder.com/">petfinder</A> 
+      <P><BR><A 
+      href="http://www.amazon.com/exec/obidos/tg/detail/-/0316919160/techinterview-20"><IMG 
+      src="sol-100 doors_files/fujismall.png" border=0><BR>*new* techInterview 
+      bible</A><BR><BR><A 
+      href="http://www.techinterview.org/Comments/fog0000000171.html">thank&nbsp;your&nbsp;brain<BR>save&nbsp;a&nbsp;dog's&nbsp;life</A><BR><BR><A 
+      href="http://www.fogcreek.com/CityDesk/"><IMG 
+      src="sol-100 doors_files/MadeWithCityDesk.gif" 
+border=0></A><BR><BR></P></TD>
+    <TD width=10>&nbsp;</TD>
+    <TD width=1 bgColor=gray><BR></TD>
+    <TD width=10>
+    <TD vAlign=top width=600>
+      <H2></H2>
+      <TABLE cellSpacing=0 cellPadding=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top>
+            <P><B>Solved by joel wollman<BR></B><BR><B>solution: 100 doors in a 
+            row</B></P>
+            <P>
+            <P>problem: you have 100 doors in a row that are all initially 
+            closed. you make 100 passes by the doors starting with the first 
+            door every time. the first time through you visit every door and 
+            toggle the door (if the door is closed, you open it, if its open, 
+            you close it). the second time you only visit every 2nd door (door 
+            #2, #4, #6). the third time, every 3rd door (door #3, #6, #9), etc, 
+            until you only visit the 100th door. 
+            <P>for example, after the first pass every door is open. on the 
+            second pass you only visit the even doors (2,4,6,8...) so now the 
+            even doors are closed and the odd ones are opened. the third time 
+            through you will close door 3 (opened from the first pass), open 
+            door 6 (closed from the second pass), etc.. 
+            <P>question: what state are the doors in after the last pass? which 
+            are open which are closed? 
+            <P>solution: you can figure out that for any given door, say door 
+            #42, you will visit it for every divisor it has. so 42 has 1 &amp; 
+            42, 2 &amp; 21, 3 &amp; 14, 6 &amp; 7. so on pass 1 i will open the 
+            door, pass 2 i will close it, pass 3 open, pass 6 close, pass 7 
+            open, pass 14 close, pass 21 open, pass 42 close. for every pair of 
+            divisors the door will just end up back in its initial state. so you 
+            might think that every door will end up closed? well what about door 
+            #9. 9 has the divisors 1 &amp; 9, 3 &amp; 3. but 3 is repeated 
+            because 9 is a perfect square, so you will only visit door #9, on 
+            pass 1, 3, and 9... leaving it open at the end. only perfect square 
+            doors will be open at the end. 
+            <P><SMALL><FONT size=1>credit to joel wollman</FONT></SMALL> <A 
+            href="http://www.techinterview.org/Solutions/fog0000000095.html"></P></A><BR 
+            clear=all>
+            <P></B></P></TD>
+          <TD width=20>&nbsp;</TD>
+          <TD vAlign=top>
+            <SCRIPT type=text/javascript><!--
+google_ad_client = "pub-1798023138596629";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_channel ="";
+google_ad_type = "text";
+google_color_border = "B4D0DC";
+google_color_bg = "ECF8FF";
+google_color_link = "0000CC";
+google_color_url = "008000";
+google_color_text = "6F6F6F";
+//--></SCRIPT>
+
+            <SCRIPT src="sol-100 doors_files/show_ads.js" type=text/javascript>
+</SCRIPT>
+          </TD></TR></TBODY></TABLE>
+      <P>
+      <P></P></TD></TR>
+  <TR>
+    <TD align=middle colSpan=5>
+      <HR noShade SIZE=1>
+      <BR>
+      <DIV align=center><A 
+      href="http://www.techinterview.org/index.html">home</A> | <A 
+      href="http://www.fogcreek.com/">software development</A> | <A 
+      href="http://www.fogcreek.com/FogBUGZ">bug tracking software</A> | <A 
+      href="http://www.techinterview.org/archive.html">archive</A> 
+      </DIV><BR><SPAN style="DISPLAY: none">[<A 
+      href="http://discuss.fogcreek.com/">general software discussion</A>] [<A 
+      href="http://nyca.net/">dogs new york city</A>] [<A 
+      href="http://www.fogcreek.com/FogBUGZ/">Software Quality</A>] 
+</SPAN></TD></TR>
+  <TR>
+    <TD align=middle colSpan=5>
+      <SCRIPT type=text/javascript><!--
+google_ad_client = "pub-1798023138596629";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_channel ="";
+google_ad_type = "text_image";
+google_color_border = "FDEFD2";
+google_color_bg = "FDEFD2";
+google_color_link = "0000CC";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></SCRIPT>
+
+      <SCRIPT src="sol-100 doors_files/show_ads.js" type=text/javascript>
+</SCRIPT>
+    </TD></TR></TBODY></TABLE></BODY></HTML>

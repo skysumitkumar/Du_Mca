@@ -1,0 +1,1140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0043)http://www.faqs.org/faqs/os-research/part1/ -->
+<HTML><HEAD><TITLE>Comp.os.research: Frequently answered questions [1/3: l/m 13 Aug 1996]</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type><LINK 
+href="mailto:faq-admin@faqs.org" rev=made>
+<META content="MSHTML 5.00.2614.3500" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff text=#000000>
+<DIV align=center><SMALL>Part1 - <A 
+href="http://www.faqs.org/faqs/os-research/part2/">Part2</A> - <A 
+href="http://www.faqs.org/faqs/os-research/part3/">Part3</A> - <A 
+href="http://www.faqs.org/faqs/os-research/part1/preamble.html">MultiPage</A> 
+</SMALL><BR>
+<HR noShade SIZE=2 width=600>
+
+<P>
+<H1>Comp.os.research: Frequently answered questions [1/3: l/m 13 Aug 1996]</H1>
+<HR noShade SIZE=2 width=600>
+</DIV><PRE>From: bos@serpentine.com (Bryan O'Sullivan)
+Newsgroups: <A href="news:comp.os.research">comp.os.research</A>,<A href="news:comp.answers">comp.answers</A>,<A href="news:news.answers">news.answers</A>
+Subject: Comp.os.research: Frequently answered questions [1/3: l/m 13 Aug 1996]
+Followup-To: poster
+Date: 1 Nov 1997 10:00:12 GMT
+Organization: Polymorphous Thaumaturgy
+Message-ID: &lt;63eujc$iq@darkstar.ucsc.edu&gt;
+Reply-To: <A href="mailto:os-faq@cse.ucsc.edu">os-faq@cse.ucsc.edu</A>
+Summary: frequent topics of discussion on the operating systems research group
+
+Archive-name: os-research/part1
+Version: $Revision: 1.19 $
+Posting-Frequency: monthly
+Last-Modified: Tue Aug 13 21:03:39 1996
+URL: <A href="http://www.serpentine.com/~bos/os-faq/">http://www.serpentine.com/~bos/os-faq/</A>
+
+		Answers to frequently asked questions
+		  for <A href="news:comp.os.research">comp.os.research</A>: part 1 of 3
+
+		       Copyright (C) 1993--1996
+			   Bryan O'Sullivan
+
+
+
+			  TABLE OF CONTENTS
+
+
+1.     Introduction
+1.1.   How to read this article
+1.2.   Reader contributions and comments
+1.3.   Acknowledgments and caveats
+
+2.     Recurrent discussions
+2.1.   Microkernels, macrokernels, and the in-betweenies
+2.2.   Threads
+2.2.1. Distinguishing features
+2.2.2. Characterising implementations of multithreading
+2.2.3. The history of threads
+
+3.     File systems
+3.1.   Extent-based versus log-structured file systems
+
+4.     Mobile and disconnected computing
+4.1.   Constraints on software
+4.2.   Communications protocols
+4.3.   Access to files
+4.4.   Power management
+4.5.   Other issues
+4.6.   An introductory mobile computing bibliography
+
+5.     Operating systems teaching
+5.1.   What good undergraduate-level texts are available?
+5.2.   Graduate-level texts
+5.3.   Do any texts cover the implementation of specific operating systems?
+5.4.   What instructional operating systems can I use?
+5.5.   Where can I find the canonical list of OS papers for grad courses?
+
+
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [1] Introduction
+From: Introduction
+
+This posting consists of answers to many of the questions most
+frequently asked and summaries of the topics most frequently covered
+on <A href="news:comp.os.research">comp.os.research</A>, the Usenet operating systems research discussion
+group.  The purpose of this posting is to circulate existing
+information, and to avoid rehashing old topics of discussion and
+questions.  Please read all parts of this document before posting to
+this newsgroup.
+
+This newsgroup is moderated; the moderator is Darrell Long
+&lt;<A href="mailto:darrell@cse.ucsc.edu">darrell@cse.ucsc.edu</A>&gt;.  A companion posting to the FAQs, `Welcome
+to <A href="news:comp.os.research">comp.os.research</A>', briefly covers the moderation policy and
+guidelines for posting to <A href="news:comp.os.research">comp.os.research</A>.  It can be found in either
+<A href="news:comp.os.research">comp.os.research</A> or <A href="news:news.answers">news.answers</A>, and is posted regularly.
+
+Due to its size, the FAQ is split up into three parts; each is posted
+once a month.  The welcome posting is posted fortnightly.  The FAQ is
+also available in hypertext form on the World-Wide Web, at
+&lt;URL:<A href="http://www.serpentine.com/~bos/os-faq">http://www.serpentine.com/~bos/os-faq</A>&gt;.  You may prefer to browse
+the FAQ on the Web rather than on Usenet, as it contains many useful
+hyperlinks.
+
+Note: chunks of text of the form [92-02-12-21-20.29] indicate the
+original posting from which a section of this article was inspired,
+snarfed, or just plain copied wholesale.  The FAQ as available on the
+Web has hyperlinks to the relevant articles.  Other chunks in square
+brackets are comments and reminders to myself.  These latter sections
+of text will be removed as appropriate material is added, but the
+attributions will remain.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [1.1] How to read this article
+From: Introduction
+
+This article is posted in digest format; using the `G%' command from
+within the `nn' newsreader should split it up into separate
+sub-articles which you can browse through.
+
+To skip to a particular question numbered n.m, use `/: \[n\.m\]' from
+most pagers.  From within GNU Emacs, you can use `C-s [n.m]'.  This
+article is treated as an outline when edited by GNU Emacs.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [1.2] Reader contributions and comments
+From: Introduction
+
+Your contributions, comments, and corrections are welcomed; mail sent
+to &lt;<A href="mailto:os-faq@cse.ucsc.edu">os-faq@cse.ucsc.edu</A>&gt; will be dealt with as quickly as I can
+manage.  Generally, performing a reply or followup to this article
+from within your newsreader should do the Right Thing.
+
+While I am more than happy to include submissions of material for the
+FAQ if they seem appropriate, it would make my life a lot easier if
+such text were proof-read in advance, and kept concise.  I don't have
+as much time as I would like to digest 15K text files and summarise
+them in three paragraphs for inclusion here.  If you are interested in
+contributing material, please see the to-do list at the end of part 3
+of the FAQ.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [1.3] Acknowledgments and caveats
+From: Introduction
+
+Although this FAQ has been the result of a co-operative effort, any
+blame for inaccuracies and errors lies entirely with my edits.  I
+would like to thank the following people for their part in
+contributing to this article:
+
+Arindam Banerji		&lt;<A href="mailto:axb@cse.nd.edu">axb@cse.nd.edu</A>&gt;
+Surendar Chandra	&lt;<A href="mailto:surendar@cs.duke.edu">surendar@cs.duke.edu</A>&gt;
+Steve Chapin		&lt;<A href="mailto:sjc@cs.purdue.edu">sjc@cs.purdue.edu</A>&gt;
+Crispin Cowan		&lt;<A href="mailto:crispin@csd.uwo.ca">crispin@csd.uwo.ca</A>&gt;
+Dan Hildebrand		&lt;<A href="mailto:danh@qnx.com">danh@qnx.com</A>&gt;
+Gordon Irlam		&lt;<A href="mailto:gordoni@home.base.com">gordoni@home.base.com</A>&gt;
+Alan Judge		&lt;<A href="mailto:amjudge@dsg.cs.tcd.ie">amjudge@dsg.cs.tcd.ie</A>&gt;
+Darrell Long		&lt;<A href="mailto:darrell@cse.ucsc.edu">darrell@cse.ucsc.edu</A>&gt;
+Chris Maeda		&lt;<A href="mailto:cmaeda@cs.washington.edu">cmaeda@cs.washington.edu</A>&gt;
+Peter Magnusson		&lt;<A href="mailto:psm@sics.se">psm@sics.se</A>&gt;
+Craig Partridge		&lt;<A href="mailto:craig@bbn.com">craig@bbn.com</A>&gt;
+Tom Van Vleck		&lt;<A href="mailto:tom_van_vleck@taligent.com">tom_van_vleck@taligent.com</A>&gt;
+Robert Walsh		&lt;<A href="mailto:rjwalsh@maths.tcd.ie">rjwalsh@maths.tcd.ie</A>&gt;
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [2] Recurrent discussions
+From: Recurrent discussions
+
+A number of topics tend to appear with regularity in <A href="news:comp.os.research">comp.os.research</A>.
+This section attempts to go over some of the most commonly-covered
+ground.  I haven't made the list of topics covered exhaustive by any
+means.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [2.1] Microkernels, macrokernels, and the in-betweenies
+From: Recurrent discussions
+
+A recurrent topic of discussion in this newsgroup has been the
+comparison between microkernel (for example Mach and QNX) and
+`macrokernel' (traditional Unix) operating systems.  The basic notion
+of a microkernel consists of devolving as much functionality as
+possible into processes rather than the kernel itself; different
+systems take different approaches to implementing this.
+
+For example, some systems (such as Mach) leave device drivers in the
+kernel, and place higher-level services (such as file systems)
+outside; others (such as QNX) move device drivers outside of the
+kernel.
+
+However, anecdotal evidence [93-03-03-07-56.52] suggests that the
+distinction between microkernel and monolithic architectures is
+becoming more blurred as time goes on, as the two advance.  For
+example, most modern monolithic kernels now implement multiple threads
+of execution and fine-grained parallelism.  Architecturally, this
+approach begins to appear similar to a microkernel with several
+kernel-space processes working from shared memory.
+
+As an aside, people often complain that the Mach system can't be a
+`real' microkernel, because it is so large (at least, this is the
+argument most frequently cited).  However, I have been told that
+automatically-generated code stubs contribute very significantly to
+the size of the kernel, and that some size reduction would be likely
+if MIG (the stub generator) produced better code.  [Can someone from
+CMU comment on this?]  As mentioned above, the leaving of device
+drivers in the kernel also contributes to Mach's size.
+
+Debating microkernels versus monolithic kernels on the basis of kernel
+size misses the central, architectural point.  In the same way as the
+point of a RISC processor is not to minimise the instruction count,
+but rather to make a different tradeoff between what is implemented
+in the processor instruction set and what is implemented in other
+ways, the microkernel architectural issue is to determine which
+services are implemented in the microkernel, and which services are
+implemented external to that microkernel.  By making appropriate
+choices here, the goal is to enhance various OS attributes in a manner
+that might not be addressable with a monolithic kernel OS.  System
+attributes such as performance, flexibility, realtime, etc. are all
+variables which are taken into account.
+
+Some history:
+
+Ira Goldstein and Paul Dale were the coiners of the term `microkernel'
+back around 1989.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [2.2] Threads
+From: Recurrent discussions
+
+The exact meaning of the term `thread' is not generally agreed upon.
+One of the more common usages denotes a `lightweight' process
+(sequential flow of control) which shares an address space and some
+other resources with others, and for which context switching time is
+lower than for `heavyweight' (i.e. kernel-supported) processes.
+
+Throughout the following material, when we refer to `processes', this
+can be taken as meaning heavyweight processes.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [2.2.1] Distinguishing features
+From: Recurrent discussions
+
+Some of the features which distinguish different approaches to
+threading are listed below:
+
+- Number of *concurrent* flows of control: generally, threads may
+  potentially make use of multiple processors in order to allow
+  several to execute concurrently.  That is, the model usually takes
+  into consideration the possibility that there may be more than one
+  flow of control active at any time.
+
+- Scheduling policy: a thread scheduler may be pre-emptive, in which
+  case a thread is put to sleep either when it waits upon some
+  resource or runs for the full duration of its time quantum, or
+  non-pre-emptive, in which case individual threads continue to run
+  until they relinquish the processor themselves (either through
+  waiting on a resource or calling the analogue of a sleep()
+  function).
+
+Systems which are non-pre-emptive and may only ever have a single
+active flow of control (regardless of the number of processors
+available) are referred to as coroutine systems.  Coroutine
+programming requires quite a different approach from threads-based
+programming, as many of the synchronisation and resource-sharing
+problems which occur in threaded environments need never trouble the
+coroutines programmer.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [2.2.2] Characterising implementations of multithreading
+From: Recurrent discussions
+
+An important distinction may be made between user-level threads and
+kernel-supported threads.  A user-level thread maintains all its state
+in user space.  A consequence of this is that no kernel resources need
+to be allocated per thread, and switching between threads can be done
+without changing address space.  A disadvantage is that user level
+threads cannot execute while the kernel is busy, for instance, with
+paging or I/O.  This would require some knowledge and participation on
+the part of the kernel.
+
+It is possible to combine both methods, as is done in SunOS 5.x (aka
+Solaris 2.x).  Here, one or more light weight processes (LWPs)
+multitask one or more user-level threads, which in turn are
+implemented using user-space libraries.
+
+Some issues which characterise thread implementations, and which
+determine the uses to which a threads package may be put, include:
+
+- How much by way of kernel resources does a thread require?  This
+  will typically limit the number of threads that can be started by a
+  process.
+
+- Under what circumstances will the entire process hang?  For
+  instance, if some thread gets a page fault, may another thread in
+  that process be dispatched?
+
+- Does switching threads require a full system call (as on the SPARC),
+  or may context switches between threads be performed entirely at
+  user level?
+
+- How are signals handled?  Can signals be masked individually per
+  thread?  Is there a `broadcast' signal?
+
+- How are stacks handled?  Will the stacks shrink/grow dynamically on
+  a per thread basis?
+
+Several systems today (QNX and Plan 9, for instance) take the stance
+that threads `fix the symptom, but not the problem'.  Rather than
+using threads because the OS context switch time is too slow, a better
+approach, according to the architects of these systems, is to fix the
+OS.  It's ironic, now that even PC-hosted desktop OSes provide
+MMU-protected multitasking, the fashionable programming model has
+become multiple threads running in a common address space, making
+debugging difficult, and also making it more difficult to generate
+reliable code.  With fast context switching, existing OS services like
+explicitly allocated shared memory between a team of cooperating
+processes can create a `threaded' environment, without opening the
+Pandora's box of problems that a fully shared memory space entails.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [2.2.3] The history of threads
+From: Recurrent discussions
+
+[93-04-21-13-32.11] [92-01-27-17-05.54] The notion of a thread, as a
+sequential flow of control, dates back to 1965, at least, with the
+Berkeley Timesharing System.  Only they weren't called threads at that
+time, but processes [Dijkstra, 65].  Processes interacted through
+shared variables, semaphores, and similar means.  Max Smith did a
+prototype threads implementation on Multics around 1970; it used
+multiple stacks in a single heavyweight process to support background
+compilations.
+
+Perhaps the most important progenitor of threads is the programming
+language PL/I, from about the 1965 time frame.  The language as
+defined by IBM provided a `CALL XXX (A, B) TASK;' construct, which
+forked a thread for XXX.  It is not clear whether any IBM compiler
+ever implemented this feature, but it was examined closely while
+Multics was being designed; it was decided that the TASK call as
+defined didn't map onto processes, since there was no protection
+between the threads of control.  So Multics took a different
+direction, and the TASK feature was removed from PL/I by IBM in any
+case, along with the ABNORMAL attribute and lots of other weird stuff.
+
+Then came Unix, in the early 1970s.  The Unix notion of a `process'
+became a sequential thread of control *plus* a virtual address space
+(incidentally, the Unix notion of a process derived directly from the
+Multics process design [Saltzer, 66]).  So `processes', in the Unix
+sense, are quite heavyweight machines.  Since they cannot share memory
+(each has its own address space), they interact through pipes,
+signals, etc).  Shared memory (also a rather ponderous mechanism) was
+added much later.
+
+After some time, Unix users started to miss the old processes that
+could share memory.  This led to the `invention' of threads: old-style
+processes that shared the address space of a single Unix process.
+They also were called `lightweight', by way of contrast with
+`heavyweight' Unix processes.  This distinction dates back to the very
+late 70s or early 80s, i.e. to the first `microkernels' (Thoth
+(precursor of the V-kernel and QNX), Amoeba, Chorus, the
+RIG-Accent-Mach family, etc).
+
+On a side note, threads have been in continuous use in
+telecommunications applications for quite a long time.
+
+See also:
+
+[Cheriton, 79]
+  Cheriton, D. R., `Multi-process structuring and the Thoth operating
+    system', Ph.D. Thesis, University of Waterloo, 1979.
+
+[Daley &amp; Dennis, 68]
+  Daley, R. C., Dennis, J. B., `Virtual memory, processes, and
+    sharing in Multics', Comm, ACM 11, 306-312, May 1968.
+
+[Dennis &amp; van Horn, 66]
+  Dennis, J. B., van Horn, E. C., `Programming semantics for
+    multiprogrammed computations', MAC-TR-21, 1966.
+
+[Dijkstra, 65]
+  Dijkstra, E. W., `Cooperating sequential processes', in `Programming
+    Languages', Genuys, F. (ed.), Academic Press, 1965.
+
+[Saltzer, 66]
+  Saltzer, J. H., `Traffic control in a multiplexed computer system',
+    MAC-TR-30 (Sc.D. Thesis), July, 1966.
+
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [3] File systems
+From: File systems
+
+This field is discussed both here and in the <A href="news:comp.arch.storage">comp.arch.storage</A>
+newsgroup.  This section needs fleshing out at the moment; it will
+grow over time (hopefully!).
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [3.1] Extent-based versus log-structured file systems
+From: File systems
+
+[92-11-18-10-57.53] [92-11-22-10-16.26] A general definition for a
+log-structured storage system might be the following: logging is an
+append-only storage semantics.  The unit of logging is the record.
+Write accesses append records to the end of the log.  A log record may
+become obsolete.  Useless records are compacted out of the log when
+possible.  Other write accesses are forbidden.
+
+An extent-based file system is another candicate for better filesystem
+performance.  The approach used under QNX, for example, is to have
+files exist as an array of extents on disk, where each is extent is as
+many contiguous blocks as could be allocated at that location.  By
+using a bitmap for space allocation, files can also grow `in-place',
+if adjacent free space on disk exists.  This approach allows the unit
+of disk space allocation to remain 512 bytes, which is also the
+smallest unit of physical I/O.  The potential performance bottleneck
+of this approach does not happen because the filesystem code passes
+I/O requests to the disk drivers in units of extents, not 512 byte
+blocks.  The filesystem also heuristically modifies the size of the
+pre-read requests based on the historical access pattern to the
+file.  This approach provides the performance advantages of larger
+physical disk block sizes, without the wasted disk space that results
+from unused portions of large blocks, or the complexity of trying to
+allocate space from partially unused blocks.
+
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [4] Mobile and disconnected computing
+From: Mobile and disconnected computing
+
+The subject of operating systems for mobile and
+frequently-disconnected computers has become a recurrent topic in this
+newsgroup.  This section attempts to give an overview of issues in
+this area.  [Text by Arindam Banerji.]
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [4.1] Constraints on software
+From: Mobile and disconnected computing
+
+System software for mobile computing is impeded by four distinct
+constraints:
+
+- Compared to stationary computers, mobile computers will always be
+  resource poor [Satyanarayan, 93].  Although currently available PDAs
+  (Personal Digital Assistants) compare favourably with the
+  stand-alone workstations of a few years ago [Marsh, 93], they'll
+  most probably lag behind in compute capabilities, available power,
+  storage availability and communication bandwidth, for some time to
+  come.
+
+- Mobility entails computation amid fluctuating resource availability
+  and constraints [Banerji, 93].  Communication bandwidth may be
+  available at discrete intervals, an available resource may suddenly
+  become unreachable or an otherwise in-expensive communication link
+  may be randomly replaced by an expensive alternate in transit.
+
+- Security threats to both mobile computational elements as well as
+  the data accessed by them are greatly increased [Satyanarayan, 93].
+  Not only is it easier to lose, damage or be robbed of a carry-along
+  PDA, but it is often easier to tap into the data transferred (as is
+  well-known to much of the cellular communication industry).  Very
+  little work, except for that undertaken by the cellular
+  communication industry, has been done in the area of addressing the
+  specific security needs of mobile computing (as far as I know).
+
+- User needs and their application requirements may not be the same as
+  those in stationary systems [Weiser, 91].  As mobile computers
+  become ubiquitous (this phrase coined by Mark Weiser), the number of
+  computer users will most probably increase exponentially.  Most or
+  many of these users will be far less computer literate than the
+  average computer user of today.  In addition, shopping, information
+  browsing and entertainment may be the typical use of such mobile
+  units, as opposed to traditional scientific computing, database
+  support or word processing.
+
+- With the presence of PCMCIA slots in a PDA, it also becomes
+  necessary for an OS to be able to mount and dismount entire OS
+  subsystems on the fly [Hildebrand, 94].  Operating systems need to
+  be able to treat networking, filesystems, and other services as
+  facilities which may be loaded and unloaded on demand.
+  
+Based upon an amalgam of these criteria, the next few sections discuss
+some of the main areas of ongoing research in mobile computing.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [4.2] Communications protocols
+From: Mobile and disconnected computing
+
+Mobile-IP [Myles &amp; Perkins, 93] `allows packets between mobile hosts
+or networks and other hosts (including fixed hosts) to be delivered
+along close to optimal routes'.  Compatibility with existing IP
+implementations is one of the key problems in Mobile-IP.  For example,
+[Perkins et. al, 93], have suggested a scheme based upon the loose
+source routing option of IP packets, but most existing IP
+implementations do not implement this option.  Scalability is yet
+another important issue.
+
+The Columbia scheme [Ioannidis et al., 91] uses IP-in-IP
+encapsulation, thus avoiding problems with non-conforming
+implementations; but it achieves only sub-optimal routing for mobility
+across widely distributed locations [Aziz, 94].  Some efficient
+implementations of IP-in-IP encapsulation capable of supporting
+near-optimal wide area mobile routing have been suggested [Aziz, 94],
+but more experimentation is required.
+
+For resource-constrained mobile computers, hosting a full IP protocol
+suite may be an unacceptable resource burden.  Being able to gateway
+with a lightweight protocol to a network node which is hosting a
+`heavyweight' protocol suite is a valuable capability [Hildebrand,
+94].  Lightweight protocols can also make better use of the bandwidth
+limitations of wireless communications.
+
+Apart from this, architectures and implementations that handle the
+impact of mobility at higher layers have also been proposed -- such as
+the connection-oriented services discussed by Katz [Keeton et. al.,
+93], and the mobile socket interface discussed by Casey [Casey, 93].
+Current trends would appear to suggest that some form of Mobile-IP
+will soon become standard, whereas connection maintenance and caching
+in higher-level protocols still needs to be resolved.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [4.3] Access to files
+From: Mobile and disconnected computing
+
+File access in a mobile computing environment, where the communication
+link to a file server is not guaranteed, has been a major area of
+study.  Coda [Satyanarayan, 90], a descendant of the Andrew File
+system (AFS), pioneered support for disconnected operations in
+file-systems.  Coda increases file availability by replicating a
+single volume at multiple server locations.  Disconnected operations
+occur when the set of accessible servers for a particular volume
+becomes null.  Coda supports disconnected operations by pre-caching
+the files a user is most likely to need and then allowing all
+operations on cached copies of these files, while disconnected.  Upon
+reconnection, reintegration occurs through reconciliation of the
+cached copy with the now-reachable server's copy, through the use of a
+replay log maintained during the disconnection.
+
+Disconnected operations have also been implemented for AFS [Huston,
+93].  The highly available peer-to-peer based Ficus [Page, 91] file
+system achieves similar results, although mobile computing was not one
+its initial applications.  Caching issues are beginning to predominate
+the open research topics in this area.  In between connected and
+disconnected states, there are many states of expensive, intermittent
+and unreliable connections.  Adapting caching to these varying
+situations is a necessity.  More importantly, as introduced by the
+Hoarding scheme of Coda, user control over some caching behavior is
+extremely beneficial, and this need for user input becomes even more
+important when the server connection is weak.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [4.4] Power management
+From: Mobile and disconnected computing
+
+Current battery technology limits PDA use to only a few hours.  The
+conservation of power through system software is thus becoming a major
+area of research in mobile computing.  Two specific approaches to this
+problem exist.
+
+- Some researchers [Greenawalt, 93] are attempting to analyse the effects
+  of application type, user input and operating system implementations on
+  device power consumption.  Based upon simulation data, several power
+  consumption models have been proposed for disks [Greenawalt, 93]
+  [Douglis &amp; Marsh, 93].  Work in characterising and analysing the power
+  consumption problem is still ongoing.
+
+- Several industry-led efforts, on the other hand, have focussed on
+  building system support for dynamic power-saving mechanisms.  The
+  Advanced Power Management standard presents an interface and structure
+  for manipulating power consumption.  The Nomadic System Group at Sun
+  Microsystems has integrated similar support into SVR4 [Bender et. al,
+  93]; these facilities are also available in QNX.
+
+Complete analysis of peripheral device power usage and experimentation
+with different strategies for implementing power management will certainly
+be useful.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [4.5] Other issues
+From: Mobile and disconnected computing
+
+Two significant aspects of mobile computing give applications in this
+environment a very different flavour.
+
+- The dynamic nature of the environment forces applications to handle
+  changes in the availability and allocation of software resources.
+  Dynamic changes to environment variables [Schilit, 93], change in
+  the available version of a library [Goldstein, 94] and the ability
+  to lookup and retrieve objects from remote locations [Theimer, 93]
+  are all required to solve this problem.  For the very same reasons,
+  user interfaces add on an extra dimension, an issue which very few
+  have addressed so far [Landay &amp; Kaufmann, 93]. All this has caused
+  certain vendors to move towards interpreted environments, based on
+  scripting(??) languages as such as Script-X (Kaleida) and Open
+  Scripting Architecture (Apple).
+
+- Money will be a constituent of many of the transactions and
+  applications that mobile computers will typically be used for.
+  Hence, many pieces of system software will be required to handle,
+  understand and optimise the use of money [Kulkarni, 94].  As
+  mentioned by Ed Frank at the ICDCS '93 panel discussion on mobile
+  computing, transaction involving `money and sex' may well become the
+  biggest uses of the mobile computer.  Some initial forays into
+  reviewing policies for pricing Internet services [Shenker, 93] may
+  prove to be very useful and so will the experience of current
+  consumer service providers such as CompuServe and America Online.
+  This area will perhaps show the biggest divergence in the years to
+  come, since applications will be far more customer-needs driven than
+  technology-driven, as they have been in the past.
+
+Finally, aspects of hardware support are critical to positioning any
+discussion on mobile computing.  The most ambitious system is perhaps
+the ParcTab system [Schilit, 93] under development at Xerox PARC.  The
+ParcTab is a PDA that communicates via infrared data packets to a
+network of infrared transceivers.  The network, designed for use
+within a building, designates each room as a communication cell.  This
+infrastructure has the responsibility for providing reliable service
+as the ParcTab user moves from room to room.  More general purpose but
+less ambitious PDAs are currently available from AT&amp;T (EO), Apple
+(Newton), IBM (Simon) etc.  Almost all recognise some alternate form
+of input, such as handwriting.  The capabilities of these PDAs are
+sure to increase in the coming years, and hopefully their prices will
+not follow a similar trend.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [4.6] An introductory mobile computing bibliography
+From: Mobile and disconnected computing
+
+[Marsh, 93]
+  Marsh, B., Douglis, F. &amp; Caceres, R., `System issues in mobile
+    computing', Technical Report, Matsushita Information Technology
+    Laboratory, ITL-TR-50-93
+
+[Satyanarayanan, 93]
+  Satyanarayanan et. al, `Experience with disconnected operation in a
+    mobile computing environment', Proceedings of Mobile and
+    Location-Independent Computing Symposium, August 93, pp. 11-28
+
+[Banerji, 93]
+  Banerji, A., Cohn, D. &amp; Kulkarni, D., `Mobile computing personae',
+    Proceedings of Fourth Workshop on Workstation Operating Systems,
+    October 93, pp. 14-20
+
+[Weiser, 91]
+  Weiser, M., `The computer for the 21st century', Scientific
+    American, September 91, pp. 94-104
+
+[Myles &amp; Perkins, 94]
+  Myles, A. &amp; Perkins, C., Internet Draft, September, 93
+
+[Perkins et. al, 93]
+  Bhagwat, P. &amp; Perkins, C., `A mobile networking system based on IP',
+    Proceedings of Mobile and Location-Independent Computing
+    Symposium, August 93, pp. 69-82
+
+[Ioannidis et. al, 91]
+  `IP based protocols for mobile internetworking', Proceedings of the
+    SIGCOMM-91 conference: Communications, Architectures and
+    Protocols, September 91, pp. 235-245
+
+[Aziz, 94]
+  Aziz, A., `A scalable and efficient intra-domain tunneling mobile-IP
+    scheme', ACM SIGCOMM-Computer Communications Review, Vol 24.,
+    No. 1, January 94, pp. 12-20
+
+[Keeton et al., 93]
+  Keeton, K. et al., `Providing connection oriented network services
+    to mobile hosts', Proceedings of Mobile and Location-Independent
+    Computing Symposium, August 93, pp. 83-102
+
+[Casey, 94]
+  Casey, M., `Application and communication support for mobile
+    computing', Dissertation Proposal, University of Notre Dame,
+    January 94
+
+[Satyanarayanan, 90]
+  Satyanarayanan, M., et al., `Coda: A highly available File-system
+    for a distributed workstation environment', IEEE Transactions on
+    Computers 39(4), April 90
+
+[Huston, 93]
+  Huston, L. &amp; Honeyman, P., `Disconnected operation for AFS',
+    Proceedings of Mobile and Location- Independent Computing
+    Symposium, August 93, pp. 1-10
+
+[Page, 91]
+  Page, T. et al., `Architecture of the Ficus replicated file system',
+    Tech Report CSD-910005, University of California, Los Angeles,
+    March 91
+
+[Greenawalt, 93]
+  Greenawalt, P., `Modelling power management for hard disks',
+    Intl. Workshop on Modelling, Analysis &amp; Simulation of Computer and
+    Telecommunication Systems, January 94
+
+[Douglis &amp; Marsh, 93]
+  Douglis, F. &amp; Marsh, B., `Low power disk management for mobile
+    computers', Technical Report, Matsushita Information Technology
+    Laboratory, MITL-TR-53-93
+
+[Bender et. al, 93]
+  Nomadic Systems Group, Sun Microsystems, `UNIX for Nomads: Making
+    UNIX support mobile computing', Proceedings of Mobile and
+    Location-Independent Computing Symposium, August 93, pp. 53-68
+
+[Schilit, 93]
+  Schilit, B., Theimer, M. &amp; Welch, B., `Customizing mobile
+    applications', Proceedings of Mobile and Location-Independent
+    Computing Symposium, August 93, pp. 129-138
+
+[Hildebrand, 94]
+  Hildebrand, D., `QNX: microkernel technology for open systems
+    handheld computing', Proceedings of Pen and Portable Computing
+    Conference Exposition, May 1994.  Available via ftp from
+    &lt;URL:<A href="ftp://ftp.qnx.com/pub/papers/qnx-pen.ps.Z">ftp://ftp.qnx.com/pub/papers/qnx-pen.ps.Z</A>&gt;.
+
+[Goldstein, 94]
+  Goldstein, T. &amp; Sloane, A., `The object binary interface -- C++
+    objects for evolvable shared class libraries', Proceedings of the
+    USENIX C++ Conference, April 94
+
+[Theimer, 93]
+  Theimer, M., Demers, A. &amp; Welch, B., `Operating system issues for
+    PDAs', Proceedings of Fourth Workshop on Workstation Operating
+    Systems, October 93, pp. 14-20
+
+[Landay &amp; Kaufmann, 93]
+  Landay, J. &amp; Kaufmann, T., `User-interface issues in mobile
+    computing', Proceedings of Fourth Workshop on Workstation
+    Operating Systems, October 93, pp. 40-47
+
+[Kulkarni, 94]
+  Kulkarni, D., Banerji, A., Cohn, D., `Operating systems and cost
+    management', Operating Systems Review, January 94.
+
+[Shenker, 93]
+  Shenker, S., `Service models and pricing policies for an integrated
+    services Internet', Proceedings on Conference on Public Access to
+    the Internet, JFK School of Government, Harvard University, May 93
+
+[Schlitt, 93]
+  Schlitt et al., `The ParcTab mobile computing system', Proceedings
+    of Fourth Workshop on Workstation Operating Systems, October 93,
+    pp. 34-39
+
+
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [5] Operating systems teaching
+From: Operating systems teaching
+
+This section attempts to give some useful pointers to people who teach
+operating systems, both at undergraduate and postgraduate level.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [5.1] What good undergraduate-level texts are available?
+From: Operating systems teaching
+
+The comments below have been provided by a variety of people, so any
+`me's or `I's you encounter are not necessarily those of the
+maintainer!
+
+- `Operating Systems Concepts', fourth edition, by Abraham
+  Silberschatz and Peter Galvin is the latest version of this popular
+  text.  Addison-Wesley, 1994, ISBN 0-201-50480.  This book has been
+  revised to include new and updated information, examples, diagrams,
+  and an expanded bibliography.
+
+  I think this is the `standard' OS text, although I have a couple of
+  others that I also think are good, and that I draw from when I teach
+  OS.  Previous editions of the dinosaur book don't have the greatest
+  organisation, and sometimes wander when describing things.  Its
+  strong point lies in the copious examples.
+
+  Speaking of the third edition (I haven't seen a copy of the fourth
+  edition yet):
+
+    The first 84 pages cover operating system basics, the next 120
+    pages cover process management including 30 pages on deadlocks.
+    130 pages on storage management: memory, virtual memory, secondary
+    storage.  70 pages on file systems and protection.  Then 100 pages
+    on distributed systems.  The last part of the book has case
+    studies on Unix and Mach: 50 pages on Unix and 30 pages on Mach.
+    The last chapter gives a short 10 page historical perspective.
+
+  Mail a message with contents `send help' to &lt;<A href="mailto:os4e@aw.com">os4e@aw.com</A>&gt; for
+  further details of the new edition.  The book gives a good (but
+  slightly theoretical) overview of operating system concepts.  A good
+  complement would be the books covering Minix or BSD, which are more
+  implementation-oriented.
+
+- `Operating Systems', Harvey Deitel, Addison-Wesley, 1990, ISBN
+  0-201-18038-3.  Not a bad book; gives the same sort of theoretical
+  treatment of operating systems as the dinosaur book.  Includes case
+  studies on Unix, MS DOS, MVS, VM, the Macintosh OS, and OS/2.
+
+- `An Operating Systems Vade Mecum', second edition, by Raphael
+  Finkel, 1988, Prentice Hall, ISBN 0-13-637950-8.  I really like this
+  book; it is a bit more theoretical than the dinosaur book, but is
+  well-written and clear.  I would accompany it with labs based on one
+  of the educational experimental OS's (NachOS, OSP) for hands-on
+  experience.
+
+  The edition mentioned above is now out of print.  However, it may be
+  obtained via anonymous ftp from
+  &lt;URL:<A href="ftp://ftp.ms.uky.edu/pub/tech-reports/UK/cs/vade.mecum.2.ps.gz">ftp://ftp.ms.uky.edu/pub/tech-reports/UK/cs/vade.mecum.2.ps.gz</A>&gt;.
+  Here is the associated chunk of README:
+
+    This textbook is out of print.  It was published by Prentice Hall.
+    The author now owns the copyright.  Permission is granted to copy
+    this text for any noncommercial purpose.  Feel free to generate
+    copies of the text for your students.  You may also photocopy the
+    original book without restriction.  Kindly send suggested upgrades
+    to the author: &lt;<A href="mailto:raphael@ms.uky.edu">raphael@ms.uky.edu</A>&gt;.  He is planning a new
+    edition sometime.
+
+  [It's been a few years since I've looked at this book, so I can't
+   remember what it contains.  Can anyone help?]
+
+- `The Logical Design of Operating Systems', second edition, Lubomir
+  Bic, Alan Shaw, 1988, Prentice Hall, ISBN 0-13-540139-9.  This one
+  isn't as theoretical as Finkel's book, nor is it as long as the
+  dinosaur book.  I haven't tried to use it in a course yet, but it
+  looks like a fairly well-rounded text.
+
+  [Can anyone write a paragraph on the various topics covered ... ?]
+
+- `Operating Systems', second edition, William Stallings
+  &lt;<A href="mailto:ws@shore.net">ws@shore.net</A>&gt;, Prentice-Hall, 1995, ISBN 0-02-415493-8.  I
+  received very positive feedback from students about the first
+  edition of this book; I have not yet seen the second edition.  The
+  explanations of topics were easy to understand and complete.  An
+  especially nice feature was that at the end of each chapter OS/2,
+  Unix and MVS were used to demonstrate real life implementations of
+  the theory talked about.  I found this tying together of theory and
+  practice much nicer than having the practice lumped at the end of
+  the book.
+
+- `Modern Operating Systems,' Andrew Tanenbaum &lt;<A href="mailto:ast@cs.vu.nl">ast@cs.vu.nl</A>&gt;,
+  1992, Prentice Hall, ISBN 0-13-588187-0.  This started out as a
+  rewrite of the Minix book, but he pulled the Minix-specific material
+  and added seven chapters on distributed systems.  It's a bit heavy
+  for undergrads, depending on how far into the distributed systems
+  you go, but I like Tanenbaum as an author.  He'll be bringing out a
+  second edition of the Minix book sometime soon; as he says, one is
+  for `hands-on' (Minix) and one is for `hands-off' (Modern OS).
+
+  The book is divided into two parts: `traditional' introductory
+  material, taken more or less verbatim from the Minix book, and an
+  introduction to distributed systems.  Each parts concludes with a
+  case study and comparison of two well-known systems (Unix and
+  MS-DOS, and Mach and Amoeba).  The bibliography at the end is
+  organised well for more advanced coverage of the topics encountered
+  throughout the book.
+
+  Topics covered in the first part include process concepts, memory
+  management, file system organisation and I/O, and deadlock detection
+  and avoidance.  The second part addresses issues such as distributed
+  communication, synchronisation (the section on clock synchronisation
+  is well put together), processes in distributed environments
+  (nothing on process migration), and distributed file systems (using
+  AFS as an example).  The second part seems more suitable for
+  advanced undergraduate level or introductory graduate level studies.
+
+  This book has been translated into German; it is available from
+  Carl Hanser Verlag as `Moderne Betriebssysteme', ISBN 3-446-17472-9.
+
+- `Operating System Design: the Xinu Approach', Douglas Comer, Timothy
+  Fossum, 1984, Prentice Hall, ISBNs 0-13-638180-4 (PC edition) and
+  0-13-638529-X (Macintosh edition).  A walk-through of the principles
+  behind, and implementation of, the Xinu operating system, a small
+  instructional OS similar to Unix.  While this text is aging
+  somewhat, it presents its material in a clear fashion, and does a
+  good job of covering the "standard" fundamentals of operating
+  systems.
+
+- `Operating Systems: Design and Implementation', Andrew S. Tanenbaum,
+  1986 (?), Prentice Hall, ISBN 0-13-637406-9.  This, along with
+  Comer's Xinu books, is the classic text which `teaches by doing',
+  covering the design and implementation of Minix, a microkernel
+  operating system which has a programming and user interface similar
+  to Unix.  As with Comer's books, this text is showing its age
+  somewhat (the source is very much out of date with the current Minix
+  distribution), but it still does a good job of presenting the basics
+  of operating system implementation.
+
+- `Operating Systems Programming: The SR Programming Language',
+  Stephen J. Hartley &lt;<A href="mailto:shartley@mcs.drexel.edu">shartley@mcs.drexel.edu</A>&gt;, Oxford University
+  Press, 1995, ISBN 0-19-5095790.  SR is a language for concurrent
+  programming; this book presents the language, presents some example
+  programs in the context of operating systems or concurrent
+  programming, and provides exercises in the form of Open Student
+  Laboratories.  The book is designed to be used in conjunction with
+  one of the standard operating systems texts to provide concurrent
+  programming experience, or can be used alone as an introductory
+  concurrent programming book.  I have not seen a copy of it yet, and
+  so cannot comment on its quality.  The example programs in the book
+  are intended for running in a Unix environment; they are available
+  via anonymous ftp from &lt;URL:<A href="ftp://mcs.drexel.edu/pub/shartley">ftp://mcs.drexel.edu/pub/shartley</A>&gt;, and
+  the SR language itself is available from
+  &lt;URL:<A href="ftp://cs.arizona.edu/sr">ftp://cs.arizona.edu/sr</A>&gt;.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [5.2] Graduate-level texts
+From: Operating systems teaching
+
+This section is still under construction.
+
+- `Distributed Systems', second edition, by Sape Mullender,
+  Addison-Wesley, 1994, ISBN 0-201-62427-3.  A review is forthcoming.
+
+- `Distributed Operating Systems -- the Logical Design', Andrzej
+  Goscinski, Addison-Wesley, 1991, ISBN 0-201-41704-9.  A thorough
+  desk reference, but reads a little too much like an encyclopedia for
+  use as a textbook.
+
+- `Modern Operating Systems,' Andrew Tanenbaum &lt;<A href="mailto:ast@cs.vu.nl">ast@cs.vu.nl</A>&gt;,
+  1992, Prentice Hall, ISBN 0-13-588187-0.  The section of this book
+  which covers distributed systems is suitable for use at introductory
+  graduate level.  See above for further details.
+
+- `Concurrent Systems', Jean Bacon, 1992, Addison-Wesley, ISBN
+  0-201-41677-8.  This covers much the same material as `Modern
+  Operating Systems', but goes into rather more detail on databases
+  and languages.  The book is divided into four parts, and comes with
+  a separate instructor's manual (ISBN 0-201-62406-0).  The first
+  covers basic material, such as OS functions, and system and language
+  support for concurrent processes.  Part 2 deals with simple
+  concurrent actions, covering topics such as shared-memory IPC,
+  message passing, persistent data, crashes, and distributed data.
+  The third part of the book covers transactions, concurrency control,
+  and failure recovery.  The final section presents a set of case
+  studies, with Unix, Mach and Chorus being covered, along with some
+  of the work done at Cambridge over the past decade.  An interesting
+  emphasis is placed on language-level support for concurrency
+  throughout the book, and the focus on database issues is also a good
+  thing.
+
+  I haven't read the book in as much detail as I would like, but it
+  seems to be well put together.  The cramming of so many topics under
+  one cover means that there is probably too much material for a
+  single undergraduate course, and the book perforce does not go into
+  as much detail as I would like on some topics (a problem I also find
+  with Tanenbaum's book).  Well worth a look, however.
+
+- `Distributed Systems: Concepts and Design', second edition, George
+  Coulouris &lt;<A href="mailto:George.Coulouris@dcs.qmw.ac.uk">George.Coulouris@dcs.qmw.ac.uk</A>&gt;, Jean Dollimore, and
+  Tim Kindberg, Addison-Wesley 1994, ISBN 0-201-62433-8.  This text
+  treats a wide variety of issues at a level suitable for advanced
+  undergraduate and postgraduate teaching.  Basic topics covered
+  include IPC, networking and RPC, upon which notions of distributed
+  operation and provision of services are built.  Coverage of
+  distributed synchronisation leads on to a treatment of replication,
+  simple transactions and concurrency control.  The final chapters
+  include material on distributed transactions, fault tolerance,
+  security, and distributed shared memory.
+
+  Illustrative examples taken from modern `real world' systems such as
+  Sun RPC, the Andrew File System, and PGP are provided throughout the
+  book, and case studies of the Amoeba, Mach, Chorus, and Clouds
+  systems appear towards the end.  Exercises are presented at the end
+  of each chapter.  The prose is clear, and the layout pleasant.  This
+  is, by a narrow margin, the best distributed systems textbook I have
+  come across.
+
+- `Advanced Concepts in Operating Systems -- Distributed,
+  Multiprocessor, and Database Operating Systems', Mukesh Singhal,
+  Niranjan G. Shivaratri, McGraw-Hill, 1994, ISBN 0-07-057572-X.  A
+  solid work on advanced operating systems, with some emphasis on
+  theoretical aspects.  Well over 2/3 of the book focuses on
+  distributed operating systems.  It does a good job of covering all
+  the bases, but at times omits vital information or obfuscates what
+  should be simple issues.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [5.3] Do any texts cover the implementation of specific operating systems?
+From: Operating systems teaching
+
+Some books commonly used in conjunction with the texts listed above
+are:
+
+- `The Design and Implementation of the 4.3BSD Unix Operating System',
+  Samuel Leffler, Kirk McKusick, Michael Karels, John Quarterman,
+  1989, Addison-Wesley, ISBN 0-201-06196-1.  This book describes the
+  kernel of 4.3BSD Unix in some detail, covering process and memory
+  management (the latter being heavily VAX-oriented), file system
+  organisation, device driver internals, terminal handling, IPC,
+  network communications, some details of the Internet protocols, and
+  system operation.  I found this book to be well-written and concise.
+
+  Accompanying the above is the `4.3BSD Answer Book', Samuel Leffler,
+  Kirk McKusick, 1991, Addison-Wesley, ISBN 0-201-54629-9.  This short
+  book provides answers to all of the exercises found at the end of
+  each chapter in the daemon book.
+
+- `The Design of the Unix Operating System', Maurice Bach, 1986,
+  Prentice Hall, ISBN 0-13-201757-1.  This is the authoritative
+  description of the internals of System V Release 2 Unix.  Due to
+  copyright restrictions, it contains no actual code, but rather
+  pseudo-code (I didn't find this to be a problem).  Topics covered
+  include file system internals, process control and scheduling,
+  memory management, IPC, and device driver architecture.  Coverage of
+  mutliprocessor and distributed Unix systems is dated, but this
+  remains a classic operating systems text.
+
+- `The Magic Garden Explained: The Internals of Unix System V Release
+  4', Berny Goodheart, James Cox, 1994, Prentice Hall, ISBN
+  0-13-098138-9.  This books covers the workings of SVR4 in
+  substantial detail; it is more detailed than either of the above
+  texts, and appears to be of very high quality.  While the authors
+  recommend the book be read in parallel with study of the original
+  Unix source code, sufficient pseudocode representation of the key
+  algorithms has been included to permit a more or less detailed study
+  without restricted access to the original source code.
+
+- `Unix Internals: The New Frontiers', Uresh Vahalia, 1995, Prentice
+  Hall, ISBN 0-13-101908-2.  This is quite simply a wonderful book.
+  The broad issues it covers include threads and lightweight
+  processes, and how they interact; signal implementations, process
+  group and session management; process scheduling; IPC; kernel
+  synchronisation and multiprocessor architectures; local and
+  distributed filesystems; kernel memory management; and device driver
+  architectures.  Each topic is accompanied by details of its
+  implementation under modern Unix variants such as Solaris 2.x,
+  SVR4.2, and 4.4BSD, and its treatment by the Mach kernel.  The
+  writing style is concise and pleasant, and the treatment of each
+  topic is satisfyingly thorough and clear.  If you are interested in
+  the implementation of Unix or other operating systems, this book is
+  a "must have".
+
+- `Unix Systems for Modern Architectures: Caching and Symmetric
+  Multiprocessing for Kernel Programmers', Curt Schimmel, 1995,
+  Addison-Wesley, ISBN 0-201-63338-8.  Covers in extensive detail the
+  operation of caches and symmetric multiprocessors, how they
+  interact, and the issues operating systems must address in order to
+  make effective use of them.  Issues addressed include the management
+  of virtually- and physically-tagged caches on uniprocessors,
+  synchronisation and mutual exclusion techniques for multiprocessors,
+  standard multiprocessor kernel architectures, and multiprocessor
+  cache coherency.  This book is written in a clear manner, and
+  illustrated effectively.  Each chapter ends with lists of exercises
+  and references.  My copy contains a number of typographical errors,
+  but I am told that later printings have addressed this issue.
+
+I am not aware of any similar book which covers the implementation of
+a distributed system.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [5.4] What instructional operating systems can I use?
+From: Operating systems teaching
+
+- Minix, from Amsterdam's Vrije Universiteit, was developed by Andy
+  Tanenbaum &lt;<A href="mailto:ast@cs.vu.nl">ast@cs.vu.nl</A>&gt;, and is a mostly-Unix lookalike based on
+  a message-passing microkernel-similar architecture.  The system is
+  used in Tanenbaum's `Modern Operating Systems' and its predecessor,
+  `Operating Systems: Design and Implementation'.  See the Minix
+  Information Sheet, posted regularly to <A href="news:comp.os.minix">comp.os.minix</A>, for ordering
+  information; Minix is copyrighted and is not in the public domain,
+  but is available from &lt;URL:<A href="ftp://ftp.cs.vu.nl/pub/minix">ftp://ftp.cs.vu.nl/pub/minix</A>&gt;.  For
+  further information, see Andy's Web page at
+  &lt;URL:<A href="http://www.cs.vu.nl/~ast">http://www.cs.vu.nl/~ast</A>&gt;.
+
+- NachOS is an instructional OS developed at Berkeley by Tom Anderson
+  &lt;<A href="mailto:tea@cs.berkeley.edu">tea@cs.berkeley.edu</A>&gt;, Wayne Christopher, Stephen Procter (and
+  others?).  It currently runs on DEC MIPS and Sun SPARC workstations,
+  HP PA-RISC, and 386BSD machines.  The NachOS system, along with
+  sample assignments and an overview paper which was presented at
+  Usenix, is available via anonymous ftp from
+  &lt;URL:<A href="ftp://ftp.cs.berkeley.edu/ucb/nachos">ftp://ftp.cs.berkeley.edu/ucb/nachos</A>&gt;.
+
+- OSP (current version is 1.7) is an operating systems simulator,
+  available via ftp from &lt;URL:<A href="ftp://sblapis1.cs.sunysb.edu/">ftp://sblapis1.cs.sunysb.edu/</A>&gt;, with
+  username ospftp, and password as in the instructor's guide.  Used in
+  `OSP---an Environment for Operating Systems', Michael Kifer, Scott
+  Smolka, Addison-Wesley.
+
+- RCOS (Ron Chernich's Operating System) is a simulated operating
+  system that is intended to demonstrate graphically the concepts
+  behind operating systems.  Students can investigate and modify the
+  algorithms it uses, and write programs in a Pascal-like language
+  (extended with semaphores and shared memory) which it will execute.
+  RCOS has a windowing interface, and currently runs under MS-DOS; an
+  alpha-quality Unix/X11 port is also available.  For further details,
+  check out the Web page at
+  &lt;URL:<A href="http://cq-pan.cqu.edu.au/david-jones/projects/rcos">http://cq-pan.cqu.edu.au/david-jones/projects/rcos</A>&gt;.
+
+- SunOS Minix consists of a set of patches for Minix which allows the
+  Minix system to run in a single monolithic Unix process on top of
+  SunOS 4.x on Sun 3 and Sun 4 machines.  SunOS Minix is produced by
+  applying a set of patches to Mac Minix 1.5 (both 1.5.10.0 and
+  1.5.10.1 can be used) or PC Minix 1.5.  Also, Atari Minix has been
+  used as the base version by at least one person.  The latest version
+  (2.0) includes a preliminary attempt at a port to Solaris 2.x.
+  SunOS Minix is available via anonymous ftp from
+  &lt;URL:<A href="ftp://csc.canterbury.ac.nz/UNIX/SMX_2_00.TAR_Z">ftp://csc.canterbury.ac.nz/UNIX/SMX_2_00.TAR_Z</A>&gt;.
+
+- VSTa is not intended as an instructional operating system, but it is
+  certainly small and concise enough to be tractable, and the code is
+  clean and provides modern microkernel features.  See part 2 of the
+  FAQ for further details.
+
+- Xinu was developed at Purdue by Doug Comer and some others.  It was
+  designed to be small and layered, so that the code is succinct and
+  easily understandable.  It is intended for education, and is a
+  `conventional' operating system.  Xinu runs on the IBM PC, Sun-3,
+  SPARC, LSI, MIPS, Macintosh, and VAX architectures.  The system is
+  used in Comer's `Operating System Design: the Xinu Approach'.
+  See &lt;URL:<A href="http://www.cs.purdue.edu/homes/dec/xlicense.html">http://www.cs.purdue.edu/homes/dec/xlicense.html</A>&gt; for
+  licensing information.
+
+<HR align=left noShade SIZE=2 width=500>
+Subject: [5.5] Where can I find the canonical list of OS papers for grad courses?
+From: Operating systems teaching
+
+[93-03-14-17-09.47] Darrell Long &lt;<A href="mailto:darrell@cse.ucsc.edu">darrell@cse.ucsc.edu</A>&gt; maintains a
+bibliography which provides a good starting point for graduate OS
+course reading lists.  This may be imported using refdbms as
+ucsc.grad.os, from refdbms.cse.ucsc.edu 4117 or refdbms.cs.vu.nl 4117.
+</PRE>
+<DIV align=center><SMALL>
+<P>
+<HR noShade width=350>
+<BR>Part1 - <A href="http://www.faqs.org/faqs/os-research/part2/">Part2</A> - <A 
+href="http://www.faqs.org/faqs/os-research/part3/">Part3</A> - <A 
+href="http://www.faqs.org/faqs/os-research/part1/preamble.html">MultiPage</A> 
+</SMALL>
+<P>
+<HR noShade SIZE=2 width=450>
+<SMALL><STRONG>[ <A href="http://www.faqs.org/faqs/by-archive-name.html">By 
+Archive-name</A> | <A href="http://www.faqs.org/faqs/by-author/">By Author</A> | 
+<A href="http://www.faqs.org/faqs/by-category.html">By Category</A> | <A 
+href="http://www.faqs.org/faqs/by-newsgroup/">By Newsgroup</A> ] <BR>[ <A 
+href="http://www.faqs.org/faqs/">Home</A> | <A 
+href="http://www.faqs.org/faqs/os-research/part1/faqs/changed.html">Latest 
+Updates</A> | <A href="http://www.faqs.org/faqs/stats.html">Archive Stats</A> | 
+<A href="http://www.faqs.org/faqs/faqsearch.html">Search</A> | <A 
+href="http://www.faqs.org/usenet/">Usenet References</A> | <A 
+href="http://www.faqs.org/faqs/WWW-FAQ-Archive-Tech-Info.html">Help</A> ] 
+</STRONG></SMALL><BR>
+<HR noShade SIZE=2 width=450>
+
+<P>
+<ADDRESS>Send corrections/additions to the FAQ Maintainer: <BR><A 
+href="mailto:os-faq@cse.ucsc.edu">os-faq@cse.ucsc.edu</A> </ADDRESS>
+<P><SMALL><STRONG>Last Update July 08 2002 @ 00:11 AM</STRONG> 
+<BR></SMALL></P></DIV></BODY></HTML>

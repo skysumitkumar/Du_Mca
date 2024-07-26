@@ -1,0 +1,1090 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Questions 4 (Hints and solutions start on page .)</TITLE>
+<META NAME="description" CONTENT="Questions 4 (Hints and solutions start on page .)">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="previous" HREF="node74.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node74.html">
+<LINK REL="up" HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">
+<LINK REL="next" HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1396"
+  HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1390"
+  HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1386"
+  HREF="node74.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node74.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1392"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1394"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1397"
+  HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">Random Numbers</A>
+<B> Up:</B> <A NAME="tex2html1391"
+  HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">Grammers and Parsing</A>
+<B> Previous:</B> <A NAME="tex2html1387"
+  HREF="node74.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node74.html">Evaluating a Postfix Expression</A>
+ &nbsp <B>  <A NAME="tex2html1393"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1395"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00890000000000000000"></A><A NAME="SQ:grammars"></A>
+<BR>
+Questions 4 (Hints and solutions start on page <A HREF="node109.html#SA:grammars" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node109.html#SA:grammars"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/crossref.gif"></A>.)
+</H1>
+
+<P>
+<P>
+<DIV><A NAME="Q:a-to-the-n-b-to-the-m"><B>Q  4.1</B></A> &nbsp; 
+
+Write an algorithm in pseudocode which, given any string from <I>A</I><SUP>*</SUP>
+will decide if it is of the form <!-- MATH
+ $\{\mathrm{a}^n\mathrm{b}^m : n+m>0\}$
+ -->
+{a<SUP>n</SUP>b<SUP>m</SUP> : <I>n</I> + <I>m</I> &gt; 0}, and if so, return the values of <I>m</I> and <I>n</I>.</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:brackets"><B>Q  4.2</B></A> &nbsp; 
+ 
+Consider the following Formal Grammar G, which generates the
+Formal Language L.
+
+<P><P>
+<BR>
+
+<!-- MATH
+ $A=\{a,b\} \qquad \mathcal{A}=\{\sigma\} \qquad \textrm{initial} = \sigma$
+ -->
+<I>A</I> = {<I>a</I>, <I>b</I>}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img179.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img179.gif"
+ ALT="$ \mathcal {A}$"> = {<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$">}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initial = <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$">
+productions:
+1. <!-- MATH
+ $\sigma \to \sigma\sigma$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$">
+2. <!-- MATH
+ $\sigma \to a\sigma b$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>a</I><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$"><I>b</I>
+3. <!-- MATH
+ $\sigma \to ab$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>ab</I>
+
+<P><P>
+<BR>
+
+<P>
+Show that every string in L has even length, starts with an <I>a</I> and ends
+with a <I>b</I>. Find all strings in L of lengths 2,4,6,8.
+
+<P>
+Prove that <!-- MATH
+ $\alpha\in A^+$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"> <IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img65.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img65.gif"
+ ALT="$ \in$"> <I>A</I><SUP>+</SUP> is in L iff it satisfies the property:
+
+<OL>
+<LI>up to any point in <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"> the number of <I>b</I>'s does not exceed the
+number of <I>a</I>'s; and
+</LI>
+<LI><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"> has equal numbers of <I>a</I>'s and <I>b</I>'s.
+</LI>
+</OL>
+
+<P>
+What very familiar structure is described by this grammar?</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:n-squared"><B>Q  4.3</B></A> &nbsp; 
+
+Find a grammar that generates the language <!-- MATH
+ $L = \{a^{n^2}\mid n \ge
+1\}$
+ -->
+<I>L</I> = {<I>a</I><SUP>n<SUP>2</SUP></SUP> | <I>n</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$">1}.  There are abstract considerations that show your grammar cannot
+be very simple.</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:reals"><B>Q  4.4</B></A> &nbsp; 
+
+The following indicate the acceptable forms for REAL numbers
+in FORTRAN (excluding the exponent form 12.2<I>E</I>6).
+<!-- MATH
+ \begin{displaymath}
+23.45,\quad 23,\quad .34,\quad 32.,\quad -2.7,\quad -23,\quad -.7\quad
+-8.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+23.45,&nbsp;&nbsp;&nbsp;&nbsp;23,&nbsp;&nbsp;&nbsp;&nbsp;.34,&nbsp;&nbsp;&nbsp;&nbsp;32.,&nbsp;&nbsp;&nbsp;&nbsp; - 2.7,&nbsp;&nbsp;&nbsp;&nbsp; - 23,&nbsp;&nbsp;&nbsp;&nbsp; - .7&nbsp;&nbsp;&nbsp;&nbsp; - 8.
+</DIV><P></P>
+Write a grammar that will generate precisely such strings from the
+alphabet <!-- MATH
+ $A=\{0,1,2,\ldots,9\}\cup\{+,-,.\}$
+ -->
+<I>A</I> = {0, 1, 2,..., 9} <IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img139.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img139.gif"
+ ALT="$ \cup$"> { + , - ,.}. Extend the grammar to cover
+the exponent case as well.
+
+<P>
+Your grammar will presumably allow things like
+<!-- MATH
+ \begin{displaymath}
+12345657891224234234345345456556756678678.23525253152615263126
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+12345657891224234234345345456556756678678.23525253152615263126
+</DIV><P></P>
+which FORTRAN may not like very much. Can you think of a way of working
+into the grammar the requirement that, for example, there are no more than
+8 digits before the decimal point? There is no tidy answer.</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:anbncn"><B>Q  4.5</B></A> &nbsp; 
+ 
+What language is generated by the following grammar?
+
+<P><P>
+<BR>
+
+<!-- MATH
+ $A=\{a,b,c\},\qquad \mathcal{A} = \{A,B,C\},\qquad \textrm{initial} = A$
+ -->
+<I>A</I> = {<I>a</I>, <I>b</I>, <I>c</I>},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img179.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img179.gif"
+ ALT="$ \mathcal {A}$"> = {<I>A</I>, <I>B</I>, <I>C</I>},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initial = <I>A</I>
+1. <!-- MATH
+ $A \to aABC$
+ -->
+<I>A</I><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>aABC</I>
+2. <I>A</I><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>aBC</I>
+3. <I>CB</I><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>BC</I>
+4. <I>aB</I><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>ab</I>
+5. <I>bB</I><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>bb</I>
+6. <I>bC</I><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>bc</I>
+7. <I>cC</I><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>cc</I></DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:ae-minus"><B>Q  4.6</B></A> &nbsp; 
+ 
+Extend the AE grammar so as to include the possibility of the `unary
+minus' as in - <I>a</I> + <I>b</I> or - (<I>b</I> + <I>c</I>)*<I>d</I>. You are not to allow things like
+<I>a</I> + - <I>b</I>, but <I>a</I>* - <I>b</I> is marginal and probably to be included.</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:ae-succession"><B>Q  4.7</B></A> &nbsp; 
+
+Build up a `succession' table for AE -- saying which objects are
+allowed to follow which in a string generated by AE. The objects are:
+var, op, (, ), start and end (where start and end are the start and
+end of the string). When you have it, check its validity by giving
+examples of all the successions that you claim can exist and proving
+that the rest cannot.</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:postfix"><B>Q  4.8</B></A> &nbsp; 
+
+Convert the following expressions first into fbie form and then into
+postfix form.
+<!-- MATH
+ \begin{displaymath}
+a+b-c,\quad a+b*d-c*a,\quad (a-b)*c/d,\quad a/b/c/d/(a+(b*c-d)/u)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>a</I> + <I>b</I> - <I>c</I>,&nbsp;&nbsp;&nbsp;&nbsp;<I>a</I> + <I>b</I>*<I>d</I> - <I>c</I>*<I>a</I>,&nbsp;&nbsp;&nbsp;&nbsp;(<I>a</I> - <I>b</I>)*<I>c</I>/<I>d</I>,&nbsp;&nbsp;&nbsp;&nbsp;<I>a</I>/<I>b</I>/<I>c</I>/<I>d</I> /(<I>a</I> + (<I>b</I>*<I>c</I> - <I>d</I> )/<I>u</I>)
+</DIV><P></P></DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:gram-june98"><B>Q  4.9</B></A> &nbsp; 
+
+Consider the formal language <!-- MATH
+ $\mathcal{L}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img187.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img187.gif"
+ ALT="$ \mathcal {L}$"> given by the following
+grammar.
+<UL>
+<LI>The alphabet is <!-- MATH
+ $A=\{\mathrm{a},\mathrm{b},\mathrm{c}\}$
+ -->
+<I>A</I> = {a, b, c}.
+</LI>
+<LI>The abstract alphabet is <!-- MATH
+ $\mathcal{A} = \{\sigma,\alpha,\beta,\gamma\}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img179.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img179.gif"
+ ALT="$ \mathcal {A}$"> = {<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$">,<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$">,<IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$">,<IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$">}.
+</LI>
+<LI>The initial symbol is <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$">.
+</LI>
+<LI>The productions are
+ 
+<OL>
+<LI><!-- MATH
+ $\sigma           \to \mathrm{a}\sigma\beta\gamma$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$">a<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$"><IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$">;
+</LI>
+<LI><!-- MATH
+ $\sigma           \to \mathrm{a}\beta\gamma$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$">a<IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$"><IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$">; 
+</LI>
+<LI><!-- MATH
+ $\gamma\beta      \to \beta\gamma$
+ -->
+<IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$"><IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$">;
+</LI>
+<LI><!-- MATH
+ $\mathrm{a}\beta  \to \mathrm{a}\mathrm{b}$
+ -->
+a<IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$">ab;
+</LI>
+<LI><!-- MATH
+ $\mathrm{b}\beta  \to \mathrm{b}\mathrm{b}$
+ -->
+b<IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$">bb;
+</LI>
+<LI><!-- MATH
+ $\mathrm{b}\gamma \to \mathrm{b}\mathrm{c}$
+ -->
+b<IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$">bc; and
+</LI>
+<LI><!-- MATH
+ $\mathrm{c}\gamma \to \mathrm{c}\mathrm{c}$
+ -->
+c<IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$">cc.
+ 
+</LI>
+</OL>
+</LI>
+</UL>
+
+<P>
+
+<P><P>
+<BR>
+a) 
+Prove that the string <I>abc</I> is in <!-- MATH
+ $\mathcal{L}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img187.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img187.gif"
+ ALT="$ \mathcal {L}$">.
+
+<P>
+
+<P><P>
+<BR>
+b) 
+Prove that the string <I>a</I><SUP>2</SUP><I>bcbc</I> is <I>not</I> in <!-- MATH
+ $\mathcal{L}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img187.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img187.gif"
+ ALT="$ \mathcal {L}$">.  If
+productions (4) to (7) are replaced by 
+<!-- MATH
+ \begin{displaymath}
+(4'.)\quad \beta \to \mathrm{b};\quad\text{and}\quad
+(5'.)\quad\gamma \to \mathrm{c}.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+(4'.)&nbsp;&nbsp;&nbsp;&nbsp;<IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img188.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img188.gif"
+ ALT="$\displaystyle \beta$"><IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img75.gif"
+ ALT="$\displaystyle \to$">b;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;&nbsp;&nbsp;&nbsp;(5'.)&nbsp;&nbsp;&nbsp;&nbsp;<IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img56.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img56.gif"
+ ALT="$\displaystyle \gamma$"><IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img75.gif"
+ ALT="$\displaystyle \to$">c.
+</DIV><P></P>
+does this remain true?  
+
+<P>
+
+<P><P>
+<BR>
+c) Prove that the string <I>a</I><SUP>n</SUP><I>b</I><SUP>n</SUP><I>c</I><SUP>n</SUP> is in
+<!-- MATH
+ $\mathcal{L}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img187.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img187.gif"
+ ALT="$ \mathcal {L}$"> for any <I>n</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$">1.
+
+<P>
+
+<P><P>
+<BR>
+d) 
+Give a simple description of the strings in <!-- MATH
+ $\mathcal{L}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img187.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img187.gif"
+ ALT="$ \mathcal {L}$"> and give
+arguments to support your claim.  [A formal proof is not expected]</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:2-to-the-n"><B>Q  4.10</B></A> &nbsp; 
+ Consider the formal language <!-- MATH
+ $\mathcal{L}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img187.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img187.gif"
+ ALT="$ \mathcal {L}$"> given by the following
+grammar.
+<UL>
+<LI>The alphabet is <I>A</I> = {<I>a</I>}.
+</LI>
+<LI>The abstract alphabet is <!-- MATH
+ $\mathcal{A} = \{\sigma,\alpha,\beta,\gamma\}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img179.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img179.gif"
+ ALT="$ \mathcal {A}$"> = {<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$">,<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$">,<IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$">,<IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$">}.
+</LI>
+<LI>The initial symbol is <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$">.
+</LI>
+<LI>The productions are
+
+<OL>
+<LI><!-- MATH
+ $\sigma \to \alpha\beta$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$">;
+</LI>
+<LI><!-- MATH
+ $\alpha\beta \to \alpha\alpha\beta$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$">; 
+</LI>
+<LI><!-- MATH
+ $\alpha\beta \to \alpha a\gamma$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><I>a</I><IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$">; 
+</LI>
+<LI><!-- MATH
+ $\alpha a \to aa\alpha$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><I>a</I><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>aa</I><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$">; 
+</LI>
+<LI><!-- MATH
+ $\alpha\alpha\gamma \to \alpha\gamma$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$">; and 
+</LI>
+<LI><!-- MATH
+ $a\alpha\gamma \to a$
+ -->
+<I>a</I><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>a</I>.
+	
+</LI>
+</OL>
+</LI>
+</UL>
+
+<P>
+
+<P><P>
+<BR>
+a) 
+Prove that the string <I>a</I><SUP>2</SUP> is in <!-- MATH
+ $\mathcal{L}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img187.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img187.gif"
+ ALT="$ \mathcal {L}$">.
+
+<P>
+
+<P><P>
+<BR>
+b) 
+Prove that the string <I>a</I><SUP>4</SUP> is in <!-- MATH
+ $\mathcal{L}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img187.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img187.gif"
+ ALT="$ \mathcal {L}$">. 
+
+<P>
+
+<P><P>
+<BR>
+c) 
+Let <I>s</I> be a string generated from <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$">.  For each <I>a</I> in
+<I>s</I>, define the <I>wieght</I> of <I>a</I> to be 2<SUP>k</SUP>, where <I>k</I>
+is the number of copies of <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"> which occur in <I>s</I> to the left of
+<I>a</I>.  Show that the sum of the weights of all copies of
+<I>a</I> in <I>s</I> is the same before and after an application of
+production (4).
+
+<P>
+
+<P><P>
+<BR>
+d) 
+Give a simple description of the strings in <!-- MATH
+ $\mathcal{L}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img187.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img187.gif"
+ ALT="$ \mathcal {L}$"> and give
+arguments to support your claim.</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+<P>
+<DIV><A NAME="Q:grammar-2000"><B>Q  4.11</B></A> &nbsp; 
+
+Consider the formal language <!-- MATH
+ $\mathcal{L}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img187.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img187.gif"
+ ALT="$ \mathcal {L}$"> given by the following
+grammar.
+<UL>
+<LI>The alphabet is <!-- MATH
+ $A=\{a,b,c\}$
+ -->
+<I>A</I> = {<I>a</I>, <I>b</I>, <I>c</I>}.
+</LI>
+<LI>The abstract alphabet is <!-- MATH
+ $\mathcal{A} = \{\alpha,\beta,\gamma\}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img179.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img179.gif"
+ ALT="$ \mathcal {A}$"> = {<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$">,<IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$">,<IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$">}.
+</LI>
+<LI>The initial symbol is <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$">.
+</LI>
+<LI>The productions are
+
+<OL>
+<LI><!-- MATH
+ $\alpha \to a\alpha\beta\gamma$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>a</I><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$"><IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$">;
+</LI>
+<LI><!-- MATH
+ $\alpha \to a\beta\gamma$
+ -->
+<IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>a</I><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$"><IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$">; 
+</LI>
+<LI><!-- MATH
+ $\gamma\beta \to \beta\gamma$
+ -->
+<IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$"><IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$">; 
+</LI>
+<LI><!-- MATH
+ $a\beta \to ab$
+ -->
+<I>a</I><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>ab</I>; 
+</LI>
+<LI><!-- MATH
+ $b\beta \to bb$
+ -->
+<I>b</I><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>bb</I>;
+</LI>
+<LI><!-- MATH
+ $b\gamma \to bc$
+ -->
+<I>b</I><IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>bc</I>;
+</LI>
+<LI><!-- MATH
+ $c\gamma \to cc$
+ -->
+<I>c</I><IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$"><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"><I>cc</I>.
+	
+</LI>
+</OL>
+</LI>
+</UL>
+
+<P>
+
+<P><P>
+<BR>
+a) 
+Prove that the string <I>a</I><SUP>2</SUP><I>b</I><SUP>2</SUP><I>c</I><SUP>2</SUP> is in <!-- MATH
+ $\mathcal{L}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img187.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img187.gif"
+ ALT="$ \mathcal {L}$">.
+
+<P>
+
+<P><P>
+<BR>
+b) 
+Prove that at every stage of the process, no member of the abstract
+alphabet appears to the left of any member of <I>A</I>.
+
+<P>
+
+<P><P>
+<BR>
+c) 
+Prove that production (2) is always applied exactly once, and that
+after it has been applied the resulting string is of the form
+<!-- MATH
+ $a^{n+1}\sigma$
+ -->
+<I>a</I><SUP>n + 1</SUP><IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$">, where <I>n</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$"> 0 and <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$"> contains exactly <I>n</I> + 1
+copies of both <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$"> and <IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$">, ordered in such a way that up to
+any point in <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img91.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img91.gif"
+ ALT="$ \sigma$">, there are at least as many copies of <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img180.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img180.gif"
+ ALT="$ \beta$"> as
+of <IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img183.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img183.gif"
+ ALT="$ \gamma$">.
+
+<P>
+
+<P><P>
+<BR>
+d) 
+Give a simple description of the strings in <!-- MATH
+ $\mathcal{L}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img187.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img187.gif"
+ ALT="$ \mathcal {L}$"> and give
+arguments to support your claim.  [A formal proof is not expected.]</DIV><P></P>
+
+<P>
+
+<P>
+<BR>
+
+<P>
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1396"
+  HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1390"
+  HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1386"
+  HREF="node74.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node74.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1392"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1394"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1397"
+  HREF="node76.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node76.html">Random Numbers</A>
+<B> Up:</B> <A NAME="tex2html1391"
+  HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">Grammers and Parsing</A>
+<B> Previous:</B> <A NAME="tex2html1387"
+  HREF="node74.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node74.html">Evaluating a Postfix Expression</A>
+ &nbsp <B>  <A NAME="tex2html1393"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1395"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

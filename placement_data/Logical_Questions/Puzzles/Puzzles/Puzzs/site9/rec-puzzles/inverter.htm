@@ -1,0 +1,52 @@
+<html><head>
+<title>Solution for /logic/inverter</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /logic/inverter problem</h1>
+<hr>
+It can be shown that N inverters can invert 2^N-1 independent inputs,
+given an unlimited supply of AND and OR gates. The classic version of
+this puzzle is to invert 3 independent inputs using AND gates, OR
+gates, and only 2 inverters.
+
+<p>
+This is solved by:
+<pre>
+  n1 = not(i1 and i2 or i1 and i3 or i2 and i3);
+  n2 = not((i1 or i2 or i3) and n1  or  i1 and i2 and i3);
+  o1 = (i2 or i3 or n2) and n1  or  i2 and i3 and n2;
+  o2 = (i1 or i3 or n2) and n1  or  i1 and i3 and n2;
+  o3 = (i1 or i2 or n2) and n1  or  i1 and i2 and n2;
+</pre>
+i1, i2, and i3 are the inputs, n1 and n2 are the inverted signals, and
+o1, o2, and o3 are the outputs.  "and" has higher precedence than "or".
+
+<p>
+So, start with N inverters.  Replace 3 of them with 2.
+Keep doing that until you're down to 2 inverters.
+
+<p>
+I was skeptical at first, because such a design requires so much feedback
+that I was sure the system would oscillate when switching between two
+particular states.  But after writing a program to test every possible state 
+change (32^2), it appears that this system settles after a maximum of
+3 feedback logic iterations. I did not include gate delays in the simulation,
+however, which could increase the number of iterations before the system
+settles.
+
+<p>
+In any case, it appears that the world needs only 2 inverters! :-)
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

@@ -1,0 +1,144 @@
+<html><head>
+<title>Solution for /arithmetic/conway</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/conway problem</h1>
+<hr>
+This sequence and its remarkable properties were discovered, apparently
+independently, by Douglas Hofstadter (circa 1975), John Conway (in the
+early 1980's), B.W. Connoly, and others. Since Conway discovered many of
+the deeper properties, and is the one responsible for popularizing the
+sequence, it seems appropriate to name the sequence after him.
+
+<p>
+Some properties of a(n):
+
+<ul>
+<li>  a(n+1) - a(n) = 0 or 1
+
+<li>  a(2^n) = 2^(n-1)
+
+<li>  n/2 &lt;= a(n) &lt;= n
+
+<li>  A(n)= 2a(n) - n    has zeros at the powers of 2 and 
+     positive "humps" in between
+
+<li>  A(2^n + t) = A(2^(n+1) - t)  for t between 0 and 2^n,
+     i.e. the humps are symmetric
+
+<li> a(2n) &lt;= 2a(n)
+
+<li> a(n)/n --&gt; 1/2  as  n --&gt; infinity
+
+<li> a(n) and A(n) are self-similar, in the sense that their values on the
+   (N+1)'st hump can be obtained by a "magnification" process applied
+   to the values on the N'th hump. They are *not* chaotic sequences,
+   since their asymptotics and combinatorial structure are very regular
+   and rigid.
+</ul>
+
+In a lecture at Bell Labs in 1988, Conway asked for the rate at
+which  a(n)/n converges to 1/2.  In particular, he asked for
+N(epsilon), the last value of  n  such that  |a(n)/n - 1/2|
+exceeds epsilon, in the case  epsilon=1/20.  This problem was
+solved by Colin Mallows of Bell Labs: he found that  N(1/20)=1489
+and N(1/40)=6083008742. These values are reported in his article
+in the American Mathematical Monthly, January 1991, p. 5.
+
+<p>
+Conway's sequence has a deep combinatorial structure, and is intimately
+connected with all of the following: variants of Pascal's triangle, the
+Gaussian distribution, combinatorial operations on finite sets,
+coin-pushing games, and Fibonacci and Catalan numbers.  All of this is
+explained in my joint paper with Ravi Vakil; anyone who would like to
+receive a copy in LaTex format should contact me at the e-mail address
+listed below.
+
+<p>
+One byproduct of our work is an algorithm to determine  N(epsilon) for
+given positive epsilon.  Here are some particular values:
+
+<pre>
+ e      Last  n  such that   |a(n)/n - 1/2| &gt; e
+----    ----------------------------------------------------------
+1/20    1489  (found by Mallows in 1988)
+1/30    758765
+1/40    6083008742  (found by Mallows in 1988)
+1/50    809308036481621
+1/60    1684539346496977501739
+1/70    55738373698123373661810220400
+1/80    15088841875190938484828948428612052839
+1/90    127565909103887972767169084026274554426122918035
+1/100   8826608001127077619581589939550531021943059906967127007025
+</pre>
+These values were computed by the Mathematica program listed below; the
+algorithm is explained in our paper.  To use the program, load it into
+Mathematica and type   neps[t]  for some numerical value of  t  (which
+should probably be smaller than 1/5 or so). The program will output  N(t),
+e.g.  neps[1/20] = 1489. These numbers grow very fast: N(epsilon) will be
+about 2^((0.138015/epsilon)^2), so  N(1/1000) will have about 5735 digits.
+The program requires very little memory space, but its runtime appears to
+grow rapidly as epsilon decreases (on a Sun 3, it took about one second to
+find the first value listed, and several minutes to find the last).
+
+<pre>
+neps[eps_] := Block[{W}, L = 1 + Floor[(0.138015/eps)^2]; e = eps*2; 
+    W = processvector[L]; While[Length[W] &gt; 0, 
+     nmax = 1 + Last[W][[4]]; L++; W = processvector[L]]; nmax]
+ 
+processvector[L_] := 
+  Block[{V}, V = startvector[L]; While[notfound[V], V = newbody[V]]; V]
+ 
+startvector[L_] := Select[initialvector[L], gt]
+ 
+initialvector[L_] := 
+  Table[{L, b, Binomial[L - 1, b - 1], 
+    2^(L + 1) - Sum[Binomial[L, c], {c, b, L}]}, {b, 0, L - 1}]
+ 
+c[0] = 0
+ 
+c[n_] := c[n] = Sum[Binomial[2*a, a]/(a + 1), {a, 0, n - 1}]
+ 
+gt[x_] := U[x] &gt; e
+ 
+U[x_] := (x[[3]] + M[x[[1]], x[[2]]])/(x[[4]] + incp[x[[1]], x[[2]]])
+ 
+M[n_, n_] = -1
+ 
+M[n_, k_] := Binomial[n - 1, K[n, k]] - Binomial[n - 1, k - 1] + c[K[n, k]]
+ 
+K[n_, k_] := Min[k, n - k]
+ 
+incp[n_, k_] := Max[M[n, k], 1]
+ 
+notfound[V_] := 
+  Length[V] &gt; 0 &amp;&amp; Last[V][[2]] &gt; 0 &amp;&amp; Last[V][[1]] &gt; Last[V][[2]]
+ 
+newbody[V_] := Join[Drop[V, -1], newtail[V]]
+ 
+newtail[V_] := Select[{vleft[Last[V]], vright[Last[V]]}, gt]
+ 
+vleft[x_] := {x[[1]] - 1, x[[2]] - 1, x[[3]], x[[4]]}
+ 
+vright[x_] := {x[[1]] - 1, x[[2]], x[[3]] + S[x[[1]] - 1, x[[2]] - 1], 
+   x[[4]] + Binomial[x[[1]] - 1, x[[2]] - 1]}
+ 
+S[n_, k_] := Binomial[n - 1, k] - Binomial[n - 1, k - 1]
+
+
+-Tal Kubo     kubo@math.harvard.edu  or   kubo@zariski.harvard.edu
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

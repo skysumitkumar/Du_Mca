@@ -1,0 +1,183 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The ADT tree</TITLE>
+<META NAME="description" CONTENT="The ADT tree">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node57.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node57.html">
+<LINK REL="previous" HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">
+<LINK REL="up" HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">
+<LINK REL="next" HREF="node57.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node57.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1127"
+  HREF="node57.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node57.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1121"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1115"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1123"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1125"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1128"
+  HREF="node57.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node57.html">Traversals</A>
+<B> Up:</B> <A NAME="tex2html1122"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">Trees</A>
+<B> Previous:</B> <A NAME="tex2html1116"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">Trees</A>
+ &nbsp <B>  <A NAME="tex2html1124"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1126"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00721000000000000000">
+The ADT tree</A>
+</H2>
+A <A NAME="5010"></A><B>tree</B> is a finite set of elements or <A NAME="5012"></A><B>nodes</B>.  If the
+set is non-empty, one of the nodes is distinguished as the
+<A NAME="5014"></A><B>root</B> node, while the remaining (possibly empty) set of nodes
+are grouped into subsets, each of which is itself a tree.  This
+hierarchical relationship is described by referring to each such
+subtree as a <A NAME="5016"></A><B>child</B> of the root, while the root is referred to
+as the <A NAME="5018"></A><B>parent</B> of each subtree.  If a tree consists of a single
+node, that node is called a <A NAME="5020"></A><B>leaf</B> node.
+
+<P>
+
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="F:tree-example"></A><A NAME="4444"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 3.4:</STRONG>
+A simple tree.</CAPTION>
+<TR><TD><IMG
+ WIDTH="337" HEIGHT="137" BORDER="0"
+ SRC="img161.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img161.gif"
+ ALT="\begin{figure}
+\centering\begin{psTree}[levelsep=12mm]{\Tcircle{A}}
+\begin{psTr...
+...e}{\Tcircle{C}}
+\Tcircle {I}
+\end{psTree} \Tcircle{D}
+\end{psTree}\end{figure}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+
+<P>
+It is a notational convenience to allow an empty tree.  It is usual to
+represent a tree using a picture such as Fig.&nbsp;<A HREF="node56.html#F:tree-example" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node56.html#F:tree-example">3.4</A>, in
+which the root node is <I>A</I>, and there are three subtrees rooted at
+<I>B</I>, <I>C</I> and <I>D</I>.  The root of the subtree <I>D</I> is a leaf node, as are
+the remaining nodes, <I>E</I>, <I>F</I>, <I>G</I>, <I>H</I> and <I>I</I>.  The node <I>C</I> has a
+single child <I>I</I>, while each of <I>E</I>, <I>F</I>, <I>G</I> and <I>H</I> have the same
+parent <I>B</I>.  The subtrees rooted at a given node are taken to be
+<I>ordered</I>, so the tree in Fig.&nbsp;<A HREF="node56.html#F:tree-example" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node56.html#F:tree-example">3.4</A> is different
+from the one in which nodes <I>E</I> and <I>F</I> are interchanged.  Thus it
+makes sense to say that the <I>first</I> subtree at <I>A</I> has 4 leaf
+nodes.
+
+<P>
+<P>
+<DIV><B>Example  3.4</B> &nbsp; 
+Show how to implement the  Abstract Data Type tree using lists.</DIV><P></P>
+
+<P>
+<I>Solution</I> We write <code>[A B C]</code> for the list containing three elements, and
+distinguish <code>A</code> from <code>[A]</code>.  We can represent a tree as a
+list consisting of the root and a list of the subtrees in order.  Thus
+the list-based representation of the tree in Fig&nbsp;<A HREF="node56.html#F:tree-example" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node56.html#F:tree-example">3.4</A>
+is
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ [A [[B [[E] [F] [G] [H]]] [C [I]] [D]]].
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>
+<P>
+
+<P>
+<BR>
+Note that for example we confuse <code>[D]</code> with <code>[D []]</code>, which
+we should write to be strictly correct, since <code>D</code> has an empty
+set of subtrees.  To give an idea of how common the list representation
+is, my editor was happily matching brackets as I typed the above; in
+other words, when I typed the last ``<code>]</code>'', the cursor moved to the
+``<code>[</code>'' before ``A'' to show the balancing bracket.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1127"
+  HREF="node57.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node57.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1121"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1115"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1123"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1125"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1128"
+  HREF="node57.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node57.html">Traversals</A>
+<B> Up:</B> <A NAME="tex2html1122"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">Trees</A>
+<B> Previous:</B> <A NAME="tex2html1116"
+  HREF="node55.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node55.html">Trees</A>
+ &nbsp <B>  <A NAME="tex2html1124"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1126"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

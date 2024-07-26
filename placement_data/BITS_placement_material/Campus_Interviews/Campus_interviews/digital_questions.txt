@@ -1,0 +1,189 @@
+The following are some of the questions I was asked in my interviews. The questions of course, depend on the position you are being interviewed and also on your Resume. So if you find any questions not relevant to your Resume, you can safely ignore them. Also, these questions are limited to VLSI Design, Computer Architeture and some basic Programming. If you are looking for something in Analog, RF etc, this is NOT the place. 
+
+Okay alright...that makes sense...now lets get going...
+
+
+VLSI Design:
+
+1) Explain why & how a MOSFET works
+
+2) Draw Vds-Ids curve for a MOSFET. Now, show how this curve changes (a) with increasing Vgs (b) with increasing transistor width (c) considering Channel Length Modulation
+
+3) Explain the various MOSFET Capacitances & their significance
+
+4) Draw a CMOS Inverter. Explain its transfer characteristics
+
+5) Explain sizing of the inverter 
+
+6)How do you size NMOS and PMOS transistors to increase the threshold voltage?
+
+7) What is Noise Margin? Explain the procedure to determine Noise Margin
+
+8) Give the expression for CMOS switching power dissipation
+
+9) What is Body Effect? 
+
+10) Describe the various effects of scaling 
+
+11) Give the expression for calculating Delay in CMOS circuit
+
+12) What happens to delay if you increase load capacitance?
+
+13) What happens to delay if we include a resistance at the output of a CMOS circuit? 
+
+14) What are the limitations in increasing the power supply to reduce delay? 
+
+15) How does Resistance of the metal lines vary with increasing thickness and increasing length? 
+
+16) You have three adjacent parallel metal lines. Two out of phase signals pass through the outer two metal lines. Draw the waveforms in the center metal line due to interference. Now, draw the signals if the signals in outer metal lines are in phase with each other
+
+17) What happens if we increase the number of contacts or via from one metal layer to the next? 
+
+18) Draw a transistor level two input NAND gate. Explain its sizing (a) considering Vth (b) for equal rise and fall times 
+
+19) Let A & B be two inputs of the NAND gate. Say signal A arrives at the NAND gate later than signal B. To optimize delay, of the two series NMOS inputs A & B, which one would you place near the output? 
+
+20) Draw the stick diagram of a NOR gate. Optimize it 
+
+21) For CMOS logic, give the various techniques you know to minimize power consumption 
+
+22) What is Charge Sharing? Explain the Charge Sharing problem while sampling data from a Bus 
+
+23) Why do we gradually increase the size of inverters in buffer design? Why not give the output of a circuit to one large inverter? 
+
+24) In the design of a large inverter, why do we prefer to connect small transistors in parallel (thus increasing effective width) rather than lay out one transistor with large width? 
+
+25) Given a layout, draw its transistor level circuit. (I was given a 3 input AND gate and a 2 input Multiplexer. You can expect any simple 2 or 3 input gates)
+
+26) Give the logic expression for an AOI gate. Draw its transistor level equivalent. Draw its stick diagram 
+
+27) Why don't we use just one NMOS or PMOS transistor as a transmission gate? 
+
+28) For a NMOS transistor acting as a pass transistor, say the gate is connected to VDD, give the output for a square pulse input going from 0 to VDD 
+
+29) Draw a 6-T SRAM Cell and explain the Read and Write operations 
+
+30) Draw the Differential Sense Amplifier and explain its working. Any idea how to size this circuit? (Consider Channel Length Modulation) 
+
+31) What happens if we use an Inverter instead of the Differential Sense Amplifier? 
+
+32) Draw the SRAM Write Circuitry 
+
+33) Approximately, what were the sizes of your transistors in the SRAM cell? How did you arrive at those sizes? 
+
+34) How does the size of PMOS Pull Up transistors (for bit & bit- lines) affect SRAM's performance? 
+
+35) What's the critical path in a SRAM? 
+
+36) Draw the timing diagram for a SRAM Read. What happens if we delay the enabling of Clock signal? 
+
+37) Give a big picture of the entire SRAM Layout showing your placements of SRAM Cells, Row Decoders, Column Decoders, Read Circuit, Write Circuit and Buffers 
+
+38) In a SRAM layout, which metal layers would you prefer for Word Lines and Bit Lines? Why? 
+
+39) How can you model a SRAM at RTL Level? 
+
+40) What’s the difference between Testing & Verification? 
+
+41) For an AND-OR implementation of a two input Mux, how do you test for Stuck-At-0 and Stuck-At-1 faults at the internal nodes? (You can expect a circuit with some redundant logic) 
+
+42) What is Latch Up? Explain Latch Up with cross section of a CMOS Inverter. How do you avoid Latch Up? 
+
+
+Digital Design:
+
+1) Give two ways of converting a two input NAND gate to an inverter 
+
+2) Given a circuit, draw its exact timing response. (I was given a Pseudo Random Signal Generator; you can expect any sequential ckt) 
+
+3) What are set up time & hold time constraints? What do they signify? Which one is critical for estimating maximum clock frequency of a circuit? 
+
+4) Give a circuit to divide frequency of clock cycle by two 
+
+5) Design a divide-by-3 sequential circuit with 50% duty circle. (Hint: Double the Clock) 
+
+6) Suppose you have a combinational circuit between two registers driven by a clock. What will you do if the delay of the combinational circuit is greater than your clock signal? (You can't resize the combinational circuit transistors) 
+
+7) The answer to the above question is breaking the combinational circuit and pipelining it. What will be affected if you do this? 
+
+8) What are the different Adder circuits you studied? 
+
+9) Give the truth table for a Half Adder. Give a gate level implementation of the same. 
+
+10) Draw a Transmission Gate-based D-Latch.
+
+11) Design a Transmission Gate based XOR. Now, how do you convert it to XNOR? (Without inverting the output)
+
+12) How do you detect if two 8-bit signals are same? 
+
+13) How do you detect a sequence of "1101" arriving serially from a signal line? 
+
+14) Design any FSM in VHDL or Verilog. 
+
+
+Computer Architecture: 
+
+1) What is pipelining? 
+
+2) What are the five stages in a DLX pipeline?
+
+3) For a pipeline with 'n' stages, what’s the ideal throughput? What prevents us from achieving this ideal throughput?
+
+4) What are the different hazards? How do you avoid them?
+
+5) Instead of just 5-8 pipe stages why not have, say, a pipeline with 50 pipe stages?
+
+6) What are Branch Prediction and Branch Target Buffers?
+
+7) How do you handle precise exceptions or interrupts?
+
+8) What is a cache?
+
+9) What's the difference between Write-Through and Write-Back Caches? Explain advantages and disadvantages of each.
+
+10) Cache Size is 64KB, Block size is 32B and the cache is Two-Way Set Associative. For a 32-bit physical address, give the division between Block Offset, Index and Tag.
+
+11) What is Virtual Memory?
+
+12) What is Cache Coherency?
+
+13) What is MESI?
+
+14) What is a Snooping cache?
+
+15) What are the components in a Microprocessor? 
+
+16) What is ACBF(Hex) divided by 16?
+
+17) Convert 65(Hex) to Binary 
+
+18) Convert a number to its two's compliment and back 
+
+19) The CPU is busy but you want to stop and do some other task. How do you do it?
+
+
+Other Simple Questions: 
+
+1) What is j to the power j?
+
+2) What is Normal Distribution? Where is the Mean and Median on the graph for Normal Distribution?
+
+3) Draw a simple RC-Low pass circuit.
+
+
+Some General Questions: 
+1) Tell me something about yourself and your interests
+
+2) Tell me something about some problems you faced in a project and how did you handle it? 
+
+3) Give one instance where you were criticised by your Professor
+
+4) Where do you see yourself five years from now? 
+
+5) What salary are you expecting?
+
+6) Any Questions for me regarding the position or the company?
+
+7) Finally, does this position sound interesting? :-) 
+
+

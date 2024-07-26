@@ -1,0 +1,257 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Postfix Grammer</TITLE>
+<META NAME="description" CONTENT="Postfix Grammer">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="previous" HREF="node70.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node70.html">
+<LINK REL="up" HREF="node70.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node70.html">
+<LINK REL="next" HREF="node72.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node72.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1343"
+  HREF="node72.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node72.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1337"
+  HREF="node70.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node70.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1333"
+  HREF="node70.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node70.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1339"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1341"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1344"
+  HREF="node72.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node72.html">Converting Infix to Postfix</A>
+<B> Up:</B> <A NAME="tex2html1338"
+  HREF="node70.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node70.html">Postfix Expressions</A>
+<B> Previous:</B> <A NAME="tex2html1334"
+  HREF="node70.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node70.html">Postfix Expressions</A>
+ &nbsp <B>  <A NAME="tex2html1340"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1342"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00861000000000000000">
+Postfix Grammer</A>
+</H2>
+The Grammar for Postfix Expressions is as follows:
+<UL>
+<LI>The alphabet is <I>A</I> = <I>V</I> <IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img139.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img139.gif"
+ ALT="$ \cup$"> <I>B</I> where 
+	 <!-- MATH
+ $V = \{a,b,c,\ldots,z\}$
+ -->
+<I>V</I> = {<I>a</I>, <I>b</I>, <I>c</I>,..., <I>z</I>} and <!-- MATH
+ $B = \{+,-,*,/\}$
+ -->
+<I>B</I> = { + , - ,*,/}
+</LI>
+<LI>The abstract alphabet is <!-- MATH
+ $\mathcal{A}$
+ -->
+<IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img179.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img179.gif"
+ ALT="$ \mathcal {A}$"> = { <B> expr </B>, <B> var </B>, <B> op </B>}
+</LI>
+<LI>The initial symbol is  <B> expr </B>.
+</LI>
+<LI>The productions are
+ 
+<OL>
+<LI><B> expr </B><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"> <B> expr </B>  <B> expr </B> <B> op </B>;
+</LI>
+<LI><B> expr </B><IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"> <B> var </B>;
+</LI>
+<LI><B> var </B> <IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"> <!-- MATH
+ $a|b|c|\ldots |z$
+ -->
+<I>a</I>| <I>b</I>| <I>c</I>|...| <I>z</I>; and
+</LI>
+<LI><B> op </B>  <IMG
+ WIDTH="20" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img54.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img54.gif"
+ ALT="$ \to$"> + | - |*|/
+ 
+</LI>
+</OL>
+</LI>
+</UL>
+
+<P>
+Note that, apart from the lack of brackets, the significant change is the
+<I>order</I> of the abstracts in (1). This grammar is actually a simple
+generalisation of the grammar that we studied in Example 2. Because of this
+it is now easy to prove the following result:
+
+<P>
+<P>
+<DIV><B>Theorem  4.4</B> &nbsp; 
+A string <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"> in <I>A</I><SUP>+</SUP> is a postfix expression iff it satisfies
+the following property: there is one more <B> var </B>symbol in <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"> than
+<B> op </B>symbols and up to any point in <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img60.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img60.gif"
+ ALT="$ \alpha$"> there are more <B> var </B>
+symbols than <B> op </B>symbols.</DIV><P></P>
+
+<P>
+You can prove it as an exercise (it just means making minor modifications
+in the corresponding proofs in Example 2). 
+
+<P>
+So we can now write a simple `syntax-checking' algorithm to decide whether
+or not a given string is in postfix form. (See below for explanations of
+<TT>isvar</TT> and <TT>isop</TT>.)
+
+<P>
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ algorithm &nbsp;postfix-checker(s,n) 
+<BR>// check the string <!-- MATH
+ $s_{1},\ldots,s_{n}$
+ -->
+<I>s</I><SUB>1</SUB>,..., <I>s</I><SUB>n</SUB> to see if it is postfix.
+<BR>
+begin
+<BR>&nbsp;&nbsp;count = 0
+<BR>&nbsp;&nbsp;if (n = 1) then begin
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;if isvar(<I>s</I><SUB>1</SUB>) then begin
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return POSTFIX 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;else 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return NOT POSTFIX
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;end
+<BR>&nbsp;&nbsp;end
+<BR>&nbsp;&nbsp;for i=1 to n-1 begin
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;if isvar( <I>s</I><SUB>i</SUB> ) then count = count + 1
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;if isop( <I>s</I><SUB>i</SUB> ) then count = count - 1
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;if count &lt;= 0 then return NOT POSTFIX
+<BR>&nbsp;&nbsp;end
+<BR>&nbsp;&nbsp;if isop( <I>s</I><SUB>n</SUB> ) and count <IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img12.gif"
+ ALT="$ \ne$"> 2 then return NOT POSTFIX 
+<BR>&nbsp;&nbsp;if isvar( <I>s</I><SUB>n</SUB> ) then return NOT POSTFIX
+<BR>&nbsp;&nbsp;return IS POSTFIX
+<BR>
+end.
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>
+<P>
+This routine uses the <I>predicates</I> <TT>isvar(x)</TT> and <TT>isop(x)</TT>.
+A predicate is just a function that returns the logical values TRUE or
+FALSE. The predicate <TT>isvar(x)</TT> will return TRUE iff <TT>x</TT> is a
+<B> var </B>symbol. The predicate <TT>isop(x)</TT> will return TRUE iff <TT>x</TT> is
+an <B> op </B>symbol.
+
+<P>
+The routine will work with much more general alphabets than I have been
+using, so long as <TT>isvar()</TT> and <TT>isop()</TT> are suitably redefined.
+In many computer languages the operator list is a bit longer, often
+including a power operator (like ** in FORTRAN). Some languages even allow
+you to define your own binary operators. In almost all computer languages
+the alphabet for <B> var </B>is much bigger, usually consisting of all strings
+of up to a given number of characters from a set which certainly includes
+all the letters and digits and may include a lot more.
+
+<P>
+None of this has any important effect on what I have been doing. The
+restriction to a simple alphabet was a matter of convenience rather than
+a simplification of the theory. The more complicated you make your
+alphabets the more difficult it becomes to write the <TT>isvar()</TT>
+predicate -- but that is somebody else's problem.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1343"
+  HREF="node72.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node72.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1337"
+  HREF="node70.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node70.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1333"
+  HREF="node70.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node70.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1339"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1341"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1344"
+  HREF="node72.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node72.html">Converting Infix to Postfix</A>
+<B> Up:</B> <A NAME="tex2html1338"
+  HREF="node70.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node70.html">Postfix Expressions</A>
+<B> Previous:</B> <A NAME="tex2html1334"
+  HREF="node70.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node70.html">Postfix Expressions</A>
+ &nbsp <B>  <A NAME="tex2html1340"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1342"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

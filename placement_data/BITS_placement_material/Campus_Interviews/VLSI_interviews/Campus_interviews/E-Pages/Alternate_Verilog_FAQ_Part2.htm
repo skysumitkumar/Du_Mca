@@ -1,0 +1,1099 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0042)http://bawankule.com/verilogfaq/page3.html -->
+<HTML xmlns:mso = "urn:schemas-microsoft-com:office:office" xmlns:msdt = 
+"uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"><HEAD><TITLE>Alternate Verilog FAQ: Part2</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2800.1543" name=GENERATOR>
+<META content="Rajesh Bawankule" name=Author>
+<META 
+content="Verilog FAQ: Answers frequently asked questions about Verilog Hardware Description language Language." 
+name=Description>
+<META 
+content="Verilog, verilog, FAQ, faq, PLI, digital, rajesh, bawankule, eda, IP, core, CAD, HDL, Hardware Description Language, design, verification, RTL, rtl, synopsys, synthesis, Synopsys, Cadence, ASIC, asic, VHDL, bawankule, hardware, Verilog, synthesis, cadence, synopsys, verification, simulation" 
+name=keywords>
+<META content="computers, software, CAD/CAM, IC Design" name=Classification>
+<META content="Microsoft FrontPage 4.0" name=GENERATOR><!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:Categories msdt:dt="string">Verilog FAQ</mso:Categories>
+</mso:CustomDocumentProperties>
+</xml><![endif]--><LINK href="Alternate Verilog FAQ Part2_files/vrl.css" 
+type=text/css rel=stylesheet>
+<META content="tb, default" name="Microsoft Border"></HEAD>
+<BODY text=#000000 vLink=#993366 aLink=#ff0000 link=#0000ee bgColor=#ffffff><!--msnavigation-->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <CENTER>
+      <P style="LINE-HEIGHT: 0"><B><FONT face=Georgia 
+size=+3><BR></FONT></B></P>
+      <P style="LINE-HEIGHT: 0"><B><FONT face=Georgia size=+3>Verilog 
+      FAQ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><I><FONT size=-1>Version 09/05: 
+      September 2005</FONT></I></B></P>
+      <HR width="100%" noShade>
+
+      <P><B><FONT face=Arial,Helvetica size=2>[&nbsp; <A 
+      href="http://bawankule.com/verilogfaq/">FAQ Main</A>&nbsp; |&nbsp; <A 
+      href="http://bawankule.com/verilogfaq/page2.html">Part-1</A>&nbsp; |&nbsp; 
+      <A href="http://bawankule.com/verilogfaq/page3.html">Part-2&nbsp;</A> 
+      |&nbsp; <A 
+      href="http://bawankule.com/verilogfaq/page4.html">Part-3</A>&nbsp; |&nbsp; 
+      <A href="http://bawankule.com/verilogfaq/whats_new.html">What' 
+      New&nbsp;</A> |&nbsp;&nbsp; <A 
+      href="http://bawankule.com/verilogfaq/links.html">Links</A>&nbsp;&nbsp;&nbsp; 
+      ]</FONT></B> </P>
+      <HR width="100%" noShade>
+      </CENTER></TD></TR><!--msnavigation--></TBODY></TABLE><!--msnavigation-->
+<TABLE dir=ltr cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR><!--msnavigation-->
+    <TD vAlign=top>&nbsp; 
+      <TABLE cellSpacing=0 cellPadding=0 width=607 border=0>
+        <TBODY>
+        <TR height=256>
+          <TD height=256>
+            <P align=left><B><FONT face=Arial,Helvetica size=3><I>Part 
+            2</I></FONT></B> 
+            <HR>
+
+            <P align=left><B><FONT color=#000000>Technical Topics 
+            :</FONT></B></P>
+            <P><FONT face=Arial,Helvetica><A 
+            href="http://bawankule.com/verilogfaq/page3.html#Future of">Future 
+            of Verilog&nbsp;</A></FONT> <BR><FONT face=Arial,Helvetica><A 
+            href="http://bawankule.com/verilogfaq/page3.html#Programming Language">Programming 
+            Language Interface</A>.&nbsp;</FONT> 
+            <P><FONT face=Arial,Helvetica><A 
+            href="http://bawankule.com/verilogfaq/page3.html#Connecting other scripting languages to Verilog">Connecting 
+            other scripting languages to Verilog</A> <IMG height=28 
+            src="Alternate Verilog FAQ Part2_files/new.jpg" width=30 
+            border=0></FONT> 
+            <P><FONT face=Arial,Helvetica><A 
+            href="http://bawankule.com/verilogfaq/page3.html#VCD (Value Change Data)">VCD 
+            (Value Change Data)</A>&nbsp; <IMG height=28 
+            src="Alternate Verilog FAQ Part2_files/new.jpg" width=30 
+            border=0></FONT> <BR><FONT face=Arial,Helvetica><A 
+            href="http://bawankule.com/verilogfaq/page3.html#Different types of Verilog">Different 
+            types of Verilog Simulators</A></FONT> <BR><FONT 
+            face=Arial,Helvetica><A 
+            href="http://bawankule.com/verilogfaq/page3.html#Efficient State Machine in">Finite 
+            State Machines in Verilog</A></FONT> <BR><FONT 
+            face=Arial,Helvetica><A 
+            href="http://bawankule.com/verilogfaq/page3.html#FSM Design and Analysis">FSM 
+            Design and Analysis Tools&nbsp;</A></FONT> <BR><FONT 
+            face=Arial,Helvetica><A 
+            href="http://bawankule.com/verilogfaq/page3.html#Verilog Model">Verilog 
+            Model Examples</A></FONT> 
+            <UL>
+              <LI><FONT face=Arial,Helvetica><A 
+              href="http://bawankule.com/verilogfaq/page3.html#D type">D Type 
+              Flip-flop</A></FONT>&nbsp; 
+              <LI><FONT face=Arial,Helvetica><A 
+              href="http://bawankule.com/verilogfaq/page3.html#d with async reset">D 
+              Type Flip-flop with asynchronous reset</A></FONT>&nbsp; 
+              <LI><FONT face=Arial,Helvetica><A 
+              href="http://bawankule.com/verilogfaq/page3.html#d with sync reset">D 
+              Type Flip-flop with Synchronous reset</A></FONT>&nbsp; 
+              <LI><FONT face=Arial,Helvetica><A 
+              href="http://bawankule.com/verilogfaq/page3.html#d with sync reset and ce">D 
+              Type Flip-flop with asynchronous reset and clock 
+              enable</A></FONT>&nbsp; 
+              <LI><FONT face=Arial,Helvetica><A 
+              href="http://bawankule.com/verilogfaq/page3.html#mux case">4:1 
+              Multiplexer Using case statement</A></FONT>&nbsp; 
+              <LI><FONT face=Arial,Helvetica><A 
+              href="http://bawankule.com/verilogfaq/page3.html#mux ifelse">4:1 
+              Multiplexer Using if-else statements</A></FONT>&nbsp; 
+              <LI><FONT face=Arial,Helvetica><A 
+              href="http://bawankule.com/verilogfaq/page3.html#mux assign">4:1 
+              Multiplexer Using assign statements</A></FONT>&nbsp; 
+              <LI><FONT face=Arial,Helvetica><A 
+              href="http://bawankule.com/verilogfaq/page3.html#behav fifo">Behavioral 
+              FIFO model</A></FONT>&nbsp; 
+              <LI><FONT face=Arial,Helvetica><A 
+              href="http://bawankule.com/verilogfaq/page3.html#moorby">Examples 
+              from "The Verilog Hardware Description Language"</A> by D.E. 
+              Thomas and P.R. Moorby&nbsp;</FONT>&nbsp; 
+              <LI><FONT face=Arial,Helvetica><A 
+              href="http://bawankule.com/verilogfaq/page3.html#Micron memory">Micron 
+              memory simulation models&nbsp;</A></FONT>&nbsp;<IMG height=12 
+              alt=updated src="Alternate Verilog FAQ Part2_files/upd.jpg" 
+              width=80 NOSAVE> </LI></UL>
+            <P><FONT face=Arial,Helvetica><A 
+            href="http://bawankule.com/verilogfaq/page3.html#Synthesis">Synthesis&nbsp;</A></FONT> 
+
+            <UL>
+              <LI><FONT face=Arial,Helvetica><A 
+              href="http://bawankule.com/verilogfaq/page3.html#Synthesis Flow">Synthesis 
+              Flow Diagram</A></FONT>&nbsp; 
+              <LI><FONT face=Arial,Helvetica><A 
+              href="http://bawankule.com/verilogfaq/page3.html#Simple">Simple 
+              example</A></FONT>&nbsp; 
+              <LI><FONT face=Arial,Helvetica><A 
+              href="http://bawankule.com/verilogfaq/page3.html#Unsupported Verilog Language">Unsupported 
+              Verilog Language Constructs</A></FONT>&nbsp; 
+              <LI><FONT face=Arial,Helvetica><A 
+              href="http://bawankule.com/verilogfaq/page3.html#Synthesis Tools">Synthesis 
+              Tools</A></FONT> 
+              <LI><FONT face=Arial,Helvetica><A 
+              href="http://bawankule.com/verilogfaq/page3.html#Synthesis Standards">Synthesis 
+              Standards Working group working on Synthesis</A></FONT> 
+              <LI><FONT face=Arial,Helvetica><A 
+              href="http://bawankule.com/verilogfaq/page3.html#Good books on">Good 
+              books on Synthesis</A></FONT>&nbsp; 
+              <LI><FONT face=Arial,Helvetica><A 
+              href="http://bawankule.com/verilogfaq/page3.html#Usenet group related to">Usenet 
+              group related to synthesis</A></FONT> </LI></UL><FONT 
+            face=Arial,Helvetica><A 
+            href="http://bawankule.com/verilogfaq/page3.html#Technical Questions">Technical 
+            Questions</A></FONT> <BR>&nbsp; 
+            <P><A name="Future of"></A><B><FONT color=#000000>Future of 
+            Verilog</FONT></B> 
+            <P><I><U><FONT face=Arial,Helvetica>Verilog-2000</FONT></U></I> 
+            <P><FONT face=Arial,Helvetica>The final draft of Verilog-2000 is 
+            completed on March 1st 2000. Once IEEE approval is done it will be a 
+            new Verilog HDL standard called IEEE Std. 1364-2000. This new 
+            standard contains 30 new enhancements over earlier standard for 
+            higher level, abstract syatem level modeling. It adds powerful 
+            capabilities Intellectual Property modeling, greater deep submicron 
+            accuracy and scalable, re-usable modeling.</FONT> 
+            <P><I><U><FONT face=Arial,Helvetica>Analog Verilog</FONT></U></I> 
+            <BR><FONT face=Arial,Helvetica>Through OVI's efforts and actions, 
+            Verilog is now IEEE Standard 1364 and is available from many 
+            vendors. Now they are trying to push Verilog further by introducing 
+            Verilog AMS (Analog and Mixed Signal).&nbsp;</FONT> 
+            <P><FONT face=Arial,Helvetica>The intent of the Verilog-AMS standard 
+            is to define extensions to the Verilog standard (OVI 2.0 / IEEE 
+            1364) for describing analog circuit and system behavior combined 
+            with digital circuit and system behavior, with maximum forward and 
+            backward compatibility.&nbsp;</FONT> 
+            <P><FONT face=Arial,Helvetica>Visit <A 
+            href="http://www.eda.org/verilog-ams/">http://www.eda.org/verilog-ams/</A> 
+            to get more details.</FONT> <BR><FONT 
+            face=Arial,Helvetica>Interesting examples of Verilog-AMS are 
+            here.</FONT> <BR><FONT face=Arial,Helvetica><A 
+            href="http://www.eda.org/verilog-ams/models/resistor.va">Resistor</A></FONT> 
+            <BR><FONT face=Arial,Helvetica><A 
+            href="http://www.eda.org/verilog-ams/models/capacitor.va">Capacitor</A></FONT> 
+            <BR><FONT face=Arial,Helvetica><A 
+            href="http://www.eda.org/verilog-ams/models/V_sine_generator.va">Sine 
+            Wave Generator</A></FONT> <BR><FONT face=Arial,Helvetica><A 
+            href="http://www.eda.org/verilog-ams/models/diode.va">Diode</A></FONT> 
+            <BR><FONT face=Arial,Helvetica><A 
+            href="http://www.eda.org/verilog-ams/models/d_ff.va">D Flip 
+            flop</A></FONT> <BR><FONT face=Arial,Helvetica><A 
+            href="http://www.eda.org/verilog-ams/models/ball.va">Bouncing 
+            Ball</A></FONT> 
+            <P><FONT face=Arial,Helvetica>OVI is also trying on other fronts to 
+            create IEEE standards. IEEE 1497 will be created to describe SDF 
+            (Standard Delay Format) specifications. Proposed draft can be seen 
+            at</FONT> <BR><FONT face=Arial,Helvetica><A 
+            href="http://www.eda.org/sdf/sdf_3.0.pdf">http://www.eda.org/sdf/sdf_3.0.pdf</A></FONT> 
+
+            <P><A name="Programming Language"></A><B><FONT 
+            face=Arial,Helvetica>Programming Language Interface.</FONT></B> 
+            <P><FONT face=Arial,Helvetica>PLI stands for Programming Language 
+            Interface. The PLI consists of an interface mechanism, a set of 
+            routines to interact with the simulation environment, and a set of 
+            routines to access the Verilog internal data structures. These allow 
+            user supplied C code to interact dynamically with the simulation and 
+            data structures.&nbsp;</FONT> 
+            <P><FONT face=Arial,Helvetica>There are two good books available on 
+            PLI.</FONT> <BR>&nbsp; 
+            <TABLE cols=2 width="100%">
+              <TBODY>
+              <TR>
+                <TD vAlign=top align=left width=100><IMG height=199 
+                  alt="PLI Book" 
+                  src="Alternate Verilog FAQ Part2_files/swapna.gif" width=132 
+                  NOSAVE></TD>
+                <TD vAlign=top align=left><B><FONT 
+                  face=Arial,Helvetica>Principles of Verilog 
+                  PLI&nbsp;</FONT></B> <BR><FONT face=Arial,Helvetica>by 
+                  Swapnajit Mittra&nbsp;</FONT> <BR><FONT 
+                  face=Arial,Helvetica>Price: $112.00</FONT> <BR><FONT 
+                  face=Arial,Helvetica>Hardcover (March 1999)&nbsp;</FONT> 
+                  <BR><FONT face=Arial,Helvetica>Kluwer Academic 
+                  Pub;&nbsp;</FONT> <BR><FONT face=Arial,Helvetica>ISBN: 
+                  0792384776 .&nbsp;</FONT> <BR><FONT face=Arial,Helvetica><A 
+                  href="http://www.angelfire.com/ca/verilog/adv.html" 
+                  target=_blank>(More Information)</A></FONT> 
+                  <P><FONT face=Arial,Helvetica>He also maintains "Veri Page" 
+                  dedicated to PLI. He has links to&nbsp; many Verilog and PLI 
+                  related sites on this page. He has kept his own PLI (1 
+                  and&nbsp; 2) examples.&nbsp;</FONT> <BR><FONT 
+                  face=Arial,Helvetica><A 
+                  href="http://www.angelfire.com/ca/verilog/">http://www.angelfire.com/ca/verilog/</A></FONT></P></TD></TR>
+              <TR>
+                <TD><IMG height=184 alt="PLI Handbook" 
+                  src="Alternate Verilog FAQ Part2_files/pli_handbook.jpg" 
+                  width=120 NOSAVE></TD>
+                <TD vAlign=top align=left><FONT face=Arial,Helvetica><B>The 
+                  Verilog Pli Handbook : </B>A User's Guide and Comprehensive 
+                  Reference on the Verilog Programming Language 
+                  Interface&nbsp;</FONT> <BR><FONT face=Arial,Helvetica>by 
+                  Stuart Sutherland&nbsp;</FONT> <BR><FONT 
+                  face=Arial,Helvetica>Price: $148.00</FONT> <BR><FONT 
+                  face=Arial,Helvetica>Hardcover (March 1999)&nbsp;</FONT> 
+                  <BR><FONT face=Arial,Helvetica>Kluwer Academic 
+                  Publishers;&nbsp;</FONT> <BR><FONT face=Arial,Helvetica>ISBN: 
+                  079238489X&nbsp;</FONT> <BR><FONT face=Arial,Helvetica><A 
+                  href="http://www.sutherland.com/" target=_blank>(More 
+                  Information)</A></FONT></TD></TR></TBODY></TABLE><BR><FONT 
+            face=Arial><B><I>JavaPLI</I></B> : <A 
+            href="http://www.javapli.com/jpli/index.html">http://www.javapli.com/jpli/index.html</A><BR>JavaPLI 
+            can extend the reach of Verilog models into Java realm. You can do 
+            these and more interesting things with JavaPLI.</FONT> 
+            <P><FONT face=Arial>- Verilog model combined with a GUI for 
+            providing stimuli and observing the model's behavior in a graphical 
+            form.<BR>- A Verilog model that reads and writes complex data via 
+            XML. The data might be stored on file, or transmitted over the net 
+            or the Internet (using Java's XML package and possibly the java.net 
+            package). and many more. </FONT></P>
+            <P><FONT face=Arial,Helvetica><B><I>Christian B. Spear</I></B> has 
+            donated his PLI routines to Verilog community. The following guide 
+            describes how you can read files in a Verilog model using a 
+            set&nbsp; of system functions which are based on the C stdio 
+            package. With these system&nbsp; functions you can perform file 
+            input directly in Verilog models without having to&nbsp; learn C or 
+            the PLI. Visit his own PLI web site&nbsp;</FONT> <BR><FONT 
+            face=Arial,Helvetica><A 
+            href="http://www.chris.spear.net/pli/default.htm">http://www.chris.spear.net/pli/default.htm</A></FONT> 
+
+            <P><FONT color=#000000><B><I>David Roberts</I></B>, of Cadence 
+            Design Systems, has provided a great example using sockets to 
+            communicate between a PLI application and an independently running C 
+            program.&nbsp; David has provided this example with no restrictions 
+            on usage, copying or distribution.</FONT> 
+            <P><FONT color=#000000><A 
+            href="http://www.sutherland-hdl.com/pli_book_files/pli_socket_example_pc.zip">pli_socket_example_pc.zip</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            Using sockets example, compressed using WinZip (27 KB)</FONT> 
+            <BR><FONT color=#000000><A 
+            href="http://www.sutherland-hdl.com/pli_book_files/pli_socket_example_unix.tar.gz">pli_socket_example_unix.tar.gz</A>&nbsp;&nbsp;&nbsp; 
+            Using sockets example, compressed using compressed using GZIP (18 
+            KB)</FONT> <BR><FONT color=#000000><A 
+            href="http://www.sutherland-hdl.com/pli_book_files/pli_socket_example_unix.tar.gz">pli_socket_example_unix.tar</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            Using sockets example, uncompressed (100 KB)</FONT> 
+            <H5><FONT face=Arial,Helvetica><A 
+            name="Connecting other scripting languages to Verilog">Connecting 
+            other scripting languages to Verilog</A> <IMG height=28 
+            src="Alternate Verilog FAQ Part2_files/new.jpg" width=30 
+            border=0></FONT></H5><FONT face=Verdana size=2>
+            <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align=left><A 
+            href="http://www.nelsim.com/index.html" 
+            target=_blank>ScriptSim</A></FONT><FONT face=Verdana size=2><A 
+            href="http://www.nelsim.com/index.html" target=_blank>: Bring the 
+            power of Perl/Tk and Python/Tk to your Verilog® 
+            simulations.</A><BR><BR>ScriptSim is a tool for rapid development of 
+            simulation models. It uses a graphical user interface, creating 
+            professional-looking windows for presentation of simulation results 
+            in text or graphical formats. It is available as open-source 
+            software.<BR><BR>Requirements: Unix/Linux/Solaris system with gcc 
+            compiler, Verilog simulator with PLI interface<BR></FONT>
+            <H5 style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align=left><FONT 
+            face=Arial,Helvetica><A name="VCD (Value Change Data)">VCD (Value 
+            Change Data)</A>&nbsp; <IMG height=28 
+            src="Alternate Verilog FAQ Part2_files/new.jpg" width=30 
+            border=0></FONT></H5>
+            <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align=left>Verilog 
+            simulator dumps the simulation information for waveform viewing in 
+            VCD Format (Value Change Data). It's specification is part of IEEE 
+            Std 1364. Michael J. Smith's site has a beta pages of Verilog LRM. 
+            Following page lists specification for VCD format.</P>
+            <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" align=left><A 
+            href="http://www-ee.eng.hawaii.edu/~msmith/ASICs/HTML/Verilog/LRM/HTML/15/ch15.2.htm">http://www-ee.eng.hawaii.edu/~msmith/ASICs/HTML/Verilog/LRM/HTML/15/ch15.2.htm</A><BR></P>
+            <H5><A name="Different types of Verilog"></A><B><FONT 
+            face=Arial,Helvetica>Different types of Verilog 
+            Simulators</FONT></B> </H5>
+            <P><FONT face=Arial,Helvetica>There are mainly two types of 
+            simulators available.&nbsp;</FONT> 
+            <UL><FONT face=Arial,Helvetica>Event Driven&nbsp;</FONT> <BR><FONT 
+              face=Arial,Helvetica>Cycle Based&nbsp;</FONT></UL><B><U><FONT 
+            face=Arial,Helvetica>Event-based Simulator:&nbsp;</FONT></U></B> 
+            <P><FONT face=Arial,Helvetica>This Digital Logic Simulation method 
+            sacrifices performance for rich functionality: every active signal 
+            is calculated for every device it propagates through during a clock 
+            cycle. Full Event-based simulators support 4-28 states; simulation 
+            of Behavioral HDL, RTL HDL, gate, and transistor representations; 
+            full timing calculations for all devices; and the full HDL standard. 
+            Event-based simulators are like a Swiss Army knife with many 
+            different features but none are particularly fast.&nbsp;</FONT> 
+            <P><FONT face=Arial,Helvetica>Event based simulators are further 
+            categorized in 2 types.&nbsp;</FONT> 
+            <P><FONT face=Arial,Helvetica>Compiled-Code Simulators:&nbsp;</FONT> 
+
+            <P><FONT face=Arial,Helvetica>This technique takes the input 
+            definition (HDL) of the design and spends&nbsp; time compiling it 
+            into a new data structure in order to enable much faster 
+            calculations during run-time. You sacrifice compile time to be able 
+            to run large numbers of tests faster. it is used in some high end, 
+            Event-based simulators.&nbsp;</FONT> 
+            <P><FONT face=Arial,Helvetica>e.g. Synopsys Inc.'s VCS Simulator 
+            converts verilog files into C code which then be compiled and run, 
+            just like any other executable file. It is 10 to 50 times faster 
+            than any other interpretive simulator.&nbsp;</FONT> <BR><FONT 
+            face=Arial,Helvetica>see <A 
+            href="http://www.synopsys.com/index.html/products/simulation/vcs_ds.html">http://www.synopsys.com/index.html/products/simulation/vcs_ds.html</A></FONT> 
+
+            <P><FONT face=Arial,Helvetica>Cadence's Native Compiled Verilog 
+            generates direct machine language instructions from verilog 
+            files.&nbsp;</FONT> <BR><FONT face=Arial,Helvetica>see <A 
+            href="http://www.cadence.com/datasheets/affirma_nc_verilog_sim.html">http://www.cadence.com/datasheets/affirma_nc_verilog_sim.html</A> 
+            </FONT><BR>&nbsp; 
+            <P><FONT face=Arial,Helvetica>Interpreted Code 
+            Simulators:&nbsp;</FONT> 
+            <P><FONT face=Arial,Helvetica>This method of simulation allows for 
+            rapid change of the source HDL of&nbsp; the design and restart of 
+            the simulation since there is little or no compilation involved 
+            after every design change. This is good for&nbsp; interaction but 
+            leads to poor run times of large tests compared to Compiled Code 
+            Techniques.&nbsp;</FONT> 
+            <P><FONT face=Arial,Helvetica>e.g. Cadence Design Systems Verilog - 
+            XL.&nbsp;</FONT> 
+            <P><FONT face=Arial,Helvetica>see <A 
+            href="http://www.cadence.com/datasheets/affirma_nc_verilog_sim.html">http://www.cadence.com/datasheets/affirma_nc_verilog_sim.html</A></FONT> 
+            <BR>&nbsp; 
+            <P><B><U><FONT face=Arial,Helvetica>Cycle Based 
+            Simulator:&nbsp;</FONT></U></B> 
+            <P><FONT face=Arial,Helvetica>This is a Digital Logic Simulation 
+            method that eliminates unnecessary calculations to achieve huge 
+            performance gains in verifying Boolean logic:&nbsp;</FONT> 
+            <P><FONT face=Arial,Helvetica>1.) Results are only examined at the 
+            end of every clock cycle; and&nbsp;</FONT> 
+            <P><FONT face=Arial,Helvetica>2.) The digital logic is the only part 
+            of the design simulated (no timing calculations). By limiting the 
+            calculations, Cycle based Simulators can provide huge 
+            increases&nbsp; in performance over conventional Event-based 
+            simulators.&nbsp;</FONT> 
+            <P><FONT face=Arial,Helvetica>Cycle based simulators are more like a 
+            high speed electric carving knife in comparison because they focus 
+            on a subset of the biggest problem: logic verification.&nbsp;</FONT> 
+
+            <P><FONT face=Arial,Helvetica>Cycle based simulators are almost 
+            invariably used along with Static Timing verifier to compensate for 
+            the lost timing information coverage.&nbsp;</FONT> 
+            <P><FONT face=Arial,Helvetica>for example&nbsp;</FONT> <BR><FONT 
+            face=Arial,Helvetica>Avanti's Polaris cycle based 
+            simulator&nbsp;</FONT> <BR><FONT face=Arial,Helvetica><A 
+            href="http://www.avanticorp.com/">http://www.avanticorp.com/</A></FONT> 
+
+            <P><FONT face=Arial,Helvetica>In following table differences between 
+            Event based and Cycle based simulation are summarized.&nbsp;</FONT> 
+            <BR>&nbsp; <BR>&nbsp; 
+            <TABLE cols=2 width="100%">
+              <TBODY>
+              <TR>
+                <TD><FONT face=Arial,Helvetica>Event based 
+Simulation</FONT></TD>
+                <TD><FONT face=Arial,Helvetica>Cycle Based 
+              Simulation</FONT></TD></TR>
+              <TR>
+                <TD><FONT face=Arial,Helvetica>Evaluates inputs looking for 
+                  state change</FONT></TD>
+                <TD><FONT face=Arial,Helvetica>Evaluate entire design every 
+                  clock cycle&nbsp;</FONT></TD></TR>
+              <TR>
+                <TD><FONT face=Arial,Helvetica>Schedule events in 
+                time</FONT></TD>
+                <TD><FONT face=Arial,Helvetica>No event 
+                scheduling&nbsp;</FONT></TD></TR>
+              <TR>
+                <TD><FONT face=Arial,Helvetica>Calculate time delay</FONT></TD>
+                <TD><FONT face=Arial,Helvetica>No delay calculations or timing 
+                  checks&nbsp;</FONT></TD></TR>
+              <TR>
+                <TD><FONT face=Arial,Helvetica>Store state values and time 
+                  information</FONT></TD>
+                <TD><FONT face=Arial,Helvetica>No such storage. Very fast, 
+                  very efficient&nbsp; memory usage.&nbsp;</FONT></TD></TR>
+              <TR>
+                <TD><FONT face=Arial,Helvetica>Identify timing 
+                  violations</FONT></TD>
+                <TD><FONT face=Arial,Helvetica>Does not identify timing 
+                  violations</FONT></TD></TR></TBODY></TABLE>
+            <P><IMG height=299 alt="Cycle Based" 
+            src="Alternate Verilog FAQ Part2_files/cycle.gif" width=472 border=0 
+            NOSAVE> <BR>&nbsp; 
+            <P><FONT color=#000000>Where two simulations are 
+            appropriate&nbsp;</FONT> <BR><IMG height=398 
+            alt="Comparison of two simulators" 
+            src="Alternate Verilog FAQ Part2_files/img8.gif" width=455 border=0 
+            NOSAVE> <BR><FONT color=#000000>Comparison between Event Based and 
+            Cycle based Simulation&nbsp;</FONT> 
+            <P><A name="Efficient State Machine in"></A><B><FONT 
+            color=#000000>Finite State Machines in Verilog</FONT></B> 
+            <P><FONT face=Arial,Helvetica>State machine design is becoming more 
+            complex due to increasing time&nbsp;&nbsp; constraints and 
+            verification issues. Following papers provide good insight into 
+            design and optimization.&nbsp;</FONT> 
+            <P><FONT face=Arial,Helvetica>1] State Machine Design Techniques for 
+            Verilog and VHDL : by Steve Golson,&nbsp; Trilobyte 
+            Systems&nbsp;</FONT> <BR><FONT face=Arial,Helvetica><A 
+            href="http://bawankule.com/verilogfaq/files/jhld099401.pdf">PDF 
+            version of article</A></FONT> <BR><FONT face=Arial,Helvetica>Text 
+            Version : <A 
+            href="http://www.synopsys.com/index.html/news/pubs/JHLD/JHLD-099401">http://www.synopsys.com/index.html/news/pubs/JHLD/JHLD-099401</A></FONT> 
+
+            <P><A name="FSM Design and Analysis"></A><B><FONT 
+            face=Arial,Helvetica>FSM Design and Analysis Tools</FONT></B> 
+            <P><FONT face=Arial,Helvetica><A 
+            href="http://mufasa.informatik.uni-mannheim.de/lsra/projects/fsmdes/">FSMDesigner</A></FONT> 
+            <BR><FONT face=Arial,Helvetica>It is a Java based Finite State 
+            Machine (FSM) editor, which allows the hardware designer to specify 
+            complex control circuits in an easy and comfortable way. The 
+            graphical FSM is converted into a proprietary state/flow table 
+            format. It can be translated into efficient and synthesizable 
+            Verilog HDL.&nbsp;</FONT> <BR><FONT face=Arial,Helvetica>More 
+            Information : <A 
+            href="http://mufasa.informatik.uni-mannheim.de/lsra/projects/fsmdes/">http://mufasa.informatik.uni-mannheim.de/lsra/projects/fsmdes/</A></FONT> 
+            <BR>&nbsp; 
+            <P><A name="Verilog Model"></A><B><FONT face=Arial,Helvetica>Verilog 
+            Model Examples</FONT></B> 
+            <P><FONT face=Arial,Helvetica>The Verilog beginners need examples 
+            of&nbsp; simple building blocks to learn coding techniques. This 
+            section tries to create a database of such designs. If you have any 
+            such design please mail to <A 
+            href="mailto:rajesh52@hotmail.com">Rajesh Bawankule</A> (<A 
+            href="mailto:rajesh52@hotmail.com">rajesh52@hotmail.com</A>)</FONT> 
+            <BR>&nbsp; 
+            <TABLE cols=2 width="100%">
+              <TBODY>
+              <TR>
+                <TD vAlign=top><A name="D type"></A><B><FONT color=#000000>D 
+                  Type Flip-flop:</FONT></B> 
+                  <P><FONT face=Arial,Helvetica>A sample code is shown below. A 
+                  header indicates a minimum set of information needed to 
+                  identify and maintain the code.&nbsp;</FONT></P></TD>
+                <TD><IMG height=150 alt="D Type Flip-Flop" 
+                  src="Alternate Verilog FAQ Part2_files/img9.gif" width=260 
+                  border=0 NOSAVE></TD></TR></TBODY></TABLE><TT><FONT 
+            color=#000000>////////////////////////////////////////////////////////////////////</FONT></TT> 
+            <BR><TT><FONT color=#000000>//&nbsp;</FONT></TT> <BR><TT><FONT 
+            color=#000000>//&nbsp; Copyleft (C) 1998 by Rajesh 
+            Bawankule</FONT></TT> <BR><TT><FONT color=#000000>//&nbsp; This 
+            model is available for free distribution</FONT></TT> <BR><TT><FONT 
+            color=#000000>//&nbsp;</FONT></TT> <BR><TT><FONT 
+            color=#000000>//&nbsp; file name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 
+            dff.v</FONT></TT> <BR><TT><FONT color=#000000>//&nbsp; last 
+            modified&nbsp; : 07/23/98</FONT></TT> <BR><TT><FONT 
+            color=#000000>//&nbsp; function&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            : d flip flop</FONT></TT> <BR><TT><FONT color=#000000>//</FONT></TT> 
+            <BR><TT><FONT 
+            color=#000000>////////////////////////////////////////////////////////////////////</FONT></TT> 
+
+            <P><TT><FONT color=#000000>module dff (data, clock, q);</FONT></TT> 
+            <BR><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; // port 
+            list</FONT></TT> <BR><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; 
+            input&nbsp;&nbsp; data, clock;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp; output&nbsp; q;</FONT></TT> 
+            <P><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; // reg / wire 
+            declaration for outputs / inouts</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp; reg&nbsp;&nbsp;&nbsp;&nbsp; 
+            q;</FONT></TT> 
+            <P><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; // logic begins 
+            here</FONT></TT> <BR><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; 
+            always @(posedge clock)&nbsp;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; q &lt;= 
+            data;</FONT></TT> <BR><TT><FONT color=#000000>endmodule</FONT></TT> 
+            <BR>&nbsp; <BR>&nbsp; <BR>&nbsp; 
+            <TABLE cols=2 width="100%">
+              <TBODY>
+              <TR>
+                <TD vAlign=top align=left><A 
+                  name="d with async reset"></A><B><FONT color=#000000>D Type 
+                  Flip-flop with asynchronous reset:</FONT></B> 
+                  <P><FONT face=Arial,Helvetica>Example of D type Flip flop with 
+                  asynchronous reset.</FONT></P></TD>
+                <TD><IMG height=174 
+                  alt="D Type Flip-flop with asynchronous reset" 
+                  src="Alternate Verilog FAQ Part2_files/img10.gif" width=259 
+                  border=0 NOSAVE></TD></TR></TBODY></TABLE><TT><FONT 
+            color=#000000>module dff_async (data, clock, reset, q);</FONT></TT> 
+            <BR><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; // port 
+            list</FONT></TT> <BR><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; 
+            input&nbsp;&nbsp; data, clock, reset;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp; output&nbsp; q;</FONT></TT> 
+            <P><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; // reg / wire 
+            declaration for outputs / inouts</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp; reg&nbsp;&nbsp;&nbsp;&nbsp; 
+            q;</FONT></TT> 
+            <P><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; // reg / wire 
+            declaration for internal signals</FONT></TT> 
+            <P><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; // logic begins 
+            here</FONT></TT> <BR><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; 
+            always @(posedge clock or negedge reset)</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(reset == 
+            1'b0)</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            q &lt;= 1'b0;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            else&nbsp;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            q &lt;= data;</FONT></TT> <BR><TT><FONT 
+            color=#000000>endmodule</FONT></TT> <BR>&nbsp; <BR>&nbsp; <BR>&nbsp; 
+
+            <TABLE cols=2 width="100%">
+              <TBODY>
+              <TR>
+                <TD vAlign=top><A name="d with sync reset"></A><B><FONT 
+                  color=#000000>D Type Flip-flop with Synchronous 
+                  reset:</FONT></B> 
+                  <P><FONT face=Arial,Helvetica>Example of D type Flip flop with 
+                  synchronous reset.</FONT></P></TD>
+                <TD><IMG height=150 
+                  alt="D type Flip flop with synchronous reset" 
+                  src="Alternate Verilog FAQ Part2_files/img11.gif" width=256 
+                  border=0 NOSAVE></TD></TR></TBODY></TABLE><TT><FONT 
+            color=#000000>module dff_sync (data, clock, reset, q);</FONT></TT> 
+            <BR><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; // port 
+            list</FONT></TT> <BR><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; 
+            input&nbsp;&nbsp; data, clock, reset;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp; output&nbsp; q;</FONT></TT> 
+            <P><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; // reg / wire 
+            declaration for outputs / inouts</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp; reg&nbsp;&nbsp;&nbsp;&nbsp; 
+            q;</FONT></TT> 
+            <P><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; // reg / wire 
+            declaration for internal signals</FONT></TT> 
+            <P><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; // logic begins 
+            here</FONT></TT> <BR><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; 
+            always @(posedge clock)&nbsp;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(reset == 
+            1'b0)</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            q &lt;= 1'b0;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            else&nbsp;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            q &lt;= data;</FONT></TT> <BR><TT><FONT 
+            color=#000000>endmodule</FONT></TT> <BR>&nbsp; <BR>&nbsp; 
+            <TABLE cols=2 width="100%">
+              <TBODY>
+              <TR>
+                <TD vAlign=top><A name="d with sync reset and ce"></A><B><FONT 
+                  color=#000000>D Type Flip-flop with asynchronous reset and 
+                  clock enable</FONT></B></TD>
+                <TD><IMG height=174 
+                  alt="D Type Flip-flop with aynchronous reset and clock enable" 
+                  src="Alternate Verilog FAQ Part2_files/img12.gif" width=266 
+                  border=0 NOSAVE></TD></TR></TBODY></TABLE><TT><FONT 
+            color=#000000>module dff_cke (data, clock, reset, cke, 
+            q);</FONT></TT> <BR><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; // 
+            port list</FONT></TT> <BR><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; 
+            input&nbsp;&nbsp; data, clock, reset, cke;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp; output&nbsp; q;</FONT></TT> 
+            <P><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; // reg / wire 
+            declaration for outputs / inouts</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp; reg&nbsp;&nbsp;&nbsp;&nbsp; 
+            q;</FONT></TT> 
+            <P><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; // logic begins 
+            here</FONT></TT> <BR><TT><FONT color=#000000>&nbsp;&nbsp;&nbsp; 
+            always @(posedge clock or negedge reset)&nbsp;</FONT></TT> 
+            <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (reset 
+            == 0)</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            q &lt;= 1'b0;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else if 
+            (cke == 1'b1)</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            q &lt;= data;</FONT></TT> <BR><TT><FONT 
+            color=#000000>endmodule</FONT></TT> <BR>&nbsp; <BR>&nbsp; 
+            <TABLE cols=2 width="100%">
+              <TBODY>
+              <TR>
+                <TD vAlign=top align=left><A name="mux case"></A><B><FONT 
+                  color=#000000>4:1 Multiplexer Using case 
+                statement</FONT></B></TD>
+                <TD><IMG height=150 alt="4:1 Multiplxer Using case statement" 
+                  src="Alternate Verilog FAQ Part2_files/img13.gif" width=266 
+                  border=0 NOSAVE></TD></TR></TBODY></TABLE><TT><FONT 
+            color=#000000>module mux4_1_case(Y,I0,I1,I2,I3,C0,C1);</FONT></TT> 
+            <BR><TT><FONT color=#000000>&nbsp; input 
+            I0,I1,I2,I3,C0,C1;</FONT></TT> <BR><TT><FONT color=#000000>&nbsp; 
+            output Y;</FONT></TT> 
+            <P><TT><FONT color=#000000>&nbsp; reg&nbsp;&nbsp; Y;</FONT></TT> 
+            <P><TT><FONT color=#000000>&nbsp; always@(I0 or I1 or I2 or I3 or C0 
+            or C1) begin</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 
+            ({C1,C0})&nbsp;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            2'b00 : Y = I0 ;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            2'b01 : Y = I1 ;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            2'b10 : Y = I2 ;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            2'b11 : Y = I3 ;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; endcase</FONT></TT> 
+            <BR><TT><FONT color=#000000>&nbsp; end</FONT></TT> <BR><TT><FONT 
+            color=#000000>endmodule</FONT></TT> <BR>&nbsp; <BR>&nbsp; 
+            <TABLE cols=2 width="100%">
+              <TBODY>
+              <TR>
+                <TD vAlign=top align=left><A name="mux ifelse"></A><B><FONT 
+                  color=#000000>4:1 Multiplexer Using if-else 
+                  statements:</FONT></B> <BR><FONT face=Arial,Helvetica>This 
+                  implementation gives priority encoder structure.</FONT></TD>
+                <TD><IMG height=174 alt="4:1 Mux using if-else statements" 
+                  src="Alternate Verilog FAQ Part2_files/img14.gif" width=273 
+                  border=0 NOSAVE statements? if-else using multiplxer 
+                alt?4:1></TD></TR></TBODY></TABLE>
+            <P><TT><FONT color=#000000>module 
+            mux4_1_if(Y,I0,I1,I2,I3,C0,C1);</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp; input I0,I1,I2,I3,C0,C1;</FONT></TT> 
+            <BR><TT><FONT color=#000000>&nbsp; output Y;</FONT></TT> 
+            <P><TT><FONT color=#000000>&nbsp; reg&nbsp;&nbsp; Y;</FONT></TT> 
+            <P><TT><FONT color=#000000>&nbsp; always@(I0 or I1 or I2 or I3 or 
+            C1) begin</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ({C1,C0} == 2'b00) Y 
+            = I0;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else if ({C1,C0} == 
+            2'b01) Y = I1;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else if ({C1,C0} == 
+            2'b10) Y = I2;</FONT></TT> <BR><TT><FONT 
+            color=#000000>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else if ({C1,C0} == 
+            2'b11) Y = I3;</FONT></TT> <BR><TT><FONT color=#000000>&nbsp; 
+            end</FONT></TT> <BR><TT><FONT color=#000000>endmodule</FONT></TT> 
+            <BR>&nbsp; <BR>&nbsp; 
+            <P><A name="mux assign"></A><B><FONT color=#000000>4:1 Multiplexer 
+            Using assign statements :</FONT></B> <BR><FONT 
+            face=Arial,Helvetica>This implementation is given to show 
+            flexibility of Verilog language. This type of coding is generally 
+            not preferred for mux implementation as it is difficult to 
+            debug.&nbsp;</FONT> 
+            <P><TT>module mux4_1_assign(Y,I0,I1,I2,I3,C0,C1);&nbsp;</TT> 
+            <BR><TT>&nbsp; input I0,I1,I2,I3,C0,C1;&nbsp;</TT> <BR><TT>&nbsp; 
+            output Y;&nbsp;</TT> 
+            <P><TT>&nbsp; wire a_0, a_1, a_2, 
+            a_3;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // intermediate 
+            signals&nbsp;</TT> <BR><TT>&nbsp; wire c0_n, c1_n;&nbsp;</TT> 
+            <BR><TT>&nbsp; wire Y;&nbsp;</TT> 
+            <P><TT>&nbsp; assign c0_n = ~C0;&nbsp;</TT> <BR><TT>&nbsp; assign 
+            c1_n = ~C1;&nbsp;</TT> <BR><TT>&nbsp; assign a_0 = I0 &amp; c1_n 
+            &amp; c0_n;&nbsp;</TT> <BR><TT>&nbsp; assign a_1 = I1 &amp; c1_n 
+            &amp; C0;&nbsp;</TT> <BR><TT>&nbsp; assign a_2 = I2 &amp; C1 &amp; 
+            c0_n;&nbsp;</TT> <BR><TT>&nbsp; assign a_3 = I3 &amp; C1 &amp; 
+            C0;&nbsp;</TT> <BR><TT>&nbsp; assign Y = a_0 | a_1 | a_2 | 
+            a_3;&nbsp;</TT> 
+            <P><TT>endmodule&nbsp;</TT> 
+            <P><A name="behav fifo"></A><B><FONT face=Arial,Helvetica>Behavioral 
+            FIFO model:&nbsp;</FONT></B> <BR><FONT face=Arial,Helvetica>This is 
+            a behavioral fifo model, which enables simultaneous&nbsp; shift-in 
+            and shift-out, posedge triggered and asynch reset,&nbsp;</FONT> 
+            <BR><FONT face=Arial,Helvetica>Assumptions:&nbsp;</FONT> <BR><FONT 
+            face=Arial,Helvetica>- no shift-in is made on a full 
+            fifo&nbsp;</FONT> <BR><FONT face=Arial,Helvetica>- no shift-out is 
+            made on an empty fifo&nbsp;</FONT> <BR><FONT 
+            face=Arial,Helvetica>This model is contributed by Lars Rzymianowicz 
+            (<A 
+            href="mailto:lr@mufasa.informatik.uni-mannheim.de">lr@mufasa.informatik.uni-mannheim.de</A>)&nbsp;</FONT> 
+
+            <P><TT>module fifo(&nbsp;</TT> <BR><TT>dout,&nbsp; // head of 
+            fifo&nbsp;</TT> <BR><TT>full,&nbsp; // no more space, no shift-in 
+            allowed&nbsp;</TT> <BR><TT>half,&nbsp; // fifo is &gt;=50% 
+            full&nbsp;</TT> <BR><TT>quarter, // fifo is &gt;=25% full&nbsp;</TT> 
+            <BR><TT>empty,&nbsp; // head of fifo is invalid data&nbsp;</TT> 
+            <BR><TT>clk,&nbsp;</TT> <BR><TT>res_,&nbsp;</TT> 
+            <BR><TT>din,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // data to 
+            store&nbsp;</TT> <BR><TT>shiftin, // store data from din in 
+            fifo&nbsp;</TT> <BR><TT>shiftout); // i've read the head of fifo, 
+            show me next&nbsp;</TT> 
+            <P><TT>&nbsp;&nbsp; parameter WIDTH = 32;&nbsp;&nbsp; // bit 
+            width&nbsp;</TT> <BR><TT>&nbsp;&nbsp; parameter DEPTH = 
+            16;&nbsp;&nbsp; // depth of fifo&nbsp;</TT> 
+            <P><TT>&nbsp;&nbsp; output [(WIDTH-1):0] dout;&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp; 
+            output&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            full, half, quarter, empty;&nbsp;</TT> <BR><TT>&nbsp;&nbsp; 
+            reg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            full, half, quarter, empty;&nbsp;</TT> <BR><TT>&nbsp;&nbsp; 
+            input&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            clk, res_, shiftin, shiftout;&nbsp;</TT> <BR><TT>&nbsp;&nbsp; input 
+            [(WIDTH-1):0]&nbsp; din;</TT> 
+            <P><TT>&nbsp;&nbsp; reg [(WIDTH-1):0]&nbsp;&nbsp;&nbsp; entry 
+            [0:(DEPTH-1)];&nbsp;</TT> <BR><TT>&nbsp;&nbsp; // the register 
+            stages&nbsp;</TT> <BR><TT>&nbsp;&nbsp; 
+            integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            wp;&nbsp;</TT> <BR><TT>&nbsp;&nbsp; // write pointer (points to 
+            first free slot)&nbsp;</TT> <BR><TT>&nbsp;&nbsp; 
+            integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            i;&nbsp;&nbsp;&nbsp; // loop count&nbsp;</TT> <BR>&nbsp; 
+            <P><TT>&nbsp;&nbsp; // first stage of fifo is output&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp; assign dout = entry[0];&nbsp;</TT> <BR>&nbsp; 
+            <P><TT>&nbsp;&nbsp; always @(posedge clk or negedge 
+            res_)&nbsp;&nbsp; // trigger new evaluation</TT> 
+            <BR><TT>&nbsp;&nbsp; begin&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (res_ == 0)&nbsp;&nbsp; // 
+            it's a reset&nbsp;</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            begin&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            wp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 0;&nbsp;&nbsp;&nbsp;&nbsp; 
+            // the initial values&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            full&nbsp;&nbsp;&nbsp; &lt;= 1'b0;&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            half&nbsp;&nbsp;&nbsp; &lt;= 1'b0;&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; quarter 
+            &lt;= 1'b0;&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            empty&nbsp;&nbsp; &lt;= 1'b1;&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else&nbsp;&nbsp; // it's a 
+            posedge of clk&nbsp;</TT> <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            begin&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case 
+            ({shiftin, shiftout})&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            2'b00: ; // nothing to do&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            2'b01:&nbsp;&nbsp; // shift-out(assumes: at least 1 valid value in 
+            fifo)&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            begin&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            for (i=1; i&lt;wp; i=i+1)&nbsp;&nbsp; // shift all valid 
+            entries&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            entry[i-1] &lt;= entry[i];&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            wp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = wp-1;&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            full&nbsp;&nbsp;&nbsp; &lt;= 1'b0;&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            half&nbsp;&nbsp;&nbsp; &lt;= (wp &gt;= (DEPTH/2)) ? 1'b1 : 
+            1'b0;&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            quarter &lt;= (wp &gt;= (DEPTH/4)) ? 1'b1 : 1'b0;&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            empty&nbsp;&nbsp; &lt;= (wp == 0) ? 1'b1 : 1'b0;&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            end&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            2'b10:&nbsp;&nbsp; // shift-in (assumes: at least 1 entry 
+            free)&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            begin&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            entry[wp] &lt;= din;&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            wp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = wp+1;&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            full&nbsp;&nbsp;&nbsp; &lt;= (wp == DEPTH) ? 1'b1 : 1'b0;&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            half&nbsp;&nbsp;&nbsp; &lt;= (wp &gt;= (DEPTH/2)) ? 1'b1 : 
+            1'b0;&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            quarter &lt;= (wp &gt;= (DEPTH/4)) ? 1'b1 : 1'b0;&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            empty&nbsp;&nbsp; &lt;= 1'b0;&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            end&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            2'b11:&nbsp;&nbsp; //simultaneous shift-in and -out&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            begin // (at least 1 valid entry)&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            for (i=1; i&lt;wp; i=i+1)&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            entry[i-1] &lt;= entry[i];&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            entry[wp-1] &lt;= din;&nbsp;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            end&nbsp;</TT> <BR><TT>&nbsp;&nbsp; endcase // case ({shiftin, 
+            shiftout})&nbsp;</TT> <BR><TT>&nbsp;&nbsp; end // else: !if(res_ == 
+            0)&nbsp;</TT> <BR><TT>&nbsp;&nbsp; end // always @ (posedge clk or 
+            negedge res_)&nbsp;</TT> 
+            <P><TT>endmodule</TT> 
+            <P><A name=moorby></A><B><FONT face=Arial,Helvetica><A 
+            href="http://bawankule.com/verilogfaq/moorby.html">Examples from 
+            "The Verilog Hardware Description Language"</A></FONT></B> <BR><FONT 
+            face=Arial,Helvetica>by D.E. Thomas and P.R. Moorby&nbsp;</FONT> 
+            <P><A name="Micron memory"></A><B><FONT face=Arial,Helvetica>Micron 
+            memory simulation models with testbenches.</FONT></B> <BR><FONT 
+            face=Arial,Helvetica>Micron memory models are available for EDO 
+            DRAM, SDRAM, SRAM, SGRAM, SLDRAM with various flavors and 
+            testbenches.</FONT> <BR><FONT face=Arial><A 
+            href="http://www.micron.com/products/">http://www.micron.com/products/</A></FONT>
+            <P><A name=Synthesis></A><B><FONT 
+            face=Arial,Helvetica>Synthesis</FONT></B> <BR><FONT 
+            face=Arial,Helvetica>Synthesis: It is a process to map and 
+            optimizing higher level HDL description to technology cells (gates, 
+            flip flops etc.)</FONT> 
+            <P><A name="Synthesis Flow"></A><B><FONT 
+            face=Arial,Helvetica>Synthesis Flow Diagram:</FONT></B> 
+            <CENTER>
+            <P><IMG height=240 alt="Synthesis Flow Diagram" 
+            src="Alternate Verilog FAQ Part2_files/synthesis.gif" width=247 
+            align=textTop NOSAVE></CENTER>
+            <P><FONT face=Arial,Helvetica><I><U>HDL Description</U></I>: This is 
+            description of design in Verilog. One has to use subset of 
+            constructs as synthesis tools does not support all of them.</FONT> 
+            <P><FONT face=Arial,Helvetica><I><U>Technology Library</U></I>: This 
+            file contains functional description and other information related 
+            to area and speed for all the cells of particular technology.</FONT> 
+
+            <P><FONT face=Arial,Helvetica>Here "technology" means information 
+            about particular process for particular vendor. For example Company 
+            X, Standard Cell, 0.18 micron, Y Process, Z Type.</FONT> 
+            <P><FONT face=Arial,Helvetica><I><U>Constraints</U></I>: This 
+            optional file contains information about physical expectations from 
+            design. For example speed and area.</FONT> 
+            <P><FONT face=Arial,Helvetica><I><U>Netlist</U></I>: A netlist is a 
+            text file description of a physical connection of components.</FONT> 
+
+            <P><FONT face=Arial,Helvetica><I><U>Reports</U></I>: This optional 
+            output file contains physical performance of design in terms of 
+            speed and area.</FONT> 
+            <P><FONT face=Arial,Helvetica><I><U>Schematic</U></I>: Some tools 
+            provide the facility to view netlist in terms of schematics for 
+            better understanding of design and to match the results with the 
+            expectations.</FONT> 
+            <P><A name=Simple></A><B><FONT face=Arial,Helvetica>Simple 
+            example:</FONT></B> <BR><FONT face=Arial,Helvetica>Following trivial 
+            example explains the Synthesis process. In this example only always 
+            procedural statement is used.</FONT> 
+            <P><TT>module test (out, in1, in2); // behavioral description</TT> 
+            <BR><TT>&nbsp; input in1, in2;</TT> <BR><TT>&nbsp; output out;</TT> 
+            <BR><TT>&nbsp; reg out;</TT> <BR><TT>&nbsp; reg 
+            temp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            // temporary register</TT> 
+            <P><TT>&nbsp; always@(in1 or in2) begin</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp; temp = ~in2;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp; out = ~in1 ^ temp;&nbsp; // I am trying 
+            to have exor with inverted&nbsp;</TT> <BR><TT>&nbsp; 
+            end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            // inputs</TT> <BR><TT>endmodule</TT> 
+            <P>--------------- <BR><FONT face=Arial,Helvetica>after synthesis 
+            one gets following "netlist" in verilog. Note that XOR2 is module 
+            picked up from technology library. It will be different for 
+            different libraries.</FONT> <BR>--------------- 
+            <P><TT>module add ( out , in1 , in2 );&nbsp; // netlist</TT> 
+            <P><TT>&nbsp;&nbsp;&nbsp; output out ;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp; input in1 ;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp; input in2 ;</TT> 
+            <P><TT>&nbsp;&nbsp;&nbsp; XOR2&nbsp;&nbsp; instance_name (.Y (out 
+            ),.A (in1 ),.B (in2 ) );</TT> 
+            <P><TT>endmodule</TT> <BR>-------------- <BR><FONT 
+            face=Arial,Helvetica>Note that synthesis tool optimized the logic. 
+            Netlist can be obtained in other formats like&nbsp; .EDIF, .vhdl. 
+            Here is an example of .xnf format ( Xilinx netlist format)</FONT> 
+            <BR>-------------- <BR><TT>LCANET, 5</TT> <BR><TT>USER, 
+            LIBRARY_NAME, temp</TT> <BR><TT>USER, CELL_NAME, test</TT> 
+            <BR><TT>USER, VIEW_NAME, INTERFACE</TT> <BR><TT>SIG, out, S</TT> 
+            <BR><TT>SIG, in1, S</TT> <BR><TT>SIG, in2, S</TT> <BR><TT>SYM, 
+            instance_name, XOR2</TT> <BR><TT>PIN, A, I, in1,</TT> <BR><TT>PIN, 
+            B, I, in2,</TT> <BR><TT>PIN, Y, O, out, 1.000000</TT> 
+            <BR><TT>END</TT> <BR><TT>EOF</TT> <BR>--------- <BR><FONT 
+            face=Arial,Helvetica>You can get detailed information on netlist 
+            formats in respective synthesis tool manuals / guides and SDF 
+            manual.</FONT> 
+            <P><FONT face=Arial,Helvetica>Now try the same example which uses 
+            always, assign and simple gate level description. You will find that 
+            results are identical. Synthesis tool optimizes the description and 
+            produces the minimal hardware required.</FONT> 
+            <P><TT>module xor_example (in1, in2, out);</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp; input&nbsp; in1, in2;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp; output out;</TT> 
+            <P><TT>&nbsp;&nbsp;&nbsp; reg&nbsp;&nbsp;&nbsp; out;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp; reg&nbsp;&nbsp;&nbsp; temp1;</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp; wire&nbsp;&nbsp; temp2;</TT> 
+            <P><TT>&nbsp;&nbsp;&nbsp; always @(in1 or in2) begin</TT> 
+            <BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temp1 = in1 
+            &amp;amp; ~in2;</TT> <BR><TT>&nbsp;&nbsp;&nbsp; end</TT> 
+            <P><TT>&nbsp;&nbsp;&nbsp; assign temp2 = ~in1 &amp;amp; in2;</TT> 
+            <P><TT>&nbsp;&nbsp;&nbsp; or my_or (out, temp1, temp2);</TT> 
+            <P><TT>endmodule</TT> <BR>&nbsp; <BR>&nbsp; 
+            <P><A name="Unsupported Verilog Language"></A><B><FONT 
+            face=Arial,Helvetica>Unsupported Verilog Language 
+            Constructs</FONT></B> 
+            <P><FONT face=Arial,Helvetica>Synthesis tools are not so 
+            intelligent. They try to infer hardware from HDL description. Most 
+            synthesis tools does not support the following Verilog 
+            constructs:</FONT> <BR><FONT face=Arial,Helvetica>• 
+            <I><U>Unsupported definitions and declarations</U></I></FONT> <BR>- 
+            <TT>primitive</TT> <FONT face=Arial,Helvetica>definition</FONT> 
+            <BR>- <TT>time</TT> <FONT face=Arial,Helvetica>declaration</FONT> 
+            <BR>- <TT>event</TT> <FONT face=Arial,Helvetica>declaration</FONT> 
+            <BR>- <TT>triand, trior, tri1, tri0</TT>, <FONT 
+            face=Arial,Helvetica>and</FONT><TT>trireg</TT><FONT 
+            face=Arial,Helvetica>net types</FONT> <BR>-<FONT 
+            face=Arial,Helvetica> Ranges and arrays for integers</FONT> 
+            <P>• <I><U><FONT face=Arial,Helvetica>Unsupported 
+            statements</FONT></U></I> <BR>- <TT>defparam</TT> <FONT 
+            face=Arial,Helvetica>statement</FONT> <BR>- <TT>initial</TT> <FONT 
+            face=Arial,Helvetica>statement</FONT> <BR>- <TT>repeat</TT> <FONT 
+            face=Arial,Helvetica>statement</FONT> <BR>- delay <FONT 
+            face=Arial,Helvetica>control</FONT> <BR>- event <FONT 
+            face=Arial,Helvetica>control</FONT> <BR>- <TT>wait</TT> <FONT 
+            face=Arial,Helvetica>statement</FONT> <BR>- <TT>fork-join</TT> <FONT 
+            face=Arial,Helvetica>statements</FONT> <BR>- <TT>deassign</TT> <FONT 
+            face=Arial,Helvetica>statement</FONT> <BR>- <TT>force</TT> <FONT 
+            face=Arial,Helvetica>statement</FONT> <BR>- <TT>release</TT> <FONT 
+            face=Arial,Helvetica>statement</FONT> <BR>- <FONT 
+            face=Arial,Helvetica>Assignment statement with a variable used as a 
+            bit-select on the left side of the equal sign</FONT> 
+            <P>• <I><U><FONT face=Arial,Helvetica>Unsupported 
+            operators</FONT></U></I> <BR><FONT face=Arial,Helvetica>- Case 
+            equality and inequality operators (=== and !==)</FONT> <BR><FONT 
+            face=Arial,Helvetica>- Division and modulus operators for 
+            variables</FONT> 
+            <P><FONT face=Arial,Helvetica>• <I><U>Unsupported gate-level 
+            constructs</U></I></FONT> <BR>- <TT>nmos, pmos, cmos, rnmos, rpmos, 
+            rcmos, pullup, pulldown,</TT> <BR><TT>tranif0, tranif1, rtran, 
+            rtrainf0</TT>, <FONT 
+            face=Arial,Helvetica>and</FONT><TT>rtrainf1</TT><FONT 
+            face=Arial,Helvetica>gate types</FONT> 
+            <P>• <I><U><FONT face=Arial,Helvetica>Unsupported miscellaneous 
+            constructs</FONT></U></I> <BR><FONT face=Arial,Helvetica>- 
+            Hierarchical names within a module</FONT> 
+            <P><A name="Synthesis Tools"></A><B><FONT 
+            face=Arial,Helvetica>Synthesis Tools</FONT></B> 
+            <P><FONT face=Arial size=2>Currently<B> </B>there is no single free 
+            synthesis tool available. Following is a list of commercially 
+            available sythesis tools.</FONT> 
+            <DL>
+              <DT><FONT face=Arial size=2><A 
+              href="http://www.synopsys.com/index.html">Synopsys, 
+              Inc.</A>&nbsp;</FONT> 
+              <DD><FONT face=Arial size=2>Design Compiler and Behavioral 
+              Compiler&nbsp;</FONT> 
+              <DT><FONT face=Arial size=2><A 
+              href="http://www.synplicity.com/">Synplicity, 
+              Inc.</A>&nbsp;</FONT> 
+              <DD><FONT face=Arial size=2>Synplify&nbsp;</FONT> 
+              <DT><FONT face=Arial size=2><A 
+              href="http://www.exemplar.com/">Exemplar Logic</A>&nbsp;</FONT> 
+              <DD><FONT face=Arial size=2>Leonardo Spectrum&nbsp;</FONT> 
+              <DT><FONT face=Arial size=2><A 
+              href="http://www.mentor.com/">Mentor Graphics 
+              Corp.</A>&nbsp;</FONT> 
+              <DD><FONT face=Arial size=2>AutoLogic and 
+              PLDSynthesis&nbsp;</FONT> 
+              <DT><A href="http://www.avanticorp.com/"><FONT face=Arial 
+              size=2>Avanti</FONT></A> 
+              <DD><FONT face=Arial size=2>Asyn&nbsp;</FONT> 
+              <DT><FONT face=Arial size=2><A 
+              href="http://www.cadence.com/">Cadence Design Systems 
+              Inc.</A>&nbsp;</FONT> 
+              <DD><FONT face=Arial size=2>Ambit&nbsp;</FONT> 
+              <DT><A href="http://www.magma-da.com/" target=_blank><FONT 
+              face=Arial size=2>Magma Design Automation</FONT></A> 
+              <DT><FONT face=Arial 
+              size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              Blast Create</FONT><BR></DT></DL><A 
+            name="Synthesis Standards"></A><B><FONT 
+            face=Arial,Helvetica>Synthesis Standards Working group working on 
+            Synthesis</FONT></B> <BR><FONT face=Arial,Helvetica>There is Verilog 
+            Synthesis Subset Working Group (IEEE PAR 1364.1)&nbsp; working on 
+            formalizing Verilog subset used in Synthesis.</FONT> <BR><FONT 
+            face=Arial,Helvetica><A 
+            href="http://www.eda.org/vlog-synth/">http://www.eda.org/vlog-synth/</A></FONT> 
+
+            <P><FONT face=Arial,Helvetica>IEEE P1364.1/D1.4 Draft Standard for 
+            Verilog Register Transfer Level Synthesis is available at</FONT> 
+            <BR><FONT face=Arial,Helvetica><A 
+            href="http://www.eda.org/vlog-synth/vlogrtl.pdf">http://www.eda.org/vlog-synth/vlogrtl.pdf</A></FONT> 
+
+            <P><FONT face=Arial,Helvetica>"RTL Coding Styles That Yield 
+            Simulation and Synthesis Mismatches"&nbsp; by Don Mills is available 
+            in pdf format at <A 
+            href="http://www.eda.org/vlog-synth/Mills_Final.pdf">http://www.eda.org/vlog-synth/Mills_Final.pdf</A></FONT> 
+            <BR>&nbsp; 
+            <P><A name="Good books on"></A><B><FONT face=Arial,Helvetica>Good 
+            books on Synthesis:</FONT></B> <BR>&nbsp; <BR>&nbsp; 
+            <TABLE cols=2 width="100%">
+              <TBODY>
+              <TR>
+                <TD vAlign=top align=left width=100><IMG height=165 
+                  alt="Logic Synthesis Using Synopsis" 
+                  src="Alternate Verilog FAQ Part2_files/synopsys.jpg" width=110 
+                  NOSAVE></TD>
+                <TD vAlign=top align=left><B><FONT face=Arial,Helvetica>Logic 
+                  Synthesis Using Synopsis&nbsp;</FONT></B> <BR><FONT 
+                  face=Arial,Helvetica>by Pran Kurup, Taher Abbasi&nbsp;</FONT> 
+                  <BR><FONT face=Arial,Helvetica>Price: $120.00</FONT> <BR><FONT 
+                  face=Arial,Helvetica>Hardcover 2nd edition (June 
+                  1997)&nbsp;</FONT> <BR><FONT face=Arial,Helvetica>Kluwer 
+                  Academic Pub;</FONT> <BR><FONT face=Arial,Helvetica>ISBN: 
+                  079239786X&nbsp;</FONT></TD></TR>
+              <TR>
+                <TD vAlign=top align=left width=100><IMG height=140 
+                  alt="Behavioral Synthesis" 
+                  src="Alternate Verilog FAQ Part2_files/behave.jpg" width=100 
+                  align=textTop NOSAVE></TD>
+                <TD vAlign=top align=left><B><FONT 
+                  face=Arial,Helvetica>Behavioral Synthesis : Digital System 
+                  Design Using the Synopsis Behavioral Compiler</FONT></B> 
+                  <BR><FONT face=Arial,Helvetica>by David W. Knapp&nbsp;</FONT> 
+                  <BR><FONT face=Arial,Helvetica>Price: $68.00&nbsp;&nbsp; 
+                  Hardcover - 231 pages Bk&amp;Disk edition (June 
+                  1996)&nbsp;</FONT> <BR><FONT face=Arial,Helvetica>Prentice 
+                  Hall;&nbsp;</FONT> <BR><FONT face=Arial,Helvetica>ISBN: 
+                  0135692520&nbsp;</FONT></TD></TR>
+              <TR>
+                <TD vAlign=top align=left width=100><IMG height=180 
+                  alt="Advanced Chip Synthesis" 
+                  src="Alternate Verilog FAQ Part2_files/adv_syn.jpg" width=120 
+                  NOSAVE></TD>
+                <TD vAlign=top align=left><B><FONT 
+                  face=Arial,Helvetica>Advanced Asic Chip Synthesis : Using 
+                  Synopsys Design Compiler and Primetime</FONT></B> <BR><FONT 
+                  face=Arial,Helvetica>by Himanshu Bhatnagar&nbsp;</FONT> 
+                  <BR><FONT face=Arial,Helvetica>Hardcover (June 
+                  1999)&nbsp;</FONT> <BR><FONT face=Arial,Helvetica>Kluwer 
+                  Academic Pub;&nbsp;</FONT> <BR><FONT 
+                  face=Arial,Helvetica>Price: $115.00</FONT> <BR><FONT 
+                  face=Arial,Helvetica>ISBN: 0792385373&nbsp;</FONT></TD></TR>
+              <TR>
+                <TD width=100></TD>
+                <TD></TD></TR></TBODY></TABLE>
+            <P><A name="Usenet group related to"></A><B><FONT 
+            face=Arial,Helvetica>Usenet group related to synthesis</FONT></B> 
+            <BR>&nbsp; 
+            <OL>
+              <LI><FONT face=Arial,Helvetica>John Cooley maintains moderated 
+              email based ESNUG (Synopsys User Group) email list. Past and 
+              present email archives can be found at <A 
+              href="http://www.deepchip.com/">http://www.DeepChip.com/</A></FONT>&nbsp; 
+              </LI></OL>
+            <OL>
+              <LI><FONT face=Arial,Helvetica>Usenet group 
+              <B><I>comp.cad.synthesis</I></B> is created to discuss synthesis 
+              related questions. One get postings through <A 
+              href="http://www.deja.com/">http://www.deja.com/</A> and other 
+              sites.</FONT>&nbsp; </LI></OL><A 
+            name="Technical Questions"></A><B><FONT 
+            face=Arial,Helvetica>Technical Questions</FONT></B> <BR><FONT 
+            face=Arial,Helvetica>This section lists questions asked in 
+            comp.lang.verilog usenet forum and their answers. This section is 
+            kept on separate page <A 
+            href="http://bawankule.com/verilogfaq/techqa.html">here</A>.</FONT> 
+          </TD></TR>
+        <TR height=256>
+          <TD height=256></TD></TR></TBODY></TABLE>&nbsp;<!--msnavigation--></TD></TR><!--msnavigation--></TBODY></TABLE><!--msnavigation-->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <CENTER>
+      <HR width="100%" noShade>
+
+      <P><B><FONT face=Arial,Helvetica size=2>[&nbsp; <A 
+      href="http://bawankule.com/verilogfaq/">FAQ Main</A>&nbsp; |&nbsp; <A 
+      href="http://bawankule.com/verilogfaq/page2.html">Part-1</A>&nbsp; |&nbsp; 
+      <A href="http://bawankule.com/verilogfaq/page3.html">Part-2&nbsp;</A> 
+      |&nbsp; <A 
+      href="http://bawankule.com/verilogfaq/page4.html">Part-3</A>&nbsp; |&nbsp; 
+      <A href="http://bawankule.com/verilogfaq/whats_new.html">What' 
+      New&nbsp;</A> |&nbsp;&nbsp; <A 
+      href="http://bawankule.com/verilogfaq/links.html">Links</A>&nbsp;&nbsp;&nbsp; 
+      ]</FONT></B> </P>
+      <HR width="100%" noShade>
+      </CENTER>
+      <P>
+      <CENTER>
+      <P><B><FONT face=Arial,Helvetica color=#000000 size=1>Copyright <A 
+      href="mailto:rajesh52@hotmail.com">Rajesh Bawankule</A>&nbsp; 1997 - 
+      2005</FONT></B></P></CENTER>
+      <P></P></TD></TR><!--msnavigation--></TBODY></TABLE></BODY></HTML>

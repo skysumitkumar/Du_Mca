@@ -1,0 +1,348 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <meta name="ProgId" content="Word.Document">
+   <meta name="Generator" content="Microsoft Word 9">
+   <meta name="Originator" content="Microsoft Word 9">
+   <meta name="GENERATOR" content="Mozilla/4.77 [en] (X11; U; SunOS 5.7 sun4u) [Netscape]">
+   <title>Optimal hole</title>
+<link rel=File-List href="javascript:if(confirm('http://www.math.utah.edu/~cherk/holes/Hole-2_files/filelist.xml  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?'))window.location='http://www.math.utah.edu/~cherk/holes/Hole-2_files/filelist.xml'" tppabs="http://www.math.utah.edu/~cherk/holes/Hole-2_files/filelist.xml">
+<link rel=Edit-Time-Data href="javascript:if(confirm('http://www.math.utah.edu/~cherk/holes/Hole-2_files/editdata.mso  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?'))window.location='http://www.math.utah.edu/~cherk/holes/Hole-2_files/editdata.mso'" tppabs="http://www.math.utah.edu/~cherk/holes/Hole-2_files/editdata.mso">
+<link rel=OLE-Object-Data href="javascript:if(confirm('http://www.math.utah.edu/~cherk/holes/Hole-2_files/oledata.mso  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?'))window.location='http://www.math.utah.edu/~cherk/holes/Hole-2_files/oledata.mso'" tppabs="http://www.math.utah.edu/~cherk/holes/Hole-2_files/oledata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>andrej</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>andrej</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>24</o:TotalTime>
+  <o:Created>2001-07-07T04:59:00Z</o:Created>
+  <o:LastSaved>2001-07-07T04:59:00Z</o:LastSaved>
+  <o:Pages>3</o:Pages>
+  <o:Words>564</o:Words>
+  <o:Characters>3218</o:Characters>
+  <o:Company>mathematics</o:Company>
+  <o:Lines>26</o:Lines>
+  <o:Paragraphs>6</o:Paragraphs>
+  <o:CharactersWithSpaces>3951</o:CharactersWithSpaces>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:553679495 -2147483648 8 0 66047 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:1.0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	color:red;
+	mso-font-kerning:0pt;}
+h2
+	{mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:1.0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	color:#993300;}
+h3
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:13.0pt;
+	font-family:Arial;}
+span.MsoEndnoteReference
+	{vertical-align:super;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin-top:0in;
+	margin-right:1.0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:blue;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.MsoBlockText, li.MsoBlockText, div.MsoBlockText
+	{margin-top:0in;
+	margin-right:1.0in;
+	margin-bottom:0in;
+	margin-left:.75in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:16.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:red;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoDocumentMap, li.MsoDocumentMap, div.MsoDocumentMap
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	background:navy;
+	font-size:12.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:883642402;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1821328842 67698703 1034089518 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F06E;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+@list l1
+	{mso-list-id:1578203698;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-944207966 67698709 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+	{mso-level-number-format:alpha-upper;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]-->
+<!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+<body text="#000000" bgcolor="#FFFFCC" link="#0000FF" vlink="#800080" alink="#FF0000" lang="EN-US" style="tab-interval:.5in">
+
+<div class=Section1>
+<div class="MsoNormal">
+<center><font color="#990000">PART IV</font></center>
+</div>
+
+<h1>
+<font color="#990000">&nbsp;Collective effect: Forming of a composite</font></h1>
+
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt">Assume
+now that one can drill any number of holes of any shape in a plane but
+the total area must remain constant. Consider the same optimization problem:
+What holes correspond to lowest energy stored in a uniformly loaded elastic
+plane? Particularly, we ask:</div>
+
+<div class="MsoNormal" style="margin-right:1.0in">
+<blockquote><b><i><font color="#3333FF">Are two optimal holes better than
+one?</font></i></b></blockquote>
+</div>
+
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt">Again,
+the answer depends on the sign of <font color="#3333FF"><b><i><font size=+1>a</font></i></b>.</font></div>
+
+<p><br>
+<hr WIDTH="100%">
+<blockquote>
+<h2 style="margin-left:.25in;text-indent:-.25in;mso-list:l1 level1 lfo2;
+tab-stops:list .25in">
+A. Loadings of the same sign</h2>
+</blockquote>
+
+<div class="MsoNormal">
+<blockquote>&nbsp;</blockquote>
+</div>
+
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt">
+<blockquote>In this case, two optimized holes have exactly the same effect
+as one optimal hole of the area equal to the total areas of the two holes.
+Their shapes, however, differ from ellipses.</blockquote>
+</div>
+
+<blockquote>
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt">
+<blockquote><img SRC="IMAGE003.JPG" tppabs="http://www.math.utah.edu/~cherk/holes/IMAGE003.JPG" LOWSRC="IMAGE003.JPG" tppabs="http://www.math.utah.edu/~cherk/holes/IMAGE003.JPG" BORDER=0 v:shapes="_x0000_i1026" height=261 width=288></blockquote>
+</div>
+</blockquote>
+
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt">
+<blockquote>These analytical (infinitely differentiable) contours look
+as kidneys, see (Vigdergauz, 1984). An optimal hole changes its shape to
+adjust to the inhomogenuity of the stress field caused by the twin hole.
+Again, we face here an unexpected feature of the optimization problem:</blockquote>
+</div>
+
+<blockquote>
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt">
+<blockquote>
+<blockquote><b><font color="#3333FF">Although the optimal shapes of the
+holes depend on the mutual position of the holes and their relative sizes,
+their effect is exactly the same for all values of these parameters!</font></b></blockquote>
+</blockquote>
+</div>
+</blockquote>
+
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:1.0in;margin-bottom:.0001pt">
+<blockquote>An elegant method for finding optimal shapes is based on Muskhelishwili
+potentials and the theory of analytical functions, particularly conformal
+mapping.</blockquote>
+</div>
+
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:1.0in;margin-bottom:.0001pt"><i><b><font color="#990000">Remark&nbsp;&nbsp;&nbsp;</font></b>
+The equivalence of performance of any number of optimal inclusions is also
+due to simplicity of the domain: we are dealing with an infinite plane
+uniformly loaded at infinity. If the domain is finite and/or loading is
+inhomogeneous, then the&nbsp; more holes the better (except of specially
+designed symmetric cases).</i></div>
+
+<blockquote>Continuing, we&nbsp; find that any number of optimal inclusions
+leads to the same strength of the perforated plate. The detailed explanation
+can be found in the papers by Vigdergauz.</blockquote>
+
+<h1 class="MsoBodyText">
+<font color="#990000">Infinite number of inclusions</font></h1>
+
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt">
+<blockquote>One can also consider a problem with infinitely many inclusions.
+The slight difference from the previous case is that the periodic system
+of inclusions has infinite volume, and the fraction of the volume assigned
+to inclusions is fixed instead.</blockquote>
+The periodic inclusions (composite) found by Vigdergauz, (see also Grabovsky
+&amp; Kohn) depend on the elongation of the periodicity cell and on volume
+fraction of the holes. Each value elongation corresponds to the same strength
+but to different optimal shapes. When the volume fraction of the void increases,
+the shapes of optimal inclusions vary from array of ellipses to array of
+ovals closely inscribed into rectangular periodicity shell. Here, different
+colors show the shapes of optimal inclusions depending on the volume fractions.</div>
+<img SRC="IMAGE005.GIF" tppabs="http://www.math.utah.edu/~cherk/holes/IMAGE005.GIF" height=274 width=456>
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt">&nbsp;
+<p>An optimal periodic solution can be explicilty found for any rate of
+elongation of the periodicity cell. All these solutions correspond to the
+same value of cost functional. In particular, the structure tends to an
+optimal "second-rank laminate" when the elongation of the periodicity cell
+is extreme.</div>
+
+<blockquote><img SRC="I-lim_pos.gif" tppabs="http://www.math.utah.edu/~cherk/holes/I-lim_pos.gif" height=171 width=647></blockquote>
+
+<div class="MsoNormal" style="margin-top:0in;margin-right:1.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt">&nbsp;The
+shapes of these inclusions are inscribed into extremely elongated rectangles,
+but they are&nbsp; analytical (infinitely smooth) curves.</div>
+
+<h2>
+<img SRC="IMAGE007.GIF" tppabs="http://www.math.utah.edu/~cherk/holes/IMAGE007.GIF" BORDER=0 v:shapes="_x0000_i1028" height=274 width=456></h2>
+
+<hr WIDTH="100%"></div>
+
+<div style='mso-element:endnote-list'>
+<div style='mso-element:endnote' id=edn4>
+<div class="MsoEndnoteText">
+<center><a href="part5.html" tppabs="http://www.math.utah.edu/~cherk/holes/part5.html">To the
+fifth part&nbsp;</a><a href="part5.html" tppabs="http://www.math.utah.edu/~cherk/holes/part5.html"><img SRC="IMAGE001.GIF" tppabs="http://www.math.utah.edu/~cherk/holes/IMAGE001.GIF" BORDER=0 v:shapes="_x0000_i1036" height=62 width=78></a></center>
+</div>
+</div>
+</div>
+
+</body>
+</html>

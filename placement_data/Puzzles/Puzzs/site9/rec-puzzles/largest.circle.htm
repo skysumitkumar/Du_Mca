@@ -1,0 +1,68 @@
+<html><head>
+<title>Solution for /geometry/dissections/largest.circle</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /geometry/dissections/largest.circle problem</h1>
+<hr>
+There are two methods:
+
+<h3>Method M1:</h3>
+The  diameters of the semicircles have to be on the longer sides,
+starting at an endpoint of the rectangle.  The two semicircles touch
+each other in the middle M of the rectangle.
+<pre>
+                    a
+       D._______________________.C
+        |                       |
+        |                       |
+      b |           . M         |
+        |                       |
+        |                       |
+        |_______.___.___________|
+        A       R   X           B
+</pre>
+R should be the center of the semicircle, and because of RA = RM,
+it holds that:
+<pre>
+   r^2 = (a/2 - r)^2 + (b/2)^2
+</pre>
+Solving for r gives:
+
+<pre>
+   r = min[b,(a^2+b^2)/(4a)], where a &gt;= b.
+</pre>
+<h3>Method M2:</h3>
+We'll cut on the line y = c x, where c will turn out to be slightly
+less than d, the slope of the diagonal.  We describe the semicircle
+lying above the line y = c x, having this line as the straight part of
+the semi-circle.  The center P of the semicircle will be taken on the
+line y = d - x, and will be tangent to the left and top of the
+rectangle.  Clearly the lower down P is on this line, the better.  The
+naive solution is not optimal because the upper place where the
+semicircle meets the diagonal is interior to the rectangle.  So we try
+to determine c in such a way that this latter point actually lies
+slightly down from the top, on the right side of the rectangle.  This
+involves solving the quartic:
+4r^4 - (4a+16b)r^3 + (16b^2+a^2+8ab)r^2 - (6b^3+4ab^2+2ba^2)r + b^4+(ab)^2 = 0,
+where r &lt; b, the details of which will be left to the reader.
+
+<p>
+The other semicircle is the reflection of the first through the origin.
+
+<p>
+After a few calculations, we find that the value of r given
+by M2 is greater than the one given by M1 only if 1 &lt; a/b &lt; 2.472434.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

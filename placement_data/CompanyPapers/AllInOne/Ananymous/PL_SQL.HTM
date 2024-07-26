@@ -1,0 +1,945 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<META content="MSHTML 5.00.2920.0" name=GENERATOR></HEAD>
+<BODY><PRE><H3><B>
+<FONT color=red>For this PL/SQL tutorial we will 
+be using two tables viz.emp_v and dept_v, 
+the contents of these two tables are listed below.
+</FONT>
+
+SQL&gt; select * from emp_v;
+<FONT color=blue>
+    EMPNO ENAME      JOB             MGR HIREDATE        SAL      COMM    DEPTNO                    
+--------- ---------- --------- --------- --------- --------- --------- ---------                    
+     7369 SMITH      CLERK          7902 17-DEC-80       800                  20                    
+     7499 ALLEN      SALESMAN       7698 20-FEB-81      1600       300        30                    
+     7521 WARD       SALESMAN       7698 22-FEB-81      1250       500        30                    
+     7566 JONES      MANAGER        7839 02-APR-81      2975                  20                    
+     7654 MARTIN     SALESMAN       7698 28-SEP-81      1250      1400        30                    
+     7698 BLAKE      MANAGER        7839 01-MAY-81      2850                  30                    
+     7782 CLARK      MANAGER        7839 09-JUN-81      2450                  10                    
+     7788 SCOTT      ANALYST        7566 19-APR-87      3000                  20                    
+     7839 KING       PRESIDENT           17-NOV-81      5000                  10                    
+     7844 TURNER     SALESMAN       7698 08-SEP-81      1500         0        30                    
+     7876 ADAMS      CLERK          7788 23-MAY-87      1100                  20                    
+     7900 JAMES      CLERK          7698 03-DEC-81       950                  30                    
+     7902 FORD       ANALYST        7566 03-DEC-81      3000                  20                    
+     7934 MILLER     CLERK          7782 23-JAN-82      1300                  10                    
+
+14 rows selected.
+</FONT>
+SQL&gt; select * from dept_v;
+<FONT color=blue>
+   DEPTNO DNAME          LOC                                                                        
+--------- -------------- -------------                                                              
+       10 ACCOUNTING     NEW YORK                                                                   
+       20 RESEARCH       DALLAS                                                                     
+       30 SALES          CHICAGO                                                                    
+       40 OPERATIONS     BOSTON                                                                     
+
+</FONT>
+________________________________________________________________________________________
+<FONT color=red>
+Following PL/SQL block is stored in file test1.sql. 
+This is a very simple example for retrieving the 
+employee name for empno=7499. A VARIABLE statemnet
+is used here to get employee name and later print it.
+
+test1.sql
+---------
+VARIABLE empname varchar2(20);
+declare 
+     myname varchar2(20);
+begin
+     select ename
+     into myname
+     from emp_v
+     where empno = 7499;
+     :empname := myname;
+end;
+/
+
+To execute this block, type @test1 at SQL prompt as 
+given below:
+</FONT>
+SQL&gt; @test1
+<FONT color=blue>
+PL/SQL procedure successfully completed.
+</FONT>
+SQL&gt; print empname;
+<FONT color=blue>
+EMPNAME                                                                                             
+--------------------------------                                                                    
+ALLEN                                                                                               
+</FONT>
+<FONT color=red>
+Another example of using VARIABLE statement, stored in 
+file test2.sql.
+
+test2.sql
+---------
+VARIABLE mybonus number;
+declare
+      bonus number(5,2);
+begin
+     select sal *0.1
+     into bonus
+     from emp_v
+     where empno=7369;
+     :mybonus := bonus;
+end;
+/
+</FONT>
+
+SQL&gt; @test2
+
+<FONT color=blue>
+PL/SQL procedure successfully completed.
+</FONT>
+SQL&gt; print mybonus;
+<FONT color=blue>
+  MYBONUS                                                                                           
+---------                                                                                           
+       80                                                                                           
+</FONT>
+______________________________________________________
+
+<FONT color=red>
+This is another example where v_salary variable is 
+of the same type as the sal attribute in emp_v table.
+
+test3.sql
+---------
+
+VARIABLE salary number;
+declare 
+   v_salary  emp_v.sal%type;
+begin
+   select sal
+   into v_salary
+   from emp_v
+   where empno=7369;
+   :salary := v_salary;
+end;
+/
+
+</FONT>
+
+SQL&gt; @test3
+
+<FONT color=blue>
+PL/SQL procedure successfully completed.
+</FONT>
+SQL&gt; print salary;
+<FONT color=blue>
+   SALARY                                                                                           
+---------                                                                                           
+      800                                                                                           
+</FONT>
+___________________________________________________________________________
+<FONT color=red>
+There is another way to get the output printed. 
+Use dbms_output.put_line ( <STRING>); for this, 
+you need to 'set serveroutput on 'before executing 
+the block, as shown below:
+
+test4.sql
+---------
+
+declare
+      bonus number(5,2);
+begin
+     select sal *0.1
+     into bonus
+     from emp_v
+     where empno=7369;
+     dbms_output.put_line ( 'Bonus= '|| bonus );
+end;
+/
+</FONT>
+
+SQL&gt; set serveroutput on;
+SQL&gt; @test4
+<FONT color=blue>
+Bonus= 80                                                                                           
+
+PL/SQL procedure successfully completed.
+</FONT>
+______________________________________________
+
+SQL&gt; desc dept_v;
+<FONT color=blue>
+ Name                                                  Null?    Type
+ ----------------------------- -------- ------------------------------------
+ DEPTNO                                  NOT NULL NUMBER(2)
+ DNAME                                    VARCHAR2(14)
+ LOC                                       VARCHAR2(13)
+
+</FONT>
+_____________________________________________________________________________
+<FONT color=red>
+In the following example, v_deptno is of the 
+type of the attribute deptno in dept_v table. 
+v_location is of the type of the attribute loc 
+in dept_v.
+
+test5.sql
+---------
+
+declare
+  v_deptno dept_v.deptno%type;
+  v_location dept_v.loc%type;
+begin
+     select deptno, loc
+     into v_deptno, v_location
+     from dept_v
+     where dname = 'SALES';
+     dbms_output.put_line ('deptno: '||v_deptno||' 
+location: '|| v_location);
+end;
+/
+</FONT>
+
+
+SQL&gt; @test5
+<FONT color=blue>
+deptno: 30 location: CHICAGO                                                                        
+
+PL/SQL procedure successfully completed.
+</FONT>
+_________________________________________________________________________________
+<FONT color=red>
+The following example shows use of aggregate 
+function sum in PL/SQL block.
+
+test6.sql
+---------
+
+declare
+    v_sum_sal emp_v.sal%type;
+    v_deptno  number not null :=10;
+begin
+    select sum (sal)
+    into v_sum_sal
+    from emp_v
+    where deptno=v_deptno;
+    dbms_output.put_line ('Sum of salary = '||v_sum_sal);
+end;
+/
+    
+</FONT>
+
+SQL&gt; @test6
+<FONT color=blue>
+Sum of salary = 8750                                                                                
+
+PL/SQL procedure successfully completed.
+</FONT>
+<FONT color=red>
+Following example shows how to create synonyms 
+for tables.
+</FONT> 
+
+SQL&gt; create synonym EMPLOYEE for emp_v;
+<FONT color=blue>
+Synonym created.
+</FONT>
+
+SQL&gt; create synonym DEPARTMENT for dept_v;
+<FONT color=blue>
+Synonym created.
+</FONT>
+____________________________________________________________
+<FONT color=red>
+Following example shows how we can insert an 
+employee values in employee table through PL/SQL 
+block. Note that we retrieve the maximum value 
+of empno and then add one to it to generate
+the next empno. Also note the use of synonym 
+EMPLOYEE.This PL/SQL block is saved in 
+test7.sql file.
+
+test7.sql
+---------
+
+declare 
+   v_empno   employee.empno%type;
+   
+begin
+   select max(empno)
+   into   v_empno
+   from employee;
+   v_empno := v_empno+1;
+   insert into employee (empno, ename, job, deptno)
+                values  (v_empno, 'DANIEL', 'CLERK', 10);
+end;
+/  
+ 
+</FONT>
+SQL&gt; @test7
+<FONT color=blue>
+PL/SQL procedure successfully completed.
+</FONT>
+<FONT color=red>
+Following query confirms that the new employee has 
+been inserted correctly
+</FONT>
+
+SQL&gt; select *
+  2  from employee;
+
+<FONT color=blue>
+    EMPNO ENAME      JOB             MGR HIREDATE        SAL      COMM    DEPTNO                    
+--------- ---------- --------- --------- --------- --------- --------- ---------                    
+     7369 SMITH      CLERK          7902 17-DEC-80       800                  20                    
+     7499 ALLEN      SALESMAN       7698 20-FEB-81      1600       300        30                    
+     7521 WARD       SALESMAN       7698 22-FEB-81      1250       500        30                    
+     7566 JONES      MANAGER        7839 02-APR-81      2975                  20                    
+     7654 MARTIN     SALESMAN       7698 28-SEP-81      1250      1400        30                    
+     7698 BLAKE      MANAGER        7839 01-MAY-81      2850                  30                    
+     7782 CLARK      MANAGER        7839 09-JUN-81      2450                  10                    
+     7788 SCOTT      ANALYST        7566 19-APR-87      3000                  20                    
+     7839 KING       PRESIDENT           17-NOV-81      5000                  10                    
+     7844 TURNER     SALESMAN       7698 08-SEP-81      1500         0        30                    
+     7876 ADAMS      CLERK          7788 23-MAY-87      1100                  20                    
+     7900 JAMES      CLERK          7698 03-DEC-81       950                  30                    
+     7902 FORD       ANALYST        7566 03-DEC-81      3000                  20                    
+     7934 MILLER     CLERK          7782 23-JAN-82      1300                  10                    
+     7935 DANIEL     CLERK                                                    10                    
+
+15 rows selected.
+</FONT>
+
+<FONT color=red>
+Following PL/SQL block updates salary of all 
+employees by $3000 who are clerks. Code for 
+this is in test8.sql
+
+test8.sql
+---------
+declare
+  v_sal_increase  employee.sal%type := 3000;
+begin
+    update employee
+    set    sal = sal +v_sal_increase
+    where job ='CLERK';
+end;
+/
+</FONT>
+SQL&gt; @test8
+<FONT color=blue>
+PL/SQL procedure successfully completed.
+</FONT>
+<FONT color=red>
+Following query confirms that the salaries for 
+employees with job as CLERK have been updated.
+</FONT>
+SQL&gt; select * from employee where job='CLERK';
+<FONT color=blue>
+    EMPNO ENAME      JOB             MGR HIREDATE        SAL      COMM    DEPTNO                    
+--------- ---------- --------- --------- --------- --------- --------- ---------                    
+     7369 SMITH      CLERK          7902 17-DEC-80      3800                  20                    
+     7876 ADAMS      CLERK          7788 23-MAY-87      4100                  20                    
+     7900 JAMES      CLERK          7698 03-DEC-81      3950                  30                    
+     7934 MILLER     CLERK          7782 23-JAN-82      4300                  10                    
+     7935 DANIEL     CLERK                                                    10                    
+</FONT>
+___________________________________________________________________________________
+<FONT color=red>
+Following PL/SQL block shows how we can 
+delete rows from a table for a department 
+whose deptno is specified in the declare section.
+
+test9.sql
+---------
+
+declare
+    v_deptno employee.deptno%type := 10;
+begin
+    delete 
+    from employee
+    where deptno = v_deptno
+    and   job    = 'CLERK';
+end;
+/
+</FONT>
+
+SQL&gt; @test9
+<FONT color=blue>
+PL/SQL procedure successfully completed.
+</FONT>
+______________________________________________________________________________
+<FONT color=red>
+Following query confirms deletion of tuples from 
+employee with deptno =10 and job='CLERK'.
+</FONT>
+SQL&gt; select * from employee where job ='CLERK';
+<FONT color=blue>
+    EMPNO ENAME      JOB             MGR HIREDATE        SAL      COMM    DEPTNO                    
+--------- ---------- --------- --------- --------- --------- --------- ---------                    
+     7369 SMITH      CLERK          7902 17-DEC-80      3800                  20                    
+     7876 ADAMS      CLERK          7788 23-MAY-87      4100                  20                    
+     7900 JAMES      CLERK          7698 03-DEC-81      3950                  30                    
+</FONT>
+__________________________________________________________________________________
+<FONT color=red>
+Following PL/SQL block shows that if no rows 
+are found satisfying the given condition then 
+it displays the error message "no data found".
+Later we will discuss what to do if no data is found.
+
+test10.sql
+----------
+
+declare 
+     v_date DATE := SYSDATE;
+     v_ename employee.ename%type;
+begin
+    select ename, hiredate
+    into   v_ename, v_date
+    from employee
+    where hiredate = v_date;
+    dbms_output.put_line (v_ename||'  '||v_date);
+end;
+/
+</FONT>
+      
+SQL&gt; @test10
+<FONT color=blue>
+declare
+*
+ERROR at line 1:
+ORA-01403: no data found 
+ORA-06512: at line 5 
+</FONT>
+____________________________________________________________________________________
+<FONT color=red>
+Following PL/SQL block shows the use of 
+loop statement for inserting five employees 
+for department number 10. We first retrieve 
+the highest empno from the table and for 
+each new employee, assign the next higher number.
+
+test11.sql
+----------
+declare
+   v_counter number(2):= 1;
+   v_empno   employee.empno%type;
+begin
+    select max(empno)
+    into v_empno
+    from employee;
+   
+    loop
+         v_empno := v_empno+1;
+        insert into employee ( empno, deptno)
+                    values (v_empno, 10);
+        v_counter := v_counter+1;
+    exit when  v_counter &gt; 5;
+    end loop;
+end;
+/
+</FONT>
+SQL&gt; @test11
+<FONT color=blue>
+PL/SQL procedure successfully completed.
+</FONT>
+_____________________________________________________________________________
+<FONT color=red>
+Following query confirms the insertion of five 
+employees for department 10.
+</FONT>
+SQL&gt; select *
+  2  from employee
+  3  ;
+<FONT color=blue>
+    EMPNO ENAME      JOB             MGR HIREDATE        SAL      COMM    DEPTNO                    
+--------- ---------- --------- --------- --------- --------- --------- ---------                    
+     7369 SMITH      CLERK          7902 17-DEC-80      3800                  20                    
+     7499 ALLEN      SALESMAN       7698 20-FEB-81      1600       300        30                    
+     7521 WARD       SALESMAN       7698 22-FEB-81      1250       500        30                    
+     7566 JONES      MANAGER        7839 02-APR-81      2975                  20                    
+     7654 MARTIN     SALESMAN       7698 28-SEP-81      1250      1400        30                    
+     7698 BLAKE      MANAGER        7839 01-MAY-81      2850                  30                    
+     7782 CLARK      MANAGER        7839 09-JUN-81      2450                  10                    
+     7788 SCOTT      ANALYST        7566 19-APR-87      3000                  20                    
+     7839 KING       PRESIDENT           17-NOV-81      5000                  10                    
+     7844 TURNER     SALESMAN       7698 08-SEP-81      1500         0        30                    
+     7876 ADAMS      CLERK          7788 23-MAY-87      4100                  20                    
+     7900 JAMES      CLERK          7698 03-DEC-81      3950                  30                    
+     7902 FORD       ANALYST        7566 03-DEC-81      3000                  20                    
+     7903                                                                     10                    
+     7904                                                                     10                    
+     7905                                                                     10                    
+     7906                                                                     10                    
+     7907                                                                     10                    
+
+18 rows selected.
+</FONT>
+________________________________________________________________________________
+<FONT color=red>
+Following example shows the use of 'for' 
+statement for inserting five more
+employees in department 10.
+
+test12.sql
+----------
+
+declare
+   v_empno   employee.empno%type;
+begin
+    select max(empno)
+    into v_empno
+    from employee;
+   
+    for i in 1..5 
+     loop
+         v_empno := v_empno+1;
+        insert into employee ( empno, deptno)
+                    values (v_empno, 10);
+     end loop;
+end;
+/
+</FONT>
+SQL&gt; @test12
+<FONT color=blue>
+PL/SQL procedure successfully completed.
+</FONT>
+_____________________________________________________________________________
+<FONT color=red>
+Following query confirms insertion of five 
+more employees in department 10
+</FONT>
+SQL&gt; select * from employee;
+<FONT color=blue>
+    EMPNO ENAME      JOB             MGR HIREDATE        SAL      COMM    DEPTNO                    
+--------- ---------- --------- --------- --------- --------- --------- ---------                    
+     7369 SMITH      CLERK          7902 17-DEC-80      3800                  20                    
+     7499 ALLEN      SALESMAN       7698 20-FEB-81      1600       300        30                    
+     7521 WARD       SALESMAN       7698 22-FEB-81      1250       500        30                    
+     7566 JONES      MANAGER        7839 02-APR-81      2975                  20                    
+     7654 MARTIN     SALESMAN       7698 28-SEP-81      1250      1400        30                    
+     7698 BLAKE      MANAGER        7839 01-MAY-81      2850                  30                    
+     7782 CLARK      MANAGER        7839 09-JUN-81      2450                  10                    
+     7788 SCOTT      ANALYST        7566 19-APR-87      3000                  20                    
+     7839 KING       PRESIDENT           17-NOV-81      5000                  10                    
+     7844 TURNER     SALESMAN       7698 08-SEP-81      1500         0        30                    
+     7876 ADAMS      CLERK          7788 23-MAY-87      4100                  20                    
+     7900 JAMES      CLERK          7698 03-DEC-81      3950                  30                    
+     7902 FORD       ANALYST        7566 03-DEC-81      3000                  20                    
+     7903                                                                     10                    
+     7904                                                                     10                    
+     7905                                                                     10                    
+     7906                                                                     10                    
+     7907                                                                     10                    
+     7908                                                                     10                    
+     7909                                                                     10                    
+     7910                                                                     10                    
+
+    EMPNO ENAME      JOB             MGR HIREDATE        SAL      COMM    DEPTNO                    
+--------- ---------- --------- --------- --------- --------- --------- ---------                    
+     7911                                                                     10                    
+     7912                                                                     10                    
+
+23 rows selected.
+</FONT>
+___________________________________________________________________________________
+<FONT color=red>
+Following example shows how to accept 
+input from the user interactively.
+This example also shows how to use 
+'if/elsif' statement. In this example,
+we retrieve salary of an employee with 
+empno as input by the user. If the
+salary of that employee is less than $1000 
+then commission rate is 10%. If salary is 
+between $1000 and $1500 then commission rate 
+is 15%. If salary is greater than $1500, 
+commission rate is 20%. If salary is null
+then commission rate is 0. Once the commission 
+rate is determined, we update the tuple for 
+employee by setting the COMM as commission rate 
+multiplied by salary.
+
+test13.sql
+----------
+
+ACCEPT employee_number PROMPT 'PLEASE enter employee number :   '
+declare
+     v_empno employee.empno%type :=&amp;employee_number;
+     v_salary   employee.sal%type;
+     v_commission employee.comm%type;
+begin
+     select sal
+     into v_salary
+     from employee
+     where empno = v_empno;
+ 
+    if v_salary &lt; 1000 then
+       v_commission := 0.10;
+    elsif
+        v_salary between 1000 and 1500 then
+        v_commission := 0.15;
+    elsif 
+        v_salary &gt; 1500 then
+        v_commission :=0.20;
+    else
+        v_commission := 0;
+    end if;
+   
+    update employee
+    set comm = sal * v_commission
+    where empno = v_empno;
+COMMIT;
+
+dbms_output.put_line ( 'Salary = '||v_salary ||'  
+'||'commission rate = '||v_commission);
+end;
+/ 
+This block was executed for empno 7499 and 7369.
+</FONT>  
+
+SQL&gt; @test13
+<FONT color=blue>
+PLEASE enter employee number :   7499
+Input truncated to 4 characters
+old   2:      v_empno employee.empno%type :=&amp;employee_number;
+new   2:      v_empno employee.empno%type :=7499;
+Salary = 1600  commission rate = .2                                                                       
+
+PL/SQL procedure successfully completed.
+</FONT>
+___________________________________________________________________________
+<FONT color=red>
+Execution of the above block when the input empno. 
+does not exist
+</FONT>
+SQL&gt; @test13
+<FONT color=blue>
+PLEASE enter employee number :   8000
+Input truncated to 4 characters
+old   2:      v_empno employee.empno%type :=&amp;employee_number;
+new   2:      v_empno employee.empno%type :=8000;
+declare
+*
+ERROR at line 1:
+ORA-01403: no data found 
+ORA-06512: at line 6 
+</FONT>
+____________________________________________________________________________
+<FONT color=red>
+Following query result confirms correct 
+modification of COMM for 
+employee with empno 7369 &amp; 7499.
+</FONT>
+SQL&gt; select * from employee;
+<FONT color=blue>
+    EMPNO ENAME      JOB             MGR HIREDATE        SAL      COMM    DEPTNO                    
+--------- ---------- --------- --------- --------- --------- --------- ---------                    
+     7369 SMITH      CLERK          7902 17-DEC-80      3800       760        20                    
+     7499 ALLEN      SALESMAN       7698 20-FEB-81      1600       320        30                    
+     7521 WARD       SALESMAN       7698 22-FEB-81      1250       500        30                    
+     7566 JONES      MANAGER        7839 02-APR-81      2975                  20                    
+     7654 MARTIN     SALESMAN       7698 28-SEP-81      1250      1400        30                    
+     7698 BLAKE      MANAGER        7839 01-MAY-81      2850                  30                    
+     7782 CLARK      MANAGER        7839 09-JUN-81      2450                  10                    
+     7788 SCOTT      ANALYST        7566 19-APR-87      3000                  20                    
+     7839 KING       PRESIDENT           17-NOV-81      5000                  10                    
+     7844 TURNER     SALESMAN       7698 08-SEP-81      1500         0        30                    
+     7876 ADAMS      CLERK          7788 23-MAY-87      4100                  20                    
+     7900 JAMES      CLERK          7698 03-DEC-81      3950                  30                    
+     7902 FORD       ANALYST        7566 03-DEC-81      3000                  20                    
+     7903                                                                     10                    
+     7904                                                                     10                    
+     7905                                                                     10                    
+     7906                                                                     10                    
+     7907                                                                     10                    
+     7908                                                                     10                    
+     7909                                                                     10                    
+     7910                                                                     10                    
+
+    EMPNO ENAME      JOB             MGR HIREDATE        SAL      COMM    DEPTNO                    
+--------- ---------- --------- --------- --------- --------- --------- ---------                    
+     7911                                                                     10                    
+     7912                                                                     10                    
+
+23 rows selected.
+</FONT>
+______________________________________________________________________________
+<FONT color=red>
+Following example shows use of a cursor.  
+We declare a cursor for containing the 
+result of retrieving empno and salary 
+of employees with deptno &gt; 10.  We 
+determine the commission rate for each 
+employee depending on their salary. 
+We update the commission of these employees 
+based on their commission rate.
+PLease note the use of CURSOR, OPEN, FETCH, 
+WHILE, FOUND in the following block.
+
+test14.sql
+-----------
+declare
+     v_empno employee.empno%type;
+     v_salary   employee.sal%type;
+     v_commission employee.comm%type;
+     CURSOR emp_cursor IS
+        select empno,  sal
+        from employee
+        where deptno &gt; 10;
+
+begin
+     OPEN emp_cursor;
+     FETCH emp_cursor into v_empno, v_salary;
+     WHILE emp_cursor%FOUND LOOP
+
+    if v_salary &lt; 1000 then
+       v_commission := 0.10;
+    elsif
+        v_salary between 1000 and 1500 then
+        v_commission := 0.15;
+    elsif 
+        v_salary &gt; 1500 then
+        v_commission :=0.20;
+    else
+        v_commission := 0;
+    end if;
+   
+    update employee
+    set comm = sal * v_commission
+    where empno = v_empno;
+   FETCH emp_cursor into v_empno, v_salary;
+
+dbms_output.put_line ( 'Salary = '||v_salary ||'  '||'
+commission rate = '||v_commission);
+END LOOP;
+end;
+/   
+</FONT>
+SQL&gt; @test14
+<FONT color=blue>
+Salary = 1600  commission rate = .2                                                                 
+Salary = 1250  commission rate = .2                                                                 
+Salary = 2975  commission rate = .15                                                                
+Salary = 1250  commission rate = .2                                                                 
+Salary = 2850  commission rate = .15                                                                
+Salary = 3000  commission rate = .2                                                                 
+Salary = 1500  commission rate = .2                                                                 
+Salary = 4100  commission rate = .15                                                                
+Salary = 3950  commission rate = .2                                                                 
+Salary = 3000  commission rate = .2                                                                 
+Salary = 3000  commission rate = .2                                                                 
+
+PL/SQL procedure successfully completed.
+</FONT>
+________________________________________________________________________
+<FONT color=red>
+Result of following query confirms the correct 
+execution of the 
+test14.sql
+</FONT>
+SQL&gt; select * from employee;
+<FONT color=blue>
+    EMPNO ENAME      JOB             MGR HIREDATE        SAL      COMM    DEPTNO                    
+--------- ---------- --------- --------- --------- --------- --------- ---------                    
+     7369 SMITH      CLERK          7902 17-DEC-80      3800       760        20                    
+     7499 ALLEN      SALESMAN       7698 20-FEB-81      1600       320        30                    
+     7521 WARD       SALESMAN       7698 22-FEB-81      1250     187.5        30                    
+     7566 JONES      MANAGER        7839 02-APR-81      2975       595        20                    
+     7654 MARTIN     SALESMAN       7698 28-SEP-81      1250     187.5        30                    
+     7698 BLAKE      MANAGER        7839 01-MAY-81      2850       570        30                    
+     7782 CLARK      MANAGER        7839 09-JUN-81      2450                  10                    
+     7788 SCOTT      ANALYST        7566 19-APR-87      3000       600        20                    
+     7839 KING       PRESIDENT           17-NOV-81      5000                  10                    
+     7844 TURNER     SALESMAN       7698 08-SEP-81      1500       225        30                    
+     7876 ADAMS      CLERK          7788 23-MAY-87      4100       820        20                    
+     7900 JAMES      CLERK          7698 03-DEC-81      3950       790        30                    
+     7902 FORD       ANALYST        7566 03-DEC-81      3000       600        20                    
+     7903                                                                     10                    
+     7904                                                                     10                    
+     7905                                                                     10                    
+     7906                                                                     10                    
+     7907                                                                     10                    
+     7908                                                                     10                    
+     7909                                                                     10                    
+     7910                                                                     10                    
+
+    EMPNO ENAME      JOB             MGR HIREDATE        SAL      COMM    DEPTNO                    
+--------- ---------- --------- --------- --------- --------- --------- ---------                    
+     7911                                                                     10                    
+     7912                                                                     10                    
+
+23 rows selected.
+</FONT>
+________________________________________________________________________________
+<FONT color=red>
+Following example shows the use of two 
+cursors. One cursor is used without parameters 
+and the other one with one parameter. Here, the 
+first cursor contains all department 
+numbers of all departments.Using one 
+department number from this cursor, we retrieve 
+names and department numbers of employees in that 
+department, using the deptno as parameter for 
+another cursor.
+
+test15.sql
+----------
+declare 
+     v_current_deptno department.deptno%type;
+     v_employee       varchar2(50);
+     CURSOR dept_cursor IS
+           select deptno
+           from department
+           order by deptno;
+
+     CURSOR emp_cursor ( v_deptno number ) IS
+           select ename || ' - Department '|| to_char(deptno)
+           from  employee
+           where deptno =v_deptno;
+begin
+
+     open dept_cursor;
+     loop
+         fetch dept_cursor into v_current_deptno;
+         exit when dept_cursor%notfound;
+         if emp_cursor%ISOPEN then
+            close emp_cursor;
+         end if;
+         open emp_cursor (v_current_deptno);
+         loop
+             fetch emp_cursor into v_employee;
+             exit when emp_cursor%notfound;
+             dbms_output.put_line (v_employee);
+         end loop;
+         close emp_cursor;
+     end loop;
+     close dept_cursor;
+end;
+/    
+</FONT>
+SQL&gt; @test15
+<FONT color=blue>
+Input truncated to 5 characters
+CLARK - Department 10                                                                               
+KING - Department 10                                                                                
+- Department 10                                                                                     
+- Department 10                                                                                     
+- Department 10                                                                                     
+- Department 10                                                                                     
+- Department 10                                                                                     
+- Department 10                                                                                     
+- Department 10                                                                                     
+- Department 10                                                                                     
+- Department 10                                                                                     
+- Department 10                                                                                     
+SMITH - Department 20                                                                               
+JONES - Department 20                                                                               
+SCOTT - Department 20                                                                               
+ADAMS - Department 20                                                                               
+FORD - Department 20                                                                                
+ALLEN - Department 30                                                                               
+WARD - Department 30                                                                                
+MARTIN - Department 30                                                                              
+BLAKE - Department 30                                                                               
+TURNER - Department 30                                                                              
+JAMES - Department 30                                                                               
+
+PL/SQL procedure successfully completed.
+</FONT>
+________________________________________________________________________________
+<FONT color=red>
+Following example shows that how the above 
+PL/SQL block can be converted to a PL/SQL 
+procedure by adding the following line at 
+the top of PL/SQL block. "create or replace 
+procedure employees_deptno is" Note that 
+the name of the procedure is "employees_deptno". 
+Also note that for output, we can use 
+"dbms_output.enable;" 
+instead of  "set serveroutput on" as mentioned 
+in the beginning of this tutorial. The file 
+test16.sql contains this procedure. 
+
+test16.sql
+_________
+
+create or replace procedure employees_deptno is
+
+     v_current_deptno department.deptno%type;
+     v_employee       varchar2(50);
+     CURSOR dept_cursor IS
+           select deptno
+           from department
+           order by deptno;
+
+     CURSOR emp_cursor ( v_deptno number ) IS
+           select ename || ' - Department '|| to_char(deptno)
+           from  employee
+           where deptno =v_deptno;
+begin
+     dbms_output.enable;
+     open dept_cursor;
+     loop
+         fetch dept_cursor into v_current_deptno;
+         exit when dept_cursor%notfound;
+         if emp_cursor%ISOPEN then
+            close emp_cursor;
+         end if;
+         open emp_cursor (v_current_deptno);
+         loop
+             fetch emp_cursor into v_employee;
+             exit when emp_cursor%notfound;
+             dbms_output.put_line (v_employee);
+         end loop;
+         close emp_cursor;
+     end loop;
+     close dept_cursor;
+end;
+/    
+Execution of test16.sql creates only the 
+procedure. It does not execute this procedure.
+</FONT>
+SQL&gt; @test16
+<FONT color=blue>
+Procedure created.
+</FONT>
+___________________________________________________________________________
+<FONT color=red>
+For executing the procedure, 
+"execute procedure_name" should be used as shown below.
+</FONT>
+
+SQL&gt; execute employees_deptno;
+<FONT color=blue>
+CLARK - Department 10                                                                               
+KING - Department 10                                                                                
+- Department 10                                                                                     
+- Department 10                                                                                     
+- Department 10                                                                                     
+- Department 10                                                                                     
+- Department 10                                                                                     
+- Department 10                                                                                     
+- Department 10                                                                                     
+- Department 10                                                                                     
+- Department 10                                                                                     
+- Department 10                                                                                     
+SMITH - Department 20                                                                               
+JONES - Department 20                                                                               
+SCOTT - Department 20                                                                               
+ADAMS - Department 20                                                                               
+FORD - Department 20                                                                                
+ALLEN - Department 30                                                                               
+WARD - Department 30                                                                                
+MARTIN - Department 30                                                                              
+BLAKE - Department 30                                                                               
+TURNER - Department 30                                                                              
+JAMES - Department 30                                                                               
+
+PL/SQL procedure successfully completed.
+</H3>
+<B>
+</FONT>
+</PRE></B></B></BODY></HTML>

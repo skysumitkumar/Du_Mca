@@ -1,0 +1,34 @@
+<html><head>
+<title>Solution for /arithmetic/digits/all.ones</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/digits/all.ones problem</h1>
+<hr>
+Let n be our integer; one such desired multiple is then
+(10^(phi(n))-1)/9.  All we need is that (n,10) = 1, and if the last
+digit is 3 this must be the case.  A different proof using the
+pigeonhole principle is to consider the sequence 1, 11, 111, ..., (10^n
+- 1)/9.  We must have at some point that either some member of our
+sequence = 0 (mod n) or else some value (mod n) is duplicated.  Assume
+the latter, with x_a and x_b, x_b&gt;x_a,  possesing the duplicated
+remainders.  We then have that x_b - x-a = 0 (mod n).  Let m be the
+highest power of 10 dividing x_b - x_a.  Now since (10,n) = 1, we can
+divide by 10^m and get that (x_b - x_a)/10^m = 0 (n).  But (x_b -
+x_a)/10^m is a number containing only the digit 1.
+
+<p>
+Q.E.D.
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

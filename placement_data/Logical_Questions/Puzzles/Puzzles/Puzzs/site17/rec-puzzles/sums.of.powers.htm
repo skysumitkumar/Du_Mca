@@ -1,0 +1,80 @@
+<html><head>
+<title>Solution for /arithmetic/sums.of.powers</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/sums.of.powers problem</h1>
+<hr>
+<pre>
+The solution is A = {1,4,6,7,10,11,13,16}
+                B = {2,3,5,8,9,12,14,15}
+</pre>
+Let X+k be a set formed by adding k to all elements of X.
+Then A+k and B+k have the property of satisfying i,ii and iii.
+That means, any 16 numbers in A.P can be partioned in such a way to
+satisfy i,ii and iii.
+
+<p>
+How do we arrive at the above solution without using a computer?
+
+<p>
+By the preceding discussion,
+
+<pre>
+	A1 = A-1 = {0,3,5,6,9,10,12,15}
+        B1 = B-1 = {1,2,4,7,8,11,13,14}
+</pre>
+have the property of satisfying i,ii and iii.
+Notice that all numbers of A1 have even number of 1's in binary and
+all numbers of B1 have odd number of 1's in binary. Essentially the
+above partition is a partition based on parity.
+
+<p>
+Observation:
+
+<p>
+	Partition of (n+1) bit numbers based on parity into two
+groups A and B (each consisting of 2^n elements) satisfies
+
+<p>
+ sum of kth powers of elements of A = sum of kth powers of elements of B
+for k=1,2,...,n. (The above puzzle is a special case n=3).
+
+<p>
+The above observation also holds for any radix. In radix r we will have
+r groups.
+
+<p>
+Infact,
+
+<p>
+	Any r^(n+1) terms in A.P can be partitioned into r groups (each of
+r^n elements) such that sum of kth powers of all r groups is same (k=1,2,...,n)
+
+<p>
+Finding such groups with minimal number of elements (less than r^n) appears to
+be more difficult!
+
+<p>
+ALL THIS APPEARS TO BE INTERESTING. IS IT A CONSEQUENCE OF A SIMPLE THEOREM OF
+NUMBER THEORY? HOW DO I PROVE THIS?
+
+<p>
+Thanks in advance for any clues,
+
+<pre>
+-- ramana@svl.cdc.com (Mr. Ramana (Indian analyst))
+</pre>
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index-1.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

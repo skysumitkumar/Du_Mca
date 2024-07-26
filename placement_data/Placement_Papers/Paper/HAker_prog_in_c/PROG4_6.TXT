@@ -1,0 +1,31 @@
+#include 	<stdio.h>
+
+int	main(void)
+{
+FILE	*in;
+char	ch1,ch2,fname[BUFSIZ];
+
+	printf("Enter TIFF file>>");
+	gets(fname);
+
+	if ((in=fopen(fname,"r"))==NULL)
+	{
+		printf("Can't find file %s\n",fname);
+		return(1);
+	}
+
+	ch1=fgetc(in); ch2=getc(in); 
+	printf("Memory model %c%c\n",ch1,ch2);
+	ch1=fgetc(in); ch2=getc(in); 
+	printf("Version %x%x\n",ch2,ch1);
+
+	fclose(in);
+	return(0);
+}
+
+
+
+
+
+
+

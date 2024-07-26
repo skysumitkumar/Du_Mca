@@ -1,0 +1,388 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The Fast Fourier Transform.</TITLE>
+<META NAME="description" CONTENT="The Fast Fourier Transform.">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node97.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node97.html">
+<LINK REL="previous" HREF="node93.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node93.html">
+<LINK REL="up" HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<LINK REL="next" HREF="node96.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node96.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1703"
+  HREF="node96.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node96.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1697"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1691"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node94.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node94.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node94.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1699"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1701"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1704"
+  HREF="node96.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node96.html">Timing the FFT</A>
+<B> Up:</B> <A NAME="tex2html1698"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">The Fast Fourier Transform</A>
+<B> Previous:</B> <A NAME="tex2html1692"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node94.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node94.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node94.html">Remark:</A>
+ &nbsp <B>  <A NAME="tex2html1700"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1702"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001060000000000000000"></A><A NAME="9062"></A><A NAME="9063"></A>
+<BR>
+The Fast Fourier Transform.
+</H1>
+
+<P>
+The convolution theorem suggest a different way of computing <!-- MATH
+ $\mathbf{a}\star
+\b$
+ -->
+<B>a</B><IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img278.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img278.gif"
+ ALT="$ \star$"><B>b</B> for <!-- MATH
+ $\mathbf{a}, \b\in \ensuremath{\mathbb{C}}^n$
+ -->
+<IMG
+ WIDTH="70" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img309.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img309.gif"
+ ALT="$\mathbf{a}, \b\in \ensuremath{\mathbb{C}}^n$">; as the inverse transform of
+<!-- MATH
+ $\hat{\mathbf{a}}.\hat{\b}$
+ -->
+<IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img310.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img310.gif"
+ ALT="$ \hat{\mathbf{a}}$">.<IMG
+ WIDTH="14" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img311.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img311.gif"
+ ALT="$ \hat{\b}$">.  In other words, we first compute the discrete
+Fourier transforms of <!-- MATH
+ $\mathbf{a}$
+ -->
+<B>a</B> and <B>b</B>, then compute the pointwise
+product <!-- MATH
+ $\hat{\mathbf{a}}.\hat{\b}$
+ -->
+<IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img310.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img310.gif"
+ ALT="$ \hat{\mathbf{a}}$">.<IMG
+ WIDTH="14" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img311.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img311.gif"
+ ALT="$ \hat{\b}$">, and finally compute the inverse discrete
+Fourier transform to obtain <!-- MATH
+ $\mathbf{a}\star \b$
+ -->
+<B>a</B><IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img278.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img278.gif"
+ ALT="$ \star$"><B>b</B>.  However, the obvious way
+to calculate the discrete Fourier transform, using
+equation&nbsp;<A HREF="node91.html#E:dft" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node91.html#E:dft">6.2</A> involves <I>n</I> multiplications for each of the <I>n</I>
+terms.  Thus two transforms, a pointwise product and and an inverse
+transform total 3<I>n</I><SUP>2</SUP> + <I>n</I> multiplications, as opposed to the <I>n</I><SUP>2</SUP>
+multiplications needed to do the convolution directly.  We discuss in
+this section an algorithm which makes the computation of the Fourier
+transform <I>very</I> much more efficient, reducing the calculations
+from one of order <I>n</I><SUP>2</SUP> to one of order <I>n</I> log&nbsp;<I>n</I>.  This arrangement
+of the calculation is known as the <A NAME="9494"></A><B>fast Fourier transform</B> or
+<A NAME="9496"></A><B>FFT</B>.  The algorithm was brought to the attention of many
+people by Cooley and Tukey (1965),<A NAME="9072"></A><A NAME="9073"></A> although
+as often happens it appears to have been discovered a number of times
+before that, with the idea going back to Gauss!<A NAME="9074"></A> There are
+now many variants; a good reference for both these and for code itself
+is
+(<A
+ HREF="node112.html#numerical-recipes-in-C" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node112.html#numerical-recipes-in-C">Press et&nbsp;al., 1992</A>, Chapter 12).  The common
+feature is that the length of the vector should factor into a product
+of a large number of small primes; a very efficient version is when
+the image size is a power of two, and we present this.
+
+<P>
+Assume then we are calculating the Fourier transform of a vector of
+length <I>n</I> = 2<SUP>m</SUP>, so <!-- MATH
+ $m = \log_2(n)$
+ -->
+<I>m</I> = log<SUB>2</SUB>(<I>n</I>).  To concentrate on essentials,
+we ignore the normalising factor.  Write <!-- MATH
+ $\displaystyle{\omega _n =
+\exp\left({-2\pi i}/{n}\right)}$
+ -->
+<IMG
+ WIDTH="23" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img312.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img312.gif"
+ ALT="$\displaystyle \omega_{n}^{}$">=exp<IMG
+ WIDTH="12" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img313.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img313.gif"
+ ALT="$\displaystyle \left(\vphantom{{-2\pi i}/{n}}\right.$">-2<IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img72.gif"
+ ALT="$\displaystyle \pi$"><I>i</I>/<I>n</I><IMG
+ WIDTH="12" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img314.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img314.gif"
+ ALT="$\displaystyle \left.\vphantom{{-2\pi i}/{n}}\right)$"> to emphasise the underlying image
+size. Then <!-- MATH
+ $(\omega _n)^n = 1$
+ -->
+(<IMG
+ WIDTH="23" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img261.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img261.gif"
+ ALT="$ \omega_{n}^{}$">)<SUP>n</SUP> = 1 and, since <I>n</I> = 2<SUP>m</SUP>, we have <!-- MATH
+ $n = 2.2^{m-1}
+= 2n_1$
+ -->
+<I>n</I> = 2.2<SUP>m - 1</SUP> = 2<I>n</I><SUB>1</SUB> for <I>m</I><IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img141.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img141.gif"
+ ALT="$ \ge$">1. We have
+
+<P>
+<!-- MATH
+ \begin{displaymath}
+F_p = \sum_{j = 0}^{n-1}f_j\omega _n^{jp}
+	= \sum_{j = 0}^{2n_1-1}f_j\omega _{2n_1}^{jp}.
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<I>F</I><SUB>p</SUB> = <IMG
+ WIDTH="28" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img284.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img284.gif"
+ ALT="$\displaystyle \sum_{j = 0}^{n-1}$"><I>f</I><SUB>j</SUB><IMG
+ WIDTH="28" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img315.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img315.gif"
+ ALT="$\displaystyle \omega_{n}^{jp}$"> = <IMG
+ WIDTH="41" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img316.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img316.gif"
+ ALT="$\displaystyle \sum_{j = 0}^{2n_1-1}$"><I>f</I><SUB>j</SUB><IMG
+ WIDTH="35" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img317.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img317.gif"
+ ALT="$\displaystyle \omega_{2n_1}^{jp}$">.
+</DIV><P></P>
+on re-writing in terms of <I>n</I><SUB>1</SUB>.  This sum can be split into two
+terms, according to whether <I>j</I> is even or odd, so
+<P></P>
+<DIV ALIGN="CENTER"><TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><I>F</I><SUB>p</SUB></TD>
+<TD NOWRAP ALIGN="LEFT">= <IMG
+ WIDTH="35" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img318.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img318.gif"
+ ALT="$\displaystyle \sum_{j = 0}^{n_1-1}$"><I>f</I><SUB>2j</SUB><IMG
+ WIDTH="35" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img319.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img319.gif"
+ ALT="$\displaystyle \omega_{2n_1}^{2jp}$"> + <IMG
+ WIDTH="35" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img318.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img318.gif"
+ ALT="$\displaystyle \sum_{j = 0}^{n_1-1}$"><I>f</I><SUB>2j + 1</SUB><IMG
+ WIDTH="60" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img320.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img320.gif"
+ ALT="$\displaystyle \omega_{2n_1}^{(2j+1)p}$">,</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD NOWRAP ALIGN="LEFT">= <IMG
+ WIDTH="35" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img318.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img318.gif"
+ ALT="$\displaystyle \sum_{j = 0}^{n_1-1}$"><I>f</I><SUB>2j</SUB><IMG
+ WIDTH="29" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img321.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img321.gif"
+ ALT="$\displaystyle \omega_{n_1}^{jp}$"> + <IMG
+ WIDTH="35" HEIGHT="65" ALIGN="MIDDLE" BORDER="0"
+ SRC="img318.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img318.gif"
+ ALT="$\displaystyle \sum_{j = 0}^{n_1-1}$"><I>f</I><SUB>2j + 1</SUB><IMG
+ WIDTH="29" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img321.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img321.gif"
+ ALT="$\displaystyle \omega_{n_1}^{jp}$"><IMG
+ WIDTH="23" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img322.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img322.gif"
+ ALT="$\displaystyle \omega_{n}^{p}$">.</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+&nbsp;&nbsp;&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+We consider this sum in more detail. Suppose first that <!-- MATH
+ $0
+\le p <n_1$
+ -->
+0<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$"><I>p</I> &lt; <I>n</I><SUB>1</SUB>. Then we can rewrite this as
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="E:fft-low"></A><!-- MATH
+ \begin{equation}
+\     F_p = \hat{f}_{\text{even}}(p) + \omega _n^p\hat{f}_{\text{odd}}(p)
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER">&nbsp;<I>F</I><SUB>p</SUB> = <IMG
+ WIDTH="37" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img323.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img323.gif"
+ ALT="$\displaystyle \hat{f}_{\text{even}}^{}$">(<I>p</I>) + <IMG
+ WIDTH="23" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img322.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img322.gif"
+ ALT="$\displaystyle \omega_{n}^{p}$"><IMG
+ WIDTH="33" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img324.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img324.gif"
+ ALT="$\displaystyle \hat{f}_{\text{odd}}^{}$">(<I>p</I>)</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(6.2)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <!-- MATH
+ $f_{\text{even}}$
+ -->
+<I>f</I><SUB>even</SUB> is the restriction of <I>f</I> to the even
+elements in its domain, and similarly for <!-- MATH
+ $f_{\text{odd}}$
+ -->
+<I>f</I><SUB>odd</SUB>.
+Further, if we consider <IMG
+ WIDTH="14" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img325.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img325.gif"
+ ALT="$ \hat{f}$"> at a point in the second
+half of its domain, namely at a point <I>p</I> + <I>n</I><SUB>1</SUB> for some <I>p</I> with
+<!-- MATH
+ $0 \le p < n_1$
+ -->
+0<IMG
+ WIDTH="16" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img73.gif"
+ ALT="$ \le$"><I>p</I> &lt; <I>n</I><SUB>1</SUB>, we see that 
+<!-- MATH
+ \begin{displaymath}
+\     \omega _{n_1}^{j(p+n_1)} = \omega _{n_1}^{jp}
+\     \ensuremath{\quad\text{and}\quad}\     \omega _n^{p + n_1} = -\omega _n^p.
+\end{displaymath}
+ -->
+<P ALIGN="CENTER"><IMG
+ WIDTH="259" HEIGHT="30" BORDER="0"
+ SRC="img328.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img328.gif"
+ ALT="\begin{displaymath}
+\omega _{n_1}^{j(p+n_1)} = \omega _{n_1}^{jp}
+\ensuremath{\quad\text{and}\quad} \omega _n^{p + n_1} = -\omega _n^p.
+\end{displaymath}"></P>
+Thus we have
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="E:fft-high"></A><!-- MATH
+ \begin{equation}
+\     \hat{f}(p + n_1) = \hat{f}_{\text{even}}(p) -
+\omega _n^p\hat{f}_{\text{odd}}(p).
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER">&nbsp;<IMG
+ WIDTH="14" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img329.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img329.gif"
+ ALT="$\displaystyle \hat{f}$">(<I>p</I> + <I>n</I><SUB>1</SUB>) = <IMG
+ WIDTH="37" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img323.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img323.gif"
+ ALT="$\displaystyle \hat{f}_{\text{even}}^{}$">(<I>p</I>) - <IMG
+ WIDTH="23" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img322.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img322.gif"
+ ALT="$\displaystyle \omega_{n}^{p}$"><IMG
+ WIDTH="33" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img324.gif" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/img324.gif"
+ ALT="$\displaystyle \hat{f}_{\text{odd}}^{}$">(<I>p</I>).</TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(6.3)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+These two formulae are essentially the same, and show we can
+calculate a transform of size <I>n</I> = 2<SUP>m</SUP> in terms of two
+transforms of size 2<SUP>m - 1</SUP>.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html1705"
+  HREF="node96.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node96.html">Timing the FFT</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1703"
+  HREF="node96.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node96.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1697"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1691"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node94.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node94.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node94.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1699"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1701"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1704"
+  HREF="node96.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node96.html">Timing the FFT</A>
+<B> Up:</B> <A NAME="tex2html1698"
+  HREF="node88.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node88.html">The Fast Fourier Transform</A>
+<B> Previous:</B> <A NAME="tex2html1692"
+  HREF="javascript:if(confirm('http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node94.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?'))window.location='http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node94.html'" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node94.html">Remark:</A>
+ &nbsp <B>  <A NAME="tex2html1700"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1702"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

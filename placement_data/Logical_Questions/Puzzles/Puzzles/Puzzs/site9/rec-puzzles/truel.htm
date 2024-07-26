@@ -1,0 +1,688 @@
+<html><head>
+<title>Solution for /decision/truel</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /decision/truel problem</h1>
+<hr>
+This is problem 20 in Mosteller _Fifty Challenging Problems in Probability_
+and it also appears (with an almost identical solution) on page 82 in
+Larsen &amp; Marx _An Introduction to Probability and Its Applications_.
+
+<p>
+Here's Mosteller's solution:
+
+<p>
+  A is naturally not feeling cheery about this enterprise.  Having the
+first shot he sees that, if he hits C, B will then surely hit him, and
+so he is not going to shoot at C.  If he shoots at B and misses him,
+
+<p>
+Then B clearly {I disagree; this is not at all clear!} shoots the more
+dangerous C first, and A gets one shot at B with probability 0.3 of
+succeeding.  If he misses this time, the less said the better.  On the
+other hand, suppose A hits B.  Then C and A shoot alternately until one
+hits.  A's chance of winning is (.5)(.3) + (.5)^2(.7)(.3) +
+(.5)^3(.7)^2(.3) + ... .  Each term corresponds to a sequence of misses
+by both C and A ending with a final hit by A.  Summing the geometric
+series we get ... 3/13 &lt; 3/10.  Thus hitting B and finishing off with
+C has less probability of winning for A than just missing the first shot.
+So A fires his first shot into the ground and then tries to hit B with
+his next shot.  C is out of luck.
+
+<p>
+As much as I respect Mosteller, I have some serious problems with this
+solution.  If we allow the option of firing into the ground, then if
+all fire into the ground with every shot, each will survive with
+probability 1.  Now, the argument could be made that a certain
+strategy for X that both allows them to survive with probability 1
+*and* gives less than a probability of survival of less than 1 for
+at least one of their foes would be preferred by X.  However, if
+X pulls the trigger and actually hits someone what would the remaining
+person, say Y, do?  If P(X hits)=1, clearly Y must try to hit X, since
+X firing at Y with intent to hit dominates any other strategy for X.
+If P(X hits)&lt;1 and X fires at Y with intent to hit, then
+P(Y survives)&lt;1 (since X could have hit Y).  Thus, Y must insure that
+X can not follow this strategy by shooting back at X (thus insuring
+that P(X survives)&lt;1).  Therefore, I would conclude that the ideal
+strategy for all three players, assuming that they are rational and
+value survival above killing their enemies, would be to keep firing
+into the ground.  If they don't value survival above killing their
+enemies (which is the only a priori assumption that I feel can be
+safely made in the absence of more information), then the problem
+can't be solved unless the function each player is trying to maximize
+is explicitly given.
+<pre>
+-- 
+    -- clong@remus.rutgers.edu (Chris Long)
+</pre>
+OK - I'll have a go at this.
+
+<p>
+How about the payoff function being 1 if you win the "duel" (i.e. if at some
+point you are still standing and both the others have been shot) and 0
+otherwise? This should ensure that an infinite sequence of deliberate misses
+is not to anyone's advantage. Furthermore, I don't think simple survival
+makes a realistic payoff function, since people with such a payoff function
+would not get involved in the fight in the first place!
+
+<pre>
+[ I.e. I am presupposing a form of irrationality on the part of the
+  fighters: they're only interested in survival if they win the duel. Come
+  to think of it, this may be quite rational - spending the rest of my life
+  firing a gun into the ground would be a very unattractive proposition to
+  me :-)
+]
+</pre>
+Now, denote each position in the game by the list of people left standing,
+in the order in which they get their turns (so the initial position is
+(A,B,C), and the position after A misses the first shot (B,C,A)). We need to
+know the value of each possible position for each person.
+
+<p>
+By definition:
+
+<pre>
+    valA(A) = 1            valB(A) = 0            valC(A) = 0
+    valA(B) = 0            valB(B) = 1            valC(B) = 0
+    valA(C) = 0            valB(C) = 0            valC(C) = 1
+</pre>
+Consider the two player position (X,Y). An infinite sequence of misses has
+value zero to both players, and each player can ensure a positive payoff by
+trying to shoot the other player. So both players deliberately missing is a
+sub-optimal result for both players. The question is then whether both
+players should try to shoot the other first, or whether one should let the
+other take the first shot. Since having the first shot is always an
+advantage, given that some real shots are going to be fired, both players
+should try to shoot the other first. It is then easy to establish that:
+
+<pre>
+    valA(A,B) = 3/10       valB(A,B) = 7/10       valC(A,B) = 0
+    valA(B,A) = 0          valB(B,A) = 1          valC(B,A) = 0
+    valA(B,C) = 0          valB(B,C) = 1          valC(B,C) = 0
+    valA(C,B) = 0          valB(C,B) = 5/10       valC(C,B) = 5/10
+    valA(C,A) = 3/13       valB(C,A) = 0          valC(C,A) = 10/13
+    valA(A,C) = 6/13       valB(A,C) = 0          valC(A,C) = 7/13
+</pre>
+Now for the three player positions (A,B,C), (B,C,A) and (C,A,B). Again, the
+fact that an infinite sequence of misses is sub-optimal for all three
+players means that at least one player is going to decide to fire. However,
+it is less clear than in the 2 player case that any particular player is
+going to fire. In the 2 player case, each player knew that *if* it was
+sub-optimal for him to fire, then it was optimal for the other player to
+fire *at him* and that he would be at a disadvantage in the ensuing duel
+because of not having got the first shot. This is not necessarily true in
+the 3 player case.
+
+<p>
+Consider the payoff to A in the position (A,B,C). If he shoots at B, his
+expected payoff is:
+
+<pre>
+    0.3*valA(C,A) + 0.7*valA(B,C,A) = 9/130 + 0.7*valA(B,C,A)
+</pre>
+If he shoots at C, his expected payoff is:
+
+<pre>
+    0.3*valA(B,A) + 0.7*valA(B,C,A) = 0.7*valA(B,C,A)
+</pre>
+
+And if he deliberately misses, his expected payoff is:
+
+<pre>
+    valA(B,C,A)
+</pre>
+Since he tries to maximise his payoff, we can immediately eliminate shooting
+at C as a strategy - it is strictly dominated by shooting at B. So A's
+expected payoff is:
+
+<pre>
+    valA(A,B,C) = MAX(valA(B,C,A), 9/130 + 0.7*valA(B,C,A))
+</pre>
+
+A similar argument shows that C's expected payoffs in the (C,A,B) position are:
+
+<pre>
+    For shooting at A: 0.5*valC(A,B,C)
+    For shooting at B: 35/130 + 0.5*valC(A,B,C)
+    For missing:       valC(A,B,C)
+</pre>
+
+So C either shoots at B or deliberately misses, and:
+
+<pre>
+    valC(C,A,B) = MAX(valC(A,B,C), 35/130 + 0.5*valC(A,B,C))
+</pre>
+Each player can obtain a positive expected payoff by shooting at one of the
+other players, and it is known that an infinite sequence of misses will
+result in a zero payoff for all players. So it is known that some player's
+strategy must involve shooting at another player rather than deliberately
+missing.
+
+<p>
+Now look at this from the point of view of player B. He knows that *if* it
+is sub-optimal for him to shoot at another player, then it is optimal for at
+least one of the other players to shoot. He also knows that if the other
+players choose to shoot, they will shoot *at him*. If he deliberately
+misses, therefore, the best that he can hope for is that they miss him and
+he is presented with the same situation again. This is clearly less good for
+him than getting his shot in first. So in position (B,C,A), he must shoot at
+another player rather than deliberately miss.
+
+<p>
+B's expected payoffs are:
+
+<pre>
+    For shooting at A: valB(C,B) = 5/10
+    For shooting at C: valB(A,B) = 7/10
+</pre>
+So in position (B,C,A), B shoots at C for an expected payoff of 7/10. This
+gives us:
+
+<pre>
+    valA(B,C,A) = 3/10     valB(B,C,A) = 7/10     valC(B,C,A) = 0
+</pre>
+So valA(A,B,C) = MAX(3/10, 9/130 + 21/100) = 3/10, and A's best strategy is
+position (A,B,C) is to deliberately miss, giving us:
+
+<pre>
+    valA(A,B,C) = 3/10     valB(A,B,C) = 7/10     valC(A,B,C) = 0
+</pre>
+
+And finally, valC(C,A,B) = MAX(0, 35/130 + 0) = 7/26, and C's best strategy
+in position (C,A,B) is to shoot at B, giving us:
+
+<pre>
+    valA(C,A,B) = 57/260   valB(C,A,B) = 133/260  valC(C,A,B) = 7/26
+</pre>
+
+I suspect that, with this payoff function, all positions with 3 players can
+be resolved. For each player, we can establish that if their correct
+strategy is to fire at another player, then it is to fire at whichever of
+the other players is more dangerous. The most dangerous of the three players
+then finds that he has nothing to lose by firing at the second most
+dangerous.
+
+<p>
+Questions:
+
+<ol>
+<li> In the general case, what are the optimal strategies for the other two
+    players, possibly as functions of the hit probabilities and the cyclic
+    order of the three players?
+
+<li> What happens in the 4 or more player case?
+</ol>
+    -- David Seal &lt;dseal@armltd.co.uk&gt;
+
+<hr>
+In article &lt;1993Mar25.022459.10269@cs.cornell.edu&gt;, karr@cs.cornell.edu (David Karr) writes:
+<pre>
+&gt; The Good, the Bad, and the Ugly are standing at three equidistant
+      "P"       "Q"          "R"      -- allow me these alternate names.
+&gt; points around a very large circle, about to fight a three-way duel to
+&gt; see who gets the treasure.  They all know that the Good hits with
+&gt; probability p=.9, the Bad hits with probability q=.7, and the Ugly
+&gt; hits with probability r=.5.
+&gt; 
+&gt; Yes, I know this sounds like decision/truel from the rec.puzzles
+&gt; archive.  But here's the difference:
+&gt; 
+&gt; At some instant, all three will fire simultaneously, each at a target
+&gt; of his choice.  Then any who survive that round fire simultaneously
+&gt; again, until at most one remains.  Note that there are then four
+&gt; possible outcomes: the Good wins, the Bad wins, the Ugly wins, or all
+&gt; are killed.
+
+</pre>
+	A multi-round multi-person game can get complicated if implicit
+	alliances are formed or the players deduce each other's strategies.
+	For simplicity let's disallow communication and assume the players
+	forget who shot at whom after each round.
+<pre>
+&gt; 
+&gt; Now the questions:
+</pre>
+	These are not easy questions, even with the simplifying
+	assumptions I've made.
+
+<pre>
+&gt; 
+&gt; 1. What is each shooter's strategy?
+</pre>
+
+	Each player has two possible strategies so there are eight cases
+	to consider; unfortunately none of the players has a strictly
+	dominant strategy:
+
+<pre>
+P aims at Q aims at R aims at	P survival Q survival R survival Noone lives
+--------- --------- ---------   ---------- ---------- ---------- -----------
+    Q         P         P         0.0649     0.0355     0.7991     0.1005
+    Q         P         Q         0.1371     0.0146     0.6966     0.1517
+ *  Q         R         P         0.3946     0.0444     0.1470     0.4140
+    Q         R         Q         0.8221     0.0026     0.0152     0.1601
+    R         P         P         0.0381     0.8221     0.0152     0.1246
+ *  R         P         Q         0.1824     0.3443     0.0426     0.4307
+    R         R         P         0.1371     0.5342     0.0027     0.3260
+    R         R         Q         0.6367     0.0355     0.0008     0.3270
+</pre>
+	(The similarity of, say, the 4th and 5th lines here looks wrong:
+	the intermediate expressions are quite different.  I can't
+	explain *why* P_survival(q,r,q) = Q_survival(r,p,p) = 0.8221
+	but I *have* double-checked this result.)
+
+	<p>
+	If I *know* who my opponents are going to aim at, I should shoot
+	at the better shooter if they're both aiming at me or neither is
+	aiming at me.  Otherwise I should aim at whoever is *not* aiming
+	at me.  There are two equilibrium points (marked "*" above):
+	<ul>
+	<li> Good aims at Bad; Bad aims at Ugly; Ugly aims at Good.
+	<li>  Good aims at Ugly; Bad aims at Good; Ugly aims at Bad.
+	</ul>
+	Here, unlike for zero-sum two-person games, the equilibria
+	are *not* equivalent and "solution", if any, may lie elsewhere.
+	Perhaps a game-theorist lurking in r.p can offer a better comment.
+
+	<p>
+	Note that the probability all three shooters die is highest at
+	the equilibria!  This seems rather paradoxical and rather sad :-(
+<pre>
+&gt; 
+&gt; 2. Who is most likely to survive?
+</pre>
+
+	Good, Bad, or Ugly, depending on the strategies.
+<pre>
+&gt; 
+&gt; 3. Who is least likely to survive?
+&gt; 
+</pre>
+	Bad or Ugly, depending on the strategies.
+
+<pre>
+&gt; 4. Can you change p, q, and r under the constraint p &gt; q &gt; r so that
+&gt;    the answers to questions 2 and 3 are reversed?  Which of the six
+&gt;    possible permutations of the three shooters is a possible ordering
+&gt;    of probability of survival under the constraint p &gt; q &gt; r?
+</pre>
+
+	Yes.  Of the six possible survival-probability orderings,
+	five can be obtained readily:
+	<pre>
+p	q	r	P_surv	Q_surv	R_surv	Order
+---	---	---	------	------	------	-------
+0.255	0.25	0.01	0.408	0.413	0.172	Q P R
+0.26	0.25	0.01	0.412	0.406	0.173	P Q R
+0.75	0.25	0.01	0.675	0.076	0.242	P R Q
+0.505	0.50	0.01	0.325	0.324	0.344	R P Q
+0.505	0.50	0.02	0.314	0.320	0.353	R Q P
+</pre>
+	Unlike the p=.9, q=.7, r=.5 case we are given, the five cases
+	in this table *do* have simple pure solutions: in each case
+	p shoots at q, while q and r each shoot at p.  (I've found no
+	case with a "simple pure" solution other than this "obvious"
+	p aims at q, q aims at p, r aims at p choice.)
+<pre>
+&gt; 
+&gt; 5. Are there any value of p, q, and r for which it is ever in the
+&gt;    interest of one of the shooters to fire into the ground?
+</pre>
+	No.  It can't hurt to shoot at one's stronger opponent.
+	This is the easiest of the questions ... but it's still
+	not easy enough for me to construct an elegant proof
+	in English.
+
+<pre>
+&gt; 
+&gt; -- David Karr (karr@cs.cornell.edu)
+&gt; 
+</pre>
+	Speaking of decision/truel, I recall a *very* interesting
+	analysis (I *might* have seen it here in rec.puzzles) suggesting
+	that the N-person "truel" (N-uel?) has a Cooperative Solution
+	(ceasefire) if and only if N = 3.  But I don't see this in the
+	FAQL; anyone care to repost it?
+
+<p>
+-- James Allen
+
+<hr>
+<pre>
+In article &lt;1993Apr1.123404.18039@vax5.cit.cornell.edu&gt; mkt@vax5.cit.cornell.edu writes:
+&gt;In article &lt;1993Mar25.022459.10269@cs.cornell.edu&gt;, karr@cs.cornell.edu (David Karr) writes:
+[...]
+&gt;&gt; 5. Are there any value of p, q, and r for which it is ever in the
+&gt;&gt;    interest of one of the shooters to fire into the ground?
+&gt;&gt; 
+&gt;     Yes, p=1, q=1, r=1.  The only way for one to survive is to have the other
+&gt;     two shoot at eachother.  Shooting at anyone has no effect on ones personal
+&gt;     survival.
+</pre>
+I assume by "has no effect on" you mean "does not improve."
+
+<pre>
+&gt;  If all follow the same logic, they will keep shooting into the
+&gt;     ground and thus all live.
+</pre>
+I was very pleased by this answer but I had to think about it.  First
+of all, it assumes that continuing the fight forever has a positive
+value for each shooter.  My preferred assumption is that it doesn't.
+But even if each shooter is simply trying to maximize his probability
+of never being shot, I wonder about the "has no effect" statement.
+
+<p>
+Suppose that in round 1 the Good fires into the ground and the Bad
+shoots at the Good.  Then the Ugly lives if he shoots the Bad and dies
+if he does anything else.  (The Bad will surely shoot at the Ugly if
+he can in round 2, since this dominates any other strategy.)  So it
+definitely makes a difference to the Ugly in this case to shoot at the
+Bad.
+
+<p>
+But all this is under the assumption that no shooter can tell what
+the others are about to do until after all have shot.  This isn't
+entirely unreasonable--we can certainly set up a game that plays
+this way--but suppose we assume instead:
+
+<ul>
+<li>  All three start out with guns initially holstered.
+<li>  Each one is a blindingly fast shot: he can grab his holstered gun,
+    aim, and fire in 0.6 second.
+<li>  A shooter can redirect his unholstered gun at a different target and 
+    fire in just 0.4 second.
+<li>  The reaction time of each shooter is just 0.2 second.  That is, any
+    decision he makes to act can be based only on the actions of the 
+    other two up to 0.2 second before he initiates his own action.
+<li>  The bullets travel between shooters in less than 0.1 second and
+    stop any further action when they hit.
+</ul>
+Then I *think* the conclusion holds for p=q=r=1: The best strategy is
+to wait for someone else to grab for their gun, then shoot that
+person, therefore nobody will shoot at anyone.  At least I haven't yet
+thought of a case in which you improve your survival by shooting at
+anyone.  Of course this is only good if you don't mind waiting around
+the circle forever.
+
+<pre>
+-- David Karr (karr@cs.cornell.edu)
+</pre>
+<hr>
+
+<pre>
+In article &lt;1993Apr5.210749.2657@cs.cornell.edu&gt;,
+karr@cs.cornell.edu (David Karr) writes: 
+&gt; In article &lt;1993Apr1.123404.18039@vax5.cit.cornell.edu&gt; mkt@vax5.cit.cornell.edu writes:
+&gt;&gt;In article &lt;1993Mar25.022459.10269@cs.cornell.edu&gt;, karr@cs.cornell.edu (David Karr) writes:
+&gt; [...]
+&gt;&gt;&gt; 5. Are there any value of p, q, and r for which it is ever in the
+&gt;&gt;&gt;    interest of one of the shooters to fire into the ground?
+&gt;&gt;&gt; 
+&gt;&gt;     Yes, p=1, q=1, r=1.  The only way for one to survive is to have the other
+&gt;&gt;     two shoot at eachother.  Shooting at anyone has no effect on ones personal
+&gt;&gt;     survival.
+
+&gt; 
+&gt; I assume by "has no effect on" you mean "does not improve."
+&gt; 
+&gt;&gt;  If all follow the same logic, they will keep shooting into the
+&gt;&gt;     ground and thus all live.
+&gt; 
+&gt; I was very pleased by this answer but I had to think about it.  First
+&gt; of all, it assumes that continuing the fight forever has a positive
+&gt; value for each shooter.  My preferred assumption is that it doesn't.
+&gt; But even if each shooter is simply trying to maximize his probability
+&gt; of never being shot, I wonder about the "has no effect" statement.
+&gt; 
+&gt; Suppose that in round 1 the Good fires into the ground and the Bad
+&gt; shoots at the Good.  Then the Ugly lives if he shoots the Bad and dies
+&gt; if he does anything else.  (The Bad will surely shoot at the Ugly if
+&gt; he can in round 2, since this dominates any other strategy.)  So it
+&gt; definitely makes a difference to the Ugly in this case to shoot at the
+&gt; Bad.
+&gt; 
+</pre>
+Here's where the clincher comes in!  If we "assume" the object of the game
+is to survive, and that there exists _one_ unique method for survival, then
+all the shooters will behave in the same fashion.  Obviously the above case
+will not hold.  How do we distinguish between the good, the bad and the ugly?
+If the command is "Shoot" then all will shoot and somebody is going to wind up
+lucky (Prob that it is you is 1/3).  If the command is "No Shoot", then all
+will fire into the ground (or just give up and go home--no sense waitin' around
+wastin' time, ya know)...
+
+<p>
+But wait, you cry!  What if there exists _more than one_ solution for optimal
+survival.  Then what?  Will the Good the Bad and the Ugly each randomly decide
+between "Shoot" and "No Shoot" with .5 probability?  If this is true, then is
+it in your best interest to shoot someone?  If it is, then we arrive back at
+square one:  since we assume all shooters are geniouses, then all will shoot--
+arriving at an optimal solution of "Shooting".  If the answer is "No Shooting",
+we arrive at an optimal solution of "No Shooting".  If there is no effect on
+your personal survival, then do we analyze this with another .5 probability
+between the chances of soemone shooting or not shooting?  If the answer to this
+is "Shoot" then we arrive at square one:  all will Shoot; if no, then all will 
+withold.  If there is no effect, then we arrive at another .5 probability...
+Obviously you can see the recursion of this process.
+
+<p>
+Perhaps this would be easier to discuss if we let p=1, q=1, r=0.  Obviously, in
+terms of survival, shooting at the ugly would be wasting a shot.  Thus we have 
+made a complex problem more simple but retaining the essence of the paradox:
+
+<blockquote>
+ If there are two gunmen who shoot and think with perfect logic and are kept
+ inside a room and are allowed to shoot at discrete time intervals without
+ being able to "see" what your opponent will do, what will happen?
+</blockquote>
+
+Let's say that you are one of the gunmen (the Good).  You reason "My probability
+to survive the next round is independent on whether or not I fire at him."  So
+you say to yourself, "Fire at the opponent!  I'll get to stop playing this
+blasted game." But then you realize that your opponent will also think the same
+way...so you might think that you might as well not shoot.  But if your
+opponent thinks that way, then you know that:  1.  You can survive the next
+round.  2.  You can shoot him if you wish on this round (if you like).  So you
+say to yourself, "Fire at the opponent!".  But you know the opponent thinks the
+same way so... you're dead.  But really, you say.  Is there a way of "knowing"
+what the opponent thinks?  Of course not.  You reason that you can know your
+probability of shooting your opponent (either 1 or 0).  You reason that your
+opponent has a variable probability of shooting you.  Thus from your
+perspective, p=1 and r&lt;1.  We already discussed this case and said "Shoot!". 
+But wait you cry!  What if the opponent figures this out too:  p&lt;1, r=1?  Sorry,
+you're both dead.  'nuff said!  This applies to the p=r=q=1 case as well.
+
+<pre>
+&gt; But all this is under the assumption that no shooter can tell what
+&gt; the others are about to do until after all have shot.  
+</pre>
+
+Ay, there's the rub!
+
+<pre>
+&gt;This isn't entirely unreasonable--we can certainly set up a game that plays
+&gt; this way--but suppose we assume instead:
+&gt; 
+&gt;   All three start out with guns initially holstered.
+&gt;   Each one is a blindingly fast shot: he can grab his holstered gun,
+&gt;     aim, and fire in 0.6 second.
+&gt;   A shooter can redirect his unholstered gun at a different target and 
+&gt;     fire in just 0.4 second.
+&gt;   The reaction time of each shooter is just 0.2 second.  That is, any
+&gt;     decision he makes to act can be based only on the actions of the 
+&gt;     other two up to 0.2 second before he initiates his own action.
+&gt;   The bullets travel between shooters in less than 0.1 second and
+&gt;     stop any further action when they hit.
+&gt; 
+&gt; Then I *think* the conclusion holds for p=q=r=1: The best strategy is
+&gt; to wait for someone else to grab for their gun, then shoot that
+&gt; person, therefore nobody will shoot at anyone.  At least I haven't yet
+&gt; thought of a case in which you improve your survival by shooting at
+&gt; anyone.  Of course this is only good if you don't mind waiting around
+&gt; the circle forever.
+</pre>
+Hmmn...alternate ploy:
+
+<ul>
+<li> 0.0  You begin to unholster your gun
+<li> 0.2  Opponents begin unholstering guns.  You aim into the ground for .2 sec.
+<li> 0.4  Opponents are unholstered you are unholstered.  They note you aren't
+     aiming at them.  They haven't aimed at anyone yet.
+
+</ul>
+What happens now?  I'll have to think about it, but I haven't seen anything
+fundamentally different between this and the above case yet.
+
+<p>
+More ideas to consider:
+
+<ul>
+<li> You begin unholstering your gun but only for .1  sec (you place it by .2 )<br>
+<li> You begin unholstering your gun but only for .09 sec (you place it by .19)<br>
+</ul>
+
+<ul>
+<li> You start to aim for .1  sec and then stop aiming.
+<li> You start to aim for .1  sec and then turn and aim at another.
+<li> You start to aim for .09 sec and then stop aiming (or aim at another)
+</ul>
+-Greg
+
+<p>
+<hr>
+Looking at the answer for decision/truel, I came across the following:
+
+<pre>
+&gt;Each player can obtain a positive expected payoff by shooting at one of the
+&gt;other players, and it is known that an infinite sequence of misses will
+&gt;result in a zero payoff for all players. So it is known that some player's
+&gt;strategy must involve shooting at another player rather than deliberately
+&gt;missing.
+</pre>
+This may be true but it's not obvious to me.  For example, suppose A, B,
+and C are passengers in a lifeboat in a storm.  If they all stay aboard,
+the lifeboat is certain to sink eventually, taking all three to the 
+bottom with it.  If anyone jumps overboard, the two remaining in the
+boat are guaranteed to survive, while the person who jumped has a 1%
+chance of survival.
+
+<p>
+It seems to me the lifeboat satisfies the quoted conditions, in the
+sense that if nobody jumps then the payoff for all is zero, and the
+payoff for jumping is 0.01 which is positive.  But it is not clear to
+me that the three shouldn't just all sit still until someone goes nuts
+and jumps overboard despite everything, for this strategy gives a 67%
+chance of survival (assuming everyone is equally likely to "crack"
+first) vs. only 1% for jumping by choice.  Even if there is a wave
+about to swamp the boat, I'd wonder if the situation wouldn't just
+reduce to a game of "chicken," with each person waiting until the last
+minute and jumping only if it seems the other two have decided to sink
+with the boat if you don't jump.
+
+<p>
+On the other hand, this situation is set up so it is always worse to
+be the first person to jump.  In the truel I don't think this is true,
+but only because of the asymmetry of the odds, and to determine
+whether *anyone* shoots, it is easiest to proceed directly to
+considering B's point of view.
+
+<p>
+Whenever it is B's turn to shoot, B can divide the possible courses of
+action into four possibilities (actually there are seven, but three
+are ruled out a priori by obvious optimizations of each individual's
+strategy):
+
+<p>
+<ul>
+<li> Nobody ever shoots (expected value 0)
+<li> A shoots first (at B, expected value &lt;= .7)
+<li> C shoots first (at B, expected value &lt;= .5)
+<li> B shoots first (at C, expected value .7)
+</ul>
+In fact the value of "A shoots first" is strictly less than .7 because
+in case A misses, the same four possibilities recur, and all have
+expected payoff &lt; 1.
+
+<p>
+So the value of "B shoots first" uniquely maximizes B's value function,
+ergo B will always shoot as soon as possible.
+
+<p>
+The rest of the analysis then follows as in the archive.
+
+<p>
+-- David Karr (karr@cs.cornell.edu)
+
+<hr>
+<pre>
+&gt; Looking at the answer for decision/truel, I came across the following:
+&gt;
+&gt; &gt;Each player can obtain a positive expected payoff by shooting at one of the
+&gt; &gt;other players, and it is known that an infinite sequence of misses will
+&gt; &gt;result in a zero payoff for all players. So it is known that some player's
+&gt; &gt;strategy must involve shooting at another player rather than deliberately
+&gt; &gt;missing.
+&gt;
+&gt; This may be true but it's not obvious to me.  For example, suppose A, B,
+&gt; and C are passengers in a lifeboat in a storm.  If they all stay aboard,
+&gt; the lifeboat is certain to sink eventually, taking all three to the 
+&gt; bottom with it.  If anyone jumps overboard, the two remaining in the
+&gt; boat are guaranteed to survive, while the person who jumped has a 1%
+&gt; chance of survival.
+&gt;
+&gt; It seems to me the lifeboat satisfies the quoted conditions, in the
+&gt; sense that if nobody jumps then the payoff for all is zero, and the
+&gt; payoff for jumping is 0.01 which is positive.  But it is not clear to
+&gt; me that the three shouldn't just all sit still until someone goes nuts
+&gt; and jumps overboard despite everything, for this strategy gives a 67%
+&gt; chance of survival (assuming everyone is equally likely to "crack"
+&gt; first) vs. only 1% for jumping by choice.  ...
+</pre>
+Yes and no. Yes in the sense that if you treat the game as a psychological
+one, the best strategy is as you say. But treating it as a mathematical
+game, you've got to adhere to your strategy and you've got to assume that
+others will adhere to theirs.
+
+<p>
+I.e. as a mathematical game, "Don't jump at all" and "Don't jump unless I
+crack" are different strategies, and the first one is often (not always)
+superior - e.g. if I take "Don't jump at all" and the others take "Don't
+jump unless I crack", I'm certain to survive and the others each have a
+50.5% chance, which is better from my point of view than a 67% chance of
+survival for all of us. As a psychological game, some of the mathematical
+strategies may simply not be available - i.e. you cannot control what you
+will do if you crack, and so we commonly use "Don't jump" to mean "Don't
+jump unless I crack", since "Don't jump at all" is not an available strategy
+for most real humans. But for mathematical analysis, the problem has to tell
+you what strategies you are not allowed to take.
+
+<p>
+What the argument above shows is that "Don't jump at all" is not a stable
+strategy, in the sense that if everyone takes it, it is in everyone's
+interest to change strategy. I.e. it shows that someone will jump
+eventually, even if it's only the result of someone actually having taken
+"Don't jump unless I crack".
+
+<p>
+Applied to the truel, the argument above *does* show that someone's strategy
+will involve shooting at another player: the strategy "Don't shoot at all"
+is unstable in exactly the same way as "Don't jump at all" was. But I agree
+it allows for a lot of leeway about how and when the deadlock gets broken,
+and your argument showing that it is always in B's interest to shoot is more
+satisfactory.
+
+<p>
+David Seal
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>

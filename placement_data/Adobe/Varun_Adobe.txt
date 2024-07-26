@@ -1,0 +1,256 @@
+Adobe Written Exam 
+
+C/C++ :-
+ 
+Ques 1.
+Write setnum(x,p,y,n)
+Dennis Ritchie question : set the n bits starting from position p in x with rightmost n bits of y.
+ 
+Ques 2.
+Write a program to find the depth of Binary Tree
+ 
+Ques 3.
+In Binary Search code, reduce the number of comparisons in while loop from two to one. Write the code.
+ 
+Ques 4.
+Difference between char arr[] = "string" and char *arr = "string".
+ 
+Ques 5.
+Implement int **my2DAllocate(int rows, int columns); to allocate memory for 2D array and return the int ** pointer.
+ 
+Ques 6.
+What are bit fields. Give example, when they are used.
+ 
+Ques 7.
+What are data break points. When do we use them.
+ 
+Ques 8.
+Write code to evaluate ReversePolish.
+Input : 123+*
+Output : 6 
+ 
+Ques 9.
+Hex no. is given in string for (0x or 0X optional). Write code to get the integer value.
+ 
+ 
+
+
+Engineering Paper : -
+
+Ques1:
+For a String s
+Head(s)= first char of s
+Tail(s) = all the chars of s except head 
+
+I.e. is s=”abcd” , head(s)=”a” , tail(s)=”bcd”
+
+So given concat(Head(s),Head(tail(tail(s))) = “ac” , which of the following could be s 
+
+abcd , aabc,acac , aaac
+
+
+Ques 2.
+Binary Search tree is given. Print all the possible routes from root to leaf.
+ 
+Ques 3.
+Give a Data Structure to denote a polynomial when :
+a)	polynomial is dense
+b)	polynomial is sparse
+ 
+Ques 4.
+U have a file that is much bigger than RAM , give an algo to sort the file.
+
+Ques 5.
+
+Int power(int base,int n)
+{
+    if(n==0)
+       return 1;
+    else 
+    {
+          int x = power(base,n/2);
+          if(n%2==0)
+             {
+               return x*x;
+             }
+           else{
+                return x*x*base; 
+            }
+    }
+}
+
+if I call power(5,12) then how many multiplications will take place ?
+
+
+Ques 6.
+P1 : read the file
+P2 : modify the file
+ 
+Show how will u synchronize the process so that modify can happen only when no one is reading the file. Using constructs 
+
+Enter Critical Section :
+Exit Critical Section :
+Wait Event :
+Signal Event 
+
+Ques 7.
+Given code that did bubble sort and sorted an array in decreasing order. An array is given in sorted order, u have to find out that if the above algo is run on it .. then how many times would two array values be swapped.
+
+
+Ques 8.
+Given two binary tree, how will u find that they are isomorphic (that is at each level they are equal or are mirror image of each other)
+
+Ques 9.
+A rectangle is represented by two points P1(x1,y1) and P2(x2,y2) representing lower left and upper right corner.
+
+So given two rectangles , find if they intersect.
+
+
+ 
+Interview 1 :
+
+1) A date is represented as yyyy/mm/dd ex : 2001/10/02  .
+   Now observe that the above date is a palendrom, so find out the palendrom date which came just before the above date.
+  (Hint : September dosn’t have 31 days !!!! )
+
+2) given two stings s1 and s2 , s1 has some characters at the end which are same as   some of s2’s starting characters .. 
+   so u have to concatenate the strings so that the repeated portion occurs only once.
+
+Ex :  S1 = “ ABCDEFGHIJK”;
+      S2 = “GHIJKXYZ”;
+
+      O/p = “ABCDEFGHIJKXYZ”
+      
+3) given a big string , u enable a person to underline some characters , for example some body had underlined characters 3-6 and 10-14 and so on .. 
+   suggest a Data structure which can record this info effeciently and can accomodate new underlines .
+   NOTE : a new underline could lead to updation of records for ex consider a underline that starts from 5-8 .. then above set would become 3-8 and 10-14
+   NOTE : a new underline could lead to MERGING of records for ex consider a underline 4-13 .. this would lead to 3-14 in above set.
+   
+4) arr[2][3][2]={1,2,3,4,5,6,7,8,9,10,11,12};
+   what is value of arr,*arr,**arr,***arr, arr+1 ,*arr+1 ,**arr+1,***a+1
+   
+5) Given a no N, find all prime nos from 1 to N. using the fastest approach possible.
+
+   Now the answer i gave for this question left him speechless .. 
+   He was basically just looking for the soln where i store all the previously encountered primes in an array and just keep dividing my no with them to find if its prime or not
+   But because of my maths background i gave a answer which uses Fermat's Theorm and proved much faster than above approach and no extra memory reqd.
+   
+   After that soln he kind of felt overwhelmed and the interview was over :D
+   
+
+Interview 2 :
+
+1) Given M sorted arrays , each having K elements , merge them into a big sorted array of size MK in most efficient manner possible.
+
+   (Hint :- Coreman Question : Use a Heap) 
+   
+2) If u have to desing ur own Operating System , what mechanism are u going to use for ur file system .
+
+   (I started with using continous blocks to store file , this lead to external fragmentation ..
+    so next i told of using linked approach , where in each block i also keep address of next data block
+    next moved to FAT system...
+    Finally came up with an indexed approach , where first datablock just stored pointers to rest of data blocks)
+    
+3) Implement a stack such that push,pop and max and min are obtained in O(1)
+
+4) given an array[1...N] which have elements from range 1-N they have elements that are repeated any no of times.
+   So give all the approaches u can come up for to find the nos that are repeated.
+   
+   (first O(n^2) approach : brute force
+    then sort and find out 
+    then use and extra array of size n 
+    then use a bit vector of size n
+    no extra memory , whenever u encounter a no go to that index and make the value -ve ....
+    and another couple of really fundoo algos were given )
+    
+5) How will u create ur own C++ library.
+  
+   (told that i will create my classes and place all my implementations in it. and provide a header file which having the class , macro and typedef declarations.
+    He then asked that what approach would u use to avoid mentioning all private and protected functions from the '.h' file
+    After about 5 - 10 mins of discussion .. i gave the correct answer .. that i will create a class which has all my private and protected funtions .. and in my 
+    original class i will just add a POINTER to that class (Note : Pointer and not object as if i use an object then i have to give my second class's declaration too
+    and so will land up at square 1 )
+    
+6) Create a singleton class in C++
+
+
+Interview 3 : 
+
+1) given a link list , find if its a palendrom or not.
+   (I gave one soln , then he asked me to code a recursive one )
+   
+2) There is a rectangular table , u and ur friends have identical coins , so u place a coin on table,then ur friend places one (no overlap allowed) , in the end 
+   there would be no space left on the table and the person who is not able to place his coin on the table looses.
+   So device an algo such that if u place the first coin , u will always win .
+   
+   (Basically place the coin at the center (point of intersection of diagonals), then wherever the friends places a coin, place a coin at its mirror image across the diagonal,
+    so for all his coins u are able to place a coin, hence cancelling his every move, but u have a coin extra at the center and hence in the end u will win)
+
+3) In a party there is  X, X's wife Y along with A,B,C,D,E and F (where b is a's wife , d is c's wife and f is e's wife). So ppl meet and handshakes take place , its given 
+   a husband dosnt shake hands with his wife. In the End X asks every1 else the no of handshakes that they had .. and all give different Answers !!!!!!
+   IF its given that X shook hands with A. Then u have to find if Y shook hand with A / B / either of them / none of them 
+   
+4) Applications of Heap, implement heapsort
+
+5) function to generate permutations of a string ( he told me to assume that all characters in string are different)
+
+6) being in line with prev question , he told me to come up with a Data structure that given a string , find all anagrams of string.
+   
+Interview 4:
+
+1) given a no x , convert it to binary and store it into a char array and return.
+
+   (Looks simple, but is not .. basically u need to take care how much memory u need to allocate the array , then if u are returning , should u create a array 
+    or use malloc , then how should the calling function accept it as char * p = fun() or char p[] = fun()
+    
+    He then changed some lines of code and said now what will happen and so on ..)
+   
+2) given two very big files , each having around 1 billion lines , u have to print all the lines that are common to both files
+
+   (gave nearly 10 different approaches : 
+    brute force , create a binary tree of one file and then keep searching elements of other file in it,sort one file and do binary search , sort both and compare top two and proceed , 
+    sort and place the strings in buckets , buckets then gave way to B trees , then hashing , break file into small mangagable chunks and then proceed etc etc ..) 
+    
+3) what is virtual memory and how would u use it in the previous question
+
+4) given a N X M matrix , find out the total nos of rectangles that can be there.
+
+
+5) 
+
+   int p = 0x6000;
+   int *q = &p;
+   
+   fun(int *r)
+   {
+      *r = *q;
+   }
+   int main()
+   {
+      int a = 0x5000;
+      fun(&a);
+      printf(a);
+   }
+   
+   here he asked the o/p. then he made the following change 
+   
+   he replaced the int * r with char ** r , then asked me what would be the o/p. This really confused me, but i figured out the ans in about 2 mins .
+   then he replaced the char ** r with char *r, this looks simpler than pervious case , but believe me .. this is the toughest ,
+   
+   here when we do *r = *q this would then lead to storage of 0x6000 % 255 to be stored in *r 
+   also there is now the case of Endianess, if machine is little Endian then r has changed the Least Significant Byte of a else the Most Significant Byte.
+   
+HR round : 
+
+1) ur marks in 10,12,grad and mca 
+2) ur ranks in all the above 
+3) what all companies did u sit in during campus placements , out of them in how many did u get selected
+4) what was ur rank in DU's MCA enterance
+5) what would ur boss say about u
+6) What is the best thing about Trilogy and whats the worst
+7) Package , how much expected
+8) Whats ur worst habbit
+9) How is ur rapport with ur team in trilogy
+10) Give me 5 reasons that seperates u from others so that i should select u
+11) How do u rate ur performance in trilogy on a scale of 1-10
+

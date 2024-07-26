@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Solution</title>
+</head>
+
+<body bgcolor=lightyellow>
+<center>
+<h1>Solution</h1>
+</center>
+<center>
+</center>
+
+<blockquote>
+<hr>
+<font color="blue">Question:</font><br>
+Call a number n &gt 0 a "dollar number" if there is a way to make exactly
+one US dollar with exactly "n" US coins (denominations $.01, $.05, $.10,
+$.25, $.50, and $1.00).  What is the smallest n &gt 0 that is not a dollar
+number?
+<p>
+To make things clearer, for example, 4 is not a dollar number since 4 quarters make a dollar. 5 isn't a dollar
+number either because you can have .50 + 0.25 + 0.10 + 0.10 + 0.05 = 1.00.
+<p>
+<font color="blue">Answer:</font><br>
+77 <p>
+<pre>
+For n = 1 to 4 there are obvious combinations of 1.00, .50, and .25.
+For n = 5 and 6, use 1.00 = .50 + .25 + .10 + .10 + .05, then .50 = 2*.25.
+For n = 7 to 9, use 1.00 = 2*.25 + 5*.10, then apply .10 = 2*.05 twice.
+For n = 10 to 19, use 1.00 = 10*.10 and apply .10 = 2*.05 nine times.
+For n = 20 to 76, vary the breakdown of the first 30 cents from 3 to 6
+        coins using .30 = 3*.10 = 2*.10 + 2*.05 = .10 + 4*.05 = 6*.05;
+        the remaining 70 cents starts out as nickels which you convert
+        to pennies one at a time, raising the count by 4 each time.
+        Thus you get from 20 nickels to 70 pennies and 6 nickels.
+
+To get 77 coins, suppose these include 5k pennies (must have a
+multiple of 5 because every other coin is congruent to 0 mod 5 cents).
+Then the remaining 100 - 5k cents must consist of 77 - 5k coins.
+Since each remaining coin is worth at least 5 cents, the non-penny
+value in cents is at least 5 times the non-penny coin count:
+
+   100 - 5k  >=  5 * (77 - 5k)
+
+By algebra:
+
+   20 - k  >=  77 - 5k
+   4k  >=  57
+   k  >=  57/4 = 14.25
+
+Since k is an integer, k >= 15, i.e. we must have at least 5*15 = 75
+pennies.  We can't have more because 5*16 = 80 is already greater than
+77.  But then we must find exactly two coins to add up to the
+remaining 25 cents.  By exhaustive search we show there is no such
+combination.  We can't make 1.00 in 77 coins.
+</pre>
+<hr>
+<p>
+<center>
+</center>
+
+<p><br><br><br>
+</blockquote>
+</body>
+</html>

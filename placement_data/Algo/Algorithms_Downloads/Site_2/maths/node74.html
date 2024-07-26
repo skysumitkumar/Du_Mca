@@ -1,0 +1,209 @@
+
+<!--Converted with LaTeX2HTML 2K.1beta (1.47)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Evaluating a Postfix Expression </TITLE>
+<META NAME="description" CONTENT="Evaluating a Postfix Expression ">
+<META NAME="keywords" CONTENT="notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<!--#include virtual="/maths/department/include_html/style1.html"-->
+<!--#include
+    virtual="/maths/department/include_html/head.html"-->
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2K.1beta">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="notes.css" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/notes.css">
+
+<LINK REL="next" HREF="node75.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node75.html">
+<LINK REL="previous" HREF="node72.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node72.html">
+<LINK REL="up" HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">
+<LINK REL="next" HREF="node75.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node75.html">
+</HEAD>
+
+<BODY  bgcolor="#ffffff">
+<!--Navigation Panel-->
+<A NAME="tex2html1384"
+  HREF="node75.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node75.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1378"
+  HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1372"
+  HREF="node73.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node73.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1380"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1382"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1385"
+  HREF="node75.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node75.html">Questions 4 (Hints and</A>
+<B> Up:</B> <A NAME="tex2html1379"
+  HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">Grammers and Parsing</A>
+<B> Previous:</B> <A NAME="tex2html1373"
+  HREF="node73.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node73.html">FBIE Grammer</A>
+ &nbsp <B>  <A NAME="tex2html1381"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1383"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00880000000000000000">
+Evaluating a Postfix Expression </A>
+</H1>
+
+<P>
+Now we come to the nub of the problem. The compiler has input an
+expression in normal form from your program. It has decided that it is
+grammatically correct and has converted it into postfix form. Now it
+has to <I>understand</I> it -- i.e. work out what it is asking for.
+The compiler does not actually perform the operations called for by the
+expression (that is done when you run the program) but it generates a
+stream of machine instructions that will have the effect of evaluating
+the expression. To give you a taste of what happens let me invent a totally
+fictitious compiler and equally fictitious machine language.
+
+<P>
+The expression <!-- MATH
+ $(a+b)*(c+d)$
+ -->
+(<I>a</I> + <I>b</I>)*(<I>c</I> + <I>d</I> ) would be converted into something like
+the following
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ fetch value of a into register
+<BR>
+add value of b to register
+<BR>
+put result into temporary store T
+<BR>
+fetch value of c into register
+<BR>
+add value of d to register
+<BR>
+multiply value of T into register
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>
+<P>
+The point is that the actual machine operations are usually rather
+elementary things (on small computers there would probably be far more
+instructions used than in this example simply because the instructions
+are that much more elementary).
+
+<P>
+Let's get on with the problem. The beauty of postfix expressions is
+that they are very easy to evaluate. That's why I converted into
+postfix in the first place.  And here is the evaluation algorithm,
+which once more uses the two `predicates' isvar(x) and isop(x):
+
+<P>
+<BR CLEAR="ALL">
+<HR>
+<DIV ALIGN="LEFT">
+<TT>
+ 01 algorithm evaluate(s,n)
+<BR>
+02 // s is a postfix string of length n
+<BR>
+03 &nbsp;&nbsp;for i = 1 to n begin
+<BR>
+04 &nbsp;&nbsp;&nbsp;&nbsp;if isvar( s(i) ) &nbsp;then push(value of s(i) )
+<BR>
+05 &nbsp;&nbsp;&nbsp;&nbsp;if isop( s(i) ) then begin
+<BR>
+06 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = pop
+<BR>
+07 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = pop
+<BR>
+08 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do y s(i) x and push result (note the order) 
+<BR>
+09 &nbsp;&nbsp;&nbsp;&nbsp;end
+<BR>
+10 &nbsp;&nbsp;end 
+<BR>
+11 &nbsp;&nbsp;x = pop
+<BR>
+12 &nbsp;&nbsp;return x
+<BR>
+13 end. &nbsp;
+<BR></TT>
+</DIV>
+<BR CLEAR="ALL">
+<HR>
+<P>
+The basic action is this:  as each variable appears in the expression its
+value is pushed onto the stack (4). When an operation appears (5) the top two 
+values are taken off the stack (6,7) and this operation is performed
+on them. The result is pushed back onto the stack (8). This means that,
+at any stage, the next operator applies to the previous two values on
+the stack.  At the end there
+should be just one value left in the stack -- the result. Pop this (11)
+and return it as the answer.
+
+<P>
+A compiler, as I said, does not actually perform the calculation -- you
+are not running the program yet. At line 8 the compiler will write the
+machine code for performing the operation, rather than actually performing
+it.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1384"
+  HREF="node75.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node75.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/next.gif"></A> 
+<A NAME="tex2html1378"
+  HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/up.gif"></A> 
+<A NAME="tex2html1372"
+  HREF="node73.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node73.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/prev.gif"></A> 
+<A NAME="tex2html1380"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/contents.gif"></A> 
+<A NAME="tex2html1382"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index"
+ SRC="file:/maths/faces/local/lib/latex2html-2K.1beta/icons/index.gif"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1385"
+  HREF="node75.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node75.html">Questions 4 (Hints and</A>
+<B> Up:</B> <A NAME="tex2html1379"
+  HREF="node62.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node62.html">Grammers and Parsing</A>
+<B> Previous:</B> <A NAME="tex2html1373"
+  HREF="node73.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node73.html">FBIE Grammer</A>
+ &nbsp <B>  <A NAME="tex2html1381"
+  HREF="node1.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node1.html">Contents</A></B> 
+ &nbsp <B>  <A NAME="tex2html1383"
+  HREF="node113.html" tppabs="http://www.maths.abdn.ac.uk/~igc/tch/mx4002/notes/node113.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Ian Craw
+2001-04-27
+</ADDRESS>
+</BODY>
+</HTML>

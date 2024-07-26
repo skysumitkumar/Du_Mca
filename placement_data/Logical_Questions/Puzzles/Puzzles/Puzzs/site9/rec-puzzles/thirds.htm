@@ -1,0 +1,63 @@
+<html><head>
+<title>Solution for /arithmetic/clock/thirds</title></head>
+<body bgcolor="#FFFFFF">
+<h1>Solution to the /arithmetic/clock/thirds problem</h1>
+<hr>
+First let us assume that our clock has 60 divisions.  We will show that
+any time the hour hand and the minute hand are 20 divisions (120 degrees)
+apart, the second hand cannot be an integral number of divisions from the
+other hands, unless it is straight up (on the minute).
+
+<p>
+Let us use h for hours, m for minutes, and s for seconds.
+We will use =n to mean congruent mod n, thus 12 =5 7.
+
+<p>
+We know that m =60 12h, that is, the minute hand moves 12 times as fast
+as the hour hand, and wraps around at 60.
+We also have s =60 60m. This simplifies to s/60 =1 m, which goes to
+s/60 = frac(m) (assuming s is in the range 0 &lt;= s &lt; 60), which goes to
+s = 60 frac(m).  Thus, if m is 5.5, s is 30.
+
+<p>
+Now let us assume the minute hand is 20 divisions ahead of the hour hand.
+So m =60 h + 20, thus 12h =60 h + 20, 11h =60 20, and, finally,
+h =60/11 20/11 (read 'h is congruent mod 60/11 to 20/11').
+So all values of m are k + n/11 for some integral k and integral n,
+0 &lt;= n &lt; 11.  s is therefore 60n/11.  If s is to be an integral number of
+units from m and h, we must have 60n =11 n.  But 60 and 11 are relatively
+prime, so this holds only for n = 0.  But if n = 0, m is integral, so
+s is 0.
+
+<p>
+Now assume, instead, that the minute hand is 20 divisions behind the hour hand.
+So m =60 h - 20, 12h =60 h - 20, 11h =60 -20, h =60/11 -20/11.
+So m is still k + n/11.  Thus s must be 0.
+
+<p>
+But if s is 0, h must be 20 or 40.  But this translates to 4 o'clock or
+8 o'clock, at both of which the minute hand is at 0, along with the second
+hand.
+
+<p>
+Thus the 3 hands can never be 120 degrees apart, Q.E.D.
+
+<p>
+This assumes, of course, that the second hand is synchronized with the
+minute hand.  This is not true on some inexpensive analog watches.  This
+also assumes that the watch is not broken (:^)).
+
+<br>
+<br>
+<center>
+<a href="mailto:nospam+4@rec-puzzles.org">E-mail</a> |
+<a href="index.htm" tppabs="http://rec-puzzles.org/">to the index</a> |
+<a href="javascript:if(confirm('http://ladybug.xs4all.nl/arlet/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://ladybug.xs4all.nl/arlet/'" tppabs="http://ladybug.xs4all.nl/arlet/">to Arlet's home page</a> |
+Powered by  
+<a href="javascript:if(confirm('http://www.linux.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.linux.org/'" tppabs="http://www.linux.org/">Linux</a>/<a href="javascript:if(confirm('http://www.apache.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://www.apache.org/'" tppabs="http://www.apache.org/">Apache</a>.
+</center>
+<br>
+<hr>
+<em>
+... ``follow me,'' the wise man said, but he walked behind... </em><br>
+</body></html>
