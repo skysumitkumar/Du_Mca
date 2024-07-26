@@ -1,0 +1,277 @@
+#include<iostream>
+#include<vector>
+#include<ctime>
+#include<chrono>
+using namespace std;
+using namespace std::chrono;
+class sort
+{
+    public:
+    int n;
+    int size;
+    sort(int size)
+    {
+        this->size=size;
+    }
+    void SelectionSort(int *arr)
+    {
+        int min;
+        int index;
+        for(int i=0;i<size-1;i++)
+        {
+            min=arr[i];
+            index=i;
+            for(int j=i+1;j<size;j++)
+            {
+                if(arr[j]<min)
+                {
+                    min=arr[j];
+                    index=j;
+                }
+            }
+            if(index!=i)
+            {
+                int temp=arr[index];
+                arr[index]=arr[i];
+                arr[i]=temp;
+            }
+        }
+    }
+    void BubbleSort(int *arr)
+    {
+            int flag;
+            for(int i=0;i<size;i++)
+            {
+                flag=0;
+                for(int j=0;j<size-i-1;j++)
+                {
+                    if(arr[j+1]<arr[j])
+                    {
+                        int temp=arr[j];
+                        arr[j]=arr[j+1];
+                        arr[j+1]=temp;
+                    }
+                    if(flag==0)
+                    {
+                        return;
+                    }
+                }
+            }
+    }
+    void InsertionSort(int *arr)
+    {
+            for(int i=0;i<size;i++)
+            {
+                for(int j=i;j>0;j--)
+                {
+                    if(arr[j-1]>arr[j])
+                    {
+                        int temp=arr[j-1];
+                        arr[j-1]=arr[j];
+                        arr[j]=temp;
+                    }
+                }
+            }
+    }
+    //merge sort
+    void Merge(int *v,int start,int end,int mid)
+    {
+        int size1=mid-start+1;
+        int size2=end-mid;
+        int arr1[size1];
+        int arr2[size2];
+        int s=start;    
+        int m=mid+1;
+        int i=0,j=0;
+        //here i copy array
+        for(int i=0;i<size1;i++)
+        {
+            arr1[i]=v[s];
+            s++;
+        }
+        for(int i=0;i<size2;i++)
+        {
+            arr2[i]=v[m];
+            m++;
+        }
+        i=0;
+        j=0;
+        s=start;
+        //here i checking array and arrange in sorted manner
+        while(i<size1&&j<size2)
+        {
+            if(arr1[i]<arr2[j])
+            {
+                v[s]=arr1[i];
+                i++;
+                s++;
+            }
+            else
+            {
+                v[s]=arr2[j];
+                j++;
+                s++;
+            }
+        }
+        //if any array left than traversing than we traverse that and arrange thoes no's in sorted manner
+        while(i<size1)
+        {
+            v[s]=arr1[i];
+            i++;
+            s++;
+        }
+        while(j<size2)
+        {
+            v[s]=arr2[j];
+            j++;
+            s++;
+        }
+    }
+    void sortmerge(int* arr,int start,int end)
+    {
+        if(start<end)
+        {
+            int mid=(start+end)/2;
+            sortmerge(arr,start,mid);
+            sortmerge(arr,mid+1,end);
+            Merge(arr,start,end,mid);
+        }
+        
+    }
+    //Quick sort
+    int Quicksort(int *arr,int lowerbound,int upperbound)
+    {
+        int pivot=arr[lowerbound];
+        int start=lowerbound;
+        int end=upperbound;
+        while(start<end)
+        {
+            while(arr[start]<=pivot&&start<end) 
+            {
+                start++;
+            }
+            while(arr[end]>pivot)
+            {
+                end--;
+            }
+            if(start<end)
+            {
+                swap(arr[start],arr[end]);
+            }
+        }
+        swap(arr[end],arr[lowerbound]);
+        return end;
+    }
+    void sortquick(int* arr,int lowerbound,int upperbound)
+    {
+        if(lowerbound<upperbound)
+        {
+            int pivotelement=Quicksort(arr,lowerbound,upperbound);
+            sortquick(arr,lowerbound,pivotelement-1);
+            sortquick(arr,pivotelement+1,upperbound);
+        }   
+        else
+        {
+            return;
+        }
+    }
+    //heap sort
+    void Hdelete(int* arr,int start,int end)
+    {
+        int e=end;
+        int s=start;
+        swap(arr[start],arr[end]);
+        while(2*s<end)
+        {
+            int lchild=arr[2*s];
+            int index=0;
+            if((2*s)+1<end)
+            {
+                int rchild=arr[(2*s)+1];
+                int m=max(lchild,rchild);
+                if(m==lchild)
+                {
+                    index=2*s;
+                }
+                else
+                {
+                    index=(2*s)+1;
+                }
+                swap(arr[index],arr[s]);
+                s=index;
+            }
+            else{
+                index=2*s;
+                if(arr[s],arr[2*s])
+                {
+                    swap(arr[index],arr[s]);
+                    s=index;
+                }
+            }
+        }
+    }
+    void hepify(int* arr,int start,int end)
+    {
+        int s=start;
+        int e=end;
+        while(e>1)
+        {
+            int end1=e;
+            while(arr[end1]>arr[end1/2]&&end1>1)
+            {
+                if(arr[end1]>arr[end1/2])
+                {
+                    swap(arr[end1],arr[end1/2]);
+                }
+                end1=end1/2;
+            }
+            e--;
+        }
+    }
+    void Hsort(int* arr,int start,int end)
+    {
+        start=start+1;
+        hepify(arr,start,end);
+        while(end>=2)
+        {
+            Hdelete(arr,start,end);
+            end--;
+        }
+    }
+    void print(int* arr)
+    {
+        for(int i=0;i<size;i++)
+        {
+            cout<<arr[i]<<" ";
+        }
+    }
+};
+void tester()
+    {
+        int size[]={10,100,500,1000,5000,10000,50000,100000};
+        for(int j=0;j<9;j++)
+        {
+            int n=size[j];
+            int *arr=new int[n];
+            for(int i=0;i<n;i++)
+            {
+                arr[i]=rand()%n;
+            }
+            sort s(j);
+            auto before=high_resolution_clock::now();
+            s.SelectionSort(arr);
+            s.BubbleSort(arr);
+            s.InsertionSort(arr);
+            s.sortmerge(arr,0,n-1);
+            s.sortquick(arr,0,n-1);
+            s.Hsort(arr,0,n-1);
+            auto after=high_resolution_clock::now();
+            auto duration=duration_cast<milliseconds>(after-before);
+            cout<<"Time for "<<n<<"="<<duration.count()<<endl;
+        }
+    }
+    int main()
+    {
+        tester();
+        return 0;
+    }
