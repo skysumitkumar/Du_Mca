@@ -1,0 +1,166 @@
+
+Setting environment for using XAMPP for Windows.
+sky30@DESKTOP-DU18TEA c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> VIEW DATABASES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'VIEW DATABASES' at line 1
+MariaDB [(none)]> VIEW DATAVASE;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'VIEW DATAVASE' at line 1
+MariaDB [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.008 sec)
+
+MariaDB [(none)]> CREATE DATABASE shop;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> use DATABASE shop;
+ERROR 1049 (42000): Unknown database 'database'
+MariaDB [(none)]> use shop;
+Database changed
+MariaDB [shop]> CREATE TABLE suppliers(sno varchar(4) primary key,sname varchar(20),status decimal(5,2),scity varchar(10);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [shop]> CREATE TABLE suppliers(sno varchar(4) primary key,sname varchar(20),status decimal(5,2),scity varchar(10));
+Query OK, 0 rows affected (0.019 sec)
+
+MariaDB [shop]> CREATE TABLE parts(pno varchar(4) primary key,pname varchar(20),colour varchar(10),weight decimal(7,2),city varchar(15));
+Query OK, 0 rows affected (0.020 sec)
+
+MariaDB [shop]> CREATE TABLE project(jno varchar(4) primary key,jname varchar(20),jcity varchar(15));
+Query OK, 0 rows affected (0.019 sec)
+
+MariaDB [shop]> CREATE TABLE shipment(sno varchar(4) primary key,pno varchar(4),jno varchar(4),qty varchar(8));
+Query OK, 0 rows affected (0.019 sec)
+
+MariaDB [shop]> SELECT * FROM suppliers;
+Empty set (0.013 sec)
+
+MariaDB [shop]> INSERT INTO suppliers values("s1","Ajay",30.00,"Paris");
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [shop]> INSERT INTO suppliers values(s2,"Nancy",20.00,"London");
+ERROR 1054 (42S22): Unknown column 's2' in 'field list'
+MariaDB [shop]> INSERT INTO suppliers values("s2","Nancy",20.00,"London");
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [shop]> INSERT INTO suppliers values("s3","Ram",40.00,"New York");
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [shop]> INSERT INTO suppliers values("s4","Isha",70.00,"Paris");
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [shop]> INSERT INTO suppliers values("s5","Ayush",30.00,"Delhi");
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [shop]> INSERT INTO suppliers values("s6","Hema",10.00,"Channai");
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [shop]> INSERT INTO suppliers values("s7","Seema",45.00,"London");
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [shop]> INSERT INTO suppliers values("s8","Riya",23.00,"Ontario");
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [shop]> SELECT * FROM suppliers;
++-----+-------+--------+----------+
+| sno | sname | status | scity    |
++-----+-------+--------+----------+
+| s1  | Ajay  |  30.00 | Paris    |
+| s2  | Nancy |  20.00 | London   |
+| s3  | Ram   |  40.00 | New York |
+| s4  | Isha  |  70.00 | Paris    |
+| s5  | Ayush |  30.00 | Delhi    |
+| s6  | Hema  |  10.00 | Channai  |
+| s7  | Seema |  45.00 | London   |
+| s8  | Riya  |  23.00 | Ontario  |
++-----+-------+--------+----------+
+8 rows in set (0.004 sec)
+
+MariaDB [shop]> INSERT INTO parts values("p1","A","red",7.00,"Paris");
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [shop]> INSERT INTO parts values("p2","B","blue",20.00,"London");
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [shop]> INSERT INTO parts values("p3","C","green",17.00,"New York");
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [shop]> INSERT INTO parts values("p4","D","black",21.00,"Paris");
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [shop]> INSERT INTO parts values("p5","E","red",9.00,"Ontario");
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [shop]> INSERT INTO parts values("p6","F","grey",10.00,"Delhi");
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [shop]> INSERT INTO parts values("p7","G","silver",18.00,"Chennai");
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [shop]> INSERT INTO parts values("p8","H","red",7.00,"Delhi");
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [shop]> INSERT INTO project values("j1","J","Chennai");
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [shop]> INSERT INTO project values("j2","K","London");
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [shop]> INSERT INTO project values("j3","L","Paris");
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [shop]> INSERT INTO project values("j4","M","Ontario");
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [shop]> INSERT INTO project values("j5","N","Delhi");
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [shop]> INSERT INTO project values("j6","O","Chennai");
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [shop]> INSERT INTO project values("j7","P","London");
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [shop]> INSERT INTO project values("j8","Q","New York");
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [shop]> INSERT INTO shipment values("s1","p1","j1",400);
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [shop]> INSERT INTO shipment values("s2","p2","j2",500);
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [shop]> INSERT INTO shipment values("s3","p3","j3",350);
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [shop]> INSERT INTO shipment values("s4","p4","j4",100);
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [shop]> INSERT INTO shipment values("s5","p5","j5",200);
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [shop]> INSERT INTO shipment values("s6","p6","j6",600);
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [shop]> INSERT INTO shipment values("s7","p7","j7",700);
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [shop]> INSERT INTO shipment values("s8","p8","j8",250);
+Query OK, 1 row affected (0.013 sec)

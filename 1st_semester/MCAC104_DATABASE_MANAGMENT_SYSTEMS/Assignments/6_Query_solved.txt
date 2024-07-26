@@ -1,0 +1,152 @@
+a.Identify primary and foreign keys.
+
+Primary keys:
+(i)	Sno(Suppliers)
+(ii)	Pno(Parts)
+(iii)	Jno(Project)
+(iv)	Sno(Shipment) 
+Foreign Keys:
+(i)	Sno in Shipment table references Sno in Suppliers table.
+(ii)	Pno in Shipment table references Pno in Parts table.
+(iii)	Jno in Shipment table references Jno in Project table.
+
+b.Get supplier numbers for suppliers in Paris with status>20.
+
+MariaDB [shop]> SELECT sno FROM suppliers WHERE scity = 'Paris' AND status > 20;
++-----+
+| sno |
++-----+
+| s1  |
+| s4  |
++-----+
+2 rows in set (0.001 sec)
+
+c.Get suppliers details for suppliers who supply part P2. Display the supplier list in increasing order of supplier numbers.
+
+MariaDB [shop]> SELECT * FROM suppliers WHERE sno IN (SELECT sno FROM shipment WHERE pno = 'P2') ORDER BY sno;
++-----+-------+--------+--------+
+| sno | sname | status | scity  |
++-----+-------+--------+--------+
+| s2  | Nancy |  20.00 | London |
++-----+-------+--------+--------+
+1 row in set (0.002 sec)
+
+d.Get suppliers names for suppliers who do not supply part P2.
+
+MariaDB [shop]> SELECT sname FROM suppliers WHERE sno NOT IN (SELECT sno FROM shipment WHERE pno = 'P2') ORDER BY sno;
++-------+
+| sname |
++-------+
+| Ajay  |
+| Ram   |
+| Isha  |
+| Ayush |
+| Hema  |
+| Seema |
+| Riya  |
++-------+
+7 rows in set (0.002 sec)
+
+e.For each shipment get full shipment details, including total shipment weights.
+
+MariaDB [shop]> SELECT S.*, P.weight FROM shipment S, parts P WHERE S.pno = P.pno;
++-----+------+------+------+--------+
+| sno | pno  | jno  | qty  | weight |
++-----+------+------+------+--------+
+| s1  | p1   | j1   | 400  |   7.00 |
+| s2  | p2   | j2   | 500  |  20.00 |
+| s3  | p3   | j3   | 350  |  17.00 |
+| s4  | p4   | j4   | 100  |  21.00 |
+| s5  | p5   | j5   | 200  |   9.00 |
+| s6  | p6   | j6   | 600  |  10.00 |
+| s7  | p7   | j7   | 700  |  18.00 |
+| s8  | p8   | j8   | 250  |   7.00 |
++-----+------+------+------+--------+
+8 rows in set (0.001 sec)
+
+f.Get all the shipments where the quantity is in the range 300 to 750 inclusive
+
+MariaDB [shop]> SELECT * FROM shipment WHERE qty BETWEEN 350 AND 700;
++-----+------+------+------+
+| sno | pno  | jno  | qty  |
++-----+------+------+------+
+| s1  | p1   | j1   | 400  |
+| s2  | p2   | j2   | 500  |
+| s3  | p3   | j3   | 350  |
+| s6  | p6   | j6   | 600  |
+| s7  | p7   | j7   | 700  |
++-----+------+------+------+
+5 rows in set (0.001 sec)
+
+g.Get part nos. for parts that either weigh more than 16 pounds or are supplied by suppliers S2, or both.
+
+MariaDB [shop]> SELECT pno FROM parts WHERE weight > 16 OR (SELECT sno FROM suppliers WHERE sno = 's2');
++-----+
+| pno |
++-----+
+| p2  |
+| p3  |
+| p4  |
+| p7  |
++-----+
+4 rows in set, 1 warning (0.001 sec)
+
+h.Get the names of cities that store more than five red parts.
+
+MariaDB [shop]> SELECT city FROM parts WHERE colour = 'red' GROUP BY city HAVING COUNT(*) > 5;
+Empty set (0.001 sec)
+
+i.Get full details of parts supplied by a supplier in London.
+
+MariaDB [shop]> SELECT T1.* FROM parts T1 JOIN shipment T2 ON T1.pno = T2.pno JOIN suppliers T3 ON T3.sno = T2.sno WHERE T3.scity = 'London';
++-----+-------+--------+--------+---------+
+| pno | pname | colour | weight | city    |
++-----+-------+--------+--------+---------+
+| p2  | B     | blue   |  20.00 | London  |
+| p7  | G     | silver |  18.00 | Chennai |
++-----+-------+--------+--------+---------+
+2 rows in set (0.001 sec)
+
+j.Get part numbers for part supplied by a supplier in London to a project in London.
+
+MariaDB [shop]> SELECT pno FROM suppliers SUP, project P, shipment S WHERE SUP.sno=S.sno AND P.jno=SUP.jno AND scity="London" AND jcity="London";
++-------+
+| pno   |
++-------+
+| p2	|
+| p7	|
++-------+
+
+k.Get the total number of project supplied by a supplier (say, S1).
+
+MariaDB [shop]> SELECT sno, COUNT(*) AS "Total Projects" FROM shipment GROUP BY sno;
++-----+----------------+
+| sno | Total Projects |
++-----+----------------+
+| s1  |              1 |
+| s2  |              1 |
+| s3  |              1 |
+| s4  |              1 |
+| s5  |              1 |
+| s6  |              1 |
+| s7  |              1 |
+| s8  |              1 |
++-----+----------------+
+8 rows in set (0.001 sec)
+
+l.Get the total quantity of a part (say, P1) supplied by a supplier (say, S1).
+
+MariaDB [shop]> SELECT shipment.sno, shipment.pno, shipment.qty * parts.weight AS total_quantity FROM shipment JOIN parts ON parts.pno = shipment.pno;
++-----+------+----------------+
+| sno | pno  | total_quantity |
++-----+------+----------------+
+| s1  | p1   |           2800 |
+| s2  | p2   |          10000 |
+| s3  | p3   |           5950 |
+| s4  | p4   |           2100 |
+| s5  | p5   |           1800 |
+| s6  | p6   |           6000 |
+| s7  | p7   |          12600 |
+| s8  | p8   |           1750 |
++-----+------+----------------+
+8 rows in set (0.001 sec)

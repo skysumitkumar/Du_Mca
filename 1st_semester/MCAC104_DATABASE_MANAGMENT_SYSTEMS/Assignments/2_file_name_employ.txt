@@ -1,0 +1,181 @@
+# mysql -u root -p
+Enter password: password
+DROP DATABASE employee;
+CREATE DATABASE employee;
+use employee;
+MariaDB [employee]> CREATE TABLE emp(empno decimal(4,0) primary key,ename varchar(10),job varchar(9),mgr decimal(4,0),hiredate date,sal decimal(7,2),comm decimal(7,2),deptno decimal(2,0));
+Query OK, 0 rows affected (0.019 sec)
+
+MariaDB [employee]> CREATE TABLE dept(DEPNO decimal(2,0) primary key,DNAME varchar(14),LOC varchar(13));
+Query OK, 0 rows affected (0.029 sec)
+
+MariaDB [employee]> CREATE TABLE salgrade(GRADE decimal(1,0),LOSAL decimal(4,0),HISAL decimal(4,0));
+Query OK, 0 rows affected (0.031 sec)
+
+MariaDB [employee]> CREATE TABLE bonus(Ename varchar(10),JOB varchar(9),SAL decimal(10,0),COMM decimal(10,0));
+Query OK, 0 rows affected (0.032 sec)
+
+MariaDB [employee]> INSERT INTO emp values(7369,"SMITH","CLERK",7902,"1980-12-17",800,NULL,20);
+Query OK, 1 row affected (0.058 sec)
+
+MariaDB [employee]> INSERT INTO emp values(7499,"ALLEN","SALESMAN",7698,"1981-02-20",1600,300,30);
+Query OK, 1 row affected (0.015 sec)
+
+MariaDB [employee]> INSERT INTO emp values(7521,"WARD","SALESMAN",7698,"1981-02-22",1250,500,30);
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [employee]> INSERT INTO emp values(7566,"JONES","MANAGER",7839,"1981-04-02",2975,NULL,20);
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [employee]> INSERT INTO emp values(7654,"MARTIN","SALSEMAN",7698,"1981-09-28",1250,1400,30);
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [employee]> INSERT INTO emp values(7698,"BLAKE","MANAGER",7839,"1981-05-01",2850,NULL,30);
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [employee]> INSERT INTO emp values(7782,"CLERK","MANAGER",7839,"1981-06-09",2450,NULL,10);
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [employee]> INSERT INTO emp values(7788,"SCOTT","ANALYST",7566,"1982-12-09",3000,NULL,20);
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [employee]> INSERT INTO emp values(7839,"KING","PRESIDENT",NULL,"1981-11-17",5000,NULL,10);
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [employee]> INSERT INTO emp values(7844,"TURNER","SALESMAN",7788,"1981-09-08",1500,0,30);
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [employee]> INSERT INTO emp values(7876,"ADAMS","CLERK",7788,"1983-01-12",1100,NULL,20);
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [employee]> INSERT INTO emp values(7900,"JAMES","CLERK",7698,"1981-12-03",950,NULL,30);
+Query OK, 1 row affected (0.015 sec)
+
+MariaDB [employee]> INSERT INTO emp values(7902,"FORD","ANALYST",7566,1981-12-03,3000,NULL,20);
+Query OK, 1 row affected, 1 warning (0.014 sec)
+
+MariaDB [employee]> INSERT INTO emp values(7932,"MILLER","CLERK",7782,"1982-01-23",1300,NULL,10);
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [employee]> SELECT * FROM emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALSEMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLERK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7788 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 0000-00-00 | 3000.00 |    NULL |     20 |
+|  7932 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.001 sec)
+
+MariaDB [employee]> INSERT INTO DEPT VALUES(10,"ACCOUNTING","NEW YORK");
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [employee]> INSERT INTO DEPT VALUES(20,"RESERCH","DALLAS");
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [employee]> INSERT INTO DEPT VALUES(30,"SALES","CHICAGO");
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [employee]> INSERT INTO DEPT VALUES(40,"OPERATIONS","BOSTON");
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [employee]> SELECT * FROM bonus;
+Empty set (0.001 sec)
+
+MariaDB [employee]> SELECT * FROM BONUS;
+Empty set (0.000 sec)
+
+MariaDB [employee]> INSERT INTO BONUS VALUES("ALLEN","SALESMAN",1600,300);
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [employee]> INSERT INTO BONUS VALUES("WARD","SALESMAN",1250,500);
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [employee]> INSERT INTO BONUS VALUES("TURNER","SALESMAN",1500,0);
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [employee]> INSERT INTO BONUS VALUES("MARTIN","SALESMAN",1250,1400);
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [employee]> INSERT INTO SALGRADE VALUES(1,700,1200);
+Query OK, 1 row affected (0.015 sec)
+
+MariaDB [employee]> INSERT INTO SALGRADE VALUES(2,1201,1400);
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [employee]> INSERT INTO SALGRADE VALUES(3,1401,2000);
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [employee]> INSERT INTO SALGRADE VALUES(4,2001,3000);
+Query OK, 1 row affected (0.014 sec)
+
+MariaDB [employee]> INSERT INTO SALGRADE VALUES(5,3001,9999);
+Query OK, 1 row affected (0.015 sec)
+
+MariaDB [employee]> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALSEMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLERK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7788 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 0000-00-00 | 3000.00 |    NULL |     20 |
+|  7932 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.001 sec)
+
+MariaDB [employee]> select * from dept;
++-------+------------+----------+
+| DEPNO | DNAME      | LOC      |
++-------+------------+----------+
+|    10 | ACCOUNTING | NEW YORK |
+|    20 | RESERCH    | DALLAS   |
+|    30 | SALES      | CHICAGO  |
+|    40 | OPERATIONS | BOSTON   |
++-------+------------+----------+
+4 rows in set (0.001 sec)
+
+MariaDB [employee]> select * from bonus;
++--------+----------+------+------+
+| Ename  | JOB      | SAL  | COMM |
++--------+----------+------+------+
+| ALLEN  | SALESMAN | 1600 |  300 |
+| WARD   | SALESMAN | 1250 |  500 |
+| TURNER | SALESMAN | 1500 |    0 |
+| MARTIN | SALESMAN | 1250 | 1400 |
++--------+----------+------+------+
+4 rows in set (0.000 sec)
+
+MariaDB [employee]> select * from salgrade;
++-------+-------+-------+
+| GRADE | LOSAL | HISAL |
++-------+-------+-------+
+|     1 |   700 |  1200 |
+|     2 |  1201 |  1400 |
+|     3 |  1401 |  2000 |
+|     4 |  2001 |  3000 |
+|     5 |  3001 |  9999 |
++-------+-------+-------+
+5 rows in set (0.001 sec)
+
+MariaDB [employee]>
