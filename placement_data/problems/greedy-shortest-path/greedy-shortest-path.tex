@@ -1,0 +1,29 @@
+Consider the following greedy strategy for finding a shortest path
+from vertex {\em start} to vertex {\em goal} in a given connected graph.
+
+\begin{enumerate}
+  
+\item  [1:] Initialize {\em path} to {\em start}.
+  
+\item  [2:] Initialize {\em VisitedVertices} to \{{\em start}\}.
+  
+\item  [3:] If {\em start=goal}, return {\em path} and exit.
+  Otherwise, continue.
+  
+\item  [4:] Find the edge ({\em start,v}) of minimum weight such that
+  {\em v} is adjacent to {\em start} and {\em v} is not in {\em
+
+    VisitedVertices}.
+  
+\item  [5:] Add {\em v} to {\em path}.
+  
+\item  [6:] Add {\em v} to {\em VisitedVertices}.
+
+\item  [7:] Set {\em start} equal to {\em v} and go to step 3.
+
+\end{enumerate}
+
+Does this greedy strategy always find a shortest path from {\em start}
+to {\em goal}?  Either explain intuitively why it works, or give a
+counter-example.
+

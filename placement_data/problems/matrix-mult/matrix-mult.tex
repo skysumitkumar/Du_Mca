@@ -1,0 +1,78 @@
+Suppose we are given an unweighted directed graph $G$ with $n$
+vertices, and let $M$ be the $n\times  n$ adjacency matrix of $G$,
+where we assume that all the diagonal entries of $M$ are $1$'s, i.e.,
+$M(i,i)=1$ for $1\leq  i \leq  n$.
+
+\begin{enumerate}
+  
+\item  Let the product of $M$ with itself, denoted $M^{2}$, be defined
+  as follows:
+  \begin{quote}
+    for $1\leq  i,j \leq  n$, \\
+        $M^{2}(i,j)=(M(i,1)\wedge  M(1,j))\vee  (M(i,2)\wedge  M(2,j)) \vee
+        \cdots  \vee  (M(i,n)\wedge  M(n,j))$, \\  
+
+        
+
+        where ``$\vee$''  is the boolean ``OR'' operator and
+    ``$\wedge$''  is the boolean ``AND'' operator. \\
+    \end{quote}
+  For example, for the graph shown in the figure below, we have:
+
+\begin{center}
+\setlength{\unitlength}{0.45cm}
+\begin{figure}[h]
+\begin{picture}(6,6)
+\put(-1,-1){$v_2$}
+\put(0,4.5){$v_3$}
+\put(4.5,0){$v_1$}
+\put(0,0){\circle*{0.3}}
+\put(0,4){\circle*{0.3}}
+\put(4,0){\circle*{0.3}}
+\put(0,0){\line(1,0){4}}
+\put(0,0){\line(0,1){4}}
+\end{picture}\end{figure}
+
+$M =
+\left[  \begin{array}{cccc}
+& v_1 & v_2 & v_3 \\
+v_1 & 1 & 1 & 0 \\
+v_2 & 1 & 1 & 1 \\
+v_3 & 0 & 1 & 1 
+\end{array} \right]
+$
+and 
+$M^2 =
+\left[  \begin{array}{cccc}
+& v_1 & v_2 & v_3 \\
+v_1 & 1 & 1 & 1 \\
+v_2 & 1 & 1 & 1 \\
+v_3 & 1 & 1 & 1 
+\end{array} \right]
+$
+\end{center}
+
+Given this definition, what does $M^{2}(i,j)=1$ imply about
+vertices $v_i$ and $v_j$?  \\
+What if $M^{2}(i,j)=0$?
+
+\item  Suppose $M^{4}$ is the product of $M^{2}$ with itself.  What
+  then do the entries of $M^{4}$ signify?  How about the entries of
+  $M^{5}=(M^{4})(M)$?  In general, what information is contained in
+  the matrix $M^{p}$?
+
+% \item  Now suppose that $G$ is weighted and assume the following:
+%
+%      \begin{enumerate}
+%      \item  [1:] for $1\leq  i \leq  n$, $M(i,i)=0$.
+%      \item  [2:] for $1\leq  i,j \leq  n$, $M(i,j)=weight(i,j)$ if $(i,j)\in  E$.
+%      \item  [3:] for $1\leq  i,j \leq  n$, $M(i,j)=\infty$  if $(i,j)\not\in  E$.
+%      \end{enumerate}
+
+%      Also, let $M^{2}$ be defined as follows: \\
+%      for $1\leq  i,j \leq  n$, $M^{2}(i,j)=min(M(i,1)+M(1,j),M(i,2)+M(2,j),
+%      \ldots,  M(i,n)+M(n,j))$. \\    If $M^{2}(i,j)=k$, what may we conclude
+%      about the relationship between vertices $i$ and $j$?
+
+\end{enumerate}
+

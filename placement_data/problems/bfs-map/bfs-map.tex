@@ -1,0 +1,35 @@
+Providence Rent-a-Wreck wants to provide computerized driving
+directions to its customers.  The driving directions are a
+sequence of statements of the type:
+
+\begin{quote}
+At {\em location-name}, go {\em direction} on {\em street-name}.
+\end{quote}
+
+Their computer stores the map of the city as follows:
+
+\begin{itemize}
+
+\item  There are $N$ locations, each with a unique integer ID in the
+range $1 \cdots  N$.  The locations include all the street
+intersections, plus various important buildings, such as the CIT.  An
+array {\sf Location} of size $N$ stores in element {\sf Location}$[i]$
+the name of the location with ID~$i$.  Also, a red-black tree stores
+the locations alphabetically sorted by name, where each internal node
+stores a location and its~ID.
+
+\item  An $N \times  N$ 2-dimensional array {\sf Connect} stores info on
+streets, as follows.  If there is a street $s$ that allows one to drive
+from location $i$ to location $j$ along $s$, then {\sf Connect}$[i,j]$
+stores the name of $s$ and the direction of travel from $i$ to $j$
+along $s$ (N, S, E, or W).  If two or more such streets exist, an
+arbitrary one of them is chosen. Otherwise (there is no street that
+allows one to drive from $i$ to $j$), {\sf Connect}$[i,j]$ stores the
+conventional symbol~\#.
+
+\end{itemize}
+
+Give an efficient algorithm that given the above data structure and the
+names of two locations, $A$ and $B$, prints directions to drive from
+$A$ to $B$ going through the minimum number of streets.
+

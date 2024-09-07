@@ -1,0 +1,23 @@
+Let $G$ be an {\em undirected} graph with vertex set
+$\{0,1,\ldots,n-1\}$ and with $m$ edges. We denote with $(i,j)$ the
+edge connecting vertex $i$ and vertex $j$, and with $d(i)$ the degree
+of vertex~$i$.
+
+We define the following two operations:
+\begin{description}
+\item[{\sf deleteEdge}$(i,j)$:] delete from $G$ a given edge $(i,j)$.
+\item  [{\sf deleteIncidentEdges}$(i)$:] delete from $G$ all the $d(i)$
+  edges incident on a given vertex $i$.
+\end{description}
+Provide a precise analysis of the time complexity of operations {\sf
+
+  deleteEdge} and {\sf deleteIncidentEdges} for the following two
+representations of graph $G$:
+\begin{enumerate}
+\item  Graph $G$ is represented by an $n \times  n$ boolean matrix $A$
+  such that $A[i,j]$ is true if and only if $G$ contains edge
+  $(i,j)$.
+\item  Graph $G$ is represented by $n$ sequences $S_1, \ldots  , S_n$,
+  where sequence $S_i$ contains all the $d(i)$ vertices adjacent to
+  vertex $i$ and is realized by means of a doubly-linked list.
+\end{enumerate}

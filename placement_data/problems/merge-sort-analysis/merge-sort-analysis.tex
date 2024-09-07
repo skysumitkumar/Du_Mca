@@ -1,0 +1,30 @@
+The underlying idea of the mergesort algorithm for sorting a list L is as
+follows:
+\  \\
+\  \\
+\indent  (1) Sort the first half of the list.
+\  \\
+\indent  (2) Sort the second half of the list.
+\  \\
+\indent  (3) Merge the two sorted halves into one sorted list.
+\  \\
+\  \\
+Let N be the number of elements in the list L and suppose T(N) is the time
+required to sort L.  Also, assume N is a power of 2. Since the time necessary 
+to sort N elements is T(N), the time necessary to sort N/2 elements must be 
+T(N/2).  Thus, sorting half of the list L requires T(N/2) time.  From this it
+follows that steps (1) and (2) from above require a total of 2T(N/2) time
+for completion.  Step (3), merging two lists of size N/2 into one list of size
+N, takes essentially N time.  So, steps (1), (2), (3) together can be
+completed in 2T(N/2)+N time.  Therefore, mergesort must require 2T(N/2)+N
+time for completion.  Since we previously let T(N) denote sorting time, we may
+conclude that T(N)=2T(N/2)+N.  Given that this is the case and also that 
+$T(1)=0$, solve for T(N)
+explicitly (unwind the recurrence equation).  By doing so, you will also
+be determining the time complexity of mergesort.
+
+
+
+
+
+

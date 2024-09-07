@@ -1,0 +1,235 @@
+Daewoo Telecom LTD.
+	
+               Answers    
+S.NO.  Section A(C) Section B(Unix) Section C(Telecom) Section D(Netw)
+1	    D   	C		C			A
+2	    B		D		D			B
+3	    B		C		A			D
+4	    C		C		B			B
+5	    D		B		B			D
+6	    B		C		A			A
+7	    D		C		C			C
+8	    C		D		A			B
+9	    D		D		B
+10	    A		C		C			B
+11	    B				D	
+12	    B				B	
+13	    A			
+
+
+
+
+     Apptitude (Simple) : 25 Ques.  (40 mins.)
+
+
+Telecom - Noise , Menchestor encoding (book knowledge)
+
+
+                   TECHNICAL TEST    
+                                                                                          TIME  : 1 HR.
+
+Directions  :
+
+1. Amongst the given choices only one alternative is correct. 
+   Choose the correct alternative.
+2. One mark will be awarded for every correct answer and half
+   marks will be deducted for incorrect answer.
+3. You shoud not write anything  on the question paper. All the
+   rough work should be done on sheet provided.
+
+                    SECTION  A
+
+
+
+1) Consider the macro max defined :
+   # define max(a,b) ((a>=b)?(a)Lb))
+   What are the values of i,j,k after the execution of the following code :
+   int i=3,j=4,k;
+   k= max(++i,j++);
+
+a) i=4,j=6,k=6
+b) 5,6,6
+c) 4,5,4
+d) 5,5,5
+
+
+----------
+2) What will be the values of  i & j resp. after the execution of the 
+   following code :
+        int i=8,j;
+        i=(int)(i+0.98);
+        if(i=9) j=0;
+        else j=1;
+a) 8,0
+b) 9,0
+c) 8,1
+d) 9,1
+
+
+---------- 
+3) Consider the following function :
+   int fact(int n) {....}
+
+   Which of the following can be placed inside the braces to give 
+   the factorial of non-negative integers :
+a) int k=n;
+   if (n) k* = fact(n-1); return k;
+b) int k=1;
+   if (n) k* = fact(n-1); return k;
+c) int k = fact(n-1);
+   if (n)  return 1;
+   else return k*n;
+d) int k=1;
+   if (n>1) k = fact(n-1); return k*n;
+
+
+----------
+4) If x is an array of pointer to function returning int choose the 
+   correct declaration:
+
+a) int * x[]()
+b) int *x()[]
+c) int (*x[])()
+d) int ((*x)())[]
+
+
+----------
+5) Which of the following code segments swap the values of a and b 
+   (a&b are integers , assumed no underflow , overflow in computing a & b):
+   
+a) 1 only
+b) 1 and 2 only
+c) 1 & 3 only
+d) 1,2,3
+
+
+----------
+6) Function  f takes a parameter: 2 dimensional array of int as follows:
+        f(int A[10][15])
+	Another declaration for function f would be:
+	1). f(int A[][15])
+	2). f(int (*A)[15])
+	3). f(int A[][])
+	4). F(int *A[15])
+
+a). 1 only.
+b). 1,2 only.
+c).  1,4 only.
+d). 1,2 & 4 only.
+
+
+
+----------
+7. Which of the following declarations are correct.
+
+	1. static register int b;	{outside the block}
+	2. auto register int b;		{inside the block}
+	3. register int b;		{inside the block}
+	4. register int b;		{outside the block}
+
+a). All are correct.
+b). Only 3 & 4 are correct.
+c). Only 2,3 are correct.
+d). All are incorrect.
+
+----------
+
+for Q8, Q9 study the given program.
+
+void getval()
+{
+	int i;
+	i = malloc(sizof(int *));
+	i=0;
+	return i;
+}
+
+
+main()
+{
+	int *p=1;
+	char *s1="arbit";
+	char *s2="maxarbit";
+	
+	strncpy(s2,s1,5);
+	printf("%d",*((!strcmp(s2,s1)) ? getval() : p));
+}
+
+----------
+8. Ignoring the warnings the program on compilation gives
+
+a). No syntax errors.
+b). Single error removed by replacing int *i with void *i.
+c). Single error removed by replacing *((!strcmp(s2,s1)) ? getval() : p)
+    with *(int *)((!strcmp(s2,s1)) ? getval() : p)
+d). Any other multiple syntax errors.
+
+----------
+9. After removing the syntax error(s) if any in Q8 the output of 
+   the program will be
+
+a). 0
+b). 1
+c). Garbage value.
+d). Bus error.
+
+----------
+10.The function 
+   void rev(char *s)
+   {
+    ---
+   }
+
+   reverses characters in the ctype string s.
+   Which of the following when placed inside the braces will suffice
+
+a). char c=*s;
+    if (*++s) rev(s);
+    strcpy(s-1,s);
+    s[strlen(s)]=c;
+b). int i,len=strlen(s);
+    if (len < 2) return;
+    for (i=0;i<len/2;i++)
+        s[i]=s[len-i-1];
+c). int last = strlen(s-1);
+    char c = s[last];
+    s[last] = '\0';
+    rev(s+1);
+    s[last] = *s;
+    *s = c;
+d). int k,len = strlen(s);
+    char c;
+    if (len<2) return;
+    for (k= 0; k<len;k++)
+    {
+	c=s[k];
+	s[k]=s[len-k-1];
+	s[len-k-1]=c;
+    }
+
+
+----------
+
+11.Consider the following class declarations
+
+	class A{
+ 		int a;
+		public :
+			void seta(int k):a(k){};
+	};
+
+	class B : public A{
+		int b;
+		public :
+			void setb(int k):b(k){};
+	};
+
+	B obj;
+
+a). obj.seta(10) can not be called because it accesses A :: a which is
+    not inherited by class B.
+b). obj.seta(10) sets value of obj.(A::a) to 10.
+c). obj.seta(10) can be called but it can not set a to 10.
+d). Calling obj.seta(10) causes a run time error.
+
+

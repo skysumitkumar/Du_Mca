@@ -1,0 +1,147 @@
+Query1. Write a query to display name, job, hiredate and employee number for each employee with employee number appearing first.
+Ans. SELECT empno,ename,job,hiredate FROM emp;
+
+Query2. Write a query to display unique jobs from the employee table.
+Ans. SELECT DISTINCT job FROM emp;
+
+Query3. Write a query to display name concatenated by a job separated by a comma.
+Ans. SELECT CONCAT(ename,",",job) FROM emp;
+
+Query4. Write a query to display the name and salary of employees earning more than $2850.
+Ans. SELECT ename,sal FROM emp WHERE sal>2850;
+
+Quer5. Write a query to display the name and department number for employee number 7900.
+Ans. SELECT ename,deptno FROM emp WHERE empno=7900;
+
+Query6. Write a query to display the name and salary of all employees whose salary is not in the range of $1500 and $2850.
+Ans. SELECT ename,sal FROM emp WHERE sal NOT BETWEEN 1500 AND 2850;
+
+Query7. Write a query to display the name and department number of all employees in departments 10 and 30 in alphabetical order by name.
+Ans. SELECT ename,deptno FROM emp WHERE deptno=10 OR deptno=30 ORDER BY ename;
+
+Query8. Write a query to display the name and salary of employees who earned more than
+$1500 and are in department number 10 or 30.
+Ans. SELECT ename,sal FROM emp WHERE sal>1500 AND (deptno=10 OR deptno=30);
+
+Query9. Write a query to display the name and hire date of every employee who was hired in 1981.
+Ans. SELECT ename, hiredate FROM emp WHERE hiredate LIKE "1981%";
+
+Query10. Write a query to display the name and job of all employees who do not have a manager.
+Ans. SELECT ename,job FROM emp WHERE NOT(job='MANAGER');
+
+Query11. Write a query to display the name, salary and commission for all employees who earn commission. Sort the data in descending order of salary.
+Ans. SELECT ename,sal,comm FROM emp WHERE (comm IS NOT NULL) AND (comm<>0.00) ORDER BY SAL DESC;
+
+Query12. Write a query to display the names of all employees where the third letter of their name is A.
+Ans. SELECT ename FROM emp WHERE ename LIKE "__A%";
+
+Query13. Write a query to display the names of all employees that have two R's or A's in their name and are in department number 30 or their manager is 7788.
+Ans. SELECT ename FROM emp WHERE ((ename LIKE "%A%A%" OR ename LIKE "%R%R%") AND deptno=30 ) OR mgr=7788;
+
+Query14. Write a query to display the name, job and salary of all employees whose job is clerk or analyst and their salary are not equal to 1000, 3000 or 5000.
+Ans. SELECT ename,job,sal FROM emp WHERE (job="clerk"OR job="analyst")AND (sal NOT IN (1000,3000,5000));
+
+Query15. Write a query to display the name, salary and commission of all employees whose commission amount is greater than their salary increased by 5%.
+Ans. SELECT ename,sal,comm FROM emp WHERE comm>sal*1.05;
+
+Query16. Write a query to display a current date.
+Ans. SELECT CURDATE();
+   SELECT CURRENT_TIMESTAMP;
+   SELECT CURRENT_TIMESTAMP();
+   SELECT CURRENT_TIMESTAMP FROM DUAL;
+
+Query17. Write a query to display employee number, name, salary, salary increased by 15% expressed as a whole number.
+Ans. SELECT empno,ename,sal,(sal*1.15) AS aggr_sal_sal FROM emp;
+
+Query18. Write a query to display the employee number, name, salary, salary increased by 15% expressed as a whole number and increase in salary.
+Ans. SELECT empno,ename,sal,(sal*1.15)AS aggr_sal,((sal*1.15)-sal)As incr_sal FROM emp;
+
+Query19.Write a query to display the following for each employee:-
+<ename> earns <salary> monthly but wants <3 times salary>. Label the column as Dream Salary.
+Ans. SELECT CONCAT(ename,"earns",sal,"but wants",3*sal)AS "Dream Salary" FROM emp;
+
+Query20.Write a query to display the employees name with the first letter capitalized and all other letters lower case and length of their name for all employees whose name start with J, A and M.
+Ans. SELECT CONCAT(UPPER(SUBSTRING(ename, 1, 1)), LOWER(SUBSTRING(ename, 2))) AS "Employee Name" FROM emp WHERE (ename LIKE "J%" OR ename LIKE "A%" OR ename LIKE "R%");
+
+Query21. Write a query to display the name, department name, department number for all employees.
+////Ans. SELECT e.ename AS "Employee Name", d.dname AS "Department Name", d.depno AS "Department Number" FROM emp e JOIN dept e ON e.depno = d.depno;
+(IN THIS QUERY PROBLEM)
+
+Query22. Write a query that displays the unique listing of all jobs that are in department 30.
+Ans. SELECT DISTINCT job FROM emp WHERE deptno = 30;
+
+Query23. Write a query to display the employee name, department name and location for all employees who earn a commission.
+Ans. SELECT e.ename AS "Employee Name", d.dname AS "Department Name", d.loc AS "Department Location" FROM emp e JOIN dept d ON e.deptno = d.depno;
+
+Query24. Write a query to display the employee name and department name for all employees who have 'A' in their name.
+Ans. SELECT e.ename AS "Employee Name", d.dname AS "Department Name" FROM emp e JOIN dept d ON e.deptno = d.depno WHERE e.ename LIKE "%A%";
+
+Query25. Write a query to display the name, job, department number and department name for all employees who work at location DALLAS.
+Ans. SELECT e.ename AS "Employee Name", e.job AS "Job", d.depno AS "Department Number", d.dname AS "Department Name" FROM emp e JOIN dept d ON e.deptno = d.depno WHERE d.loc = "DALLAS";
+
+Query26. Write a query to display employee name and employee number along with their
+manager's name and manager's number.
+Ans. SELECT E.ename AS EMPLOYEE_NAME,E.empno AS EMPLOYEE_NUMBER ,M.ename AS MANAGER_NAME , M.empno AS MANAGER_NUMBER FROM emp E LEFT OUTER JOIN emp M ON E.mgr = M.empno WHERE E.mgr IS NOT NULL;
+
+Query27. Write a query to display employee name and employee number along with their
+manager's name and manager's number along with the employees who do not have a manager.
+Ans. SELECT E.ename AS EMPLOYEE_NAME,E.empno AS EMPLOYEE_NUMBER ,M.ename AS MANAGER_NAME , M.empno AS MANAGER_NUMBER FROM emp E left outer join emp M ON E.mgr =M.empno;
+
+Query28. Write a query to display employee name, department number and all the employees
+that work in the same department as the given employee. Do this for all the employees.
+Ans. SELECT C.ename, E.deptno,E.ename AS "Colleagues" FROM emp E, emp C WHERE E.deptno = C.deptno AND E.ename != C.ename;
+
+Query29. Write a query to display the name, job, department name, salary and grade for all
+employees.
+Ans. SELECT ename AS NAME,job AS JOB,DNAME AS DEPARTMENT_NAME,sal AS SALARY,GRADE FROM emp,dept,salgrade WHERE emp.deptno = dept.DEPNO AND sal BETWEEN salgrade.LOSAL AND salgrade.HISAL;
+
+Query30. Write a query to display all names and hire dates of all employees along with their
+manager's name and hire date for all employees who were hired before their managers.
+Ans. SELECT E.ename AS EMPLOYEE_NAME,E.hiredate AS EMPLOYEE_HIREDATE ,M.ename AS MANAGER_NAME , M.hiredate AS MANAGER_HIREDATE FROM emp E LEFT OUTER JOIN emp M ON E.mgr = M.empno WHERE E.hiredate < M.hiredate;
+
+Query31. Write a query to display the highest, lowest, sum and average salary of all employees.
+Ans. SELECT MAX(sal) AS HIGHEST_SALARY , MIN(sal) AS LOWEST_SALARY ,SUM(sal) AS SUM_OF_SALARY , AVG(sal) AS AVERAGE_SALARY FROM emp;
+
+Query32. Write a query to display minimum, maximum, sum and average salary for each job
+type.
+Ans. SELECT DISTINCT job ,MAX(sal),MIN(sal),SUM(sal),AVG(sal) FROM emp GROUP BY job;
+
+Query33. Write a query to display the number of people with the same job.
+Ans. SELECT DISTINCT job ,COUNT(job) AS NUMBER_OF_PERSON FROM emp GROUP BY job;
+
+Query34. Write a query to display the difference between the highest and lowest salaries.
+Ans. SELECT ( MAX(sal) - MIN(sal) ) AS DIFFERENCE_BTW_MAX_AND_MIN_SALARY FROM emp;
+
+Query35. Write a query to display the manager number and the salary of the lowest paid
+employee for that manager. Exclude any groups where the manager id is not known. Exclude
+any groups where the minimum salary is less than $1000.
+Ans. SELECT mgr,MIN(sal) FROM emp WHERE sal > 1000 AND mgr IS NOT NULL;
+
+Query36. Write a query to display the department name, location name, number of employees
+and the average salary for all employees in that department.
+Ans. SELECT D.DNAME ,D.LOC ,COUNT( E.deptno) ,AVG(E.sal) FROM dept D,emp E WHERE D.DEPNO=E.deptno GROUP BY D.DNAME;
+
+Query37. Write a query to display the employee name and hire date for all employees in the
+same department as Blake.
+Ans. SELECT ename ,hiredate FROM emp WHERE deptno IN (SELECT deptno FROM emp WHERE ename ='BLAKE');
+
+Query38. Write a query to display the employee number and employee name for all employees
+who earn more than the average salary.
+Ans. SELECT empno , ename FROM emp WHERE sal > (SELECT AVG(sal) FROM emp);
+
+Query39. Write a query to display the employee number and name for all employees who work
+in a department with any employee whose name contains a T.
+Ans. SELECT empno,ename FROM emp  WHERE deptno IN (SELECT deptno FROM emp WHERE ename LIKE '%T%');
+
+Query40. Write a query to display the employee name and salary of all employees who report
+to King.
+Ans. SELECT ename , sal FROM emp WHERE mgr in (SELECT empno FROM emp WHERE ename = 'KING');
+
+Query41. Write a query to display the department number, name and job for all employees in
+the Sales department.
+Ans. SELECT E.deptno ,E.ename, E.job FROM emp E,dept D WHERE E.deptno = D.DEPNO AND D.DNAME ='SALES';
+
+Query42.Write a query to display the employee number, name and salary for all employees
+who earn more than the average salary and who work in a department with any employee with
+a T in their name.
+Ans. SELECT empno,ename,sal FROM emp  WHERE deptno IN (SELECT deptno FROM emp WHERE ename LIKE '%T%') AND sal > (SELECT AVG(sal) FROM emp);

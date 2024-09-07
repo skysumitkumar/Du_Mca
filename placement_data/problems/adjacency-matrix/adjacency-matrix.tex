@@ -1,0 +1,28 @@
+When an adjacency matrix representation is used, most graph algorithms
+require time $O(n^2)$ (where $n$ is the number of vertices), but there
+are some exceptions. Here's one.
+
+The race for the election of Brown's chairman is heating up and
+$everyone$ at Brown is competing for it. Each candidate has a few
+preferences (people who the person would be willing to accept as a
+chairman). Of course, the set of preferences for a person includes
+him/her self all the time.
+
+What we are looking for is a ``perfect'' chairman who is in the set of
+preferences of every person and who does not prefer anyone but him/her
+self (wouldn't that make a good chairman?). In fact, all we want to
+know whether such a person exists or not. Otherwise, we're willing to
+live in anarchy.
+
+Define a directed graph with the set of candidates as the vertices and
+a directed edge from vertex $a$ to vertex $b$ if and only if $b$ is in
+the set of preferences of $a$. 
+
+Suppose that the number of people (also the number of candidates) is
+$n$ Give an algorithm which executes in $O(n)$ time and determines if
+such a perfect chairman exists or not. Assume that you are given the
+graph described above in the form of an $n \times  n$ adjacency matrix.
+
+% Show that determining whether a directed graph contains a {\it sink}-
+% a vertex with indegree $|V|-1$ and out-degree 0- can be determined in
+% time $O(V)$, even if an adjacency matrix representation is used.

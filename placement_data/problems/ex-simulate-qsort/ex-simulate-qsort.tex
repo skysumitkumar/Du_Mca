@@ -1,0 +1,32 @@
+Consider the following version of the quicksort algorithm. Assume that
+all the elements of the input sequence $S$ are distinct.
+
+\begin{enumerate}
+\item  If $S$ has only one element or is empty, then return $S$.
+\item  Partition the sequence into three parts, 
+\begin{enumerate}
+\item  The pivot $p$, which is chosen to be the last element of $S$.
+\item  The subsequence $S'$ containing all elements $S$ less than $p$.
+\item  The subsequence $S''$ containing all elements $S$ greater than $p$.
+\end{enumerate}
+\item  Recursively sort $S'$ and $S''$
+\item  Return the concatenation of $S'$,$p$ and $S''$.
+\end{enumerate}
+
+{\it Note that this is not exactly the same as the question that was given
+
+to you in the homeworks. The pivot element is different here.}
+
+We can construct a {\it sort tree} for an execution of this algorithm
+on a given input sequence. Construct a {\it sort tree} for the
+sequence {\tt (68 57 74 67 12 56 43 34 8 59)}
+
+A {\it sort tree} for the input {\tt (3 7 8 4)} is shown in figure 1.
+
+\begin{figure}[ht]
+\centerline{\psfig{file=fi-ex-simulate-qsort.eps}}
+\caption{Sort tree for (3 7 8 4)}
+\end{figure}
+
+
+

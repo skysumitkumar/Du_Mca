@@ -1,0 +1,26 @@
+You have a hashtable of size $m=11$ and two hash functions $h1$ and $h2$:
+
+$h1(x)$ = (sum of the values of the first and last letters of $x$) mod $m$ \\
+$h2(x)$ = ((value of the last letter) mod $(m-1)$) +1  \\
+
+where the value of a letter is its position in the alphabet
+(e.g., value(a)=1, value(b)=2, etc.).  
+
+Here are some precomputed hash values: 
+
+word ape bat bird carp dog hare ibex mud koala stork 
+h1 6 0 6 7 0 2 0 6 1 8 
+h2 6 1 5 7 8 6 10 5 2 2
+
+\begin{enumerate}
+\item  Draw a picture of the resulting hashtable after inserting, in
+order, the following words: \\
+
+ibex, hare, ape, bat, koala, mud, dog, carp, stork.
+
+\item  Highlight cells that are looked at when trying to find bird. Do
+this for each of the following techniques.  Chaining with h1 as your
+hash function.  Linear probing with h1 as your hash function.  Double
+hashing with h1 as your first hash function and h2 as your second hash
+function.
+\end{enumerate}

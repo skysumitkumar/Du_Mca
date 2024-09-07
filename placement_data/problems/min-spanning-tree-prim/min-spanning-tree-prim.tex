@@ -1,0 +1,62 @@
+One night Roberto was walking home from the CIT when he was attacked by
+a dog.  Luckily, the dog was satisfied with biting only Roberto's
+notebook \ldots  The next day Roberto tries to figure out what was the
+algorithm that he had written on one badly damaged page of the
+notebook.  Here's what the page looks like:
+
+\bigskip
+\noindent
+\hrule
+\medskip
+\noindent
+{\bf Algorithm}
+	{\sf [ \ldots hole in the page \ldots\ ]}
+%
+\begin{description}
+%
+\item[input:]  weighted graph $G$ with $N$ vertices and $M$ edges.
+%
+\item[output:]  set $S$ of edges of $G$ such that
+	{\sf [ \ldots hole in the page \ldots\ ]}
+%
+\end{description}
+
+\begin{tabbing}
+XX \=  XX \=  XX \=  XX \=  XX \=  XX \=  XX  \kill
+      \> {\bf begin} 					\\
+      \>        \>  pick an arbitrary vertex $s$;		\\
+      \>        \>  $A := \{ s \}$;				\\
+      \>        \>  $B := \{\mbox{adjacent vertices of $v$}\}$;	\\
+      \>	  \>  $S := \emptyset$;				\\
+      \>        \> {\bf repeat} \\
+      \>        \>\>  find edge $(u,v)$ of minimum weight such that
+		$u \in  A$ and $v \in  B$;\\
+      \>        \>\>  add $(u,v)$ to $S$; \\
+      \>        \>\>  remove $v$ from $B$ and add it to $A$;\\
+      \>        \>  \>{\bf foreach} vertex $w$ adjacent to $v$ {\bf do}\\
+      \>        \>      \>  \> {\bf if} ($w \not\in  A \cup  B$) {\bf then} \\
+      \>        \>      \>  \>        \>  add $w$ to $B$; \\
+      \>        \> {\bf until} $(B = \emptyset)$  \\
+      \> {\bf end }					\\
+%
+   \>
+	{\sf [ \ldots\ rest of the page eaten by the dog \ldots\ ] }
+\end{tabbing}
+\noindent
+\hrule
+\bigskip
+
+Your task is to figure out what is the algorithm described by the
+above pseudocode.
+
+\begin{enumerate}
+
+\item    (40\%  credit) What is the set of edges $S$ returned by the
+algorithm?
+
+\item    (40\%  credit) What is the time complexity of the algorithm?
+
+\item    (20\%  credit) Give an example of a practical problem that can be
+solved by applying the algorithm.
+
+\end{enumerate}

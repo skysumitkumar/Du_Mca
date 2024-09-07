@@ -1,0 +1,37 @@
+{\em Warshall's Algorithm}, introduced in class, computes the transitive
+closure of a digraph. If the digraph is represented by an $N \times  N$
+adjacency matrix $A$, the algorithm can be compactly described as
+follows:
+
+\begin{verbatim}
+    for k := 1 to N
+        for i := 1 to N
+            for j := 1 to N
+                A[i,j] := A[i,j] OR (A[i,k] AND A[k,j])
+\end{verbatim}
+
+The values stored in $A$ are boolean values ({\tt TRUE} or {\tt
+
+FALSE}).  If there is an edge from vertex $i$ to vertex $j$, $A[i,j]$ =
+{\tt TRUE}; otherwise, $A[i,j]$ = {\tt FALSE}.  The time complexity is
+$O(N^3)$.
+
+\indent
+Suppose we have a weighted digraph that is represented by its
+adjacency matrix and by a weight matrix $W$ such that
+
+\begin{itemize}
+
+\item  $W[i,j] = 0$ if $i=j$;
+
+\item  $W[i,j] = \ell$  if $i\neq  j$ and there is an edge with weight
+$\ell$  from $i$ to $j$; and
+
+\item  $W[i,j] = \infty$  if $i\neq  j$ and there is no edge from  $i$ to
+$j$.
+
+\end{itemize}
+
+Modify Warshall's algorithm by adding one or more instructions, such
+that when the computation terminates, $W[i,j]$ stores the length of a
+shortest path from vertex $i$ to vertex $j$.

@@ -1,0 +1,27 @@
+In a multiprogramming environment, several concurrent computational
+processes compete for the use of resources (e.g., disk, scanner,
+CD-rom).  A resource is assigned to at most one process, while the
+other processes who have requested that resource are {\em waiting}
+until the resource is released and made available.  A {\em deadlock}
+occurs when processes end up waiting forever because resources are
+never freed.  This happens when the resource-allocation digraph
+contains a directed cycle.  Indeed, if such a cycle exists, say
+$p_0,r_0,p_1,r_1,p_2,r_2,p_0$, we have that processor $p_0$ is
+waiting for resource $r_0$, which is assigned to processor $p_1$.  At
+the same time, processor $p_1$ is waiting for resource $r_1$, which is
+assigned to processor $p_2$, and processor $p_2$ is waiting for
+resource $r_2$, which is assigned to processor $p_0$.  Hence, $p_0$,
+$p_1$ and $p_2$ keep on waiting indefinitely for resources.  The
+example below shows a deadlock caused by a directed cycle in the
+resource-allocation digraph.  
+
+\input{psfig} \vspace{4mm} \par
+\begin{figure}[h]
+\centerline{\psfig{file=fi-graph-test-cycle.ps,width=2.0in}}\end{figure}
+ \par
+\vspace{4mm}
+
+To detect deadlocks, a multiprogramming operating system needs to
+determine whether the resource-allocation digraph is acyclic (i.e., it
+has no directed cycles).  Give an efficient algorithm for testing
+whether a digraph is acyclic.  What is the time complexity of your algorithm?

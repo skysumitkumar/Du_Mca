@@ -1,0 +1,47 @@
+The recent discovery of the following fragment of uncommented
+procedural C code in the Sunlab has caused a big scandal.
+
+\begin{verbatim}
+foo(int a[],int l,int r,int k)
+{ int i;
+
+  i = partition(a,l,r);
+
+  if (i == k) return a[k];
+
+      else if (i < k) return foo(a,i+1,r,k);
+
+          else return foo(a,l,i-1,k); }
+
+\end{verbatim}
+
+Since the author of the code is still hiding, we will have to decipher
+it.  The TAs have already determined that function {\tt partition(int
+
+a[],int l,int r)} works as follows: let {\tt v=a[r]}; {\tt partition}
+rearranges the subarray {\tt a[l]} through {\tt a[r]} such that the
+elements equal to {\tt v} precede those greater than {\tt v} and follow
+those smaller than {\tt v}, and returns an index {\tt i} such that {\tt
+
+a[i]=v}.   Thus, {\tt partition} works in the same manner as the
+function Partition of Quicksort discussed in class, except that it also
+returns the position of the partitioning element {\tt v} in the
+rearranged subarray {\tt a[l...r]}.
+
+Let {\tt a} be an array of size {\tt N} of integers, and {\tt 1 $\leq$
+
+k $\leq$ N}.
+
+\begin{enumerate}
+
+\item  What will {\tt foo(a,1,N,k)} return?
+
+\item  What is the worst-case time complexity of {\tt foo(a,1,N,k)}, and
+when does it occur? 
+
+\item  What is the average-time complexity of {\tt foo(a,1,N,k)}?
+({\em This is a difficult question, so just guess if you are not
+
+mathematically inclined!})
+
+\end{enumerate}

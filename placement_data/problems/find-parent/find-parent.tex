@@ -1,0 +1,21 @@
+The students at Tamarindo University are being harassed by electronic
+chain letters and the FBI wants to trace who has started the infamous
+game.  The FBI has obtained from the system administrators the
+sender/receiver information for all the chain emails.  By viewing the
+sender as the ``parent'' and the receiver as the ``child'' they have
+built trees to represent the propagation of chain letters (Assume for
+simplicity that there are no cycles in the graph thus
+constructed). The originators are the roots of such trees. FBI has
+decided that each person who received an electronic chain letter
+should get a compensation from the originator of that chain (i.e the
+root of the tree to which the person belongs). Assume that each person
+is in only one tree.
+
+Let $\cal  F$ be a forest, i.e., a set of rooted trees.  Assume that
+for each node $v$ contained in some tree of $\cal  F$, we know only
+$p(v)$, the parent of $v$.  Given this, design a CREW PRAM algorithm
+that computes the root of the tree containing $v$, for each node $v$
+in the forest.  Your algorithm should run in $O(\log  H)$ time, where
+$H$ is the height of the tallest tree in $\cal  F$.  Your algorithm
+need not be optimal in terms of the number of processors used, but
+specify the number of processors required by your algorithm.

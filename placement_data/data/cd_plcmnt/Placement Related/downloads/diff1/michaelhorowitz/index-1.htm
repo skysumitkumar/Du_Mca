@@ -1,0 +1,166 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="description" content="TimeKeeper a JavaScript web page for tracking time usage">
+<meta name="keywords" content="TimeKeeer, JavaScript">
+<title>TimeKeeper</title>
+<LINK REL=StyleSheet HREF="mh.css" tppabs="http://www.michaelhorowitz.com/mh.css"  TYPE='text/css'>
+</head>
+
+<body>
+
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#717855">
+    <td align="left" width="257"><img border="0" src="mhlogo.gif" tppabs="http://www.michaelhorowitz.com/pix/mhlogo.gif" width="255" height="29"></td>
+    <td align="right" >
+<a href="index.htm" tppabs="http://www.michaelhorowitz.com/index.htm" class="breadlink">Home</a>
+<span class="bread"> <a name="top"> =></a>  TimeKeeper &nbsp; </span></td></tr>
+</table>
+
+<script language="JavaScript" src="timekeeperheader.js" tppabs="http://www.michaelhorowitz.com/Timekeeper/timekeeperheader.js"> </script>
+
+<table border="0" width="100%"> <tr>
+<td width="150">&nbsp;</td>
+<td valign="top"><h1 align="center">TimeKeeper</h1>
+   <h3 align="center">a web page to track time usage</h3></td>
+<td width="201">
+<img border="0" src="clock.gif" tppabs="http://www.michaelhorowitz.com/pix/clock.gif" align="right" width="150" height="121" alt="TimeKeeper"></td></tr>
+</table>
+
+<font face="Verdana" size="2">
+TimeKeeper is a web page that can be used to track hours/minutes spent working on a project.
+The intended audience is someone who bills clients by the hour (consultants, lawyers,
+etc.).&nbsp;
+<p>It is a bit unusual in that the application consists entirely of JavaScript
+embedded in the web page (cookies are the data store).&nbsp;</p>
+
+<p> TimeKeeper is free. It requires only a web browser that supports JavaScript
+and thus should be usable from pretty much any browser on pretty much any Operating System
+(Windows, Mac,
+Linux, etc.).&nbsp;&nbsp;</p>
+
+<p>TimeKeeper can be used either on-line or off-line. That is, you can use it
+from this web site while
+logged on to the Internet or, better yet, download it to your computer and use
+it in off-line mode at any time. Although it is a web page, TimeKeeper was designed
+and intended for off-line use. The <a href="timekeeper.online.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/timekeeper.online.html">on-line
+use</a> available here is intended only as a demonstration (but
+it is fully functional). To use it off-line, you have to download the single TimeKeeper
+web page to your computer (instructions are below).&nbsp;</p>
+
+<p>The application is brutally simple, using it involves nothing more than clicking on buttons on a web page. One button tells
+it when you start working for the day, another tells it when you stop working
+for the day. In between, you can suspend working and resume working any number
+of times. <a href="Usage.Notes.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Usage.Notes.html">(see usage notes)</a>
+ All TimeKeeper does is add up all the minutes/hours you worked and report on
+it.&nbsp;</p>
+
+<p>Your web browser does not have to be active or running TimeKeeper while you are working. After you
+tell TimeKeeper that you have started or resumed a work day, you can close your web browser. TimeKeeper saves the
+information it needs in a cookie, which is
+read later when you suspend your work session or end the work day. The advantages of leaving TimeKeeper
+running while you are working are that it makes it harder to forget about TimeKeeper when you stop working
+and you can use the reminders feature.</p>
+
+<p>A short introduction to using TimeKeeper is included with the off-line
+version and available from the Help button. A longer discussion of all the ins and out of using TimeKeeper,
+is available on the <a href="Usage.Notes.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Usage.Notes.html">Usage Notes</a> page.&nbsp; </p>
+
+<p> Cookies are small text files that are read and
+written by a web browser program. TimeKeeper's use of cookies is
+unusual in that it does not require a web server. Instead, TimeKeeper issues
+JavaScript commands to your web browser to read and write the cookies it needs. This is what enables
+TimeKeeper to be used off-line. </p>
+
+<p>Why use cookies? Originally JavaScript was intended for use within a web browser and for security reasons was not
+allowed to read or write to files or databases. This has changed over time, ASP on the server side and WSH on
+the client side now allow JavaScript programs to access files and databases. Cookies
+have always been allowed from client-side JavaScript and they are a safe means
+of data storage. They are plain text files and by restricting itself to cookies,
+TimeKeeper can not read any data on your computer. If you have any security
+concerns about TimeKeeper, just look at the source code of the web page.&nbsp; </p>
+
+</font>
+
+
+<h4><b>Can you run TimeKeeper?&nbsp;</b></h4>
+
+<font face="Verdana" size="2">
+
+As noted above, TimeKeeper requires JavaScript which is built into almost every web browser.
+However, even if your web browser supports JavaScript, the use of JavaScript might be disabled.
+Below is a test of whether your web browser
+both supports
+JavaScript and is enabled to use it. There are many versions
+of JavaScript and the test shows the version used in your web browser.
+TimeKeeper <i> should</i> work with all versions of JavaScript as I avoided any
+recent (meaning nothing new as of 2001) or fancy language features. However, I have not tested it with each
+and every web browser.&nbsp;Your test results:&nbsp;&nbsp;
+
+<div align="center">
+<table bgcolor="#FFFFFF" border="2" bordercolor="#000000" cellpadding="10" cellspacing="0"><tr><td>
+<font face="arial"> <b>
+<noscript>Your web browser does not support JavaScript!&nbsp;!<br></b>
+This is either because the browser is not capable of supporting JavaScript at all, <i> or</i><br>
+the use of JavaScript has been disabled by a configuration option of the browser.<br>
+Either way, you can not use TimeKeeper.&nbsp; </font></noscript>
+<script language="javascript"> var jsvers = "not known!" // javascript version </script>
+<script language="javascript">    jsvers="1.0" </script>
+<script language="javascript1.1"> jsvers="1.1" </script>
+<script language="javascript1.2"> jsvers="1.2" </script>
+<script language="javascript1.3"> jsvers="1.3" </script>
+<script language="javascript1.4"> jsvers="1.4" </script>
+<script language="javascript1.5"> jsvers="1.5" </script>
+<script language="JavaScript">
+document.write ("You can use TimeKeeper!</b></font>" );
+document.write ("<br>Your Web Browser is " + navigator.appName);
+document.write ("<br>It supports JavaScript version " + jsvers) ;
+</script>
+</td></tr></table> </div>
+
+
+<p>Pretty much every web browser supports JavaScript. The most popular ones,
+Internet Explorer, Mozilla, Firefox, Opera, Netscape (v4, 6 and 7) all do. To check if a particular browser
+supports JavaScript, see this chart from <a href="javascript:if(confirm('http://hotwired.lycos.com/webmonkey/reference/browser_chart/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?'))window.location='http://hotwired.lycos.com/webmonkey/reference/browser_chart/'" tppabs="http://hotwired.lycos.com/webmonkey/reference/browser_chart/">WebMonkey</a>.</p>
+
+
+</font>
+
+
+<h4><b>Get the Off-Line Version</b></h4>
+
+<font face="Verdana" size="2">
+
+<p>To use TimeKeeper off-line, you have to download a single <font face="Courier New"> html</font> file to
+your computer. The <a href="Download.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Download.html">download</a> page has instructions on
+this and also shows the date of the latest version of TimeKeeper (I track
+updates based on dates, not versions/releases). The off-line version reports
+it's last update date at the bottom of the web page.&nbsp;&nbsp;</p>
+
+<p>To help you decide whether to upgrade to the latest version of TimeKeeper, see
+the changes made on the <a href="Change.History.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Change.History.html">change history</a> page.</p>
+</font>
+
+
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#717855">
+  <td align="left"> <font face="Verdana" size="1" color="#FFFFFF"><b>michael @ michaelhorowitz.com</b></font></td>
+  <td align="right"><span class="bread">
+      <a href="index-1.htm" tppabs="http://www.michaelhorowitz.com/Timekeeper/index.htm" class="breadlink">Home</a> &nbsp; => TimeKeeper  &nbsp;
+      <a href="#top" class="toplink">Top of Page</a> &nbsp; </span></td></tr>
+<tr bgcolor="#FFFFFF">
+ <td align="left"><font face="Verdana" size="1">Last Updated: May 6, 2004</font></td>
+ <td align="right">
+ <font face="Verdana" size="2">TimeKeeper: |  <a href="Download.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Download.html">Download</a>
+| <a href="Usage.Notes.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Usage.Notes.html">Usage Notes</a>
+| <a href="Change.History.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Change.History.html">Change History</a>
+| <a href="timekeeper.online.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/timekeeper.online.html">Run On-Line</a>
+| <a href="Technical.Notes.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Technical.Notes.html">Tech Notes</a>
+| <a href="Planned.Enhancements.html" tppabs="http://www.michaelhorowitz.com/Timekeeper/Planned.Enhancements.html">Enhancements</a></font></td></tr>
+<tr><td colspan="2" bgcolor="#717855" height="3"></td></tr>
+</table>
+<center><font face="Verdana" size="1"><b>Viewed
+  <img src="Count.cgi-df=timekeeperhome.dat-display=Counter-ft=0-md=6-frgb=100;139;216-dd=B.gif" tppabs="http://www.michaelhorowitz.com/cgi-sys/Count.cgi?df=timekeeperhome.dat|display=Counter|ft=0|md=6|frgb=100;139;216|dd=B">
+  times since May 26, 2005</font></b><br>
+<script language="JavaScript" src="timekeeperfooter2.js" tppabs="http://www.michaelhorowitz.com/Timekeeper/timekeeperfooter2.js"> </script>
+</body>
+</html>

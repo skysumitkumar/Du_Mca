@@ -1,0 +1,30 @@
+Security is extremely important in operating systems and computer
+networks. Typical {\em cryptographic} schemes for the secure
+transmission of messages over networks are based on the fact that no
+efficient algorithms are known for factoring large integers.  Hence,
+if we can represent a secret message by a large prime number $p$, we
+can transmit over the network the number $r = p \cdot  q$, where $q >
+p$ is another large prime number that acts as the {\em encryption
+
+  key}.  An eavesdropper who obtains the transmitted number $r$ on the
+network would have to factor $r$ in order to figure out the secret
+message~$p$.  This is very difficult without knowing the encryption
+key~$q$.  To understand why, consider the following naive factoring
+algorithm:
+\begin{quote} \sf
+    For every integer $p$ such that $1 < p < r $, check if $p$ divides
+  $r$.  \\  If so, print ``The secret message is $p$\/!''  and stop,
+  else continue.
+\end{quote}
+\begin{enumerate}
+\item  Suppose that the eavesdropper uses the above algorithm and has a
+  computer that can carry out in one microsecond (one millionth of a
+  second) a division between two integers of up to 100 bits each.
+  Give an estimate of the time that it will take in the worst case to
+  decypher the secret message if $r$ has 100 bits.
+\item  What is the worst-case time complexity of the above algorithm?
+  Since the input to the algorithm is just one large number, $r$,
+  assume that the input size $N$ is the number of bytes needed to
+  store $r$, i.e., $N = (\log_2  r) /8$, and that each division takes
+  time $O(N)$.
+\end{enumerate}

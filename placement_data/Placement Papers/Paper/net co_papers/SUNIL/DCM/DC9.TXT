@@ -1,0 +1,17 @@
+
+swap(int *a,int *b)
+{
+	a=a+b;
+	b=a-b;
+	a=a-b;
+}
+main()
+{
+	int x,y,z[2];
+	x=3;y=4;z[0]=3;z[1]=4;
+	swap(&x,&y);
+	swap(&z[0],&z[1]);
+	printf("%d...%d....%d....%d",x,y,z[0],z[1]);
+
+}
+ans->4,3,4,3

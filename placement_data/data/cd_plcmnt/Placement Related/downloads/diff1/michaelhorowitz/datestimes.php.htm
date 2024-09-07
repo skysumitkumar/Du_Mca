@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<meta name="author" content="Michael Horowitz">
+<meta name="keywords" content="php">
+<meta name="description" content="dates and times in PHP">
+<TITLE>Dates and Times in PHP</TITLE>
+<LINK REL=StyleSheet HREF="mh.css" tppabs="http://www.michaelhorowitz.com/mh.css"  TYPE='text/css'>
+</HEAD>
+
+
+<body>
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#717855">
+    <td align="left" width="257"><img border="0" src="mhlogo.gif" tppabs="http://www.michaelhorowitz.com/pix/mhlogo.gif" width="255" height="29"></td>
+    <td align="right" >
+<a href="index.htm" tppabs="http://www.michaelhorowitz.com/index.htm" class="breadlink">Home</a>
+<span class="bread"> <a name="top"> =></a>
+<a href="index.html" tppabs="http://www.michaelhorowitz.com/php/index.html" class="breadlink">PHP Projects</a> => Dates/Times &nbsp; </span></td></tr>
+</table>
+
+<font face="Verdana" size="2">
+<div align=center>
+<font face="Verdana, Helvetica" size="4" color="#800000"><b>Dates and Times in P H P</font></b><br><br>
+</div>
+
+<font face="Verdana" size="2">
+<p>Using very little PHP, this project will produce the following output at the bottom of a web page</p>
+
+<div align="center">
+<table border="1" cellpadding="7" cellspacing="0" width="90%" bgcolor="#F2F2F2" bordercolor="#800000">
+  <tr><td width="100%">
+<font face="Courier New" size="2">
+&nbsp; The time on your computer is: hh:mm:ss AM<br>
+&nbsp; The time on the web server is: hh:mm:ss PM <br>
+&nbsp; Prior to you, the last person to look at this web page did so at: hh:mm:ss PM</font></td></tr>
+</table></div>
+
+<p>The first line is produced on your computer, the last two lines are produced
+on the web server machine by PHP. The heart of the issue is producing the last
+line, a record of the last time each web page was viewed.&nbsp;</p>
+<p>The first line comes from client side JavaScript that looks like this:&nbsp;</p>
+
+<div align="center">
+<table border="1" cellpadding="7" cellspacing="0" width="90%" bgcolor="#F2F2F2" bordercolor="#800000">
+  <tr><td width="100%"><font face="Courier New" size="2">
+   &nbsp; &lt;script language="JavaScript"&gt;<br>
+    &nbsp; tempdate = new Date();<br>
+    &nbsp; document.write(&quot;The time on your comptuer is: &quot;  +
+    tempdate.toLocaleString() +&quot;&lt;br&gt;&quot;);<br>
+    &nbsp; &lt;/script></font></td></tr>
+</table></div>
+
+<p>Here is the output the above script produced for you, now: <br>
+&nbsp;  &nbsp; <b>
+<script language="JavaScript">
+  tempdate = new Date();
+  document.write("The time on your comptuer is: " + tempdate.toLocaleString() +"<br>");
+</script>
+</b> </p>
+
+<p>PHP has a date function that can be used to externalize the date on the web
+server computer. For example, this PHP code:</font><br><font face="Courier New" size="2">
+&nbsp; &nbsp; &nbsp; echo date (&quot;l dS of F Y h:i:s A&quot;)</font><br>
+<font face="Verdana" size="2">
+Prints something like: Wednesday 15th of January 2003 05:51:38 AM </p>
+
+<p>The PHP date function, output right now is:<br><b>&nbsp; &nbsp; &nbsp;
+The time on the server is: Friday,  July 29, 2005 3:48:52 AM</b></p>
+
+<p>&nbsp;
+
+</font>
+
+<br> <br>
+<table border="0" cellpadding="3" cellspacing="0" width="100%">
+
+<tr bgcolor="#717855">
+ <td align="left"> <font face="Verdana" size="1" color="#FFFFFF">
+
+&nbsp;Viewed 1480 times since February 2,2004 (3 per day over 542.5 days)</font></td>
+   
+  <td align="right"><span class="bread"><a href="index.htm" tppabs="http://www.michaelhorowitz.com/index.htm" class="breadlink">Home</a>
+     => <a href="index.html" tppabs="http://www.michaelhorowitz.com/php/index.html" class="breadlink">PHP Projects</a> &nbsp; </span> </td></tr>
+
+
+<tr bgcolor="#FFFFFF">
+<td align="left"><font face="Verdana" size="1">Page: www.michaelhorowitz.com/php/datestimes.php</font></td>
+  <td align="right"><font face="Verdana" size="1">Last Updated:
+  May 24, 2005 6 PM  &nbsp;</font></td></tr>
+
+ 
+
+<tr><td colspan="2" bgcolor="#717855" height="3"></td></tr>
+<tr bgcolor='#FFFFFF'><td align='right' width='50%'><font face='Verdana' size='1'>Prior to you, the last person to look at this web page did so on </td><td><font face='Verdana' size='1'>Friday, July 29, 2005 3:37:09 AM</td></tr><tr bgcolor='#FFFFFF'><td align=right width='50%'><font face='Verdana' size='1'>Current time on the server is </td><td><font face='Verdana' size='1'>Friday, July 29, 2005 3:48:52 AM</td></tr>
+
+<script language="JavaScript">
+  tempdate = new Date();
+  document.write ("<tr bgcolor='#FFFFFF'><td align='right' width='50%'><font face='Verdana' size='1'>");
+  document.write ("The time on your computer is </td><td><font face='Verdana' size='1'>");
+  document.write (tempdate.toLocaleString() + "</td></tr>");
+</script>
+
+
+<tr><td colspan="2" bgcolor="#717855" height="3"></td></tr>
+</table>
+
+<div align=center><font face='Verdana' size='2'>There have been 23887 page views of these PHP pages since February 10, 2004 for an average of 45 per day over 534.2 days<br>The last 5 people to view this web site were from these IP addresses:<br></font><font face='Courier New'><table border='1'><tr><td>202.141.141.10</td><td>proxy.du.ac.in</td></tr><tr><td>61.11.19.211</td><td>no name found</td></tr><tr><td>139.18.2.68</td><td>aspra10.informatik.uni-leipzig.de</td></tr><tr><td>194.98.7.155</td><td>no name found</td></tr><tr><td>213.139.228.210</td><td>lotus.ankarapatent.com</td></tr></table></div></font>
+<div align="center"><img border="0" src="license_mh.1986.jpg" tppabs="http://www.michaelhorowitz.com/license_mh.1986.jpg" width="150" height="77"></div>
+</p>
+</body>
+</HTML>

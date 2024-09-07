@@ -1,0 +1,21 @@
+Assume $A$ is an array of $N$ distinct integers indexed from $1$ to
+$N$.  Also, let $B$ be an auxiliary array (work space) of the same type
+as $A$.  Consider the following sorting algorithm:
+
+\begin{tt}
+\begin{tabbing}
+for $i:=1$ to $N$ do \\
+beg\=in  \\
+      \>  $x:=1$ \\
+      \>  for \=  $j:=1$ to $N$ do \\
+      \>        \>  if \=  $A[j]>A[i]$ then \\
+      \>        \>        \>  $x:=x+1$ \\
+      \>  $B[x]:=A[i]$ \\
+end \\
+for $i:=N$ downto $1$ do \\
+      \>  $A[N-i+1]:=B[i]$
+\end{tabbing}
+\end{tt}
+
+Explain how the algorithm sorts array $A$.  Also, give the time
+complexity of the algorithm.

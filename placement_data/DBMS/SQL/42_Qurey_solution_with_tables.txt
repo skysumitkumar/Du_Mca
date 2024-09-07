@@ -1,0 +1,774 @@
+
+Setting environment for using XAMPP for Windows.
+sky30@DESKTOP-DU18TEA c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 9
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use employee;
+Database changed
+MariaDB [employee]> show tables;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| bonus              |
+| dept               |
+| emp                |
+| salgrade           |
++--------------------+
+4 rows in set (0.001 sec)
+
+MariaDB [employee]> SELECT * FROM bonus;
++--------+----------+------+------+
+| Ename  | JOB      | SAL  | COMM |
++--------+----------+------+------+
+| ALLEN  | SALESMAN | 1600 |  300 |
+| WARD   | SALESMAN | 1250 |  500 |
+| TURNER | SALESMAN | 1500 |    0 |
+| MARTIN | SALESMAN | 1250 | 1400 |
++--------+----------+------+------+
+4 rows in set (0.000 sec)
+
+MariaDB [employee]> SELECT * FROM dept;
++-------+------------+----------+
+| DEPNO | DNAME      | LOC      |
++-------+------------+----------+
+|    10 | ACCOUNTING | NEW YORK |
+|    20 | RESERCH    | DALLAS   |
+|    30 | SALES      | CHICAGO  |
+|    40 | OPERATIONS | BOSTON   |
++-------+------------+----------+
+4 rows in set (0.000 sec)
+
+MariaDB [employee]> SELECT * FROM emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALSEMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLERK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7788 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 0000-00-00 | 3000.00 |    NULL |     20 |
+|  7932 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+13 rows in set (0.001 sec)
+
+MariaDB [employee]> SELECT * FROM selgrade;
+ERROR 1146 (42S02): Table 'employee.selgrade' doesn't exist
+MariaDB [employee]> SELECT * FROM salgrade;
++-------+-------+-------+
+| GRADE | LOSAL | HISAL |
++-------+-------+-------+
+|     1 |   700 |  1200 |
+|     2 |  1201 |  1400 |
+|     3 |  1401 |  2000 |
+|     4 |  2001 |  3000 |
+|     5 |  3001 |  9999 |
++-------+-------+-------+
+5 rows in set (0.000 sec)
+
+Query1. Write a query to display name, job, hiredate and employee number for each employee with employee number appearing first.
+
+MariaDB [employee]> SELECT empno,ename,job,hiredate FROM emp;
++-------+--------+-----------+------------+
+| empno | ename  | job       | hiredate   |
++-------+--------+-----------+------------+
+|  7369 | SMITH  | CLERK     | 1980-12-17 |
+|  7499 | ALLEN  | SALESMAN  | 1981-02-20 |
+|  7566 | JONES  | MANAGER   | 1981-04-02 |
+|  7654 | MARTIN | SALSEMAN  | 1981-09-28 |
+|  7698 | BLAKE  | MANAGER   | 1981-05-01 |
+|  7782 | CLERK  | MANAGER   | 1981-06-09 |
+|  7788 | SCOTT  | ANALYST   | 1982-12-09 |
+|  7839 | KING   | PRESIDENT | 1981-11-17 |
+|  7844 | TURNER | SALESMAN  | 1981-09-08 |
+|  7876 | ADAMS  | CLERK     | 1983-01-12 |
+|  7900 | JAMES  | CLERK     | 1981-12-03 |
+|  7902 | FORD   | ANALYST   | 0000-00-00 |
+|  7932 | MILLER | CLERK     | 1982-01-23 |
++-------+--------+-----------+------------+
+13 rows in set (0.001 sec)
+
+Query2. Write a query to display unique jobs from the employee table.
+
+MariaDB [employee]> SELECT DISTINCT job FROM emp;
++-----------+
+| job       |
++-----------+
+| CLERK     |
+| SALESMAN  |
+| MANAGER   |
+| SALSEMAN  |
+| ANALYST   |
+| PRESIDENT |
++-----------+
+6 rows in set (0.001 sec)
+
+Query3. Write a query to display name concatenated by a job separated by a comma.
+
+MariaDB [employee]> SELECT CONCAT(ename,",",job) FROM emp;
++-----------------------+
+| CONCAT(ename,",",job) |
++-----------------------+
+| SMITH,CLERK           |
+| ALLEN,SALESMAN        |
+| JONES,MANAGER         |
+| MARTIN,SALSEMAN       |
+| BLAKE,MANAGER         |
+| CLERK,MANAGER         |
+| SCOTT,ANALYST         |
+| KING,PRESIDENT        |
+| TURNER,SALESMAN       |
+| ADAMS,CLERK           |
+| JAMES,CLERK           |
+| FORD,ANALYST          |
+| MILLER,CLERK          |
++-----------------------+
+13 rows in set (0.001 sec)
+
+Query4. Write a query to display the name and salary of employees earning more than $2850.
+
+MariaDB [employee]> SELECT ename,sal FROM emp WHERE sal>2850;
++-------+---------+
+| ename | sal     |
++-------+---------+
+| JONES | 2975.00 |
+| SCOTT | 3000.00 |
+| KING  | 5000.00 |
+| FORD  | 3000.00 |
++-------+---------+
+4 rows in set (0.001 sec)
+
+Quer5. Write a query to display the name and department number for employee number 7900.
+
+MariaDB [employee]> SELECT ename,deptno FROM emp WHERE empno=7900;
++-------+--------+
+| ename | deptno |
++-------+--------+
+| JAMES |     30 |
++-------+--------+
+1 row in set (0.001 sec)
+
+Query6. Write a query to display the name and salary of all employees whose salary is not in the range of $1500 and $2850.
+
+MariaDB [employee]> SELECT ename,sal FROM emp WHERE sal NOT BETWEEN 1500 AND 2850;
++--------+---------+
+| ename  | sal     |
++--------+---------+
+| SMITH  |  800.00 |
+| JONES  | 2975.00 |
+| MARTIN | 1250.00 |
+| SCOTT  | 3000.00 |
+| KING   | 5000.00 |
+| ADAMS  | 1100.00 |
+| JAMES  |  950.00 |
+| FORD   | 3000.00 |
+| MILLER | 1300.00 |
++--------+---------+
+9 rows in set (0.001 sec)
+
+Query7. Write a query to display the name and department number of all employees in departments 10 and 30 in alphabetical order by name.
+
+MariaDB [employee]> SELECT ename,deptno FROM emp WHERE deptno=10 OR deptno=30 ORDER BY ename;
++--------+--------+
+| ename  | deptno |
++--------+--------+
+| ALLEN  |     30 |
+| BLAKE  |     30 |
+| CLERK  |     10 |
+| JAMES  |     30 |
+| KING   |     10 |
+| MARTIN |     30 |
+| MILLER |     10 |
+| TURNER |     30 |
++--------+--------+
+8 rows in set (0.001 sec)
+
+Query8. Write a query to display the name and salary of employees who earned more than
+$1500 and are in department number 10 or 30.
+
+MariaDB [employee]> SELECT ename,sal FROM emp WHERE sal>1500 AND (deptno=10 OR deptno=30);
++-------+---------+
+| ename | sal     |
++-------+---------+
+| ALLEN | 1600.00 |
+| BLAKE | 2850.00 |
+| CLERK | 2450.00 |
+| KING  | 5000.00 |
++-------+---------+
+4 rows in set (0.001 sec)
+
+Query9. Write a query to display the name and hire date of every employee who was hired in 1981.
+
+MariaDB [employee]> SELECT ename, hiredate FROM emp WHERE hiredate LIKE "1981%";
++--------+------------+
+| ename  | hiredate   |
++--------+------------+
+| ALLEN  | 1981-02-20 |
+| JONES  | 1981-04-02 |
+| MARTIN | 1981-09-28 |
+| BLAKE  | 1981-05-01 |
+| CLERK  | 1981-06-09 |
+| KING   | 1981-11-17 |
+| TURNER | 1981-09-08 |
+| JAMES  | 1981-12-03 |
++--------+------------+
+8 rows in set (0.001 sec)
+Query10. Write a query to display the name and job of all employees who do not have a manager.
+
+MariaDB [employee]> SELECT ename,job FROM emp WHERE NOT(job='MANAGER');
++--------+-----------+
+| ename  | job       |
++--------+-----------+
+| SMITH  | CLERK     |
+| ALLEN  | SALESMAN  |
+| MARTIN | SALSEMAN  |
+| SCOTT  | ANALYST   |
+| KING   | PRESIDENT |
+| TURNER | SALESMAN  |
+| ADAMS  | CLERK     |
+| JAMES  | CLERK     |
+| FORD   | ANALYST   |
+| MILLER | CLERK     |
++--------+-----------+
+10 rows in set (0.001 sec)
+
+Query11. Write a query to display the name, salary and commission for all employees who earn commission. Sort the data in descending order of salary.
+
+MariaDB [employee]> SELECT ename,sal,comm FROM emp WHERE (comm IS NOT NULL) AND (comm<>0.00) ORDER BY sal DESC;
+Or we write it as SELECT ename,sal,comm FROM emp WHERE comm>0 ORDER BY sal DESC;
++--------+---------+---------+
+| ename  | sal     | comm    |
++--------+---------+---------+
+| ALLEN  | 1600.00 |  300.00 |
+| MARTIN | 1250.00 | 1400.00 |
++--------+---------+---------+
+2 rows in set (0.001 sec)
+
+Query12. Write a query to display the names of all employees where the third letter of their name is A.
+
+MariaDB [employee]> SELECT ename FROM emp WHERE ename LIKE "__A%";
++-------+
+| ename |
++-------+
+| BLAKE |
+| ADAMS |
++-------+
+2 rows in set (0.001 sec)
+
+Query13. Write a query to display the names of all employees that have two R's or A's in their name and are in department number 30 or their manager is 7788.
+
+MariaDB [employee]> SELECT ename FROM emp WHERE ((ename LIKE "%A%A%" OR ename LIKE "%R%R%") AND deptno=30 ) OR mgr=7788;
++--------+
+| ename  |
++--------+
+| TURNER |
+| ADAMS  |
++--------+
+2 rows in set (0.002 sec)
+
+Query14. Write a query to display the name, job and salary of all employees whose job is clerk or analyst and their salary are not equal to 1000, 3000 or 5000.
+
+MariaDB [employee]> SELECT ename,job,sal FROM emp WHERE (job="clerk"OR job="analyst")AND (sal NOT IN (1000,3000,5000));
++--------+-------+---------+
+| ename  | job   | sal     |
++--------+-------+---------+
+| SMITH  | CLERK |  800.00 |
+| ADAMS  | CLERK | 1100.00 |
+| JAMES  | CLERK |  950.00 |
+| MILLER | CLERK | 1300.00 |
++--------+-------+---------+
+4 rows in set (0.001 sec)
+
+Query15. Write a query to display the name, salary and commission of all employees whose commission amount is greater than their salary increased by 5%.
+
+MariaDB [employee]> SELECT ename,sal,comm FROM emp WHERE comm>sal*1.05;
++--------+---------+---------+
+| ename  | sal     | comm    |
++--------+---------+---------+
+| MARTIN | 1250.00 | 1400.00 |
++--------+---------+---------+
+1 row in set (0.001 sec)
+
+Query16. Write a query to display a current date.
+
+MariaDB [employee]> SELECT CURDATE();
++------------+
+| CURDATE()  |
++------------+
+| 2023-10-28 |
++------------+
+1 row in set (0.000 sec)
+
+Query17. Write a query to display employee number, name, salary, salary increased by 15% expressed as a whole number.
+
+MariaDB [employee]> SELECT empno,ename,sal,(sal*1.15) AS aggr_sal_sal FROM emp;
++-------+--------+---------+--------------+
+| empno | ename  | sal     | aggr_sal_sal |
++-------+--------+---------+--------------+
+|  7369 | SMITH  |  800.00 |     920.0000 |
+|  7499 | ALLEN  | 1600.00 |    1840.0000 |
+|  7566 | JONES  | 2975.00 |    3421.2500 |
+|  7654 | MARTIN | 1250.00 |    1437.5000 |
+|  7698 | BLAKE  | 2850.00 |    3277.5000 |
+|  7782 | CLERK  | 2450.00 |    2817.5000 |
+|  7788 | SCOTT  | 3000.00 |    3450.0000 |
+|  7839 | KING   | 5000.00 |    5750.0000 |
+|  7844 | TURNER | 1500.00 |    1725.0000 |
+|  7876 | ADAMS  | 1100.00 |    1265.0000 |
+|  7900 | JAMES  |  950.00 |    1092.5000 |
+|  7902 | FORD   | 3000.00 |    3450.0000 |
+|  7932 | MILLER | 1300.00 |    1495.0000 |
++-------+--------+---------+--------------+
+13 rows in set (0.001 sec)
+
+Query18. Write a query to display the employee number, name, salary, salary increased by 15% expressed as a whole number and increase in salary.
+
+MariaDB [employee]> SELECT empno,ename,sal,(sal*1.15)AS aggr_sal,((sal*1.15)-sal)As incr_sal FROM emp;
++-------+--------+---------+-----------+----------+
+| empno | ename  | sal     | aggr_sal  | incr_sal |
++-------+--------+---------+-----------+----------+
+|  7369 | SMITH  |  800.00 |  920.0000 | 120.0000 |
+|  7499 | ALLEN  | 1600.00 | 1840.0000 | 240.0000 |
+|  7566 | JONES  | 2975.00 | 3421.2500 | 446.2500 |
+|  7654 | MARTIN | 1250.00 | 1437.5000 | 187.5000 |
+|  7698 | BLAKE  | 2850.00 | 3277.5000 | 427.5000 |
+|  7782 | CLERK  | 2450.00 | 2817.5000 | 367.5000 |
+|  7788 | SCOTT  | 3000.00 | 3450.0000 | 450.0000 |
+|  7839 | KING   | 5000.00 | 5750.0000 | 750.0000 |
+|  7844 | TURNER | 1500.00 | 1725.0000 | 225.0000 |
+|  7876 | ADAMS  | 1100.00 | 1265.0000 | 165.0000 |
+|  7900 | JAMES  |  950.00 | 1092.5000 | 142.5000 |
+|  7902 | FORD   | 3000.00 | 3450.0000 | 450.0000 |
+|  7932 | MILLER | 1300.00 | 1495.0000 | 195.0000 |
++-------+--------+---------+-----------+----------+
+13 rows in set (0.001 sec)
+
+Query19.Write a query to display the following for each employee:-
+<ename> earns <salary> monthly but wants <3 times salary>. Label the column as Dream Salary.
+
+MariaDB [employee]> SELECT CONCAT(ename,"earns",sal,"but wants",3*sal)AS "Dream Salary" FROM emp;
++------------------------------------+
+| Dream Salary                       |
++------------------------------------+
+| SMITHearns800.00but wants2400.00   |
+| ALLENearns1600.00but wants4800.00  |
+| JONESearns2975.00but wants8925.00  |
+| MARTINearns1250.00but wants3750.00 |
+| BLAKEearns2850.00but wants8550.00  |
+| CLERKearns2450.00but wants7350.00  |
+| SCOTTearns3000.00but wants9000.00  |
+| KINGearns5000.00but wants15000.00  |
+| TURNERearns1500.00but wants4500.00 |
+| ADAMSearns1100.00but wants3300.00  |
+| JAMESearns950.00but wants2850.00   |
+| FORDearns3000.00but wants9000.00   |
+| MILLERearns1300.00but wants3900.00 |
++------------------------------------+
+13 rows in set (0.001 sec)
+
+Query20.Write a query to display the employees name with the first letter capitalized and all other letters lower case and length of their name for all employees whose name start with J, A and M.
+
+MariaDB [employee]> SELECT CONCAT(UPPER(SUBSTRING(ename, 1, 1)), LOWER(SUBSTRING(ename, 2))) AS "Employee Name" FROM emp WHERE (ename LIKE "J%" OR ename LIKE "A%" OR ename LIKE "R%");
++---------------+
+| Employee Name |
++---------------+
+| Allen         |
+| Jones         |
+| Adams         |
+| James         |
++---------------+
+4 rows in set (0.001 sec)
+
+Query21. Write a query to display the name, department name, department number for all employees.
+
+Query22. Write a query that displays the unique listing of all jobs that are in department 30.
+
+MariaDB [employee]> SELECT DISTINCT job FROM emp WHERE deptno = 30;
++----------+
+| job      |
++----------+
+| SALESMAN |
+| SALSEMAN |
+| MANAGER  |
+| CLERK    |
++----------+
+4 rows in set (0.001 sec)
+
+Query23. Write a query to display the employee name, department name and location for all employees who earn a commission.
+
+MariaDB [employee]> SELECT e.ename AS "Employee Name", d.dname AS "Department Name", d.loc AS "Department Location" FROM emp e JOIN dept d ON e.deptno = d.depno;
++---------------+-----------------+---------------------+
+| Employee Name | Department Name | Department Location |
++---------------+-----------------+---------------------+
+| SMITH         | RESERCH         | DALLAS              |
+| ALLEN         | SALES           | CHICAGO             |
+| JONES         | RESERCH         | DALLAS              |
+| MARTIN        | SALES           | CHICAGO             |
+| BLAKE         | SALES           | CHICAGO             |
+| CLERK         | ACCOUNTING      | NEW YORK            |
+| SCOTT         | RESERCH         | DALLAS              |
+| KING          | ACCOUNTING      | NEW YORK            |
+| TURNER        | SALES           | CHICAGO             |
+| ADAMS         | RESERCH         | DALLAS              |
+| JAMES         | SALES           | CHICAGO             |
+| FORD          | RESERCH         | DALLAS              |
+| MILLER        | ACCOUNTING      | NEW YORK            |
++---------------+-----------------+---------------------+
+13 rows in set (0.001 sec)
+
+Query24. Write a query to display the employee name and department name for all employees who have 'A' in their name.
+
+MariaDB [employee]> SELECT e.ename AS "Employee Name", d.dname AS "Department Name" FROM emp e JOIN dept d ON e.deptno = d.depno WHERE e.ename LIKE "%A%";
++---------------+-----------------+
+| Employee Name | Department Name |
++---------------+-----------------+
+| ALLEN         | SALES           |
+| MARTIN        | SALES           |
+| BLAKE         | SALES           |
+| ADAMS         | RESERCH         |
+| JAMES         | SALES           |
++---------------+-----------------+
+5 rows in set (0.001 sec)
+
+Query25. Write a query to display the name, job, department number and department name for all employees who work at location DALLAS.
+
+MariaDB [employee]> SELECT e.ename AS "Employee Name", e.job AS "Job", d.depno AS "Department Number", d.dname AS "Department Name" FROM emp e JOIN dept d ON e.deptno = d.depno WHERE d.loc = "DALLAS";
++---------------+---------+-------------------+-----------------+
+| Employee Name | Job     | Department Number | Department Name |
++---------------+---------+-------------------+-----------------+
+| SMITH         | CLERK   |                20 | RESERCH         |
+| JONES         | MANAGER |                20 | RESERCH         |
+| SCOTT         | ANALYST |                20 | RESERCH         |
+| ADAMS         | CLERK   |                20 | RESERCH         |
+| FORD          | ANALYST |                20 | RESERCH         |
++---------------+---------+-------------------+-----------------+
+5 rows in set (0.001 sec)
+
+Query26. Write a query to display employee name and employee number along with their managers name and managers number.
+
+MariaDB [employee]> SELECT E.ename AS EMPLOYEE_NAME,E.empno AS EMPLOYEE_NUMBER ,M.ename AS MANAGER_NAME , M.empno AS MANAGER_NUMBER FROM emp E LEFT OUTER JOIN emp M ON E.mgr = M.empno WHERE E.mgr IS NOT NULL;
++---------------+-----------------+--------------+----------------+
+| EMPLOYEE_NAME | EMPLOYEE_NUMBER | MANAGER_NAME | MANAGER_NUMBER |
++---------------+-----------------+--------------+----------------+
+| SMITH         |            7369 | FORD         |           7902 |
+| ALLEN         |            7499 | BLAKE        |           7698 |
+| WARD          |            7521 | BLAKE        |           7698 |
+| JONES         |            7566 | KING         |           7839 |
+| MARTIN        |            7654 | BLAKE        |           7698 |
+| BLAKE         |            7698 | KING         |           7839 |
+| CLARK         |            7782 | KING         |           7839 |
+| SCOTT         |            7788 | JONES        |           7566 |
+| TURNER        |            7844 | BLAKE        |           7698 |
+| ADAMS         |            7876 | SCOTT        |           7788 |
+| JAMES         |            7900 | BLAKE        |           7698 |
+| FORD          |            7902 | JONES        |           7566 |
+| MILLER        |            7934 | CLARK        |           7782 |
++---------------+-----------------+--------------+----------------+
+
+
+
+Query27. Write a query to display employee name and employee number along with their managers name and managers number along with the employees who do not have a manager.
+
+MariaDB [employee]> SELECT E.ename AS EMPLOYEE_NAME,E.empno AS EMPLOYEE_NUMBER ,M.ename AS MANAGER_NAME , M.empno AS MANAGER_NUMBER FROM emp E left outer join emp M ON E.mgr =M.empno;
++---------------+-----------------+--------------+----------------+
+| EMPLOYEE_NAME | EMPLOYEE_NUMBER | MANAGER_NAME | MANAGER_NUMBER |
++---------------+-----------------+--------------+----------------+
+| SMITH         |            7369 | FORD         |           7902 |
+| ALLEN         |            7499 | BLAKE        |           7698 |
+| WARD          |            7521 | BLAKE        |           7698 |
+| JONES         |            7566 | KING         |           7839 |
+| MARTIN        |            7654 | BLAKE        |           7698 |
+| BLAKE         |            7698 | KING         |           7839 |
+| CLARK         |            7782 | KING         |           7839 |
+| SCOTT         |            7788 | JONES        |           7566 |
+| KING          |            7839 | NULL         |           NULL |
+| TURNER        |            7844 | BLAKE        |           7698 |
+| ADAMS         |            7876 | SCOTT        |           7788 |
+| JAMES         |            7900 | BLAKE        |           7698 |
+| FORD          |            7902 | JONES        |           7566 |
+| MILLER        |            7934 | CLARK        |           7782 |
++---------------+-----------------+--------------+----------------+
+
+
+
+Query28. Write a query to display employee name, department number and all the employees
+that work in the same department as the given employee. Do this for all the employees.
+
+MariaDB [employee]> SELECT C.ename, E.deptno,E.ename AS "Colleagues" FROM emp E, emp C WHERE E.deptno = C.deptno AND E.ename != C.ename;
++--------+--------+------------+
+| ename  | deptno | Colleagues |
++--------+--------+------------+
+| SMITH  |     20 | JONES      |
+| SMITH  |     20 | SCOTT      |
+| SMITH  |     20 | ADAMS      |
+| SMITH  |     20 | FORD       |
+| ALLEN  |     30 | MARTIN     |
+| ALLEN  |     30 | BLAKE      |
+| ALLEN  |     30 | TURNER     |
+| ALLEN  |     30 | JAMES      |
+| JONES  |     20 | SMITH      |
+| JONES  |     20 | SCOTT      |
+| JONES  |     20 | ADAMS      |
+| JONES  |     20 | FORD       |
+| MARTIN |     30 | ALLEN      |
+| MARTIN |     30 | BLAKE      |
+| MARTIN |     30 | TURNER     |
+| MARTIN |     30 | JAMES      |
+| BLAKE  |     30 | ALLEN      |
+| BLAKE  |     30 | MARTIN     |
+| BLAKE  |     30 | TURNER     |
+| BLAKE  |     30 | JAMES      |
+| CLERK  |     10 | KING       |
+| CLERK  |     10 | MILLER     |
+| SCOTT  |     20 | SMITH      |
+| SCOTT  |     20 | JONES      |
+| SCOTT  |     20 | ADAMS      |
+| SCOTT  |     20 | FORD       |
+| KING   |     10 | CLERK      |
+| KING   |     10 | MILLER     |
+| TURNER |     30 | ALLEN      |
+| TURNER |     30 | MARTIN     |
+| TURNER |     30 | BLAKE      |
+| TURNER |     30 | JAMES      |
+| ADAMS  |     20 | SMITH      |
+| ADAMS  |     20 | JONES      |
+| ADAMS  |     20 | SCOTT      |
+| ADAMS  |     20 | FORD       |
+| JAMES  |     30 | ALLEN      |
+| JAMES  |     30 | MARTIN     |
+| JAMES  |     30 | BLAKE      |
+| JAMES  |     30 | TURNER     |
+| FORD   |     20 | SMITH      |
+| FORD   |     20 | JONES      |
+| FORD   |     20 | SCOTT      |
+| FORD   |     20 | ADAMS      |
+| MILLER |     10 | CLERK      |
+| MILLER |     10 | KING       |
++--------+--------+------------+
+
+Query29. Write a query to display the name, job, department name, salary and grade for all
+employees.
+
+MariaDB [employee]> SELECT ename AS NAME,job AS JOB,DNAME AS DEPARTMENT_NAME,sal AS SALARY,GRADE FROM emp,dept,salgrade WHERE emp.deptno = dept.DEPTNO AND sal BETWEEN salgrade.LOSAL AND salgrade.HISAL;
++--------+----------+-----------------+---------+-------+
+| NAME   | JOB      | DEPARTMENT_NAME | SALARY  | GRADE |
++--------+----------+-----------------+---------+-------+
+| SMITH  | CLERK    | RESEARCH        |  800.00 |     1 |
+| ALLEN  | SALESMAN | SALES           | 1600.00 |     3 |
+| WARD   | SALESMAN | SALES           | 1250.00 |     2 |
+| JONES  | MANAGER  | RESEARCH        | 2975.00 |     4 |
+| MARTIN | SALESMAN | SALES           | 1250.00 |     2 |
+| BLAKE  | MANAGER  | SALES           | 2850.00 |     4 |
+| CLARK  | MANAGER  | ACCOUNTING      | 2450.00 |     4 |
+| SCOTT  | ANALYST  | RESEARCH        | 3000.00 |     4 |
+| TURNER | SALESMAN | SALES           | 1500.00 |     3 |
+| ADAMS  | CLERK    | RESEARCH        | 1100.00 |     1 |
+| JAMES  | CLERK    | SALES           |  950.00 |     1 |
+| FORD   | ANALYST  | RESEARCH        | 3000.00 |     4 |
+| MILLER | CLERK    | ACCOUNTING      | 1300.00 |     2 |
++--------+----------+-----------------+---------+-------+
+
+
+
+Query30. Write a query to display all names and hire dates of all employees along with their managers name and hire date for all employees who were hired before their managers.
+
+MariaDB [employee]> SELECT E.ename AS EMPLOYEE_NAME,E.hiredate AS EMPLOYEE_HIREDATE ,M.ename AS MANAGER_NAME , M.hiredate AS MANAGER_HIREDATE FROM emp E LEFT OUTER JOIN emp M ON E.mgr = M.empno WHERE E.hiredate < M.hiredate;
++---------------+-------------------+--------------+------------------+
+| EMPLOYEE_NAME | EMPLOYEE_HIREDATE | MANAGER_NAME | MANAGER_HIREDATE |
++---------------+-------------------+--------------+------------------+
+| SMITH         | 1980-12-17        | FORD         | 1981-12-03       |
+| ALLEN         | 1981-02-20        | BLAKE        | 1981-05-01       |
+| WARD          | 1981-02-22        | BLAKE        | 1981-05-01       |
+| JONES         | 1981-04-02        | KING         | 1981-11-17       |
+| BLAKE         | 1981-05-01        | KING         | 1981-11-17       |
+| CLARK         | 1981-06-09        | KING         | 1981-11-17       |
++---------------+-------------------+--------------+------------------+
+
+
+
+Query31. Write a query to display the highest, lowest, sum and average salary of all employees.
+
+MariaDB [employee]> SELECT MAX(sal) AS HIGHEST_SALARY , MIN(sal) AS LOWEST_SALARY ,SUM(sal) AS SUM_OF_SALARY , AVG(sal) AS AVERAGE_SALARY FROM emp;
++----------------+---------------+---------------+----------------+
+| HIGHEST_SALARY | LOWEST_SALARY | SUM_OF_SALARY | AVERAGE_SALARY |
++----------------+---------------+---------------+----------------+
+|        5000.00 |        800.00 |      29025.00 |    2073.214286 |
++----------------+---------------+---------------+----------------+
+
+
+
+Query32. Write a query to display minimum, maximum, sum and average salary for each job type.
+
+MariaDB [employee]> SELECT DISTINCT job ,MAX(sal),MIN(sal),SUM(sal),AVG(sal) FROM emp GROUP BY job;
++-----------+----------+----------+----------+-------------+
+| job       | MAX(sal) | MIN(sal) | SUM(sal) | AVG(sal)    |
++-----------+----------+----------+----------+-------------+
+| ANALYST   |  3000.00 |  3000.00 |  6000.00 | 3000.000000 |
+| CLERK     |  1300.00 |   800.00 |  4150.00 | 1037.500000 |
+| MANAGER   |  2975.00 |  2450.00 |  8275.00 | 2758.333333 |
+| PRESIDENT |  5000.00 |  5000.00 |  5000.00 | 5000.000000 |
+| SALESMAN  |  1600.00 |  1250.00 |  5600.00 | 1400.000000 |
++-----------+----------+----------+----------+-------------+
+
+
+
+
+Query33. Write a query to display the number of people with the same job.
+
+MariaDB [employee]> SELECT DISTINCT job ,COUNT(job) AS NUMBER_OF_PERSON FROM emp GROUP BY job;
++-----------+------------------+
+| job       | NUMBER_OF_PERSON |
++-----------+------------------+
+| ANALYST   |                2 |
+| CLERK     |                4 |
+| MANAGER   |                3 |
+| PRESIDENT |                1 |
+| SALESMAN  |                4 |
++-----------+------------------+
+
+
+
+Query34. Write a query to display the difference between the highest and lowest salaries.
+
+MariaDB [employee]> SELECT ( MAX(sal) - MIN(sal) ) AS DIFFERENCE_BTW_MAX_AND_MIN_SALARY FROM emp;
++-----------------------------------+
+| DIFFERENCE_BTW_MAX_AND_MIN_SALARY |
++-----------------------------------+
+|                           4200.00 |
++-----------------------------------+
+
+
+
+
+Query35. Write a query to display the manager number and the salary of the lowest paid employee for that manager. Exclude any groups where the manager id is not known. Exclude
+any groups where the minimum salary is less than $1000.
+
+MariaDB [employee]> SELECT mgr,MIN(sal) FROM emp WHERE sal > 1000 AND mgr IS NOT NULL;
++------+----------+
+| mgr  | MIN(sal) |
++------+----------+
+| 7698 |  1100.00 |
++------+----------+
+
+Query36. Write a query to display the department name, location name, number of employees and the average salary for all employees in that department.
+
+MariaDB [employee]> SELECT D.DNAME ,D.LOC ,COUNT( E.deptno) ,AVG(E.sal) FROM dept D,emp E WHERE D.DEPTNO=E.deptno GROUP BY D.DNAME;
++------------+----------+------------------+-------------+
+| DNAME      | LOC      | COUNT( E.deptno) | AVG(E.sal)  |
++------------+----------+------------------+-------------+
+| ACCOUNTING | NEW YORK |                3 | 2916.666667 |
+| RESEARCH   | DALLAS   |                5 | 2175.000000 |
+| SALES      | CHICAGO  |                6 | 1566.666667 |
++------------+----------+------------------+-------------+
+
+
+Query37. Write a query to display the employee name and hire date for all employees in the same department as Blake.
+
+MariaDB [employee]> SELECT ename ,hiredate FROM emp WHERE deptno IN (SELECT deptno FROM emp WHERE ename ='BLAKE');
++--------+------------+
+| ename  | hiredate   |
++--------+------------+
+| ALLEN  | 1981-02-20 |
+| WARD   | 1981-02-22 |
+| MARTIN | 1981-09-28 |
+| BLAKE  | 1981-05-01 |
+| TURNER | 1981-09-08 |
+| JAMES  | 1981-12-03 |
++--------+------------+
+
+
+
+
+Query38. Write a query to display the employee number and employee name for all employees who earn more than the average salary.
+
+MariaDB [employee]> SELECT empno , ename FROM emp WHERE sal > (SELECT AVG(sal) FROM emp);
++-------+-------+
+| empno | ename |
++-------+-------+
+|  7566 | JONES |
+|  7698 | BLAKE |
+|  7782 | CLARK |
+|  7788 | SCOTT |
+|  7839 | KING  |
+|  7902 | FORD  |
++-------+-------+
+
+
+
+Query39. Write a query to display the employee number and name for all employees who work in a department with any employee whose name contains a T.
+E2
+MariaDB [employee]> SELECT empno,ename FROM emp  WHERE deptno IN (SELECT deptno FROM emp WHERE ename LIKE '%T%');
++-------+--------+
+| empno | ename  |
++-------+--------+
+|  7369 | SMITH  |
+|  7499 | ALLEN  |
+|  7521 | WARD   |
+|  7566 | JONES  |
+|  7654 | MARTIN |
+|  7698 | BLAKE  |
+|  7788 | SCOTT  |
+|  7844 | TURNER |
+|  7876 | ADAMS  |
+|  7900 | JAMES  |
+|  7902 | FORD   |
++-------+--------+
+
+
+
+Query40. Write a query to display the employee name and salary of all employees who report
+to King.
+
+MariaDB [employee]> SELECT ename , sal FROM emp WHERE mgr in (SELECT empno FROM emp WHERE ename = 'KING');
++-------+---------+
+| ename | sal     |
++-------+---------+
+| JONES | 2975.00 |
+| BLAKE | 2850.00 |
+| CLARK | 2450.00 |
++-------+---------+
+
+
+Query41. Write a query to display the department number, name and job for all employees in
+the Sales department.
+
+MariaDB [employee]> SELECT E.deptno ,E.ename, E.job FROM emp E,dept D WHERE E.deptno = D.DEPTNO AND D.DNAME ='SALES';
++--------+--------+----------+
+| deptno | ename  | job      |
++--------+--------+----------+
+|     30 | ALLEN  | SALESMAN |
+|     30 | WARD   | SALESMAN |
+|     30 | MARTIN | SALESMAN |
+|     30 | BLAKE  | MANAGER  |
+|     30 | TURNER | SALESMAN |
+|     30 | JAMES  | CLERK    |
++--------+--------+----------+
+
+
+Query42.Write a query to display the employee number, name and salary for all employees
+who earn more than the average salary and who work in a department with any employee with
+a T in their name.
+
+MariaDB [employee]> SELECT empno,ename,sal FROM emp  WHERE deptno IN (SELECT deptno FROM emp WHERE ename LIKE '%T%') AND sal > (SELECT AVG(sal) FROM emp);
++-------+-------+---------+
+| empno | ename | sal     |
++-------+-------+---------+
+|  7566 | JONES | 2975.00 |
+|  7698 | BLAKE | 2850.00 |
+|  7788 | SCOTT | 3000.00 |
+|  7902 | FORD  | 3000.00 |
++-------+-------+---------+

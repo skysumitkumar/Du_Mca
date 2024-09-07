@@ -1,0 +1,47 @@
+The application process at Tamarindo University is as follows:
+
+\begin{itemize}
+
+	\item  Each applicant takes a standard test consisting of eight
+	subjects: {\em English} (E), {\em Math}
+	(M), {\em Physics} (P), {\em Chemistry} (C), {\em Biology} (B),
+	{\em History} (H), {\em Geography} (G), and {\em Sociology}
+	(S).
+
+	\item  Each applicant also submits a list of departments where
+	he/she wants to be admitted, ranked by preference.
+
+	\item  Each department $D$ can admit at most $A_D$ students, and
+	ranks each applicant $a$ using a function $\sigma_D(a)$  that
+	computes a weighted average of the test scores obtained
+	by~$a$.  The function $\sigma_D$  is different for each
+	department.  For example, the Computer Science Department uses
+	the function
+
+	\[
+	\sigma_{\rm CS}(a) = 0.1 E(a) + 0.3 M(a) + 0.2P(a) + 0.1 C(a) +
+	0.1 B(a) + 0.05 H(a) + 0.1 G(a) + 0.05 S(a) .
+	\]
+
+\end{itemize}
+
+An admission blunder occurs when an applicant $a$ is admitted into
+department $D$ but
+%
+\begin{itemize}
+
+\item  $a$ prefers department $E$ over $D$; and
+
+\item  either fewer than $A_{E}$ students have been admitted into $E$,
+or there is another applicant $b$ admitted into $E$ such that
+ $\sigma_{E}(b) < \sigma_{E}(a)$.
+
+\end{itemize}
+%
+Clearly, $a$ should have been admitted into $E$.
+
+\medskip
+
+Describe an efficient admission algorithm that prevents blunders.  What
+is the time complexity of your algorithm?  Assume there are $N$
+applicants and $M$ departments.

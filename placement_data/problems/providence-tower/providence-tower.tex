@@ -1,0 +1,28 @@
+The {\em Towers of Providence} is a variation of the classical Towers of
+Hanoi problem.  There are four pegs, denoted $A$, $B$, $C$, and $D$,
+and $N$ disks of different sizes.  Originally, all the disks are on peg
+$A$, stacked in decreasing size from bottom to top. Our goal is to
+transfer all the disks to peg $D$, and the rules are that we can only
+move one disk at a time, and no disk can be moved onto a smaller one.
+
+We can solve this problem with a recursive method:  If $N=1$, move this
+disk directly to peg $D$, and we are done. Otherwise ($N>1$), perform
+the following steps:
+\begin{enumerate}
+\item  transfer the top $N-2$ disks on peg $A$ to peg $B$ applying the
+method recursively;
+\item  move the second largest disk from peg $A$ to peg $C$;
+\item  move the largest disk from peg $A$ to peg $D$;
+\item  move the second largest disk from peg $C$ to peg $D$;
+\item  transfer the $N-2$ disks on peg $B$ to peg $D$ applying
+the method recursively.
+\end{enumerate}
+\medskip
+Let $T(N)$ be the total number of moves needed to transfer
+$N$ disks.  We have:
+
+\[  T(1) = 1 ; ~~~~~~~~~~ T(N) = 2 T(N-2) + 3 . \]
+
+Unfold this recurrence relation to obtain a closed-form expression for
+$T(N)$.  Assume that $N$ is odd.
+

@@ -1,0 +1,16 @@
+Suppose we have some data stored in disk blocks. There are two kinds of
+blocks in terms of their contents. One is data block, where the real
+records are stored, another is index block, where we store some control
+information. All the records within a data block are sorted. A record 
+in index block consists of three fields: a key, an address of another
+block and a boolean variable indicating whether the following block
+contains data or indices. And the index records are also sorted on
+the key within a index block. All the records whose key is between 
+the key fields of two adjacent index records can be found at the block
+pointed to by the address field of the latter one, regardless of the
+type of that block. Design an efficient
+algorithm to perform searching on this data structure and determine 
+its time complexity. Suppose a block can contain $D$ data records 
+or $I$ indice, and the total number of data {\em blocks} is $N$ which is
+a power of $I$. Also, all the data blocks have the same length from
+the root index block.

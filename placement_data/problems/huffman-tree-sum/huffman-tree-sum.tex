@@ -1,0 +1,57 @@
+In a Huffman encoding tree, all the leaf nodes are called external nodes
+and the others are called internal nodes. The tree has the property that 
+the value of an internal node is the sum of the values of it children,
+and the value of an external node is the frequency of the character
+associated with this node. We can expect the length of the compressed
+text to be the sum of the products of the value and the depth (the depth
+of the root is 0) of each external node, this is called the {\em weighted
+
+external path length}. There's an interesting property that this length
+is exactly equal to the sum of the values of all the internal nodes.
+For instance, in the following tree, the weighted external path length
+is $5 \times  1 + 2 \times  3 + 2 \times  3 + 1 \times  3 + 1 \times  3 = 23$,
+and the sum of the values of the internal nodes is $11 + 6 + 4 + 2 = 23$.
+Give a mathematical proof to that. ({\em Hint:} Prove that it holds true
+for the tree with only one internal node at first. Then assume that
+it holds true for a tree containing $n$ internal nodes, try to prove it
+for a tree with $n+1$ internal nodes. Choose a node with two external-node
+children and consider it as an external node. Now the problem goes back
+to the case of a tree with $n$ internal nodes.)
+
+\setlength{\unitlength} {0.15in}
+
+\begin{figure}[h]
+\begin{picture}(17,9)(0,0)
+
+\put(2,8) {\circle{1}}
+\put(2,8) {\makebox(0,0) {$11$}}
+\put(1.50,7.50) {\line (-3,-2){1.80}}
+\put(2.50,7.50) {\line (6,-1){7.57}}
+
+\put(0,6) {\framebox(0,0) {$5$}}
+
+\put(10,6) {\circle{1}}
+\put(10,6) {\makebox(0,0) {$6$}}
+\put(9.50,5.50) {\line (-4,-1){3.64}}
+\put(10.50,5.50) {\line (4,-1){3.64}}
+
+\put(6,4) {\circle{1}}
+\put(6,4) {\makebox(0,0) {$4$}}
+\put(5.50,3.50) {\line (-3,-2){1.80}}
+\put(6.50,3.50) {\line (3,-2){1.80}}
+
+\put(4,2) {\framebox(0,0) {$2$}}
+
+\put(8,2) {\framebox(0,0) {$2$}}
+
+\put(14,4) {\circle{1}}
+\put(14,4) {\makebox(0,0) {$2$}}
+\put(13.50,3.50) {\line (-3,-2){1.80}}
+\put(14.50,3.50) {\line (3,-2){1.80}}
+
+\put(12,2) {\framebox(0,0) {$1$}}
+
+\put(16,2) {\framebox(0,0) {$1$}}
+
+\end{picture}\end{figure}
+

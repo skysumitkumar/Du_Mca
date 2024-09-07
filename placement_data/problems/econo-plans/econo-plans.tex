@@ -1,0 +1,26 @@
+BT\&T  has a complex project to carry out, and $N$ alternative plans
+have been proposed for completing the project.  Each plan $p$ can be
+represented by a pair $(t(p),c(p))$ where $t(p)$ is the time (duration)
+and $c(p)$ is the cost of plan~$p$.  We can represent these plans as
+points in the plane, just let the $x$-axis represent $t$ and the
+$y$-axis represent $c$.
+
+A plan $p$ is ``bad'' if there is another plan $q$ which is both faster
+and cheaper than $p$.  In the example shown below, plan $p_6$ is bad
+because there is plan $p_2$ such that $t(p_2) < t(p_6)$ and $c(p_2) <
+c(p_6)$.
+
+Design an algorithm that takes as input the list of plans, and returns
+a revised list where the bad plans have been removed.  In the example
+below, the algorithm should return a list containing plans $p_1$,
+$p_2$, $p_3$ and $p_5$. Your algorithm should have the time complexity
+$O(N \log  N)$.
+ 
+\input{psfig}
+\vspace{4mm}
+\par
+\begin{figure}[h]
+\centerline{\psfig{file=fi-econo-plans.ps,width=4in}}\end{figure}
+
+\par
+\vspace{4mm}

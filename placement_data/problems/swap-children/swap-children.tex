@@ -1,0 +1,29 @@
+Below is an uncommented function, where {\tt tree} is the type
+definition of a binary tree. Find out its functionality.
+
+\begin{verbatim}
+typedef	struct	tree_type {
+        int                     key;
+
+        struct tree_type       *llink,*rlink;
+
+	} tree;
+
+foo(tree *root)
+{
+  tree	*temp;
+
+  if (root == NULL) return;
+
+  temp = root->llink;
+
+  root->llink = root->rlink;
+
+  root->rlink = temp;
+
+  foo(root->llink);
+
+  foo(root->rlink);
+
+}/* foo */
+\end{verbatim}

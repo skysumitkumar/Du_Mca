@@ -1,0 +1,17 @@
+When merging to array {\tt a[1..N]} and {\tt b[1..N]}, standard merge 
+sort will start comparing from {\tt a[1]} and {\tt b[1]}, then compare
+the elements of {\tt a} and {\tt b} consequently, until one array
+is exhausted and finally copy the remaining of the other array into
+the buffer array. We are going to make a little change to this merging
+procedure that compare {\tt b[1]} with {\tt a[N],a[N-1],$\cdots$} until
+meet an element {\tt a[i]} which is smaller or equal to it, and then copy
+{\tt a[1],a[2],$\cdots$,a[i]} and {\tt b[1]} into the buffer array
+consequently. Apply the similar operation for {\tt b[2]} on {\tt
+
+a[i+1],$\cdots$,a[N]}, then for {\tt b[3],b[4],$\cdots$} until {\tt a}
+is exhausted. Now copy the remaining of {\tt b} into the buffer and
+we get a merged array. Ignore the time for moving elements, only
+consider time on comparison, determine when the best case will happen
+for an array of size $M$, and what the exact number of comparisons is. 
+Will this always be better than the standard merge sort? Justify
+your answer. (Assume $M$ is a power of 2.)

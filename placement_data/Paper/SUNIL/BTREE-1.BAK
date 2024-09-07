@@ -1,0 +1,987 @@
+/*  File implemntation of b-plus tree program.
+
+        Submitted by
+       --------------
+       Umang Singh               Vivek Kumar Choudhary
+       Roll No. 32               Roll No. 33
+                  M.C.A. IInd SEM.                    */
+
+//--------------------------------------------------------------
+     //Headers Files.
+#include<stdio.h>  // fflush(stdin) & getchar()
+#include<conio.h>  // getch(),clrscr() & gotoxy()
+#include<fstream.h> //cin & cout
+#include<stdlib.h>  //exit(0)
+#include<ctype.h>   //tolower
+#include<graphics.h> //intiailizing graphics
+#include<string.h>  // strlen
+#include<dos.h>  //delay
+//--------------------------------------------------------------
+struct node         //Structure of node
+{
+   int level;      //field for indicating level of node.
+   int ptr[5];     //five pointers field.
+   int sortkey[4]; //max. four keys can be inserted in a node.
+};
+struct data_record //Structure of record
+{
+   int status;     //field indicates existing/deleted records.
+   int record_id;  //field for record no.
+   int key_value;  //key field used as sorting purpose.
+};
+//--------------------------------------------------------------
+int root_address;  //contains address of root node in B+TREE.
+const int max=200; //max.limit of stack.
+int dim=200;       //used as index of stack top.
+int stack_array[max];//array used as stack.
+static int index;  //used as top pointer of stack.
+int queue[200];    //array to be used as queue.
+int queue_first;   //used as start pointer for queue.
+int queue_last;    //used as end pointer for queue.
+int print;         //to check display of ellipses.
+//--------------------------------------------------------------
+ //      FUNCTIONS PROTOTYPES.
+node initialize(node); //it initializes a node.
+void insertion();  //inserting a key in B+ TREE.
+void display_node(); //it display all nodes of B+ TREE.
+int searching(int); //it searches a key .
+void split_leaf(data_record);//it split a leaf node of tree.
+void split_internal(data_record);//if split a internal node.
+void display_records(); //display sorted records.
+void stack();  //initializing stack.
+void queues(); //initializing queue.
+void push(int);//pushing an integer in stack.
+int pop();     //pop an integer from a stack.
+void push_queue(int);//pushing an integer in queue.
+int pop_queue();  //pop an integer from a queue.
+int check_entry(char *,int);//checks an error if any in inputs.
+
+//-------------------------------------------------------------
+
+void main()
+{
+   int keys,choice;
+   char mode;
+   fstream indexfile,datafile;//declaring objects of type fstream.
+   stack();
+   do
+   {
+      clrscr();
+      cout<<"PROGRAM OF B+TREE\n-------------------";
+      cout<<"\nChoices are : \n";
+      cout<<"\n1.Work on existing record.";
+      cout<<"\n2.Creating new database.";
+      cout<<"\n\nEnter your choice (1 or 2) : ";
+      fflush(stdin);//it flushes a stream.i.e. the buffer for the stream is written to disk file.
+      mode=tolower(getchar());//input from user.
+      if(mode!='1' && mode!='2')
+      { 
+         cout<<"\n\n\t Please enter '1' or '2' only.";
+         getch();
+      }
+   }
+   while(mode!='1' && mode!='2');
+
+   if(mode=='2') //when user want to create new file.
+   {
+      indexfile.open("INDEXFIL.INT",ios::out|ios::trunc|ios::binary);
+      datafile.open("DATAFILE.INT",ios::out|ios::trunc|ios::binary);
+      root_address=0;
+      node new_node;
+      new_node=initialize(new_node);
+      indexfile.write((char *)&root_address,sizeof root_address);
+      indexfile.write((char *)&new_node,sizeof new_node);
+      indexfile.close();
+      datafile.close();
+   }
+
+   else       //when user want work on existing records.
+   {
+      node first_node;
+      first_node=initialize(first_node);
+      indexfile.open("INDEXFIL.INT",ios::in|ios::binary);
+      indexfile.seekg(2,ios::beg);
+      indexfile.read((char *)&first_node,sizeof first_node);
+      if(first_node.sortkey[0]==-1 && first_node.sortkey[1]==-1 &&  first_node.sortkey[2]==-1 && first_node.sortkey[3]==-1)
+      {
+         indexfile.close();
+         cout<<"\n\n SORRY! No existing records ,you must create new database.";
+         getch();
+	 exit(0);
+      }
+      indexfile.close();
+   }
+
+   char temp[4];
+   int error=0;
+   do
+   {
+      do
+      {
+         clrscr();
+         cout<<"\n Main menu ";
+         cout<<"\n 1. Inserting a new key to B+TREE ";
+         cout<<"\n 2. Display all nodes of B+TREE ";
+	 cout<<"\n 3. Searching a key in B+TREE ";
+         cout<<"\n 4. Display all records in sorted order ";
+         cout<<"\n 5. Quit ";
+         cout<<"\n\n\t Enter your choice : ";
+         fflush(stdin);
+         gets(temp); //gets a string from stdin.
+	 error=check_entry(temp,1);
+      }
+      while(error==1);
+      choice=atoi(temp);//converts string of digits into integer.
+
+      switch(choice)
+      {
+         case 1 :
+                  insertion();
+                  getch();
+                  break;
+	 case 2 :
+                  display_node();
+                  getch();
+		  break;
+         case 3 :
+                  int found=searching(-1);
+                  if(found==0)
+                     cout<<" ";
+		  getch();
+		  break;
+         case 4 :
+		  display_records();
+		  getch();
+                  break;
+       
+      }
+   }
+   while(choice!=5);
+}  //-----------   END OF MAIN METHOD  --------------------//
+//---------------------------------------------------------------
+
+int check_entry(char *temp,int call)
+{
+   if(strlen(temp)==0)
+      return 1;
+   for(int i=0;i<strlen(temp);i++)
+      if(!isdigit(temp[i]))
+	 return 1;
+   if(call==2)
+      if(strlen(temp)==5)
+	 if(temp[0]=='3' && temp[1]=='2' && temp[2]=='7' && temp[3]=='6' && strcmp(temp,"32767")>0 )
+	 {
+            cout<<"\n\n\t ERROR! Entry is out of range.";
+            getch();
+            return 1;
+         }
+   int value=atoi(temp);
+   if(value<0)
+      return 1;
+   return 0;
+}
+//-------------------------------------------------------------------
+
+void insertion()
+{
+   fstream datafile,indexfile;
+   data_record record;
+   datafile.open("DATAFILE.INT",ios::ate|ios::out|ios::binary);
+   int success;
+   char temp[6],mode;
+   int error,repeate;
+
+   do
+   {
+      cout<<"\n\n\t Enter the key field of the record : ";
+      fflush(stdin);
+      gets(temp);
+      error=check_entry(temp,2);
+   }
+   while(error==1);
+   record.key_value=atoi(temp);
+   int present=searching(record.key_value);
+   if(present==0)       //if key is not present.
+   {
+      datafile.seekp(0,ios::end);
+      record.record_id=((datafile.tellp()/6)+1);
+      record.status=1;
+      datafile.write((char *)&record,sizeof(record));
+   }
+   else     //if key already exists
+   {
+      cout<<"\n\n\t Record with this key value already exist";
+      return;
+   }
+
+   node read_node;
+   int node_address,insertflag=0;
+   indexfile.open("INDEXFIL.INT",ios::in|ios::binary);
+   indexfile.read((char *)&node_address,sizeof node_address);
+   push(node_address);
+   indexfile.seekg(20*node_address+2,ios::beg);
+   indexfile.read((char *)&read_node,sizeof read_node);
+
+   while(read_node.level!=1)     //loop for finding leaf node
+   {
+      insertflag=0;
+      if(read_node.sortkey[0]==-1)
+         break;
+      for(int z=0;z<4;z++)
+         if(read_node.sortkey[z]==-1 || read_node.sortkey[z]>record.key_value)
+	 {
+            insertflag=1;
+            node_address=read_node.ptr[z];
+            break;
+         }
+      if(insertflag==0)
+	 node_address=read_node.ptr[4];
+
+      indexfile.seekg(20*node_address+2,ios::beg);
+      indexfile.read((char *)&read_node,sizeof read_node);
+      push(node_address);
+   }
+
+   if(read_node.sortkey[0]!=-1 && read_node.sortkey[1]!=-1 && read_node.sortkey[2]!=-1 && read_node.sortkey[3]!=-1)
+   {
+      split_leaf(record);    // if leaf node is full.
+      return;
+   }
+   //if there exists an empty key field in the leaf node then
+   //insert the key at appropriate place.
+   int temparray[5],tempinfo,recordarray[5],temprec;
+   if(read_node.sortkey[0]==-1)
+   {
+      read_node.sortkey[0]=record.key_value;
+      read_node.ptr[0]=record.record_id;
+   }
+   else
+   {
+      for(int count=0;read_node.sortkey[count]!=-1;count++);
+      for(int i=0;i<count;i++)
+      {
+         temparray[i]=read_node.sortkey[i];
+	 recordarray[i]=read_node.ptr[i];
+      } 
+      temparray[i]=record.key_value;
+      recordarray[i]=record.record_id;
+      count++;
+      for(i=0;i<count;i++)
+         for(int j=1;j<count-i;j++)
+            if(temparray[j]<temparray[j-1])
+	    {
+               tempinfo=temparray[j-1];
+	       temparray[j-1]=temparray[j];
+               temparray[j]=tempinfo;
+	       temprec=recordarray[j-1];
+               recordarray[j-1]=recordarray[j];
+               recordarray[j]=temprec;
+            }
+      for(i=0;i<count;i++)
+      {
+         read_node.sortkey[i]=temparray[i];
+         read_node.ptr[i]=recordarray[i];
+      }   
+   }
+
+   indexfile.close();
+   indexfile.open("INDEXFIL.INT",ios::ate|ios::out|ios::binary);
+   indexfile.seekp(20*node_address+2,ios::beg);
+   indexfile.write((char *)&read_node,sizeof read_node);
+   indexfile.close();
+}
+//-----------------------------------------------------------------------
+int searching(int search_value)
+{
+   fstream datafile,indexfile;
+   node search_node;
+   data_record display_record;
+   int store_value=search_value;
+   int error;
+   char temp[6];
+   if(search_value==-1)   // called by main()
+   {
+      do
+      {
+	 cout<<"\n\n\tEnter the key field of the record : ";
+         fflush(stdin);
+         gets(temp);
+         error=check_entry(temp,2);
+      }
+      while(error==1);
+      search_value=atoi(temp);
+   }
+   int node_address;
+   indexfile.open("INDEXFIL.INT",ios::in|ios::binary);
+   indexfile.read((char *)&node_address,sizeof root_address);
+   int found=0,insertflag=0;
+   do
+   {
+      insertflag=0;
+      indexfile.seekg(node_address*20+2,ios::beg);
+      indexfile.read((char *)&search_node,sizeof search_node);
+      if(search_value==search_node.sortkey[0] || search_value==search_node.sortkey[1] || search_value==search_node.sortkey[2] || search_value==search_node.sortkey[3])
+      {
+         found=1;
+	 break;
+      }
+      if(search_node.sortkey[0]==-1)
+         break;
+      int z;
+      if(search_value<search_node.sortkey[0])
+      {
+         node_address=search_node.ptr[0];
+         goto end;
+      }
+      else
+      {
+         for(z=1;z<4;z++)
+         if(search_value>search_node.sortkey[z-1] && search_node.sortkey[z-1]!=-1)
+            if(search_node.sortkey[z]==-1 || search_node.sortkey[z]>search_value)
+            {
+               insertflag=1;
+               node_address=search_node.ptr[z];
+               break;
+            }
+	 if(insertflag==0)
+	    node_address=search_node.ptr[4];
+         end:
+      }
+   }
+   while(search_node.level!=1);
+   if(found==0)
+   {
+      if(store_value==-1)
+         cout<<"\n Record with entered key value is not present.";
+      indexfile.close();
+      return found;
+   }
+   else
+   {
+      if(store_value!=-1 && store_value!=-2)
+         return found;
+      for(int x=0;x<4;x++)
+      {
+         if(search_value==search_node.sortkey[x])
+	    node_address=search_node.ptr[x];
+      }
+     while(search_node.level!=1)
+     {
+         indexfile.seekg(node_address*20+2,ios::beg);
+	 indexfile.read((char *)&search_node,sizeof search_node);
+         for(int x=4;x>0;x--)
+            if(search_node.ptr[x]!=-1)
+            {
+               node_address=search_node.ptr[x];
+               break;
+            }
+      }
+      int search_record_no;
+      datafile.open("DATAFILE.INT",ios::in|ios::binary);
+      for(x=0;x<4;x++)
+         if(search_value==search_node.sortkey[x])
+	    search_record_no=search_node.ptr[x];
+      search_record_no--;
+      datafile.seekg(6*search_record_no,ios::beg);
+      datafile.read((char *)&display_record,sizeof(display_record));
+      cout<<"\n\n  Record No. : "<<display_record.record_id;
+      cout<<"\t Record Key : "<<display_record.key_value;
+   }
+   datafile.close();
+   indexfile.close();
+   return found;
+}
+//------------------------------------------------------------------------
+node initialize(node initial_node)
+{
+   for(int z=0;z<4;z++)
+   {
+      initial_node.ptr[z]=-1;
+      initial_node.sortkey[z]=-1;
+   }
+   initial_node.ptr[4]=-1;
+   initial_node.level=1;
+   return (initial_node);
+}
+//-----------------------------------------------------------------------
+void split_leaf(data_record record)
+{
+   fstream indexfile;
+   node new_node,old_node;
+   new_node=initialize(new_node);
+   old_node=initialize(old_node);
+   int leaf_address=pop();
+   int tempinfo,temparray[5],temp,recordarray[5];
+   for(int i=0;i<5;i++)
+   {
+      temparray[i]=0;
+      recordarray[i]=0;
+   }
+   indexfile.open("INDEXFIL.INT",ios::in|ios::binary);
+   indexfile.seekg(leaf_address*20+2,ios::beg);
+   indexfile.read((char *)&old_node,sizeof old_node);
+   int fluctuate,address;
+   indexfile.seekg(0,ios::end);
+   new_node.ptr[4]=old_node.ptr[4];
+   old_node.ptr[4]=indexfile.tellg()/20;
+   address=old_node.ptr[4];
+   for(i=0;i<4;i++)
+   {
+      temparray[i]=old_node.sortkey[i];
+      recordarray[i]=old_node.ptr[i];
+   }
+   temparray[i]=record.key_value;
+   recordarray[i]=record.record_id;
+   for(i=0;i<5;i++)
+      for(int j=1;j<5-i;j++)
+         if(temparray[j]<temparray[j-1])
+         {
+            tempinfo=temparray[j-1];
+            temparray[j-1]=temparray[j];
+            temparray[j]=tempinfo;
+            temp=recordarray[j-1];
+	    recordarray[j-1]=recordarray[j];
+            recordarray[j]=temp;
+         }
+   fluctuate=temparray[2];
+   new_node.sortkey[0]=temparray[3];
+   new_node.sortkey[1]=temparray[4];
+   new_node.ptr[0]=recordarray[3];
+   new_node.ptr[1]=recordarray[4];
+   old_node.sortkey[0]=temparray[0];
+   old_node.sortkey[1]=temparray[1];
+   old_node.sortkey[2]=temparray[2];
+   old_node.ptr[0]=recordarray[0];
+   old_node.ptr[1]=recordarray[1];
+   old_node.ptr[2]=recordarray[2];
+   old_node.ptr[3]=-1;
+   old_node.sortkey[3]=-1;
+
+ loop:
+   indexfile.close();
+   indexfile.open("INDEXFIL.INT",ios::ate|ios::out|ios::binary);
+   indexfile.seekp(leaf_address*20+2,ios::beg);
+   indexfile.write((char *)&old_node,sizeof(old_node));
+   indexfile.seekp(0,ios::end);
+   indexfile.write((char *)&new_node,sizeof new_node);
+   indexfile.close();
+   indexfile.open("INDEXFIL.INT",ios::in|ios::binary);
+   int reply=pop();
+   node parent_node;
+   parent_node=initialize(parent_node);
+   indexfile.seekg(0,ios::beg);
+   int root_check;
+   indexfile.read((char *)&root_check,sizeof root_check);
+      
+   if(root_check==0)    //if there was no parent earlier.
+   {
+      parent_node.level=2;
+      parent_node.sortkey[0]=fluctuate;
+      parent_node.ptr[1]=address;
+      parent_node.ptr[0]=leaf_address;
+      indexfile.close();
+      indexfile.open("INDEXFIL.INT",ios::ate|ios::out|ios::binary);
+      indexfile.seekp(0,ios::end);
+      leaf_address=indexfile.tellp()/20;
+      indexfile.write((char *)&parent_node,sizeof parent_node);
+      indexfile.seekp(0,ios::beg);
+      indexfile.write((char *)&leaf_address,sizeof leaf_address);
+      indexfile.close();
+   }
+   else      //if oarent existted earlier.
+   {
+      indexfile.seekg(reply*20+2,ios::beg);
+      indexfile.read((char *)&parent_node,sizeof parent_node);
+      if(parent_node.sortkey[0]!=-1 && parent_node.sortkey[1]!=-1 && parent_node.sortkey[2]!=-1 && parent_node.sortkey[3]!=-1)
+      {
+         record.key_value=fluctuate;
+         record.record_id=address;
+         push(reply);
+         indexfile.close();
+         split_internal(record);  //split in parent node if reqd.
+         return;
+      }
+      //if no split reqd. then readjusting the node.
+      for(int count=0;parent_node.sortkey[count]!=-1;count++);
+      for(i=0;i<count;i++)
+      {
+         temparray[i]=parent_node.sortkey[i];
+         recordarray[i]=parent_node.ptr[i];
+      }
+      temparray[i]=fluctuate;
+      recordarray[i]=address;
+      count++;
+      for(i=0;i<count;i++)
+         for(int j=1;j<count-i;j++)
+	    if(temparray[j]<temparray[j-1])
+            {
+               tempinfo=temparray[j-1];
+               temparray[j-1]=temparray[j];
+               temparray[j]=tempinfo;
+               temp=recordarray[j-1];
+               recordarray[j-1]=recordarray[j];
+               recordarray[j]=temp;
+            }
+      for(int location=0;temparray[location]!=fluctuate;location++);
+      for(j=4;j>location+1;j--)
+      {
+	 parent_node.ptr[j]=parent_node.ptr[j-1];
+         parent_node.sortkey[j-1]=parent_node.sortkey[j-2];
+      }
+      parent_node.ptr[location+1]=address;
+      parent_node.sortkey[location]=fluctuate;
+      indexfile.close();
+      indexfile.open("INDEXFIL.INT",ios::ate|ios::out|ios::binary);
+      indexfile.seekp(reply*20+2,ios::beg);
+      indexfile.write((char *)&parent_node,sizeof parent_node);
+      indexfile.close();
+   }
+}
+//------------------------------------------------------------------------
+
+void split_internal(data_record record)
+{
+   fstream indexfile;
+   node new_node,old_node;
+   int root;
+   int reply=pop();
+   indexfile.open("INDEXFIL.INT",ios::in|ios::binary);
+   indexfile.seekg(0,ios::beg);
+   indexfile.read((char *)&root,sizeof root);
+   int fluctuate,address;
+   indexfile.seekg(reply*20+2,ios::beg);
+   indexfile.read((char *)&old_node,sizeof old_node);
+   while(old_node.sortkey[0]!=-1 && old_node.sortkey[1]!=-1 && old_node.sortkey[2]!=-1 && old_node.sortkey[3]!=-1)
+   {
+      old_node.level=3;
+      new_node=initialize(new_node);
+      new_node.level=3;
+      indexfile.seekg(0,ios::end);
+      address=indexfile.tellg()/20;
+      int temparray[5],tempinfo,recordarray[5],temprec;
+      for(int i=0;i<4;i++)
+      {
+	 temparray[i]=old_node.sortkey[i];
+         recordarray[i]=old_node.ptr[i+1];
+      }
+      temparray[i]=record.key_value;
+      recordarray[i]=record.record_id;
+      for(i=0;i<5;i++)
+         for(int j=1;j<5-i;j++)
+            if(temparray[j]<temparray[j-1])
+	    {
+               tempinfo=temparray[j-1];
+               temparray[j-1]=temparray[j];
+               temparray[j]=tempinfo;
+	       temprec=recordarray[j-1];
+               recordarray[j-1]=recordarray[j];
+               recordarray[j]=temprec;
+            }
+      fluctuate=temparray[2];
+      new_node.sortkey[0]=temparray[3];
+      new_node.sortkey[1]=temparray[4];
+      new_node.ptr[0]=recordarray[2];
+      new_node.ptr[1]=recordarray[3];
+      new_node.ptr[2]=recordarray[4];
+      old_node.sortkey[0]=temparray[0];
+      old_node.sortkey[1]=temparray[1];
+      old_node.sortkey[2]=-1;
+      old_node.sortkey[3]=-1;
+      old_node.ptr[1]=recordarray[0];
+      old_node.ptr[2]=recordarray[1];
+      old_node.ptr[3]=-1;
+      old_node.ptr[4]=-1;
+
+  loop:
+      indexfile.close();
+      indexfile.open("INDEXFIL.INT",ios::ate|ios::out|ios::binary);
+      indexfile.seekp(reply*20+2,ios::beg);
+      indexfile.write((char *)&old_node,sizeof old_node);
+      indexfile.seekp(0,ios::end);
+      indexfile.write((char *)&new_node,sizeof new_node);
+      node parent_node;
+      parent_node=initialize(parent_node);
+      if(reply==root)  //case when parent node splitted is root node.
+      {
+         parent_node.level=2;
+         parent_node.sortkey[0]=fluctuate;  //storing the key value.
+         parent_node.ptr[0]=reply; //storing the left pointer.
+         parent_node.ptr[1]=address; //storing the right pointer.
+         indexfile.seekp(0,ios::end);
+         root=indexfile.tellp()/20;
+	 indexfile.write((char *)&parent_node,sizeof parent_node);
+         indexfile.seekp(0,ios::beg);
+         indexfile.write((char *)&root,sizeof root);
+         indexfile.close();
+         return;
+      }
+      else    // case when higher parent node is present.
+      {
+         indexfile.close();
+         reply=pop();
+         record.key_value=fluctuate;
+         record.record_id=address;
+	 indexfile.open("INDEXFIL.INT",ios::in|ios::binary);
+         indexfile.seekg(reply*20+2,ios::beg);
+         indexfile.read((char *)&parent_node,sizeof parent_node);
+      }
+   }
+   int temparray[5],recordarray[5],tempinfo,temp;
+   for(int z=0;z<5;z++)
+   {
+      temparray[z]=0;
+      recordarray[z]=0;
+   }
+   for(int count=0;old_node.sortkey[count]!=-1;count++);
+   for(int i=0;i<count;i++)
+   {
+      temparray[i]=old_node.sortkey[i];
+      recordarray[i]=old_node.ptr[i];
+   }
+   temparray[i]=fluctuate;
+   recordarray[i]=address;
+   count++;
+   for(i=0;i<count;i++)
+      for(int j=1;j<count-i;j++)
+         if(temparray[j]<temparray[j-1])
+	 {
+	    tempinfo=temparray[j-1];
+            temparray[j-1]=temparray[j];
+            temparray[j]=tempinfo;
+            temp=recordarray[j-1];
+	    recordarray[j-1]=recordarray[j];
+            recordarray[j]=temp;
+         }
+   for(int location=0;temparray[location]!=fluctuate;location++);
+   for(j=4;j>location+1;j--)
+   {
+      old_node.ptr[j]=old_node.ptr[j-1];
+      old_node.sortkey[j-1]=old_node.sortkey[j-2];
+   }
+   old_node.ptr[location+1]=address;
+   old_node.sortkey[location]=fluctuate;
+   indexfile.close();
+   indexfile.open("INDEXFIL.INT",ios::ate|ios::out|ios::binary);
+   indexfile.seekp(reply*20+2,ios::beg);
+   indexfile.write((char *)&old_node,sizeof old_node);
+   indexfile.close();
+}
+//----------------------------------------------------------------------
+void display_records()
+{
+   fstream indexfile,datafile;
+   char temp[6];
+   int root=0;
+   int col=25,row=5;
+   clrscr();
+   node read_node;
+   indexfile.open("INDEXFIL.INT",ios::in|ios::binary);
+   datafile.open("DATAFILE.INT",ios::in|ios::binary);
+     // print all records in sorted order.
+   do
+   {
+      gotoxy(30,1);
+      cout<<"\n\t Records in sorted order ";
+      for(int j=2;j<=5;j+=3)
+         for(int i=5;i<=75;i++)
+	 {
+            gotoxy(i,j);
+            cout<<"-";
+         }
+      for(j=5;j<=75;j+=35)
+         for(i=2;i<=24;i++)
+         {
+            gotoxy(j,i);
+            cout<<"|";
+	 }
+      for(i=5;i<=75;i++)
+      {
+         gotoxy(i,24);
+         cout<<"-";
+      }
+      gotoxy(5,4);
+		cout<<"|\t           Record No.                  Key Field";
+		indexfile.seekg(20*root+2,ios::beg);
+      indexfile.read((char *)&read_node,sizeof read_node);
+      if(read_node.sortkey[0]==-1 && read_node.sortkey[1]==-1 && read_node.sortkey[2]==-1 && read_node.sortkey[3]==-1)
+      {
+	 cout<<"\n\n\t No records are present";
+         getch();
+         return;
+      }
+      int record_ptr;
+      data_record read_record;
+      record_ptr=read_node.ptr[0];
+      record_ptr--;
+      datafile.seekg(record_ptr*6,ios::beg);
+      datafile.read((char *)&read_record,sizeof read_record);
+      if(read_record.status!=0)
+      {
+	 row++;
+         gotoxy(col,row);
+         cout<<read_record.record_id;
+         gotoxy(col+30,row);
+         cout<<read_record.key_value;
+      }
+      for(int z=1;z<4;z++)
+      {
+         if(read_node.sortkey[z]!=-1)
+         {
+            record_ptr=read_node.ptr[z];
+            record_ptr--;
+	    datafile.seekg(record_ptr*6,ios::beg);
+            datafile.read((char *)&read_record,sizeof read_record);
+         }
+         else
+            break;
+	 if(read_record.status!=0)
+         {
+            row++;
+            gotoxy(col,row);
+            cout<<read_record.record_id;
+            gotoxy(col+30,row);
+            cout<<read_record.key_value;
+	 }
+      }
+      if(row>=21)
+      {
+         getch();
+         row=5;
+         clrscr();
+      }
+      root=read_node.ptr[4];
+   }
+   while(read_node.ptr[4]!=-1);
+   indexfile.close();
+   datafile.close();
+}
+//------------------------------------------------------------------------
+
+void display_node()
+{
+   print=100;
+   void display(int,int);
+   fstream indexfile;
+   int gd,gm=DETECT;
+	initgraph(&gm,&gd,"C:\\tc\\bgi");
+   node display_node;
+   int root;
+   queues();
+   clrscr();
+   cleardevice();
+   indexfile.open("INDEXFIL.INT",ios::in|ios::binary);
+   indexfile.seekg(0,ios::beg);
+   indexfile.read((char *)&root,sizeof root);
+   int row=80;
+   do
+   {
+      indexfile.seekg(root*20+2,ios::beg);
+      indexfile.read((char *)&display_node,sizeof display_node);
+      if(display_node.level!=1)
+      {
+         push_queue(display_node.ptr[0]);
+         for(int z=1;z<=4;z++)
+            if(display_node.ptr[z]!=-1)
+               push_queue(display_node.ptr[z]);
+      }
+      display(root,row);
+      print+=60;
+      row+=60;
+      if(row==440)
+      {
+	 getch();
+         clrscr();
+         print=100;
+         cleardevice();
+         row=80;
+      }    
+      root=pop_queue();
+   }
+   while(root!=-1);
+   getch();
+   closegraph();
+}
+//------------------------------------------------------------------------
+
+void display(int root,int row)
+{
+   fstream indexfile;
+   node display_node;
+   int col;
+   char temp[5];
+   indexfile.open("INDEXFIL.INT",ios::in|ios::binary);
+   indexfile.seekg(root*20+2,ios::beg);
+   indexfile.read((char *)&display_node,sizeof display_node);
+   col=145;
+   settextstyle(0,0,1);
+   if(display_node.level==1)
+      outtextxy(50,row-15,"Leaf Node : ");
+   if(display_node.level==2)
+      outtextxy(50,row-15,"Root Node : ");
+   if(display_node.level==3)
+      outtextxy(50,row-15,"Internal Node : ");
+   outtextxy(15,row+10,"Node No. ");
+   itoa(root,temp,10);
+   outtextxy(80,row+10,temp);
+   ellipse(355,print,0,360,220,25);
+   for(int z=0;z<4;z++)
+   {
+      itoa(display_node.ptr[z],temp,10);
+      outtextxy(col,row+20,temp);
+      col+=50;
+      itoa(display_node.sortkey[z],temp,10);
+      outtextxy(col,row+20,temp);
+      col+=50;
+   }
+   itoa(display_node.ptr[4],temp,10);
+   outtextxy(col,row+20,temp);
+   indexfile.close();
+}
+//------------------------------------------------------------------------
+
+void stack()
+{
+   for(int i=0;i<dim;i++)
+      stack_array[i]=0;
+   index=-1;
+}
+//------------------------------------------------------------------------
+
+void push(int stack_top)
+{
+   if(index==dim-1)
+   {
+      cout<<"\n\n\n\t\tStack Overflow";
+      getch();
+      exit(0);
+   }
+   index++;
+   stack_array[index]=stack_top;
+}
+//------------------------------------------------------------------------
+
+int pop()
+{
+   if(index==-1)
+      return -2;
+   int stack_top=stack_array[index];
+   index--;
+   return stack_top;
+}
+//------------------------------------------------------------------------
+
+void queues()
+{
+   for(int i=0;i<200;i++)
+      queue[i]=-1;
+   queue_first=0;
+   queue_last=-1;
+}
+//------------------------------------------------------------------------
+
+void push_queue(int first_entry)
+{
+   queue_last++;
+   queue[queue_last]=first_entry;
+}  
+//------------------------------------------------------------------------
+
+int pop_queue()
+{
+   if(queue_first>queue_last)
+      return -1;
+   int serve_entry=queue[queue_last];
+   queue_first++;
+   return serve_entry;
+}
+//------------------------------------------------------------------------
+//                 END OF PROGRAM                               //
+
+
+
+
+
+
+
+
+
+
+
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+   
+

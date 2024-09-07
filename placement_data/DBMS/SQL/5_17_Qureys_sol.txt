@@ -1,0 +1,17 @@
+26.SELECT E.ename AS EMPLOYEE_NAME,E.empno AS EMPLOYEE_NUMBER ,M.ename AS MANAGER_NAME , M.empno AS MANAGER_NUMBER FROM emp E LEFT OUTER JOIN emp M ON E.mgr = M.empno WHERE E.mgr IS NOT NULL;
+27.SELECT E.ename AS EMPLOYEE_NAME,E.empno AS EMPLOYEE_NUMBER ,M.ename AS MANAGER_NAME , M.empno AS MANAGER_NUMBER FROM emp E left outer join emp M ON E.mgr =M.empno;
+28.SELECT C.ename, E.deptno,E.ename AS "Colleagues" FROM emp E, emp C WHERE E.deptno = C.deptno AND E.ename != C.ename;
+29.SELECT ename AS NAME,job AS JOB,DNAME AS DEPARTMENT_NAME,sal AS SALARY,GRADE FROM emp,dept,salgrade WHERE emp.deptno = dept.DEPNO AND sal BETWEEN salgrade.LOSAL AND salgrade.HISAL;
+30.SELECT E.ename AS EMPLOYEE_NAME,E.hiredate AS EMPLOYEE_HIREDATE ,M.ename AS MANAGER_NAME , M.hiredate AS MANAGER_HIREDATE FROM emp E LEFT OUTER JOIN emp M ON E.mgr = M.empno WHERE E.hiredate < M.hiredate;
+31.SELECT MAX(sal) AS HIGHEST_SALARY , MIN(sal) AS LOWEST_SALARY ,SUM(sal) AS SUM_OF_SALARY , AVG(sal) AS AVERAGE_SALARY FROM emp;
+32.SELECT DISTINCT job ,MAX(sal),MIN(sal),SUM(sal),AVG(sal) FROM emp GROUP BY job;
+33.SELECT DISTINCT job ,COUNT(job) AS NUMBER_OF_PERSON FROM emp GROUP BY job;
+34.SELECT ( MAX(sal) - MIN(sal) ) AS DIFFERENCE_BTW_MAX_AND_MIN_SALARY FROM emp;
+35.SELECT mgr,MIN(sal) FROM emp WHERE sal > 1000 AND mgr IS NOT NULL;
+36.SELECT D.DNAME ,D.LOC ,COUNT( E.deptno) ,AVG(E.sal) FROM dept D,emp E WHERE D.DEPNO=E.deptno GROUP BY D.DNAME;
+37.SELECT ename ,hiredate FROM emp WHERE deptno IN (SELECT deptno FROM emp WHERE ename ='BLAKE');
+38.SELECT empno , ename FROM emp WHERE sal > (SELECT AVG(sal) FROM emp);
+39.SELECT empno,ename FROM emp  WHERE deptno IN (SELECT deptno FROM emp WHERE ename LIKE '%T%');
+40.SELECT ename , sal FROM emp WHERE mgr in (SELECT empno FROM emp WHERE ename = 'KING');
+41.SELECT E.deptno ,E.ename, E.job FROM emp E,dept D WHERE E.deptno = D.DEPNO AND D.DNAME ='SALES';
+42.SELECT empno,ename,sal FROM emp  WHERE deptno IN (SELECT deptno FROM emp WHERE ename LIKE '%T%') AND sal > (SELECT AVG(sal) FROM emp);

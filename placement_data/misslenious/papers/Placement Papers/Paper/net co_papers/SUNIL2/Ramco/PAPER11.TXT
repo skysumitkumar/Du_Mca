@@ -1,0 +1,1887 @@
+From: oepg9627 (Pullabhotla Srinivas)
+Message-Id: <9709141152.AA53207@vanavil>
+To: mepg9618
+Status: R
+
+RAMCO  'C'     QUESTION  PAPER
+
+
+
+1).
+--------------------------------------------------------------
+
+main()
+{
+	char *p1="Name";
+	char *p2;
+	p2=(char *)malloc(20);
+	while(*p2++=*p1++);
+	printf("%s\n",p2);
+}
+
+
+
+Ans : An empty String 
+
+2).
+--------------------------------------------------------------
+
+main()
+{
+  	int x=20,y=35;
+	x = y++ + x++;
+	y = ++y + ++x;
+	printf("%d %d\n",x,y);
+}
+
+Ans   57   94 
+
+
+3).
+--------------------------------------------------------------
+
+
+main()
+{
+  	int x=5;
+	printf("%d %d %d\n",x,x<<2,x>>2);
+}
+
+Ans   5 20 1
+
+
+
+4).
+-----------------------------------------------------------------
+#define swap1(a,b) a=a+b;b=a-b;a=a-b;
+main()
+{
+	int x=5,y=10;
+	swap1(x,y);
+	printf("%d %d\n",x,y);
+	swap2(x,y);
+	printf("%d %d\n",x,y);
+}
+
+int swap2(int a,int b)
+{
+	int temp;
+	temp=a;
+	b=a;
+	a=temp;
+	return;
+}
+
+Ans 		 10   5
+                 10   5
+
+
+5).	
+--------------------------------------------------------------
+
+
+main()
+{
+ 	char *ptr = "Ramco Systems";
+ 	(*ptr)++;
+	printf("%s\n",ptr);
+	ptr++;
+	printf("%s\n",ptr);
+}
+ Ans      Samco Systems
+	  amco Systems
+
+6).
+--------------------------------------------------------------
+
+#include
+main()
+{
+	char s1[]="Ramco";
+	char s2[]="Systems";
+	s1=s2;
+	printf("%s",s1);
+}
+
+Ans    Compilation error giving it cannot be an modifible 'lvalue'
+
+
+
+7).
+--------------------------------------------------------------
+
+#include
+main()
+{
+	char *p1;
+	char *p2;
+	p1=(char *) malloc(25);
+	p2=(char *) malloc(25);
+	strcpy(p1,"Ramco");
+	strcpy(p2,"Systems");
+	strcat(p1,p2);
+	printf("%s",p1);
+}
+
+
+Ans : RamcoSystems
+
+
+
+8).
+--------------------------------------------------------------
+
+[1]. The following variable is available in file1.c
+
+ 
+static int average_float;
+
+Ans        all the functions in the file1.c can access the variable
+
+
+
+
+9).
+--------------------------------------------------------------
+
+Ans    :      [2]. extern int x;
+
+	Check the answer
+
+
+
+
+
+10).
+--------------------------------------------------------------
+[3]. Another Problem with 
+
+	# define TRUE 0
+
+	some code
+
+	while(TRUE)
+	{
+		some code 
+
+	}
+	
+
+	This won't go into the loop as TRUE is defined as 0
+	Ans    NONE OF THE ABOVE i.e   D
+
+
+
+11).
+--------------------------------------------------------------
+Ans   :  [4].   A question in structures where the memebers are dd,mm,yy.
+
+	mm:dd:yy
+	09:07:97
+
+
+
+12).
+--------------------------------------------------------------
+Ans :    [5]. Another structure question 	
+
+	1 Rajiv System Analyst
+
+
+
+13).
+--------------------------------------------------------------
+
+Answer
+
+	INFILE.DAT is copied to OUTFILE.DAT
+
+
+
+14).
+--------------------------------------------------------------
+
+ A question with argc and argv . 
+
+	Input will be
+
+	c:\TEMP.EXE Ramco Systems India
+
+	Output will be 
+
+		India: I n d i a
+		Systems: S y s t e m s
+		Ramco: R a m c o
+
+	Answer is choice d
+
+
+
+15). 
+--------------------------------------------------------------
+
+ Structure swap 
+
+	Ramco India
+	Ramco Systems Corporation
+	Ramco ... Limited .
+
+	After swapping the result will be
+
+	First two will be swapped. 
+
+	Ramco Systems Corporation
+	Ramco India
+	Ramco ... Limited .
+
+
+
+
+
+16).
+--------------------------------------------------------------
+
+int x;
+main()
+{
+	int x=0;
+	{
+		int x=10;
+		x++;
+		change_value(x);
+		x++;
+		Modify_value();
+		printf("First output: %d\n",x);
+	}
+	x++;
+	change_value(x);
+	printf("Second Output : %d\n",x);
+	Modify_value();
+	printf("Third Output : %d\n",x);
+}
+
+Modify_value()
+{
+	return (x+=10);
+}
+
+change_value()
+{
+	return(x+=1);
+}
+
+
+
+
+
+Ans   :   12     1      1
+
+
+
+
+17).
+--------------------------------------------------------------
+
+	
+
+main()
+{
+	int x=10,y=15;
+	x=x++;
+	y=++y;
+	printf("%d %d\n",x,y);
+}
+
+
+Ans  :   11    16
+
+
+
+
+
+18).
+--------------------------------------------------------------
+
+
+main()
+{
+	int a=0;
+	if(a=0) printf("Ramco Systems\n");
+	printf("Ramco Systems\n");
+}
+	
+Ans  :  Ony one time 
+		"Ramco Systems" 
+			will be printed
+
+------------------            OVER               ------------------
+
+/* -------------------  ramqp  -------------------------*/
+/*
+
+1) A - G are 7 consecutive +ve integers not necessarily in the same order
+
+	1) B is the middle number
+	2) D is 3 less than c
+	3) the difference between F & A is equal in magnitude and sign
+	   to the difference between E & C
+	4) Neither F nor C lie between E & G
+
+	a) What is the value of B-F
+
+		1   	2 	-1	-2 	cannot be determined
+
+	b) which is greatest
+
+		F	C	A	E	cannot be determined
+
+	c) Given both A & B are primes what is the lowest value of E
+
+		8	6	9	12 	cannot
+
+
+2) Given that a,b,c,d,e each represent one of the digits between
+   1-9 and that the following multiplication holds
+
+	   a b c d e 
+		   4
+	   ----------
+	   e d c b a 
+
+    What digit does e represent
+
+	a) 4
+	b) 6
+	c) 7
+	d) 8
+	e) none
+
+
+1. How many butes does an array A(1:8,-2:2,1:5) require for storage if
+   each element of the array is 24 bits long.
+
+	200	480	600	800	none
+
+
+2. 	begin
+		
+		i:=0;	
+		j:=0;	| block d
+
+	loop:
+
+		if(i != 0) 
+			i := i-1;
+		else
+			i := i+1;
+	
+		i := i+1;	| block a
+		j := j+1;	| block b
+
+		if (j <= 25)
+			goto loop;
+
+	end			| block c
+
+
+	a) What is the value of i at [c] 
+		2 ?
+	b) How many times is the goto executed 
+		25 ?
+	c) How many times is the loop executed if i is initialized to 1
+	   in [d]  26
+	d) How many times is the loop entered if the block [b] is changed
+	   to j=j+1 ?
+
+	e) What is the value of i at [c] interchanging blocks [a] and [b] ?
+	   2 ?
+
+Follow the instructions given below [ From 1 to 8 ]
+
+1. A cause B or C but not both
+
+2. F occurs only if B occurs
+
+3. D occurs if B or C occurs
+
+4. E occurs if only c occurs
+
+5. J occurs only if E or F occurs
+
+6. H occurs if E occurs
+
+7. D causes G, H or Both.
+
+8. G occurs if F occurs.
+
+
+Questions
+---------
+
+1. If A occurs which of the following may occur
+
+   1. F & G   (ii) E & H  (iii) D
+
+Ans
+---
+ (a) 1 only  (b) 2 only (c) 3 only (d) 1,2,3 or 2 & 3 but not 1
+
+(e) 1,2 & 3
+
+
+2. If B occurs which must occur
+
+Ans
+---  (a) F & G (b) D & G (c) D (d) G & H (e) J
+
+3. If J occurs which must occur
+
+Ans
+---
+(a) E (b) Both E & F (c) Either B or C (d) B (e) Both B & c
+
+
+4. Which may occur as a result by a cause not mentioned.
+
+(I) D (II) A (III) F
+
+Ans
+---
+(a) I only (b) II (c) I & II (d) II & III (e) I,II,III
+
+
+5. If E occurs which cannot occur.
+
+(a) F (b) A (c) D (d) C (e) J
+
+
+
+#include
+int SumElement(int *,int);
+void main(void)
+{
+	int x[10];
+	int i=10;
+	for(;i;)
+	{
+		i--;
+		*(x+i)=i;
+	}
+	printf("%d",SumElement(x,10));
+}
+int SumElement(int array[],int size)
+{
+	int i=0;
+	float sum=0;
+	for(;i
+void main(void);
+int printf(const char*,...);
+void main(void)
+{
+	int i=100,j=10,k=20;
+	int sum;
+	float ave;
+	char myformat[]="ave=%.2f";
+	sum=i+j+k;
+	ave=sum/3.0;
+	printf(myformat,ave);
+}
+
+
+#include
+void main(void);
+void main(void)
+{
+	int a[10];
+	printf("%d",((a+9) + (a+1)));
+}
+
+
+#include
+void main(void);
+void main(void)
+{
+	struct s{
+		int x;
+		float y;
+	}s1={25,45.00};
+	union u{
+		int x;
+		float y;
+	} u1;
+	u1=(union u)s1;
+	printf("%d and %f",u1.x,u1.y);
+}
+
+
+#include
+void main(void)
+{
+	unsigned int c;
+	unsigned x=0x3;
+	scanf("%u",&c);
+	switch(c&x)
+	{
+		case 3: printf("Hello!\t");
+		case 2: printf("Welcome\t");
+		case 1: printf("To All\t");
+		default:printf("\n");
+	}
+}
+
+
+#include
+int fn(void);
+void print(int,int(*)());
+int i=10;
+void main(void)
+{
+	int i=20;
+	print(i,fn);
+}
+void print(int i,int (*fn1)())
+{
+	printf("%d\n",(*fn1)());
+}
+
+int fn(void)
+{
+	return(i-=5);
+}
+
+
+#include
+void main(void);
+void main(void)
+{
+	char numbers[5][6]={"Zero","One","Two","Three","Four"};
+	printf("%s is %c",&numbers[4][0],numbers[0][0]);
+}
+
+
+int bags[5]={20,5,20,3,20};
+void main(void)
+{
+	int pos=5,*next();
+	*next()=pos;
+	printf("%d %d %d",pos,*next(),bags[0]);
+}
+int *next()
+{
+	int i;
+	for(i=0;i<5;i++)
+		if (bags[i]==20)
+			return(bags+i);
+		printf("Error!");
+	exit(0);
+}
+
+
+
+#include
+void main(void)
+{
+	int y,z;
+	int x=y=z=10;
+	int f=x;
+	float ans=0.0;
+	f *=x*y;
+	ans=x/3.0+y/3;
+	printf("%d %.2f",f,ans);
+}
+
+
+#include
+void main(void);
+double dbl=20.4530,d=4.5710,dblvar3;
+void main(void)
+{
+	double dbln(void);
+	dblvar3=dbln();
+	printf("%.2f\t%.2f\t%.2f\n",dbl,d,dblvar3);
+}
+double dbln(void)
+{
+	double dblvar3;
+	dbl=dblvar3=4.5;
+	return(dbl+d+dblvar3);
+}
+
+
+
+#include
+static int i=5;
+void main(void)
+{
+	int sum=0;
+	do
+	{
+		sum+=(1/i);
+	}while(0
+void main(void)
+{
+	int oldvar=25,newvar=-25;
+	int swap(int,int);
+	swap(oldvar,newvar);
+	printf("Numbers are %d\t%d",newvar,oldvar);
+}
+int swap(int oldval,int newval)
+{
+	int tempval=oldval;
+	oldval=newval;
+	newval=tempval;
+}
+
+
+
+#include
+void main(void);
+void main(void)
+{
+	int i=100,j=20;
+	i++=j;
+	i*=j;
+	printf("%d\t%d\n",i,j);
+}
+
+
+
+#include
+void main(void);
+int newval(int);
+void main(void)
+{
+	int ia[]={12,24,45,0};
+	int i;
+	int sum=0;
+	for(i=0;ia[i];i++)
+	{
+		sum+=newval(ia[i]);
+	}
+	printf("Sum= %d",sum);
+}
+int newval(int x)
+{
+	static int div=1;
+	return(x/div++);
+}
+
+
+
+#include
+void main(void);
+void main(void)
+{
+	int var1,var2,var3,minmax;
+	var1=5;
+	var2=5;
+	var3=6;
+	minmax=(var1>var2)?(var1>var3)?var1:var3:(var2>var3)?var2:var3;
+	printf("%d\n",minmax);
+}
+	
+
+
+#include
+void main(void);
+void main(void)
+{
+	void pa(int *a,int n);
+	int arr[5]={5,4,3,2,1};
+	pa(arr,5);
+}
+
+void pa(int *a,int n)
+{
+	int i;
+	for(i=0;i
+void main(void);
+void print(void);
+void main(void)
+{
+	print();
+}
+void f1(void)
+{
+	printf("\nf1():");
+}
+
+#include "6.c"
+void print(void)
+{
+	extern void f1(void);
+	f1();
+}
+static void f1(void)
+{
+	printf("\n static f1().");
+}
+
+
+
+#include
+void main(void);
+static int i=50;
+int print(int i);
+void main(void)
+{
+	static int i=100;
+	while(print(i))
+	{
+		printf("%d\n",i);
+		i--;
+	}
+}
+int print(int x)
+{
+	static int i=2;
+	return(i--);
+}
+
+
+
+#include
+void main(void);
+typedef struct NType
+{
+	int i;
+	char c;
+	long x;
+} NewType;
+void main(void)
+{
+	NewType *c;
+	c=(NewType *)malloc(sizeof(NewType));
+	c->i=100;
+	c->c='C';
+	(*c).x=100L;
+	printf("(%d,%c,%4Ld)",c->i,c->c,c->x);
+}
+
+
+
+#include
+void main(void);
+const int k=100;
+void main(void)
+{
+	int a[100];
+	int sum=0;
+	for(k=0;k<100;k++)
+		*(a+k)=k;
+	sum+=a[--k];
+	printf("%d",sum);
+}
+
+
+/*                    BAAN
+
+PAPER 1 completely from R.S.Agarwal
+1 ---> analogy 1c(1-20)[pg 15-17]
+2----> directions sense test 7b[1-10]
+3---->logic deduction 17b[30-50]
+4----> mathematical modelling 15a[1-20]
+
+technical paper is same for all papers
+
+peper 2
+    analogy from GRE book
+
+    LOGIC model test 1
+
+    page        Q.no     new GRE
+     406        1-4      (motorist prob)
+     407        17-22     (letters a,b,c)
+     508        1-4       (all g's are h's)
+     381        40 -41    (president prob)
+     377        7-11       (office staff)
+
+     part 2
+      problems on ages
+      part 3
+       blood relations
+
+ series problems
+
+ 6,9,14,21,(30)
+ 5,2,(2.5),8
+ 2,10,(30),68,130,(222)
+ 9,15,23,33,(45)
+ 6,25,62,123,314,241
+ 5,11,19,29,(41),55
+ 2,12,30,56,90,(132)
+ 4,18,52,(17)
+ 39,21,(45),93
+ 1,3,7,(15)31
+ 3,9,21,(45),93
+ 35,24,15,8,(3)
+ 2,12,30,56,90,(132)
+ 3,11,19,29,(39),51
+
+analogy
+
+ fans:bleachers:: gre389
+ archipilago:islands::gre393
+ crow:boastful   393
+ bracket:shelf 394
+ taxonomy:classification 394
+ moderator:debate   413
+ glossary:words   413
+ lumber: bear    414
+ celerity:snail 414
+ wood:sand 454
+
+
+ carpenter :saw 87
+ horns:bull 87
+ gullible: 87
+ marathon ::                 (13th GRE 87p)
+ Skin : man ::           
+ kick : Football :: Betal :chew     (pno.45, RS  46)
+ Bamboo: Shoot :: Bean : sprout  
+ Deflect : missile  : distract : Attraction
+ Editor : magazine :: director : film
+ pine : clock :: calander  :date
+ Volcano : Lava  ::  Fault : earthquate   (Eyes : Tears)
+ Hero : Accuhade :: hanging  stork : Ridicle
+ Agitator : Firebrand  :: Renegade ; Turncoat
+ Burst : Sound :: Tinder : Fire 
+ Star : cluster :: Tree : clump
+ Piston : Cylinger :: elevator : shaft
+ Mitigate : punishment :: commute : sentence 
+ Erudite : scholar :: illeterate : ignorant
+ Fire : Ashes :: explosion : debris (11 RS 11th)
+ mason : wall :: Author : Book (87p GRE )
+ Fire  : Ashes :: Event : memories
+
+
+ SECTION II    CODING 
+
+ Load == MPBE             DRIVE = ESJWF
+ HOW WILL YOU CODE    LADDLER  -> MBEEMFS
+
+ 2) START =WALKA     BUDPI = XZFMR
+
+ What would be STUPID  =  WAZMRF
+
+ FROM   3  TO 7
+
+ A=Z, B=Y, C=X, ..........   Z=A
+
+ 3) LIMIT = ORNRG
+ 4) SOUR = HLFI
+ 5) POCKET = KLXPUG
+ 6) GROUP = TILFK
+ 7) ZERD = AVIL
+
+ FROM 8  TO 9
+ Here each letter is coded a s
+
+ A = (BC)D  ,   B=(CD ) E, C=(DE)F
+
+ 8) SHOOT   ---- VKRRW
+ 9) VWDUW  ------  YZGXZ
+ 10) If DBMDVUUB = CALCUTTA
+     How will be BOMBAY = ?  (ANLAZX)
+11) DELHI = CD********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************13, O = 15 then DEAF = ?            (16)
+
+--------------------------
+
+ TECHNICAL :
+
+ 1.  Binary equivalent of 52       ----     110100
+ 2.  Hexadecimal equivalent of 3452    ------        72A
+ 3.Consider the Boolean table 
+
+
+
+
+  Ans : a) 1
+
+4. Consider the circuit 
+
+Ans  a)  (A+B).(C+B)
+5. jUST in time Concept address  ----    
+Ans : Elimination of waste by purchasing manufacturing exactly when needed
+6. A better way of unit testing   s/w program is 
+Ans : User test
+7.A lowest level of security by most RDBMS are 
+Ans : a) field low
+8. OOT uses 
+ Ans : Encapsulated of detect methods
+ 9.EDI useful in 
+ Ans : Electronic Transmission
+ 10. MRPII  different from MRP 
+ aNS : Modular version of man redundant initials 
+ 11. Hard disk time for R/W head to move to correct 
+ And : a) Lactency 
+ 12. Percentage of times a page number bound in associate register
+ Ans : Bit ratio
+ 13. MODEM  --------Modulation and Demodulation
+ 14. RDBMS  file system 
+   Ans :  Interrelated
+15. Super Key is  -----     Primary key+ Attribute
+16. Transmission is said to be  ----committed
+17.  Windows 95 supports 
+a) Multiuser b) n tasks c) Both
+Ans : c
+18. Difference between printf and fprintf ----
+19.To change permission r&w to owner group to no permission to others
+a) Chmod 614   b) chmod 604
+
+c) chmod 640   d) chmod 310
+20. In batch process  ------------better job
+
+
+
+) ONE RECTANGULAR PLATE WITH LENGTH 8INCHES,BREADTH 11 INCHES AND
+   2 INCHES THICKNESS IS THERE.WHAT IS THE LENGTH OF THE CIRCULAR ROD
+   WITH DIAMETER 8 INCHES AND EQUAL TO VOLUME OF RECTANGULAR PLATE?
+ANS: 3.5INCHES
+2) WHAT IS THE NUMBER OF ZEROS AT THE END OF THE PRODUCT OF THE NUMBERS
+   FROM 1 TO 100
+3) in some game 139 members have participated every time one fellow will
+   get bye what is the number of matches to choose the champion to be
+   held?
+ans: 138
+4) one fast typist type some matter in 2hr and
+   another slow typist type the
+   same matter in 3hr. if both do combinely in how much time they
+   will finish.
+ans: 1hr 12min
+5) in 8*8 chess board what is the total number of squares
+   refer odel
+ans:204
+6) falling height is proportional to square of the time.
+   one object falls 64cm in 2sec than in 6sec from how much 
+   height the object will fall.
+7) gavaskar average in first 50 innings was 50 . after the 51st
+   innings his average was 51 how many runs he made in the 51st
+   innings
+8)2 oranges,3 bananas and  4 apples cost Rs.15 . 3 ornages 2 bananas
+ 1 apple costs Rs 10. what is the cost of 3 oranges, 3 bananas and 
+  3 apples ANs Rs 15.
+9)in 80 coins one coin is counterfiet what is minimum number of 
+  weighings to find out counterfiet coin 
+10)in a company 30% are supervisors and 40% employees are male
+   if 60% of supervisors are male. what is the probability
+   that a randomly choosen employee is a male or female?
+11)statement: all green are blue are blue, all blue are white
+   conclusion: 
+   I) some blue are green II) some white are green
+   III)some green are not white IV) all white are blue
+   a) he has given four choices like gre type
+12)all teachers are students. some students are girls.
+   this type of questions are there.
+   we cant able to reproduce them.:wq
+
+
+
+
+
+1.while((*p++=*q++)!=0){}
+   is equal to
+expl: while((*p++=*q++)!='\0'){}
+   a) b) c) d)
+
+2.the function strcmp(str1,str2) returns
+ans: int 
+
+
+3. int   *x[](); means
+expl: Elments of an array can't be functions.
+
+4.#define  PRINT(int) printf("int=%d",int);
+main()
+{int x,y,z;
+x=03;y=-1;z=01;
+PRINT(x^x);
+z<<=3;PRINT(x);   ----> I think here may be (z). for this ans=8.
+                                                if (x) ans ix =3.
+y>>=3;PRINT(y);
+}
+                       expl: 0,8,-1  (if second is z)
+
+
+
+5. struct list{
+int x;
+struct list *next;
+}*head;
+the struct head.x =100
+ above is correct / wrong
+
+
+expl: Before using the ptr type struct variable we have to give memory
+ to that .
+And also when ever the struct variable is ptr then we access the members
+ by "->" operator.
+
+
+
+
+
+ 6. '-'=45  '/'=47
+ printfr(%d/n,'-','-','-','-','/','/','/');
+ o/p =?
+                           ans: 45 ( i.e it takes first argument in 
+								printf function.
+                
+
+
+ 12.o/p=?
+ int i;
+ i=1;
+ i=i+2*i++;
+ printf(%d,i);
+          *********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************pointer;
+b=c;
+printf("a=%d b=%d",a,b);
+a. a=1 b=3
+b a=3 b=3
+c 3     2
+d. error                           
+							ans: d .  Because ";" indicates  competion
+								of that statement. so It give error.
+
+ 			* Imp: And in above program   " a=c/*pointer " statement
+					it considering as starting of comment statement.
+                    So , It also causing for syntax error.
+
+
+
+11.#include
+char *f()
+{char *s=malloc(8);
+strcpy(s,"goodbye")}
+main()
+{
+char *f();
+printf("%c",*f()='A');
+o/p=?
+ 								ans: prints " A "
+
+
+13.  int sum(n)
+int n;
+if(n<1)return n;
+else return(n+sum(n-1))
+a 10 b 16  c  14  d  15
+								ans: If we take n=5 then ans is 15.
+
+
+14.   when a function is recursively called all ,
+automatic variables are    a. stored in stack b . c. d
+
+						ans: (a)
+
+
+
+15)   #define MAN(x,y) (x)>(y)?(x):(y)
+  {  int i=10;j=5;k=0;
+  k= MAX(i++,++j)
+  printf(%d %d %d %d,i,j,k)}
+16) a=10;b=5; c=3;d=3;
+if(a
+  show(int t,va_list ptr1)
+  {
+  int a,x,i;
+  a=va_arg(ptr1,int)
+  printf("\n %d",a)
+  }
+  display(char)
+  {int x;
+  listptr;
+  va_star(otr,s);
+  n=va_arg(ptr,int);
+  show(x,ptr);
+  }
+  main()
+  {
+  display("hello",4,12,13,14,44);
+  }
+  a) 13 b) 12 c) 44 d) 14
+  .............................................
+
+  17. if the following program (my prog)
+  main(int size of ,char *arg[])
+  { while(size of arg) printf("%s",arg[--size of arg)
+  }
+  is run from the command line as myprog jan feb mar apr
+  what would be the o/p
+  a)myprog jan,feb,mar,apr
+  b)rev
+  c)jan,feb,mar,apr
+  d)error
+  .............................................
+
+  18.what is o/p
+  main()
+  {int i=3;
+  while(i--)
+  {
+  int i=100
+  i--;
+  printf("%d..",i);
+  }
+  }
+  a) infinite loop
+  b) error
+  c) 99..99..99..99
+  d) 3..22..1..
+  .............................................
+  20)what is the o/p of the program
+    main()
+    {
+      int rows=3,colums=4; 
+      int a[rows][colums]={1,2,3,4,5,6,7,8,9,10,11,12};
+	  i=j=k=99;
+	  for(i=0;i I think here may be (z). for this ans=8.
+                                                if (x) ans ix =3.
+y>>=3;PRINT(y);
+}
+                       expl: 0,8,-1  (if second is z)
+
+
+
+5. struct list{
+int x;
+struct list *next;
+}*head;
+the struct head.x =100
+ above is correct / wrong
+
+
+expl: Before using the ptr type struct variable we have to give memory
+ to that .
+And also when ever the struct variable is ptr then we access the members
+ by "->" operator.
+
+
+
+
+
+ 6. '-'=45  '/'=47
+ printfr(%d/n,'-','-','-','-','/','/','/');
+ o/p =?
+                           ans: 45 ( i.e it takes first argument in 
+								printf function.
+                
+
+
+ 12.o/p=?
+ int i;
+ i=1;
+ i=i+2*i++;
+ printf(%d,i);
+          *********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************pointer;
+b=c;
+printf("a=%d b=%d",a,b);
+a. a=1 b=3
+b a=3 b=3
+c 3     2
+d. error                           
+							ans: d .  Because ";" indicates  competion
+								of that statement. so It give error.
+
+ 			* Imp: And in above program   " a=c/*pointer " statement
+					it considering as starting of comment statement.
+                    So , It also causing for syntax error.
+
+
+
+11.#include
+char *f()
+{char *s=malloc(8);
+strcpy(s,"goodbye")}
+main()
+{
+char *f();
+printf("%c",*f()='A');
+o/p=?
+ 								ans: prints " A "
+
+
+13.  int sum(n)
+int n;
+if(n<1)return n;
+else return(n+sum(n-1))
+a 10 b 16  c  14  d  15
+								ans: If we take n=5 then ans is 15.
+
+
+14.   when a function is recursively called all ,
+automatic variables are    a. stored in stack b . c. d
+
+						ans: (a)
+
+
+
+15)   #define MAN(x,y) (x)>(y)?(x):(y)
+  {  int i=10;j=5;k=0;
+  k= MAX(i++,++j)
+  printf(%d %d %d %d,i,j,k)}
+16) a=10;b=5; c=3;d=3;
+if(a
+  show(int t,va_list ptr1)
+  {
+  int a,x,i;
+  a=va_arg(ptr1,int)
+  printf("\n %d",a)
+  }
+  display(char)
+  {int x;
+  listptr;
+  va_star(otr,s);
+  n=va_arg(ptr,int);
+  show(x,ptr);
+  }
+  main()
+  {
+  display("hello",4,12,13,14,44);
+  }
+  a) 13 b) 12 c) 44 d) 14
+  .............................................
+17. if the following program (my prog)
+  main(int size of ,char *arg[])
+  { while(size of arg) printf("%s",arg[--size of arg)
+  }
+  is run from the command line as myprog jan feb mar apr
+  what would be the o/p
+  a)myprog jan,feb,mar,apr
+  b)rev
+  c)jan,feb,mar,apr
+  d)error
+  .............................................
+
+  18.what is o/p
+  main()
+  {int i=3;
+  while(i--)
+  {
+  int i=100
+  i--;
+  printf("%d..",i);
+  }
+  }
+  a) infinite loop
+  b) error
+  c) 99..99..99..99
+  d) 3..22..1..
+  .............................................
+  20)what is the o/p of the program
+    main()
+    {
+      int rows=3,colums=4; 
+      int a[rows][colums]={1,2,3,4,5,6,7,8,9,10,11,12};
+	  i=j=k=99;
+	  for(i=0;i analogy 1c(1-20)[pg 15-17]
+2----> directions sense test 7b[1-10]
+3---->logic deduction 17b[30-50]
+4----> mathematical modelling 15a[1-20]
+
+technical paper is same for all papers
+
+peper 2
+    analogy from GRE book
+
+    LOGIC model test 1
+
+    page        Q.no     new GRE
+     406        1-4      (motorist prob)
+     407        17-22     (letters a,b,c)
+     508        1-4       (all g's are h's)
+     381        40 -41    (president prob)
+     377        7-11       (office staff)
+
+     part 2
+      problems on ages
+      part 3
+       blood relations
+
+ series problems
+
+ 6,9,14,21,(30)
+ 5,2,(2.5),8
+ 2,10,(30),68,130,(222)
+ 9,15,23,33,(45)
+ 6,25,62,123,314,241
+ 5,11,19,29,(41),55
+ 2,12,30,56,90,(132)
+ 4,18,52,(17)
+ 39,21,(45),93
+ 1,3,7,(15)31
+ 3,9,21,(45),93
+ 35,24,15,8,(3)
+ 2,12,30,56,90,(132)
+ 3,11,19,29,(39),51
+
+analogy
+
+ fans:bleachers:: gre389
+ archipilago:islands::gre393
+ crow:boastful   393
+ bracket:shelf 394
+ taxonomy:classification 394
+ moderator:debate   413
+ glossary:words   413
+ lumber: bear    414
+ celerity:snail 414
+ wood:sand 454
+
+
+ carpenter :saw 87
+ horns:bull 87
+ gullible: 87
+ marathon ::                 (13th GRE 87p)
+ Skin : man ::           
+ kick : Football :: Betal :chew     (pno.45, RS  46)
+ Bamboo: Shoot :: Bean : sprout  
+ Deflect : missile  : distract : Attraction
+ Editor : magazine :: director : film
+ pine : clock :: calander  :date
+ Volcano : Lava  ::  Fault : earthquate   (Eyes : Tears)
+ Hero : Accuhade :: hanging  stork : Ridicle
+ Agitator : Firebrand  :: Renegade ; Turncoat
+ Burst : Sound :: Tinder : Fire 
+ Star : cluster :: Tree : clump
+ Piston : Cylinger :: elevator : shaft
+ Mitigate : punishment :: commute : sentence 
+ Erudite : scholar :: illeterate : ignorant
+ Fire : Ashes :: explosion : debris (11 RS 11th)
+ mason : wall :: Author : Book (87p GRE )
+ Fire  : Ashes :: Event : memories
+
+
+ SECTION II    CODING 
+
+ Load == MPBE             DRIVE = ESJWF
+ HOW WILL YOU CODE    LADDLER  -> MBEEMFS
+
+ 2) START =WALKA     BUDPI = XZFMR
+
+ What would be STUPID  =  WAZMRF
+
+ FROM   3  TO 7
+
+ A=Z, B=Y, C=X, ..........   Z=A
+
+ 3) LIMIT = ORNRG
+ 4) SOUR = HLFI
+ 5) POCKET = KLXPUG
+ 6) GROUP = TILFK
+ 7) ZERD = AVIL
+
+ FROM 8  TO 9
+ Here each letter is coded a s
+
+ A = (BC)D  ,   B=(CD ) E, C=(DE)F
+
+ 8) SHOOT   ---- VKRRW
+ 9) VWDUW  ------  YZGXZ
+ 10) If DBMDVUUB = CALCUTTA
+     How will be BOMBAY = ?  (ANLAZX)
+11) DELHI = CD????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????book on Microprocessor)
+> >    24. Qn on pipeline architecture
+> >    25 QN on LAPB protocol
+> > 
+> >
+> 
+
+????????????????13, O = 15 then DEAF = ?            (16)
+
+--------------------------
+
+ TECHNICAL :
+
+ 1.  Binary equivalent of 52       ----     110100
+ 2.  Hexadecimal equivalent of 3452    ------        72A
+ 3.Consider the Boolean table 
+
+
+
+
+  Ans : a) 1
+
+4. Consider the circuit 
+
+Ans  a)  (A+B).(C+B)
+5. jUST in time Concept address  ----    
+Ans : Elimination of waste by purchasing manufacturing exactly when needed
+6. A better way of unit testing   s/w program is 
+Ans : User test
+7.A lowest level of security by most RDBMS are 
+Ans : a) field low
+8. OOT uses 
+ Ans : Encapsulated of detect methods
+ 9.EDI useful in 
+ Ans : Electronic Transmission
+ 10. MRPII  different from MRP 
+ aNS : Modular version of man redundant initials 
+ 11. Hard disk time for R/W head to move to correct 
+ And : a) Lactency 
+ 12. Percentage of times a page number bound in associate register
+ Ans : Bit ratio
+ 13. MODEM  --------Modulation and Demodulation
+ 14. RDBMS  file system 
+   Ans :  Interrelated
+15. Super Key is  -----     Primary key+ Attribute
+16. Transmission is said to be  ----committed
+17.  Windows 95 supports 
+a) Multiuser b) n tasks c) Both
+Ans : c
+18. Difference between printf and fprintf ----
+19.To change permission r&w to owner group to no permission to others
+a) Chmod 614   b) chmod 604
+
+c) chmod 640   d) chmod 310
+20. In batch process  ------------better job
+
+dear srihari,
+        i received your mail & that hot mail too. how you got that mail.
+earlier i sent a mail with full details of my interview.i think you did't
+receive that.ok .i got in satyam secunderabad.till now dbss have not come.
+it was a formal g.d followed by personel interview.in g.d the toppic was
+"internet effect on indian culture."the lucky thing for me was no good
+competitor in our batch. first he divided 50 people into 5  batches
+and for each batch he given seperate topic.those are 1.computers in 
+communications...2.g.d is essential for mode of selection.etc
+they took 4fellows from each batch.then in my interview heasked the
+the first question was what is the differance between CAD/CAM.that 
+question i expected i answered very confidently.then i told about
+CONCURRENT ENGG. &REENGINEERING. then they asked about personnel questions.
+do interested in further studies etc..again they asked that have you done 
+any course in computers.actually i have't done any course. i told him 
+that i operated some packages.that is about  AUTO CAD & UNI GRAPHICS&
+PATTERN. on which platform you used auto cad. on ms-dos.then they asked
+ what is icon.then about unigraphics i did a minor project on that.
+i told some more good on that.so that was my interview.is satyam sec bad
+is coming to your campus  or only dbss.our joining date is on 1st januvary of
+98.what about our potti usha. she got job in which company.convey my best
+wishes to vijay, srikanth,g.v.s.ok . waiting for your reply.
+
+
+
+
+
+ _   _                                   _                 _             
+| | | | __ ___   _____     __ _    _ __ (_) ___ ___     __| | __ _ _   _ 
+| |_| |/ _` \ \ / / _ \   / _` |  | '_ \| |/ __/ _ \   / _` |/ _` | | | |
+|  _  | (_| |\ V /  __/  | (_| |  | | | | | (_|  __/  | (_| | (_| | |_| |
+|_| |_|\__,_| \_/ \___|   \__,_|  |_| |_|_|\___\___|   \__,_|\__,_|\__, |
+                                                                   |___/ 
+-----------------------------------------------------------------------------
+
+
+							YOURS
+
+   [7m                                           [m
+   [7m   [m[4m                                     [7m   [m
+   [7m   [m[4m    [7m[5m M.V. Surendra Reddy       [0m[7m   [m
+   [7m   [m[4m    NC-5, Shivalik  Hostel           [7m   [m
+   [7m   [m[4m    IIT Delhi, Hauz Khas             [7m   [m
+   [7m   [m[4m    New Delhi - 110 016              [7m   [m
+   [7m [m[7m                                       [7m   [m
+
+
+
+> 
+>         
+>                              SIEMENS INFO
+>   THIS PAPER CONSISTS 6 PARTS.    all are multiple choice q's  
+>  1)general
+>  2)c/unix
+>  3)c++/motif
+>  4)database
+>  5)x-windows
+>  6)ms-windows
+>   we have written q's not acc. to each part.total 50. q's. time is
+> sufficient.
+> if u have basic idea about all of the u can easily answer the paper.
+>  paper
+> ------
+> 1)which of following operator can't be overloaded.
+> a)== b)++ c)?! d)<=
+> 2)#include
+>   main()
+> {
+> printf("Hello World");
+> }
+> the program prints Hello World without changing main() the o/p should
+> be
+>  intialisation 
+>  Hello World
+>  Desruct
+>  the changes should be
+> a)iostream operator<<(iostream os, char*s)
+> os<<'intialisation'<<(Hello World)< b)  c)   d)none of the above
+> 3)CDPATH shell variable is in(c-shell)
+> a) b) c) d)
+> 4) term stickily bit is related to  a)kernel
+> b)undeletable file
+> c)  d)none
+> 5)semaphore variable is different from ordinary variable by
+> 6)swap(int x,y)
+> {
+> int temp;
+> temp=x;
+> x=y;
+> y=temp;
+> }
+> main()
+> {
+> int x=2;y=3;
+> swap(x,y);
+> }
+> after calling swap ,what are yhe values x&y?
+> 7) static variable will be visible in
+> a)fn. in which they are defined
+> b)module "   "    "        "
+> c)all the program
+> d)none
+> 8)unix system is 
+> a)multi processing
+> b)multi processing ,multiuser
+> c)multi processing ,multiuser,multitasking
+> d)multiuser,multitasking
+> 9)x.25 protocol encapsulates the follwing layers
+> a)network
+> b)datalink
+> c)physical
+> d)all of the above
+> e)none of the above
+> 10)TCP/IP can work on
+> a)ethernet
+> b)tokenring
+> c)a&b
+> d)none
+> 11)a node has the ip address 138.50.10.7 and 138.50.10.9.But it is
+> transmitting data from node1 to node2only. The reason may be
+> a)a node cannot have more than one address
+> b)class A should have second octet different
+> c)classB   "      "    "       "        "
+> d)a,b,c
+> 12) the OSI layer from bottom to top
+> 13)for an application which exceeds 64k the memory model should be
+> a)medium
+> b)huge
+> c)large
+> d)none
+> 14)the condition required for dead lock in unix sustem is
+> 15)set-user-id is related to (in unix)
+> 16) bourne shell has 
+> a)history record
+> b)
+> c)
+> d)
+> 17)wrong statement about c++
+> a)code removably
+> b)encapsulation of data and code
+> c)program easy maintenance
+> d)program runs faster
+> 18)struct base {int a,b;
+> base();
+> int virtual function1();
+> }
+> struct derv1:base{
+> int b,c,d;
+> derv1()
+> int virtual function1();
+> }
+> struct derv2 : base
+>  {int a,e;
+> }
+> base::base()
+> {
+> a=2;b=3;
+> }
+> derv1::derv1(){
+> b=5;
+> c=10;d=11;}
+> base::function1()
+> {return(100);
+> }
+> derv1::function1()
+> {
+> return(200);
+> }
+> main()
+> base ba;
+> derv1 d1,d2;
+> printf("%d %d",d1.a,d1.b)
+> o/p is 
+> a)a=2;b=3;
+> b)a=3; b=2;
+> c)a=5; b=10;
+> d)none
+> 19) for the above program answer the following q's
+> main()
+> base da;
+> derv1 d1;
+> derv2 d2;
+> printf("%d %d %d",da.function1(),d1.function1(),d2.function1());
+> o/p is
+> a)100,200,200;
+> b)200,100,200;
+> c)200,200,100;
+> d)none
+> 20)struct {
+> int x;
+> int y;
+> }abc;
+> you can not access x by the following
+> 1)abc-->x;
+> 2)abc[0]-->x;
+> abc.x;
+> (abc)-->x;
+> a)1,2,3
+> b)2&3
+> c)1&2
+> d)1,3,4
+> 21) automatic variables are destroyed after fn. ends because
+> a)stored in swap
+> b)stored in stack and poped out after fn. returns
+> c)stored in data area
+> d)stored in disk
+> 22) relation between x-application and x-server  (x-win)
+> 23)UIL(user interface language)   (x-win)
+> 24)which is right in ms-windows
+> a)application has single qvalue system has multiple qvalue
+> b) "                multiple "       "      single     "
+> c)"      "            "                     multiple   "
+> d)none
+> 25)widget in x-windows is
+> 26)gadget in x_windows is
+> 27)variable DESTDIR in make program is accessed as
+> a)$(DESTDIR)
+> b)${DESTDIR}
+> c)DESTDIR
+> d)DESTDIR
+> 28)the keystroke mouse entrie are interpreted in ms windows as
+> a)interrupt
+> b)message
+> c)event
+> d)none of the above
+> 29)link between program and out side world (ms -win)
+> a)device driver and hardware disk
+> b)application and device driver
+> c)application and hardware device
+> d)none
+> 30)ms -windows is 
+> a)multitasking 
+> b)   c)   d)
+31)dynimic scoping is
+> 32) after logout the process still runs in the background by giving
+> the command
+> a)nohop
+> b)
+> 33)process dies out but still waita
+> a)exit
+> b)wakeup
+> c)zombie
+> d)steep
+> 34)in dynamic memory allocation we use
+> a)doubly linked list
+> b)circularly linked
+> c)B trees
+> d)L trees
+> e)none
+> 35)to find the key of search the data structure is
+> a)hask key
+> b)trees
+> c)linked lists
+> d)records
+> 36)data base
+>  --------------------------                
+> --------------------------------
+> employ_code       salary                    employ_code          leave
+> ---------------------------               
+> ----------------------------------
+>                                                           from       to
+>                                       
+> --------------------------------------
+> 1236             1500                         1238        ---       ---
+> 1237             2000                         1238        ---       ---
+> 1238             2500                         1237        ---     
+> -----
+> 					      1237	  ---	     ---
+> 					      1237        ---       ---
+> 					      1237	  ---	    ---
+> -------------------------- 		--------------------------------------
+>  select employ_code,employ_data ,leave
+> the number of rows in the o/p 
+> a)18
+> b)6
+> c)7
+> d)3
+> 37)DBMS
+> 38)read about SQL,db
+> 39)which is true
+> a)bridge connects dissimiler LANand protocol insensitive
+> b)router "       "             "           "       "
+> c)gateway "        "           "             "      "
+> d)none of the above
+> 40)read types of tree traversals.
+> 41)42)43)  simple programs on pointers in c
+> 					 
+> 
+
+------------------------------------------------------
+ b V L N Murthy
+ M.Tech.
+ Dept. Of Mechanical Engg.
+ Room# D/221
+ Azad Hall
+ IIT, Kharagpur
+ 721 302
+ India
+------------------------------------------------------ 
+
+Dear Sekar,
+
+                 TCS complete peper ( except psychometry ) I am sendig to you 
+ with solutions. 
+
+Psychomery is very very easy. But you should answer all quetions.
+           
+
+            Ok!
+ 
+Please give me reply immediatly.
+
+                     PAPER-97
+               ___________________
+
+
+
+--------------------------------------------------------------------------------             CALICUT  TCS paper --1997
+--------------------------------------------------------------------------------
+
+
+SECTION 1 INTURN CONSISTS OF THREE PARTS.
+
+PART 1
+      VERBAL---
+		IT CONSISTS OF 40 WORDS WHICH HAS 5 MULTIPLE ANSWERS
+    FOR THEM.THE MAIN WORDS WHICH I REMEMBER ARE AS FOLLOWS FOR WHICH
+    YOU SHOULD LEARN THE SYNONYMS OF THESE---
+
+merry= gay
+alienate= estrange
+solicit= beechat
+heap= to pile
+cargo= freight
+momentary= transient
+volume= quantity
+veer= diverge
+dispel= dissipate
+admonish= cautious
+meager= scanty
+latitude= scope
+latent= potential
+covet= crave
+discretion= prudence
+latent= potential
+emanicipate= liberate
+lethargy= stupor
+concur= acquiesce
+confiscate= appropriate
+baffle= frustrate
+subside= wane
+misery= distress
+pretentious= ostentatious
+tranquil= serene
+efface= obliterate
+obstinate= stubborn
+hover= linger
+caprice= whim
+belate= too late
+renounce= reject
+brim= border
+divulge= reveal
+lament= wail
+bileaf= conviction
+adhesive= tenacious
+furtive= stealthy
+hamper= obstruct
+to merit= to deserve
+
+
+SECTION 1        PART B        20MIN    30 marks 15 QUANTITATIVE.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+THESE ARE SOME PROBLEMS :
+
+1.)  two pencils cost 8 cents. then 5 pencils cost?
+(20 cents)
+
+2. A work is done by the people in 24 minutes.  One of them can do
+this workalonely in 40 minutes.  How much time to do the same work
+for the second person?
+(60 minutes)
+
+3. A car is filled with four and half gallons of fuel for a round trip.
+Fuel is taken 1/4 more in going then coming.  What is the fuel 
+consumed in coming up? (2 gallons)
+
+4.Low temperature at the night in a city is 1/3 more than 1/2 high as 
+higher temperature in a day.  Sum of the low tem. and highest temp. 
+is 100 degrees.  Then what is the low temp? (40 deg.)
+
+5. A person, who decided to go to weekened trip should not 
+exceed 8 hours driving in a day.  Average speed of forward journey
+is 40 m/h. Due to traffic in sundays, the return journey average speed
+is 30 m/h. How far he can select a picnic spot?
+	a) 120 miles
+	b) between 120 and 140 miles
+	c) 160 miles
+ans: 120 miles
+
+6. A salesperson multiplied a number and get the answer 3,
+instead of that number devided by 3.
+what is the answer he actually has to get?
+		1 x 3 = 3
+		so number = 1
+		devided by 3, the ans. is 1/3.
+
+7. A ship started from port and moving with I miles per hour and another
+ship started from L and moving with H miles per hour.
+At which place these two ships meet?
+
+    |----|----|----|----|----|----|
+  port	 G    H    I    J    K    L
+
+8. A building with height D shadow upto G. A neighbour building with 
+what height shadows C feet.
+
+    |----|----|----|----|----|----|----|
+    A    B    C    D    E    F    G    H
+
+9. A person was fined for exceeding the speed limit by 10 mph.
+Another person was also fined for exceeding the same speed limit 
+by twice the same.  If the second person was travelling at a 
+speed of 35 mph, find the speed limit.  (15 mph)
+
+10.A bus started from bustand at 8.00am, and after 30 minutes staying
+ at destination, it returned back to the busstand.  The destination 
+ is 27 miles from the busstand.  The speed of the bus is 18mph.  In
+ return journey bus travels with 50% fast speed.
+ At what time it returns to the busstand? (11.00am).
+
+11.In a mixture, R is 2 parts, S is 1 part. In aoder to make S to 
+ 25% of the mixture, howmuch r is to be added?
+
+12. wind flows 160 miles in 330 min, for 80 miles how much time required.
+
+13. with 4/5 full tank vehicle travels 12 miles, with 1/3 full tank
+    how much distance travels    ( 5 miles )
+
+14. two trees are there. one grows at 3/5 of the other in 4 years,
+    total growth of trees is 8 ft. what growth will smaller tree will have
+    in 2 years  (  < 2 ft. ) 
+
+15. A storm will move with a velocity of     towards the centre in   hours,
+    At the same rate how much far will it move in hrs. 
+     ( but the answer is 8/3 or 2 2/3  )
+
+
+

@@ -1,0 +1,34 @@
+/*	ENCODE.C		*/
+#include <stdio.h>
+int	main(void)
+{
+FILE	*in,*out;
+char	previous,current;
+int	count;
+
+	if ((in=fopen("in.dat","r"))==NULL)
+	{
+		printf("Cannot open <in.dat>");
+		return(1);
+	}
+	if ((out=fopen("out.dat","w"))==NULL)
+	{
+		printf("Cannot open <out.dat>");
+		return(1);
+	}
+	do	{
+		count=1;
+		previous=current;
+		current=fgetc(in);
+		do		{
+			previous=current;
+			current=fgetc(in);
+			if (previous!=current) ungetc(current,in);
+			else count++;
+		} while (previous==current);
+		if (count>1) printf(out,"ZZ%c%02d",previous,count);
+		else fprintf(out,"%c",previous);
+	}	while (!feof(in));
+	fclose(in);	fclose(out);
+	return(0);
+}

@@ -1,0 +1,34 @@
+Consider the following pseudocode for Quicksort (taken from the Class Notes):
+\begin{verbatim}
+procedure Quicksort(left, right:integer);
+   index: integer;
+
+   if (right - left <= 1) then return;
+   if (right > left) then
+     index := Partition(left, right);
+     Quicksort(left, index-1);
+     Quicksort(index+1, right);
+end Quicksort;
+
+
+function Partition(left, right);
+   p : integer;
+
+   p := A[right];
+   scan from left until A[i] > p is found;
+   scan from right until A[j] < p is found;
+   exchange A[i] and A[j];
+   continue scanning and exchanging until pointers i, j, cross;
+   exchange p with A[i];
+   return (p);
+end Partition;
+\end{verbatim}
+
+Show how the following array elements would be processed when we apply the
+given psudocode:
+
+$$6,\hbox{      } 2,\hbox{      } 12,\hbox{      } 5,\hbox{      } 15,\hbox{      } 9,\hbox{      } 7$$
+
+Show your intermediate steps (i.e. draw the array immediately after any elements
+are exchanged, and indicate where the $i$ and $j$ pointers are pointing at that
+time).

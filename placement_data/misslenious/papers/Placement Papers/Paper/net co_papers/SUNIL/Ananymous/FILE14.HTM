@@ -1,0 +1,2083 @@
+<b> Please close this browser to return to your RediffMail session</b><br><hr><br><br><div><pre>/*      ----------    cquest      --------
+Some of the C frequently asked questions (Collected from Express Computer mag.)
+*******************************************************************************
+1. what is the error in the following sequence of program.
+	
+	int i1;
+	switch(i1)
+	{
+		printf("The value of I1 is :");
+		case 1: printf("%d",i1);
+			break;
+		case 2: printf("%d",i1);
+			break;
+		default : printf("Invalid entry");
+	}
+
+2. what is an error in the following sequence of a program.
+	
+	int i1;
+	switch(i1)
+	{
+		case 1: goto lure;
+			break;
+		case 2: printf("This is second choice");
+			break;
+		default: printf("This is default choice");
+	}
+	void fun(void)
+	{
+	lure: printf("This is unconditional jump");
+	}
+
+3. What is an error in the following sequence of a program.
+	
+	int i;
+	switch(i)
+	{
+		case 1: printf("This is first choice");
+			break;
+		case j: printf("This is second choice");
+			break;
+		case 1+2+4: printf("This is the third and last choice");
+			break;
+	}
+
+4. what is an error in the following sequence of a program.
+		
+	int i;
+	switch(i)
+	{
+		default: printf("This is default value");
+			break;
+		case 1: printf("This is first choice");
+			break;
+		case 2: printf("This is the second choice");
+	}
+
+
+
+1.  Will the following be used as an identifier?
+	a. sum_of_credits 	b. initial tree 	c. final_#
+	d. while		e. SECTION_6		f. bingo-square
+	g. 2_4_87
+
+2.  Are the identifiers name and NAME are same?
+
+3.  Is it right to type # of #define other than in first column?
+
+4.  Does C require expressions to be enclosed in parenthesis for while loop?
+
+5.  Will the preprocessor terminates with semicolon ?
+
+6.  What is the return value of scanf statement?
+
+7.  What will happen, if there are two statements (without grouping) in if
+condition and an else is there for that if.
+
+8.  What will be the output of this program.
+
+	int no_fish;
+	no_fish=1;
+	if (no_fish==1)
+		printf("The water was to warm\n");
+	else ;
+		printf("The wates were all fished out\n");
+ 
+9.  Is parenthesis required for conditional expression in if condition?
+
+CV paper:
+*****************************************************************
+
+
+ 	1-18  General  (i) Data sufficiency
+		       (ii) Analytical
+		       (iii) Mathematics
+	19-45 C&UNIX
+
+1. |x-a|=a-x 	Ans: (c) x<=a
+
+2. There is six letter word VGANDA . How many ways you can arrange the
+   letters in the word in such a way that both the A's are together.
+    Ans : 120    (5x4!)
+
+3.  If two cards are taken one after another without replacing from
+     a pack of 52 cards what is the probability  for the two cards be
+	queen.     Ans : (4/52)*(3/51)       (1/17)*(1/13)
+
+4. 51 x 53 x ... x 59 ; symbols ! - factorial
+			        ^ - power of 2
+  (a) 99!/49! (b)  (c)   (d) (99! x 25!)/(2^24 x 49! x 51!)
+
+5. The ratio fo Boys to Girls is 6:4. 60% of the boys and 40% of girls
+    take lunch in the canteen. What % of class takes lunch in canteen.
+	Ans : 52%    (60/100)*60 + (40/100)*40
+
+
+Data Sufficiency : a) only statement A is sufficent , B is not
+		   b) only statemnet B
+		   c) both are necessary
+		   d) both are not sufficient.
+
+6. X is an integer. Is X dvisible by 5?
+   A) 2X is divisible by 5.
+   B) 10X is divisible by 5.
+
+   Ans : A)
+
+7. (A) Anna is the tallest girl
+   (B) Anna is taller than all boys.
+  (Q) . Is Anna the tallest in the class
+
+  Ans : c
+
+8. maths question
+9, 10 Analytical
+
+Zulus always speak truth and  Hutus always speak lies. There are
+three persons A,B&C. A met B and says " I am a Zulu or I am Hutu".
+We don't know what exactly he said. then B meets C and says to c
+that " A is a Zulu ". Then C replied " No, A is a Hutu ".
+
+9. How many Zulus are there ? Ans 2( check)
+10) Who must be a Zulu ? Ans B (check)
+
+11,12.13,14.
+-----------
+
+	A father F has 5 sons, p,q,r,s,t. Not necessarly in this order.
+Two are of same age. The eldest and youngest cannot be twins. T is elder
+to r and younger to q and s has three older brothers
+
+q) who are the twins?   s,t
+q) who is the oldest and youngest?   q, (s&t)
+q)
+q)
+
+
+15,16,17,18
+----------
+
+ There are 7 people who take a test among which  M is the worst, R is
+disqualified, P and S obtain same marks, T scores less than S and Q scores
+less than P, N scores higher than every one.
+Ans : N P S T Q R M (may be, just check)  or N S P T Q R M
+
+C & UNIX
+--------
+
+19. What does chmod 654 stand for.
+
+   Ans : _rw_r_xr__
+20. Which of following is used for back-up files?
+    (a) compress (b) Tar (c) make (d) all the above  Ans : b
+21 what does find command do ? Ans : search a file
+22. what does " calloc" do?
+    Ans :  A memory allocation and initialising to zero.
+23 what does exit() do?
+   Ans : come out of executing programme.
+24. what is the value of 'i'?
+   i=strlen("Blue")+strlen("People")/strlen("Red")-strlen("green")
+   Ans : 1
+25. i=2
+    printf("%old %old %old %old ",i, i++,i--,i++);
+    Ans : check the answer.
+26. Using pointer, changing A to B and B to A is Swapping the function
+    using two address and one temperory variable. a,b are address, t is
+    temporary variable. How function look like?
+     Ans : swap(int *, int *, int )
+27.  In  'o' how are the arguments passed?
+     ans : by value.
+28. Find the prototype of sine function.
+    Ans : extern double sin(double)
+29. Scope of a global variable which is declared as static?
+    ans : File
+30. ASCII  problem
+     i=..
+ ans : 6
+31 .
+32. what is the o/p
+    printf(" Hello \o is the world ");
+   Ans : Hello is the world.
+33. Clarifying the concept addresses used over array ; ie changing
+    the address of a base element produces what error?
+34. child process  -- fork
+    child shell    -- sh
+35. Answer are lex 7 yacc & man read these things in UNIX
+36. What is
+    int *p(char (*s)[])
+    Ans : p is a function which is returning a pointer to integer
+    which takes arguments as pointer to array of characters.
+************************************************************
+
+---------------------------
+
+
+
+Wipro paper(System software)
+July-1997
+------------
+
+PART --A
+------------------------------------------------------
+1) abcD+abcd+aBCd+aBCD
+   then the simplified function is
+   ( Capital letters are copliments of corresponding letters
+     A=compliment of a)
+
+  [a] a   [b] ab  [c] abc  [d] a(bc)* [e] mone
+  (bc)*=compliment of bc
+
+  Ans:  e
+
+-------------------------------------
+2) A 12 address lines maps to the memory of
+
+ [a] 1k bytes  [b] 0.5k bytes [c] 2k bytes  [d] none
+
+ Ans: b
+
+----------------------------------------
+3) In a processor these are 120 instructions . Bits needed to impliment
+   this instructions
+   [a] 6  [b] 7  [c] 10  [d] none
+
+  Ans: b
+
+-----------------------------------------
+4) In 8085 microprocessor READY signal does.which of the following
+   is incorrect statements
+   [a]It is input to the microprocessor
+   [b] It sequences the instructions
+
+  Ans : b
+----------------------------------------
+
+5) Return address will be returned by function to
+  [a] Pushes to the stack by call
+  Ans : a
+------------------------------------------
+6)
+   n=7623
+   {
+        temp=n/10;
+        result=temp*10+ result;
+       n=n/10
+   }
+
+Ans : 3267
+----------------------------------------------
+7) If A>B then
+      F=F(G);
+   else B>C then
+      F=G(G);
+   in this , for 75% times A>B and 25% times B>C then,is 10000 instructions
+   are there ,then the ratio of F to G
+   [a] 7500:2500  [b]  7500:625  [c] 7500:625 if a=b=c else
+                                     7500:2500
+--------------------------------------------------
+8) In a compiler there is 36 bit for a word and to store a character 8bits are
+needed. IN this to store
+ a character two words are appended .Then for storing a K characters string,
+ How many words are needed.
+ [a] 2k/9  [b] (2k+8)/9  [c]  (k+8)/9 [d] 2*(k+8)/9 [e] none
+
+ Ans: a
+---------------------------------------------------------
+9) C program code
+
+   int zap(int n)
+   {
+    if(n<=1)then zap=1;
+    else  zap=zap(n-3)+zap(n-1);
+   }
+   then the call zap(6) gives the values of zap
+   [a] 8  [b]  9  [c] 6  [d]  12  [e] 15
+
+  Ans: b
+---------------------------------------------------------------
+
+
+PART-B
+-------
+1) Virtual memory size depends on
+   [a] address lines    [b] data bus
+   [c] disc space       [d] a & c    [e] none
+
+ Ans :  a
+-----------------------------------------------
+2) Critical section is
+   [a]
+   [b] statements which are accessing shared resourses
+   Ans : b
+-------------------------------------------------
+
+3) load a
+   mul  a
+   store t1
+   load  b
+   mul   b
+   store t2
+   mul t2
+   add t1
+
+  then the content in accumulator is
+
+Ans : a**2+b**4
+---------------------------------------------------
+4) question (3) in old paper
+5) q(4) in old paper
+6) question (7) in old paper
+7) q(9) in old paper
+------------------------------
+
+
+
+Hughes,Delhi:
+-------
+
+> > (A)Aptitude :25 Qns, 20 Minutes
+> > 
+> >   1. 2 x 4 analytical GRE type qns
+> >   2. 2-3 Reasoning qns (GRE type)
+> >   3. Probability of getting a sum of 7 when two dices are thrown together
+> >   4. Rest quantitative questions
+> > 
+> >  (B) Technical: 50 Qns, 45 Minutes
+> >   
+> >   1. 3 qns on operating systems. I qn on dijkestra algorithm
+> > 
+> >   2. Using which pin it's possible to address 16 bit addresses even though there
+> >      are only 8 address bits in 8085? Ans: ALE
+> >   3. Voltage gain for an amplifier is 100 while it is operating at 10 volts.
+> >      What is the O/P voltage wen i/p is 1 volt
+> >   4. Quality factor indicates a0 Quality of inductor b) quality of capacitor
+> >      c) both
+> >   5. Qns related to bridges, routers and generators, which OSI layer they 
+> >   corresspond to. (Refer to stevens 4th chapter)
+> >   6.OPAmp's I/P ciurrent, O/p current and CMRR is given, what is the voltage 
+> >   gain
+> >   7. 2-3 qns on scope of static variables in C. Qn to view o/p odf a C static 
+> >      var
+> >   8. Qn to print a value of a pointer
+> >   9.resistance increases with temperature in a) Metal b) semiconductor
+> >   10. A qn to find the physical address from a given virtual address, virtual
+> >       to physical address table was provided
+> >   11. 16 bit mantissa and 8 bit exponent can present what maximum value?
+> >   12. 4 bit window size in sliding window protocol, how many acknowledements can be held?
+> >   13. Security functionality is provided by which layer of OSI
+> >   14. Frequency spectrums for AM, FM and PM (figure given, u'veto tell which
+> >       Kind of modulation it belongs to)
+> >   15. Among AM and FM which is better and why?
+> >   16.LASt stage of TTL NAND gate is called: Ans: Totem Pole Amplifier
+> >   17. SR to JK flip flop conversion. Ans: S=JQ', R=KQ
+> >   18. LSB of  a shift register is connected to its MSB, what is formed: Ans:
+> >       RING Counter
+> >   19. 2-3 Qns based on Demorgan's laws (identiies: (A+b)' = A'b', etc)
+> >   20. 2 qns on Logic gates (O/p of logic gates)
+> >   21. Diff in IRET and RET statements of 8086
+> >   22. How many address bytes are required to address an array of memory chips
+> >       (4 * 6), each chip having 4 memory bits and 8k registers.
+> >    23. Diff. in memory mapped and I/P O/P mapped Input/Output (Refer a book on Microprocessor)
+> >    24. Qn on pipeline architecture
+> >    25 QN on LAPB protocol
+> > 
+> >
+> 
+
+The quetions may not be in order
+
+Q 1-5:
+
+1) 6 persons A,B,C,D,E,F are playing a game of cards . A's  father and mother , uncle were in the gang. There were two women. B is the mother of A gets more
+   points then her husband. D got more points then E but less then F. Niece of
+E got the lowest points. Father of A agot More points then F. But would not win 
+the game.
+
+i). who won the game? 
+a)A  b) B  c) F  d) D    ans: b
+
+ii) who got lowest points ?
+
+a) A b) C  c) E d) B    ans: a
+
+iii). who is the husband of B ?
+a) F  b) E c) D d) c   ans : c
+
+iV) B was one of the lady. who was other lady?
+a) C b) D c) E d) A  ans: a
+
+v) who stood second in the game?
+a) A b) B c) C d) D  ans: c
+
+NOTE:  check answers.
+
+
+6). A is the widow of B. B & C were the only children of E. C is unmarried and
+is a doctor. D is the grand daughter of E and studies science. How is A related to D.
+
+a)Aunt b) daughter c) sister d) sister_in_law 		ans: b
+
+Follow the following for Q. 7-8.
+a) Only conclusion I follows definately.
+b)       ,,        II      ,,
+c) Both  I  &  II follow
+d) Neither I nor II follows.
+e) either I or II follows.
+
+7). STATEMENTS:
+It is some times said that corruption is due to proverty and gross diparities.
+It is an uncalled for slurr on the poor. Because the poor in India are among the most unsight persons.
+
+conclusions: 
+I. upsight persons can't be corrupt persons.
+II. Disparities of income make the people corrupt.
+
+
+ans: c
+
+8) STATEMENTS:
+The Indian economy has suffered considerble stresses and strains during the lostthree years. The general picture is one of stagnations. 
+conclusions: 
+I. stresses and strains in economy lead to stagnation .
+II. Indian economy is stagnant.
+
+ans: e
+
+Q. 9-15 follow this answers.
+a) only inference I follows.
+b) only inference II follows.
+c) Both I & II follow.
+d) neither I nor II follows.
+
+9). no hawk is a sparrow.
+    All hawks are hens.
+Inferences:
+I. no hen is a sparrow.
+II. no sparrow is a hen.
+ans: c
+
+10). all graduates are chairs.
+     all chairs are tables.
+Inferences:
+I. all graduates are tables.
+II. all tables are graduates.
+ans: a
+ 
+11) some birds are elephnts.
+    some elephants are white.
+Inferences:
+I. some birds are white
+II. some white are birds
+ans: d
+
+12) all fans are vans.
+    none van is pan.
+I. No pan is fan.
+II.no fan is pan.
+ans: d
+
+13). all boats are coats.
+     no coat is shirt.
+I. all boats are shirts
+II. all shitrs are boats.
+ans: a
+
+14). no pen is hen.
+     some hens are healthy.
+I. no pen is healthy.
+II. no healthy thing is pen.
+ans: d
+
+15) all hopes are doops.
+    all fears are hairs.
+
+I. all hopes are fears.
+   all doops are hairs.
+ans: d
+
+
+
+Below we are giving Q'es whatever remember to us. It is not clear and order.
+
+1). poem, song, rommance, dirty,couplet
+ans: Rommance
+
+2). Historical, ancient, olden ,inheritant.
+ans: inheritant.
+
+3) widow ...........,  		ans: daughter.
+
+4) For one coding problem ( ie he will give some numbering to alphbets )
+ans: 
+ 				1) PRIQOV
+				2) MOFZB
+
+6). synonyms:
+i) placeble   ii) emblish  iii) incence  iv) depricate  v) palret
+
+7) ODDMEN OUT:	
+
+	i) bench, chair, winch,thrown,pedastal  ans: pedestal
+	ii) book, volume, saga......
+	iii) 3,4,20,38 ....... ans: 20
+	iv) 3,6,52.5,157.5 ....ans: 52.5
+
+8). one age problem  father and son 10 years ago........ans: 14,38.
+
+
+>>From naidu@indy.iitm.ernet.in Fri Oct  3 17:19:49 1997
+Received: from [144.16.241.170] by violet.iitm.ernet.in (AIX 3.2/UCB 5.64/4.03)
+          id AA23610; Fri, 3 Oct 1997 17:19:49 GMT
+Received: by indy (940816.SGI.8.6.9/940406.SGI)
+	 id RAA02593; Fri, 3 Oct 1997 17:15:32 +0530
+Date: Fri, 3 Oct 1997 17:15:32 +0530
+From: naidu@indy.iitm.ernet.in (P.V.T. Naidu)
+Message-Id: <199710031145.RAA02593@indy>
+To: mepg9618@violet.iitm.ernet.in
+Subject: Deshaw!
+Cc: oepg9627@violet.iitm.ernet.in
+Status: RO
+
+DE-Shaw Software,Hyderabad.
+---------------------------
+                        SECTION-A
+ 
+ you should write the programs for the following problems in C.
+ 
+ 1. swapping two variables x,y without using a temporary variable.
+ 2. a program has been given asking to find the output
+        ans. it is algorithm for finding G.C.D
+ 3. write a program for reversing the given string.
+ 4. the integers from 1 to n are stored in an array in a random
+    fashion. but one integer is missing. write a program to find the
+    missing integer.
+        ans. idea. the sum of n natural numbers is = n(n+1)/2.
+             if we subtract the above sum from the sum of all the
+             numbers in the array , the result is nothing but the
+             missing number.
+ 5. some bit type of questions has been given on pointers asking to
+    to find whether it is correct from syntax point of view. and if
+    it is correct explain what it will do.(around 15 bits).
+ 
+                        SECTION-B
+ 
+   ANSWER AS MANY AS POSSIBLE.
+ 
+ 6.& 7. two programs on pre-processor directions has been given asking
+        to find the output.
+ 8. simple question given on pointer
+    a) kernighan & richie page no. 122
+    b) schaum series  page no. 323
+    try to understand the pointer problems given here he asked to 
+explain
+    in the interview if answer it in exam.
+ 9. write a c program to find whether a stack is progressing in forward
+   or reverse direction.
+ 10. write a c program that reverses the linked list.
+ 
+  GUIDELINES:
+     the interview is very tough he is asking to do the problems in
+   front of him. he is also giving some new problems to solve before 
+him.
+   you should have a very good funda of C language.
+ 
+ 
+-----------------------------------------------------------------------
+    P . V . THATAYYA  NAIDU          
+                  M.S ( CS)           Hostel : 91-044-2351326
+       Research Scholar                      (PP: #341 Naidu)
+                   
+    341, BrahmaPutra Hostel           Infotech Lab : 91-044-2351365
+    IIT MADRAS - 600036                              ext:3529/3530
+    INDIA
+    EMAIL         :   naidu@indy.iitm.ernet.in 
+                      naidu%bronto@iitm.ernet.in
+-----------------------------------------------------------------------
+
+
+THIS IS THE PAPER IN IIT KHARAGPUR
+
+	DESHAW 97
+PART 1						TIME:20 MIN
+* 20 QUESTIONS , EACH QUESTION CARRIES 2 MARKS
+
+1. A SOLID ICE OF 11 X 8 X2 INCHES IS MADE INTO ROD OF DIA  4 INCH. WHAT
+IS THE LENGE OF ROD?
+
+ANS: 3.5 INCH
+
+2. THERE WERE 750 PEOPLE WHEN THE FIRST SONG WAS SUNG. AFTER EACH
+SONG 50 PEOPLE ARE LEAVING THE HALL. HOWMANY SONGS ARE SUNG TO MAKE
+THEM ZERO?
+
+ANS:16
+
+3. A PERSON IS CLIMBING OF 60 MTS . FOR EVERY MINUTE HE IS  CLIMBING 6 MTS
+AND SLIPPING 4 MTS . AFTER HOWMANY MINUTES HE MAY REACH THE TOP?
+
+ANS: (60-6)/2 +1  :28
+
+4. HOWMANY ZEROS ARE THERE IN THE PRODUCT OF THE INTEGER FROM 1TO 100?
+
+ANS: 24( NOT GIVEN)
+
+	1 TO 10   -2  ZEROS
+	21 TO 30  -3  ZEROS  : BECAUSE  25 = 5*5
+					22 *5
+					24 *5
+
+5. A CAN DO WORK IN 2 HOURS B CAN DO A WORK IN 3 HOURS WHAT IS THE 
+SHORTEST TIME TYEY CAN FINISH THE WORK?
+
+ANS: 1HOUR 12 MIN.
+
+6..SALARY IS INCREASED BY 1200 ,TAX IS DECREASED FROM 12% TO 10% BUT PAYING
+SAME AMOUNT  AS TAX . WHAT IS THE PREVISIOUS SALARY?
+
+ANS:6000
+
+7. THE LEAST NO. WHICH IS WHEN DEVIDED BY 4,6,7  LEAVES A REMAINDER OF 2 ?
+
+ANS: 86
+
+8. A MAN DRIVING THE CAR AT TWICE THE SPEED OF AUTO ONEDAY HE WAS DRIVEN 
+CAR FOR 10 MIN. AND CAR IS FAILED. HE LEFT THE CAR AND TOOK AUTO TO GOTO 
+THE OFFICE . HE SPENT 30 MIN. IN THE AUTO. WHAT WILL BE THE TIME TAKE BY 
+CAR TO GO OFFICE?
+
+ANS:25 MIN
+
+9. A REPORT HS 20 WHEETS, EACH OF 55 LINES AND EACH SU;CH A LINE CONSISTS
+OF 65 CHARACTERS. IF THE REPORT HAS TO BE RETYPED WITH EACH SHEET HAVING 65 
+LINES AND EACH LINE HAVE 75 CHARACTERS, THE PERCENTAGE OF  REDUCTION OF
+NO OF SHEETS IS CLOSEST IS TO?
+	
+
+ANS: 25%
+
+ 
+
+10. OUT OF 100 FAMILIES IN NEIGHBOUR HOOD , 55 OWN RADIO, 75 OWN T.V
+AND 25 OWN VCR. ONLY 10 FAMILIES HAVE ALLOF THESE, AND EACH VCR OWNER
+HAS TV . IF 25 FAMILIES HAVE THE RADIO ONLY, THE NO. OF FAMILIES HAVE
+ONLY TV ARE?
+
+ANS: 30
+
+
+
+
+APTITUDE: ( QUESTIONS 16 T019)
+
+KYA KYA IS AN ISLAND IN THE SOUTH PACIFI . THE INHABITANTS OF KYA KYA
+ALWAYS ANSWER ANY QUESTION WITH TWO SENTENCES, ONE OR WHICH IS ALWAYS
+TRUE AND OTHER IS ALWAYS FALSE.
+
+1. YOU ARE WALKING ON THE ROAD AND COME TO A FORK. YOU ASK ,THE INHABITANTS
+RAM.LAXMAN, AND LILA AS" WHICH ROAD WILL TAKE ME TO THE VILAGE?
+
+RAM SAYS: I NEVER SPEAK TO STRANGERS. IAM NEW TO THIS PLACE
+LAXMAN SAYS: IAM MARRIED TO.LILA. TAKE THE LEFT ROAD
+LILA SAYS: IAM MARRIED TO RAM. HE IS NOT NEW TO THIS PLACE
+
+ANS:  LEFT ROAD TAKE YU TO THE VILLAGE
+
+2. YOU FIND THAT YOUR BOAT IS STOLLEN. U QUESTIONED THREE INHABITANTS OT 
+ ISLANDS AND THEIR REPLIES ARE
+
+JOHN   : I DIDNOT DO IT. MATHEW DIDNOT DO IT
+MATHEW :  I DIDNOT DO IT. KRISHNA DIDNOT DO IT
+KRISHNA: I DID NOT DO IT; I DONOT KNOW WHO DID IT
+
+ANS: MATHEW STOLEN THE BOAT
+
+3. YOU WANT TO SPEAK TO THE CHIEF OF VILLAGE , U ASK THREE FELLOWS AMAR
+BOBBY, CHARLES AND BOBBY IS WEARING RED SHIRT
+
+AMAR    : IAM NOT BOBBY`S SON ; THE CHIEF WEARS RED SHIRT
+BOBBY   : IAM AMARS FATHER ; CHARLES IS THE CHIEF
+CHARLES : THE CHIEF IS ONE AMONG US; IAM THE CHIEF
+
+ANS: BOBBY IS THE CHIEF
+
+4. THERE IS ONLY OPNE POLOT IN THE VILLAGE(ISLAND). YOU INTERVIEWED THREEM MAN 
+KOISK ,LORRY AND MISHRA
+U ALSO NOTICE THAT KOISK IS WEARING CAP.
+
+M SAYS : LARRY IS FATHER IN THE PILOT .LARRY IS NOT THE PRIESTS SON
+KOISK  : IAM THE PRIEST ON THEIS ISLAND ONLY PRISTS CAN WEAR THE CAPS
+LARRY  : IAM THE PRIEST SON . KOISK IS NOT THE PREST
+
+ANS : KOISK IS THE PILOT
+
+
+
+
+
+
+THIS PAPER HAS GIVEN IN IIT DELHI , SO GO THROUGH THIS IT WILL GIVE 
+ROUGH IDEA;
+
+
+1.   typedef struct{
+	char *;
+	nodeptr next;
+	} * nodeptr;
+what does nodeptr stand for?
+
+2. supposing thaty each integer occupies 4 bytes and each charactrer 
+1 byte , what is the output of the following programme?
+
+#include<stdio.h>
+main()
+{
+ int a[] ={ 1,2,3,4,5,6,7};
+char c[] = {' a','x','h','o','k'};
+printf("%d\t %d ", (&a[3]-&a[0]),(&c[3]-&c[0]));
+}
+ans : 3  3
+
+3. what is the output of the program?
+
+#include<stdio.h>
+main()
+{
+struct s1 {int i; };
+struct s2 {int i; };
+struct s1 st1;
+struct s2 st2;
+st1.i =5;
+st2 = st1;
+printf(" %d " , st2.i);
+}
+
+ans: nothing  (error)
+expl: diff struct variables should not assigned using "=" operator.
+
+
+
+4.what is the output of the program?
+
+#include<stdio.h>
+main()
+{
+int i,j;
+int mat[3][3] ={1,2,3,4,5,6,7,8,9};
+for (i=2;i>=0;i--)
+ for ( j=2;j>=0;j--)
+printf("%d" , *(*(mat+j)+i));
+}
+
+ans : 9 6 3 8 5 2 7 4 1
+
+5.
+
+fun(n);
+}
+int fun( int n)
+{
+int i;
+for(i=0;i<=n;i++)
+fun(n-i);
+printf(" well done");
+
+}
+ howmany times is the printf statement executed for n=10?
+
+
+ans: zero
+expl: Befire reaching to printf statement it will goes to infinite loop.
+
+
+6.what is the output of the program?
+
+main()
+{
+struct emp{
+	char emp[];
+	int empno;
+	float sal;
+};
+struct emp member = { "TIGER"};
+printf(" %d %f", member.empno,member.sal);
+
+
+ans: error. In struct variable emp[], we have to give array size.
+ If array size given
+ans is 0, 0.00
+
+
+
+7. output of the program?
+
+	# define infiniteloop while(1)
+	main()
+	{
+	infiniteloop;
+	printf("DONE");
+}
+
+ans: none
+expl: infiniteloop in main ends with ";" . so loop will not reach end;
+and the DONE also will not print.
+
+8.  output of the program?
+	
+main()
+{
+int a=2, b=3;
+printf(" %d ", a+++b);
+}
+
+ans:5
+expl: here it evaluates as a++ + b. 
+
+9. output of the program?
+
+#define prn(a) printf("%d",a)
+#define print(a,b,c) prn(a), prn(b), prn(c)
+#define max(a,b)  (a<b)? b:a
+
+main()
+{
+int x=1, y=2;
+print(max(x++,y),x,y);
+print(max(x++,y),x,y);
+}
+
+
+ans: 3 4 2
+
+10. which of the following is the correct declaration for the function main() ?
+
+ans: main( int , char *[])
+
+11. if ptr is defined as
+
+	int *ptr[][100];
+	which of the following correctly allocates memory for ptr?
+
+ans: ptr = (int *)(malloc(100* sizeof(int));
+
+FEW MORE PROGRAMS HERE BUT NOT AVAILABLE:
+
+
+
+
+
+************
+
+1. Name of the Company
+	INFOSYS Technologies Ltd.
+2. Date of Int/Selection
+	30th and 31st Aug '95
+3. Panel Details
+	The Panel consisted of 3 chota guys, one GM, and one Veeps(HRD). The
+	VP(HRD) was quite painful during the written test and exceedingly
+	strict. GM was called Kris, and had some fundaes
+4. Area of Work
+	Area of work is 100% appli s/w. Has 4 groups, Mainframes (50% of
+	revenue), AS/400, Open Systems & Client Server, and OSDC (Off-Shore
+        Devpt Group). Usually CS, EE and ECE guys are placed in Open Sys, and
+        OSDC.
+5. Pay (Gross) (Take Home)
+	8,925/- pm, gross for MTech/MS. 20% of Basic increment every April.
+6. Perks and Benefits
+	A big office, 15k sq ft, non A/C, about 15 kms from B'lore proper. Daily
+        bus trips from 13 diff places in B'lore. Subsidised Lunch and Breaker. 4
+        coffee/tea free per day. No advances or loans for house, motor vehicle.
+        Stock offer after 1 year or so. High chances of going abroad for brief
+        stints of 3-4 months.
+7. Work atmosphere, and facilities
+	Atmosphere is cool, hajaar IIT guys there, and avg age is 23-25. Good
+        news for girls and bad for guys, only about 10-12% of staff are kudis, 
+        the rest are chokras. An AT-486 66 Mhz for everyone, with facility to 
+        use it as a WS, or a node. E-mail group ids for everyone, and if you 
+        are on OSDC, Internet ids.
+8. Selection Procedures
+	Two tests, one Mathematical Ability, another Analytical. Short-listed
+        junta for GD (only for PGs). Then Personal Interview (some tech ques 
+	thrown in).
+9. Qualities students should have
+	Prepare well for tests. Speak in the GD, dont be too agressive, try
+        to give some new thots when it is your turn. Personal Int is cool.
+10. Some statistics.
+	About 500 guys took written test. 30 PGs short-listed for GD & Int.
+        22 selected. 128 Btechs selected.
+11. Some Comments about the Company
+	Junta Company, i.e. takes guys in large nos. and truck-loads. Mainly
+        UGs, and a few PGs. 7th in s/w export revenue-wise. Good Co. for Mtechs.        MS with no interest in appli prog, don't apply. 
+
+************ 
+
+1. Name of the Company
+        TISL - Tata Information Systems Limited, Blr.
+2. Date of Int/Selection
+        Date of Interview 14/09/95 - Interview time 9.30 pm
+        Date of Selection 15/09/95
+3. Panel Details
+        Two Panels.  Three Guys, two technical and one HR.  One technical 
+        for each panel, and the HR guy going between the two.
+4. Area of Work
+        Mostly IBM projects, and some system areas.  
+5. Pay (Gross) (Take Home)
+        Gross 1.38 lakhs for PGs, and guys with CG 9-9.5 get a 5% hike on 
+        basic, amounting to a approx. amount of Rs. 400/-pm, and 10% hike 
+        on basic for guys with CG 9.5 and above.
+6. Perks and Benefits
+        For junta from outside Blr, Airfare, or First A/C train fare, and 
+        two weeks stay in a Hotel for self spouse and children. 10 months HRA 
+        (approx. Rs.23000) as interest free loan for paying advance.Rs.50000 
+        vehicle loan at 5% interest. Subsidized lunch. Medical, and other 
+        insurance policies.
+7. Work atmosphere, and facilities
+        Presently promised that each one will get a separate cabin, and a 
+        PC and a terminal attached to the mainframes. E-mail facility will be 
+        provided for most junta.
+8. Selection Procedures
+        One written test and one interview.
+        Written test
+        Has 3 sections, finding the next element in a series of alphabets, 
+	finding next figure in a series of figures, and finally a quantitative
+        ability test. This test needs more speed than anything else as you have
+	to answer something like 30 questions in 10 minutes etc.  
+        Interview
+        First question tell me about yourself, and depending on your answer the
+	rest of the interview proceeds.
+
+9. Qualities students should have, i.e. CGPA, talking skills etc.
+        For written test CGPA should be above 7.5 for BTech and MTech CS junta.
+        But talking skills are important, mainly be confident, and remember 
+	that they need you as much as you need them if not more.
+        
+10. Some statistics i.e. how many attended int/test, and how many got thru.
+        For written, there were hajjar junta.  So can't specify the no.
+        For interview
+        Total, 30 in first set and 10 in second set.From CS, 7 BTechs, 2 MTechs
+	and one MS.
+        Total junta who got thro'  26. From CS, 6 BTechs, and 1 MTech.
+        
+**********
+
+1. Name of the company  
+	Bharat Electronics Ltd ,Central &Research Labs
+2. Date of Selection  
+	22nd September
+3. Panel Details 
+        There were 4 persons in that panel.Each of them asked questions on 
+	different subjects.
+4. Area of work 
+	Mostly , for Defense and Embedded S/W
+5. Pay  
+        I do not know clearly. I think around Rs 7200 to Rs 7500 without PF .
+6. Perks & Befits 
+        It is a Public Sector. May not give any perks.They told that they give
+	Vehicle Allowance , Canteen Subsidy and such things.
+7. Work atmosphere & facilities
+        It is good it seems. I heard that the campus is also good.
+8. Selection Procedure
+        Only Interview. All the panel members asked questions on different 
+	subjects.Usually , thet ask OS, Networks,S/W and the course i am doing 
+	(DC)now and Project. They will ask whether we really want to join in
+	it. There is 3 years bond. 1 year Training period.
+9. Qualities we should have 
+	I do not know clearly about this. They are not so stringent on CGPA. If 
+	we can impress them in the interview for the questions they asked in 
+	subjects and if we can give the guarantee to join in that company , it 
+	is O.K. .Also, they prefer ECE degree people with computers postgraduate
+	degree.
+10. Statistics 
+	Around 20 or 25 people attended. They selected 6 students.(2 M.Tech
+	1 M.Tech(E.C.E) 1 M.S(E.C.E) 2 Ph.d
+
+***********
+
+1. Name of the Company 
+	Oracle Software (I) Ltd.
+2. Date of Int/Selection  
+	19 th Sept.
+3. Panel Details 
+        Two Project Managers  - Mr. G.Ramesh & Mr.Ravishankar(Expert in SCO
+	Unix)
+4. Area of Work 
+        They want expertise in Unix Internals preferably.
+5. Pay (Gross) (Take Home)
+	1.3 lacs gross. Take home not known.
+6. Perks and Benefits
+	The best perks among all the software Co's.
+	Some of the perks are 
+        - Bike loan (interest free)
+        - Visa card.
+        - ANZ Grindlays ATM account.
+        - Club membership.
+        - House Advance
+        - Flexi Timings 
+        - Catered Lunch daily.
+        - Dinner allowance of Rs. 50 if you work in the night. Etc.
+7. Work atmosphere, and facilities  
+        Don't know much. But they mentioned there's one Workstation per
+	person.
+8. Selection Procedures   
+        Intreview only.
+9. Qualities students should have, i.e. CGPA, talking skills etc.  
+        A good CGPA.(Not necessarily very high ).
+10. Some statistics i.e. how many attended int/test, and how many got thru.
+        6 Mtechs,5 Btechs and 2 MS's attended,of which 2 Mtechs,2 MS's and
+	1 Btech got selected.
+
+************
+
+1. Name of the Company
+2. Date of Int/Selection
+3. Panel Details
+4. Area of Work
+5. Pay (Gross) (Take Home)
+6. Perks and Benefits
+7. Work atmosphere, and facilities
+8. Selection Procedures
+9. Qualities students should have
+10. Some statistics.
+
+
+************
+
+1. Name of the Company
+	WIPRO Systems, Bangalore.
+2. Date of Int/Selection
+	1st & 2nd September, 1995.
+3. Panel Details
+	2 guys on the panel.
+4. Area of Work
+	They are interested in application programming, mainly. They have
+	groups which work on OS and Networking also. Lots of interest in
+	Mainframe COBOL, and other tools. C++ and WINDOWS work also going
+	on.
+5. Pay (Gross) (Take Home)
+	About 11k gross.
+6. Perks and Benefits
+	Hajaar perks like house rent advance, vehicle loan, free grub,
+	medical, LTA. Medical bills can include Ray Ban(!).
+7. Work atmosphere, and facilities
+	Good ambience, and office is on MG Road, Bangalore. Only thing is
+	uniform, ties, shoes etc. If not on Mainframes, you have a WS to
+	yourself, and if you are on Mainframes, only a node for you.
+8. Selection Procedures
+	Only interview. But a short-list initially is put out based on
+	CGPA. During 94 they had the cut-off at 8.3. The interview is
+	peaceful and all CS and EE guys selected.
+9. Qualities students should have
+	Good and decent dress, CGPA above cut-off and goos commn skills.
+10. Some statistics.
+	About 12 PGs attended the interview and 10 got thru.
+
+
+                EASI -96
+            ------------------
+
+
+
+		NOW I AM SENDING EASI-TECH-96 PAPER
+           FIRST PRIORITY FOR --F E M & C++	
+		You should prepare one FEM project work
+	and mention it in your BIODATA as your present work.Then
+	they will definitely call for interview even you perform
+	worstly in written test.
+	 One more thing is this year they have big FORD project.
+	So priority is there for mechanicals.
+		I WILL SEND REMAINING PAPERS BY POST.
+			OOOOOKKKKKK!
+			EASI-TECH(96)
+    WRITE THE OUTPUT FOR FOLLOWING PROGRAMS.
+1) printf("%d%x\n",ox2,12);
+2) int a=10;
+   int b=20;
+   a=a^b;
+   b=a^b;
+   a=a^b;
+   printf("%d%d\n",a,b);
+    3)enum     
+	{ELLIPSE,
+	TRIANGLE,
+	RECTANGLE,
+	SQUARE=100,
+	CIRCLE=5
+	}	
+        printf{"%d%d%d%d\n",TRIANGLE-RECTANGLE,SQUARE*CIRCLE-RECTANGLE};
+4) define the following...
+   a) pointer to a integer
+   b) pointer to a char
+   c) function pointer returning a pointer integer.
+5) void a(void);
+   main()
+   {
+   a();
+   }
+   void a(void)
+   {
+   char a="HELLOW";
+   char *b="HELLOW";
+   char c[10]="HELLOW";
+   printf("%s%s%s\n",a,b,c);
+   printf("%d%d%d\n",sizeof(a),sizeof(b),sizeof(c)));
+   }
+  6)  int a=15;
+	int b=16;
+	printf("%d %d \n",a&b,a/b);	(bitwise operators)
+ 7)   int a[5],*p;
+      for(p=a;p<&a[5];p++)
+	{
+	*p=p-a;
+	printf("%d\n",*p);
+        }
+8) sscanf("xyz abc ABC 345" "% *[a-z A-Z]lf",&a);
+   printf("lf",a);
+  9) Not clear
+        fprintf(- - - - -
+10) main()
+    {
+    int i=10;
+    printf("%d",i);
+    {
+    int i=20;
+    printf("%d",i);
+    }
+    printf("%d",i);
+    }
+ 11)struct class
+	{
+	int i;
+	float a;
+	string[12];
+	}
+	sizeof(class)=?
+12)   int *p;
+	i=10;
+	p=i;
+	printf("%d",*p);
+13)  fact(5)
+     int n;
+     fact(n)
+     {
+      sum=n*fact(n-1);
+     }
+NEXT FINITE ELEMENT ANALYSYS QUESTIONS
+1)
+NAME THE EQUATION AND EXPLAIN THE TERMS
+ A) M/I=F/Y=E/R.
+ B) mx..+cx.+kx=F(t)         ans: sdof mass-spring-dashpot equn.
+2) 
+WHAT ARE THE DIFFT.TYPES OF FINITE ELEMENTS.
+3)
+WHAT IS THE SIZE OF STIFFNESS MATRIX FOR A 4 NODED SHELL ELEMENT IN 3-D 
+SPACE.
+4)
+HOW MANY NODES ARE THERE FOR A BEAM ELEMENT ? WHY?
+5)
+WRITE STIFFNESS MATRIX OF TRUSS ELEMENT.
+  
+   6)WHAT ARE PLANE STRESS AND PLANE STRAIN ELEMENTS
+
+  7)WHAT IS MENT BY STRESS SMOTHENING
+  8)WHAT IS GAUSS POINT
+  9)WHAT ARE CO AND C1 PROBLEMS
+
+[OK 13Q IN C  AND 9Q IN FEM]
+THIS IS ORIGINAL FULL WIDTH PAPER
+		SSSSSSSsUUUu
+						yours,
+						murthy.
+
+
+		1) YOU SHOULD LEARN POINTERS(they may ask in I.W)
+		2)****SHOULD LEARN C++(this is very very IMP,Based
+			on this only I got job.One more thing is
+			CLASS,INHERATENCI&POLYMORPHISM is sufficient)
+		3)YOU SHOULD PREPARE ONE FEM PROJECT AND TELL THEM
+		  THAT AS YOUR OWN WORK(This will increase chance
+			to 99%)
+                      EASI-TECH
+                 WRITTEN TEST PATTERN
+		 --------------------
+1] C       TEST 10Q 20MINUITS
+2]F E M    TEST 19Q 20MINUITS
+3]APTITUDE TEST 15Q 20MINUITS
+-----------------------------
+F E M TEST
+----------
+1)WHO USED THE TERM FINITE ELEMENT FOR THE FIRST TIME?
+  a)
+  b)
+  c) CLOUGH
+2)DERIVE THE JACOBIEN |J| FOR BEAM ELEMENT WITH STRAIN 
+  ENERGY?
+  (ANS:PROMLEM IS NOT CORRECT PLEASE DO NOT ATTEMPT)
+3)FOR AN ELEMENT SIGMA Ni=1,WHICH TYPE OF ELEMENT IT IS?
+   a)
+   b)NATURAL CO-ORDINATE
+    (ANS 100% CORRECT)
+4)TIMOSHENKO BEAM ELEMENT THEORY TO CONSIDER -- - - -?
+   a)
+   b)
+   c)SHEAR DEFORMATION
+5)SHEAR LOCKING - - - - ?
+  (ANS IS VERY STIFF 'K')
+6)MEMBRANE LOCKING 
+  (ANS IS ARCH ELEMENT)
+7)Ex(epsiolan x)=dU/dX,Ey=dV/dY,r(X,Y)=?(gama(x,y)=?)
+  (ANS IS dU/dY+dV/dX )
+8)K=integral B(TRANSPOSE)*D*B  FOR LARGE DEFORMATION
+  WHICH MATRIX WILL GET EFFECTED?
+  (ANS IS  D matrix )100%correct
+9)FOR PLANE STRAIN  f(Ex,Ey,Ez,r(x,y) ) - - - 
+  (ANS IS    Ez=0)  
+10)SERENDIPITY ELEMENT IS
+   (ANS 8 NODED ELEMENT)
+ (The element which is having nodes only on boundary is
+   called SERENDIPITY element)
+11)IF THE ROTATION OF ELEMENT AND THE DISPLACEMENT ABOUT
+   N-A  IS SAME THEN THE ORDER OF CONTINUITY
+   (ANS IS  C1)
+12)FRONTAL THEORY IS APPLIED FOR
+  (Please refer any fem book)
+13)MINDLINS THEORY IS APPLIED FOR
+  c) this is the answer(Both Co&C1problems)
+14)X=SigmaNi*Xi,U=sigmaNi*Ui WHICH TYPE OF ELEMENT
+  (Refer book)
+15)BEAM SUBJECTED TO UDL FIND THE MOMENTS AT THE 
+   2 NODES
+16)Integral B(Transpose)*sigma(here sigma means stress)*dV 
+    REPRESENTS?
+    (ANS IS INTERNAL LOAD VECTOR)
+17)Integral ET(epsiolan transpose)*sigma*dV
+    P=strain displacement vector
+    Q=stress-strain deformation
+    Find [K]
+    (ANS    [K]=[P]T(p transpose)*[Q]*[P] )
+18)
+19)
+
+
+REMEMBER ORDER MAY NOT BE CORRECT
+
+	
+                      APTITUDE TEST
+ 1)33 1/3 of     101 + 296 is
+		(ans 1200) check
+ 2)0.625= ?	(ans 27/40)
+ 3)One ship goes along the stream direction 28 km and in opposite
+   direction 13 km in 5 hrs for each direction.What is the velocity
+   of stream?
+		(ans 1.5 kmph)
+ 4)Cubic root of 3375=?
+		(ans 15)
+ 5)2020201-565656=?
+		(ans 1454545)
+ 6)CHAIRS PROBLEM
+		5 chairs=9 tables,12 tables = 7 stools likethat- - - 
+		(ans is 80Rs)
+ 7)One clock ringes 7 O'clock in 7 sec.In how many seconds it will
+   ring 10 O'clock.
+		(ans 10.5 sec)
+ 8)One watch is showing 30 past 3 .What is the angle between minutes &
+   hours hand?
+		(ans 75 degrees)
+ 9)The average of 4 consecutive even numbers is 27. What is the largest
+   number?
+		(ans 30)
+ 10) 25 stations ,24 stations are inbetween- - - - -
+     how many tickets should be required.
+                (ans 25*24=600)PUZZLES TO PUZZLE YOU "S.DEVI"PROB 24
+ 11)One ball was dropped from 8ft height and every time it goes half
+    of the height. How much distance it will travell before coming to 
+    rest.
+                 (ans 24 approximately)
+ 12)Two trains are travelline at equilateral .Train A is travelling
+    in the direction of earths spin.Other train B is travelling in
+    opposite direction of earths spin.Which trains wheels will wear
+    first?and why?
+        (ans TRAIN B .Because of less centrifugal force.)
+        
+
+
+
+          OK HARI 3 MORE QUES ARE THERE.I HOPE YOU CAN SOLVE EASILY.
+            NOW I have only 3 C ques. I am sendins them in immediate 
+            mail. Any whey I will try to send remaining 7 C ques
+		before 20th.
+
+		
+
+	C QUESTIONS:WHAT IS THE OUT PUT FOR FOLLOWING PROGRAMMS
+1)main()
+{
+char a[2];
+*a[0]=7;
+*a[1]=5;
+printf("%d",&a[1]-a)
+ANS:
+   ans may be 1.(illegal initialization)
+2)
+#include<stdio.h>
+main(){
+char a[]="hellow";
+char *b="hellow";
+char c[5]="hellow";
+printf("%s %s %s ",a,b,c);
+printf(" ",sizeof(a),sizeof(b),sizeof(c));
+}
+(ans is     hellow,hellow,hellow
+              6,2,5   )
+3)
+#include<stdio.h>
+main()
+
+float value=10.00;
+printf("%g %0.2g %0.4g %f",value,value,value,value)
+}
+(ans is 10,10,10,10.000000)
+4)
+#include<stdio.h>
+void function1;
+int i-value=100;
+main()
+{
+ i-value=50;
+function1;
+printf("i-value in the function=",i-value);
+printf("i-value after the function=",i-value);
+}
+printf("i-value at the end of main=",i-value);
+functioni()
+i-value=25;
+
+
+THIS IS ROUGH IDEA OF THE PROGRAM
+   ANS ARE
+1)i-value in the function=25;
+2)i-value after the function=50;
+3)i-value at the end of the main=100;
+
+5)
+  main()
+{
+funct(int n);
+{
+switch(n)
+  case1:
+        m=2;
+  		break;
+  case2:
+	m=5;
+		break;
+  case3:
+	m=7;
+		break;
+  default: 
+	m=0;
+}
+THIS IS ROUGH IDEA:
+    (ANS:Out put is m=0) 
+
+REMAINING 5 PROGRAMS SOME WHAT LARGE AND COMPLICATED.ANY WHEY
+I WILL SEND REMAINING PROGRAMS BEFORE 20th.
+     
+
+			I am sending mainly c paper and some questions.Rao
+also will send somethig.There are 15 c q's all are discriptive.
+
+1)fallacy  
+f()
+{
+int a;
+void c;f2(&c,&a);
+2)a=0;
+b=(a=0)?2:3;
+a) What will be the value of b? why
+b) If in 1st stmt a=0 is replaced by -1, b=?
+c) If in second stmt a=0 is replaced by -1, b=?
+3)char *a[2]
+int const *p;
+int *const p;
+struct new { int a;int b; *var[5] (struct new)
+4)f()
+{
+int a=2;
+f1(a++);
+}
+f1(int c)
+{
+printf("%d", c);
+}
+c=?
+5)f1()
+{
+f(3);}
+f(int t)
+{
+switch(t);
+{
+case 2: c=3;
+case 3: c=4;
+case 4: c=5;
+case 5: c=6;
+default: c=0;}
+value of c?
+6)Fallacy
+int *f1()
+{
+int a=5;
+return &a;
+}
+f()
+int *b=f1()
+int c=*b;
+}
+7)a)Function returning an int pointer
+b)Function ptr returning an int ptr
+c)Function ptr returning an array of integers
+d)array of function ptr returning an array of integers
+(See Scham series book)
+8)fallacy 
+int a;
+short b;
+b=a;
+9)Define function ?Explain about arguments?
+10)C passes  By value or By reference?
+11)Post processed code for 
+abc=1;
+b=abc1; (1 or 2 blank lines are given)
+strcpy(s,"abc");
+z=abc;
+12)difference between my-strcpy and strcpy ?check
+13)f()
+{
+int *b;
+*b=2;
+}
+14)Function which gives a pointer to a binary trees const an integer value
+at each code, return function of all the nodes in binary tree.(Study)Check
+15)Calling refernce draw the diagram of function stack illustrating the
+variables in the -----then were pushed on the stack at the point when
+function f2 has been introduced 
+type def struct
+{ double x,double y} point;
+main( int argc, char *arg[3])
+{double a;
+int b,c;
+f1(a,b);}
+f1(double x, int y)
+{
+point p;
+stack int n;
+f2(p,x,y)}
+f2(point p, double angle)
+{ int i,j,k,int max)
+}
+_____________________________________________________________
+1)Least no. when divide by [7 gives remainder 6,6gives 5,5 gives 4 and
+soon     ans;419
+2)What compilation do (ans source code to obj)
+3)Artficial language is provided which of the language (Lisp) check
+4)241 change its equivalent octal ?
+5)for cube and sphere 3 views are similarly draw one such figure?
+6)Write a program to exchange two variaables without temp
+7)Fortran cannot have value by reference
+8)4,6,8,__
+9)success is to failure, joy is to
+10)MEANING OF JOLLY?
+11)opposite to essential?
+12)"Raw" means
+ 13)To be good "Wrestler " one should have?
+14)"Command" opposite?
+15)genuine opposite?
+16)Two proverbs are goven
+17)Sum of two consecutive nos is 55, larger one is?
+18)A person goes 4/5 of his usual speed reaches 10min lateto his
+destinaton, time taken? 
+19)80% pass in english, 70%pass in maths , 10%fail in both , 144 pass in
+both . How many all appeared to the test?
+20)To get a parabola if you cut a section of?
+21)Bird is flying 120km/hr b/w B to R. two trians at B to R at 60 kmph
+The distance trvelled by the bird before it is killed.Ans.120
+22)meaning of inert
+	If any are there  rao will send you. Prepare well
+for the interview. Mostly on graphics , geometry .Prepare questions like
+(for interview)Prove  some of the angles in a triangle are 180.Angle in a
+half circle is 90.How will you measure hight of building when you  are at
+the top of the building and if you have stone with you.
+		Best of luck
+Sekhar
+
+
+
+GSSL
+
+ITest : General Intelligence
+
+II test : Technical test
+
+III test : C-language
+
+
+I Test
+
+Some of the questions what I have Iam sending.
+
+1. 5,5,,13,13,21,21    Ans: 29
+
+2.0,7,26,63,124,   Ans: 215 i.e.n**3-1 rule following
+
+3. 1,3,5,7, Ans: 9   '1' is not a prime number
+
+4. If a person walks at 4/5th of his usual spee he reaches 40min late. If 
+he walks athis usual speed how much time does he travels.
+
+Ans:160min or 2hr 40min
+
+5. Two trains A&B start at opposite points 120km at 60kmph. A fly 
+starting along with train A at 120kmph reaches B then returns back to 
+touch and continue. By the time two trains meet howmuch distance the fly 
+would have travelled?
+
+Ans : By  1hour both trains meet, so the distance travel by fly in 1hr is 
+120km.
+6.In a class 80% have passed english,70% passed Hindi 10% didnot passed 
+either. If 144 students passed both. What is the total strength of the class.
+
+Ans: 240
+
+. Find the least number when divided by 7 gives the reminder 6, when 
+divided by 6 gives reminder 5, when divided by 5 gives reminder 4 and so 
+on....
+Ans: 419
+
+8. If a man stands in front of sun what is the first letter of the 
+direction which is left to him:
+
+Ans: North(N)
+
+9.A square is to circle what is cube to
+
+Ans: sphere
+
+10. Synonyms
+
+	i) Joy = gay
+
+	ii) Inert = Inactive
+11.One wordswill begiven find oddman out: Ans:sickle like that
+ a) sow  b) cut c)   d) sickel
+
+12. If I bought a cycle before 2days of my birthday and I broke it after 
+3 days of my birthday the day I broke is Mar2, 1956?  Answer following 
+logical questions?
+i) when is his birthday?
+Ans: April,28  (due to leap year i.e.1956)  but do not keep answer 
+blindly we just think before choosing answer Iam just giving ideaof question
+
+13.
+							Monday
+							Aug25, 96
+
+Mr A,
+	You forgott your umbrella during the party on last friday.I 
+expected you to collect it on your visit on wednesday,I plan to leave on 
+this Friday.
+
+Questions: when  A missed umbrella?
+When A is supposed to collect it?
+
+When K leaves?
+
+Hint:  These dates i.e. Aug 25 is not exactly given in test, but Iam 
+giving feel of that question.If you solve this question you can solve it 
+easily in exam.
+
+14.What is my father's sons son to my son?
+
+Ans: cousin brother
+
+15.On cutting which solid parabola would be generated Ans: cone
+
+16. Eulers formula:  Ans: F+V-E =2;  
+
+F= faces;V= vertices;E = number of edges	
+
+17. Newton Rapson method is to find Ans:to find the root of f(x) = 0;
+
+18. How many tangents can be dran within three circles if they donot lie 
+within each other
+Ans : 12  But this answer is not there I kept 8 as answer
+
+
+19. In language the fortran which is true. A) fortran uses call by value
+
+20. When a program is compiled what it produces
+
+Ans:source code to object code
+
+21. In the following venn diagram shaded region is represented by some 
+question like that I can't draw figure here thats why Iam sendinganswer only
+
+Ans: (B-A)'   i.e. (B-A) whole dash
+
+
+22. xy-x+2y = 6 equation is shifted to form equation xy=c what is c?
+
+Ans : 4
+
+23.When x is real what is the least value of (x**2-6*x+5)/(x**2+2*x+1)
+
+Ans:-1/3
+
+24.When an object like cube or sphere is seen along x,y,z,axes we get the 
+same.Apart from these suggest another which has similar characteristics?
+
+Ans:you have to draw the figure    Ans: is triangular prism you draw 
+triangular prism.
+
+25. When an object is seen from front side we can see two concentric 
+squares and topview also without any hidden lines. Draw the side view.
+
+Ans: I know ans but I canot draw.
+
+26. Convert  251 decimal to base 8(i.e. octal)?
+
+Ans: similar question    but for this question answer is 373
+
+27. How much information can be solved in 1 byte of a IBM pc compatible?
+
+Ans: 256
+	
+28.What is the language used for Artificial Intelligence Ans: lisp
+
+29. Swap two variables without using temporary variable
+
+Ans:   a= a+b;
+	b= a-b;
+	a= a-b:
+
+30.Which is not the operating system ?Ans: BIOS
+
+31. What is the optimum number of operations for 2*(x**3)+3*(x**2)+5*x+5?
+
+Ans: three multiplications, three additions.
+
+32. A=> Bmeans
+Ans: if A is true B has to be true
+
+33.If A is not invertible and BA = I is not possible
+
+Ans: Determinant is Zero.
+
+34, What is FREE BoDY Diagram
+
+Ans: Used for analysing FEM.
+
+35. A  die is thrown twice what is the probability that you get same number
+
+Ans:11/36.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dear Murthy! Yaa! you are luck fellow. I got HCL full paper. I am mailing it.
+The quetions are in order. So you no need to prepare answers and mugging that
+that quetions. Just you mug that answers which are in order or you write all
+these answers on the hand compactly while you are going to exam.
+
+ Paper Model:
+  Section I:   computer awareness(i.e general things about computer)   Q.15
+  											             -ve marks: 1/4
+            
+  Section II:  Simple  C- language  		Q. 15     &  -ve marks: -1/4 
+
+  Section III: On pointers & structures
+                and C++,JAVA( only 1 on this)  Q.10    each quetion ->2 marks
+													   -ve marks: -1
+  Section IV:   Analytical                   Q.20     each quetion -> 2 marks. 
+													   -ve marks: -1/4
+
+
+Murthy from each section I am giving one are to quetions also because for
+checking whether the same paper or not.
+    And for doubtful answers also I am writing quetions but not writing answers
+for these quetions.
+
+
+								Section-I
+
+1). Piggy backing is a technique for 
+
+a) Flow control b) sequence  c) Acknowledgement   d) retransmition
+
+ans:   c    piggy backing
+
+
+2). The layer in the OST model handles terminal emulation
+
+a) session  b) application  c) presentation  d) transport
+
+ans: b  application
+
+3)  ans:  a		odd numbers of errors
+
+4)Q.	In signed magnitude notation what is the minimum value that can be represented with 8 bits
+
+a) -128  b) -255  c) -127  d) 0
+
+5) c		20
+
+6) a		120
+
+7) b		synchronise the access
+
+8) a		system call
+
+9) b		the operating system
+
+10) a		177333
+
+11) d   	used as a network layer protocall in network and windows system
+
+12) b		has to be unique in the sub network 
+
+13)Q. there is an employer table with key feilds as employer no. data in every
+ n'th row are needed for a simple following queries will get required results.
+
+  a) select A employe no. from employe A , where exists from employe B
+where A employe no. >= B employe having (count(*) mod n)=0 
+  b) select employe no. from employe A, employe B where
+A employe no. >= B employ no.   grouply employe no. having (count(*) mod n=0 )
+  c) both a& b
+  d)none of the above
+
+14)Q. type duplicates of a row in a table customer with non uniform key feild
+customer no. you can see
+
+a) delete from costomer where customer no. exists 
+( select distinct customer no. from customer having count )
+b) delete customer a  where customer no. in
+(select customer  b where custermer no. equal to b custemor no. ) and a rowid >
+b rowid
+c) delete customer a where custermor no. in 
+( select customer no. from customer a, customer b )
+d) none of the above
+
+15)  c		Volatile modifier
+
+
+----------   Section I over with 15 quetions   -------------------
+
+
+
+ 						SECTION-II
+
+Section II is not covered completly But it is very very easy. You can do it 
+ very easely.
+
+
+1)   ans: recursion 
+
+2) long int size 
+   a) 4 bytes  b) 2 bytes  c) compiler dependent  d) 8 bytes
+ans: compiler dependent
+note: order of a,b,c,d are doubt but answer is correct.
+
+3) x=2,y=6,z=6
+x=y==z;
+printf(%d",x)    ?
+
+4) if(x>2)?3:4  
+
+5)
+
+6) 
+
+7)  ans: c  6  ( quetion on enum )
+
+8) ----
+---
+---
+--
+14)  c : class A,B and C can have member  functions with same name.
+
+15)  ans: d       none of the above 
+
+
+
+
+
+
+
+
+                       SECTION-III
+
+
+1) ans: b		It  does not work when rp is the last element in the linked list
+
+2) ans: a   	always
+
+3) ans: b 		13
+
+4) ans: b       16
+
+5) ans: d       55,55
+
+6) ans: c   	    5,10,10,3
+
+7)  ---
+
+8) ans:d		4
+
+9) ans: c		5
+
+10)ans: c       semicolon missing
+
+
+
+ 						SECTION-IV
+
+
+
+
+following are not in order:
+
+ 2. M > D > Y        ans: (a)
+ 
+ 6. 10 in 4 seconds,
+     ? in 6 minutes         = 10x6x60/4  = 900    ans: (a)
+
+ 7. a=2, b=4, c=5
+      (a+b)/c - c/(a+b) = 11/30 (ans).
+
+ 8. 100(100000000+100000000)/10000 = 2x1000000 (ans).
+
+ 9. what does the hexanumber E78 in radix 7.
+    (a) 12455  (b) 14153  (c) 14256  (d) 13541  (e) 131112   ans: (d)
+
+ 10. Q is not equal to zero   and  k = (Q x n - s)/2    find  n?
+    (a) (2 x k + s)/Q  (b) (2 x s x k)/Q   (c) (2 x k - s)/Q
+    (d) (2 x k + s x Q)/Q   (e) (k + s)/Q
+
+
+
+
+  (from GRE book page no:411)
+    data:
+     A causes B or C, but not both
+     F occurs only if B occurs
+     D occurs if B or C occurs
+     E occurs only if C occurs
+     J occurs only if E or F occurs
+     D causes G,H or both
+     H occurs if E occurs
+     G occurs if F occurs
+
+NOTE: check following answers.
+
+ 11. If A occurs which of the following must occurs
+     
+      I. F & G
+     II. E  and H
+    III. D
+
+    (a) I only   (b) II only  (c) III only  (d) I,II, & III
+    (e) I & II (or) II & III but not both             ans: (e)
+
+ 12. If B occurs which must occur
+
+    (a)  D   (b) D and G  (c) G and H  (d) F and G  (e) J   ans: (a)
+
+ 13. If J occurs which must have occured
+
+    (a) E  (b) either B or C  (c) both E & F  (d) B  (e) both B & C  ans: (b)
+
+ 14. which may occurs as a result of cause not mentioned
+
+    (1) D   (2) A   (3) F
+
+    (a) 1 only  (b) 2 only  (c) 1 & 2  (d) 2 & 3  (e) 1,2,3    ans: (c)
+
+ 15. E occurs which one cannot occurs
+
+    (a) A   (b) F   (c) D   (d) C   (e) J              ans: (b)
+
+ 11 to 15:-    -----------  e , a , b , c , b ---------------
+
+
+
+
+
+
+Below are in order:
+
+ 16.  to  20.  answers:    
+
+e
+a
+c
+a
+e
+
+
+
+
+            ---------------  over ----------------
+
+                  BEST OF LUCK
+
+ In written test in each section you have to get minimum marks i.e you have to pass in each section.  There will be questions from C, C++, JAVA. about 10 questions in C++ in the written test.
+           
+
+
+
+
+
+
+INTERVIEW: 		I will send interview quetions tomorrow early morning.
+
+
+
+
+ok
+yours lovingly
+srihari.K
+
+
+ 
+ 	three. I have answers for Q/A paper. For Q/C you
+	should try for answers. 
+
+                       INFOSYS 1997.           TIME 1hr.
+		       PAPER CODE Q/A.        marks 50. 
+--------------------------------------------------------------
+1)At 6'o clock clock ticks 6 times.  The time between first and
+last ticks was 30sec.  How much time it takes at 12'o clock.
+
+Ans. 66 sec.                 2 marks.
+
+2)Three friends divided some bullets equally.  After all of them
+shot 4 bullets the total no.of remaining bullets is equal to that of
+one has after division.  Find the original number divided.
+
+Ans. x          x       x
+     x-4        x-4     x-4
+     3x-12 = x
+     x= 6
+     ans is 18                  2 marks
+
+3)A ship went on a voyage after 180 miles a plane statrted with 10 times
+speed  that of the ship.  Find the distance when they meet from
+starting point.
+
+Ans.  180 + (x/10) = x
+       x = 20
+       ans is 180+20=200miles.             2 marks
+
+4) Fill the empty slots.
+  Three FOOTBALL teams are there. Given below the list of maches.
+
+        played  won     lost    draw    Goals for       Goals against
+A        2       2       *0      *0        *7                 1         
+B        2       *0      *1       1        2                    4
+C        2       *0      *1      *1        3                   7
+
+the slots with stars are answers.   4 marks
+BC drew with  2-2
+A won on B by 2-0
+a won on C by 5-1
+( YOU HAVE TO FILL THE BLANKS AT APPROPRIATE STAR SYMBOLS.)`
+5) There are 3 societies a,b,c.  a lent tractors to b and c as many
+as they had.  After some time b gave as many tractors to a and c
+as many as they have.  After sometime c did the same thing.
+At the end of this transaction each one of them had 24.
+Find the tractors each orginally had.
+
+Ans a had 39, b had 21, c had 12,          4 marks
+
+6) There N stations on a railroad. After adding x stations 46 additional
+tickets have to be printed. Find N and X.
+
+Ans. let N(N-1) = t;
+         (N+x)(N+x-1)       = t+46;
+         trail and error method   x=2  and N=11   4 marks
+
+7)Given that April 1 is tuesday. a,b,c are 3 persons told that their
+farewell party was on
+  a  - may 8, thursday
+  b  - may 10,tuesday
+  c  - june 8, friday
+Out of a,b,c one is only correct one of the regarding month,day,date.
+Other told two correct and the third person told all wrong.What is
+correct date,month,day.                 5 marks
+(ans may be MAY 10 SUNDAY. check once again)
+8)There are 4 parties.  df,gs,dl(depositloss),ew ran for a contest.
+Anup,Sujit,John made the following statements regarding results.
+Anup said either df or ew will definitely win
+sujit said he is confident that df will not win
+John said he is confident that neither ew nor dl will win
+the result has come.  only one of the above three has made a correct
+statement.  Who has made the correct statement and who has won
+the contest.                    5 marks.
+  (ans DL )
+9)Five people a,b,c,d,e are related to each other.  Four of them make
+one true statement each as follows.
+i) b is my father's brother.       (ans. d said this)
+ii)e is my mother-in-law.          (     b          )
+iii)c is my son-in-law's brother.  (     e          )
+iv)a is my brother's wife.         (     c          )
+who said each statement.
+                                        10 marks.
+
+10) All members of d are also members of a
+    All   ''       e   ''                d
+    all    ''      c    ''               both a and b
+    not all ''     a  are members of d
+    not all ''     d   ''            e
+Some questions on these conditions.(5questions 5 marks)
+11)
+   boys are allowed to watch football at c.v.Raman auditorium subjected to
+   conditions.
+   i)the boy over age 16 can wear overcoat
+   ii)no boy over age  15 can wear cap
+   iii)to watch the football either he has to wear overcoat or cap
+        or both
+   iv) a boy with an umberella or above 16 or both cannot wear sweater.
+   v)  boys must either not watch football or wear sweater.
+
+   What is the appearence of the boy who is watching football.
+   Try to solve this question................
+
+
+
+                      ok!!!!!
+                 infosys paper 1997.
+		 paper code q/c.
+------------------------------------------------------------------------
+
+1)   be * be = acb
+     a,b,c,e   are non zero numbers find b,e.
+     ans)  b=1   e=9
+2)   a,b,c,d,e  are having numerical values. there are some conditions
+given
+   a)  a=c  <===>  b!=e
+   

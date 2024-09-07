@@ -1,0 +1,36 @@
+Given your passion for computer science (and for finding a well-paying
+job) it is expected that you will continue taking more CS courses.
+Now, when you take a course on {\em compilers} next year, you will be
+asked to implement such a creature.  As you may expect, this is not
+trivial, so start thinking about it.  Now.  Good.  (See, we care about
+you!)
+
+Well, your compiler will read a file containing the source program in
+some language, and will encounter variable names, function names, and
+procedure names.  Let us call all of these {\em names}.  For each name,
+you will need to keep a record with some information associated with it
+in some {\em neat} data structure.  Now, every time a name is
+encountered, you may need to:
+
+\begin{enumerate}
+
+	\item  Check to see if you did encounter it before. If you did
+	not, you have to {\bf insert} it into your {\em neat} data
+	structure.
+
+	\item  If it is a name that you have seen before, {\bf retrieve}
+	some of the values associated with it.
+
+	\item  When you are changing scope by entering or exiting a
+	function declaration, you will need to {\bf delete} some
+	names.
+
+\end{enumerate}
+
+You have the following options for implementing your {\em neat} data
+structure:  array, linked list, balanced binary tree and hash table.
+Investigate the options by creating a table that gives for each
+implementation, the expected time of the {\bf insert}, {\bf retrieve},
+and {\bf delete} operations.  Explain your answers and discuss the
+advantages and disadvantages of each implementation for the above name
+handling application.

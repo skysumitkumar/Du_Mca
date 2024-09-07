@@ -1,0 +1,928 @@
+What is that C have and C++ doesnt have
+What is that C have and C++ doesnt have?
+
+or in words can u write a program that works 
+with c compiler but not with c++ compiler?  
+ 
+  
+
+Yes, you can. Two most frequent examples could be:
+
+1. C+++ has more strict implicit typecasting rules - therefore 
+an explicit typecasting can be needed in C++ code, but not in C.
+
+2. The namespace for struct names is separated in C - so this is 
+valid in C, but not in C++:
+
+typedef struct X {
+/* some member declarations */
+} X;
+ 
+ 
+  
+the C lacks in ++, in comparision 2 c++  
+ 
+  
+ 
+Normally C++ compiler is C compiler too
+C++ is a implementation of object oriented for C language  
+ 
+  
+
+Declare a variable called 'new' in a C program. Now try 
+compiling it in C++.  
+
+
+###############################################################
+###############################################################
+
+hello frenz:
+i just encountered d following problem
+printf("%d") outputs 0
+printf("%d %d") outputs 0 340
+printf("%d %d %d .....") also outputs 0 340 0 ....
+
+
+i use a tc compiler
+please explain me wy it is so?  
+ 
+  
+Its undefined behavior. printf is a varargs function - you're 
+just providing it with format specifiers but no subsequent matching 
+arguments. So, can't predict what would happen. But anything that 
+happens is completely legal!  
+ 
+  
+
+When u say
+printf("%d");
+than at this stage any garbage value will be send to console output 
+but its rane will be the range of int.
+
+int x;
+printf("%d",x);
+will also give the garbage result as no value is assigned to 'x'  
+ 
+
+####################################################################
+######################################################################
+
+Try to solve this quiz ....
+
+if(X)
+{ 
+printf("Hello");
+}
+else
+{
+printf("World");
+}
+
+Question: What should be the value of "X" so that the output is 
+HelloWorld?  
+ 
+  
+
+may be printf("Hello");  
+ 
+  
+http://www.orkut.com/CommMsgs.aspx?cmm=1366247&tid=2435074138457093987  
+ 
+
+ 
+ 
+  
+
+#include <stdio.h>
+
+void main()
+{
+if(printf("hello") - 5)
+{
+printf("hello");
+}
+else
+printf("world");
+}  
+ 
+ 
+if(printf("Hello world") && exit(1))
+{
+}
+
+else
+
+{
+
+}  
+ 
+  
+#include <stdio.h>
+
+void main()
+{
+if(printf("hello") - 5)
+printf("hello");
+else
+printf("world");
+}  
+ 
+  
+if(!printf(“hello”))
+{
+printf("hello");
+}
+else
+{
+printf("world");
+}  
+ 
+  
+
+if(fork())
+{
+printf("Hello");
+}
+else
+{
+printf("World");
+}  
+ 
+if(!printf("Hello"))
+{
+printf("Hello");
+}
+else
+{
+printf("World");
+}
+
+how's that ?? 
+
+################################################################
+#################################################################
+
+what do u think will be the outputs in the following and why??
+do try these out..
+
+1.
+int i=10;
+i=i++ + ++i + ++i;
+printf("\n %d",i);
+
+
+2.
+
+int i=10,j=10;
+j=-j++ + ++j;
+printf("\n %d", j);
+printf("\n %d",-i++ + ++i);
+
+3.
+
+int i=10/0;
+printf("\n %d", i);
+
+
+4.
+
+int i=10/0.0;
+printf("\n%d",i);  
+ 
+  
+
+C standard says that a variable's value should not be read as 
+well as written as a part of the single expression. 
+So things like i = i++; cannot have predictable values.
+http://c-faq.com/expr/seqpoints.html
+
+
+  
+ 
+ 
+  
+
+ya this expression is compiler-specificbut can u explain??
+q:-
+
+int i=10,j;
+j=i++ + ++i + ++i;
+printf("\n %d",j);
+ya rajat...u r rite but givea thought to below!
+u know there is no differenc between 
+this one and
+
+int i=10;
+i=i++ + ++i + ++i;
+printf("\n %d",i);
+
+
+whatever teh logic behind this one but the outputs of these two 
+should be same..
+but see the output on turbo c...  
+ 
+  
+
+Whenever you enter the realms of things that are not specifically 
+mentioned to have a particular behavior in the language standard, 
+its just "UNDEFINED BEHAVIOR" - there's no use giving thought to 
+why different compilers give different results of why two seemingly 
+different expressions give the same value - its just something that 
+the compiler writers decided that the compiler should do in such 
+situations. Nothing is guaranteed - different versions of the same 
+compiler might give different outputs in such cases... 
+
+That's exactly why the language standard is out there... to say what 
+is guaranteed and what is not! Time and again, there are 
+(and there will be) questions like these - but the simple answer, 
+as I mentioned above, is that its plain undefined behavior.  
+ 
+  
+
+
+now to tell u, int i=10/0 gives output as 10 in tc.i dunno why?note 
+i am only talking about TC rite now.rest i havent tried till now..  
+ 
+  
+
+I don't have TC here. But, I've repeated this a lot of times - TC 
+is a stone age compiler!!!! Get a better compiler!  
+ 
+  
+
+u r rite...and now i am using gcc both on windows and linux..
+just wanted to know!!  
+
+
+##################################################################
+##################################################################
+
+strings with scanf 12/27/2005 8:17 AM
+is it possible to input strings containing spaces with scanf?  
+ 
+  
+
+
+char string[100];
+
+/* read 'til \n */
+scanf("%[^\n]",string);  
+ 
+  
+
+Don't go inputing strings with scanf().
+And the solution @ previous example, might work once or twice, 
+but should be avoided, as you don't want to flush the input buffer.
+
+Use fgets instead, and you're safe.
+char buf[1024];
+
+fgets( buf, sizeof( buf ), stdin );  
+ 
+#####################################################################
+######################################################################
+
+when do you get the follwoing warning 
+passing argument **** discards qualifiers  
+ 
+
+"... discards qualifiers from pointer target type" - when you 
+do things like the following simple example: 
+
+char * getMsg( void )
+{
+// ... 
+return "Hello"; 
+
+#####################################################################
+####################################################################
+
+Static storage type variables are not allocated on the heap, 
+but their are "allocated" in the uninitialized data segment of 
+the (program) image. The area for the segment is reserved by 
+the image header and provided by the loader (and if it is not 
+cleared by the loader, it is usually cleared by the runtime 
+during the image initialization). This scenario allows to allocate 
+necessary space efficiently and perform necessary relocations for
+ this kind of variables (needed by dynamically loaded/linked 
+libraries).
+
+
+######################################################################
+######################################################################
+
+
+can we pass array to variable length arg function?
+eg:
+int sum(int n,...);
+main()
+{
+a[]={1,2,3};
+int n;
+sum(n,a);//n no of args(here 3)
+}  
+ 
+  
+yes, u can pass. but the value of n will be 2, not 3. as follows.
+
+#include<stdio.h>
+#include<stdarg.h>
+
+int sum_fun (int n, ...)
+{
+va_list args;
+int sum = 0, *arr;
+
+va_start(args, n);
+arr = va_arg(args, int*);
+sum = arr[0] + arr[1] + arr[2];
+return sum;
+
+}
+
+int main()
+{
+int a[] = {1,2,3};
+int sum;
+sum = sum_fun(2,a);
+
+printf("sum is : %d\n", sum);
+return 1;
+}  
+
+ 
+###################################################################
+###################################################################
+
+please write a program to reverse 12/12/2005 12:40 AM
+a string and another program to find the number of letters in a word and no of words in a sentence..its like say user inputs "aaabbbbddddccc"
+then it should print a =3
+b=4
+d=4
+c=3
+thanks for your time.
+ 
+ 
+  
+
+function(char *word)
+{
+
+int alpha[26]=0,i=0,;
+char c;
+while(word!='\0')
+{
+alpha[word-'a']++;
+}
+for(i=0;i<26;i++)
+{
+if(alpha!=0)
+{
+c=(char)word+'a';
+printf("%c = %d\n",c,alpha);
+}
+}
+}  
+ 
+
+
+its more correct code for counting letters
+void main ()
+{
+char *ch;
+gets(ch);
+function(ch);
+getch();
+
+}
+void function(char *word)
+{
+int alpha[26],i=0;
+char c;
+for(i=0;i<26;i++)
+{
+alpha=0;
+}
+i=0;
+while(word!='\0')
+{
+alpha[word-'a']++;
+i++;
+}
+for(i=0;i<26;i++)
+{
+if(alpha!=0)
+{
+c=(char)word;
+printf("%c = %d\n",c,alpha);
+}
+}
+}  
+
+ 
+###################################################################
+##################################################################
+
+hi frenz
+
+the problem is 
+write some code in the function change() so that the printf in the main 
+prints 5.u should not modify the main function.also u should not use 
+printf in change function
+the change function takes no arguments and it returns nothing
+
+#include<stdio.h>
+
+
+void change()
+{
+/*write code here*/
+} 
+
+
+int main()
+{
+int i;
+i=5;
+change();
+i=10;
+printf("%d",i); /* this should print 5*/
+}
+
+one more thing.dont do it the hackers way.that is going to the stack 
+and changing the return address.
+
+Do let us know the ans  
+ 
+  
+hey this is simple if u know how to use macros......
+
+just include the follwoing statement in fun function
+
+#define printf(x,y) printf("100")
+
+Explanation:
+Before compilation preprocessor sees printf a macro and hence it 
+replaces with the stm printf("100"). So main prints value 100 
+
+#####################################################################
+######################################################################
+
+when I do something like this
+
+char* h= (char*) malloc(5)
+;
+does it return me a location with 20 bytes or 5 bytes. How do 
+we find out the size that was allocated
+
+Malloc can return more bytes than requested; (for alignment purposes; 
+for instance, 8 bytes instead of 5!)
+
+sizeof a pointer = 4/8 bytes usually. 
+
+Sizeof is a compile-time binding, so it won't work for pointers
+
+The memory block, that is returned by malloc(), is large enough 
+to hold 
+the required size (you passed in the argument).
+You can't get the size of the block later, if you are asking 
+about this (I don't understand your question otherwise). You have 
+to remember it, if you need it. 
+
+hey parag...
+
+as petr said the actual size of the block depends on a lotta factors 
+like the mem manager,os,also many implementations do somethinn called 
+memory promotion...which means if the block sizes are 10,20,1000 and 
+if u request for 5..it shud ideally go into blocks wid size 10..but 
+all those blocks are full it may go in to 20 or 1000....so even in 
+the same system u may get different values.....
+
+
+as for lValue..iam not sure whether any proper definition exits ...
+its jus hte value on the left side of the '='
+
+also u need not do that to get the value of 'h' jus a 
+int *j = (int *)(&h); 
+should do.... 
+
+#include<stdio.h>
+
+main()
+{
+float i=1406848478.00000;
+printf("%f\n",i);
+
+}
+
+and tell me why this prints:
+
+1406848512.000000
+
+Can anyone has idea on how floats are rounded off? can i print 
+the exact value by any mechanism?  
+ 
+
+you can try converting it to double. With float you would always 
+run into rounding issues.  
+
+#######################################################################
+######################################################################
+
+Hi everyone,
+I've a question for you all. We know that gets returns an integer. 
+But why does it always return '10'? I have no clue
+
+dude 10 is the ascii value of carriage return .. so guess ure just 
+pressing enter to get out of the prompt and so gets returns the 
+ascii value of the key pressed ...
+main()
+{
+char a=10 ;
+printf("Hi");
+printf("%c",a);
+printf("bye");
+} 
+
+######################################################################
+#####################################################################
+
+The formula to find
+number of squares on a chessboard of n is
+(n*(n+1)*(2*n+1) )/6.
+
+Do scrap back if nething is wrong or for ne questions.  
+ 
+  
+
+i think following should be the generalised solution:
+for an n dimensional chess the number of p*q 
+-dimensional blocks are:
+2*(n-p)*(n-q).......if p!=q
+(n-p)*(n-q) .......if p=q
+
+now total number of squares can be calculated by putting 
+p=q= 1,2,...,n and add it.
+ 
+
+########################################################################
+#####################################################################
+
+can someone print a very long string of 0/1 s .
+
+suppose 
+1010101001010001010010101010101001001001010010010101001
+0010101010101010101010010101001010101010101010101010010
+101010000010010100101001
+
+now print it in decimal. 
+
+following program will do it i guess. 11/26/2005 2:14 AM
+#include <stdio.h>
+
+
+int main()
+{
+char strnum[] = "100000000000";
+int len = 0, i = 0;
+int output = 0;
+
+len = strlen(strnum);
+
+for(i=0; i<len; i++)
+{
+output = 2*output + strnum-'0' ;
+}
+
+printf("Number Converted to int is: %d\n", output);
+return 0;
+}
+
+#####################################################################
+#####################################################################
+
+i'm studing C and i have a question by now... how could I represent 
+a int as a char? I don't want to convert the ascii code to their 
+representation. I want to represent 69 as "69" for example. Could 
+anyone help me?
+
+Thanks 
+
+yah its very simple just use sprintf() finction
+
+suppose u want to convert i=69 to string then take a char array say str and use the stm
+
+sprintf(str,"%d",i);
+
+Apart from this u can write a function with own logic.
+The logic very simple. Take one by one char and add its value with 
+48 ( ascii code of '0' ) and add this value as char in some array 
+string. tats it
+
+
+#####################################################################
+#####################################################################
+
+Coercion is the term for implicit type conversion.
+
+####################################################################
+###################################################################
+
+plz suggest me a way to find the factorial of 1000, wht should be the datatype, and all !!!. how can we do that.The COMPLETE program. 
+
+*** fact( *** n)
+{
+if ( n == 1)
+return 1;
+else return ( n* (n-1));
+}
+for general data types it returning 0.  
+ 
+  
+Naveen    reply: Factorial of 1000 11/9/2005 9:46 PM
+for finding factorial of 1000 you have to make a pointer return type function which can multiply two strings means first u conver integer 1000,99.. to the string after and multiply it ........
+char *mulstring(char *a1,char *a2)
+{
+//multipication of string
+}
+I have whole programme , if you want mail me
+.............................  
+ 
+  
+Raj    se mee also 11/10/2005 1:53 AM
+[;s mail the full programm to
+vishnurajkumar27@gmail.com  
+ 
+  
+Jitendra Prakash    11/20/2005 7:34 AM
+U can use an array in which u store the number digitwise and than starting from 2 to that no u multiply and store the result that is a bit easy ..pls tell me for the future query  
+ 
+  
+Parag    hey mail me too 11/21/2005 3:48 AM
+paragp@synopsys.com  
+
+"NAVEEN IN C COMMUNITY HAS THE ANSWER OF THIS QUES"
+
+####################################################################
+
+ Power of 2 
+How to check a given number if it is a power of 2 or not?
+
+For ex. 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, and so on are 
+all exits as some power of 2.
+
+But one small condition is : No LOOP is allowed i.e. for, while, 
+do while.
+
+No recursive function is allowed. And also, all the same things 
+like looping are not allowed.  
+ 
+  
+int i=(log(x)/log(2))
+if(pow(2,i)==x)
+printf("%s","yess");  
+ 
+  
+
+int i;
+
+if ((i > 0) && (i & (i-1)) == 0))
+printf("%d is a power of 2\n", i);  
+ 
+  
+#######################################################################
+
+  Is ++i really faster than i = i + 1? 
+Is ++i really faster than i = i + 1?  
+ 
+  
+No. Any decent optimizing compiler will generate exactly the same 
+code for all the statements
+++i;
+i++;
+i = i + 1;  
+ 
+  
+but lenson compiler can take advantage of processors single inc 
+instruction know....instead of loading the value i and 1 to some 
+registers and adding them which takes 3 instruction like 
+load i,ah
+load 1,bh
+add ah,bh  
+ 
+  
+Right! But what's stopping the compiler from using the inc 
+instruction for all the three statements?  
+ 
+  
+hey guys...any one know the reason for the lenson statement????  
+ 
+  
+Try this on gcc on a system which supports the autoincrement 
+instructions:
+Compile each of the statements 
+i++;
+i = i + 1;
+++i;
+with the -S flag (for generating the assembly listing). 
+
+In the assembly listing, you will notice that the same assembly 
+code is generated for all three (on my x86 system, with dev-cpp, 
+the inc instruction was used for all three).  
+ 
+
+I think Lenson is correct. But ++i is faster than i++, for some 
+higher level classes like say STL vector iterators. The reason is:
+
+++i ==> incr i; return i;
+i++ ==> copy i; incr i; return the copy;
+
+You see that there is a copy overhead in post increment operator?  
+ 
+
+i think you people are missing on something deep. while ++I would 
+require only one register and an increment operation , i+1 will 
+require first two registers to store them and then an addition 
+and then storing the result back to the register containing i. 
+So u see ++i is obviously faster wen u look at macchine level 
+implementation.  
+ 
+  
+
+hello again u r making mistake as lenson said if it uses inc then 
+u cant detemine which is faster.......so it depends on the compiler 
+as in my case using x86 system and gcc compiler it uses d inc 4 the 
+3 statements  
+ 
+  
+Back in the day, on a PDP-11 (or later VAX), 
+
+i = *p++; or i = *--p;
+
+were faster than
+
+i = *++p; or i = *p--;
+
+because the former were hardware addressing modes, (hardware 
+implementation of stack push/pop). That's how the autoincrement
+/decrement got into the C language. Rather than make the operations 
+a special case, K&R just generalized the operator.
+
+But there's no reason that
+
+++i;
+
+should be any faster than
+
+i = i + 1;
+
+Since a smart compiler should be able to figure out that they are 
+exactly equivalent. 
+
+####################################################################
+
+here is one 1/13/2006 11:16 AM
+for adding 1:
+int main()
+{
+int i;
+scanf("%d",&i);
+i=-(i^-1);
+printf("%d",i);
+return 0;
+}
+
+for subtracting 1:
+int main()
+{
+int i;
+scanf("%d",&i);
+i=(-i^-1);
+printf("%d",i);
+return 0;
+}  
+ 
+  
+Shivram    thanx 1/21/2006 1:51 AM
+cool sol.
+any other sol possible????  
+ 
+  
+Ankur    1/21/2006 5:32 AM
+anubhaw....... what r u trying to do.......
+
+we dont have ^ operator in c...... u cant use it......
+
+and secondly
+
+i = - (i^-1); has two - operators... so it is not a solution........
+
+@shivram........ if u dont want to use - operator.... u can use assembly lang... 
+
+asm {
+subi i,1 
+};
+
+this will do.....
+chk ur compiler mannual for usage details or other fine prints abt its usage.......  
+ 
+  
+Anubhaw    1/21/2006 2:25 PM
+@ankur 
+<anubhaw....... what r u trying to do.......
+we dont have ^ operator in c...... u cant use it......>
+ who told u v dont hav ^ operator in C..
+take any gud reference n hav a look on bitwise operators u will find many more to learn ....
+anyways i m uploading "ISO Standard for C (C9X) - final committee draft" for u ... 
+http://www.esnips.com/webfolder/4c01fd0b-fb21-43e9-a0a1-60ee7d64cc16
+i hope this will help u..
+
+<and secondly
+
+i = - (i^-1); has two - operators... so it is not a solution........>
+well i used -ve to manage signs..and i used "-1" not as a operator ...
+
+but if u feel this cant be done in C wthout using - operator then u r wrong buddy..no assembly required here..
+here is the other way to do it
+
+for adding 1:
+
+int main()
+{
+int i,s;
+s=1^~1;
+scanf("%d",&i);
+if(i>=0)
+i=abs(~i);
+else i= abs(~i)*s;
+printf("%d",i);
+return 0;
+}
+
+for subtracting 1:
+
+int main()
+{
+int i,s;
+s=1^~1;
+scanf("%d",&i);
+if(i>0)
+i=abs(~(i*s));
+else
+i=~abs(i); 
+printf("%d",i);
+return 0;
+}
+
+
+i hope this wont leave any doubts now..  
+ 
+  
+Shivram    thanX 1/28/2006 2:14 AM
+thanks for it guys...
+do u know ny other intresting prog lik this...???  
+ 
+  
+Subramanian    1/29/2006 5:50 AM
+i = - (i^-1);
+
+I agree with ankur... your solution is wrong anubhaw.
+
+i=-(i^-1) is same as i=i-(i^-1)
+
+you are not supposed to use subtraction operator.
+
+try it out using bit operators... it becomes simple.
+
+good luck  
+ 
+  
+Pushpak    @subramaniyam... 1/29/2006 7:16 AM
+dear subramaniam....
+its indeed nice 2 see ur inclination towards C programming but equally dissappointment to see ur observation.....
+do not take it personally...coj ..to err z human..but
+1stly...u misinterpreted anubhaw's usage of ^ operator..
+to put it simply...a=-x z never same as a-=x..(as u read it)
+2ndly..u fired w/o fully loading...so u got empty in mid...
+u shud hav gone thru da sol given completely....da guy has given alternative 4 da objection...
+lastly...u recommended use of bit operator(i donno if u dont call ^ as bit operator)...bt didnt came up wid any DIFFERENT n productive code....
+do intimidate me if i err anywere...n i'll luv 2 learn 4m u anyway...
+take care....  
+ 
+  
+Bharat    superb 2/1/2006 11:16 AM
+guys u all r really good , dont think i m an asshole but still i m glad 2 be wid u all.  
+ 
+  
+Pushpak    @bharat... 2/1/2006 11:58 AM
+REMEMBER
+In dis world of competetion...
+none z weak(asshole) enuff to stand out...
+none z strong(smart) enuff to b out-standing...
+jst abstract ur shortcomings n build upon ur strengths.....golden rule 2 survive  
+ 
+
+  
+ 
+ 
+

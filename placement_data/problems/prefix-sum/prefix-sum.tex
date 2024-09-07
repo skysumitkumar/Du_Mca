@@ -1,0 +1,17 @@
+The {\it prefix sum with operation addition} problem is defined as follows:
+Given an array of numbers $I[1..N]$, output a new array $O[1..N]$  in which
+$O[i] = \sum_1^i  I[i]$.
+For example, when $I[1..5] = 3, 2, 5, 1, 2$, we get
+$O[1..5] = 3, 5, 10, 11, 13$.
+
+Sequentially, this is a very easy problem to solve. Give a parallel algorithm
+for solving this problem in $\log  N$ time using $N$ processors.
+{\em Hint:} Look at slide 599 on the mirror....
+
+NOTE that you can define the ``prefix sum'' problem over {\em any} binary,
+associative operation, not only addition.
+For example, if the operation is $minimum$, every element in the output
+array will contain the minimum of all the elements to its left in the
+input array. In the numerical example above, the result 
+of prefix sum with operation $minimum$ would be
+$3, 2, 2, 1, 1$. 

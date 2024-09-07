@@ -1,0 +1,1103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0050)http://linuxdevices.com/articles/AT3524337625.html -->
+<HTML><HEAD><TITLE>Guest column:      When hard real-time goes soft</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252"><LINK 
+title="LinuxDevices News" 
+href="http://www.LinuxDevices.com/backend/headlines10.rdf" 
+type=application/rss+xml rel=alternate><LINK title=MyCSS 
+href="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/style.css" 
+type=text/css rel=stylesheet>
+<META 
+content="Linux, embedded Linux, Linux embedded, Linux devices, uClinux, RTLinux, RTAI, real time, realtime, real-time Linux, embedding, embed, embedded, computing, applied computing, software, operating system, systems, device drivers, distributions, open source, GNU, news, links, articles, FAQ, forum, jobs, hardware, computers, computer, chips, system-on-chip boards, single board computer, SBC, PC/104, PC-104, PC104, PC 104, CPCI, CompactPCI, EBX, VME, PDA, set top box" 
+name=keywords>
+<META 
+content="Comprehensive information and resources on using Linux in embedded applications. This site provides embedded Linux news, articles, events, links, jobs, polls, FAQ, interactive forum, and product information." 
+name=description>
+<META content="MSHTML 6.00.2600.0" name=GENERATOR></HEAD>
+<BODY bgColor=white topMargin=0><FONT size=1><!--  START OF OMNITURE CODE -><!-- SiteCatalyst code version: G.9.Copyright 1997-2004 Omniture, Inc. More info available at http://www.omniture.com -->
+<SCRIPT language=JavaScript><!-- 
+var s_pageName=""
+var s_server=""
+var s_channel=""
+var s_pageType=""
+var s_prop1=""
+var s_prop2=""
+var s_prop3=""
+var s_prop4=""
+var s_prop5=""
+var s_campaign=""
+var s_state=""
+var s_zip=""
+var s_events=""
+var s_products=""
+var s_purchaseID=""
+var s_eVar1=""
+var s_eVar2=""
+var s_eVar3=""
+var s_eVar4=""
+var s_eVar5=""
+var s_account="ziffdavisglobal, ziffdavislinuxdevices"
+//--></SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/s_code_remote.js"></SCRIPT>
+<!-- End SiteCatalyst code version: G.9. --><!-- END OF OMNITURE CODE --></FONT><!-- begin banner tag -->
+<TABLE cellSpacing=0 cellPadding=0 width=728 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <CENTER><IFRAME marginWidth=0 marginHeight=0 
+      src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;sz=728x90;ord=[timestamp].htm" 
+      frameBorder=0 width=728 scrolling=no height=90 
+      BORDERCOLOR="#000000"><SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;sz=728x90;abr=!ie;ord=[timestamp]?" ></SCRIPT></IFRAME><NOSCRIPT><A 
+      href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;sz=728x90;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+      target=_blank><IMG height=90 alt="" 
+      src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;sz=728x90;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+      width=728 border=0></A></NOSCRIPT> </CENTER></TD></TR></TBODY></TABLE><!-- End banner tag -->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=center align=left width=410>
+      <TABLE cellSpacing=0 cellPadding=0 border=0 valign="bottom">
+        <TBODY>
+        <TR>
+          <TD vAlign=bottom align=left width=95 rowSpan=2><A 
+            href="http://www.linuxdevices.com/index.html"><IMG alt=LinuxDevices 
+            src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/penguin-short.gif" 
+            border=0></A> </TD>
+          <TD></TD></TR>
+        <TR>
+          <TD vAlign=bottom align=left width=291><A 
+            href="http://linuxdevices.com/index.html"><IMG alt=LinuxDevices 
+            src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/name-short.gif" 
+            border=0></A> </TD></TR></TBODY></TABLE></TD>
+    <TD vAlign=center align=right>
+      <TABLE cellSpacing=0 cellPadding=0 width=150 border=0><!-- vertical spacer follows - remove if not required -->
+        <TBODY>
+        <TR>
+          <TD height=5></TD></TR>
+        <TR>
+          <TD noWrap align=middle width=200><FONT face=Arial,Helvetica 
+            size=1>Click here to learn<BR>about this Sponsor:</FONT></TD></TR>
+        <TR>
+          <TD align=middle><!-- begin tagline-ad tag -->
+            <TABLE cellSpacing=0 cellPadding=0 width=170 border=1>
+              <TBODY>
+              <TR>
+                <TD align=middle><IFRAME marginWidth=0 marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;sz=170x60;ord=[timestamp].htm" 
+                  frameBorder=0 width=170 scrolling=no height=60 
+                  BORDERCOLOR="#000000"><SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;sz=170x60;abr=!ie;ord=[timestamp]?" ></SCRIPT></IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;sz=170x60;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=60 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;sz=170x60;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=170 border=0></A></NOSCRIPT> </TD></TR></TBODY></TABLE><!-- end ad tag --></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD height=5></TD></TR>
+  <TR>
+    <TD align=left colSpan=2><FONT face=Arial,Helvetica size=2><A 
+      href="http://linuxdevices.com/"><B>home</B></A> &nbsp;|&nbsp; <A 
+      href="http://linuxdevices.com/news"><B>news</B></A> &nbsp;|&nbsp; <A 
+      href="http://linuxdevices.com/articles"><B>articles</B></A> &nbsp;|&nbsp; 
+      <A 
+      href="http://linuxdevices.com/cgi-bin/survey/survey.cgi"><B>polls</B></A> 
+      &nbsp;|&nbsp; <A 
+      href="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl"><B>forum</B></A> 
+      &nbsp;|&nbsp; <A href="http://linuxdevices.com/events"><B>events</B></A> 
+      &nbsp;|&nbsp; <A href="http://linuxdevices.com/links"><B>links</B></A> 
+      &nbsp;|&nbsp; <A 
+      href="http://linuxdevices.com/products"><B>products</B></A> &nbsp;|&nbsp; 
+      <A href="http://linuxdevices.com/sponsors"><B>sponsors</B></A> 
+      &nbsp;|&nbsp; <A 
+      href="http://linuxdevices.com/cgi-bin/search_view.cgi"><B>search</B></A> 
+      &nbsp;|&nbsp; <A 
+      href="http://linuxdevices.com/cgi-bin/printerfriendly.cgi?id=AT3524337625"><B>printable</B></A></FONT></TD></TR>
+  <TR>
+    <TD height=5></TD></TR></TBODY></TABLE><!-- Search Form ================== -->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#fcec9c 
+        border=1><TBODY>
+        <TR>
+          <FORM action=/cgi-bin/article_view.cgi method=post>
+          <TD align=middle><STRONG><FONT face=Arial,Helvetica size=3>Articles 
+            &amp; white papers about Linux based embedded applications 
+            ...</FONT></STRONG><BR><SMALL>Keywords:</SMALL> <INPUT size=25 
+            name=sk> <SMALL>Match:</SMALL> <SELECT size=1 name=st> <OPTION 
+              value=all selected>All keywords</OPTION> <OPTION value=any>Any 
+              keyword</OPTION> <OPTION value=exact>Exact phrase</OPTION></SELECT> <INPUT type=submit value=Search name=view> <SMALL>Sort by:</SMALL> 
+            <SELECT size=1 name=ss> <OPTION value=newest selected>Newest 
+              first</OPTION> <OPTION value=best>Best match</OPTION></SELECT> 
+          </TD></FORM></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE cellPadding=2 width="100%">
+  <TBODY>
+  <TR>
+    <TD vAlign=top width="18%">
+      <TABLE cellSpacing=0 cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD><!-- columnleft019.html --><FONT face="arial, helvetica" 
+            size=2>Got a hot tip? &nbsp; <A 
+            href="http://linuxdevices.com/cgi-bin/news_post.cgi"><U>tell 
+            us</U></A> <BR></FONT>
+            <TABLE height=10 cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                <TD></TD></TR></TBODY></TABLE>
+            <CENTER>
+            <TABLE cellSpacing=0 cellPadding=5 bgColor=#fcec9c border=1>
+              <TBODY>
+              <TR>
+                <TD>
+                  <FORM name=newslettersForm 
+                  action=http://www.eweek.com/data_process_newsletter_manage/ 
+                  method=get>
+                  <CENTER><FONT face="arial, helvetica" color=#de0000 
+                  size=2><B>Free weekly newsletter</B><BR></FONT><FONT 
+                  face="arial, helvetica" size=1><INPUT type=hidden value=1 
+                  name=112> <INPUT type=hidden value=2 name=SelFormat> <INPUT 
+                  type=hidden value=1 name=component>Enter your 
+                  email...<BR><INPUT maxLength=64 size=15 name=email><BR><INPUT type=submit value=Subscribe name=Submit> 
+                  &nbsp; ... <A class=Module_Content 
+                  href="http://www.eweek.com/newsletter_manage"><U>more</U></A><BR></FONT></CENTER></FORM></TD></TR></TBODY></TABLE></CENTER>
+            <TABLE height=10 cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                <TD></TD></TR></TBODY></TABLE><FONT face="arial, helvetica" 
+            size=2><B>Check out the latest...</B> 
+            <CENTER><A href="http://www.linuxmobilephones.com/"><IMG 
+            src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/smartphones-thm.jpg" 
+            vspace=5 border=0><BR clear=all><B>Linux 
+            smartphones!</B></A></CENTER></FONT>
+            <HR>
+            <FONT face="arial, helvetica" size=2>
+            <CENTER><A 
+            href="http://linuxdevices.com/articles/AT8728350077.html"><IMG 
+            src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/pdas-thm.jpg" 
+            vspace=5 border=0><BR clear=all><B>Linux 
+PDAs</B></A></CENTER></FONT>
+            <HR>
+            <FONT face="arial, helvetica" size=2>
+            <CENTER><A 
+            href="http://linuxdevices.com/articles/AT4936596231.html"><IMG 
+            src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/othercoolstuff-thm.jpg" 
+            vspace=5 border=0><BR clear=all><B>...and other cool 
+            stuff</B></A></CENTER></FONT>
+            <HR>
+            <FONT face="arial, helvetica" size=2><B>Don't miss the...</B> 
+            <CENTER><A 
+            href="http://linuxdevices.com/articles/AT6946253856.html"><IMG 
+            src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/wrestlers.jpg" 
+            vspace=5 border=0><BR clear=all><B>"Great Gadget 
+            Smack-Down"</B></A></CENTER></FONT>
+            <HR>
+            <FONT face="arial, helvetica" color=#de0000 size=2><B>Hot 
+            topics:</B></FONT><BR><FONT face="arial, helvetica" size=2>•<A 
+            href="http://linuxdevices.com/articles/AT4936596231.html"> Linux 
+            Device Showcase</A><BR>•<A 
+            href="http://linuxdevices.com/articles/AT3908389811.html"> Linux 
+            mobile phones</A><BR>•<A 
+            href="http://linuxdevices.com/articles/AT6979783720.html"> Executive 
+            interviews</A><BR>•<A 
+            href="http://linuxdevices.com/articles/AT6957998682.html"> Carrier 
+            Grade Linux</A><BR>•<A 
+            href="http://linuxdevices.com/articles/AT4179133067.html"> Mono and 
+            DotGNU</A><BR>•<A 
+            href="http://linuxdevices.com/news/NS9430710378.html"> Linux 2.6 
+            arrives</A><BR>•<A 
+            href="http://linuxdevices.com/news/NS8800432563.html"> Is embedding 
+            Windows 4X cheaper than Linux?</A><BR></FONT>
+            <HR>
+            <FONT face="arial, helvetica" size=2><B>2005 Embedded Linux market 
+            snapshot:</B></FONT> <A 
+            href="http://linuxdevices.com/articles/AT4036830962.html">
+            <CENTER><IMG 
+            src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/linux-preference-thm.gif" 
+            vspace=5 border=0></CENTER></A>
+            <HR>
+            <FONT face="arial, helvetica" color=#de0000 size=2><B>Quick 
+            Reference Guides</B><BR></FONT><FONT face="arial, helvetica" 
+            size=2>•<A 
+            href="http://linuxdevices.com/articles/AT9888936014.html"> Intro 
+            &amp; overview</A><BR>•<A 
+            href="http://linuxdevices.com/articles/AT2760742655.html"> Embedded 
+            distributions</A><BR>•<A 
+            href="http://linuxdevices.com/articles/AT8073314981.html"> Real-time 
+            Linux</A><BR>•<A 
+            href="http://linuxdevices.com/articles/AT9202043619.html"> Embedded 
+            GUIs</A><BR>•<A 
+            href="http://linuxdevices.com/articles/AT8918758707.html"> Embedded 
+            Java + Linux</A><BR>•<A 
+            href="http://linuxdevices.com/articles/AT8728350077.html"> 
+            Linux-based PDAs</A><BR>•<A 
+            href="http://linuxdevices.com/articles/AT9423084269.html"> Linux 
+            mobile phones</A><BR>•<A 
+            href="http://linuxdevices.com/articles/AT4923746399.html"> Linux 
+            thin clients</A><BR>•<A 
+            href="http://linuxdevices.com/articles/AT2016997232.html"> Little 
+            Linux systems</A><BR>•<A 
+            href="http://linuxdevices.com/articles/AT2614444132.html"> Single 
+            board computers</A><BR>•<A 
+            href="http://linuxdevices.com/articles/AT4313418436.html"> Embedded 
+            processors</A><BR></FONT>
+            <HR>
+            <FONT face="arial, helvetica" size=2><B>Embedded Linux 
+            books</B></FONT> <A 
+            href="http://linuxdevices.com/articles/AT2969812114.html">
+            <CENTER><IMG 
+            src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/elbook.jpg" 
+            vspace=5 border=0></CENTER></A>
+            <HR>
+            <FONT face="arial, helvetica" size=2><B>Read ELJonline 
+            here:</B></FONT> <A 
+            href="http://linuxdevices.com/products/PD4202339625.html">
+            <CENTER><IMG 
+            src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/latest.gif" 
+            vspace=5 border=0></CENTER></A>
+            <HR>
+            <FONT face="arial, helvetica" size=2><B>Popular 
+            discussions</B><BR>•&nbsp;<A 
+            href="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&amp;Board=talkbacks"> 
+            Article talkbacks</A><BR>•&nbsp;<A 
+            href="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&amp;Board=linuxpda"> 
+            Linux on PDAs</A><BR>•&nbsp;<A 
+            href="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&amp;Board=100"> 
+            Technical questions</A><BR>•&nbsp;<A 
+            href="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&amp;Board=realtime"> 
+            Real-time Linux</A><BR>•&nbsp;<A 
+            href="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&amp;Board=licenses"> 
+            GPL issues, discussion</A><BR>•&nbsp;<A 
+            href="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&amp;Board=java"> 
+            Embedded Java+Linux</A><BR>•&nbsp;<A 
+            href="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&amp;Board=sbc"> 
+            Little Linux systems</A><BR>•&nbsp;<A 
+            href="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowBoard&amp;Board=general"> 
+            General discussion</A><BR></FONT><A 
+            href="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl"><IMG 
+            src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/moreheadline.gif" 
+            border=0></A> 
+            <HR>
+            <FONT face="arial, helvetica" size=2><B>Submissions...</B><BR><A 
+            href="http://linuxdevices.com/cgi-bin/news_post.cgi"><U>news</U></A>, 
+            <A 
+            href="http://linuxdevices.com/cgi-bin/event_post.cgi"><U>events</U></A>, 
+            <A 
+            href="http://linuxdevices.com/cgi-bin/product_post.cgi"><U>products</U></A>, 
+            <A href="http://linuxdevices.com/cgi-bin/link_post.cgi"><U>resource 
+            links</U></A>, <A 
+            href="http://linuxdevices.com/contactus.html"><U>other</U></A><BR></FONT>
+            <HR>
+            <FONT face="arial, helvetica" size=2><A 
+            href="http://linuxdevices.com/backend/index.html" target=_blank><IMG 
+            hspace=5 
+            src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/xml.gif" 
+            align=left vspace=5 border=0> <U>news feed</U></A></FONT> 
+        <BR></TD></TR></TBODY></TABLE></TD>
+    <TD vAlign=top width="64%">
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE width="100%">
+              <TBODY>
+              <TR>
+                <TD>
+                  <TABLE cellSpacing=0 cellPadding=6 width="100%" border=1>
+                    <TBODY>
+                    <TR>
+                      <TH width="100%" bgColor=#fcec9c><FONT 
+                        face=Arial,Helvetica size=2>Guest column: 
+                        &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes 
+                        soft</FONT></TH></TR>
+                    <TR>
+                      <TD width="100%" height=20><FONT face=Arial,Helvetica 
+                        size=2>Jeff Dionne, of Lineo &nbsp;&nbsp;&nbsp; (Sept. 
+                        16, 2000)</FONT><BR><BR><FONT face=Arial,Helvetica 
+                        size=3><B>How hard is real-time?</B><BR><BR>The idea and 
+                        ideal of real-time has become very important to Linux 
+                        developers. Linux has grown into a full-featured 
+                        operating system, suitable for many embedded 
+                        applications. One area that has received a great deal of 
+                        attention is the potential for using Linux, RTLinux, and 
+                        RTAI in mission critical applications.<BR><BR>The line 
+                        between what is real-time and non real-time appears to 
+                        be a moving target. System developers need to understand 
+                        the hard floor requirements for real-time. Hard 
+                        real-time is an absolute deterministic response to an 
+                        event. It is not based on average response time; this is 
+                        when hard real-time goes soft. In this article, we will 
+                        try to demystify the issue of real-time, and clarify the 
+                        distinctions between hard and soft real-time operating 
+                        systems (RTOSes).<BR><BR><B>The grave responsibility of 
+                        some embedded systems</B><BR><BR>Embedded systems come 
+                        in many flavors, each with different requirements. 
+                        Real-time performance is as diverse as the flavors of 
+                        the applications the underlying RTOS is asked to serve, 
+                        and no RTOS can fit all applications. In his recent book 
+                        about the early American space program "Failure is Not 
+                        an Option", Former NASA Flight Director Gene Kranz 
+                        defines real-time as ". . . when the capsule is 
+                        electronically in view of the tracking station . . ." 
+                        <BR><BR>Now this may seem to have very little to do with 
+                        hard or soft real-time operating systems, but as we 
+                        explore the analogy, we find they have more in common 
+                        than immediately obvious. Gene goes on a few chapters 
+                        later to state that ". . . in real-time controllers knew 
+                        that if the team made the right decisions, we would 
+                        accomplish the mission and bring our men home safely. If 
+                        we were wrong in real-time, we would ruin the mission 
+                        and the crew might be killed."<BR><BR>That's a heavy 
+                        burden for anyone! Unfortunately, it's a fact of life 
+                        not only for the men who are controllers for the space 
+                        program, but also for the software and firmware that 
+                        controls many of the machines we build as engineers. 
+                        There are deadlines that must be met for certain tasks, 
+                        say for instance the go/no go decision to abort a 
+                        mission before the communication window with the 
+                        spacecraft is over, or to service an incoming data 
+                        stream before the input buffer overflows or the machine 
+                        kills someone. <BR><BR><B>Perception is 
+                        reality</B><BR><BR>There are other deadlines that have 
+                        more to do with perception or throughput where making an 
+                        absolute deadline is not as important as keeping up with 
+                        some process over the long term smoothly. Examples of 
+                        these sorts of real-time system include streaming audio 
+                        and video where large buffers are put in place to 
+                        minimize "drop outs" and where occasional buffer 
+                        under/over runs are non-fatal.<BR><BR>With this in mind, 
+                        we can start to define what we mean by hard real-time 
+                        and soft real-time, and it's startlingly simple. In a 
+                        hard real-time system, the deadlines are fixed and the 
+                        system must guarantee response within a fixed and 
+                        well-defined time. In a soft real-time system, we take a 
+                        best effort approach and minimize latency from event to 
+                        response as much as possible while keeping throughput up 
+                        with external events overall. <BR><BR>We've heard much 
+                        debate about the definition of real-time lately, but 
+                        this has to be taken as the final answer. For instance, 
+                        we've heard that hard real-time is just where you draw 
+                        the line. Some people may call it hard real-time only if 
+                        it's faster than other people's defined response 
+                        time.<BR><BR>But if we look at Gene's definition, we see 
+                        that this really is a red herring. Of course you need to 
+                        define the response time requirements for your real-time 
+                        system. However, it is the fact that you have 
+                        <I>strictly</I> defined those requirements (say, before 
+                        the spacecraft goes out of view or before the shaft on 
+                        the motor you're controlling turns more than 0.3 
+                        degrees) that have made your system hard real-time as 
+                        opposed to soft real-time.<BR><BR><B>Real-time on the 
+                        moon</B><BR><BR>But back to OSes, and specifically RTOS 
+                        definitions. From all of this, it's clear that a hard 
+                        real-time OS is one that provides a guarantee that the 
+                        response to an event will occur within some fixed time, 
+                        without fail <I>no matter what.</I> A soft real-time OS 
+                        will do it's best to service your event in, <I>on 
+                        average</I> a certain time. Both types of OS are useful, 
+                        but they have distinctly different uses. And in fact, a 
+                        hard RTOS usually provides scheduling classes for tasks 
+                        requiring both hard and soft real-time 
+                        response.<BR><BR>In Gene's account of the first moon 
+                        landing, we find that the guidance computer on the 
+                        Eagle, the Apollo 11 Lunar Module, had both hard and 
+                        soft real-time tasks (and this is more than 30 years 
+                        ago)! During decent, the Lunar Module's computer was 
+                        unable to keep up with the data stream from the landing 
+                        radar, a non-critical task. These missed deadlines were 
+                        non fatal, and the scheduler automatically reset and the 
+                        mission proceeded normally. On average, most of the 
+                        landing radar data (and other tasks for that matter) met 
+                        the required deadlines to guide the craft to a safe 
+                        landing.<BR><BR>Now, it may well be that the Lunar 
+                        Module landing radar task was intended to be hard 
+                        real-time, and its failure turned out to be soft in 
+                        practice, but that's not really the point. It 
+                        illustrates the differences involved, and from there we 
+                        can extrapolate a useful system incorporating both 
+                        concepts. <BR><BR><B>An earthly example</B><BR><BR>Let's 
+                        look, for instance, at a fairly typical data acquisition 
+                        system which is also called upon to process the data it 
+                        receives. We can ease design constraints by partitioning 
+                        the system into three separate domains: hard real-time, 
+                        soft real-time, and non real-time. <BR><BR>Suppose that 
+                        we have a data stream coming in from an analog to 
+                        digital converter, and that this converter absolutely 
+                        requires us to read its output every 125uSec. This is 
+                        simple hardware, possibly a high resolution Delta Sigma 
+                        A/D with only a single sample of output buffer. 
+                        <BR><BR>We can use a hard real-time task to read the 
+                        converter into a buffer in memory, safe in the knowledge 
+                        that no matter what other demands are placed on the 
+                        system, even ones that where unforeseen when the system 
+                        was designed, every sample will be read from the 
+                        converter into a memory buffer.<BR><BR>We can then use a 
+                        soft real-time task which will on average have the 
+                        required throughput and low enough latency to process 
+                        the buffer stored by the hard real-time task. We know 
+                        that we will keep up with the data stream which has been 
+                        safely stored for the soft real-time task even though we 
+                        may not be able to guarantee we get to each and every 
+                        sample before the next comes in.<BR><BR>Finally, we can 
+                        take the post-processed data from the soft real-time 
+                        task and display it on a console of some 
+                        kind.<BR><BR><B>The hard and soft side of 
+                        Linux</B><BR><BR>Hard and soft real-time systems have 
+                        different requirements, and both may (and usually do) 
+                        exist in the same system. There are systems, which can 
+                        get by with only soft real-time, whereas there are those 
+                        where it is absolutely fatal to miss deadlines and which 
+                        are therefore hard real-time by their very 
+                        nature.<BR><BR>Linux based RTOS solutions are available 
+                        for all of these classes of system -- accommodating 
+                        simple problems requiring a few milliseconds average 
+                        soft real-time response, to strictly defined and highly 
+                        demanding systems requiring 15uS guaranteed response 
+                        times with only 5uS of jitter (available with RTAI). By 
+                        meeting such a broad range of system requirements, 
+                        Embedded Linux comes very close to being a universally 
+                        applicable RTOS.<BR><BR>
+                        <HR>
+                        <BR><B>Author's bio:</B> Jeff Dionne was a co-founder of 
+                        Rt-Control Inc., with over 15 years of experience 
+                        working in the electronics and software industries. His 
+                        strengths include software and electronics hardware 
+                        engineering. Dionne's work experience is in the computer 
+                        networks, electronic services and manufacturing 
+                        industries. He has been involved with many software and 
+                        hardware companies as a lead developer or project 
+                        engineer. His list of projects includes development of a 
+                        Data Concentrator/Port Server, Digital Fault Playback 
+                        system, Precision DSP power meter and 30KW power 
+                        amplifier for Automated Test Equipment. Dionne was the 
+                        co-developer and is the maintainer of the uClinux 
+                        operating system, and his contributions to the Open 
+                        Source community are well recognized. In February 2000, 
+                        when Rt-Control was acquired by Lineo, Inc. Dionne 
+                        became part of the Office of the CTO, and VP of Research 
+                        and Development.<BR><BR>
+                        <HR>
+                        <BR><B>Related stories:</B><BR><A 
+                        href="http://www.linuxdevices.com/articles/AT9837719278.html">Real-time 
+                        Linux -- what is it, why do you want it, how do you do 
+                        it?</A><BR><A 
+                        href="http://www.linuxdevices.com/articles/AT8073314981.html">The 
+                        Real-time Linux Quick Reference Guide</A><BR><BR>Do you 
+                        have questions or comments on this article? <A 
+                        href="http://www.linuxdevices.com/cgi-bin/board/UltraBoard.pl?Action=ShowPost&amp;Board=talkbacks&amp;Post=55"><U>talkback 
+                        here</U></A><BR><BR></FONT><A 
+                        href="http://www.lineo.com/"><IMG 
+                        src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/furtherinfo.gif" 
+                        align=right 
+              border=0></A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD><!-- google marketplace starts here --><FONT size=1><BR></FONT>
+            <STYLE type=text/css>.sponsors_container {
+	BORDER-RIGHT: #fffe08 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #fffe08 1px solid; PADDING-LEFT: 3px; MARGIN-BOTTOM: 5px; PADDING-BOTTOM: 3px; BORDER-LEFT: #fffe08 1px solid; PADDING-TOP: 3px; BORDER-BOTTOM: #fffe08 1px solid
+}
+.sponsors {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 10px; PADDING-TOP: 5px; BACKGROUND-COLOR: #fff7d3
+}
+.sponsors UL {
+	CLEAR: both; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 9px; PADDING-TOP: 0px
+}
+.sponsors UL LI {
+	PADDING-RIGHT: 0px; BACKGROUND-POSITION: 0px 4px; PADDING-LEFT: 3px; LIST-STYLE-POSITION: outside; BACKGROUND-IMAGE: url(/images/LD-arrow_bluegray.gif); PADDING-BOTTOM: 0px; MARGIN: 0px 0px 3px; VERTICAL-ALIGN: top; PADDING-TOP: 0px; BACKGROUND-REPEAT: no-repeat; LIST-STYLE-TYPE: none
+}
+.sponsors P {
+	FONT-SIZE: 10px; FONT-FAMILY: verdana,arial
+}
+.sponsors A {
+	FONT-SIZE: 10px; COLOR: #2347b3; TEXT-DECORATION: underline
+}
+.sponsors A:hover {
+	TEXT-DECORATION: none
+}
+.sponsors IMG.left_ad_image {
+	FLOAT: left; MARGIN: 0px 0px 0px 20px
+}
+.sponsors IMG.left_ad_type_image {
+	CLEAR: left; FLOAT: left; MARGIN: 0px 0px 5px 20px
+}
+.sponsors P.right_text {
+	FLOAT: right; MARGIN: 3px 3px 0px 0px
+}
+.sponsors P.sponsor_text {
+	MARGIN: 0px 0px 0px 8px
+}
+.sponsors P.sponsor_header {
+	MARGIN: 0px 0px 0px 8px
+}
+.sponsors UL.sponsor_links A {
+	MARGIN: 0px 0px 2px 8px
+}
+.sponsors UL.intel_links A {
+	MARGIN: 0px 0px 2px 8px
+}
+</STYLE>
+
+            <SCRIPT language=JavaScript>   
+	<!-- 
+	function ws(w){window.status=w;return true;} 
+	 
+	function google_ad_request_done(google_ads)  
+	{   
+		var i; 
+		 
+		 
+ 
+		document.write('<div class="sponsors_container"><div class="sponsors">' + 
+		 
+			 
+				'<img src="/images/LD-marketplace-1.gif" width="75" height="9" class="left_ad_image">' + 
+				'<p class="right_text"><a href="http://www.google.com/ads_by_google.html">' +  
+					'Ads By Google' +  
+				'</a></p>' + 
+			 
+		 
+			'<img src="/images/LD-marketplace-2.gif" class="left_ad_type_image">' + 
+			 
+			 
+			 
+			 
+			'<ul>'); 
+		 
+		 
+		 
+		for(i = 0; i < google_ads.length; ++i)  
+		{     
+	 
+			 
+				document.write('<li><p class="sponsor_header">'); 
+				document.write('<a href="' + google_ads[i].url + '" onMouseOver="return ws(\'' + google_ads[i].visible_url + '\')">' + 
+					google_ads[i].line1 + '</p>'); 
+				 
+				document.write('<p class="sponsor_text">' + 
+					'<a href="' +  google_ads[i].url + '" onMouseOver="return ws(\'' + google_ads[i].visible_url + '\')" STYLE="text-decoration: none"><font color=#333333>' + google_ads[i].line2 + ' ' + google_ads[i].line3 +  '<br />' + google_ads[i].visible_url + '</font></a>' +  
+		  			'</p></li>'); 
+	 
+		} 
+		 
+			 
+			document.write('</ul></div></div>'); 
+	 
+		 
+	}  
+	// --> 
+	</SCRIPT>
+
+            <SCRIPT language=JavaScript> 
+	<!--          
+	 
+	         google_ad_client 	= 'ziffdavis-other_js';          
+			 google_ad_output 	= 'js';          
+			 google_max_num_ads = 5;                  
+			 google_safe      	= 'high'; 
+			 google_ad_channel  = 'linuxdevices-1'; 
+		 
+	--> 
+	</SCRIPT>
+
+            <SCRIPT language=JavaScript 
+            src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/show_ads.js"></SCRIPT>
+<!-- google market place ends here --></TD></TR>
+        <TR>
+          <TD height=10></TD></TR>
+        <TR>
+          <TD><!-- sponsored links section begins here --><FONT 
+            size=1><BR></FONT>
+            <STYLE type=text/css>.sponsors_container {
+	BORDER-RIGHT: #fffe08 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #fffe08 1px solid; PADDING-LEFT: 3px; MARGIN-BOTTOM: 5px; PADDING-BOTTOM: 3px; BORDER-LEFT: #fffe08 1px solid; PADDING-TOP: 3px; BORDER-BOTTOM: #fffe08 1px solid
+}
+.sponsors {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 10px; PADDING-TOP: 5px; BACKGROUND-COLOR: #fff7d3
+}
+.sponsors UL {
+	CLEAR: both; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 9px; PADDING-TOP: 0px
+}
+.sponsors UL LI {
+	PADDING-RIGHT: 0px; BACKGROUND-POSITION: 0px 4px; PADDING-LEFT: 3px; LIST-STYLE-POSITION: outside; BACKGROUND-IMAGE: url(/images/LD-arrow_bluegray.gif); PADDING-BOTTOM: 0px; MARGIN: 0px 0px 3px; VERTICAL-ALIGN: top; PADDING-TOP: 0px; BACKGROUND-REPEAT: no-repeat; LIST-STYLE-TYPE: none
+}
+.sponsors P {
+	FONT-SIZE: 10px; FONT-FAMILY: verdana,arial
+}
+.sponsors A {
+	FONT-SIZE: 10px; COLOR: #2347b3; TEXT-DECORATION: underline
+}
+.sponsors A:hover {
+	TEXT-DECORATION: none
+}
+.sponsors IMG.left_ad_image {
+	FLOAT: left; MARGIN: 0px 0px 0px 20px
+}
+.sponsors IMG.left_ad_type_image {
+	CLEAR: left; FLOAT: left; MARGIN: 0px 0px 5px 20px
+}
+.sponsors P.right_text {
+	FLOAT: right; MARGIN: 3px 3px 0px 0px
+}
+.sponsors P.sponsor_text {
+	MARGIN: 0px 0px 0px 8px
+}
+.sponsors P.sponsor_header {
+	MARGIN: 0px 0px 0px 8px
+}
+.sponsors UL.sponsor_links A {
+	MARGIN: 0px 0px 2px 8px
+}
+.sponsors UL.intel_links A {
+	MARGIN: 0px 0px 2px 8px
+}
+</STYLE>
+
+            <DIV class=sponsors_container>
+            <DIV class=sponsors><IMG class=left_ad_type_image 
+            src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/LD-sponsoredlinks.gif"> 
+
+            <UL class=sponsor_links><!-- link ID - date-to-remove -->
+              <LI><A href="http://linuxdevices.com/contactus.html" 
+              target=new>Find out how to put your company's message here</A> 
+              </LI></UL></DIV></DIV><!-- end sponsored links section --></TD></TR></TBODY></TABLE></TD>
+    <TD vAlign=top width="18%">
+      <TABLE cellSpacing=0 cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD><!-- column118.htm --><FONT face="arial, helvetica" size=2>Click 
+            below for a profile of each sponsor:</FONT><BR><!-- start PLATINUM sponsors -->
+            <TABLE cellSpacing=0 cellPadding=0 width=150 bgColor=white 
+              border=2><TBODY>
+              <TR>
+                <TD align=middle bgColor=#fcec9c height=30><FONT 
+                  face="arial, helvetica" size=2><B>Platinum 
+                  Sponsors:</B></FONT> </TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin timesys tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=timesys;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=timesys;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=timesys;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=timesys;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A></NOSCRIPT> <!-- End ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30 border="0"><!-- begin metrowerks tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=metro;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=metro;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=metro;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=metro;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A></NOSCRIPT> <!-- End ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30 border="0"><!-- begin arcom tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=arcom;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=arcom;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=arcom;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=arcom;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A></NOSCRIPT> <!-- End ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin tri-m tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=trim;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=trim;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=trim;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=trim;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A></NOSCRIPT> <!-- End ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin viosoft tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=viosoft;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000">
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=viosoft;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT>
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=viosoft;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=viosoft;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A></NOSCRIPT> <!-- End ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin moxa tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=moxa;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000">
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=moxa;sz=150x30;abr=!ie;ord=[timestamp]?" >
+</SCRIPT>
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=moxa;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=moxa;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0> </A></NOSCRIPT><!-- End ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin redhat tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=redhat;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000">
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=redhat;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT>
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=redhat;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=redhat;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0> </A></NOSCRIPT><!-- End ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin windriver tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=windriver;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=windriver;sz=150x30;abr=!ie;ord=[timestamp]?" >
+</SCRIPT> 
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=windriver;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=windriver;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A> </NOSCRIPT><!-- end ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin devicescape tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=devicescape;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=devicescape;sz=150x30;abr=!ie;ord=[timestamp]?" >
+</SCRIPT> 
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=devicescape;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=devicescape;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A> </NOSCRIPT><!-- end ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin versalogic tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=versalogic;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=versalogic;sz=150x30;abr=!ie;ord=[timestamp]?" >
+</SCRIPT> 
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=versalogic;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=versalogic;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A></NOSCRIPT> <!-- End ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin jaluna tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=jaluna;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=jaluna;sz=150x30;abr=!ie;ord=[timestamp]?" >
+</SCRIPT> 
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=jaluna;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=jaluna;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A></NOSCRIPT> 
+              <!-- End ad tag --></TD></TR></TBODY></TABLE><!-- end PLATINUM sponsors -->
+            <TABLE height=10 cellSpacing=0 cellPadding=0 width=150 border=0>
+              <TBODY>
+              <TR>
+                <TD></TD></TR></TBODY></TABLE><!-- start GOLD sponsors -->
+            <TABLE cellSpacing=0 cellPadding=0 width=150 bgColor=white 
+              border=2><TBODY>
+              <TR>
+                <TD align=middle bgColor=#fcec9c height=30><FONT 
+                  face="arial, helvetica" size=2><B>Gold Sponsors:</B></FONT> 
+              </TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin montavista tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=montavista;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=montavista;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=montavista;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=montavista;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A></NOSCRIPT> <!-- End ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin lynuxworks tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=lynux;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=lynux;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=lynux;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=lynux;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A></NOSCRIPT> <!-- End ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin octagon tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=octagon;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=octagon;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=octagon;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=octagon;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A></NOSCRIPT> <!-- End ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin ibm-ltc tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=linuxibm;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=linuxibm;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=linuxibm;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=linuxibm;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A></NOSCRIPT> <!-- End ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin embedded-planet tag --><IFRAME 
+                  marginWidth=0 marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=ep;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=ep;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=ep;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=ep;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A></NOSCRIPT> <!-- End ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin vibren tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=vibren;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=vibren;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=vibren;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=vibren;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A></NOSCRIPT> <!-- End ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin via tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=via;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=via;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=via;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=via;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A></NOSCRIPT> <!-- End ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin kenati tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=kenati;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=kenati;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=kenati;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=kenati;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A></NOSCRIPT> <!-- End ad tag --></TD></TR>
+              <TR height=5>
+                <TD align=middle bgColor=#fcec9c></TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin enea tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=enea;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000">
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=enea;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT>
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=enea;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=enea;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A></NOSCRIPT> 
+              <!-- End ad tag --></TD></TR></TBODY></TABLE><!-- end GOLD sponsors -->
+            <TABLE height=10 cellSpacing=0 cellPadding=0 width=150 border=0>
+              <TBODY>
+              <TR>
+                <TD></TD></TR></TBODY></TABLE><!-- start SILVER sponsors -->
+            <TABLE cellSpacing=0 cellPadding=0 width=156 bgColor=white 
+              border=2><TBODY>
+              <TR>
+                <TD align=middle width=150 bgColor=#fcec9c height=30><FONT 
+                  face="arial, helvetica" size=2><B>Silver Sponsors:</B></FONT> 
+                </TD></TR>
+              <TR>
+                <TD align=middle width=150 bgColor=white height=30><!-- begin microsys tag --><IFRAME marginWidth=0 
+                  marginHeight=0 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=microsys;sz=150x30;ord=[timestamp].htm" 
+                  frameBorder=0 width=150 scrolling=no height=30 
+                  BORDERCOLOR="#000000"> 
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;kw=microsys;sz=150x30;abr=!ie;ord=[timestamp]?" ></SCRIPT> 
+</IFRAME><NOSCRIPT><A 
+                  href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;kw=microsys;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+                  target=_blank><IMG height=30 alt="" 
+                  src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;kw=microsys;sz=150x30;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+                  width=150 border=0></A></NOSCRIPT> 
+              <!-- End ad tag --></TD></TR></TBODY></TABLE><!-- end SILVER sponsors -->
+            <HR>
+
+            <CENTER><FONT face="arial, helvetica" 
+            size=1><B>ADVERTISEMENT</B></FONT> 
+            </CENTER><!-- begin ad tag --><IFRAME marginWidth=0 marginHeight=0 
+            src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;sz=160x600;ord=[timestamp].htm" 
+            frameBorder=0 width=160 scrolling=no height=600 
+            BORDERCOLOR="#000000">
+<SCRIPT LANGUAGE="JavaScript" SRC="http://ad.doubleclick.net/adj/linuxdevices.dart/home;sz=160x600;abr=!ie;ord=[timestamp]?" ></SCRIPT>
+</IFRAME><NOSCRIPT><A 
+            href="http://ad.doubleclick.net/jump/linuxdevices.dart/home;sz=160x600;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp]?" 
+            target=_blank><IMG height=600 alt="" 
+            src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/home;sz=160x600;abr=!ie4;abr=!ie5;abr=!ie6;ord=[timestamp].gif" 
+            width=160 border=0></A></NOSCRIPT> <!-- End ad tag --><BR>
+            <HR>
+
+            <TABLE cellSpacing=0 cellPadding=5 width=160 bgColor=#fff7d3 
+            border=1>
+              <TBODY>
+              <TR>
+                <TD><FONT face="arial, helvetica" size=1><B>CAREER 
+                  CENTER</B><BR>Search more than 60,000 tech jobs. Search by 
+                  keywords, skill, job title, and location.<BR><A 
+                  href="http://ad.doubleclick.net/clk;16161145;11321417;o?http://www.dice.com/" 
+                  target=new><U>Check it out today!</U></A> 
+              <BR></FONT></TD></TR></TBODY></TABLE>
+            <HR>
+
+            <CENTER><A 
+            href="http://linuxdevices.com/news/NS7728006050.html"><IMG hspace=5 
+            src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/lj-editors-choice-2001.gif" 
+            vspace=5 border=0> <BR clear=all><FONT face="arial, helvetica" 
+            size=2><B>"Website of the Year"</B></FONT></A><BR></CENTER>
+            <HR>
+            <FONT face="arial, helvetica" size=2><B>Submissions...</B><BR><A 
+            href="http://linuxdevices.com/cgi-bin/news_post.cgi"><U>news</U></A>, 
+            <A 
+            href="http://linuxdevices.com/cgi-bin/article_post.cgi"><U>articles</U></A>, 
+            <A 
+            href="http://linuxdevices.com/cgi-bin/event_post.cgi"><U>events</U></A>, 
+            <A 
+            href="http://linuxdevices.com/cgi-bin/product_post.cgi"><U>products</U></A>, 
+            <A 
+            href="http://linuxdevices.com/contactus.html"><U>other</U></A><BR></FONT>
+            <HR>
+            <FONT face="arial, helvetica" size=2><A 
+            href="http://linuxdevices.com/backend/index.html" target=_blank><IMG 
+            hspace=5 
+            src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/xml.gif" 
+            align=left vspace=5 border=0> <U>news feed</U></A></FONT> 
+        <BR></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-------- page footer begins here -------->
+<HR>
+
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD><FONT face=Arial,Helvetica size=2><A 
+      href="http://linuxdevices.com/"><B>home</B></A> &nbsp;|&nbsp; <A 
+      href="http://linuxdevices.com/news"><B>news</B></A> &nbsp;|&nbsp; <A 
+      href="http://linuxdevices.com/articles"><B>articles</B></A> &nbsp;|&nbsp; 
+      <A 
+      href="http://linuxdevices.com/cgi-bin/survey/survey.cgi"><B>polls</B></A> 
+      &nbsp;|&nbsp; <A 
+      href="http://linuxdevices.com/cgi-bin/board/UltraBoard.pl"><B>forum</B></A> 
+      &nbsp;|&nbsp; <A href="http://linuxdevices.com/events"><B>events</B></A> 
+      &nbsp;|&nbsp; <A href="http://linuxdevices.com/links"><B>links</B></A> 
+      &nbsp;|&nbsp; <A 
+      href="http://linuxdevices.com/products"><B>products</B></A> &nbsp;|&nbsp; 
+      <A href="http://linuxdevices.com/sponsors"><B>sponsors</B></A> 
+      &nbsp;|&nbsp; <A 
+      href="http://linuxdevices.com/cgi-bin/search_view.cgi"><B>search</B></A> 
+      &nbsp;|&nbsp; <A 
+      href="http://linuxdevices.com/aboutus.html"><B>aboutus</B></A> 
+      &nbsp;|&nbsp; <A 
+      href="http://linuxdevices.com/contactus.html"><B>contactus</B></A></FONT></TD></TR>
+  <TR>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD><FONT face=Arial,Helvetica size=2><A 
+      href="http://www.ziffdavis.com/"><IMG hspace=5 
+      src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/zdmlogo.gif" 
+      align=right vspace=5 border=0></A> Use of this site is governed by our <A 
+      href="http://www.ziffdavis.com/about/terms"><U>Terms of Use</U></A> and <A 
+      href="http://www.ziffdavis.com/about/privacy"><U>Privacy Policy</U></A>. 
+      Except where otherwise specified, the contents of this site are copyright 
+      © 1999-2005 <A href="http://www.ziffdavis.com/"><U>Ziff Davis Publishing 
+      Holdings Inc.</U></A> All Rights Reserved. Reproduction in whole or in 
+      part without permission is prohibited. Linux is a registered trademark of 
+      Linus Torvalds. All other marks are the property of their respective 
+      owners.</FONT></TD></TR></TBODY></TABLE><!-- START RedMeasure V4 - CGI v1.1 Revision: 1.6 --><!-- COPYRIGHT 2000 Red Sheriff Limited -->
+<SCRIPT language=JavaScript><!--
+	var pCid="us_us-ziffdavis_0-dvf-3";
+	var w0=1;
+	var refR=escape(document.referrer);
+	if (refR.length>=252) refR=refR.substring(0,252)+"...";
+//--></SCRIPT>
+
+<SCRIPT language=JavaScript1.1><!--
+	var w0=0;
+//--></SCRIPT>
+
+<SCRIPT language=JavaScript1.1 
+src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/c1.js"></SCRIPT>
+
+<SCRIPT language=JavaScript><!--
+	if(w0){
+		document.write('<img src="http://server-us.imrworldwide.com/cgi-bin/count?ref='+
+        refR+'&cid='+pCid+'" width=1 height=1>');
+	}
+	document.write("<COMMENT>");
+//--></SCRIPT>
+<NOSCRIPT><IMG height=1 
+src="Guest column &nbsp;&nbsp;&nbsp;&nbsp; When hard real-time goes soft_files/count.gif" 
+width=1></NOSCRIPT> <!-- END RedMeasure V4 --><!-------- page footer ends here --------></BODY></HTML>
