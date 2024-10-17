@@ -1,0 +1,457 @@
+
+<HTML>
+
+<!-- Mirrored from www.cracktheinterview.com by HTTrack Website Copier/3.x [XR,YP'2001] -->
+<HEAD>
+<TITLE>CRACK THE INTERVIEW - Write a C program to implement a Generic Linked List.  (www.cracktheinterview.com)</TITLE><style type="text/css">
+<!--
+.breakhere     {page-break-before: always}
+
+A:link         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+A:active       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+A:visited      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#996633} 
+
+H1             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt; font-weight:bold; color:#336699} 
+H2             {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; font-weight:bold} 
+.normal        {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:9pt; color:#000000} 
+.announce      {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#000000} 
+.announceLink  {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; color:#336699} 
+.note          {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt ! important; font-weight:normal} 
+.system        {font-family:Courier New, Courier; font-size:x-small;
+                font-weight:normal} 
+.stayblue      {color:#336699 ! important}
+.title         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:larger ! important} 
+.error         {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:small; color:#aa0000; font-weight:bold} 
+.notelink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:normal;
+                font-size:9pt ! important} 
+.tableHeader   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableHeaderSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRow      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#f7f7e7} 
+.tableBlank    {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt; color:black; font-weight: normal;
+                background-color:#ffffff} 
+.hardlink      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#336699 ! important; font-weight:bold;
+                font-size:8pt ! important} 
+.boxlink       {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:#000000 ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.hardnote      {font-family:Arial, Helvetica, Geneva, sans-serif;
+                color:black ! important; font-weight:normal;
+                font-size:8pt ! important} 
+.tableRowSmall {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal} 
+.tableRowSmallBold {font-family:Verdana, Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                bold} 
+.blueHeading   {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:bold;
+                color:#336699! important} 
+.blueHeadingLarge {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:16pt! important; font-weight:normal;
+                color:#336699} 
+.blueHeadingMid {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:12pt! important; font-weight:normal;
+                color:#336699}
+.blueHeadingSmall {font-family:Arial, Helvetica, Geneva, sans-serif;
+                font-size:10pt! important; font-weight:bold;
+                color:#336699} 
+.tableHeaderV  {font-family:Verdana,Arial, Helvetica, Geneva, sans-serif;
+                font-size:8pt; color:#336699; font-weight: bold;
+                background-color:#3284FF} 
+.tableRowV     {font-family:Verdana,Arial, Helvetica, Geneva,
+                sans-serif; font-size:8pt; color:black; font-weight:
+                normal; background-color:#f7f7e7} 
+.just          {text-align: justify}
+-->
+</style>
+
+<META NAME="keywords" CONTENT="interview,C,linked list,generic,void">
+<META NAME="description" CONTENT="Write a C program to implement a Generic Linked List. ">
+<META NAME="robots" CONTENT="FOLLOW,INDEX">
+<META HTTP-EQUIV="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+
+</HEAD>
+<BODY>
+<TABLE BORDER=0 cellpadding=10>
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER><A HREF="../index.html"><IMG SRC=../images/logo2.jpg border=0></img></A></CENTER></TD>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2>
+<CENTER>
+
+
+<!--START:ADS0-->
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"
+  src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+
+</CENTER>
+</TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER>
+
+<!--START:LINKS-->
+
+
+<TABLE BORDER=0 cellpadding=10>
+<TR><TD NOWRAP>
+<A HREF="../index.html" target="_top"><font class=announcelink>Home</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="../adfaqpublish.html" target="_top"><font class=announcelink>Questions</font></A><BR>
+</TD>
+
+
+<TD NOWRAP>
+<A href="../search.html" target="_top"><font class=announcelink>Search</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A HREF="../forum/index.html" target="_top"><font class=announcelink>Forum</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="mailto:cracktheinterview@gmail.com?subject=Hi!"><font class=announcelink>Contact</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum12a3.html" target="_top"><font class=announcelink>Guest Book</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum4d6b.html" target="_top"><font class=announcelink>Polls!</font></A><BR>
+</TD>
+
+<TD NOWRAP>
+<A href="../forum/viewforum31e6.html" target="_top"><font class=announcelink>Got a Question?</font></A><BR>
+</TD>
+
+</TABLE>
+
+<!--END-->
+
+</CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=100%% valign=top colspan=2><CENTER> &nbsp; </CENTER></TD>
+</TR>
+
+
+<TR>
+<TD WIDTH=90%% valign=top>
+
+
+
+
+
+<!--START : DATA-->
+
+
+
+<TABLE BORDER=0>
+
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="0_3.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=blueHeading>Linked Lists</font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="0_5.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD>
+<TD WIDTH=90%%><CENTER><font class=blueHeading>(5 / 268)</font></center></TD>
+<TD WIDTH=5%%><CENTRE>&nbsp;</CENTRE></TD></TR>
+<TR>
+<TD WIDTH=5%%></TD>
+<TD WIDTH=90%%><center>&nbsp;</center></TD>
+<TD WIDTH=5%%></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=announceLink><BR><BR><BR>
+<!--THE QUESTION-->
+
+Write a C program to implement a Generic Linked List. <BR>
+<!--END-->
+<BR></font></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<font class=normal>
+<!--THE ANSWER--><BR>
+<!--META:START--><!--interview,C,linked list,generic,void--><!--META:END--><BR>
+<BR>
+Here is a C program which implements a generic linked list. This is also one of the very <font class=announcelink>popular</font> interview questions thrown around. The crux of the solution is to use the <font class=announcelink>void</font> C pointer to make it <font class=announcelink>generic</font>. Also notice how we use <font class=announcelink>function pointers</font> to pass the address of different functions to print the different <font class=announcelink>generic</font> data.<BR>
+<BR>
+<CODE><BR>
+#include&nbsp;&lt;stdio.h><BR>
+#include&nbsp;&lt;stdlib.h><BR>
+#include&nbsp;&lt;string.h><BR>
+<BR>
+typedef&nbsp;struct&nbsp;list&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;*data;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;struct&nbsp;list&nbsp;*next;<BR>
+}&nbsp;List;<BR>
+<BR>
+struct&nbsp;check&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;i;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;c;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;d;<BR>
+}&nbsp;chk[]&nbsp;=&nbsp;{&nbsp;{&nbsp;1,&nbsp;'a',&nbsp;1.1&nbsp;},<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;2,&nbsp;'b',&nbsp;2.2&nbsp;},<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;3,&nbsp;'c',&nbsp;3.3&nbsp;}&nbsp;};<BR>
+<BR>
+void&nbsp;insert(List&nbsp;**,&nbsp;void&nbsp;*,&nbsp;unsigned&nbsp;int);<BR>
+void&nbsp;print(List&nbsp;*,&nbsp;void&nbsp;(*)(void&nbsp;*));<BR>
+void&nbsp;printstr(void&nbsp;*);<BR>
+void&nbsp;printint(void&nbsp;*);<BR>
+void&nbsp;printchar(void&nbsp;*);<BR>
+void&nbsp;printcomp(void&nbsp;*);<BR>
+<BR>
+List&nbsp;*list1,&nbsp;*list2,&nbsp;*list3,&nbsp;*list4;<BR>
+<BR>
+int&nbsp;main(void)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;c[]&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{&nbsp;'a',&nbsp;'b',&nbsp;'c',&nbsp;'d'&nbsp;};<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;i[]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;{&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;4&nbsp;};<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;*str[]&nbsp;=&nbsp;{&nbsp;"hello1",&nbsp;"hello2",&nbsp;"hello3",&nbsp;"hello4"&nbsp;};<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;list1&nbsp;=&nbsp;list2&nbsp;=&nbsp;list3&nbsp;=&nbsp;list4&nbsp;=&nbsp;NULL;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;insert(&list1,&nbsp;&c[0],&nbsp;sizeof(char));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;insert(&list1,&nbsp;&c[1],&nbsp;sizeof(char));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;insert(&list1,&nbsp;&c[2],&nbsp;sizeof(char));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;insert(&list1,&nbsp;&c[3],&nbsp;sizeof(char));<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;insert(&list2,&nbsp;&i[0],&nbsp;sizeof(int));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;insert(&list2,&nbsp;&i[1],&nbsp;sizeof(int));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;insert(&list2,&nbsp;&i[2],&nbsp;sizeof(int));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;insert(&list2,&nbsp;&i[3],&nbsp;sizeof(int));<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;insert(&list3,&nbsp;str[0],&nbsp;strlen(str[0])+1);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;insert(&list3,&nbsp;str[1],&nbsp;strlen(str[0])+1);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;insert(&list3,&nbsp;str[2],&nbsp;strlen(str[0])+1);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;insert(&list3,&nbsp;str[3],&nbsp;strlen(str[0])+1);<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;insert(&list4,&nbsp;&chk[0],&nbsp;sizeof&nbsp;chk[0]);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;insert(&list4,&nbsp;&chk[1],&nbsp;sizeof&nbsp;chk[1]);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;insert(&list4,&nbsp;&chk[2],&nbsp;sizeof&nbsp;chk[2]);<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("Printing&nbsp;characters:");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;print(list1,&nbsp;printchar);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("&nbsp;:&nbsp;done\n\n");<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("Printing&nbsp;integers:");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;print(list2,&nbsp;printint);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("&nbsp;:&nbsp;done\n\n");<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("Printing&nbsp;strings:");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;print(list3,&nbsp;printstr);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("&nbsp;:&nbsp;done\n\n");<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("Printing&nbsp;composite:");<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;print(list4,&nbsp;printcomp);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("&nbsp;:&nbsp;done\n");<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;0;<BR>
+}<BR>
+<BR>
+void&nbsp;insert(List&nbsp;**p,&nbsp;void&nbsp;*data,&nbsp;unsigned&nbsp;int&nbsp;n)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;*temp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;i;<BR>
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;Error&nbsp;check&nbsp;is&nbsp;ignored&nbsp;*/<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;=&nbsp;malloc(sizeof(List));<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;temp->data&nbsp;=&nbsp;malloc(n);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;<&nbsp;n;&nbsp;i++)<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*(char&nbsp;*)(temp->data&nbsp;+&nbsp;i)&nbsp;=&nbsp;*(char&nbsp;*)(data&nbsp;+&nbsp;i);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;temp->next&nbsp;=&nbsp;*p;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;*p&nbsp;=&nbsp;temp;<BR>
+}<BR>
+<BR>
+void&nbsp;print(List&nbsp;*p,&nbsp;void&nbsp;(*f)(void&nbsp;*))<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(p)&nbsp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(*f)(p->data);<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p&nbsp;=&nbsp;p->next;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;}<BR>
+}<BR>
+<BR>
+void&nbsp;printstr(void&nbsp;*str)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("&nbsp;\"%s\"",&nbsp;(char&nbsp;*)str);<BR>
+}<BR>
+<BR>
+void&nbsp;printint(void&nbsp;*n)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("&nbsp;%d",&nbsp;*(int&nbsp;*)n);<BR>
+}<BR>
+<BR>
+void&nbsp;printchar(void&nbsp;*c)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("&nbsp;%c",&nbsp;*(char&nbsp;*)c);<BR>
+}<BR>
+<BR>
+void&nbsp;printcomp(void&nbsp;*comp)<BR>
+{<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;struct&nbsp;check&nbsp;temp&nbsp;=&nbsp;*(struct&nbsp;check&nbsp;*)comp;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;printf("&nbsp;'%d:%c:%f",&nbsp;temp.i,&nbsp;temp.c,&nbsp;temp.d);<BR>
+}<BR>
+<BR>
+</CODE> 
+<BR><BR>
+<!--END-->
+</font><BR></TD></TR>
+<TR>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="0_3.html">PREV</A></font></CENTRE></TD>
+<TD WIDTH=90%%><center><font class=notelink><A href="mailto:cracktheinterview@gmail.com?subject=Comments [Write a C program to implement a Generic Linked List. ]&Body=Question : [Write a C program to implement a Generic Linked List. ]"><font class=announcelink>COMMENTS</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><A HREF=../adfaqpublish.html>INDEX</A></font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class=notelink><a href="#" onclick="window.print();return false;">PRINT</a></font></center></TD>
+<TD WIDTH=5%%><CENTRE><font class=notelink><A HREF="0_5.html">NEXT</A></font></CENTRE></TD></TR>
+<TR>
+<TD COLSPAN=3 width=700 align=left>
+<BR><BR><BR><font class=notelink>
+Last updated:
+
+July 8, 2005<BR><BR>
+<a href=../index.html>www.cracktheinterview.com</a> - Your destination for the most common IT interview questions, answers, frequently asked interview questions (FAQ), C Programs, C Datastructures for interviews conducted by Microsoft, Oracle, Google, IBM, HP, Yahoo, Infosys, Wipro, SAP, CA (Computer Associates), Sun, Adobe, GE, Novell, Cisco, Motorola, TI (Texas Instruments), Intel, TCS, iFlex, Trilogy, MindTree, GS and more...<br><BR>
+
+</TD>
+</TR>
+</TABLE>
+
+
+
+
+<!--END-->
+
+
+</TD>
+
+
+
+
+<TD WIDTH=10%% valign="top">
+
+
+<!--START:ADS1-->
+
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_alternate_color = "CCCCCC";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript" src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-4208362929074433";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//-->
+</script>
+<script type="text/javascript"  src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+<!--END-->
+
+</TD>
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+</BODY>
+
+<!-- Mirrored from www.cracktheinterview.com by HTTrack Website Copier/3.x [XR,YP'2001] -->
+</HTML>
+
+

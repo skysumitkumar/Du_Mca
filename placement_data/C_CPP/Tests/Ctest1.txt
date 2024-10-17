@@ -1,0 +1,103 @@
+1) main(){
+	int a;
+	char *p;
+	a = sizeof(int) * p; 
+	printf("%d\n",a);
+	}
+a)compile error
+b)run time error
+c)4
+d)compiler dependent
+ans:a
+2)#define SIZE sizeof(int)
+  main(){ int i=-1;
+        if( i < SIZE )
+                printf("True\n");
+        else
+                printf("False\n");
+  }
+a) True
+b) False
+c) can't predict
+d) None of these
+ans:b (?)
+
+3) int (*fun())[]
+a) function returning a pointer to an array
+b) function returning an array of pointers
+c) pointer to a funtion which takes array as asrument
+d) Compiler error
+ans: a
+4) main(){
+        int a=8,d;
+        int *p;
+        p=&a;
+        d=a/*p;
+        print("%d\n",d);
+        }
+a) 1
+b) 0
+c) compiler error
+d) run time error
+ans: c
+5)main(){
+        char *a="Hello";
+        *a++ = 'h';
+        printf("%s\n",a);
+        }
+a) hello
+b) ello
+c) runtime error
+d) compiler error
+ans:b
+6) main(){
+        char p[]="Hello";
+        p[0]='h';
+        printf("%s\n", p);
+        }
+a) hello
+b) Hello
+c) compiler error
+d) run time error
+ans:a
+7)#define mysizeof(a) (&a+1) - &a
+  main(
+        float d;
+        printf("%d\n", mysizeof(d) );
+        }
+note:  assume sizeof float is 8 bytes
+a) 8
+b) 4
+c) 1
+d) compiler error
+ans:c
+8) main()
+        { int *p=10;
+        printf("%d\n",*p);
+        }
+a) 10
+b) run time error
+c) compiler error
+d) 5
+ans:b (?)
+
+9)main(){
+         int i=-1;
+         i<<=2;
+         printf("%d\n",i);
+         }
+a) -1
+b) -2
+c) -4
+d) 0
+ans:c
+10) main(){
+        int i= 0xffffffff;
+        printf("%d\n",i);
+        }
+note: size of int is 4 bytes
+a) -1
+b) 65635
+c) 100
+d) error
+ans:a

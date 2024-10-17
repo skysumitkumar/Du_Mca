@@ -1,0 +1,156 @@
+1.Write is the output?
+     void foo()
+{
+    static int i=5;
+    for(int j=i+3; i<j; i++)
+        printf("%3d",i);
+    printf("\n");
+}
+void main()
+{
+    for(int i=0; i<3; i++)
+        foo();
+}
+
+2..   # define MAX(a,b)a>b?a:b
+void main()
+{
+    int a=3,b=4;
+    printf("a=%d b=%d MAX=%d", a, b, MAX(a++,b++));
+}
+
+Select the correct output from the following:
+A. a=4,b=5,MAX=5
+B. a=4,b=5,MAX=6
+C. a=5,b=6,MAX=5
+D. a=4,b=6,MAX=5
+
+3.What is the output?
+
+void main()
+{
+    union
+    {
+        int a;
+        char c;
+    } num;
+
+    num.a=325;
+    printf("%d",num.c);
+}
+
+Select the correct output:
+A. 69
+B. 25
+C. 45
+D. -39
+
+4..   # include <conio.h>
+# include <stdio.h>
+void main()
+{
+    static int a[]= { 0,1,2,3 };
+    static int *p[] = { a, a+1, a+2, a+3};
+    int **ptr=p;
+
+    *++*ptr;
+
+    printf("%d %d %d",ptr-p, *ptr-a, **ptr);
+}
+
+Select the corect output:
+A. 110
+B. 221
+C. 011
+D. 210
+
+5..  int func(int p, int q)
+{
+    return (p+q);
+}
+
+void main()
+{
+
+    int x=1, y=2, z=3;
+
+    printf("%d",func((x+3,y+=1),z--) );
+}
+
+Select the correct output from the above code
+A. 6
+B. 5
+C. Compiler Error, Type mismatch
+D. Compiles, but undefined behavior
+
+6..  Write the output
+void DoubleBoth(int i, int *j)
+{
+    i*=2;
+    *j *=2;
+}
+void main()
+{
+    int i=3,j=4;
+
+    DoubleBoth(i,&j);
+    printf("%d %d",i,j);
+}
+A. 6 8
+B. 3 4
+C. 3 8
+D. 6 4
+
+7.  What is the output of the code?
+
+int bitmagic(unsigned x, unsigned y, unsigned z)
+{
+    return (((~(1<<z)) &x) | ((1<<z) &y));
+}
+void main()
+{
+    printf("%d", bitmagic(2,4,2));
+}
+
+A. 6
+B. 5
+C. 4
+D. 3
+
+8.void main()
+{
+    enum days
+    {
+        saturday,
+        sunday
+    } today;
+
+    enum days yesterday;
+    int i=sunday;
+    yesterday=0;
+
+    printf("%d %d", i, yesterday);
+}
+
+Select the correct output
+A. 1 0
+B. 2 0
+C. Compiler Error on Line 2
+D. Compiler Error on Line 1
+
+9.What is the output of the following program:
+void main()
+{
+    printf("%f",9/5);
+}
+
+10. What is the output of the following program:
+void main()
+{
+    int i;
+
+    for(i=0; i<5; i++}
+    {
+        printf("%d",i&i);
+    }
+}
