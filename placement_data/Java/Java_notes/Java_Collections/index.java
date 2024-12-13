@@ -160,6 +160,11 @@ public class index
         // s.length();
         // s.substring(4,5);
 
+        // //String array
+        // String [] ans=new String[n];
+        // ans[0]="Sumit";
+        // s[0].charAt(5)=='Q';
+
         // //StringBuilder
         // StringBuilder s=new StringBuilder("sumit kumar");
         // s.setCharAt(3,'l');
