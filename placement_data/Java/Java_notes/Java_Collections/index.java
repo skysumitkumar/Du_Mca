@@ -164,7 +164,7 @@ public class index
         // StringBuilder s=new StringBuilder("sumit kumar");
         // s.setCharAt(3,'l');
 
-        // StringBuilder
+        // StringBuffer
         StringBuffer s=new StringBuffer("sumit kumar");
         
     }
