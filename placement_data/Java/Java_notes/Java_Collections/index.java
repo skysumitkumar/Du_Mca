@@ -30,13 +30,20 @@ public class index
     public static void main(String a[])
     {
         // ArrayList<Integer> arr=new ArrayList<>();
-        // //sort in desending order
-        // Collections.sort(arr,(c,b)->b-c);
+        // Give size to ArrayList
+        // ArrayList<integer> arr=new ArrayList<>(size);
+        // fill all index of ArrayList with 0
+        // Collections.fill(arr,0);  //it throw error some time
+        // Do both things at one time
+        // ArrayList<Integer> arr=new ArrayList<>(Collections.nCopies(size,0)); //this is best way
         // arr.add();
+        // arr.set(index,element); //replace particular index element with some other element
         // arr.add(0,5); //add 5 to oth position now array size increase by 1
         // arr.get(index);
         // arr.size(); //find size of arr
         // arr.remove(index);
+        // //sort in desending order
+        // Collections.sort(arr,(c,b)->b-c);
 
         // // pair ArrayList
         // ArrayList<Pair> arr=new ArrayList<>();
