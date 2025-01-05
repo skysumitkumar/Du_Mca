@@ -29,6 +29,10 @@ public class index
    
     public static void main(String a[])
     {
+        // int[] arr=new int[size];
+        // sort array
+        // Arrays.sort(arr);
+        
         // ArrayList<Integer> arr=new ArrayList<>();
         // Give size to ArrayList
         // ArrayList<integer> arr=new ArrayList<>(size);
