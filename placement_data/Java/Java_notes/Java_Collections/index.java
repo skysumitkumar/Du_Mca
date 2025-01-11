@@ -108,7 +108,8 @@ public class index
         // //Map
         // Map<Integer,String> m=new HashMap<>();
         // Or
-        //HashMap<Integer,String>m2=new HashMap<>();
+        // HashMap<Integer,String>m2=new HashMap<>();
+        //HashMap<Character,Integer>m3=new HashMap<>();
         // Map<Integer,Integer> m1=new HashMap<>();
         // m1.put(4,5);
         // m.put(4,"sumit");
@@ -117,6 +118,7 @@ public class index
         // m.remove(4);
         // m.put(4,"Ankit");
         // m.put(4,m.getOrDefault(4,0)+1);
+        // m3.put(s.charAt(j),m.getOrDefault(s.charAt(j),0)+1);
         // m1.size();
 
         // //Map of pair
