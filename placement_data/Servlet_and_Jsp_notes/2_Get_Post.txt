@@ -1,0 +1,138 @@
+Post method:-send data to the server
+Get method:-Fetch data from the server
+Put method:-
+Delete method:-
+Options method:-
+
+
+index.html file
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	//by default method is get in this we see the data in the url which we pass in the input
+	<form action="add" method="get">
+		Enter 1st number: <input type="text" name="num1"></input><br>
+		Enter 2nd number: <input type="text" name="num2"></input><br>
+		<input type="submit"></input>
+	</form>
+</body>
+</html>
+
+AddServlet.java
+
+package com.sumit;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class AddServlet extends HttpServlet
+{
+	//here we use doGet method if we use post in the form method then we got error because we only have get method here
+	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		int i=Integer.parseInt(req.getParameter("num1"));
+		int j=Integer.parseInt(req.getParameter("num2"));
+		int k=i+j;
+		//System.out.println("Sum is "+k);
+		PrintWriter out=res.getWriter();
+		out.println("result is "+k);
+	}
+}
+
+
+index.html file
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	//if we use post method here then when we submit the form we don't see what we pass in the input in the url
+	<form action="add" method="post">
+		Enter 1st number: <input type="text" name="num1"></input><br>
+		Enter 2nd number: <input type="text" name="num2"></input><br>
+		<input type="submit"></input>
+	</form>
+</body>
+</html>
+
+AddServlet.java
+
+package com.sumit;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class AddServlet extends HttpServlet
+{
+	//here we use doPet method if we use Get in the form method then we got error because we only have Post method here
+	public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		int i=Integer.parseInt(req.getParameter("num1"));
+		int j=Integer.parseInt(req.getParameter("num2"));
+		int k=i+j;
+		//System.out.println("Sum is "+k);
+		PrintWriter out=res.getWriter();
+		out.println("result is "+k);
+	}
+}
+
+index.html file
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="add" method="post">
+		Enter 1st number: <input type="text" name="num1"></input><br>
+		Enter 2nd number: <input type="text" name="num2"></input><br>
+		<input type="submit"></input>
+	</form>
+</body>
+</html>
+
+AddServlet.java
+
+package com.sumit;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class AddServlet extends HttpServlet
+{
+	//now use anything get or post because we make both method here
+	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		int i=Integer.parseInt(req.getParameter("num1"));
+		int j=Integer.parseInt(req.getParameter("num2"));
+		int k=i+j;
+		//System.out.println("Sum is "+k);
+		PrintWriter out=res.getWriter();
+		out.println("result is "+k);
+	}
+	public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		int i=Integer.parseInt(req.getParameter("num1"));
+		int j=Integer.parseInt(req.getParameter("num2"));
+		int k=i+j;
+		//System.out.println("Sum is "+k);
+		PrintWriter out=res.getWriter();
+		out.println("result is "+k);
+	}
+}

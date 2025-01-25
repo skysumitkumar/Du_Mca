@@ -1,0 +1,58 @@
+index.html file
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	//here in action we give add so that when we submit it find the add servlet to perform operation on that data
+	<form action="add">
+		Enter 1st number: <input type="text" name="num1"></input><br>
+		Enter 2nd number: <input type="text" name="num2"></input><br>
+		<input type="submit"></input>
+	</form>
+</body>
+</html>
+
+AddServlet.java file
+
+package com.sumit;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class AddServlet extends HttpServlet
+{
+	public void service(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{	
+		//req.getParameter("num1") give us to string
+		int i=Integer.parseInt(req.getParameter("num1"));
+		int j=Integer.parseInt(req.getParameter("num2"));
+		int k=i+j;
+		//it not print on the web page it just print on the console
+		//System.out.println("Sum is "+k);
+		//it also give exception so we have to add throws IOException
+		PrintWriter out=res.getWriter();
+		//to print on the page we use this
+		out.println("result is "+k);
+	}
+}
+
+web.xml file
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  //here we map add to AddServlet
+  <servlet>
+  	<servlet-name>abc</servlet-name>
+  	<servlet-class>com.sumit.AddServlet</servlet-class> //remember to give package name also
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>abc</servlet-name>
+  	<url-pattern>/add</url-pattern>
+  </servlet-mapping>
+</web-app>
