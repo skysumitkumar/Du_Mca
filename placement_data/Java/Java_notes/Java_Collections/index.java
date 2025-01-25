@@ -29,6 +29,10 @@ public class index
    
     public static void main(String a[])
     {
+        // int[] arr=new int[size];
+        // sort array
+        // Arrays.sort(arr);
+        
         // ArrayList<Integer> arr=new ArrayList<>();
         // Give size to ArrayList
         // ArrayList<integer> arr=new ArrayList<>(size);
@@ -103,6 +107,9 @@ public class index
 
         // //Map
         // Map<Integer,String> m=new HashMap<>();
+        // Or
+        // HashMap<Integer,String>m2=new HashMap<>();
+        //HashMap<Character,Integer>m3=new HashMap<>();
         // Map<Integer,Integer> m1=new HashMap<>();
         // m1.put(4,5);
         // m.put(4,"sumit");
@@ -110,7 +117,8 @@ public class index
         // m.get(4);
         // m.remove(4);
         // m.put(4,"Ankit");
-        // m1.put(4,m1.get(4)+1);
+        // m.put(4,m.getOrDefault(4,0)+1);
+        // m3.put(s.charAt(j),m.getOrDefault(s.charAt(j),0)+1);
         // m1.size();
 
         // //Map of pair
