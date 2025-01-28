@@ -185,7 +185,30 @@ public class index
         // s.setCharAt(3,'l');
 
         // StringBuffer
-        StringBuffer s=new StringBuffer("sumit kumar");
+        StringBuffer sb=new StringBuffer("sumit kumar");
+        sb.append("World");
+        sb.insert(5,"Java");
+        sb.replace(0,5,"Hi");  // Replaces characters from index 0 to 4 with "Hi"
+        sb.delete(0,3);  // Deletes characters from index 0 to 2
+        sb.deleteCharAt(5);  // Deletes the character at index 5
+        sb.reverse();  // Reverses the string
+        int capacity = sb.capacity();  // Get the current capacity
+        int length = sb.length();  // Get the length
+        char ch = sb.charAt(5);  // Get the character at index 5
+        sb.setCharAt(5,'Z');  // Set the character at index 5 to 'Z'
+        String sub1=sb.substring(5);      // Substring from index 5 to the end
+        String sub2=sb.substring(0, 5);   // Substring from index 0 to 4
+        int index1=sb.indexOf("Java");       // First occurrence of "Java"
+        int index2=sb.indexOf("Java", 5);    // First occurrence of "Java" starting from index 5
+        String str=sb.toString();  // Converts to a String
+        int capacity=sb.capacity();        // Get the current capacity
+        sb.ensureCapacity(50);               // Ensure the capacity is at least 50
+        sb.trimToSize();                     // Reduce capacity to the current string length
+
+        //swap to index 
+        char temp=s.charAt(i);
+        s.setCharAt(i,s.charAt(index));
+        s.setCharAt(index,temp);
         
     }
 }
