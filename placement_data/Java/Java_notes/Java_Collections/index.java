@@ -30,6 +30,7 @@ public class index
     public static void main(String a[])
     {
         // int[] arr=new int[size];
+        // int[][] arr1=new int[row][col];
         // sort array
         // Arrays.sort(arr);
         
@@ -159,12 +160,16 @@ public class index
         // PriorityQueue<Integer> p=new PriorityQueue<>();
         // p.add(4);
         // p.add(2);
+        or
+        //p.offer(2);
+        //System.out.println(p.contains(5));
+        //p.clear();
         // System.out.println(p.peek());
         // p.remove();
         // System.out.println(p.peek());
 
         // //Priority queue by maxHeap
-        // PriorityQueue<Integer> p=new PriorityQueue<>((p1,p2)->p2-p1);
+        // PriorityQueue<Integer> p=new PriorityQueue<>((p1,p2)->p2-p1); //if we write second-first it give us in decending order
 
         // //Priority queue by maxHeap Pair
         // PriorityQueue<Pair> p=new PriorityQueue<>((p1,p2)->p2.y-p1.y);
