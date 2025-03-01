@@ -209,6 +209,7 @@ public class index
         int capacity=sb.capacity();        // Get the current capacity
         sb.ensureCapacity(50);               // Ensure the capacity is at least 50
         sb.trimToSize();                     // Reduce capacity to the current string length
+        sb.setLength(0);                    //to clear the length
 
         //swap to index 
         char temp=s.charAt(i);
