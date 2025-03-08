@@ -1,0 +1,298 @@
+Main.java file
+
+package org.sumit;
+
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
+        // to see how IntelliJ IDEA suggests fixing it.
+        Student s1=new Student();
+        s1.setRollNo(39);
+        s1.setsAge(21);
+        s1.setsName("ann");
+
+        SessionFactory sf=new Configuration().addAnnotatedClass(org.sumit.Student.class).configure().buildSessionFactory();
+        Session session=sf.openSession();
+
+        Transaction tx=session.beginTransaction();
+
+	//delete the object with the search of the primary key
+        session.remove(s1);
+
+        tx.commit();
+        session.close();
+        sf.close();
+
+
+
+    }
+}
+
+
+Student.java file
+
+package org.sumit;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class Student {
+    @Id
+    private int rollNo;
+    private String sName;
+    private int sAge;
+
+    public int getRollNo() {
+        return rollNo;
+    }
+
+    public void setRollNo(int rollNo) {
+        this.rollNo = rollNo;
+    }
+
+    public String getsName() {
+        return sName;
+    }
+
+    public void setsName(String sName) {
+        this.sName = sName;
+    }
+
+    public int getsAge() {
+        return sAge;
+    }
+
+    public void setsAge(int sAge) {
+        this.sAge = sAge;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "rollNo=" + rollNo +
+                ", sName='" + sName + '\'' +
+                ", sAge=" + sAge +
+                '}';
+    }
+}
+
+
+hibernate.cfg.xml
+
+
+<hibernate-configuration xmlns="http://www.hibernate.org/xsd/orm/cfg">
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/USER_DETAILS</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">123456789</property>
+	<!--create:-create new table
+	update:-if table not present it create or if it present it make change on databases -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+	<!--if face any issue-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+	<!--it show the sql query-->
+        <property name="hibernate.show_sql">true</property>
+	<!-- it show the sql query in formated manner-->
+        <property name="hibernate.format_sql">true</property>
+
+    </session-factory>
+</hibernate-configuration>
+
+
+pom.xml file
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>demo1</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>9.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>6.6.5.Final</version>
+        </dependency>
+
+    </dependencies>
+
+    <properties>
+        <maven.compiler.source>23</maven.compiler.source>
+        <maven.compiler.target>23</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+</project>
+
+
+
+Main.java file
+
+package org.sumit;
+
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
+        // to see how IntelliJ IDEA suggests fixing it.
+        Student s1=new Student();
+ 
+        SessionFactory sf=new Configuration().addAnnotatedClass(org.sumit.Student.class).configure().buildSessionFactory();
+        Session session=sf.openSession();
+	
+	//get the data in s1
+	s1=session.get(Student.class,39);
+
+        Transaction tx=session.beginTransaction();
+
+	//delete the object with the search of the primary key
+        session.remove(s1);
+
+        tx.commit();
+        session.close();
+        sf.close();
+
+
+
+    }
+}
+
+
+Student.java file
+
+package org.sumit;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class Student {
+    @Id
+    private int rollNo;
+    private String sName;
+    private int sAge;
+
+    public int getRollNo() {
+        return rollNo;
+    }
+
+    public void setRollNo(int rollNo) {
+        this.rollNo = rollNo;
+    }
+
+    public String getsName() {
+        return sName;
+    }
+
+    public void setsName(String sName) {
+        this.sName = sName;
+    }
+
+    public int getsAge() {
+        return sAge;
+    }
+
+    public void setsAge(int sAge) {
+        this.sAge = sAge;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "rollNo=" + rollNo +
+                ", sName='" + sName + '\'' +
+                ", sAge=" + sAge +
+                '}';
+    }
+}
+
+
+hibernate.cfg.xml
+
+
+<hibernate-configuration xmlns="http://www.hibernate.org/xsd/orm/cfg">
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/USER_DETAILS</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">123456789</property>
+	<!--create:-create new table
+	update:-if table not present it create or if it present it make change on databases -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+	<!--if face any issue-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+	<!--it show the sql query-->
+        <property name="hibernate.show_sql">true</property>
+	<!-- it show the sql query in formated manner-->
+        <property name="hibernate.format_sql">true</property>
+
+    </session-factory>
+</hibernate-configuration>
+
+
+pom.xml file
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>demo1</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>9.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>6.6.5.Final</version>
+        </dependency>
+
+    </dependencies>
+
+    <properties>
+        <maven.compiler.source>23</maven.compiler.source>
+        <maven.compiler.target>23</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+</project>
+

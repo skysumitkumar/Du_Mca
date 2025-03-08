@@ -1,0 +1,240 @@
+//here we got both mapping table Student to Laptop or Laptop to Student so to solve this see next file
+
+Main.java file
+
+package org.sumit;
+
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import java.util.Arrays;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
+        // to see how IntelliJ IDEA suggests fixing it.
+        Laptop laptop=new Laptop();
+        laptop.setLid(1);
+        laptop.setModel("mac");
+        laptop.setBrand("apple");
+        laptop.setYear(2025);
+
+        Laptop laptop1=new Laptop();
+        laptop1.setLid(2);
+        laptop1.setModel("dell");
+        laptop1.setBrand("xps");
+        laptop1.setYear(2026);
+
+        Laptop laptop3=new Laptop();
+        laptop3.setLid(4);
+        laptop3.setModel("redmi");
+        laptop3.setBrand("xdf");
+        laptop3.setYear(2025);
+
+        Student s1=new Student();
+        s1.setAid(10);
+        s1.setRollNo(39);
+        s1.setsAge(21);
+        s1.setsName("ann");
+        s1.setLaptop(Arrays.asList(laptop,laptop1,laptop3));
+
+        Student s2=new Student();
+        s2.setAid(11);
+        s2.setRollNo(39);
+        s2.setsAge(21);
+        s2.setsName("amit");
+        s2.setLaptop(Arrays.asList(laptop,laptop1,laptop3));
+
+        laptop.setStudent(Arrays.asList(s1,s2));
+        laptop1.setStudent(Arrays.asList(s1,s2));
+        laptop3.setStudent(Arrays.asList(s1,s2));
+
+        SessionFactory sf=new Configuration().addAnnotatedClass(org.sumit.Student.class).addAnnotatedClass(org.sumit.Laptop.class).configure().buildSessionFactory();
+        Session session=sf.openSession();
+
+        Transaction tx=session.beginTransaction();
+        session.persist(laptop);
+        session.persist(laptop1);
+        session.persist(laptop3);
+        session.persist(s1);
+        session.persist(s2);
+
+        tx.commit();
+
+        session.close();
+	Session session =sf.openSession();
+	
+	//if we write this but don't want to print hibernate not print laptop details it is lazy to fetch
+	Student s5=session.get(Student.class,11);
+	
+	//but if we have to print that object then hibernate think that is important so at that time it fetch that and print that
+        //System.out.println(s5);
+        sf.close();
+
+
+
+
+    }
+}
+
+Student.java file
+
+package org.sumit;
+
+import jakarta.persistence.*;
+
+import java.util.List;
+
+@Entity
+public class Student {
+    @Id
+    private int aid;
+    private int rollNo;
+    private String sName;
+    private int sAge;
+
+    //here we said hibernate fetch type is EAGER so when you fetch also fetch laptops
+    @ManyToMany(fetch="FetchType.EAGER)
+    private List<Laptop> laptop;
+    public int getAid() {
+        return aid;
+    }
+
+    public void setAid(int aid) {
+        this.aid = aid;
+    }
+
+    public void setLaptop(List<Laptop> laptop) {
+        this.laptop = laptop;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "aid=" + aid +
+                ", rollNo=" + rollNo +
+                ", sName='" + sName + '\'' +
+                ", sAge=" + sAge +
+                ", laptop=" + laptop +
+                '}';
+    }
+
+
+    public int getRollNo() {
+        return rollNo;
+    }
+
+    public void setRollNo(int rollNo) {
+        this.rollNo = rollNo;
+    }
+
+    public String getsName() {
+        return sName;
+    }
+
+    public void setsName(String sName) {
+        this.sName = sName;
+    }
+
+    public int getsAge() {
+        return sAge;
+    }
+
+    public void setsAge(int sAge) {
+        this.sAge = sAge;
+    }
+
+
+}
+
+Laptop.java file
+
+package org.sumit;
+
+import jakarta.persistence.*;
+
+import java.util.List;
+
+@Entity
+public class Student {
+    @Id
+    private int aid;
+    private int rollNo;
+    private String sName;
+    private int sAge;
+    @ManyToMany(mappedBy = "laptop")
+    private List<Laptop> laptop;
+    public int getAid() {
+        return aid;
+    }
+
+    public void setAid(int aid) {
+        this.aid = aid;
+    }
+
+    public void setLaptop(List<Laptop> laptop) {
+        this.laptop = laptop;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "aid=" + aid +
+                ", rollNo=" + rollNo +
+                ", sName='" + sName + '\'' +
+                ", sAge=" + sAge +
+                ", laptop=" + laptop +
+                '}';
+    }
+
+
+    public int getRollNo() {
+        return rollNo;
+    }
+
+    public void setRollNo(int rollNo) {
+        this.rollNo = rollNo;
+    }
+
+    public String getsName() {
+        return sName;
+    }
+
+    public void setsName(String sName) {
+        this.sName = sName;
+    }
+
+    public int getsAge() {
+        return sAge;
+    }
+
+    public void setsAge(int sAge) {
+        this.sAge = sAge;
+    }
+
+
+}
+
+hibernate.cfg.xml file
+
+<hibernate-configuration xmlns="http://www.hibernate.org/xsd/orm/cfg">
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/USER_DETAILS</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">123456789</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
+
+        <!--if face any issue-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+
+    </session-factory>
+</hibernate-configuration>

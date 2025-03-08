@@ -1,0 +1,195 @@
+Main.java file
+
+package org.sumit;
+
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
+        // to see how IntelliJ IDEA suggests fixing it.
+        Laptop laptop=new Laptop();
+        laptop.setLid(1);
+        laptop.setModel("mac");
+        laptop.setBrand("apple");
+        laptop.setYear(2025);
+
+        Student s1=new Student();
+        s1.setAid(10);
+        s1.setRollNo(39);
+        s1.setsAge(21);
+        s1.setsName("ann");
+        s1.setLaptop(laptop);
+	
+	//here we add annotated for Student and Laptop both
+        SessionFactory sf=new Configuration().addAnnotatedClass(org.sumit.Student.class).addAnnotatedClass(org.sumit.Laptop.class).configure().buildSessionFactory();
+        Session session=sf.openSession();
+
+        Transaction tx=session.beginTransaction();
+        session.persist(s1);
+        session.persist(laptop);
+
+        tx.commit();
+        session.close();
+        sf.close();
+
+
+
+    }
+}
+
+Student.java file
+
+package org.sumit;
+
+import jakarta.persistence.*;
+
+@Entity
+public class Student {
+    @Id
+    private int aid;
+    private int rollNo;
+    private String sName;
+    private int sAge;
+    @OneToOne
+    private Laptop laptop;
+    public int getAid() {
+        return aid;
+    }
+
+    public void setAid(int aid) {
+        this.aid = aid;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "aid=" + aid +
+                ", rollNo=" + rollNo +
+                ", sName='" + sName + '\'' +
+                ", sAge=" + sAge +
+                ", laptop=" + laptop +
+                '}';
+    }
+
+
+
+    public int getRollNo() {
+        return rollNo;
+    }
+
+    public void setRollNo(int rollNo) {
+        this.rollNo = rollNo;
+    }
+
+    public String getsName() {
+        return sName;
+    }
+
+    public void setsName(String sName) {
+        this.sName = sName;
+    }
+
+    public int getsAge() {
+        return sAge;
+    }
+
+    public void setsAge(int sAge) {
+        this.sAge = sAge;
+    }
+
+    public Laptop getLaptop() {
+        return laptop;
+    }
+
+    public void setLaptop(Laptop laptop) {
+        this.laptop = laptop;
+    }
+
+}
+
+
+Laptop.java file
+
+package org.sumit;
+
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class Laptop {
+    @Id
+    private int lid;
+    private String brand;
+    private String model;
+    private int year;
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public int getLid() {
+        return lid;
+    }
+
+    public void setLid(int lid) {
+        this.lid = lid;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    @Override
+    public String toString() {
+        return "Laptop{" +
+                "lid=" + lid +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", year=" + year +
+                '}';
+    }
+}
+
+
+hibernate.cfg.xml file
+
+<hibernate-configuration xmlns="http://www.hibernate.org/xsd/orm/cfg">
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/USER_DETAILS</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">123456789</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
+
+        <!--if face any issue-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+
+    </session-factory>
+</hibernate-configuration>
