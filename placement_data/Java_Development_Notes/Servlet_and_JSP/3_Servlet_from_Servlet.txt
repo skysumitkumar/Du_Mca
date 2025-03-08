@@ -1,0 +1,171 @@
+index.html file
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="add" method="get">
+		Enter 1st number: <input type="text" name="num1"></input><br>
+		Enter 2nd number: <input type="text" name="num2"></input><br>
+		<input type="submit"></input>
+	</form>
+</body>
+</html>
+
+AddServlet.java file
+
+package com.sumit;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class AddServlet extends HttpServlet
+{
+	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException
+	{
+		int i=Integer.parseInt(req.getParameter("num1"));
+		int j=Integer.parseInt(req.getParameter("num2"));
+		int k=i+j;
+		//here RequestDispatcher is Interface here we pass the servlet sq 
+		RequestDispatcher rd=req.getRequestDispatcher("sq");
+		//here we foward the request and responce obj
+		rd.forward(req,res);
+	}
+}
+
+SquareServlet.java file
+
+package com.sumit;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+public class SquareServlet extends HttpServlet
+{
+	public void doGet(HttpServletRequest req,HttpServletResponse res)throws IOException
+	{
+		PrintWriter out=res.getWriter();
+		out.print("hello i am in the square servlet");		
+	}
+}
+
+web.xml file
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <servlet>
+  	<servlet-name>abc</servlet-name>
+  	<servlet-class>com.sumit.AddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>abc</servlet-name>
+  	<url-pattern>/add</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>SquareServlet</servlet-name>
+  	<servlet-class>com.sumit.SquareServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SquareServlet</servlet-name>
+  	<url-pattern>/sq</url-pattern>
+  </servlet-mapping>
+</web-app>
+
+index.html file
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="add" method="get">
+		Enter 1st number: <input type="text" name="num1"></input><br>
+		Enter 2nd number: <input type="text" name="num2"></input><br>
+		<input type="submit"></input>
+	</form>
+</body>
+</html>
+
+AddServlet.java file
+
+package com.sumit;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class AddServlet extends HttpServlet
+{
+	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException
+	{
+		int i=Integer.parseInt(req.getParameter("num1"));
+		int j=Integer.parseInt(req.getParameter("num2"));
+		int k=i+j;
+		
+		//Session Managment
+		//here we map k with "k" and we set this is req because we pass req.forward(req,res)
+		req.setAttribute("k",k);
+		RequestDispatcher rd=req.getRequestDispatcher("sq");
+		rd.forward(req,res);
+	}
+}
+
+SquareServlet.java file
+
+package com.sumit;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+public class SquareServlet extends HttpServlet
+{
+	public void doGet(HttpServletRequest req,HttpServletResponse res)throws IOException
+	{
+		PrintWriter out=res.getWriter();
+		//to get the value of "k" that we pass from the AddServlet
+		int k=(int)req.getAttribute("k");
+		k=k*k;
+		out.print("square is "+k);
+		
+	}
+}
+
+web.xml file
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <servlet>
+  	<servlet-name>abc</servlet-name>
+  	<servlet-class>com.sumit.AddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>abc</servlet-name>
+  	<url-pattern>/add</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>SquareServlet</servlet-name>
+  	<servlet-class>com.sumit.SquareServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SquareServlet</servlet-name>
+  	<url-pattern>/sq</url-pattern>
+  </servlet-mapping>
+</web-app>

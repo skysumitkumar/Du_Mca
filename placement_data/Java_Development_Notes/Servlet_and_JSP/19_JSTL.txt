@@ -1,0 +1,230 @@
+Classification of The JSTL Tags
+The JSTL tags can be classified, according to their functions, into the following JSTL tag library groups that can be used when creating a JSP page −
+
+Core Tags
+
+Formatting tags
+
+SQL tags
+
+XML tags
+
+JSTL Functions
+
+Core Tags
+The core group of tags are the most commonly used JSTL tags. Following is the syntax to include the JSTL Core library in your JSP −
+
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+Following table lists out the core JSTL Tags −
+
+S.No.	Tag & Description
+1	<c:out>
+	Like <%= ... >, but for expressions.
+
+2	<c:set >
+	Sets the result of an expression evaluation in a 'scope'
+
+3	<c:remove >
+	Removes a scoped variable (from a particular scope, if specified).
+
+4	<c:catch>
+	Catches any Throwable that occurs in its body and optionally exposes it.
+
+5	<c:if>
+	Simple conditional tag which evalutes its body if the supplied condition is true.
+
+6	<c:choose>
+	Simple conditional tag that establishes a context for mutually exclusive conditional operations, marked by <when> and <otherwise>.
+
+7	<c:when>
+	Subtag of <choose> that includes its body if its condition evalutes to 'true'.
+
+8	<c:otherwise >
+	Subtag of <choose> that follows the <when> tags and runs only if all of the prior conditions evaluated to 'false'.
+
+9	<c:import>
+	Retrieves an absolute or relative URL and exposes its contents to either the page, a String in 'var', or a Reader in 'varReader'.
+
+10	<c:forEach >
+	The basic iteration tag, accepting many different collection types and supporting subsetting and other functionality .
+
+11	<c:forTokens>
+	Iterates over tokens, separated by the supplied delimeters.
+
+12	<c:param>
+	Adds a parameter to a containing 'import' tag's URL.
+
+13	<c:redirect >
+	Redirects to a new URL.
+
+14	<c:url>
+	Creates a URL with optional query parameters
+
+Formatting Tags
+The JSTL formatting tags are used to format and display text, the date, the time, and numbers for internationalized Websites. Following is the syntax to include Formatting library in your JSP −
+
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+Following table lists out the Formatting JSTL Tags −
+
+S.No.	Tag & Description
+1	<fmt:formatNumber>
+	To render numerical value with specific precision or format.
+
+2	<fmt:parseNumber>
+	Parses the string representation of a number, currency, or percentage.
+
+3	<fmt:formatDate>
+	Formats a date and/or time using the supplied styles and pattern.
+
+4	<fmt:parseDate>
+	Parses the string representation of a date and/or time
+
+5	<fmt:bundle>
+	Loads a resource bundle to be used by its tag body.
+
+6	<fmt:setLocale>
+	Stores the given locale in the locale configuration variable.
+
+7	<fmt:setBundle>
+	Loads a resource bundle and stores it in the named scoped variable or the bundle configuration variable.
+
+8	<fmt:timeZone>
+	Specifies the time zone for any time formatting or parsing actions nested in its body.
+
+9	<fmt:setTimeZone>
+	Stores the given time zone in the time zone configuration variable
+
+10	<fmt:message>
+	Displays an internationalized message.
+
+11	<fmt:requestEncoding>
+	Sets the request character encoding
+
+SQL Tags
+The JSTL SQL tag library provides tags for interacting with relational databases (RDBMSs) such as Oracle, mySQL, or Microsoft SQL Server.
+
+Following is the syntax to include JSTL SQL library in your JSP −
+
+<%@ taglib prefix = "sql" uri = "http://java.sun.com/jsp/jstl/sql" %>
+Following table lists out the SQL JSTL Tags −
+
+S.No.	Tag & Description
+1	<sql:setDataSource>
+	Creates a simple DataSource suitable only for prototyping
+
+2	<sql:query>
+	Executes the SQL query defined in its body or through the sql attribute.
+
+3	<sql:update>
+	Executes the SQL update defined in its body or through the sql attribute.
+
+4	<sql:param>
+	Sets a parameter in an SQL statement to the specified value.
+
+5	<sql:dateParam>
+	Sets a parameter in an SQL statement to the specified java.util.Date value.
+
+6	<sql:transaction >
+	Provides nested database action elements with a shared Connection, set up to execute all statements as one transaction.
+
+XML tags
+The JSTL XML tags provide a JSP-centric way of creating and manipulating the XML documents. Following is the syntax to include the JSTL XML library in your JSP.
+
+The JSTL XML tag library has custom tags for interacting with the XML data. This includes parsing the XML, transforming the XML data, and the flow control based on the XPath expressions.
+
+<%@ taglib prefix = "x" 
+   uri = "http://java.sun.com/jsp/jstl/xml" %>
+Before you proceed with the examples, you will need to copy the following two XML and XPath related libraries into your <Tomcat Installation Directory>\lib −
+
+XercesImpl.jar − Download it from https://www.apache.org/dist/xerces/j/
+
+xalan.jar − Download it from https://xml.apache.org/xalan-j/index.html
+
+Following is the list of XML JSTL Tags −
+
+S.No.	Tag & Description
+1	<x:out>
+	Like <%= ... >, but for XPath expressions.
+
+2	<x:parse>
+	Used to parse the XML data specified either via an attribute or in the tag body.
+
+3	<x:set >
+	Sets a variable to the value of an XPath expression.
+
+4	<x:if >
+	Evaluates a test XPath expression and if it is true, it processes its body. If the test condition is false, the body is ignored.
+
+5	<x:forEach>
+	To loop over nodes in an XML document.
+
+6	<x:choose>
+	Simple conditional tag that establishes a context for mutually exclusive conditional operations, marked by <when> and <otherwise> tags.
+
+7	<x:when >
+	Subtag of <choose> that includes its body if its expression evalutes to 'true'.
+
+8	<x:otherwise >
+	Subtag of <choose> that follows the <when> tags and runs only if all of the prior conditions evaluates to 'false'.
+
+9	<x:transform >
+	Applies an XSL transformation on a XML document
+
+10	<x:param >
+	Used along with the transform tag to set a parameter in the XSLT stylesheet
+
+JSTL Functions
+JSTL includes a number of standard functions, most of which are common string manipulation functions. Following is the syntax to include JSTL Functions library in your JSP −
+
+<%@ taglib prefix = "fn" 
+   uri = "http://java.sun.com/jsp/jstl/functions" %>
+Following table lists out the various JSTL Functions −
+
+S.No.	Function & Description
+1	fn:contains()
+	Tests if an input string contains the specified substring.
+
+2	fn:containsIgnoreCase()
+	Tests if an input string contains the specified substring in a case insensitive way.
+
+3	fn:endsWith()
+	Tests if an input string ends with the specified suffix.
+
+4	fn:escapeXml()
+	Escapes characters that can be interpreted as XML markup.
+
+5	fn:indexOf()
+	Returns the index withing a string of the first occurrence of a specified substring.
+
+6	fn:join()
+	Joins all elements of an array into a string.
+
+7	fn:length()
+	Returns the number of items in a collection, or the number of characters in a string.
+
+8	fn:replace()
+	Returns a string resulting from replacing in an input string all occurrences with a given string.
+
+9	fn:split()
+	Splits a string into an array of substrings.
+
+10	fn:startsWith()
+	Tests if an input string starts with the specified prefix.
+
+11	fn:substring()
+	Returns a subset of a string.
+
+12	fn:substringAfter()
+	Returns a subset of a string following a specific substring.
+
+13	fn:substringBefore()
+	Returns a subset of a string before a specific substring.
+
+14	fn:toLowerCase()
+	Converts all of the characters of a string to lower case.
+
+15	fn:toUpperCase()
+	Converts all of the characters of a string to upper case.
+
+16	fn:trim()
+	Removes white spaces from both ends of a string.

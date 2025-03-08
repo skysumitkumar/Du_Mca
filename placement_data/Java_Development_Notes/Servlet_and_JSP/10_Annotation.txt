@@ -1,0 +1,139 @@
+index.html file
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="add" method="get">
+		Enter 1st number: <input type="text" name="num1"></input><br>
+		Enter 2nd number: <input type="text" name="num2"></input><br>
+		<input type="submit"></input>
+	</form>
+</body>
+</html>
+
+AddServlet.java file
+
+package com.sumit;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Cookie;
+import javax.servlet.annotation.WebServlet;
+
+//here we give annotation if we use add in action to html file this servlet is called
+@WebServlet("/add")
+
+public class AddServlet extends HttpServlet
+{
+	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException
+	{
+		int i=Integer.parseInt(req.getParameter("num1"));
+		int j=Integer.parseInt(req.getParameter("num2"));
+		int k=i+j;
+		//send req to server and you get res from the server will have cookiee and  when you send req to sq Servlet you can send same cookiee again
+		Cookie cookie=new Cookie("k",k+"");//here we pass it as string
+		res.addCookie(cookie);
+		res.sendRedirect("sq");
+	}
+}
+
+
+SquareServlet.java file
+
+package com.sumit;
+import java.io.IOException;
+
+import java.io.PrintWriter;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Cookie;
+import javax.servlet.annotation.WebServlet;
+
+//here we give annotation if we use sq in action to html file this servlet is called
+@WebServlet("/sq")
+public class SquareServlet extends HttpServlet
+{
+	public void doGet(HttpServletRequest req,HttpServletResponse res)throws IOException
+	{
+		int k=0;
+		Cookie cookies[]=req.getCookies();
+		for(Cookie c:cookies)
+		{
+			if(c.getName().equals("k"))
+			{
+				k=Integer.parseInt(c.getValue());
+			}
+		}
+		int i=k*k;
+		PrintWriter out=res.getWriter();
+		out.print("value is "+i);
+		
+	}
+}
+
+
+web.xml file
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <!--<servlet>
+  	<servlet-name>AddServlet</servlet-name>
+  	<servlet-class>com.sumit.AddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddServlet</servlet-name>
+  	<url-pattern>/add</url-pattern>
+  	
+  	
+  </servlet-mapping>
+  
+  <servlet>	
+  	<servlet-name>SquareServlet</servlet-name>
+  	<servlet-class>com.sumit.SquareServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SquareServlet</servlet-name>
+  	<url-pattern>/sq</url-pattern>
+  </servlet-mapping>-->
+  
+  <servlet>
+    <servlet-name>MyServlet</servlet-name>
+    <servlet-class>com.sumit.MyServlet</servlet-class>
+    <!--ServletConfig-->
+    <init-param>
+  		<param-name>Name</param-name>
+  		<param-value>Lokesh</param-value>
+  	</init-param>
+</servlet>
+<servlet-mapping>
+    <servlet-name>MyServlet</servlet-name>
+    <url-pattern>/myServlet</url-pattern>
+</servlet-mapping>
+
+
+  <!--these are shared by the all the servlet-->
+  <context-param>
+  	<param-name>Name</param-name>
+  	<param-value>Sumit</param-value>
+  </context-param>
+  
+  
+  <context-param>
+  	<param-name>Phone</param-name>
+  	<param-value>Iphone</param-value>
+  </context-param>
+</web-app>

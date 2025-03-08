@@ -1,0 +1,67 @@
+in this code we have problem without username and password if we open welcome.jsp file it open so to solve this problem we go the next file
+
+login.jsp file
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="Login">
+		Enter Username: <input type="text" name="username"><br/>
+		Enter Password: <input type="password" name="pass"><br/>
+		<input type="submit" value="login">
+	</form>
+</body>
+</html>
+
+
+Login.java file
+
+
+package com.sumit;
+
+import java.io.IOException;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/Login")
+public class Login extends HttpServlet
+{
+	protected void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		String username=req.getParameter("username");
+		String password=req.getParameter("pass");
+		if(username.equals("sumit")&&"12345".equals(password))
+		{
+			res.sendRedirect("welcome.jsp");
+		}
+		else
+		{
+			res.sendRedirect("login.jsp");
+		}
+	}
+}
+
+
+welcome.jsp file
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	hello Sumit
+</body>
+</html>

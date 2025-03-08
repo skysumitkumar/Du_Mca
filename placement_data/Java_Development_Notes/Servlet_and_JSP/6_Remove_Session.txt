@@ -1,0 +1,97 @@
+index.html file
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="add" method="get">
+		Enter 1st number: <input type="text" name="num1"></input><br>
+		Enter 2nd number: <input type="text" name="num2"></input><br>
+		<input type="submit"></input>
+	</form>
+</body>
+</html>
+
+AddServlet.java file
+
+package com.sumit;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+public class AddServlet extends HttpServlet
+{
+	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException
+	{
+		int i=Integer.parseInt(req.getParameter("num1"));
+		int j=Integer.parseInt(req.getParameter("num2"));
+		int k=i+j;
+		//here HttpSession is interface and here we make a session
+		HttpSession session=req.getSession();
+		//here we pass value of k throughout the session
+		session.setAttribute("k",k);
+		//here we pass req to SquareServlet
+		res.sendRedirect("sq");
+	}
+}
+
+SquareServlet.java file
+
+package com.sumit;
+import java.io.IOException;
+
+import java.io.PrintWriter;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+public class SquareServlet extends HttpServlet
+{
+	public void doGet(HttpServletRequest req,HttpServletResponse res)throws IOException
+	{
+		//Here we create the session
+		HttpSession session=req.getSession();
+
+		//To remove k from the session
+		session.removeAttribute("k");
+
+		//here we get the value of k from the session
+		int k=(int)session.getAttribute("k");	//Remember here we get value of k so take it on k otherwise confusion is happning
+		int i=k*k;
+		PrintWriter out=res.getWriter();
+		out.print("value is "+i);
+		
+	}
+}
+
+
+web.html file
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <servlet>
+  	<servlet-name>abc</servlet-name>
+  	<servlet-class>com.sumit.AddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>abc</servlet-name>
+  	<url-pattern>/add</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>SquareServlet</servlet-name>
+  	<servlet-class>com.sumit.SquareServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SquareServlet</servlet-name>
+  	<url-pattern>/sq</url-pattern>
+  </servlet-mapping>
+</web-app>

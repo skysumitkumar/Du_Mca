@@ -1,0 +1,132 @@
+in this code we have problem after the logout if we go back than it show us the previous page so to solve this problem we have to go to next file
+
+login.jsp file
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="Login">
+		Enter Username: <input type="text" name="username"><br/>
+		Enter Password: <input type="password" name="pass"><br/>
+		<input type="submit" value="login">
+	</form>
+</body>
+</html>
+
+
+Login.java file
+
+package com.sumit;
+
+import java.io.IOException;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@WebServlet("/Login")
+public class Login extends HttpServlet
+{
+	protected void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		String username=req.getParameter("username");
+		String password=req.getParameter("pass");
+		if(username.equals("sumit")&&"12345".equals(password))
+		{
+			//it set username and passowrd to all the session
+			HttpSession session=req.getSession();
+			session.setAttribute("username",username);
+			res.sendRedirect("welcome.jsp");
+		}
+		else
+		{
+			res.sendRedirect("login.jsp");
+		}
+	}
+}
+
+
+welcome.jsp file
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+		//it check the username if null redirect to login page again
+		if(session.getAttribute("username")==null)
+		{
+			response.sendRedirect("login.jsp");
+		}
+	%>
+	hello Sumit go to video site
+	<a href="video.jsp">videos here</a>
+</body>
+</html>
+
+
+video.jsp file
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+		if(session.getAttribute("username")==null)
+		{
+			response.sendRedirect("login.jsp");
+		}
+	%>
+	<form action="logout">
+		<input type="submit" value="logout">
+	</form>
+</body>
+</html>
+
+
+logout.java file
+
+package com.sumit;
+
+import java.io.IOException;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+@WebServlet("/logout")
+public class logout extends HttpServlet
+{
+	protected void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		HttpSession session=req.getSession();
+
+		//it remove the username to throught the session
+		session.removeAttribute("username");
+
+		//it invalidate the session
+		session.invalidate();
+		res.sendRedirect("login.jsp");
+	}
+}

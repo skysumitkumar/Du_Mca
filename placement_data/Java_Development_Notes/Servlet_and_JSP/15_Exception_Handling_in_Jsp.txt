@@ -1,0 +1,98 @@
+index.html file
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="add.jsp" method="get">
+		Enter 1st number: <input type="text" name="num1"></input><br>
+		Enter 2nd number: <input type="text" name="num2"></input><br>
+		<input type="submit"></input>
+	</form>
+</body>
+</html>
+
+
+add.jsp file
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body bgcolor="pink">
+
+<%
+	//here we handle our exception
+	try
+	{
+		int k=9/0;
+	}
+	catch(Exception e)
+	{
+		out.println("we got error"+e.getMessage());
+	}
+%>
+	
+
+</body>
+</html>
+
+index.html file
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="add.jsp" method="get">
+		Enter 1st number: <input type="text" name="num1"></input><br>
+		Enter 2nd number: <input type="text" name="num2"></input><br>
+		<input type="submit"></input>
+	</form>
+</body>
+</html>
+
+add.jsp file
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" errorPage="error.jsp"%> //we include errorPage here so we can redirect to error page if we got error
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body bgcolor="pink">
+
+<%
+	int k=9/0;
+%>
+	
+
+</body>
+</html>
+
+error.jsp file
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" isErrorPage="true"%>  //to said it is a error page so we can handle the exception
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	Error
+	<%=exception.getMessage() %> 	//here we handle the exception
+</body>
+</html>

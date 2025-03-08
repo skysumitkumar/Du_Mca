@@ -1,0 +1,87 @@
+Student.java file
+
+package com.sumit;
+import java.util.*;
+public class Student {
+	int rollNo;
+	String name;
+	Student(int rollNo,String name)
+	{
+		this.rollNo=rollNo;
+		this.name=name;
+	}
+	public int getRollNo() {
+		return rollNo;
+	}
+	public void setRollNo(int rollNo) {
+		this.rollNo = rollNo;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	@Override
+	public String toString() {
+		return "Student [rollNo=" + rollNo + ", name=" + name + "]";
+	}
+	
+}
+
+
+DemoServlet.java file
+
+package com.sumit;
+
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+
+@WebServlet("/DemoServlet")
+public class DemoServlet extends HttpServlet
+{
+	public void doGet(HttpServletRequest req,HttpServletResponse res) throws ServletException, IOException
+	{
+		List<Student> studs=Arrays.asList(new Student(1,"sumit"),new Student(2,"ankit"),new Student(3,"uttam"));
+		Student s=new Student(58,"sumit");
+		req.setAttribute("students",studs);
+		RequestDispatcher rd= req.getRequestDispatcher("DisplayName.jsp");
+		rd.forward(req,res);
+	}
+}
+
+
+DisplayName.jsp file
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+    <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>	//for sql
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	//for <c:
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	//var is where we store the database
+	//at the last of url we have to give the name of our database
+	<sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://localhost:3306/USER_DETAILS" user="root" password="123456789"/>
+	<sql:query var="rs" dataSource="${db}">SELECT* from loginPass</sql:query>
+	<c:forEach var="row" items="${rs.rows}">
+		<c:out value="${row.username }"></c:out>:<c:out value="${row.password }"></c:out>
+		<br/>
+	</c:forEach>
+</body>
+</html> 

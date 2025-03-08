@@ -1,0 +1,190 @@
+login.jsp file
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="Login" method="post">
+		Enter Username: <input type="text" name="username"><br/>
+		Enter Password: <input type="password" name="pass"><br/>
+		<input type="submit" value="login">
+	</form> 
+</body>
+</html>
+
+Login.java file
+
+package com.sumit;
+
+import java.io.IOException;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@WebServlet("/Login")
+public class Login extends HttpServlet
+{
+	protected void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		String username=req.getParameter("username");
+		String password=req.getParameter("pass");
+		
+		//here we make a object of dao class
+		LoginDao duo=new LoginDao();
+		
+		//here we call the dao function to check our username and password is correct or not
+		if(duo.check(username,password))
+		{
+			HttpSession session=req.getSession();
+			session.setAttribute("username",username);
+			res.sendRedirect("welcome.jsp");
+		}
+		else
+		{
+			res.sendRedirect("login.jsp");
+		}
+	}
+}
+
+
+LoginDao.java file
+
+package com.sumit;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class LoginDao {
+
+	//sql query that we want to check
+	String sql="SELECT * FROM loginPass WHERE username=? and password=?";
+	String url="jdbc:mysql://localhost:3306/USER_DETAILS";
+	String uname="root";
+	String pass="123456789";
+	public boolean check(String username,String password)
+	{
+		try
+		{
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con=DriverManager.getConnection(url,uname,pass);
+			//here we get the sql statement
+			PreparedStatement st=con.prepareStatement(sql);
+			st.setString(1,username);
+			st.setString(2, password);
+			//to execute the query
+			ResultSet rs=st.executeQuery();
+			if(rs.next())
+			{
+				return true;
+			}
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return false;
+	}
+}
+
+
+welcome.jsp file
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+		//with this after logout if we go to previous page it do redirect to your previous page it only work on HTTP 1.1
+		response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
+			
+		//for older version
+		response.setHeader("Pragma","no-cache");
+					
+		//for Proxies
+		response.setHeader("Expires","0");
+		if(session.getAttribute("username")==null)
+		{
+			response.sendRedirect("login.jsp");
+		}
+	%>
+	hello Sumit go to video site
+	<a href="video.jsp">videos here</a>
+</body>
+</html>
+
+
+
+video.jsp file
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+		//with this after logout if we go to previous page it do redirect to your previous page it only work on HTTP 1.1
+		response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
+		
+		//for older version
+		response.setHeader("Pragma","no-cache");
+				
+		//for Proxies
+		response.setHeader("Expires","0");
+		
+		if(session.getAttribute("username")==null)
+		{
+			response.sendRedirect("login.jsp");
+		}
+	%>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/714vHyjIisk?si=mixT9bG8CX65kgrA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+	<form action="logout">
+		<input type="submit" value="logout">
+	</form>
+</body>
+</html>
+
+
+logout.java file
+
+package com.sumit;
+
+import java.io.IOException;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+@WebServlet("/logout")
+public class logout extends HttpServlet
+{
+	protected void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		HttpSession session=req.getSession();
+		session.removeAttribute("username");
+		session.invalidate();
+		res.sendRedirect("login.jsp");
+	}
+}
