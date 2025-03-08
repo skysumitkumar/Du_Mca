@@ -30,6 +30,7 @@ public class index
     public static void main(String a[])
     {
         // int[] arr=new int[size];
+        // int[][] arr1=new int[row][col];
         // sort array
         // Arrays.sort(arr);
         
@@ -159,12 +160,16 @@ public class index
         // PriorityQueue<Integer> p=new PriorityQueue<>();
         // p.add(4);
         // p.add(2);
+        or
+        //p.offer(2);
+        //System.out.println(p.contains(5));
+        //p.clear();
         // System.out.println(p.peek());
         // p.remove();
         // System.out.println(p.peek());
 
         // //Priority queue by maxHeap
-        // PriorityQueue<Integer> p=new PriorityQueue<>((p1,p2)->p2-p1);
+        // PriorityQueue<Integer> p=new PriorityQueue<>((p1,p2)->p2-p1); //if we write second-first it give us in decending order
 
         // //Priority queue by maxHeap Pair
         // PriorityQueue<Pair> p=new PriorityQueue<>((p1,p2)->p2.y-p1.y);
@@ -185,7 +190,31 @@ public class index
         // s.setCharAt(3,'l');
 
         // StringBuffer
-        StringBuffer s=new StringBuffer("sumit kumar");
+        StringBuffer sb=new StringBuffer("sumit kumar");
+        sb.append("World");
+        sb.insert(5,"Java");
+        sb.replace(0,5,"Hi");  // Replaces characters from index 0 to 4 with "Hi"
+        sb.delete(0,3);  // Deletes characters from index 0 to 2
+        sb.deleteCharAt(5);  // Deletes the character at index 5
+        sb.reverse();  // Reverses the string
+        int capacity = sb.capacity();  // Get the current capacity
+        int length = sb.length();  // Get the length
+        char ch = sb.charAt(5);  // Get the character at index 5
+        sb.setCharAt(5,'Z');  // Set the character at index 5 to 'Z'
+        String sub1=sb.substring(5);      // Substring from index 5 to the end
+        String sub2=sb.substring(0, 5);   // Substring from index 0 to 4
+        int index1=sb.indexOf("Java");       // First occurrence of "Java"
+        int index2=sb.indexOf("Java", 5);    // First occurrence of "Java" starting from index 5
+        String str=sb.toString();  // Converts to a String
+        int capacity=sb.capacity();        // Get the current capacity
+        sb.ensureCapacity(50);               // Ensure the capacity is at least 50
+        sb.trimToSize();                     // Reduce capacity to the current string length
+        sb.setLength(0);                    //to clear the length
+
+        //swap to index 
+        char temp=s.charAt(i);
+        s.setCharAt(i,s.charAt(index));
+        s.setCharAt(index,temp);
         
     }
 }
