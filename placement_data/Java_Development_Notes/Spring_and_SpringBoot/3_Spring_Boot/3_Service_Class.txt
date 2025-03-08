@@ -1,0 +1,127 @@
+//main.java.org.sumit.springbootdemoapplication
+
+SpringBootDemoApplication.java file
+
+package org.sumit.springbootdemoapplication;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.sumit.springbootdemoapplication.model.Alien;
+import org.sumit.springbootdemoapplication.model.Laptop;
+import org.sumit.springbootdemoapplication.service.LaptopService;
+
+@SpringBootApplication
+public class SpringBootDemoApplication {
+
+    public static void main(String[] args) {
+
+        ApplicationContext context = SpringApplication.run(SpringBootDemoApplication.class, args);
+        LaptopService service = context.getBean(LaptopService.class);
+        Laptop lap = context.getBean(Laptop.class);
+        service.addLaptop(lap);
+
+    }
+}
+
+//org.sumit.springbootdemoapplication.service
+
+LaptopService.java file
+
+package org.sumit.springbootdemoapplication.service;
+
+import org.springframework.stereotype.Service;
+import org.sumit.springbootdemoapplication.model.Laptop;
+
+//here we said it is a service class
+@Service
+public class LaptopService {
+    public void addLaptop(Laptop lap)
+    {
+        System.out.println("method called");
+    }
+    public boolean isGoodForProg(Laptop lap)
+    {
+        return true;
+    }
+}
+
+//org.sumit.springbootdemoapplication.model
+
+Laptop.java file
+
+package org.sumit.springbootdemoapplication.model;
+
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
+
+@Component
+@Primary
+public class Laptop implements Computer{
+    public Laptop() {
+        System.out.println("Laptop Constructor is called");
+    }
+    @Override
+
+    public void compile()
+    {
+        System.out.println("Laptop code is compiling");
+    }
+}
+
+pom.xml file
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.2</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>org.sumit</groupId>
+    <artifactId>SpringBootDemoApplication</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>SpringBootDemoApplication</name>
+    <description>SpringBootDemoApplication</description>
+    <url/>
+    <licenses>
+        <license/>
+    </licenses>
+    <developers>
+        <developer/>
+    </developers>
+    <scm>
+        <connection/>
+        <developerConnection/>
+        <tag/>
+        <url/>
+    </scm>
+    <properties>
+        <java.version>17</java.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

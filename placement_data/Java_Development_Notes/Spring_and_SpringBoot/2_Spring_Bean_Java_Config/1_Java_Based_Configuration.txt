@@ -1,0 +1,64 @@
+//location of AppConfig class is org.sumit.config
+
+
+App.java class
+
+package org.sumit;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.sumit.config.AppConfig;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        //it will help to make the container
+        //in this give the name of java file where we have the configuration are present now
+        //spring framework knows what are the classes and objects is spring has to create for you in the container
+        ApplicationContext context=new AnnotationConfigApplicationContext(AppConfig.class);
+        Desktop dt=context.getBean(Desktop.class);
+        dt.compile();
+
+
+    }
+}
+
+
+Desktop.java class
+
+package org.sumit;
+
+public class Desktop implements Computer{
+    public Desktop() {
+        System.out.println("Desktop constructor is called");
+    }
+
+    @Override
+    public void compile()
+    {
+        System.out.println("Desktop Compile");
+    }
+}
+
+
+AppConfig.java class
+
+package org.sumit.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.sumit.Desktop;
+
+//to configurate your application so we have to make AppConfig class with Configuration annotation
+@Configuration
+public class AppConfig {
+
+    //here we said it is a bean
+    @Bean
+    public Desktop desktop()
+    {
+        return new Desktop();
+    }
+}

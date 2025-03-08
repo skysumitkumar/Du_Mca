@@ -1,0 +1,139 @@
+//com.sumit.SpringOAuthDemo
+
+SpringOAuthDemoApplication.java file
+
+package com.sumit.SpringOAuthDemo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SpringOAuthDemoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringOAuthDemoApplication.class, args);
+	}
+
+}
+
+//com.sumit.SpringOAuthDemo.controller
+
+HelloController.java file
+
+package com.sumit.SpringOAuthDemo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HelloController {
+
+    @GetMapping({"/","hello"})
+    public String hello()
+    {
+        return "Hello Sumit";
+    }
+}
+
+//com.sumit.SpringOAuthDemo.configuration
+
+SecurityConfig.java file
+
+package com.sumit.SpringOAuthDemo.configuration;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(auth->auth
+                                        .anyRequest()
+                                        .authenticated())
+                                        .oauth2Login(Customizer.withDefaults());
+        return http.build();
+    }
+
+}
+
+application.properties file
+
+spring.application.name=SpringOAuthDemo
+
+#set the credintial to the https://console.cloud.google.com/cloud-resource-manager?organizationId=0&supportedpurview=project
+spring.security.oauth2.client.registration.google.client-id=654646545df4g6d1fgfd4g56dfg6d4fg65fd4
+spring.security.oauth2.client.registration.google.client-secret=d54g6df4g64df6g4df6gfd94fd
+
+
+pom.xml file
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.4.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.sumit</groupId>
+	<artifactId>SpringOAuthDemo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>SpringOAuthDemo</name>
+	<description>Demo project for Spring Boot</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>23</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

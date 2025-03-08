@@ -1,0 +1,149 @@
+App.java file
+
+package org.sumit;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.sumit.config.AppConfig;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        ApplicationContext context=new AnnotationConfigApplicationContext(AppConfig.class);
+
+        Alien obj1=context.getBean(Alien.class);
+        System.out.println(obj1.getAge());
+        obj1.compile();
+
+    }
+}
+
+
+Alien.java file
+
+package org.sumit;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+import java.beans.ConstructorProperties;
+
+ @Component
+
+public class Alien {
+    private int age;
+    
+    @Autowired
+
+    //here we Qualifie that to use com2 bean name object
+    @Qualifier("com2")
+    //remember to use small case letter all
+    //@Qualifier("desktop")
+    private Computer com;
+    public Alien()
+    {
+
+    }
+    public Alien(int age,Computer com)
+    {
+        this.age=age;
+        this.com=com;
+    }
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Computer getCom() {
+        return com;
+    }
+
+    public void setCom(Computer com) {
+        this.com = com;
+    }
+
+    public void compile()
+    {
+        com.compile();
+    }
+}
+
+Computer.java file
+
+package org.sumit;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public interface Computer {
+    void compile();
+}
+
+
+Desktop.java file
+
+package org.sumit;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Desktop implements Computer{
+    public Desktop() {
+        System.out.println("Desktop constructor is called");
+    }
+
+    @Override
+    public void compile()
+    {
+        System.out.println("Desktop Compile");
+    }
+}
+
+Laptop.java file
+
+package org.sumit;
+
+import org.springframework.stereotype.Component;
+
+//here we give the name of the component to search for the specific component
+@Component("com2")
+public class Laptop implements Computer {
+    public Laptop() {
+        System.out.println("Laptop Constructor is created");
+    }
+
+    @Override
+    public void compile()
+    {
+        System.out.println("Laptop Compile");
+    }
+}
+
+
+
+AppConfig.java file
+
+package org.sumit.config;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.sumit.Alien;
+import org.sumit.Desktop;
+import org.sumit.Laptop;
+import org.sumit.Computer;
+
+@Configuration
+
+@ComponentScan("org.sumit")
+public class AppConfig {
+
+
+}

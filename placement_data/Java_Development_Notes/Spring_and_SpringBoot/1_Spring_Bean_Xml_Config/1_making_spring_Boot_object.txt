@@ -1,0 +1,41 @@
+SpringBootFirstApplication.java file
+
+package com.sumit.app;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class SpringBootFirstApplication {
+
+	public static void main(String[] args) {
+		//now we have way to communicate with the ioc container with the help of ApplicationContext
+		ApplicationContext context=SpringApplication.run(SpringBootFirstApplication.class, args);
+		//object is called bean in the spring 
+		//in Bean we have to specify which class object we want
+		Alien obj=context.getBean(Alien.class);
+		obj.code();
+		Alien obj1=context.getBean(Alien.class);
+		obj.code();
+		
+	}
+
+}
+
+
+Alien.java file
+
+package com.sumit.app;
+
+import org.springframework.stereotype.Component;
+
+//with this spring knows spring has to manage this object
+@Component
+public class Alien {
+	public void code()
+	{
+		System.out.println("i am in Alien class");
+	}
+
+}

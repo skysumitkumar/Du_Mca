@@ -1,0 +1,250 @@
+//com.sumit.spring_sec_demo
+
+SpringSecDemoApplication.java file
+
+package com.sumit.spring_sec_demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SpringSecDemoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringSecDemoApplication.class, args);
+	}
+
+}
+
+//com.sumit.spring_sec_demo.model
+
+Student.java file
+
+package com.sumit.spring_sec_demo.model;
+
+public class Student {
+    private int id;
+    private String name;
+    private String skill;
+
+    public Student(int id, String name, String skill) {
+        this.id = id;
+        this.name = name;
+        this.skill = skill;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSkill() {
+        return skill;
+    }
+
+    public void setSkill(String skill) {
+        this.skill = skill;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", skill='" + skill + '\'' +
+                '}';
+    }
+}
+
+
+//com.sumit.spring_sec_demo.controller
+
+HelloController
+
+package com.sumit.spring_sec_demo.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+
+    @GetMapping({"/","hello"})
+    public String greet(HttpServletRequest request)
+    {
+        //every time we login we got new session id
+        return "hello"+request.getSession().getId();
+    }
+
+    @GetMapping("about")
+    public String about(HttpServletRequest request)
+    {
+        return "about"+request.getSession().getId();
+    }
+}
+
+//com.sumit.spring_sec_demo.controller
+
+StudentController.java file
+
+package com.sumit.spring_sec_demo.controller;
+
+import com.sumit.spring_sec_demo.Student;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+public class StudentController {
+    List<Student> students=new ArrayList<>(List.of(
+            new Student(1,"Navin","c++"),
+            new Student(2,"sumit","java")
+    ));
+    @GetMapping("/student")
+    public List<Student> getStudents()
+    {
+        return students;
+    }
+
+    @PostMapping("student")
+    public void addStudents(@RequestBody Student student)
+    {
+        students.add(student);
+    }
+}
+
+//com.sumit.spring_sec_demo.configuration
+
+SecurityConfig.java file
+
+package com.sumit.spring_sec_demo.configuration;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+//to enable the web Security
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
+    {
+        //to disable csrf
+        http.csrf(customizer->customizer.disable());
+        //Enable security for all the requests
+        http.authorizeHttpRequests(request->request
+                                            .anyRequest()
+                                            .authenticated());
+        //to enable the login form
+        //http.formLogin(Customizer.withDefaults());
+        http.httpBasic(Customizer.withDefaults());
+        //To make statelsess(change session id every time)
+        http.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        return http.build();
+    }
+}
+
+
+application.properties
+
+spring.application.name=spring-sec-demo
+//here we are setting the username and password of our own
+spring.security.user.name=sumit
+spring.security.user.password=Sumit@123
+
+#to restrict other website to not intrect with my session to update values in my session
+server.servlet.session.cookie.same-site=strict
+
+pom.xml file
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.4.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.sumit</groupId>
+	<artifactId>spring-sec-demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>spring-sec-demo</name>
+	<description>Demo project for Spring Boot</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>23</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+

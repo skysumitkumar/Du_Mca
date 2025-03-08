@@ -1,0 +1,636 @@
+//com.sumit.spring_boot_rest
+
+SpringBootRestApplication.java file
+
+package com.sumit.spring_boot_rest;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SpringBootRestApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringBootRestApplication.class, args);
+	}
+
+}
+
+//com.sumit.spring_boot_rest.model
+
+JobPost.java file
+
+package com.sumit.spring_boot_rest.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Component
+@Entity
+public class JobPost {
+    @Id
+    private int postId;
+    private String postProfile;
+    private String postDesc;
+    private int reqExperience;
+    private List<String> postTechStack;
+
+}
+
+//com.sumit.spring_boot_rest.model
+
+User.java file
+
+package com.sumit.spring_boot_rest.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+public class User {
+
+    @Id
+    private int id;
+    private String username;
+    private String password;
+}
+
+//com.sumit.spring_boot_rest.model
+
+UserPrincipal.java file
+
+package com.sumit.spring_boot_rest.model;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.Collections;
+
+public class UserPrincipal implements UserDetails {
+
+    private User user;
+    public UserPrincipal(User user) {
+        this.user=user;
+    }
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singleton(new SimpleGrantedAuthority("USER"));
+    }
+
+    @Override
+    public String getPassword() {
+        return user.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return user.getUsername();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return UserDetails.super.isAccountNonExpired();
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return UserDetails.super.isAccountNonLocked();
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return UserDetails.super.isCredentialsNonExpired();
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return UserDetails.super.isEnabled();
+    }
+}
+
+
+//com.sumit.spring_boot_rest.Controller
+
+JobRestController.java file
+
+package com.sumit.spring_boot_rest.Controller;
+
+import com.sumit.spring_boot_rest.model.JobPost;
+import com.sumit.spring_boot_rest.service.JobService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+//when we are using controller i bydefault think you are returning a view name
+@RestController
+//to give the data to the react because react host on 3000
+@CrossOrigin(origins="http://localhost:3000")
+public class JobRestController {
+
+    @Autowired
+    private JobService service;
+
+    @GetMapping(path="jobPosts",produces={"application/json"})
+    @ResponseBody
+    public List<JobPost> getAllJobs()
+    {
+        return service.getAllJobs();
+    }
+
+    @GetMapping("jobPost/{postId}")
+    public JobPost getJob(@PathVariable("postId")int postId)
+    {
+        return service.getJob(postId);
+    }
+
+    @GetMapping("jobPosts/keyword/{keyword}")
+    public List<JobPost>searchByKeyword(@PathVariable("keyword") String keyword)
+    {
+        return service.search(keyword);
+    }
+
+    @PostMapping(path = "jobPost",consumes={"application/xml"})
+    public JobPost addjob(@RequestBody JobPost jobPost)
+    {
+        service.addJob(jobPost);
+        return service.getJob(jobPost.getPostId());
+    }
+
+    @PutMapping("jobPost")
+    public JobPost updateJob(@RequestBody JobPost jobPost)
+    {
+        service.updateJob(jobPost);
+        return service.getJob(jobPost.getPostId());
+    }
+
+    @DeleteMapping("jobPost/{postId}")//here postId is taken from url
+    public String deleteJob(@PathVariable int postId)
+    {
+        service.deleteJob(postId);
+        return "Deleted Job Id: " + postId;
+    }
+
+    @GetMapping("load")
+    public String loadData()
+    {
+        service.load();
+        return "success";
+    }
+}
+
+
+//com.sumit.spring_boot_rest.service
+
+JobService.java file
+
+package com.sumit.spring_boot_rest.service;
+
+import com.sumit.spring_boot_rest.model.JobPost;
+import com.sumit.spring_boot_rest.repository.JobRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.ArrayList;
+import java.util.List;
+@Service
+public class JobService {
+
+    @Autowired
+    private JobRepo repo;
+    public void addJob(JobPost jobPost)
+    {
+        repo.save(jobPost);
+    }
+    public List<JobPost> getAllJobs()
+    {
+        return repo.findAll();
+    }
+
+    public JobPost getJob(int postId) {
+        return repo.findById(postId).orElse(new JobPost());
+    }
+
+    public void updateJob(JobPost jobPost) {
+        repo.save(jobPost);
+    }
+
+    public void deleteJob(int postId) {
+
+        repo.deleteById(postId);
+    }
+
+    public void load() {
+        List<JobPost>jobs=new ArrayList<>(List.of(new JobPost(1,"Java Developer","this is java profile",2,List.of("java"))));
+        repo.saveAll(jobs);
+    }
+
+    public List<JobPost> search(String keyword) {
+        return repo.findByPostProfileContainingOrPostDescContaining(keyword,keyword);
+    }
+}
+
+//com.sumit.spring_boot_rest.service
+
+MyUserDetailsService.java file
+
+package com.sumit.spring_boot_rest.service;
+
+import com.sumit.spring_boot_rest.Dao.UserRepo;
+import com.sumit.spring_boot_rest.model.User;
+import com.sumit.spring_boot_rest.model.UserPrincipal;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MyUserDetailsService implements UserDetailsService {
+
+    @Autowired
+    private UserRepo repo;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+            User user=repo.findByUsername(username);
+            if(user==null)
+            {
+                System.out.println("user not found");
+                throw new UsernameNotFoundException(username);
+            }
+            return new UserPrincipal(user);
+    }
+}
+
+//com.sumit.spring_boot_rest.service
+
+UserService.java file
+
+package com.sumit.spring_boot_rest.service;
+
+import com.sumit.spring_boot_rest.Dao.UserRepo;
+import com.sumit.spring_boot_rest.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepo repo;
+
+    private BCryptPasswordEncoder encoder=new BCryptPasswordEncoder(12);
+
+    //for register the user
+    //here we encrypt the password
+    public User serviceUser(User user)
+    {
+        user.setPassword(encoder.encode(user.getPassword()));
+        //System.out.println(user.getPassword());
+        return repo.save(user);
+    }
+}
+
+//com.sumit.spring_boot_rest.repository
+
+JobRepo.java file
+
+package com.sumit.spring_boot_rest.repository;
+
+import com.sumit.spring_boot_rest.model.JobPost;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Repository
+public interface JobRepo extends JpaRepository<JobPost,Integer>
+{
+
+    List<JobPost> findByPostProfileContainingOrPostDescContaining(String postProfile, String postDesc);
+}
+
+//com.sumit.spring_boot_rest.Dao
+
+UserRepo.java file
+
+package com.sumit.spring_boot_rest.Dao;
+
+import com.sumit.spring_boot_rest.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepo extends JpaRepository<User,Integer> {
+
+    User findByUsername(String username);
+}
+
+//com.sumit.spring_boot_rest.configuration
+
+Securityconfig.java file
+
+package com.sumit.spring_boot_rest.configuration;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+//to enable the web Security
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+        //to disable csrf
+        http.csrf(customizer->customizer.disable());
+        //Enable security for all the requests
+        http.authorizeHttpRequests(request->request
+                                            .anyRequest()
+                                            .authenticated());
+        //to enable the login form
+        //http.formLogin(Customizer.withDefaults());
+        http.httpBasic(Customizer.withDefaults());
+        //To make statelsess(change session id every time)
+        http.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        return http.build();
+    }
+
+
+    @Bean
+    public AuthenticationProvider authProvider() {
+        DaoAuthenticationProvider provider=new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService);
+        provider.setPasswordEncoder(new BCryptPasswordEncoder(12));
+        return provider;
+    }
+
+}
+
+//com.sumit.spring_boot_rest.aop
+
+LogginAspect.java file
+
+package com.sumit.spring_boot_rest.aop;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.aop.interceptor.PerformanceMonitorInterceptor;
+import org.springframework.stereotype.Component;
+
+@Component
+//we have to include this to use AOP
+@Aspect
+public class LoggingAspect {
+
+    private static final Logger LOGGER= LoggerFactory.getLogger(LoggingAspect.class);
+
+    private static final Logger LOGGER1= LoggerFactory.getLogger(PerformanceMonitorInterceptor.class);
+
+    //here we said before the execution of(execution(* com.sumit.spring_boot_rest.service.JobService.*(..))) this method call logMethodCall method
+    //return type,class-name.method-name(args)
+    //this is a point-cut
+    @Before("execution(* com.sumit.spring_boot_rest.service.JobService.getJob(..))")
+    public void logMethodCall(JoinPoint joinPoint)
+    {
+        //here we maintain the log on system
+        LOGGER.info("Metthod called " + joinPoint.getSignature().getName());
+    }
+
+    //this is called after the execution of the below method
+    @After("execution(* com.sumit.spring_boot_rest.service.JobService.getJob(..))||execution(* com.sumit.spring_boot_rest.service.JobService.updateJob(..))")
+    public void logMethodExecuted(JoinPoint joinPoint)
+    {
+        //here we maintain the log on system
+        LOGGER.info("Metthod Executed " + joinPoint.getSignature().getName());
+    }
+
+    //it only executed when there is error in the below described methods
+    @AfterThrowing("execution(* com.sumit.spring_boot_rest.service.JobService.getJob(..))")
+    public void logMethodCrash(JoinPoint joinPoint)
+    {
+        //here we maintain the log on system
+        LOGGER.info("Metthod has some issues " + joinPoint.getSignature().getName());
+    }
+
+    //it only executed when there is no error after execution of the described methods
+    @AfterReturning("execution(* com.sumit.spring_boot_rest.service.JobService.getJob(..))||execution(* com.sumit.spring_boot_rest.service.JobService.updateJob(..))")
+    public void logMethodExecutedSuccess(JoinPoint joinPoint)
+    {
+        //here we maintain the log on system
+        LOGGER.info("Metthod Executed Successfully " + joinPoint.getSignature().getName());
+    }
+
+    @Around("execution(* com.sumit.spring_boot_rest.service.JobService.getJob(..))")
+    public Object monitorTime(ProceedingJoinPoint joinPoint) throws Throwable {
+        //start the time
+        long start=System.currentTimeMillis();
+        //after starting the time call the getJob method
+        Object obj=joinPoint.proceed(); //if we not take this object here so our output of http://localhost:8080/jobPost/4 is not print on the postman
+        //end the time
+        long end=System.currentTimeMillis();
+
+        LOGGER1.info("Time taken : "+(end-start));
+
+        return obj;
+    }
+}
+
+//com.sumit.spring_boot_rest.aop
+
+ValidationAspect.java file
+
+package com.sumit.spring_boot_rest.aop;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.aop.interceptor.PerformanceMonitorInterceptor;
+import org.springframework.stereotype.Component;
+
+@Component
+@Aspect
+public class ValidationAspect {
+
+    private static final Logger LOGGER= LoggerFactory.getLogger(ValidationAspect.class);
+
+    @Around("execution(* com.sumit.spring_boot_rest.service.JobService.getJob(..))&&args(postId)")
+    public Object validateAndUpdate(ProceedingJoinPoint jp,int postId) throws Throwable
+    {
+        if(postId<0)
+        {
+            LOGGER.info("PostId is negative i will update it");
+            postId=-postId;
+        }
+        LOGGER.info("new value is : "+postId);
+        Object obj=jp.proceed(new Object[]{postId});
+        return obj;
+    }
+}
+
+application.properties file
+
+spring.application.name=SpringJDBCEx
+#spring.security.user.name=sumit
+#spring.security.user.password=Sumit@123
+
+spring.datasource.url=jdbc:mysql://localhost:3306/USER_DETAILS
+spring.datasource.username=root
+spring.datasource.password=123456789
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+#create a table if we have or not
+#spring.jpa.hibernate.ddl-auto=create
+#create a table if we don't have that if we have table just update it
+spring.jpa.hibernate.ddl-auto=update
+
+#to show the query also what it give
+spring.jpa.show-sql=true
+
+#to restrict other website to not intrect with my session to update values in my session
+server.servlet.session.cookie.same-site=strict
+
+
+pom.xml file
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.4.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.sumit</groupId>
+	<artifactId>spring-boot-rest</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>spring-boot-rest</name>
+	<description>Demo project for Spring Boot</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>23</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!--to convert data in xml format-->
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+			<version>2.15.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

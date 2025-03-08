@@ -1,0 +1,163 @@
+App.java file
+
+package org.sumit;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
+
+        Alien obj=(Alien)context.getBean("alien");
+
+        Alien obj1=(Alien)context.getBean("alien");
+        System.out.println(obj1.getAge());
+        System.out.println(obj1.getSalary());
+        obj1.compile();
+    }
+}
+
+
+
+Alien.java file
+
+package org.sumit;
+
+public class Alien {
+    private Laptop lap;
+    private int age;
+    private int salary;
+    public Alien()
+    {
+
+    }
+    //it called by the <constructor-args value="25"/>
+    public Alien(int age)
+    {
+        System.out.println("parametrize constructor of age is called");
+        this.age = age;
+    }
+    public Alien(int age,Laptop lap)
+    {
+        System.out.println("parametrize constructor of age and lap is called");
+        this.age=age;
+        this.lap=lap;
+    }
+    public Alien(int age,Laptop lap,int salary)
+    {
+        System.out.println("parametrize constructor of age,Laptop and salary is called");
+        this.age=age;
+        this.lap=lap;
+        this.salary=salary;
+    }
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Laptop getLap() {
+        return lap;
+    }
+
+    public void setLap(Laptop lap) {
+        this.lap = lap;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public void compile()
+    {
+        lap.compile();
+    }
+}
+
+
+
+Laptop.java file
+
+package org.sumit;
+
+public class Laptop {
+    public void compile()
+    {
+        System.out.println("Laptop Compile");
+    }
+}
+
+
+spring.xml file
+
+<!--beans are the objects the are manage by spring framework<?xml version="1.0" encoding="UTF-8"?>-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <bean id="alien" class="org.sumit.Alien">
+<!--        &lt;!&ndash;if we have all diff type of parameter so we also give the type so it understand what value give to which variable&ndash;&gt;-->
+<!--        <constructor-arg type="Laptop" ref="lap1"/>-->
+<!--        <constructor-arg type="int" value="25"/>-->
+
+<!--        &lt;!&ndash;if we not write here sequence wise so have to give the index value so it understand here put which value&ndash;&gt;-->
+<!--        <constructor-arg index="1" ref="lap1"/>-->
+<!--        <constructor-arg index="2" value="2500"/>-->
+<!--        <constructor-arg index="0" value="25"/>-->
+
+            <!--with this way we can give the name of the variable to differenciate the which value is for that variable in this we have to give in the sequence-->
+            <constructor-arg name="age" value="25"/>
+            <constructor-arg name="lap" ref="lap1"/>
+            <constructor-arg name="salary" value="25000"/>
+
+    </bean>
+
+    <bean id="lap1" class="org.sumit.Laptop">
+    </bean>
+
+</beans>
+
+
+pom.xml file
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.sumit</groupId>
+  <artifactId>Spring1</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>Spring1</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>6.2.2</version>
+    </dependency>
+  </dependencies>
+</project>

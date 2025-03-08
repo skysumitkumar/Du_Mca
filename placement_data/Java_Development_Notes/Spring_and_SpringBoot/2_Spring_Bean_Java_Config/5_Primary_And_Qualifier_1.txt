@@ -1,0 +1,147 @@
+App.java file
+
+package org.sumit;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.sumit.config.AppConfig;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        ApplicationContext context=new AnnotationConfigApplicationContext(AppConfig.class);
+
+        Alien obj1=context.getBean(Alien.class);
+        System.out.println(obj1.getAge());
+        obj1.compile();
+
+
+    }
+}
+
+Alien.java file
+
+package org.sumit;
+
+import java.beans.ConstructorProperties;
+
+public class Alien {
+    private Computer com;
+    private int age;
+    public Alien()
+    {
+
+    }
+    public Alien(int age,Computer com)
+    {
+        this.age=age;
+        this.com=com;
+    }
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Computer getCom() {
+        return com;
+    }
+
+    public void setCom(Computer com) {
+        this.com = com;
+    }
+
+    public void compile()
+    {
+        com.compile();
+    }
+}
+
+Computer.java file
+
+package org.sumit;
+
+public interface Computer {
+    void compile();
+}
+
+
+Desktop.java file
+
+package org.sumit;
+
+public class Desktop implements Computer{
+    public Desktop() {
+        System.out.println("Desktop constructor is called");
+    }
+
+    @Override
+    public void compile()
+    {
+        System.out.println("Desktop Compile");
+    }
+}
+
+
+Laptop.java file
+
+package org.sumit;
+
+public class Laptop implements Computer {
+    public Laptop() {
+        System.out.println("Laptop Constructor is created");
+    }
+
+    @Override
+    public void compile()
+    {
+        System.out.println("Laptop Compile");
+    }
+}
+
+
+AppConfig.java file
+
+package org.sumit.config;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.sumit.Alien;
+import org.sumit.Desktop;
+import org.sumit.Laptop;
+import org.sumit.Computer;
+
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public Alien alien(Computer com)
+    {
+        Alien obj=new Alien();
+        obj.setAge(25);
+        obj.setCom(com);
+        return obj;
+    }
+
+
+    @Bean
+    public Desktop desktop()
+    {
+        return new Desktop();
+    }
+
+    @Bean
+    @Primary
+    public Laptop laptop()
+    {
+        return new Laptop();
+    }
+}

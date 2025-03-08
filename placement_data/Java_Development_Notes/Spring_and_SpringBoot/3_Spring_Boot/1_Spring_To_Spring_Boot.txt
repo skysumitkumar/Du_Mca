@@ -1,0 +1,124 @@
+Springbootdemoapplication.java file
+
+package org.sumit.springbootdemoapplication;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class SpringBootDemoApplication {
+
+    public static void main(String[] args) {
+
+        ApplicationContext context=SpringApplication.run(SpringBootDemoApplication.class, args);
+        Alien obj=context.getBean(Alien.class);
+        obj.code();
+    }
+
+}
+
+
+Alien.java file
+
+package org.sumit.springbootdemoapplication.model;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Alien {
+    int age;
+
+    @Autowired
+    Laptop lap;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void code() {
+        lap.compile();
+    }
+
+}
+
+
+Laptop.java file
+
+package org.sumit.springbootdemoapplication.model;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Laptop {
+
+    public Laptop() {
+        System.out.println("Laptop Constructor is called");
+    }
+    public void compile()
+    {
+        System.out.println("Laptop code is compiling");
+    }
+}
+
+pom.xml file
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.2</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>org.sumit</groupId>
+    <artifactId>SpringBootDemoApplication</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>SpringBootDemoApplication</name>
+    <description>SpringBootDemoApplication</description>
+    <url/>
+    <licenses>
+        <license/>
+    </licenses>
+    <developers>
+        <developer/>
+    </developers>
+    <scm>
+        <connection/>
+        <developerConnection/>
+        <tag/>
+        <url/>
+    </scm>
+    <properties>
+        <java.version>17</java.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

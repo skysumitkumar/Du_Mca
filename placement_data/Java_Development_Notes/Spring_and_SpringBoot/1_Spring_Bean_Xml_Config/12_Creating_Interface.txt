@@ -1,0 +1,121 @@
+App.java file
+
+package org.sumit;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
+
+        Alien obj=(Alien)context.getBean("alien");
+
+        Alien obj1=(Alien)context.getBean("alien");
+        System.out.println(obj1.getAge());
+        obj1.compile();
+    }
+}
+
+
+Alien.java file
+
+package org.sumit;
+
+import java.beans.ConstructorProperties;
+
+public class Alien {
+    private Computer com;
+    private int age;
+    public Alien()
+    {
+
+    }
+    public Alien(int age,Computer com)
+    {
+        this.age=age;
+        this.com=com;
+    }
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Computer getCom() {
+        return com;
+    }
+
+    public void setCom(Computer com) {
+        this.com = com;
+    }
+
+    public void compile()
+    {
+        com.compile();
+    }
+}
+
+
+Computer.java file
+
+package org.sumit;
+
+public interface Computer {
+    void compile();
+}
+
+
+Desktop.java file
+
+package org.sumit;
+
+public class Desktop implements Computer{
+    @Override
+    public void compile()
+    {
+        System.out.println("Desktop Compile");
+    }
+}
+
+
+Laptop.java file
+
+package org.sumit;
+
+public class Laptop implements Computer {
+    @Override
+    public void compile()
+    {
+        System.out.println("Laptop Compile");
+    }
+}
+
+
+
+spring.xml file
+
+<!--beans are the objects the are manage by spring framework<?xml version="1.0" encoding="UTF-8"?>-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <bean id="alien" class="org.sumit.Alien">
+
+            <property name="age" value="25"/>
+            <property name="com" ref="lap1"/>
+
+    </bean>
+
+    <bean id="lap1" class="org.sumit.Laptop">
+    </bean>
+    <bean id="desk1" class="org.sumit.Desktop">
+    </bean>
+
+</beans>

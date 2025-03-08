@@ -1,0 +1,102 @@
+App.java file
+
+package org.sumit;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        //this line create the object go to that spring.xml and create all the object are in the Bean tag with scope singlton
+        ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
+
+        //if we write getBean 2 times with same id it don't create new object for that is work with previous object
+        Alien obj=(Alien)context.getBean("alien");
+        obj.age=25;
+
+        Alien obj1=(Alien)context.getBean("alien");
+        System.out.println(obj1.age);     //now it give 0 because in spring.xml file we set scope as prototype so when we call bean it create new object every time
+        
+    }
+}
+
+
+Alien.java file
+
+package org.sumit;
+
+public class Alien {
+
+    int age;
+    public void compile()
+    {
+        System.out.println("i am in the Alien class");
+    }
+}
+
+
+Laptop.java file
+
+
+package org.sumit;
+
+public class Laptop {
+
+}
+
+
+spring.xml file
+
+<!--beans are the objects the are manage by spring framework<?xml version="1.0" encoding="UTF-8"?>-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <!--if we write singlton(by default) in the scope it create object only one time no matter how many times you call getBean-->
+    <!--if we write prototype in the scope it create object each time when we call the getBean-->
+    <!--prototype is called only when we call getBeen-->
+    <bean id="alien" class="org.sumit.Alien" scope="prototype">
+    </bean>
+
+    <bean id="laptop" class="org.sumit.Laptop">
+    </bean>
+
+</beans>
+
+
+pom.xml file
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.sumit</groupId>
+  <artifactId>Spring1</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>Spring1</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>6.2.2</version>
+    </dependency>
+  </dependencies>
+</project>

@@ -1,0 +1,193 @@
+//com.sumit.spring_data_jpa_ex
+
+SpringDataJpaExApplication.java
+
+package com.sumit.spring_data_jpa_ex;
+
+import com.sumit.spring_data_jpa_ex.model.Student;
+import com.sumit.spring_data_jpa_ex.repository.StudentRepo;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class SpringDataJpaExApplication {
+
+	public static void main(String[] args) {
+
+		ApplicationContext context=SpringApplication.run(SpringDataJpaExApplication.class, args);
+
+		StudentRepo repo=context.getBean(StudentRepo.class);
+
+		Student s1=context.getBean(Student.class);
+		Student s2=context.getBean(Student.class);
+		Student s3=context.getBean(Student.class);
+
+		//to print everything from the student table
+		System.out.println(repo.findAll());
+	}
+
+}
+
+//com.sumit.spring_data_jpa_ex.model
+
+Student.java file
+
+package com.sumit.spring_data_jpa_ex.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("prototype")
+//here we said my table name is same is class name
+@Entity
+public class Student {
+    @Id
+    private int rollNo;
+    private String name;
+    private int marks;
+
+    public int getRollNo() {
+        return rollNo;
+    }
+
+    public void setRollNo(int rollNo) {
+        this.rollNo = rollNo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getMarks() {
+        return marks;
+    }
+
+    public void setMarks(int marks) {
+        this.marks = marks;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "rollNo=" + rollNo +
+                ", name='" + name + '\'' +
+                ", marks=" + marks +
+                '}';
+    }
+}
+
+//com.sumit.spring_data_jpa_ex.repository
+
+StudentRepo.java file
+
+package com.sumit.spring_data_jpa_ex.repository;
+
+import com.sumit.spring_data_jpa_ex.model.Student;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+//it take the name of the class and the type of the primary key
+public interface StudentRepo extends JpaRepository<Student, Integer> {
+
+
+}
+
+
+application.properties file
+
+spring.application.name=SpringJDBCEx
+spring.datasource.url=jdbc:mysql://localhost:3306/USER_DETAILS
+spring.datasource.username=root
+spring.datasource.password=123456789
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+#create a table if we have or not
+#spring.jpa.hibernate.ddl-auto=create
+#create a table if we don't have that if we have table just update it
+spring.jpa.hibernate.ddl-auto=update
+
+#to show the query also what it give
+spring.jpa.show-sql=true
+
+
+
+pom.xml file
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.4.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.sumit</groupId>
+	<artifactId>spring-data-jpa-ex</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>spring-data-jpa-ex</name>
+	<description>Demo project for Spring Boot</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>23</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<version>9.2.0</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+
+

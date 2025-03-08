@@ -1,0 +1,494 @@
+//com.sumit.spring_sec_demo
+
+SpringSecDemoApplication.java file
+
+package com.sumit.spring_sec_demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SpringSecDemoApplication {
+
+	public static void main(String[] args) {
+
+		SpringApplication.run(SpringSecDemoApplication.class, args);
+	}
+
+}
+
+//com.sumit.spring_sec_demo.model
+
+User.java file
+
+package com.sumit.spring_sec_demo.model;
+
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import jakarta.persistence.Entity;
+
+//this we do with the help of lombok
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+public class User {
+
+    @Id
+    private int id;
+    private String username;
+    private String password;
+}
+
+//com.sumit.spring_sec_demo.model
+
+Student.java file
+
+package com.sumit.spring_sec_demo.model;
+
+public class Student {
+    private int id;
+    private String name;
+    private String skill;
+
+    public Student(int id, String name, String skill) {
+        this.id = id;
+        this.name = name;
+        this.skill = skill;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSkill() {
+        return skill;
+    }
+
+    public void setSkill(String skill) {
+        this.skill = skill;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", skill='" + skill + '\'' +
+                '}';
+    }
+}
+
+//com.sumit.spring_sec_demo.controller
+
+HelloController.java file
+
+package com.sumit.spring_sec_demo.controller;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+
+    @GetMapping({"/","hello"})
+    public String greet(HttpServletRequest request)
+    {
+        //every time we login we got new session id
+        return "hello"+request.getSession().getId();
+    }
+
+    @GetMapping("about")
+    public String about(HttpServletRequest request)
+    {
+        return "about"+request.getSession().getId();
+    }
+}
+
+//com.sumit.spring_sec_demo.controller
+
+StudentController.java file
+
+package com.sumit.spring_sec_demo.controller;
+
+import com.sumit.spring_sec_demo.model.Student;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.security.web.csrf.CsrfToken;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+public class StudentController {
+    List<Student> students=new ArrayList<>(List.of(
+            new Student(1,"Navin","c++"),
+            new Student(2,"sumit","java")
+    ));
+    @GetMapping("/student")
+    public List<Student> getStudents()
+    {
+        return students;
+    }
+
+    @PostMapping("students")
+    public void addStudents(@RequestBody Student student)
+    {
+        students.add(student);
+    }
+
+}
+
+//com.sumit.spring_sec_demo.controller
+
+UserController.java file
+
+package com.sumit.spring_sec_demo.controller;
+
+import com.sumit.spring_sec_demo.model.User;
+import com.sumit.spring_sec_demo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+    //to register the user
+    @PostMapping("register")
+    public User register(@RequestBody User user)
+    {
+        return userService.serviceUser(user);
+    }
+}
+
+
+
+//com.sumit.spring_sec_demo.service
+
+MyUserDetailsService.java file
+
+package com.sumit.spring_sec_demo.service;
+
+import com.sumit.spring_sec_demo.model.User;
+import com.sumit.spring_sec_demo.model.UserPrincipal;
+import com.sumit.spring_sec_demo.Dao.UserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MyUserDetailsService implements UserDetailsService {
+
+    @Autowired
+    private UserRepo repo;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+            User user=repo.findByUsername(username);
+            if(user==null)
+            {
+                System.out.println("user not found");
+                throw new UsernameNotFoundException(username);
+            }
+            return new UserPrincipal(user);
+    }
+}
+
+//com.sumit.spring_sec_demo.service
+
+UserService.java file
+
+package com.sumit.spring_sec_demo.service;
+
+import com.sumit.spring_sec_demo.Dao.UserRepo;
+import com.sumit.spring_sec_demo.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepo repo;
+
+    //for register the user
+    public User serviceUser(User user)
+    {
+        return repo.save(user);
+    }
+}
+
+
+
+//com.sumit.spring_sec_demo.Dao
+
+UserRepo.java file
+
+package com.sumit.spring_sec_demo.Dao;
+
+import com.sumit.spring_sec_demo.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepo extends JpaRepository<User,Integer> {
+
+    User findByUsername(String username);
+}
+
+//com.sumit.spring_sec_demo.model
+
+UserPrincipal.java file
+
+package com.sumit.spring_sec_demo.model;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+public class UserPrincipal implements UserDetails {
+
+    private User user;
+    public UserPrincipal(User user) {
+        this.user=user;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singleton(new SimpleGrantedAuthority("USER"));
+    }
+
+    @Override
+    public String getPassword() {
+        return user.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return user.getUsername();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return UserDetails.super.isAccountNonExpired();
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return UserDetails.super.isAccountNonLocked();
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return UserDetails.super.isCredentialsNonExpired();
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return UserDetails.super.isEnabled();
+    }
+}
+
+
+//com.sumit.spring_sec_demo.configuration
+
+SecurityConfig.java file
+
+package com.sumit.spring_sec_demo.configuration;
+
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.authorization.AuthorizationManager;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
+import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+//to enable the web Security
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+        //to disable csrf
+        http.csrf(customizer->customizer.disable());
+        //Enable security for all the requests
+        http.authorizeHttpRequests(request->request
+                                            .anyRequest()
+                                            .authenticated());
+        //to enable the login form
+        //http.formLogin(Customizer.withDefaults());
+        http.httpBasic(Customizer.withDefaults());
+        //To make statelsess(change session id every time)
+        http.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        return http.build();
+    }
+
+
+    @Bean
+    public AuthenticationProvider authProvider() {
+        DaoAuthenticationProvider provider=new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService);
+        provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
+        return provider;
+    }
+
+}
+
+application.properties file
+
+spring.application.name=spring-sec-demo
+#spring.security.user.name=sumit
+#spring.security.user.password=Sumit@123
+
+spring.datasource.url=jdbc:mysql://localhost:3306/user_details
+spring.datasource.username=root
+spring.datasource.password=123456789
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+#create a table if we have or not
+#spring.jpa.hibernate.ddl-auto=create
+#create a table if we don't have that if we have table just update it
+spring.jpa.hibernate.ddl-auto=update
+
+#to restrict other website to not intrect with my session to update values in my session
+server.servlet.session.cookie.same-site=strict
+
+pom.xml file
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.4.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.sumit</groupId>
+	<artifactId>spring-sec-demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>spring-sec-demo</name>
+	<description>Demo project for Spring Boot</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>23</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>9.1.0</version>
+        </dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.30</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!--for import entity		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

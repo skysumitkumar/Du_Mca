@@ -1,0 +1,73 @@
+App.java file
+
+package org.sumit;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        //this line create the object go to that spring.xml and create all the object are in the Bean tag
+        ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
+
+        //if we write getBean 2 times with same id it don't create new object for that it work with previous object
+        Alien obj=(Alien)context.getBean("alien");
+        obj.age=25;
+
+        Alien obj1=(Alien)context.getBean("alien");
+        System.out.println(obj1.age);
+    }
+}
+
+
+Alien.java file
+
+package org.sumit;
+
+public class Alien {
+    Alien()
+    {
+        System.out.println("Alien Constructor is called");
+    }
+    int age;
+    public void compile()
+    {
+        System.out.println("i am in the Alien class");
+    }
+}
+
+
+Laptop.java file
+
+package org.sumit;
+
+public class Laptop {
+    Laptop()
+    {
+        System.out.println("Laptop constructor is called");
+    }
+}
+
+
+spring.xml file
+
+<!--beans are the objects the are manage by spring framework<?xml version="1.0" encoding="UTF-8"?>-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <!--if you write one bean 2 times it called that class constructor 2 times and make object 2 times-->
+    <bean id="alien" class="org.sumit.Alien">
+    </bean>
+
+    <bean id="alien1" class="org.sumit.Alien">
+    </bean>
+
+    <bean id="laptop" class="org.sumit.Laptop">
+    </bean>
+
+</beans>

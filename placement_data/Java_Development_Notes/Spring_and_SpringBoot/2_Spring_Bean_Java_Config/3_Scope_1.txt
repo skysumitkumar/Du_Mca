@@ -1,0 +1,65 @@
+App.java file
+
+package org.sumit;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.sumit.config.AppConfig;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        ApplicationContext context=new AnnotationConfigApplicationContext(AppConfig.class);
+        Desktop dt=context.getBean("com",Desktop.class);
+        dt.compile();
+	
+        Desktop dt2=context.getBean("com",Desktop.class);
+        dt2.compile();
+
+
+    }
+}
+
+
+
+Desktop.java file
+
+package org.sumit;
+
+public class Desktop implements Computer{
+    public Desktop() {
+        System.out.println("Desktop constructor is called");
+    }
+
+    @Override
+    public void compile()
+    {
+        System.out.println("Desktop Compile");
+    }
+}
+
+
+AppConfig.java file
+
+
+package org.sumit.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.Configuration;
+import org.sumit.Desktop;
+
+@Configuration
+public class AppConfig {
+
+    @Bean(name="com")
+
+    //here we use Scope prototype so it create object every time it called
+    @Scope("prototype")
+    public Desktop desktop()
+    {
+        return new Desktop();
+    }
+}

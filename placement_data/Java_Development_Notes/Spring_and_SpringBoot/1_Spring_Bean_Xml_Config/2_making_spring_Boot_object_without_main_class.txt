@@ -1,0 +1,57 @@
+SpringBootFirstApplication.java file
+
+package com.sumit.app;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class SpringBootFirstApplication {
+
+	public static void main(String[] args) {
+		ApplicationContext context=SpringApplication.run(SpringBootFirstApplication.class, args);
+		Alien obj=context.getBean(Alien.class);
+		obj.code();
+		
+	}
+
+}
+
+
+Alien.java class
+
+package com.sumit.app;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Alien {
+
+	//it wiring between the Alien and Laptop class
+	//now spring framework know it is his responsiblity to search for the laptop object in the container
+	@Autowired
+	Laptop lap;
+	public void code()
+	{
+		lap.compile();
+	}
+
+}
+
+
+Laptop.java class
+
+package com.sumit.app;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Laptop {
+
+	public void compile()
+	{
+		System.out.println("i am in the laptop class");
+	}
+}

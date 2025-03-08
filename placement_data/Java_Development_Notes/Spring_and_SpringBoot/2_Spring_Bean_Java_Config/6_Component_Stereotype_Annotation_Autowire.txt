@@ -1,0 +1,131 @@
+//Autowire :- is field Injection
+//Constructor:-we make a constructor and at top of that we use Autowire that is constructor Injection
+//Setter:- we make a setter and at top of that we use Autowire that is Setter Injection
+
+App.java file
+
+package org.sumit;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.sumit.config.AppConfig;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        ApplicationContext context=new AnnotationConfigApplicationContext(AppConfig.class);
+
+        Alien obj1=context.getBean(Alien.class);
+        System.out.println(obj1.getAge());
+        obj1.compile();
+
+    }
+}
+
+
+Alien.java file
+
+package org.sumit;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
+
+import java.beans.ConstructorProperties;
+
+//it is a Stereotype annotation in spring which helps your spring framework to understand that this alien class is managed by the spring framework
+@Component
+
+public class Alien {
+    private int age;
+	
+    //here we said spring Autowire the object of com so here we have only Desktop so it call the desktop but if we have 2 objects of same type so it give error to solve that we have to use Qualifier
+    @Autowired
+    private Computer com;
+    public Alien()
+    {
+
+    }
+    public Alien(int age,Computer com)
+    {
+        this.age=age;
+        this.com=com;
+    }
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Computer getCom() {
+        return com;
+    }
+
+    public void setCom(Computer com) {
+        this.com = com;
+    }
+
+    public void compile()
+    {
+        com.compile();
+    }
+}
+
+Computer.java file
+
+package org.sumit;
+
+import org.springframework.stereotype.Component;
+
+//it is a Stereotype annotation in spring which helps your spring framework to understand that this Computer class is managed by the spring framework
+@Component
+public interface Computer {
+    void compile();
+}
+
+
+Desktop.java file
+
+package org.sumit;
+
+import org.springframework.stereotype.Component;
+
+//it is a Stereotype annotation in spring which helps your spring framework to understand that this Desktop class is managed by the spring framework
+@Component
+public class Desktop implements Computer{
+    public Desktop() {
+        System.out.println("Desktop constructor is called");
+    }
+
+    @Override
+    public void compile()
+    {
+        System.out.println("Desktop Compile");
+    }
+}
+
+AppConfig.java file
+
+package org.sumit.config;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.sumit.Alien;
+import org.sumit.Desktop;
+import org.sumit.Laptop;
+import org.sumit.Computer;
+
+@Configuration
+
+//hay spring please scan these particular component and see if they have @Component on top of it  if you find this annotaiton there please manage them
+//here we give the location of our files that we want to manage
+@ComponentScan("org.sumit")
+public class AppConfig {
+
+
+}

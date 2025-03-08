@@ -1,0 +1,359 @@
+//com.sumit.spring_boot_rest
+
+SpringBootRestApplication.java file
+
+package com.sumit.spring_boot_rest;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SpringBootRestApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringBootRestApplication.class, args);
+	}
+
+}
+
+
+//com.sumit.spring_boot_rest.model
+
+JobPost.java file
+
+package com.sumit.spring_boot_rest.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Component
+public class JobPost {
+    private int postId;
+    private String postProfile;
+    private String postDesc;
+    private int reqExperience;
+    private List<String> postTechStack;
+
+//    public int getPostId() {
+//        return postId;
+//    }
+//
+//    public void setPostId(int postId) {
+//        this.postId = postId;
+//    }
+//
+//    public String getPostProfile() {
+//        return postProfile;
+//    }
+//
+//    public void setPostProfile(String postProfile) {
+//        this.postProfile = postProfile;
+//    }
+//
+//    public String getPostDesc() {
+//        return postDesc;
+//    }
+//
+//    public void setPostDesc(String postDesc) {
+//        this.postDesc = postDesc;
+//    }
+//
+//    public int getReqExperience() {
+//        return reqExperience;
+//    }
+//
+//    public void setReqExperience(int reqExperience) {
+//        this.reqExperience = reqExperience;
+//    }
+//
+//    public List<String> getPostTechStack() {
+//        return postTechStack;
+//    }
+//
+//    public void setPostTechStack(List<String> postTechStack) {
+//        this.postTechStack = postTechStack;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "JobPost{" +
+//                "postId=" + postId +
+//                ", postProfile='" + postProfile + '\'' +
+//                ", postDesc='" + postDesc + '\'' +
+//                ", reqExperience=" + reqExperience +
+//                ", postTechStack=" + postTechStack +
+//                '}';
+//    }
+}
+
+
+//com.sumit.spring_boot_rest
+
+JobRestController.java file
+
+
+package com.sumit.spring_boot_rest;
+
+import com.sumit.spring_boot_rest.model.JobPost;
+import com.sumit.spring_boot_rest.service.JobService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+//when we are using controller it bydefault think you are returning a view name
+@RestController
+//to give the data to the react
+@CrossOrigin(origins="http://localhost:3000")
+public class JobRestController {
+
+    @Autowired
+    private JobService service;
+
+    @GetMapping("jobPosts")
+
+    //to returning the data on the web we can use @ResponseBody to see it go to http://localhost:8080/jobPosts
+    @ResponseBody
+    public List<JobPost> getAllJobs()
+    {
+        return service.getAllJobs();
+    }
+
+    @GetMapping("jobpost/{postId}")
+    //here we get the data from the url and give the data of the specific id for this we use @PathVariable
+    public JobPost getJob(@PathVariable("postId")int postId)
+    {
+        return service.getJob(postId);
+    }
+
+    @PostMapping("jobPost")
+    //to send json data to the server we use @RequestBody to store json data to JobPost
+    public JobPost addjob(@RequestBody JobPost jobPost)
+    {
+        service.addJob(jobPost);
+        return service.getJob(jobPost.getPostId());
+    }
+
+    //put mapping for the change data to the server
+    @PutMapping("jobPost")
+    public JobPost updateJob(@RequestBody JobPost jobPost)
+    {
+        service.updateJob(jobPost);
+        return service.getJob(jobPost.getPostId());
+    }
+
+    //to delete the data from the server with the help of postId we use @DeleteMapping
+    @DeleteMapping("jobPost/{postId}")//here postId is taken from url
+    public String deleteJob(@PathVariable int postId)
+    {
+        service.deleteJob(postId);
+        return "Deleted Job Id: " + postId;
+    }
+}
+
+
+
+
+//com.sumit.spring_boot_rest.service
+
+JobService.java file
+
+package com.sumit.spring_boot_rest.service;
+
+import com.sumit.spring_boot_rest.model.JobPost;
+import com.sumit.spring_boot_rest.repository.JobRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+@Service
+public class JobService {
+
+    @Autowired
+    private JobRepo repo;
+    public void addJob(JobPost jobPost)
+    {
+        repo.addJob(jobPost);
+    }
+    public List<JobPost> getAllJobs()
+    {
+        return repo.getAllJobs();
+    }
+
+    public JobPost getJob(int i) {
+        return repo.getJob(i);
+    }
+
+    public void updateJob(JobPost jobPost) {
+        repo.updateJob(jobPost);
+    }
+
+    public void deleteJob(int postId) {
+        repo.deleteJob(postId);
+    }
+}
+
+
+
+//com.sumit.spring_boot_rest.repository
+
+JobRepo.java file
+
+package com.sumit.spring_boot_rest.repository;
+
+import com.sumit.spring_boot_rest.model.JobPost;
+import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Repository
+public class JobRepo {
+
+    List<JobPost> jobs=new ArrayList<>();
+    public List<JobPost> getAllJobs()
+    {
+        return jobs;
+    }
+    public void addJob(JobPost job)
+    {
+        jobs.add(job);
+        System.out.println(job);
+    }
+    public JobPost getJob(int postId)
+    {
+        for(JobPost job:jobs)
+        {
+            if(job.getPostId()==postId)
+            {
+                return job;
+            }
+        }
+        return null;
+    }
+
+    public void updateJob(JobPost jobPost) {
+        for(JobPost job:jobs)
+        {
+            if(job.getPostId()==jobPost.getPostId())
+            {
+                job.setPostProfile(jobPost.getPostProfile());
+                job.setPostDesc(jobPost.getPostDesc());
+                job.setReqExperience(jobPost.getReqExperience());
+                job.setPostTechStack(jobPost.getPostTechStack());
+
+            }
+        }
+    }
+
+    public void deleteJob(int postId) {
+        for(JobPost job:jobs)
+        {
+            if(job.getPostId()==postId)
+            {
+                jobs.remove(job);
+            }
+        }
+    }
+}
+
+
+pom.xml file
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.4.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.sumit</groupId>
+	<artifactId>spring-boot-rest</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>spring-boot-rest</name>
+	<description>Demo project for Spring Boot</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>23</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!--to convert data in xml format-->
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+			<version>2.15.3</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

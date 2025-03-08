@@ -1,0 +1,87 @@
+//make sure spring.xml file in the main/resourses/spring.xml location
+
+App.java class
+
+package org.sumit;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        //it will help to make the container
+        //bin factory also use in place of ApplicationContext but it is outdated
+        //in this give the name of xml file where we have the configuration are present now
+        // spring framework knows what are the classes and objects is spring has to create for you in the container
+        ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
+
+        //here given "alien" is same as id in spring.xml file
+        Alien org=(Alien)context.getBean("alien");
+        org.compile();
+    }
+}
+
+
+Alien.java file
+
+package org.sumit;
+
+public class Alien {
+    public void compile()
+    {
+        System.out.println("i am in the Alien class");
+    }
+}
+
+
+Spring.xml file
+
+<!--beans are the objects that are manage by spring framework<?xml version="1.0" encoding="UTF-8"?>-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <bean id="alien" class="org.sumit.Alien">
+    </bean>
+
+</beans>
+
+
+pom.xml file
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.sumit</groupId>
+  <artifactId>Spring1</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>Spring1</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!--here we give the dependency for the spring-context-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>6.2.2</version>
+    </dependency>
+  </dependencies>
+</project>
