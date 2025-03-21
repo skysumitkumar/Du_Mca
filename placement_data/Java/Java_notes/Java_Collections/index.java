@@ -162,11 +162,14 @@ public class index
         // p.add(2);
         or
         //p.offer(2);
+        //p.peek(); // top element not remove
+        //p.poll(); // top element also remove top element
         //System.out.println(p.contains(5));
         //p.clear();
         // System.out.println(p.peek());
         // p.remove();
         // System.out.println(p.peek());
+        // p.size();
 
         // //Priority queue by maxHeap
         // PriorityQueue<Integer> p=new PriorityQueue<>((p1,p2)->p2-p1); //if we write second-first it give us in decending order
@@ -179,6 +182,7 @@ public class index
         // s.charAt(4);
         // s.length();
         // s.substring(4,5);
+        // s.length();
 
         // //String array
         // String [] ans=new String[n];
@@ -210,6 +214,7 @@ public class index
         sb.ensureCapacity(50);               // Ensure the capacity is at least 50
         sb.trimToSize();                     // Reduce capacity to the current string length
         sb.setLength(0);                    //to clear the length
+        int size=sb.length();
 
         //swap to index 
         char temp=s.charAt(i);
