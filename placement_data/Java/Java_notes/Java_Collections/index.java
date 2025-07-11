@@ -33,6 +33,7 @@ public class index
         // int[][] arr1=new int[row][col];
         // sort array
         // Arrays.sort(arr);
+        //Arrays.sort(arr1,(a,b)->a[0]-b[0]);
         
         // ArrayList<Integer> arr=new ArrayList<>();
         // Give size to ArrayList
