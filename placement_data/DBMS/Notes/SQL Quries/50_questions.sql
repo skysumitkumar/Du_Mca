@@ -173,4 +173,119 @@ select department , sum(salary) as depSal from worker group by department order 
 -- Q-50. Write an SQL query to fetch the names of workers who earn the highest salary.
 select first_name, salary from worker where salary = (select max(Salary) from worker);
 
+--Q-51. Write a query to find duplicate rows in a table. 
+SELECT column1, column2, COUNT(*) AS count 
+FROM your_table 
+GROUP BY column1, column2 
+HAVING COUNT(*) > 1;
 
+--Q-52. Explain the difference between INNER JOIN and OUTER JOIN with examples. 
+--INNER JOIN
+ --Returns only matching records from both tables.
+ SELECT e.name, d.department_name
+ FROM employees e
+ INNER JOIN departments d ON e.department_id = d.department_id; 
+
+--LEFT OUTER JOIN: 
+--Returns all records from the left table, and matching records from the right table. If no match, NULL is returned.
+ SELECT e.name, d.department_name
+ FROM employees e
+ LEFT JOIN departments d ON e.department_id = d.department_id; 
+
+--RIGHT OUTER JOIN: 
+--Returns all records from the right table, and matching records from the left. 
+ SELECT e.name, d.department_name
+ FROM employees e
+ RIGHT JOIN departments d ON e.department_id = d.department_id; 
+
+--FULL OUTER JOIN: 
+
+--Returns all records from both tables, matching where possible.
+-- Key Difference: 
+--INNER JOIN = intersection (matched data only)
+--OUTER JOIN = union + NULLs (matched + unmatched data)
+
+--Q.53. Write a query to find employees earning more than their managers. 
+-- Assume the table employees has:
+-- emp_id, name, salary, manager_id 
+SELECT e.name AS employee_name, e.salary, m.name AS manager_name, m.salary AS manager_salary 
+FROM employees e 
+JOIN employees m ON e.manager_id = m.emp_id 
+WHERE e.salary > m.salary; 
+
+--Q.54. Explain the difference between UNION and UNION ALL. 
+ Feature          UNION                  UNION ALL
+ Duplicates       Removes duplicates     Keeps all rows, including duplicates 
+ Performace       Slower (because of sorting) Faster (no de-duplication)
+ Use Case         When you want distinct rows When duplicates are meaningful 
+
+Example: 
+SELECT city FROM customers 
+UNION 
+SELECT city FROM vendors; 
+Output:- Returns a unique list of cities. 
+ 
+SELECT city FROM customers 
+UNION ALL 
+SELECT city FROM vendors; 
+Output:- Returns all cities, including duplicates. 
+
+--Q.54. How do you use a CASE statement in SQL? Provide an example. 
+--CASE lets you write conditional logic in SQL (similar to IF/ELSE).
+ SELECT name, salary, 
+ CASE 
+ WHEN salary >= 100000 THEN 'High'
+ WHEN salary >= 50000 THEN 'Medium'
+ ELSE 'Low' 
+ END AS salary_category 
+ FROM employees;
+
+--Q.55. What is a CTE (Common Table Expression), and how is it used? 
+ --Definition:
+ --A CTE (Common Table Expression) is a temporary, named result set that you can reference within a SQL query.
+ --It improves readability and simplifies complex subqueries or recursive logic. 
+--Syntax: 
+WITH cte_name AS ( 
+SELECT ... 
+) 
+SELECT * FROM cte_name; 
+
+--Example – Filter top-paid employees using CTE: 
+WITH HighEarners AS ( 
+SELECT emp_id, name, salary 
+FROM employees 
+WHERE salary > 100000 
+) 
+SELECT * FROM HighEarners; 
+
+--Q.56. Explain the difference between DELETE and TRUNCATE commands.
+Feature             DELETE                                            TRUNCATE
+Removes rows        Yes (can use WHERE condition)                     Yes (removes all rows)
+WHERE supported?    Yes                                               No
+Logging             Logs each deleted row (slower)                    Minimal logging (faster) 
+Rollback            Can be rolled back (if within transaction)        Can be rolled back (in some RDBMS) 
+Identity reset      Retains identity                                  Resets identity (in most DBs)
+Use case            Partial deletion or audit trail needed            Full data wipe without audit needed
+
+--Q.57. How do you optimize SQL queries for better performance? 
+Here are key SQL optimization techniques: 
+1. Use SELECT only required columns -- Bad 
+SELECT * FROM orders; 
+-- Good 
+SELECT order_id, customer_id FROM orders; 
+2. Create proper indexes 
+• Index frequently used columns in JOIN, WHERE, ORDER BY. 
+3. Avoid functions on indexed columns 
+ -- Slower (cannot use index) 
+WHERE YEAR(order_date) = 2024 
+ -- Better 
+WHERE order_date BETWEEN '2024-01-01' AND '2024-12-31' 
+4. Use EXISTS instead of IN (for subqueries) 
+ -- Prefer EXISTS (better for large datasets) 
+SELECT name FROM customers c 
+WHERE EXISTS ( 
+SELECT 1 FROM orders o WHERE o.customer_id = c.customer_id 
+); 
+5. Avoid unnecessary joins or nested subqueries 
+6. Use appropriate data types and avoid implicit conversions 
+7. Analyze execution plans (EXPLAIN or EXPLAIN ANALYZE)
