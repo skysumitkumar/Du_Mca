@@ -122,6 +122,9 @@ public class index
         // m.put(4,m.getOrDefault(4,0)+1);
         // m3.put(s.charAt(j),m.getOrDefault(s.charAt(j),0)+1);
         // m1.size();
+        // m1.clear();    //clear the map
+        // m.putAll(m1);  //put one map to another
+        // m.equals(m1);   //check to map same or not true false
 
         // //Map of pair
         // Map<Pair,Integer> m=new HashMap<>();
